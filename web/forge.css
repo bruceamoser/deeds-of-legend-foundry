@@ -4,10 +4,84 @@
   --atlas-gold: #e3c483;
   --atlas-glow: #273a31;
   min-width: 0;
+  --forge-row: #fcf9f0;
+  --forge-open: #dce4d8;
+  --forge-mechanics: #eee8d9;
+  display: grid;
+  grid-template-columns: clamp(130px, 20%, 184px) minmax(0, 1fr);
+  gap: 14px;
+  align-items: start;
+  color: var(--forest);
+}
+.forge-sidebar {
+  border: 1px solid var(--line);
+  padding: 9px 5px;
+  min-width: 0;
+  align-self: stretch;
+}
+.forge-sidebar h3 {
+  margin: 0 3px 8px;
+  color: var(--muted);
+  font-family: inherit;
+  font-size: 0.76rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+.forge-studied,
+.forge-chooser-list {
+  display: grid;
+  align-content: start;
+  gap: 5px;
+}
+.workshop-forge .forge-discipline {
+  display: grid;
+  gap: 1px;
+  width: 100%;
+  padding: 6px 9px;
+  background: var(--forge-row);
+  border-radius: 0;
+  line-height: 1.25;
+  text-align: left;
+  font-weight: 500;
+}
+.forge-discipline span + span {
+  font-size: 0.84rem;
+}
+.forge-discipline small {
+  color: var(--muted);
+  font-size: 0.73rem;
+  font-weight: 400;
+}
+.forge-discipline[aria-pressed="true"] small {
+  color: inherit;
+}
+.workshop-forge .forge-add {
+  width: 100%;
+  min-height: 28px;
+  margin-top: 12px;
+  padding: 4px 8px;
+  border-radius: 0;
+  background: var(--forge-row);
+  font-size: 0.84rem;
+  font-weight: 500;
+  text-align: left;
+}
+.forge-balance {
+  display: grid;
+  gap: 3px;
+  padding: 15px 4px 3px;
+}
+.forge-balance span,
+.forge-source {
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+.forge-balance strong {
+  font-size: 1.35rem;
+  font-weight: 500;
 }
 .forge-controls,
 .forge-view-buttons,
-.forge-filter-buttons,
 .forge-map-toolbar,
 .forge-map-legend,
 .forge-inspector-actions {
@@ -17,49 +91,30 @@
   gap: 5px;
 }
 .forge-controls {
-  justify-content: space-between;
+  min-height: 28px;
   margin-bottom: 8px;
+  column-gap: 18px;
 }
-.forge-controls button,
-.forge-filters button {
-  white-space: nowrap;
+.forge-controls h3 {
+  margin: 0;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.forge-view-buttons {
+  margin-inline-start: auto;
+}
+.forge-view-buttons button {
+  min-width: 62px;
+  border-radius: 0;
 }
 .workshop-forge button[aria-pressed="true"]:not(.forge-node) {
   background: var(--forest);
   border-color: var(--forest);
   color: var(--paper);
 }
-.forge-dp {
-  color: var(--forest);
-  font-size: 0.88rem;
-}
-.forge-filters,
-.forge-columns-discipline {
-  border: 1px solid var(--line);
-  border-radius: 4px;
-  margin-bottom: 8px;
-}
-.forge-filters summary,
-.forge-columns-discipline summary {
-  cursor: pointer;
-  padding: 6px 9px;
-  font-weight: 600;
-}
-.forge-filter-buttons {
-  padding: 0 8px 8px;
-}
 .forge-workspace {
-  display: grid;
-  grid-template: "map inspect" auto "more inspect" 1fr / minmax(0, 1fr) minmax(230px, 31%);
-  gap: 9px;
-  align-items: start;
-}
-.forge-surface {
-  grid-area: map;
-  min-width: 0;
-}
-.forge-more {
-  grid-area: more;
   min-width: 0;
 }
 .forge-map-toolbar {
@@ -100,6 +155,13 @@
   background: var(--atlas);
   scrollbar-color: #6a7f70 var(--atlas);
   scrollbar-width: thin;
+  cursor: grab;
+  user-select: none;
+  overscroll-behavior: contain;
+}
+.forge-map-scroll.is-panning,
+.forge-map-scroll.is-panning button {
+  cursor: grabbing;
 }
 .forge-map {
   position: relative;
@@ -235,7 +297,7 @@
   font-size: 0.73rem;
 }
 .forge-inspector {
-  grid-area: inspect;
+  margin-top: 8px;
   min-width: 0;
   padding: 10px;
   background: #fbf7ee;
@@ -277,11 +339,10 @@
   display: none;
 }
 .forge-related,
-.forge-pages {
+.forge-spells {
   margin-top: 9px;
 }
-.forge-related ul,
-.forge-path ol {
+.forge-related ul {
   list-style: none;
   margin: 4px 0 0;
   padding: 0;
@@ -294,12 +355,7 @@
 .forge-related li + li {
   margin-top: 2px;
 }
-.forge-node.forge-next-step:not([aria-pressed="true"]) {
-  border-color: #789183;
-  background: #edf2e9;
-}
-.forge-node.forge-related-node,
-.forge-node.forge-path-step {
+.forge-node.forge-related-node {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -321,49 +377,191 @@
   flex: 0 0 auto;
   font-size: 0.71rem;
 }
-.forge-columns-discipline {
-  background: #fbf7ee;
-}
-.forge-columns-discipline summary > * {
-  vertical-align: middle;
-  margin-right: 6px;
-}
-.forge-columns-discipline summary small {
-  float: right;
-}
-.forge-columns-body {
-  padding: 3px 8px 8px;
-}
 .forge-paths {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 7px;
-  margin-top: 7px;
 }
 .forge-path {
+  --forge-steps: minmax(0, 1.1fr) minmax(0, 1.25fr) minmax(35px, 0.28fr) minmax(95px, 0.8fr) 12px;
   min-width: 0;
-  padding: 6px;
   border: 1px solid var(--line);
-  border-radius: 3px;
 }
-.forge-path > p {
+.forge-path h4 {
+  margin: 0;
+  font: inherit;
+}
+.workshop-forge :is(.forge-path-toggle, .forge-step-toggle) {
+  display: grid;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  min-height: 27px;
+  padding: 4px 9px;
+  border: 0;
+  border-radius: 0;
+  text-align: left;
+  font-weight: 500;
+  background: transparent;
+}
+.workshop-forge .forge-path-toggle {
+  grid-template-columns: 10px minmax(0, 1fr) max-content;
+}
+.forge-path.is-open .forge-path-toggle {
+  background: var(--forge-open);
+}
+.forge-path-toggle small,
+.forge-path-summary,
+.forge-book-name {
   color: var(--muted);
-  font-size: 0.73rem;
+  font-size: 0.77rem;
 }
-.forge-path li {
-  position: relative;
+.forge-path-summary,
+.forge-book-name {
+  margin: 0 10px 4px 26px;
 }
-.forge-path li + li {
-  margin-top: 6px;
+.forge-path-summary,
+.forge-step-summary {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-.forge-path li + li::before {
-  content: "";
-  position: absolute;
-  width: 1px;
-  height: 6px;
-  left: 13px;
-  top: -6px;
-  background: #9f854e;
+.forge-book-name {
+  margin-block: 4px;
+}
+.forge-path ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.forge-step-row {
+  display: grid;
+  grid-template-columns: var(--forge-steps);
+  background: var(--forge-row);
+  border-top: 1px solid var(--line);
+}
+.forge-step-row.is-learned {
+  background: var(--forge-open);
+}
+.workshop-forge .forge-step-toggle {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  grid-template-columns: subgrid;
+  gap: 0;
+  min-height: 33px;
+}
+.forge-step-toggle[aria-expanded="true"] .forge-step-name {
+  font-weight: 650;
+}
+.forge-step-name {
+  padding-inline-end: 8px;
+  overflow-wrap: anywhere;
+}
+.forge-step-summary,
+.forge-step-cost,
+.forge-step-status {
+  font-size: 0.77rem;
+  font-weight: 400;
+}
+.forge-step-summary {
+  grid-column: 2;
+  margin-inline-end: 10px;
+}
+.forge-step-cost {
+  grid-column: 3;
+}
+.forge-step-chevron {
+  grid-column: -2;
+  text-align: right;
+}
+.forge-step-status,
+.workshop-forge .forge-step-learn {
+  grid-column: 4;
+  grid-row: 1;
+  align-self: center;
+  margin-inline: 5px;
+  z-index: 1;
+}
+.forge-step-status {
+  color: var(--muted);
+  pointer-events: none;
+  overflow-wrap: anywhere;
+}
+.workshop-forge .forge-step-learn {
+  min-height: 26px;
+  padding: 3px 7px;
+  border-radius: 0;
+  font-size: 0.82rem;
+  font-weight: 500;
+  text-align: left;
+}
+.forge-step-details {
+  grid-column: 1 / -1;
+  padding: 8px 12px 10px;
+  border-top: 1px solid var(--line);
+  border-inline-start: 3px solid var(--gold);
+  background: var(--forge-mechanics);
+}
+.forge-step-details :is(p, .forge-reasons) {
+  margin-block: 0 5px;
+}
+.forge-step-effect {
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+  font-size: 0.9rem;
+}
+.forge-improves {
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+.forge-other-learning {
+  margin-top: 8px;
+  padding: 5px 9px;
+  border: 1px solid var(--line);
+}
+.forge-other-learning > summary {
+  cursor: pointer;
+  font-size: 0.82rem;
+}
+.forge-chooser {
+  width: min(756px, calc(100% - 24px));
+  max-height: 88dvh;
+  padding: 16px;
+  overflow: auto;
+}
+.forge-chooser header {
+  margin: -16px -16px 9px;
+}
+.forge-chooser > p {
+  margin: 0 0 9px;
+  color: var(--muted);
+}
+.forge-chooser > input {
+  width: 100%;
+  margin-bottom: 10px;
+}
+.forge-chooser-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.8fr);
+  gap: 16px;
+}
+.forge-chooser-list {
+  max-height: min(47dvh, 360px);
+  overflow: auto;
+}
+.forge-chooser-list .forge-discipline[hidden] {
+  display: none;
+}
+.forge-chooser-preview {
+  align-self: start;
+  padding: 12px;
+  border: 1px solid var(--line);
+  background: var(--forge-mechanics);
+}
+.forge-chooser-preview ul {
+  padding-inline-start: 16px;
+}
+.forge-chooser-preview h3 {
+  margin-top: 0;
 }
 .forge-node.is-learned:not(.forge-map button) {
   border-left: 3px solid var(--gold);
@@ -407,17 +605,58 @@
   padding: 10px;
   font-size: 0.85rem;
 }
-@media (max-width: 700px) {
-  .forge-workspace {
-    grid-template: "map" auto "inspect" auto "more" auto / minmax(0, 1fr);
+@media (max-width: 680px) {
+  .workshop-forge {
+    gap: 8px;
   }
-}
-@media (max-width: 430px) {
-  .forge-paths,
-  .forge-more .forge-related ul {
-    grid-template-columns: minmax(0, 1fr);
+  .forge-path {
+    --forge-steps: minmax(0, 1fr) 0px minmax(30px, 0.25fr) minmax(77px, 0.9fr) 10px;
+  }
+  .forge-step-summary {
+    display: none;
   }
   .forge-map-legend {
     margin-left: 0;
+  }
+}
+@media (max-width: 500px) {
+  .workshop-forge {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .forge-sidebar {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 5px;
+  }
+  .forge-sidebar h3,
+  .forge-studied {
+    grid-column: 1 / -1;
+  }
+  .forge-studied {
+    display: flex;
+    overflow: auto;
+  }
+  .workshop-forge .forge-studied .forge-discipline {
+    width: auto;
+    flex: 0 0 auto;
+  }
+  .workshop-forge .forge-add,
+  .forge-balance {
+    width: fit-content;
+    margin-top: 0;
+  }
+  .forge-balance {
+    display: flex;
+    align-items: center;
+    padding: 0 4px;
+  }
+  .forge-balance strong {
+    font-size: 1rem;
+  }
+  .forge-more .forge-related ul {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .forge-chooser-body {
+    gap: 8px;
   }
 }

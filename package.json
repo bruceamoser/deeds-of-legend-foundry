@@ -120,7 +120,8 @@
     "test:ancestry-native": "node scripts/check-ancestry-native.mjs",
     "test:debt-native": "node scripts/check-debt-native.mjs",
     "audit:rule-rendering": "node scripts/audit-rule-rendering.mjs",
-    "test:defense-substitutions": "node scripts/check-defense-substitutions.mjs"
+    "test:defense-substitutions": "node scripts/check-defense-substitutions.mjs",
+    "test:workshop-compact": "node scripts/check-workshop-compact.mjs"
   },
   "devDependencies": {
     "@foundryvtt/foundryvtt-cli": "3.0.5",

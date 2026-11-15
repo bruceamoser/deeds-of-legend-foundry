@@ -86,7 +86,7 @@ try {
     )
       .slice(0, 4)
       .map((s) => s.trim()),
-    ["Passives", "Ancestry traits", "Defenses", "Conditions"],
+    ["Defenses", "Conditions", "Movement & carrying", "Supplies"],
   );
   assert.equal(
     await page
@@ -94,9 +94,11 @@ try {
       .count(),
     0,
   );
+  await page.locator('[data-collapse="passives"] > summary').click();
   await page.locator(".passive-table [data-action=reference]").first().click();
   assert(await page.getByRole("dialog").isVisible());
   await page.keyboard.press("Escape");
+  await page.locator('[data-collapse="ancestry-traits"] > summary').click();
   await page.locator(".trait-table [data-action=reference]").first().click();
   assert(await page.getByRole("dialog").isVisible());
   await page.keyboard.press("Escape");
@@ -146,12 +148,10 @@ try {
   await page.screenshot({ path: `${output}/foundry-sized-sheet.png` });
   await page.setViewportSize({ width: 1440, height: 1050 });
   await page.getByRole("tab", { name: "Abilities", exact: true }).click();
-  assert.match(await page.locator(".known-disciplines").innerText(), /Armor/);
-  assert.match(await page.locator(".known-disciplines").innerText(), /Guard/);
-  await page.locator('#results [data-id="arms:impact:1"][data-action="reference"]').click();
-  assert.match(await page.locator("#reference").innerText(), /Driving Blow II.*2 squares/s);
-  assert.match(await page.locator("#reference").innerText(), /Driving Blow III.*Dazed 1/s);
-  await page.keyboard.press("Escape");
+  await page.locator('#results [data-action-row="arms:impact:1"] .expand-action').click();
+  const drivingBlow = page.locator('[data-detail-id="arms:impact:1"]');
+  assert.match(await drivingBlow.innerText(), /Driving Blow II.*2 squares/s);
+  assert.match(await drivingBlow.innerText(), /Driving Blow III.*Dazed 1/s);
   await page.locator(".brand").hover();
   await page.screenshot({ path: `${output}/desktop-abilities.png` });
   await page.getByRole("tab", { name: "Abilities", exact: true }).focus();
@@ -192,20 +192,16 @@ try {
   assert.match(await page.locator(".inventory-stats").innerText(), /7 \/ 13/);
   await page.getByLabel("Carry Ordinary Light Armor", { exact: true }).check();
   await page.getByRole("tab", { name: "Main", exact: true }).click();
-  await page.getByRole("button", { name: "✎ Edit", exact: true }).click();
-  await page.getByLabel("Show Basic Melee", { exact: true }).uncheck();
-  assert.equal(
-    await page.evaluate(() => document.activeElement.dataset.basic),
-    "ability-basic-melee",
-  );
-  await page.getByRole("button", { name: "✓ Done", exact: true }).click();
-  assert.equal(
-    await page.locator('.action-table [data-id="ability-basic-melee"]').count(),
-    0,
-  );
-  await page.getByRole("button", { name: "✎ Edit", exact: true }).click();
-  await page.getByLabel("Show Basic Melee", { exact: true }).check();
-  await page.getByRole("button", { name: "✓ Done", exact: true }).click();
+  await page.getByRole("tab", { name: "Abilities", exact: true }).click();
+  const basicMelee = page.locator('#results [data-action-row="ability-basic-melee"] .star-button');
+  if (await basicMelee.getAttribute("aria-pressed") === "true") await basicMelee.click();
+  await page.getByRole("tab", { name: "Main", exact: true }).click();
+  assert.equal(await page.locator('[data-action-row="ability-basic-melee"]').count(), 0);
+  await page.getByRole("tab", { name: "Abilities", exact: true }).click();
+  await basicMelee.click();
+  assert.equal(await basicMelee.getAttribute("aria-pressed"), "true");
+  await page.getByRole("tab", { name: "Main", exact: true }).click();
+  assert(await page.locator('[data-action-row="ability-basic-melee"]').isVisible());
   await page.getByRole("tab", { name: "Development", exact: true }).click();
   assert.equal(await page.locator('[data-dp="spent"]').innerText(), "8");
   await page
@@ -214,6 +210,9 @@ try {
   assert.equal(await page.locator('[data-dp="current"]').innerText(), "6");
   await page.getByRole("button", { name: "Spend DP", exact: true }).click();
   await page.locator('[data-action="forge-view"][data-id="columns"]').click();
+  assert.match(await page.locator(".forge-studied").innerText(), /Armor/);
+  assert.match(await page.locator(".forge-studied").innerText(), /Guard/);
+  await page.getByText("Combined abilities and talents", { exact: true }).click();
   await page.locator('[data-action="forge-select"][data-id="ability-quick-exit"]').click();
   await page.locator('[data-action="forge-learn"][data-id="ability-quick-exit"]').click();
   assert.equal(await page.locator("[data-dp-remaining]").innerText(), "5 DP remaining");
@@ -251,16 +250,10 @@ try {
   );
   assert.equal(await page.getByLabel("Player", { exact: true }).count(), 0);
   await page.getByRole("tab", { name: "Main", exact: true }).click();
-  await page
-    .getByRole("button", { name: "Basic Melee", exact: true })
-    .first()
-    .click();
-  assert(await page.getByRole("dialog").isVisible());
-  assert.equal(
-    await page.getByRole("dialog").locator('a[href*="github.com"]').count(),
-    0,
-  );
-  await page.keyboard.press("Escape");
+  await page.getByRole("button", { name: "Basic Melee", exact: true }).click();
+  const meleeRules = page.locator('[data-detail-id="ability-basic-melee"]');
+  assert(await meleeRules.isVisible());
+  assert.equal(await meleeRules.locator('a[href*="github.com"]').count(), 0);
   await page.getByRole("tab", { name: "Development", exact: true }).click();
   await page
     .getByRole("button", { name: "Edit creation", exact: true })
@@ -268,19 +261,19 @@ try {
   await page
     .getByRole("button", { name: "5 Learning", exact: true })
     .click();
-  assert.match(await page.locator('[aria-label="Current disciplines"]').innerText(), /Armor/);
+  assert.match(await page.locator(".forge-studied").innerText(), /Armor/);
   // The focused columns can fit without scrolling at full desktop height.
   // Open the training plan in a shorter window so overflow is guaranteed.
   await page.setViewportSize({ width: 1440, height: 670 });
   await page.getByText("Learning at this level", { exact: true }).click();
   await page.evaluate(() => document.fonts.ready);
-  const headerBefore = await page.locator(".workshop-header").boundingBox();
+  const headerBefore = await page.locator(".creation-summary").boundingBox();
   const panelScrolled = await page.locator("#panel").evaluate((panel) => {
     panel.scrollTo({ top: 600, behavior: "instant" });
     return panel.scrollTop > 0;
   });
   assert(panelScrolled);
-  assert.equal((await page.locator(".workshop-header").boundingBox()).y, headerBefore.y);
+  assert.equal((await page.locator(".creation-summary").boundingBox()).y, headerBefore.y);
   assert.equal(await page.evaluate(() => window.scrollY), 0);
   await page.setViewportSize({ width: 1440, height: 1050 });
   await page.screenshot({ path: `${output}/desktop-learning.png` });
@@ -318,9 +311,9 @@ try {
     .click();
   await page.getByRole("tab", { name: "Abilities", exact: true }).click();
   assert(await page.locator("#results .action-table").first().isVisible());
-  await page.locator('#results [data-action="reference"]').first().click();
-  assert(await page.getByRole("dialog").isVisible());
-  await page.keyboard.press("Escape");
+  const lightArmorRules = page.locator('#results [data-action-row="armor:harness:1"] .expand-action');
+  await lightArmorRules.click();
+  assert(await page.locator('[data-detail-id="armor:harness:1"]').isVisible());
   await page.getByRole("tab", { name: "Inventory", exact: true }).click();
   await page.getByLabel("Wear Food Bundle", { exact: true }).check();
   await page.getByLabel("Hold Food Bundle", { exact: true }).check();
@@ -509,6 +502,7 @@ try {
   await page.getByRole("tab", { name: "Main", exact: true }).click();
   assert.match(await page.locator(".condition-bar").innerText(), /Burning 2/);
   await page.locator("#import-file").setInputFiles(file);
+  await page.getByRole("button", { name: "View character sheet", exact: true }).click();
   await page.getByRole("button", { name: "New hero", exact: true }).click();
   assert(
     await page
@@ -882,10 +876,8 @@ try {
     /Armor/,
   );
   await page.getByRole("button", { name: "4 Class", exact: true }).click();
-  await page
-    .locator('[data-action="class"][data-id="class-protector"]')
-    .click();
-  assert.match(await page.locator(".hero-header").innerText(), /Protector/);
+  await page.getByRole("combobox", { name: "Class", exact: true }).selectOption("class-protector");
+  assert.match(await page.locator(".creation-summary").innerText(), /Protector/);
   // Buy the new shared options through the real learning UI and retain their choices.
   const utility = structuredClone(exported);
   utility.draft.purchases = { 0: [], 1: [] };
@@ -911,11 +903,15 @@ try {
     ["quick-exit", "Quick Exit"],
     ["look-over-here", "Look Over Here!"],
   ]) {
-    await page.locator(`[data-action="forge-select"][data-id="ability-${id}"]`).click();
+    const talent = page.locator(`[data-action="forge-select"][data-id="ability-${id}"]`);
+    if (!await talent.isVisible())
+      await page.getByText("Combined abilities and talents", { exact: true }).click();
+    await talent.click();
     const learn = page.locator(
       `[data-action="forge-learn"][data-id="ability-${id}"]`,
     );
     assert.match(await page.locator("#forge-selection .forge-meta").innerText(), /1 DP/);
+    assert.match(await page.locator("#forge-selection").innerText(), new RegExp(name));
     await learn.click();
     assert.equal(await learn.count(), 0);
     if (id === "another-tongue")
@@ -942,37 +938,18 @@ try {
   await page.getByRole("tab", { name: "Character", exact: true }).click();
   assert.match(await page.locator(".language-table").innerText(), /Goblin/);
   await page.getByRole("tab", { name: "Abilities", exact: true }).click();
-  await page
-    .locator(
-      '#results [data-action="reference"][data-id="ability-a-party-piece"]',
-    )
-    .click();
-  assert.match(
-    await page.getByRole("dialog").innerText(),
-    /Your instrument: flute/,
-  );
-  await page.keyboard.press("Escape");
-  await page
-    .locator(
-      '#results [data-action="reference"][data-id="ability-message-by-heart"]',
-    )
-    .click();
-  await page
-    .getByLabel("Memorized message", { exact: true })
-    .fill("Meet by the old bridge at dawn.");
+  await page.getByRole("button", { name: "A Party Piece", exact: true }).click();
+  assert.match(await page.locator('[data-detail-id="ability-a-party-piece"]').innerText(), /Your instrument: flute/);
+  await page.getByRole("button", { name: "Message by Heart", exact: true }).click();
+  await page.getByLabel("Memorized message", { exact: true }).fill("Meet by the old bridge at dawn.");
   await page.getByRole("button", { name: "Save message", exact: true }).click();
   await page.reload();
-  await page
-    .locator(
-      '#results [data-action="reference"][data-id="ability-message-by-heart"]',
-    )
-    .click();
+  await page.getByRole("button", { name: "Message by Heart", exact: true }).click();
   assert.equal(
     await page.getByLabel("Memorized message", { exact: true }).inputValue(),
     "Meet by the old bridge at dawn.",
   );
   await page.screenshot({ path: `${output}/memorized-message.png` });
-  await page.keyboard.press("Escape");
   const savedUtility = await page.evaluate(
     () => JSON.parse(localStorage.getItem("hol.workshop.v1")).character,
   );

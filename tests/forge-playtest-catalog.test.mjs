@@ -140,3 +140,7 @@ test("Sustain Spell is a universal Maneuver and its current journal uses zero SP
   assert.match(magic, /Sustain costs 0 SP/);
   assert.doesNotMatch(magic, /spend a Maneuver and 1 SP/);
 });
+
+test("approved Goblin ancestry contributes one starting SP", () => {
+  assert.equal(forge.ancestries.find(entry => entry.id === "ancestry-goblin").spContribution, 1);
+});

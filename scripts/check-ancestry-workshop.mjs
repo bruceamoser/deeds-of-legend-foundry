@@ -63,8 +63,10 @@ try {
     await dialog.getByRole("button", {name:"Close",exact:true}).click();
     for (const id of ancestry.traits) {
       const trait = catalogs.choices.find(record => record.id === id);
-      const choice = page.locator(".check").filter({has:page.locator(`input[value="${id}"]`)});
-      assert.equal(await choice.locator(".card-copy").textContent(), trait.reference.flavor[0], `${trait.name}: chooser description`);
+      const choice = page.locator(".creation-trait").filter({has:page.locator(`input[value="${id}"]`)});
+      await choice.getByText("Trait rules", { exact: true }).click();
+      for (const block of trait.reference.rules.body)
+        if (block.text) assert((await choice.locator(".creation-inline").innerText()).includes(block.text), `${trait.name}: inline rules`);
       await choice.locator(`[data-action="reference"][data-id="${id}"]`).click();
       assert.equal(await dialog.locator("p.flavor").textContent(), trait.reference.flavor[0], `${trait.name}: reference description`);
       const prose = await dialog.innerText();
@@ -115,6 +117,7 @@ try {
   await page.getByRole("button", {name:"View character sheet",exact:true}).click();
   await page.getByRole("tab", {name:"Main",exact:true}).click();
   assert.match(await page.locator('[data-collapse="movement-carrying"]').innerText(), /8 \/ 16/);
+  await page.locator('[data-collapse="ancestry-traits"] > summary').click();
   assert(await page.locator('.trait-table [data-id="trait-tallfolk-broad-back"]').isVisible());
   const mixedDownload = page.waitForEvent("download");
   await page.getByRole("button", {name:"Export JSON",exact:true}).click();
@@ -139,7 +142,7 @@ try {
   await page.getByRole("button", {name:"View character sheet",exact:true}).click();
   await page.getByRole("tab", {name:"Main",exact:true}).click();
   assert.match(await page.locator('[data-collapse="movement-carrying"]').innerText(), /8 \/ 13/);
-  await page.getByRole("button", {name:"Evade",exact:true}).click();
+  await page.getByRole("button", {name:"Roll defense",exact:true}).click();
   assert.equal(await page.locator("#recipe-net").inputValue(),"1", "borrowed Small Target supplies one defense Boon");
   await page.keyboard.press("Escape");
   await page.reload();

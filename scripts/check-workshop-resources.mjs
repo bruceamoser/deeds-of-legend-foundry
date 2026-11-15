@@ -92,12 +92,12 @@ try {
     }).locator("strong").innerText(),
     "0",
   );
-  // Every right-column section and action group stores its collapsed state.
+  // The Main sidebar restores both open and collapsed sections.
   const sections = await page
-    .locator("[data-collapse]")
+    .locator(".play-summary [data-collapse][open]")
     .evaluateAll((es) => es.map((e) => e.dataset.collapse));
   assert(
-    sections.includes("supplies") && sections.includes("actions-main-action"),
+    sections.includes("supplies") && sections.includes("defenses"),
   );
   for (const key of sections)
     await page.locator(`[data-collapse="${key}"] > summary`).click();
@@ -113,9 +113,7 @@ try {
   for (const key of sections)
     await page.locator(`[data-collapse="${key}"] > summary`).click();
   await page.getByRole("tab", { name: "Abilities", exact: true }).click();
-  const star = page
-    .locator('[data-action="favorite"][data-kind="abilities"]')
-    .first();
+  const star = page.locator('[data-action="favorite"][data-kind="abilities"][data-id="ability-use-a-healing-potion"]');
   const abilityId = await star.getAttribute("data-id");
   assert.equal(await star.innerText(), "☆");
   await star.click();
@@ -142,9 +140,8 @@ try {
   await hp.fill("3");
   await hp.press("Tab");
   await page.getByRole("tab", { name: "Main", exact: true }).click();
-  await page
-    .getByRole("button", { name: "Use a healing potion", exact: true })
-    .click();
+  const potionAction = page.locator('[data-action-row="ability-use-a-healing-potion"]');
+  await potionAction.getByRole("button", { name: "Use a healing potion", exact: true }).click();
   await page
     .getByLabel("Healing potion", { exact: true })
     .selectOption(potionId);
@@ -235,7 +232,7 @@ try {
   }
   assert.deepEqual(failures, []);
   console.info(
-    "PASS lifetime Grit, separate failure marks and Last Words, all section states, potion final healing, supply decay, quantity, stars and current-only portable persistence; 900/760/390px and zero browser errors.",
+    "PASS lifetime Grit, separate failure marks and Last Words, sidebar section states, potion final healing, supply decay, quantity, stars and current-only portable persistence; 900/760/390px and zero browser errors.",
   );
 } catch (error) {
   await page.screenshot({

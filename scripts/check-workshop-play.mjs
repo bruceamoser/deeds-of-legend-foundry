@@ -76,14 +76,19 @@ try {
   // A roll remains available for correction or another attempt.
   await page.getByRole("button", { name: "Roll", exact: true }).click();
   await page.keyboard.press("Escape");
-  const ability = page
-    .locator('.action-groups [data-action="open-roll"]')
-    .first();
-  assert(await ability.isVisible());
-  await ability.click();
+  await page.getByRole("tab", { name: "Abilities", exact: true }).click();
+  const ability = page.locator('[data-action-row="ability-basic-unarmed"]');
+  await ability.getByRole("button", { name: "Expand Basic Unarmed", exact: true }).click();
+  assert(await page.locator('[data-detail-id="ability-basic-unarmed"]').isVisible());
+  assert.equal(await page.getByRole("dialog").count(), 0);
+  const abilityRoll = ability.locator('[data-action="open-roll"]');
+  assert.match(await abilityRoll.innerText(), /^[A-Za-z]{2} [+-]\d+$/);
+  await abilityRoll.click();
   assert(await page.getByLabel("Roll attribute", { exact: true }).isVisible());
   await page.getByRole("button", { name: "Roll", exact: true }).click();
+  assert.match(await page.locator("#recipe-roll-result").innerText(), /→ keep/);
   await page.keyboard.press("Escape");
+  await page.getByRole("tab", { name: "Main", exact: true }).click();
   await hp.fill("0");
   await hp.press("Tab");
   const deathRoll = page.getByRole("button", { name: "Death roll", exact: true });
@@ -109,7 +114,7 @@ try {
   await rollDeath(6, /Failure marks 0 \/ 3 · Success marks 0/);
   assert.equal(await hp.inputValue(), "0");
   assert.equal(await deathRoll.isDisabled(), true);
-  await page.getByRole("button", { name: "Evade", exact: true }).click();
+  await page.getByRole("button", { name: "Roll defense", exact: true }).click();
   assert.equal(await page.locator("#recipe-net").inputValue(), "-3");
   await page.keyboard.press("Escape");
   await hp.fill("4");
