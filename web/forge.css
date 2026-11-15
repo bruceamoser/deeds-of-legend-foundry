@@ -294,6 +294,10 @@
 .forge-related li + li {
   margin-top: 2px;
 }
+.forge-node.forge-next-step:not([aria-pressed="true"]) {
+  border-color: #789183;
+  background: #edf2e9;
+}
 .forge-node.forge-related-node,
 .forge-node.forge-path-step {
   display: flex;

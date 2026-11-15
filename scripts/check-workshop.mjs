@@ -207,18 +207,18 @@ try {
   await page.getByLabel("Show Basic Melee", { exact: true }).check();
   await page.getByRole("button", { name: "✓ Done", exact: true }).click();
   await page.getByRole("tab", { name: "Development", exact: true }).click();
-  assert.equal(await page.locator('[data-dp="spent"]').innerText(), "20");
+  assert.equal(await page.locator('[data-dp="spent"]').innerText(), "8");
   await page
     .getByRole("button", { name: "Increase level", exact: true })
     .click();
-  assert.equal(await page.locator('[data-dp="current"]').innerText(), "10");
+  assert.equal(await page.locator('[data-dp="current"]').innerText(), "6");
   await page.getByRole("button", { name: "Spend DP", exact: true }).click();
   await page.locator('[data-action="forge-view"][data-id="columns"]').click();
   await page.locator('[data-action="forge-select"][data-id="ability-quick-exit"]').click();
   await page.locator('[data-action="forge-learn"][data-id="ability-quick-exit"]').click();
-  assert.equal(await page.locator("[data-dp-remaining]").innerText(), "9 DP remaining");
+  assert.equal(await page.locator("[data-dp-remaining]").innerText(), "5 DP remaining");
   await page.getByRole("button", { name: "Done", exact: true }).click();
-  assert.equal(await page.locator('[data-dp="spent"]').innerText(), "21");
+  assert.equal(await page.locator('[data-dp="spent"]').innerText(), "9");
   await page
     .getByRole("button", { name: "Decrease level", exact: true })
     .click();
@@ -226,7 +226,7 @@ try {
   await page
     .getByRole("button", { name: "Increase level", exact: true })
     .click();
-  assert.equal(await page.locator('[data-dp="current"]').innerText(), "9");
+  assert.equal(await page.locator('[data-dp="current"]').innerText(), "5");
   await page
     .getByRole("button", { name: "Decrease level", exact: true })
     .click();
@@ -266,7 +266,7 @@ try {
     .getByRole("button", { name: "Edit creation", exact: true })
     .click();
   await page
-    .getByRole("button", { name: "4 Early learning", exact: true })
+    .getByRole("button", { name: "5 Learning", exact: true })
     .click();
   assert.match(await page.locator('[aria-label="Current disciplines"]').innerText(), /Armor/);
   const headerBefore = await page.locator(".workshop-header").boundingBox();
@@ -276,7 +276,7 @@ try {
   assert.equal(await page.evaluate(() => window.scrollY), 0);
   await page.screenshot({ path: `${output}/desktop-learning.png` });
 
-  await page.getByRole("button", { name: "7 Equipment", exact: true }).click();
+  await page.getByRole("button", { name: "6 Equipment", exact: true }).click();
   const beforePurchase = await page.locator(".context-strip .inventory-stats").innerText();
   await picker("equipment");
   await page.getByLabel("Search equipment", { exact: true }).fill("Ordinary Shield");
@@ -288,7 +288,7 @@ try {
   assert.equal(await shieldRows.count(), 1);
   assert.equal(await page.locator(".context-strip .inventory-stats").innerText(), beforePurchase);
   await page.screenshot({ path: `${output}/desktop-equipment.png` });
-  await page.getByRole("button", { name: "8 Review", exact: true }).click();
+  await page.getByRole("button", { name: "7 Review", exact: true }).click();
   assert(
     await page
       .getByRole("button", { name: "Export character JSON", exact: true })
@@ -493,7 +493,7 @@ try {
   const playFile = `${output}/borin-play.hol.json`;
   await (await playDownload).saveAs(playFile);
   const played = JSON.parse(await readFile(playFile, "utf8"));
-  assert.equal(played.schemaVersion, 4);
+  assert.equal(played.schemaVersion, 5);
   assert.equal(played.draft.play.conditions[0].key, "burning");
   assert(played.draft.progression.levels[3].signatures[3]);
   await page.locator("#import-file").setInputFiles(playFile);
@@ -545,7 +545,7 @@ try {
   const crafter = (await response.json()).find((entry) => entry.id === "oren-brass");
   await page.locator("#import-file").setInputFiles({
     name: "oren.hol.json", mimeType: "application/json",
-    buffer: Buffer.from(JSON.stringify({ format: "heroes-of-legend-character", schemaVersion: 4, draft: crafter.draft })),
+    buffer: Buffer.from(JSON.stringify({ format: "heroes-of-legend-character", schemaVersion: 5, draft: crafter.draft })),
   });
   await page.getByRole("heading", {name:"Creation complete",exact:true}).waitFor();
   await page
@@ -557,7 +557,7 @@ try {
       .getByRole("heading", { name: "Ancestry traits", exact: true })
       .count(),
   );
-  assert.equal(await page.getByRole("tab").count(), 6);
+  assert.equal(await page.getByRole("tab").count(), 7);
   assert.equal(await page.locator(".recipe-table").count(), 0);
   await page.getByRole("tab", { name: "Inventory", exact: true }).click();
   assert.equal(await page.locator(".recipe-table").count(), 0);
@@ -680,7 +680,7 @@ try {
     .getByRole("button", { name: "Edit creation", exact: true })
     .click();
   await closePicker();
-  await page.getByRole("button", { name: "7 Equipment", exact: true }).click();
+  await page.getByRole("button", { name: "6 Equipment", exact: true }).click();
   await picker("equipment");
   await page.getByLabel("Search equipment", { exact: true }).fill("Small Tent");
   await page.getByLabel("Quantity Small Tent", { exact: true }).fill("100");
@@ -700,7 +700,7 @@ try {
     /-[0-9]+ coins/,
   );
   await closePicker();
-  await page.getByRole("button", { name: "8 Review", exact: true }).click();
+  await page.getByRole("button", { name: "7 Review", exact: true }).click();
   assert(
     await page
       .getByRole("button", { name: "Export character JSON", exact: true })
@@ -745,9 +745,6 @@ try {
     await page.getByRole("heading", { name: "Oren Brass", exact: true }).isVisible(),
   );
   // Import a ranged character and inspect its creation grants, not just the sheet.
-  const fixtures = JSON.parse(
-    await readFile(resolve("tests/fixtures/reference-heroes.json"), "utf8"),
-  );
   const ranged = {
     ...exported,
     draft: (await response.json()).find((h) => h.id === "lira-ashbow").draft,
@@ -761,7 +758,7 @@ try {
     .getByRole("heading", { name: "Lira Ashbow", exact: true })
     .waitFor();
   await closePicker();
-  await page.getByRole("button", { name: "7 Equipment", exact: true }).click();
+  await page.getByRole("button", { name: "6 Equipment", exact: true }).click();
   const rangedInventory = await page.locator(".inventory-table").innerText();
   assert.match(rangedInventory, /Ordinary Ranged Weapon/);
   assert.match(rangedInventory, /Ammunition Bundle/);
@@ -869,12 +866,13 @@ try {
   await page.getByRole("button", { name: "3 Origins", exact: true }).click();
   await page
     .getByLabel("Culture", { exact: true })
-    .selectOption("origin-culture-walled-communities|0");
+    .selectOption("origin-culture-walled-communities");
+  await page.getByLabel("Culture discipline", { exact: true }).selectOption("0");
   assert.match(
     await page.locator(".origin-grants").first().innerText(),
-    /Armor.*Armored Training I/s,
+    /Armor/,
   );
-  await page.getByRole("button", { name: "5 Class", exact: true }).click();
+  await page.getByRole("button", { name: "4 Class", exact: true }).click();
   await page
     .locator('[data-action="class"][data-id="class-protector"]')
     .click();
@@ -891,7 +889,7 @@ try {
     buffer: Buffer.from(JSON.stringify(utility)),
   });
   await page
-    .getByRole("button", { name: "4 Early learning", exact: true })
+    .getByRole("button", { name: "5 Learning", exact: true })
     .click();
   const initialDp = Number(
     (await page.locator("[data-dp-remaining]").innerText()).split(" ")[0],
@@ -928,7 +926,7 @@ try {
   );
   await page.screenshot({ path: `${output}/one-dp-learning.png` });
   await closePicker();
-  await page.getByRole("button", { name: "8 Review", exact: true }).click();
+  await page.getByRole("button", { name: "7 Review", exact: true }).click();
   await page
     .getByRole("button", { name: "View character sheet", exact: true })
     .click();
@@ -1068,10 +1066,10 @@ try {
     .click();
   await page.getByRole("button", { name: "3 Origins", exact: true }).click();
   const culture = page.getByLabel("Culture", { exact: true });
-  assert.equal(await culture.inputValue(), "origin-culture-cloister-valleys|0");
+  assert.equal(await culture.inputValue(), "origin-culture-cloister-valleys");
   assert.match(
-    await culture.locator("option:checked").innerText(),
-    /Wards.*Protection I/,
+    await page.getByLabel("Culture discipline", { exact: true }).locator("option:checked").innerText(),
+    /Wards/,
   );
   assert(
     (await culture.locator("option").allTextContents()).every(
@@ -1105,7 +1103,7 @@ try {
   );
   assert.deepEqual(failures, []);
   console.info(
-    "Workshop passed: fixed scrolling, live attributes, grants, armor/Bulk/supply, grouped actions, crafting rolls, level replay, independent/revisitable signatures, play inventory/languages/conditions, coin override, named saves, schema-4 export/import and 390px layout; no browser errors.",
+    "Workshop passed: fixed scrolling, live attributes, grants, armor/Bulk/supply, grouped actions, crafting rolls, level replay, independent/revisitable signatures, play inventory/languages/conditions, coin override, named saves, schema-5 export/import and 390px layout; no browser errors.",
   );
 } catch (error) {
   await page.screenshot({ path: `${output}/failure.png`, fullPage: true });

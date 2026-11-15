@@ -154,7 +154,7 @@ try {
   assert.match(await page.locator("#healing-preview").innerText(), /Restore 4 HP/);
   await page.getByRole("button", { name: "Apply healing", exact: true }).click();
   assert.match(await page.locator(".tool-stats").innerText(), /7 \/ 19/);
-  assert.match(await page.locator(".tool-stats").innerText(), /SP 3 \/ 6/);
+  assert.match(await page.locator(".tool-stats").innerText(), /SP 3 \/ 4/);
   await page.getByRole("button", { name: "Take damage", exact: true }).click();
   await page.getByRole("button", { name: "Apply damage", exact: true }).click();
   assert.match(await page.locator(".tool-stats").innerText(), /Dying/);
@@ -182,7 +182,7 @@ try {
   await page.getByRole("button", { name: "Safe overnight rest", exact: true }).click();
   await page.getByRole("button", { name: "Complete safe rest", exact: true }).click();
   assert.match(await page.locator(".tool-stats").innerText(), /19 \/ 19/);
-  assert.match(await page.locator(".tool-stats").innerText(), /SP 6 \/ 6/);
+  assert.match(await page.locator(".tool-stats").innerText(), /SP 4 \/ 4/);
   assert.match(await page.locator(".tool-stats").innerText(), /Grit 0/);
   assert.equal(await page.getByText("A silver line across the jaw.", { exact: true }).isVisible(), true);
   assert.equal(await page.getByRole("button", { name: "Give first aid", exact: true }).isDisabled(), false);

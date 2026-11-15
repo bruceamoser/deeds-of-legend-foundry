@@ -8,11 +8,10 @@ import { writePortableCharacter } from "../src/rules/portable-character.mjs";
 
 const directory = resolve("dist/workshop"), prefix = "/heroes-of-legend-foundry/";
 const read = async path => JSON.parse(await readFile(path, "utf8"));
-const [choices, inventory, wounds, forge, forgeReferences, forgeParty] = await Promise.all(
-  ["choices", "inventory", "wounds", "forge", "forge-references", "forge-party"].map(name => read(`static/data/${name}.json`)),
+const [choices, inventory, wounds, forge, forgeReferences, fixture] = await Promise.all(
+  ["choices", "inventory", "wounds", "forge", "forge-references", "example"].map(name => read(`dist/workshop/data/${name}.json`)),
 );
 const catalogs = workshopCatalogs(choices, inventory, wounds, forge, forgeReferences);
-const fixture = forgeParty.party[0].draft;
 const ancestries = catalogs.choices.filter(record => record.kind === "ancestry");
 const server = createServer(async (req, res) => {
   try {
@@ -112,7 +111,7 @@ try {
   await page.getByRole("button", {name:"Read borrowed trait",exact:true}).click();
   assert((await page.locator("#reference").innerText()).includes("Your Bulk capacity increases by 3."));
   await page.locator("#reference").getByRole("button", {name:"Close",exact:true}).click();
-  await page.getByRole("button", {name:"8 Review",exact:true}).click();
+  await page.getByRole("button", {name:"7 Review",exact:true}).click();
   await page.getByRole("button", {name:"View character sheet",exact:true}).click();
   await page.getByRole("tab", {name:"Main",exact:true}).click();
   assert.match(await page.locator('[data-collapse="movement-carrying"]').innerText(), /8 \/ 16/);
@@ -136,7 +135,7 @@ try {
   await page.getByLabel("Other ancestry", {exact:true}).selectOption("ancestry-gnome");
   await page.getByLabel("Borrowed trait", {exact:true}).selectOption("trait-gnome-small-target");
   await page.getByLabel("Ancestry language", {exact:true}).selectOption("goblin");
-  await page.getByRole("button", {name:"8 Review",exact:true}).click();
+  await page.getByRole("button", {name:"7 Review",exact:true}).click();
   await page.getByRole("button", {name:"View character sheet",exact:true}).click();
   await page.getByRole("tab", {name:"Main",exact:true}).click();
   assert.match(await page.locator('[data-collapse="movement-carrying"]').innerText(), /8 \/ 13/);
@@ -160,7 +159,7 @@ try {
     await page.locator("#import-file").setInputFiles({name:"legacy-mixed-ancestry.json",mimeType:"application/json",buffer:Buffer.from(JSON.stringify(legacyMixed))});
     await expect(page.locator("#notice")).toContainText("Character imported.");
     await page.getByRole("heading", {name:"Review",exact:true}).waitFor();
-    assert(await page.getByRole("button", {name:"Export character JSON",exact:true}).isDisabled());
+    await expect(page.getByRole("button", {name:"Export character JSON",exact:true})).toBeDisabled();
     await page.getByRole("button", {name:"2 Ancestry",exact:true}).click();
     const original = (await stored()).character.draft;
     assert.deepEqual(original.languages.extraSpoken,["elven","harbor-cant"]);
@@ -178,7 +177,7 @@ try {
   await page.getByLabel("Ancestry language", {exact:true}).selectOption("giant");
   assert.deepEqual((await stored()).character.draft.languages.extraSpoken,[]);
   assert.equal((await stored()).character.draft.languages.home,fixture.languages.home);
-  await page.getByRole("button", {name:"8 Review",exact:true}).click();
+  await page.getByRole("button", {name:"7 Review",exact:true}).click();
   await page.getByRole("heading", {name:"Creation complete",exact:true}).waitFor();
   const repairedDownload = page.waitForEvent("download");
   await page.getByRole("button", {name:"Export character JSON",exact:true}).click();
@@ -201,7 +200,7 @@ try {
   assert.deepEqual((await stored()).character.draft.languages.extraSpoken,[]);
   assert.equal((await stored()).character.draft.profile.story,legacyMixed.draft.profile.story);
   await page.locator('input[data-list="traitIds"][value="trait-human-practiced-patience"]').check();
-  await page.getByRole("button", {name:"8 Review",exact:true}).click();
+  await page.getByRole("button", {name:"7 Review",exact:true}).click();
   await page.getByRole("heading", {name:"Creation complete",exact:true}).waitFor();
   assert(await page.getByRole("button", {name:"Export character JSON",exact:true}).isEnabled());
 
@@ -214,7 +213,7 @@ try {
   assert.deepEqual((await stored()).character.draft.languages.extraSpoken,[]);
   await page.locator('input[data-list="traitIds"][value="trait-human-weathered"]').click();
   for (const id of fixture.traitIds) await page.locator(`input[data-list="traitIds"][value="${id}"]`).check();
-  await page.getByRole("button", {name:"8 Review",exact:true}).click();
+  await page.getByRole("button", {name:"7 Review",exact:true}).click();
   await page.getByRole("heading", {name:"Creation complete",exact:true}).waitFor();
   assert(await page.getByRole("button", {name:"Export character JSON",exact:true}).isEnabled());
 

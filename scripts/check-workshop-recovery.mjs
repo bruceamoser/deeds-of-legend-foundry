@@ -91,7 +91,7 @@ try {
   assert.equal(await page.getByRole("dialog").getByRole("button", { name: "Begin first aid", exact: true }).isDisabled(), true);
   await page.getByRole("dialog").getByRole("button", { name: "Complete safe rest", exact: true }).click();
   assert.equal(await hp.inputValue(), "19");
-  assert.equal(await sp.inputValue(), "6");
+  assert.equal(await sp.inputValue(), "4");
   assert.equal(await page.getByRole("dialog").getByRole("button", { name: "Begin first aid", exact: true }).isDisabled(), false);
   await page.getByLabel("Hour rest finished", { exact: true }).fill("31");
   await page.getByRole("dialog").getByRole("button", { name: "Complete safe rest", exact: true }).click();

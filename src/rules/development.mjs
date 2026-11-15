@@ -403,7 +403,7 @@ export function creationLedger(
   };
 }
 /** Level high-water mark makes repeated awards idempotent; never restores spent Grit. */
-export function awardMilestones(state, newLevel) {
+export function awardMilestones(state, newLevel, { dpBase = 8 } = {}) {
   integer(state.level, "current level", 1);
   integer(state.gritGranted, "Grit grants");
   integer(state.gritSpent, "spent Grit");
@@ -417,7 +417,7 @@ export function awardMilestones(state, newLevel) {
   const next = clone(state);
   if (newLevel === state.level) return next;
   const dp = integer(
-    ((newLevel - state.level) * (16 + state.level + 1 + newLevel)) / 2 +
+    ((newLevel - state.level) * (2 * dpBase + state.level + 1 + newLevel)) / 2 +
       (newLevel - state.level) *
         ancestryBenefits(state.creation ? ancestryTraitIds(state.creation) : state.ancestryTraitIds ?? []).additionalDpPerLevel,
     "milestone DP",

@@ -1,3 +1,6 @@
+import { applyForgePlaytest, applyForgePlaytestJournals } from "../src/rules/forge-playtest-catalog.mjs";
+import { workshopCatalogs } from "../src/rules/workshop-forge-catalog.mjs";
+import { workshopPlaytestParty } from "./workshop-playtest-party.mjs";
 import { cp, mkdir, rm, readFile, writeFile } from "node:fs/promises";
 import { createHash } from "node:crypto";
 const root = new URL("../", import.meta.url);
@@ -84,9 +87,15 @@ const [forge, forgeJournals, forgeReferences, forgeParty] = await Promise.all(
 const forgeLock = JSON.parse(await readFile(new URL("content/forge-source-lock.json", root)));
 if ([forge, forgeJournals, forgeReferences, forgeParty].some(({ sourceCommit }) => sourceCommit !== forgeLock.commit))
   throw new Error("Character Workshop Forge data differs from the approved book revision.");
+const playtest = applyForgePlaytest(forge, forgeReferences);
+const wounds = JSON.parse(await readFile(new URL("static/data/wounds.json", root)));
+const party = workshopPlaytestParty(forgeParty.party, workshopCatalogs(choices, inventory, wounds, playtest.forge, playtest.references));
 for (const [name, data] of Object.entries({
-  forge, "forge-journals": forgeJournals, "forge-references": forgeReferences,
-  example: forgeParty.party[0].draft, party: forgeParty.party,
+  forge: playtest.forge,
+  "forge-journals": applyForgePlaytestJournals(forgeJournals),
+  "forge-references": playtest.references,
+  example: party[0].draft, party,
+
 })) {
   await writeFile(new URL(`data/${name}.json`, out), JSON.stringify(data));
 }

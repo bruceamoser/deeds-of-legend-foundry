@@ -26,6 +26,8 @@ export function workshopCharacter(draft, catalogs, languages) {
     languages,
     catalogs.forge,
   );
+  const playtest = Boolean(catalogs.forge?.playtest);
+  const dpBase = playtest ? 4 : 8;
   const target = draft.progression?.level ?? 1;
   if (!Number.isSafeInteger(target) || target < 1 || target > 100)
     throw new Error("Choose a whole level from 1 to 100.");
@@ -33,7 +35,7 @@ export function workshopCharacter(draft, catalogs, languages) {
     ...structuredClone(creation.state),
     level: 1,
     stage: "advancement",
-    dp: 0,
+    dp: playtest ? creation.state.dp : 0,
     items: structuredClone(creation.inventory.items),
     safePlace: true,
   };
@@ -42,7 +44,7 @@ export function workshopCharacter(draft, catalogs, languages) {
     levels = {},
     advancementLedger = [];
   for (let level = 2; level <= target; level++) {
-    state = awardMilestones(state, level);
+    state = awardMilestones(state, level, { dpBase });
     state.safePlace = true; // Browser planning; native commitment retains campaign authority.
     const before = structuredClone(state);
     const levelPlan = draft.progression?.levels?.[level] ?? emptyLevelDraft();
@@ -64,7 +66,7 @@ export function workshopCharacter(draft, catalogs, languages) {
     );
     levels[level] = { before, ...result };
     advancementLedger.push(
-      { kind: "award", level, delta: 8 + level + ancestryBenefits(effectiveTraitIds).additionalDpPerLevel },
+      { kind: "award", level, delta: dpBase + level + ancestryBenefits(effectiveTraitIds).additionalDpPerLevel },
       ...result.ledger,
     );
   }
@@ -109,13 +111,13 @@ export function workshopCharacter(draft, catalogs, languages) {
       instanceId: id,
       source: catalogs.choices.find((r) => r.id === id)?.source,
     })),
-    equipment: items.filter((item) => !catalogs.forge || !forgeArmorRequirement(item.catalogId)).map((i) => ({ ...i, source: i.definition.source })),
+    equipment: items.filter((item) => !catalogs.forge || !forgeArmorRequirement(item.catalogId, playtest)).map((i) => ({ ...i, source: i.definition.source })),
   });
   if (catalogs.forge) {
     for (const item of items.filter((entry) => entry.worn)) {
-      const required = forgeArmorRequirement(item.catalogId);
+      const required = forgeArmorRequirement(item.catalogId, playtest);
       if (required && state.learned.includes(required))
-        passive.resistances.push({ type: "physical", value: Number(required.at(-1)), label: item.definition.name });
+        passive.resistances.push({ type: "physical", value: playtest ? item.definition.physicalResistance : Number(required.at(-1)), label: item.definition.name });
     }
   }
   const resistances = {};
@@ -142,6 +144,7 @@ export function workshopCharacter(draft, catalogs, languages) {
     fortitude: draft.attributes.fortitude,
     fixedHp: ancestryBenefits(effectiveTraitIds).maximumHpBonus,
     capacitySp: state.learning.capacitySp,
+    startingSp: creation.summary.startingSp,
   }) : null;
   const unresolved = errors.filter(
     (e) =>
