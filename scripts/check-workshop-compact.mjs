@@ -209,12 +209,22 @@ try {
     await expect(byLabel("Culture")).toHaveJSProperty("tagName", "SELECT");
     await expect(byLabel("Background")).toHaveJSProperty("tagName", "SELECT");
     await expect(byLabel("Culture discipline")).toHaveCount(0);
+    // All available origins advertise their disciplines before the player chooses one.
+    const originCatalog = await (await page.request.get(new URL("data/forge.json", base).href)).json();
+    const disciplineNames = new Map(originCatalog.disciplines.map(({id,name}) => [id,name]));
+    for (const origin of originCatalog.origins) {
+      const label = origin.kind === "culture" ? "Culture" : "Background";
+      const choices = [...new Set(origin.pairs.map(({disciplineId}) => disciplineNames.get(disciplineId)))];
+      assert(choices.every(Boolean), `${origin.name} references named disciplines`);
+      await expect(byLabel(label).locator(`option[value="${origin.id}"]`))
+        .toHaveText(`${origin.name} — ${choices.join(" / ")}`);
+    }
     await byLabel("Culture").selectOption("origin-culture-walled-communities");
     await byLabel("Culture discipline").selectOption("0");
     await byLabel("Background").selectOption("origin-background-household-guard");
     await byLabel("Background discipline").selectOption("0");
-    await expect(byLabel("Culture").locator("option:checked")).toHaveText("Walled Communities");
-    await expect(byLabel("Background").locator("option:checked")).toHaveText("Household Guard");
+    await expect(byLabel("Culture").locator("option:checked")).toHaveText("Walled Communities — Armor / Guard");
+    await expect(byLabel("Background").locator("option:checked")).toHaveText(/^Household Guard — /);
     await expect(identity).not.toContainText("Protector");
     await noOverflow("Origins");
     await capture("creator-origins");

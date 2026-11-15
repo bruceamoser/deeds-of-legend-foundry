@@ -814,7 +814,10 @@ function originChoice(kind) {
   const picked = chosenOriginDiscipline(kind);
   const discipline = catalogs.forge.disciplines.find(({ id }) => id === picked);
   const origins = catalogs.choices.filter((entry) => entry.originType === kind);
-  const originOptions = origins.map((entry) => option(entry.id, entry.name, record?.id === entry.id));
+  const originOptions = origins.map((entry) => {
+    const disciplines = [...new Set(entry.pairs.map(({ disciplineId }) => name(disciplineId)))];
+    return option(entry.id, `${entry.name} — ${disciplines.join(" / ")}`, record?.id === entry.id);
+  });
   const disciplineOptions = record?.pairs.map((pair, index) => {
     const owned = pair.disciplineId === other;
     return option(index, name(pair.disciplineId) + (owned ? " · From your other origin" : ""), selection.pair === index, owned);
