@@ -6,6 +6,20 @@ const classOptions = {
   "class-odd": ["athletics", "subterfuge", "influence", "spellcraft"],
 };
 
+// Entry prices preserve existing mundane affinities and extend them to the new
+// magical disciplines by class identity. Unlisted disciplines cost 3 DP.
+const classAffinities = {
+  "class-arcanist": [["elements", "force", "spellcraft"], ["invocation", "scholarship", "divination", "wards"]],
+  "class-blade": [["arms", "marksmanship"], ["athletics", "subterfuge"]],
+  "class-intellect": [["scholarship", "craft"], ["medicine", "mentalism", "divination", "force", "spellcraft"]],
+  "class-leader": [["influence", "guard"], ["arms", "scholarship", "mentalism", "wards"]],
+  "class-protector": [["armor", "guard"], ["arms", "medicine", "wards"]],
+  "class-shadow": [["subterfuge", "marksmanship"], ["athletics", "mentalism", "divination"]],
+  "class-shepherd": [["life", "wards"], ["medicine", "wilderness", "invocation", "spellcraft"]],
+  "class-unbalanced": [["arms", "athletics"], ["armor", "elements"]],
+  "class-warden": [["wilderness", "marksmanship"], ["arms", "athletics", "life", "divination"]],
+};
+
 const classAttributes = {
   "class-arcanist": "knowledge",
   "class-blade": "reason",
@@ -194,7 +208,18 @@ function classChoice(record, disciplines) {
       /^\*\*Starting disciplines:\*\* .+$/m,
       `**Starting disciplines:** Begin studying one of ${disciplineIds.map((id) => disciplines.get(id)).join(", ")}.\n`,
     );
-  return { ...record, spAttribute, disciplineIds, referenceMarkdown: source };
+  const [close = [], related = []] = classAffinities[record.id] ?? [];
+  const disciplineCosts = Object.fromEntries([...disciplines.keys()].map(id => [id,
+    record.id === "class-odd" ? 2 : close.includes(id) ? 1 : related.includes(id) ? 2 : 3,
+  ]));
+  const prices = [1, 2, 3].map(cost => {
+    const names = [...disciplines].filter(([id]) => disciplineCosts[id] === cost).map(([, name]) => name);
+    return names.length ? `**${cost} DP:** ${names.join(", ")}.` : "";
+  }).filter(Boolean).join(" ");
+  return { ...record, spAttribute, disciplineIds, disciplineCosts, referenceMarkdown: source.replace(
+    /^\*\*Learning costs:\*\* .+$/m,
+    `**Learning costs:** ${prices} Learned steps cost 1/2/2/3 DP; the last requires level 3. Combined abilities require level 7 and cost 3/4/5 DP for two/three/four disciplines.`,
+  ) };
 }
 
 function armorReference(record, training, resistance) {
@@ -269,7 +294,7 @@ function playtestMagic(markdown) {
 }
 
 function playtestLearning(markdown) {
-  return markdown.replace(
+  return markdown.replace("Spend 1 DP to begin studying it", "Spend its class price (1, 2 or 3 DP) to begin studying it").replace(
     /^You may learn disciplines and their first three steps during level-0 or level-1 development\. The final ability requires character level 3\./m,
     "From level 1, learn the first three steps of each discipline path in order. The final step requires level 3. Combined abilities require level 7 and their named branch endpoints. Pay each step’s DP cost.",
   );
@@ -301,13 +326,9 @@ function playtestDevelopment(markdown) {
         "## Create a hero at level 1",
         "Assign Brawn, Fortitude, Agility, Guile, Knowledge and Reason from −2 through +2, totaling +3. Choose an ancestry and two traits, then choose culture and background.",
         "Choose one starting discipline from each of your culture, background and class. Choose three different disciplines. Meet the class’s attribute minimums and choose one level-1 signature.",
-        "Start with **8 + Guile + Knowledge + Reason DP** and any explicit ancestry benefits. Include negative attributes. Spend from this one pool to learn available steps or study another discipline for 1 DP. Keep any unspent DP for later learning.",
+        "Start with **8 + Guile + Knowledge + Reason DP** and any explicit ancestry benefits. Include negative attributes. Spend from this one pool to learn available steps or study another discipline for its class price (1, 2 or 3 DP). Keep any unspent DP for later learning.",
         "",
       ].join("\n\n"),
-    )
-    .replace(
-      "the third pages 5–6, and the level-3 endpoint",
-      "the level-2 third section pages 5–6, and the level-3 endpoint",
     )
     .replace(
       "At level 0, use 10 + ancestry contribution + Fortitude + fixed benefits. ",

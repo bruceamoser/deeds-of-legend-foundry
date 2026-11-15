@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { forgeEligibility } from "../src/rules/forge.mjs";
+import { forgeEligibility, learnForgeEntry } from "../src/rules/forge.mjs";
 import {
   applyForgePlaytest,
   applyForgePlaytestJournals,
@@ -117,4 +117,40 @@ test("Sustain Spell is a universal Maneuver and its current journal uses zero SP
 
 test("approved Goblin ancestry contributes one starting SP", () => {
   assert.equal(forge.ancestries.find(entry => entry.id === "ancestry-goblin").spContribution, 1);
+});
+
+
+test("all class/discipline pairs have explicit entry prices, charged once by shared eligibility", () => {
+  for (const cls of forge.classes) {
+    assert.equal(Object.keys(cls.disciplineCosts).length, forge.disciplines.length);
+    for (const discipline of forge.disciplines) {
+      const cost = cls.disciplineCosts[discipline.id];
+      assert.ok([1, 2, 3].includes(cost), `${cls.name}: ${discipline.name}`);
+      const state = { classId: cls.id, level: 1, dp: cost, learned: [] };
+      assert.equal(forgeEligibility(forge, state, discipline.id).cost, cost);
+      assert.equal(forgeEligibility(forge, { ...state, dp: cost - 1 }, discipline.id).eligible, false);
+      const bought = learnForgeEntry(forge, state, discipline.id);
+      assert.equal(bought.state.dp, 0);
+      assert.equal(learnForgeEntry(forge, bought.state, discipline.id).eligible, false);
+      for (const path of discipline.paths) {
+        assert.deepEqual(path.steps.map(id => forgeEligibility(forge, state, id).cost), [1, 2, 2, 3]);
+      }
+    }
+    assert.doesNotMatch(cls.referenceMarkdown, /costs 1 DP for every class/);
+  }
+  const price = (classId, id) => forgeEligibility(forge, { classId, level: 1, dp: 10, learned: [] }, id).cost;
+  assert.equal(price("class-arcanist", "elements"), 1);
+  assert.equal(price("class-protector", "elements"), 3);
+  assert.equal(price("class-protector", "wards"), 2);
+  assert.ok(Object.values(forge.classes.find(c => c.id === "class-odd").disciplineCosts).every(n => n === 2));
+  assert.equal(forgeEligibility(forge, { level: 1, dp: 10, learned: [] }, "elements").eligible, false);
+});
+
+test("current learning journal uses class prices and no level-two gates", () => {
+  const journals = applyForgePlaytestJournals(data("-journals"));
+  for (const id of ["rule-development", "rule-learning"]) {
+    const text = journals.records.find(r => r.id === id).markdown;
+    assert.match(text, /class price/);
+    assert.doesNotMatch(text, /level-2 third|Spend 1 DP to begin|discipline for 1 DP/);
+  }
 });

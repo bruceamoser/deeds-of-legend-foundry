@@ -130,3 +130,25 @@ test("older portable characters keep identity, planned choices and live resource
   assert.equal(persisted.schemaVersion, 5);
   assert.deepEqual(persisted.draft, saved.draft);
 });
+
+test("class-priced discipline purchases replay, refund, and export at their paid cost", () => {
+  const draft = example("vaelis-emberglass");
+  draft.purchases[1] = [];
+  const before = hero(draft);
+  assert.equal(before.state.classId, "class-arcanist");
+  assert.ok(!before.state.learned.includes("arms"));
+  draft.purchases[1] = purchases("arms");
+  const bought = hero(draft);
+  assert.deepEqual(bought.errors, []);
+  assert.equal(bought.development.current, before.development.current - 3);
+  assert.equal(bought.development.spent, 3);
+  const exported = writePortableCharacter(draft, catalogs);
+  // The existing portable contract retains choices; current rules recalculate costs.
+  assert.equal(readPortableCharacter(JSON.parse(exported), catalogs).preview.development.current, bought.development.current);
+  draft.purchases[1] = [];
+  assert.equal(hero(draft).development.current, before.development.current);
+  draft.purchases[1] = purchases("arms", "armor", "guard", "wilderness");
+  const overBudget = hero(draft);
+  assert.ok(overBudget.errors.some(error => error.code === "purchase"));
+  assert.equal(draft.purchases[1].length, 4, "unaffordable stored choices remain repairable");
+});

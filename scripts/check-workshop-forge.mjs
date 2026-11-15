@@ -49,6 +49,8 @@ const balance = (dp) => expect(page.locator(".forge-balance strong")).toHaveText
 const findDiscipline = (id) => action("forge-filter", id).click();
 const select = async (id) => {
   if (id.startsWith("arms:bladework:") || id.startsWith("air:")) {
+    const showAll = action("forge-show-all", "toggle");
+    if (await showAll.getAttribute("aria-pressed") === "false") await showAll.click();
     const path = action("forge-path", id.startsWith("air:") ? "elements:air" : "arms:bladework");
     if (await path.getAttribute("aria-expanded") === "false") await path.click();
     const row = action("forge-step", id);
@@ -126,8 +128,8 @@ try {
   await action("forge-learn", "elements").click();
   await expect(page.locator("#forge-discipline-chooser")).toBeHidden();
   await expect(action("forge-filter", "elements")).toBeVisible();
-  for (const id of ["air:0", "air:1"]) await learn(id);
-  await select("air:2");
+  await learn("air:0");
+  await select("air:1");
   await expect(page.locator("#forge-selection")).toContainText("Costs 2 DP. You have 1 DP.");
   await balance(1);
   await stage(6).click();
@@ -136,7 +138,7 @@ try {
   assert.deepEqual(creation.classDisciplines, ["guard"]);
   assert.deepEqual(creation.purchases[0], []);
   assert.deepEqual(creation.purchases[1].map(({ id }) => id), [
-    "arms:bladework:1", "arms:bladework:2", "arms:bladework:3", "elements", "air:0", "air:1",
+    "arms:bladework:1", "arms:bladework:2", "arms:bladework:3", "elements", "air:0",
   ]);
 
   await action("sheet").filter({ hasText: "View character sheet" }).click();
@@ -163,8 +165,16 @@ try {
     (elements) => elements.map((element) => element.dataset.from),
   );
   assert.deepEqual(edges, ["air:3", "arms:bladework:4"]);
+  // Buy through the Atlas inspector, then verify the shared list state.
+  await page.locator('.forge-map [data-action="forge-select"][data-id="air:1"]').click();
+  await expect(selected).toContainText("2 DP");
+  await expect(action("forge-learn", "air:1")).toBeEnabled();
+  await action("forge-learn", "air:1").click();
+  await expect(page.locator('.forge-map [data-id="air:1"]')).toHaveClass(/is-learned/);
   await action("forge-view", "columns").click();
   await findDiscipline("elements");
+  await select("air:1");
+  await expect(selected.locator(".forge-meta")).toContainText("Learned");
   await learn("air:2");
   await learn("air:3");
   assert.equal(await selected.locator(".forge-spell").count(), 5);
@@ -211,7 +221,7 @@ try {
   assert.equal(portable.draft.progression.level, 7);
   assert.equal(portable.draft.play.sp, sp - 3);
   assert.deepEqual(portable.draft.progression.levels[7].purchases.map(({ id }) => id), [
-    "air:2", "air:3", "arms:bladework:4", "combined:stormsteel-arc",
+    "air:1", "air:2", "air:3", "arms:bladework:4", "combined:stormsteel-arc",
   ]);
   await page.reload();
   await heading(actorName).waitFor();

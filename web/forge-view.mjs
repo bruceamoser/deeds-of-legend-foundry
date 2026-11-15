@@ -1,3 +1,5 @@
+import { forgeEligibility } from "./rules/forge.mjs";
+
 const escape = (value) =>
   String(value ?? "").replace(
     /[&<>"']/g,
@@ -181,14 +183,14 @@ function mapView(model, visible) {
     return nodeButton(model, node, "", {
       className: `forge-map-step${end ? " forge-map-end" : ""}`,
       style: toStyle(positions.get(id)),
-      tabIndex: overview ? -1 : undefined,
+      tabIndex: undefined,
     });
   })).join("");
   const crossNodes = mapCombinations.map((node) =>
     nodeButton(model, node, String(node.requires.length), {
       className: "forge-map-combination",
       style: toStyle(positions.get(node.id)),
-      tabIndex: overview ? -1 : undefined,
+      tabIndex: undefined,
     }),
   ).join("");
   const mapRatio = width / height;
@@ -223,10 +225,11 @@ function sidebar(model) {
   const rows = model.studied.map((discipline) => {
     const source = model.sources[discipline.id]?.label ?? "Study";
     return control("forge-filter", discipline.id, `<span>${escape(discipline.name)}</span><span>${disciplineCount(model, discipline)}</span><small>${escape(source)}</small>`,
-      `aria-pressed="${model.discipline?.id === discipline.id}"`, "forge-discipline");
+      `aria-pressed="${model.filter === discipline.id}"`, "forge-discipline");
   });
   return `<aside class="forge-sidebar" aria-label="Your disciplines">
     <h3>Your disciplines</h3>
+    ${control("forge-filter", "all", "All disciplines", `aria-pressed="${model.filter === "all"}"`, "forge-discipline")}
     <div class="forge-studied">${rows.join("")}</div>
     ${control("forge-chooser", "open", "+ Add discipline", 'aria-haspopup="dialog"', "forge-add")}
     <div class="forge-balance"><span>DP remaining</span><strong>${model.dp}${model.budget == null ? "" : ` of ${model.budget}`}</strong></div>
@@ -251,7 +254,8 @@ function stepStatus(model, node) {
   for (const required of node.requires) {
     if (!model.learned.has(required)) gates.push(`Needs ${model.nodes.get(required).name}`);
   }
-  if (model.dp < node.dp) gates.push(`Need ${node.dp - model.dp} more DP`);
+  const cost = model.eligibility(node.id).cost;
+  if (model.dp < cost) gates.push(`Need ${cost - model.dp} more DP`);
   return gates.join(" · ");
 }
 
@@ -268,7 +272,7 @@ function stepDetails(model, node) {
   const learned = model.learned.has(node.id);
   const improves = model.nodes.get(node.improves);
   return `<section class="forge-step-details" id="forge-selection" aria-label="${escape(node.name)} mechanics" tabindex="-1">
-    <p class="forge-meta">${escape(node.name)} · ${learned ? "Learned" : `${node.dp} DP`}${node.level ? ` · Level ${node.level}` : ""}</p>
+    <p class="forge-meta">${escape(node.name)} · ${learned ? "Learned" : `${model.eligibility(node.id).cost ?? "—"} DP`}${node.level ? ` · Level ${node.level}` : ""}</p>
     ${node.effect ? `<p class="forge-step-effect">${escape(node.effect)}</p>` : ""}
     ${improves ? `<p class="forge-improves">Improves ${escape(improves.name)}.</p>` : ""}
     ${learned ? "" : reasonsList(model.eligibility(node.id))}
@@ -283,42 +287,46 @@ function stepRow(model, node, selectedId) {
   const requirement = stepStatus(model, node);
   return `<li class="forge-step-row is-${status}">
     ${control("forge-step", node.id,
-      `<span class="forge-step-name">${escape(node.name)}</span><span class="forge-step-summary">${escape(stepSummary(node))}</span><span class="forge-step-cost">${node.dp} DP</span><span class="forge-step-chevron" aria-hidden="true">${expanded ? "⌄" : "›"}</span>`,
-      `aria-label="${escape([node.name, `${node.dp} DP`, requirement].filter(Boolean).join(", "))}" aria-expanded="${expanded}" ${expanded ? 'aria-controls="forge-selection"' : ""}`, "forge-step-toggle")}
+      `<span class="forge-step-name">${escape(node.name)}</span><span class="forge-step-summary">${escape(stepSummary(node))}</span><span class="forge-step-cost">${model.eligibility(node.id).cost ?? "—"} DP</span><span class="forge-step-chevron" aria-hidden="true">${expanded ? "⌄" : "›"}</span>`,
+      `aria-label="${escape([node.name, `${model.eligibility(node.id).cost ?? "—"} DP`, requirement].filter(Boolean).join(", "))}" aria-expanded="${expanded}" ${expanded ? 'aria-controls="forge-selection"' : ""}`, "forge-step-toggle")}
     ${status === "available"
-      ? control("forge-learn", node.id, `Learn · ${node.dp} DP`, `aria-label="Learn ${escape(node.name)} for ${node.dp} DP"`, "primary forge-step-learn")
+      ? `<span class="forge-step-status">Available now</span>`
       : `<span class="forge-step-status">${escape(requirement)}</span>`}
     ${expanded ? stepDetails(model, node) : ""}
   </li>`;
 }
 
-function pathCard(model, path, openPath) {
+function pathCard(model, path) {
   const nodes = path.steps.map((id) => model.nodes.get(id));
-  const open = path.id === openPath;
+  const open = model.openPaths.has(path.id);
+  const next = nodes.find((node) => !model.learned.has(node.id));
+  const availability = next && model.eligibility(next.id);
+  if (!model.showAll && !open && !availability?.eligible) return "";
   const learned = nodes.filter((node) => model.learned.has(node.id));
   const book = model.books.get(path.bookId);
-  const count = book ? `${plural(new Set(learned.flatMap((node) => node.spellIds ?? [])).size, "spell")} learned`
-    : `${learned.length} of ${nodes.length} learned`;
-  const selectedId = model.selection === undefined
-    ? (nodes.find((node) => !model.learned.has(node.id)) ?? nodes.at(-1))?.id
-    : model.selection;
-  return `<section class="forge-path${open ? " is-open" : ""}">
-    <h4>${control("forge-path", path.id,
-      `<span aria-hidden="true">${open ? "⌄" : "›"}</span><span>${escape(path.name)}</span><small>${count}</small>`,
-      `aria-expanded="${open}" ${open ? 'aria-controls="forge-path-steps"' : ""}`, "forge-path-toggle")}</h4>
-    ${!open ? `<p class="forge-path-summary">${escape(book?.name ?? `${nodes[0].name} · ${stepSummary(nodes[0])}`)}</p>` : ""}
-    ${open && book ? `<p class="forge-book-name">${escape(book.name)}</p>` : ""}
-    ${open ? `<ol id="forge-path-steps">${nodes.map((node) => stepRow(model, node, selectedId)).join("")}</ol>` : ""}
+  const heading = next ? `${path.name} — ${next.name} — ${availability.cost ?? "—"} DP` : `${path.name} — Complete`;
+  return `<section class="forge-path forge-learning-branch${open ? " is-open" : ""}" data-path="${escape(path.id)}">
+    <div class="forge-next-heading">
+      <h4>${control("forge-path", path.id, `<span>${escape(heading)} <small class="forge-branch-count">${learned.length}/${nodes.length} learned</small></span><span aria-hidden="true">${open ? "⌄" : "›"}</span>`,
+        `aria-expanded="${open}" aria-controls="branch-${escape(path.id)}"`, "forge-path-toggle")}</h4>
+      ${availability?.eligible ? control("forge-learn", next.id, "Learn now", `aria-label="Learn ${escape(next.name)} for ${availability.cost ?? "—"} DP"`, "primary forge-next-learn") : `<span class="forge-next-status">${next ? escape(stepStatus(model, next)) : `${learned.length} learned`}</span>`}
+    </div>
+    ${next ? `<div class="forge-next-mechanics">${book ? `<p class="forge-book-name">${escape(book.name)}</p>` : ""}${next.effect ? `<p class="forge-step-effect">${escape(next.effect)}</p>` : ""}${spellSection(model, next)}</div>` : ""}
+    <div id="branch-${escape(path.id)}" ${open ? "" : "hidden"}>
+      ${open ? `<ol>${nodes.map((node) => stepRow(model, node, model.selection)).join("")}</ol>` : ""}
+    </div>
   </section>`;
 }
 
 function columnView(model) {
-  const discipline = model.discipline;
-  if (!discipline) return '<p class="forge-empty">Add a discipline to start learning.</p>';
-  const openPath = model.path === undefined
-    ? (model.selected?.disciplineId === discipline.id ? model.selected.pathId : undefined) ?? discipline.paths[0]?.id
-    : model.path;
-  return `<div class="forge-paths">${discipline.paths.map((path) => pathCard(model, path, openPath)).join("")}</div>`;
+  if (!model.studied.length) return '<p class="forge-empty">Add a discipline to start learning.</p>';
+  const disciplines = model.filter === "all" ? model.studied : model.studied.filter(entry => entry.id === model.discipline?.id);
+  const groups = disciplines.map(discipline => {
+    const paths = discipline.paths.map(path => pathCard(model, path)).join("");
+    if (!paths) return "";
+    return `<section class="forge-learning-group" data-discipline="${escape(discipline.id)}"><h3>${disciplineToken(discipline.id)} ${escape(discipline.name)} <small>${disciplineCount(model, discipline)}</small></h3><div class="forge-paths">${paths}</div></section>`;
+  }).join("");
+  return `<div class="forge-list-toolbar">${control("forge-show-all", "toggle", "Show all branches", `aria-pressed="${model.showAll}"`, "small")}</div>${groups || '<p class="forge-empty">No choices available to purchase now. Show all branches to plan your next steps.</p>'}`;
 }
 
 function disciplineChooser(model) {
@@ -328,20 +336,20 @@ function disciplineChooser(model) {
   const root = model.nodes.get(candidate?.id);
   return `<dialog id="forge-discipline-chooser" class="forge-chooser" aria-labelledby="forge-chooser-title">
     <header><h2 id="forge-chooser-title">Add discipline</h2>${control("forge-chooser", "close", "×", 'aria-label="Close add discipline"', "small")}</header>
-    <p>Choose another area of study. Its first steps become available to learn.</p>
+    <div class="forge-chooser-context"><span>${escape(model.className ?? "Choose a class")}</span><strong>${model.dp} DP available</strong></div>
     <input type="search" id="forge-chooser-search" aria-label="Search disciplines" placeholder="Search disciplines…" autofocus>
     <div class="forge-chooser-body">
       <div class="forge-chooser-list" aria-label="Available disciplines">${choices.map((entry) => control("forge-candidate", entry.id,
-        `<span>${escape(entry.name)}</span><small>${escape(entry.theme)}</small>`,
+        `<span>${escape(entry.name)}</span><small class="forge-chooser-cost">${model.eligibility(entry.id).cost ?? "—"} DP</small>`,
         `aria-pressed="${candidate.id === entry.id}"`, "forge-discipline")).join("")}
         <p class="forge-no-choices" ${choices.length ? "hidden" : ""}>${choices.length ? "No disciplines match." : "All disciplines are studied."}</p>
       </div>
       ${candidate ? `<section class="forge-chooser-preview">
         <h3>${escape(candidate.name)}</h3>
         <p>${escape(candidate.theme)}</p>
-        <ul>${candidate.paths.map((path) => `<li>${escape(path.name)}</li>`).join("")}</ul>
+        <div class="forge-chooser-paths">${candidate.paths.map(path => `<div class="forge-chooser-path"><strong>${escape(path.name)}</strong><span>${escape(model.nodes.get(path.steps[0])?.name ?? "")}</span></div>`).join("")}</div>
         ${reasonsList(model.eligibility(root.id))}
-        ${control("forge-learn", root.id, `Study ${escape(root.name)} for ${root.dp} DP`,
+        ${control("forge-learn", root.id, `Study ${escape(root.name)} for ${model.eligibility(root.id).cost ?? "—"} DP`,
           model.eligibility(root.id).eligible ? "" : "disabled", "primary")}
       </section>` : ""}
     </div>
@@ -374,7 +382,7 @@ function inspector(model) {
   const next = children.filter((entry) => entry.kind !== "combined");
   const combined = children.filter((entry) => entry.kind === "combined");
   const canRefund = refundable(model, node.id);
-  const currency = learned ? "Learned" : `${node.dp} DP`;
+  const currency = learned ? "Learned" : `${model.eligibility(node.id).cost ?? "—"} DP`;
   const context = [discipline?.name, path?.name].filter((value) => value && value !== node.name).join(" · ");
   const description = node.effect ?? (node.kind === "discipline" ? "Choose any of its four paths and learn the steps in order." : "");
   return `<section class="forge-inspector" id="forge-selection" aria-label="Selected learning" tabindex="-1">
@@ -410,35 +418,31 @@ export function renderForge(graph, state, options = {}) {
     graph, nodes, learned, view, selected, studied, discipline, atlasDiscipline,
     selection: options.selected,
     path: options.path,
+    filter: options.discipline ?? "all",
+    openPaths: new Set(options.openPaths ?? (options.path ? [options.path] : [])),
+    showAll: options.showAll ?? false,
     chooser: options.chooser,
     candidate: options.candidate,
     sources: options.sources ?? {},
+    className: graph.classes?.find(entry => entry.id === state.classId)?.name,
     atlasScope: options.atlasScope ?? (atlasDiscipline ? "discipline" : "all"),
     dp: state.dp,
     level: state.level,
     budget: options.budget,
-    zoom: Math.min(2, Math.max(0.75, Number(options.zoom) || 1)),
+    zoom: Math.min(6, Math.max(0.4, Number(options.zoom) || 1)),
     canRefund: options.canRefund ?? options.refundable,
     disciplines: graph.disciplines,
     combinations: graph.nodes.filter((node) => node.kind === "combined"),
     books: new Map(graph.books.map((book) => [book.id, book])),
     spells: new Map(graph.spells.map((spell) => [spell.id, spell])),
-    eligibility: options.eligibility ?? ((id) => {
-      const node = nodes.get(id);
-      return {
-        eligible: !learned.has(id) && state.level >= node.level &&
-          state.dp >= node.dp && node.requires.every((required) => learned.has(required)),
-        cost: node.dp,
-        reasons: [],
-      };
-    }),
+    eligibility: options.eligibility ?? ((id) => forgeEligibility(graph, state, id)),
   };
 
   const visible = visibleDisciplines(model);
   const columns = view === "columns";
   const source = model.sources[(columns ? discipline : atlasDiscipline)?.id];
-  const context = columns ? discipline?.name ?? "Paths" : model.atlasScope === "discipline" ? atlasDiscipline?.name : "Discipline atlas";
-  const combinations = connectedCombinations(model, columns && discipline ? [discipline] : visible);
+  const context = columns ? "Learn" : model.atlasScope === "discipline" ? atlasDiscipline?.name : "Discipline atlas";
+  const combinations = connectedCombinations(model, columns ? model.studied : visible);
   const showInspector = !columns || ["combined", "talent"].includes(selected?.kind);
   const viewed = (id) => `aria-pressed="${view === id}"`;
   return `<div class="workshop-forge">
@@ -446,9 +450,9 @@ export function renderForge(graph, state, options = {}) {
     <div class="forge-workspace">
       <div class="forge-controls">
         <h3>${escape(context)}</h3>
-        ${source && (columns || model.atlasScope === "discipline") ? `<span class="forge-source">${escape(source.detail ? `From your ${source.label.toLowerCase()} · ${source.detail}` : source.label)}</span>` : ""}
+        ${source && !columns && model.atlasScope === "discipline" ? `<span class="forge-source">${escape(source.detail ? `From your ${source.label.toLowerCase()} · ${source.detail}` : source.label)}</span>` : ""}
         <div class="forge-view-buttons" aria-label="Learning views">
-          ${control("forge-view", "columns", "Paths", viewed("columns"), "small")}
+          ${control("forge-view", "columns", "List", viewed("columns"), "small")}
           ${control("forge-view", "atlas", "Atlas", viewed("atlas"), "small")}
         </div>
       </div>
@@ -457,6 +461,7 @@ export function renderForge(graph, state, options = {}) {
           ${model.atlasScope === "discipline" ? control("forge-filter", "all", "Whole atlas", "", "small") : ""}
           ${control("forge-view", "zoom-out", "−", 'aria-label="Zoom out"', "small")}
           ${control("forge-view", "zoom-in", "+", 'aria-label="Zoom in"', "small")}
+          ${control("forge-view", "fit", "Fit", 'aria-label="Fit atlas"', "small")}
           <span class="forge-map-legend"><span class="forge-key forge-key-learned">Learned</span><span class="forge-key forge-key-available">Available</span><span class="forge-key">Requirements to meet</span></span>
         </div>${mapView(model, visible)}`}
       </div>
@@ -503,7 +508,7 @@ export function bindForgeInteractions(container, { onZoom = () => {} } = {}) {
     const map = viewport.querySelector(".forge-map");
     const current = Number(viewport.dataset.zoom);
     const delta = event.deltaY * (event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? viewport.clientHeight : 1);
-    const next = Math.min(2, Math.max(0.75, current * Math.exp(-delta * 0.0015)));
+    const next = Math.min(6, Math.max(0.4, current * Math.exp(-delta * 0.0015)));
     if (current === next) return;
     const before = map.getBoundingClientRect();
     const anchorX = (event.clientX - before.left) / before.width;

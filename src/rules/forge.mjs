@@ -15,14 +15,19 @@ export function forgeEligibility(catalog, state, id) {
   const node = nodes.get(id);
   if (!node)
     return { eligible: false, cost: null, reasons: ["Choose an entry in the current learning paths."] };
+  const cls = catalog.classes?.find(entry => entry.id === state.classId);
+  const cost = node.kind === "discipline" && catalog.playtest
+    ? cls?.disciplineCosts?.[id] ?? null
+    : node.dp;
   const learned = new Set(state.learned);
   const reasons = [];
   if (learned.has(id)) reasons.push("Already learned.");
   if (state.level < node.level) reasons.push(`Available at level ${node.level}.`);
   for (const parent of node.requires)
     if (!learned.has(parent)) reasons.push(`Learn ${nodes.get(parent).name} first.`);
-  if (state.dp < node.dp) reasons.push(`Costs ${node.dp} DP. You have ${state.dp} DP.`);
-  return { eligible: reasons.length === 0, cost: node.dp, reasons };
+  if (cost === null) reasons.push("Choose a class to see this discipline’s DP cost.");
+  else if (state.dp < cost) reasons.push(`Costs ${cost} DP. You have ${state.dp} DP.`);
+  return { eligible: reasons.length === 0, cost, reasons };
 }
 
 export function learnForgeEntry(catalog, state, id) {
