@@ -269,11 +269,20 @@ try {
     .getByRole("button", { name: "5 Learning", exact: true })
     .click();
   assert.match(await page.locator('[aria-label="Current disciplines"]').innerText(), /Armor/);
+  // The focused columns can fit without scrolling at full desktop height.
+  // Open the training plan in a shorter window so overflow is guaranteed.
+  await page.setViewportSize({ width: 1440, height: 670 });
+  await page.getByText("Learning at this level", { exact: true }).click();
+  await page.evaluate(() => document.fonts.ready);
   const headerBefore = await page.locator(".workshop-header").boundingBox();
-  await page.locator("#panel").evaluate((el) => el.scrollTop = 600);
-  assert(await page.locator("#panel").evaluate((el) => el.scrollTop > 0));
+  const panelScrolled = await page.locator("#panel").evaluate((panel) => {
+    panel.scrollTo({ top: 600, behavior: "instant" });
+    return panel.scrollTop > 0;
+  });
+  assert(panelScrolled);
   assert.equal((await page.locator(".workshop-header").boundingBox()).y, headerBefore.y);
   assert.equal(await page.evaluate(() => window.scrollY), 0);
+  await page.setViewportSize({ width: 1440, height: 1050 });
   await page.screenshot({ path: `${output}/desktop-learning.png` });
 
   await page.getByRole("button", { name: "6 Equipment", exact: true }).click();
