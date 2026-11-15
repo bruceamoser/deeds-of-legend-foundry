@@ -433,7 +433,7 @@ function sustainPanel() {
     <p>${play.maneuverSpent ? "Maneuver spent" : "Maneuver available"}${play.mainSpent ? " · Main Action spent" : ""}</p>
     <div class="dialog-actions">
       ${button("Sustain Spell", "sustain-spell", castThisTurn || play.maneuverSpent || sustained ? "disabled" : "")}
-      ${button("End spell", "end-sustain", play.maneuverSpent ? "disabled" : "")}
+      ${button("Clear ended spell", "end-sustain", 'title="Use when the spell ends at the table"')}
       ${button("Mark Maneuver spent", "record-maneuver", play.maneuverSpent ? "disabled" : "")}
       ${button("Mark Main Action spent", "record-sustain-main", play.mainSpent ? "disabled" : "")}
       ${play.maneuverSpent && !play.mainSpent ? button("Convert Main to Maneuver", "sustain-convert") : ""}
@@ -1937,12 +1937,13 @@ async function action(target) {
       draft.play = maintainForgeSustain(play, spell);
       notice(`Spend a Maneuver to sustain ${spell.name}. Apply the spell’s upkeep effects at the table.`);
     }
-    if (a === "end-sustain" || a === "record-maneuver") {
+    if (a === "end-sustain") {
+      draft.play = endForgeSustain(play);
+      notice(`Cleared ${spell.name} from your spell tracker.`);
+    }
+    if (a === "record-maneuver") {
       if (play.maneuverSpent) throw new Error("Your Maneuver has already been spent this turn.");
-      draft.play = a === "end-sustain"
-        ? endForgeSustain({ ...play, maneuverSpent: true })
-        : { ...play, maneuverSpent: true };
-      if (a === "end-sustain") notice(`${spell.name} ends. Resolve its ending effects at the table.`);
+      draft.play = { ...play, maneuverSpent: true };
     }
     if (a === "record-sustain-main") draft.play = { ...play, mainSpent: true };
     if (a === "sustain-convert") draft.play = convertForgeManeuver(play);

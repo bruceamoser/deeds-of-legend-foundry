@@ -79,8 +79,8 @@ try {
   if (await ritualRoll.count()) await ritualRoll.click();
   if (await page.getByRole("dialog").count()) await page.keyboard.press("Escape");
   await expect(page.getByRole("region", { name: "Sustained Spell" })).toContainText("Clairvoyance");
-  await page.getByRole("region", { name: "Sustained Spell" }).getByRole("button", { name: "End spell", exact: true }).click();
-  await page.getByRole("region", { name: "Sustained Spell" }).getByRole("button", { name: "End my turn", exact: true }).click();
+  await page.getByRole("region", { name: "Sustained Spell" }).getByRole("button", { name: "Clear ended spell", exact: true }).click();
+  await expect(page.getByRole("region", { name: "Sustained Spell" })).toHaveCount(0);
   await sp.fill("2");
   await sp.press("Tab");
   await cast();
@@ -108,8 +108,8 @@ try {
   await cast("spell:air:3");
   await expect(status.getByRole("button", { name: "Fog Cloud", exact: true })).toBeVisible();
   await expect(status.getByRole("button", { name: "Heat Metal", exact: true })).toHaveCount(0);
-  await control("End spell").click();
-  await expect(status).toContainText("Maneuver spent");
+  await control("Clear ended spell").click();
+  await expect(status).toContainText("Main Action spent");
   await control("End my turn").click();
   await cast();
   const hp = page.getByRole("spinbutton", { name: "Current HP", exact: true });
