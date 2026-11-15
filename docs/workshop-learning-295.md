@@ -37,3 +37,7 @@ Before updating the manuscript, reconcile this file with `workshop-playtest-287.
 **Required follow-up: #296.** Review every ancestry trait and class signature against revised rules. Some no longer make sense. Audit grants, resources, actions, obsolete mechanics, overlap, and balance; present mechanical changes for Bruce's decision. This UI release does not claim that audit is complete or silently rewrite those traits/signatures.
 
 Native Foundry and the book are not changed by this revision.
+
+## Validation record
+
+Node 24 build and repository validation passed with the full 815-test suite; a subsequent focused ledger/export/refund regression also passed. Browser suites passed for compact learning, full Forge flow, character creation, ancestry, play, sustain, resources, recovery, builder/equipment, sheet prototypes, roll/chat previews, and tools. Reviewed rendered 900×720 list, expanded branch, atlas, and chooser captures; narrow layouts are covered by browser checks. Final budget review uses successful ledger purchases, so invalid saved choices cannot inflate the displayed pool. GitHub CI supplies the final aggregate test count and deployment evidence.
