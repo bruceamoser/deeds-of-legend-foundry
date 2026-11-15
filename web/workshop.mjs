@@ -105,7 +105,9 @@ let saveId = null;
 let signatureTier = 1;
 let libraryScope = "all", spellDiscipline = "all", spellTiming = "all";
 const expandedActions = new Set();
+let forgeOpenPaths = new Set(), forgeShowAll = false;
 let forgePath, forgeChooser = false, forgeCandidate;
+let forgeListDiscipline = "all";
 let forgeView = "columns", forgeDiscipline = "all", forgeSelected, forgeZoom = 1;
 let catalogs,
   references,
@@ -814,7 +816,10 @@ function originChoice(kind) {
   const picked = chosenOriginDiscipline(kind);
   const discipline = catalogs.forge.disciplines.find(({ id }) => id === picked);
   const origins = catalogs.choices.filter((entry) => entry.originType === kind);
-  const originOptions = origins.map((entry) => option(entry.id, entry.name, record?.id === entry.id));
+  const originOptions = origins.map((entry) => {
+    const disciplines = [...new Set(entry.pairs.map(({ disciplineId }) => name(disciplineId)))];
+    return option(entry.id, `${entry.name} — ${disciplines.join(" / ")}`, record?.id === entry.id);
+  });
   const disciplineOptions = record?.pairs.map((pair, index) => {
     const owned = pair.disciplineId === other;
     return option(index, name(pair.disciplineId) + (owned ? " · From your other origin" : ""), selection.pair === index, owned);
@@ -922,10 +927,13 @@ let editingLevel = null;
 const activeLearningLevel = () => editingLevel ?? preview.development.level;
 function learning() {
   const current = learningState();
+  const learningLedger = mode === "advancement"
+    ? preview.levels[activeLearningLevel()].ledger
+    : preview.ledger.filter(entry => entry.stage === 1);
   const content = renderForge(catalogs.forge, current, {
-    view: forgeView, discipline: forgeDiscipline, selected: forgeSelected, zoom: forgeZoom,
-    ownedColumns: true, path: forgePath, chooser: forgeChooser, candidate: forgeCandidate,
-    budget: current.dp + learningPurchases().reduce((sum, entry) => sum + (get(entry.id)?.dp ?? 0), 0),
+    view: forgeView, discipline: forgeDiscipline, listDiscipline: forgeListDiscipline, selected: forgeSelected, zoom: forgeZoom,
+    ownedColumns: true, path: forgePath, openPaths: [...forgeOpenPaths], showAll: forgeShowAll, chooser: forgeChooser, candidate: forgeCandidate,
+    budget: current.dp - learningLedger.filter(entry => entry.kind === "purchase").reduce((sum, entry) => sum + entry.delta, 0),
     sources: Object.fromEntries([
       ...["culture", "background"].map(kind => [chosenOriginDiscipline(kind), {label:title(kind),detail:name(draft[kind]?.id)}]),
       ...draft.classDisciplines.map(id => [id,{label:"Class",detail:name(draft.classId)}]),
@@ -2420,24 +2428,39 @@ async function action(target) {
       draft.classDisciplines = [id];
   }
   if (a === "signature") draft.signatureId = target.dataset.id;
-  if (a === "forge-select") forgeSelected = target.dataset.id;
+  if (a === "forge-select") {
+    forgeSelected = target.dataset.id;
+    const node = catalogs.forge.nodes.find(entry => entry.id === forgeSelected);
+    if (node?.pathId) forgeOpenPaths.add(node.pathId);
+  }
   if (a === "forge-filter") { forgeDiscipline = target.dataset.id; forgePath = undefined; forgeSelected = undefined; }
-  if (a === "forge-path") { forgePath = target.getAttribute("aria-expanded") === "true" ? null : target.dataset.id; forgeSelected = undefined; }
+  if (a === "forge-path") {
+    const id = target.dataset.id;
+    if (forgeOpenPaths.has(id)) forgeOpenPaths.delete(id); else forgeOpenPaths.add(id);
+    forgePath = id;
+    forgeSelected = undefined;
+  }
+  if (a === "forge-show-all") forgeShowAll = !forgeShowAll;
   if (a === "forge-step") forgeSelected = target.getAttribute("aria-expanded") === "true" ? null : target.dataset.id;
   if (a === "forge-chooser") forgeChooser = target.dataset.id === "open";
   if (a === "forge-candidate") forgeCandidate = target.dataset.id;
   if (a === "forge-view") {
     const value = target.dataset.id;
     if (value === "zoom-in" || value === "zoom-out")
-      forgeZoom = Math.max(.75, Math.min(2, forgeZoom + (value === "zoom-in" ? .25 : -.25)));
-    else forgeView = value;
+      forgeZoom = Math.max(.4, Math.min(20, forgeZoom * (value === "zoom-in" ? 1.4 : 1 / 1.4)));
+    else if (value === "fit") { forgeZoom = 1; forgeDiscipline = "all"; }
+    else {
+      if (value === "atlas") { forgeListDiscipline = forgeDiscipline; forgeDiscipline = "all"; }
+      else if (forgeView === "atlas") forgeDiscipline = forgeListDiscipline;
+      forgeView = value;
+    }
   }
   if (a === "forge-learn") {
     const node = catalogs.forge.nodes.find((entry) => entry.id === target.dataset.id);
     const currentSp = liveVitals().sp;
     learn(target.dataset.id);
-    if (node?.kind === "discipline") { forgeChooser = false; forgeDiscipline = node.id; forgePath = undefined; }
-    forgeSelected = undefined;
+    if (node?.kind === "discipline") { forgeChooser = false; forgeDiscipline = "all"; forgePath = undefined; }
+    forgeSelected = forgeView === "atlas" ? node?.id : undefined;
     if (mode === "advancement" && node?.spCapacity) playDraft().sp = currentSp;
   }
   if (a === "forge-refund") refundLearning(target.dataset.id);
@@ -2499,6 +2522,7 @@ async function action(target) {
       "new",
     ].includes(a),
   });
+  if (a === "forge-view" && target.dataset.id === "fit") $(".forge-map-scroll")?.scrollTo(0, 0);
   if (a === "forge-learn" || a === "forge-select")
     $("#forge-selection")?.focus({ preventScroll: a === "forge-learn" || (!target.classList?.contains("forge-related-node") && !matchMedia("(max-width: 680px)").matches) });
   if (a === "tab")

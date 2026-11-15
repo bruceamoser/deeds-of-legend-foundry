@@ -209,12 +209,22 @@ try {
     await expect(byLabel("Culture")).toHaveJSProperty("tagName", "SELECT");
     await expect(byLabel("Background")).toHaveJSProperty("tagName", "SELECT");
     await expect(byLabel("Culture discipline")).toHaveCount(0);
+    // All available origins advertise their disciplines before the player chooses one.
+    const originCatalog = await (await page.request.get(new URL("data/forge.json", base).href)).json();
+    const disciplineNames = new Map(originCatalog.disciplines.map(({id,name}) => [id,name]));
+    for (const origin of originCatalog.origins) {
+      const label = origin.kind === "culture" ? "Culture" : "Background";
+      const choices = [...new Set(origin.pairs.map(({disciplineId}) => disciplineNames.get(disciplineId)))];
+      assert(choices.every(Boolean), `${origin.name} references named disciplines`);
+      await expect(byLabel(label).locator(`option[value="${origin.id}"]`))
+        .toHaveText(`${origin.name} — ${choices.join(" / ")}`);
+    }
     await byLabel("Culture").selectOption("origin-culture-walled-communities");
     await byLabel("Culture discipline").selectOption("0");
     await byLabel("Background").selectOption("origin-background-household-guard");
     await byLabel("Background discipline").selectOption("0");
-    await expect(byLabel("Culture").locator("option:checked")).toHaveText("Walled Communities");
-    await expect(byLabel("Background").locator("option:checked")).toHaveText("Household Guard");
+    await expect(byLabel("Culture").locator("option:checked")).toHaveText("Walled Communities — Armor / Guard");
+    await expect(byLabel("Background").locator("option:checked")).toHaveText(/^Household Guard — /);
     await expect(identity).not.toContainText("Protector");
     await noOverflow("Origins");
     await capture("creator-origins");
@@ -246,82 +256,119 @@ try {
       await expect(control).toHaveAttribute("aria-expanded", "true");
     };
     const learnedStep = (id) => panel.locator(".forge-step-row.is-learned").filter({ has: action("forge-step", id) });
-    await study("arms").click();
+    const branch = (id) => panel.locator(`[data-path="${id}"]`);
+    const showAll = action("forge-show-all", "toggle", panel);
+    // Three starting disciplines expose just their twelve affordable next choices.
+    await expect(panel.locator(".forge-learning-group")).toHaveCount(3);
+    await expect(panel.locator(".forge-learning-branch")).toHaveCount(12);
     for (const id of ["armor", "arms", "guard"]) await expect(study(id)).toBeVisible();
     await expect(study("elements")).toHaveCount(0);
-    await openPath("arms:bladework");
-    // Default-open disclosures close on the first click, not the second.
-    await path("arms:bladework").click();
-    await expect(path("arms:bladework")).toHaveAttribute("aria-expanded", "false");
-    await path("arms:bladework").click();
-    await expect(stepControl("arms:bladework:1")).toHaveAttribute("aria-expanded", "true");
-    await stepControl("arms:bladework:1").click();
-    await expect(stepControl("arms:bladework:1")).toHaveAttribute("aria-expanded", "false");
-    await stepControl("arms:bladework:1").click();
-    await expect(path("arms:bladework")).toContainText("0 of 4 learned");
-    await expect(stepControl("arms:bladework:2")).toHaveAccessibleName(/Needs Measured Cut I/);
-    await expect(buy("arms:bladework:2")).toHaveCount(0);
+    await expect(path("arms:bladework")).toContainText("Measured Cut I — 1 DP");
+    await expect(branch("arms:bladework").locator(".forge-next-mechanics")).toContainText("physical damage");
+    await expect(stepControl("arms:bladework:2")).toHaveCount(0);
     await noOverflow("Learning");
     await capture("learning-first");
+    await openPath("arms:bladework");
+    await openPath("armor:harness");
+    await expect(stepControl("arms:bladework:2")).toHaveAccessibleName(/Needs Measured Cut I/);
+    await expect(buy("arms:bladework:2")).toHaveCount(0);
+    await buy("arms:bladework:1").scrollIntoViewIfNeeded();
+    const learningScroll = await panel.evaluate(element => element.scrollTop);
     await buy("arms:bladework:1").click();
+    assert(Math.abs(await panel.evaluate(element => element.scrollTop) - learningScroll) <= 2,
+      "Learning preserves the panel scroll position");
     await expect(learnedStep("arms:bladework:1")).toBeVisible();
-    await expect(path("arms:bladework")).toContainText("1 of 4 learned");
+    await expect(path("armor:harness")).toHaveAttribute("aria-expanded", "true");
+    await expect(path("arms:bladework")).toContainText("Measured Cut II — 2 DP");
     await expect(remaining).toHaveText("9 DP remaining");
-    const improvement = stepControl("arms:bladework:2");
-    if ((await improvement.getAttribute("aria-expanded")) !== "true") await improvement.click();
+    await stepControl("arms:bladework:2").click();
     await expect(panel.locator("#forge-selection")).toContainText("Improves Measured Cut I");
     await expect(dialog).toHaveCount(0);
     await capture("learning-improvement");
     await buy("arms:bladework:2").click();
     await buy("arms:bladework:3").click();
-    await expect(path("arms:bladework")).toContainText("3 of 4 learned");
+    // An expanded branch remains open after its next purchase becomes level-gated.
+    await expect(path("arms:bladework")).toContainText("Sweeping Blade — 3 DP");
     await expect(stepControl("arms:bladework:4")).toHaveAccessibleName(/Level 3/);
     await expect(buy("arms:bladework:4")).toHaveCount(0);
     await expect(remaining).toHaveText("5 DP remaining");
+    await path("arms:bladework").click();
+    await expect(branch("arms:bladework")).toHaveCount(0);
+    await showAll.click();
+    await expect(branch("arms:bladework")).toBeVisible();
+    await showAll.click();
+    await expect(branch("arms:bladework")).toHaveCount(0);
 
     await action("forge-chooser", "open", sidebar).click();
     const chooser = page.getByRole("dialog", { name: "Add discipline", exact: true });
     await expect(chooser).toBeVisible();
     await expect(action("forge-candidate", "arms", chooser)).toHaveCount(0);
+    await expect(chooser.locator(".forge-chooser-context")).toContainText("Protector");
+    const candidateRects = await chooser.locator(".forge-chooser-list button").evaluateAll(nodes => nodes.map(node => {
+      const rect = node.getBoundingClientRect(); return { top: rect.top, bottom: rect.bottom, height: rect.height };
+    }));
+    for (let i = 0; i < candidateRects.length; i++) {
+      assert(candidateRects[i].height >= 32, "Discipline choices have usable row height");
+      if (i) assert(candidateRects[i].top >= candidateRects[i-1].bottom, "Discipline choices do not overlap");
+    }
     await chooser.getByRole("searchbox", { name: "Search disciplines" }).fill("Elements");
     await action("forge-candidate", "elements", chooser).click();
     await expect(chooser.getByRole("searchbox")).toHaveValue("Elements");
+    await expect(buy("elements", chooser)).toContainText("3 DP");
     await capture("learning-add-discipline");
     await buy("elements", chooser).click();
     await expect(chooser).toHaveCount(0);
     await expect(study("elements")).toBeVisible();
-    await expect(remaining).toHaveText("4 DP remaining");
-    await study("elements").click();
-    await openPath("elements:air");
+    await expect(remaining).toHaveText("2 DP remaining");
+    await expect(branch("elements:air")).toBeVisible();
     await buy("air:0").click();
-    await expect(path("elements:air")).toContainText("2 spells learned");
-    await buy("air:1").click();
-    await expect(path("elements:air")).toContainText("4 spells learned");
-    await expect(stepControl("air:2")).toHaveAccessibleName(/Level 2/);
-    await expect(buy("air:2")).toHaveCount(0);
+    // With only 1 DP, the next 2-DP spell section is hidden until planning is enabled.
+    await expect(branch("elements:air")).toHaveCount(0);
+    await showAll.click();
+    await openPath("elements:air");
+    await expect(stepControl("air:1")).toHaveAccessibleName(/Need 1 more DP/);
+    await expect(buy("air:1")).toHaveCount(0);
+    await expect(learnedStep("air:0")).toBeVisible();
     await expect(remaining).toHaveText("1 DP remaining");
     await page.reload();
     await expect(identity).toContainText(hero);
     await expect(remaining).toHaveText("1 DP remaining");
-    await study("elements").click();
+    await showAll.click();
     await openPath("elements:air");
-    await expect(path("elements:air")).toContainText("4 spells learned");
-    await expect(learnedStep("air:1")).toBeVisible();
-    await study("arms").click();
+    await expect(learnedStep("air:0")).toBeVisible();
     await openPath("arms:bladework");
-    await expect(path("arms:bladework")).toContainText("3 of 4 learned");
     await expect(learnedStep("arms:bladework:3")).toBeVisible();
 
     await action("forge-view", "atlas", panel).click();
-    const map = panel.locator(".forge-map-scroll");
+    const atlas = page.getByRole("dialog", { name: "Discipline atlas", exact: true });
+    await expect(atlas).toBeVisible();
+    const atlasBox = await atlas.boundingBox();
+    assert(atlasBox.width >= 850 && atlasBox.height >= 650, "Atlas popup uses the available viewport");
+    const map = atlas.locator(".forge-map-scroll");
+    await expect(map.locator(".forge-map-root")).toHaveCount(originCatalog.disciplines.length);
+    await expect(map.locator(".forge-map-step")).toHaveCount(originCatalog.disciplines.reduce((sum, entry) => sum + entry.paths.reduce((total, path) => total + path.steps.length, 0), 0));
+    await expect(map.locator(".forge-map-combination")).toHaveCount(originCatalog.nodes.filter(node => node.kind === "combined").length);
+    const stateStyles = await map.evaluate(element => {
+      const learned = element.querySelector(".forge-map-step.is-learned");
+      const future = element.querySelector(".forge-map-step.is-later");
+      return {
+        mark: getComputedStyle(learned, "::after").content,
+        learnedBackground: getComputedStyle(learned).backgroundColor,
+        futureBackground: getComputedStyle(future).backgroundColor,
+        futureBorder: getComputedStyle(future).borderStyle,
+      };
+    });
+    assert.match(stateStyles.mark, /✓/, "Learned nodes have a visible checkmark in addition to color");
+    assert.notEqual(stateStyles.learnedBackground, stateStyles.futureBackground);
+    assert.equal(stateStyles.futureBorder, "dashed", "Future choices use a distinct outline");
     await map.scrollIntoViewIfNeeded();
     const mapBox = await map.boundingBox();
     const beforeZoom = Number(await map.getAttribute("data-zoom"));
     await page.mouse.move(mapBox.x + mapBox.width / 2, mapBox.y + mapBox.height / 2);
     await page.mouse.wheel(0, -250);
     await expect.poll(async () => Number(await map.getAttribute("data-zoom"))).toBeGreaterThan(beforeZoom);
-    await action("forge-view", "zoom-in", panel).click();
-    await action("forge-view", "zoom-in", panel).click();
+    for (let step = 0; step < 12; step++) await action("forge-view", "zoom-in", atlas).click();
+    assert(Number(await map.getAttribute("data-zoom")) > 6, "Atlas zoom reaches closer than the previous six-times limit");
     await map.evaluate(element => { element.scrollLeft=80; element.scrollTop=80; });
     const beforePan = await map.evaluate(element => [element.scrollLeft,element.scrollTop]);
     const bounds = await map.boundingBox();
@@ -330,7 +377,25 @@ try {
     await page.mouse.move(bounds.x + bounds.width / 2 - 45, bounds.y + Math.min(bounds.height / 2, 100) - 45, {steps:5});
     await page.mouse.up();
     assert.notDeepEqual(await map.evaluate(element => [element.scrollLeft,element.scrollTop]), beforePan, "Mouse drag pans the Atlas");
+    await expect(map).toHaveClass(/show-node-labels/);
+    const closeNode = map.locator('[data-id="arms:bladework:2"]');
+    await closeNode.scrollIntoViewIfNeeded();
+    await expect(closeNode.locator(".forge-node-label")).toBeVisible();
+    assert((await closeNode.boundingBox()).width >= 28, "Close zoom provides a larger node hit area");
+    assert(await closeNode.locator(".forge-node-label").evaluate(element => parseFloat(getComputedStyle(element).fontSize)) >= 14,
+      "Close zoom increases label readability");
+    await capture("learning-atlas-close-zoom");
+    await action("forge-view", "fit", atlas).click();
     await capture("learning-atlas");
+    await page.keyboard.press("Escape");
+    await expect(atlas).toHaveCount(0);
+    await expect(path("arms:bladework")).toHaveAttribute("aria-expanded", "true");
+    await expect(path("elements:air")).toHaveAttribute("aria-expanded", "true");
+    await expect(remaining).toHaveText("1 DP remaining");
+    await action("forge-view", "atlas", panel).click();
+    await expect(atlas).toBeVisible();
+    await atlas.getByRole("button", { name: "Close atlas", exact: true }).click();
+    await expect(atlas).toHaveCount(0);
 
     assert.deepEqual(failures, []);
     await rm(resolve(output, "failure.png"), { force: true });

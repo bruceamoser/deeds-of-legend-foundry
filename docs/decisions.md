@@ -290,3 +290,7 @@ refunding DP, removing separately paid alternatives, resetting equipment or
 repeating acquisition grants. Preserve paid purchases and saved drafts. This
 changes the Foundry interaction by the lead designer's direct instruction; no
 canonical source document is silently rewritten.
+
+## November 15, 2026 — Workshop learning and book follow-through
+
+Bruce approved an available-now learning list with expandable full branches alongside a functional full atlas, class-priced discipline entry, and web testing/publication. See [the decision and price mapping record](workshop-learning-295.md) for exact scope and book integration notes. Follow-up #296 audits ancestry traits and class signatures against the new rules before revising their mechanics.
