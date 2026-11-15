@@ -59,7 +59,7 @@ try {
     .click();
   await page.evaluate(() => {
     const saved = JSON.parse(localStorage.getItem("hol.workshop.v1"));
-    saved.character.draft.purchases[0] = saved.character.draft.purchases[0].filter(
+    saved.character.draft.purchases[1] = saved.character.draft.purchases[1].filter(
       ({ id }) => id !== "armor:harness:2" && id !== "armor:harness:3",
     );
     localStorage.setItem("hol.workshop.v1", JSON.stringify(saved));
@@ -67,7 +67,7 @@ try {
   await page.reload();
   const picker = page.locator("#picker");
   await page.setViewportSize({ width: 760, height: 900 });
-  await page.getByRole("button", { name: "7 Equipment", exact: true }).click();
+  await page.getByRole("button", { name: "6 Equipment", exact: true }).click();
   assert.equal(await page.locator("#panel [data-acquisition]").count(), 0);
   assert.equal(await page.locator(".market-table").count(), 0);
   await page
@@ -83,7 +83,7 @@ try {
   );
   assert.match(
     await picker.locator(".market-table").innerText(),
-    /Requires Armored Training III/,
+    /Requires Heavy Armor/,
   );
   await picker
     .getByLabel("Search equipment", { exact: true })
@@ -118,7 +118,7 @@ try {
       .count(),
     2,
   );
-  await page.getByRole("button", { name: "8 Review", exact: true }).click();
+  await page.getByRole("button", { name: "7 Review", exact: true }).click();
   await page
     .getByRole("button", { name: "View character sheet", exact: true })
     .click();
@@ -172,6 +172,9 @@ try {
   assert.equal(savedLevel, 7);
   await page.evaluate(() => {
     const saved = JSON.parse(localStorage.getItem("hol.workshop.v1"));
+    saved.character.draft.purchases[1] = saved.character.draft.purchases[1].filter(
+      ({ id }) => !id.startsWith("armor:harness:"),
+    );
     saved.character.draft.culture = {
       id: "origin-culture-deep-halls",
       pair: 0,
@@ -205,7 +208,7 @@ try {
     .click();
   assert.match(
     await page.locator("#notice").innerText(),
-    /Requires Armored Training I/,
+    /Requires Light Armor/,
   );
   assert.equal(
     await page.locator(".inventory-table tbody tr").count(),

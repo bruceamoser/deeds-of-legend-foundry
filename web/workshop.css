@@ -2186,14 +2186,41 @@ dialog header button[data-action]:focus-visible {
   accent-color: var(--forest, #15221c);
 }
 
-.spellbook-sheet {
-  margin-block: 0 12px;
+.spell-reserve {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 18px;
+  margin-bottom: 12px;
 }
-.spellbook-sheet h3 {
+.spell-reserve small, .spell-reserve strong { display: block; }
+.spell-reserve strong { font-size: 1.25rem; }
+.spell-reserve p { flex: 1 1 16rem; margin: 0; }
+.spellbooks-library {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 27rem), 1fr));
+  align-items: start;
+  gap: 12px;
+  margin-top: 12px;
+}
+.spellbook-sheet { min-width: 0; }
+.spellbook-sheet header {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+  margin-bottom: 8px;
 }
+.spellbook-sheet h3 { margin: 0; overflow-wrap: anywhere; }
+.spellbook-sheet td:first-child, .spellbook-sheet td:last-child { text-align: center; }
+.spellbook-sheet th:first-child, .spellbook-sheet th:last-child { text-align: center; }
+.spellbook-sheet tr.spell-page-advanced td { background: #eee2c4; }
+.spell-tag {
+  display: inline-block;
+  margin-inline-start: .45em;
+  border: 1px solid var(--line, #bca981);
+  padding-inline: .35em;
+}
+.spell-cantrip { font-weight: 700; }
 .technique-improvement {
   padding-block: 8px;
   border-top: 1px solid var(--line, #bca981);

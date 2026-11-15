@@ -1,3 +1,4 @@
+import { sustainLimit } from "./forge-sustain.mjs";
 import { WOUND_TABLES } from "./damage.mjs";
 import { woundRoll } from "./wounds.mjs";
 import { normalizeRecovery } from "./recovery.mjs";
@@ -43,6 +44,7 @@ export function normalizeWorkshopPlay(
       successfulDeathRolls: 2,
       lastRestHour: Number.MAX_SAFE_INTEGER,
     });
+  if (catalogs.forge?.playtest) numericLimits.workshopTurn = Number.MAX_SAFE_INTEGER - 10;
   for (const [key, maximum] of Object.entries(numericLimits)) {
     if (value[key] !== undefined) {
       if (
@@ -75,6 +77,24 @@ export function normalizeWorkshopPlay(
       if (value[key] === undefined) continue;
       if (typeof value[key] !== "boolean") fail();
       result[key] = value[key];
+    }
+    if (catalogs.forge.playtest) {
+      for (const key of ["maneuverSpent", "mainSpent"]) {
+        if (value[key] === undefined) continue;
+        if (typeof value[key] !== "boolean") fail();
+        result[key] = value[key];
+      }
+      if (value.sustain !== undefined) {
+        if (!object(value.sustain)) fail();
+        const { spellId, castTurn, maintainedTurn } = value.sustain;
+        const turn = result.workshopTurn ?? 0;
+        if (!text(spellId) ||
+            !Number.isSafeInteger(castTurn) || !Number.isSafeInteger(maintainedTurn) ||
+            castTurn < 0 || maintainedTurn < castTurn || maintainedTurn > turn) fail();
+        const limit = sustainLimit(catalogs.forge.spells.find((spell) => spell.id === spellId));
+        if (limit && turn < castTurn + limit && turn <= maintainedTurn + 1)
+          result.sustain = { spellId, castTurn, maintainedTurn };
+      }
     }
     if (value.gritTrigger !== undefined) {
       if (

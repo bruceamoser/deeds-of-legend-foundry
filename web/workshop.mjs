@@ -1,3 +1,7 @@
+import {
+  activeForgeSustain, beginForgeSustain, convertForgeManeuver, endForgeSustain,
+  maintainForgeSustain, nextForgeTurn, sustainLimit,
+} from "./rules/forge-sustain.mjs";
 import { renderForge } from "./forge-view.mjs";
 import { forgeSpendSp } from "./rules/forge-vitals.mjs";
 import { forgeEligibility } from "./rules/forge.mjs";
@@ -23,13 +27,13 @@ import { HEALING_POTION_IDS } from "./rules/potions.mjs";
 import {
   advanceForgeVitals, forgeBeginFirstAid, forgeCanSpendGrit, forgeDamage,
   forgeDeathRoll, forgeFinalizeDeath, forgeFinishFirstAid, forgeHeal,
-  forgeInterruptFirstAid, forgeMaximums, forgeRecordScar, forgeRest, forgeSpellcraftRecovery,
+  forgeInterruptFirstAid, forgeRecordScar, forgeRest, forgeSpellcraftRecovery,
   forgeSpendGrit, forgeStabilize, forgeVitals,
 } from "./rules/forge-vitals.mjs";
 import { itemArrangement } from "./rules/workshop-play.mjs";
 import { normalizeRecovery, payDebt, nextDawn } from "./rules/recovery.mjs";
 import { passiveAncestryDefenseSources } from "./rules/passive-defenses.mjs";
-import { ancestryBenefits, ancestrySelection } from "./rules/ancestry.mjs";
+import { ancestrySelection } from "./rules/ancestry.mjs";
 import { CONDITION_KINDS, conditionRollSources } from "./rules/conditions.mjs";
 import {
   workshopCharacter,
@@ -54,6 +58,7 @@ import {
   readPortableCharacter,
   writePortableCharacter,
   MAX_CHARACTER_BYTES,
+  WORKSHOP_PLAYTEST_VERSION,
 } from "./rules/portable-character.mjs";
 
 const $ = (selector) => document.querySelector(selector);
@@ -72,12 +77,17 @@ const steps = [
   "Identity",
   "Ancestry",
   "Origins",
-  "Early learning",
   "Class",
-  "Heroic learning",
+  "Learning",
   "Equipment",
   "Review",
 ];
+const CLASS_STEP = 3;
+const LEARNING_STEP = 4;
+const EQUIPMENT_STEP = 5;
+const REVIEW_STEP = steps.length - 1;
+const CREATION_FLOW = 2;
+const PREVIOUS_STEPS = [0, 1, 2, LEARNING_STEP, CLASS_STEP, LEARNING_STEP, EQUIPMENT_STEP, REVIEW_STEP];
 const tabs = [
   "Main",
   "Abilities",
@@ -93,7 +103,7 @@ const storageKey = "hol.workshop.v1";
 const libraryKey = "hol.workshop.library.v1";
 let saveId = null;
 let signatureTier = 1;
-let forgeView = "atlas", forgeDiscipline = "all", forgeSelected, forgeZoom = 1;
+let forgeView = "columns", forgeDiscipline = "all", forgeSelected, forgeZoom = 1;
 let catalogs,
   references,
   example,
@@ -184,7 +194,7 @@ function symbol(id) {
   return `<img class="sigil" src="assets/${key}.${svg ? "svg" : "webp"}" alt="">`;
 }
 function equipmentEligibility(id) {
-  const requiredAbilityId = forgeArmorRequirement(id) ?? (id === "item-smoke-supply" ? "craft:mixtures:1" : null);
+  const requiredAbilityId = forgeArmorRequirement(id, catalogs.forge.playtest) ?? (id === "item-smoke-supply" ? "craft:mixtures:1" : null);
   return { requiredAbilityId, eligible: !requiredAbilityId || preview.state.learned.includes(requiredAbilityId) };
 }
 function errors() {
@@ -202,6 +212,7 @@ function persist() {
         character: JSON.parse(writePortableCharacter(draft, catalogs)),
         mode,
         tab,
+        creationFlow: CREATION_FLOW,
         step,
         isExample,
         saveId,
@@ -250,8 +261,13 @@ function applyWorkshopDamage(amount) {
   if (current.immediateDeathRoll) throw new Error("Resolve the immediate death roll first.");
   const outcome = forgeDamage(current, limits, amount);
   Object.assign(current, outcome.play, { immediateDeathRoll: outcome.deathRollRequired });
-  if (outcome.gritTrigger === "fall" && !preview.play.conditions.some(({ key }) => key === "prone") && current.conditions.length < 100) {
-    current.conditions.push({
+  if (outcome.play.hp === 0 && current.sustain) {
+    const spell = get(current.sustain.spellId);
+    draft.play = endForgeSustain(current);
+    notice(`${spell?.name ?? "The sustained spell"} ends when you fall unconscious.`);
+  }
+  if (outcome.gritTrigger === "fall" && !preview.play.conditions.some(({ key }) => key === "prone") && playDraft().conditions.length < 100) {
+    playDraft().conditions.push({
       id: "prone-" + crypto.randomUUID(), key: "prone", rating: 1,
       persistence: "binary", source: "Fell to 0 HP",
     });
@@ -261,17 +277,9 @@ function applyWorkshopDamage(amount) {
 const effectiveTraits = () => ancestrySelection(draft, catalogs.choices).traitIds;
 function header() {
   const vitals = liveVitals();
-  const early = mode === "builder" && step < 4;
-  const ancestry = get(draft.ancestryId);
-  const earlyLimits = early && ancestry ? forgeMaximums({
-    ancestryHp: ancestry.hp,
-    fortitude: draft.attributes.fortitude,
-    fixedHp: ancestryBenefits(effectiveTraits()).maximumHpBonus,
-    capacitySp: preview.stages[0].learning.capacitySp,
-  }) : null;
   const showResources = mode === "sheet";
   return `<div class="workshop-header"><div class="toolbar"><div class="toolbar-group">${button(edit ? "✓ Done" : "✎ Edit", "edit", `aria-pressed="${edit}"`, edit ? "selected" : "quiet")}</div><div class="toolbar-group">${button("New", "new", 'aria-label="New hero"', "quiet")}${button("Save", "save", 'aria-label="Save character"', "quiet")}${button("Load", "library", 'aria-label="Load character"', "quiet")}${button("Import", "import", 'aria-label="Import JSON"', "quiet")}${button("Export", "export", 'aria-label="Export JSON"', "quiet")}</div></div>
-  <header class="hero-header"><div class="identity-line"><img class="hero-mark" src="assets/crest.webp" alt=""><div><div class="name-line">${edit && mode === "sheet" ? field("Character name", "name", draft.name, "text", 'maxlength="200"') : `<h1>${esc(draft.name || "New hero")}</h1>`}${button(skullIcon + (vitals.dying ? `<span>${vitals.failed} / ${vitals.successfulDeathRolls}</span>` : ""), "death-roll", `aria-label="Death roll" title="Fortitude death roll · ${vitals.failed} failures · ${vitals.successfulDeathRolls} successes" ${vitals.dying && vitals.failed < 3 ? "" : "disabled"}`, "icon-button death-button")}</div><p>${esc(join([get(draft.ancestryId)?.name, get(draft.culture?.id)?.name, get(draft.background?.id)?.name, early ? null : get(draft.classId)?.name, `Level ${early ? 0 : preview.development.level}`]))}</p></div></div><div class="vitals"><div class="vital"><small>HP</small><strong class="hp-value">${showResources ? `<input aria-label="Current HP" data-field="play.hp" type="number" min="0" max="${Math.max(vitals.hp, vitals.recoveryMax)}" step="1" value="${vitals.hp}"><span>/ ${vitals.max || "—"}</span>` : `<span>${early ? earlyLimits?.maxHp ?? "—" : vitals.max || "—"}</span>`}</strong></div><div class="vital"><small>SP</small><strong class="hp-value">${showResources ? `<input aria-label="Current SP" data-field="play.sp" type="number" min="0" max="${vitals.limits.maxSp}" step="1" value="${vitals.sp}"><span>/ ${vitals.limits.maxSp || "—"}</span>` : `<span>${early ? 3 + preview.stages[0].learning.capacitySp : vitals.limits.maxSp || "—"}</span>`}</strong></div><div class="vital"><small>${button("Grit", "use-grit", 'aria-label="Use Grit"', "vital-link")}</small><strong>${early ? 0 : vitals.grit}</strong></div><div class="vital"><small>Speed</small><strong data-speed>${vitals.speed}${vitals.speed < vitals.maxSpeed ? ` / ${vitals.maxSpeed}` : ""}</strong></div><div class="vital"><small>${button("Recovery", "hero-recovery", 'aria-label="Recovery"', "vital-link")}</small><strong>${vitals.dead ? "Dead" : vitals.dying ? "Dying" : vitals.hp === 0 && vitals.max ? "Stable" : ""}</strong></div><div class="vital"><small>Armor DR</small><strong>${preview.resistances.physical ?? 0}</strong></div></div></header>
+  <header class="hero-header"><div class="identity-line"><img class="hero-mark" src="assets/crest.webp" alt=""><div><div class="name-line">${edit && mode === "sheet" ? field("Character name", "name", draft.name, "text", 'maxlength="200"') : `<h1>${esc(draft.name || "New hero")}</h1>`}${button(skullIcon + (vitals.dying ? `<span>${vitals.failed} / ${vitals.successfulDeathRolls}</span>` : ""), "death-roll", `aria-label="Death roll" title="Fortitude death roll · ${vitals.failed} failures · ${vitals.successfulDeathRolls} successes" ${vitals.dying && vitals.failed < 3 ? "" : "disabled"}`, "icon-button death-button")}</div><p>${esc(join([get(draft.ancestryId)?.name, get(draft.culture?.id)?.name, get(draft.background?.id)?.name, get(draft.classId)?.name, `Level ${preview.development.level}`]))}</p></div></div><div class="vitals"><div class="vital"><small>HP</small><strong class="hp-value">${showResources ? `<input aria-label="Current HP" data-field="play.hp" type="number" min="0" max="${Math.max(vitals.hp, vitals.recoveryMax)}" step="1" value="${vitals.hp}"><span>/ ${vitals.max || "—"}</span>` : `<span>${vitals.max || "—"}</span>`}</strong></div><div class="vital"><small>SP</small><strong class="hp-value">${showResources ? `<input aria-label="Current SP" data-field="play.sp" type="number" min="0" max="${vitals.limits.maxSp}" step="1" value="${vitals.sp}"><span>/ ${vitals.limits.maxSp || "—"}</span>` : `<span>${vitals.limits.maxSp || "—"}</span>`}</strong></div><div class="vital"><small>${button("Grit", "use-grit", 'aria-label="Use Grit"', "vital-link")}</small><strong>${vitals.grit}</strong></div><div class="vital"><small>Speed</small><strong data-speed>${vitals.speed}${vitals.speed < vitals.maxSpeed ? ` / ${vitals.maxSpeed}` : ""}</strong></div><div class="vital"><small>${button("Recovery", "hero-recovery", 'aria-label="Recovery"', "vital-link")}</small><strong>${vitals.dead ? "Dead" : vitals.dying ? "Dying" : vitals.hp === 0 && vitals.max ? "Stable" : ""}</strong></div><div class="vital"><small>Armor DR</small><strong>${preview.resistances.physical ?? 0}</strong></div></div></header>
   <div class="attributes">${ATTRIBUTES.map((key) => `<div class="attribute"><span>${title(key)}</span>${rollButton(title(key), `data-attribute-key="${key}"`)}<strong data-attribute="${key}">${signed(preview.attributes[key])}</strong></div>`).join("")}</div></div>`;
 }
 function knownCards() {
@@ -345,7 +353,7 @@ function sheetContent() {
   if (tab === "Character")
     return `${heading("", "Character", "")}<div class="columns"><section class="box"><h3>Origins</h3>${row("Ancestry", name(draft.ancestryId))}${row("Culture", name(draft.culture?.id))}${row("Background", name(draft.background?.id))}</section><section class="box"><h3 class="section-controls">Languages ${button("Add", "add-language", 'aria-label="Add language"', "small")}</h3>${languageTable()}</section></div>${collapsible("story", "Story", `<label class="story-editor"><textarea aria-label="Story" data-field="profile.story" maxlength="10000" placeholder="Write your character’s story…">${esc(draft.profile?.story ?? "")}</textarea></label>`)}${scarSection()}`;
   const dev = preview.development;
-  return `${heading("", "Development", "")}<section class="box development-training"><h3 class="section-controls">Training ${button("Edit creation", "review", "", "small quiet")}</h3><div class="development-summary"><div class="level-control"><span>Level</span>${button("−", "level-down", 'aria-label="Decrease level"')}<strong>${dev.level}</strong>${button("+", "level-up", 'aria-label="Increase level"')}</div><div><small>Current DP</small><strong data-dp="current">${dev.current}</strong></div><div><small>DP spent</small><strong data-dp="spent">${dev.spent}</strong></div><div><small>Total DP</small><strong data-dp="total">${dev.total}</strong></div></div><div class="training-footer"><small>Each new level grants 8 + level DP. Unspent advancement DP carries forward.</small>${button("Spend DP", "advance", dev.current > 0 || draft.progression?.levels?.[dev.level]?.purchases?.length ? "" : "disabled", "primary small")}</div></section>${collapsible("signatures", "Class signatures", signatureProgress())}${
+  return `${heading("", "Development", "")}<section class="box development-training"><h3 class="section-controls">Training ${button("Edit creation", "review", "", "small quiet")}</h3><div class="development-summary"><div class="level-control"><span>Level</span>${button("−", "level-down", 'aria-label="Decrease level"')}<strong>${dev.level}</strong>${button("+", "level-up", 'aria-label="Increase level"')}</div><div><small>Current DP</small><strong data-dp="current">${dev.current}</strong></div><div><small>DP spent</small><strong data-dp="spent">${dev.spent}</strong></div><div><small>Total DP</small><strong data-dp="total">${dev.total}</strong></div></div><div class="training-footer"><small>Each new level grants 4 + level DP. Unspent advancement DP carries forward.</small>${button("Spend DP", "advance", dev.current > 0 || draft.progression?.levels?.[dev.level]?.purchases?.length ? "" : "disabled", "primary small")}</div></section>${collapsible("signatures", "Class signatures", signatureProgress())}${
     preview.errors.filter((e) => e.level && e.code !== "signature").length
       ? `<section class="box"><h3>Choices to finish</h3><ul class="error-list">${preview.errors
           .filter((e) => e.level && e.code !== "signature")
@@ -363,10 +371,13 @@ function spellbooks() {
     ...book,
     pages: book.spellIds.filter((id) => learned.has(id)).map(get),
   })).filter((book) => book.pages.length);
-  return `${heading("", "Spellbooks", "")}${books.map((book) =>
-    `<section class="box spellbook-sheet"><h3>${symbol(book.disciplineId)}${esc(book.name)}</h3>
+  const vitals = liveVitals();
+  const reserve = `<section class="box spell-reserve" aria-label="Spellcasting reserve"><div><small>Spell Points</small><strong>${vitals.sp} / ${vitals.limits.maxSp} SP</strong></div><p>Choose a page to see how it’s cast. Cantrips cost 0 SP; Rituals list their casting time.</p>${button("Recovery", "hero-recovery", "", "small")}</section>`;
+  return `${heading("", "Spellbooks", "")}${reserve}${sustainPanel()}<div class="spellbooks-library">${books.map((book) =>
+    `<section class="box spellbook-sheet">
+    <header>${symbol(book.disciplineId)}<div><small>${esc(name(book.disciplineId))} · ${book.pages.length} learned ${book.pages.length === 1 ? "page" : "pages"}</small><h3>${esc(book.name)}</h3></div></header>
     <div class="table-wrap"><table><thead><tr><th>Page</th><th>Spell</th><th>Casting</th><th>SP</th></tr></thead><tbody>
-    ${book.pages.map((spell) => `<tr><td>${esc(spell.page)}</td><td>${button(esc(spell.name), "reference", `data-id="${esc(spell.id)}"`, "table-link")}</td><td>${esc(spell.actionText ?? spell.action)}</td><td>${spell.sp}</td></tr>`).join("")}</tbody></table></div></section>`).join("")}`;
+    ${book.pages.map((spell) => `<tr class="spell-page-${spell.page.startsWith("A") ? "advanced" : "basic"}"><td>${esc(spell.page)}</td><td>${button(esc(spell.name), "reference", `data-id="${esc(spell.id)}"`, "table-link")}${sustainLimit(spell) ? '<small class="spell-tag">Sustained</small>' : ""}</td><td>${esc(spell.actionText ?? spell.action)}</td><td>${spell.sp === 0 ? '<span class="spell-cantrip" title="Cantrip · 0 SP">0</span>' : spell.sp}</td></tr>`).join("")}</tbody></table></div></section>`).join("")}</div>`;
 }
 
 function spellProfile(record) {
@@ -393,6 +404,59 @@ function isRitual(record) {
   return record.action === "Ritual" || record.effect?.startsWith("Ritual");
 }
 
+function sustainUnavailable() {
+  return liveVitals().hp === 0 || preview.play.conditionSummary.unconscious.active;
+}
+
+function currentSustain() {
+  const play = draft.play ?? {};
+  const spell = preview.state.learning.spells.find((entry) => entry.id === play.sustain?.spellId);
+  return { play, spell, active: activeForgeSustain(play, spell, sustainUnavailable()) };
+}
+
+function sustainPanel() {
+  const { play, spell, active } = currentSustain();
+  if (!active) {
+    if (!play.maneuverSpent && !play.mainSpent) return "";
+    const used = [play.maneuverSpent && "Maneuver spent", play.mainSpent && "Main Action spent"].filter(Boolean).join(" · ");
+    return `<section class="box" aria-label="Sustained Spell"><p>${used}</p><div class="dialog-actions">${button("End my turn", "next-sustain-turn")}</div></section>`;
+  }
+  const turn = play.workshopTurn ?? 0;
+  const castThisTurn = active.castTurn === turn;
+  const sustained = !castThisTurn && active.maintainedTurn === turn;
+  const status = castThisTurn ? "First upkeep is due next turn."
+    : sustained ? "Sustained this turn."
+    : "Spend a Maneuver before this turn ends.";
+  return `<section class="box" aria-label="Sustained Spell">
+    <h3>${button(esc(spell.name), "reference", `data-id="${esc(spell.id)}"`, "table-link")}</h3>
+    <p>${status} ${esc(spell.duration)}.</p>
+    <p>${play.maneuverSpent ? "Maneuver spent" : "Maneuver available"}${play.mainSpent ? " · Main Action spent" : ""}</p>
+    <div class="dialog-actions">
+      ${button("Sustain Spell", "sustain-spell", castThisTurn || play.maneuverSpent || sustained ? "disabled" : "")}
+      ${button("Clear ended spell", "end-sustain", 'title="Use when the spell ends at the table"')}
+      ${button("Mark Maneuver spent", "record-maneuver", play.maneuverSpent ? "disabled" : "")}
+      ${button("Mark Main Action spent", "record-sustain-main", play.mainSpent ? "disabled" : "")}
+      ${play.maneuverSpent && !play.mainSpent ? button("Convert Main to Maneuver", "sustain-convert") : ""}
+      ${button("End my turn", "next-sustain-turn")}
+    </div>
+  </section>`;
+}
+
+function requireCastAction(record) {
+  const timing = record.page ? record.action : actionTiming(record)[0];
+  if (timing === "Main Action" && draft.play?.mainSpent)
+    throw new Error("Your Main Action has already been spent this turn.");
+  if (timing === "Maneuver" && draft.play?.maneuverSpent)
+    throw new Error("Your Maneuver has already been spent this turn.");
+}
+
+function recordCastAction(record) {
+  if (!draft.play.sustain && !draft.play.mainSpent && !draft.play.maneuverSpent) return;
+  const timing = record.page ? record.action : actionTiming(record)[0];
+  if (timing === "Main Action") draft.play.mainSpent = true;
+  if (timing === "Maneuver") draft.play.maneuverSpent = true;
+}
+
 function castFromSheet(id) {
   const record = get(id);
   const cost = castCost(record);
@@ -403,22 +467,25 @@ function castFromSheet(id) {
   if (!preview.limits) throw new Error("Finish creating this hero to track SP.");
   const vitals = liveVitals();
   if (vitals.hp <= 0 || vitals.dead) throw new Error("Regain HP before casting.");
+  if (preview.play.conditionSummary.unconscious.active) throw new Error("Regain consciousness before casting.");
   if (cost > vitals.sp) throw new Error("You need more SP.");
   const attribute = attributeFor(record);
   const automatic = !attribute || /(?:^|[.!] )No (?:casting )?roll\./i.test(record.effect);
+  requireCastAction(record);
   $("#reference").close();
   if (isRitual(record)) {
     draft.play = forgeSpendSp(playDraft(), vitals.limits, cost);
     persist();
     render();
-    popup(record.name, `${record.page ? spellProfile(record) : markdown(record.effect)}<p>${cost} SP spent. Finish the printed casting time before resolving the effect.</p>${automatic ? "" : `<div class="dialog-actions">${button("Roll when the Ritual ends", "finish-ritual", `data-id="${esc(id)}"`, "primary")}</div>`}`);
+    popup(record.name, `${record.page ? spellProfile(record) : markdown(record.effect)}<p>${cost} SP spent. Finish the printed casting time before resolving the effect.</p>${automatic && !sustainLimit(record) ? "" : `<div class="dialog-actions">${button(automatic ? "Complete Ritual" : "Roll when the Ritual ends", "finish-ritual", `data-id="${esc(id)}"`, "primary")}</div>`}`);
     return;
   }
   if (!automatic) {
     openSheetRoll({ key: attribute, id, cast: true });
     return;
   }
-  draft.play = forgeSpendSp(playDraft(), vitals.limits, cost);
+  draft.play = beginForgeSustain(forgeSpendSp(playDraft(), vitals.limits, cost), record);
+  recordCastAction(record);
   persist();
   render();
   notice(`Casting recorded: ${record.name}${cost ? ` · ${cost} SP spent` : ""}.`);
@@ -537,7 +604,7 @@ function mainPanel() {
   ];
   const favorites = workshopFavorites(preview, draft, catalogs);
   const left =
-    collapsible(
+    sustainPanel() + collapsible(
       "favorites",
       "Favorites",
       favorites.length
@@ -695,28 +762,27 @@ function advancementTable() {
 }
 
 function ledgerTable() {
-  return `<div class="table-wrap"><table><thead><tr><th>Stage</th><th>Choice</th><th>DP</th><th>Remaining</th></tr></thead><tbody>${preview.ledger.map((e) => `<tr><td>Level ${e.stage}</td><td>${esc(e.kind === "pool" ? "Starting pool" : e.kind === "expired-pool" ? "Unspent DP expires at stage end" : name(e.sourceId))}</td><td>${signed(e.delta)}</td><td>${e.balance}</td></tr>`).join("")}</tbody></table></div>`;
+  return `<div class="table-wrap"><table><thead><tr><th>Choice</th><th>DP</th><th>Remaining</th></tr></thead><tbody>${preview.ledger.map((e) => `<tr><td>${esc(e.kind === "pool" ? "Starting pool" : name(e.sourceId))}</td><td>${signed(e.delta)}</td><td>${e.balance}</td></tr>`).join("")}</tbody></table></div>`;
 }
 function builder() {
   const icons = [
     "Character",
     "Ancestry",
     "Origins",
-    "Abilities",
     "Class",
-    "Heroic",
+    "Abilities",
     "Inventory",
     "Review",
   ];
-  return `<div class="wizard"><nav class="edge-tabs" aria-label="Creation steps">${steps.map((label, i) => button(navIcon(icons[i], `${i + 1}. ${label}`), "step", `aria-label="${i + 1} ${label}" ${step === i ? 'aria-current="step"' : ""} data-step="${i}"`)).join("")}</nav><div class="wizard-body">${requiredChoicesBanner()}${contextStrip()}<section id="panel" class="panel" aria-labelledby="panel-title">${builderContent()}</section><footer class="wizard-footer">${button(step ? "← Back" : "View sheet", step ? "back" : "sheet")}<small>${storageAvailable ? "Draft saved in this browser" : "Export JSON to keep your draft"}</small>${step < 7 ? button("Continue →", "next", "", "primary") : button("View character sheet", "sheet", "", "primary")}</footer></div></div>`;
+  return `<div class="wizard"><nav class="edge-tabs" aria-label="Creation steps">${steps.map((label, i) => button(navIcon(icons[i], `${i + 1}. ${label}`), "step", `aria-label="${i + 1} ${label}" ${step === i ? 'aria-current="step"' : ""} data-step="${i}"`)).join("")}</nav><div class="wizard-body">${requiredChoicesBanner()}${contextStrip()}<section id="panel" class="panel" aria-labelledby="panel-title">${builderContent()}</section><footer class="wizard-footer">${button(step ? "← Back" : "View sheet", step ? "back" : "sheet")}<small>${storageAvailable ? "Draft saved in this browser" : "Export JSON to keep your draft"}</small>${step < REVIEW_STEP ? button("Continue →", "next", "", "primary") : button("View character sheet", "sheet", "", "primary")}</footer></div></div>`;
 }
 function builderContent() {
   if (step === 0)
-    return `${heading("Step 1 of 8", "Identity & attributes", "Start with a name and six attributes. You can revisit every choice.")}<div class="field-grid">${field("Character name", "name", draft.name, "text", 'maxlength="200"')}</div><h3 class="section-title" style="margin-top:14px">Your attributes</h3><p class="inline-help">Assign −2 to +2 to each attribute, totaling +3. Each creation DP pool is 10 + Knowledge + Reason + Guile.</p><div class="field-grid" style="margin-top:10px">${ATTRIBUTES.map((key) => field(title(key), `attributes.${key}`, draft.attributes[key], "number", 'min="-2" max="2" step="1"')).join("")}</div><div class="callout" style="margin-top:10px">Assigned total: <strong>${signed(Object.values(draft.attributes).reduce((a, b) => a + b, 0))} / +3</strong></div>`;
+    return `${heading("Step 1 of 7", "Identity & attributes", "Start with a name and six attributes. You can revisit every choice.")}<div class="field-grid">${field("Character name", "name", draft.name, "text", 'maxlength="200"')}</div><h3 class="section-title" style="margin-top:14px">Your attributes</h3><p class="inline-help">Assign −2 to +2 to each attribute, totaling +3. Your starting DP is 8 + Guile + Knowledge + Reason, plus any ancestry benefit that grants DP. Unspent DP carries forward.</p><div class="field-grid" style="margin-top:10px">${ATTRIBUTES.map((key) => field(title(key), `attributes.${key}`, draft.attributes[key], "number", 'min="-2" max="2" step="1"')).join("")}</div><div class="callout" style="margin-top:10px">Assigned total: <strong>${signed(Object.values(draft.attributes).reduce((a, b) => a + b, 0))} / +3</strong></div>`;
   if (step === 1) {
     const ancestry = get(draft.ancestryId),
       options = campaignLanguageOptions(catalogs.languages, draft.languages);
-    return `${heading("Step 2 of 8", "Ancestry & languages", "Choose your ancestry, two traits and a home language. Common is already known.")}<div class="cards">${catalogs.choices
+    return `${heading("Step 2 of 7", "Ancestry & languages", "Choose your ancestry, two traits and a home language. Common is already known.")}<div class="cards">${catalogs.choices
       .filter((r) => r.kind === "ancestry")
       .map(
         (r) =>
@@ -727,61 +793,72 @@ function builderContent() {
       )}</div><h3 class="section-title" style="margin-top:14px">Choose two traits</h3><div class="cards">${(ancestry?.traits ?? []).map((id) => choiceCheck(id, "traitIds", draft.traitIds)).join("") || '<p class="empty">Choose an ancestry to see its traits.</p>'}</div><div style="margin-top:12px">${select("Home language", "languages.home", option("", "Choose a home language", !draft.languages.home) + options.home.map((l) => option(l.id, `${l.name}${l.reason ? ` — ${l.reason}` : ""}`, l.selected, l.disabled)).join(""))}</div>${draft.traitIds.includes("trait-human-many-homes") ? `<h3 class="section-title" style="margin-top:12px">A Foot in Two Worlds</h3><div class="field-grid">${select("Other ancestry", "borrowedAncestryId", option("", "Choose another ancestry", !draft.borrowedAncestryId) + catalogs.choices.filter(r => r.kind === "ancestry" && r.id !== "ancestry-human").map(r => option(r.id, r.name, r.id === draft.borrowedAncestryId)).join(""))}${select("Borrowed trait", "borrowedTraitId", option("", "Choose one trait", !draft.borrowedTraitId) + (get(draft.borrowedAncestryId)?.traits ?? []).map(id => option(id, name(id), id === draft.borrowedTraitId)).join(""))}${select("Ancestry language", "languages.ancestry", option("", "Choose a DA-approved native language", !draft.languages.ancestry) + catalogs.languages.filter(l => l.ordinary).map(l => option(l.id, l.name, l.id === draft.languages.ancestry)).join(""))}</div>${draft.borrowedTraitId ? button("Read borrowed trait", "reference", `data-id="${esc(draft.borrowedTraitId)}"`, "quiet small") : ""}<p class="inline-help">Choose a language native to the other ancestry with your DA.</p>` : ""}${staleSelections("traitIds", ancestry?.traits ?? [])}`;
   }
   if (step === 2)
-    return `${heading("", "Culture & background", "")}<div class="origin-grid">${[
-      "culture",
-      "background",
-    ]
-      .map(
-        (kind) =>
-          `<section class="box"><label>${title(kind)}<select aria-label="${title(kind)}" data-origin="${kind}">${option("", `Choose ${kind} and grants`, !draft[kind]?.id)}${catalogs.choices
-            .filter((r) => r.originType === kind)
-            .flatMap((r) =>
-              r.pairs.map((pair, index) =>
-                option(
-                  `${r.id}|${index}`,
-                  `${r.name} — ${name(pair.disciplineId)} + ${name(pair.abilityId)}`,
-                  draft[kind]?.id === r.id && draft[kind]?.pair === index,
-                ),
-              ),
-            )
-            .join("")}</select></label>${
-            draft[kind]?.id
-              ? (() => {
-                  const pair = get(draft[kind].id)?.pairs?.[draft[kind].pair];
-                  return `<div class="origin-grants">${button(esc(name(draft[kind].id)), "reference", `data-id="${esc(draft[kind].id)}"`, "table-link")}${pair ? `<div>${symbol(pair.disciplineId)}${esc(name(pair.disciplineId))}</div>${button(esc(name(pair.abilityId)), "reference", `data-id="${pair.abilityId}"`, "table-link")}` : ""}</div>`;
-                })()
-              : ""
-          }</section>`,
-      )
-      .join(
-        "",
-      )}</div><p class="inline-help">Each choice starts a discipline and teaches its first entry. Each duplicate grants 1 DP.</p>`;
-  if ([3, 5].includes(step)) return learning();
-  if (step === 4) {
+    return `${heading("", "Culture & background", "")}<div class="origin-grid">${["culture", "background"].map(originChoice).join("")}</div><p class="inline-help">Choose a different starting discipline from your culture and background.</p>`;
+  if (step === LEARNING_STEP) return learning();
+  if (step === CLASS_STEP) {
     const cls = catalogs.choices.find(
       (r) => r.kind === "class" && r.id === draft.classId,
     );
-    return `${heading("Step 5 of 8", "Class", "Classes you qualify for appear first. Then choose two starting disciplines and one signature.")}<div class="cards">${eligibleFirst(
+    return `${heading("Step 4 of 7", "Class", "Choose a starting discipline and a class signature.")}<div class="cards">${eligibleFirst(
       catalogs.choices.filter((r) => r.kind === "class"),
       (r) => classEligibility(r, draft.attributes),
     )
       .map(
         (e) =>
-          `<article class="choice-card ${e.eligible ? "" : "unavailable"} ${draft.classId === e.choice.id ? "chosen" : ""}"><h3>${e.choice.name}</h3><p class="card-meta">+${e.choice.hp} HP per level · +${e.choice.spContribution} SP · +${e.choice.coins} coins</p><p class="requirement">${e.reasons.map((r) => esc(r.text)).join(" ") || "You meet the requirements."}</p><div class="card-actions">${button("Read class", "reference", `data-id="${e.choice.id}"`, "quiet small")}${button(draft.classId === e.choice.id ? "Selected" : "Choose", "class", `data-id="${e.choice.id}" ${e.eligible ? "" : "disabled"}`, "small")}</div></article>`,
+          `<article class="choice-card ${e.eligible ? "" : "unavailable"} ${draft.classId === e.choice.id ? "chosen" : ""}"><h3>${e.choice.name}</h3><p class="card-meta">+${e.choice.hp} HP per level · +${classStartingSp(e.choice)} SP${e.choice.spAttribute ? ` (${esc(title(e.choice.spAttribute.toLowerCase()))} × 2)` : ""} · +${e.choice.coins} coins</p><p class="requirement">${e.reasons.map((r) => esc(r.text)).join(" ") || "You meet the requirements."}</p><div class="card-actions">${button("Read class", "reference", `data-id="${e.choice.id}"`, "quiet small")}${button(draft.classId === e.choice.id ? "Selected" : "Choose", "class", `data-id="${e.choice.id}" ${e.eligible ? "" : "disabled"}`, "small")}</div></article>`,
       )
       .join(
         "",
-      )}</div>${cls ? `<h3 class="section-title" style="margin-top:14px">Two starting disciplines</h3><div class="cards">${cls.startingDisciplines.map((id) => choiceCheck(id, "classDisciplines", draft.classDisciplines, preview.stages[0].learned.includes(id))).join("")}</div><h3 class="section-title" style="margin-top:14px">Your first signature</h3><div class="cards">${cls.signatures[1].map((id) => `<article class="choice-card ${draft.signatureId === id ? "chosen" : ""}"><h3>${esc(name(id))}</h3><p class="card-copy">${esc(get(id)?.reference?.flavor?.[0])}</p><div class="card-actions">${button("Read signature", "reference", `data-id="${esc(id)}"`, "quiet small")}${button(draft.signatureId === id ? "Selected" : "Choose", "signature", `data-id="${esc(id)}"`, "small")}</div></article>`).join("")}</div>${staleSelections("classDisciplines", cls.startingDisciplines)}` : ""}`;
+      )}</div>${cls ? `<h3 class="section-title" style="margin-top:14px">Your class discipline</h3><div class="cards">${cls.startingDisciplines.map(classDisciplineChoice).join("")}</div><h3 class="section-title" style="margin-top:14px">Your first signature</h3><div class="cards">${cls.signatures[1].map((id) => `<article class="choice-card ${draft.signatureId === id ? "chosen" : ""}"><h3>${esc(name(id))}</h3><p class="card-copy">${esc(get(id)?.reference?.flavor?.[0])}</p><div class="card-actions">${button("Read signature", "reference", `data-id="${esc(id)}"`, "quiet small")}${button(draft.signatureId === id ? "Selected" : "Choose", "signature", `data-id="${esc(id)}"`, "small")}</div></article>`).join("")}</div>` : ""}`;
   }
-  if (step === 6) return equipment();
-  return `${heading("Step 8 of 8", "Review", preview.valid ? "Your character is ready to play. Save a copy or export your build." : "A few choices still need attention. Your draft is saved, and every step remains available.")}${
+  if (step === EQUIPMENT_STEP) return equipment();
+  return `${heading("Step 7 of 7", "Review", preview.valid ? "Your character is ready to play. Save a copy or export your build." : "A few choices still need attention. Your draft is saved, and every step remains available.")}${
     preview.valid
       ? `<div class="callout"><h3>${preview.development.level > 1 ? "Character plan ready" : "Creation complete"}</h3><p>${esc(draft.name)} · ${esc(name(draft.ancestryId))} ${esc(name(draft.classId))}</p></div>`
       : `<ul class="error-list">${errors()
           .map((e) => `<li>${esc(e)}</li>`)
           .join("")}</ul>`
-  }${preview.errors.some((entry) => entry.code === "purchase" && !entry.level) ? `<div class="dialog-actions">${button("Review level 0 learning", "step", 'data-step="3"')}${button("Review level 1 learning", "step", 'data-step="5"')}</div>` : ""}<div class="columns" style="margin-top:12px"><section class="box"><h3>Your character</h3>${row("Maximum HP", preview.summary?.maximumHp ?? "—")}${row("Maximum SP", preview.summary?.maximumSp ?? "—")}${row("Grit", preview.summary?.gritGranted ?? "—")}${row("Speed", preview.summary?.speed ?? "—")}${row("Learned abilities", preview.state.abilities.length)}${row("Coins", preview.inventory.remainingCoins)}</section><section class="box"><h3>Take your hero with you</h3>${button("Export character JSON", "ready-export", preview.valid ? "" : "disabled", "primary")}<p class="file-hint">Import this file into Character Workshop to open your hero on another browser.</p>${button("Save draft JSON", "export", "", "quiet")}</section></div><details class="planned"><summary>Creation ledger</summary>${ledgerTable()}</details>`;
+  }${preview.errors.some((entry) => entry.code === "purchase" && !entry.level) ? `<div class="dialog-actions">${button("Review learning", "step", `data-step="${LEARNING_STEP}"`)}</div>` : ""}<div class="columns" style="margin-top:12px"><section class="box"><h3>Your character</h3>${row("Maximum HP", preview.summary?.maximumHp ?? "—")}${row("Maximum SP", preview.summary?.maximumSp ?? "—")}${row("Grit", preview.summary?.gritGranted ?? "—")}${row("Speed", preview.summary?.speed ?? "—")}${row("Culture discipline", name(chosenOriginDiscipline("culture")))}${row("Background discipline", name(chosenOriginDiscipline("background")))}${row("Class discipline", name(draft.classDisciplines[0]))}${row("Starting DP left", preview.stages[1].dp)}${row("Coins", preview.inventory.remainingCoins)}</section><section class="box"><h3>Take your hero with you</h3>${button("Export character JSON", "ready-export", preview.valid ? "" : "disabled", "primary")}<p class="file-hint">Import this file into Character Workshop to open your hero on another browser.</p>${button("Save draft JSON", "export", "", "quiet")}</section></div><details class="planned"><summary>Creation ledger</summary>${ledgerTable()}</details>`;
 }
+function chosenOriginDiscipline(kind) {
+  const selection = draft[kind];
+  return get(selection?.id)?.pairs?.[selection.pair]?.disciplineId;
+}
+
+function originChoice(kind) {
+  const selection = draft[kind];
+  const record = get(selection?.id);
+  const other = chosenOriginDiscipline(kind === "culture" ? "background" : "culture");
+  const origins = catalogs.choices.filter((entry) => entry.originType === kind);
+  const originOptions = origins.map((entry) => option(entry.id, entry.name, record?.id === entry.id));
+  const disciplineOptions = record?.pairs.map((pair, index) => {
+    const owned = pair.disciplineId === other;
+    return option(index, name(pair.disciplineId) + (owned ? " · From your other origin" : ""), selection.pair === index, owned);
+  }) ?? [];
+  return `<section class="box">
+    <label>${title(kind)}<select aria-label="${title(kind)}" data-origin="${kind}">${option("", `Choose ${kind}`, !record)}${originOptions.join("")}</select></label>
+    ${record ? `<div class="origin-grants">
+      <p class="card-meta">${signed(record.spContribution ?? 1)} SP · ${signed(record.coins)} coins ${button("Read rules", "reference", `data-id="${esc(record.id)}"`, "table-link")}</p>
+      <label>${title(kind)} discipline<select aria-label="${title(kind)} discipline" data-origin-discipline="${kind}">${option("", "Choose a discipline", !record.pairs[selection.pair])}${disciplineOptions.join("")}</select></label>
+    </div>` : ""}
+  </section>`;
+}
+
+function classStartingSp(record) {
+  return 2 * Math.max(0, draft.attributes[record.spAttribute?.toLowerCase()] ?? 0);
+}
+
+function classDisciplineChoice(id) {
+  const fromOrigin = ["culture", "background"].some((kind) => chosenOriginDiscipline(kind) === id);
+  const selected = draft.classDisciplines.includes(id);
+  return `<div class="check ${fromOrigin ? "already-owned" : ""}">${button(
+    `${symbol(id)}${esc(name(id))}${fromOrigin ? " · From your origin" : ""}`,
+    "class-discipline",
+    `data-id="${esc(id)}" aria-pressed="${selected}" ${fromOrigin ? "disabled" : ""}`,
+    selected ? "selected" : "",
+  )}</div>`;
+}
+
 function choiceCheck(id, list, values, owned = false) {
   const record = get(id);
   const description = record?.kind === "trait" ? record.reference?.flavor?.[0] : "";
@@ -793,9 +870,6 @@ function staleSelections(list, valid) {
     ? `<div class="callout" style="margin-top:10px"><p>These choices belong to your earlier selection. Remove them to finish this step.</p>${stale.map((id) => choiceCheck(id, list, draft[list])).join("")}</div>`
     : "";
 }
-function stage() {
-  return step === 3 ? 0 : 1;
-}
 let pickerKind = null;
 let editingLevel = null;
 const activeLearningLevel = () => editingLevel ?? preview.development.level;
@@ -803,16 +877,17 @@ function learning() {
   const current = learningState();
   const content = renderForge(catalogs.forge, current, {
     view: forgeView, discipline: forgeDiscipline, selected: forgeSelected, zoom: forgeZoom,
+    ownedColumns: true,
     eligibility: (id) => forgeEligibility(catalogs.forge, current, id),
     canRefund: (id) => learningPurchases().some((entry) => entry.id === id),
   });
   const choices = learningPurchases().map((entry, index) => {
     const failed = preview.errors.find((error) => error.code === "purchase" && error.id === entry.id && (
-      mode === "advancement" ? error.level === activeLearningLevel() : error.stage === stage()
+      mode === "advancement" ? error.level === activeLearningLevel() : error.stage === 1
     ));
     return `<li class="build-entry" data-build-id="${esc(entry.id)}"><div class="build-row"><div>${esc(name(entry.id))}${failed ? `<small>${esc(failed.reasons.map((reason) => reason.text).join(" "))}</small>` : ""}</div>${button("Remove", "remove-purchase", `data-index="${index}" aria-label="Remove ${esc(name(entry.id))}"`, "small quiet")}</div></li>`;
   }).join("");
-  return `${heading("", mode === "advancement" ? `Level ${activeLearningLevel()} learning` : stage() ? "Heroic learning" : "Early learning", "")}${content}${acquisitions(true)}${choices ? `<details class="planned"><summary>Learning at this level</summary><ul>${choices}</ul></details>` : ""}`;
+  return `${heading("", mode === "advancement" ? `Level ${activeLearningLevel()} learning` : "Starting learning", "")}${content}${acquisitions(true)}${choices ? `<details class="planned"><summary>Learning at this level</summary><ul>${choices}</ul></details>` : ""}`;
 }
 
 function openPicker(kind) {
@@ -868,7 +943,7 @@ function acquisitions(onlyMissing = false, onlyId = null) {
       ?.signatures ?? {},
   ).flat();
   const state =
-    mode === "advancement" || [3, 5].includes(step)
+    mode === "advancement" || step === LEARNING_STEP
       ? learningState()
       : preview.creation.state;
   return (
@@ -972,24 +1047,24 @@ function levelDraft(level = activeLearningLevel()) {
 function learningState() {
   return mode === "advancement"
     ? preview.levels[activeLearningLevel()].state
-    : preview.stages[stage()];
+    : preview.stages[1];
 }
 function learningPurchases() {
   return mode === "advancement"
     ? levelDraft().purchases
-    : draft.purchases[stage()];
+    : draft.purchases[1];
 }
 function contextStrip() {
-  if (mode === "advancement" || [3, 5].includes(step)) {
+  if (mode === "advancement" || step === LEARNING_STEP) {
     const state = learningState();
-    return `<div class="context-strip"><strong data-dp-remaining>${state.dp} DP remaining</strong><span>Level ${mode === "advancement" ? activeLearningLevel() : stage()}</span><div class="discipline-strip" aria-label="Current disciplines">${
+    return `<div class="context-strip"><strong data-dp-remaining>${state.dp} DP remaining</strong><span>Level ${mode === "advancement" ? activeLearningLevel() : 1}</span><div class="discipline-strip" aria-label="Current disciplines">${
       state.learning.disciplines
         .map(({ id, name }) => `<span class="chip">${symbol(id)}${esc(name)}</span>`)
         .join("") ||
-      "<small>Choose origins to receive starting disciplines.</small>"
+      "<small>Choose your starting disciplines under Origins and Class.</small>"
     }</div></div>`;
   }
-  if (step === 6)
+  if (step === EQUIPMENT_STEP)
     return `<div class="context-strip">${inventoryStats(true)}</div>`;
   return "";
 }
@@ -1163,6 +1238,7 @@ function library() {
   const current = saved.map((entry) => {
     if (
       entry.character.sourceCommit === catalogs.commit &&
+      entry.character.schemaVersion === WORKSHOP_PLAYTEST_VERSION &&
       entry.character.draft?.culture?.retainedFrom === undefined &&
       entry.character.draft?.background?.retainedFrom === undefined &&
       !entry.name.endsWith(" (before rules update)")
@@ -1441,12 +1517,22 @@ function rollSheetDice() {
   if ((activeRoll.cast || activeRoll.finishRitual) && liveVitals().hp <= 0)
     throw new Error("Regain HP before resolving this working.");
   if (activeRoll.cast) {
-    const cost = castCost(get(activeRoll.id));
-    draft.play = forgeSpendSp(playDraft(), liveVitals().limits, cost);
+    const record = get(activeRoll.id);
+    const cost = castCost(record);
+    if (sustainUnavailable()) throw new Error("Regain consciousness before casting.");
+    requireCastAction(record);
+    draft.play = beginForgeSustain(forgeSpendSp(playDraft(), liveVitals().limits, cost), record);
+    recordCastAction(record);
     persist();
     render();
   }
   const result = displayDice(preview.attributes[key], undefined, activeRoll.death);
+  if (activeRoll.finishRitual && sustainLimit(get(activeRoll.id))) {
+    if (sustainUnavailable()) throw new Error("Regain consciousness before completing the Ritual.");
+    draft.play = beginForgeSustain(playDraft(), get(activeRoll.id));
+    persist();
+    render();
+  }
   if (activeRoll.cast || activeRoll.finishRitual) $("#reference [data-action=roll-sheet]").disabled = true;
   if (activeRoll.defense)
     $("#recipe-roll-result").insertAdjacentHTML(
@@ -1666,13 +1752,18 @@ function getValue(path) {
 }
 function updateField(target) {
   if (target.dataset.origin) {
-    const [id, pair] = target.value.split("|");
-    if (id)
-      draft[target.dataset.origin] = {
-        id,
-        pair: Number(pair),
-      };
-    else delete draft[target.dataset.origin];
+    const kind = target.dataset.origin;
+    if (target.value) draft[kind] = { id: target.value, pair: -1 };
+    else delete draft[kind];
+  } else if (target.dataset.originDiscipline) {
+    const kind = target.dataset.originDiscipline;
+    const pair = target.value === "" ? -1 : Number(target.value);
+    const origin = draft[kind];
+    const discipline = get(origin?.id)?.pairs?.[pair]?.disciplineId;
+    const other = chosenOriginDiscipline(kind === "culture" ? "background" : "culture");
+    if (!origin || (discipline && discipline === other)) return;
+    origin.pair = pair;
+    draft.classDisciplines = draft.classDisciplines.filter((id) => id !== discipline);
   } else if (target.dataset.field) {
     let value = target.type === "checkbox" ? target.checked : target.value;
     if (
@@ -1756,7 +1847,7 @@ function refundLearning(id) {
     if (entry?.requires.some((parent) => removed.has(parent))) removed.add(choice.id);
   }
   choices.splice(0, choices.length, ...choices.filter((entry) => !removed.has(entry.id)));
-  notice(`${[...removed].map(name).join(", ")} removed from this stage.`);
+  notice(`${[...removed].map(name).join(", ")} removed from this level.`);
 }
 function inline(text) {
   return esc(text)
@@ -1816,12 +1907,13 @@ function showReference(id) {
         "This reference is unavailable in this build.",
     );
   body += learnedImprovements(id);
+  if (id === "ability-sustain-spell") body += sustainPanel();
   if (r.spellIds?.length)
     body += `<h3>Pages in this section</h3>${r.spellIds.map((spellId) => `<details><summary>${esc(name(spellId))}</summary>${spellProfile(get(spellId))}</details>`).join("")}`;
   const cost = castCost(r);
   const known = r.page ? preview.state.learning.spells.some((entry) => entry.id === id) : preview.state.abilities.includes(id);
   if (Number.isInteger(cost) && known)
-    body += `<div class="dialog-actions">${button(isRitual(r) ? "Begin Ritual" : "Cast", "cast-spell", `data-id="${esc(id)}" ${preview.limits && liveVitals().hp > 0 && liveVitals().sp >= cost ? "" : "disabled"}`, "primary")}</div>`;
+    body += `<div class="dialog-actions">${button(isRitual(r) ? "Begin Ritual" : "Cast", "cast-spell", `data-id="${esc(id)}" ${preview.limits && !sustainUnavailable() && liveVitals().sp >= cost ? "" : "disabled"}`, "primary")}</div>`;
   const instrument = preview.state.instruments?.find(
     (entry) => entry.abilityId === id,
   )?.instrument;
@@ -1833,11 +1925,37 @@ function showReference(id) {
       body;
   $("#reference").innerHTML =
     `<header><h2 id="reference-title">${esc(r.name)}</h2>${button("Close", "close-reference", "", "quiet")}</header><div class="reference-body">${body}</div>`;
-  $("#reference").showModal();
+  if (!$("#reference").open) $("#reference").showModal();
   $("#reference").scrollTop = 0;
 }
 async function action(target) {
   const a = target.dataset.action;
+  if (["sustain-spell", "end-sustain", "record-maneuver", "record-sustain-main", "sustain-convert", "next-sustain-turn"].includes(a)) {
+    const { play, spell, active } = currentSustain();
+    if (!active && a !== "next-sustain-turn") throw new Error("There is no active sustained spell.");
+    if (a === "sustain-spell") {
+      draft.play = maintainForgeSustain(play, spell);
+      notice(`Spend a Maneuver to sustain ${spell.name}. Apply the spell’s upkeep effects at the table.`);
+    }
+    if (a === "end-sustain") {
+      draft.play = endForgeSustain(play);
+      notice(`Cleared ${spell.name} from your spell tracker.`);
+    }
+    if (a === "record-maneuver") {
+      if (play.maneuverSpent) throw new Error("Your Maneuver has already been spent this turn.");
+      draft.play = { ...play, maneuverSpent: true };
+    }
+    if (a === "record-sustain-main") draft.play = { ...play, mainSpent: true };
+    if (a === "sustain-convert") draft.play = convertForgeManeuver(play);
+    if (a === "next-sustain-turn") {
+      draft.play = nextForgeTurn(play, spell);
+      if (active && !draft.play.sustain) notice(`${spell.name} ends. Resolve its ending effects at the table.`);
+    }
+    persist();
+    render();
+    if ($("#reference").open) showReference("ability-sustain-spell");
+    return;
+  }
   if (a === "hero-recovery") return recoveryDialog();
   if (a === "add-scar") return scarDialog();
   if (a === "finish-first-aid") return firstAidDialog();
@@ -1853,6 +1971,8 @@ async function action(target) {
     if (a === "stabilize-hero") next = forgeStabilize(playDraft(), v.limits);
     if (a === "hero-last-words") next = forgeFinalizeDeath(playDraft(), v.limits);
     Object.assign(playDraft(), next);
+    if (a === "complete-hero-rest" || a === "hero-last-words")
+      draft.play = endForgeSustain({ ...playDraft(), mainSpent: false, maneuverSpent: false });
     persist();
     render();
     if (a === "save-scar") return $("#reference").close();
@@ -1927,7 +2047,7 @@ async function action(target) {
       if (tier) signatureTier = tier;
     } else {
       mode = "builder";
-      step = (preview.stages[0].abilities.includes(id) || preview.stages[0].learned.includes(id)) ? 3 : 5;
+      step = LEARNING_STEP;
     }
     persist();
     render({ focusHeading: true });
@@ -1983,9 +2103,15 @@ async function action(target) {
   if (a === "roll-sheet") return rollSheetDice();
   if (a === "cast-spell") return castFromSheet(target.dataset.id);
   if (a === "finish-ritual") {
+    if (sustainUnavailable()) throw new Error("Regain consciousness before completing the Ritual.");
     const record = get(target.dataset.id);
     $("#reference").close();
-    return openSheetRoll({ id: record.id, key: attributeFor(record), finishRitual: true });
+    const attribute = attributeFor(record);
+    if (attribute) return openSheetRoll({ id: record.id, key: attribute, finishRitual: true });
+    draft.play = beginForgeSustain(playDraft(), record);
+    persist();
+    render();
+    return notice(`${record.name} takes effect.`);
   }
   if (a === "reference") return showReference(target.dataset.id);
   if (a === "save-message") {
@@ -2092,6 +2218,10 @@ async function action(target) {
               ? "starred"
               : "temporary",
     });
+    if (key === "unconscious" && draft.play.sustain) {
+      draft.play = endForgeSustain(playDraft());
+      notice("The sustained spell ends when you fall unconscious. Resolve its ending effects at the table.");
+    }
     $("#reference").close();
   }
   if (a === "delete-condition")
@@ -2139,6 +2269,10 @@ async function action(target) {
     isExample = false;
     mode = "builder";
     step = 0;
+    forgeView = "columns";
+    forgeDiscipline = "all";
+    forgeSelected = undefined;
+    forgeZoom = 1;
     edit = false;
   }
   if (a === "level-up" || a === "level-down") {
@@ -2153,11 +2287,12 @@ async function action(target) {
   }
   if (a === "advance" || a === "edit-learning-level") {
     editingLevel = a === "edit-learning-level" ? Number(target.dataset.level) : null;
-    mode = "advancement";
+    mode = a === "advance" && preview.development.level === 1 ? "builder" : "advancement";
     edit = false;
     query = "";
     filter = "all";
-    levelDraft();
+    if (mode === "builder") step = LEARNING_STEP;
+    else levelDraft();
   }
   if (a === "sheet-development") {
     editingLevel = null;
@@ -2187,11 +2322,11 @@ async function action(target) {
   }
   if (a === "review") {
     mode = "builder";
-    step = 7;
+    step = REVIEW_STEP;
   }
   if (a === "step") step = Number(target.dataset.step);
   if (a === "back") step = Math.max(0, step - 1);
-  if (a === "next") step = Math.min(7, step + 1);
+  if (a === "next") step = Math.min(REVIEW_STEP, step + 1);
   if (["step", "back", "next"].includes(a)) {
     query = "";
     filter = "all";
@@ -2200,7 +2335,17 @@ async function action(target) {
   if (a === "class") {
     const r = get(target.dataset.id);
     if (!classEligibility(r, draft.attributes).eligible) return;
+    if (draft.classId !== r.id) {
+      draft.classDisciplines = [];
+      draft.signatureId = "";
+    }
     draft.classId = r.id;
+  }
+  if (a === "class-discipline") {
+    const id = target.dataset.id;
+    if (["culture", "background"].some((kind) => chosenOriginDiscipline(kind) === id)) return;
+    if (get(draft.classId)?.startingDisciplines.includes(id))
+      draft.classDisciplines = [id];
   }
   if (a === "signature") draft.signatureId = target.dataset.id;
   if (a === "forge-select") forgeSelected = target.dataset.id;
@@ -2466,7 +2611,7 @@ $("#import-file").addEventListener("change", async (event) => {
     normalizeShoppingIds();
     saveId = null;
     mode = "builder";
-    step = 7;
+    step = REVIEW_STEP;
     isExample = false;
     edit = false;
     if ((draft.progression?.level ?? 1) > 1) {
@@ -2539,7 +2684,9 @@ try {
             ? "Inventory"
             : "Main";
       step = Number.isInteger(saved.step)
-        ? Math.max(0, Math.min(7, saved.step))
+        ? saved.creationFlow === CREATION_FLOW
+          ? Math.max(0, Math.min(REVIEW_STEP, saved.step))
+          : PREVIOUS_STEPS[saved.step] ?? 0
         : 0;
       isExample = Boolean(saved.isExample);
       persist();

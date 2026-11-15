@@ -125,7 +125,7 @@ function visibleDisciplines(model) {
       for (const id of selected.requires) ids.add(nodes.get(id)?.disciplineId);
     return disciplines.filter((entry) => ids.has(entry.id));
   }
-  if (view !== "owned") return disciplines;
+  if (view !== "owned" && !(view === "columns" && model.ownedColumns)) return disciplines;
   const ids = new Set(disciplines.filter((entry) => learned.has(entry.id)).map((entry) => entry.id));
   if (selected?.kind === "combined")
     for (const id of selected.requires) ids.add(nodes.get(id)?.disciplineId);
@@ -215,10 +215,12 @@ function spellCard(spell) {
 
 function pathCard(model, path) {
   const book = model.books.get(path.bookId);
+  const next = path.steps.find((id) => !model.learned.has(id));
+  const available = next && model.eligibility(next).eligible;
   return `<section class="forge-path"><h4>${escape(path.name)}</h4>${book ? `<p>${escape(book.name)}</p>` : ""}<ol>${path.steps.map((id, index) => {
     const node = model.nodes.get(id);
     return `<li>${nodeButton(model, node, `<span>${escape(node.name)}</span><small>${model.learned.has(id) ? "Learned" : `${node.dp} DP${node.level ? ` · Level ${node.level}` : ""}`}</small>`, {
-      className: `forge-path-step${index === path.steps.length - 1 ? " forge-path-end" : ""}`,
+      className: `forge-path-step${id === next && available ? " forge-next-step" : ""}${index === path.steps.length - 1 ? " forge-path-end" : ""}`,
     })}</li>`;
   }).join("")}</ol></section>`;
 }
@@ -231,7 +233,7 @@ function columnView(model, visible) {
         model.selected?.disciplineId === discipline.id || model.selected?.id === discipline.id;
       return `<details class="forge-columns-discipline" ${open ? "open" : ""}><summary>${disciplineToken(discipline.id)}<span>${escape(discipline.name)}</span><small>${model.learned.has(root.id) ? "Studying" : "1 DP"}</small></summary><div class="forge-columns-body">${nodeButton(model, root, `Study ${escape(root.name)}`, { className: "forge-column-root" })}<div class="forge-paths">${discipline.paths.map((path) => pathCard(model, path)).join("")}</div></div></details>`;
     }).join("")
-    : '<p class="forge-empty">Begin studying a discipline to see it here.</p>';
+    : `<p class="forge-empty">Your starting disciplines appear here. ${control("forge-view", "atlas", "Explore other disciplines", "", "small")}</p>`;
 }
 
 function relatedList(model, nodes, label, showPath = false) {
@@ -293,6 +295,7 @@ export function renderForge(graph, state, options = {}) {
   const selected = nodes.get(options.selected) ?? nodes.get(requestedDiscipline?.id);
   const model = {
     graph, nodes, learned, view, selected,
+    ownedColumns: options.ownedColumns,
     discipline: requestedDiscipline?.id,
     zoom: Math.min(2, Math.max(0.75, Number(options.zoom) || 1)),
     canRefund: options.canRefund ?? options.refundable,
@@ -319,7 +322,7 @@ export function renderForge(graph, state, options = {}) {
       <div class="forge-view-buttons">
         ${control("forge-view", "atlas", "Whole atlas", viewed("atlas"), "small")}
         ${control("forge-view", "owned", "My disciplines", viewed("owned"), "small")}
-        ${control("forge-view", "columns", "Column view", viewed("columns"), "small")}
+        ${control("forge-view", "columns", options.ownedColumns ? "My discipline paths" : "Column view", viewed("columns"), "small")}
       </div>
       <strong class="forge-dp">${state.dp} DP available</strong>
     </div>

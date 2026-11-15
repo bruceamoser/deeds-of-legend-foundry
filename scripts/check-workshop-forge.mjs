@@ -72,13 +72,13 @@ try {
   await action("new").click();
   await page.getByLabel("Character name", { exact: true }).fill(actorName);
   await page.getByLabel("Character name", { exact: true }).blur();
-  for (const [attribute, value] of [["Brawn", "1"], ["Fortitude", "1"], ["Reason", "1"]]) {
+  for (const [attribute, value] of [["Fortitude", "1"], ["Knowledge", "1"], ["Reason", "1"]]) {
     const field = page.getByLabel(attribute, { exact: true });
     await field.fill(value);
     await field.blur();
   }
   assert.deepEqual((await data()).character.draft.attributes, {
-    brawn: 1, fortitude: 1, agility: 0, guile: 0, knowledge: 0, reason: 1,
+    brawn: 0, fortitude: 1, agility: 0, guile: 0, knowledge: 1, reason: 1,
   });
 
   await stage(1).click();
@@ -88,13 +88,23 @@ try {
   await page.getByLabel("Home language", { exact: true }).selectOption("dwarven");
 
   await stage(2).click();
-  await page.getByLabel("Culture", { exact: true }).selectOption("origin-culture-walled-communities|0");
-  await page.getByLabel("Background", { exact: true }).selectOption("origin-background-household-guard|0");
+  await page.getByLabel("Culture", { exact: true }).selectOption("origin-culture-walled-communities");
+  await page.getByLabel("Culture discipline", { exact: true }).selectOption("0");
+  await page.getByLabel("Background", { exact: true }).selectOption("origin-background-household-guard");
+  await page.getByLabel("Background discipline", { exact: true }).selectOption("0");
 
   await stage(3).click();
-  await heading("Early learning").waitFor();
-  await balance(11);
-  await action("forge-view", "columns").click();
+  await action("class", "class-protector").click();
+  await expect(action("class-discipline", "armor")).toBeDisabled();
+  await expect(action("class-discipline", "arms")).toBeDisabled();
+  await action("class-discipline", "guard").click();
+  await action("signature", "ability-signature-protector-between-them").click();
+
+  await stage(4).click();
+  await heading("Starting learning").waitFor();
+  await balance(10);
+  await expect(action("forge-view", "columns")).toHaveAttribute("aria-pressed", "true");
+  assert.equal(await page.locator(".forge-columns-discipline").count(), 3);
   await findDiscipline("arms");
   await learn("arms:bladework:1");
   await learn("arms:bladework:2");
@@ -102,30 +112,28 @@ try {
   await select("arms:bladework:4");
   await expect(action("forge-learn", "arms:bladework:4")).toBeDisabled();
   await expect(page.locator("#forge-selection")).toContainText("Available at level 3");
-  await balance(6);
+  await balance(5);
 
-  await stage(4).click();
-  await action("class", "class-protector").click();
-  await page.locator('input[data-list="classDisciplines"][value="armor"]').check();
-  await page.locator('input[data-list="classDisciplines"][value="guard"]').check();
-  await action("signature", "ability-signature-protector-between-them").click();
-
-  await stage(5).click();
-  await heading("Heroic learning").waitFor();
-  // The Armor class grant duplicates the culture discipline, adding 1 DP at level 1.
-  await balance(12);
   await findDiscipline("elements");
-  for (const id of ["elements", "air:0", "air:1", "air:2"]) await learn(id);
-  await balance(6);
-  await stage(7).click();
+  for (const id of ["elements", "air:0", "air:1"]) await learn(id);
+  await select("air:2");
+  await expect(page.locator("#forge-selection")).toContainText("Available at level 2");
+  await balance(1);
+  await stage(6).click();
   assert.match(await page.locator("#panel").innerText(), /Creation complete/);
-  const firstStage = (await data()).character.draft.purchases;
-  assert.deepEqual(firstStage[0].map(({ id }) => id), ["arms:bladework:1", "arms:bladework:2", "arms:bladework:3"]);
-  assert.deepEqual(firstStage[1].map(({ id }) => id), ["elements", "air:0", "air:1", "air:2"]);
+  const creation = (await data()).character.draft;
+  assert.deepEqual(creation.classDisciplines, ["guard"]);
+  assert.deepEqual(creation.purchases[0], []);
+  assert.deepEqual(creation.purchases[1].map(({ id }) => id), [
+    "arms:bladework:1", "arms:bladework:2", "arms:bladework:3", "elements", "air:0", "air:1",
+  ]);
 
   await action("sheet").filter({ hasText: "View character sheet" }).click();
   await openDevelopment();
-  for (let level = 2; level <= 7; level++) await action("level-up").click();
+  await expect(page.locator('[data-dp="current"]')).toHaveText("1");
+  await action("level-up").click();
+  await expect(page.locator('[data-dp="current"]')).toHaveText("7");
+  for (let level = 3; level <= 7; level++) await action("level-up").click();
   for (const tier of [3, 7]) {
     await page.locator(`[data-action="choose-signature"][data-tier="${tier}"]`).click();
     await page.locator(`[data-action="advance-signature"][data-tier="${tier}"]`).first().click();
@@ -146,6 +154,7 @@ try {
   assert.deepEqual(edges, ["air:3", "arms:bladework:4"]);
   await action("forge-view", "columns").click();
   await findDiscipline("elements");
+  await learn("air:2");
   await learn("air:3");
   assert.equal(await selected.locator(".forge-spell").count(), 5);
   await findDiscipline("arms");
@@ -168,6 +177,9 @@ try {
     await page.locator('#reference [data-action="roll-sheet"]').click();
   assert.equal(Number(await page.getByRole("spinbutton", { name: "Current SP" }).inputValue()), sp - 1);
   if (await page.locator("#reference").isVisible()) await page.keyboard.press("Escape");
+  await page.getByRole("tab", { name: "Main", exact: true }).click();
+  await action("next-sustain-turn").click();
+  await page.getByRole("tab", { name: "Spellbooks", exact: true }).click();
   await action("reference", "spell:air:4").click();
   await action("cast-spell", "spell:air:4").click();
   await expect(page.getByLabel("Roll attribute", { exact: true })).toBeDisabled();
@@ -189,7 +201,7 @@ try {
   assert.equal(portable.draft.progression.level, 7);
   assert.equal(portable.draft.play.sp, sp - 3);
   assert.deepEqual(portable.draft.progression.levels[7].purchases.map(({ id }) => id), [
-    "air:3", "arms:bladework:4", "combined:stormsteel-arc",
+    "air:2", "air:3", "arms:bladework:4", "combined:stormsteel-arc",
   ]);
   await page.reload();
   await heading(actorName).waitFor();
@@ -215,7 +227,7 @@ try {
     }).slice(0, 25))),
   );
   assert.deepEqual(failures, []);
-  console.log("PASS Workshop Forge: staged creation pools, level gates, exact mixed combination edges, save/reload/import, and narrow layout.");
+  console.log("PASS Workshop Forge: single creation pool and distinct origin/class access, level gates, exact mixed combination edges, save/reload/import, and narrow layout.");
 } catch (error) {
   console.error("Browser errors:", failures);
   throw error;

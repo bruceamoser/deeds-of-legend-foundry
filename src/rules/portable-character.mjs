@@ -6,6 +6,10 @@ import { currentAncestryId } from "./ancestry.mjs";
 export const PORTABLE_FORMAT = "heroes-of-legend-character";
 export const PORTABLE_VERSION = 3;
 export const FORGE_PORTABLE_VERSION = 4;
+export const WORKSHOP_PLAYTEST_VERSION = 5;
+const portableVersion = (catalogs) => catalogs.forge?.playtest
+  ? WORKSHOP_PLAYTEST_VERSION
+  : catalogs.forge ? FORGE_PORTABLE_VERSION : PORTABLE_VERSION;
 export const MAX_CHARACTER_BYTES = 262144;
 const object = (value) =>
   value && typeof value === "object" && !Array.isArray(value);
@@ -126,7 +130,7 @@ function migrateForgeChoices(draft, { forge, legacyChoices = [] }) {
     )?.[1];
     const entryId =
       exact?.entryId ?? alias?.entryId ?? forge.redirects[previousId];
-    choice.pair = current.pairs.findIndex((pair) => pair.entryId === entryId);
+    choice.pair = (current.bookPairs ?? current.pairs).findIndex((pair) => pair.entryId === entryId);
   }
 
   const roots = new Set(forge.disciplines.map(({ id }) => id));
@@ -182,6 +186,66 @@ function migrateForgeChoices(draft, { forge, legacyChoices = [] }) {
   return draft;
 }
 
+/** Keep prior learning as a reviewable plan under the new, smaller budget. */
+function migrateWorkshopPlaytest(draft, forge) {
+  if (!object(draft) || !object(draft.purchases) ||
+      !Array.isArray(draft.purchases[0]) || !Array.isArray(draft.purchases[1]) ||
+      !Array.isArray(draft.classDisciplines)) return;
+  const origins = ["culture", "background"].map((kind) => ({
+    choice: draft[kind],
+    entry: forge.origins.find((record) => record.kind === kind && record.id === draft[kind]?.id),
+  }));
+  const cls = forge.classes.find((record) => record.id === draft.classId);
+  const oldRoots = [...draft.classDisciplines];
+  const originalOriginEntries = [];
+  for (const { choice, entry } of origins) {
+    const pair = (entry?.bookPairs ?? entry?.pairs)?.[choice?.pair];
+    if (!pair) continue;
+    oldRoots.unshift(pair.disciplineId);
+    if (pair.entryId) originalOriginEntries.push(pair.entryId);
+  }
+  const [culture, background] = origins;
+  // Retain origin indices where possible. When an old build doubled up,
+  // prefer the closest distinct choices and leave the old learning in the plan.
+  const ranked = ({ choice, entry }) => entry?.pairs.map((_, index) => index)
+    .sort((a, b) => Number(b === choice?.pair) - Number(a === choice?.pair)) ?? [];
+  const classes = [...new Set([...draft.classDisciplines, ...(cls?.disciplineIds ?? [])])]
+    .filter((id) => cls?.disciplineIds.includes(id));
+  let triple;
+  if (culture.choice?.pair >= 0 && background.choice?.pair >= 0 && draft.classDisciplines.length) {
+    const possibilities = [];
+    for (const first of ranked(culture)) for (const second of ranked(background)) for (const discipline of classes) {
+      const roots = [culture.entry.pairs[first].disciplineId, background.entry.pairs[second].disciplineId, discipline];
+      if (new Set(roots).size === 3) possibilities.push({ first, second, discipline, roots });
+    }
+    triple = possibilities[0];
+  }
+  if (triple) {
+    culture.choice.pair = triple.first;
+    background.choice.pair = triple.second;
+    draft.classDisciplines = [triple.discipline];
+  } else draft.classDisciplines = classes.slice(0, Number(draft.classDisciplines.length > 0));
+  const granted = new Set(triple?.roots ?? [
+    culture.entry?.pairs[culture.choice?.pair]?.disciplineId,
+    background.entry?.pairs[background.choice?.pair]?.disciplineId,
+    ...draft.classDisciplines,
+  ]);
+  const known = new Set(forge.disciplines.map(({ id }) => id));
+  const desired = [
+    ...oldRoots.filter((id) => known.has(id)).map((id) => ({ id })),
+    ...originalOriginEntries.map((id) => ({ id })),
+    ...draft.purchases[0],
+    ...draft.purchases[1],
+  ];
+  const seen = new Set(granted);
+  draft.purchases = { 0: [], 1: desired.filter((entry) => {
+    if (!object(entry)) return true; // The bounded parser reports malformed input.
+    if (seen.has(entry.id)) return false;
+    seen.add(entry.id);
+    return true;
+  }) };
+}
+
 /** Import choices, never trusted derived statistics, executable content or Actor IDs. */
 export function readPortableCharacter(input, catalogs, languages) {
   if (
@@ -193,21 +257,21 @@ export function readPortableCharacter(input, catalogs, languages) {
   if (
     !object(value) ||
     value.format !== PORTABLE_FORMAT ||
-    ![1, 2, PORTABLE_VERSION, FORGE_PORTABLE_VERSION].includes(
+    ![1, 2, PORTABLE_VERSION, FORGE_PORTABLE_VERSION, WORKSHOP_PLAYTEST_VERSION].includes(
       value.schemaVersion,
     )
   )
     throw new Error("Choose a supported Heroes of Legend character JSON file.");
-  if (!catalogs.forge && value.schemaVersion === FORGE_PORTABLE_VERSION)
+  if (!catalogs.forge && value.schemaVersion >= FORGE_PORTABLE_VERSION)
     throw new Error(
       "Open this character in the current Character Workshop. This Foundry version uses the earlier character format.",
     );
-  const schemaVersion = catalogs.forge
-    ? FORGE_PORTABLE_VERSION
-    : PORTABLE_VERSION;
+  const schemaVersion = portableVersion(catalogs);
   const d = currentCreationDraft(value.draft, value.sourceCommit);
   if (catalogs.forge && value.schemaVersion < FORGE_PORTABLE_VERSION)
     migrateForgeChoices(d, catalogs);
+  if (catalogs.forge?.playtest && value.schemaVersion < WORKSHOP_PLAYTEST_VERSION)
+    migrateWorkshopPlaytest(d, catalogs.forge);
   const fail = () => {
     throw new Error("The character file contains malformed creation choices.");
   };
@@ -432,7 +496,7 @@ export function writePortableCharacter(
 ) {
   const value = {
     format: PORTABLE_FORMAT,
-    schemaVersion: catalogs.forge ? FORGE_PORTABLE_VERSION : PORTABLE_VERSION,
+    schemaVersion: portableVersion(catalogs),
     sourceCommit: catalogs.commit,
     draft,
   };

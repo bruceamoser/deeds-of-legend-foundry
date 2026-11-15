@@ -126,7 +126,7 @@ try {
   await page.getByRole("button", { name: "Roll", exact: true }).click();
   assert.match(
     await page.locator("#preview-result .hol-chat-abilities").innerText(),
-    /Armored Training I/,
+    /Light Armor/,
   );
   await referenceAbility.uncheck();
   await ability.check();

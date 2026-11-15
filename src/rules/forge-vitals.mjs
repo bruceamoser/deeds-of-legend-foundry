@@ -4,6 +4,11 @@ const cap = (value, max) => Math.min(max, Math.max(0, value));
 const integer = (value, fallback = 0) =>
   Number.isSafeInteger(value) ? value : fallback;
 
+export function forgeStartingSp(ancestry, culture, background, cls, attributes) {
+  const originSp = [ancestry, culture, background].reduce((sum, record) => sum + (record?.spContribution ?? 0), 0);
+  return originSp + 2 * Math.max(0, attributes[cls?.spAttribute] ?? 0);
+}
+
 export function forgeMaximums({
   level = 0,
   ancestryHp = 0,
@@ -12,10 +17,11 @@ export function forgeMaximums({
   fixedHp = 0,
   capacitySp = 0,
   fixedSp = 0,
+  startingSp = 6,
 } = {}) {
   return {
     maxHp: 10 + (level === 0 ? ancestryHp : level * (ancestryHp + classHp)) + fortitude + fixedHp,
-    maxSp: (level === 0 ? 3 : 6 + 2 * (level - 1)) + capacitySp + fixedSp,
+    maxSp: (level === 0 ? 3 : startingSp + 2 * (level - 1)) + capacitySp + fixedSp,
     gritGranted: [1, 3, 7].filter((milestone) => level >= milestone).length,
   };
 }

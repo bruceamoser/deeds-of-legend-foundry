@@ -7,11 +7,11 @@ import { forgeIndex, forgeLearning, learnForgeEntry } from "./forge.mjs";
 const trailRecipeIds = new Set(["recipe-bound-torches", "recipe-fletched-ammunition", "recipe-travel-food", "recipe-twisted-cord", "recipe-wooden-brace"]);
 const recipeSteps = new Set(["craft:supplies:1", "craft:supplies:2"]);
 
-export function forgeArmorRequirement(itemId) {
+export function forgeArmorRequirement(itemId, playtest = false) {
   return {
     "item-ordinary-light-armor": "armor:harness:1",
-    "item-ordinary-medium-armor": "armor:harness:2",
-    "item-ordinary-heavy-armor": "armor:harness:3",
+    "item-ordinary-medium-armor": playtest ? "armor:harness:3" : "armor:harness:2",
+    "item-ordinary-heavy-armor": playtest ? "armor:harness:4" : "armor:harness:3",
   }[itemId];
 }
 
@@ -80,22 +80,27 @@ function applyPurchases(state, entries, graph, acquisitions, inventory, language
 export function forgeCreationLedger(draft, choices, { graph, inventoryCatalog, languages, initialLanguages = [] }) {
   const errors = [], ledger = [], stages = {};
   const attrs = draft.attributes;
+  const playtest = Boolean(graph.playtest);
   const validRange = ATTRIBUTES.every((key) => Number.isInteger(attrs[key]) && Math.abs(attrs[key]) <= 2);
   if (!validRange || ATTRIBUTES.reduce((sum, key) => sum + attrs[key], 0) !== 3)
     errors.push({ code: "attributes", text: "Assign six attributes from −2 to +2 totaling +3." });
   const ancestryTraitIds = ancestrySelection(draft, choices).traitIds;
-  const basePool = validRange ? 10 + attrs.knowledge + attrs.reason + attrs.guile : 0;
+  const basePool = validRange ? (playtest ? 8 : 10) + attrs.knowledge + attrs.reason + attrs.guile : 0;
   const bonus = ancestryBenefits(ancestryTraitIds).additionalDpPerLevel;
   let state = {
-    level: 0, stage: 0, dp: basePool + bonus, learned: [], signatureChoices: {},
+    level: playtest ? 1 : 0, stage: playtest ? 1 : 0, dp: basePool + bonus, learned: [], signatureChoices: {},
     languages: [...initialLanguages], ancestryTraitIds, recipes: [], items: [],
-    classId: null, gritGranted: 0, gritSpent: 0, safePlace: true,
+    classId: null, gritGranted: playtest ? 1 : 0, gritSpent: 0, safePlace: true,
   };
   const add = (snapshot, kind, id, delta) => ledger.push({
     stage: snapshot.stage, kind, sourceId: id, id, delta, balance: snapshot.dp,
   });
   const grant = (id, source) => {
     const duplicate = state.learned.includes(id);
+    if (duplicate && playtest) {
+      errors.push({ code: "starting-discipline", source, text: "Choose a different discipline for each of your three starting choices." });
+      return;
+    }
     state = duplicate ? { ...state, dp: state.dp + 1 } : { ...state, learned: [...state.learned, id] };
     add(state, duplicate ? "duplicate-grant" : "grant", id, duplicate ? 1 : 0);
     if (!duplicate) state = applyLearning(state, id, draft.acquisitions, inventoryCatalog, languages, errors);
@@ -117,12 +122,14 @@ export function forgeCreationLedger(draft, choices, { graph, inventoryCatalog, l
       continue;
     }
     grant(pair.disciplineId, origin.id);
-    grant(pair.entryId, origin.id);
+    if (!playtest) grant(pair.entryId, origin.id);
   }
-  state = applyPurchases(state, draft.purchases[0], graph, draft.acquisitions, inventoryCatalog, languages, errors, add);
-  close();
-  state = { ...state, stage: 1, level: 1, dp: basePool + bonus, gritGranted: 1 };
-  add(state, "pool", null, state.dp);
+  if (!playtest) {
+    state = applyPurchases(state, draft.purchases[0], graph, draft.acquisitions, inventoryCatalog, languages, errors, add);
+    close();
+    state = { ...state, stage: 1, level: 1, dp: basePool + bonus, gritGranted: 1 };
+    add(state, "pool", null, state.dp);
+  }
   const cls = graph.classes.find((entry) => entry.id === draft.classId);
   if (!cls) errors.push({ code: "class", text: "Choose a class." });
   else {
@@ -131,8 +138,8 @@ export function forgeCreationLedger(draft, choices, { graph, inventoryCatalog, l
     else {
       state.classId = cls.id;
       const picks = draft.classDisciplines ?? [];
-      if (picks.length !== 2 || new Set(picks).size !== 2 || picks.some((id) => !cls.disciplineIds.includes(id)))
-        errors.push({ code: "class-disciplines", text: "Choose two distinct disciplines from your class." });
+      if (picks.length !== (playtest ? 1 : 2) || new Set(picks).size !== picks.length || picks.some((id) => !cls.disciplineIds.includes(id)))
+        errors.push({ code: "class-disciplines", text: playtest ? "Choose one discipline from your class." : "Choose two distinct disciplines from your class." });
       else for (const id of picks) grant(id, cls.id);
       if (!cls.signatures[1].includes(draft.signatureId))
         errors.push({ code: "signature", text: "Choose a level-1 class signature." });
@@ -144,7 +151,8 @@ export function forgeCreationLedger(draft, choices, { graph, inventoryCatalog, l
     }
   }
   state = applyPurchases(state, draft.purchases[1], graph, draft.acquisitions, inventoryCatalog, languages, errors, add);
-  close();
+  if (playtest) stages[1] = summarize(state, graph);
+  else close();
   return { draft, valid: errors.length === 0, errors, ledger, stages, state: summarize(state, graph) };
 }
 
