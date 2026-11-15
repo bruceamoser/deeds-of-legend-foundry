@@ -22,7 +22,7 @@ const classAttributes = {
 const ancestryResources = {
   "ancestry-deep-dwarf": { spContribution: 1, coinContribution: 2 },
   "ancestry-gnome": { spContribution: 3, coinContribution: 0 },
-  "ancestry-goblin": { spContribution: 2, coinContribution: 1 },
+  "ancestry-goblin": { spContribution: 1, coinContribution: 1 },
   "ancestry-halfling": { spContribution: 1, coinContribution: 3 },
   "ancestry-high-elf": { spContribution: 2, coinContribution: 1 },
   "ancestry-dwarf": { spContribution: 0, coinContribution: 2 },

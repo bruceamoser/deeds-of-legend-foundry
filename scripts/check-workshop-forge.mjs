@@ -45,15 +45,20 @@ const action = (name, id) => page.locator(
 );
 const stage = (index) => page.locator(`[data-action="step"][data-step="${index}"]`);
 const heading = (name) => page.getByRole("heading", { name, exact: true });
-const balance = (dp) => expect(page.locator(".forge-dp")).toHaveText(`${dp} DP available`);
-const findDiscipline = async (id) => {
-  const filter = page.locator(".forge-filters");
-  if ((await filter.getAttribute("open")) === null) await filter.locator("summary").click();
-  await action("forge-filter", id).click();
-};
+const balance = (dp) => expect(page.locator(".forge-balance strong")).toHaveText(`${dp} of 10`);
+const findDiscipline = (id) => action("forge-filter", id).click();
 const select = async (id) => {
-  const visible = page.locator(`[data-action="forge-select"][data-id="${id}"]:visible`);
-  await visible.first().click();
+  if (id.startsWith("arms:bladework:") || id.startsWith("air:")) {
+    const path = action("forge-path", id.startsWith("air:") ? "elements:air" : "arms:bladework");
+    if (await path.getAttribute("aria-expanded") === "false") await path.click();
+    const row = action("forge-step", id);
+    if (await row.getAttribute("aria-expanded") === "false") await row.click();
+  } else {
+    const candidate = page.locator(`[data-action="forge-select"][data-id="${id}"]:visible`);
+    if (!(await candidate.count()))
+      await page.getByText("Combined abilities and talents", { exact: true }).click();
+    await candidate.first().click();
+  }
   await expect(page.locator("#forge-selection")).toBeVisible();
 };
 const learn = async (id) => {
@@ -61,6 +66,7 @@ const learn = async (id) => {
   const button = action("forge-learn", id);
   await expect(button).toBeEnabled();
   await button.click();
+  await select(id);
   await expect(page.locator("#forge-selection .forge-meta")).toContainText("Learned");
 };
 const data = async () => page.evaluate(() => JSON.parse(localStorage.getItem("hol.workshop.v1")));
@@ -94,28 +100,33 @@ try {
   await page.getByLabel("Background discipline", { exact: true }).selectOption("0");
 
   await stage(3).click();
-  await action("class", "class-protector").click();
+  await page.getByRole("combobox", { name: "Class", exact: true }).selectOption("class-protector");
   await expect(action("class-discipline", "armor")).toBeDisabled();
   await expect(action("class-discipline", "arms")).toBeDisabled();
   await action("class-discipline", "guard").click();
   await action("signature", "ability-signature-protector-between-them").click();
 
   await stage(4).click();
-  await heading("Starting learning").waitFor();
+  await expect(page.locator(".forge-controls")).toBeVisible();
   await balance(10);
   await expect(action("forge-view", "columns")).toHaveAttribute("aria-pressed", "true");
-  assert.equal(await page.locator(".forge-columns-discipline").count(), 3);
+  assert.equal(await page.locator(".forge-studied .forge-discipline").count(), 3);
   await findDiscipline("arms");
   await learn("arms:bladework:1");
   await learn("arms:bladework:2");
   await learn("arms:bladework:3");
   await select("arms:bladework:4");
-  await expect(action("forge-learn", "arms:bladework:4")).toBeDisabled();
+  await expect(action("forge-learn", "arms:bladework:4")).toHaveCount(0);
   await expect(page.locator("#forge-selection")).toContainText("Available at level 3");
   await balance(5);
 
-  await findDiscipline("elements");
-  for (const id of ["elements", "air:0", "air:1"]) await learn(id);
+  await action("forge-chooser", "open").click();
+  await action("forge-candidate", "elements").click();
+  await expect(action("forge-learn", "elements")).toBeEnabled();
+  await action("forge-learn", "elements").click();
+  await expect(page.locator("#forge-discipline-chooser")).toBeHidden();
+  await expect(action("forge-filter", "elements")).toBeVisible();
+  for (const id of ["air:0", "air:1"]) await learn(id);
   await select("air:2");
   await expect(page.locator("#forge-selection")).toContainText("Available at level 2");
   await balance(1);
@@ -142,7 +153,7 @@ try {
   await action("advance").click();
   await heading("Level 7 learning").waitFor();
   await action("forge-view", "atlas").click();
-  await findDiscipline("all");
+  if (await action("forge-filter", "all").isVisible()) await findDiscipline("all");
   await select("combined:stormsteel-arc");
   const selected = page.locator("#forge-selection");
   await expect(selected).toContainText("Voice of the Tempest");
@@ -165,22 +176,21 @@ try {
   await page.getByRole("tab", { name: "Spellbooks", exact: true }).click();
   await expect(page.getByRole("heading", { name: /Zephyra/ })).toBeVisible();
   assert.equal(await page.locator(".spellbook-sheet tbody tr").count(), 11);
-  await action("reference", "spell:air:1").click();
-  await expect(page.locator("#reference")).toContainText("Maneuver");
+  await page.getByRole("button", { name: "Expand Elementalism — Air", exact: true }).click();
+  await expect(page.locator('[data-detail-id="spell:air:1"]')).toContainText("Maneuver");
   const sp = Number(await page.getByRole("spinbutton", { name: "Current SP" }).inputValue());
   await action("cast-spell", "spell:air:1").click();
   assert.equal(Number(await page.getByRole("spinbutton", { name: "Current SP" }).inputValue()), sp);
-  await action("reference", "spell:air:3").click();
-  await expect(page.locator("#reference")).toContainText("Fog Cloud");
+  await page.getByRole("button", { name: "Expand Fog Cloud", exact: true }).click();
+  await expect(page.locator('[data-action-row="spell:air:3"]')).toContainText("Fog Cloud");
   await action("cast-spell", "spell:air:3").click();
   if (await page.locator('#reference [data-action="roll-sheet"]').isVisible())
     await page.locator('#reference [data-action="roll-sheet"]').click();
   assert.equal(Number(await page.getByRole("spinbutton", { name: "Current SP" }).inputValue()), sp - 1);
   if (await page.locator("#reference").isVisible()) await page.keyboard.press("Escape");
   await page.getByRole("tab", { name: "Main", exact: true }).click();
-  await action("next-sustain-turn").click();
+  await page.getByRole("button", { name: "End spell", exact: true }).click();
   await page.getByRole("tab", { name: "Spellbooks", exact: true }).click();
-  await action("reference", "spell:air:4").click();
   await action("cast-spell", "spell:air:4").click();
   await expect(page.getByLabel("Roll attribute", { exact: true })).toBeDisabled();
   const cast = page.locator('#reference [data-action="roll-sheet"]');

@@ -102,13 +102,9 @@ try {
   await page.getByRole("dialog").getByRole("button", { name: "Save scar", exact: true }).click();
   // Favorite universal and learned actions plus a weapon and a supply.
   await page.getByRole("tab", { name: "Abilities", exact: true }).click();
-  await page
-    .locator('[data-action="favorite"][data-id="arms:impact:1"]')
-    .click();
-  await page.getByText("Basic actions", { exact: true }).click();
-  await page
-    .locator('[data-action="favorite"][data-id="ability-basic-unarmed"]')
-    .click();
+  if (await page.locator('[data-action="favorite"][data-id="arms:impact:1"]').getAttribute("aria-pressed") !== "true") await page.locator('[data-action="favorite"][data-id="arms:impact:1"]').click();
+  await page.getByRole("button", { name: "Basic actions", exact: true }).click();
+  if (await page.locator('[data-action="favorite"][data-id="ability-basic-unarmed"]').getAttribute("aria-pressed") !== "true") await page.locator('[data-action="favorite"][data-id="ability-basic-unarmed"]').click();
   await page.getByRole("tab", { name: "Inventory", exact: true }).click();
   const weapon = page
     .locator(".inventory-table tr")
@@ -120,7 +116,7 @@ try {
   await food.locator('[data-action="favorite"]').click();
   const foodId = await food.getAttribute("data-instance");
   await page.getByRole("tab", { name: "Main", exact: true }).click();
-  const favorites = page.locator('[data-collapse="favorites"]');
+  const favorites = page.locator(".action-groups");
   for (const name of [
     "Driving Blow",
     "Basic Unarmed",
@@ -210,14 +206,14 @@ try {
   await hp.waitFor();
   assert.equal(await hp.inputValue(), "11");
   assert.match(
-    await page.locator('[data-collapse="favorites"]').innerText(),
+    await page.locator('.action-groups').innerText(),
     /Basic Unarmed/,
   );
   for (const width of [760, 390]) {
     await page.setViewportSize({ width, height: 900 });
     await page.locator(".brand").hover();
     await page.screenshot({ path: `${output}/recovery-main-${width}.png` });
-    const favoriteBox = await page.locator(".favorite-actions").boundingBox(),
+    const favoriteBox = await page.locator(".action-groups").boundingBox(),
       summaryBox = await page.locator(".play-summary").boundingBox();
     assert(
       favoriteBox.y <= summaryBox.y + 2,
@@ -245,7 +241,7 @@ try {
   assert.equal(await hp.inputValue(), "11");
   await page.getByRole("tab", { name: "Main", exact: true }).click();
   assert.match(
-    await page.locator('[data-collapse="favorites"]').innerText(),
+    await page.locator('.action-groups').innerText(),
     /Opportunity Attack/,
   );
   await page.evaluate(() => {

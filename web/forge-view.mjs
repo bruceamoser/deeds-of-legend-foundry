@@ -6,7 +6,6 @@ const escape = (value) =>
   );
 
 const TAU = Math.PI * 2;
-const SECTION = ["I", "II", "III", "IV"];
 const WEBP_TOKENS = new Set([
   "arms", "armor", "guard", "marksmanship", "athletics", "subterfuge",
   "wilderness", "medicine", "craft", "scholarship", "influence", "life",
@@ -118,18 +117,13 @@ function nodeButton(model, node, content, { className = "", style = "", tabIndex
 }
 
 function visibleDisciplines(model) {
-  const { disciplines, discipline, nodes, selected, view, learned } = model;
-  if (discipline && discipline !== "all") {
-    const ids = new Set([discipline]);
-    if (selected?.kind === "combined")
-      for (const id of selected.requires) ids.add(nodes.get(id)?.disciplineId);
-    return disciplines.filter((entry) => ids.has(entry.id));
+  if (model.atlasDiscipline && model.atlasScope === "discipline") {
+    const ids = new Set([model.atlasDiscipline.id]);
+    if (model.selected?.kind === "combined")
+      for (const id of model.selected.requires) ids.add(model.nodes.get(id)?.disciplineId);
+    return model.disciplines.filter((entry) => ids.has(entry.id));
   }
-  if (view !== "owned" && !(view === "columns" && model.ownedColumns)) return disciplines;
-  const ids = new Set(disciplines.filter((entry) => learned.has(entry.id)).map((entry) => entry.id));
-  if (selected?.kind === "combined")
-    for (const id of selected.requires) ids.add(nodes.get(id)?.disciplineId);
-  return disciplines.filter((entry) => ids.has(entry.id));
+  return model.disciplines;
 }
 
 function connectedCombinations(model, visible) {
@@ -198,7 +192,7 @@ function mapView(model, visible) {
     }),
   ).join("");
   const mapRatio = width / height;
-  return `<div class="forge-map-scroll" tabindex="0" aria-label="Discipline map"><div class="forge-map ${visible.length === 1 ? "forge-map-focus" : "forge-map-overview"}" style="--map-ratio:${mapRatio};--map-zoom:${model.zoom}"><svg viewBox="${minX} ${minY} ${width} ${height}" preserveAspectRatio="none" aria-hidden="true">${branchPaths}${crossPaths}</svg>${roots}${steps}${crossNodes}</div></div>`;
+  return `<div class="forge-map-scroll" data-zoom="${model.zoom}" tabindex="0" aria-label="Discipline map"><div class="forge-map ${visible.length === 1 ? "forge-map-focus" : "forge-map-overview"}" style="--map-ratio:${mapRatio};--map-zoom:${model.zoom}"><svg viewBox="${minX} ${minY} ${width} ${height}" preserveAspectRatio="none" aria-hidden="true">${branchPaths}${crossPaths}</svg>${roots}${steps}${crossNodes}</div></div>`;
 }
 
 function spellCard(spell) {
@@ -210,30 +204,148 @@ function spellCard(spell) {
     ["Target / range", spell.target],
     ["Duration", spell.duration],
   ].filter(([, value]) => value);
-  return `<details class="forge-spell"><summary><span>Page ${escape(spell.page)} · ${escape(spell.name)}</span><span>${spell.sp} SP</span></summary><dl>${fields.map(([label, value]) => `<div><dt>${label}</dt><dd>${escape(value)}</dd></div>`).join("")}</dl><p>${escape(spell.effect)}</p></details>`;
+  return `<details class="forge-spell"><summary><span>${escape(spell.name)}</span><span>${spell.sp} SP</span></summary><dl>${fields.map(([label, value]) => `<div><dt>${label}</dt><dd>${escape(value)}</dd></div>`).join("")}</dl><p>${escape(spell.effect)}</p></details>`;
 }
 
-function pathCard(model, path) {
+function plural(count, noun) {
+  return `${count} ${noun}${count === 1 ? "" : "s"}`;
+}
+
+function disciplineCount(model, discipline) {
+  const learned = discipline.paths.flatMap((path) => path.steps)
+    .filter((id) => model.learned.has(id)).map((id) => model.nodes.get(id));
+  if (discipline.paths.some((path) => path.bookId))
+    return `${plural(new Set(learned.flatMap((node) => node.spellIds ?? [])).size, "spell")} learned`;
+  return `${learned.length} learned`;
+}
+
+function sidebar(model) {
+  const rows = model.studied.map((discipline) => {
+    const source = model.sources[discipline.id]?.label ?? "Study";
+    return control("forge-filter", discipline.id, `<span>${escape(discipline.name)}</span><span>${disciplineCount(model, discipline)}</span><small>${escape(source)}</small>`,
+      `aria-pressed="${model.discipline?.id === discipline.id}"`, "forge-discipline");
+  });
+  return `<aside class="forge-sidebar" aria-label="Your disciplines">
+    <h3>Your disciplines</h3>
+    <div class="forge-studied">${rows.join("")}</div>
+    ${control("forge-chooser", "open", "+ Add discipline", 'aria-haspopup="dialog"', "forge-add")}
+    <div class="forge-balance"><span>DP remaining</span><strong>${model.dp}${model.budget == null ? "" : ` of ${model.budget}`}</strong></div>
+  </aside>`;
+}
+
+function spellSection(model, node) {
+  if (!node.spellIds?.length) return "";
+  const label = model.learned.has(node.id) ? "Spells learned" : "Spells taught";
+  return `<section class="forge-spells"><h4>${label}</h4>${node.spellIds.map((id) => spellCard(model.spells.get(id))).join("")}</section>`;
+}
+
+function stepSummary(node) {
+  if (node.spellIds?.length) return `Section ${node.section} · ${plural(node.spellIds.length, "spell")}`;
+  return node.effect ?? "";
+}
+
+function stepStatus(model, node) {
+  if (model.learned.has(node.id)) return "Learned";
+  const gates = [];
+  if (node.level > model.level) gates.push(`Level ${node.level}`);
+  for (const required of node.requires) {
+    if (!model.learned.has(required)) gates.push(`Needs ${model.nodes.get(required).name}`);
+  }
+  if (model.dp < node.dp) gates.push(`Need ${node.dp - model.dp} more DP`);
+  return gates.join(" · ");
+}
+
+function reasonsList(availability) {
+  const reasons = (availability.reasons ?? []).map((reason) => typeof reason === "string" ? reason : reason.text).filter(Boolean);
+  return reasons.length ? `<ul class="forge-reasons">${reasons.map((reason) => `<li>${escape(reason)}</li>`).join("")}</ul>` : "";
+}
+
+function refundable(model, id) {
+  return typeof model.canRefund === "function" ? model.canRefund(id) : model.canRefund;
+}
+
+function stepDetails(model, node) {
+  const learned = model.learned.has(node.id);
+  const improves = model.nodes.get(node.improves);
+  return `<section class="forge-step-details" id="forge-selection" aria-label="${escape(node.name)} mechanics" tabindex="-1">
+    <p class="forge-meta">${escape(node.name)} · ${learned ? "Learned" : `${node.dp} DP`}${node.level ? ` · Level ${node.level}` : ""}</p>
+    ${node.effect ? `<p class="forge-step-effect">${escape(node.effect)}</p>` : ""}
+    ${improves ? `<p class="forge-improves">Improves ${escape(improves.name)}.</p>` : ""}
+    ${learned ? "" : reasonsList(model.eligibility(node.id))}
+    ${spellSection(model, node)}
+    ${learned && refundable(model, node.id) ? control("forge-refund", node.id, "Undo learning", "", "small") : ""}
+  </section>`;
+}
+
+function stepRow(model, node, selectedId) {
+  const status = nodeStatus(model, node.id);
+  const expanded = selectedId === node.id;
+  const requirement = stepStatus(model, node);
+  return `<li class="forge-step-row is-${status}">
+    ${control("forge-step", node.id,
+      `<span class="forge-step-name">${escape(node.name)}</span><span class="forge-step-summary">${escape(stepSummary(node))}</span><span class="forge-step-cost">${node.dp} DP</span><span class="forge-step-chevron" aria-hidden="true">${expanded ? "⌄" : "›"}</span>`,
+      `aria-label="${escape([node.name, `${node.dp} DP`, requirement].filter(Boolean).join(", "))}" aria-expanded="${expanded}" ${expanded ? 'aria-controls="forge-selection"' : ""}`, "forge-step-toggle")}
+    ${status === "available"
+      ? control("forge-learn", node.id, `Learn · ${node.dp} DP`, `aria-label="Learn ${escape(node.name)} for ${node.dp} DP"`, "primary forge-step-learn")
+      : `<span class="forge-step-status">${escape(requirement)}</span>`}
+    ${expanded ? stepDetails(model, node) : ""}
+  </li>`;
+}
+
+function pathCard(model, path, openPath) {
+  const nodes = path.steps.map((id) => model.nodes.get(id));
+  const open = path.id === openPath;
+  const learned = nodes.filter((node) => model.learned.has(node.id));
   const book = model.books.get(path.bookId);
-  const next = path.steps.find((id) => !model.learned.has(id));
-  const available = next && model.eligibility(next).eligible;
-  return `<section class="forge-path"><h4>${escape(path.name)}</h4>${book ? `<p>${escape(book.name)}</p>` : ""}<ol>${path.steps.map((id, index) => {
-    const node = model.nodes.get(id);
-    return `<li>${nodeButton(model, node, `<span>${escape(node.name)}</span><small>${model.learned.has(id) ? "Learned" : `${node.dp} DP${node.level ? ` · Level ${node.level}` : ""}`}</small>`, {
-      className: `forge-path-step${id === next && available ? " forge-next-step" : ""}${index === path.steps.length - 1 ? " forge-path-end" : ""}`,
-    })}</li>`;
-  }).join("")}</ol></section>`;
+  const count = book ? `${plural(new Set(learned.flatMap((node) => node.spellIds ?? [])).size, "spell")} learned`
+    : `${learned.length} of ${nodes.length} learned`;
+  const selectedId = model.selection === undefined
+    ? (nodes.find((node) => !model.learned.has(node.id)) ?? nodes.at(-1))?.id
+    : model.selection;
+  return `<section class="forge-path${open ? " is-open" : ""}">
+    <h4>${control("forge-path", path.id,
+      `<span aria-hidden="true">${open ? "⌄" : "›"}</span><span>${escape(path.name)}</span><small>${count}</small>`,
+      `aria-expanded="${open}" ${open ? 'aria-controls="forge-path-steps"' : ""}`, "forge-path-toggle")}</h4>
+    ${!open ? `<p class="forge-path-summary">${escape(book?.name ?? `${nodes[0].name} · ${stepSummary(nodes[0])}`)}</p>` : ""}
+    ${open && book ? `<p class="forge-book-name">${escape(book.name)}</p>` : ""}
+    ${open ? `<ol id="forge-path-steps">${nodes.map((node) => stepRow(model, node, selectedId)).join("")}</ol>` : ""}
+  </section>`;
 }
 
-function columnView(model, visible) {
-  return visible.length
-    ? visible.map((discipline) => {
-      const root = model.nodes.get(discipline.id);
-      const open = visible.length === 1 || model.discipline === discipline.id ||
-        model.selected?.disciplineId === discipline.id || model.selected?.id === discipline.id;
-      return `<details class="forge-columns-discipline" ${open ? "open" : ""}><summary>${disciplineToken(discipline.id)}<span>${escape(discipline.name)}</span><small>${model.learned.has(root.id) ? "Studying" : "1 DP"}</small></summary><div class="forge-columns-body">${nodeButton(model, root, `Study ${escape(root.name)}`, { className: "forge-column-root" })}<div class="forge-paths">${discipline.paths.map((path) => pathCard(model, path)).join("")}</div></div></details>`;
-    }).join("")
-    : `<p class="forge-empty">Your starting disciplines appear here. ${control("forge-view", "atlas", "Explore other disciplines", "", "small")}</p>`;
+function columnView(model) {
+  const discipline = model.discipline;
+  if (!discipline) return '<p class="forge-empty">Add a discipline to start learning.</p>';
+  const openPath = model.path === undefined
+    ? (model.selected?.disciplineId === discipline.id ? model.selected.pathId : undefined) ?? discipline.paths[0]?.id
+    : model.path;
+  return `<div class="forge-paths">${discipline.paths.map((path) => pathCard(model, path, openPath)).join("")}</div>`;
+}
+
+function disciplineChooser(model) {
+  if (!model.chooser) return "";
+  const choices = model.disciplines.filter(({ id }) => !model.learned.has(id));
+  const candidate = choices.find(({ id }) => id === model.candidate) ?? choices[0];
+  const root = model.nodes.get(candidate?.id);
+  return `<dialog id="forge-discipline-chooser" class="forge-chooser" aria-labelledby="forge-chooser-title">
+    <header><h2 id="forge-chooser-title">Add discipline</h2>${control("forge-chooser", "close", "×", 'aria-label="Close add discipline"', "small")}</header>
+    <p>Choose another area of study. Its first steps become available to learn.</p>
+    <input type="search" id="forge-chooser-search" aria-label="Search disciplines" placeholder="Search disciplines…" autofocus>
+    <div class="forge-chooser-body">
+      <div class="forge-chooser-list" aria-label="Available disciplines">${choices.map((entry) => control("forge-candidate", entry.id,
+        `<span>${escape(entry.name)}</span><small>${escape(entry.theme)}</small>`,
+        `aria-pressed="${candidate.id === entry.id}"`, "forge-discipline")).join("")}
+        <p class="forge-no-choices" ${choices.length ? "hidden" : ""}>${choices.length ? "No disciplines match." : "All disciplines are studied."}</p>
+      </div>
+      ${candidate ? `<section class="forge-chooser-preview">
+        <h3>${escape(candidate.name)}</h3>
+        <p>${escape(candidate.theme)}</p>
+        <ul>${candidate.paths.map((path) => `<li>${escape(path.name)}</li>`).join("")}</ul>
+        ${reasonsList(model.eligibility(root.id))}
+        ${control("forge-learn", root.id, `Study ${escape(root.name)} for ${root.dp} DP`,
+          model.eligibility(root.id).eligible ? "" : "disabled", "primary")}
+      </section>` : ""}
+    </div>
+  </dialog>`;
 }
 
 function relatedList(model, nodes, label, showPath = false) {
@@ -257,32 +369,29 @@ function inspector(model) {
   const learned = model.learned.has(node.id);
   const discipline = model.disciplines.find((entry) => entry.id === (node.disciplineId ?? node.id));
   const path = discipline?.paths.find((entry) => entry.id === node.pathId);
-  const book = model.books.get(path?.bookId);
   const parentNodes = node.requires.map((id) => model.nodes.get(id));
   const children = model.graph.nodes.filter((entry) => entry.requires.includes(node.id));
   const next = children.filter((entry) => entry.kind !== "combined");
   const combined = children.filter((entry) => entry.kind === "combined");
-  const canRefund = typeof model.canRefund === "function" ? model.canRefund(node.id) : model.canRefund;
+  const canRefund = refundable(model, node.id);
   const currency = learned ? "Learned" : `${node.dp} DP`;
   const context = [discipline?.name, path?.name].filter((value) => value && value !== node.name).join(" · ");
-  const sectionIndex = node.kind === "section" ? path?.steps.indexOf(node.id) : -1;
-  const reasons = (availability.reasons ?? []).map((reason) => typeof reason === "string" ? reason : reason.text).filter(Boolean);
   const description = node.effect ?? (node.kind === "discipline" ? "Choose any of its four paths and learn the steps in order." : "");
   return `<section class="forge-inspector" id="forge-selection" aria-label="Selected learning" tabindex="-1">
-    ${context ? `<p class="forge-context">${escape(context)}${sectionIndex >= 0 ? ` · Section ${SECTION[sectionIndex]}` : ""}</p>` : ""}
+    ${context ? `<p class="forge-context">${escape(context)}${node.section ? ` · Section ${escape(node.section)}` : ""}</p>` : ""}
     <h3>${escape(node.name)}</h3>
     <p class="forge-meta">${currency}${node.level ? ` · Level ${node.level}` : ""}${node.kind === "combined" ? ` · ${node.requires.length} disciplines` : ""}</p>
     ${description ? `<p class="forge-effect">${escape(description)}</p>` : ""}
-    ${!learned && reasons.length ? `<ul class="forge-reasons">${reasons.map((reason) => `<li>${escape(reason)}</li>`).join("")}</ul>` : ""}
+    ${!learned ? reasonsList(availability) : ""}
     <div class="forge-inspector-actions">
       ${!learned ? control("forge-learn", node.id, node.kind === "discipline" ? "Begin studying" : "Learn", availability.eligible ? "" : "disabled", "primary") : ""}
       ${learned && canRefund ? control("forge-refund", node.id, "Undo learning") : ""}
-      ${discipline && model.discipline !== discipline.id && model.view !== "columns" ? control("forge-filter", discipline.id, "View discipline", "", "small") : ""}
+      ${discipline && model.atlasScope !== "discipline" && model.view === "atlas" ? control("forge-filter", discipline.id, "View discipline", "", "small") : ""}
     </div>
     ${relatedList(model, parentNodes, node.kind === "combined" ? "Required endpoints" : "Earlier step", node.kind === "combined")}
     ${relatedList(model, next, node.kind === "discipline" ? "First steps" : "Next step")}
     ${relatedList(model, combined, "Combined abilities")}
-    ${node.spellIds?.length ? `<section class="forge-pages"><h4>${escape(book?.name ?? "Spell pages")}</h4>${node.spellIds.map((id) => spellCard(model.spells.get(id))).join("")}</section>` : ""}
+    ${spellSection(model, node)}
   </section>`;
 }
 
@@ -290,13 +399,24 @@ function inspector(model) {
 export function renderForge(graph, state, options = {}) {
   const nodes = new Map(graph.nodes.map((node) => [node.id, node]));
   const learned = new Set(state.learned ?? []);
-  const view = ["atlas", "owned", "columns"].includes(options.view) ? options.view : "atlas";
-  const requestedDiscipline = graph.disciplines.find((entry) => entry.id === options.discipline);
-  const selected = nodes.get(options.selected) ?? nodes.get(requestedDiscipline?.id);
+  const view = options.view === "atlas" ? "atlas" : "columns";
+  const studied = graph.disciplines.filter(({ id }) => learned.has(id))
+    .sort((a, b) => a.name.localeCompare(b.name));
+  const selected = nodes.get(options.selected);
+  const atlasDiscipline = graph.disciplines.find(({ id }) => id === options.discipline);
+  const requested = studied.find(({ id }) => id === options.discipline);
+  const discipline = requested ?? studied.find(({ id }) => id === selected?.disciplineId) ?? studied[0];
   const model = {
-    graph, nodes, learned, view, selected,
-    ownedColumns: options.ownedColumns,
-    discipline: requestedDiscipline?.id,
+    graph, nodes, learned, view, selected, studied, discipline, atlasDiscipline,
+    selection: options.selected,
+    path: options.path,
+    chooser: options.chooser,
+    candidate: options.candidate,
+    sources: options.sources ?? {},
+    atlasScope: options.atlasScope ?? (atlasDiscipline ? "discipline" : "all"),
+    dp: state.dp,
+    level: state.level,
+    budget: options.budget,
     zoom: Math.min(2, Math.max(0.75, Number(options.zoom) || 1)),
     canRefund: options.canRefund ?? options.refundable,
     disciplines: graph.disciplines,
@@ -313,39 +433,161 @@ export function renderForge(graph, state, options = {}) {
       };
     }),
   };
+
   const visible = visibleDisciplines(model);
-  const combinations = connectedCombinations(model, visible);
   const columns = view === "columns";
+  const source = model.sources[(columns ? discipline : atlasDiscipline)?.id];
+  const context = columns ? discipline?.name ?? "Paths" : model.atlasScope === "discipline" ? atlasDiscipline?.name : "Discipline atlas";
+  const combinations = connectedCombinations(model, columns && discipline ? [discipline] : visible);
+  const showInspector = !columns || ["combined", "talent"].includes(selected?.kind);
   const viewed = (id) => `aria-pressed="${view === id}"`;
   return `<div class="workshop-forge">
-    <div class="forge-controls" aria-label="Learning views">
-      <div class="forge-view-buttons">
-        ${control("forge-view", "atlas", "Whole atlas", viewed("atlas"), "small")}
-        ${control("forge-view", "owned", "My disciplines", viewed("owned"), "small")}
-        ${control("forge-view", "columns", options.ownedColumns ? "My discipline paths" : "Column view", viewed("columns"), "small")}
-      </div>
-      <strong class="forge-dp">${state.dp} DP available</strong>
-    </div>
-    <details class="forge-filters" ${requestedDiscipline ? "open" : ""}>
-      <summary>${requestedDiscipline ? escape(requestedDiscipline.name) : "Find a discipline"}</summary>
-      <div class="forge-filter-buttons">
-        ${control("forge-filter", "all", "All disciplines", `aria-pressed="${!requestedDiscipline}"`, "small")}
-        ${model.disciplines.map((entry) => control("forge-filter", entry.id, escape(entry.name), `aria-pressed="${requestedDiscipline?.id === entry.id}"`, "small")).join("")}
-      </div>
-    </details>
+    ${sidebar(model)}
     <div class="forge-workspace">
+      <div class="forge-controls">
+        <h3>${escape(context)}</h3>
+        ${source && (columns || model.atlasScope === "discipline") ? `<span class="forge-source">${escape(source.detail ? `From your ${source.label.toLowerCase()} · ${source.detail}` : source.label)}</span>` : ""}
+        <div class="forge-view-buttons" aria-label="Learning views">
+          ${control("forge-view", "columns", "Paths", viewed("columns"), "small")}
+          ${control("forge-view", "atlas", "Atlas", viewed("atlas"), "small")}
+        </div>
+      </div>
       <div class="forge-surface">
-        ${columns ? columnView(model, visible) : `<div class="forge-map-toolbar">
+        ${columns ? columnView(model) : `<div class="forge-map-toolbar">
+          ${model.atlasScope === "discipline" ? control("forge-filter", "all", "Whole atlas", "", "small") : ""}
           ${control("forge-view", "zoom-out", "−", 'aria-label="Zoom out"', "small")}
           ${control("forge-view", "zoom-in", "+", 'aria-label="Zoom in"', "small")}
           <span class="forge-map-legend"><span class="forge-key forge-key-learned">Learned</span><span class="forge-key forge-key-available">Available</span><span class="forge-key">Requirements to meet</span></span>
         </div>${mapView(model, visible)}`}
       </div>
-      ${inspector(model)}
+      ${showInspector ? inspector(model) : ""}
       <div class="forge-more">
-        ${relatedList(model, combinations, "Combined abilities")}
-        ${relatedList(model, graph.nodes.filter((node) => node.kind === "talent"), "Talents")}
+        <details class="forge-other-learning" ${["combined", "talent"].includes(selected?.kind) ? "open" : ""}>
+          <summary>Combined abilities and talents</summary>
+          ${relatedList(model, combinations, "Combined abilities")}
+          ${relatedList(model, graph.nodes.filter((node) => node.kind === "talent"), "Talents")}
+        </details>
       </div>
     </div>
+    ${disciplineChooser(model)}
   </div>`;
+}
+
+/** Bind pointer and search interactions to the stable Workshop app container. */
+export function bindForgeInteractions(container, { onZoom = () => {} } = {}) {
+  let drag;
+  let suppressClick = false;
+  let query = "";
+  let candidateScroll = 0;
+  let previousDialog;
+
+  function filterCandidates(dialog) {
+    const search = query.trim().toLocaleLowerCase();
+    const buttons = [...dialog.querySelectorAll('[data-action="forge-candidate"]')];
+    if (!buttons.length) return;
+    for (const button of buttons)
+      button.hidden = !button.textContent.toLocaleLowerCase().includes(search);
+    dialog.querySelector(".forge-no-choices").hidden = buttons.some((button) => !button.hidden);
+  }
+
+  container.addEventListener("input", (event) => {
+    if (event.target.id !== "forge-chooser-search") return;
+    query = event.target.value;
+    filterCandidates(event.target.closest("dialog"));
+  });
+
+  container.addEventListener("wheel", (event) => {
+    const viewport = event.target.closest(".forge-map-scroll");
+    if (!viewport) return;
+    event.preventDefault();
+    const map = viewport.querySelector(".forge-map");
+    const current = Number(viewport.dataset.zoom);
+    const delta = event.deltaY * (event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? viewport.clientHeight : 1);
+    const next = Math.min(2, Math.max(0.75, current * Math.exp(-delta * 0.0015)));
+    if (current === next) return;
+    const before = map.getBoundingClientRect();
+    const anchorX = (event.clientX - before.left) / before.width;
+    const anchorY = (event.clientY - before.top) / before.height;
+    map.style.setProperty("--map-zoom", next);
+    viewport.dataset.zoom = next;
+    const after = map.getBoundingClientRect();
+    viewport.scrollLeft += after.left + after.width * anchorX - event.clientX;
+    viewport.scrollTop += after.top + after.height * anchorY - event.clientY;
+    onZoom(next);
+  }, { passive: false });
+
+  container.addEventListener("pointerdown", (event) => {
+    if (event.button !== 0 || !event.isPrimary) return;
+    suppressClick = false;
+    const viewport = event.target.closest(".forge-map-scroll");
+    if (!viewport || event.pointerType === "touch") return;
+    drag = {
+      viewport, id: event.pointerId,
+      x: event.clientX, y: event.clientY,
+      left: viewport.scrollLeft, top: viewport.scrollTop,
+      moved: false,
+    };
+  });
+
+  container.addEventListener("pointermove", (event) => {
+    if (drag?.id !== event.pointerId) return;
+    const x = event.clientX - drag.x;
+    const y = event.clientY - drag.y;
+    if (!drag.moved) {
+      if (Math.hypot(x, y) < 5) return;
+      if (drag.viewport.scrollWidth <= drag.viewport.clientWidth &&
+          drag.viewport.scrollHeight <= drag.viewport.clientHeight) return;
+      drag.moved = true;
+      drag.viewport.setPointerCapture(event.pointerId);
+      drag.viewport.classList.add("is-panning");
+    }
+    drag.viewport.scrollLeft = drag.left - x;
+    drag.viewport.scrollTop = drag.top - y;
+  });
+
+  function finishPan(event) {
+    if (drag?.id !== event.pointerId) return;
+    suppressClick = drag.moved && event.type === "pointerup";
+    drag.viewport.classList.remove("is-panning");
+    drag = undefined;
+  }
+
+  for (const type of ["pointerup", "pointercancel", "lostpointercapture"])
+    container.ownerDocument.addEventListener(type, finishPan);
+
+  container.addEventListener("click", (event) => {
+    if (suppressClick && event.target.closest(".forge-map-scroll") && event.detail) {
+      suppressClick = false;
+      event.stopPropagation();
+      event.preventDefault();
+    }
+    if (event.target.closest('[data-action="forge-candidate"]'))
+      candidateScroll = event.target.closest(".forge-chooser-list").scrollTop;
+  }, { capture: true });
+
+  return function syncForge() {
+    const dialog = container.querySelector("#forge-discipline-chooser");
+    if (!dialog) {
+      if (previousDialog)
+        container.querySelector('[data-action="forge-chooser"][data-id="open"]')?.focus({ preventScroll: true });
+      previousDialog = undefined;
+      query = "";
+      candidateScroll = 0;
+      return;
+    }
+    if (dialog === previousDialog) return;
+    const active = container.ownerDocument.activeElement;
+    const keepFocus = dialog.contains(active);
+    previousDialog = dialog;
+    const search = dialog.querySelector("#forge-chooser-search");
+    search.value = query;
+    filterCandidates(dialog);
+    dialog.showModal();
+    dialog.querySelector(".forge-chooser-list").scrollTop = candidateScroll;
+    if (keepFocus) active.focus({ preventScroll: true });
+    dialog.addEventListener("cancel", (event) => {
+      event.preventDefault();
+      dialog.querySelector('[data-id="close"]').click();
+    });
+  };
 }

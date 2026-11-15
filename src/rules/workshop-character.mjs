@@ -192,7 +192,7 @@ export function workshopAbility(character, record) {
 export function actionTiming(record) {
   const action = record.currentAction ??
     record.reference?.rules.details.find((d) => d.label === "Action")?.value ??
-    "Passive";
+    record.actionText ?? record.action ?? "Passive";
   if (/^Passive/i.test(action)) return ["Passive"];
   const groups = [
     [/Main Action/i, "Main Action"],
