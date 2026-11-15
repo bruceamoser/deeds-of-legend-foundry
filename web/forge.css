@@ -706,3 +706,36 @@
 .forge-sidebar>.forge-discipline {margin-bottom:5px;}
 /* Leave the character summary and creator navigation visible around the atlas. */
 .forge-map-scroll {--map-max-height:min(530px,max(260px,calc(100dvh - 390px)));}
+
+/* The atlas is a planning workspace independent of the compact character window. */
+.forge-atlas-dialog {width:calc(100vw - 24px);max-width:1800px;height:calc(100dvh - 24px);max-height:none;margin:auto;padding:12px;overflow:hidden;background:var(--paper);color:var(--forest);}
+.forge-atlas-dialog[open] {display:flex;flex-direction:column;gap:8px;}
+.forge-atlas-dialog>header {display:flex;align-items:center;gap:14px;flex:none;margin:-12px -12px 0;padding:10px 12px;}
+.forge-atlas-dialog>header h2 {margin:0;font-size:18px;}
+.forge-atlas-dialog>header strong {margin-left:auto;font-size:13px;}
+.forge-atlas-dialog .forge-map-toolbar {flex:none;margin:0;}
+.forge-atlas-body {display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:10px;min-height:0;flex:1;}
+.forge-atlas-dialog .forge-map-scroll {--map-max-height:calc(100dvh - 118px);height:100%;max-height:none;min-height:0;}
+.forge-atlas-inspector {min-width:0;min-height:0;overflow:auto;}
+.forge-atlas-inspector .forge-inspector {margin:0;padding:9px;height:auto;}
+.forge-map button.is-learned {background:#e4bb54;border:2px solid #fff0b9;color:#17241d;box-shadow:0 0 0 1px #8c651e;}
+.forge-map button.is-learned::after {content:"✓";position:absolute;inset:0;display:grid;place-items:center;font:900 clamp(7px,calc(7px * var(--map-zoom)),18px)/1 system-ui;color:#10251a;}
+.forge-map-root.is-learned .forge-token {opacity:.3;}
+.forge-map button.is-available {background:#193d2c;border:2px solid #9df3b6;box-shadow:0 0 0 1px #38684a;}
+.forge-map button.is-later {background:transparent;border:1px dashed #74867e;color:#a7b1ad;}
+.forge-map .forge-map-combination.is-learned {color:transparent;}
+.forge-map .forge-node-label {display:none;position:absolute;left:calc(100% + 5px);top:50%;transform:translateY(-50%);padding:2px 4px;background:#13221eee;border:1px solid #526459;border-radius:2px;color:#fff3d4;font:12px/1.2 system-ui;white-space:nowrap;pointer-events:none;}
+.forge-map-scroll.show-node-labels .forge-node-label {display:block;}
+.forge-map-root .forge-node-label {display:none!important;}
+.forge-map button:hover .forge-node-label, .forge-map button:focus-visible .forge-node-label {display:block;z-index:3;}
+.forge-key-later::before {border-style:dashed;}
+.forge-key-available::before {border:2px solid #41925c;background:transparent;}
+.forge-key-learned::before {background:#e4bb54;border-color:#946d27;}
+@media(max-width:700px) {.forge-atlas-body{grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(200px,1fr) minmax(120px,.55fr);} .forge-atlas-dialog .forge-map-scroll{--map-max-height:calc((100dvh - 135px) * .65);} .forge-atlas-dialog>header h2{font-size:14px;} .forge-atlas-dialog .forge-map-legend{font-size:10px;}}
+.forge-map-overview .forge-map-root {width:clamp(13px,calc(13px * var(--map-zoom)),40px);height:clamp(13px,calc(13px * var(--map-zoom)),40px);}
+.forge-map-overview .forge-map-step {width:clamp(7px,calc(7px * var(--map-zoom)),32px);height:clamp(7px,calc(7px * var(--map-zoom)),32px);}
+.forge-map-overview .forge-map-end {width:clamp(9px,calc(9px * var(--map-zoom)),36px);height:clamp(9px,calc(9px * var(--map-zoom)),36px);}
+.forge-map-overview .forge-map-combination {width:clamp(11px,calc(11px * var(--map-zoom)),36px);height:clamp(11px,calc(11px * var(--map-zoom)),36px);font-size:clamp(8px,calc(8px * var(--map-zoom)),16px);}
+.forge-map button.is-learned::after {font-size:clamp(7px,calc(7px * var(--map-zoom)),24px);}
+.forge-map-scroll.show-node-labels .forge-node-label {font-size:16px;}
+.forge-map .forge-label-left .forge-node-label {left:auto;right:calc(100% + 5px);}

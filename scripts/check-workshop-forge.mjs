@@ -56,12 +56,14 @@ const select = async (id) => {
     const row = action("forge-step", id);
     if (await row.getAttribute("aria-expanded") === "false") await row.click();
   } else {
-    const candidate = page.locator(`[data-action="forge-select"][data-id="${id}"]:visible`);
+    const atlas = page.getByRole("dialog", { name: "Discipline atlas", exact: true });
+    const scope = await atlas.isVisible() ? atlas : page;
+    const candidate = scope.locator(`[data-action="forge-select"][data-id="${id}"]:visible`);
     if (!(await candidate.count()))
       await page.getByText("Combined abilities and talents", { exact: true }).click();
     await candidate.first().click();
   }
-  await expect(page.locator("#forge-selection")).toBeVisible();
+  await expect(page.locator("#forge-selection:visible")).toBeVisible();
 };
 const learn = async (id) => {
   await select(id);
@@ -119,7 +121,7 @@ try {
   await learn("arms:bladework:3");
   await select("arms:bladework:4");
   await expect(action("forge-learn", "arms:bladework:4")).toHaveCount(0);
-  await expect(page.locator("#forge-selection")).toContainText("Available at level 3");
+  await expect(page.locator("#forge-selection:visible")).toContainText("Available at level 3");
   await balance(5);
 
   await action("forge-chooser", "open").click();
@@ -130,7 +132,7 @@ try {
   await expect(action("forge-filter", "elements")).toBeVisible();
   await learn("air:0");
   await select("air:1");
-  await expect(page.locator("#forge-selection")).toContainText("Costs 2 DP. You have 1 DP.");
+  await expect(page.locator("#forge-selection:visible")).toContainText("Costs 2 DP. You have 1 DP.");
   await balance(1);
   await stage(6).click();
   assert.match(await page.locator("#panel").innerText(), /Creation complete/);
@@ -155,12 +157,13 @@ try {
   await action("advance").click();
   await heading("Level 7 learning").waitFor();
   await action("forge-view", "atlas").click();
-  if (await action("forge-filter", "all").isVisible()) await findDiscipline("all");
+  const atlas = page.getByRole("dialog", { name: "Discipline atlas", exact: true });
+  await expect(atlas).toBeVisible();
   await select("combined:stormsteel-arc");
-  const selected = page.locator("#forge-selection");
+  const selected = page.locator("#forge-selection:visible");
   await expect(selected).toContainText("Voice of the Tempest");
   await expect(selected).toContainText("Sweeping Blade");
-  await expect(action("forge-learn", "combined:stormsteel-arc")).toBeDisabled();
+  await expect(atlas.locator('[data-action="forge-learn"][data-id="combined:stormsteel-arc"]')).toBeDisabled();
   const edges = await page.locator('.forge-cross[data-to="combined:stormsteel-arc"]').evaluateAll(
     (elements) => elements.map((element) => element.dataset.from),
   );
@@ -168,10 +171,12 @@ try {
   // Buy through the Atlas inspector, then verify the shared list state.
   await page.locator('.forge-map [data-action="forge-select"][data-id="air:1"]').click();
   await expect(selected).toContainText("2 DP");
-  await expect(action("forge-learn", "air:1")).toBeEnabled();
-  await action("forge-learn", "air:1").click();
+  const atlasLearn = atlas.locator('[data-action="forge-learn"][data-id="air:1"]');
+  await expect(atlasLearn).toBeEnabled();
+  await atlasLearn.click();
   await expect(page.locator('.forge-map [data-id="air:1"]')).toHaveClass(/is-learned/);
-  await action("forge-view", "columns").click();
+  await page.keyboard.press("Escape");
+  await expect(atlas).toHaveCount(0);
   await findDiscipline("elements");
   await select("air:1");
   await expect(selected.locator(".forge-meta")).toContainText("Learned");

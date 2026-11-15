@@ -107,6 +107,7 @@ let libraryScope = "all", spellDiscipline = "all", spellTiming = "all";
 const expandedActions = new Set();
 let forgeOpenPaths = new Set(), forgeShowAll = false;
 let forgePath, forgeChooser = false, forgeCandidate;
+let forgeListDiscipline = "all";
 let forgeView = "columns", forgeDiscipline = "all", forgeSelected, forgeZoom = 1;
 let catalogs,
   references,
@@ -930,7 +931,7 @@ function learning() {
     ? preview.levels[activeLearningLevel()].ledger
     : preview.ledger.filter(entry => entry.stage === 1);
   const content = renderForge(catalogs.forge, current, {
-    view: forgeView, discipline: forgeDiscipline, selected: forgeSelected, zoom: forgeZoom,
+    view: forgeView, discipline: forgeDiscipline, listDiscipline: forgeListDiscipline, selected: forgeSelected, zoom: forgeZoom,
     ownedColumns: true, path: forgePath, openPaths: [...forgeOpenPaths], showAll: forgeShowAll, chooser: forgeChooser, candidate: forgeCandidate,
     budget: current.dp - learningLedger.filter(entry => entry.kind === "purchase").reduce((sum, entry) => sum + entry.delta, 0),
     sources: Object.fromEntries([
@@ -2446,16 +2447,20 @@ async function action(target) {
   if (a === "forge-view") {
     const value = target.dataset.id;
     if (value === "zoom-in" || value === "zoom-out")
-      forgeZoom = Math.max(.4, Math.min(6, forgeZoom + (value === "zoom-in" ? .25 : -.25)));
+      forgeZoom = Math.max(.4, Math.min(20, forgeZoom * (value === "zoom-in" ? 1.4 : 1 / 1.4)));
     else if (value === "fit") { forgeZoom = 1; forgeDiscipline = "all"; }
-    else { forgeView = value; if (value === "atlas") forgeDiscipline = "all"; }
+    else {
+      if (value === "atlas") { forgeListDiscipline = forgeDiscipline; forgeDiscipline = "all"; }
+      else if (forgeView === "atlas") forgeDiscipline = forgeListDiscipline;
+      forgeView = value;
+    }
   }
   if (a === "forge-learn") {
     const node = catalogs.forge.nodes.find((entry) => entry.id === target.dataset.id);
     const currentSp = liveVitals().sp;
     learn(target.dataset.id);
     if (node?.kind === "discipline") { forgeChooser = false; forgeDiscipline = "all"; forgePath = undefined; }
-    forgeSelected = undefined;
+    forgeSelected = forgeView === "atlas" ? node?.id : undefined;
     if (mode === "advancement" && node?.spCapacity) playDraft().sp = currentSp;
   }
   if (a === "forge-refund") refundLearning(target.dataset.id);

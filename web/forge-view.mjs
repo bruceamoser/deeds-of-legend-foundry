@@ -112,7 +112,7 @@ function nodeButton(model, node, content, { className = "", style = "", tabIndex
   return control(
     "forge-select",
     node.id,
-    content,
+    content + (className.includes("forge-map-") ? `<span class="forge-node-label">${escape(node.name)}</span>` : ""),
     `aria-label="${escape(label)}" aria-pressed="${selected}" title="${escape(label)}"${style ? ` style="${style}"` : ""}${tabIndex === undefined ? "" : ` tabindex="${tabIndex}"`}`,
     `forge-node is-${status} ${className}`,
   );
@@ -181,7 +181,7 @@ function mapView(model, visible) {
     const node = model.nodes.get(id);
     const end = index === path.steps.length - 1;
     return nodeButton(model, node, "", {
-      className: `forge-map-step${end ? " forge-map-end" : ""}`,
+      className: `forge-map-step${end ? " forge-map-end" : ""}${positions.get(id).x < positions.get(node.disciplineId).x ? " forge-label-left" : ""}`,
       style: toStyle(positions.get(id)),
       tabIndex: undefined,
     });
@@ -194,7 +194,7 @@ function mapView(model, visible) {
     }),
   ).join("");
   const mapRatio = width / height;
-  return `<div class="forge-map-scroll" data-zoom="${model.zoom}" tabindex="0" aria-label="Discipline map"><div class="forge-map ${visible.length === 1 ? "forge-map-focus" : "forge-map-overview"}" style="--map-ratio:${mapRatio};--map-zoom:${model.zoom}"><svg viewBox="${minX} ${minY} ${width} ${height}" preserveAspectRatio="none" aria-hidden="true">${branchPaths}${crossPaths}</svg>${roots}${steps}${crossNodes}</div></div>`;
+  return `<div class="forge-map-scroll${model.zoom >= 4 ? " show-node-labels" : ""}" data-zoom="${model.zoom}" tabindex="0" aria-label="Discipline map"><div class="forge-map ${visible.length === 1 ? "forge-map-focus" : "forge-map-overview"}" style="--map-ratio:${mapRatio};--map-zoom:${model.zoom}"><svg viewBox="${minX} ${minY} ${width} ${height}" preserveAspectRatio="none" aria-hidden="true">${branchPaths}${crossPaths}</svg>${roots}${steps}${crossNodes}</div></div>`;
 }
 
 function spellCard(spell) {
@@ -429,7 +429,7 @@ export function renderForge(graph, state, options = {}) {
     dp: state.dp,
     level: state.level,
     budget: options.budget,
-    zoom: Math.min(6, Math.max(0.4, Number(options.zoom) || 1)),
+    zoom: Math.min(20, Math.max(0.4, Number(options.zoom) || 1)),
     canRefund: options.canRefund ?? options.refundable,
     disciplines: graph.disciplines,
     combinations: graph.nodes.filter((node) => node.kind === "combined"),
@@ -438,43 +438,36 @@ export function renderForge(graph, state, options = {}) {
     eligibility: options.eligibility ?? ((id) => forgeEligibility(graph, state, id)),
   };
 
-  const visible = visibleDisciplines(model);
-  const columns = view === "columns";
-  const source = model.sources[(columns ? discipline : atlasDiscipline)?.id];
-  const context = columns ? "Learn" : model.atlasScope === "discipline" ? atlasDiscipline?.name : "Discipline atlas";
-  const combinations = connectedCombinations(model, columns ? model.studied : visible);
-  const showInspector = !columns || ["combined", "talent"].includes(selected?.kind);
-  const viewed = (id) => `aria-pressed="${view === id}"`;
-  return `<div class="workshop-forge">
-    ${sidebar(model)}
-    <div class="forge-workspace">
-      <div class="forge-controls">
-        <h3>${escape(context)}</h3>
-        ${source && !columns && model.atlasScope === "discipline" ? `<span class="forge-source">${escape(source.detail ? `From your ${source.label.toLowerCase()} · ${source.detail}` : source.label)}</span>` : ""}
-        <div class="forge-view-buttons" aria-label="Learning views">
-          ${control("forge-view", "columns", "List", viewed("columns"), "small")}
-          ${control("forge-view", "atlas", "Atlas", viewed("atlas"), "small")}
-        </div>
-      </div>
-      <div class="forge-surface">
-        ${columns ? columnView(model) : `<div class="forge-map-toolbar">
-          ${model.atlasScope === "discipline" ? control("forge-filter", "all", "Whole atlas", "", "small") : ""}
-          ${control("forge-view", "zoom-out", "−", 'aria-label="Zoom out"', "small")}
-          ${control("forge-view", "zoom-in", "+", 'aria-label="Zoom in"', "small")}
-          ${control("forge-view", "fit", "Fit", 'aria-label="Fit atlas"', "small")}
-          <span class="forge-map-legend"><span class="forge-key forge-key-learned">Learned</span><span class="forge-key forge-key-available">Available</span><span class="forge-key">Requirements to meet</span></span>
-        </div>${mapView(model, visible)}`}
-      </div>
-      ${showInspector ? inspector(model) : ""}
-      <div class="forge-more">
-        <details class="forge-other-learning" ${["combined", "talent"].includes(selected?.kind) ? "open" : ""}>
-          <summary>Combined abilities and talents</summary>
-          ${relatedList(model, combinations, "Combined abilities")}
-          ${relatedList(model, graph.nodes.filter((node) => node.kind === "talent"), "Talents")}
-        </details>
-      </div>
+  const atlas = view === "atlas";
+  const listModel = atlas ? {...model, view: "columns", filter: options.listDiscipline ?? "all", discipline: studied.find(entry => entry.id === options.listDiscipline) ?? discipline, selected: undefined, selection: undefined} : model;
+  const combinations = connectedCombinations(model, model.studied);
+  const atlasDialog = atlas ? `<dialog id="forge-atlas-dialog" class="forge-atlas-dialog" aria-labelledby="forge-atlas-title">
+    <header><h2 id="forge-atlas-title">Discipline atlas</h2><strong>${state.dp} DP available</strong>${control("forge-view", "columns", "Close", 'aria-label="Close atlas"', "small")}</header>
+    <div class="forge-map-toolbar">
+      ${control("forge-filter", "all", "Whole atlas", "", "small")}
+      ${control("forge-view", "zoom-out", "−", 'aria-label="Zoom out"', "small")}
+      ${control("forge-view", "zoom-in", "+", 'aria-label="Zoom in"', "small")}
+      ${control("forge-view", "fit", "Fit", 'aria-label="Fit atlas"', "small")}
+      <span class="forge-map-legend"><span class="forge-key forge-key-learned">✓ Learned</span><span class="forge-key forge-key-available">Available</span><span class="forge-key forge-key-later">Requirements to meet</span></span>
     </div>
-    ${disciplineChooser(model)}
+    <div class="forge-atlas-body">${mapView(model, visibleDisciplines(model))}<aside class="forge-atlas-inspector">${inspector(model)}</aside></div>
+  </dialog>` : "";
+  return `<div class="workshop-forge">
+    ${sidebar(listModel)}
+    <div class="forge-workspace">
+      <div class="forge-controls"><h3>Learn</h3><div class="forge-view-buttons" aria-label="Learning views">
+        ${control("forge-view", "columns", "List", 'aria-pressed="true"', "small")}
+        ${control("forge-view", "atlas", "Atlas", 'aria-haspopup="dialog"', "small")}
+      </div></div>
+      <div class="forge-surface">${columnView(listModel)}</div>
+      ${!atlas && ["combined", "talent"].includes(selected?.kind) ? inspector(model) : ""}
+      <div class="forge-more"><details class="forge-other-learning" ${!atlas && ["combined", "talent"].includes(selected?.kind) ? "open" : ""}>
+        <summary>Combined abilities and talents</summary>
+        ${relatedList(model, combinations, "Combined abilities")}
+        ${relatedList(model, graph.nodes.filter((node) => node.kind === "talent"), "Talents")}
+      </details></div>
+    </div>
+    ${disciplineChooser(model)}${atlasDialog}
   </div>`;
 }
 
@@ -485,6 +478,7 @@ export function bindForgeInteractions(container, { onZoom = () => {} } = {}) {
   let query = "";
   let candidateScroll = 0;
   let previousDialog;
+  let previousAtlas;
 
   function filterCandidates(dialog) {
     const search = query.trim().toLocaleLowerCase();
@@ -508,13 +502,14 @@ export function bindForgeInteractions(container, { onZoom = () => {} } = {}) {
     const map = viewport.querySelector(".forge-map");
     const current = Number(viewport.dataset.zoom);
     const delta = event.deltaY * (event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? viewport.clientHeight : 1);
-    const next = Math.min(6, Math.max(0.4, current * Math.exp(-delta * 0.0015)));
+    const next = Math.min(20, Math.max(0.4, current * Math.exp(-delta * 0.0015)));
     if (current === next) return;
     const before = map.getBoundingClientRect();
     const anchorX = (event.clientX - before.left) / before.width;
     const anchorY = (event.clientY - before.top) / before.height;
     map.style.setProperty("--map-zoom", next);
     viewport.dataset.zoom = next;
+    viewport.classList.toggle("show-node-labels", next >= 4);
     const after = map.getBoundingClientRect();
     viewport.scrollLeft += after.left + after.width * anchorX - event.clientX;
     viewport.scrollTop += after.top + after.height * anchorY - event.clientY;
@@ -571,6 +566,17 @@ export function bindForgeInteractions(container, { onZoom = () => {} } = {}) {
   }, { capture: true });
 
   return function syncForge() {
+    const atlas = container.querySelector("#forge-atlas-dialog");
+    if (atlas && atlas !== previousAtlas) {
+      atlas.showModal();
+      atlas.addEventListener("cancel", event => {
+        event.preventDefault();
+        atlas.querySelector('[aria-label="Close atlas"]').click();
+      });
+    } else if (!atlas && previousAtlas) {
+      container.querySelector('[data-action="forge-view"][data-id="atlas"]')?.focus({preventScroll:true});
+    }
+    previousAtlas = atlas;
     const dialog = container.querySelector("#forge-discipline-chooser");
     if (!dialog) {
       if (previousDialog)
