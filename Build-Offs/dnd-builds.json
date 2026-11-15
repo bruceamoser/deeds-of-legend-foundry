@@ -1,0 +1,2264 @@
+{
+  "edition": "2024 core rules, verified against official SRD 5.2.1; 2025 Eberron: Forge of the Artificer for Artificer, with explicit secondary-source verification limit.",
+  "level": 2,
+  "assumptions": [
+    "Standard array 15/14/13/12/10/8, background boosts only; no species ability-score bonuses.",
+    "Maximum class Hit Die at level 1; fixed average at level 2; all begin with full resources.",
+    "All twelve core subclasses begin at level 3; none are granted here.",
+    "Origin feats and species magic are included separately from class spell counts.",
+    "Class package A plus background package A; no adventure treasure assumed. Duplicate items remain in inventory; duplicate proficiencies counted once.",
+    "Default proficiency bonus +2. Saves field lists proficient saves only; other saves equal the relevant ability modifier.",
+    "Backgrounds use the four freely verified SRD options. Human bonus feat is Alert; all Humans also receive Heroic Inspiration after Long Rest.",
+    "Choose size Medium except Halfling/Gnome Small. Elf characters have Darkvision60ft, Fey Ancestry and Trance; their selected Keen Senses proficiency is included."
+  ],
+  "sources": [
+    {
+      "title": "Official SRD5.2.1 (CC-BY4.0)",
+      "url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf"
+    }
+  ],
+  "builds": [
+    {
+      "id": "barbarian",
+      "class": "Barbarian",
+      "name": "Harka Stormshoulder",
+      "level": 2,
+      "species": "Goliath (Stone Giant ancestry)",
+      "background": "Soldier",
+      "abilityScores": {
+        "before": {
+          "str": 15,
+          "dex": 13,
+          "con": 14,
+          "int": 8,
+          "wis": 12,
+          "cha": 10
+        },
+        "boosts": {
+          "str": 2,
+          "dex": 1
+        },
+        "final": {
+          "str": 17,
+          "dex": 14,
+          "con": 14,
+          "int": 8,
+          "wis": 12,
+          "cha": 10
+        }
+      },
+      "hp": 23,
+      "hpCalculation": "12 + 7 + 2 \u00d7 CON 2",
+      "ac": "14 unarmored (10 + DEX 2 + CON 2)",
+      "speed": 35,
+      "proficiencyBonus": 2,
+      "saves": {
+        "str": 5,
+        "con": 4
+      },
+      "skills": {
+        "Athletics": 5,
+        "Intimidation": 2,
+        "Perception": 3,
+        "Survival": 3
+      },
+      "expertise": [],
+      "tools": [
+        "Dice Set"
+      ],
+      "languages": [
+        "Common",
+        "Dwarvish",
+        "Elvish"
+      ],
+      "originFeats": [
+        "Savage Attacker"
+      ],
+      "classChoices": [
+        "Mastery: Greataxe (Cleave), Handaxe (Vex)",
+        "Rage; Unarmored Defense; Danger Sense; Reckless Attack",
+        "Stone\u2019s Endurance; Powerful Build"
+      ],
+      "attacks": [
+        "Greataxe +5, 1d12+3 slashing; +2 damage while raging",
+        "Handaxe +5, 1d6+3 slashing; thrown 20/60 ft"
+      ],
+      "spells": {
+        "cantrips": [],
+        "prepared": [],
+        "slots": {}
+      },
+      "resources": [
+        "2 Rages: regain one on Short Rest, all on Long Rest",
+        "Stone\u2019s Endurance: Reaction, reduce damage by 1d12+2; 2 uses/Long Rest",
+        "2d12 Hit Dice"
+      ],
+      "equipment": {
+        "method": "Class starting package A plus background package A; no assumed adventure treasure.",
+        "classPackage": [
+          "Greataxe",
+          "4 Handaxes",
+          "Explorer\u2019s Pack"
+        ],
+        "backgroundPackage": [
+          "Spear",
+          "Shortbow",
+          "20 arrows",
+          "Dice Set",
+          "Healer\u2019s Kit",
+          "Quiver",
+          "Traveler\u2019s Clothes"
+        ],
+        "additions": [],
+        "goldRemaining": 29,
+        "initialGold": 29,
+        "coinBreakdown": {
+          "classPackage": 15,
+          "backgroundPackage": 14,
+          "additionalPurchases": 0,
+          "remaining": 29
+        }
+      },
+      "playLoop": "Rage, commit to a powerful melee hit, use Reckless Attack when the extra exposure is worthwhile, and absorb a dangerous hit with Stone\u2019s Endurance.",
+      "limits": [
+        "No subclass at level 2 under the 2024 class progression.",
+        "Use normal free-hand, focus, armor and component rules; stow a held weapon when casting needs that hand."
+      ],
+      "sources": [
+        {
+          "title": "Official SRD 5.2.1: class, species, background, feats, equipment and spells",
+          "url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf"
+        },
+        {
+          "title": "Official 2024 Basic Rules \u2014 Character Classes",
+          "url": "https://www.dndbeyond.com/sources/dnd/br-2024/character-classes"
+        },
+        {
+          "title": "Publisher 2024 Barbarian class reference",
+          "url": "https://www.dndbeyond.com/classes/2190875-barbarian"
+        }
+      ],
+      "initiative": 2,
+      "proficiencySources": {
+        "background": [
+          "Athletics",
+          "Intimidation"
+        ],
+        "species": [],
+        "class": [
+          "Perception",
+          "Survival"
+        ]
+      },
+      "speciesFeatures": [
+        "Stone\u2019s Endurance: Reaction, reduce incoming damage by 1d12+2; 2 uses/Long Rest",
+        "Powerful Build: Advantage to end Grappled; count one size larger for carrying",
+        "Speed35 ft; Large Form is not available until level 5"
+      ]
+    },
+    {
+      "id": "bard",
+      "class": "Bard",
+      "name": "Lysa Silverstring",
+      "level": 2,
+      "species": "Human",
+      "background": "Acolyte",
+      "abilityScores": {
+        "before": {
+          "str": 8,
+          "dex": 14,
+          "con": 13,
+          "int": 10,
+          "wis": 12,
+          "cha": 15
+        },
+        "boosts": {
+          "cha": 2,
+          "wis": 1
+        },
+        "final": {
+          "str": 8,
+          "dex": 14,
+          "con": 13,
+          "int": 10,
+          "wis": 13,
+          "cha": 17
+        }
+      },
+      "hp": 15,
+      "hpCalculation": "8 + 5 + 2 \u00d7 CON 1",
+      "ac": "13 (Leather 11 + DEX 2)",
+      "speed": 30,
+      "proficiencyBonus": 2,
+      "saves": {
+        "dex": 4,
+        "cha": 5
+      },
+      "skills": {
+        "Insight": 3,
+        "Religion": 2,
+        "Performance": 7,
+        "Persuasion": 7,
+        "Deception": 5,
+        "Perception": 3
+      },
+      "expertise": [
+        "Performance",
+        "Persuasion"
+      ],
+      "tools": [
+        "Calligrapher\u2019s Supplies",
+        "Lute",
+        "Flute",
+        "Drum"
+      ],
+      "languages": [
+        "Common",
+        "Dwarvish",
+        "Elvish"
+      ],
+      "originFeats": [
+        "Magic Initiate (Cleric)",
+        "Alert"
+      ],
+      "classChoices": [
+        "Bardic Inspiration d6; Expertise: Performance and Persuasion; Jack of All Trades (+1 on qualifying non-proficient skill checks)",
+        "Human: Perception; Alert; Heroic Inspiration after Long Rest"
+      ],
+      "attacks": [
+        "Dagger +4, 1d4+2 piercing",
+        "Vicious Mockery: WIS save DC 13, 1d6 psychic and its printed attack penalty"
+      ],
+      "spells": {
+        "ability": "Charisma",
+        "attack": 5,
+        "saveDc": 13,
+        "cantrips": [
+          "Vicious Mockery",
+          "Minor Illusion"
+        ],
+        "prepared": [
+          "Healing Word",
+          "Dissonant Whispers",
+          "Faerie Fire",
+          "Charm Person",
+          "Thunderwave"
+        ],
+        "slots": {
+          "1": 3
+        },
+        "additional": [
+          {
+            "source": "Magic Initiate (Cleric)",
+            "ability": "Charisma",
+            "cantrips": [
+              "Guidance",
+              "Thaumaturgy"
+            ],
+            "prepared": [
+              "Bless"
+            ],
+            "freeCast": "Bless: once per Long Rest; also castable with spell slots."
+          }
+        ]
+      },
+      "resources": [
+        "Bardic Inspiration: 3 d6 uses/Long Rest",
+        "Three level-1 slots/Long Rest",
+        "Human Heroic Inspiration after Long Rest",
+        "2d8 Hit Dice"
+      ],
+      "equipment": {
+        "method": "Class starting package A plus background package A; no assumed adventure treasure.",
+        "classPackage": [
+          "Leather Armor",
+          "2 Daggers",
+          "Lute",
+          "Entertainer\u2019s Pack"
+        ],
+        "backgroundPackage": [
+          "Calligrapher\u2019s Supplies",
+          "Prayer Book",
+          "Holy Symbol",
+          "10 parchment sheets",
+          "Robe"
+        ],
+        "additions": [],
+        "goldRemaining": 27,
+        "initialGold": 27,
+        "coinBreakdown": {
+          "classPackage": 19,
+          "backgroundPackage": 8,
+          "additionalPurchases": 0,
+          "remaining": 27
+        }
+      },
+      "playLoop": "A former temple singer rallies allies, controls a troublesome enemy, heals at range, and handles negotiation. Inspiration and spells complement a broad skill suite.",
+      "limits": [
+        "No subclass at level 2 under the 2024 class progression.",
+        "Acolyte is a deliberately SRD-only, temple-performer origin; the bard\u2019s musical identity comes from class skills, instruments and magic.",
+        "Use normal free-hand, focus, armor and component rules; stow a held weapon when casting needs that hand."
+      ],
+      "sources": [
+        {
+          "title": "Official SRD 5.2.1: class, species, background, feats, equipment and spells",
+          "url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf"
+        },
+        {
+          "title": "Official 2024 Basic Rules \u2014 Character Classes",
+          "url": "https://www.dndbeyond.com/sources/dnd/br-2024/character-classes"
+        },
+        {
+          "title": "Publisher 2024 Bard class reference",
+          "url": "https://www.dndbeyond.com/classes/2190876-bard"
+        }
+      ],
+      "initiative": 4,
+      "proficiencySources": {
+        "background": [
+          "Insight",
+          "Religion"
+        ],
+        "species": [
+          "Perception"
+        ],
+        "class": [
+          "Performance",
+          "Persuasion",
+          "Deception"
+        ]
+      },
+      "speciesFeatures": [
+        "Skillful: Perception",
+        "Versatile: Alert (already listed under Origin feats)",
+        "Resourceful: Heroic Inspiration after each Long Rest"
+      ]
+    },
+    {
+      "id": "cleric",
+      "class": "Cleric",
+      "name": "Brunna Hearthward",
+      "level": 2,
+      "species": "Dwarf",
+      "background": "Acolyte",
+      "abilityScores": {
+        "before": {
+          "str": 13,
+          "dex": 10,
+          "con": 14,
+          "int": 8,
+          "wis": 15,
+          "cha": 12
+        },
+        "boosts": {
+          "wis": 2,
+          "cha": 1
+        },
+        "final": {
+          "str": 13,
+          "dex": 10,
+          "con": 14,
+          "int": 8,
+          "wis": 17,
+          "cha": 13
+        }
+      },
+      "hp": 19,
+      "hpCalculation": "8 + 5 + 2 \u00d7 CON 2 + 2 Dwarven Toughness",
+      "ac": "15 (Chain Shirt 13 + DEX 0 + Shield 2)",
+      "speed": 30,
+      "proficiencyBonus": 2,
+      "saves": {
+        "wis": 5,
+        "cha": 3
+      },
+      "skills": {
+        "Insight": 5,
+        "Religion": 1,
+        "Medicine": 5,
+        "Persuasion": 3
+      },
+      "expertise": [],
+      "tools": [
+        "Calligrapher\u2019s Supplies"
+      ],
+      "languages": [
+        "Common",
+        "Dwarvish",
+        "Elvish"
+      ],
+      "originFeats": [
+        "Magic Initiate (Cleric)"
+      ],
+      "classChoices": [
+        "Divine Order: Protector (martial weapons and heavy-armor training; starting gear remains chain shirt)",
+        "Channel Divinity: Divine Spark or Turn Undead",
+        "Dwarven Resilience; Toughness; Stonecunning"
+      ],
+      "attacks": [
+        "Mace +3, 1d6+1 bludgeoning",
+        "Sacred Flame: DEX save DC 13, 1d8 radiant"
+      ],
+      "spells": {
+        "ability": "Wisdom",
+        "attack": 5,
+        "saveDc": 13,
+        "cantrips": [
+          "Sacred Flame",
+          "Light",
+          "Mending"
+        ],
+        "prepared": [
+          "Healing Word",
+          "Guiding Bolt",
+          "Cure Wounds",
+          "Shield of Faith",
+          "Detect Magic"
+        ],
+        "slots": {
+          "1": 3
+        },
+        "additional": [
+          {
+            "source": "Magic Initiate (Cleric)",
+            "ability": "Wisdom",
+            "cantrips": [
+              "Guidance",
+              "Thaumaturgy"
+            ],
+            "prepared": [
+              "Bless"
+            ],
+            "freeCast": "Bless: once per Long Rest; also castable with spell slots."
+          }
+        ]
+      },
+      "resources": [
+        "Channel Divinity 2 uses: regain one/Short Rest, all/Long Rest",
+        "Divine Spark: 1d8+3 healing or damage with its save",
+        "Three level-1 slots/Long Rest",
+        "Stonecunning: 2 uses/Long Rest",
+        "2d8 Hit Dice"
+      ],
+      "equipment": {
+        "method": "Class starting package A plus background package A; no assumed adventure treasure.",
+        "classPackage": [
+          "Chain Shirt",
+          "Shield",
+          "Mace",
+          "Holy Symbol",
+          "Priest\u2019s Pack"
+        ],
+        "backgroundPackage": [
+          "Calligrapher\u2019s Supplies",
+          "Prayer Book",
+          "Holy Symbol",
+          "10 parchment sheets",
+          "Robe"
+        ],
+        "additions": [],
+        "goldRemaining": 15,
+        "initialGold": 15,
+        "coinBreakdown": {
+          "classPackage": 7,
+          "backgroundPackage": 8,
+          "additionalPurchases": 0,
+          "remaining": 15
+        }
+      },
+      "playLoop": "Protect the front line with Bless or Shield of Faith, use healing or Divine Spark when needed, and confront undead with Channel Divinity.",
+      "limits": [
+        "No subclass at level 2 under the 2024 class progression.",
+        "Protector grants heavy-armor training, not free heavy armor; AC uses the actual starting chain shirt.",
+        "Use normal free-hand, focus, armor and component rules; stow a held weapon when casting needs that hand."
+      ],
+      "sources": [
+        {
+          "title": "Official SRD 5.2.1: class, species, background, feats, equipment and spells",
+          "url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf"
+        },
+        {
+          "title": "Official 2024 Basic Rules \u2014 Character Classes",
+          "url": "https://www.dndbeyond.com/sources/dnd/br-2024/character-classes"
+        },
+        {
+          "title": "Publisher 2024 Cleric class reference",
+          "url": "https://www.dndbeyond.com/classes/2190877-cleric"
+        }
+      ],
+      "initiative": 0,
+      "proficiencySources": {
+        "background": [
+          "Insight",
+          "Religion"
+        ],
+        "species": [],
+        "class": [
+          "Medicine",
+          "Persuasion"
+        ]
+      },
+      "speciesFeatures": [
+        "Darkvision 120 ft",
+        "Poison resistance; Advantage to avoid/end Poisoned",
+        "Dwarven Toughness: +1 HP per level; +2 already included",
+        "Stonecunning: Bonus Action, 60 ft Tremorsense for 10 minutes while touching stone; 2 uses/Long Rest"
+      ]
+    },
+    {
+      "id": "druid",
+      "class": "Druid",
+      "name": "Thalen Reedwalker",
+      "level": 2,
+      "species": "Wood Elf",
+      "background": "Sage",
+      "abilityScores": {
+        "before": {
+          "str": 8,
+          "dex": 14,
+          "con": 13,
+          "int": 10,
+          "wis": 15,
+          "cha": 12
+        },
+        "boosts": {
+          "wis": 2,
+          "con": 1
+        },
+        "final": {
+          "str": 8,
+          "dex": 14,
+          "con": 14,
+          "int": 10,
+          "wis": 17,
+          "cha": 12
+        }
+      },
+      "hp": 17,
+      "hpCalculation": "8 + 5 + 2 \u00d7 CON 2",
+      "ac": "15 (Leather 11 + DEX 2 + Shield 2)",
+      "speed": 35,
+      "proficiencyBonus": 2,
+      "saves": {
+        "int": 2,
+        "wis": 5
+      },
+      "skills": {
+        "Arcana": 5,
+        "History": 2,
+        "Nature": 5,
+        "Survival": 5,
+        "Perception": 5
+      },
+      "expertise": [],
+      "tools": [
+        "Calligrapher\u2019s Supplies",
+        "Herbalism Kit"
+      ],
+      "languages": [
+        "Common",
+        "Dwarvish",
+        "Elvish"
+      ],
+      "originFeats": [
+        "Magic Initiate (Wizard)"
+      ],
+      "classChoices": [
+        "Primal Order: Magician (extra Druid cantrip Guidance; +3 to Intelligence-based Arcana/Nature checks, included in skills)",
+        "Wild Shape forms: Rat, Riding Horse, Spider, Wolf (CR \u22641/4, no flying)",
+        "Druidic; Wild Companion; Elf lineage casting ability: Wisdom"
+      ],
+      "attacks": [
+        "Produce Flame +5, 1d8 fire",
+        "Thorn Whip +5, 1d6 piercing and printed pull"
+      ],
+      "spells": {
+        "ability": "Wisdom",
+        "attack": 5,
+        "saveDc": 13,
+        "cantrips": [
+          "Produce Flame",
+          "Thorn Whip",
+          "Guidance"
+        ],
+        "prepared": [
+          "Entangle",
+          "Healing Word",
+          "Faerie Fire",
+          "Thunderwave",
+          "Goodberry"
+        ],
+        "slots": {
+          "1": 3
+        },
+        "additional": [
+          {
+            "source": "Wood Elf",
+            "ability": "Wisdom",
+            "cantrips": [
+              "Druidcraft"
+            ]
+          },
+          {
+            "source": "Druidic",
+            "prepared": [
+              "Speak with Animals"
+            ]
+          },
+          {
+            "source": "Wild Companion",
+            "spell": "Find Familiar",
+            "cost": "Spend a spell slot or Wild Shape use; no material component; companion lasts until next Long Rest."
+          },
+          {
+            "source": "Magic Initiate (Wizard)",
+            "ability": "Wisdom",
+            "cantrips": [
+              "Mage Hand",
+              "Minor Illusion"
+            ],
+            "prepared": [
+              "Shield"
+            ],
+            "freeCast": "Shield: once per Long Rest; also castable with spell slots."
+          }
+        ]
+      },
+      "resources": [
+        "Wild Shape 2 uses: regain one/Short Rest, all/Long Rest; 2 temporary HP per transformation",
+        "Three level-1 slots/Long Rest",
+        "2d8 Hit Dice"
+      ],
+      "equipment": {
+        "method": "Class starting package A plus background package A; no assumed adventure treasure.",
+        "classPackage": [
+          "Leather Armor",
+          "Shield",
+          "Sickle",
+          "Druidic Focus (Quarterstaff)",
+          "Explorer\u2019s Pack",
+          "Herbalism Kit"
+        ],
+        "backgroundPackage": [
+          "Quarterstaff",
+          "Calligrapher\u2019s Supplies",
+          "History Book",
+          "8 parchment sheets",
+          "Robe"
+        ],
+        "additions": [],
+        "goldRemaining": 17,
+        "initialGold": 17,
+        "coinBreakdown": {
+          "classPackage": 9,
+          "backgroundPackage": 8,
+          "additionalPurchases": 0,
+          "remaining": 17
+        }
+      },
+      "playLoop": "Control terrain, communicate with animals, scout in a small beast form, and switch to healing or ranged magic when the party needs it.",
+      "limits": [
+        "No subclass at level 2 under the 2024 class progression.",
+        "Use normal free-hand, focus, armor and component rules; stow a held weapon when casting needs that hand."
+      ],
+      "sources": [
+        {
+          "title": "Official SRD 5.2.1: class, species, background, feats, equipment and spells",
+          "url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf"
+        },
+        {
+          "title": "Official 2024 Basic Rules \u2014 Character Classes",
+          "url": "https://www.dndbeyond.com/sources/dnd/br-2024/character-classes"
+        },
+        {
+          "title": "Publisher 2024 Druid class reference",
+          "url": "https://www.dndbeyond.com/classes/2190878-druid"
+        }
+      ],
+      "initiative": 2,
+      "proficiencySources": {
+        "background": [
+          "Arcana",
+          "History"
+        ],
+        "species": [
+          "Perception"
+        ],
+        "class": [
+          "Nature",
+          "Survival"
+        ]
+      },
+      "speciesFeatures": [
+        "Darkvision 60 ft; Advantage against Charmed; immunity to magical sleep",
+        "Trance: Long Rest in four hours while conscious",
+        "Keen Senses: Perception",
+        "Wood lineage: Speed35 ft and Druidcraft"
+      ]
+    },
+    {
+      "id": "fighter",
+      "class": "Fighter",
+      "name": "Corin Ashguard",
+      "level": 2,
+      "species": "Human",
+      "background": "Soldier",
+      "abilityScores": {
+        "before": {
+          "str": 15,
+          "dex": 13,
+          "con": 14,
+          "int": 8,
+          "wis": 12,
+          "cha": 10
+        },
+        "boosts": {
+          "str": 2,
+          "dex": 1
+        },
+        "final": {
+          "str": 17,
+          "dex": 14,
+          "con": 14,
+          "int": 8,
+          "wis": 12,
+          "cha": 10
+        }
+      },
+      "hp": 20,
+      "hpCalculation": "10 + 6 + 2 \u00d7 CON 2",
+      "ac": "19 with Flail and Shield (Chain Mail 16 + Shield 2 + Defense 1); 17 while wielding Greatsword",
+      "speed": 30,
+      "proficiencyBonus": 2,
+      "saves": {
+        "str": 5,
+        "con": 4
+      },
+      "skills": {
+        "Athletics": 5,
+        "Intimidation": 2,
+        "Perception": 3,
+        "Insight": 3,
+        "Survival": 3
+      },
+      "expertise": [],
+      "tools": [
+        "Dice Set"
+      ],
+      "languages": [
+        "Common",
+        "Dwarvish",
+        "Elvish"
+      ],
+      "originFeats": [
+        "Savage Attacker",
+        "Alert"
+      ],
+      "classChoices": [
+        "Fighting Style: Defense",
+        "Mastery: Greatsword (Graze), Flail (Sap), Javelin (Slow)",
+        "Second Wind; Action Surge; Tactical Mind"
+      ],
+      "attacks": [
+        "Flail +5, 1d8+3 bludgeoning; shield equipped",
+        "Greatsword +5, 2d6+3 slashing; shield doffed",
+        "Javelin +5, 1d6+3 piercing; thrown 30/120 ft"
+      ],
+      "spells": {
+        "cantrips": [],
+        "prepared": [],
+        "slots": {}
+      },
+      "resources": [
+        "Second Wind 2 uses: regain one/Short Rest, all/Long Rest; heal 1d10+2",
+        "Action Surge: 1/Short or Long Rest; extra action excludes Magic action",
+        "Tactical Mind uses Second Wind to add 1d10 to a failed check, retaining the use if still failed",
+        "2d10 Hit Dice",
+        "Human Heroic Inspiration after Long Rest"
+      ],
+      "equipment": {
+        "method": "Class starting package A plus background package A; no assumed adventure treasure.",
+        "classPackage": [
+          "Chain Mail",
+          "Greatsword",
+          "Flail",
+          "8 Javelins",
+          "Dungeoneer\u2019s Pack"
+        ],
+        "backgroundPackage": [
+          "Spear",
+          "Shortbow",
+          "20 arrows",
+          "Dice Set",
+          "Healer\u2019s Kit",
+          "Quiver",
+          "Traveler\u2019s Clothes"
+        ],
+        "additions": [
+          {
+            "item": "Shield",
+            "gp": 10
+          }
+        ],
+        "goldRemaining": 8,
+        "initialGold": 18,
+        "coinBreakdown": {
+          "classPackage": 4,
+          "backgroundPackage": 14,
+          "additionalPurchases": 10,
+          "remaining": 8
+        }
+      },
+      "playLoop": "Hold the front line with flail, shield and Sap mastery; use Action Surge for a decisive second action and Second Wind to remain standing. Greatsword is an alternative loadout, not a simultaneous shield attack.",
+      "limits": [
+        "No subclass at level 2 under the 2024 class progression.",
+        "Use normal free-hand, focus, armor and component rules; stow a held weapon when casting needs that hand."
+      ],
+      "sources": [
+        {
+          "title": "Official SRD 5.2.1: class, species, background, feats, equipment and spells",
+          "url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf"
+        },
+        {
+          "title": "Official 2024 Basic Rules \u2014 Character Classes",
+          "url": "https://www.dndbeyond.com/sources/dnd/br-2024/character-classes"
+        },
+        {
+          "title": "Publisher 2024 Fighter class reference",
+          "url": "https://www.dndbeyond.com/classes/2190879-fighter"
+        }
+      ],
+      "initiative": 4,
+      "proficiencySources": {
+        "background": [
+          "Athletics",
+          "Intimidation"
+        ],
+        "species": [
+          "Survival"
+        ],
+        "class": [
+          "Perception",
+          "Insight"
+        ]
+      },
+      "speciesFeatures": [
+        "Skillful: Survival",
+        "Versatile: Alert (already listed under Origin feats)",
+        "Resourceful: Heroic Inspiration after each Long Rest"
+      ]
+    },
+    {
+      "id": "monk",
+      "class": "Monk",
+      "name": "Sera Quietstep",
+      "level": 2,
+      "species": "Human",
+      "background": "Soldier",
+      "abilityScores": {
+        "before": {
+          "str": 12,
+          "dex": 15,
+          "con": 13,
+          "int": 10,
+          "wis": 14,
+          "cha": 8
+        },
+        "boosts": {
+          "dex": 2,
+          "con": 1
+        },
+        "final": {
+          "str": 12,
+          "dex": 17,
+          "con": 14,
+          "int": 10,
+          "wis": 14,
+          "cha": 8
+        }
+      },
+      "hp": 17,
+      "hpCalculation": "8 + 5 + 2 \u00d7 CON 2",
+      "ac": "15 unarmored (10 + DEX 3 + WIS 2)",
+      "speed": 40,
+      "proficiencyBonus": 2,
+      "saves": {
+        "str": 3,
+        "dex": 5
+      },
+      "skills": {
+        "Athletics": 3,
+        "Intimidation": 1,
+        "Acrobatics": 5,
+        "Insight": 4,
+        "Perception": 4
+      },
+      "expertise": [],
+      "tools": [
+        "Dice Set",
+        "Calligrapher\u2019s Supplies"
+      ],
+      "languages": [
+        "Common",
+        "Dwarvish",
+        "Elvish"
+      ],
+      "originFeats": [
+        "Savage Attacker",
+        "Alert"
+      ],
+      "classChoices": [
+        "Martial Arts d6; Unarmored Defense; Unarmored Movement +10 ft",
+        "Focus: Flurry of Blows, Patient Defense, Step of the Wind",
+        "Uncanny Metabolism"
+      ],
+      "attacks": [
+        "Unarmed Strike +5, 1d6+3 bludgeoning",
+        "Spear +5, 1d8+3 piercing two-handed; Bonus Action unarmed strike available"
+      ],
+      "spells": {
+        "cantrips": [],
+        "prepared": [],
+        "slots": {}
+      },
+      "resources": [
+        "2 Focus Points/Short or Long Rest",
+        "Uncanny Metabolism once/Long Rest when rolling Initiative: restore all Focus and heal 2+1d6",
+        "Flurry: 1 Focus for two Bonus Action unarmed strikes; other Focus options use printed costs",
+        "2d8 Hit Dice",
+        "Human Heroic Inspiration after Long Rest"
+      ],
+      "equipment": {
+        "method": "Class starting package A plus background package A; no assumed adventure treasure.",
+        "classPackage": [
+          "Spear",
+          "5 Daggers",
+          "Calligrapher\u2019s Supplies",
+          "Explorer\u2019s Pack"
+        ],
+        "backgroundPackage": [
+          "Spear",
+          "Shortbow",
+          "20 arrows",
+          "Dice Set",
+          "Healer\u2019s Kit",
+          "Quiver",
+          "Traveler\u2019s Clothes"
+        ],
+        "additions": [],
+        "goldRemaining": 25,
+        "initialGold": 25,
+        "coinBreakdown": {
+          "classPackage": 11,
+          "backgroundPackage": 14,
+          "additionalPurchases": 0,
+          "remaining": 25
+        }
+      },
+      "playLoop": "Move quickly, combine a weapon or unarmed attack with a Bonus Action strike, and spend Focus for a burst of attacks or safe repositioning.",
+      "limits": [
+        "No subclass at level 2 under the 2024 class progression.",
+        "No Deflect Attacks until level 3. Savage Attacker concerns weapon damage; do not automatically apply it to unarmed strikes.",
+        "Use normal free-hand, focus, armor and component rules; stow a held weapon when casting needs that hand."
+      ],
+      "sources": [
+        {
+          "title": "Official SRD 5.2.1: class, species, background, feats, equipment and spells",
+          "url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf"
+        },
+        {
+          "title": "Official 2024 Basic Rules \u2014 Character Classes",
+          "url": "https://www.dndbeyond.com/sources/dnd/br-2024/character-classes"
+        },
+        {
+          "title": "Publisher 2024 Monk class reference",
+          "url": "https://www.dndbeyond.com/classes/2190880-monk"
+        }
+      ],
+      "initiative": 5,
+      "proficiencySources": {
+        "background": [
+          "Athletics",
+          "Intimidation"
+        ],
+        "species": [
+          "Perception"
+        ],
+        "class": [
+          "Acrobatics",
+          "Insight"
+        ]
+      },
+      "speciesFeatures": [
+        "Skillful: Perception",
+        "Versatile: Alert (already listed under Origin feats)",
+        "Resourceful: Heroic Inspiration after each Long Rest"
+      ]
+    },
+    {
+      "id": "paladin",
+      "class": "Paladin",
+      "name": "Aldren Vowkeeper",
+      "level": 2,
+      "species": "Human (oath-bound fiction)",
+      "background": "Soldier",
+      "abilityScores": {
+        "before": {
+          "str": 15,
+          "dex": 12,
+          "con": 13,
+          "int": 8,
+          "wis": 10,
+          "cha": 14
+        },
+        "boosts": {
+          "str": 2,
+          "con": 1
+        },
+        "final": {
+          "str": 17,
+          "dex": 12,
+          "con": 14,
+          "int": 8,
+          "wis": 10,
+          "cha": 14
+        }
+      },
+      "hp": 20,
+      "hpCalculation": "10 + 6 + 2 \u00d7 CON 2",
+      "ac": "19 (Chain Mail 16 + Shield 2 + Defense 1)",
+      "speed": 30,
+      "proficiencyBonus": 2,
+      "saves": {
+        "wis": 2,
+        "cha": 4
+      },
+      "skills": {
+        "Athletics": 5,
+        "Intimidation": 4,
+        "Persuasion": 4,
+        "Insight": 2,
+        "Religion": 1
+      },
+      "expertise": [],
+      "tools": [
+        "Dice Set"
+      ],
+      "languages": [
+        "Common",
+        "Dwarvish",
+        "Elvish"
+      ],
+      "originFeats": [
+        "Savage Attacker",
+        "Alert"
+      ],
+      "classChoices": [
+        "Fighting Style: Defense",
+        "Mastery: Longsword (Sap), Javelin (Slow)",
+        "Lay on Hands; Paladin\u2019s Smite"
+      ],
+      "attacks": [
+        "Longsword +5, 1d8+3 slashing one-handed",
+        "Javelin +5, 1d6+3 piercing",
+        "Divine Smite: Bonus Action after its hit trigger; adds 2d8 radiant at level 1, with printed undead/fiend bonus"
+      ],
+      "spells": {
+        "ability": "Charisma",
+        "attack": 4,
+        "saveDc": 12,
+        "cantrips": [],
+        "prepared": [
+          "Bless",
+          "Cure Wounds",
+          "Shield of Faith"
+        ],
+        "slots": {
+          "1": 2
+        },
+        "additional": [
+          {
+            "source": "Paladin\u2019s Smite",
+            "prepared": [
+              "Divine Smite"
+            ],
+            "freeCast": "One Divine Smite without a slot/Long Rest."
+          }
+        ]
+      },
+      "resources": [
+        "Lay on Hands: 10 HP/Long Rest, Bonus Action",
+        "Two level-1 slots/Long Rest",
+        "One free Divine Smite/Long Rest",
+        "2d10 Hit Dice",
+        "Human Heroic Inspiration after Long Rest"
+      ],
+      "equipment": {
+        "method": "Class starting package A plus background package A; no assumed adventure treasure.",
+        "classPackage": [
+          "Chain Mail",
+          "Shield",
+          "Longsword",
+          "6 Javelins",
+          "Holy Symbol",
+          "Priest\u2019s Pack"
+        ],
+        "backgroundPackage": [
+          "Spear",
+          "Shortbow",
+          "20 arrows",
+          "Dice Set",
+          "Healer\u2019s Kit",
+          "Quiver",
+          "Traveler\u2019s Clothes"
+        ],
+        "additions": [],
+        "goldRemaining": 23,
+        "initialGold": 23,
+        "coinBreakdown": {
+          "classPackage": 9,
+          "backgroundPackage": 14,
+          "additionalPurchases": 0,
+          "remaining": 23
+        }
+      },
+      "playLoop": "Hold the line in armor, heal with Lay on Hands, and deliver a radiant finishing blow. The oath is story identity; a mechanical subclass arrives later.",
+      "limits": [
+        "No subclass at level 2 under the 2024 class progression.",
+        "Use normal free-hand, focus, armor and component rules; stow a held weapon when casting needs that hand."
+      ],
+      "sources": [
+        {
+          "title": "Official SRD 5.2.1: class, species, background, feats, equipment and spells",
+          "url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf"
+        },
+        {
+          "title": "Official 2024 Basic Rules \u2014 Character Classes",
+          "url": "https://www.dndbeyond.com/sources/dnd/br-2024/character-classes"
+        },
+        {
+          "title": "Publisher 2024 Paladin class reference",
+          "url": "https://www.dndbeyond.com/classes/2190881-paladin"
+        }
+      ],
+      "initiative": 3,
+      "proficiencySources": {
+        "background": [
+          "Athletics",
+          "Intimidation"
+        ],
+        "species": [
+          "Religion"
+        ],
+        "class": [
+          "Persuasion",
+          "Insight"
+        ]
+      },
+      "speciesFeatures": [
+        "Skillful: Religion",
+        "Versatile: Alert (already listed under Origin feats)",
+        "Resourceful: Heroic Inspiration after each Long Rest"
+      ]
+    },
+    {
+      "id": "ranger",
+      "class": "Ranger",
+      "name": "Eryn Mossarrow",
+      "level": 2,
+      "species": "Wood Elf",
+      "background": "Soldier",
+      "abilityScores": {
+        "before": {
+          "str": 12,
+          "dex": 15,
+          "con": 13,
+          "int": 10,
+          "wis": 14,
+          "cha": 8
+        },
+        "boosts": {
+          "dex": 2,
+          "con": 1
+        },
+        "final": {
+          "str": 12,
+          "dex": 17,
+          "con": 14,
+          "int": 10,
+          "wis": 14,
+          "cha": 8
+        }
+      },
+      "hp": 20,
+      "hpCalculation": "10 + 6 + 2 \u00d7 CON 2",
+      "ac": "15 (Studded Leather 12 + DEX 3)",
+      "speed": 35,
+      "proficiencyBonus": 2,
+      "saves": {
+        "str": 3,
+        "dex": 5
+      },
+      "skills": {
+        "Athletics": 3,
+        "Intimidation": 1,
+        "Survival": 6,
+        "Stealth": 5,
+        "Nature": 2,
+        "Perception": 4
+      },
+      "expertise": [
+        "Survival"
+      ],
+      "tools": [
+        "Dice Set"
+      ],
+      "languages": [
+        "Common",
+        "Elvish",
+        "Goblin",
+        "Sylvan (Deft Explorer)",
+        "Giant (Deft Explorer)"
+      ],
+      "originFeats": [
+        "Savage Attacker"
+      ],
+      "classChoices": [
+        "Fighting Style: Archery",
+        "Mastery: Longbow (Slow), Shortsword (Vex)",
+        "Favored Enemy; Deft Explorer; Elf lineage casting ability: Wisdom"
+      ],
+      "attacks": [
+        "Longbow +7, 1d8+3 piercing; Hunter\u2019s Mark adds 1d6 force per qualifying hit",
+        "Shortsword +5, 1d6+3 piercing"
+      ],
+      "spells": {
+        "ability": "Wisdom",
+        "attack": 4,
+        "saveDc": 12,
+        "cantrips": [],
+        "prepared": [
+          "Alarm",
+          "Speak with Animals",
+          "Cure Wounds"
+        ],
+        "slots": {
+          "1": 2
+        },
+        "additional": [
+          {
+            "source": "Favored Enemy",
+            "prepared": [
+              "Hunter\u2019s Mark"
+            ],
+            "freeCast": "Two free casts/Long Rest; also castable with slots."
+          },
+          {
+            "source": "Wood Elf",
+            "ability": "Wisdom",
+            "cantrips": [
+              "Druidcraft"
+            ]
+          }
+        ]
+      },
+      "resources": [
+        "Two level-1 slots/Long Rest",
+        "Hunter\u2019s Mark: 2 free casts/Long Rest; Concentration",
+        "2d10 Hit Dice"
+      ],
+      "equipment": {
+        "method": "Class starting package A plus background package A; no assumed adventure treasure.",
+        "classPackage": [
+          "Studded Leather Armor",
+          "Scimitar",
+          "Shortsword",
+          "Longbow",
+          "20 Arrows",
+          "Quiver",
+          "Druidic Focus (mistletoe)",
+          "Explorer\u2019s Pack"
+        ],
+        "backgroundPackage": [
+          "Spear",
+          "Shortbow",
+          "20 arrows",
+          "Dice Set",
+          "Healer\u2019s Kit",
+          "Quiver",
+          "Traveler\u2019s Clothes"
+        ],
+        "additions": [],
+        "goldRemaining": 21,
+        "initialGold": 21,
+        "coinBreakdown": {
+          "classPackage": 7,
+          "backgroundPackage": 14,
+          "additionalPurchases": 0,
+          "remaining": 21
+        }
+      },
+      "playLoop": "Track the quarry with Survival Expertise, open with Hunter\u2019s Mark, and use accurate bow fire while guiding the party through wilderness.",
+      "limits": [
+        "No subclass at level 2 under the 2024 class progression.",
+        "Use normal free-hand, focus, armor and component rules; stow a held weapon when casting needs that hand."
+      ],
+      "sources": [
+        {
+          "title": "Official SRD 5.2.1: class, species, background, feats, equipment and spells",
+          "url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf"
+        },
+        {
+          "title": "Official 2024 Basic Rules \u2014 Character Classes",
+          "url": "https://www.dndbeyond.com/sources/dnd/br-2024/character-classes"
+        },
+        {
+          "title": "Publisher 2024 Ranger class reference",
+          "url": "https://www.dndbeyond.com/classes/2190882-ranger"
+        }
+      ],
+      "initiative": 3,
+      "proficiencySources": {
+        "background": [
+          "Athletics",
+          "Intimidation"
+        ],
+        "species": [
+          "Perception"
+        ],
+        "class": [
+          "Survival",
+          "Stealth",
+          "Nature"
+        ]
+      },
+      "speciesFeatures": [
+        "Darkvision 60 ft; Advantage against Charmed; immunity to magical sleep",
+        "Trance: Long Rest in four hours while conscious",
+        "Keen Senses: Perception",
+        "Wood lineage: Speed35 ft and Druidcraft"
+      ]
+    },
+    {
+      "id": "rogue",
+      "class": "Rogue",
+      "name": "Pip Nightjar",
+      "level": 2,
+      "species": "Halfling",
+      "background": "Criminal",
+      "abilityScores": {
+        "before": {
+          "str": 8,
+          "dex": 15,
+          "con": 14,
+          "int": 13,
+          "wis": 12,
+          "cha": 10
+        },
+        "boosts": {
+          "dex": 2,
+          "int": 1
+        },
+        "final": {
+          "str": 8,
+          "dex": 17,
+          "con": 14,
+          "int": 14,
+          "wis": 12,
+          "cha": 10
+        }
+      },
+      "hp": 17,
+      "hpCalculation": "8 + 5 + 2 \u00d7 CON 2",
+      "ac": "14 (Leather 11 + DEX 3)",
+      "speed": 30,
+      "proficiencyBonus": 2,
+      "saves": {
+        "dex": 5,
+        "int": 4
+      },
+      "skills": {
+        "Sleight of Hand": 7,
+        "Stealth": 7,
+        "Acrobatics": 5,
+        "Investigation": 4,
+        "Perception": 3,
+        "Deception": 2
+      },
+      "expertise": [
+        "Stealth",
+        "Sleight of Hand"
+      ],
+      "tools": [
+        "Thieves\u2019 Tools"
+      ],
+      "languages": [
+        "Common",
+        "Halfling",
+        "Elvish",
+        "Thieves\u2019 Cant",
+        "Goblin (Thieves\u2019 Cant feature extra language)"
+      ],
+      "originFeats": [
+        "Alert"
+      ],
+      "classChoices": [
+        "Mastery: Shortsword (Vex), Dagger (Nick)",
+        "Sneak Attack 1d6; Cunning Action; Thieves\u2019 Cant",
+        "Halfling Luck, Brave, Nimbleness, Naturally Stealthy"
+      ],
+      "attacks": [
+        "Shortsword +5, 1d6+3 piercing; Sneak Attack +1d6 once per turn when eligible",
+        "Shortbow +5, 1d6+3 piercing; Sneak Attack eligible",
+        "Dagger +5, 1d4+3 piercing (Light extra attack omits modifier without a qualifying feature)"
+      ],
+      "spells": {
+        "cantrips": [],
+        "prepared": [],
+        "slots": {}
+      },
+      "resources": [
+        "Cunning Action: Bonus Action Dash, Disengage or Hide",
+        "Sneak Attack: once per turn, no rest resource",
+        "2d8 Hit Dice"
+      ],
+      "equipment": {
+        "method": "Class starting package A plus background package A; no assumed adventure treasure.",
+        "classPackage": [
+          "Leather Armor",
+          "2 Daggers",
+          "Shortsword",
+          "Shortbow",
+          "20 Arrows",
+          "Quiver",
+          "Thieves\u2019 Tools",
+          "Burglar\u2019s Pack"
+        ],
+        "backgroundPackage": [
+          "2 daggers",
+          "Thieves\u2019 Tools",
+          "Crowbar",
+          "2 Pouches",
+          "Traveler\u2019s Clothes"
+        ],
+        "additions": [],
+        "goldRemaining": 24,
+        "initialGold": 24,
+        "coinBreakdown": {
+          "classPackage": 8,
+          "backgroundPackage": 16,
+          "additionalPurchases": 0,
+          "remaining": 24
+        }
+      },
+      "playLoop": "Scout and open locks, find an eligible Sneak Attack, then hide or disengage. The small silhouette and mobility keep this a skirmisher rather than a stand-up fighter.",
+      "limits": [
+        "No subclass at level 2 under the 2024 class progression.",
+        "Duplicate background/class Thieves\u2019 Tools proficiency is counted once; no invented replacement benefit.",
+        "Use normal free-hand, focus, armor and component rules; stow a held weapon when casting needs that hand."
+      ],
+      "sources": [
+        {
+          "title": "Official SRD 5.2.1: class, species, background, feats, equipment and spells",
+          "url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf"
+        },
+        {
+          "title": "Official 2024 Basic Rules \u2014 Character Classes",
+          "url": "https://www.dndbeyond.com/sources/dnd/br-2024/character-classes"
+        },
+        {
+          "title": "Publisher 2024 Rogue class reference",
+          "url": "https://www.dndbeyond.com/classes/2190883-rogue"
+        }
+      ],
+      "initiative": 5,
+      "proficiencySources": {
+        "background": [
+          "Sleight of Hand",
+          "Stealth"
+        ],
+        "species": [],
+        "class": [
+          "Acrobatics",
+          "Investigation",
+          "Perception",
+          "Deception"
+        ]
+      },
+      "speciesFeatures": [
+        "Luck: reroll a natural 1 on a D20 Test; use the new roll",
+        "Brave: Advantage to avoid/end Frightened",
+        "Nimbleness: move through a larger creature\u2019s space",
+        "Naturally Stealthy: can Hide when obscured only by a creature at least one size larger"
+      ]
+    },
+    {
+      "id": "sorcerer",
+      "class": "Sorcerer",
+      "name": "Ilyra Cinderblood",
+      "level": 2,
+      "species": "High Elf",
+      "background": "Acolyte",
+      "abilityScores": {
+        "before": {
+          "str": 8,
+          "dex": 14,
+          "con": 13,
+          "int": 10,
+          "wis": 12,
+          "cha": 15
+        },
+        "boosts": {
+          "cha": 2,
+          "wis": 1
+        },
+        "final": {
+          "str": 8,
+          "dex": 14,
+          "con": 13,
+          "int": 10,
+          "wis": 13,
+          "cha": 17
+        }
+      },
+      "hp": 12,
+      "hpCalculation": "6 + 4 + 2 \u00d7 CON 1",
+      "ac": "12 normally; 15 with Mage Armor (costs one level-1 slot)",
+      "speed": 30,
+      "proficiencyBonus": 2,
+      "saves": {
+        "con": 3,
+        "cha": 5
+      },
+      "skills": {
+        "Insight": 3,
+        "Religion": 2,
+        "Arcana": 2,
+        "Persuasion": 5,
+        "Perception": 3
+      },
+      "expertise": [],
+      "tools": [
+        "Calligrapher\u2019s Supplies"
+      ],
+      "languages": [
+        "Common",
+        "Dwarvish",
+        "Elvish"
+      ],
+      "originFeats": [
+        "Magic Initiate (Cleric)"
+      ],
+      "classChoices": [
+        "Metamagic: Quickened Spell and Subtle Spell",
+        "Innate Sorcery; Font of Magic",
+        "High Elf cantrip: Prestidigitation (Charisma)"
+      ],
+      "attacks": [
+        "Fire Bolt +5, 1d10 fire",
+        "Ray of Frost +5, 1d8 cold and printed Speed reduction"
+      ],
+      "spells": {
+        "ability": "Charisma",
+        "attack": 5,
+        "saveDc": 13,
+        "cantrips": [
+          "Fire Bolt",
+          "Ray of Frost",
+          "Mage Hand",
+          "Minor Illusion"
+        ],
+        "prepared": [
+          "Mage Armor",
+          "Shield",
+          "Burning Hands",
+          "Sleep"
+        ],
+        "slots": {
+          "1": 3
+        },
+        "additional": [
+          {
+            "source": "High Elf",
+            "ability": "Charisma",
+            "cantrips": [
+              "Prestidigitation"
+            ]
+          },
+          {
+            "source": "Magic Initiate (Cleric)",
+            "ability": "Charisma",
+            "cantrips": [
+              "Guidance",
+              "Thaumaturgy"
+            ],
+            "prepared": [
+              "Healing Word"
+            ],
+            "freeCast": "Healing Word: once per Long Rest; also castable with spell slots."
+          }
+        ]
+      },
+      "resources": [
+        "2 Sorcery Points/Long Rest; Quickened costs 2, Subtle costs 1",
+        "Innate Sorcery: 2 uses/Long Rest; one minute, sorcerer spell DC +1 and Advantage on sorcerer spell attack rolls",
+        "Three level-1 slots/Long Rest; Mage Armor reduces the day\u2019s remaining pool to two when cast",
+        "2d6 Hit Dice"
+      ],
+      "equipment": {
+        "method": "Class starting package A plus background package A; no assumed adventure treasure.",
+        "classPackage": [
+          "Spear",
+          "2 Daggers",
+          "Arcane Focus (crystal)",
+          "Dungeoneer\u2019s Pack"
+        ],
+        "backgroundPackage": [
+          "Calligrapher\u2019s Supplies",
+          "Prayer Book",
+          "Holy Symbol",
+          "10 parchment sheets",
+          "Robe"
+        ],
+        "additions": [],
+        "goldRemaining": 36,
+        "initialGold": 36,
+        "coinBreakdown": {
+          "classPackage": 28,
+          "backgroundPackage": 8,
+          "additionalPurchases": 0,
+          "remaining": 36
+        }
+      },
+      "playLoop": "Unleash innate magic, bend casting with Metamagic, and alternate a reliable cantrip with a few decisive spells. Background healing reflects a temple-raised prodigy.",
+      "limits": [
+        "No subclass at level 2 under the 2024 class progression.",
+        "Do not assume a bloodline subclass at level 2; 2024 sorcerers choose it at level 3.",
+        "Use normal free-hand, focus, armor and component rules; stow a held weapon when casting needs that hand."
+      ],
+      "sources": [
+        {
+          "title": "Official SRD 5.2.1: class, species, background, feats, equipment and spells",
+          "url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf"
+        },
+        {
+          "title": "Official 2024 Basic Rules \u2014 Character Classes",
+          "url": "https://www.dndbeyond.com/sources/dnd/br-2024/character-classes"
+        },
+        {
+          "title": "Publisher 2024 Sorcerer class reference",
+          "url": "https://www.dndbeyond.com/classes/2190884-sorcerer"
+        }
+      ],
+      "initiative": 2,
+      "proficiencySources": {
+        "background": [
+          "Insight",
+          "Religion"
+        ],
+        "species": [
+          "Perception"
+        ],
+        "class": [
+          "Arcana",
+          "Persuasion"
+        ]
+      },
+      "speciesFeatures": [
+        "Darkvision 60 ft; Advantage against Charmed; immunity to magical sleep",
+        "Trance: Long Rest in four hours while conscious",
+        "Keen Senses: Perception",
+        "High lineage: selected Wizard cantrip shown under additional spells; replaceable after Long Rest"
+      ]
+    },
+    {
+      "id": "warlock",
+      "class": "Warlock",
+      "name": "Vesper Ashpact",
+      "level": 2,
+      "species": "Human (oath-bound fiction)",
+      "background": "Acolyte",
+      "abilityScores": {
+        "before": {
+          "str": 8,
+          "dex": 14,
+          "con": 13,
+          "int": 10,
+          "wis": 12,
+          "cha": 15
+        },
+        "boosts": {
+          "cha": 2,
+          "wis": 1
+        },
+        "final": {
+          "str": 8,
+          "dex": 14,
+          "con": 13,
+          "int": 10,
+          "wis": 13,
+          "cha": 17
+        }
+      },
+      "hp": 15,
+      "hpCalculation": "8 + 5 + 2 \u00d7 CON 1",
+      "ac": "13 (Leather 11 + DEX 2)",
+      "speed": 30,
+      "proficiencyBonus": 2,
+      "saves": {
+        "wis": 3,
+        "cha": 5
+      },
+      "skills": {
+        "Insight": 3,
+        "Religion": 2,
+        "Arcana": 2,
+        "Deception": 5,
+        "Perception": 3
+      },
+      "expertise": [],
+      "tools": [
+        "Calligrapher\u2019s Supplies"
+      ],
+      "languages": [
+        "Common",
+        "Dwarvish",
+        "Elvish"
+      ],
+      "originFeats": [
+        "Magic Initiate (Cleric)",
+        "Alert"
+      ],
+      "classChoices": [
+        "Invocations: Pact of the Tome, Agonizing Blast (Eldritch Blast), Repelling Blast (Eldritch Blast)",
+        "Magical Cunning; Human Heroic Inspiration after Long Rest"
+      ],
+      "attacks": [
+        "Eldritch Blast +5, 1d10+3 force; Repelling Blast pushes an eligible target up to 10 ft",
+        "Quarterstaff with Shillelagh +5, 1d8+3 (printed Shillelagh damage choice)"
+      ],
+      "spells": {
+        "ability": "Charisma",
+        "attack": 5,
+        "saveDc": 13,
+        "cantrips": [
+          "Eldritch Blast",
+          "Minor Illusion"
+        ],
+        "prepared": [
+          "Hex",
+          "Armor of Agathys",
+          "Hellish Rebuke"
+        ],
+        "slots": {
+          "Pact level 1": 2
+        },
+        "additional": [
+          {
+            "source": "Pact of the Tome",
+            "ability": "Charisma",
+            "cantrips": [
+              "Mage Hand",
+              "Prestidigitation",
+              "Shillelagh"
+            ],
+            "prepared": [
+              "Detect Magic",
+              "Comprehend Languages"
+            ],
+            "note": "Tome level-1 choices are rituals; use ritual casting without spending Pact slots when time permits."
+          },
+          {
+            "source": "Magic Initiate (Cleric)",
+            "ability": "Charisma",
+            "cantrips": [
+              "Guidance",
+              "Thaumaturgy"
+            ],
+            "prepared": [
+              "Bless"
+            ],
+            "freeCast": "Bless: once per Long Rest; also castable with spell slots."
+          }
+        ]
+      },
+      "resources": [
+        "Two level-1 Pact slots/Short or Long Rest",
+        "Magical Cunning: one-minute rite restores one Pact slot, once/Long Rest",
+        "2d8 Hit Dice",
+        "Human Heroic Inspiration after Long Rest"
+      ],
+      "equipment": {
+        "method": "Class starting package A plus background package A; no assumed adventure treasure.",
+        "classPackage": [
+          "Leather Armor",
+          "Sickle",
+          "2 Daggers",
+          "Arcane Focus (orb)",
+          "Book (occult lore)",
+          "Scholar\u2019s Pack"
+        ],
+        "backgroundPackage": [
+          "Calligrapher\u2019s Supplies",
+          "Prayer Book",
+          "Holy Symbol",
+          "10 parchment sheets",
+          "Robe"
+        ],
+        "additions": [
+          {
+            "item": "Quarterstaff",
+            "gp": 0.2
+          }
+        ],
+        "goldRemaining": 22.8,
+        "initialGold": 23,
+        "coinBreakdown": {
+          "classPackage": 15,
+          "backgroundPackage": 8,
+          "additionalPurchases": 0.2,
+          "remaining": 22.8
+        }
+      },
+      "playLoop": "Use empowered Eldritch Blast as the reliable attack, reserve Pact slots for curse/defense, and use the Tome\u2019s rituals to make the bargain useful beyond combat.",
+      "limits": [
+        "No subclass at level 2 under the 2024 class progression.",
+        "The patron is established in fiction; its mechanical subclass begins at level 3.",
+        "Use normal free-hand, focus, armor and component rules; stow a held weapon when casting needs that hand."
+      ],
+      "sources": [
+        {
+          "title": "Official SRD 5.2.1: class, species, background, feats, equipment and spells",
+          "url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf"
+        },
+        {
+          "title": "Official 2024 Basic Rules \u2014 Character Classes",
+          "url": "https://www.dndbeyond.com/sources/dnd/br-2024/character-classes"
+        },
+        {
+          "title": "Publisher 2024 Warlock class reference",
+          "url": "https://www.dndbeyond.com/classes/2190885-warlock"
+        }
+      ],
+      "initiative": 4,
+      "proficiencySources": {
+        "background": [
+          "Insight",
+          "Religion"
+        ],
+        "species": [
+          "Perception"
+        ],
+        "class": [
+          "Arcana",
+          "Deception"
+        ]
+      },
+      "speciesFeatures": [
+        "Skillful: Perception",
+        "Versatile: Alert (already listed under Origin feats)",
+        "Resourceful: Heroic Inspiration after each Long Rest"
+      ]
+    },
+    {
+      "id": "wizard",
+      "class": "Wizard",
+      "name": "Vaelis Quillstar",
+      "level": 2,
+      "species": "High Elf",
+      "background": "Sage",
+      "abilityScores": {
+        "before": {
+          "str": 8,
+          "dex": 14,
+          "con": 13,
+          "int": 15,
+          "wis": 12,
+          "cha": 10
+        },
+        "boosts": {
+          "int": 2,
+          "con": 1
+        },
+        "final": {
+          "str": 8,
+          "dex": 14,
+          "con": 14,
+          "int": 17,
+          "wis": 12,
+          "cha": 10
+        }
+      },
+      "hp": 14,
+      "hpCalculation": "6 + 4 + 2 \u00d7 CON 2",
+      "ac": "12 normally; 15 with Mage Armor (costs one level-1 slot)",
+      "speed": 30,
+      "proficiencyBonus": 2,
+      "saves": {
+        "int": 5,
+        "wis": 3
+      },
+      "skills": {
+        "Arcana": 7,
+        "History": 5,
+        "Investigation": 5,
+        "Insight": 3,
+        "Perception": 3
+      },
+      "expertise": [
+        "Arcana"
+      ],
+      "tools": [
+        "Calligrapher\u2019s Supplies"
+      ],
+      "languages": [
+        "Common",
+        "Dwarvish",
+        "Elvish"
+      ],
+      "originFeats": [
+        "Magic Initiate (Wizard)"
+      ],
+      "classChoices": [
+        "Scholar: Arcana Expertise",
+        "Ritual Adept; Arcane Recovery",
+        "High Elf: replace Prestidigitation with Minor Illusion after Long Rest; Intelligence"
+      ],
+      "attacks": [
+        "Fire Bolt +5, 1d10 fire",
+        "Ray of Frost +5, 1d8 cold and printed Speed reduction",
+        "Magic Missile: three automatic darts at 1d4+1 force each"
+      ],
+      "spells": {
+        "ability": "Intelligence",
+        "attack": 5,
+        "saveDc": 13,
+        "cantrips": [
+          "Fire Bolt",
+          "Ray of Frost",
+          "Mage Hand"
+        ],
+        "prepared": [
+          "Mage Armor",
+          "Magic Missile",
+          "Sleep",
+          "Grease",
+          "Thunderwave"
+        ],
+        "spellbook": [
+          "Mage Armor",
+          "Magic Missile",
+          "Detect Magic",
+          "Find Familiar",
+          "Sleep",
+          "Grease",
+          "Thunderwave",
+          "Comprehend Languages"
+        ],
+        "slots": {
+          "1": 3
+        },
+        "additional": [
+          {
+            "source": "High Elf",
+            "ability": "Intelligence",
+            "cantrips": [
+              "Minor Illusion"
+            ]
+          },
+          {
+            "source": "Magic Initiate (Wizard)",
+            "ability": "Intelligence",
+            "cantrips": [
+              "Mending",
+              "Prestidigitation"
+            ],
+            "prepared": [
+              "Shield"
+            ],
+            "freeCast": "Shield: once per Long Rest; also castable with spell slots."
+          }
+        ]
+      },
+      "resources": [
+        "Three level-1 slots/Long Rest",
+        "Arcane Recovery: recover one level-1 slot after a Short Rest, once/Long Rest",
+        "Find Familiar ritual needs its consumed 10-GP materials; selected form Owl",
+        "2d6 Hit Dice"
+      ],
+      "equipment": {
+        "method": "Class starting package A plus background package A; no assumed adventure treasure.",
+        "classPackage": [
+          "2 Daggers",
+          "Arcane Focus (Quarterstaff)",
+          "Robe",
+          "Spellbook",
+          "Scholar\u2019s Pack"
+        ],
+        "backgroundPackage": [
+          "Quarterstaff",
+          "Calligrapher\u2019s Supplies",
+          "History Book",
+          "8 parchment sheets",
+          "Robe"
+        ],
+        "additions": [
+          {
+            "item": "Find Familiar consumed incense materials",
+            "gp": 10
+          }
+        ],
+        "goldRemaining": 3,
+        "initialGold": 13,
+        "coinBreakdown": {
+          "classPackage": 5,
+          "backgroundPackage": 8,
+          "additionalPurchases": 10,
+          "remaining": 3
+        }
+      },
+      "playLoop": "Prepare a focused combat kit, protect yourself with Mage Armor/Shield, and solve exploration problems through the spellbook\u2019s unprepared rituals.",
+      "limits": [
+        "No subclass at level 2 under the 2024 class progression.",
+        "Eight book spells = six at level 1 plus two at level 2; only five class spells prepared. Mage Armor and familiar casting costs are not ignored.",
+        "Use normal free-hand, focus, armor and component rules; stow a held weapon when casting needs that hand."
+      ],
+      "sources": [
+        {
+          "title": "Official SRD 5.2.1: class, species, background, feats, equipment and spells",
+          "url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf"
+        },
+        {
+          "title": "Official 2024 Basic Rules \u2014 Character Classes",
+          "url": "https://www.dndbeyond.com/sources/dnd/br-2024/character-classes"
+        },
+        {
+          "title": "Publisher 2024 Wizard class reference",
+          "url": "https://www.dndbeyond.com/classes/2190886-wizard"
+        }
+      ],
+      "initiative": 2,
+      "proficiencySources": {
+        "background": [
+          "Arcana",
+          "History"
+        ],
+        "species": [
+          "Perception"
+        ],
+        "class": [
+          "Investigation",
+          "Insight"
+        ]
+      },
+      "speciesFeatures": [
+        "Darkvision 60 ft; Advantage against Charmed; immunity to magical sleep",
+        "Trance: Long Rest in four hours while conscious",
+        "Keen Senses: Perception",
+        "High lineage: selected Wizard cantrip shown under additional spells; replaceable after Long Rest"
+      ]
+    },
+    {
+      "id": "artificer",
+      "class": "Artificer",
+      "name": "Nim Coppercoil",
+      "level": 2,
+      "species": "Rock Gnome",
+      "background": "Sage",
+      "abilityScores": {
+        "before": {
+          "str": 8,
+          "dex": 14,
+          "con": 13,
+          "int": 15,
+          "wis": 12,
+          "cha": 10
+        },
+        "boosts": {
+          "int": 2,
+          "con": 1
+        },
+        "final": {
+          "str": 8,
+          "dex": 14,
+          "con": 14,
+          "int": 17,
+          "wis": 12,
+          "cha": 10
+        }
+      },
+      "hp": 17,
+      "hpCalculation": "8 + 5 + 2 \u00d7 CON 2",
+      "ac": "16 (Studded Leather 12 + DEX 2 + purchased Shield 2)",
+      "speed": 30,
+      "proficiencyBonus": 2,
+      "saves": {
+        "con": 4,
+        "int": 5
+      },
+      "skills": {
+        "Arcana": 5,
+        "History": 5,
+        "Investigation": 5,
+        "Perception": 3
+      },
+      "expertise": [],
+      "tools": [
+        "Calligrapher\u2019s Supplies",
+        "Thieves\u2019 Tools",
+        "Tinker\u2019s Tools",
+        "Smith\u2019s Tools"
+      ],
+      "languages": [
+        "Common",
+        "Dwarvish",
+        "Elvish"
+      ],
+      "originFeats": [
+        "Magic Initiate (Wizard)"
+      ],
+      "classChoices": [
+        "Tinker\u2019s Magic; Replicate Magic Item",
+        "Plans known: Bag of Holding, Cap of Water Breathing, Sending Stones, Wand of the War Mage +1",
+        "Created today: Bag of Holding and Wand of the War Mage +1; attune to the wand",
+        "Rock Gnome lineage uses Intelligence; Mending overlaps the class grant and is counted once"
+      ],
+      "attacks": [
+        "Fire Bolt +6 while holding the attuned +1 wand, 1d10 fire (otherwise +5)",
+        "Dagger +4, 1d4+2 piercing"
+      ],
+      "spells": {
+        "ability": "Intelligence",
+        "attack": 6,
+        "saveDc": 13,
+        "cantrips": [
+          "Fire Bolt",
+          "Guidance"
+        ],
+        "prepared": [
+          "Cure Wounds",
+          "Faerie Fire",
+          "Grease"
+        ],
+        "slots": {
+          "1": 2
+        },
+        "additional": [
+          {
+            "source": "Tinker\u2019s Magic",
+            "cantrips": [
+              "Mending"
+            ]
+          },
+          {
+            "source": "Rock Gnome",
+            "ability": "Intelligence",
+            "cantrips": [
+              "Mending",
+              "Prestidigitation"
+            ]
+          },
+          {
+            "source": "Magic Initiate (Wizard)",
+            "ability": "Intelligence",
+            "cantrips": [
+              "Mage Hand",
+              "Minor Illusion"
+            ],
+            "prepared": [
+              "Detect Magic"
+            ],
+            "freeCast": "Detect Magic: once per Long Rest; also castable with spell slots."
+          }
+        ]
+      },
+      "resources": [
+        "Two level-1 slots/Long Rest",
+        "Tinker\u2019s Magic: 3 temporary mundane items/Long Rest",
+        "Four plans known; maximum two replicated items at once, selected after Long Rest",
+        "2d8 Hit Dice"
+      ],
+      "equipment": {
+        "method": "Class starting package A plus background package A; no assumed adventure treasure.",
+        "classPackage": [
+          "Studded Leather Armor",
+          "Dagger",
+          "Thieves\u2019 Tools",
+          "Tinker\u2019s Tools",
+          "Dungeoneer\u2019s Pack"
+        ],
+        "backgroundPackage": [
+          "Quarterstaff",
+          "Calligrapher\u2019s Supplies",
+          "History Book",
+          "8 parchment sheets",
+          "Robe"
+        ],
+        "additions": [
+          {
+            "item": "Shield",
+            "gp": 10
+          }
+        ],
+        "goldRemaining": 14,
+        "initialGold": 24,
+        "coinBreakdown": {
+          "classPackage": 16,
+          "backgroundPackage": 8,
+          "additionalPurchases": 10,
+          "remaining": 14
+        }
+      },
+      "playLoop": "Solve obstacles with tools and temporary gear, equip the party with replicated items, and deliver a dependable wand-assisted cantrip while retaining a few support spells.",
+      "limits": [
+        "No subclass at level 2 under the 2024 class progression.",
+        "2025 final Artificer numeric tables and item plans were cross-checked in two independent secondary transcriptions because the full publisher class page is access-restricted. Publisher overview confirms the feature framework. No Unearthed Arcana draft is treated as final.",
+        "Smith\u2019s Tools proficiency is selected but that extra tool set is not owned; buy or borrow it before smithing.",
+        "Use normal free-hand, focus, armor and component rules; stow a held weapon when casting needs that hand."
+      ],
+      "sources": [
+        {
+          "title": "Official SRD 5.2.1: class, species, background, feats, equipment and spells",
+          "url": "https://media.dndbeyond.com/compendium-images/srd/5.2/SRD_CC_v5.2.1.pdf"
+        },
+        {
+          "title": "Official 2024 Basic Rules \u2014 Character Classes",
+          "url": "https://www.dndbeyond.com/sources/dnd/br-2024/character-classes"
+        },
+        {
+          "title": "Publisher overview: final 2025 Artificer",
+          "url": "https://www.dndbeyond.com/posts/2106-whats-new-with-the-artificer-in-eberron-forge-of"
+        },
+        {
+          "title": "Final 2025 class transcription (secondary corroboration)",
+          "url": "https://ems.glyphforged.com/catalog/eberron-forge-2025-rule-artificer"
+        },
+        {
+          "title": "Independent final class transcription (secondary corroboration)",
+          "url": "https://dnd2024.wikidot.com/artificer:main"
+        },
+        {
+          "title": "Final Replicate Magic Item plan transcription (secondary corroboration)",
+          "url": "https://ems.glyphforged.com/catalog/eberron-forge-2025-ability-artificer-replicate-magic-item"
+        }
+      ],
+      "initiative": 2,
+      "proficiencySources": {
+        "background": [
+          "Arcana",
+          "History"
+        ],
+        "species": [],
+        "class": [
+          "Investigation",
+          "Perception"
+        ]
+      },
+      "speciesFeatures": [
+        "Darkvision 60 ft; Advantage on Intelligence, Wisdom, Charisma saves",
+        "Rock lineage: Mending and Prestidigitation (Intelligence); Mending duplicates the class grant",
+        "Ten-minute Prestidigitation can make a tiny clockwork device; at most three, each lasting eight hours"
+      ]
+    }
+  ]
+}

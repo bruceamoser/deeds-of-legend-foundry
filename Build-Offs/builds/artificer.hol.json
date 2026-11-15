@@ -1,0 +1,163 @@
+{
+  "format": "heroes-of-legend-character",
+  "schemaVersion": 5,
+  "sourceCommit": "d4d4b796e1393aaf79557ba39b0f9d51bf419e92",
+  "draft": {
+    "name": "Nim Coppercoil",
+    "attributes": {
+      "brawn": 0,
+      "fortitude": 1,
+      "agility": 0,
+      "guile": 0,
+      "knowledge": 2,
+      "reason": 0
+    },
+    "traitIds": [
+      "trait-gnome-fingers-in-the-works",
+      "trait-gnome-bright-idea"
+    ],
+    "classDisciplines": [
+      "divination"
+    ],
+    "languages": {
+      "home": "dwarven",
+      "extraSpoken": []
+    },
+    "purchases": {
+      "0": [],
+      "1": [
+        {
+          "id": "force"
+        },
+        {
+          "id": "telekinesis:0"
+        },
+        {
+          "id": "shaping:0"
+        },
+        {
+          "id": "imbuement:0"
+        },
+        {
+          "id": "craft:repairs:1"
+        },
+        {
+          "id": "craft:supplies:1"
+        },
+        {
+          "id": "craft:supplies:2"
+        },
+        {
+          "id": "detection:0"
+        }
+      ]
+    },
+    "acquisitions": {
+      "craft:supplies:1": {
+        "recipes": [
+          "recipe-bound-torches",
+          "recipe-twisted-cord"
+        ]
+      },
+      "craft:supplies:2": {
+        "recipes": [
+          "recipe-travel-food",
+          "recipe-wooden-brace"
+        ]
+      }
+    },
+    "shopping": [
+      {
+        "id": "item-ordinary-melee-weapon",
+        "quantity": 1,
+        "hands": 1,
+        "instanceId": "shop-buildoff-artificer-0"
+      },
+      {
+        "id": "item-craft-tools",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-artificer-1"
+      },
+      {
+        "id": "item-material-bundle",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-artificer-2"
+      },
+      {
+        "id": "item-writing-kit",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-artificer-3"
+      },
+      {
+        "id": "item-travel-pack",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-artificer-4"
+      },
+      {
+        "id": "item-food-bundle",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-artificer-5"
+      },
+      {
+        "id": "item-water-flask",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-artificer-6"
+      }
+    ],
+    "ancestryId": "ancestry-gnome",
+    "classId": "class-intellect",
+    "signatureId": "ability-signature-intellect-spot-the-leverage",
+    "culture": {
+      "id": "origin-culture-deep-halls",
+      "pair": 0
+    },
+    "background": {
+      "id": "origin-background-itinerant-tinker",
+      "pair": 1
+    },
+    "loadout": {
+      "shop-buildoff-artificer-0": {
+        "carried": true,
+        "worn": false,
+        "held": true
+      },
+      "shop-buildoff-artificer-1": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      },
+      "shop-buildoff-artificer-2": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      },
+      "shop-buildoff-artificer-3": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      },
+      "shop-buildoff-artificer-4": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      },
+      "shop-buildoff-artificer-5": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      },
+      "shop-buildoff-artificer-6": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      }
+    }
+  },
+  "status": "ready"
+}
