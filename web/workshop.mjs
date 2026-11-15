@@ -926,10 +926,13 @@ let editingLevel = null;
 const activeLearningLevel = () => editingLevel ?? preview.development.level;
 function learning() {
   const current = learningState();
+  const learningLedger = mode === "advancement"
+    ? preview.levels[activeLearningLevel()].ledger
+    : preview.ledger.filter(entry => entry.stage === 1);
   const content = renderForge(catalogs.forge, current, {
     view: forgeView, discipline: forgeDiscipline, selected: forgeSelected, zoom: forgeZoom,
     ownedColumns: true, path: forgePath, openPaths: [...forgeOpenPaths], showAll: forgeShowAll, chooser: forgeChooser, candidate: forgeCandidate,
-    budget: current.dp + learningPurchases().reduce((sum, entry) => sum + (forgeEligibility(catalogs.forge, current, entry.id).cost ?? 0), 0),
+    budget: current.dp - learningLedger.filter(entry => entry.kind === "purchase").reduce((sum, entry) => sum + entry.delta, 0),
     sources: Object.fromEntries([
       ...["culture", "background"].map(kind => [chosenOriginDiscipline(kind), {label:title(kind),detail:name(draft[kind]?.id)}]),
       ...draft.classDisciplines.map(id => [id,{label:"Class",detail:name(draft.classId)}]),
