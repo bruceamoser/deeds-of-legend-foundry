@@ -128,7 +128,7 @@ try {
   await expect(action("forge-filter", "elements")).toBeVisible();
   for (const id of ["air:0", "air:1"]) await learn(id);
   await select("air:2");
-  await expect(page.locator("#forge-selection")).toContainText("Need 1 more DP");
+  await expect(page.locator("#forge-selection")).toContainText("Costs 2 DP. You have 1 DP.");
   await balance(1);
   await stage(6).click();
   assert.match(await page.locator("#panel").innerText(), /Creation complete/);
