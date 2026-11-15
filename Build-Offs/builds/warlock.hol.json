@@ -1,0 +1,139 @@
+{
+  "format": "heroes-of-legend-character",
+  "schemaVersion": 5,
+  "sourceCommit": "d4d4b796e1393aaf79557ba39b0f9d51bf419e92",
+  "draft": {
+    "name": "Vesper Ashpact",
+    "attributes": {
+      "brawn": 0,
+      "fortitude": 1,
+      "agility": 1,
+      "guile": 2,
+      "knowledge": 0,
+      "reason": -1
+    },
+    "traitIds": [
+      "trait-oath-bound-bound-by-your-word",
+      "trait-oath-bound-neither-here-nor-there"
+    ],
+    "classDisciplines": [
+      "spellcraft"
+    ],
+    "languages": {
+      "home": "harbor-cant",
+      "extraSpoken": []
+    },
+    "purchases": {
+      "0": [],
+      "1": [
+        {
+          "id": "spirits:0"
+        },
+        {
+          "id": "binding:0"
+        },
+        {
+          "id": "force"
+        },
+        {
+          "id": "telekinesis:0"
+        },
+        {
+          "id": "spellcraft:soul-capacity:1"
+        },
+        {
+          "id": "spellcraft:recovery:1"
+        },
+        {
+          "id": "perception:0"
+        },
+        {
+          "id": "calling:0"
+        }
+      ]
+    },
+    "acquisitions": {},
+    "shopping": [
+      {
+        "id": "item-ordinary-melee-weapon",
+        "quantity": 1,
+        "hands": 1,
+        "instanceId": "shop-buildoff-warlock-0"
+      },
+      {
+        "id": "item-travel-pack",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-warlock-1"
+      },
+      {
+        "id": "item-food-bundle",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-warlock-2"
+      },
+      {
+        "id": "item-water-flask",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-warlock-3"
+      },
+      {
+        "id": "item-sleeping-roll",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-warlock-4"
+      },
+      {
+        "id": "item-lighting-bundle",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-warlock-5"
+      }
+    ],
+    "ancestryId": "ancestry-oath-bound",
+    "classId": "class-odd",
+    "signatureId": "ability-signature-odd-sideways-thinking",
+    "culture": {
+      "id": "origin-culture-cairn-communities",
+      "pair": 0
+    },
+    "background": {
+      "id": "origin-background-dragon-dreamer",
+      "pair": 1
+    },
+    "loadout": {
+      "shop-buildoff-warlock-0": {
+        "carried": true,
+        "worn": false,
+        "held": true
+      },
+      "shop-buildoff-warlock-1": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      },
+      "shop-buildoff-warlock-2": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      },
+      "shop-buildoff-warlock-3": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      },
+      "shop-buildoff-warlock-4": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      },
+      "shop-buildoff-warlock-5": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      }
+    }
+  },
+  "status": "ready"
+}

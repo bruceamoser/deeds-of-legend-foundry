@@ -1,0 +1,141 @@
+{
+  "format": "heroes-of-legend-character",
+  "schemaVersion": 5,
+  "sourceCommit": "d4d4b796e1393aaf79557ba39b0f9d51bf419e92",
+  "draft": {
+    "name": "Harka Stormshoulder",
+    "attributes": {
+      "brawn": 2,
+      "fortitude": 2,
+      "agility": 0,
+      "guile": -1,
+      "knowledge": -1,
+      "reason": 1
+    },
+    "traitIds": [
+      "trait-tallfolk-long-reach",
+      "trait-tallfolk-built-for-the-weather"
+    ],
+    "classDisciplines": [
+      "armor"
+    ],
+    "languages": {
+      "home": "giant",
+      "extraSpoken": []
+    },
+    "purchases": {
+      "0": [],
+      "1": [
+        {
+          "id": "arms:impact:1"
+        },
+        {
+          "id": "arms:impact:2"
+        },
+        {
+          "id": "arms:impact:3"
+        },
+        {
+          "id": "athletics:leaping:1"
+        },
+        {
+          "id": "athletics:balance:1"
+        }
+      ]
+    },
+    "acquisitions": {},
+    "shopping": [
+      {
+        "id": "item-ordinary-melee-weapon",
+        "quantity": 1,
+        "hands": 2,
+        "instanceId": "shop-buildoff-barbarian-0"
+      },
+      {
+        "id": "item-travel-pack",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-barbarian-1"
+      },
+      {
+        "id": "item-food-bundle",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-barbarian-2"
+      },
+      {
+        "id": "item-water-flask",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-barbarian-3"
+      },
+      {
+        "id": "item-sleeping-roll",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-barbarian-4"
+      },
+      {
+        "id": "item-rope-coil",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-barbarian-5"
+      },
+      {
+        "id": "item-lighting-bundle",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-barbarian-6"
+      }
+    ],
+    "ancestryId": "ancestry-tallfolk",
+    "classId": "class-unbalanced",
+    "signatureId": "ability-signature-unbalanced-wild-approach",
+    "culture": {
+      "id": "origin-culture-grass-sea-clans",
+      "pair": 1
+    },
+    "background": {
+      "id": "origin-background-pit-fighter",
+      "pair": 1
+    },
+    "loadout": {
+      "shop-buildoff-barbarian-0": {
+        "carried": true,
+        "worn": false,
+        "held": true
+      },
+      "shop-buildoff-barbarian-1": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      },
+      "shop-buildoff-barbarian-2": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      },
+      "shop-buildoff-barbarian-3": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      },
+      "shop-buildoff-barbarian-4": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      },
+      "shop-buildoff-barbarian-5": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      },
+      "shop-buildoff-barbarian-6": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      }
+    }
+  },
+  "status": "ready"
+}

@@ -294,3 +294,9 @@ canonical source document is silently rewritten.
 ## November 15, 2026 — Workshop learning and book follow-through
 
 Bruce approved an available-now learning list with expandable full branches alongside a functional full atlas, class-priced discipline entry, and web testing/publication. See [the decision and price mapping record](workshop-learning-295.md) for exact scope and book integration notes. Follow-up #296 audits ancestry traits and class signatures against the new rules before revising their mechanics.
+
+## November 15, 2026 — Trait/signature review and trope Build-Offs (#296, #297)
+
+After publishing the learning list and expanded atlas, Bruce requested an audit of ancestry traits and class signatures, followed by paired D&D level-2 / HoL level-1 builds for every base class. [Build-Offs](../Build-Offs/README.md) contains all thirteen comparisons, including Artificer, the complete 50-trait/90-signature reviews, and importable HoL characters. The comparison baseline is revised 2024 D&D with the 2025 Artificer, and Workshop revision `27200945e033ca3d2e9eabeed312d9ed0f7911a1`.
+
+These findings are recommendations and playtest questions, not approved rule changes. Keep #296 open for rulings and book follow-through. All thirteen HoL builds passed current construction/budget checks and actual browser import at 1000×800, with matching HP/SP and no page errors. This establishes construction and importability, not combat balance or native Foundry behavior.
