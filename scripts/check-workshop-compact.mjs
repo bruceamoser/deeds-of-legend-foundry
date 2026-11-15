@@ -307,7 +307,7 @@ try {
     await expect(path("elements:air")).toContainText("2 spells learned");
     await buy("air:1").click();
     await expect(path("elements:air")).toContainText("4 spells learned");
-    await expect(stepControl("air:2")).toHaveAccessibleName(/Level 2/);
+    await expect(stepControl("air:2")).toHaveAccessibleName(/Need 1 more DP/);
     await expect(buy("air:2")).toHaveCount(0);
     await expect(remaining).toHaveText("1 DP remaining");
     await page.reload();

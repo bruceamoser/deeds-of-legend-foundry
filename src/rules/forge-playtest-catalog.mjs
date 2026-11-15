@@ -67,14 +67,9 @@ const nodeChanges = {
       "Reaction. When a visible enemy finishes voluntary movement adjacent to one of your allies and within 6 squares of you, attack the enemy with Agility for 1/2/3 physical damage. You need a ready ranged weapon.",
   },
   "marksmanship:readiness:3": {
-    level: 2,
     effect:
       "Watchful Shot deals 1/2/4 physical damage instead of 1/2/3. You can trigger it when any visible enemy within range finishes voluntary movement.",
   },
-  "spellcraft:soul-capacity:2": { level: 2 },
-  "spellcraft:mind-capacity:2": { level: 2 },
-  "spellcraft:soul-capacity:3": { level: 3 },
-  "spellcraft:mind-capacity:3": { level: 3 },
 };
 
 const counterspellTrigger =
@@ -244,9 +239,6 @@ export function applyForgePlaytest(graph, references) {
       origins: graph.origins.map((origin) => originChoice(origin, disciplines)),
       nodes: graph.nodes.map((node) => ({
         ...node,
-        ...(node.kind === "section" && node.section === "III"
-          ? { level: 2 }
-          : {}),
         ...nodeChanges[node.id],
       })),
       spells: graph.spells.map((spell) => ({
@@ -261,10 +253,6 @@ export function applyForgePlaytest(graph, references) {
 
 function playtestMagic(markdown) {
   return markdown
-    .replace(
-      "III costs 2 DP and teaches pages 5–6.",
-      "At level 2, learn section III for 2 DP to add pages 5–6.",
-    )
     .replace(
       "Starting on the turn after you cast it, spend a Maneuver and 1 SP by the end of each turn to maintain it through the end of your following turn, within the printed maximum duration. Perform that upkeep once per turn.",
       "Starting on the turn after you cast it, use the Sustain Spell Maneuver by the end of each turn. " +
@@ -283,7 +271,7 @@ function playtestMagic(markdown) {
 function playtestLearning(markdown) {
   return markdown.replace(
     /^You may learn disciplines and their first three steps during level-0 or level-1 development\. The final ability requires character level 3\./m,
-    "Study paths from level 1 onward. Each step’s printed level applies once you know its preceding step. Spellbook section III and the second steps of Soul Capacity and Mind Capacity require level 2. Learn their deeper capacity steps and the final step of any path at level 3.",
+    "From level 1, learn the first three steps of each discipline path in order. The final step requires level 3. Combined abilities require level 7 and their named branch endpoints. Pay each step’s DP cost.",
   );
 }
 

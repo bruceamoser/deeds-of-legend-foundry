@@ -52,47 +52,21 @@ test("every sample identity can take three distinct starting disciplines", () =>
 test("the playtest gates preserve ordered links and require deeper armor training", () => {
   const state = (level, learned) => ({ level, learned, dp: 12 });
   const get = (id) => forge.nodes.find((entry) => entry.id === id);
-  assert.equal(
-    forge.nodes.filter((entry) => entry.kind === "section" && entry.level === 2)
-      .length,
-    29,
-  );
-  assert.equal(
-    forgeEligibility(
-      forge,
-      state(1, ["elements", "flame:0", "flame:1"]),
-      "flame:2",
-    ).eligible,
-    false,
-  );
-  assert.equal(
-    forgeEligibility(
-      forge,
-      state(2, ["elements", "flame:0", "flame:1"]),
-      "flame:2",
-    ).eligible,
-    true,
-  );
-  assert.equal(
-    forgeEligibility(
-      forge,
-      state(1, ["spellcraft", "spellcraft:soul-capacity:1"]),
-      "spellcraft:soul-capacity:2",
-    ).eligible,
-    false,
-  );
-  assert.equal(
-    forgeEligibility(
-      forge,
-      state(2, [
-        "spellcraft",
-        "spellcraft:soul-capacity:1",
-        "spellcraft:soul-capacity:2",
-      ]),
-      "spellcraft:soul-capacity:3",
-    ).eligible,
-    false,
-  );
+  assert.deepEqual([...new Set(forge.nodes.map(node => node.level))].sort((a,b)=>a-b), [0,3,7]);
+  for (const discipline of forge.disciplines) {
+    for (const path of discipline.paths) {
+      path.steps.forEach((id, index) => {
+        const node = get(id);
+        assert.equal(node.level, index === 3 ? 3 : 0, `${id} level gate`);
+        assert.equal(forgeEligibility(forge, state(1, node.requires), id).eligible, index < 3, `${id} at level 1`);
+      });
+    }
+  }
+  for (const node of forge.nodes.filter(node => node.kind === "combined")) {
+    assert.equal(node.level, 7, node.id);
+    assert.equal(forgeEligibility(forge, state(6,node.requires), node.id).eligible, false, node.id);
+    assert.equal(forgeEligibility(forge, state(7,node.requires), node.id).eligible, true, node.id);
+  }
 
   assert.deepEqual(get("armor:harness:3").requires, ["armor:harness:2"]);
   assert.equal(

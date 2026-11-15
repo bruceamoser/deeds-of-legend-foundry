@@ -20,8 +20,8 @@ character sheet, roll/utility pages, and rules references.
   refilling current SP. Learned Spellcraft can add capacity or aid recovery.
 - The Harness path is Light Armor → Brace in Armor → Armor II → Heavy Armor.
   Heavy training is level 3 and includes Ironbound Advance. The worn, trained
-  suit supplies physical resistance 1/2/3. Spellbook section III opens at
-  level 2; section IV and final path abilities open at level 3. Combined
+  suit supplies physical resistance 1/2/3. The first three steps of every path use only ordered prerequisites and DP costs;
+  section IV and final path abilities open at level 3. Combined
   abilities keep their named endpoints and their level-7 costs of 3/4/5 DP.
 - Sustain Spell uses a Maneuver and costs 0 SP. On the sheet, use **End my
   turn** to move the spell’s timer, and resolve its printed upkeep at the
@@ -38,3 +38,13 @@ who learns four recipes, several field techniques, and utility magic. These
 are examples of reachable builds. At the table, compare how often the
 techniques and spells matter, how many paid spells the party casts in a day,
 and whether the earlier choices stay useful after later upgrades.
+
+## November 15 correction (#293)
+
+Only branch endpoints (level 3) and combined abilities (level 7) have level gates.
+The earlier browser-only level-2 gates on spellbook section III, Spellcraft capacity,
+and Watchful Shot III were unapproved and have been removed, along with
+intermediate level-3 capacity gates. Ordered prerequisites and DP costs still apply.
+The current sheet records manual sustain upkeep as described in
+[the compact Workshop decisions](workshop-compact-289.md); the earlier End my turn
+control described above has been removed.
