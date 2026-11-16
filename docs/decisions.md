@@ -315,3 +315,12 @@ One creation pool, three starting disciplines, DP 8 + Guile + Knowledge + Reason
 Signatures are one free choice at each of 1/3/7, developing a known line or beginning another. A late-start line supplies its foundation; intermediate conditional developments apply only when selected. Sustain is a universal Maneuver costing 0 SP. Fixed durations and directing a hazard are distinct from Sustain; printed hold and escape attributes preserve player-only rolls. Ancestry characteristics carry their modest benefits and natural side effects.
 
 The revised books and Workshop are the acceptance target. Native Foundry remains pinned to its existing source until the separate integration phase. Playtest-dependent encounter balance remains deferred.
+
+
+## November 16 — consistent spellbook atlas geometry (#308)
+
+Bruce found the spellbook fans confusing and approved bringing them into the standard discipline layout. The four spellbook sections retain the same inner loops as other disciplines. A book with mastery spells uses one curved advanced tail, following the standard shoulder and outer mastery band; its short final branches distinguish independent choices. The shared junction is purely visual, not an extra purchase or prerequisite.
+
+Circles, triangles and diamonds continue to identify level-1, level-3 and level-7 entries. Each mastery still requires only its own book's section IV. Costs, spells and learning order are unchanged. Learned and selected states apply to the shared tail and each individual choice separately. The inspector identifies “Master spells · Level 7,” explains that each is a separate choice, and lets the player inspect siblings. This also distinguishes them from the advanced spells learned with section IV.
+
+Validation covers all 29 real book loops and their actual prerequisite graph, master-choice spacing, shared-tail highlighting, legal purchases and reload, and rendered Elements/Life/Invocation/Spellcraft at compact and narrow sizes. The change is confined to the published Workshop; canonical rules and native Foundry remain on their existing pins.

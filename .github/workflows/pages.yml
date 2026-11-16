@@ -51,6 +51,7 @@ jobs:
       - run: npm run test:build-offs
       - run: npm run test:workshop-compact
       - run: npm run test:workshop-forge
+      - run: npm run test:spell-atlas
       - run: npm run test:workshop
       - run: npm run test:ancestry-workshop
       - run: npm run test:workshop-play

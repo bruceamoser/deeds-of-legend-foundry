@@ -70,3 +70,46 @@ test("independent advanced spells attach to book IV and are all available withou
   const html=renderForge(graph,{learned,level:7,dp:20},options(graph,learned,7));
   assert.match(html,/Learn Advanced 1 for 4 DP/);assert.match(html,/Learn Advanced 2 for 4 DP/);
 });
+
+const currentGraph = JSON.parse(await readFile(new URL("../static/data/forge.json", import.meta.url), "utf8"));
+test("every real spellbook keeps its four-node loop and uses one standard tail for its master choices", () => {
+  const before=JSON.stringify(currentGraph);
+  const {positions,edges,stems}=atlasLayout(currentGraph);
+  const arms=currentGraph.disciplines.find(d=>d.id==="arms");
+  const offset=(id,root)=>({x:(positions.get(id).x-positions.get(root).x)||0,y:(positions.get(id).y-positions.get(root).y)||0});
+  for(const discipline of currentGraph.disciplines) for(const [index,path] of discipline.paths.entries()) {
+    if(!path.bookId) continue;
+    const book=currentGraph.books.find(b=>b.id===path.bookId), masters=book.masteryIds??[];
+    assert.equal(path.steps.length,4);
+    assert.deepEqual(path.steps.map(id=>offset(id,discipline.id)),arms.paths[index].steps.slice(0,4).map(id=>offset(id,"arms")));
+    const shared=stems.filter(stem=>stem.from===path.steps.at(-1));
+    assert.equal(shared.length,Number(masters.length>0),book.name);
+    if(!masters.length)continue;
+    assert.deepEqual(shared[0].targets,masters);
+    const standardTail=edges.find(edge=>edge.to===arms.paths[index].steps[4]);
+    assert.match(shared[0].draw,/ Q .* L /);
+    assert.match(standardTail.draw,/ Q /);
+    for(const id of masters) {
+      const edge=edges.find(e=>e.to===id),node=currentGraph.nodes.find(n=>n.id===id),p=offset(id,discipline.id);
+      assert.equal(edge.from,path.steps.at(-1));
+      assert.equal(edge.sharedStem,path.steps.at(-1));
+      assert.deepEqual(node.requires,[path.steps.at(-1)],"a sibling mastery is never a prerequisite");
+      assert.match(edge.draw,/^M [-\d]+ [-\d]+ L [-\d]+ [-\d]+$/,"only a short final connection branches");
+      assert(Math.abs(Math.hypot(p.x,p.y)-195)<1,"mastery stays on the standard outer band");
+    }
+    for(const a of masters) for(const b of masters) if(a!==b)
+      assert(Math.hypot(positions.get(a).x-positions.get(b).x,positions.get(a).y-positions.get(b).y)>30,"mastery choices stay separate");
+  }
+  assert.equal(JSON.stringify(currentGraph),before,"layout never changes the learning graph");
+});
+
+test("a shared spell tail stays learned while each sibling keeps its own status and selected route", () => {
+  const graph=currentGraph, learned=["elements","flame:0","flame:1","flame:2","flame:3","mastery:starfall-volley"];
+  const html=renderForge(graph,{learned,level:7,dp:4},{...options(graph,learned,7),view:"atlas",discipline:"elements",selected:"mastery:meteor-swarm"});
+  assert.equal((html.match(/data-mastery-stem="flame:3"/g)??[]).length,1);
+  assert.match(html,/class="forge-branch forge-mastery-stem is-learned is-highlighted" data-from="flame:3"/);
+  assert.match(html,/data-id="mastery:meteor-swarm" class="forge-node is-available/);
+  assert.match(html,/data-id="mastery:starfall-volley" class="forge-node is-learned/);
+  assert.match(html,/Each master spell is a separate choice after learning this book’s section IV/);
+  assert.match(html,/Other master spells/);
+});
