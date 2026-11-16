@@ -495,7 +495,7 @@ try {
   const playFile = `${output}/borin-play.hol.json`;
   await (await playDownload).saveAs(playFile);
   const played = JSON.parse(await readFile(playFile, "utf8"));
-  assert.equal(played.schemaVersion, 6);
+  assert.equal(played.schemaVersion, 7);
   assert.equal(played.draft.play.conditions[0].key, "burning");
   assert(played.draft.progression.levels[3].signatures[3]);
   await page.locator("#import-file").setInputFiles(playFile);
@@ -1066,7 +1066,7 @@ try {
   );
   assert.deepEqual(failures, []);
   console.info(
-    "Workshop passed: fixed scrolling, live attributes, grants, armor/Bulk/supply, grouped actions, crafting rolls, level replay, independent/revisitable signatures, play inventory/languages/conditions, coin override, named saves, schema-6 export/import and 390px layout; no browser errors.",
+    "Workshop passed: fixed scrolling, live attributes, grants, armor/Bulk/supply, grouped actions, crafting rolls, level replay, independent/revisitable signatures, play inventory/languages/conditions, coin override, named saves, schema-7 export/import and 390px layout; no browser errors.",
   );
 } catch (error) {
   await page.screenshot({ path: `${output}/failure.png`, fullPage: true });
