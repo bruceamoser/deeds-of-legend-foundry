@@ -304,3 +304,14 @@ These findings are recommendations and playtest questions, not approved rule cha
 ## November 15, 2026 — Seven-step progression and character identity rewrite (#299)
 
 Bruce authorized the next books/Workshop rewrite after the Build-Off review. [The delivery record](rewrite-299.md) links the six workstreams and distinguishes agreed architecture from candidate costs and mechanics. Nonmagical branches retain three initial circles, then a level-3 endpoint and two improvements (triangles), then level-7 mastery (diamond). Inter-discipline intersection purchases are removed in the new design; spellbooks retain themed-list progression. Traits carry descriptive benefits/side effects, signatures may develop at milestones, and spell-specific escape attributes are explicit. Fixed-duration hazards preserve positional strategy; Sustain remains a Maneuver at 0 SP. Both books and the web app precede native Foundry. The first contract/budget PR does not itself switch the live catalog.
+
+
+## November 16 — completed progression rewrite (#299–#305)
+
+Bruce corrected nonmagical branch prices to **1 / 2 / 2 / 3 / 4 / 4 / 5 DP**. Adopted exactly: three level-1 entries, three level-3 entries and a level-7 mastery, totaling 21 DP. Additional disciplines retain class-specific 1/2/3 DP prices. Spellbook sections retain 1/2/2/3 DP, and single-book master spells remain separately priced at level 7.
+
+One creation pool, three starting disciplines, DP 8 + Guile + Knowledge + Reason, later DP 4 + new level, and twice the positive class mental attribute for SP are now canonical book rules as well as Workshop behavior. Full implementation and validation notes: [rewrite record](rewrite-299.md). Current-only saved-character migration preserves live resources and equipment and returns changed learning purchases to the DP ledger for reselection; it never silently teaches a different ability.
+
+Signatures are one free choice at each of 1/3/7, developing a known line or beginning another. A late-start line supplies its foundation; intermediate conditional developments apply only when selected. Sustain is a universal Maneuver costing 0 SP. Fixed durations and directing a hazard are distinct from Sustain; printed hold and escape attributes preserve player-only rolls. Ancestry characteristics carry their modest benefits and natural side effects.
+
+The revised books and Workshop are the acceptance target. Native Foundry remains pinned to its existing source until the separate integration phase. Playtest-dependent encounter balance remains deferred.

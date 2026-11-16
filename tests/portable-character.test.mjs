@@ -273,21 +273,19 @@ test("Workshop migrates legacy origin grants, learning, and play records to Forg
   const { draft, preview } = readPortableCharacter(legacy, webCatalogs);
   assert.equal(draft.name, legacy.draft.name);
   assert.deepEqual(draft.profile, legacy.draft.profile);
-  assert.deepEqual(draft.classDisciplines, ["elements", "scholarship"]);
+  assert.equal(draft.classDisciplines.length, 1);
+  assert.ok(forge.classes.find(c=>c.id===draft.classId).disciplineIds.includes(draft.classDisciplines[0]));
   assert.equal(
     forge.origins.find((origin) => origin.id === draft.culture.id).pairs[
       draft.culture.pair
-    ].entryId,
-    "wilderness:foraging:1",
+    ].disciplineId,
+    "wilderness",
   );
-  assert.deepEqual(draft.purchases[0], [
-    { id: "flame:0" },
-    { id: "retired-choice" },
-  ]);
-  assert.equal(
-    draft.progression.levels[3].purchases[0].id,
-    "wilderness:tracking:1",
-  );
+  assert.deepEqual(draft.purchases[0], []);
+  assert.ok(draft.purchases[1].some(entry=>entry.id==="flame:0"));
+  assert.ok(draft.purchases[1].some(entry=>entry.id==="retired-choice"));
+  assert.deepEqual(draft.progression.levels[3].purchases, []);
+  assert.ok(draft.learningReview.includes("wilderness:tracking:1"));
   assert.equal(
     preview.errors.some((error) => error.id === "retired-choice"),
     true,
@@ -309,7 +307,7 @@ test("Workshop migrates legacy origin grants, learning, and play records to Forg
     recipes: ["recipe-bound-torches", "recipe-travel-food"],
   };
   const saved = writePortableCharacter(draft, webCatalogs);
-  assert.equal(JSON.parse(saved).schemaVersion, 4);
+  assert.equal(JSON.parse(saved).schemaVersion, 6);
   assert.deepEqual(readPortableCharacter(saved, webCatalogs).draft, draft);
   assert.throws(
     () => readPortableCharacter(saved, catalogs),

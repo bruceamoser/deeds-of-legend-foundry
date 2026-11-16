@@ -1,3 +1,4 @@
+import { normalizeForgeRecovery } from "./forge-recovery.mjs";
 import { classifyRoll } from "./roll.mjs";
 
 const cap = (value, max) => Math.min(max, Math.max(0, value));
@@ -171,6 +172,8 @@ export function forgeRest(play, limits, { hour } = {}) {
     firstAidPending: false,
     spellcraftRecoveryUsed: false,
     lastRestHour: hour ?? current.lastRestHour,
+    recovery: { ...normalizeForgeRecovery(current.recovery), debtUsed: false },
+    soulWellspringUsed: false, mindPalaceUsed: false,
   }, limits);
 }
 
@@ -181,12 +184,14 @@ export function forgeBeginFirstAid(play, limits) {
   return { ...current, firstAidUsed: true, firstAidPending: true };
 }
 
-export function forgeFinishFirstAid(play, limits, tier, { trained = false, fieldDressing = trained ? 1 : 0 } = {}) {
+export function forgeFinishFirstAid(play, limits, tier, { trained = false, fieldDressing = trained ? 1 : 0, treatment } = {}) {
   const current = forgeVitals(play, limits);
   if (!current.firstAidPending) throw new Error("Begin first aid before resolving the roll.");
   const healing = { weak: 2, standard: 4, strong: 6 }[tier];
   if (!Number.isSafeInteger(healing)) throw new Error("Choose a Weak, Standard, or Strong result.");
-  return forgeHeal({ ...current, firstAidPending: false }, limits, healing + cap(integer(fieldDressing), 2));
+  const treatmentValues = { emergency2: {weak:5, standard:7, strong:9}, mastery: {weak:5, standard:8, strong:11} };
+  if (treatment && !treatmentValues[treatment]) throw new Error("Choose a listed treatment.");
+  return forgeHeal({ ...current, firstAidPending: false }, limits, treatment ? treatmentValues[treatment][tier] : healing + cap(integer(fieldDressing), 2));
 }
 
 export function forgeInterruptFirstAid(play, limits) {
@@ -202,7 +207,7 @@ export function forgeSpellcraftRecovery(play, limits, restored) {
   assertLiving(current);
   if (current.dying) throw new Error("A Dying hero cannot rest or meditate.");
   if (current.spellcraftRecoveryUsed) throw new Error("Spellcraft Recovery is available once between safe overnight rests.");
-  if (![1, 2, 3, 4].includes(restored)) throw new Error("Learn Spellcraft Recovery to use this benefit.");
+  if (![1, 2, 3, 4, 6, 8, 12].includes(restored)) throw new Error("Learn Spellcraft Recovery to use this benefit.");
   return { ...current, sp: Math.min(limits.maxSp, current.sp + restored), spellcraftRecoveryUsed: true };
 }
 

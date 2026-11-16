@@ -1,0 +1,264 @@
+{
+  "format": "heroes-of-legend-character",
+  "schemaVersion": 6,
+  "sourceCommit": "55cbd4c70f13704c684f7ba358f0d75bb62b1f30",
+  "draft": {
+    "name": "Nim Coppercoil",
+    "attributes": {
+      "brawn": 0,
+      "fortitude": 1,
+      "agility": 0,
+      "guile": 0,
+      "knowledge": 2,
+      "reason": 0
+    },
+    "traitIds": [
+      "trait-gnome-fingers-in-the-works",
+      "trait-gnome-bright-idea"
+    ],
+    "classDisciplines": [
+      "divination"
+    ],
+    "languages": {
+      "home": "dwarven",
+      "extraSpoken": []
+    },
+    "purchases": {
+      "0": [],
+      "1": [
+        {
+          "id": "force"
+        },
+        {
+          "id": "telekinesis:0"
+        },
+        {
+          "id": "shaping:0"
+        },
+        {
+          "id": "imbuement:0"
+        },
+        {
+          "id": "craft:repairs:1"
+        },
+        {
+          "id": "craft:mixtures:1"
+        },
+        {
+          "id": "detection:0"
+        },
+        {
+          "id": "craft:safeguards:1"
+        }
+      ]
+    },
+    "acquisitions": {},
+    "shopping": [
+      {
+        "id": "item-ordinary-melee-weapon",
+        "quantity": 1,
+        "hands": 1,
+        "instanceId": "shop-buildoff-artificer-0"
+      },
+      {
+        "id": "item-craft-tools",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-artificer-1"
+      },
+      {
+        "id": "item-material-bundle",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-artificer-2"
+      },
+      {
+        "id": "item-writing-kit",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-artificer-3"
+      },
+      {
+        "id": "item-travel-pack",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-artificer-4"
+      },
+      {
+        "id": "item-food-bundle",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-artificer-5"
+      },
+      {
+        "id": "item-water-flask",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-artificer-6"
+      }
+    ],
+    "ancestryId": "ancestry-gnome",
+    "classId": "class-intellect",
+    "signatureId": "ability-signature-intellect-make-it-last",
+    "culture": {
+      "id": "origin-culture-deep-halls",
+      "pair": 0
+    },
+    "background": {
+      "id": "origin-background-itinerant-tinker",
+      "pair": 1
+    },
+    "loadout": {
+      "shop-buildoff-artificer-0": {
+        "carried": true,
+        "worn": false,
+        "held": true
+      },
+      "shop-buildoff-artificer-1": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      },
+      "shop-buildoff-artificer-2": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      },
+      "shop-buildoff-artificer-3": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      },
+      "shop-buildoff-artificer-4": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      },
+      "shop-buildoff-artificer-5": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      },
+      "shop-buildoff-artificer-6": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      }
+    },
+    "progression": {
+      "level": 7,
+      "levels": {
+        "2": {
+          "purchases": [],
+          "acquisitions": {},
+          "signatures": {}
+        },
+        "3": {
+          "purchases": [
+            {
+              "id": "craft:repairs:2"
+            },
+            {
+              "id": "craft:repairs:3"
+            },
+            {
+              "id": "craft:repairs:4"
+            },
+            {
+              "id": "craft:repairs:5"
+            },
+            {
+              "id": "imbuement:1"
+            }
+          ],
+          "acquisitions": {},
+          "signatures": {
+            "3": "ability-signature-intellect-twofold-making"
+          }
+        },
+        "4": {
+          "purchases": [],
+          "acquisitions": {},
+          "signatures": {}
+        },
+        "5": {
+          "purchases": [],
+          "acquisitions": {},
+          "signatures": {}
+        },
+        "6": {
+          "purchases": [],
+          "acquisitions": {},
+          "signatures": {}
+        },
+        "7": {
+          "purchases": [
+            {
+              "id": "craft:repairs:6"
+            },
+            {
+              "id": "craft:repairs:7"
+            },
+            {
+              "id": "imbuement:2"
+            },
+            {
+              "id": "imbuement:3"
+            },
+            {
+              "id": "shaping:1"
+            },
+            {
+              "id": "shaping:2"
+            },
+            {
+              "id": "shaping:3"
+            },
+            {
+              "id": "telekinesis:1"
+            },
+            {
+              "id": "telekinesis:2"
+            },
+            {
+              "id": "telekinesis:3"
+            },
+            {
+              "id": "craft:workshop:1"
+            },
+            {
+              "id": "craft:workshop:2"
+            },
+            {
+              "id": "craft:workshop:3"
+            },
+            {
+              "id": "craft:workshop:4"
+            },
+            {
+              "id": "detection:1"
+            }
+          ],
+          "acquisitions": {
+            "craft:workshop:1": {
+              "recipes": [
+                "recipe-bound-torches",
+                "recipe-twisted-cord"
+              ]
+            },
+            "craft:workshop:2": {
+              "recipes": [
+                "recipe-travel-food",
+                "recipe-wooden-brace"
+              ]
+            }
+          },
+          "signatures": {
+            "7": "ability-signature-intellect-masterwork-bond"
+          }
+        }
+      }
+    }
+  },
+  "status": "ready"
+}

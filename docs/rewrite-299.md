@@ -19,7 +19,7 @@ The source contract and draft reader explanations are authored in the book repos
 
 - A trait's description carries its mechanics. Glowing low-light eyes impose a hiding **Bane**, not a Boon. Natural drawbacks are common but not compulsory.
 - One signature selection at each of levels 1/3/7: develop a known line or select a new milestone-appropriate signature. Do not award both for one selection.
-- Nonmagical steps: base, improvement, improvement at level 1; major development and two improvements at level 3; mastery at level 7. Costs for new advanced steps are under explicit budget analysis.
+- Nonmagical steps: base, improvement, improvement at level 1; major development and two improvements at level 3; mastery at level 7. Approved costs are **1 / 2 / 2 / 3 / 4 / 4 / 5 DP**: 21 DP for the whole path, 16 through the level-3 developments.
 - North Main Action / west Maneuver / east Reaction / south wildcard. Scholarship, social and Craft reactions need real noncombat triggers and usage boundaries.
 - Spellbooks retain their themed lists and separate progression; Spellcraft's three training paths and Channeling book remain distinct.
 - Remove inter-discipline intersection purchases. Relocate useful mixed-theme concepts instead of requiring remote endpoint combinations.
@@ -40,3 +40,18 @@ Preserve the original `Build-Offs/` comparison baseline. New progression fixture
 ## Evidence record
 
 First pass: reviewed latest book main `d4d4b79` and Workshop main `3a3313e`; identified active source discrepancies above. The DP analysis script/report accompany #300. Traits and signature plans live with the book source. No live catalog, published PDF, Pages bundle or native Foundry behavior is changed by this foundation record alone.
+
+
+## Completed implementation — November 16, 2026
+
+The source rewrite and Workshop now share one canonical current catalog. It contains 329 seven-step training entries (44 nonmagical paths and three Spellcraft paths), 29 spellbooks with 319 spells, 20 book-linked mastery spells, 50 ancestry traits, and 30 signature lines with 90 milestone choices. The existing 19 disciplines retain the class-specific 1/2/3 DP entry prices. Nonmagical branches cost **1/2/2/3/4/4/5 DP**; book sections remain **1/2/2/3 DP**. No remote intersection prerequisite remains.
+
+Creation uses one pool, three starting disciplines, 8 + Guile + Knowledge + Reason DP, varied ancestry SP, and twice the positive class-associated mental attribute for class SP. Later DP is 4 + the new level; maximum SP grows by 2 per level. The Workshop imports these rules directly and bypasses the former overlay when the current catalog is loaded.
+
+The learning list and fullscreen atlas share eligibility, prices and sequential prerequisites. The atlas uses circles, triangles and diamonds, separate advanced tails, strong learned/available states and zoom to 20x. Spellbook libraries include learned master spells, inline full mechanics and favorites. Signatures expose only the foundation and developments actually earned, including a new line selected at a later milestone.
+
+Existing saves apply the current rules automatically. Changed nonmagical and removed combined purchases return to the available DP ledger for relearning; the sheet names the changed choices without blocking play or requiring approval of another rules version. Current HP/SP, equipment and story fields remain intact. Spent resource benefits survive reload; safe overnight rest renews the appropriate benefits, while dawn only releases The Debt Comes Due's unavailable HP.
+
+Validation includes the full package suite, compact real-browser character workflows, atlas learning and saved-character round trips, and revised Build-Offs for all thirteen tropes at levels 1, 3 and 7. The historical comparison documents remain as a dated baseline; `Build-Offs/revised/` is the current legal construction evidence. Numerical legality does not establish combat balance.
+
+Book proof details are recorded in `design/revision/rewrite-299-pdf-quality.md` in the source repository. Final source, PR and deployment links belong to epic #299 and its implementation issues. The native source lock, compendium packs and world Actors are unchanged; native Foundry implementation follows Workshop acceptance.

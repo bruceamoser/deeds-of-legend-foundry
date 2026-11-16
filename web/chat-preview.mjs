@@ -3,7 +3,7 @@ import { attackCard, rollCard, resourceCard } from "./chat-cards.mjs";
 import { rollPlan, classifyRoll } from "./rules/roll.mjs";
 import { inventoryCheck } from "./rules/inventory.mjs";
 import { workshopSupplyUse } from "./rules/workshop-resources.mjs";
-const { draft, opponent: creature, incoming: attack, field, drivingBlow, inventory } = previewExample;
+const { draft, opponent: creature, incoming: attack, field, attackAbility, inventory } = previewExample;
 const log = document.querySelector(".chat-log");
 function append(html) {
   log.insertAdjacentHTML("beforeend", html);
@@ -29,7 +29,7 @@ function sample(mode, faces, net = 0, attribute = 1) {
     attribute: mode === "defense" ? "agility" : "brawn",
     title: previewExample.title(mode),
     effect: previewExample.effect(mode, result.tier),
-    abilities: mode === "ability" ? [drivingBlow.name] : [],
+    abilities: mode === "ability" ? [attackAbility.name] : [],
     roll: {
       plan: rollPlan({
         attribute,

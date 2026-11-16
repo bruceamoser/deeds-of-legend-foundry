@@ -1,3 +1,4 @@
+import { forgeSignatureLearning } from "./forge-signatures.mjs";
 import { ATTRIBUTES } from "./character.mjs";
 import { ancestryBenefits, ancestrySelection } from "./ancestry.mjs";
 import { acquireAbility } from "./acquisition.mjs";
@@ -5,7 +6,7 @@ import { classEligibility } from "./development.mjs";
 import { forgeIndex, forgeLearning, learnForgeEntry } from "./forge.mjs";
 
 const trailRecipeIds = new Set(["recipe-bound-torches", "recipe-fletched-ammunition", "recipe-travel-food", "recipe-twisted-cord", "recipe-wooden-brace"]);
-const recipeSteps = new Set(["craft:supplies:1", "craft:supplies:2"]);
+const recipeSteps = new Set(["craft:supplies:1", "craft:supplies:2", "craft:workshop:1", "craft:workshop:2"]);
 
 export function forgeArmorRequirement(itemId, playtest = false) {
   return {
@@ -45,7 +46,7 @@ export function forgeInventory(inventory, graph) {
         weaponChoice: null,
         recipeChoices: 0,
       })),
-      ...[...recipeSteps].map((id) => ({ id, recipeChoices: 2, items: [], recipes: [] })),
+      ...[...recipeSteps].filter(id => graph.nodes.some(node => node.id === id)).map((id) => ({ id, recipeChoices: 2, items: [], recipes: [] })),
     ],
     recipes: inventory.recipes.map((recipe) => trailRecipeIds.has(recipe.id)
       ? { ...recipe, genericChoice: true, permissions: [...recipeSteps] }
@@ -55,10 +56,12 @@ export function forgeInventory(inventory, graph) {
 
 function summarize(state, graph) {
   const learning = forgeLearning(graph, state.learned);
+  const signatures = forgeSignatureLearning(graph, state.signatureChoices);
   return {
     ...state,
-    abilities: [...learning.abilities.map((entry) => entry.id), ...Object.values(state.signatureChoices)],
-    compatibleRecipes: [...trailRecipeIds].filter((id) => state.learned.includes("craft:supplies:1")),
+    signatureLines: signatures.lines, signatureComponents: signatures.components,
+    abilities: [...learning.abilities.map((entry) => entry.id), ...signatures.abilityIds],
+    compatibleRecipes: [...trailRecipeIds].filter((id) => state.learned.includes("craft:supplies:1") || state.learned.includes("craft:workshop:1")),
     learning,
   };
 }
@@ -80,7 +83,7 @@ function applyPurchases(state, entries, graph, acquisitions, inventory, language
 export function forgeCreationLedger(draft, choices, { graph, inventoryCatalog, languages, initialLanguages = [] }) {
   const errors = [], ledger = [], stages = {};
   const attrs = draft.attributes;
-  const playtest = Boolean(graph.playtest);
+  const playtest = Boolean(graph.playtest || graph.rulesRevision === 299);
   const validRange = ATTRIBUTES.every((key) => Number.isInteger(attrs[key]) && Math.abs(attrs[key]) <= 2);
   if (!validRange || ATTRIBUTES.reduce((sum, key) => sum + attrs[key], 0) !== 3)
     errors.push({ code: "attributes", text: "Assign six attributes from −2 to +2 totaling +3." });

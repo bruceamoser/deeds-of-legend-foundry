@@ -47,7 +47,7 @@ const base = `http://127.0.0.1:${server.address().port}${prefix}`;
 try {
   await page.goto(base + "roll.html");
   await page
-    .getByRole("heading", { name: "Driving Blow I", exact: true })
+    .getByRole("heading", { name: "Measured Cut I", exact: true })
     .waitFor();
   assert.equal(await page.locator(".sheet-links a").count(), 7);
   const range = page.getByRole("slider", {
@@ -105,13 +105,13 @@ try {
     /5d6kh3 \+ \(-1\)/,
   );
   const ability = page.locator(
-    '[data-preview-ability="arms:impact:1"]',
+    '[data-preview-ability="arms:bladework:1"]',
   );
   assert(await ability.isChecked());
   await page.getByRole("button", { name: "Roll", exact: true }).click();
   assert.match(
     await page.locator("#preview-result").innerText(),
-    /Driving Blow I/,
+    /Measured Cut I/,
   );
   await ability.uncheck();
   await page.getByRole("button", { name: "Roll", exact: true }).click();
@@ -135,8 +135,8 @@ try {
     await page.locator("[data-selected-rules]").innerText(),
     /Main Action/,
   );
-  assert.match(await page.locator("[data-selected-rules]").innerText(), /pushes 2 squares/);
-  assert.match(await page.locator("[data-selected-rules]").innerText(), /applies Dazed 1/);
+  assert.match(await page.locator("[data-selected-rules]").innerText(), /3\/4\/6 physical damage/);
+  assert.doesNotMatch(await page.locator("[data-selected-rules]").innerText(), /Measured Cut III/);
   await page.getByText("Selected ability rules", { exact: true }).click();
   for (const width of [760, 390, 320]) {
     await page.setViewportSize({ width, height: 800 });

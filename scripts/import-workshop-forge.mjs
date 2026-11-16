@@ -51,12 +51,15 @@ const equipment = current.filter((record) => record.source.path.startsWith("desi
     ...previous,
     id, name: markdown.match(/^# (.+)/)[1], price, bulk, source,
     ...(isHealingPotion ? { healing } : {}),
+    ...(markdown.match(/\*\*Physical resistance when worn:\*\* (\d+)/) ? { physicalResistance: Number(markdown.match(/\*\*Physical resistance when worn:\*\* (\d+)/)[1]) } : {}),
     specialOrder: markdown.includes("special-order benchmark"),
     handChoices: previous?.handChoices ?? [],
     inventoryDie: id === "item-first-aid-supplies" ? 6 : id === "item-smoke-supply" ? null : previous?.inventoryDie ?? null,
   };
 });
-const party = legacy.characters.map(({ id, draft: original }) => {
+const party = graph.rulesRevision === 299
+  ? JSON.parse(authored("design/characters/examples.json").markdown).party
+  : legacy.characters.map(({ id, draft: original }) => {
   const { markdown } = authored(`design/characters/${id}.md`);
   const draft = structuredClone(original);
   const originText = markdown.split("## Level 0")[1].split("## Level 1")[0];
@@ -101,10 +104,31 @@ const party = legacy.characters.map(({ id, draft: original }) => {
   return { id, draft };
 });
 
+assert.ok(Array.isArray(party) && party.length > 0, "Current authored Workshop examples must contain a nonempty party array");
+if (graph.rulesRevision === 299) {
+  const nodeIds = new Set(graph.nodes.map((node) => node.id));
+  const signatureIds = new Set(graph.signatures.map((signature) => signature.id));
+  const partyIds = new Set();
+  for (const { id, draft } of party) {
+    assert.ok(id && !partyIds.has(id), `Duplicate or missing example id ${id}`); partyIds.add(id);
+    assert.ok(draft && graph.ancestries.some((choice) => choice.id === draft.ancestryId), `Invalid ancestry in ${id}`);
+    assert.ok(graph.classes.some((choice) => choice.id === draft.classId), `Invalid class in ${id}`);
+    assert.equal(draft.classDisciplines?.length, 1, `${id}: choose one class discipline`);
+    assert.ok(signatureIds.has(draft.signatureId), `Unknown signature in ${id}`);
+    assert.equal(draft.purchases?.[0]?.length ?? 0, 0, `${id}: obsolete level-0 purchases`);
+    for (const purchases of Object.values(draft.purchases ?? {})) for (const purchase of purchases)
+      assert.ok(nodeIds.has(purchase.id), `${id}: unknown learning ${purchase.id}`);
+    for (const kind of ["culture", "background"]) {
+      const origin = graph.origins.find((choice) => choice.id === draft[kind]?.id);
+      assert.ok(origin?.pairs[draft[kind]?.pair], `${id}: invalid ${kind} choice`);
+    }
+  }
+}
+
 const filesToWrite = {
-  "static/data/forge-journals.json": { sourceCommit: graph.sourceCommit, records: journals },
-  "static/data/forge-references.json": { sourceCommit: graph.sourceCommit, records, equipment },
-  "static/data/forge-party.json": { sourceCommit: graph.sourceCommit, party },
+  "static/data/forge-journals.json": { sourceCommit: graph.sourceCommit, rulesRevision: graph.rulesRevision, records: journals },
+  "static/data/forge-references.json": { sourceCommit: graph.sourceCommit, rulesRevision: graph.rulesRevision, records, equipment },
+  "static/data/forge-party.json": { sourceCommit: graph.sourceCommit, rulesRevision: graph.rulesRevision, party },
 };
 for (const [path, data] of Object.entries(filesToWrite)) {
   const target = new URL(path, root);

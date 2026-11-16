@@ -1,0 +1,160 @@
+{
+  "format": "heroes-of-legend-character",
+  "schemaVersion": 6,
+  "sourceCommit": "55cbd4c70f13704c684f7ba358f0d75bb62b1f30",
+  "draft": {
+    "name": "Sera Quietstep",
+    "attributes": {
+      "brawn": 1,
+      "fortitude": 1,
+      "agility": 2,
+      "guile": -1,
+      "knowledge": 0,
+      "reason": 0
+    },
+    "traitIds": [
+      "trait-human-weathered",
+      "trait-human-practiced-patience"
+    ],
+    "classDisciplines": [
+      "subterfuge"
+    ],
+    "languages": {
+      "home": "harbor-cant",
+      "extraSpoken": []
+    },
+    "purchases": {
+      "0": [],
+      "1": [
+        {
+          "id": "arms:unarmed:1"
+        },
+        {
+          "id": "arms:unarmed:2"
+        },
+        {
+          "id": "arms:unarmed:3"
+        },
+        {
+          "id": "athletics:balance:1"
+        },
+        {
+          "id": "athletics:leaping:1"
+        }
+      ]
+    },
+    "acquisitions": {},
+    "shopping": [
+      {
+        "id": "item-ordinary-melee-weapon",
+        "quantity": 1,
+        "hands": 1,
+        "instanceId": "shop-buildoff-monk-0"
+      },
+      {
+        "id": "item-travel-pack",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-monk-1"
+      },
+      {
+        "id": "item-food-bundle",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-monk-2"
+      },
+      {
+        "id": "item-water-flask",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-monk-3"
+      },
+      {
+        "id": "item-sleeping-roll",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-monk-4"
+      },
+      {
+        "id": "item-rope-coil",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-monk-5"
+      }
+    ],
+    "ancestryId": "ancestry-human",
+    "classId": "class-blade",
+    "signatureId": "ability-signature-blade-measured-guard",
+    "culture": {
+      "id": "origin-culture-traveling-companies",
+      "pair": 0
+    },
+    "background": {
+      "id": "origin-background-monastery-runaway",
+      "pair": 0
+    },
+    "loadout": {
+      "shop-buildoff-monk-0": {
+        "carried": true,
+        "worn": false,
+        "held": true
+      },
+      "shop-buildoff-monk-1": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      },
+      "shop-buildoff-monk-2": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      },
+      "shop-buildoff-monk-3": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      },
+      "shop-buildoff-monk-4": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      },
+      "shop-buildoff-monk-5": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      }
+    },
+    "progression": {
+      "level": 3,
+      "levels": {
+        "2": {
+          "purchases": [],
+          "acquisitions": {},
+          "signatures": {}
+        },
+        "3": {
+          "purchases": [
+            {
+              "id": "arms:unarmed:4"
+            },
+            {
+              "id": "arms:unarmed:5"
+            },
+            {
+              "id": "arms:unarmed:6"
+            },
+            {
+              "id": "athletics:balance:2"
+            }
+          ],
+          "acquisitions": {},
+          "signatures": {
+            "3": "ability-signature-blade-return-stroke"
+          }
+        }
+      }
+    }
+  },
+  "status": "ready"
+}

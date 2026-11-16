@@ -10,7 +10,10 @@ if (!repository)
 
 const lockPath = new URL("../content/forge-source-lock.json", import.meta.url);
 const outputPath = new URL("../static/data/forge.json", import.meta.url);
-const { commit, records } = JSON.parse(await readFile(lockPath, "utf8"));
+const sourceLock = JSON.parse(await readFile(lockPath, "utf8"));
+const commit = process.env.HOL_BOOK_COMMIT ?? sourceLock.commit;
+const records = sourceLock.records;
+if (commit !== sourceLock.commit) assert.ok(process.argv.includes("--refresh-lock"), "A new HOL_BOOK_COMMIT requires --refresh-lock");
 assert.match(commit, /^[a-f0-9]{40}$/);
 const hashes = new Map();
 const git = (...args) =>
@@ -50,5 +53,5 @@ if (check)
   );
 else await writeFile(outputPath, serialized);
 console.info(
-  `Verified Forge catalog: ${catalog.disciplines.length} disciplines, ${catalog.spells.length} spells, and ${catalog.nodes.filter((node) => node.kind === "combined").length} combined abilities.`,
+  `Verified Forge catalog: ${catalog.disciplines.length} disciplines, ${catalog.spells.length} spells, and ${catalog.nodes.filter((node) => node.kind === "spell-mastery").length} spellbook masteries.`,
 );

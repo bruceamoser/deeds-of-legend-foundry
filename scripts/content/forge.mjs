@@ -2,7 +2,9 @@ import assert from "node:assert/strict";
 import { parseAbilityReference } from "./choices.mjs";
 
 const costs = [1, 2, 2, 3];
-const levels = [0, 0, 0, 3];
+const levels = [1, 1, 1, 3];
+const branchCosts = [1, 2, 2, 3, 4, 4, 5];
+const branchLevels = [1, 1, 1, 3, 3, 3, 7];
 const sections = ["I", "II", "III", "IV"];
 const pages = ["1", "2", "3", "4", "5", "6", "7", "8", "A1", "A2", "A3"];
 const pageSections = [0, 0, 1, 1, 2, 2, 3, 3, 3, 3, 3];
@@ -45,41 +47,26 @@ function readSteps(text, disciplineId, path, training) {
       effect: effect.trim(),
     });
   }
-  assert.equal(steps.length, 4, path.id);
-  assert.deepEqual(
-    steps.map(({ dp }) => dp),
-    costs,
-    path.id,
-  );
-  assert.deepEqual(
-    steps.map(({ level }) => level),
-    levels,
-    path.id,
-  );
+  assert.equal(steps.length, 7, path.id);
+  assert.deepEqual(steps.map(({ dp }) => dp), branchCosts, path.id);
+  assert.deepEqual(steps.map(({ level }) => level), branchLevels, path.id);
   return steps.map((step, i) => {
-    const first = `${path.id}:1`;
+    const improvement = [1, 2, 4, 5].includes(i);
     const node = {
-      id: `${path.id}:${i + 1}`,
-      ...step,
-      kind: training
-        ? "training"
-        : i === 1 || i === 2
-          ? "improvement"
-          : "technique",
-      disciplineId,
-      pathId: path.id,
+      id: `${path.id}:${i + 1}`, ...step,
+      kind: training ? "training" : improvement ? "improvement" : i === 6 ? "mastery" : "technique",
+      disciplineId, pathId: path.id,
       requires: [i ? `${path.id}:${i}` : disciplineId],
+      shape: i === 6 ? "diamond" : i >= 3 ? "triangle" : "circle",
     };
-    if (node.kind === "improvement") node.improves = first;
+    if (improvement) node.improves = `${path.id}:${i < 3 ? 1 : 4}`;
     if (training) {
-      const capacity = step.effect.match(/^Maximum SP \+(\d+)\./);
+      const capacity = step.effect.match(/Increase maximum SP by (?:another )?(\d+)/i);
       if (capacity) node.spCapacity = Number(capacity[1]);
-      else
-        node.spRecovery = Number(
-          match(step.effect, /recover (\d+) SP|restores (\d+) SP/, step.name)
-            .slice(1)
-            .find(Boolean),
-        );
+      else {
+        node.spRecovery = Number(match(step.effect, /recover (\d+) SP|restores (\d+) SP/i, step.name).slice(1).find(Boolean));
+        node.recoveryMinutes = /30 uninterrupted minutes/.test(step.effect) ? 30 : 60;
+      }
     }
     return node;
   });
@@ -110,22 +97,11 @@ function readSpellbook(text, bookId, discipline, endpoint, pathId) {
     .split(/^### /m)
     .slice(1)
     .map((entry, i) => {
-      const [
-        ,
-        spellName,
-        id,
-        page,
-        actionText,
-        sp,
-        attribute,
-        target,
-        duration,
-        effect,
-      ] = match(
-        entry.trim(),
-        /^(.+)\n\n\*\*ID:\*\* (.+)\n\*\*Page:\*\* (.+)\n\*\*Action:\*\* (.+)\n\*\*SP:\*\* (\d+)\n\*\*Attribute:\*\* (.+)\n\*\*Target \/ range:\*\* (.+)\n\*\*Duration:\*\* (.+)\n\n([\s\S]+)$/,
-        `spell profile in ${bookId}`,
-      );
+      const spellName = entry.split("\n")[0].trim();
+      const fields = Object.fromEntries([...entry.matchAll(/^\*\*([^*]+):\*\* (.+)$/gm)].map(([, key, value]) => [key, value]));
+      const { ID: id, Page: page, Action: actionText, SP: sp, Attribute: attribute, "Target / range": target, Duration: duration } = fields;
+      const effect = entry.trim().split("\n\n").slice(2).join("\n\n").trim();
+      assert.ok(id && page && actionText && sp !== undefined && attribute && target && duration && effect, `Incomplete spell profile ${bookId}/${spellName}`);
       const section = sections[pageSections[i]];
       assert.deepEqual([page, spellName, sp, section], rows[i]?.slice(1), id);
       assert.equal(id, `spell:${bookId}:${page.toLowerCase()}`);
@@ -156,6 +132,9 @@ function readSpellbook(text, bookId, discipline, endpoint, pathId) {
         actionText,
         ...timing,
         attribute,
+        defense: fields.Defense ?? null, defenseAttribute: fields.Defense ?? null,
+        holdAttribute: fields["Hold attribute"] ?? null,
+        escapeAttribute: fields["Escape attribute"] ?? null,
         target,
         duration,
         effect,
@@ -232,11 +211,10 @@ export function parseForge(read, list, sourceCommit) {
     spells = [],
     books = [];
   const development = read("design/development.md");
-  const [, ancestrySp, classSp] = match(
-    development,
-    /^Ancestry, culture and background each contribute (\d+) maximum SP at level 0\. Class adds (\d+) at level 1,/m,
-    "starting SP",
-  );
+  assert.ok(/8.*Guile.*Knowledge.*Reason/s.test(development), "Current creation DP rules missing");
+  const signatureDevelopment = JSON.parse(read("design/signature-development.json"));
+  assert.deepEqual(signatureDevelopment.choiceLevels, [1, 3, 7]);
+  const signatureMetadata = index(signatureDevelopment.signatures, (entry) => entry.id, "signature development");
   const endpointEntries = [
     ...read("design/magic-endpoints.md").matchAll(
       /^## (.+)\nID: ([\w-]+:3)\nDiscipline: (.+)\nList: (.+)\nPages 7–8: (.+)\nAdvanced pages: (.+)$/gm,
@@ -270,19 +248,20 @@ export function parseForge(read, list, sourceCommit) {
       name,
       kind: "discipline",
       dp: 1,
-      level: 0,
+      level: 1,
       requires: [],
       effect: theme,
     });
     for (const [, pathName, body] of text.matchAll(
       /^## (.+)\n([\s\S]*?)(?=^## |(?![\s\S]))/gm,
     )) {
-      if (id === "spellcraft" && pathName === "Channeling") continue;
+      if (!/^### /m.test(body)) continue;
       const path = { id: `${id}:${slug(pathName)}`, name: pathName };
       const entries = readSteps(body, id, path, id === "spellcraft");
       discipline.paths.push({
         ...path,
         steps: entries.map((entry) => entry.id),
+        direction: ["north", "west", "east", "south"][discipline.paths.length],
       });
       nodes.push(...entries);
     }
@@ -336,39 +315,25 @@ export function parseForge(read, list, sourceCommit) {
   index(books, (book) => book.id, "spellbook");
   index(spells, (spell) => spell.id, "spell");
 
-  for (const part of read("design/combined-abilities.md")
-    .split(/^## /m)
-    .slice(1)) {
-    const [, name, dp, level, references, effect] = match(
-      part.trim(),
-      /^(.+)\nDP: (\d+) \| Level: (\d+)\nRequires: (.+)\n([\s\S]+)$/,
-      "combined ability",
-    );
-    const requires = references.split(", ");
-    const parents = requires.map((id) => {
-      assert.ok(
-        endpointIds.has(id),
-        `${name} requires an unknown or incomplete endpoint ${id}`,
-      );
-      return nodeById.get(id);
-    });
-    assert.ok(requires.length >= 2 && requires.length <= 4, name);
-    assert.equal(
-      new Set(parents.map((parent) => parent.disciplineId)).size,
-      requires.length,
-      name,
-    );
-    assert.equal(Number(dp), requires.length + 1, name);
-    assert.equal(Number(level), 7, name);
-    nodes.push({
-      id: `combined:${slug(name)}`,
-      name,
-      kind: "combined",
-      dp: Number(dp),
-      level: Number(level),
-      requires,
-      effect,
-    });
+  // A mastery deepens its own book; it is not a fifth section or a confluence.
+  for (const part of read("design/spell-masteries.md").split(/^## /m).slice(1)) {
+    const [, name, spellId, bookId, dp, level] = match(part, /^(.+)\nID: (spell-mastery:[\w-]+)\nBook: ([\w-]+)\nDP: (\d+) \| Level: (\d+)/, "spell mastery header");
+    assert.equal(Number(dp), 4, name); assert.equal(Number(level), 7, name);
+    const book = books.find((entry) => entry.id === bookId);
+    assert.ok(book, `Unknown mastery book ${bookId}`);
+    const fields = Object.fromEntries([...part.matchAll(/^\*\*([^*]+):\*\* (.+)$/gm)].map(([, key, value]) => [key, value]));
+    const actionText = fields.Action, [action, detail] = actionText.split(" · ");
+    const effect = part.trim().split("\n\n").slice(2).join("\n\n").trim();
+    assert.ok(fields.SP !== undefined && fields.Attribute && fields["Target / range"] && fields.Duration && effect, name);
+    const id = spellId.replace(/^spell-mastery:/, "mastery:");
+    spells.push({ id: spellId, name, bookId, page: "Mastery", masteryId: id, sp: Number(fields.SP), action, actionText,
+      ...(action === "Reaction" ? {trigger: detail} : action === "Ritual" ? {ritualTime: detail} : {}),
+      attribute: fields.Attribute, defense: fields.Defense ?? null, defenseAttribute: fields.Defense ?? null,
+      holdAttribute: fields["Hold attribute"] ?? null, escapeAttribute: fields["Escape attribute"] ?? null,
+      target: fields["Target / range"], duration: fields.Duration, effect });
+    nodes.push({ id, name, kind: "spell-mastery", disciplineId: book.disciplineId, pathId: book.pathId, bookId,
+      dp: Number(dp), level: Number(level), shape: "diamond", requires: [`${bookId}:3`], spellIds: [spellId], effect });
+    (book.masteryIds ??= []).push(id);
   }
 
   const firstSteps = index(
@@ -402,20 +367,13 @@ export function parseForge(read, list, sourceCommit) {
     const text = read(file);
     const id = file.split("/").at(-1).replace(/\.md$/, "");
     const kind = id.split("-")[0];
-    const pairs = [
-      ...text.matchAll(
-        /^- \*\*(.+) access\*\* and \[([^\]]+)\]\(\.\.\/([^\)]+)\)\.$/gm,
-      ),
-    ].map(([, disciplineName, entryName, path]) => {
-      const entry = findFirst(path, entryName);
-      assert.equal(
-        disciplineByName.get(disciplineName)?.id,
-        entry.disciplineId,
-        file,
-      );
-      return { disciplineId: entry.disciplineId, entryId: entry.id };
+    const choiceNames = match(text, /^\*\*Discipline choices:\*\* (.+)\.$/m, file)[1].split(", ");
+    assert.equal(choiceNames.length, 2, file);
+    const pairs = choiceNames.map((name) => {
+      const discipline = disciplineByName.get(name);
+      assert.ok(discipline, `Unknown discipline ${name} in ${file}`);
+      return { disciplineId: discipline.id };
     });
-    assert.equal(pairs.length, 2, file);
     assert.ok(["culture", "background"].includes(kind), file);
     return {
       id: `origin-${id}`,
@@ -423,32 +381,19 @@ export function parseForge(read, list, sourceCommit) {
       kind,
       pairs,
       coinContribution: coins(text),
-      spContribution: Number(ancestrySp),
+      spContribution: Number(match(text, /\*\*Starting SP contribution:\*\* \+(\d+) maximum SP/, file)[1]),
       referenceMarkdown: text,
     };
   });
 
   const originRedirects = Object.fromEntries(
-    Object.entries(JSON.parse(read("design/migration/origin-grants.json"))).map(
-      ([key, entry]) => {
-        const node = findFirst(entry.source, entry.ability);
-        const originId = `origin-${key.split(":")[0].replace(/\.md$/, "")}`;
-        const origin = origins.find((record) => record.id === originId);
-        assert.ok(
-          origin?.pairs.some((pair) => pair.entryId === node.id),
-          key,
-        );
-        assert.equal(
-          node.disciplineId,
-          disciplineByName.get(entry.discipline)?.id,
-          key,
-        );
-        return [
-          key,
-          { originId, entryId: node.id, disciplineId: node.disciplineId },
-        ];
-      },
-    ),
+    Object.entries(JSON.parse(read("design/migration/origin-grants.json"))).map(([key, entry]) => {
+      const originId = `origin-${key.split(":")[0].replace(/\.md$/, "")}`;
+      const origin = origins.find((record) => record.id === originId);
+      const disciplineId = disciplineByName.get(entry.discipline)?.id;
+      assert.ok(origin && disciplineId, key);
+      return [key, { originId, disciplineId }];
+    }),
   );
 
   const signatures = [];
@@ -456,36 +401,23 @@ export function parseForge(read, list, sourceCommit) {
     const text = read(file);
     const id = `class-${file.split("/").at(-1).replace(/\.md$/, "")}`;
     const name = title(text);
-    const [, hp] = match(
-      text,
-      /HP contribution \+(\d+) at level 1 and per level thereafter/,
-      `HP for ${id}`,
-    );
-    const [, sp] = match(
-      text,
-      /^\*\*Starting SP contribution:\*\* \+(\d+) maximum SP once, at level 1\.$/m,
-      `SP for ${id}`,
-    );
-    assert.equal(sp, classSp, id);
-    const [, choices] = match(
-      text,
-      /^\*\*Starting disciplines:\*\* choose two distinct disciplines from (.+)\.$/m,
-      `disciplines for ${id}`,
-    );
+    const hp = match(text, /\*\*HP contribution:\*\* \+(\d+) at level 1/, `HP for ${id}`)[1];
+    const spAttribute = match(text, /Starting SP contribution:\*\* Twice your positive (\w+)/, `SP for ${id}`)[1].toLowerCase();
+    const choices = match(text, /^\*\*Starting disciplines:\*\* Choose one of ([^.]+)\./m, `disciplines for ${id}`)[1];
     const disciplineIds = choices.split(", ").map((choice) => {
-      const discipline = disciplineByName.get(choice);
-      assert.ok(discipline, choice);
-      return discipline.id;
+      const discipline = disciplineByName.get(choice); assert.ok(discipline, choice); return discipline.id;
     });
-    const minimumAttributes = text.includes("no attribute minimums")
-      ? []
-      : match(
-          text,
-          /minimum 0 in (\w+)(?:, | and )(\w+); HP contribution/,
-          `attributes for ${id}`,
-        )
-          .slice(1)
-          .map((attribute) => attribute.toLowerCase());
+    assert.equal(disciplineIds.length, 4, id);
+    const minimumAttributes = /no attribute minimums/i.test(text) ? [] : match(text, /Minimum 0 in (\w+)(?:, | and )(\w+)/i, `attributes for ${id}`).slice(1).map((attribute) => attribute.toLowerCase());
+    const costText = match(text, /^\*\*Learning costs:\*\* (.+)$/m, `class prices ${id}`)[1];
+    const disciplineCosts = {};
+    for (const [, cost, names] of costText.matchAll(/\*\*(1|2|3) DP:\*\* ([^.]+)\./g))
+      for (const name of names.split(", ")) {
+        const discipline = disciplineByName.get(name); assert.ok(discipline, name);
+        assert.equal(disciplineCosts[discipline.id], undefined, `Duplicate class price ${id}/${name}`);
+        disciplineCosts[discipline.id] = Number(cost);
+      }
+    assert.equal(Object.keys(disciplineCosts).length, disciplines.length, `Incomplete class prices ${id}`);
     const signatureChoices = Object.fromEntries(
       [...text.matchAll(/^## Level (\d+) choices\n\n((?:- .+\n)+)/gm)].map(
         ([, level, choices]) => {
@@ -500,7 +432,14 @@ export function parseForge(read, list, sourceCommit) {
               [label, Number(level), null],
               filename,
             );
-            signatures.push({ ...card, classId: id });
+            const metadata = signatureMetadata.get(filename);
+            assert.ok(metadata, `Missing signature development ${filename}`);
+            assert.equal(metadata.classId, id); assert.equal(metadata.level, card.level);
+            const abilityId = (sourceId) => sourceId ? `ability-${sourceId}` : null;
+            signatures.push({ ...card, classId: id, lineId: metadata.lineId,
+              foundationId: abilityId(metadata.foundationId), upgradeFrom: abilityId(metadata.upgradeFrom),
+              includes: metadata.includes.map(abilityId), conditionalIncludes: metadata.conditionalIncludes.map(abilityId),
+              components: metadata.components.map((component) => ({...component, id: abilityId(component.id)})) });
             return card.id;
           });
           assert.equal(ids.length, 3, `${id} level ${level} signatures`);
@@ -516,7 +455,9 @@ export function parseForge(read, list, sourceCommit) {
       signatures: signatureChoices,
       minimumAttributes,
       hpContribution: Number(hp),
-      spContribution: Number(sp),
+      spAttribute,
+      spMultiplier: 2,
+      disciplineCosts,
       coinContribution: coins(text),
       referenceMarkdown: text,
     };
@@ -537,7 +478,7 @@ export function parseForge(read, list, sourceCommit) {
         id: `ancestry-${ancestryAliases[filename] ?? filename}`,
         name: title(text),
         hpContribution: Number(hp),
-        spContribution: Number(ancestrySp),
+        spContribution: Number(match(text, /\*\*Starting SP contribution:\*\* \+(\d+) maximum SP/, file)[1]),
         baseSpeed: Number(speed),
         coinContribution: coins(text),
       };
@@ -548,10 +489,10 @@ export function parseForge(read, list, sourceCommit) {
   for (const [, label, filename] of read("design/catalog.md").matchAll(
     /^- \[([^\]]+)\]\(cards\/([\w-]+)\.md\)$/gm,
   )) {
-    if (signatureIds.has(`ability-${filename}`)) continue;
+    if (filename.startsWith("signature-") || signatureIds.has(`ability-${filename}`)) continue;
     const card = readCard(read(`design/cards/${filename}.md`));
     assert.equal(card.name, label, filename);
-    assert.equal(card.level, 0, filename);
+    assert.equal(card.level, card.dp === null ? 0 : 1, filename);
     if (card.dp === null) basicActions.push(card);
     else {
       assert.equal(card.dp, 1, filename);
@@ -560,12 +501,25 @@ export function parseForge(read, list, sourceCommit) {
   }
 
   index(nodes, (node) => node.id, "node");
+  index(spells, (spell) => spell.id, "spell including masteries");
+  const allNodeIds = new Set(nodes.map((node) => node.id));
+  for (const node of nodes) for (const prerequisite of node.requires ?? []) assert.ok(allNodeIds.has(prerequisite), `${node.id}: unknown prerequisite ${prerequisite}`);
+  const abilityId = (id) => id ? `ability-${id}` : null;
+  const importedDevelopment = {
+    ...signatureDevelopment,
+    signatures: signatureDevelopment.signatures.map((entry) => ({ ...entry,
+      id: abilityId(entry.id), foundationId: abilityId(entry.foundationId), upgradeFrom: abilityId(entry.upgradeFrom),
+      includes: entry.includes.map(abilityId), conditionalIncludes: entry.conditionalIncludes.map(abilityId),
+      components: entry.components.map((component) => ({ ...component, id: abilityId(component.id) })) })),
+    displaced: signatureDevelopment.displaced.map((entry) => ({ ...entry, id: abilityId(entry.id) })),
+  };
+  for (const entry of importedDevelopment.displaced) assert.ok(allNodeIds.has(entry.destination) || spells.some((spell) => spell.id === entry.destination), `Missing rehomed concept ${entry.id}: ${entry.destination}`);
   assert.deepEqual(
     [
       disciplines.length,
       books.length,
       spells.length,
-      nodes.filter((node) => node.kind === "combined").length,
+      nodes.filter((node) => node.kind === "spell-mastery").length,
       classes.length,
       signatures.length,
       origins.length,
@@ -573,11 +527,14 @@ export function parseForge(read, list, sourceCommit) {
       basicActions.length,
       nodes.filter((node) => node.kind === "talent").length,
     ],
-    [19, 29, 319, 41, 10, 90, 50, 10, 18, 6],
+    [19, 29, 339, 20, 10, 90, 50, 10, 19, 6],
     "Forge catalog coverage",
   );
   return {
     schemaVersion: 1,
+    rulesRevision: 299,
+    signatureDevelopment: importedDevelopment,
+    migration: { disciplines: JSON.parse(read("design/discipline-migration.json")), signatureDispositions: importedDevelopment.displaced, learningRedirects: redirects, originRedirects },
     sourceCommit,
     disciplines,
     nodes,

@@ -1,0 +1,147 @@
+{
+  "format": "heroes-of-legend-character",
+  "schemaVersion": 6,
+  "sourceCommit": "55cbd4c70f13704c684f7ba358f0d75bb62b1f30",
+  "draft": {
+    "name": "Thalen Reedwalker",
+    "attributes": {
+      "brawn": 0,
+      "fortitude": 0,
+      "agility": 1,
+      "guile": 0,
+      "knowledge": 0,
+      "reason": 2
+    },
+    "traitIds": [
+      "trait-elf-leaf-listener",
+      "trait-elf-unhurried-grace"
+    ],
+    "classDisciplines": [
+      "life"
+    ],
+    "languages": {
+      "home": "elven",
+      "extraSpoken": []
+    },
+    "purchases": {
+      "0": [],
+      "1": [
+        {
+          "id": "growth:0"
+        },
+        {
+          "id": "growth:1"
+        },
+        {
+          "id": "transformation:0"
+        },
+        {
+          "id": "water:0"
+        },
+        {
+          "id": "earth:0"
+        },
+        {
+          "id": "wilderness:animal-handling:1"
+        },
+        {
+          "id": "wilderness:tracking:1"
+        }
+      ]
+    },
+    "acquisitions": {},
+    "shopping": [
+      {
+        "id": "item-ordinary-melee-weapon",
+        "quantity": 1,
+        "hands": 1,
+        "instanceId": "shop-buildoff-druid-0"
+      },
+      {
+        "id": "item-travel-pack",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-druid-1"
+      },
+      {
+        "id": "item-food-bundle",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-druid-2"
+      },
+      {
+        "id": "item-water-flask",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-druid-3"
+      },
+      {
+        "id": "item-sleeping-roll",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-druid-4"
+      },
+      {
+        "id": "item-rope-coil",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-druid-5"
+      },
+      {
+        "id": "item-lighting-bundle",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-druid-6"
+      }
+    ],
+    "ancestryId": "ancestry-elf",
+    "classId": "class-shepherd",
+    "signatureId": "ability-signature-shepherd-borrowed-shape",
+    "culture": {
+      "id": "origin-culture-forest-communities",
+      "pair": 0
+    },
+    "background": {
+      "id": "origin-background-storm-survivor",
+      "pair": 0
+    },
+    "loadout": {
+      "shop-buildoff-druid-0": {
+        "carried": true,
+        "worn": false,
+        "held": true
+      },
+      "shop-buildoff-druid-1": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      },
+      "shop-buildoff-druid-2": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      },
+      "shop-buildoff-druid-3": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      },
+      "shop-buildoff-druid-4": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      },
+      "shop-buildoff-druid-5": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      },
+      "shop-buildoff-druid-6": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      }
+    }
+  },
+  "status": "ready"
+}

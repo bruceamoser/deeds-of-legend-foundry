@@ -1,0 +1,189 @@
+{
+  "format": "heroes-of-legend-character",
+  "schemaVersion": 6,
+  "sourceCommit": "55cbd4c70f13704c684f7ba358f0d75bb62b1f30",
+  "draft": {
+    "name": "Vaelis Quillstar",
+    "attributes": {
+      "brawn": -1,
+      "fortitude": 0,
+      "agility": 1,
+      "guile": 0,
+      "knowledge": 2,
+      "reason": 1
+    },
+    "traitIds": [
+      "trait-high-elf-starlight-eyes",
+      "trait-high-elf-weight-of-centuries"
+    ],
+    "classDisciplines": [
+      "force"
+    ],
+    "languages": {
+      "home": "elven",
+      "extraSpoken": []
+    },
+    "purchases": {
+      "0": [],
+      "1": [
+        {
+          "id": "telekinesis:0"
+        },
+        {
+          "id": "telekinesis:1"
+        },
+        {
+          "id": "shaping:0"
+        },
+        {
+          "id": "animation:0"
+        },
+        {
+          "id": "imbuement:0"
+        },
+        {
+          "id": "detection:0"
+        },
+        {
+          "id": "scholarship:investigation:1"
+        },
+        {
+          "id": "spellcraft"
+        },
+        {
+          "id": "spellcraft:soul-capacity:1"
+        },
+        {
+          "id": "spellcraft:recovery:1"
+        }
+      ]
+    },
+    "acquisitions": {},
+    "shopping": [
+      {
+        "id": "item-ordinary-melee-weapon",
+        "quantity": 1,
+        "hands": 1,
+        "instanceId": "shop-buildoff-wizard-0"
+      },
+      {
+        "id": "item-writing-kit",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-wizard-1"
+      },
+      {
+        "id": "item-travel-pack",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-wizard-2"
+      },
+      {
+        "id": "item-food-bundle",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-wizard-3"
+      },
+      {
+        "id": "item-water-flask",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-wizard-4"
+      },
+      {
+        "id": "item-sleeping-roll",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-wizard-5"
+      },
+      {
+        "id": "item-lighting-bundle",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-wizard-6"
+      }
+    ],
+    "ancestryId": "ancestry-high-elf",
+    "classId": "class-arcanist",
+    "signatureId": "ability-signature-arcanist-study-the-pattern",
+    "culture": {
+      "id": "origin-culture-learning-houses",
+      "pair": 0
+    },
+    "background": {
+      "id": "origin-background-weather-apprentice",
+      "pair": 1
+    },
+    "loadout": {
+      "shop-buildoff-wizard-0": {
+        "carried": true,
+        "worn": false,
+        "held": true
+      },
+      "shop-buildoff-wizard-1": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      },
+      "shop-buildoff-wizard-2": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      },
+      "shop-buildoff-wizard-3": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      },
+      "shop-buildoff-wizard-4": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      },
+      "shop-buildoff-wizard-5": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      },
+      "shop-buildoff-wizard-6": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      }
+    },
+    "progression": {
+      "level": 3,
+      "levels": {
+        "2": {
+          "purchases": [],
+          "acquisitions": {},
+          "signatures": {}
+        },
+        "3": {
+          "purchases": [
+            {
+              "id": "telekinesis:2"
+            },
+            {
+              "id": "telekinesis:3"
+            },
+            {
+              "id": "spellcraft:soul-capacity:2"
+            },
+            {
+              "id": "spellcraft:soul-capacity:3"
+            },
+            {
+              "id": "spellcraft:soul-capacity:4"
+            }
+          ],
+          "acquisitions": {},
+          "signatures": {
+            "3": "ability-signature-arcanist-reading-the-weave"
+          }
+        }
+      }
+    }
+  },
+  "status": "ready"
+}

@@ -238,6 +238,7 @@ function armorReference(record, training, resistance) {
 }
 
 export function applyForgePlaytest(graph, references) {
+  if (graph.rulesRevision === 299) return { forge: { ...graph, playtest: true }, references };
   const disciplines = new Map(
     graph.disciplines.map(({ id, name }) => [id, name]),
   );

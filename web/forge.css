@@ -739,3 +739,26 @@
 .forge-map button.is-learned::after {font-size:clamp(7px,calc(7px * var(--map-zoom)),24px);}
 .forge-map-scroll.show-node-labels .forge-node-label {font-size:16px;}
 .forge-map .forge-label-left .forge-node-label {left:auto;right:calc(100% + 5px);}
+
+/* Shape is the level gate; fill and the outer rim are the learning state. */
+.forge-map button.forge-map-step,
+.forge-map button.forge-map-step:is(.is-learned,.is-available,.is-later,:hover,[aria-pressed="true"]) {
+  border:0; border-radius:0; background:transparent; box-shadow:none;
+}
+.forge-node-shape {width:100%;height:100%;overflow:visible;pointer-events:none;}
+.forge-shape-halo {fill:none;stroke:transparent;stroke-width:8;stroke-linejoin:round;}
+.forge-shape-body {fill:#14271f;stroke:#4e8266;stroke-width:2.5;stroke-linejoin:round;}
+.forge-map-step.is-available .forge-shape-halo {stroke:#dfb754;}
+.forge-map-step.is-available .forge-shape-body {stroke:#4e8266;fill:#14271f;}
+.forge-map-step.is-learned .forge-shape-body {fill:#e4bb54;stroke:#fff0b9;}
+.forge-map-step:is(:hover,:focus-visible,[aria-pressed="true"]) .forge-shape-body {stroke:#fff3c5;}
+.forge-map-step:focus-visible {outline:2px solid #fff3c5;outline-offset:5px;}
+.forge-map button.forge-map-root.is-available {background:#14271f;border:2px solid #4e8266;box-shadow:0 0 0 3px #dfb754;}
+.forge-map button.forge-map-root.is-later {background:#14271f;border:1px solid #4e8266;box-shadow:none;}
+.forge-map .forge-map-step.is-learned::after {font-size:clamp(7px,calc(7px * var(--map-zoom)),16px);}
+.forge-map .forge-level-3.is-learned::after {padding-top:5px;}
+.forge-map-focus .forge-map-step {width:24px;height:24px;}
+.forge-map-focus .forge-map-end {width:28px;height:28px;}
+.forge-shape-key {white-space:nowrap;color:var(--forest);}
+.forge-key-available::before {border:1px solid #4e8266;background:#14271f;box-shadow:0 0 0 2px #dfb754;}
+.forge-key-later::before {border:1px solid #4e8266;background:transparent;}

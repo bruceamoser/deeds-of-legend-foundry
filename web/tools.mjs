@@ -61,9 +61,26 @@ const heroes = party.map((p) => ({
   ...p,
   character: workshopCharacter(p.draft, catalogs),
 }));
-const hero = heroes[0],
-  crafter = heroes.find((p) => craftingActions(p.character, catalogs).some(({ recipe }) => recipe.id === "recipe-travel-food"))
-    ?? heroes.find((p) => craftingActions(p.character, catalogs).length);
+const hero = heroes[0];
+// The crafting tool demonstrates Oren's later studies; keep the six starting
+// heroes untouched and validate the same DP/recipe choices used by the sheet.
+function craftingExample() {
+  const sample = heroes.find(p => p.draft.name === "Oren Brass");
+  if (!sample || catalogs.forge.rulesRevision !== 299) return null;
+  const draft = structuredClone(sample.draft);
+  draft.progression = { level: 2, levels: { 2: {
+    purchases: [1, 2, 3].map(step => ({ id: `craft:workshop:${step}` })),
+    signatures: {}, acquisitions: {
+      "craft:workshop:1": { recipes: ["recipe-travel-food", "recipe-bound-torches"] },
+      "craft:workshop:2": { recipes: ["recipe-twisted-cord", "recipe-wooden-brace"] },
+    },
+  } } };
+  const character = workshopCharacter(draft, catalogs);
+  if (!character.valid) throw new Error("The crafting example must meet current learning requirements.");
+  return { ...sample, draft, character };
+}
+const crafter = heroes.find((p) => craftingActions(p.character, catalogs).some(({ recipe }) => recipe.id === "recipe-travel-food"))
+  ?? heroes.find((p) => craftingActions(p.character, catalogs).length) ?? craftingExample();
 const entries = [
   ...journals.records.map((r) => ({ ...r, name: r.title, category: "Rules" })),
   ...catalogs.choices
@@ -387,12 +404,12 @@ function crafting() {
         .join("")}</select></label>`
     : `<h2>Project progress</h2><div class="tool-progress"><progress max="${recipe.target}" value="${stocks[recipe.id] ?? 0}"></progress><strong data-project-progress>${stocks[recipe.id] ?? 0} / ${recipe.target}</strong></div><p>${products[recipe.id] ?? 0} finished product${products[recipe.id] === 1 ? "" : "s"}</p>`;
   app.innerHTML =
-    banner("Crafting", crafter.draft.name ?? "Oren Brass") +
+    banner("Crafting", `${crafter.draft.name ?? "Oren Brass"} · Level ${crafter.character.development.level}`) +
     `<div class="craft-layout"><aside class="craft-list">${[...new Map(recipes.map((r) => [r.recipe.id, r.recipe])).values()].map((r) => btn(esc(r.name), "recipe", `data-id="${r.id}" aria-pressed="${r.id === recipe.id}"`)).join("")}</aside><div><section class="tool-box"><h2>${esc(recipe.name)}</h2><p>${esc(ability.name)} · ${recipe.attemptMinutes} min / attempt · ${cap}</p>${metadata.map((t) => ruleMarkup(t, resolveLink)).join("")}<div class="tool-actions">${btn("Begin attempt", "begin-craft", "", "primary")}${ruleButton(recipe.id)}</div></section><section class="tool-box">${result}</section>${craftNotice ? `<div class="tool-result" role="status">${esc(craftNotice)}</div>` : ""}<section class="tool-box"><h2>Attempts</h2>${jobs.length ? jobs.map((j) => `<div class="stat-row"><span>${esc(j.recipe.name)} · ${j.recipe.attemptMinutes} min${j.complete ? " · Complete" : ""}</span>${!j.complete ? btn("Resolve", "resolve-craft", `data-id="${j.id}"`) : ""}</div>`).join("") : "<p>No attempts in progress.</p>"}</section></div></div><p class="tool-help">Local crafting example · tools, materials and elapsed time are judged at the table. No world time or saved inventory changes.</p>`;
 }
 
 function trailWorkshopSteps(tier) {
-  if (!crafter.character.state.learned?.includes("craft:supplies:3")) return;
+  if (!crafter.character.state.learned?.includes(catalogs.forge.rulesRevision === 299 ? "craft:workshop:3" : "craft:supplies:3")) return;
   return { weak: 1, standard: 3, strong: 4 }[tier];
 }
 

@@ -1,4 +1,4 @@
-import { readPortableCharacter, PORTABLE_FORMAT, WORKSHOP_PLAYTEST_VERSION } from "../src/rules/portable-character.mjs";
+import { readPortableCharacter, PORTABLE_FORMAT, WORKSHOP_PLAYTEST_VERSION, portableVersion } from "../src/rules/portable-character.mjs";
 
 // These six example heroes show different ways to use a single level-1 pool.
 // Keep identity, signatures and gear from the book's examples.
@@ -30,6 +30,11 @@ const plans = {
 };
 
 export function workshopPlaytestParty(party, catalogs) {
+  if (catalogs.forge.rulesRevision === 299) return party.map(hero => {
+    const result = readPortableCharacter({format: PORTABLE_FORMAT, schemaVersion: portableVersion(catalogs), draft: hero.draft}, catalogs);
+    if (!result.preview.valid) throw new Error(`Invalid current example ${hero.id}: ${JSON.stringify(result.preview.errors)}`);
+    return {...hero, draft: result.draft};
+  });
   return party.map((hero) => {
     const [culture, background, discipline, learning] = plans[hero.draft.name];
     const draft = structuredClone(hero.draft);

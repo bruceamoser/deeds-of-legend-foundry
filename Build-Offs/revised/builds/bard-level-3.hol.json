@@ -1,0 +1,172 @@
+{
+  "format": "heroes-of-legend-character",
+  "schemaVersion": 6,
+  "sourceCommit": "55cbd4c70f13704c684f7ba358f0d75bb62b1f30",
+  "draft": {
+    "name": "Lysa Silverstring",
+    "attributes": {
+      "brawn": -1,
+      "fortitude": 0,
+      "agility": 0,
+      "guile": 2,
+      "knowledge": 1,
+      "reason": 1
+    },
+    "traitIds": [
+      "trait-human-shared-table",
+      "trait-human-practiced-patience"
+    ],
+    "classDisciplines": [
+      "guard"
+    ],
+    "languages": {
+      "home": "harbor-cant",
+      "extraSpoken": []
+    },
+    "purchases": {
+      "0": [],
+      "1": [
+        {
+          "id": "emotion:0"
+        },
+        {
+          "id": "emotion:1"
+        },
+        {
+          "id": "perception:0"
+        },
+        {
+          "id": "thought:0"
+        },
+        {
+          "id": "influence:negotiation:1"
+        },
+        {
+          "id": "influence:negotiation:2"
+        },
+        {
+          "id": "influence:leadership:1"
+        },
+        {
+          "id": "guard:shelter:1"
+        }
+      ]
+    },
+    "acquisitions": {},
+    "shopping": [
+      {
+        "id": "item-ordinary-melee-weapon",
+        "quantity": 1,
+        "hands": 1,
+        "instanceId": "shop-buildoff-bard-0"
+      },
+      {
+        "id": "item-musical-instrument",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-bard-1"
+      },
+      {
+        "id": "item-travel-pack",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-bard-2"
+      },
+      {
+        "id": "item-food-bundle",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-bard-3"
+      },
+      {
+        "id": "item-water-flask",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-bard-4"
+      },
+      {
+        "id": "item-sleeping-roll",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-bard-5"
+      }
+    ],
+    "ancestryId": "ancestry-human",
+    "classId": "class-leader",
+    "signatureId": "ability-signature-leader-follow-my-signal",
+    "culture": {
+      "id": "origin-culture-free-harbors",
+      "pair": 0
+    },
+    "background": {
+      "id": "origin-background-traveling-player",
+      "pair": 1
+    },
+    "loadout": {
+      "shop-buildoff-bard-0": {
+        "carried": true,
+        "worn": false,
+        "held": true
+      },
+      "shop-buildoff-bard-1": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      },
+      "shop-buildoff-bard-2": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      },
+      "shop-buildoff-bard-3": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      },
+      "shop-buildoff-bard-4": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      },
+      "shop-buildoff-bard-5": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      }
+    },
+    "progression": {
+      "level": 3,
+      "levels": {
+        "2": {
+          "purchases": [],
+          "acquisitions": {},
+          "signatures": {}
+        },
+        "3": {
+          "purchases": [
+            {
+              "id": "influence:negotiation:3"
+            },
+            {
+              "id": "influence:negotiation:4"
+            },
+            {
+              "id": "influence:negotiation:5"
+            },
+            {
+              "id": "influence:negotiation:6"
+            },
+            {
+              "id": "emotion:2"
+            }
+          ],
+          "acquisitions": {},
+          "signatures": {
+            "3": "ability-signature-leader-press-the-opening"
+          }
+        }
+      }
+    }
+  },
+  "status": "ready"
+}

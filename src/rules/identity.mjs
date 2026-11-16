@@ -1,3 +1,4 @@
+import { forgeAncestryBenefits } from "./forge-ancestry.mjs";
 import { forgeCreationLedger } from "./forge-character.mjs";
 import { forgeMaximums, forgeStartingSp } from "./forge-vitals.mjs";
 import { creationLedger } from "./development.mjs";
@@ -127,14 +128,14 @@ export function creationIdentity(
     culture?.kind === "origin" &&
     background?.kind === "origin" &&
     validTraits && !selection.errors.length &&
-    (result.valid || (options.graph?.playtest && result.state.classId && !errors.some(({ code }) => code === "attributes")))
+    (result.valid || ((options.graph?.playtest || options.graph?.rulesRevision === 299) && result.state.classId && !errors.some(({ code }) => code === "attributes")))
   ) {
     const attributes = structuredClone(draft.attributes);
-    const benefits = ancestryBenefits(selection.traitIds);
+    const benefits = forgeAncestryBenefits(selection.traitIds, options.graph);
     const hpTraining = (result.state.purchases ?? []).filter(
       (p) => p.id === "ability-conditioned-body",
     ).length;
-    const startingSp = options.graph?.playtest ? forgeStartingSp(ancestry, culture, background, cls, attributes) : undefined;
+    const startingSp = (options.graph?.playtest || options.graph?.rulesRevision === 299) ? forgeStartingSp(ancestry, culture, background, cls, attributes) : undefined;
     const limits = options.graph ? forgeMaximums({
       level: 1,
       ancestryHp: ancestry.hp,

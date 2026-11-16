@@ -1,8 +1,14 @@
 # DP budget analysis for the seven-step rewrite
 
-November 15, 2026 · #299 / #300 · **Analysis and recommendation, not approved prices or a live rules change.**
+November 15 analysis, updated November 16, 2026 · #299 / #300 · **Curve D is the user-selected rewrite price; prior recommendations remain comparison evidence.**
 
-## Recommendation
+## November 16 decision — approved curve
+
+Bruce selected **1 / 2 / 2 / 3 / 4 / 4 / 5 DP** for the rewrite. The first six entries cost **16 DP**, and the complete branch costs **21 DP** before discipline entry. Gates remain **1 / 1 / 1 / 3 / 3 / 3 / 7**. Candidate D in the reproducible data is this approved curve. The earlier recommendation below is retained as comparative analysis, not the implementation price.
+
+A hero with the first three steps already learned spends 11 more DP to finish through step 6, leaving 2 of the 13 DP earned at levels 2–3. At level 7 the base 56–65 total DP supports two complete branches, or three for the 63–65 DP characters before other purchases. A useful first entry in an additional discipline still costs 2/3/4 DP, depending on class.
+
+## Earlier comparison and recommendation
 
 Start testing the nonmagical branch at **1 / 2 / 2 / 3 / 2 / 3 / 4 DP**, with minimum levels **1 / 1 / 1 / 3 / 3 / 3 / 7**. This is candidate B below. It retains the existing first four prices, costs 13 DP to complete the six level-3-accessible steps, and 17 DP for the full seven-step branch. The proposed new prices are **2 / 3 / 4**, not a rule already approved by Bruce.
 
@@ -70,6 +76,7 @@ Blade and Unbalanced require two nonnegative physical attributes, so their menta
 | A: inexpensive advanced growth | 1 / 2 / 2 / 3 / **2 / 2 / 3** | 1 / 3 / 5 / 8 / 10 / 12 / 15 | 12 | 15 |
 | **B: recommended starting test** | 1 / 2 / 2 / 3 / **2 / 3 / 4** | 1 / 3 / 5 / 8 / 10 / 13 / 17 | 13 | 17 |
 | C: expensive mastery | 1 / 2 / 2 / 3 / **3 / 3 / 5** | 1 / 3 / 5 / 8 / 11 / 14 / 19 | 14 | 19 |
+| **D: selected by Bruce** | 1 / 2 / 2 / 3 / **4 / 4 / 5** | 1 / 3 / 5 / 8 / 12 / 16 / 21 | 16 | 21 |
 
 At level 1 all three candidates are identical: one branch's first three steps cost 5 DP. A second branch in a studied discipline starts at 1 DP; buying both improvements on the first branch costs 4 DP. A first purchase that adds a useful action or passive is therefore cheaper than polishing an existing one. The content and favorites workflow, not the advanced prices, determine whether that encourages interesting breadth or too many buttons.
 

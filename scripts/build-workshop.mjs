@@ -92,7 +92,7 @@ const wounds = JSON.parse(await readFile(new URL("static/data/wounds.json", root
 const party = workshopPlaytestParty(forgeParty.party, workshopCatalogs(choices, inventory, wounds, playtest.forge, playtest.references));
 for (const [name, data] of Object.entries({
   forge: playtest.forge,
-  "forge-journals": applyForgePlaytestJournals(forgeJournals),
+  "forge-journals": forge.rulesRevision === 299 ? forgeJournals : applyForgePlaytestJournals(forgeJournals),
   "forge-references": playtest.references,
   example: party[0].draft, party,
 

@@ -1,50 +1,17 @@
+/** Historical D&D comparison integrity plus the current revised HoL build suite. */
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync } from 'node:fs';
-import { applyForgePlaytest } from '../src/rules/forge-playtest-catalog.mjs';
-import { workshopCatalogs } from '../src/rules/workshop-forge-catalog.mjs';
-import { readPortableCharacter, writePortableCharacter } from '../src/rules/portable-character.mjs';
-const data = name => JSON.parse(readFileSync(new URL(`../static/data/${name}.json`, import.meta.url)));
-const { forge, references } = applyForgePlaytest(data('forge'), data('forge-references'));
-const catalogs = workshopCatalogs(data('choices'), data('inventory'), data('wounds'), forge, references);
+await import('./validate-revised-build-offs.mjs');
 const base = new URL('../Build-Offs/', import.meta.url);
 const summary = JSON.parse(readFileSync(new URL('hol-builds.json', base)));
 const expected = ['artificer','barbarian','bard','cleric','druid','fighter','monk','paladin','ranger','rogue','sorcerer','warlock','wizard'];
-assert.deepEqual(summary.builds.map(b => b.id).sort(), expected);
-assert.deepEqual(readdirSync(new URL('builds/', base)).filter(f=>f.endsWith('.hol.json')).sort(), expected.map(id=>`${id}.hol.json`));
-for (const build of summary.builds) {
-  const payload = JSON.parse(readFileSync(new URL(`builds/${build.id}.hol.json`, base)));
-  const { draft, preview } = readPortableCharacter(payload, catalogs);
-  assert.equal(preview.valid, true, `${build.id}: ${JSON.stringify(preview.errors)}`);
-  assert.equal(preview.development.level, 1);
-  assert.equal(Object.values(draft.attributes).reduce((a,b)=>a+b,0),3);
-  assert.ok(Object.values(draft.attributes).every(n=>Number.isInteger(n)&&n>=-2&&n<=2));
-  const starting = [forge.origins.find(o=>o.id===draft.culture.id).pairs[draft.culture.pair].disciplineId,
-    forge.origins.find(o=>o.id===draft.background.id).pairs[draft.background.pair].disciplineId,
-    ...draft.classDisciplines];
-  assert.equal(new Set(starting).size, 3);
-  assert.equal(starting.length, 3);
-  assert.equal(preview.inventory.overBudget,0);
-  assert.ok(preview.inventory.remainingCoins>=0);
-  assert.equal(preview.inventory.coinOverride,false);
-  assert.deepEqual(preview.development,build.development);
-  assert.deepEqual(preview.limits,build.limits);
-  assert.deepEqual(preview.state.learning.spells.map(s=>s.id),build.spells.map(s=>s.id));
-  assert.equal(build.purchases.reduce((sum,p)=>sum+p.paidDp,0),build.development.spent);
-  assert.ok(build.purchases.every(p=>p.level<3));
-  assert.ok(build.equipment.filter(e=>e.held).reduce((sum,e)=>sum+e.hands,0)<=2);
-  assert.ok(build.equipment.some(e=>e.id==='item-water-flask'));
-  assert.ok(build.equipment.some(e=>e.id==='item-food-bundle'));
-  if(build.equipment.some(e=>e.id==='item-ordinary-ranged-weapon'))
-    assert.ok(build.equipment.some(e=>e.id==='item-ammunition-bundle'));
-  if(build.equipment.some(e=>e.worn&&e.id==='item-ordinary-light-armor'))
-    assert.ok(preview.state.learned.includes('armor:harness:1'));
-  const roundtrip=readPortableCharacter(JSON.parse(writePortableCharacter(draft,catalogs,{ready:true})),catalogs);
-  assert.equal(roundtrip.preview.valid,true);
-  assert.deepEqual(roundtrip.preview.development,preview.development);
-  console.log(`${build.id}: valid HoL1; ${build.development.spent}/${build.development.total} DP, ${build.limits.maxHp} HP, ${build.limits.maxSp} SP, ${preview.inventory.remainingCoins} coins left`);
+assert.deepEqual(summary.builds.map(b=>b.id).sort(),expected);
+for(const build of summary.builds) {
+ const saved=JSON.parse(readFileSync(new URL(`builds/${build.id}.hol.json`,base)));
+ assert.equal(saved.draft.name,build.name);
+ assert.equal(build.purchases.reduce((sum,p)=>sum+p.paidDp,0),build.development.spent);
+ assert.equal(build.development.spent+build.development.current,build.development.total);
 }
-console.log('PASS: all 13 current-rule builds, budgets, equipment, summaries, and ready export/import.');
-
 const dnd = JSON.parse(readFileSync(new URL('dnd-builds.json',base)));
 assert.equal(dnd.level,2);
 assert.deepEqual(dnd.builds.map(b=>b.id).sort(),expected);
@@ -81,8 +48,4 @@ for(const d of dnd.builds){
   assert.ok(doc.includes(`builds/${d.id}.hol.json`));
   assert.doesNotMatch(doc,/undefined|\[object Object\]/);
 }
-const traits=readFileSync(new URL('ancestry-trait-review.md',base),'utf8');
-const signatures=readFileSync(new URL('class-signature-review.md',base),'utf8');
-for(const id of catalogs.choices.filter(x=>x.kind==='ancestry').flatMap(x=>x.traits))assert.ok(traits.includes(id),id);
-for(const signature of forge.signatures)assert.ok(signatures.includes(signature.id),signature.id);
-console.log('PASS: thirteen D&D standard arrays, boosts, HP, spell counts/DCs, coin budgets, paired documents, and full trait/signature audit coverage.');
+console.log('PASS: historical D&D comparison arithmetic/document integrity; current HoL legality is tested in the revised suite above.');

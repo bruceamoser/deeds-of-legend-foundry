@@ -42,9 +42,10 @@ test("level-one DP supports physical, battle-caster, and broad generalist builds
   assert.ok(state.state.learning.spells.some((spell) => spell.action === "Main Action" && spell.sp === 0));
 
   const broad = example("oren-brass");
-  broad.traitIds = ["trait-human-weathered", "trait-human-many-homes"]; // No extra DP trait.
+  broad.traitIds = ["trait-human-weathered", "trait-human-shared-table"]; // No extra DP trait.
   broad.attributes = { brawn: -1, agility: 0, fortitude: -1, guile: 2, knowledge: 2, reason: 1 };
-  broad.purchases[1].push(...purchases("craft:construction:1", "farseeing:0"));
+  broad.purchases[1] = purchases("craft:repairs:1", "craft:mixtures:1", "craft:safeguards:1", "craft:workshop:1", "craft:workshop:2", "scholarship:planning:1", "scholarship:investigation:1", "scholarship:disputation:1", "detection:0", "farseeing:0");
+  broad.acquisitions = {"craft:workshop:1": {recipes:["recipe-bound-torches","recipe-travel-food"]}, "craft:workshop:2":{recipes:["recipe-twisted-cord","recipe-wooden-brace"]}};
   state = hero(broad);
   assert.deepEqual(state.errors, []);
   assert.equal(state.development.total, 13);
@@ -86,48 +87,49 @@ test("armor uses the highest trained worn suit; heavy training stays behind Armo
   assert.equal(hero(draft).resistances.physical, 2);
 });
 
-test("a four-discipline hybrid is reachable, with its exact endpoints, at level seven", () => {
+test("a mixed martial and magical build reaches its own level-seven masteries without intersections", () => {
   const draft = example("vaelis-emberglass");
-  draft.purchases[1] = purchases();
+  draft.purchases[1] = [];
   draft.progression = { level: 7, levels: {} };
-  const planned = hero(draft).state;
-  assert.equal(planned.dp, 62);
-  const id = "combined:colossus-of-the-forge";
+  let state = hero(draft).state;
+  assert.equal(state.dp, 62);
   const { nodes } = forgeIndex(forge);
-  const path = (key, state) => {
-    if (state.learned.includes(key)) return state;
-    for (const other of nodes.get(key).requires) state = path(other, state);
+  const learnPath = key => {
+    if (state.learned.includes(key)) return;
+    for (const parent of nodes.get(key).requires) learnPath(parent);
     const outcome = learnForgeEntry(forge, state, key);
     assert.ok(outcome.eligible, outcome.reasons.join(" "));
-    return outcome.state;
+    state = outcome.state;
   };
-  const endpointIds = ["flame:3", "imbuement:3", "arms:bladework:4", "craft:construction:4"];
-  assert.deepEqual(nodes.get(id).requires, endpointIds);
-  const state = endpointIds.reduce((before, endpoint) => path(endpoint, before), planned);
-  assert.equal(forgeEligibility(forge, { ...state, level: 6 }, id).eligible, false);
-  for (const endpoint of endpointIds) {
-    assert.equal(forgeEligibility(forge, { ...state, learned: state.learned.filter((key) => key !== endpoint) }, id).eligible, false);
-  }
-  const result = learnForgeEntry(forge, state, id);
-  assert.equal(result.eligible, true);
-  assert.equal(result.cost, 5);
+  learnPath("arms:bladework:6");
+  assert.equal(forgeEligibility(forge, {...state,level:6}, "arms:bladework:7").eligible,false);
+  learnPath("arms:bladework:7");
+  learnPath("air:3");
+  const mastery = "mastery:stormsteel-arc";
+  assert.deepEqual(nodes.get(mastery).requires,["air:3"]);
+  assert.equal(forgeEligibility(forge,{...state,level:6},mastery).eligible,false);
+  assert.equal(forgeEligibility(forge,{...state,learned:state.learned.filter(id=>id!=="air:3")},mastery).eligible,false);
+  learnPath(mastery);
+  assert.equal(state.dp,26); // 62 - Arms entry3 - path21 - Air8 - mastery4.
+  assert.ok(!forge.nodes.some(node=>node.kind==="combined"));
 });
 
-test("older portable characters keep identity, planned choices and live resources during conversion", () => {
+test("older portable characters retain identity and resources while changed paths refund for rebuilding", () => {
   const draft = structuredClone(original[0].draft);
   draft.play = { hp: 7, sp: 2, scars: ["Eye scar"] };
-  const saved = readPortableCharacter({ format: PORTABLE_FORMAT, schemaVersion: 4, draft }, catalogs);
+  const saved = readPortableCharacter({ format: PORTABLE_FORMAT, schemaVersion: 5, draft }, catalogs);
   assert.equal(saved.draft.name, draft.name);
   assert.deepEqual(saved.draft.classDisciplines, ["guard"]);
   assert.deepEqual(saved.draft.purchases[0], []);
-  assert.ok(saved.draft.purchases[1].some(({ id }) => id === "armor:harness:1"));
-  assert.ok(saved.draft.purchases[1].some(({ id }) => id === "arms:impact:3"));
+  assert.ok(!saved.draft.purchases[1].some(({ id }) => id === "armor:harness:1"));
+  assert.ok(saved.draft.learningReview.includes("armor:harness:1"));
+  assert.equal(saved.preview.development.current, saved.preview.development.total);
   assert.deepEqual(saved.draft.play.scars, ["Eye scar"]);
   assert.equal(saved.draft.play.hp, 7);
   assert.equal(saved.draft.play.sp, 2);
-  assert.equal(saved.preview.limits.maxHp, 19);
+  assert.equal(saved.preview.limits.maxHp, 20);
   const persisted = JSON.parse(writePortableCharacter(saved.draft, catalogs));
-  assert.equal(persisted.schemaVersion, 5);
+  assert.equal(persisted.schemaVersion, 6);
   assert.deepEqual(persisted.draft, saved.draft);
 });
 

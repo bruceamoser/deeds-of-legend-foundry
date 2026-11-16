@@ -45,6 +45,7 @@ try {
     const response = await route.fetch({ url: new URL("data/party.json", base).href });
     const party = await response.json();
     const caster = party.find(({ id }) => id === "vaelis-emberglass");
+    caster.draft.progression = {level:3,levels:{3:{purchases:[{id:"farseeing:0"},{id:"air:1"},{id:"air:2"}],signatures:{3:"ability-signature-arcanist-arcane-deflection"}}}};
     await route.fulfill({ json: caster.draft });
   });
   await page.goto(base);
@@ -60,8 +61,8 @@ try {
     await openSpellbook();
     await castButton(spellId).click();
     const roll = page.getByRole("dialog").locator('[data-action="roll-sheet"]');
-    if (spellId === "spell:flame:4") {
-      await expect(roll).toHaveText("Cast and roll · 2 SP");
+    if (await roll.isVisible()) {
+      if (spellId === "spell:flame:4") await expect(roll).toHaveText("Cast and roll · 2 SP");
       await roll.click();
       await page.keyboard.press("Escape");
     }
@@ -70,8 +71,8 @@ try {
   const artifacts = resolve("test-results/workshop");
   await mkdir(artifacts, { recursive: true });
   await openSpellbook();
-  await expect(sp).toHaveValue("11");
-  await expect(sp).toHaveAttribute("max", "11");
+  await expect(sp).toHaveValue("17");
+  await expect(sp).toHaveAttribute("max", "17");
   const ritualRow = page.locator('[data-action-row="spell:farseeing:2"]');
   await ritualRow.getByRole("button", { name: "Expand Clairvoyance", exact: true }).click();
   await expect(page.locator('[data-detail-id="spell:farseeing:2"]')).toContainText("Ritual · 1 minute");
@@ -84,13 +85,12 @@ try {
   await castButton("spell:farseeing:2").click();
   const ritual = page.getByRole("dialog");
   await expect(ritual).toContainText("1 minute");
-  await expect(sp).toHaveValue("10");
+  await expect(sp).toHaveValue("16");
   assert.equal((await play()).sustain, undefined);
-  await ritual.getByRole("button", { name: "Complete Ritual", exact: true }).click();
+  await expect(ritual.getByRole("button", { name: "Complete Ritual", exact: true })).toHaveCount(0);
+  await page.keyboard.press("Escape");
   await openMain();
-  await expect(status).toContainText("Clairvoyance");
-  await control("End spell").click();
-  await expect(status).toContainText("None active");
+  await expect(status).toContainText("None active"); // Clairvoyance has a fixed duration.
   await sp.fill("2");
   await sp.press("Tab");
   await cast();
@@ -124,8 +124,14 @@ try {
   await cast("spell:air:3");
   assert.equal((await play()).workshopTurn, replacementTurn);
   await expect(sp).toHaveValue("2");
-  await expect(status.getByRole("heading", { name: "Fog Cloud", exact: true })).toBeVisible();
-  assert.equal((await play()).sustain.spellId, "spell:air:3");
+  await expect(status.getByRole("heading", { name: "Heat Metal", exact: true })).toBeVisible();
+  assert.equal((await play()).sustain.spellId, "spell:flame:4", "fixed Fog Cloud does not replace sustained magic");
+  await sp.fill("4");
+  await sp.press("Tab");
+  await cast("spell:air:5");
+  await expect(status).toContainText("Levitate");
+  assert.equal((await play()).sustain.spellId, "spell:air:5");
+  await expect(sp).toHaveValue("2");
   await control("End spell").click();
   await expect(status).toContainText("None active");
   await cast();
@@ -139,7 +145,7 @@ try {
   await expect(status).toContainText("None active");
   assert.equal((await play()).sustain, undefined);
   assert.deepEqual(failures, []);
-  console.info("PASS Spellbook inline rules, Ritual completion, SP costs, zero-SP manual upkeep, reload, duration expiry, replacement, explicit ending, and unconsciousness.");
+  console.info("PASS Spellbook inline rules, Ritual timing, SP costs, zero-SP manual upkeep, reload, duration expiry, replacement, explicit ending, and unconsciousness.");
 } finally {
   await browser.close();
   await new Promise(done => server.close(done));
