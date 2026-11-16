@@ -34,7 +34,7 @@ export function rollSetup({
     )
     .join(
       "",
-    )}</select></label><label>Value${editableValue ? `<input id="${valueId}" aria-label="Attribute value" type="number" min="-2" max="2" value="${value}">` : `<output data-roll-value>${value >= 0 ? "+" : ""}${value}</output>`}</label></div>${netControl({ id: netId, labelId })}<div class="hol-roll-pool" aria-live="polite"><div class="hol-pool-count"><strong data-roll-count>3</strong><span>d6</span></div><div class="hol-pool-detail"><div data-roll-dice class="hol-pool-dice" aria-hidden="true"></div><strong data-roll-keep>Keep all three</strong><code data-roll-formula>3d6 + (${value})</code></div></div></section>`;
+    )}</select></label><label>Value${editableValue ? `<input id="${valueId}" aria-label="Attribute value" type="number" step="1" value="${value}">` : `<output data-roll-value>${value >= 0 ? "+" : ""}${value}</output>`}</label></div>${netControl({ id: netId, labelId })}<div class="hol-roll-pool" aria-live="polite"><div class="hol-pool-count"><strong data-roll-count>3</strong><span>d6</span></div><div class="hol-pool-detail"><div data-roll-dice class="hol-pool-dice" aria-hidden="true"></div><strong data-roll-keep>Keep all three</strong><code data-roll-formula>3d6 + (${value})</code></div></div></section>`;
 }
 const die =
   '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="3"/><circle cx="7" cy="7" r="1.4"/><circle cx="17" cy="17" r="1.4"/><circle cx="12" cy="12" r="1.4"/></svg>';

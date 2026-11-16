@@ -148,6 +148,11 @@ try {
     );
     await page.screenshot({ path: `${output}/journal-${width}.png` });
   }
+  await page.getByLabel("Collection", { exact: true }).selectOption("Spells");
+  await page.getByLabel("Find rules", { exact: true }).fill("Entangle");
+  await page.locator('[data-entry="spell:growth:2"]').click();
+  assert.match(await page.locator(".journal-page").innerText(), /Hold attribute Reason/);
+  assert.match(await page.locator(".journal-page").innerText(), /Escape attribute Agility/);
   await page.goto(base + "recovery.html");
   await page.getByRole("button", { name: "Healing", exact: true }).click();
   await page.getByLabel("Life resistance", { exact: true }).fill("2");

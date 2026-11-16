@@ -17,6 +17,8 @@
   --ink: #28251c;
   --muted: #6a6457;
   --line: #d6cdb9;
+  --frame-border: #c8bda5;
+  --frame-shadow: 0 5px 25px #30291918;
   --danger: #8b332d;
   color-scheme: light;
   font:
@@ -182,9 +184,9 @@ a {
   height: min(900px, calc(100dvh - 50px));
   margin: 0 auto 8px;
   background: var(--paper);
-  border: 1px solid #c8bda5;
+  border: 1px solid var(--frame-border);
   border-radius: 5px;
-  box-shadow: 0 5px 25px #30291918;
+  box-shadow: var(--frame-shadow);
   overflow: visible;
 }
 .workshop-header {
@@ -2224,4 +2226,23 @@ dialog header button[data-action]:focus-visible {
 .technique-improvement {
   padding-block: 8px;
   border-top: 1px solid var(--line, #bca981);
+}
+
+#app .attribute .compact-roll {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:2px;
+  width:100%;
+  padding:4px 2px;
+  border:0;
+  background:transparent;
+  font-size:14px;
+  line-height:1.15;
+}
+#app .attribute .compact-roll small {font-size:11px;}
+
+.sheet-links a[aria-current] {
+  font-weight: 700;
+  box-shadow: inset 0 -2px var(--gold);
 }

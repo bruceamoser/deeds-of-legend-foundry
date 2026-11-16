@@ -154,7 +154,9 @@ try {
     await page.screenshot({ path: `${output}/roll-banes-${width}.png` });
   }
   await page.keyboard.press("Escape");
+  assert(await page.getByRole("button", { name: "Measured Cut I", exact: true }).isVisible());
   await page.getByRole("button", { name: "Defend", exact: true }).click();
+  assert.match(await page.getByRole("dialog").innerText(), /heavy cover grants 3/);
   assert.equal(
     await page.getByLabel("Roll attribute", { exact: true }).inputValue(),
     "agility",

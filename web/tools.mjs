@@ -97,6 +97,9 @@ const entries = [
       `**${spell.action}** · ${spell.sp} SP · ${spell.attribute}`,
       `**Target / range** ${spell.target}`,
       `**Duration** ${spell.duration}`,
+      spell.defenseAttribute ? `**Defense attribute** ${spell.defenseAttribute}` : "",
+      spell.holdAttribute ? `**Hold attribute** ${spell.holdAttribute}` : "",
+      spell.escapeAttribute ? `**Escape attribute** ${spell.escapeAttribute}` : "",
       spell.trigger ? `**Trigger** ${spell.trigger}` : "",
       spell.ritualTime ? `**Casting time** ${spell.ritualTime}` : "",
       spell.effect,
@@ -356,11 +359,14 @@ function deathRollDialog(immediate) {
 }
 
 function firstAidDialog() {
-  return popup(
+  const knowledge = hero.draft.attributes.knowledge;
+  const dialog = popup(
     "First aid",
-    `<p>After ten uninterrupted minutes of treatment, roll Knowledge.</p>
+    `<p>After ten uninterrupted minutes of treatment, roll Knowledge to restore 2/4/6 HP.</p>
+    ${rollSetup({ attributes: { knowledge }, selected: "knowledge", attributeId: "first-aid-attribute", value: knowledge, netId: "first-aid-net", labelId: "first-aid-net-label" })}
     <div class="tool-actions">${btn("Roll Knowledge", "apply-first-aid", "", "primary")}</div>`,
   );
+  bindRollSetup(dialog.querySelector(".reference-body"), { getAttributeValue: () => knowledge });
 }
 
 function describeRecoveryRoll(label, result) {
@@ -387,7 +393,7 @@ function crafting() {
   const { recipe, ability } = selection;
   const metadata =
     refs.records[recipe.id]?.markdown.match(
-      /^- \*\*(Tools|Materials per attempt):\*\*.*$/gm,
+      /^(?:- )?\*\*(Tools|Materials per attempt):\*\*.*$/gm,
     ) ?? [];
   const cap = recipe.maximumDie
     ? `cap d${recipe.maximumDie}`
@@ -408,8 +414,9 @@ function crafting() {
     `<div class="craft-layout"><aside class="craft-list">${[...new Map(recipes.map((r) => [r.recipe.id, r.recipe])).values()].map((r) => btn(esc(r.name), "recipe", `data-id="${r.id}" aria-pressed="${r.id === recipe.id}"`)).join("")}</aside><div><section class="tool-box"><h2>${esc(recipe.name)}</h2><p>${esc(ability.name)} · ${recipe.attemptMinutes} min / attempt · ${cap}</p>${metadata.map((t) => ruleMarkup(t, resolveLink)).join("")}<div class="tool-actions">${btn("Begin attempt", "begin-craft", "", "primary")}${ruleButton(recipe.id)}</div></section><section class="tool-box">${result}</section>${craftNotice ? `<div class="tool-result" role="status">${esc(craftNotice)}</div>` : ""}<section class="tool-box"><h2>Attempts</h2>${jobs.length ? jobs.map((j) => `<div class="stat-row"><span>${esc(j.recipe.name)} · ${j.recipe.attemptMinutes} min${j.complete ? " · Complete" : ""}</span>${!j.complete ? btn("Resolve", "resolve-craft", `data-id="${j.id}"`) : ""}</div>`).join("") : "<p>No attempts in progress.</p>"}</section></div></div><p class="tool-help">Local crafting example · tools, materials and elapsed time are judged at the table. No world time or saved inventory changes.</p>`;
 }
 
-function trailWorkshopSteps(tier) {
-  if (!crafter.character.state.learned?.includes(catalogs.forge.rulesRevision === 299 ? "craft:workshop:3" : "craft:supplies:3")) return;
+function trailWorkshopSteps(abilityId, tier) {
+  const branch = catalogs.forge.rulesRevision === 299 ? "craft:workshop" : "craft:supplies";
+  if (abilityId !== `${branch}:1` || !crafter.character.state.learned.includes(`${branch}:3`)) return;
   return { weak: 1, standard: 3, strong: 4 }[tier];
 }
 
@@ -418,7 +425,7 @@ function craftDialog(job) {
   const attributes = crafter.draft.attributes;
   const d = popup(
     job.recipe.name,
-    `<p class="tool-help">${esc(job.ability.name)} · ${job.recipe.attemptMinutes} min / attempt</p>${noRollBrew(job.ability.id, job.recipe) ? "<p>Brew to d4 without a roll.</p>" : rollSetup({ attributes, selected: attr, attributeId: "craft-attribute", value: attributes[attr] ?? 0, netId: "craft-net", labelId: "craft-net-label" })}${noRollBrew(job.ability.id, job.recipe) ? "" : `<p class="tool-help">Weak 1 · Standard ${trailWorkshopSteps("standard") ?? 2} · Strong ${trailWorkshopSteps("strong") ?? 3} ${job.recipe.maximumDie ? `inventory steps · cap d${job.recipe.maximumDie}` : `progress · target ${job.recipe.target}`}</p>`}<label><input type="checkbox" id="craft-carried"> Check a carried material supply (${materialDie ? "d" + materialDie : "Empty"}) after the attempt</label><div class="tool-actions">${btn("Complete attempt", "complete-craft", `data-id="${job.id}"`, "primary")}${ruleButton(job.recipe.id)}</div>`,
+    `<p class="tool-help">${esc(job.ability.name)} · ${job.recipe.attemptMinutes} min / attempt</p>${noRollBrew(job.ability.id, job.recipe) ? "<p>Brew to d4 without a roll.</p>" : rollSetup({ attributes, selected: attr, attributeId: "craft-attribute", value: attributes[attr] ?? 0, netId: "craft-net", labelId: "craft-net-label" })}${noRollBrew(job.ability.id, job.recipe) ? "" : `<p class="tool-help">Weak 1 · Standard ${trailWorkshopSteps(job.ability.id, "standard") ?? 2} · Strong ${trailWorkshopSteps(job.ability.id, "strong") ?? 3} ${job.recipe.maximumDie ? `inventory steps · cap d${job.recipe.maximumDie}` : `progress · target ${job.recipe.target}`}</p>`}<label><input type="checkbox" id="craft-carried"> Check a carried material supply (${materialDie ? "d" + materialDie : "Empty"}) after the attempt</label><div class="tool-actions">${btn("Complete attempt", "complete-craft", `data-id="${job.id}"`, "primary")}${ruleButton(job.recipe.id)}</div>`,
   );
   if (!noRollBrew(job.ability.id, job.recipe)) bindRollSetup(d.querySelector(".reference-body"), {
     getAttributeValue: () =>
@@ -517,7 +524,7 @@ document.addEventListener("click", (e) => {
     }
     if (a === "rest") return popup(
       "Safe overnight rest",
-      `<p>Record the end of eight uninterrupted safe hours, including six hours of sleep or equivalent rest. Count elapsed hours from the start of the example.</p>
+      `<p>Rest somewhere safe with food, water and adequate shelter. Record the end of eight uninterrupted hours, including six hours of sleep or equivalent rest. Count elapsed hours from the start of the example.</p>
       <label>Hour rest finished <input id="rest-hour" type="number" min="${(health.lastRestHour ?? -16) + 24}" value="${(health.lastRestHour ?? -16) + 24}"></label>
       <div class="tool-actions">${btn("Complete safe rest", "complete-rest", "", "primary")}</div>`,
     );
@@ -577,7 +584,7 @@ document.addEventListener("click", (e) => {
     if (a === "finish-first-aid") return firstAidDialog();
     if (a === "apply-first-aid") {
       const before = health.hp;
-      const roll = recoveryRoll(hero.draft.attributes.knowledge, 0);
+      const roll = recoveryRoll(hero.draft.attributes.knowledge, Number(document.getElementById("first-aid-net").value));
       health = forgeFinishFirstAid(health, recoveryLimits, roll.tier);
       recoveryNotice = describeRecoveryRoll("Knowledge", roll) + `. Restored ${health.hp - before} HP.`;
     }
@@ -630,7 +637,7 @@ document.addEventListener("click", (e) => {
         abilityId: j.ability.id, recipe: j.recipe, attribute: crafter.draft.attributes[attr],
         net: Number(document.querySelector("#craft-net")?.value ?? 0), die,
       });
-      const steps = trailWorkshopSteps(result.tier) ?? basicSteps;
+      const steps = trailWorkshopSteps(j.ability.id, result.tier) ?? basicSteps;
       const materialCheck = document.querySelector("#craft-carried").checked
         ? inventoryCheck({ die: materialDie, retained: die(materialDie) })
         : null;

@@ -7,11 +7,11 @@ body.tools-preview .site-header {
 }
 .tools-shell {
   width: min(780px, calc(100% - 20px));
-  margin: 8px auto;
+  margin: 0 auto 8px;
   background: var(--paper);
-  border: 1px solid var(--line);
-  border-radius: 4px;
-  box-shadow: 0 3px 15px #30291915;
+  border: 1px solid var(--frame-border);
+  border-radius: 5px;
+  box-shadow: var(--frame-shadow);
   display: flex;
   flex-direction: column;
   max-height: calc(100dvh - 80px);
@@ -44,18 +44,18 @@ body.tools-preview .site-header {
   justify-content: space-between;
   align-items: center;
   gap: 8px;
-  background: var(--forest);
-  color: var(--paper);
-  padding: 7px 9px;
+  background: var(--paper);
+  color: var(--forest);
+  padding: 7px 12px;
   margin: -8px -8px 7px;
-  border-bottom: 2px solid var(--gold);
+  border-bottom: 1px solid var(--line);
 }
 .tool-banner h1 {
-  font-size: 1.05rem;
+  font-size: 20px;
 }
 .tool-banner small {
   font-size: 0.7rem;
-  color: #d6c6a5;
+  color: var(--muted);
 }
 .tool-help {
   font-size: 0.72rem;

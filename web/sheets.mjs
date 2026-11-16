@@ -230,7 +230,14 @@ function portrait(r) {
     : "";
 }
 function attributes(r) {
-  return `<div class="attributes">${ATTRIBUTES.map((a) => `<div class="attribute"><span>${title(a)}</span>${edit ? `<input aria-label="${title(a)}" data-field="attrs.${a}" type="number" min="-2" max="2" value="${state.attrs?.[a] ?? r?.attributes[a] ?? 0}">` : `${btn(icon("die"), "roll", `data-attribute="${a}" aria-label="Roll ${title(a)}"`, "icon-button")}<strong>${signed(state.attrs?.[a] ?? r?.attributes[a] ?? 0)}</strong>`}</div>`).join("")}</div>`;
+  return `<div class="attributes">${ATTRIBUTES.map((key) => {
+    const label = title(key);
+    const value = state.attrs?.[key] ?? r.attributes[key] ?? 0;
+    const content = edit
+      ? `<label><small>${label}</small><input aria-label="${label}" data-field="attrs.${key}" type="number" min="-2" max="2" value="${value}"></label>`
+      : btn(`<small>${label}</small>${signed(value)}`, "roll", `data-attribute="${key}" aria-label="Roll ${label}"`, "compact-roll");
+    return `<div class="attribute">${content}</div>`;
+  }).join("")}</div>`;
 }
 function itemVitals(r) {
   const vital = (label, value) =>
@@ -270,11 +277,11 @@ function itemToken(record) {
 function header(r) {
   const name = state.name ?? r?.name ?? "New NPC";
   const max = state.maxHp ?? r?.hp?.max ?? 0;
-  return `<div class="workshop-header"><div class="toolbar"><div>${btn(edit ? "✓ Done" : "✎ Edit", "edit", "", "quiet")}${btn(kind === "npc" ? "New NPC" : `Choose ${kind}`, "choose", "", "quiet")}</div><div>${["Save", "Load", "Import", "Export"].map((a) => btn(a, a.toLowerCase(), "", "quiet")).join("")}</div></div><header class="hero-header prototype-header">${kind !== "item" ? portrait(r) : ""}<div class="card-identity">${kind === "item" ? `<img class="item-mark" src="${esc(itemToken(r))}" alt="">` : ""}${edit ? field("Name", "name", name) : `<h1>${esc(name)}</h1>`}<p>${esc(kind === "npc" ? [state.role, state.location].filter(Boolean).join(" · ") : kind === "creature" ? `${r.family} · ${r.classification.role}` : title(r.kind ?? (r.price !== undefined ? "equipment" : "recipe")))}</p></div><div class="vitals">${kind === "item" ? itemVitals(r) : r ? `<div class="vital"><small>HP</small><div class="hp-value"><input aria-label="Current HP" data-field="hp" type="number" min="0" max="100000" value="${state.hp ?? max}"><span>/ ${max}</span></div></div><div class="vital"><small>Speed</small><strong>${r.speed.ordinary}</strong></div><div class="vital"><small>CV</small><strong>${r.cv}</strong></div>` : ""}</div></header>${kind !== "item" && r ? attributes(r) + defenses(r) : ""}</div>`;
+  return `<div class="workshop-header"><div class="toolbar"><div class="toolbar-group">${btn(edit ? "✓ Done" : "✎ Edit", "edit", "", "quiet")}${btn(kind === "npc" ? "New NPC" : `Choose ${kind}`, "choose", "", "quiet")}</div><div class="toolbar-group">${["Save", "Load", "Import", "Export"].map((a) => btn(a, a.toLowerCase(), "", "quiet")).join("")}</div></div><header class="hero-header prototype-header">${kind !== "item" ? portrait(r) : ""}<div class="card-identity">${kind === "item" ? `<img class="item-mark" src="${esc(itemToken(r))}" alt="">` : ""}${edit ? field("Name", "name", name) : `<h1>${esc(name)}</h1>`}<p>${esc(kind === "npc" ? [state.role, state.location].filter(Boolean).join(" · ") : kind === "creature" ? `${r.family} · ${r.classification.role}` : title(r.kind ?? (r.price !== undefined ? "equipment" : "recipe")))}</p></div><div class="vitals">${kind === "item" ? itemVitals(r) : r ? `<div class="vital"><small>HP</small><div class="hp-value"><input aria-label="Current HP" data-field="hp" type="number" min="0" max="100000" value="${state.hp ?? max}"><span>/ ${max}</span></div></div><div class="vital"><small>Speed</small><strong>${r.speed.ordinary}</strong></div><div class="vital"><small>CV</small><strong>${r.cv}</strong></div>` : ""}</div></header>${kind !== "item" && r ? attributes(r) + defenses(r) : ""}</div>`;
 }
 function defenses(r) {
   return `<div class="combat-stats" aria-label="Combat statistics">${[
-    ["Armor DR", r.armor.sourceText],
+    ["Armor DR", r.armor.sourceText.replaceAll("\\*", "*")],
     ["Evasion", r.defenses.evasion.sourceText],
     ["Threat", r.defenses.threat.sourceText],
     ["Stability", r.defenses.stability],
@@ -371,18 +378,20 @@ function combat(r) {
 function npcMain() {
   return `<div class="main-layout"><div>${section("portrayal", "At the table", ["detail", "want", "knowledge", "boundary"].map((k) => (edit ? `<label>${title(k)}<textarea data-field="${k}" aria-label="${title(k)}" maxlength="10000">${esc(state[k])}</textarea></label>` : `<div class="portrayal-line"><h4>${{ detail: "Recognizable detail", want: "Wants", knowledge: "Knows", boundary: "Boundary" }[k]}</h4><p>${esc(state[k] || "—")}</p></div>`)).join(""))}${section("relationship", "Relationship", edit ? `<textarea aria-label="Relationship" data-field="relationship" maxlength="10000">${esc(state.relationship)}</textarea>` : `<p>${esc(state.relationship || "—")}</p>`)}</div><aside class="play-summary">${section("identity", "Identity", edit ? field("Role", "role", state.role) + field("Location", "location", state.location) : row("Role", state.role) + row("Location", state.location))}${section("profile", "Combat profile", `<p>${esc(record()?.name ?? "None linked")}</p>${btn(record() ? "Change profile" : "Choose profile", "profile", "", "small")}${record() ? btn("Unlink", "unlink", "", "quiet small") : ""}`)}</aside></div>`;
 }
-function spellPages(r) {
+function learnedSpells(r) {
   return (r.spellIds ?? [])
     .map((id) => {
       const spell = spellById.get(id);
       const properties = [
         ["Casting", spell.actionText],
-        ["SP", spell.sp],
-        ["Attribute", spell.attribute],
+        ["Attribute", spell.attribute === "None" ? "Automatic" : spell.attribute],
         ["Target / range", spell.target],
         ["Duration", spell.duration],
-      ];
-      return `<details class="box"><summary>Page ${esc(spell.page)} · ${esc(spell.name)}</summary><dl class="card-metadata">${properties.map(([key, value]) => `<dt>${esc(key)}</dt><dd>${esc(value)}</dd>`).join("")}</dl>${markdown(spell.effect)}</details>`;
+        ["Defense", spell.defenseAttribute],
+        ["Hold attribute", spell.holdAttribute],
+        ["Escape attribute", spell.escapeAttribute],
+      ].filter(([, value]) => value);
+      return `<details class="box"><summary>${esc(spell.name)} (SP: ${esc(spell.sp)})</summary><dl class="card-metadata">${properties.map(([key, value]) => `<dt>${esc(key)}</dt><dd>${esc(value)}</dd>`).join("")}</dl>${markdown(spell.effect)}</details>`;
     })
     .join("");
 }
@@ -414,7 +423,7 @@ function itemMain(r) {
     ${r.archived ? '<p class="inline-help">Earlier catalog entry saved with this sheet.</p>' : ""}
     ${ref?.flavor?.length ? `<p class="flavor">${esc(ref.flavor.join(" "))}</p>` : ""}
     ${details.length ? `<dl class="card-metadata">${details.map((d) => `<dt>${esc(d.label)}</dt><dd>${esc(d.value)}</dd>`).join("")}</dl>` : ""}
-    ${body}${spellPages(r)}${ref?.rules?.notes?.map((n) => `<p>${esc(typeof n === "string" ? n : n.text)}</p>`).join("") ?? ""}
+    ${body}${learnedSpells(r)}${ref?.rules?.notes?.map((n) => `<p>${esc(typeof n === "string" ? n : n.text)}</p>`).join("") ?? ""}
     </div></article><aside>
     ${properties ? section("properties", "Properties", properties) : ""}
     ${die !== null && die !== undefined ? section("supply", "Supply", `<div class="supply-current">${die ? `d${die}` : "Empty"}</div>${die ? btn(icon("die") + " Use supply", "supply", "", "small") : ""}${btn("Resupply", "resupply", "", "small")}`) : ""}
@@ -484,14 +493,15 @@ function randomDie(sides) {
   } while (a[0] >= limit);
   return 1 + (a[0] % sides);
 }
-let rollAttribute = "agility",
-  defenseAction = null;
+let defenseAction = null;
 function rollDialog(attribute, action = null) {
-  rollAttribute = attribute;
   defenseAction = action;
+  const context = action
+    ? `<p class="inline-help">${esc(record().name)} · ${esc(action.name)}. If you have cover from this attack, count 1 Boon for partial cover or 3 Boons for heavy cover.</p>`
+    : "";
   popup(
     action ? "Defend" : `${title(attribute)} roll`,
-    `${action ? `<p class="inline-help">${esc(record().name)} · ${esc(action.name)}</p>` : ""}${rollSetup({ attributes: Object.fromEntries(ATTRIBUTES.map((a) => [a, 0])), selected: attribute, attributeId: "roll-attribute", valueId: "roll-value", editableValue: true, value: action ? 0 : (state.attrs?.[attribute] ?? record()?.attributes?.[attribute] ?? 0), netId: "roll-net", labelId: "net-label" })}<div id="roll-result" role="status" aria-live="polite"></div><div class="dialog-actions">${btn("Roll", "roll-now", "", "primary small")}</div>`,
+    `${context}${rollSetup({ attributes: Object.fromEntries(ATTRIBUTES.map((a) => [a, 0])), selected: attribute, attributeId: "roll-attribute", valueId: "roll-value", editableValue: true, value: action ? 0 : (state.attrs?.[attribute] ?? record()?.attributes?.[attribute] ?? 0), netId: "roll-net", labelId: "net-label" })}<div id="roll-result" role="status" aria-live="polite"></div><div class="dialog-actions">${btn("Roll", "roll-now", "", "primary small")}</div>`,
   );
   document.querySelector("#roll-attribute").addEventListener("change", (e) => {
     if (!defenseAction)
@@ -601,10 +611,10 @@ async function action(t) {
   }
   if (a === "roll") return rollDialog(t.dataset.attribute);
   if (a === "roll-now") {
-    const value = Number(document.querySelector("#roll-value").value),
+    const value = document.querySelector("#roll-value").valueAsNumber,
       net = Number(document.querySelector("#roll-net").value);
-    if (!Number.isInteger(value) || value < -2 || value > 2)
-      throw new Error("Use an attribute from −2 to +2.");
+    if (!Number.isSafeInteger(value))
+      throw new Error("Use a whole number for the effective attribute.");
     const plan = rollPlan({
         attribute: value,
         boons: Math.max(0, net),
@@ -615,8 +625,12 @@ async function action(t) {
         .sort((a, b) => (net < 0 ? a - b : b - a))
         .slice(0, 3),
       result = classifyRoll(retained, value);
+    const natural = {
+      critical: "Natural 666 · additional benefit",
+      fumble: "Natural 111 · complication",
+    }[result.natural];
     document.querySelector("#roll-result").innerHTML =
-      `<h3>${title(result.tier)} · ${result.total}</h3><p>${faces.join(" · ")} → ${retained.join(" + ")} ${signed(value)}</p>${defenseAction ? `<p>${esc(defenseAction.outcomes[result.tier])}</p>` : ""}`;
+      `<h3>${title(result.tier)} · ${result.total}</h3><p>${faces.join(" · ")} → ${retained.join(" + ")} ${signed(value)}</p>${natural ? `<p>${natural}</p>` : ""}${defenseAction ? `<p>${esc(defenseAction.outcomes[result.tier])}</p>` : ""}`;
     return;
   }
   if (a === "add-condition")
@@ -856,7 +870,8 @@ try {
     load("forge-references"),
   ]);
   if (
-    c.source.commit !== images.sourceCommit ||
+    c.source.portraitCommit !== images.sourceCommit ||
+    c.source.commit !== graph.sourceCommit ||
     graph.sourceCommit !== currentRefs.sourceCommit
   )
     throw new Error("Sheet references do not match their catalog.");

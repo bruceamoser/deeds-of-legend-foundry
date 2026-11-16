@@ -78,6 +78,7 @@ export function workshopCatalogs(choices, inventory, wounds, forge, references =
         ...inventory.equipment.map((item) => references.equipment?.find((record) => record.id === item.id) ?? item),
         ...(references.equipment ?? []).filter((item) => !inventory.equipment.some((record) => record.id === item.id)),
       ],
+      recipes: references.recipes ?? inventory.recipes,
     }, forge),
     wounds,
     forge,
