@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import { readFile, writeFile } from "node:fs/promises";
+import { workshopCreatureOverrides } from "./content/workshop-creatures.mjs";
 
 const root = new URL("../", import.meta.url);
 const read = async (path) => JSON.parse(await readFile(new URL(path, root), "utf8"));
@@ -55,6 +56,23 @@ const equipment = current.filter((record) => record.source.path.startsWith("desi
     specialOrder: markdown.includes("special-order benchmark"),
     handChoices: previous?.handChoices ?? [],
     inventoryDie: id === "item-first-aid-supplies" ? 6 : id === "item-smoke-supply" ? null : previous?.inventoryDie ?? null,
+  };
+});
+const recipes = current.filter((record) => record.source.path.startsWith("design/recipes/")).map(({ markdown, source }) => {
+  const id = markdown.match(/\*\*ID:\*\* ([a-z0-9-]+)/)?.[1];
+  const name = markdown.match(/^# (.+)/)?.[1];
+  const previous = inventory.recipes.find((record) => record.id === id);
+  const [, count, unit] = markdown.match(/\*\*Time(?: per attempt)?:\*\* (one|\d+) (hour|minute)s?\b/i) ?? [];
+  const maximumDie = Number(markdown.match(/\bmaximum d(\d+)\b/i)?.[1] ?? 0);
+  const target = Number(markdown.match(/\btarget(?::\*\*)? (\d+)\b/i)?.[1] ?? 0);
+  assert(id && name && previous && count, `Incomplete recipe metadata: ${source.path}`);
+  assert(Boolean(maximumDie) !== Boolean(target), `Expected a supply cap or progress target: ${source.path}`);
+  const attemptMinutes = (count.toLowerCase() === "one" ? 1 : Number(count)) * (unit.toLowerCase() === "hour" ? 60 : 1);
+  const { maximumDie: oldMaximumDie, target: oldTarget, ...compatibility } = previous;
+  return {
+    ...compatibility,
+    id, name, source, attemptMinutes,
+    ...(maximumDie ? { maximumDie } : { target }),
   };
 });
 const party = graph.rulesRevision === 299
@@ -125,10 +143,14 @@ if (graph.rulesRevision === 299) {
   }
 }
 
+const creatureOverrides = workshopCreatureOverrides(
+  await read("static/data/creatures.json"), graph.sourceCommit, authored, files,
+);
 const filesToWrite = {
   "static/data/forge-journals.json": { sourceCommit: graph.sourceCommit, rulesRevision: graph.rulesRevision, records: journals },
-  "static/data/forge-references.json": { sourceCommit: graph.sourceCommit, rulesRevision: graph.rulesRevision, records, equipment },
+  "static/data/forge-references.json": { sourceCommit: graph.sourceCommit, rulesRevision: graph.rulesRevision, records, equipment, recipes },
   "static/data/forge-party.json": { sourceCommit: graph.sourceCommit, rulesRevision: graph.rulesRevision, party },
+  "static/data/forge-creatures.json": creatureOverrides,
 };
 for (const [path, data] of Object.entries(filesToWrite)) {
   const target = new URL(path, root);
@@ -143,4 +165,5 @@ for (const id of tokens) {
   if (process.argv.includes("--check")) assert.equal(await readFile(target, "utf8"), token);
   else await writeFile(target, token);
 }
-console.log(`Verified ${party.length} example heroes, ${journals.length} journals, and ${equipment.length} equipment records for Character Workshop.`);
+console.log(`Verified ${party.length} example heroes, ${journals.length} journals, ${equipment.length} equipment records, and ${recipes.length} recipes for Character Workshop.`);
+console.log(`Verified Workshop bestiary source with ${creatureOverrides.creatures.length} creature and ${creatureOverrides.monsterAbilities.length} monster ability overrides.`);

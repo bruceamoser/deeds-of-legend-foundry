@@ -2277,5 +2277,192 @@
       "handChoices": [],
       "automation": "pending"
     }
+  ],
+  "recipes": [
+    {
+      "id": "recipe-bound-torches",
+      "name": "Bound Torches",
+      "source": {
+        "path": "design/recipes/bound-torches.md",
+        "sha256": "979fcff669f9bdc8a73fd3e5acb6a66204176063d1bfc8a7f04427ca274ad6b8"
+      },
+      "product": "item-lighting-bundle",
+      "permissions": [
+        "ability-trail-workshop",
+        "ability-make-something-useful",
+        "ability-enchanting-workshop"
+      ],
+      "ordinary": true,
+      "genericChoice": true,
+      "attemptMinutes": 60,
+      "automation": "pending",
+      "maximumDie": 6
+    },
+    {
+      "id": "recipe-camp-shelter",
+      "name": "Camp Shelter",
+      "source": {
+        "path": "design/recipes/camp-shelter.md",
+        "sha256": "5f5de2add91fad8284cbfc7900becedcf76c5c2d39770defdaff28c60045829c"
+      },
+      "product": null,
+      "permissions": [
+        "ability-a-roof-before-nightfall"
+      ],
+      "ordinary": true,
+      "genericChoice": false,
+      "attemptMinutes": 60,
+      "automation": "pending",
+      "target": 4
+    },
+    {
+      "id": "recipe-clearing-tonic",
+      "name": "Clearing Tonic",
+      "source": {
+        "path": "design/recipes/clearing-tonic.md",
+        "sha256": "cc7553697490156d16bc04f88c553ec7af0bb62b06d903d06be603204b105f83"
+      },
+      "product": "item-clearing-tonic",
+      "permissions": [
+        "ability-the-cleverest-mixture"
+      ],
+      "ordinary": true,
+      "genericChoice": false,
+      "attemptMinutes": 60,
+      "automation": "pending",
+      "maximumDie": 4
+    },
+    {
+      "id": "recipe-fletched-ammunition",
+      "name": "Fletched Ammunition",
+      "source": {
+        "path": "design/recipes/fletched-ammunition.md",
+        "sha256": "2d9bb7e27f5e08a3eb9434b56e89cd960c627fde11c530f0b83c666677c379af"
+      },
+      "product": "item-ammunition-bundle",
+      "permissions": [
+        "ability-trail-workshop",
+        "ability-make-something-useful",
+        "ability-enchanting-workshop"
+      ],
+      "ordinary": true,
+      "genericChoice": true,
+      "attemptMinutes": 60,
+      "automation": "pending",
+      "maximumDie": 8
+    },
+    {
+      "id": "recipe-lesser-healing-bottle",
+      "name": "Lesser Healing Bottle",
+      "source": {
+        "path": "design/recipes/lesser-healing-bottle.md",
+        "sha256": "407e078b0c6f6bab870b28b12096328e96be4d4e2a261216e2312278bad3cb72"
+      },
+      "product": "item-lesser-healing-bottle",
+      "permissions": [
+        "ability-bottled-morning"
+      ],
+      "ordinary": true,
+      "genericChoice": false,
+      "attemptMinutes": 60,
+      "automation": "pending",
+      "maximumDie": 4
+    },
+    {
+      "id": "recipe-simple-replacement-leg",
+      "name": "Simple Replacement Leg",
+      "source": {
+        "path": "design/recipes/simple-replacement-leg.md",
+        "sha256": "14609709a7e76dad087442e027ee75ce68bf856f42f2b36e2bcd4ece7bc12141"
+      },
+      "product": null,
+      "permissions": [
+        "ability-trail-workshop",
+        "ability-make-something-useful",
+        "ability-enchanting-workshop"
+      ],
+      "ordinary": true,
+      "genericChoice": true,
+      "attemptMinutes": 60,
+      "automation": "pending",
+      "target": 8
+    },
+    {
+      "id": "recipe-smoke-flask",
+      "name": "Smoke Flask",
+      "source": {
+        "path": "design/recipes/smoke-flask.md",
+        "sha256": "b5c5d17df13622ce2f5838813ede647186d4556037f44268cb7697e455b069af"
+      },
+      "product": "item-smoke-supply",
+      "permissions": [
+        "ability-smoke-in-a-bottle"
+      ],
+      "ordinary": true,
+      "genericChoice": false,
+      "attemptMinutes": 60,
+      "automation": "pending",
+      "target": 3
+    },
+    {
+      "id": "recipe-travel-food",
+      "name": "Travel Food",
+      "source": {
+        "path": "design/recipes/travel-food.md",
+        "sha256": "fa7db06ac906f9e2bfaa41cfa6e95a4dc3b90e42d982f6f3a2d50012f40b6a71"
+      },
+      "product": "item-food-bundle",
+      "permissions": [
+        "ability-trail-workshop",
+        "ability-make-something-useful",
+        "ability-enchanting-workshop",
+        "ability-bottled-morning",
+        "ability-smoke-in-a-bottle",
+        "ability-the-cleverest-mixture"
+      ],
+      "ordinary": true,
+      "genericChoice": true,
+      "attemptMinutes": 60,
+      "automation": "pending",
+      "maximumDie": 8
+    },
+    {
+      "id": "recipe-twisted-cord",
+      "name": "Twisted Cord",
+      "source": {
+        "path": "design/recipes/twisted-cord.md",
+        "sha256": "5de8502a97cc82c112d178ebdfe2e39c126983f7d113876e9a1cd8f6a5c23fe1"
+      },
+      "product": "item-rope-coil",
+      "permissions": [
+        "ability-trail-workshop",
+        "ability-make-something-useful",
+        "ability-enchanting-workshop"
+      ],
+      "ordinary": true,
+      "genericChoice": true,
+      "attemptMinutes": 60,
+      "automation": "pending",
+      "target": 4
+    },
+    {
+      "id": "recipe-wooden-brace",
+      "name": "Wooden Brace",
+      "source": {
+        "path": "design/recipes/wooden-brace.md",
+        "sha256": "89c8d2469ad2eea44b2cb3ce3ce040391c60c1e00cb74bfaa470ca5b162d989a"
+      },
+      "product": null,
+      "permissions": [
+        "ability-trail-workshop",
+        "ability-make-something-useful",
+        "ability-enchanting-workshop"
+      ],
+      "ordinary": true,
+      "genericChoice": true,
+      "attemptMinutes": 60,
+      "automation": "pending",
+      "target": 4
+    }
   ]
 }

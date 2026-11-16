@@ -64,6 +64,13 @@ try {
   await page.getByRole("heading", { name: "Edda Vale", exact: true }).waitFor();
   assert.equal(await page.locator(".sheet-links a").count(), 7);
   assert.equal(await page.getByRole("tab").count(), 0);
+  const rollAttributes = page.locator(".attributes .compact-roll");
+  assert.deepEqual(await rollAttributes.locator("small").allTextContents(), [
+    "Brawn", "Fortitude", "Agility", "Guile", "Knowledge", "Reason",
+  ]);
+  await page.getByRole("button", { name: "Roll Knowledge", exact: true }).click();
+  await expect(page.getByLabel("Roll attribute", { exact: true })).toHaveValue("knowledge");
+  await close();
   assert.equal(await page.locator(".combat-stats > div").count(), 7);
   for (const label of [
     "Armor DR",
@@ -158,7 +165,8 @@ try {
     .getByRole("button", { name: "Defend", exact: true })
     .click();
   assert(await page.getByLabel("Roll attribute", { exact: true }).isVisible());
-  await page.getByLabel("Attribute value", { exact: true }).fill("2");
+  await expect(page.getByRole("dialog")).toContainText("3 Boons for heavy cover");
+  await page.getByLabel("Attribute value", { exact: true }).fill("4");
   await page
     .getByRole("slider", { name: "Banes / Boons", exact: true })
     .fill("-3");
@@ -167,6 +175,7 @@ try {
     await page.locator("#roll-result").innerText(),
     /Weak|Standard|Strong/,
   );
+  await expect(page.locator("#roll-result")).toContainText("+4");
   await page.getByRole("button", { name: "Roll", exact: true }).click();
   await close();
   await page
@@ -317,7 +326,13 @@ try {
   }
   await page.getByRole("button", { name: "Choose item", exact: true }).click();
   await choose("Flame I", "flame:0");
-  await page.getByText("Page 2 · Boil Liquid").click();
+  await page.getByText("Fire Bolt (SP: 0)", { exact: true }).click();
+  const fireBolt = page.locator("details").filter({
+    has: page.getByText("Fire Bolt (SP: 0)", { exact: true }),
+  });
+  await expect(fireBolt.locator(".card-metadata")).toContainText("Defense");
+  await expect(fireBolt.locator(".card-metadata")).toContainText("Agility");
+  await page.getByText("Boil Liquid (SP: 1)", { exact: true }).click();
   await expect(page.locator(".rule-card")).toContainText("Ritual · 1 minute");
   await page.locator("#sheet-import").setInputFiles({
     name: "legacy-ability.json",

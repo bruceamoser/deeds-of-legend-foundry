@@ -215,18 +215,19 @@
   grid-template-columns: 190px minmax(0, 360px);
   gap: 12px;
   width: min(562px, calc(100% - 20px));
-  margin: 12px auto;
+  margin: 0 auto 8px;
   align-items: start;
   height: calc(100dvh - 66px);
 }
 .chat-controls {
   background: var(--paper);
-  border: 1px solid var(--line);
-  border-radius: 4px;
-  padding: 8px;
+  border: 1px solid var(--frame-border);
+  border-radius: 5px;
+  box-shadow: var(--frame-shadow);
+  padding: 8px 10px;
 }
 .chat-controls h1 {
-  font-size: 1rem;
+  font-size: 20px;
   margin: 0 0 6px;
 }
 .chat-controls button {

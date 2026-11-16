@@ -3,6 +3,7 @@ import { workshopCatalogs } from "../src/rules/workshop-forge-catalog.mjs";
 import { workshopPlaytestParty } from "./workshop-playtest-party.mjs";
 import { cp, mkdir, rm, readFile, writeFile } from "node:fs/promises";
 import { createHash } from "node:crypto";
+import { workshopCreatureCatalog } from "./content/workshop-creatures.mjs";
 const root = new URL("../", import.meta.url);
 const out = new URL("dist/workshop/", root);
 const choices = JSON.parse(
@@ -74,7 +75,7 @@ for (const [from, to] of [
 ])
   await cp(new URL(from, root), new URL(to, out), { recursive: true });
 await mkdir(new URL("data/", out), { recursive: true });
-for (const name of ["choices", "inventory", "wounds", "creatures"])
+for (const name of ["choices", "inventory", "wounds"])
   await cp(
     new URL(`static/data/${name}.json`, root),
     new URL(`data/${name}.json`, out),
@@ -87,6 +88,11 @@ const [forge, forgeJournals, forgeReferences, forgeParty] = await Promise.all(
 const forgeLock = JSON.parse(await readFile(new URL("content/forge-source-lock.json", root)));
 if ([forge, forgeJournals, forgeReferences, forgeParty].some(({ sourceCommit }) => sourceCommit !== forgeLock.commit))
   throw new Error("Character Workshop Forge data differs from the approved book revision.");
+const [baseCreatures, creatureOverrides, sheetArt] = await Promise.all(
+  ["static/data/creatures.json", "static/data/forge-creatures.json", "web/data/sheet-art.json"].map(async (path) =>
+    JSON.parse(await readFile(new URL(path, root))),
+  ),
+);
 const playtest = applyForgePlaytest(forge, forgeReferences);
 const wounds = JSON.parse(await readFile(new URL("static/data/wounds.json", root)));
 const party = workshopPlaytestParty(forgeParty.party, workshopCatalogs(choices, inventory, wounds, playtest.forge, playtest.references));
@@ -94,6 +100,7 @@ for (const [name, data] of Object.entries({
   forge: playtest.forge,
   "forge-journals": forge.rulesRevision === 299 ? forgeJournals : applyForgePlaytestJournals(forgeJournals),
   "forge-references": playtest.references,
+  creatures: workshopCreatureCatalog(baseCreatures, creatureOverrides, sheetArt, forgeLock.commit),
   example: party[0].draft, party,
 
 })) {

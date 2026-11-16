@@ -3,13 +3,15 @@ import { attackCard, rollCard, resourceCard } from "./chat-cards.mjs";
 import { rollPlan, classifyRoll } from "./rules/roll.mjs";
 import { inventoryCheck } from "./rules/inventory.mjs";
 import { workshopSupplyUse } from "./rules/workshop-resources.mjs";
-const { draft, opponent: creature, incoming: attack, field, attackAbility, inventory } = previewExample;
+const { draft, maxHp, opponent: creature, incoming: attack, field, attackAbility, inventory } = previewExample;
 const log = document.querySelector(".chat-log");
 function append(html) {
   log.insertAdjacentHTML("beforeend", html);
   log.scrollTop = log.scrollHeight;
 }
-function sample(mode, faces, net = 0, attribute = 1) {
+function sample(mode, faces, net = 0) {
+  const attributeKey = mode === "defense" ? attack.defense.attribute : "brawn";
+  const attribute = draft.attributes[attributeKey];
   const retainedIndices = faces
     .map((face, index) => ({ face, index }))
     .sort(
@@ -26,7 +28,7 @@ function sample(mode, faces, net = 0, attribute = 1) {
     actor: draft.name,
     target: mode === "attribute" ? null : creature.name,
     mode,
-    attribute: mode === "defense" ? "agility" : "brawn",
+    attribute: attributeKey,
     title: previewExample.title(mode),
     effect: previewExample.effect(mode, result.tier),
     abilities: mode === "ability" ? [attackAbility.name] : [],
@@ -56,7 +58,7 @@ function request() {
 function reset() {
   log.innerHTML =
     request() +
-    rollCard(sample("defense", [4, 3, 3], 0, 0)) +
+    rollCard(sample("defense", [4, 3, 3])) +
     rollCard(sample("ability", [6, 5, 5, 2], 1));
   log.scrollTop = 0;
 }
@@ -83,6 +85,7 @@ document.addEventListener("click", (e) => {
     );
   }
   if (kind === "healing") {
+    const hp = 3;
     const r = workshopSupplyUse({
       item: {
         catalogId: "item-lesser-healing-bottle",
@@ -90,8 +93,8 @@ document.addEventListener("click", (e) => {
         quantity: 1,
       },
       face: 1,
-      hp: 3,
-      maxHp: 12,
+      hp,
+      maxHp,
       lifeResistance: 0,
       catalog: inventory,
     });
@@ -102,7 +105,7 @@ document.addEventListener("click", (e) => {
           (i) => i.id === "item-lesser-healing-bottle",
         ).name,
         kind: "Healing",
-        effect: `Restore ${r.healed} HP · 3 / 12 → ${r.hp} / 12`,
+        effect: `Restore ${r.healed} HP · ${hp} / ${maxHp} → ${r.hp} / ${maxHp}`,
         die: { before: r.before, face: r.retained, after: r.after },
         detail: "Final dose · healing still takes effect.",
       }),

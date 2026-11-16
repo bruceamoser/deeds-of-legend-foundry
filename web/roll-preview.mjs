@@ -50,6 +50,7 @@ function rollTitle(mode) {
 
 export const previewExample = {
   draft,
+  maxHp: character.limits.maxHp,
   opponent,
   incoming,
   field,
@@ -64,13 +65,21 @@ export const previewExample = {
   },
 };
 const dialog = document.querySelector("#reference");
+const heading = document.querySelector("[data-preview-hero]");
+if (heading) {
+  heading.textContent = draft.name;
+  document.querySelector('[data-open="ability"]').textContent = attackAbility.name;
+}
 const chatMode = document.body.classList.contains("chat-preview");
 let mode = "ability";
 function open(next) {
   mode = next;
   const attribute = mode === "defense" ? incoming.defense.attribute : "brawn";
   const selected = mode === "ability" ? attackAbility.id : null;
-  dialog.innerHTML = `<header><div><small class="hol-roll-context">${esc(draft.name)}${mode === "defense" ? " · Defense" : ""}</small><h2 id="reference-title">${esc(rollTitle(mode))}</h2></div><button type="button" data-close class="quiet">Close</button></header><div class="reference-body">${rollSetup({ attributes: Object.fromEntries(ATTRIBUTES.map((a) => [a, draft.attributes[a]])), selected: attribute, attributeId: "preview-attribute", value: draft.attributes[attribute], netId: "preview-net", labelId: "preview-net-label" })}<details class="hol-roll-abilities" open><summary>Abilities</summary><div class="roll-abilities">${[
+  const defenseGuidance = mode === "defense"
+    ? '<p class="roll-preview-note">Include any Threat and other modifiers in your roll. Partial cover grants 1 Boon and heavy cover grants 3. <a href="journal.html#rule-foundations">Cover rules</a></p>'
+    : "";
+  dialog.innerHTML = `<header><div><small class="hol-roll-context">${esc(draft.name)}${mode === "defense" ? " · Defense" : ""}</small><h2 id="reference-title">${esc(rollTitle(mode))}</h2></div><button type="button" data-close class="quiet">Close</button></header><div class="reference-body">${rollSetup({ attributes: Object.fromEntries(ATTRIBUTES.map((a) => [a, draft.attributes[a]])), selected: attribute, attributeId: "preview-attribute", value: draft.attributes[attribute], netId: "preview-net", labelId: "preview-net-label" })}${defenseGuidance}<details class="hol-roll-abilities" open><summary>Abilities</summary><div class="roll-abilities">${[
     ...cards,
   ]
     .sort((a, b) => Number(b.id === selected) - Number(a.id === selected))
