@@ -123,7 +123,8 @@
     "test:defense-substitutions": "node scripts/check-defense-substitutions.mjs",
     "test:workshop-compact": "node scripts/check-workshop-compact.mjs",
     "test:workshop-casting": "node scripts/check-workshop-casting.mjs",
-    "test:build-offs": "node scripts/validate-build-offs.mjs"
+    "test:build-offs": "node scripts/validate-build-offs.mjs",
+    "test:spell-atlas": "node scripts/check-spell-atlas.mjs"
   },
   "devDependencies": {
     "@foundryvtt/foundryvtt-cli": "3.0.5",
