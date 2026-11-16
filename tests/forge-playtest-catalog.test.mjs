@@ -56,7 +56,7 @@ test("the playtest gates preserve ordered links and require deeper armor trainin
   assert.equal(forge.nodes.filter(node => node.kind === "combined").length, 0);
   for (const discipline of forge.disciplines) {
     for (const path of discipline.paths) {
-      assert.equal(path.steps.length, path.bookId ? 4 : 7, path.id);
+      assert.equal(path.steps.length, 7, path.id);
       path.steps.forEach((id, index) => {
         const node = get(id);
         assert.equal(node.level, index < 3 ? 1 : index < 6 ? 3 : 7, `${id} level gate`);
@@ -64,7 +64,7 @@ test("the playtest gates preserve ordered links and require deeper armor trainin
       });
     }
   }
-  for (const node of forge.nodes.filter(node => node.kind === "spell-mastery" || node.kind === "mastery")) {
+  for (const node of forge.nodes.filter(node => node.kind === "mastery" || (node.kind === "section" && node.level === 7))) {
     assert.equal(node.level, 7, node.id);
     assert.equal(node.requires.length, 1, node.id);
     assert.equal(forgeEligibility(forge, state(6,node.requires), node.id).eligible, false, node.id);
@@ -137,7 +137,7 @@ test("all class/discipline pairs have explicit entry prices, charged once by sha
       assert.equal(bought.state.dp, 0);
       assert.equal(learnForgeEntry(forge, bought.state, discipline.id).eligible, false);
       for (const path of discipline.paths) {
-        assert.deepEqual(path.steps.map(id => forgeEligibility(forge, state, id).cost), path.bookId ? [1, 2, 2, 3] : [1, 2, 2, 3, 4, 4, 5]);
+        assert.deepEqual(path.steps.map(id => forgeEligibility(forge, state, id).cost), [1, 2, 2, 3, 4, 4, 5]);
       }
     }
     assert.doesNotMatch(cls.referenceMarkdown, /costs 1 DP for every class/);

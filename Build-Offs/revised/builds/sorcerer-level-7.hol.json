@@ -1,7 +1,7 @@
 {
   "format": "heroes-of-legend-character",
-  "schemaVersion": 6,
-  "sourceCommit": "55cbd4c70f13704c684f7ba358f0d75bb62b1f30",
+  "schemaVersion": 7,
+  "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
   "draft": {
     "name": "Ilyra Cinderblood",
     "attributes": {
@@ -192,6 +192,15 @@
               "id": "spellcraft:soul-capacity:7"
             },
             {
+              "id": "flame:4"
+            },
+            {
+              "id": "flame:5"
+            },
+            {
+              "id": "flame:6"
+            },
+            {
               "id": "air:2"
             },
             {
@@ -205,18 +214,6 @@
             },
             {
               "id": "emotion:3"
-            },
-            {
-              "id": "spellcraft:recovery:2"
-            },
-            {
-              "id": "spellcraft:recovery:3"
-            },
-            {
-              "id": "spellcraft:recovery:4"
-            },
-            {
-              "id": "mastery:meteor-swarm"
             }
           ],
           "acquisitions": {},

@@ -1,6 +1,7 @@
 {
   "schemaVersion": 1,
   "rulesRevision": 299,
+  "spellbookProgressionRevision": 310,
   "signatureDevelopment": {
     "schemaVersion": 1,
     "choiceLevels": [
@@ -6034,9 +6035,11 @@
             "air:3",
             "arms:bladework:4"
           ],
-          "targetSpellId": "spell-mastery:stormsteel-arc",
-          "disposition": "rehome-to-single-book-mastery",
-          "requiresPlayerRebuild": true
+          "targetSpellId": "spell:air:a1",
+          "disposition": "concept-covered-not-equivalent",
+          "requiresPlayerRebuild": true,
+          "retiredTargetSpellId": "spell-mastery:stormsteel-arc",
+          "note": "Related current spell only; see spell-progression-310 audit for lost and retained effects. No automatic learning conversion."
         },
         {
           "sourceId": "combined:the-invisible-shieldbearer",
@@ -6046,9 +6049,10 @@
             "telekinesis:3",
             "guard:interception:4"
           ],
-          "targetSpellId": "spell-mastery:the-invisible-shieldbearer",
-          "disposition": "rehome-to-single-book-mastery",
-          "requiresPlayerRebuild": true
+          "disposition": "retired-in-seven-section-revision",
+          "requiresPlayerRebuild": true,
+          "retiredTargetSpellId": "spell-mastery:the-invisible-shieldbearer",
+          "note": "Retired as a separate invented hybrid; familiar spellbooks keep their defined spells. No automatic learning conversion."
         },
         {
           "sourceId": "combined:borrowed-dawn",
@@ -6058,9 +6062,11 @@
             "restoration:3",
             "medicine:first-aid:4"
           ],
-          "targetSpellId": "spell-mastery:borrowed-dawn",
-          "disposition": "rehome-to-single-book-mastery",
-          "requiresPlayerRebuild": true
+          "targetSpellId": "spell:restoration:a1",
+          "disposition": "concept-covered-not-equivalent",
+          "requiresPlayerRebuild": true,
+          "retiredTargetSpellId": "spell-mastery:borrowed-dawn",
+          "note": "Related current spell only; see spell-progression-310 audit for lost and retained effects. No automatic learning conversion."
         },
         {
           "sourceId": "combined:starfall-volley",
@@ -6071,9 +6077,11 @@
             "marksmanship:precision:4",
             "scholarship:lore:4"
           ],
-          "targetSpellId": "spell-mastery:starfall-volley",
-          "disposition": "rehome-to-single-book-mastery",
-          "requiresPlayerRebuild": true
+          "targetSpellId": "spell:flame:a1",
+          "disposition": "concept-covered-not-equivalent",
+          "requiresPlayerRebuild": true,
+          "retiredTargetSpellId": "spell-mastery:starfall-volley",
+          "note": "Related current spell only; see spell-progression-310 audit for lost and retained effects. No automatic learning conversion."
         },
         {
           "sourceId": "combined:step-between-heartbeats",
@@ -6084,9 +6092,10 @@
             "subterfuge:stealth:4",
             "athletics:leaping:4"
           ],
-          "targetSpellId": "spell-mastery:step-between-heartbeats",
-          "disposition": "rehome-to-single-book-mastery",
-          "requiresPlayerRebuild": true
+          "disposition": "retired-in-seven-section-revision",
+          "requiresPlayerRebuild": true,
+          "retiredTargetSpellId": "spell-mastery:step-between-heartbeats",
+          "note": "The independent folio is retired; existing purchase returns to the DP ledger. No replacement spell is granted."
         },
         {
           "sourceId": "combined:sanctuary-of-steel",
@@ -6097,9 +6106,11 @@
             "armor:bracing:4",
             "guard:shelter:4"
           ],
-          "targetSpellId": "spell-mastery:sanctuary-of-steel",
-          "disposition": "rehome-to-single-book-mastery",
-          "requiresPlayerRebuild": true
+          "targetSpellId": "spell-mastery:guards-and-wards-living-citadel",
+          "disposition": "concept-covered-not-equivalent",
+          "requiresPlayerRebuild": true,
+          "retiredTargetSpellId": "spell-mastery:sanctuary-of-steel",
+          "note": "Related current spell only; see spell-progression-310 audit for lost and retained effects. No automatic learning conversion."
         },
         {
           "sourceId": "combined:colossus-of-the-forge",
@@ -6111,9 +6122,10 @@
             "arms:bladework:4",
             "craft:construction:4"
           ],
-          "targetSpellId": "spell-mastery:colossus-of-the-forge",
-          "disposition": "rehome-to-single-book-mastery",
-          "requiresPlayerRebuild": true
+          "disposition": "retired-in-seven-section-revision",
+          "requiresPlayerRebuild": true,
+          "retiredTargetSpellId": "spell-mastery:colossus-of-the-forge",
+          "note": "Retired as a separate invented hybrid; familiar spellbooks keep their defined spells. No automatic learning conversion."
         },
         {
           "sourceId": "combined:the-road-for-the-lost",
@@ -6125,9 +6137,11 @@
             "wilderness:tracking:4",
             "scholarship:planning:4"
           ],
-          "targetSpellId": "spell-mastery:the-road-for-the-lost",
-          "disposition": "rehome-to-single-book-mastery",
-          "requiresPlayerRebuild": true
+          "targetSpellId": "spell:passage:a2",
+          "disposition": "concept-covered-not-equivalent",
+          "requiresPlayerRebuild": true,
+          "retiredTargetSpellId": "spell-mastery:the-road-for-the-lost",
+          "note": "Related current spell only; see spell-progression-310 audit for lost and retained effects. No automatic learning conversion."
         },
         {
           "sourceId": "combined:dawn-on-the-battlefield",
@@ -6139,9 +6153,11 @@
             "medicine:first-aid:4",
             "influence:leadership:4"
           ],
-          "targetSpellId": "spell-mastery:dawn-on-the-battlefield",
-          "disposition": "rehome-to-single-book-mastery",
-          "requiresPlayerRebuild": true
+          "targetSpellId": "spell:restoration:8",
+          "disposition": "concept-covered-not-equivalent",
+          "requiresPlayerRebuild": true,
+          "retiredTargetSpellId": "spell-mastery:dawn-on-the-battlefield",
+          "note": "Related current spell only; see spell-progression-310 audit for lost and retained effects. No automatic learning conversion."
         },
         {
           "sourceId": "combined:meteor-swarm",
@@ -6152,8 +6168,9 @@
             "telekinesis:3"
           ],
           "targetSpellId": "spell-mastery:meteor-swarm",
-          "disposition": "rehome-to-single-book-mastery",
-          "requiresPlayerRebuild": true
+          "disposition": "rehome-to-seven-section-spellbook",
+          "requiresPlayerRebuild": true,
+          "targetSection": "VII"
         },
         {
           "sourceId": "combined:wall-of-thorns-living-fortress",
@@ -6163,9 +6180,11 @@
             "growth:3",
             "shaping:3"
           ],
-          "targetSpellId": "spell-mastery:wall-of-thorns-living-fortress",
-          "disposition": "rehome-to-single-book-mastery",
-          "requiresPlayerRebuild": true
+          "targetSpellId": "spell:growth:a2",
+          "disposition": "concept-covered-not-equivalent",
+          "requiresPlayerRebuild": true,
+          "retiredTargetSpellId": "spell-mastery:wall-of-thorns-living-fortress",
+          "note": "Related current spell only; see spell-progression-310 audit for lost and retained effects. No automatic learning conversion."
         },
         {
           "sourceId": "combined:true-resurrection",
@@ -6176,8 +6195,9 @@
             "spirits:3"
           ],
           "targetSpellId": "spell-mastery:true-resurrection",
-          "disposition": "rehome-to-single-book-mastery",
-          "requiresPlayerRebuild": true
+          "disposition": "rehome-to-seven-section-spellbook",
+          "requiresPlayerRebuild": true,
+          "targetSection": "VII"
         },
         {
           "sourceId": "combined:simulacrum",
@@ -6188,8 +6208,9 @@
             "animation:3"
           ],
           "targetSpellId": "spell-mastery:simulacrum",
-          "disposition": "rehome-to-single-book-mastery",
-          "requiresPlayerRebuild": true
+          "disposition": "rehome-to-seven-section-spellbook",
+          "requiresPlayerRebuild": true,
+          "targetSection": "VII"
         },
         {
           "sourceId": "combined:demiplane",
@@ -6200,8 +6221,9 @@
             "seals:3"
           ],
           "targetSpellId": "spell-mastery:demiplane",
-          "disposition": "rehome-to-single-book-mastery",
-          "requiresPlayerRebuild": true
+          "disposition": "rehome-to-seven-section-spellbook",
+          "requiresPlayerRebuild": true,
+          "targetSection": "VII"
         },
         {
           "sourceId": "combined:foresight-shared-vigil",
@@ -6212,8 +6234,9 @@
             "portents:3"
           ],
           "targetSpellId": "spell-mastery:foresight-shared-vigil",
-          "disposition": "rehome-to-single-book-mastery",
-          "requiresPlayerRebuild": true
+          "disposition": "rehome-to-seven-section-spellbook",
+          "requiresPlayerRebuild": true,
+          "targetSection": "VII"
         },
         {
           "sourceId": "combined:storm-of-vengeance",
@@ -6225,8 +6248,9 @@
             "sanctuary:3"
           ],
           "targetSpellId": "spell-mastery:storm-of-vengeance",
-          "disposition": "rehome-to-single-book-mastery",
-          "requiresPlayerRebuild": true
+          "disposition": "rehome-to-seven-section-spellbook",
+          "requiresPlayerRebuild": true,
+          "targetSection": "VII"
         },
         {
           "sourceId": "combined:mass-lifegiving",
@@ -6237,9 +6261,11 @@
             "spirits:3",
             "sanctuary:3"
           ],
-          "targetSpellId": "spell-mastery:mass-lifegiving",
-          "disposition": "rehome-to-single-book-mastery",
-          "requiresPlayerRebuild": true
+          "targetSpellId": "spell-mastery:true-resurrection",
+          "disposition": "concept-covered-not-equivalent",
+          "requiresPlayerRebuild": true,
+          "retiredTargetSpellId": "spell-mastery:mass-lifegiving",
+          "note": "Related current spell only; see spell-progression-310 audit for lost and retained effects. No automatic learning conversion."
         },
         {
           "sourceId": "combined:foresight-oracle-s-dream",
@@ -6250,9 +6276,11 @@
             "portents:3",
             "spirits:3"
           ],
-          "targetSpellId": "spell-mastery:foresight-oracles-dream",
-          "disposition": "rehome-to-single-book-mastery",
-          "requiresPlayerRebuild": true
+          "targetSpellId": "spell:dreams:a1",
+          "disposition": "concept-covered-not-equivalent",
+          "requiresPlayerRebuild": true,
+          "retiredTargetSpellId": "spell-mastery:foresight-oracles-dream",
+          "note": "Related current spell only; see spell-progression-310 audit for lost and retained effects. No automatic learning conversion."
         },
         {
           "sourceId": "combined:gate-world-anchor",
@@ -6265,8 +6293,9 @@
             "seals:3"
           ],
           "targetSpellId": "spell-mastery:gate-world-anchor",
-          "disposition": "rehome-to-single-book-mastery",
-          "requiresPlayerRebuild": true
+          "disposition": "rehome-to-seven-section-spellbook",
+          "requiresPlayerRebuild": true,
+          "targetSection": "VII"
         },
         {
           "sourceId": "combined:guards-and-wards-living-citadel",
@@ -6279,8 +6308,9 @@
             "sanctuary:3"
           ],
           "targetSpellId": "spell-mastery:guards-and-wards-living-citadel",
-          "disposition": "rehome-to-single-book-mastery",
-          "requiresPlayerRebuild": true
+          "disposition": "rehome-to-seven-section-spellbook",
+          "requiresPlayerRebuild": true,
+          "targetSection": "VII"
         }
       ]
     },
@@ -7130,7 +7160,7 @@
       }
     }
   },
-  "sourceCommit": "55cbd4c70f13704c684f7ba358f0d75bb62b1f30",
+  "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
   "disciplines": [
     {
       "id": "arms",
@@ -7837,7 +7867,10 @@
             "flame:0",
             "flame:1",
             "flame:2",
-            "flame:3"
+            "flame:3",
+            "flame:4",
+            "flame:5",
+            "flame:6"
           ]
         },
         {
@@ -7848,7 +7881,10 @@
             "water:0",
             "water:1",
             "water:2",
-            "water:3"
+            "water:3",
+            "water:4",
+            "water:5",
+            "water:6"
           ]
         },
         {
@@ -7859,7 +7895,10 @@
             "earth:0",
             "earth:1",
             "earth:2",
-            "earth:3"
+            "earth:3",
+            "earth:4",
+            "earth:5",
+            "earth:6"
           ]
         },
         {
@@ -7870,7 +7909,10 @@
             "air:0",
             "air:1",
             "air:2",
-            "air:3"
+            "air:3",
+            "air:4",
+            "air:5",
+            "air:6"
           ]
         }
       ],
@@ -7888,7 +7930,10 @@
             "restoration:0",
             "restoration:1",
             "restoration:2",
-            "restoration:3"
+            "restoration:3",
+            "restoration:4",
+            "restoration:5",
+            "restoration:6"
           ]
         },
         {
@@ -7899,7 +7944,10 @@
             "transformation:0",
             "transformation:1",
             "transformation:2",
-            "transformation:3"
+            "transformation:3",
+            "transformation:4",
+            "transformation:5",
+            "transformation:6"
           ]
         },
         {
@@ -7910,7 +7958,10 @@
             "growth:0",
             "growth:1",
             "growth:2",
-            "growth:3"
+            "growth:3",
+            "growth:4",
+            "growth:5",
+            "growth:6"
           ]
         },
         {
@@ -7921,7 +7972,10 @@
             "decay:0",
             "decay:1",
             "decay:2",
-            "decay:3"
+            "decay:3",
+            "decay:4",
+            "decay:5",
+            "decay:6"
           ]
         }
       ],
@@ -7939,7 +7993,10 @@
             "thought:0",
             "thought:1",
             "thought:2",
-            "thought:3"
+            "thought:3",
+            "thought:4",
+            "thought:5",
+            "thought:6"
           ]
         },
         {
@@ -7950,7 +8007,10 @@
             "emotion:0",
             "emotion:1",
             "emotion:2",
-            "emotion:3"
+            "emotion:3",
+            "emotion:4",
+            "emotion:5",
+            "emotion:6"
           ]
         },
         {
@@ -7961,7 +8021,10 @@
             "perception:0",
             "perception:1",
             "perception:2",
-            "perception:3"
+            "perception:3",
+            "perception:4",
+            "perception:5",
+            "perception:6"
           ]
         },
         {
@@ -7972,7 +8035,10 @@
             "dreams:0",
             "dreams:1",
             "dreams:2",
-            "dreams:3"
+            "dreams:3",
+            "dreams:4",
+            "dreams:5",
+            "dreams:6"
           ]
         }
       ],
@@ -7990,7 +8056,10 @@
             "detection:0",
             "detection:1",
             "detection:2",
-            "detection:3"
+            "detection:3",
+            "detection:4",
+            "detection:5",
+            "detection:6"
           ]
         },
         {
@@ -8001,7 +8070,10 @@
             "farseeing:0",
             "farseeing:1",
             "farseeing:2",
-            "farseeing:3"
+            "farseeing:3",
+            "farseeing:4",
+            "farseeing:5",
+            "farseeing:6"
           ]
         },
         {
@@ -8012,7 +8084,10 @@
             "echoes:0",
             "echoes:1",
             "echoes:2",
-            "echoes:3"
+            "echoes:3",
+            "echoes:4",
+            "echoes:5",
+            "echoes:6"
           ]
         },
         {
@@ -8023,7 +8098,10 @@
             "portents:0",
             "portents:1",
             "portents:2",
-            "portents:3"
+            "portents:3",
+            "portents:4",
+            "portents:5",
+            "portents:6"
           ]
         }
       ],
@@ -8041,7 +8119,10 @@
             "spirits:0",
             "spirits:1",
             "spirits:2",
-            "spirits:3"
+            "spirits:3",
+            "spirits:4",
+            "spirits:5",
+            "spirits:6"
           ]
         },
         {
@@ -8052,7 +8133,10 @@
             "calling:0",
             "calling:1",
             "calling:2",
-            "calling:3"
+            "calling:3",
+            "calling:4",
+            "calling:5",
+            "calling:6"
           ]
         },
         {
@@ -8063,7 +8147,10 @@
             "binding:0",
             "binding:1",
             "binding:2",
-            "binding:3"
+            "binding:3",
+            "binding:4",
+            "binding:5",
+            "binding:6"
           ]
         },
         {
@@ -8074,7 +8161,10 @@
             "passage:0",
             "passage:1",
             "passage:2",
-            "passage:3"
+            "passage:3",
+            "passage:4",
+            "passage:5",
+            "passage:6"
           ]
         }
       ],
@@ -8092,7 +8182,10 @@
             "telekinesis:0",
             "telekinesis:1",
             "telekinesis:2",
-            "telekinesis:3"
+            "telekinesis:3",
+            "telekinesis:4",
+            "telekinesis:5",
+            "telekinesis:6"
           ]
         },
         {
@@ -8103,7 +8196,10 @@
             "shaping:0",
             "shaping:1",
             "shaping:2",
-            "shaping:3"
+            "shaping:3",
+            "shaping:4",
+            "shaping:5",
+            "shaping:6"
           ]
         },
         {
@@ -8114,7 +8210,10 @@
             "animation:0",
             "animation:1",
             "animation:2",
-            "animation:3"
+            "animation:3",
+            "animation:4",
+            "animation:5",
+            "animation:6"
           ]
         },
         {
@@ -8125,7 +8224,10 @@
             "imbuement:0",
             "imbuement:1",
             "imbuement:2",
-            "imbuement:3"
+            "imbuement:3",
+            "imbuement:4",
+            "imbuement:5",
+            "imbuement:6"
           ]
         }
       ],
@@ -8143,7 +8245,10 @@
             "protection:0",
             "protection:1",
             "protection:2",
-            "protection:3"
+            "protection:3",
+            "protection:4",
+            "protection:5",
+            "protection:6"
           ]
         },
         {
@@ -8154,7 +8259,10 @@
             "unraveling:0",
             "unraveling:1",
             "unraveling:2",
-            "unraveling:3"
+            "unraveling:3",
+            "unraveling:4",
+            "unraveling:5",
+            "unraveling:6"
           ]
         },
         {
@@ -8165,7 +8273,10 @@
             "sanctuary:0",
             "sanctuary:1",
             "sanctuary:2",
-            "sanctuary:3"
+            "sanctuary:3",
+            "sanctuary:4",
+            "sanctuary:5",
+            "sanctuary:6"
           ]
         },
         {
@@ -8176,7 +8287,10 @@
             "seals:0",
             "seals:1",
             "seals:2",
-            "seals:3"
+            "seals:3",
+            "seals:4",
+            "seals:5",
+            "seals:6"
           ]
         }
       ],
@@ -8236,7 +8350,10 @@
             "channeling:0",
             "channeling:1",
             "channeling:2",
-            "channeling:3"
+            "channeling:3",
+            "channeling:4",
+            "channeling:5",
+            "channeling:6"
           ]
         }
       ],
@@ -12850,6 +12967,7 @@
       "section": "I",
       "dp": 1,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "elements"
       ],
@@ -12868,6 +12986,7 @@
       "section": "II",
       "dp": 2,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "flame:0"
       ],
@@ -12886,6 +13005,7 @@
       "section": "III",
       "dp": 2,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "flame:1"
       ],
@@ -12904,15 +13024,67 @@
       "section": "IV",
       "dp": 3,
       "level": 3,
+      "shape": "triangle",
       "requires": [
         "flame:2"
       ],
       "spellIds": [
         "spell:flame:7",
-        "spell:flame:8",
-        "spell:flame:a1",
-        "spell:flame:a2",
-        "spell:flame:a3"
+        "spell:flame:8"
+      ]
+    },
+    {
+      "id": "flame:4",
+      "name": "Fire Storm",
+      "kind": "section",
+      "disciplineId": "elements",
+      "pathId": "elements:flame",
+      "bookId": "flame",
+      "section": "V",
+      "dp": 4,
+      "level": 3,
+      "shape": "triangle",
+      "requires": [
+        "flame:3"
+      ],
+      "spellIds": [
+        "spell:flame:a1"
+      ]
+    },
+    {
+      "id": "flame:5",
+      "name": "Delayed Blast Fireball",
+      "kind": "section",
+      "disciplineId": "elements",
+      "pathId": "elements:flame",
+      "bookId": "flame",
+      "section": "VI",
+      "dp": 4,
+      "level": 3,
+      "shape": "triangle",
+      "requires": [
+        "flame:4"
+      ],
+      "spellIds": [
+        "spell:flame:a2"
+      ]
+    },
+    {
+      "id": "flame:6",
+      "name": "Meteor Swarm",
+      "kind": "section",
+      "disciplineId": "elements",
+      "pathId": "elements:flame",
+      "bookId": "flame",
+      "section": "VII",
+      "dp": 5,
+      "level": 7,
+      "shape": "diamond",
+      "requires": [
+        "flame:5"
+      ],
+      "spellIds": [
+        "spell-mastery:meteor-swarm"
       ]
     },
     {
@@ -12925,6 +13097,7 @@
       "section": "I",
       "dp": 1,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "elements"
       ],
@@ -12943,6 +13116,7 @@
       "section": "II",
       "dp": 2,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "water:0"
       ],
@@ -12961,6 +13135,7 @@
       "section": "III",
       "dp": 2,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "water:1"
       ],
@@ -12979,14 +13154,66 @@
       "section": "IV",
       "dp": 3,
       "level": 3,
+      "shape": "triangle",
       "requires": [
         "water:2"
       ],
       "spellIds": [
         "spell:water:7",
-        "spell:water:8",
-        "spell:water:a1",
-        "spell:water:a2",
+        "spell:water:8"
+      ]
+    },
+    {
+      "id": "water:4",
+      "name": "Cone of Cold",
+      "kind": "section",
+      "disciplineId": "elements",
+      "pathId": "elements:water",
+      "bookId": "water",
+      "section": "V",
+      "dp": 4,
+      "level": 3,
+      "shape": "triangle",
+      "requires": [
+        "water:3"
+      ],
+      "spellIds": [
+        "spell:water:a1"
+      ]
+    },
+    {
+      "id": "water:5",
+      "name": "Freezing Sphere",
+      "kind": "section",
+      "disciplineId": "elements",
+      "pathId": "elements:water",
+      "bookId": "water",
+      "section": "VI",
+      "dp": 4,
+      "level": 3,
+      "shape": "triangle",
+      "requires": [
+        "water:4"
+      ],
+      "spellIds": [
+        "spell:water:a2"
+      ]
+    },
+    {
+      "id": "water:6",
+      "name": "Tsunami",
+      "kind": "section",
+      "disciplineId": "elements",
+      "pathId": "elements:water",
+      "bookId": "water",
+      "section": "VII",
+      "dp": 5,
+      "level": 7,
+      "shape": "diamond",
+      "requires": [
+        "water:5"
+      ],
+      "spellIds": [
         "spell:water:a3"
       ]
     },
@@ -13000,6 +13227,7 @@
       "section": "I",
       "dp": 1,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "elements"
       ],
@@ -13018,6 +13246,7 @@
       "section": "II",
       "dp": 2,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "earth:0"
       ],
@@ -13036,6 +13265,7 @@
       "section": "III",
       "dp": 2,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "earth:1"
       ],
@@ -13054,14 +13284,66 @@
       "section": "IV",
       "dp": 3,
       "level": 3,
+      "shape": "triangle",
       "requires": [
         "earth:2"
       ],
       "spellIds": [
         "spell:earth:7",
-        "spell:earth:8",
-        "spell:earth:a1",
-        "spell:earth:a2",
+        "spell:earth:8"
+      ]
+    },
+    {
+      "id": "earth:4",
+      "name": "Move Earth",
+      "kind": "section",
+      "disciplineId": "elements",
+      "pathId": "elements:earth",
+      "bookId": "earth",
+      "section": "V",
+      "dp": 4,
+      "level": 3,
+      "shape": "triangle",
+      "requires": [
+        "earth:3"
+      ],
+      "spellIds": [
+        "spell:earth:a1"
+      ]
+    },
+    {
+      "id": "earth:5",
+      "name": "Flesh to Stone",
+      "kind": "section",
+      "disciplineId": "elements",
+      "pathId": "elements:earth",
+      "bookId": "earth",
+      "section": "VI",
+      "dp": 4,
+      "level": 3,
+      "shape": "triangle",
+      "requires": [
+        "earth:4"
+      ],
+      "spellIds": [
+        "spell:earth:a2"
+      ]
+    },
+    {
+      "id": "earth:6",
+      "name": "Earthquake",
+      "kind": "section",
+      "disciplineId": "elements",
+      "pathId": "elements:earth",
+      "bookId": "earth",
+      "section": "VII",
+      "dp": 5,
+      "level": 7,
+      "shape": "diamond",
+      "requires": [
+        "earth:5"
+      ],
+      "spellIds": [
         "spell:earth:a3"
       ]
     },
@@ -13075,6 +13357,7 @@
       "section": "I",
       "dp": 1,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "elements"
       ],
@@ -13093,6 +13376,7 @@
       "section": "II",
       "dp": 2,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "air:0"
       ],
@@ -13111,6 +13395,7 @@
       "section": "III",
       "dp": 2,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "air:1"
       ],
@@ -13129,15 +13414,67 @@
       "section": "IV",
       "dp": 3,
       "level": 3,
+      "shape": "triangle",
       "requires": [
         "air:2"
       ],
       "spellIds": [
         "spell:air:7",
-        "spell:air:8",
-        "spell:air:a1",
-        "spell:air:a2",
-        "spell:air:a3"
+        "spell:air:8"
+      ]
+    },
+    {
+      "id": "air:4",
+      "name": "Chain Lightning",
+      "kind": "section",
+      "disciplineId": "elements",
+      "pathId": "elements:air",
+      "bookId": "air",
+      "section": "V",
+      "dp": 4,
+      "level": 3,
+      "shape": "triangle",
+      "requires": [
+        "air:3"
+      ],
+      "spellIds": [
+        "spell:air:a1"
+      ]
+    },
+    {
+      "id": "air:5",
+      "name": "Control Weather",
+      "kind": "section",
+      "disciplineId": "elements",
+      "pathId": "elements:air",
+      "bookId": "air",
+      "section": "VI",
+      "dp": 4,
+      "level": 3,
+      "shape": "triangle",
+      "requires": [
+        "air:4"
+      ],
+      "spellIds": [
+        "spell:air:a2"
+      ]
+    },
+    {
+      "id": "air:6",
+      "name": "Storm of Vengeance",
+      "kind": "section",
+      "disciplineId": "elements",
+      "pathId": "elements:air",
+      "bookId": "air",
+      "section": "VII",
+      "dp": 5,
+      "level": 7,
+      "shape": "diamond",
+      "requires": [
+        "air:5"
+      ],
+      "spellIds": [
+        "spell-mastery:storm-of-vengeance"
       ]
     },
     {
@@ -13159,6 +13496,7 @@
       "section": "I",
       "dp": 1,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "life"
       ],
@@ -13177,6 +13515,7 @@
       "section": "II",
       "dp": 2,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "restoration:0"
       ],
@@ -13195,6 +13534,7 @@
       "section": "III",
       "dp": 2,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "restoration:1"
       ],
@@ -13213,15 +13553,67 @@
       "section": "IV",
       "dp": 3,
       "level": 3,
+      "shape": "triangle",
       "requires": [
         "restoration:2"
       ],
       "spellIds": [
         "spell:restoration:7",
-        "spell:restoration:8",
-        "spell:restoration:a1",
-        "spell:restoration:a2",
-        "spell:restoration:a3"
+        "spell:restoration:8"
+      ]
+    },
+    {
+      "id": "restoration:4",
+      "name": "Heal",
+      "kind": "section",
+      "disciplineId": "life",
+      "pathId": "life:restoration",
+      "bookId": "restoration",
+      "section": "V",
+      "dp": 4,
+      "level": 3,
+      "shape": "triangle",
+      "requires": [
+        "restoration:3"
+      ],
+      "spellIds": [
+        "spell:restoration:a1"
+      ]
+    },
+    {
+      "id": "restoration:5",
+      "name": "Regenerate",
+      "kind": "section",
+      "disciplineId": "life",
+      "pathId": "life:restoration",
+      "bookId": "restoration",
+      "section": "VI",
+      "dp": 4,
+      "level": 3,
+      "shape": "triangle",
+      "requires": [
+        "restoration:4"
+      ],
+      "spellIds": [
+        "spell:restoration:a2"
+      ]
+    },
+    {
+      "id": "restoration:6",
+      "name": "True Resurrection",
+      "kind": "section",
+      "disciplineId": "life",
+      "pathId": "life:restoration",
+      "bookId": "restoration",
+      "section": "VII",
+      "dp": 5,
+      "level": 7,
+      "shape": "diamond",
+      "requires": [
+        "restoration:5"
+      ],
+      "spellIds": [
+        "spell-mastery:true-resurrection"
       ]
     },
     {
@@ -13234,6 +13626,7 @@
       "section": "I",
       "dp": 1,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "life"
       ],
@@ -13252,6 +13645,7 @@
       "section": "II",
       "dp": 2,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "transformation:0"
       ],
@@ -13270,6 +13664,7 @@
       "section": "III",
       "dp": 2,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "transformation:1"
       ],
@@ -13288,14 +13683,66 @@
       "section": "IV",
       "dp": 3,
       "level": 3,
+      "shape": "triangle",
       "requires": [
         "transformation:2"
       ],
       "spellIds": [
         "spell:transformation:7",
-        "spell:transformation:8",
-        "spell:transformation:a1",
-        "spell:transformation:a2",
+        "spell:transformation:8"
+      ]
+    },
+    {
+      "id": "transformation:4",
+      "name": "Animal Shapes",
+      "kind": "section",
+      "disciplineId": "life",
+      "pathId": "life:transformation",
+      "bookId": "transformation",
+      "section": "V",
+      "dp": 4,
+      "level": 3,
+      "shape": "triangle",
+      "requires": [
+        "transformation:3"
+      ],
+      "spellIds": [
+        "spell:transformation:a1"
+      ]
+    },
+    {
+      "id": "transformation:5",
+      "name": "Shapechange",
+      "kind": "section",
+      "disciplineId": "life",
+      "pathId": "life:transformation",
+      "bookId": "transformation",
+      "section": "VI",
+      "dp": 4,
+      "level": 3,
+      "shape": "triangle",
+      "requires": [
+        "transformation:4"
+      ],
+      "spellIds": [
+        "spell:transformation:a2"
+      ]
+    },
+    {
+      "id": "transformation:6",
+      "name": "True Polymorph — Living",
+      "kind": "section",
+      "disciplineId": "life",
+      "pathId": "life:transformation",
+      "bookId": "transformation",
+      "section": "VII",
+      "dp": 5,
+      "level": 7,
+      "shape": "diamond",
+      "requires": [
+        "transformation:5"
+      ],
+      "spellIds": [
         "spell:transformation:a3"
       ]
     },
@@ -13309,6 +13756,7 @@
       "section": "I",
       "dp": 1,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "life"
       ],
@@ -13327,6 +13775,7 @@
       "section": "II",
       "dp": 2,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "growth:0"
       ],
@@ -13345,6 +13794,7 @@
       "section": "III",
       "dp": 2,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "growth:1"
       ],
@@ -13363,14 +13813,66 @@
       "section": "IV",
       "dp": 3,
       "level": 3,
+      "shape": "triangle",
       "requires": [
         "growth:2"
       ],
       "spellIds": [
         "spell:growth:7",
-        "spell:growth:8",
-        "spell:growth:a1",
-        "spell:growth:a2",
+        "spell:growth:8"
+      ]
+    },
+    {
+      "id": "growth:4",
+      "name": "Awaken",
+      "kind": "section",
+      "disciplineId": "life",
+      "pathId": "life:growth",
+      "bookId": "growth",
+      "section": "V",
+      "dp": 4,
+      "level": 3,
+      "shape": "triangle",
+      "requires": [
+        "growth:3"
+      ],
+      "spellIds": [
+        "spell:growth:a1"
+      ]
+    },
+    {
+      "id": "growth:5",
+      "name": "Wall of Thorns",
+      "kind": "section",
+      "disciplineId": "life",
+      "pathId": "life:growth",
+      "bookId": "growth",
+      "section": "VI",
+      "dp": 4,
+      "level": 3,
+      "shape": "triangle",
+      "requires": [
+        "growth:4"
+      ],
+      "spellIds": [
+        "spell:growth:a2"
+      ]
+    },
+    {
+      "id": "growth:6",
+      "name": "Transport via Plants",
+      "kind": "section",
+      "disciplineId": "life",
+      "pathId": "life:growth",
+      "bookId": "growth",
+      "section": "VII",
+      "dp": 5,
+      "level": 7,
+      "shape": "diamond",
+      "requires": [
+        "growth:5"
+      ],
+      "spellIds": [
         "spell:growth:a3"
       ]
     },
@@ -13384,6 +13886,7 @@
       "section": "I",
       "dp": 1,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "life"
       ],
@@ -13402,6 +13905,7 @@
       "section": "II",
       "dp": 2,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "decay:0"
       ],
@@ -13420,6 +13924,7 @@
       "section": "III",
       "dp": 2,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "decay:1"
       ],
@@ -13438,14 +13943,66 @@
       "section": "IV",
       "dp": 3,
       "level": 3,
+      "shape": "triangle",
       "requires": [
         "decay:2"
       ],
       "spellIds": [
         "spell:decay:7",
-        "spell:decay:8",
-        "spell:decay:a1",
-        "spell:decay:a2",
+        "spell:decay:8"
+      ]
+    },
+    {
+      "id": "decay:4",
+      "name": "Harm",
+      "kind": "section",
+      "disciplineId": "life",
+      "pathId": "life:decay",
+      "bookId": "decay",
+      "section": "V",
+      "dp": 4,
+      "level": 3,
+      "shape": "triangle",
+      "requires": [
+        "decay:3"
+      ],
+      "spellIds": [
+        "spell:decay:a1"
+      ]
+    },
+    {
+      "id": "decay:5",
+      "name": "Finger of Death",
+      "kind": "section",
+      "disciplineId": "life",
+      "pathId": "life:decay",
+      "bookId": "decay",
+      "section": "VI",
+      "dp": 4,
+      "level": 3,
+      "shape": "triangle",
+      "requires": [
+        "decay:4"
+      ],
+      "spellIds": [
+        "spell:decay:a2"
+      ]
+    },
+    {
+      "id": "decay:6",
+      "name": "Circle of Death",
+      "kind": "section",
+      "disciplineId": "life",
+      "pathId": "life:decay",
+      "bookId": "decay",
+      "section": "VII",
+      "dp": 5,
+      "level": 7,
+      "shape": "diamond",
+      "requires": [
+        "decay:5"
+      ],
+      "spellIds": [
         "spell:decay:a3"
       ]
     },
@@ -13468,6 +14025,7 @@
       "section": "I",
       "dp": 1,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "mentalism"
       ],
@@ -13486,6 +14044,7 @@
       "section": "II",
       "dp": 2,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "thought:0"
       ],
@@ -13504,6 +14063,7 @@
       "section": "III",
       "dp": 2,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "thought:1"
       ],
@@ -13522,14 +14082,66 @@
       "section": "IV",
       "dp": 3,
       "level": 3,
+      "shape": "triangle",
       "requires": [
         "thought:2"
       ],
       "spellIds": [
         "spell:thought:7",
-        "spell:thought:8",
-        "spell:thought:a1",
-        "spell:thought:a2",
+        "spell:thought:8"
+      ]
+    },
+    {
+      "id": "thought:4",
+      "name": "Mind Scan",
+      "kind": "section",
+      "disciplineId": "mentalism",
+      "pathId": "mentalism:thought",
+      "bookId": "thought",
+      "section": "V",
+      "dp": 4,
+      "level": 3,
+      "shape": "triangle",
+      "requires": [
+        "thought:3"
+      ],
+      "spellIds": [
+        "spell:thought:a1"
+      ]
+    },
+    {
+      "id": "thought:5",
+      "name": "Mind Probe",
+      "kind": "section",
+      "disciplineId": "mentalism",
+      "pathId": "mentalism:thought",
+      "bookId": "thought",
+      "section": "VI",
+      "dp": 4,
+      "level": 3,
+      "shape": "triangle",
+      "requires": [
+        "thought:4"
+      ],
+      "spellIds": [
+        "spell:thought:a2"
+      ]
+    },
+    {
+      "id": "thought:6",
+      "name": "Thought Steal",
+      "kind": "section",
+      "disciplineId": "mentalism",
+      "pathId": "mentalism:thought",
+      "bookId": "thought",
+      "section": "VII",
+      "dp": 5,
+      "level": 7,
+      "shape": "diamond",
+      "requires": [
+        "thought:5"
+      ],
+      "spellIds": [
         "spell:thought:a3"
       ]
     },
@@ -13543,6 +14155,7 @@
       "section": "I",
       "dp": 1,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "mentalism"
       ],
@@ -13561,6 +14174,7 @@
       "section": "II",
       "dp": 2,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "emotion:0"
       ],
@@ -13579,6 +14193,7 @@
       "section": "III",
       "dp": 2,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "emotion:1"
       ],
@@ -13597,14 +14212,66 @@
       "section": "IV",
       "dp": 3,
       "level": 3,
+      "shape": "triangle",
       "requires": [
         "emotion:2"
       ],
       "spellIds": [
         "spell:emotion:7",
-        "spell:emotion:8",
-        "spell:emotion:a1",
-        "spell:emotion:a2",
+        "spell:emotion:8"
+      ]
+    },
+    {
+      "id": "emotion:4",
+      "name": "Mass Suggestion",
+      "kind": "section",
+      "disciplineId": "mentalism",
+      "pathId": "mentalism:emotion",
+      "bookId": "emotion",
+      "section": "V",
+      "dp": 4,
+      "level": 3,
+      "shape": "triangle",
+      "requires": [
+        "emotion:3"
+      ],
+      "spellIds": [
+        "spell:emotion:a1"
+      ]
+    },
+    {
+      "id": "emotion:5",
+      "name": "Dominate Person",
+      "kind": "section",
+      "disciplineId": "mentalism",
+      "pathId": "mentalism:emotion",
+      "bookId": "emotion",
+      "section": "VI",
+      "dp": 4,
+      "level": 3,
+      "shape": "triangle",
+      "requires": [
+        "emotion:4"
+      ],
+      "spellIds": [
+        "spell:emotion:a2"
+      ]
+    },
+    {
+      "id": "emotion:6",
+      "name": "Antipathy/Sympathy",
+      "kind": "section",
+      "disciplineId": "mentalism",
+      "pathId": "mentalism:emotion",
+      "bookId": "emotion",
+      "section": "VII",
+      "dp": 5,
+      "level": 7,
+      "shape": "diamond",
+      "requires": [
+        "emotion:5"
+      ],
+      "spellIds": [
         "spell:emotion:a3"
       ]
     },
@@ -13618,6 +14285,7 @@
       "section": "I",
       "dp": 1,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "mentalism"
       ],
@@ -13636,6 +14304,7 @@
       "section": "II",
       "dp": 2,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "perception:0"
       ],
@@ -13654,6 +14323,7 @@
       "section": "III",
       "dp": 2,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "perception:1"
       ],
@@ -13672,14 +14342,66 @@
       "section": "IV",
       "dp": 3,
       "level": 3,
+      "shape": "triangle",
       "requires": [
         "perception:2"
       ],
       "spellIds": [
         "spell:perception:7",
-        "spell:perception:8",
-        "spell:perception:a1",
-        "spell:perception:a2",
+        "spell:perception:8"
+      ]
+    },
+    {
+      "id": "perception:4",
+      "name": "Mislead",
+      "kind": "section",
+      "disciplineId": "mentalism",
+      "pathId": "mentalism:perception",
+      "bookId": "perception",
+      "section": "V",
+      "dp": 4,
+      "level": 3,
+      "shape": "triangle",
+      "requires": [
+        "perception:3"
+      ],
+      "spellIds": [
+        "spell:perception:a1"
+      ]
+    },
+    {
+      "id": "perception:5",
+      "name": "Seeming",
+      "kind": "section",
+      "disciplineId": "mentalism",
+      "pathId": "mentalism:perception",
+      "bookId": "perception",
+      "section": "VI",
+      "dp": 4,
+      "level": 3,
+      "shape": "triangle",
+      "requires": [
+        "perception:4"
+      ],
+      "spellIds": [
+        "spell:perception:a2"
+      ]
+    },
+    {
+      "id": "perception:6",
+      "name": "Programmed Illusion",
+      "kind": "section",
+      "disciplineId": "mentalism",
+      "pathId": "mentalism:perception",
+      "bookId": "perception",
+      "section": "VII",
+      "dp": 5,
+      "level": 7,
+      "shape": "diamond",
+      "requires": [
+        "perception:5"
+      ],
+      "spellIds": [
         "spell:perception:a3"
       ]
     },
@@ -13693,6 +14415,7 @@
       "section": "I",
       "dp": 1,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "mentalism"
       ],
@@ -13711,6 +14434,7 @@
       "section": "II",
       "dp": 2,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "dreams:0"
       ],
@@ -13729,6 +14453,7 @@
       "section": "III",
       "dp": 2,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "dreams:1"
       ],
@@ -13747,14 +14472,66 @@
       "section": "IV",
       "dp": 3,
       "level": 3,
+      "shape": "triangle",
       "requires": [
         "dreams:2"
       ],
       "spellIds": [
         "spell:dreams:7",
-        "spell:dreams:8",
-        "spell:dreams:a1",
-        "spell:dreams:a2",
+        "spell:dreams:8"
+      ]
+    },
+    {
+      "id": "dreams:4",
+      "name": "Lord Dream",
+      "kind": "section",
+      "disciplineId": "mentalism",
+      "pathId": "mentalism:dreams",
+      "bookId": "dreams",
+      "section": "V",
+      "dp": 4,
+      "level": 3,
+      "shape": "triangle",
+      "requires": [
+        "dreams:3"
+      ],
+      "spellIds": [
+        "spell:dreams:a1"
+      ]
+    },
+    {
+      "id": "dreams:5",
+      "name": "Weird",
+      "kind": "section",
+      "disciplineId": "mentalism",
+      "pathId": "mentalism:dreams",
+      "bookId": "dreams",
+      "section": "VI",
+      "dp": 4,
+      "level": 3,
+      "shape": "triangle",
+      "requires": [
+        "dreams:4"
+      ],
+      "spellIds": [
+        "spell:dreams:a2"
+      ]
+    },
+    {
+      "id": "dreams:6",
+      "name": "Astral Projection",
+      "kind": "section",
+      "disciplineId": "mentalism",
+      "pathId": "mentalism:dreams",
+      "bookId": "dreams",
+      "section": "VII",
+      "dp": 5,
+      "level": 7,
+      "shape": "diamond",
+      "requires": [
+        "dreams:5"
+      ],
+      "spellIds": [
         "spell:dreams:a3"
       ]
     },
@@ -13777,6 +14554,7 @@
       "section": "I",
       "dp": 1,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "divination"
       ],
@@ -13795,6 +14573,7 @@
       "section": "II",
       "dp": 2,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "detection:0"
       ],
@@ -13813,6 +14592,7 @@
       "section": "III",
       "dp": 2,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "detection:1"
       ],
@@ -13831,14 +14611,66 @@
       "section": "IV",
       "dp": 3,
       "level": 3,
+      "shape": "triangle",
       "requires": [
         "detection:2"
       ],
       "spellIds": [
         "spell:detection:7",
-        "spell:detection:8",
-        "spell:detection:a1",
-        "spell:detection:a2",
+        "spell:detection:8"
+      ]
+    },
+    {
+      "id": "detection:4",
+      "name": "Detect Magic — Scaling Analysis",
+      "kind": "section",
+      "disciplineId": "divination",
+      "pathId": "divination:detection",
+      "bookId": "detection",
+      "section": "V",
+      "dp": 4,
+      "level": 3,
+      "shape": "triangle",
+      "requires": [
+        "detection:3"
+      ],
+      "spellIds": [
+        "spell:detection:a1"
+      ]
+    },
+    {
+      "id": "detection:5",
+      "name": "Find the Path",
+      "kind": "section",
+      "disciplineId": "divination",
+      "pathId": "divination:detection",
+      "bookId": "detection",
+      "section": "VI",
+      "dp": 4,
+      "level": 3,
+      "shape": "triangle",
+      "requires": [
+        "detection:4"
+      ],
+      "spellIds": [
+        "spell:detection:a2"
+      ]
+    },
+    {
+      "id": "detection:6",
+      "name": "Sight True",
+      "kind": "section",
+      "disciplineId": "divination",
+      "pathId": "divination:detection",
+      "bookId": "detection",
+      "section": "VII",
+      "dp": 5,
+      "level": 7,
+      "shape": "diamond",
+      "requires": [
+        "detection:5"
+      ],
+      "spellIds": [
         "spell:detection:a3"
       ]
     },
@@ -13852,6 +14684,7 @@
       "section": "I",
       "dp": 1,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "divination"
       ],
@@ -13870,6 +14703,7 @@
       "section": "II",
       "dp": 2,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "farseeing:0"
       ],
@@ -13888,6 +14722,7 @@
       "section": "III",
       "dp": 2,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "farseeing:1"
       ],
@@ -13906,14 +14741,66 @@
       "section": "IV",
       "dp": 3,
       "level": 3,
+      "shape": "triangle",
       "requires": [
         "farseeing:2"
       ],
       "spellIds": [
         "spell:farseeing:7",
-        "spell:farseeing:8",
-        "spell:farseeing:a1",
-        "spell:farseeing:a2",
+        "spell:farseeing:8"
+      ]
+    },
+    {
+      "id": "farseeing:4",
+      "name": "Watch True",
+      "kind": "section",
+      "disciplineId": "divination",
+      "pathId": "divination:farseeing",
+      "bookId": "farseeing",
+      "section": "V",
+      "dp": 4,
+      "level": 3,
+      "shape": "triangle",
+      "requires": [
+        "farseeing:3"
+      ],
+      "spellIds": [
+        "spell:farseeing:a1"
+      ]
+    },
+    {
+      "id": "farseeing:5",
+      "name": "Long Sense",
+      "kind": "section",
+      "disciplineId": "divination",
+      "pathId": "divination:farseeing",
+      "bookId": "farseeing",
+      "section": "VI",
+      "dp": 4,
+      "level": 3,
+      "shape": "triangle",
+      "requires": [
+        "farseeing:4"
+      ],
+      "spellIds": [
+        "spell:farseeing:a2"
+      ]
+    },
+    {
+      "id": "farseeing:6",
+      "name": "Long Sense True",
+      "kind": "section",
+      "disciplineId": "divination",
+      "pathId": "divination:farseeing",
+      "bookId": "farseeing",
+      "section": "VII",
+      "dp": 5,
+      "level": 7,
+      "shape": "diamond",
+      "requires": [
+        "farseeing:5"
+      ],
+      "spellIds": [
         "spell:farseeing:a3"
       ]
     },
@@ -13927,6 +14814,7 @@
       "section": "I",
       "dp": 1,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "divination"
       ],
@@ -13945,6 +14833,7 @@
       "section": "II",
       "dp": 2,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "echoes:0"
       ],
@@ -13963,6 +14852,7 @@
       "section": "III",
       "dp": 2,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "echoes:1"
       ],
@@ -13981,14 +14871,66 @@
       "section": "IV",
       "dp": 3,
       "level": 3,
+      "shape": "triangle",
       "requires": [
         "echoes:2"
       ],
       "spellIds": [
         "spell:echoes:7",
-        "spell:echoes:8",
-        "spell:echoes:a1",
-        "spell:echoes:a2",
+        "spell:echoes:8"
+      ]
+    },
+    {
+      "id": "echoes:4",
+      "name": "Legend Lore",
+      "kind": "section",
+      "disciplineId": "divination",
+      "pathId": "divination:echoes",
+      "bookId": "echoes",
+      "section": "V",
+      "dp": 4,
+      "level": 3,
+      "shape": "triangle",
+      "requires": [
+        "echoes:3"
+      ],
+      "spellIds": [
+        "spell:echoes:a1"
+      ]
+    },
+    {
+      "id": "echoes:5",
+      "name": "Past Truth",
+      "kind": "section",
+      "disciplineId": "divination",
+      "pathId": "divination:echoes",
+      "bookId": "echoes",
+      "section": "VI",
+      "dp": 4,
+      "level": 3,
+      "shape": "triangle",
+      "requires": [
+        "echoes:4"
+      ],
+      "spellIds": [
+        "spell:echoes:a2"
+      ]
+    },
+    {
+      "id": "echoes:6",
+      "name": "Vision Behind — Ages",
+      "kind": "section",
+      "disciplineId": "divination",
+      "pathId": "divination:echoes",
+      "bookId": "echoes",
+      "section": "VII",
+      "dp": 5,
+      "level": 7,
+      "shape": "diamond",
+      "requires": [
+        "echoes:5"
+      ],
+      "spellIds": [
         "spell:echoes:a3"
       ]
     },
@@ -14002,6 +14944,7 @@
       "section": "I",
       "dp": 1,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "divination"
       ],
@@ -14020,6 +14963,7 @@
       "section": "II",
       "dp": 2,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "portents:0"
       ],
@@ -14038,6 +14982,7 @@
       "section": "III",
       "dp": 2,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "portents:1"
       ],
@@ -14056,15 +15001,67 @@
       "section": "IV",
       "dp": 3,
       "level": 3,
+      "shape": "triangle",
       "requires": [
         "portents:2"
       ],
       "spellIds": [
         "spell:portents:7",
-        "spell:portents:8",
-        "spell:portents:a1",
-        "spell:portents:a2",
-        "spell:portents:a3"
+        "spell:portents:8"
+      ]
+    },
+    {
+      "id": "portents:4",
+      "name": "Foresight",
+      "kind": "section",
+      "disciplineId": "divination",
+      "pathId": "divination:portents",
+      "bookId": "portents",
+      "section": "V",
+      "dp": 4,
+      "level": 3,
+      "shape": "triangle",
+      "requires": [
+        "portents:3"
+      ],
+      "spellIds": [
+        "spell:portents:a1"
+      ]
+    },
+    {
+      "id": "portents:5",
+      "name": "Anticipations True",
+      "kind": "section",
+      "disciplineId": "divination",
+      "pathId": "divination:portents",
+      "bookId": "portents",
+      "section": "VI",
+      "dp": 4,
+      "level": 3,
+      "shape": "triangle",
+      "requires": [
+        "portents:4"
+      ],
+      "spellIds": [
+        "spell:portents:a2"
+      ]
+    },
+    {
+      "id": "portents:6",
+      "name": "Foresight — Shared Vigil",
+      "kind": "section",
+      "disciplineId": "divination",
+      "pathId": "divination:portents",
+      "bookId": "portents",
+      "section": "VII",
+      "dp": 5,
+      "level": 7,
+      "shape": "diamond",
+      "requires": [
+        "portents:5"
+      ],
+      "spellIds": [
+        "spell-mastery:foresight-shared-vigil"
       ]
     },
     {
@@ -14086,6 +15083,7 @@
       "section": "I",
       "dp": 1,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "invocation"
       ],
@@ -14104,6 +15102,7 @@
       "section": "II",
       "dp": 2,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "spirits:0"
       ],
@@ -14122,6 +15121,7 @@
       "section": "III",
       "dp": 2,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "spirits:1"
       ],
@@ -14140,14 +15140,66 @@
       "section": "IV",
       "dp": 3,
       "level": 3,
+      "shape": "triangle",
       "requires": [
         "spirits:2"
       ],
       "spellIds": [
         "spell:spirits:7",
-        "spell:spirits:8",
-        "spell:spirits:a1",
-        "spell:spirits:a2",
+        "spell:spirits:8"
+      ]
+    },
+    {
+      "id": "spirits:4",
+      "name": "Etherealness",
+      "kind": "section",
+      "disciplineId": "invocation",
+      "pathId": "invocation:spirits",
+      "bookId": "spirits",
+      "section": "V",
+      "dp": 4,
+      "level": 3,
+      "shape": "triangle",
+      "requires": [
+        "spirits:3"
+      ],
+      "spellIds": [
+        "spell:spirits:a1"
+      ]
+    },
+    {
+      "id": "spirits:5",
+      "name": "Create Undead",
+      "kind": "section",
+      "disciplineId": "invocation",
+      "pathId": "invocation:spirits",
+      "bookId": "spirits",
+      "section": "VI",
+      "dp": 4,
+      "level": 3,
+      "shape": "triangle",
+      "requires": [
+        "spirits:4"
+      ],
+      "spellIds": [
+        "spell:spirits:a2"
+      ]
+    },
+    {
+      "id": "spirits:6",
+      "name": "Lifegiving",
+      "kind": "section",
+      "disciplineId": "invocation",
+      "pathId": "invocation:spirits",
+      "bookId": "spirits",
+      "section": "VII",
+      "dp": 5,
+      "level": 7,
+      "shape": "diamond",
+      "requires": [
+        "spirits:5"
+      ],
+      "spellIds": [
         "spell:spirits:a3"
       ]
     },
@@ -14161,6 +15213,7 @@
       "section": "I",
       "dp": 1,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "invocation"
       ],
@@ -14179,6 +15232,7 @@
       "section": "II",
       "dp": 2,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "calling:0"
       ],
@@ -14197,6 +15251,7 @@
       "section": "III",
       "dp": 2,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "calling:1"
       ],
@@ -14215,14 +15270,66 @@
       "section": "IV",
       "dp": 3,
       "level": 3,
+      "shape": "triangle",
       "requires": [
         "calling:2"
       ],
       "spellIds": [
         "spell:calling:7",
-        "spell:calling:8",
-        "spell:calling:a1",
-        "spell:calling:a2",
+        "spell:calling:8"
+      ]
+    },
+    {
+      "id": "calling:4",
+      "name": "Conjure Celestial",
+      "kind": "section",
+      "disciplineId": "invocation",
+      "pathId": "invocation:calling",
+      "bookId": "calling",
+      "section": "V",
+      "dp": 4,
+      "level": 3,
+      "shape": "triangle",
+      "requires": [
+        "calling:3"
+      ],
+      "spellIds": [
+        "spell:calling:a1"
+      ]
+    },
+    {
+      "id": "calling:5",
+      "name": "Planar Ally",
+      "kind": "section",
+      "disciplineId": "invocation",
+      "pathId": "invocation:calling",
+      "bookId": "calling",
+      "section": "VI",
+      "dp": 4,
+      "level": 3,
+      "shape": "triangle",
+      "requires": [
+        "calling:4"
+      ],
+      "spellIds": [
+        "spell:calling:a2"
+      ]
+    },
+    {
+      "id": "calling:6",
+      "name": "Gate — Calling",
+      "kind": "section",
+      "disciplineId": "invocation",
+      "pathId": "invocation:calling",
+      "bookId": "calling",
+      "section": "VII",
+      "dp": 5,
+      "level": 7,
+      "shape": "diamond",
+      "requires": [
+        "calling:5"
+      ],
+      "spellIds": [
         "spell:calling:a3"
       ]
     },
@@ -14236,6 +15343,7 @@
       "section": "I",
       "dp": 1,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "invocation"
       ],
@@ -14254,6 +15362,7 @@
       "section": "II",
       "dp": 2,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "binding:0"
       ],
@@ -14272,6 +15381,7 @@
       "section": "III",
       "dp": 2,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "binding:1"
       ],
@@ -14290,14 +15400,66 @@
       "section": "IV",
       "dp": 3,
       "level": 3,
+      "shape": "triangle",
       "requires": [
         "binding:2"
       ],
       "spellIds": [
         "spell:binding:7",
-        "spell:binding:8",
-        "spell:binding:a1",
-        "spell:binding:a2",
+        "spell:binding:8"
+      ]
+    },
+    {
+      "id": "binding:4",
+      "name": "Dominate Monster",
+      "kind": "section",
+      "disciplineId": "invocation",
+      "pathId": "invocation:binding",
+      "bookId": "binding",
+      "section": "V",
+      "dp": 4,
+      "level": 3,
+      "shape": "triangle",
+      "requires": [
+        "binding:3"
+      ],
+      "spellIds": [
+        "spell:binding:a1"
+      ]
+    },
+    {
+      "id": "binding:5",
+      "name": "Forcecage",
+      "kind": "section",
+      "disciplineId": "invocation",
+      "pathId": "invocation:binding",
+      "bookId": "binding",
+      "section": "VI",
+      "dp": 4,
+      "level": 3,
+      "shape": "triangle",
+      "requires": [
+        "binding:4"
+      ],
+      "spellIds": [
+        "spell:binding:a2"
+      ]
+    },
+    {
+      "id": "binding:6",
+      "name": "Imprisonment",
+      "kind": "section",
+      "disciplineId": "invocation",
+      "pathId": "invocation:binding",
+      "bookId": "binding",
+      "section": "VII",
+      "dp": 5,
+      "level": 7,
+      "shape": "diamond",
+      "requires": [
+        "binding:5"
+      ],
+      "spellIds": [
         "spell:binding:a3"
       ]
     },
@@ -14311,6 +15473,7 @@
       "section": "I",
       "dp": 1,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "invocation"
       ],
@@ -14329,6 +15492,7 @@
       "section": "II",
       "dp": 2,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "passage:0"
       ],
@@ -14347,6 +15511,7 @@
       "section": "III",
       "dp": 2,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "passage:1"
       ],
@@ -14365,15 +15530,67 @@
       "section": "IV",
       "dp": 3,
       "level": 3,
+      "shape": "triangle",
       "requires": [
         "passage:2"
       ],
       "spellIds": [
         "spell:passage:7",
-        "spell:passage:8",
-        "spell:passage:a1",
-        "spell:passage:a2",
-        "spell:passage:a3"
+        "spell:passage:8"
+      ]
+    },
+    {
+      "id": "passage:4",
+      "name": "Teleport",
+      "kind": "section",
+      "disciplineId": "invocation",
+      "pathId": "invocation:passage",
+      "bookId": "passage",
+      "section": "V",
+      "dp": 4,
+      "level": 3,
+      "shape": "triangle",
+      "requires": [
+        "passage:3"
+      ],
+      "spellIds": [
+        "spell:passage:a1"
+      ]
+    },
+    {
+      "id": "passage:5",
+      "name": "Gate — Passage",
+      "kind": "section",
+      "disciplineId": "invocation",
+      "pathId": "invocation:passage",
+      "bookId": "passage",
+      "section": "VI",
+      "dp": 4,
+      "level": 3,
+      "shape": "triangle",
+      "requires": [
+        "passage:4"
+      ],
+      "spellIds": [
+        "spell:passage:a2"
+      ]
+    },
+    {
+      "id": "passage:6",
+      "name": "Demiplane",
+      "kind": "section",
+      "disciplineId": "invocation",
+      "pathId": "invocation:passage",
+      "bookId": "passage",
+      "section": "VII",
+      "dp": 5,
+      "level": 7,
+      "shape": "diamond",
+      "requires": [
+        "passage:5"
+      ],
+      "spellIds": [
+        "spell-mastery:demiplane"
       ]
     },
     {
@@ -14395,6 +15612,7 @@
       "section": "I",
       "dp": 1,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "force"
       ],
@@ -14413,6 +15631,7 @@
       "section": "II",
       "dp": 2,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "telekinesis:0"
       ],
@@ -14431,6 +15650,7 @@
       "section": "III",
       "dp": 2,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "telekinesis:1"
       ],
@@ -14449,14 +15669,66 @@
       "section": "IV",
       "dp": 3,
       "level": 3,
+      "shape": "triangle",
       "requires": [
         "telekinesis:2"
       ],
       "spellIds": [
         "spell:telekinesis:7",
-        "spell:telekinesis:8",
-        "spell:telekinesis:a1",
-        "spell:telekinesis:a2",
+        "spell:telekinesis:8"
+      ]
+    },
+    {
+      "id": "telekinesis:4",
+      "name": "Wall of Force",
+      "kind": "section",
+      "disciplineId": "force",
+      "pathId": "force:telekinesis",
+      "bookId": "telekinesis",
+      "section": "V",
+      "dp": 4,
+      "level": 3,
+      "shape": "triangle",
+      "requires": [
+        "telekinesis:3"
+      ],
+      "spellIds": [
+        "spell:telekinesis:a1"
+      ]
+    },
+    {
+      "id": "telekinesis:5",
+      "name": "Disintegrate",
+      "kind": "section",
+      "disciplineId": "force",
+      "pathId": "force:telekinesis",
+      "bookId": "telekinesis",
+      "section": "VI",
+      "dp": 4,
+      "level": 3,
+      "shape": "triangle",
+      "requires": [
+        "telekinesis:4"
+      ],
+      "spellIds": [
+        "spell:telekinesis:a2"
+      ]
+    },
+    {
+      "id": "telekinesis:6",
+      "name": "Reverse Gravity",
+      "kind": "section",
+      "disciplineId": "force",
+      "pathId": "force:telekinesis",
+      "bookId": "telekinesis",
+      "section": "VII",
+      "dp": 5,
+      "level": 7,
+      "shape": "diamond",
+      "requires": [
+        "telekinesis:5"
+      ],
+      "spellIds": [
         "spell:telekinesis:a3"
       ]
     },
@@ -14470,6 +15742,7 @@
       "section": "I",
       "dp": 1,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "force"
       ],
@@ -14488,6 +15761,7 @@
       "section": "II",
       "dp": 2,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "shaping:0"
       ],
@@ -14506,6 +15780,7 @@
       "section": "III",
       "dp": 2,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "shaping:1"
       ],
@@ -14524,14 +15799,66 @@
       "section": "IV",
       "dp": 3,
       "level": 3,
+      "shape": "triangle",
       "requires": [
         "shaping:2"
       ],
       "spellIds": [
         "spell:shaping:7",
-        "spell:shaping:8",
-        "spell:shaping:a1",
-        "spell:shaping:a2",
+        "spell:shaping:8"
+      ]
+    },
+    {
+      "id": "shaping:4",
+      "name": "Passwall — Workshop",
+      "kind": "section",
+      "disciplineId": "force",
+      "pathId": "force:shaping",
+      "bookId": "shaping",
+      "section": "V",
+      "dp": 4,
+      "level": 3,
+      "shape": "triangle",
+      "requires": [
+        "shaping:3"
+      ],
+      "spellIds": [
+        "spell:shaping:a1"
+      ]
+    },
+    {
+      "id": "shaping:5",
+      "name": "Meld Wall",
+      "kind": "section",
+      "disciplineId": "force",
+      "pathId": "force:shaping",
+      "bookId": "shaping",
+      "section": "VI",
+      "dp": 4,
+      "level": 3,
+      "shape": "triangle",
+      "requires": [
+        "shaping:4"
+      ],
+      "spellIds": [
+        "spell:shaping:a2"
+      ]
+    },
+    {
+      "id": "shaping:6",
+      "name": "True Polymorph — Objects",
+      "kind": "section",
+      "disciplineId": "force",
+      "pathId": "force:shaping",
+      "bookId": "shaping",
+      "section": "VII",
+      "dp": 5,
+      "level": 7,
+      "shape": "diamond",
+      "requires": [
+        "shaping:5"
+      ],
+      "spellIds": [
         "spell:shaping:a3"
       ]
     },
@@ -14545,6 +15872,7 @@
       "section": "I",
       "dp": 1,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "force"
       ],
@@ -14563,6 +15891,7 @@
       "section": "II",
       "dp": 2,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "animation:0"
       ],
@@ -14581,6 +15910,7 @@
       "section": "III",
       "dp": 2,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "animation:1"
       ],
@@ -14599,15 +15929,67 @@
       "section": "IV",
       "dp": 3,
       "level": 3,
+      "shape": "triangle",
       "requires": [
         "animation:2"
       ],
       "spellIds": [
         "spell:animation:7",
-        "spell:animation:8",
-        "spell:animation:a1",
-        "spell:animation:a2",
+        "spell:animation:8"
+      ]
+    },
+    {
+      "id": "animation:4",
+      "name": "Very High Intelligence",
+      "kind": "section",
+      "disciplineId": "force",
+      "pathId": "force:animation",
+      "bookId": "animation",
+      "section": "V",
+      "dp": 4,
+      "level": 3,
+      "shape": "triangle",
+      "requires": [
+        "animation:3"
+      ],
+      "spellIds": [
+        "spell:animation:a1"
+      ]
+    },
+    {
+      "id": "animation:5",
+      "name": "Animate Objects — Greater",
+      "kind": "section",
+      "disciplineId": "force",
+      "pathId": "force:animation",
+      "bookId": "animation",
+      "section": "VI",
+      "dp": 4,
+      "level": 3,
+      "shape": "triangle",
+      "requires": [
+        "animation:4"
+      ],
+      "spellIds": [
         "spell:animation:a3"
+      ]
+    },
+    {
+      "id": "animation:6",
+      "name": "Simulacrum",
+      "kind": "section",
+      "disciplineId": "force",
+      "pathId": "force:animation",
+      "bookId": "animation",
+      "section": "VII",
+      "dp": 5,
+      "level": 7,
+      "shape": "diamond",
+      "requires": [
+        "animation:5"
+      ],
+      "spellIds": [
+        "spell-mastery:simulacrum"
       ]
     },
     {
@@ -14620,6 +16002,7 @@
       "section": "I",
       "dp": 1,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "force"
       ],
@@ -14638,6 +16021,7 @@
       "section": "II",
       "dp": 2,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "imbuement:0"
       ],
@@ -14656,6 +16040,7 @@
       "section": "III",
       "dp": 2,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "imbuement:1"
       ],
@@ -14674,15 +16059,67 @@
       "section": "IV",
       "dp": 3,
       "level": 3,
+      "shape": "triangle",
       "requires": [
         "imbuement:2"
       ],
       "spellIds": [
         "spell:imbuement:7",
-        "spell:imbuement:8",
-        "spell:imbuement:a1",
-        "spell:imbuement:a2",
-        "spell:imbuement:a3"
+        "spell:imbuement:8"
+      ]
+    },
+    {
+      "id": "imbuement:4",
+      "name": "Contingency",
+      "kind": "section",
+      "disciplineId": "force",
+      "pathId": "force:imbuement",
+      "bookId": "imbuement",
+      "section": "V",
+      "dp": 4,
+      "level": 3,
+      "shape": "triangle",
+      "requires": [
+        "imbuement:3"
+      ],
+      "spellIds": [
+        "spell:imbuement:a1"
+      ]
+    },
+    {
+      "id": "imbuement:5",
+      "name": "Armor IV",
+      "kind": "section",
+      "disciplineId": "force",
+      "pathId": "force:imbuement",
+      "bookId": "imbuement",
+      "section": "VI",
+      "dp": 4,
+      "level": 3,
+      "shape": "triangle",
+      "requires": [
+        "imbuement:4"
+      ],
+      "spellIds": [
+        "spell:imbuement:a2"
+      ]
+    },
+    {
+      "id": "imbuement:6",
+      "name": "Imbue Spell",
+      "kind": "section",
+      "disciplineId": "force",
+      "pathId": "force:imbuement",
+      "bookId": "imbuement",
+      "section": "VII",
+      "dp": 5,
+      "level": 7,
+      "shape": "diamond",
+      "requires": [
+        "imbuement:5"
+      ],
+      "spellIds": [
+        "spell:imbuement:imbue-spell"
       ]
     },
     {
@@ -14704,6 +16141,7 @@
       "section": "I",
       "dp": 1,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "wards"
       ],
@@ -14722,6 +16160,7 @@
       "section": "II",
       "dp": 2,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "protection:0"
       ],
@@ -14740,6 +16179,7 @@
       "section": "III",
       "dp": 2,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "protection:1"
       ],
@@ -14758,14 +16198,66 @@
       "section": "IV",
       "dp": 3,
       "level": 3,
+      "shape": "triangle",
       "requires": [
         "protection:2"
       ],
       "spellIds": [
         "spell:protection:7",
-        "spell:protection:8",
-        "spell:protection:a1",
-        "spell:protection:a2",
+        "spell:protection:8"
+      ]
+    },
+    {
+      "id": "protection:4",
+      "name": "Globe of Invulnerability",
+      "kind": "section",
+      "disciplineId": "wards",
+      "pathId": "wards:protection",
+      "bookId": "protection",
+      "section": "V",
+      "dp": 4,
+      "level": 3,
+      "shape": "triangle",
+      "requires": [
+        "protection:3"
+      ],
+      "spellIds": [
+        "spell:protection:a1"
+      ]
+    },
+    {
+      "id": "protection:5",
+      "name": "Mind Blank",
+      "kind": "section",
+      "disciplineId": "wards",
+      "pathId": "wards:protection",
+      "bookId": "protection",
+      "section": "VI",
+      "dp": 4,
+      "level": 3,
+      "shape": "triangle",
+      "requires": [
+        "protection:4"
+      ],
+      "spellIds": [
+        "spell:protection:a2"
+      ]
+    },
+    {
+      "id": "protection:6",
+      "name": "Prismatic Wall",
+      "kind": "section",
+      "disciplineId": "wards",
+      "pathId": "wards:protection",
+      "bookId": "protection",
+      "section": "VII",
+      "dp": 5,
+      "level": 7,
+      "shape": "diamond",
+      "requires": [
+        "protection:5"
+      ],
+      "spellIds": [
         "spell:protection:a3"
       ]
     },
@@ -14779,6 +16271,7 @@
       "section": "I",
       "dp": 1,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "wards"
       ],
@@ -14797,6 +16290,7 @@
       "section": "II",
       "dp": 2,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "unraveling:0"
       ],
@@ -14815,6 +16309,7 @@
       "section": "III",
       "dp": 2,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "unraveling:1"
       ],
@@ -14833,14 +16328,66 @@
       "section": "IV",
       "dp": 3,
       "level": 3,
+      "shape": "triangle",
       "requires": [
         "unraveling:2"
       ],
       "spellIds": [
         "spell:unraveling:7",
-        "spell:unraveling:8",
-        "spell:unraveling:a1",
-        "spell:unraveling:a2",
+        "spell:unraveling:8"
+      ]
+    },
+    {
+      "id": "unraveling:4",
+      "name": "Antimagic Field",
+      "kind": "section",
+      "disciplineId": "wards",
+      "pathId": "wards:unraveling",
+      "bookId": "unraveling",
+      "section": "V",
+      "dp": 4,
+      "level": 3,
+      "shape": "triangle",
+      "requires": [
+        "unraveling:3"
+      ],
+      "spellIds": [
+        "spell:unraveling:a1"
+      ]
+    },
+    {
+      "id": "unraveling:5",
+      "name": "Cancel True",
+      "kind": "section",
+      "disciplineId": "wards",
+      "pathId": "wards:unraveling",
+      "bookId": "unraveling",
+      "section": "VI",
+      "dp": 4,
+      "level": 3,
+      "shape": "triangle",
+      "requires": [
+        "unraveling:4"
+      ],
+      "spellIds": [
+        "spell:unraveling:a2"
+      ]
+    },
+    {
+      "id": "unraveling:6",
+      "name": "Unessence",
+      "kind": "section",
+      "disciplineId": "wards",
+      "pathId": "wards:unraveling",
+      "bookId": "unraveling",
+      "section": "VII",
+      "dp": 5,
+      "level": 7,
+      "shape": "diamond",
+      "requires": [
+        "unraveling:5"
+      ],
+      "spellIds": [
         "spell:unraveling:a3"
       ]
     },
@@ -14854,6 +16401,7 @@
       "section": "I",
       "dp": 1,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "wards"
       ],
@@ -14872,6 +16420,7 @@
       "section": "II",
       "dp": 2,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "sanctuary:0"
       ],
@@ -14890,6 +16439,7 @@
       "section": "III",
       "dp": 2,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "sanctuary:1"
       ],
@@ -14908,15 +16458,67 @@
       "section": "IV",
       "dp": 3,
       "level": 3,
+      "shape": "triangle",
       "requires": [
         "sanctuary:2"
       ],
       "spellIds": [
         "spell:sanctuary:7",
-        "spell:sanctuary:8",
-        "spell:sanctuary:a1",
-        "spell:sanctuary:a2",
-        "spell:sanctuary:a3"
+        "spell:sanctuary:8"
+      ]
+    },
+    {
+      "id": "sanctuary:4",
+      "name": "Forbiddance",
+      "kind": "section",
+      "disciplineId": "wards",
+      "pathId": "wards:sanctuary",
+      "bookId": "sanctuary",
+      "section": "V",
+      "dp": 4,
+      "level": 3,
+      "shape": "triangle",
+      "requires": [
+        "sanctuary:3"
+      ],
+      "spellIds": [
+        "spell:sanctuary:a1"
+      ]
+    },
+    {
+      "id": "sanctuary:5",
+      "name": "Magnificent Mansion",
+      "kind": "section",
+      "disciplineId": "wards",
+      "pathId": "wards:sanctuary",
+      "bookId": "sanctuary",
+      "section": "VI",
+      "dp": 4,
+      "level": 3,
+      "shape": "triangle",
+      "requires": [
+        "sanctuary:4"
+      ],
+      "spellIds": [
+        "spell:sanctuary:a2"
+      ]
+    },
+    {
+      "id": "sanctuary:6",
+      "name": "Mighty Fortress",
+      "kind": "section",
+      "disciplineId": "wards",
+      "pathId": "wards:sanctuary",
+      "bookId": "sanctuary",
+      "section": "VII",
+      "dp": 5,
+      "level": 7,
+      "shape": "diamond",
+      "requires": [
+        "sanctuary:5"
+      ],
+      "spellIds": [
+        "spell-mastery:guards-and-wards-living-citadel"
       ]
     },
     {
@@ -14929,6 +16531,7 @@
       "section": "I",
       "dp": 1,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "wards"
       ],
@@ -14947,6 +16550,7 @@
       "section": "II",
       "dp": 2,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "seals:0"
       ],
@@ -14965,6 +16569,7 @@
       "section": "III",
       "dp": 2,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "seals:1"
       ],
@@ -14983,15 +16588,67 @@
       "section": "IV",
       "dp": 3,
       "level": 3,
+      "shape": "triangle",
       "requires": [
         "seals:2"
       ],
       "spellIds": [
         "spell:seals:7",
-        "spell:seals:8",
-        "spell:seals:a1",
-        "spell:seals:a2",
-        "spell:seals:a3"
+        "spell:seals:8"
+      ]
+    },
+    {
+      "id": "seals:4",
+      "name": "Symbol",
+      "kind": "section",
+      "disciplineId": "wards",
+      "pathId": "wards:seals",
+      "bookId": "seals",
+      "section": "V",
+      "dp": 4,
+      "level": 3,
+      "shape": "triangle",
+      "requires": [
+        "seals:3"
+      ],
+      "spellIds": [
+        "spell:seals:a1"
+      ]
+    },
+    {
+      "id": "seals:5",
+      "name": "Sequester",
+      "kind": "section",
+      "disciplineId": "wards",
+      "pathId": "wards:seals",
+      "bookId": "seals",
+      "section": "VI",
+      "dp": 4,
+      "level": 3,
+      "shape": "triangle",
+      "requires": [
+        "seals:4"
+      ],
+      "spellIds": [
+        "spell:seals:a2"
+      ]
+    },
+    {
+      "id": "seals:6",
+      "name": "Gate — World Anchor",
+      "kind": "section",
+      "disciplineId": "wards",
+      "pathId": "wards:seals",
+      "bookId": "seals",
+      "section": "VII",
+      "dp": 5,
+      "level": 7,
+      "shape": "diamond",
+      "requires": [
+        "seals:5"
+      ],
+      "spellIds": [
+        "spell-mastery:gate-world-anchor"
       ]
     },
     {
@@ -15347,6 +17004,7 @@
       "section": "I",
       "dp": 1,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "spellcraft"
       ],
@@ -15365,6 +17023,7 @@
       "section": "II",
       "dp": 2,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "channeling:0"
       ],
@@ -15383,6 +17042,7 @@
       "section": "III",
       "dp": 2,
       "level": 1,
+      "shape": "circle",
       "requires": [
         "channeling:1"
       ],
@@ -15401,376 +17061,68 @@
       "section": "IV",
       "dp": 3,
       "level": 3,
+      "shape": "triangle",
       "requires": [
         "channeling:2"
       ],
       "spellIds": [
         "spell:channeling:7",
-        "spell:channeling:8",
-        "spell:channeling:a1",
-        "spell:channeling:a2",
-        "spell:channeling:a3"
+        "spell:channeling:8"
       ]
     },
     {
-      "id": "mastery:stormsteel-arc",
-      "name": "Stormsteel Arc",
-      "kind": "spell-mastery",
-      "disciplineId": "elements",
-      "pathId": "elements:air",
-      "bookId": "air",
+      "id": "channeling:4",
+      "name": "Lord Channels",
+      "kind": "section",
+      "disciplineId": "spellcraft",
+      "pathId": "spellcraft:channeling",
+      "bookId": "channeling",
+      "section": "V",
       "dp": 4,
-      "level": 7,
-      "shape": "diamond",
+      "level": 3,
+      "shape": "triangle",
       "requires": [
-        "air:3"
+        "channeling:3"
       ],
       "spellIds": [
-        "spell-mastery:stormsteel-arc"
-      ],
-      "effect": "Main Action · Brawn · 3 SP, with a melee weapon. Sweep lightning through up to three visible enemies within 3 squares. Roll once; each takes 3/6/9 lightning damage. On Strong, each also gains Dazed 1. This is a new magical attack, not a use of Measured Cut; its improvements do not apply."
+        "spell:channeling:a1"
+      ]
     },
     {
-      "id": "mastery:the-invisible-shieldbearer",
-      "name": "The Invisible Shieldbearer",
-      "kind": "spell-mastery",
-      "disciplineId": "force",
-      "pathId": "force:telekinesis",
-      "bookId": "telekinesis",
+      "id": "channeling:5",
+      "name": "Rechanneling",
+      "kind": "section",
+      "disciplineId": "spellcraft",
+      "pathId": "spellcraft:channeling",
+      "bookId": "channeling",
+      "section": "VI",
       "dp": 4,
-      "level": 7,
-      "shape": "diamond",
+      "level": 3,
+      "shape": "triangle",
       "requires": [
-        "telekinesis:3"
+        "channeling:4"
       ],
       "spellIds": [
-        "spell-mastery:the-invisible-shieldbearer"
-      ],
-      "effect": "Reaction · 2 SP, with a held shield. When an ally within 8 squares is about to take damage from an attack, project a force barrier to it. Reduce that attack’s damage by 4, minimum 1, then move the willing ally up to 2 squares along a legal route without movement reactions. This protects against one attack only and requires no additional roll."
+        "spell:channeling:a2"
+      ]
     },
     {
-      "id": "mastery:borrowed-dawn",
-      "name": "Borrowed Dawn",
-      "kind": "spell-mastery",
-      "disciplineId": "life",
-      "pathId": "life:restoration",
-      "bookId": "restoration",
-      "dp": 4,
+      "id": "channeling:6",
+      "name": "Power Bridge",
+      "kind": "section",
+      "disciplineId": "spellcraft",
+      "pathId": "spellcraft:channeling",
+      "bookId": "channeling",
+      "section": "VII",
+      "dp": 5,
       "level": 7,
       "shape": "diamond",
       "requires": [
-        "restoration:3"
+        "channeling:5"
       ],
       "spellIds": [
-        "spell-mastery:borrowed-dawn"
-      ],
-      "effect": "Main Action · Knowledge · 4 SP. Restore 8/12/16 HP to one living willing, Dying or stabilized creature within reach. Also reduce its Bleeding by 2. This is magical healing, not first aid: it neither spends nor refreshes the recipient’s first-aid allowance. It cannot raise the dead, restore Grit or exceed maximum HP. Apply each recipient’s Life resistance, with at least 1 HP restored when HP is missing."
-    },
-    {
-      "id": "mastery:starfall-volley",
-      "name": "Starfall Volley",
-      "kind": "spell-mastery",
-      "disciplineId": "elements",
-      "pathId": "elements:flame",
-      "bookId": "flame",
-      "dp": 4,
-      "level": 7,
-      "shape": "diamond",
-      "requires": [
-        "flame:3"
-      ],
-      "spellIds": [
-        "spell-mastery:starfall-volley"
-      ],
-      "effect": "Main Action · Agility · 4 SP, with a ranged weapon. Attack up to three visible enemies within 12 squares whose visible defenses you studied with a Main Action earlier this scene. Spend one projectile per target and roll once; each takes 4/7/10 fire damage and Burning 1. Each target is struck once; allies and other creatures nearby are unaffected. This grants no bonus to other attacks."
-    },
-    {
-      "id": "mastery:step-between-heartbeats",
-      "name": "Step Between Heartbeats",
-      "kind": "spell-mastery",
-      "disciplineId": "invocation",
-      "pathId": "invocation:passage",
-      "bookId": "passage",
-      "dp": 4,
-      "level": 7,
-      "shape": "diamond",
-      "requires": [
-        "passage:3"
-      ],
-      "spellIds": [
-        "spell-mastery:step-between-heartbeats"
-      ],
-      "effect": "Main Action · Agility · 4 SP, with a melee weapon. Teleport to a visible unoccupied square within 10 squares, then attack one adjacent creature for 4/7/10 physical damage. After the attack, teleport up to 4 squares to another visible legal destination. Neither teleport triggers movement reactions. If you finish behind cover that conceals you from every enemy, become Hidden. An explicit teleportation barrier can block either movement."
-    },
-    {
-      "id": "mastery:sanctuary-of-steel",
-      "name": "Sanctuary of Steel",
-      "kind": "spell-mastery",
-      "disciplineId": "wards",
-      "pathId": "wards:sanctuary",
-      "bookId": "sanctuary",
-      "dp": 4,
-      "level": 7,
-      "shape": "diamond",
-      "requires": [
-        "sanctuary:3"
-      ],
-      "spellIds": [
-        "spell-mastery:sanctuary-of-steel"
-      ],
-      "effect": "Main Action · 4 SP, wearing armor and holding a shield. Create a fixed sanctuary within 3 squares of your position until your next turn ends. You and up to four chosen allies inside it reduce attack damage by 4, minimum 1, and cannot gain Frightened or Dazed while inside. Existing conditions remain. Leaving ends a creature’s protection until it returns; the boundary blocks neither movement nor attacks. Recasting replaces your previous sanctuary."
-    },
-    {
-      "id": "mastery:colossus-of-the-forge",
-      "name": "Colossus of the Forge",
-      "kind": "spell-mastery",
-      "disciplineId": "force",
-      "pathId": "force:imbuement",
-      "bookId": "imbuement",
-      "dp": 4,
-      "level": 7,
-      "shape": "diamond",
-      "requires": [
-        "imbuement:3"
-      ],
-      "spellIds": [
-        "spell-mastery:colossus-of-the-forge"
-      ],
-      "effect": "Main Action · Knowledge · 6 SP, with a melee weapon. Form an incandescent shell around yourself through the end of your next turn, then immediately sweep up to four enemies within 3 squares for 4/7/10 physical damage and Burning 1, using one roll. While the shell lasts, gain Stability 3 and reduce attack damage by 3, minimum 1. On your next turn, you may spend a Main Action to repeat that sweep without additional SP. The shell cannot stack with another copy and creates no lasting material."
-    },
-    {
-      "id": "mastery:the-road-for-the-lost",
-      "name": "The Road for the Lost",
-      "kind": "spell-mastery",
-      "disciplineId": "invocation",
-      "pathId": "invocation:passage",
-      "bookId": "passage",
-      "dp": 4,
-      "level": 7,
-      "shape": "diamond",
-      "requires": [
-        "passage:3"
-      ],
-      "spellIds": [
-        "spell-mastery:the-road-for-the-lost"
-      ],
-      "effect": "Ritual · 10 minutes · 6 SP. Open a visible passage from your position to a landmark on the same plane within 100 squares that you personally visited and surveyed. Both endpoints must have safe, unoccupied footing. Up to twelve willing creatures you name may cross during the next minute; no other creature or attack can pass through it. You may close it early with a Maneuver. It transports carried belongings but no unattended freight. Teleportation barriers block the working; it does not bypass an unknown destination or create safe ground."
-    },
-    {
-      "id": "mastery:dawn-on-the-battlefield",
-      "name": "Dawn on the Battlefield",
-      "kind": "spell-mastery",
-      "disciplineId": "life",
-      "pathId": "life:restoration",
-      "bookId": "restoration",
-      "dp": 4,
-      "level": 7,
-      "shape": "diamond",
-      "requires": [
-        "restoration:3"
-      ],
-      "spellIds": [
-        "spell-mastery:dawn-on-the-battlefield"
-      ],
-      "effect": "Main Action · Knowledge · 6 SP. Choose up to six living willing, Dying or stabilized allies within 6 squares whom you can see. Roll once; each restores 6/10/14 HP and reduces Bleeding and Frightened by 2 each. A Dying or stabilized ally need not respond to be included. This is magical healing and neither uses nor refreshes first-aid allowances. It cannot raise the dead, restore Grit or exceed maximum HP. Each recipient is affected once per use. Apply each recipient’s Life resistance, with at least 1 HP restored when HP is missing."
-    },
-    {
-      "id": "mastery:meteor-swarm",
-      "name": "Meteor Swarm",
-      "kind": "spell-mastery",
-      "disciplineId": "elements",
-      "pathId": "elements:flame",
-      "bookId": "flame",
-      "dp": 4,
-      "level": 7,
-      "shape": "diamond",
-      "requires": [
-        "flame:3"
-      ],
-      "spellIds": [
-        "spell-mastery:meteor-swarm"
-      ],
-      "effect": "Main Action · Knowledge · 6 SP. Choose up to three visible points within 12 squares. Roll once; every creature within 1 square of a chosen point takes 4/7/10 fire damage. A creature in overlapping areas takes damage once. Allies are not exempt. Unattended flammable objects ignite. This is one spell, not three separate castings."
-    },
-    {
-      "id": "mastery:wall-of-thorns-living-fortress",
-      "name": "Wall of Thorns — Living Fortress",
-      "kind": "spell-mastery",
-      "disciplineId": "life",
-      "pathId": "life:growth",
-      "bookId": "growth",
-      "dp": 4,
-      "level": 7,
-      "shape": "diamond",
-      "requires": [
-        "growth:3"
-      ],
-      "spellIds": [
-        "spell-mastery:wall-of-thorns-living-fortress"
-      ],
-      "effect": "Main Action · Reason · 5 SP. Raise up to eight connected thorn-wall squares on unoccupied ground within 8 squares. The walls last 10 minutes, are 2 squares high, block movement and provide cover. Name up to six creatures when casting; each may pass through at normal movement cost. Other creatures can spend a Main Action cutting through one adjacent square with a suitable edged tool, taking 3 physical damage before resistance. Fire destroys an affected wall square after that attack resolves. No roll. Damage from cutting thorns is environmental, so resistance may reduce it to 0."
-    },
-    {
-      "id": "mastery:true-resurrection",
-      "name": "True Resurrection",
-      "kind": "spell-mastery",
-      "disciplineId": "life",
-      "pathId": "life:restoration",
-      "bookId": "restoration",
-      "dp": 4,
-      "level": 7,
-      "shape": "diamond",
-      "requires": [
-        "restoration:3"
-      ],
-      "spellIds": [
-        "spell-mastery:true-resurrection"
-      ],
-      "effect": "Ritual · 8 uninterrupted hours · Reason · 8 SP, with remains of one person dead no longer than seven days and unique funerary materials worth 500 coins. The DA establishes availability before preparation. The spirit must freely agree. At completion, consume the materials and return that person to life at 1 HP in a restored body, clearing both death roll tallies but retaining descriptive scars. No roll. No duplicate body, restored Grit or SP is created. Each person has one lifetime return to life, shared with Lifegiving and Mass Lifegiving. This ritual restores a life ended before its natural span."
-    },
-    {
-      "id": "mastery:simulacrum",
-      "name": "Simulacrum",
-      "kind": "spell-mastery",
-      "disciplineId": "force",
-      "pathId": "force:animation",
-      "bookId": "animation",
-      "dp": 4,
-      "level": 7,
-      "shape": "diamond",
-      "requires": [
-        "animation:3"
-      ],
-      "spellIds": [
-        "spell-mastery:simulacrum"
-      ],
-      "effect": "Ritual · 8 uninterrupted hours · Knowledge · 8 SP, with a willing adjacent living model and sculpting materials worth 300 coins, consumed on completion. Create one likeness with 10 HP, no SP or Grit, your Speed, and the model’s appearance and voice. It lasts until destroyed or you create another. It cannot cast, use learned abilities or recover HP. On your turn, spend a Main Action to command it to move up to its Speed and perform an ordinary task or Basic Melee attack using your Knowledge and 2/3/5 damage. It has no independent actions or Reactions; you roll its defenses with your attributes. It cannot create a duplicate. Destroying it does not harm the model. This mastery and the Animation book’s Simulacrum share one likeness allowance; creating either ends the other."
-    },
-    {
-      "id": "mastery:demiplane",
-      "name": "Demiplane",
-      "kind": "spell-mastery",
-      "disciplineId": "invocation",
-      "pathId": "invocation:passage",
-      "bookId": "passage",
-      "dp": 4,
-      "level": 7,
-      "shape": "diamond",
-      "requires": [
-        "passage:3"
-      ],
-      "spellIds": [
-        "spell-mastery:demiplane"
-      ],
-      "effect": "Ritual · 1 hour · Knowledge · 6 SP. Open a doorway on an adjacent solid wall to your private 6-by-6-square refuge, 3 squares high. The doorway lasts 10 minutes and may be used by anyone who can reach it. You may close it with a Maneuver. A Maneuver inside opens an exit to the last entrance location; if obstructed, use the nearest unoccupied square within 3 squares. The refuge holds ordinary objects and up to twelve creatures, with air and normal time but no created food or water. You have one refuge; recasting reopens it from the new wall. It grants no travel to any other destination. No roll."
-    },
-    {
-      "id": "mastery:foresight-shared-vigil",
-      "name": "Foresight — Shared Vigil",
-      "kind": "spell-mastery",
-      "disciplineId": "divination",
-      "pathId": "divination:portents",
-      "bookId": "portents",
-      "dp": 4,
-      "level": 7,
-      "shape": "diamond",
-      "requires": [
-        "portents:3"
-      ],
-      "spellIds": [
-        "spell-mastery:foresight-shared-vigil"
-      ],
-      "effect": "Ritual · 10 minutes · Reason · 5 SP. Link yourself and up to three willing creatures within 3 squares for one hour. Linked creatures within 12 squares of you receive a warning when any linked member perceives a threat. If the warning alerts the group before the attack, roll initiative normally. Once each round, after one linked creature rolls a defense, it may reroll the entire roll and keep either result. The entire group shares this one reroll. The link carries warnings, not unrestricted thoughts. Recasting replaces the previous link. No roll."
-    },
-    {
-      "id": "mastery:storm-of-vengeance",
-      "name": "Storm of Vengeance",
-      "kind": "spell-mastery",
-      "disciplineId": "elements",
-      "pathId": "elements:air",
-      "bookId": "air",
-      "dp": 4,
-      "level": 7,
-      "shape": "diamond",
-      "requires": [
-        "air:3"
-      ],
-      "spellIds": [
-        "spell-mastery:storm-of-vengeance"
-      ],
-      "effect": "Main Action · Reason · 7 SP. Choose a visible point within 12 squares and a 1-square sanctuary within 2 squares of that point. For three rounds, a storm fills a 3-square radius around the point. When cast, roll once: creatures in the storm outside the sanctuary take 3/5/7 lightning damage. On each of your next two turns, you may spend a Main Action and roll again to strike with the storm, dealing the same damage and pushing each affected creature 1 square away from the center where legal. Without that action the storm remains visible but deals no further damage that turn; it ends after the third round. Everyone in the sanctuary is exempt. Recasting ends the earlier storm."
-    },
-    {
-      "id": "mastery:mass-lifegiving",
-      "name": "Mass Lifegiving",
-      "kind": "spell-mastery",
-      "disciplineId": "life",
-      "pathId": "life:restoration",
-      "bookId": "restoration",
-      "dp": 4,
-      "level": 7,
-      "shape": "diamond",
-      "requires": [
-        "restoration:3"
-      ],
-      "spellIds": [
-        "spell-mastery:mass-lifegiving"
-      ],
-      "effect": "Ritual · 1 uninterrupted hour · Reason · 10 SP, within a safe prepared sanctuary. Choose up to three willing dead people whose bodies are present and who died within the previous hour. Consume 200 coins of consecrated materials for each; the DA establishes availability beforehand. Restore their fatal injuries, return them to life at 1 HP and clear both death roll tallies. No roll. Scars remain; SP and Grit are not restored. Each person has one lifetime return to life, shared with Lifegiving and True Resurrection."
-    },
-    {
-      "id": "mastery:foresight-oracles-dream",
-      "name": "Foresight — Oracle’s Dream",
-      "kind": "spell-mastery",
-      "disciplineId": "mentalism",
-      "pathId": "mentalism:dreams",
-      "bookId": "dreams",
-      "dp": 4,
-      "level": 7,
-      "shape": "diamond",
-      "requires": [
-        "dreams:3"
-      ],
-      "spellIds": [
-        "spell-mastery:foresight-oracles-dream"
-      ],
-      "effect": "Ritual · 1 hour of shared sleep · Reason · 6 SP. You and up to three willing nearby sleepers seek the help of a willing spirit for one named undertaking in the next 24 hours. The DA gives one truthful warning of a foreseeable obstacle and one usable clue about addressing it, subject to the spirit’s knowledge. Each dreamer may once reroll an entire roll directly addressing the undertaking and keep either result. Unused rerolls expire after 24 hours; a creature cannot hold a benefit from more than one Oracle’s Dream. No casting roll. This does not guarantee success or reveal unknowable future decisions."
-    },
-    {
-      "id": "mastery:gate-world-anchor",
-      "name": "Gate — World Anchor",
-      "kind": "spell-mastery",
-      "disciplineId": "wards",
-      "pathId": "wards:seals",
-      "bookId": "seals",
-      "dp": 4,
-      "level": 7,
-      "shape": "diamond",
-      "requires": [
-        "seals:3"
-      ],
-      "spellIds": [
-        "spell-mastery:gate-world-anchor"
-      ],
-      "effect": "Ritual · 7 days, 8 hours of work per day · Knowledge · 10 SP on each workday, with prepared stone anchors at two known locations, each accessible during preparation, and 1,000 coins of materials consumed in total. The DA establishes availability and site permissions first. Create a permanent paired gateway, 2 squares wide, between those anchors, even across planes. At an anchor, a holder of either of the two keys you create can spend a Main Action and 3 SP to open both ends for 10 minutes, or a Maneuver to close them. Anyone can pass while open. A key conveys no control over travelers. Destroying either anchor ends the connection; each has 30 HP and physical resistance 3, and always takes at least 1 attack damage. No roll. You may maintain one pair; completing another ends the first."
-    },
-    {
-      "id": "mastery:guards-and-wards-living-citadel",
-      "name": "Guards and Wards — Living Citadel",
-      "kind": "spell-mastery",
-      "disciplineId": "wards",
-      "pathId": "wards:sanctuary",
-      "bookId": "sanctuary",
-      "dp": 4,
-      "level": 7,
-      "shape": "diamond",
-      "requires": [
-        "sanctuary:3"
-      ],
-      "spellIds": [
-        "spell-mastery:guards-and-wards-living-citadel"
-      ],
-      "effect": "Ritual · 3 days, 8 hours of work per day · Reason · 10 SP each day, with sound stone, fertile soil, water and 600 coins of materials consumed. On a prepared 12-by-12-square site, raise a one-story living keep with six rooms, a courtyard, a gate and walls 3 squares high. No roll. Walls block movement and sight; each 1-square section has 20 HP and physical resistance 3, with minimum 1 attack damage. You designate up to twelve residents. At dawn, paying 4 SP renews its wards for 24 hours: residents within gain 1 Boon to defenses, and you sense the location of any breached wall while inside. Missing upkeep removes the wards, not the building. The keep needs ordinary food, water and repairs. You may ward only one citadel at a time."
+        "spell:channeling:a3"
+      ]
     },
     {
       "id": "ability-another-tongue",
@@ -16180,11 +17532,7 @@
         "spell:flame:8",
         "spell:flame:a1",
         "spell:flame:a2",
-        "spell:flame:a3"
-      ],
-      "masteryIds": [
-        "mastery:starfall-volley",
-        "mastery:meteor-swarm"
+        "spell-mastery:meteor-swarm"
       ]
     },
     {
@@ -16247,11 +17595,7 @@
         "spell:air:8",
         "spell:air:a1",
         "spell:air:a2",
-        "spell:air:a3"
-      ],
-      "masteryIds": [
-        "mastery:stormsteel-arc",
-        "mastery:storm-of-vengeance"
+        "spell-mastery:storm-of-vengeance"
       ]
     },
     {
@@ -16272,13 +17616,7 @@
         "spell:restoration:8",
         "spell:restoration:a1",
         "spell:restoration:a2",
-        "spell:restoration:a3"
-      ],
-      "masteryIds": [
-        "mastery:borrowed-dawn",
-        "mastery:dawn-on-the-battlefield",
-        "mastery:true-resurrection",
-        "mastery:mass-lifegiving"
+        "spell-mastery:true-resurrection"
       ]
     },
     {
@@ -16321,9 +17659,6 @@
         "spell:growth:a1",
         "spell:growth:a2",
         "spell:growth:a3"
-      ],
-      "masteryIds": [
-        "mastery:wall-of-thorns-living-fortress"
       ]
     },
     {
@@ -16429,9 +17764,6 @@
         "spell:dreams:a1",
         "spell:dreams:a2",
         "spell:dreams:a3"
-      ],
-      "masteryIds": [
-        "mastery:foresight-oracles-dream"
       ]
     },
     {
@@ -16515,10 +17847,7 @@
         "spell:portents:8",
         "spell:portents:a1",
         "spell:portents:a2",
-        "spell:portents:a3"
-      ],
-      "masteryIds": [
-        "mastery:foresight-shared-vigil"
+        "spell-mastery:foresight-shared-vigil"
       ]
     },
     {
@@ -16602,12 +17931,7 @@
         "spell:passage:8",
         "spell:passage:a1",
         "spell:passage:a2",
-        "spell:passage:a3"
-      ],
-      "masteryIds": [
-        "mastery:step-between-heartbeats",
-        "mastery:the-road-for-the-lost",
-        "mastery:demiplane"
+        "spell-mastery:demiplane"
       ]
     },
     {
@@ -16629,9 +17953,6 @@
         "spell:telekinesis:a1",
         "spell:telekinesis:a2",
         "spell:telekinesis:a3"
-      ],
-      "masteryIds": [
-        "mastery:the-invisible-shieldbearer"
       ]
     },
     {
@@ -16672,11 +17993,8 @@
         "spell:animation:7",
         "spell:animation:8",
         "spell:animation:a1",
-        "spell:animation:a2",
-        "spell:animation:a3"
-      ],
-      "masteryIds": [
-        "mastery:simulacrum"
+        "spell:animation:a3",
+        "spell-mastery:simulacrum"
       ]
     },
     {
@@ -16697,10 +18015,7 @@
         "spell:imbuement:8",
         "spell:imbuement:a1",
         "spell:imbuement:a2",
-        "spell:imbuement:a3"
-      ],
-      "masteryIds": [
-        "mastery:colossus-of-the-forge"
+        "spell:imbuement:imbue-spell"
       ]
     },
     {
@@ -16763,11 +18078,7 @@
         "spell:sanctuary:8",
         "spell:sanctuary:a1",
         "spell:sanctuary:a2",
-        "spell:sanctuary:a3"
-      ],
-      "masteryIds": [
-        "mastery:sanctuary-of-steel",
-        "mastery:guards-and-wards-living-citadel"
+        "spell-mastery:guards-and-wards-living-citadel"
       ]
     },
     {
@@ -16788,10 +18099,7 @@
         "spell:seals:8",
         "spell:seals:a1",
         "spell:seals:a2",
-        "spell:seals:a3"
-      ],
-      "masteryIds": [
-        "mastery:gate-world-anchor"
+        "spell-mastery:gate-world-anchor"
       ]
     },
     {
@@ -16967,7 +18275,7 @@
       "name": "Fire Storm",
       "bookId": "flame",
       "page": "A1",
-      "section": "IV",
+      "section": "V",
       "sp": 5,
       "action": "Main Action",
       "actionText": "Main Action",
@@ -16985,7 +18293,7 @@
       "name": "Delayed Blast Fireball",
       "bookId": "flame",
       "page": "A2",
-      "section": "IV",
+      "section": "VI",
       "sp": 5,
       "action": "Main Action",
       "actionText": "Main Action",
@@ -16999,12 +18307,12 @@
       "effect": "Place a glowing bead at the point. On casting, or after a later upkeep, you may detonate it. Roll on detonation for 4/6/9 fire damage, adding 1 damage per completed upkeep, maximum +2. Ending sustain or touching the bead detonates it immediately. Every creature in the burst is affected once."
     },
     {
-      "id": "spell:flame:a3",
-      "name": "Incendiary Cloud",
+      "id": "spell-mastery:meteor-swarm",
+      "name": "Meteor Swarm",
       "bookId": "flame",
       "page": "A3",
-      "section": "IV",
-      "sp": 5,
+      "section": "VII",
+      "sp": 6,
       "action": "Main Action",
       "actionText": "Main Action",
       "attribute": "Knowledge",
@@ -17012,9 +18320,9 @@
       "defenseAttribute": "Agility",
       "holdAttribute": null,
       "escapeAttribute": null,
-      "target": "A 2-square-radius cloud centered within 8 squares",
-      "duration": "1 minute",
-      "effect": "Fill the area with opaque, burning smoke. Roll when cast to set fire damage at 3/5/7. Creatures in it immediately take that damage. Thereafter a creature takes it on first entering or ending its turn there, at most once each round including the casting event. A Maneuver can move the cloud’s center up to 2 squares; entering a creature’s square counts as that creature entering the cloud. The cloud remains in place without that Maneuver. Keep one Incendiary Cloud active; casting another ends the first."
+      "target": "Up to three visible points within 12 squares; every creature within 1 square of any point",
+      "duration": "Instant",
+      "effect": "Call a fall of blazing meteors onto the chosen points. Roll once; every creature within 1 square of a point takes 4/7/10 fire damage, including allies. Overlapping bursts affect a creature once. Exposed unattended flammable objects ignite."
     },
     {
       "id": "spell:water:1",
@@ -17167,7 +18475,7 @@
       "name": "Cone of Cold",
       "bookId": "water",
       "page": "A1",
-      "section": "IV",
+      "section": "V",
       "sp": 5,
       "action": "Main Action",
       "actionText": "Main Action",
@@ -17185,7 +18493,7 @@
       "name": "Freezing Sphere",
       "bookId": "water",
       "page": "A2",
-      "section": "IV",
+      "section": "VI",
       "sp": 5,
       "action": "Main Action",
       "actionText": "Main Action",
@@ -17203,18 +18511,18 @@
       "name": "Tsunami",
       "bookId": "water",
       "page": "A3",
-      "section": "IV",
-      "sp": 5,
+      "section": "VII",
+      "sp": 6,
       "action": "Main Action",
       "actionText": "Main Action",
       "attribute": "Knowledge",
-      "defense": null,
-      "defenseAttribute": null,
+      "defense": "Agility",
+      "defenseAttribute": "Agility",
       "holdAttribute": null,
       "escapeAttribute": null,
       "target": "Every creature in a 5-square-wide, 3-square-long area within 8 squares",
       "duration": "Instant",
-      "effect": "Raise a surging wave from nearby water or conjured spray. Deal 4/6/8 physical damage, push each affected creature 2 squares away from you, and make it Prone on Strong. Stability applies to the push; the water drains away after resolution."
+      "effect": "Raise a surging wave from nearby water or conjured spray. Deal 5/8/11 physical damage, push each affected creature 2/3/4 squares away from you, and make it Prone on Strong. Stability and normal collision rules apply to the push. Each creature is affected once; the water drains away after resolution."
     },
     {
       "id": "spell:earth:1",
@@ -17367,7 +18675,7 @@
       "name": "Move Earth",
       "bookId": "earth",
       "page": "A1",
-      "section": "IV",
+      "section": "V",
       "sp": 5,
       "action": "Ritual",
       "actionText": "Ritual · 1 hour",
@@ -17386,7 +18694,7 @@
       "name": "Flesh to Stone",
       "bookId": "earth",
       "page": "A2",
-      "section": "IV",
+      "section": "VI",
       "sp": 5,
       "action": "Main Action",
       "actionText": "Main Action",
@@ -17404,8 +18712,8 @@
       "name": "Earthquake",
       "bookId": "earth",
       "page": "A3",
-      "section": "IV",
-      "sp": 5,
+      "section": "VII",
+      "sp": 6,
       "action": "Main Action",
       "actionText": "Main Action",
       "attribute": "Knowledge",
@@ -17415,7 +18723,7 @@
       "escapeAttribute": null,
       "target": "Every grounded creature in a 3-square-radius area within 10 squares",
       "duration": "Instant",
-      "effect": "Shake the ground violently. Deal 4/6/8 physical damage and make affected creatures Prone. Add 2/4/6 progress toward one visible structure's DA-set collapse objective in the area; the DA describes unstable features before the roll."
+      "effect": "Shake the ground violently. Deal 5/8/11 physical damage and make affected creatures Prone. Add 3/5/7 progress toward one visible structure's DA-set collapse objective in the area; the DA describes unstable features before the roll. Each creature takes the spell's damage once; collapsing structures use their normal hazard rules."
     },
     {
       "id": "spell:air:1",
@@ -17567,7 +18875,7 @@
       "name": "Chain Lightning",
       "bookId": "air",
       "page": "A1",
-      "section": "IV",
+      "section": "V",
       "sp": 5,
       "action": "Main Action",
       "actionText": "Main Action",
@@ -17585,7 +18893,7 @@
       "name": "Control Weather",
       "bookId": "air",
       "page": "A2",
-      "section": "IV",
+      "section": "VI",
       "sp": 5,
       "action": "Ritual",
       "actionText": "Ritual · 1 hour",
@@ -17600,23 +18908,22 @@
       "effect": "Gradually change local weather over the casting hour: clear or gather clouds, bring ordinary rain or snow, or raise or calm strong wind. Choose one weather change. Seasonal temperatures and sound shelter remain relevant. The change creates ordinary weather rather than attack damage."
     },
     {
-      "id": "spell:air:a3",
-      "name": "Wind Walk",
+      "id": "spell-mastery:storm-of-vengeance",
+      "name": "Storm of Vengeance",
       "bookId": "air",
       "page": "A3",
-      "section": "IV",
-      "sp": 5,
-      "action": "Ritual",
-      "actionText": "Ritual · 10 minutes",
-      "ritualTime": "10 minutes",
-      "attribute": "None",
-      "defense": null,
-      "defenseAttribute": null,
+      "section": "VII",
+      "sp": 7,
+      "action": "Main Action",
+      "actionText": "Main Action",
+      "attribute": "Reason",
+      "defense": "Agility",
+      "defenseAttribute": "Agility",
       "holdAttribute": null,
       "escapeAttribute": null,
-      "target": "Self and up to five willing creatures within 3 squares",
-      "duration": "8 hours",
-      "effect": "Transform the company and carried gear into windborne mist. Each travels at Speed 12, can rise freely, and can speak to fellow travelers. Returning to solid form or mist takes 1 uninterrupted minute. While mist, use movement and observation; handling objects and casting require solid form. On expiry, choose the nearest safe ground within 6 squares."
+      "target": "A 3-square-radius storm centered within 12 squares, with one safe square within 2 of its center",
+      "duration": "3 rounds",
+      "effect": "Choose a visible point and one safe square within 2 squares of it. A storm fills a 3-square radius around that point. Roll when cast; creatures in the storm outside the safe square take 3/5/7 lightning damage. On each of your next two turns, a Main Action lets you roll again to strike with the storm for the same damage and push each affected creature 1 square away from its center. Stability and normal collision rules apply. Without that action the storm remains visible but deals no further damage that turn. The safe square remains exempt. Keep one Storm of Vengeance active; casting another ends the first."
     },
     {
       "id": "spell:restoration:1",
@@ -17768,7 +19075,7 @@
       "name": "Heal",
       "bookId": "restoration",
       "page": "A1",
-      "section": "IV",
+      "section": "V",
       "sp": 5,
       "action": "Main Action",
       "actionText": "Main Action",
@@ -17786,7 +19093,7 @@
       "name": "Regenerate",
       "bookId": "restoration",
       "page": "A2",
-      "section": "IV",
+      "section": "VI",
       "sp": 5,
       "action": "Ritual",
       "actionText": "Ritual · 1 hour",
@@ -17801,22 +19108,23 @@
       "effect": "Restore one missing nonvital limb or damaged ordinary sense, and restore 10 HP after Life resistance. The renewed part functions normally when the ritual finishes. Scars can remain as the player describes. This treats physical loss; curses use their named remedies."
     },
     {
-      "id": "spell:restoration:a3",
-      "name": "Mass Heal",
+      "id": "spell-mastery:true-resurrection",
+      "name": "True Resurrection",
       "bookId": "restoration",
       "page": "A3",
-      "section": "IV",
-      "sp": 5,
-      "action": "Main Action",
-      "actionText": "Main Action",
-      "attribute": "Reason",
+      "section": "VII",
+      "sp": 8,
+      "action": "Ritual",
+      "actionText": "Ritual · 8 hours",
+      "ritualTime": "8 hours",
+      "attribute": "None",
       "defense": null,
       "defenseAttribute": null,
       "holdAttribute": null,
       "escapeAttribute": null,
-      "target": "Up to six living creatures within 6 squares",
+      "target": "Remains of one willing person dead no longer than seven days; 500 coins of funerary materials",
       "duration": "Instant",
-      "effect": "Roll once for a shared healing total of 12/18/24 HP. Divide it among the chosen recipients, assigning at least 1 to each before Life resistance. Each recipient also reduces Bleeding by 2."
+      "effect": "Restore a life ended before its natural span. Prepare the remains with unique funerary materials whose availability the DA establishes before the ritual. The spirit must freely agree. At completion, consume the materials and return the person to life at 1 HP in a restored body, clearing both death roll tallies. Descriptive scars remain; spent SP and Grit remain spent. Each person has one lifetime return to life, shared with Lifegiving. The ritual creates one restored body, replacing the prepared remains."
     },
     {
       "id": "spell:transformation:1",
@@ -17967,7 +19275,7 @@
       "name": "Animal Shapes",
       "bookId": "transformation",
       "page": "A1",
-      "section": "IV",
+      "section": "V",
       "sp": 5,
       "action": "Main Action",
       "actionText": "Main Action",
@@ -17985,7 +19293,7 @@
       "name": "Shapechange",
       "bookId": "transformation",
       "page": "A2",
-      "section": "IV",
+      "section": "VI",
       "sp": 5,
       "action": "Main Action",
       "actionText": "Main Action",
@@ -18003,8 +19311,8 @@
       "name": "True Polymorph — Living",
       "bookId": "transformation",
       "page": "A3",
-      "section": "IV",
-      "sp": 5,
+      "section": "VII",
+      "sp": 6,
       "action": "Ritual",
       "actionText": "Ritual · 1 hour",
       "ritualTime": "1 hour",
@@ -18015,7 +19323,7 @@
       "escapeAttribute": null,
       "target": "One willing adjacent creature; 100 coins of transformative incense consumed",
       "duration": "24 hours",
-      "effect": "Shape an ordinary living body of Small or Medium size: a humanoid guise or familiar animal. The recipient keeps its mind, HP and attributes. Choose one movement adaptation: swimming or climbing at normal Speed, or flight at Speed 4. Animal bodies use Polymorph's equipment and action rules. The recipient may return with a Maneuver; Greater Restoration also ends the transformation."
+      "effect": "Shape an ordinary living body of Small, Medium or Large size: a humanoid guise or familiar animal. The recipient keeps its mind, HP and attributes. Choose swimming, climbing or flight at its normal Speed as the body's movement adaptation. Animal bodies use Polymorph's equipment and action rules. The recipient may return with a Maneuver; Greater Restoration also ends the transformation."
     },
     {
       "id": "spell:growth:1",
@@ -18168,7 +19476,7 @@
       "name": "Awaken",
       "bookId": "growth",
       "page": "A1",
-      "section": "IV",
+      "section": "V",
       "sp": 5,
       "action": "Ritual",
       "actionText": "Ritual · 8 hours",
@@ -18187,7 +19495,7 @@
       "name": "Wall of Thorns",
       "bookId": "growth",
       "page": "A2",
-      "section": "IV",
+      "section": "VI",
       "sp": 5,
       "action": "Main Action",
       "actionText": "Main Action",
@@ -18198,15 +19506,15 @@
       "escapeAttribute": null,
       "target": "Six connected unoccupied ground squares within 8 squares",
       "duration": "1 minute",
-      "effect": "Grow a thorn wall 2 squares high. Moving through one square costs 3 movement and deals 3/5/7 physical damage, set by your casting roll, once per creature each round. Each wall square has 8 HP; fire damages it normally."
+      "effect": "Grow a thorn wall 2 squares high. Name up to six creatures when casting; they pass through it at ordinary movement cost and take no damage from its thorns. Others spend 3 movement to cross one square and take 3/5/7 physical damage, set by your casting roll, once per creature each round. Each wall square has 8 HP; fire damages it normally. The wall provides cover. Keep one Wall of Thorns active; casting another ends the first."
     },
     {
       "id": "spell:growth:a3",
       "name": "Transport via Plants",
       "bookId": "growth",
       "page": "A3",
-      "section": "IV",
-      "sp": 5,
+      "section": "VII",
+      "sp": 6,
       "action": "Ritual",
       "actionText": "Ritual · 1 minute",
       "ritualTime": "1 minute",
@@ -18217,7 +19525,7 @@
       "escapeAttribute": null,
       "target": "Self and up to five willing creatures beside a living tree",
       "duration": "Instant",
-      "effect": "Travel through the tree to another living tree you personally touched within the past month, up to 10 kilometers away on the same plane. Everyone emerges in safe adjacent squares with carried gear. The destination tree must remain alive and large enough to admit a traveler."
+      "effect": "Travel through the tree to another living tree you personally touched within the past month, up to 100 kilometers away on the same plane. Everyone emerges in safe adjacent squares with carried gear. The destination tree must remain alive and large enough to admit a traveler. An explicit teleportation barrier blocks the journey."
     },
     {
       "id": "spell:decay:1",
@@ -18368,7 +19676,7 @@
       "name": "Harm",
       "bookId": "decay",
       "page": "A1",
-      "section": "IV",
+      "section": "V",
       "sp": 5,
       "action": "Main Action",
       "actionText": "Main Action",
@@ -18386,7 +19694,7 @@
       "name": "Finger of Death",
       "bookId": "decay",
       "page": "A2",
-      "section": "IV",
+      "section": "VI",
       "sp": 5,
       "action": "Main Action",
       "actionText": "Main Action",
@@ -18404,8 +19712,8 @@
       "name": "Circle of Death",
       "bookId": "decay",
       "page": "A3",
-      "section": "IV",
-      "sp": 5,
+      "section": "VII",
+      "sp": 6,
       "action": "Main Action",
       "actionText": "Main Action",
       "attribute": "Reason",
@@ -18415,7 +19723,7 @@
       "escapeAttribute": null,
       "target": "Every living creature in a 3-square-radius burst within 10 squares",
       "duration": "Instant",
-      "effect": "A ring of pallor spreads from the chosen point. Deal 4/6/8 life damage to each creature in the burst, including allies."
+      "effect": "A ring of pallor spreads from the chosen point. Deal 5/8/11 life damage and apply Poisoned 1 to each living creature in the burst, including allies. Each creature is affected once. Resolve damage and dying by the ordinary rules."
     },
     {
       "id": "spell:thought:1",
@@ -18569,7 +19877,7 @@
       "name": "Mind Scan",
       "bookId": "thought",
       "page": "A1",
-      "section": "IV",
+      "section": "V",
       "sp": 5,
       "action": "Ritual",
       "actionText": "Ritual · 10 minutes",
@@ -18588,7 +19896,7 @@
       "name": "Mind Probe",
       "bookId": "thought",
       "page": "A2",
-      "section": "IV",
+      "section": "VI",
       "sp": 5,
       "action": "Main Action",
       "actionText": "Main Action",
@@ -18606,19 +19914,19 @@
       "name": "Thought Steal",
       "bookId": "thought",
       "page": "A3",
-      "section": "IV",
-      "sp": 5,
+      "section": "VII",
+      "sp": 6,
       "action": "Ritual",
-      "actionText": "Ritual · 10 minutes",
-      "ritualTime": "10 minutes",
+      "actionText": "Ritual · 1 hour",
+      "ritualTime": "1 hour",
       "attribute": "None",
       "defense": null,
       "defenseAttribute": null,
       "holdAttribute": null,
       "escapeAttribute": null,
       "target": "One willing adjacent creature",
-      "duration": "1 hour",
-      "effect": "Borrow one ordinary language or one factual recollection the subject agrees to share. You can use it for the duration; the subject retains it. Record the exact knowledge gained. Learned abilities and SP remain with their owner."
+      "duration": "24 hours",
+      "effect": "Borrow the subject's remembered experience of one named place, undertaking or field of study. Agree on that topic before casting. You can recall facts and sensory memories the subject actually knows about it as though you had witnessed them, gaining 1 Boon to Knowledge rolls using that borrowed experience. Record the shared topic and one ordinary language the subject knows, which you can speak and read for the duration. The subject retains its memories. Learned abilities and SP remain with their owner; memories preserve the subject's errors and gaps."
     },
     {
       "id": "spell:emotion:1",
@@ -18769,7 +20077,7 @@
       "name": "Mass Suggestion",
       "bookId": "emotion",
       "page": "A1",
-      "section": "IV",
+      "section": "V",
       "sp": 5,
       "action": "Main Action",
       "actionText": "Main Action",
@@ -18787,7 +20095,7 @@
       "name": "Dominate Person",
       "bookId": "emotion",
       "page": "A2",
-      "section": "IV",
+      "section": "VI",
       "sp": 5,
       "action": "Main Action",
       "actionText": "Main Action",
@@ -18805,8 +20113,8 @@
       "name": "Antipathy/Sympathy",
       "bookId": "emotion",
       "page": "A3",
-      "section": "IV",
-      "sp": 5,
+      "section": "VII",
+      "sp": 6,
       "action": "Ritual",
       "actionText": "Ritual · 10 minutes",
       "ritualTime": "10 minutes",
@@ -18815,9 +20123,9 @@
       "defenseAttribute": "Reason",
       "holdAttribute": null,
       "escapeAttribute": null,
-      "target": "One fixed object or 3-square-radius place within reach",
-      "duration": "1 hour",
-      "effect": "Choose a recognizable group and either welcome or dread. When a matching creature first enters, it feels the chosen pull and recognizes it as magic. Welcome supplies 1 Boon to your group's first relevant social contribution there; dread applies Frightened 1/2/3, set by your ritual roll, once per creature. Identify the object or place as the fear source."
+      "target": "One fixed object or 6-square-radius place within reach",
+      "duration": "24 hours",
+      "effect": "Choose a recognizable group and either welcome or dread. A matching creature entering the place or coming within 6 squares of the object feels the chosen pull and recognizes it as magic. Welcome grants your group 1 Boon to social contributions made there toward an attainable agreement with a matching creature. Dread applies Frightened 2/3/4, set by your ritual roll, once per creature for this casting; the object or place is the fear source. Leaving that area ends this casting’s fear contribution. Keep one Antipathy/Sympathy working active; casting another ends the first."
     },
     {
       "id": "spell:perception:1",
@@ -18969,7 +20277,7 @@
       "name": "Mislead",
       "bookId": "perception",
       "page": "A1",
-      "section": "IV",
+      "section": "V",
       "sp": 5,
       "action": "Main Action",
       "actionText": "Main Action",
@@ -18987,7 +20295,7 @@
       "name": "Seeming",
       "bookId": "perception",
       "page": "A2",
-      "section": "IV",
+      "section": "VI",
       "sp": 5,
       "action": "Ritual",
       "actionText": "Ritual · 1 minute",
@@ -19006,19 +20314,19 @@
       "name": "Programmed Illusion",
       "bookId": "perception",
       "page": "A3",
-      "section": "IV",
-      "sp": 5,
+      "section": "VII",
+      "sp": 6,
       "action": "Ritual",
-      "actionText": "Ritual · 10 minutes",
-      "ritualTime": "10 minutes",
+      "actionText": "Ritual · 1 hour",
+      "ritualTime": "1 hour",
       "attribute": "None",
       "defense": null,
       "defenseAttribute": null,
       "holdAttribute": null,
       "escapeAttribute": null,
-      "target": "One fixed 3-by-3-square space within reach",
-      "duration": "24 hours or until triggered",
-      "effect": "Prepare a visual and audible performance lasting up to 1 minute. State a visible or audible trigger within 6 squares when casting. The first matching event plays the recorded illusion once. Physical interaction reveals it; afterward the spell ends."
+      "target": "One fixed 6-by-6-square space within reach",
+      "duration": "7 days",
+      "effect": "Prepare a moving illusion with sound, scent and harmless temperature, performing a sequence lasting up to 5 minutes. Set one visible or audible trigger within 12 squares when casting. A matching event begins the performance; after it finishes, the illusion waits 10 minutes before it can trigger again. The scene stays within its prepared area and follows the same recorded sequence each time. Physical interaction reveals its insubstantial nature; observers may examine it using the shared illusion procedure. Keep one Programmed Illusion active; casting another ends the first."
     },
     {
       "id": "spell:dreams:1",
@@ -19172,7 +20480,7 @@
       "name": "Lord Dream",
       "bookId": "dreams",
       "page": "A1",
-      "section": "IV",
+      "section": "V",
       "sp": 5,
       "action": "Ritual",
       "actionText": "Ritual · 1 hour",
@@ -19184,14 +20492,14 @@
       "escapeAttribute": null,
       "target": "Self and up to five willing sleepers within 3 squares",
       "duration": "1 hour",
-      "effect": "Host a shared dream with chosen scenery and conversation. Participants may practice, exchange memories or plan together. Each receives 1 Boon on its first roll directly implementing one agreed plan within 24 hours; record that plan before waking."
+      "effect": "Host a shared dream with chosen scenery and conversation about one undertaking within the next 24 hours. The DA gives one truthful warning of a foreseeable obstacle, based on present circumstances. Each participant receives 1 Boon on its first roll directly implementing the agreed plan within 24 hours; record the plan before waking. A creature can hold one Lord Dream benefit at a time. The dream reveals possibilities, while later decisions can change the outcome."
     },
     {
       "id": "spell:dreams:a2",
       "name": "Weird",
       "bookId": "dreams",
       "page": "A2",
-      "section": "IV",
+      "section": "VI",
       "sp": 5,
       "action": "Main Action",
       "actionText": "Main Action",
@@ -19209,8 +20517,8 @@
       "name": "Astral Projection",
       "bookId": "dreams",
       "page": "A3",
-      "section": "IV",
-      "sp": 5,
+      "section": "VII",
+      "sp": 6,
       "action": "Ritual",
       "actionText": "Ritual · 1 hour",
       "ritualTime": "1 hour",
@@ -19220,8 +20528,8 @@
       "holdAttribute": null,
       "escapeAttribute": null,
       "target": "Self and up to three willing creatures beside you",
-      "duration": "1 hour",
-      "effect": "Send visible spirit projections into the nearby spirit realm while bodies sleep. Projections travel together up to 1 kilometer from the bodies, speak with spirits and observe corresponding places. They return when the spell ends or a body is disturbed. Projections use observation and speech; physical acts and further casting take place after returning to the bodies."
+      "duration": "8 hours",
+      "effect": "Send visible spirit projections into the nearby spirit realm while your bodies sleep. Projections travel together up to 10 kilometers from the bodies, speak with spirits and observe corresponding places. Magical barriers that block spirit travel still apply. They return when the spell ends, a participant chooses to return with a Maneuver, or a body is disturbed. Projections use observation and speech; physical acts and further casting take place after returning to the bodies."
     },
     {
       "id": "spell:detection:1",
@@ -19375,7 +20683,7 @@
       "name": "Detect Magic — Scaling Analysis",
       "bookId": "detection",
       "page": "A1",
-      "section": "IV",
+      "section": "V",
       "sp": 5,
       "action": "Main Action",
       "actionText": "Main Action",
@@ -19393,7 +20701,7 @@
       "name": "Find the Path",
       "bookId": "detection",
       "page": "A2",
-      "section": "IV",
+      "section": "VI",
       "sp": 5,
       "action": "Ritual",
       "actionText": "Ritual · 10 minutes",
@@ -19412,8 +20720,8 @@
       "name": "Sight True",
       "bookId": "detection",
       "page": "A3",
-      "section": "IV",
-      "sp": 5,
+      "section": "VII",
+      "sp": 6,
       "action": "Main Action",
       "actionText": "Main Action",
       "attribute": "None",
@@ -19422,8 +20730,8 @@
       "holdAttribute": null,
       "escapeAttribute": null,
       "target": "Self",
-      "duration": "10 minutes",
-      "effect": "See Invisible targets and recognize visual illusions within 12 squares. Also see the outlines of creatures immediately beyond ordinary cover up to 1 square thick, within 6 squares. Such outlines reveal position; attacks still require a clear path."
+      "duration": "1 hour",
+      "effect": "See Invisible targets and recognize visual illusions and disguising magic within 12 squares. Also see the outlines of creatures and magical effects immediately beyond ordinary cover up to 1 square thick, within 6 squares. The outlines reveal position; attacks still require a clear path. Explicit wards against divination retain their protection."
     },
     {
       "id": "spell:farseeing:1",
@@ -19580,7 +20888,7 @@
       "name": "Watch True",
       "bookId": "farseeing",
       "page": "A1",
-      "section": "IV",
+      "section": "V",
       "sp": 5,
       "action": "Ritual",
       "actionText": "Ritual · 1 hour",
@@ -19599,7 +20907,7 @@
       "name": "Long Sense",
       "bookId": "farseeing",
       "page": "A2",
-      "section": "IV",
+      "section": "VI",
       "sp": 5,
       "action": "Ritual",
       "actionText": "Ritual · 10 minutes",
@@ -19618,8 +20926,8 @@
       "name": "Long Sense True",
       "bookId": "farseeing",
       "page": "A3",
-      "section": "IV",
-      "sp": 5,
+      "section": "VII",
+      "sp": 6,
       "action": "Ritual",
       "actionText": "Ritual · 1 hour",
       "ritualTime": "1 hour",
@@ -19628,9 +20936,9 @@
       "defenseAttribute": null,
       "holdAttribute": null,
       "escapeAttribute": null,
-      "target": "One willing creature you personally know on the same plane",
-      "duration": "1 hour",
-      "effect": "Establish a remote sensory link. While both consent, use a Main Action to share what it sees and hears until your next turn begins. It continues using its own senses normally and may end the link at any time."
+      "target": "Self and up to three willing creatures you personally know on the same plane",
+      "duration": "8 hours",
+      "effect": "Establish a remote sensory link with each recipient. A linked creature may spend a Main Action to see and hear from one consenting member until its next turn begins, while that member continues using its own senses. During that interval the observer’s own sight and hearing rest at the remote point; touch can still alert it to nearby contact. A member can leave the link at any time. Magical concealment operates at each viewpoint. Keep one Long Sense True link active; casting another ends the first."
     },
     {
       "id": "spell:echoes:1",
@@ -19788,7 +21096,7 @@
       "name": "Legend Lore",
       "bookId": "echoes",
       "page": "A1",
-      "section": "IV",
+      "section": "V",
       "sp": 5,
       "action": "Ritual",
       "actionText": "Ritual · 1 hour",
@@ -19807,7 +21115,7 @@
       "name": "Past Truth",
       "bookId": "echoes",
       "page": "A2",
-      "section": "IV",
+      "section": "VI",
       "sp": 5,
       "action": "Ritual",
       "actionText": "Ritual · 1 hour",
@@ -19826,7 +21134,7 @@
       "name": "Vision Behind — Ages",
       "bookId": "echoes",
       "page": "A3",
-      "section": "IV",
+      "section": "VII",
       "sp": 5,
       "action": "Ritual",
       "actionText": "Ritual · 8 hours",
@@ -19994,7 +21302,7 @@
       "name": "Foresight",
       "bookId": "portents",
       "page": "A1",
-      "section": "IV",
+      "section": "V",
       "sp": 5,
       "action": "Main Action",
       "actionText": "Main Action",
@@ -20012,7 +21320,7 @@
       "name": "Anticipations True",
       "bookId": "portents",
       "page": "A2",
-      "section": "IV",
+      "section": "VI",
       "sp": 5,
       "action": "Reaction",
       "actionText": "Reaction · after you roll a defense",
@@ -20027,23 +21335,23 @@
       "effect": "Follow an alternate future. Reroll the whole defense and keep either result. Use at most one Anticipations True casting on a given defense."
     },
     {
-      "id": "spell:portents:a3",
-      "name": "Spell Anticipation True",
+      "id": "spell-mastery:foresight-shared-vigil",
+      "name": "Foresight — Shared Vigil",
       "bookId": "portents",
       "page": "A3",
-      "section": "IV",
+      "section": "VII",
       "sp": 5,
-      "action": "Reaction",
-      "actionText": "Reaction · when a visible spell targets you or an ally within 3 squares",
-      "trigger": "when a visible spell targets you or an ally within 3 squares",
+      "action": "Ritual",
+      "actionText": "Ritual · 10 minutes",
+      "ritualTime": "10 minutes",
       "attribute": "None",
       "defense": null,
       "defenseAttribute": null,
       "holdAttribute": null,
       "escapeAttribute": null,
-      "target": "You and up to two targeted allies within 3 squares",
-      "duration": "The triggering spell",
-      "effect": "Warn the chosen recipients before their defenses are rolled. Each gains 2 Boons to its defense against that spell. Each creature resolves its own defense normally."
+      "target": "Self and up to three willing creatures within 3 squares",
+      "duration": "1 hour",
+      "effect": "Link your awareness of approaching danger. Linked creatures within 12 squares of you receive a warning when any linked member perceives a threat. If it alerts the group before the attack, roll initiative normally. Once each round, after one linked creature rolls a defense, it may reroll the entire roll and keep either result. The group shares this one reroll. The link carries warnings. Keep one Shared Vigil link active; casting another ends the first."
     },
     {
       "id": "spell:spirits:1",
@@ -20198,7 +21506,7 @@
       "name": "Etherealness",
       "bookId": "spirits",
       "page": "A1",
-      "section": "IV",
+      "section": "V",
       "sp": 5,
       "action": "Main Action",
       "actionText": "Main Action",
@@ -20216,7 +21524,7 @@
       "name": "Create Undead",
       "bookId": "spirits",
       "page": "A2",
-      "section": "IV",
+      "section": "VI",
       "sp": 5,
       "action": "Main Action",
       "actionText": "Main Action",
@@ -20234,7 +21542,7 @@
       "name": "Lifegiving",
       "bookId": "spirits",
       "page": "A3",
-      "section": "IV",
+      "section": "VII",
       "sp": 5,
       "action": "Ritual",
       "actionText": "Ritual · 1 minute",
@@ -20246,7 +21554,7 @@
       "escapeAttribute": null,
       "target": "One willing dead person whose intact body is adjacent; death within the past minute",
       "duration": "Instant",
-      "effect": "Consume 100 coins of funerary incense and return the person at 1 HP, with both death roll tallies cleared and fatal injuries closed. The spirit chooses whether to return. Retain scars, spent SP and spent Grit. This uses the person's one lifetime return through Lifegiving, Mass Lifegiving or True Resurrection."
+      "effect": "Consume 100 coins of funerary incense and return the person at 1 HP, with both death roll tallies cleared and fatal injuries closed. The spirit chooses whether to return. Retain scars, spent SP and spent Grit. This uses the person's one lifetime return through resurrection magic."
     },
     {
       "id": "spell:calling:1",
@@ -20400,7 +21708,7 @@
       "name": "Conjure Celestial",
       "bookId": "calling",
       "page": "A1",
-      "section": "IV",
+      "section": "V",
       "sp": 5,
       "action": "Main Action",
       "actionText": "Main Action",
@@ -20418,7 +21726,7 @@
       "name": "Planar Ally",
       "bookId": "calling",
       "page": "A2",
-      "section": "IV",
+      "section": "VI",
       "sp": 5,
       "action": "Ritual",
       "actionText": "Ritual · 1 hour",
@@ -20437,7 +21745,7 @@
       "name": "Gate — Calling",
       "bookId": "calling",
       "page": "A3",
-      "section": "IV",
+      "section": "VII",
       "sp": 5,
       "action": "Ritual",
       "actionText": "Ritual · 10 minutes",
@@ -20603,7 +21911,7 @@
       "name": "Dominate Monster",
       "bookId": "binding",
       "page": "A1",
-      "section": "IV",
+      "section": "V",
       "sp": 5,
       "action": "Main Action",
       "actionText": "Main Action",
@@ -20621,7 +21929,7 @@
       "name": "Forcecage",
       "bookId": "binding",
       "page": "A2",
-      "section": "IV",
+      "section": "VI",
       "sp": 5,
       "action": "Main Action",
       "actionText": "Main Action",
@@ -20639,7 +21947,7 @@
       "name": "Imprisonment",
       "bookId": "binding",
       "page": "A3",
-      "section": "IV",
+      "section": "VII",
       "sp": 5,
       "action": "Ritual",
       "actionText": "Ritual · 10 minutes",
@@ -20807,7 +22115,7 @@
       "name": "Teleport",
       "bookId": "passage",
       "page": "A1",
-      "section": "IV",
+      "section": "V",
       "sp": 5,
       "action": "Ritual",
       "actionText": "Ritual · 1 minute",
@@ -20826,7 +22134,7 @@
       "name": "Gate — Passage",
       "bookId": "passage",
       "page": "A2",
-      "section": "IV",
+      "section": "VI",
       "sp": 5,
       "action": "Ritual",
       "actionText": "Ritual · 10 minutes",
@@ -20841,22 +22149,23 @@
       "effect": "Consume 100 coins of tuned incense to open a two-way doorway 2 squares wide. Any creature that can reach it may cross while open. The far end must be at an anchor you personally visited and currently have permission to open. You can close it with a Maneuver."
     },
     {
-      "id": "spell:passage:a3",
-      "name": "Etherealness — Company",
+      "id": "spell-mastery:demiplane",
+      "name": "Demiplane",
       "bookId": "passage",
       "page": "A3",
-      "section": "IV",
-      "sp": 5,
-      "action": "Main Action",
-      "actionText": "Main Action",
+      "section": "VII",
+      "sp": 6,
+      "action": "Ritual",
+      "actionText": "Ritual · 1 hour",
+      "ritualTime": "1 hour",
       "attribute": "None",
       "defense": null,
       "defenseAttribute": null,
       "holdAttribute": null,
       "escapeAttribute": null,
-      "target": "Self and up to three willing creatures within 3 squares",
-      "duration": "1 minute",
-      "effect": "Shift the company into pale spirit forms. Each uses Etherealness's movement and interaction procedure and may return with a Maneuver. The fixed duration covers all recipients; on expiry each returns to the nearest open square within 3 squares."
+      "target": "An adjacent solid wall; one private 6-by-6-square refuge",
+      "duration": "Permanent refuge; doorway 10 minutes",
+      "effect": "Open a doorway on an adjacent solid wall to your private refuge, 6 squares on each side and 3 squares high. It lasts 10 minutes and anyone who reaches it may cross; close it early with a Maneuver. From inside, a Maneuver opens an exit to the last entrance location, or the nearest open square within 3 squares if obstructed. The refuge holds ordinary objects and up to twelve creatures, with air and normal time. Bring food and water. You keep one refuge; recasting reopens it from the new wall. The doorway always returns to its latest entrance, rather than connecting distant places."
     },
     {
       "id": "spell:telekinesis:1",
@@ -21007,7 +22316,7 @@
       "name": "Wall of Force",
       "bookId": "telekinesis",
       "page": "A1",
-      "section": "IV",
+      "section": "V",
       "sp": 5,
       "action": "Main Action",
       "actionText": "Main Action",
@@ -21025,7 +22334,7 @@
       "name": "Disintegrate",
       "bookId": "telekinesis",
       "page": "A2",
-      "section": "IV",
+      "section": "VI",
       "sp": 5,
       "action": "Main Action",
       "actionText": "Main Action",
@@ -21043,7 +22352,7 @@
       "name": "Reverse Gravity",
       "bookId": "telekinesis",
       "page": "A3",
-      "section": "IV",
+      "section": "VII",
       "sp": 5,
       "action": "Main Action",
       "actionText": "Main Action",
@@ -21054,7 +22363,7 @@
       "escapeAttribute": null,
       "target": "Every creature in a 2-square-radius area within 8 squares",
       "duration": "Until the end of your next turn",
-      "effect": "Lift each affected creature 1/2/3 squares vertically, stopping at obstacles. It floats at that height until expiry, when it falls normally. A creature holding a fixed support may release it or remain supported. Flying creatures can use their normal movement to leave the area."
+      "effect": "Lift each affected creature 2/4/6 squares vertically from its starting position, stopping at solid obstacles. It floats there until expiry, then falls from that height using the normal falling rules. A creature already holding a fixed support may keep its grip and remain supported. A floating creature may use ordinary movement to climb a reachable fixed surface or fly out of the affected area; leaving the area ends its levitation. This working affects the chosen creatures once, when cast."
     },
     {
       "id": "spell:shaping:1",
@@ -21211,7 +22520,7 @@
       "name": "Passwall — Workshop",
       "bookId": "shaping",
       "page": "A1",
-      "section": "IV",
+      "section": "V",
       "sp": 5,
       "action": "Ritual",
       "actionText": "Ritual · 10 minutes",
@@ -21230,7 +22539,7 @@
       "name": "Meld Wall",
       "bookId": "shaping",
       "page": "A2",
-      "section": "IV",
+      "section": "VI",
       "sp": 5,
       "action": "Ritual",
       "actionText": "Ritual · 1 hour",
@@ -21249,19 +22558,19 @@
       "name": "True Polymorph — Objects",
       "bookId": "shaping",
       "page": "A3",
-      "section": "IV",
-      "sp": 5,
+      "section": "VII",
+      "sp": 6,
       "action": "Ritual",
-      "actionText": "Ritual · 8 hours",
-      "ritualTime": "8 hours",
+      "actionText": "Ritual · 10 minutes",
+      "ritualTime": "10 minutes",
       "attribute": "None",
       "defense": null,
       "defenseAttribute": null,
       "holdAttribute": null,
       "escapeAttribute": null,
-      "target": "One unattended nonmagical object of Bulk 6 or less; 100 coins of reagents consumed",
-      "duration": "24 hours",
-      "effect": "Reshape it into another mundane object of equal or smaller Bulk using stone, wood, glass or common iron. Specify its ordinary function and include all necessary parts. At expiry it returns to its original form. It provides ordinary material qualities rather than learned abilities or precious commodities."
+      "target": "One unattended nonmagical object of Bulk 12 or less; 100 coins of reagents consumed",
+      "duration": "Until dismissed or replaced",
+      "effect": "Reshape it into one mundane object of equal or smaller Bulk made of stone, wood, glass or common iron. Choose an ordinary function whose construction you understand, with all necessary parts. It has that material’s ordinary qualities and provides no precious substances or learned abilities. Keep one such transformation at a time; dismissing it, completing another, or unraveling it returns the surviving material to its original form. Separated pieces remain parts of the same transformation, not new objects to copy."
     },
     {
       "id": "spell:animation:1",
@@ -21371,7 +22680,7 @@
       "escapeAttribute": null,
       "target": "One prepared object beside you; 50 coins of reagents consumed",
       "duration": "7 days",
-      "effect": "Give it the ability to recognize its name, one voice and three spoken commands. It answers yes or no by a tiny movement or sound and remembers one short instruction. Movement or work uses a separate animation spell and its commands. You may keep one intelligent item of any degree at a time."
+      "effect": "Awaken a mind with Knowledge +1 and memory of three short instructions. Within 6 squares, you communicate telepathically and may use its score for Knowledge rolls, including casting, under the fixed-value item rules. Your own attributes determine DP, class qualifications and maximum SP. Keep one intelligent item of any grade. Movement and work use separate animation and commands."
     },
     {
       "id": "spell:animation:7",
@@ -21390,7 +22699,7 @@
       "escapeAttribute": null,
       "target": "One prepared object beside you; 100 coins of reagents consumed",
       "duration": "7 days",
-      "effect": "Give it one spoken language and memory of up to ten short instructions or messages. It can converse in simple sentences and report what was said within 1 square. Movement and work use a separate animation spell's commands. This replaces your prior intelligent item."
+      "effect": "Awaken a mind with Knowledge +2 and one language you know. It remembers ten short messages and hears within 1 square. Within 6 squares, you communicate telepathically and may use its score for Knowledge rolls, including casting, under the fixed-value item rules. Your own attributes determine DP, class qualifications and maximum SP. This replaces your prior intelligent item; physical activity uses separate animation and commands."
     },
     {
       "id": "spell:animation:8",
@@ -21409,14 +22718,14 @@
       "escapeAttribute": null,
       "target": "One prepared object beside you; 150 coins of reagents consumed",
       "duration": "7 days",
-      "effect": "Give it one language, a chosen conversational personality and memory of its week's experiences. It hears within 3 squares and can explain recorded instructions. It acts through speech; movement and work require separate animation and commands. This replaces your prior intelligent item."
+      "effect": "Awaken a mind with Knowledge +3, one language you know and a chosen personality. It hears within 3 squares and remembers its week's experiences. Within 6 squares, you communicate telepathically and may use its score for Knowledge rolls, including casting, under the fixed-value item rules. Your own attributes determine DP, class qualifications and maximum SP. This replaces your prior intelligent item; physical activity uses separate animation and commands."
     },
     {
       "id": "spell:animation:a1",
       "name": "Very High Intelligence",
       "bookId": "animation",
       "page": "A1",
-      "section": "IV",
+      "section": "V",
       "sp": 5,
       "action": "Ritual",
       "actionText": "Ritual · 8 hours",
@@ -21428,33 +22737,14 @@
       "escapeAttribute": null,
       "target": "One prepared object beside you; 250 coins of reagents consumed",
       "duration": "7 days",
-      "effect": "Give it two languages you know, a personality and clear memory of its experiences. It sees and hears within 3 squares and can discuss one field of ordinary knowledge you teach during the ritual. Its physical actions use separate animation and commands. This replaces your prior intelligent item."
-    },
-    {
-      "id": "spell:animation:a2",
-      "name": "Simulacrum",
-      "bookId": "animation",
-      "page": "A2",
-      "section": "IV",
-      "sp": 5,
-      "action": "Ritual",
-      "actionText": "Ritual · 8 hours",
-      "ritualTime": "8 hours",
-      "attribute": "None",
-      "defense": null,
-      "defenseAttribute": null,
-      "holdAttribute": null,
-      "escapeAttribute": null,
-      "target": "A willing adjacent living model and 150 coins of shaping materials consumed",
-      "duration": "24 hours, with commands",
-      "effect": "Make a likeness with 6 HP, Speed 4, your defense attributes, and the model's appearance and voice. It uses your commands and a six-square tether. A Main command permits one ordinary task or Basic Melee attack for 2/3/5 physical damage using your Knowledge. It has 0 SP and 0 Grit; the form disappears at 0 HP. You may keep one such likeness."
+      "effect": "Awaken a mind with Knowledge +4, two languages you know and a chosen personality. It sees and hears within 3 squares and remembers its experiences. Within 6 squares, you communicate telepathically and may use its score for Knowledge rolls, including casting, under the fixed-value item rules. Your own attributes determine DP, class qualifications and maximum SP. This replaces your prior intelligent item; physical activity uses separate animation and commands."
     },
     {
       "id": "spell:animation:a3",
       "name": "Animate Objects — Greater",
       "bookId": "animation",
-      "page": "A3",
-      "section": "IV",
+      "page": "A2",
+      "section": "VI",
       "sp": 5,
       "action": "Main Action",
       "actionText": "Main Action",
@@ -21466,6 +22756,25 @@
       "target": "Up to six unattended objects, combined Bulk at most 6, within 3 squares",
       "duration": "1 minute, with commands",
       "effect": "Animate one group occupying a 2-by-2-square space, with shared 18 HP, Speed 4 and your attributes for defenses. Give one immediate Main command. A Main command can attack up to two adjacent targets for 3/5/7 physical damage each, rolling once, or perform one larger ordinary task. Normal commands and six-square tether apply."
+    },
+    {
+      "id": "spell-mastery:simulacrum",
+      "name": "Simulacrum",
+      "bookId": "animation",
+      "page": "A3",
+      "section": "VII",
+      "sp": 8,
+      "action": "Ritual",
+      "actionText": "Ritual · 8 hours",
+      "ritualTime": "8 hours",
+      "attribute": "None",
+      "defense": null,
+      "defenseAttribute": null,
+      "holdAttribute": null,
+      "escapeAttribute": null,
+      "target": "One willing adjacent living model; 300 coins of sculpting materials consumed",
+      "duration": "Until destroyed or replaced",
+      "effect": "Sculpt the model’s appearance and voice into a likeness with 10 HP, 0 SP, 0 Grit, your Speed and defense attributes. Give one immediate Main command. Thereafter, a normal Main command directs an ordinary task or Basic Melee attack: Knowledge, 2/3/5 physical damage. Unlike other summons, it remains inert when uncommanded, beyond the six-square tether, or while you are unconscious or dead. It responds only to your commands while you are conscious and within that range. It has no Reactions, spells, learned abilities or healing. At 0 HP or when you create another, it disappears without harming the model."
     },
     {
       "id": "spell:imbuement:1",
@@ -21621,7 +22930,7 @@
       "name": "Contingency",
       "bookId": "imbuement",
       "page": "A1",
-      "section": "IV",
+      "section": "V",
       "sp": 5,
       "action": "Ritual",
       "actionText": "Ritual · 1 hour",
@@ -21640,7 +22949,7 @@
       "name": "Armor IV",
       "bookId": "imbuement",
       "page": "A2",
-      "section": "IV",
+      "section": "VI",
       "sp": 5,
       "action": "Ritual",
       "actionText": "Ritual · 8 hours",
@@ -21655,12 +22964,12 @@
       "effect": "Choose fire, cold, lightning, poison, life, radiant, mental or force. While worn with its normal training, the suit grants resistance 2 to that damage type. Use the highest matching resistance. You may keep one Armor IV enchantment at a time."
     },
     {
-      "id": "spell:imbuement:a3",
-      "name": "General IV",
+      "id": "spell:imbuement:imbue-spell",
+      "name": "Imbue Spell",
       "bookId": "imbuement",
       "page": "A3",
-      "section": "IV",
-      "sp": 5,
+      "section": "VII",
+      "sp": 8,
       "action": "Ritual",
       "actionText": "Ritual · 8 hours",
       "ritualTime": "8 hours",
@@ -21669,9 +22978,9 @@
       "defenseAttribute": null,
       "holdAttribute": null,
       "escapeAttribute": null,
-      "target": "One held mundane item; 100 coins of reagents consumed",
-      "duration": "7 days",
-      "effect": "Bind one known automatic, non-attack Maneuver spell costing 0 SP to the item. A bearer can use a Maneuver to produce that spell's printed effect from their own position. Only one instance from the item can persist at a time. You may keep one General IV item at a time."
+      "target": "One unattended mundane handheld item; 200 coins of enchanting materials consumed",
+      "duration": "Until dismissed, unraveled or replaced",
+      "effect": "Bind one known Main Action or Maneuver spell costing 1–5 SP into the item. Its bearer may release that spell once between your safe overnight rests, using the spell’s stated action and attribute, with the bearer’s attribute value and position. The release costs 0 SP; all other casting requirements, materials and costs apply. The bearer handles any Sustain or commands. Choose a spell from outside Channeling that neither restores or transfers SP nor enchants another item. You keep one imbued item. Completing another ends the previous enchantment without renewing its used release; all your replacements share that allowance. Your normal safe overnight rest renews the allowance once per 24 hours."
     },
     {
       "id": "spell:protection:1",
@@ -21824,7 +23133,7 @@
       "name": "Globe of Invulnerability",
       "bookId": "protection",
       "page": "A1",
-      "section": "IV",
+      "section": "V",
       "sp": 5,
       "action": "Main Action",
       "actionText": "Main Action",
@@ -21842,7 +23151,7 @@
       "name": "Mind Blank",
       "bookId": "protection",
       "page": "A2",
-      "section": "IV",
+      "section": "VI",
       "sp": 5,
       "action": "Ritual",
       "actionText": "Ritual · 10 minutes",
@@ -21861,7 +23170,7 @@
       "name": "Prismatic Wall",
       "bookId": "protection",
       "page": "A3",
-      "section": "IV",
+      "section": "VII",
       "sp": 5,
       "action": "Main Action",
       "actionText": "Main Action",
@@ -22025,7 +23334,7 @@
       "name": "Antimagic Field",
       "bookId": "unraveling",
       "page": "A1",
-      "section": "IV",
+      "section": "V",
       "sp": 5,
       "action": "Main Action",
       "actionText": "Main Action",
@@ -22043,7 +23352,7 @@
       "name": "Cancel True",
       "bookId": "unraveling",
       "page": "A2",
-      "section": "IV",
+      "section": "VI",
       "sp": 5,
       "action": "Reaction",
       "actionText": "Reaction · when a visible caster finishes a spell",
@@ -22062,7 +23371,7 @@
       "name": "Unessence",
       "bookId": "unraveling",
       "page": "A3",
-      "section": "IV",
+      "section": "VII",
       "sp": 5,
       "action": "Ritual",
       "actionText": "Ritual · 1 hour",
@@ -22074,7 +23383,7 @@
       "escapeAttribute": null,
       "target": "One adjacent permanent enchantment; 100 coins of cleansing reagents consumed",
       "duration": "Instant",
-      "effect": "Add 3/5/7 progress toward target 12 for an ordinary permanent enchantment, or a target specified by the item's own removal rules. At completion remove one identified magical property while preserving the physical item. Each attempt consumes its materials; exceptional artifacts use their printed remedies."
+      "effect": "Unweave one identified magical property while preserving the physical item. Add 6/9/12 progress toward target 12 for an ordinary permanent enchantment, or its own stated removal target. Keep progress against that property across attempts. At completion the property ends; other properties remain. Each attempt consumes the printed reagents. Exceptional artifacts follow their stated remedies."
     },
     {
       "id": "spell:sanctuary:1",
@@ -22229,7 +23538,7 @@
       "name": "Forbiddance",
       "bookId": "sanctuary",
       "page": "A1",
-      "section": "IV",
+      "section": "V",
       "sp": 5,
       "action": "Ritual",
       "actionText": "Ritual · 1 hour",
@@ -22248,7 +23557,7 @@
       "name": "Magnificent Mansion",
       "bookId": "sanctuary",
       "page": "A2",
-      "section": "IV",
+      "section": "VI",
       "sp": 5,
       "action": "Ritual",
       "actionText": "Ritual · 10 minutes",
@@ -22263,23 +23572,23 @@
       "effect": "Open a comfortable refuge with six furnished rooms, clean water and bedding for twelve. The entrance remains fixed and visible; you may open or close it with a Maneuver while beside it. At expiry occupants and their possessions emerge into safe space beside the original entrance. Furnishings remain part of the refuge. Food is brought by the guests."
     },
     {
-      "id": "spell:sanctuary:a3",
-      "name": "Prismatic Wall — Sanctum",
+      "id": "spell-mastery:guards-and-wards-living-citadel",
+      "name": "Mighty Fortress",
       "bookId": "sanctuary",
       "page": "A3",
-      "section": "IV",
-      "sp": 5,
+      "section": "VII",
+      "sp": 10,
       "action": "Ritual",
-      "actionText": "Ritual · 10 minutes",
-      "ritualTime": "10 minutes",
-      "attribute": "Knowledge",
-      "defense": "Agility",
-      "defenseAttribute": "Agility",
+      "actionText": "Ritual · 3 days, 8 hours each day",
+      "ritualTime": "3 days, 8 hours each day",
+      "attribute": "None",
+      "defense": null,
+      "defenseAttribute": null,
       "holdAttribute": null,
       "escapeAttribute": null,
-      "target": "A fixed ring of up to twelve connected unoccupied squares beside you",
-      "duration": "1 hour",
-      "effect": "Create a luminous boundary 2 squares high and name up to six guests. Others crossing take 3/5/7 radiant damage, set by your ritual roll, and Frightened 1 with the boundary as source, once per creature per round. Named guests cross freely. The ring blocks sight through its colors."
+      "target": "One prepared 12-by-12-square site; soil, water, stone and 600 coins of materials consumed",
+      "duration": "Permanent structure; wards renewed for 24 hours",
+      "effect": "On a sound prepared site, raise a one-story living keep with six rooms, a courtyard, a gate and walls 3 squares high. Pay 10 SP on each workday. Walls block movement and sight; each 1-square section has 20 HP and physical resistance 3, and takes at least 1 damage per attack. Designate up to twelve residents. Paying 4 SP at dawn renews the wards for 24 hours: residents inside gain 1 Boon to defenses, and you sense any breached wall’s location while inside. Without renewal the ordinary structure remains. It needs food, water and repairs. You may ward one citadel at a time."
     },
     {
       "id": "spell:seals:1",
@@ -22436,7 +23745,7 @@
       "name": "Symbol",
       "bookId": "seals",
       "page": "A1",
-      "section": "IV",
+      "section": "V",
       "sp": 5,
       "action": "Ritual",
       "actionText": "Ritual · 10 minutes",
@@ -22455,7 +23764,7 @@
       "name": "Sequester",
       "bookId": "seals",
       "page": "A2",
-      "section": "IV",
+      "section": "VI",
       "sp": 5,
       "action": "Ritual",
       "actionText": "Ritual · 1 hour",
@@ -22470,23 +23779,23 @@
       "effect": "Place it in a concealed, motionless magical sleep or stasis. It becomes Invisible and its bodily needs pause. Touching it with the token you designate, Remove Curse, or expiry awakens and reveals it. Record its HP and SP on entry; those values return unchanged."
     },
     {
-      "id": "spell:seals:a3",
-      "name": "Imprisonment — Seal",
+      "id": "spell-mastery:gate-world-anchor",
+      "name": "Gate — World Anchor",
       "bookId": "seals",
       "page": "A3",
-      "section": "IV",
-      "sp": 5,
+      "section": "VII",
+      "sp": 10,
       "action": "Ritual",
-      "actionText": "Ritual · 10 minutes",
-      "ritualTime": "10 minutes",
+      "actionText": "Ritual · 7 days, 8 hours each day",
+      "ritualTime": "7 days, 8 hours each day",
       "attribute": "None",
       "defense": null,
       "defenseAttribute": null,
       "holdAttribute": null,
       "escapeAttribute": null,
-      "target": "One willing or continuously restrained adjacent creature; a 100-coin crystal consumed",
-      "duration": "Until released or its seal breaks",
-      "effect": "Bind the creature sleeping inside a fixed warded chamber of at least one square. Its needs pause. Mark the chamber's door with a visible seal: breaking the door, Remove Curse, or your Main Action at the seal releases the prisoner at its previous HP and SP. Keep one such prison at a time."
+      "target": "Two known prepared stone anchors and 1,000 coins of materials consumed",
+      "duration": "Permanent, until an anchor is destroyed or the pair is replaced",
+      "effect": "Prepare both sites with their owners’ permission and pay 10 SP on each workday. Join the anchors with a permanent paired gateway, 2 squares wide, even across planes. Create two keys. At either anchor, a keyholder may spend a Main Action and 3 of their own SP to open both ends for 10 minutes, or a Maneuver to close them. Anyone can cross an open gateway. Each anchor has 30 HP and physical resistance 3 and takes at least 1 damage per attack. Destroying either ends the connection. Keep one pair; completing another ends the first."
     },
     {
       "id": "spell:channeling:1",
@@ -22637,7 +23946,7 @@
       "name": "Lord Channels",
       "bookId": "channeling",
       "page": "A1",
-      "section": "IV",
+      "section": "V",
       "sp": 5,
       "action": "Main Action",
       "actionText": "Main Action",
@@ -22655,7 +23964,7 @@
       "name": "Rechanneling",
       "bookId": "channeling",
       "page": "A2",
-      "section": "IV",
+      "section": "VI",
       "sp": 5,
       "action": "Reaction",
       "actionText": "Reaction · when a visible spell transfers SP between creatures",
@@ -22674,7 +23983,7 @@
       "name": "Power Bridge",
       "bookId": "channeling",
       "page": "A3",
-      "section": "IV",
+      "section": "VII",
       "sp": 5,
       "action": "Main Action",
       "actionText": "Main Action",
@@ -22686,376 +23995,6 @@
       "target": "Two different creatures within 6 squares with their own SP reserves",
       "duration": "Sustained, up to 1 minute",
       "effect": "Choose a donor and recipient. On casting, and on each later upkeep, transfer up to 6 existing SP if both consent, or roll for 2/4/6 if either is unwilling. Use the donor's current reserve and recipient's missing SP as limits. The bridge ends if either moves beyond 6 squares of you. Pay the casting cost once. Each later transfer uses the Sustain Maneuver and costs 0 SP beyond the actual points transferred. Either conscious unwilling participant may spend a Main Action to sever the bridge using the printed hold and escape attributes. A successful escape ends the entire bridge; willing participants may end their participation with a Maneuver."
-    },
-    {
-      "id": "spell-mastery:stormsteel-arc",
-      "name": "Stormsteel Arc",
-      "bookId": "air",
-      "page": "Mastery",
-      "masteryId": "mastery:stormsteel-arc",
-      "sp": 3,
-      "action": "Main Action",
-      "actionText": "Main Action",
-      "attribute": "Brawn",
-      "defense": "Agility",
-      "defenseAttribute": "Agility",
-      "holdAttribute": null,
-      "escapeAttribute": null,
-      "target": "Up to three visible enemies within 3 squares; a melee weapon",
-      "duration": "Instant",
-      "effect": "Main Action · Brawn · 3 SP, with a melee weapon. Sweep lightning through up to three visible enemies within 3 squares. Roll once; each takes 3/6/9 lightning damage. On Strong, each also gains Dazed 1. This is a new magical attack, not a use of Measured Cut; its improvements do not apply."
-    },
-    {
-      "id": "spell-mastery:the-invisible-shieldbearer",
-      "name": "The Invisible Shieldbearer",
-      "bookId": "telekinesis",
-      "page": "Mastery",
-      "masteryId": "mastery:the-invisible-shieldbearer",
-      "sp": 2,
-      "action": "Reaction",
-      "actionText": "Reaction · before an ally within 8 squares takes attack damage",
-      "trigger": "before an ally within 8 squares takes attack damage",
-      "attribute": "None",
-      "defense": null,
-      "defenseAttribute": null,
-      "holdAttribute": null,
-      "escapeAttribute": null,
-      "target": "One willing ally within 8 squares; a held shield",
-      "duration": "The triggering attack and immediate movement",
-      "effect": "Reaction · 2 SP, with a held shield. When an ally within 8 squares is about to take damage from an attack, project a force barrier to it. Reduce that attack’s damage by 4, minimum 1, then move the willing ally up to 2 squares along a legal route without movement reactions. This protects against one attack only and requires no additional roll."
-    },
-    {
-      "id": "spell-mastery:borrowed-dawn",
-      "name": "Borrowed Dawn",
-      "bookId": "restoration",
-      "page": "Mastery",
-      "masteryId": "mastery:borrowed-dawn",
-      "sp": 4,
-      "action": "Main Action",
-      "actionText": "Main Action",
-      "attribute": "Knowledge",
-      "defense": null,
-      "defenseAttribute": null,
-      "holdAttribute": null,
-      "escapeAttribute": null,
-      "target": "One living willing, Dying or stabilized creature within reach",
-      "duration": "Instant",
-      "effect": "Main Action · Knowledge · 4 SP. Restore 8/12/16 HP to one living willing, Dying or stabilized creature within reach. Also reduce its Bleeding by 2. This is magical healing, not first aid: it neither spends nor refreshes the recipient’s first-aid allowance. It cannot raise the dead, restore Grit or exceed maximum HP. Apply each recipient’s Life resistance, with at least 1 HP restored when HP is missing."
-    },
-    {
-      "id": "spell-mastery:starfall-volley",
-      "name": "Starfall Volley",
-      "bookId": "flame",
-      "page": "Mastery",
-      "masteryId": "mastery:starfall-volley",
-      "sp": 4,
-      "action": "Main Action",
-      "actionText": "Main Action",
-      "attribute": "Agility",
-      "defense": "Agility",
-      "defenseAttribute": "Agility",
-      "holdAttribute": null,
-      "escapeAttribute": null,
-      "target": "Up to three visible enemies within 12 squares; a ranged weapon and ammunition",
-      "duration": "Instant",
-      "effect": "Main Action · Agility · 4 SP, with a ranged weapon. Attack up to three visible enemies within 12 squares whose visible defenses you studied with a Main Action earlier this scene. Spend one projectile per target and roll once; each takes 4/7/10 fire damage and Burning 1. Each target is struck once; allies and other creatures nearby are unaffected. This grants no bonus to other attacks."
-    },
-    {
-      "id": "spell-mastery:step-between-heartbeats",
-      "name": "Step Between Heartbeats",
-      "bookId": "passage",
-      "page": "Mastery",
-      "masteryId": "mastery:step-between-heartbeats",
-      "sp": 4,
-      "action": "Main Action",
-      "actionText": "Main Action",
-      "attribute": "Agility",
-      "defense": "Agility",
-      "defenseAttribute": "Agility",
-      "holdAttribute": null,
-      "escapeAttribute": null,
-      "target": "Self and one enemy adjacent to your arrival square; a melee weapon",
-      "duration": "Instant",
-      "effect": "Main Action · Agility · 4 SP, with a melee weapon. Teleport to a visible unoccupied square within 10 squares, then attack one adjacent creature for 4/7/10 physical damage. After the attack, teleport up to 4 squares to another visible legal destination. Neither teleport triggers movement reactions. If you finish behind cover that conceals you from every enemy, become Hidden. An explicit teleportation barrier can block either movement."
-    },
-    {
-      "id": "spell-mastery:sanctuary-of-steel",
-      "name": "Sanctuary of Steel",
-      "bookId": "sanctuary",
-      "page": "Mastery",
-      "masteryId": "mastery:sanctuary-of-steel",
-      "sp": 4,
-      "action": "Main Action",
-      "actionText": "Main Action",
-      "attribute": "None",
-      "defense": null,
-      "defenseAttribute": null,
-      "holdAttribute": null,
-      "escapeAttribute": null,
-      "target": "Self and up to four chosen allies within a fixed 3-square radius of you; armor and a shield",
-      "duration": "Until the end of your next turn",
-      "effect": "Main Action · 4 SP, wearing armor and holding a shield. Create a fixed sanctuary within 3 squares of your position until your next turn ends. You and up to four chosen allies inside it reduce attack damage by 4, minimum 1, and cannot gain Frightened or Dazed while inside. Existing conditions remain. Leaving ends a creature’s protection until it returns; the boundary blocks neither movement nor attacks. Recasting replaces your previous sanctuary."
-    },
-    {
-      "id": "spell-mastery:colossus-of-the-forge",
-      "name": "Colossus of the Forge",
-      "bookId": "imbuement",
-      "page": "Mastery",
-      "masteryId": "mastery:colossus-of-the-forge",
-      "sp": 6,
-      "action": "Main Action",
-      "actionText": "Main Action",
-      "attribute": "Knowledge",
-      "defense": "Agility",
-      "defenseAttribute": "Agility",
-      "holdAttribute": null,
-      "escapeAttribute": null,
-      "target": "Self and up to four enemies within 3 squares; a melee weapon",
-      "duration": "Until the end of your next turn",
-      "effect": "Main Action · Knowledge · 6 SP, with a melee weapon. Form an incandescent shell around yourself through the end of your next turn, then immediately sweep up to four enemies within 3 squares for 4/7/10 physical damage and Burning 1, using one roll. While the shell lasts, gain Stability 3 and reduce attack damage by 3, minimum 1. On your next turn, you may spend a Main Action to repeat that sweep without additional SP. The shell cannot stack with another copy and creates no lasting material."
-    },
-    {
-      "id": "spell-mastery:the-road-for-the-lost",
-      "name": "The Road for the Lost",
-      "bookId": "passage",
-      "page": "Mastery",
-      "masteryId": "mastery:the-road-for-the-lost",
-      "sp": 6,
-      "action": "Ritual",
-      "actionText": "Ritual · 10 minutes",
-      "ritualTime": "10 minutes",
-      "attribute": "None",
-      "defense": null,
-      "defenseAttribute": null,
-      "holdAttribute": null,
-      "escapeAttribute": null,
-      "target": "One surveyed same-plane landmark within 100 squares; up to twelve willing travelers",
-      "duration": "1 minute",
-      "effect": "Ritual · 10 minutes · 6 SP. Open a visible passage from your position to a landmark on the same plane within 100 squares that you personally visited and surveyed. Both endpoints must have safe, unoccupied footing. Up to twelve willing creatures you name may cross during the next minute; no other creature or attack can pass through it. You may close it early with a Maneuver. It transports carried belongings but no unattended freight. Teleportation barriers block the working; it does not bypass an unknown destination or create safe ground."
-    },
-    {
-      "id": "spell-mastery:dawn-on-the-battlefield",
-      "name": "Dawn on the Battlefield",
-      "bookId": "restoration",
-      "page": "Mastery",
-      "masteryId": "mastery:dawn-on-the-battlefield",
-      "sp": 6,
-      "action": "Main Action",
-      "actionText": "Main Action",
-      "attribute": "Knowledge",
-      "defense": null,
-      "defenseAttribute": null,
-      "holdAttribute": null,
-      "escapeAttribute": null,
-      "target": "Up to six visible living willing, Dying or stabilized allies within 6 squares",
-      "duration": "Instant",
-      "effect": "Main Action · Knowledge · 6 SP. Choose up to six living willing, Dying or stabilized allies within 6 squares whom you can see. Roll once; each restores 6/10/14 HP and reduces Bleeding and Frightened by 2 each. A Dying or stabilized ally need not respond to be included. This is magical healing and neither uses nor refreshes first-aid allowances. It cannot raise the dead, restore Grit or exceed maximum HP. Each recipient is affected once per use. Apply each recipient’s Life resistance, with at least 1 HP restored when HP is missing."
-    },
-    {
-      "id": "spell-mastery:meteor-swarm",
-      "name": "Meteor Swarm",
-      "bookId": "flame",
-      "page": "Mastery",
-      "masteryId": "mastery:meteor-swarm",
-      "sp": 6,
-      "action": "Main Action",
-      "actionText": "Main Action",
-      "attribute": "Knowledge",
-      "defense": "Agility",
-      "defenseAttribute": "Agility",
-      "holdAttribute": null,
-      "escapeAttribute": null,
-      "target": "Up to three visible points within 12 squares; all creatures within 1 square of any point",
-      "duration": "Instant",
-      "effect": "Main Action · Knowledge · 6 SP. Choose up to three visible points within 12 squares. Roll once; every creature within 1 square of a chosen point takes 4/7/10 fire damage. A creature in overlapping areas takes damage once. Allies are not exempt. Unattended flammable objects ignite. This is one spell, not three separate castings."
-    },
-    {
-      "id": "spell-mastery:wall-of-thorns-living-fortress",
-      "name": "Wall of Thorns — Living Fortress",
-      "bookId": "growth",
-      "page": "Mastery",
-      "masteryId": "mastery:wall-of-thorns-living-fortress",
-      "sp": 5,
-      "action": "Main Action",
-      "actionText": "Main Action",
-      "attribute": "None",
-      "defense": null,
-      "defenseAttribute": null,
-      "holdAttribute": null,
-      "escapeAttribute": null,
-      "target": "Up to eight connected unoccupied ground squares within 8 squares",
-      "duration": "10 minutes",
-      "effect": "Main Action · Reason · 5 SP. Raise up to eight connected thorn-wall squares on unoccupied ground within 8 squares. The walls last 10 minutes, are 2 squares high, block movement and provide cover. Name up to six creatures when casting; each may pass through at normal movement cost. Other creatures can spend a Main Action cutting through one adjacent square with a suitable edged tool, taking 3 physical damage before resistance. Fire destroys an affected wall square after that attack resolves. No roll. Damage from cutting thorns is environmental, so resistance may reduce it to 0."
-    },
-    {
-      "id": "spell-mastery:true-resurrection",
-      "name": "True Resurrection",
-      "bookId": "restoration",
-      "page": "Mastery",
-      "masteryId": "mastery:true-resurrection",
-      "sp": 8,
-      "action": "Ritual",
-      "actionText": "Ritual · 8 uninterrupted hours",
-      "ritualTime": "8 uninterrupted hours",
-      "attribute": "None",
-      "defense": null,
-      "defenseAttribute": null,
-      "holdAttribute": null,
-      "escapeAttribute": null,
-      "target": "Remains of one willing person dead at most seven days; 500 coins of funerary materials",
-      "duration": "Instant",
-      "effect": "Ritual · 8 uninterrupted hours · Reason · 8 SP, with remains of one person dead no longer than seven days and unique funerary materials worth 500 coins. The DA establishes availability before preparation. The spirit must freely agree. At completion, consume the materials and return that person to life at 1 HP in a restored body, clearing both death roll tallies but retaining descriptive scars. No roll. No duplicate body, restored Grit or SP is created. Each person has one lifetime return to life, shared with Lifegiving and Mass Lifegiving. This ritual restores a life ended before its natural span."
-    },
-    {
-      "id": "spell-mastery:simulacrum",
-      "name": "Simulacrum",
-      "bookId": "animation",
-      "page": "Mastery",
-      "masteryId": "mastery:simulacrum",
-      "sp": 8,
-      "action": "Ritual",
-      "actionText": "Ritual · 8 uninterrupted hours",
-      "ritualTime": "8 uninterrupted hours",
-      "attribute": "None",
-      "defense": null,
-      "defenseAttribute": null,
-      "holdAttribute": null,
-      "escapeAttribute": null,
-      "target": "One willing adjacent living model; 300 coins of sculpting materials",
-      "duration": "Until destroyed or replaced",
-      "effect": "Ritual · 8 uninterrupted hours · Knowledge · 8 SP, with a willing adjacent living model and sculpting materials worth 300 coins, consumed on completion. Create one likeness with 10 HP, no SP or Grit, your Speed, and the model’s appearance and voice. It lasts until destroyed or you create another. It cannot cast, use learned abilities or recover HP. On your turn, spend a Main Action to command it to move up to its Speed and perform an ordinary task or Basic Melee attack using your Knowledge and 2/3/5 damage. It has no independent actions or Reactions; you roll its defenses with your attributes. It cannot create a duplicate. Destroying it does not harm the model. This mastery and the Animation book’s Simulacrum share one likeness allowance; creating either ends the other."
-    },
-    {
-      "id": "spell-mastery:demiplane",
-      "name": "Demiplane",
-      "bookId": "passage",
-      "page": "Mastery",
-      "masteryId": "mastery:demiplane",
-      "sp": 6,
-      "action": "Ritual",
-      "actionText": "Ritual · 1 hour",
-      "ritualTime": "1 hour",
-      "attribute": "None",
-      "defense": null,
-      "defenseAttribute": null,
-      "holdAttribute": null,
-      "escapeAttribute": null,
-      "target": "An adjacent solid wall; one private 6-by-6-square refuge",
-      "duration": "Permanent refuge; doorway 10 minutes",
-      "effect": "Ritual · 1 hour · Knowledge · 6 SP. Open a doorway on an adjacent solid wall to your private 6-by-6-square refuge, 3 squares high. The doorway lasts 10 minutes and may be used by anyone who can reach it. You may close it with a Maneuver. A Maneuver inside opens an exit to the last entrance location; if obstructed, use the nearest unoccupied square within 3 squares. The refuge holds ordinary objects and up to twelve creatures, with air and normal time but no created food or water. You have one refuge; recasting reopens it from the new wall. It grants no travel to any other destination. No roll."
-    },
-    {
-      "id": "spell-mastery:foresight-shared-vigil",
-      "name": "Foresight — Shared Vigil",
-      "bookId": "portents",
-      "page": "Mastery",
-      "masteryId": "mastery:foresight-shared-vigil",
-      "sp": 5,
-      "action": "Ritual",
-      "actionText": "Ritual · 10 minutes",
-      "ritualTime": "10 minutes",
-      "attribute": "None",
-      "defense": null,
-      "defenseAttribute": null,
-      "holdAttribute": null,
-      "escapeAttribute": null,
-      "target": "Self and up to three willing creatures within 3 squares",
-      "duration": "1 hour",
-      "effect": "Ritual · 10 minutes · Reason · 5 SP. Link yourself and up to three willing creatures within 3 squares for one hour. Linked creatures within 12 squares of you receive a warning when any linked member perceives a threat. If the warning alerts the group before the attack, roll initiative normally. Once each round, after one linked creature rolls a defense, it may reroll the entire roll and keep either result. The entire group shares this one reroll. The link carries warnings, not unrestricted thoughts. Recasting replaces the previous link. No roll."
-    },
-    {
-      "id": "spell-mastery:storm-of-vengeance",
-      "name": "Storm of Vengeance",
-      "bookId": "air",
-      "page": "Mastery",
-      "masteryId": "mastery:storm-of-vengeance",
-      "sp": 7,
-      "action": "Main Action",
-      "actionText": "Main Action",
-      "attribute": "Reason",
-      "defense": "Agility",
-      "defenseAttribute": "Agility",
-      "holdAttribute": null,
-      "escapeAttribute": null,
-      "target": "A 3-square-radius storm centered within 12 squares, with one safe square within 2 of its center",
-      "duration": "3 rounds",
-      "effect": "Main Action · Reason · 7 SP. Choose a visible point within 12 squares and a 1-square sanctuary within 2 squares of that point. For three rounds, a storm fills a 3-square radius around the point. When cast, roll once: creatures in the storm outside the sanctuary take 3/5/7 lightning damage. On each of your next two turns, you may spend a Main Action and roll again to strike with the storm, dealing the same damage and pushing each affected creature 1 square away from the center where legal. Without that action the storm remains visible but deals no further damage that turn; it ends after the third round. Everyone in the sanctuary is exempt. Recasting ends the earlier storm."
-    },
-    {
-      "id": "spell-mastery:mass-lifegiving",
-      "name": "Mass Lifegiving",
-      "bookId": "restoration",
-      "page": "Mastery",
-      "masteryId": "mastery:mass-lifegiving",
-      "sp": 10,
-      "action": "Ritual",
-      "actionText": "Ritual · 1 uninterrupted hour",
-      "ritualTime": "1 uninterrupted hour",
-      "attribute": "None",
-      "defense": null,
-      "defenseAttribute": null,
-      "holdAttribute": null,
-      "escapeAttribute": null,
-      "target": "Up to three willing dead people, bodies present, dead within one hour; safe sanctuary and 200 coins per person",
-      "duration": "Instant",
-      "effect": "Ritual · 1 uninterrupted hour · Reason · 10 SP, within a safe prepared sanctuary. Choose up to three willing dead people whose bodies are present and who died within the previous hour. Consume 200 coins of consecrated materials for each; the DA establishes availability beforehand. Restore their fatal injuries, return them to life at 1 HP and clear both death roll tallies. No roll. Scars remain; SP and Grit are not restored. Each person has one lifetime return to life, shared with Lifegiving and True Resurrection."
-    },
-    {
-      "id": "spell-mastery:foresight-oracles-dream",
-      "name": "Foresight — Oracle’s Dream",
-      "bookId": "dreams",
-      "page": "Mastery",
-      "masteryId": "mastery:foresight-oracles-dream",
-      "sp": 6,
-      "action": "Ritual",
-      "actionText": "Ritual · 1 hour of shared sleep",
-      "ritualTime": "1 hour of shared sleep",
-      "attribute": "None",
-      "defense": null,
-      "defenseAttribute": null,
-      "holdAttribute": null,
-      "escapeAttribute": null,
-      "target": "Self and up to three willing nearby sleepers; one willing spirit",
-      "duration": "One undertaking within 24 hours",
-      "effect": "Ritual · 1 hour of shared sleep · Reason · 6 SP. You and up to three willing nearby sleepers seek the help of a willing spirit for one named undertaking in the next 24 hours. The DA gives one truthful warning of a foreseeable obstacle and one usable clue about addressing it, subject to the spirit’s knowledge. Each dreamer may once reroll an entire roll directly addressing the undertaking and keep either result. Unused rerolls expire after 24 hours; a creature cannot hold a benefit from more than one Oracle’s Dream. No casting roll. This does not guarantee success or reveal unknowable future decisions."
-    },
-    {
-      "id": "spell-mastery:gate-world-anchor",
-      "name": "Gate — World Anchor",
-      "bookId": "seals",
-      "page": "Mastery",
-      "masteryId": "mastery:gate-world-anchor",
-      "sp": 10,
-      "action": "Ritual",
-      "actionText": "Ritual · 7 days, 8 hours of work each day",
-      "ritualTime": "7 days, 8 hours of work each day",
-      "attribute": "None",
-      "defense": null,
-      "defenseAttribute": null,
-      "holdAttribute": null,
-      "escapeAttribute": null,
-      "target": "Two known prepared stone anchors and 1,000 coins of materials",
-      "duration": "Permanent, until an anchor is destroyed or the pair is replaced",
-      "effect": "Ritual · 7 days, 8 hours of work per day · Knowledge · 10 SP on each workday, with prepared stone anchors at two known locations, each accessible during preparation, and 1,000 coins of materials consumed in total. The DA establishes availability and site permissions first. Create a permanent paired gateway, 2 squares wide, between those anchors, even across planes. At an anchor, a holder of either of the two keys you create can spend a Main Action and 3 SP to open both ends for 10 minutes, or a Maneuver to close them. Anyone can pass while open. A key conveys no control over travelers. Destroying either anchor ends the connection; each has 30 HP and physical resistance 3, and always takes at least 1 attack damage. No roll. You may maintain one pair; completing another ends the first."
-    },
-    {
-      "id": "spell-mastery:guards-and-wards-living-citadel",
-      "name": "Guards and Wards — Living Citadel",
-      "bookId": "sanctuary",
-      "page": "Mastery",
-      "masteryId": "mastery:guards-and-wards-living-citadel",
-      "sp": 10,
-      "action": "Ritual",
-      "actionText": "Ritual · 3 days, 8 hours of work each day",
-      "ritualTime": "3 days, 8 hours of work each day",
-      "attribute": "None",
-      "defense": null,
-      "defenseAttribute": null,
-      "holdAttribute": null,
-      "escapeAttribute": null,
-      "target": "One prepared 12-by-12-square site; soil, water, stone and 600 coins of materials",
-      "duration": "Permanent structure; wards renewed for 24 hours",
-      "effect": "Ritual · 3 days, 8 hours of work per day · Reason · 10 SP each day, with sound stone, fertile soil, water and 600 coins of materials consumed. On a prepared 12-by-12-square site, raise a one-story living keep with six rooms, a courtyard, a gate and walls 3 squares high. No roll. Walls block movement and sight; each 1-square section has 20 HP and physical resistance 3, with minimum 1 attack damage. You designate up to twelve residents. At dawn, paying 4 SP renews its wards for 24 hours: residents within gain 1 Boon to defenses, and you sense the location of any breached wall while inside. Missing upkeep removes the wards, not the building. The keep needs ordinary food, water and repairs. You may ward only one citadel at a time."
     }
   ],
   "origins": [

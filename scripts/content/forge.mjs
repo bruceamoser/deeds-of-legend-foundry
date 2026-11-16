@@ -1,13 +1,11 @@
 import assert from "node:assert/strict";
 import { parseAbilityReference } from "./choices.mjs";
 
-const costs = [1, 2, 2, 3];
-const levels = [1, 1, 1, 3];
 const branchCosts = [1, 2, 2, 3, 4, 4, 5];
 const branchLevels = [1, 1, 1, 3, 3, 3, 7];
-const sections = ["I", "II", "III", "IV"];
+const sections = ["I", "II", "III", "IV", "V", "VI", "VII"];
 const pages = ["1", "2", "3", "4", "5", "6", "7", "8", "A1", "A2", "A3"];
-const pageSections = [0, 0, 1, 1, 2, 2, 3, 3, 3, 3, 3];
+const pageSections = [0, 0, 1, 1, 2, 2, 3, 3, 4, 5, 6];
 const slug = (name) =>
   name
     .toLowerCase()
@@ -86,7 +84,7 @@ function readSpellbook(text, bookId, discipline, endpoint, pathId) {
   const [table, profiles] = text.split("\n## Spells\n");
   assert.ok(profiles, `Missing spell profiles in ${bookId}`);
   const rows = [
-    ...table.matchAll(/^\| (\d+|A\d+) \| (.+) \| (\d+) \| (I|II|III|IV) \|$/gm),
+    ...table.matchAll(/^\| (\d+|A\d+) \| (.+) \| (\d+) \| (I|II|III|IV|V|VI|VII) \|$/gm),
   ];
   assert.deepEqual(
     rows.map((row) => row[1]),
@@ -104,7 +102,7 @@ function readSpellbook(text, bookId, discipline, endpoint, pathId) {
       assert.ok(id && page && actionText && sp !== undefined && attribute && target && duration && effect, `Incomplete spell profile ${bookId}/${spellName}`);
       const section = sections[pageSections[i]];
       assert.deepEqual([page, spellName, sp, section], rows[i]?.slice(1), id);
-      assert.equal(id, `spell:${bookId}:${page.toLowerCase()}`);
+      assert.match(id, /^(?:spell:[a-z0-9-]+:[a-z0-9-]+|spell-mastery:[a-z0-9-]+)$/);
       const [action, detail] = actionText.split(" · ");
       const timing =
         action === "Reaction"
@@ -149,14 +147,15 @@ function readSpellbook(text, bookId, discipline, endpoint, pathId) {
   );
   const nodes = sections.map((section, i) => ({
     id: `${bookId}:${i}`,
-    name: i === 3 ? endpointName : `${listName} ${section}`,
+    name: i === 3 ? endpointName : i >= 4 ? spells.find(spell => spell.section === section).name : `${listName} ${section}`,
     kind: "section",
     disciplineId: discipline.id,
     pathId,
     bookId,
     section,
-    dp: costs[i],
-    level: levels[i],
+    dp: branchCosts[i],
+    level: branchLevels[i],
+    shape: i === 6 ? "diamond" : i >= 3 ? "triangle" : "circle",
     requires: [i ? `${bookId}:${i - 1}` : discipline.id],
     spellIds: spells
       .filter((spell) => spell.section === section)
@@ -314,27 +313,6 @@ export function parseForge(read, list, sourceCommit) {
   assert.equal(endpointEntries.length, books.length);
   index(books, (book) => book.id, "spellbook");
   index(spells, (spell) => spell.id, "spell");
-
-  // A mastery deepens its own book; it is not a fifth section or a confluence.
-  for (const part of read("design/spell-masteries.md").split(/^## /m).slice(1)) {
-    const [, name, spellId, bookId, dp, level] = match(part, /^(.+)\nID: (spell-mastery:[\w-]+)\nBook: ([\w-]+)\nDP: (\d+) \| Level: (\d+)/, "spell mastery header");
-    assert.equal(Number(dp), 4, name); assert.equal(Number(level), 7, name);
-    const book = books.find((entry) => entry.id === bookId);
-    assert.ok(book, `Unknown mastery book ${bookId}`);
-    const fields = Object.fromEntries([...part.matchAll(/^\*\*([^*]+):\*\* (.+)$/gm)].map(([, key, value]) => [key, value]));
-    const actionText = fields.Action, [action, detail] = actionText.split(" · ");
-    const effect = part.trim().split("\n\n").slice(2).join("\n\n").trim();
-    assert.ok(fields.SP !== undefined && fields.Attribute && fields["Target / range"] && fields.Duration && effect, name);
-    const id = spellId.replace(/^spell-mastery:/, "mastery:");
-    spells.push({ id: spellId, name, bookId, page: "Mastery", masteryId: id, sp: Number(fields.SP), action, actionText,
-      ...(action === "Reaction" ? {trigger: detail} : action === "Ritual" ? {ritualTime: detail} : {}),
-      attribute: fields.Attribute, defense: fields.Defense ?? null, defenseAttribute: fields.Defense ?? null,
-      holdAttribute: fields["Hold attribute"] ?? null, escapeAttribute: fields["Escape attribute"] ?? null,
-      target: fields["Target / range"], duration: fields.Duration, effect });
-    nodes.push({ id, name, kind: "spell-mastery", disciplineId: book.disciplineId, pathId: book.pathId, bookId,
-      dp: Number(dp), level: Number(level), shape: "diamond", requires: [`${bookId}:3`], spellIds: [spellId], effect });
-    (book.masteryIds ??= []).push(id);
-  }
 
   const firstSteps = index(
     disciplines.flatMap(({ paths }) =>
@@ -519,7 +497,7 @@ export function parseForge(read, list, sourceCommit) {
       disciplines.length,
       books.length,
       spells.length,
-      nodes.filter((node) => node.kind === "spell-mastery").length,
+      nodes.filter((node) => node.kind === "section" && node.level === 7).length,
       classes.length,
       signatures.length,
       origins.length,
@@ -527,12 +505,13 @@ export function parseForge(read, list, sourceCommit) {
       basicActions.length,
       nodes.filter((node) => node.kind === "talent").length,
     ],
-    [19, 29, 339, 20, 10, 90, 50, 10, 19, 6],
+    [19, 29, 319, 29, 10, 90, 50, 10, 19, 6],
     "Forge catalog coverage",
   );
   return {
     schemaVersion: 1,
     rulesRevision: 299,
+    spellbookProgressionRevision: 310,
     signatureDevelopment: importedDevelopment,
     migration: { disciplines: JSON.parse(read("design/discipline-migration.json")), signatureDispositions: importedDevelopment.displaced, learningRedirects: redirects, originRedirects },
     sourceCommit,

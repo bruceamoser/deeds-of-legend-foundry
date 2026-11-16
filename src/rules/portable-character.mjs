@@ -1,4 +1,4 @@
-import { reviseForgeLearning } from "./forge-rewrite.mjs";
+import { reviseForgeLearning, reviseSpellbookLearning } from "./forge-rewrite.mjs";
 import { normalizeWorkshopPlay } from "./workshop-play.mjs";
 import { ATTRIBUTES } from "./character.mjs";
 import { workshopCharacter } from "./workshop-character.mjs";
@@ -9,7 +9,8 @@ export const PORTABLE_VERSION = 3;
 export const FORGE_PORTABLE_VERSION = 4;
 export const WORKSHOP_PLAYTEST_VERSION = 5;
 export const WORKSHOP_REWRITE_VERSION = 6;
-export const portableVersion = (catalogs) => catalogs.forge?.rulesRevision === 299 ? WORKSHOP_REWRITE_VERSION : catalogs.forge?.playtest
+export const SPELLBOOK_PROGRESSION_VERSION = 7;
+export const portableVersion = (catalogs) => catalogs.forge?.spellbookProgressionRevision === 310 ? SPELLBOOK_PROGRESSION_VERSION : catalogs.forge?.rulesRevision === 299 ? WORKSHOP_REWRITE_VERSION : catalogs.forge?.playtest
   ? WORKSHOP_PLAYTEST_VERSION
   : catalogs.forge ? FORGE_PORTABLE_VERSION : PORTABLE_VERSION;
 export const MAX_CHARACTER_BYTES = 262144;
@@ -261,7 +262,7 @@ export function readPortableCharacter(input, catalogs, languages) {
   if (
     !object(value) ||
     value.format !== PORTABLE_FORMAT ||
-    ![1, 2, PORTABLE_VERSION, FORGE_PORTABLE_VERSION, WORKSHOP_PLAYTEST_VERSION, WORKSHOP_REWRITE_VERSION].includes(
+    ![1, 2, PORTABLE_VERSION, FORGE_PORTABLE_VERSION, WORKSHOP_PLAYTEST_VERSION, WORKSHOP_REWRITE_VERSION, SPELLBOOK_PROGRESSION_VERSION].includes(
       value.schemaVersion,
     )
   )
@@ -277,6 +278,7 @@ export function readPortableCharacter(input, catalogs, languages) {
   if ((catalogs.forge?.playtest || catalogs.forge?.rulesRevision === 299) && value.schemaVersion < WORKSHOP_PLAYTEST_VERSION)
     migrateWorkshopPlaytest(d, catalogs.forge);
   if (catalogs.forge?.rulesRevision === 299 && value.schemaVersion < WORKSHOP_REWRITE_VERSION) reviseForgeLearning(d, catalogs.forge);
+  if (catalogs.forge?.spellbookProgressionRevision === 310 && value.schemaVersion < SPELLBOOK_PROGRESSION_VERSION) reviseSpellbookLearning(d, catalogs.forge);
   const fail = () => {
     throw new Error("The character file contains malformed creation choices.");
   };

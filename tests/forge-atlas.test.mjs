@@ -59,57 +59,41 @@ test("available-next list advances after learning and expands all seven steps fo
   assert.doesNotMatch(html,/Path 1 — Technique 1-2/);
 });
 
-test("independent advanced spells attach to book IV and are all available without learning each other", () => {
-  const graph=fixture(), path=graph.disciplines[0].paths[0];
-  path.steps=path.steps.slice(0,4);path.bookId="book";
-  graph.books.push({id:"book",name:"Book",masteryIds:["spell-mastery:first","spell-mastery:second"]});
-  for(const [index,id] of graph.books[0].masteryIds.entries()) graph.nodes.push({id,name:`Advanced ${index+1}`,kind:"spell-mastery",disciplineId:"arms",pathId:path.id,level:7,dp:4,requires:[path.steps.at(-1)],effect:"A powerful spell."});
-  const {positions,edges}=atlasLayout(graph);
-  for(const id of graph.books[0].masteryIds) {assert(positions.has(id));assert.equal(edges.find(e=>e.to===id).from,path.steps.at(-1));}
-  const learned=["arms",...path.steps];
-  const html=renderForge(graph,{learned,level:7,dp:20},options(graph,learned,7));
-  assert.match(html,/Learn Advanced 1 for 4 DP/);assert.match(html,/Learn Advanced 2 for 4 DP/);
-});
-
 const currentGraph = JSON.parse(await readFile(new URL("../static/data/forge.json", import.meta.url), "utf8"));
-test("every real spellbook keeps its four-node loop and uses one standard tail for its master choices", () => {
+test("every real spellbook has the same seven-node geometry and sequential path as a martial branch", () => {
   const before=JSON.stringify(currentGraph);
-  const {positions,edges,stems}=atlasLayout(currentGraph);
+  const {positions,edges}=atlasLayout(currentGraph);
   const arms=currentGraph.disciplines.find(d=>d.id==="arms");
   const offset=(id,root)=>({x:(positions.get(id).x-positions.get(root).x)||0,y:(positions.get(id).y-positions.get(root).y)||0});
+  let books=0;
   for(const discipline of currentGraph.disciplines) for(const [index,path] of discipline.paths.entries()) {
     if(!path.bookId) continue;
-    const book=currentGraph.books.find(b=>b.id===path.bookId), masters=book.masteryIds??[];
-    assert.equal(path.steps.length,4);
-    assert.deepEqual(path.steps.map(id=>offset(id,discipline.id)),arms.paths[index].steps.slice(0,4).map(id=>offset(id,"arms")));
-    const shared=stems.filter(stem=>stem.from===path.steps.at(-1));
-    assert.equal(shared.length,Number(masters.length>0),book.name);
-    if(!masters.length)continue;
-    assert.deepEqual(shared[0].targets,masters);
-    const standardTail=edges.find(edge=>edge.to===arms.paths[index].steps[4]);
-    assert.match(shared[0].draw,/ Q .* L /);
-    assert.match(standardTail.draw,/ Q /);
-    for(const id of masters) {
-      const edge=edges.find(e=>e.to===id),node=currentGraph.nodes.find(n=>n.id===id),p=offset(id,discipline.id);
-      assert.equal(edge.from,path.steps.at(-1));
-      assert.equal(edge.sharedStem,path.steps.at(-1));
-      assert.deepEqual(node.requires,[path.steps.at(-1)],"a sibling mastery is never a prerequisite");
-      assert.match(edge.draw,/^M [-\d]+ [-\d]+ L [-\d]+ [-\d]+$/,"only a short final connection branches");
-      assert(Math.abs(Math.hypot(p.x,p.y)-195)<1,"mastery stays on the standard outer band");
+    books++;
+    assert.equal(path.steps.length,7);
+    assert.deepEqual(path.steps.map(id=>offset(id,discipline.id)),arms.paths[index].steps.map(id=>offset(id,"arms")));
+    for(const [step,id] of path.steps.entries()) {
+      const previous=path.steps[step-1]??discipline.id;
+      assert.equal(edges.filter(edge=>edge.to===id).length,1);
+      assert.equal(edges.find(edge=>edge.to===id).from,previous);
+      assert.deepEqual(currentGraph.nodes.find(node=>node.id===id).requires,[previous]);
     }
-    for(const a of masters) for(const b of masters) if(a!==b)
-      assert(Math.hypot(positions.get(a).x-positions.get(b).x,positions.get(a).y-positions.get(b).y)>30,"mastery choices stay separate");
   }
+  assert.equal(books,29);
+  assert.equal(edges.length,currentGraph.disciplines.flatMap(d=>d.paths).reduce((total,path)=>total+path.steps.length,0));
   assert.equal(JSON.stringify(currentGraph),before,"layout never changes the learning graph");
 });
 
-test("a shared spell tail stays learned while each sibling keeps its own status and selected route", () => {
-  const graph=currentGraph, learned=["elements","flame:0","flame:1","flame:2","flame:3","mastery:starfall-volley"];
-  const html=renderForge(graph,{learned,level:7,dp:4},{...options(graph,learned,7),view:"atlas",discipline:"elements",selected:"mastery:meteor-swarm"});
-  assert.equal((html.match(/data-mastery-stem="flame:3"/g)??[]).length,1);
-  assert.match(html,/class="forge-branch forge-mastery-stem is-learned is-highlighted" data-from="flame:3"/);
-  assert.match(html,/data-id="mastery:meteor-swarm" class="forge-node is-available/);
-  assert.match(html,/data-id="mastery:starfall-volley" class="forge-node is-learned/);
-  assert.match(html,/Each master spell is a separate choice after learning this book’s section IV/);
-  assert.match(html,/Other master spells/);
+test("a book shows its next single advanced spell and its complete seven-step plan", () => {
+  const graph=currentGraph, learned=["elements","flame:0","flame:1","flame:2","flame:3"];
+  const state={learned,level:3,dp:4};
+  const html=renderForge(graph,state,{...options(graph,learned,3),openPaths:["elements:flame"]});
+  const fifth=graph.nodes.find(node=>node.id==="flame:4"),last=graph.nodes.find(node=>node.id==="flame:6");
+  assert.match(html,/4\/7 learned/);
+  assert(html.includes(`Learn ${fifth.name} for 4 DP`));
+  assert(html.includes(last.name));
+  const atlas=renderForge(graph,state,{...options(graph,learned,3),view:"atlas",discipline:"elements",selected:"flame:4"});
+  assert.match(atlas,/data-id="flame:4" class="forge-node is-available/);
+  assert.match(atlas,/data-id="flame:5" class="forge-node is-later/);
+  assert.match(atlas,/data-id="flame:6" class="forge-node is-later/);
+  assert.doesNotMatch(atlas,/forge-mastery-stem|Other master spells|separate choice/);
 });

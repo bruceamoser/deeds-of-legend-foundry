@@ -307,7 +307,7 @@ test("Workshop migrates legacy origin grants, learning, and play records to Forg
     recipes: ["recipe-bound-torches", "recipe-travel-food"],
   };
   const saved = writePortableCharacter(draft, webCatalogs);
-  assert.equal(JSON.parse(saved).schemaVersion, 6);
+  assert.equal(JSON.parse(saved).schemaVersion, 7);
   assert.deepEqual(readPortableCharacter(saved, webCatalogs).draft, draft);
   assert.throws(
     () => readPortableCharacter(saved, catalogs),

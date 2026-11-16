@@ -1,13 +1,14 @@
 {
   "rulesRevision": 299,
-  "sourceCommit": "55cbd4c70f13704c684f7ba358f0d75bb62b1f30",
+  "spellbookProgressionRevision": 310,
+  "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
   "workingTree": false,
   "builds": [
     {
       "id": "barbarian",
       "name": "Harka Stormshoulder",
       "level": 1,
-      "sourceCommit": "55cbd4c70f13704c684f7ba358f0d75bb62b1f30",
+      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
       "workingTree": false,
       "draft": {
         "name": "Harka Stormshoulder",
@@ -216,6 +217,7 @@
           "kind": "ability",
           "action": "Maneuver",
           "attribute": "None (no roll)",
+          "duration": "Until the end of the scene, or until you end it.",
           "effect": "**Action:** Maneuver · **Attribute:** None (no roll)\n\n**Target / range / shape:** Self.\n\nEnter a rage until the end of the scene. While raging, you gain 1 Boon to attack rolls, have 1 Bane to defense rolls, and gain physical resistance 1. You can end the rage at will. It also ends if you fall unconscious or enter Dying.\n\n**Duration:** Until the end of the scene, or until you end it.\n\n**Equipment / acquisition:** None.\n\n**Frequency:** Once per scene."
         }
       ],
@@ -321,7 +323,7 @@
       "id": "barbarian",
       "name": "Harka Stormshoulder",
       "level": 3,
-      "sourceCommit": "55cbd4c70f13704c684f7ba358f0d75bb62b1f30",
+      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
       "workingTree": false,
       "draft": {
         "name": "Harka Stormshoulder",
@@ -589,6 +591,7 @@
           "kind": "ability",
           "action": "Maneuver",
           "attribute": "None (no roll)",
+          "duration": "Until the end of the scene, or until you end it.",
           "effect": "**Action:** Maneuver · **Attribute:** None (no roll)\n\n**Target / range / shape:** Self.\n\nEnter a rage until the end of the scene. While raging, you gain 1 Boon to attack rolls, have 1 Bane to defense rolls, and gain physical resistance 1. You can end the rage at will. It also ends if you fall unconscious or enter Dying.\n\n**Duration:** Until the end of the scene, or until you end it.\n\n**Equipment / acquisition:** None.\n\n**Frequency:** Once per scene."
         },
         {
@@ -600,6 +603,7 @@
           "kind": "ability",
           "action": "Passive",
           "attribute": "None",
+          "duration": "Until the next attack or the end of your next turn.",
           "effect": "**Action:** Passive · **Attribute:** None\n\n**Target / range / shape:** Self while Go Berserk is active.\n\nWhen an enemy damages you during your rage, gain 1 Boon to your next attack before the end of your next turn. Repeated damage does not accumulate these Boons. Damage you or an ally deliberately deal to you, and hazards you deliberately enter to hurt yourself, do not trigger it. Hostile forced movement into a hazard does trigger it.\n\n**Duration:** Until the next attack or the end of your next turn.\n\n**Equipment / acquisition:** None."
         }
       ],
@@ -723,7 +727,7 @@
       "id": "barbarian",
       "name": "Harka Stormshoulder",
       "level": 7,
-      "sourceCommit": "55cbd4c70f13704c684f7ba358f0d75bb62b1f30",
+      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
       "workingTree": false,
       "draft": {
         "name": "Harka Stormshoulder",
@@ -1115,6 +1119,7 @@
           "kind": "ability",
           "action": "Maneuver",
           "attribute": "None (no roll)",
+          "duration": "Until the end of the scene, or until you end it.",
           "effect": "**Action:** Maneuver · **Attribute:** None (no roll)\n\n**Target / range / shape:** Self.\n\nEnter a rage until the end of the scene. While raging, you gain 1 Boon to attack rolls, have 1 Bane to defense rolls, and gain physical resistance 1. You can end the rage at will. It also ends if you fall unconscious or enter Dying.\n\n**Duration:** Until the end of the scene, or until you end it.\n\n**Equipment / acquisition:** None.\n\n**Frequency:** Once per scene."
         },
         {
@@ -1126,6 +1131,7 @@
           "kind": "ability",
           "action": "Passive",
           "attribute": "None (no roll)",
+          "duration": "Until the end of your next turn.",
           "effect": "**Action:** Passive · **Attribute:** None (no roll)\n\n**Target / range / shape:** Self, while Go Berserk is active.\n\nOnce per scene, when damage would reduce you to 0 HP while [Go Berserk](signature-unbalanced-wild-approach.md) is active, remain at 1 HP. If you regain HP before the end of your next turn, the reprieve ends and you keep that HP. Otherwise, fall to 0 HP and begin Dying at the end of that turn. Further damage can still bring you to 0 during the reprieve. If you survive reaching 0, record a scar as usual.\n\n**Duration:** Until the end of your next turn.\n\n**Equipment / acquisition:** None."
         },
         {
@@ -1137,6 +1143,7 @@
           "kind": "ability",
           "action": "Passive",
           "attribute": "None",
+          "duration": "Until the next attack or the end of your next turn.",
           "effect": "**Action:** Passive · **Attribute:** None\n\n**Target / range / shape:** Self while Go Berserk is active.\n\nWhen an enemy damages you during your rage, gain 1 Boon to your next attack before the end of your next turn. Repeated damage does not accumulate these Boons. Damage you or an ally deliberately deal to you, and hazards you deliberately enter to hurt yourself, do not trigger it. Hostile forced movement into a hazard does trigger it.\n\n**Duration:** Until the next attack or the end of your next turn.\n\n**Equipment / acquisition:** None."
         }
       ],
@@ -1317,7 +1324,7 @@
       "id": "bard",
       "name": "Lysa Silverstring",
       "level": 1,
-      "sourceCommit": "55cbd4c70f13704c684f7ba358f0d75bb62b1f30",
+      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
       "workingTree": false,
       "draft": {
         "name": "Lysa Silverstring",
@@ -1545,6 +1552,7 @@
           "kind": "ability",
           "action": "Passive",
           "attribute": "None (no roll)",
+          "duration": "Each Boon expires when used or the start of your next turn.",
           "effect": "**Action:** Passive · **Attribute:** None (no roll)\n\n**Target / range / shape:** Up to two allies within 3 squares that can see or hear your Aid signal.\n\nWhen you use Aid, you may assist two allies instead of one. Name the task for each and explain how your signal helps. Each gains Aid’s normal 1 Boon to its next matching roll before the start of your next turn. Outside combat, Aid still replaces your own contribution to a group roll.\n\n**Duration:** Each Boon expires when used or the start of your next turn.\n\n**Equipment / acquisition:** None.\n\nYour signal may be speech, signs or music the recipients can perceive.\n\n**Frequency:** One two-recipient Aid on your turn."
         }
       ],
@@ -1710,7 +1718,7 @@
       "id": "bard",
       "name": "Lysa Silverstring",
       "level": 3,
-      "sourceCommit": "55cbd4c70f13704c684f7ba358f0d75bb62b1f30",
+      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
       "workingTree": false,
       "draft": {
         "name": "Lysa Silverstring",
@@ -2007,6 +2015,7 @@
           "kind": "ability",
           "action": "Passive",
           "attribute": "None (no roll)",
+          "duration": "Each Boon expires when used or the start of your next turn.",
           "effect": "**Action:** Passive · **Attribute:** None (no roll)\n\n**Target / range / shape:** Up to two allies within 3 squares that can see or hear your Aid signal.\n\nWhen you use Aid, you may assist two allies instead of one. Name the task for each and explain how your signal helps. Each gains Aid’s normal 1 Boon to its next matching roll before the start of your next turn. Outside combat, Aid still replaces your own contribution to a group roll.\n\n**Duration:** Each Boon expires when used or the start of your next turn.\n\n**Equipment / acquisition:** None.\n\nYour signal may be speech, signs or music the recipients can perceive.\n\n**Frequency:** One two-recipient Aid on your turn."
         },
         {
@@ -2018,6 +2027,7 @@
           "kind": "ability",
           "action": "Maneuver",
           "attribute": "None",
+          "duration": "Immediate.",
           "effect": "**Action:** Maneuver · **Attribute:** None\n\n**Target / range / shape:** One willing ally within 4 squares that can perceive your signal.\n\nOnce per scene, the ally makes one Basic Melee or Basic Ranged attack with its actual weapon and ordinary range. The attack uses the ally’s roll and is part of your Maneuver. A Strong melee attack may also push its target 1 square directly away from the ally. A granted attack cannot grant another attack.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** None."
         }
       ],
@@ -2225,7 +2235,7 @@
       "id": "bard",
       "name": "Lysa Silverstring",
       "level": 7,
-      "sourceCommit": "55cbd4c70f13704c684f7ba358f0d75bb62b1f30",
+      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
       "workingTree": false,
       "draft": {
         "name": "Lysa Silverstring",
@@ -2411,6 +2421,27 @@
                   "id": "influence:negotiation:7"
                 },
                 {
+                  "id": "dreams:0"
+                },
+                {
+                  "id": "dreams:1"
+                },
+                {
+                  "id": "dreams:2"
+                },
+                {
+                  "id": "dreams:3"
+                },
+                {
+                  "id": "dreams:4"
+                },
+                {
+                  "id": "dreams:5"
+                },
+                {
+                  "id": "dreams:6"
+                },
+                {
                   "id": "emotion:3"
                 },
                 {
@@ -2424,33 +2455,6 @@
                 },
                 {
                   "id": "thought:1"
-                },
-                {
-                  "id": "thought:2"
-                },
-                {
-                  "id": "guard:shelter:2"
-                },
-                {
-                  "id": "guard:shelter:3"
-                },
-                {
-                  "id": "guard:shelter:4"
-                },
-                {
-                  "id": "dreams:0"
-                },
-                {
-                  "id": "dreams:1"
-                },
-                {
-                  "id": "dreams:2"
-                },
-                {
-                  "id": "dreams:3"
-                },
-                {
-                  "id": "mastery:foresight-oracles-dream"
                 }
               ],
               "signatures": {
@@ -2583,6 +2587,55 @@
           "requiredLevel": 7
         },
         {
+          "id": "dreams:0",
+          "name": "Dreams I",
+          "paidDp": 1,
+          "level": 7,
+          "requiredLevel": 1
+        },
+        {
+          "id": "dreams:1",
+          "name": "Dreams II",
+          "paidDp": 2,
+          "level": 7,
+          "requiredLevel": 1
+        },
+        {
+          "id": "dreams:2",
+          "name": "Dreams III",
+          "paidDp": 2,
+          "level": 7,
+          "requiredLevel": 1
+        },
+        {
+          "id": "dreams:3",
+          "name": "Oneiric Paths",
+          "paidDp": 3,
+          "level": 7,
+          "requiredLevel": 3
+        },
+        {
+          "id": "dreams:4",
+          "name": "Lord Dream",
+          "paidDp": 4,
+          "level": 7,
+          "requiredLevel": 3
+        },
+        {
+          "id": "dreams:5",
+          "name": "Weird",
+          "paidDp": 4,
+          "level": 7,
+          "requiredLevel": 3
+        },
+        {
+          "id": "dreams:6",
+          "name": "Astral Projection",
+          "paidDp": 5,
+          "level": 7,
+          "requiredLevel": 7
+        },
+        {
           "id": "emotion:3",
           "name": "Heartstrings",
           "paidDp": 3,
@@ -2616,69 +2669,6 @@
           "paidDp": 2,
           "level": 7,
           "requiredLevel": 1
-        },
-        {
-          "id": "thought:2",
-          "name": "Thought III",
-          "paidDp": 2,
-          "level": 7,
-          "requiredLevel": 1
-        },
-        {
-          "id": "guard:shelter:2",
-          "name": "Sheltering Guard II",
-          "paidDp": 2,
-          "level": 7,
-          "requiredLevel": 1
-        },
-        {
-          "id": "guard:shelter:3",
-          "name": "Sheltering Guard III",
-          "paidDp": 2,
-          "level": 7,
-          "requiredLevel": 1
-        },
-        {
-          "id": "guard:shelter:4",
-          "name": "Shield Canopy I",
-          "paidDp": 3,
-          "level": 7,
-          "requiredLevel": 3
-        },
-        {
-          "id": "dreams:0",
-          "name": "Dreams I",
-          "paidDp": 1,
-          "level": 7,
-          "requiredLevel": 1
-        },
-        {
-          "id": "dreams:1",
-          "name": "Dreams II",
-          "paidDp": 2,
-          "level": 7,
-          "requiredLevel": 1
-        },
-        {
-          "id": "dreams:2",
-          "name": "Dreams III",
-          "paidDp": 2,
-          "level": 7,
-          "requiredLevel": 1
-        },
-        {
-          "id": "dreams:3",
-          "name": "Oneiric Paths",
-          "paidDp": 3,
-          "level": 7,
-          "requiredLevel": 3
-        },
-        {
-          "id": "mastery:foresight-oracles-dream",
-          "name": "Foresight — Oracle’s Dream",
-          "paidDp": 4,
-          "level": 7,
-          "requiredLevel": 7
         }
       ],
       "signatureChoices": {
@@ -2696,6 +2686,7 @@
           "kind": "ability",
           "action": "Passive",
           "attribute": "None (no roll)",
+          "duration": "Each Boon expires when used or the start of your next turn.",
           "effect": "**Action:** Passive · **Attribute:** None (no roll)\n\n**Target / range / shape:** Up to two allies within 3 squares that can see or hear your Aid signal.\n\nWhen you use Aid, you may assist two allies instead of one. Name the task for each and explain how your signal helps. Each gains Aid’s normal 1 Boon to its next matching roll before the start of your next turn. Outside combat, Aid still replaces your own contribution to a group roll.\n\n**Duration:** Each Boon expires when used or the start of your next turn.\n\n**Equipment / acquisition:** None.\n\nYour signal may be speech, signs or music the recipients can perceive.\n\n**Frequency:** One two-recipient Aid on your turn."
         },
         {
@@ -2707,6 +2698,7 @@
           "kind": "ability",
           "action": "Main Action",
           "attribute": "None (no roll)",
+          "duration": "Immediate movement and attacks.",
           "effect": "**Action:** Main Action · **Attribute:** None (no roll)\n\n**Target / range / shape:** Two willing allies within 4 squares that can perceive your signal.\n\nEach ally may move up to 3 squares without provoking, then make one Basic Melee or Basic Ranged attack against a legal target with its actual weapon. Resolve one ally completely before the other. On a Strong melee result, the attack may also push its target 1 directly away from the attacking ally.\n\n**Duration:** Immediate movement and attacks.\n\n**Equipment / acquisition:** None.\n\nUse once per scene. Granted attacks cannot grant further attacks."
         },
         {
@@ -2718,6 +2710,7 @@
           "kind": "ability",
           "action": "Maneuver",
           "attribute": "None",
+          "duration": "Immediate.",
           "effect": "**Action:** Maneuver · **Attribute:** None\n\n**Target / range / shape:** One willing ally within 4 squares that can perceive your signal.\n\nOnce per scene, the ally makes one Basic Melee or Basic Ranged attack with its actual weapon and ordinary range. The attack uses the ally’s roll and is part of your Maneuver. A Strong melee attack may also push its target 1 square directly away from the ally. A granted attack cannot grant another attack.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** None."
         }
       ],
@@ -2791,20 +2784,6 @@
             "influence:negotiation:6"
           ],
           "shape": "diamond"
-        },
-        {
-          "id": "guard:shelter:4",
-          "name": "Shield Canopy I",
-          "dp": 3,
-          "level": 3,
-          "effect": "Maneuver. Until your next turn starts, you and up to three willing adjacent allies reduce ranged attack damage by 2 after resistance while they remain adjacent. Reusing this technique replaces its previous effect. No roll.",
-          "kind": "technique",
-          "disciplineId": "guard",
-          "pathId": "guard:shelter",
-          "requires": [
-            "guard:shelter:3"
-          ],
-          "shape": "triangle"
         }
       ],
       "spellIds": [
@@ -2818,24 +2797,6 @@
         "spell:thought:2",
         "spell:emotion:5",
         "spell:emotion:6",
-        "spell:emotion:7",
-        "spell:emotion:8",
-        "spell:emotion:a1",
-        "spell:emotion:a2",
-        "spell:emotion:a3",
-        "spell:perception:3",
-        "spell:perception:4",
-        "spell:perception:5",
-        "spell:perception:6",
-        "spell:perception:7",
-        "spell:perception:8",
-        "spell:perception:a1",
-        "spell:perception:a2",
-        "spell:perception:a3",
-        "spell:thought:3",
-        "spell:thought:4",
-        "spell:thought:5",
-        "spell:thought:6",
         "spell:dreams:1",
         "spell:dreams:2",
         "spell:dreams:3",
@@ -2847,7 +2808,16 @@
         "spell:dreams:a1",
         "spell:dreams:a2",
         "spell:dreams:a3",
-        "spell-mastery:foresight-oracles-dream"
+        "spell:emotion:7",
+        "spell:emotion:8",
+        "spell:perception:3",
+        "spell:perception:4",
+        "spell:perception:5",
+        "spell:perception:6",
+        "spell:perception:7",
+        "spell:perception:8",
+        "spell:thought:3",
+        "spell:thought:4"
       ],
       "spells": [
         {
@@ -2931,150 +2901,6 @@
           "effect": "Appear as an overwhelming source of dread. Apply Frightened 1/2/3, with you as its source. Each creature retains control of its movement and decisions."
         },
         {
-          "id": "spell:emotion:7",
-          "name": "Charm Monster",
-          "action": "Main Action",
-          "sp": 3,
-          "duration": "One social objective, up to 10 minutes",
-          "effect": "Establish rapport through shared sensations even across a language barrier. Add 2/4/6 progress toward a feasible request stated by the DA. The creature's needs and motives shape what you can ask of it."
-        },
-        {
-          "id": "spell:emotion:8",
-          "name": "Confusion",
-          "action": "Main Action",
-          "sp": 4,
-          "duration": "Instant; conditions decay normally",
-          "effect": "Scatter attention with conflicting impulses. Apply Dazed 1/1/2. Each affected creature chooses its remaining action categories normally when its turn begins."
-        },
-        {
-          "id": "spell:emotion:a1",
-          "name": "Mass Suggestion",
-          "action": "Main Action",
-          "sp": 5,
-          "duration": "One social objective, up to 10 minutes",
-          "effect": "Propose one common course of action. Add 3/5/7 progress toward a single attainable group objective. The DA sets the concession and boundaries before casting. A later attempt needs a new relevant contribution."
-        },
-        {
-          "id": "spell:emotion:a2",
-          "name": "Dominate Person",
-          "action": "Main Action",
-          "sp": 5,
-          "duration": "Until the end of its next turn",
-          "effect": "State one brief command: move to a named safe place, release a held object, or perform one ordinary interaction. On its turn the target chooses to perform that command using its own actions or suffer Dazed 1/2/3 from resisting the pressure. Once that choice resolves, the command ends."
-        },
-        {
-          "id": "spell:emotion:a3",
-          "name": "Antipathy/Sympathy",
-          "action": "Ritual",
-          "sp": 5,
-          "duration": "1 hour",
-          "effect": "Choose a recognizable group and either welcome or dread. When a matching creature first enters, it feels the chosen pull and recognizes it as magic. Welcome supplies 1 Boon to your group's first relevant social contribution there; dread applies Frightened 1/2/3, set by your ritual roll, once per creature. Identify the object or place as the fear source."
-        },
-        {
-          "id": "spell:perception:3",
-          "name": "Disguise Self",
-          "action": "Main Action",
-          "sp": 1,
-          "duration": "1 hour",
-          "effect": "Change your apparent face, clothing and proportions within your existing size. Your voice and tangible shape remain physical. Touch reveals mismatches; close inspection uses the shared illusion procedure."
-        },
-        {
-          "id": "spell:perception:4",
-          "name": "Mirror Image",
-          "action": "Main Action",
-          "sp": 2,
-          "duration": "1 minute or until three attacks resolve against you",
-          "effect": "Create three shifting doubles. Gain 1 Boon to defenses against attacks that depend on seeing you. After each such attack resolves, one double vanishes. The remaining doubles provide the same single Boon."
-        },
-        {
-          "id": "spell:perception:5",
-          "name": "Invisibility",
-          "action": "Main Action",
-          "sp": 2,
-          "duration": "1 minute",
-          "effect": "Make the recipient and its carried gear Invisible. Attacking or casting another spell ends this casting's invisibility after that action resolves. Other senses can still locate the recipient."
-        },
-        {
-          "id": "spell:perception:6",
-          "name": "Major Image",
-          "action": "Main Action",
-          "sp": 3,
-          "duration": "1 minute",
-          "effect": "Create a moving illusion with sound, scent and harmless temperature. A Maneuver can move it 3 squares and change its performance. Touch reveals its insubstantial nature. It may conceal a real feature visually; physical terrain remains as it was. Without directing it, the image stays in place and repeats its last simple performance."
-        },
-        {
-          "id": "spell:perception:7",
-          "name": "Greater Invisibility",
-          "action": "Main Action",
-          "sp": 3,
-          "duration": "1 minute",
-          "effect": "Make the recipient and carried gear Invisible. It may continue attacking and casting while this effect lasts. Attacking still reveals its location and ends Hidden normally."
-        },
-        {
-          "id": "spell:perception:8",
-          "name": "Hallucinatory Terrain",
-          "action": "Ritual",
-          "sp": 4,
-          "duration": "8 hours",
-          "effect": "Change the area's apparent plants, surfaces and small terrain features. Buildings and creatures retain their appearance. Real footing remains physical; touch or travel through a mismatch reveals it, and observation uses the illusion procedure."
-        },
-        {
-          "id": "spell:perception:a1",
-          "name": "Mislead",
-          "action": "Main Action",
-          "sp": 5,
-          "duration": "1 minute",
-          "effect": "Become Invisible while creating a visible, speaking double of yourself. A Maneuver may move the double 3 squares and choose whether you see and hear from your own position or the double’s until your next turn. Without directing it, the double stays still and repeats its last simple performance; your senses remain at your own body. Attacking ends your invisibility after resolution but leaves the double until expiry. Keep one Mislead casting active."
-        },
-        {
-          "id": "spell:perception:a2",
-          "name": "Seeming",
-          "action": "Ritual",
-          "sp": 5,
-          "duration": "1 hour",
-          "effect": "Give each recipient an apparent humanoid disguise using Disguise Self's limits. Design each disguise when casting. Each recipient may dismiss its own disguise with a Maneuver."
-        },
-        {
-          "id": "spell:perception:a3",
-          "name": "Programmed Illusion",
-          "action": "Ritual",
-          "sp": 5,
-          "duration": "24 hours or until triggered",
-          "effect": "Prepare a visual and audible performance lasting up to 1 minute. State a visible or audible trigger within 6 squares when casting. The first matching event plays the recorded illusion once. Physical interaction reveals it; afterward the spell ends."
-        },
-        {
-          "id": "spell:thought:3",
-          "name": "Detect Thoughts",
-          "action": "Main Action",
-          "sp": 1,
-          "duration": "Instant",
-          "effect": "Read surface impressions. Learn 1/2/3 immediate concerns or sensory impressions, chosen by the DA for an NPC or its player for a hero. The target senses the intrusion after the reading. Deep memories use stronger workings."
-        },
-        {
-          "id": "spell:thought:4",
-          "name": "Tongues",
-          "action": "Main Action",
-          "sp": 2,
-          "duration": "1 hour",
-          "effect": "The recipient can understand and speak the ordinary languages of creatures addressing it. Its voice remains its own. Reading and writing use languages it already knows."
-        },
-        {
-          "id": "spell:thought:5",
-          "name": "Sending",
-          "action": "Ritual",
-          "sp": 2,
-          "duration": "Instant",
-          "effect": "Send up to twenty-five words through a mental thread. The recipient knows who sent it and may answer with twenty-five words. A creature that chooses silence still receives the message."
-        },
-        {
-          "id": "spell:thought:6",
-          "name": "Telepathic Bond",
-          "action": "Ritual",
-          "sp": 3,
-          "duration": "1 hour",
-          "effect": "Create a shared mental conversation reaching 1 kilometer. Participants exchange words and simple images by intent while conscious. Each participant may leave the link at any time."
-        },
-        {
           "id": "spell:dreams:1",
           "name": "Dreams",
           "action": "Maneuver",
@@ -3144,7 +2970,7 @@
           "action": "Ritual",
           "sp": 5,
           "duration": "1 hour",
-          "effect": "Host a shared dream with chosen scenery and conversation. Participants may practice, exchange memories or plan together. Each receives 1 Boon on its first roll directly implementing one agreed plan within 24 hours; record that plan before waking."
+          "effect": "Host a shared dream with chosen scenery and conversation about one undertaking within the next 24 hours. The DA gives one truthful warning of a foreseeable obstacle, based on present circumstances. Each participant receives 1 Boon on its first roll directly implementing the agreed plan within 24 hours; record the plan before waking. A creature can hold one Lord Dream benefit at a time. The dream reveals possibilities, while later decisions can change the outcome."
         },
         {
           "id": "spell:dreams:a2",
@@ -3158,30 +2984,102 @@
           "id": "spell:dreams:a3",
           "name": "Astral Projection",
           "action": "Ritual",
-          "sp": 5,
-          "duration": "1 hour",
-          "effect": "Send visible spirit projections into the nearby spirit realm while bodies sleep. Projections travel together up to 1 kilometer from the bodies, speak with spirits and observe corresponding places. They return when the spell ends or a body is disturbed. Projections use observation and speech; physical acts and further casting take place after returning to the bodies."
+          "sp": 6,
+          "duration": "8 hours",
+          "effect": "Send visible spirit projections into the nearby spirit realm while your bodies sleep. Projections travel together up to 10 kilometers from the bodies, speak with spirits and observe corresponding places. Magical barriers that block spirit travel still apply. They return when the spell ends, a participant chooses to return with a Maneuver, or a body is disturbed. Projections use observation and speech; physical acts and further casting take place after returning to the bodies."
         },
         {
-          "id": "spell-mastery:foresight-oracles-dream",
-          "name": "Foresight — Oracle’s Dream",
+          "id": "spell:emotion:7",
+          "name": "Charm Monster",
+          "action": "Main Action",
+          "sp": 3,
+          "duration": "One social objective, up to 10 minutes",
+          "effect": "Establish rapport through shared sensations even across a language barrier. Add 2/4/6 progress toward a feasible request stated by the DA. The creature's needs and motives shape what you can ask of it."
+        },
+        {
+          "id": "spell:emotion:8",
+          "name": "Confusion",
+          "action": "Main Action",
+          "sp": 4,
+          "duration": "Instant; conditions decay normally",
+          "effect": "Scatter attention with conflicting impulses. Apply Dazed 1/1/2. Each affected creature chooses its remaining action categories normally when its turn begins."
+        },
+        {
+          "id": "spell:perception:3",
+          "name": "Disguise Self",
+          "action": "Main Action",
+          "sp": 1,
+          "duration": "1 hour",
+          "effect": "Change your apparent face, clothing and proportions within your existing size. Your voice and tangible shape remain physical. Touch reveals mismatches; close inspection uses the shared illusion procedure."
+        },
+        {
+          "id": "spell:perception:4",
+          "name": "Mirror Image",
+          "action": "Main Action",
+          "sp": 2,
+          "duration": "1 minute or until three attacks resolve against you",
+          "effect": "Create three shifting doubles. Gain 1 Boon to defenses against attacks that depend on seeing you. After each such attack resolves, one double vanishes. The remaining doubles provide the same single Boon."
+        },
+        {
+          "id": "spell:perception:5",
+          "name": "Invisibility",
+          "action": "Main Action",
+          "sp": 2,
+          "duration": "1 minute",
+          "effect": "Make the recipient and its carried gear Invisible. Attacking or casting another spell ends this casting's invisibility after that action resolves. Other senses can still locate the recipient."
+        },
+        {
+          "id": "spell:perception:6",
+          "name": "Major Image",
+          "action": "Main Action",
+          "sp": 3,
+          "duration": "1 minute",
+          "effect": "Create a moving illusion with sound, scent and harmless temperature. A Maneuver can move it 3 squares and change its performance. Touch reveals its insubstantial nature. It may conceal a real feature visually; physical terrain remains as it was. Without directing it, the image stays in place and repeats its last simple performance."
+        },
+        {
+          "id": "spell:perception:7",
+          "name": "Greater Invisibility",
+          "action": "Main Action",
+          "sp": 3,
+          "duration": "1 minute",
+          "effect": "Make the recipient and carried gear Invisible. It may continue attacking and casting while this effect lasts. Attacking still reveals its location and ends Hidden normally."
+        },
+        {
+          "id": "spell:perception:8",
+          "name": "Hallucinatory Terrain",
           "action": "Ritual",
-          "sp": 6,
-          "duration": "One undertaking within 24 hours",
-          "effect": "Ritual · 1 hour of shared sleep · Reason · 6 SP. You and up to three willing nearby sleepers seek the help of a willing spirit for one named undertaking in the next 24 hours. The DA gives one truthful warning of a foreseeable obstacle and one usable clue about addressing it, subject to the spirit’s knowledge. Each dreamer may once reroll an entire roll directly addressing the undertaking and keep either result. Unused rerolls expire after 24 hours; a creature cannot hold a benefit from more than one Oracle’s Dream. No casting roll. This does not guarantee success or reveal unknowable future decisions."
+          "sp": 4,
+          "duration": "8 hours",
+          "effect": "Change the area's apparent plants, surfaces and small terrain features. Buildings and creatures retain their appearance. Real footing remains physical; touch or travel through a mismatch reveals it, and observation uses the illusion procedure."
+        },
+        {
+          "id": "spell:thought:3",
+          "name": "Detect Thoughts",
+          "action": "Main Action",
+          "sp": 1,
+          "duration": "Instant",
+          "effect": "Read surface impressions. Learn 1/2/3 immediate concerns or sensory impressions, chosen by the DA for an NPC or its player for a hero. The target senses the intrusion after the reading. Deep memories use stronger workings."
+        },
+        {
+          "id": "spell:thought:4",
+          "name": "Tongues",
+          "action": "Main Action",
+          "sp": 2,
+          "duration": "1 hour",
+          "effect": "The recipient can understand and speak the ordinary languages of creatures addressing it. Its voice remains its own. Reading and writing use languages it already knows."
         }
       ],
       "actionCounts": {
         "Main Action": 3,
-        "Maneuver": 4,
+        "Maneuver": 3,
         "Reaction": 0,
         "Passive": 1,
         "Other": 1
       },
       "spellCounts": {
-        "total": 40,
+        "total": 31,
         "free": 4,
-        "paid": 36
+        "paid": 27
       },
       "castingBudget": {
         "maxSp": 19,
@@ -3217,6 +3115,16 @@
           "level": 3,
           "id": "emotion:3",
           "reason": "Costs 3 DP. You have 0 DP."
+        },
+        {
+          "level": 7,
+          "id": "thought:2",
+          "reason": "Costs 2 DP. You have 0 DP."
+        },
+        {
+          "level": 7,
+          "id": "guard:shelter:2",
+          "reason": "Costs 2 DP. You have 0 DP."
         }
       ]
     },
@@ -3224,7 +3132,7 @@
       "id": "cleric",
       "name": "Brunna Hearthward",
       "level": 1,
-      "sourceCommit": "55cbd4c70f13704c684f7ba358f0d75bb62b1f30",
+      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
       "workingTree": false,
       "draft": {
         "name": "Brunna Hearthward",
@@ -3443,6 +3351,7 @@
           "kind": "ability",
           "action": "Main Action",
           "attribute": "Reason",
+          "duration": "Immediate.",
           "effect": "**Action:** Main Action · **Attribute:** Reason\n\n**Target / range / shape:** One living ally within 3 squares.\n\npay 1 SP before rolling. You must have enough SP to pay this cost. Requires a free hand. Make a Reason roll. Weak: restore 3 HP. Standard: restore 6 HP. Strong: restore 9 HP, and the target may stand without spending movement. Reduce the restored amount by the target's Life resistance, to a minimum of 1 if HP is missing, and never exceed maximum HP. A Dying or stabilized living creature can receive this healing. This does not erase scars or restore the dead.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** A free hand.\n\nThis is a spell; use its printed 1 SP cost and ordinary casting rules."
         }
       ],
@@ -3575,7 +3484,7 @@
       "id": "cleric",
       "name": "Brunna Hearthward",
       "level": 3,
-      "sourceCommit": "55cbd4c70f13704c684f7ba358f0d75bb62b1f30",
+      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
       "workingTree": false,
       "draft": {
         "name": "Brunna Hearthward",
@@ -3873,6 +3782,7 @@
           "kind": "ability",
           "action": "Main Action",
           "attribute": "Reason",
+          "duration": "Immediate.",
           "effect": "**Action:** Main Action · **Attribute:** Reason\n\n**Target / range / shape:** One living ally within 3 squares.\n\npay 1 SP before rolling. You must have enough SP to pay this cost. Requires a free hand. Make a Reason roll. Weak: restore 3 HP. Standard: restore 6 HP. Strong: restore 9 HP, and the target may stand without spending movement. Reduce the restored amount by the target's Life resistance, to a minimum of 1 if HP is missing, and never exceed maximum HP. A Dying or stabilized living creature can receive this healing. This does not erase scars or restore the dead.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** A free hand.\n\nThis is a spell; use its printed 1 SP cost and ordinary casting rules."
         },
         {
@@ -3884,6 +3794,7 @@
           "kind": "ability",
           "action": "Main Action",
           "attribute": "Reason",
+          "duration": "Immediate.",
           "effect": "**Action:** Main Action · **Attribute:** Reason\n\n**Target / range / shape:** One or two living allies within 3 squares.\n\npay 2 SP before rolling. You must have enough SP to pay this cost. Requires a free hand. Make a Reason roll. Choose one or two allies. One ally: restore 6 HP on Weak, 11 HP on Standard, 16 HP on Strong. Two allies: restore 4 HP each on Weak, 7 HP each on Standard, 10 HP each on Strong. Reduce the restored amount by each target's Life resistance, to a minimum of 1 if HP is missing, and never exceed maximum HP. A Dying or stabilized living creature can receive this healing. This does not erase scars or restore the dead.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** A free hand.\n\nThis is a spell. You can still cast Mend at its ordinary 1 SP cost instead."
         }
       ],
@@ -3943,10 +3854,7 @@
         "spell:restoration:5",
         "spell:restoration:6",
         "spell:restoration:7",
-        "spell:restoration:8",
-        "spell:restoration:a1",
-        "spell:restoration:a2",
-        "spell:restoration:a3"
+        "spell:restoration:8"
       ],
       "spells": [
         {
@@ -4044,30 +3952,6 @@
           "sp": 4,
           "duration": "Instant",
           "effect": "Weave wounds closed across a small company. Roll once; each restores 4/6/8 HP after Life resistance."
-        },
-        {
-          "id": "spell:restoration:a1",
-          "name": "Heal",
-          "action": "Main Action",
-          "sp": 5,
-          "duration": "Instant",
-          "effect": "Flood the recipient with restorative power. Restore 8/12/16 HP after Life resistance and reduce both Bleeding and Poisoned by 2."
-        },
-        {
-          "id": "spell:restoration:a2",
-          "name": "Regenerate",
-          "action": "Ritual",
-          "sp": 5,
-          "duration": "Instant",
-          "effect": "Restore one missing nonvital limb or damaged ordinary sense, and restore 10 HP after Life resistance. The renewed part functions normally when the ritual finishes. Scars can remain as the player describes. This treats physical loss; curses use their named remedies."
-        },
-        {
-          "id": "spell:restoration:a3",
-          "name": "Mass Heal",
-          "action": "Main Action",
-          "sp": 5,
-          "duration": "Instant",
-          "effect": "Roll once for a shared healing total of 12/18/24 HP. Divide it among the chosen recipients, assigning at least 1 to each before Life resistance. Each recipient also reduces Bleeding by 2."
         }
       ],
       "actionCounts": {
@@ -4078,9 +3962,9 @@
         "Other": 0
       },
       "spellCounts": {
-        "total": 15,
+        "total": 12,
         "free": 4,
-        "paid": 11
+        "paid": 8
       },
       "castingBudget": {
         "maxSp": 10,
@@ -4120,7 +4004,7 @@
       "id": "cleric",
       "name": "Brunna Hearthward",
       "level": 7,
-      "sourceCommit": "55cbd4c70f13704c684f7ba358f0d75bb62b1f30",
+      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
       "workingTree": false,
       "draft": {
         "name": "Brunna Hearthward",
@@ -4320,6 +4204,15 @@
                   "id": "medicine:first-aid:7"
                 },
                 {
+                  "id": "restoration:4"
+                },
+                {
+                  "id": "restoration:5"
+                },
+                {
+                  "id": "restoration:6"
+                },
+                {
                   "id": "protection:1"
                 },
                 {
@@ -4335,22 +4228,7 @@
                   "id": "sanctuary:2"
                 },
                 {
-                  "id": "sanctuary:3"
-                },
-                {
                   "id": "spellcraft"
-                },
-                {
-                  "id": "spellcraft:soul-capacity:1"
-                },
-                {
-                  "id": "spellcraft:soul-capacity:2"
-                },
-                {
-                  "id": "spellcraft:soul-capacity:3"
-                },
-                {
-                  "id": "mastery:borrowed-dawn"
                 }
               ],
               "signatures": {
@@ -4371,15 +4249,15 @@
       },
       "resources": {
         "maxHp": 48,
-        "maxSp": 25,
+        "maxSp": 18,
         "gritGranted": 3,
         "speed": 5,
         "remainingCoins": 11
       },
       "development": {
         "level": 7,
-        "current": 1,
-        "spent": 60,
+        "current": 0,
+        "spent": 61,
         "total": 61,
         "expired": 0
       },
@@ -4490,6 +4368,27 @@
           "requiredLevel": 7
         },
         {
+          "id": "restoration:4",
+          "name": "Heal",
+          "paidDp": 4,
+          "level": 7,
+          "requiredLevel": 3
+        },
+        {
+          "id": "restoration:5",
+          "name": "Regenerate",
+          "paidDp": 4,
+          "level": 7,
+          "requiredLevel": 3
+        },
+        {
+          "id": "restoration:6",
+          "name": "True Resurrection",
+          "paidDp": 5,
+          "level": 7,
+          "requiredLevel": 7
+        },
+        {
           "id": "protection:1",
           "name": "Protection II",
           "paidDp": 2,
@@ -4525,46 +4424,11 @@
           "requiredLevel": 1
         },
         {
-          "id": "sanctuary:3",
-          "name": "Haven",
-          "paidDp": 3,
-          "level": 7,
-          "requiredLevel": 3
-        },
-        {
           "id": "spellcraft",
           "name": "Spellcraft",
           "paidDp": 2,
           "level": 7,
           "requiredLevel": 1
-        },
-        {
-          "id": "spellcraft:soul-capacity:1",
-          "name": "Soul Capacity I",
-          "paidDp": 1,
-          "level": 7,
-          "requiredLevel": 1
-        },
-        {
-          "id": "spellcraft:soul-capacity:2",
-          "name": "Soul Capacity II",
-          "paidDp": 2,
-          "level": 7,
-          "requiredLevel": 1
-        },
-        {
-          "id": "spellcraft:soul-capacity:3",
-          "name": "Soul Capacity III",
-          "paidDp": 2,
-          "level": 7,
-          "requiredLevel": 1
-        },
-        {
-          "id": "mastery:borrowed-dawn",
-          "name": "Borrowed Dawn",
-          "paidDp": 4,
-          "level": 7,
-          "requiredLevel": 7
         }
       ],
       "signatureChoices": {
@@ -4582,6 +4446,7 @@
           "kind": "ability",
           "action": "Main Action",
           "attribute": "Reason",
+          "duration": "Immediate.",
           "effect": "**Action:** Main Action · **Attribute:** Reason\n\n**Target / range / shape:** One living ally within 3 squares.\n\npay 1 SP before rolling. You must have enough SP to pay this cost. Requires a free hand. Make a Reason roll. Weak: restore 3 HP. Standard: restore 6 HP. Strong: restore 9 HP, and the target may stand without spending movement. Reduce the restored amount by the target's Life resistance, to a minimum of 1 if HP is missing, and never exceed maximum HP. A Dying or stabilized living creature can receive this healing. This does not erase scars or restore the dead.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** A free hand.\n\nThis is a spell; use its printed 1 SP cost and ordinary casting rules."
         },
         {
@@ -4593,6 +4458,7 @@
           "kind": "ability",
           "action": "10 minutes",
           "attribute": "None (no roll)",
+          "duration": "Until used or dawn.",
           "effect": "**Action:** 10 minutes · **Attribute:** None (no roll)\n\n**Target / range / shape:** Up to three willing characters.\n\nMark each target with a physical sigil. The first time a marked character would be reduced to 0 HP, it remains at 1 HP instead; the mark then disappears. An unused mark fades at the coming dawn. A character can bear only one mark from this ability.\n\n**Duration:** Until used or dawn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a ritual spell costing 0 SP, usable once between safe overnight rests. Unused sigils expire at dawn; a creature may bear one sigil at a time."
         },
         {
@@ -4604,6 +4470,7 @@
           "kind": "ability",
           "action": "Main Action",
           "attribute": "Reason",
+          "duration": "Immediate.",
           "effect": "**Action:** Main Action · **Attribute:** Reason\n\n**Target / range / shape:** One or two living allies within 3 squares.\n\npay 2 SP before rolling. You must have enough SP to pay this cost. Requires a free hand. Make a Reason roll. Choose one or two allies. One ally: restore 6 HP on Weak, 11 HP on Standard, 16 HP on Strong. Two allies: restore 4 HP each on Weak, 7 HP each on Standard, 10 HP each on Strong. Reduce the restored amount by each target's Life resistance, to a minimum of 1 if HP is missing, and never exceed maximum HP. A Dying or stabilized living creature can receive this healing. This does not erase scars or restore the dead.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** A free hand.\n\nThis is a spell. You can still cast Mend at its ordinary 1 SP cost instead."
         }
       ],
@@ -4680,26 +4547,17 @@
         "spell:restoration:8",
         "spell:restoration:a1",
         "spell:restoration:a2",
-        "spell:restoration:a3",
+        "spell-mastery:true-resurrection",
         "spell:protection:3",
         "spell:protection:4",
         "spell:protection:5",
         "spell:protection:6",
         "spell:protection:7",
         "spell:protection:8",
-        "spell:protection:a1",
-        "spell:protection:a2",
-        "spell:protection:a3",
         "spell:sanctuary:3",
         "spell:sanctuary:4",
         "spell:sanctuary:5",
-        "spell:sanctuary:6",
-        "spell:sanctuary:7",
-        "spell:sanctuary:8",
-        "spell:sanctuary:a1",
-        "spell:sanctuary:a2",
-        "spell:sanctuary:a3",
-        "spell-mastery:borrowed-dawn"
+        "spell:sanctuary:6"
       ],
       "spells": [
         {
@@ -4815,12 +4673,12 @@
           "effect": "Restore one missing nonvital limb or damaged ordinary sense, and restore 10 HP after Life resistance. The renewed part functions normally when the ritual finishes. Scars can remain as the player describes. This treats physical loss; curses use their named remedies."
         },
         {
-          "id": "spell:restoration:a3",
-          "name": "Mass Heal",
-          "action": "Main Action",
-          "sp": 5,
+          "id": "spell-mastery:true-resurrection",
+          "name": "True Resurrection",
+          "action": "Ritual",
+          "sp": 8,
           "duration": "Instant",
-          "effect": "Roll once for a shared healing total of 12/18/24 HP. Divide it among the chosen recipients, assigning at least 1 to each before Life resistance. Each recipient also reduces Bleeding by 2."
+          "effect": "Restore a life ended before its natural span. Prepare the remains with unique funerary materials whose availability the DA establishes before the ritual. The spirit must freely agree. At completion, consume the materials and return the person to life at 1 HP in a restored body, clearing both death roll tallies. Descriptive scars remain; spent SP and Grit remain spent. Each person has one lifetime return to life, shared with Lifegiving. The ritual creates one restored body, replacing the prepared remains."
         },
         {
           "id": "spell:protection:3",
@@ -4871,30 +4729,6 @@
           "effect": "Bind your protection to the recipient. When an attack would damage it, you may spend your Reaction after its resistance and other reductions, before it loses HP. Transfer up to 3 of that damage to yourself, leaving at least 1 on it. The transferred damage bypasses your resistance. The bond ends if either participant becomes unconscious or moves beyond 6 squares."
         },
         {
-          "id": "spell:protection:a1",
-          "name": "Globe of Invulnerability",
-          "action": "Main Action",
-          "sp": 5,
-          "duration": "1 minute",
-          "effect": "Raise a shimmering globe centered on you. Protected creatures gain 1 Boon to defenses against spells and resistance 2 to spell damage. Apply the highest matching resistance. The protection moves with you."
-        },
-        {
-          "id": "spell:protection:a2",
-          "name": "Mind Blank",
-          "action": "Ritual",
-          "sp": 5,
-          "duration": "8 hours",
-          "effect": "Veil its thoughts. Grant mental resistance 3 and 2 Boons to defenses against mental spells. Reading its memories or locating it through divination requires its consent while the veil lasts. Ordinary observation and conversation remain available."
-        },
-        {
-          "id": "spell:protection:a3",
-          "name": "Prismatic Wall",
-          "action": "Main Action",
-          "sp": 5,
-          "duration": "1 minute",
-          "effect": "Raise a luminous wall 2 squares high that blocks sight. Roll on casting to set radiant damage at 4/6/8. A creature crossing it takes that damage and Slowed 2, once per creature each round. The caster can end the wall with a Maneuver."
-        },
-        {
           "id": "spell:sanctuary:3",
           "name": "Quiet Ways",
           "action": "Main Action",
@@ -4925,54 +4759,6 @@
           "sp": 3,
           "duration": "24 hours",
           "effect": "Consecrate the site. Willing occupants gain 1 Boon to defenses against undead and spirits while inside. Ordinary remains there resist decay for the duration. Choose the site's visible symbol when casting."
-        },
-        {
-          "id": "spell:sanctuary:7",
-          "name": "Guards and Wards",
-          "action": "Ritual",
-          "sp": 3,
-          "duration": "8 hours",
-          "effect": "Ward the rooms with soft warning bells. Name up to six guests. When another creature opens an exterior door or window, you hear its location while within 100 squares. It receives Slowed 1 on first entry, once per creature. Doors remain physically operable and warnings persist even after that slowing ends."
-        },
-        {
-          "id": "spell:sanctuary:8",
-          "name": "Antilife Shell",
-          "action": "Main Action",
-          "sp": 4,
-          "duration": "1 minute",
-          "effect": "A barrier of repelling force surrounds you. A living creature crossing its boundary spends 2 extra movement and becomes Slowed 1, once per round. The ring moves with you; moving it over a creature applies the same effect rather than pushing it automatically."
-        },
-        {
-          "id": "spell:sanctuary:a1",
-          "name": "Forbiddance",
-          "action": "Ritual",
-          "sp": 5,
-          "duration": "24 hours",
-          "effect": "Seal the site against teleportation and planar passage. A travel spell entering or leaving arrives at the nearest safe boundary square instead. Ordinary movement remains available. A successful cancellation objective ends the seal."
-        },
-        {
-          "id": "spell:sanctuary:a2",
-          "name": "Magnificent Mansion",
-          "action": "Ritual",
-          "sp": 5,
-          "duration": "8 hours",
-          "effect": "Open a comfortable refuge with six furnished rooms, clean water and bedding for twelve. The entrance remains fixed and visible; you may open or close it with a Maneuver while beside it. At expiry occupants and their possessions emerge into safe space beside the original entrance. Furnishings remain part of the refuge. Food is brought by the guests."
-        },
-        {
-          "id": "spell:sanctuary:a3",
-          "name": "Prismatic Wall — Sanctum",
-          "action": "Ritual",
-          "sp": 5,
-          "duration": "1 hour",
-          "effect": "Create a luminous boundary 2 squares high and name up to six guests. Others crossing take 3/5/7 radiant damage, set by your ritual roll, and Frightened 1 with the boundary as source, once per creature per round. Named guests cross freely. The ring blocks sight through its colors."
-        },
-        {
-          "id": "spell-mastery:borrowed-dawn",
-          "name": "Borrowed Dawn",
-          "action": "Main Action",
-          "sp": 4,
-          "duration": "Instant",
-          "effect": "Main Action · Knowledge · 4 SP. Restore 8/12/16 HP to one living willing, Dying or stabilized creature within reach. Also reduce its Bleeding by 2. This is magical healing, not first aid: it neither spends nor refreshes the recipient’s first-aid allowance. It cannot raise the dead, restore Grit or exceed maximum HP. Apply each recipient’s Life resistance, with at least 1 HP restored when HP is missing."
         }
       ],
       "actionCounts": {
@@ -4983,24 +4769,24 @@
         "Other": 1
       },
       "spellCounts": {
-        "total": 34,
+        "total": 25,
         "free": 4,
-        "paid": 30
+        "paid": 21
       },
       "castingBudget": {
-        "maxSp": 25,
+        "maxSp": 18,
         "oncePerRestRecovery": 0,
         "castsAtCost": {
-          "1": 25,
-          "2": 12,
-          "3": 8,
-          "5": 5
+          "1": 18,
+          "2": 9,
+          "3": 6,
+          "5": 3
         },
         "castsAfterRecovery": {
-          "1": 25,
-          "2": 12,
-          "3": 8,
-          "5": 5
+          "1": 18,
+          "2": 9,
+          "3": 6,
+          "5": 3
         },
         "note": "Alternative uses of the same reserve, not simultaneous allocations. Assumes SP is spent before recovery; time, spell-specific limits, components and maintained actions still apply. Signature spells and conditional discounts are described separately."
       },
@@ -5021,6 +4807,16 @@
           "level": 3,
           "id": "protection:1",
           "reason": "Costs 2 DP. You have 1 DP."
+        },
+        {
+          "level": 7,
+          "id": "sanctuary:3",
+          "reason": "Costs 3 DP. You have 2 DP."
+        },
+        {
+          "level": 7,
+          "id": "spellcraft:soul-capacity:1",
+          "reason": "Costs 1 DP. You have 0 DP."
         }
       ]
     },
@@ -5028,7 +4824,7 @@
       "id": "druid",
       "name": "Thalen Reedwalker",
       "level": 1,
-      "sourceCommit": "55cbd4c70f13704c684f7ba358f0d75bb62b1f30",
+      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
       "workingTree": false,
       "draft": {
         "name": "Thalen Reedwalker",
@@ -5257,6 +5053,7 @@
           "kind": "ability",
           "action": "Main Action",
           "attribute": "None",
+          "duration": "Fixed 10 minutes; no Sustain.",
           "effect": "**Action:** Main Action · **Attribute:** None\n\n**Target / range / shape:** Self.\n\n**Magic:** Spell · **SP:** 1\n\nOnce per scene, assume the appearance of a familiar Small or Medium ground beast for 10 minutes. Keep your HP, attributes, conditions, resources and Speed. Your equipment melds and provides no effects or resistance. Your form has physical resistance 1 and a natural attack: Main Action, Brawn, adjacent target, 2/3/5 physical damage on Weak/Standard/Strong. You speak only animal calls and cannot cast spells or use equipment. Return to your own shape with a Maneuver or automatically at 0 HP. Changing form never restores HP.\n\n**Duration:** Fixed 10 minutes; no Sustain.\n\n**Equipment / acquisition:** A free hand to cast before transforming."
         }
       ],
@@ -5425,7 +5222,7 @@
       "id": "druid",
       "name": "Thalen Reedwalker",
       "level": 3,
-      "sourceCommit": "55cbd4c70f13704c684f7ba358f0d75bb62b1f30",
+      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
       "workingTree": false,
       "draft": {
         "name": "Thalen Reedwalker",
@@ -5733,6 +5530,7 @@
           "kind": "ability",
           "action": "Main Action",
           "attribute": "None",
+          "duration": "Fixed 10 minutes; no Sustain.",
           "effect": "**Action:** Main Action · **Attribute:** None\n\n**Target / range / shape:** Self.\n\n**Magic:** Spell · **SP:** 1\n\nOnce per scene, assume the appearance of a familiar Small or Medium ground beast for 10 minutes. Keep your HP, attributes, conditions, resources and Speed. Your equipment melds and provides no effects or resistance. Your form has physical resistance 1 and a natural attack: Main Action, Brawn, adjacent target, 2/3/5 physical damage on Weak/Standard/Strong. You speak only animal calls and cannot cast spells or use equipment. Return to your own shape with a Maneuver or automatically at 0 HP. Changing form never restores HP.\n\n**Duration:** Fixed 10 minutes; no Sustain.\n\n**Equipment / acquisition:** A free hand to cast before transforming."
         },
         {
@@ -5744,6 +5542,7 @@
           "kind": "ability",
           "action": "Passive",
           "attribute": "None",
+          "duration": "The transformation.",
           "effect": "**Action:** Passive · **Attribute:** None\n\n**Target / range / shape:** When casting Borrowed Shape.\n\nChoose one adaptation when transforming: swim at your Speed and breathe water; climb at your Speed; or remain a ground beast and gain 1 Boon to tracking rolls that rely on scent. The adaptation lasts for that transformation. Changing it requires another casting and follows Borrowed Shape’s once-per-scene limit.\n\n**Duration:** The transformation.\n\n**Equipment / acquisition:** None."
         }
       ],
@@ -5792,9 +5591,6 @@
         "spell:growth:6",
         "spell:growth:7",
         "spell:growth:8",
-        "spell:growth:a1",
-        "spell:growth:a2",
-        "spell:growth:a3",
         "spell:transformation:3",
         "spell:transformation:4",
         "spell:transformation:5",
@@ -5914,30 +5710,6 @@
           "effect": "Step through the tree and emerge beside another living tree you can see within 12 squares. Carry your worn and held equipment. Choose an unoccupied destination with firm support."
         },
         {
-          "id": "spell:growth:a1",
-          "name": "Awaken",
-          "action": "Ritual",
-          "sp": 5,
-          "duration": "Permanent",
-          "effect": "Awaken a speaking mind with one language you know. The being keeps its body, natural senses and ordinary capabilities. It becomes an independent person; agree on any companionship or service through conversation. You can complete this awakening once between safe overnight rests."
-        },
-        {
-          "id": "spell:growth:a2",
-          "name": "Wall of Thorns",
-          "action": "Main Action",
-          "sp": 5,
-          "duration": "1 minute",
-          "effect": "Grow a thorn wall 2 squares high. Moving through one square costs 3 movement and deals 3/5/7 physical damage, set by your casting roll, once per creature each round. Each wall square has 8 HP; fire damages it normally."
-        },
-        {
-          "id": "spell:growth:a3",
-          "name": "Transport via Plants",
-          "action": "Ritual",
-          "sp": 5,
-          "duration": "Instant",
-          "effect": "Travel through the tree to another living tree you personally touched within the past month, up to 10 kilometers away on the same plane. Everyone emerges in safe adjacent squares with carried gear. The destination tree must remain alive and large enough to admit a traveler."
-        },
-        {
           "id": "spell:transformation:3",
           "name": "Longstrider",
           "action": "Main Action",
@@ -5978,9 +5750,9 @@
         "Other": 0
       },
       "spellCounts": {
-        "total": 21,
+        "total": 18,
         "free": 4,
-        "paid": 17
+        "paid": 14
       },
       "castingBudget": {
         "maxSp": 11,
@@ -6013,7 +5785,7 @@
       "id": "druid",
       "name": "Thalen Reedwalker",
       "level": 7,
-      "sourceCommit": "55cbd4c70f13704c684f7ba358f0d75bb62b1f30",
+      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
       "workingTree": false,
       "draft": {
         "name": "Thalen Reedwalker",
@@ -6207,18 +5979,6 @@
             "7": {
               "purchases": [
                 {
-                  "id": "transformation:3"
-                },
-                {
-                  "id": "water:1"
-                },
-                {
-                  "id": "water:2"
-                },
-                {
-                  "id": "water:3"
-                },
-                {
                   "id": "wilderness:animal-handling:4"
                 },
                 {
@@ -6231,16 +5991,25 @@
                   "id": "wilderness:animal-handling:7"
                 },
                 {
-                  "id": "spellcraft"
+                  "id": "growth:4"
                 },
                 {
-                  "id": "spellcraft:soul-capacity:1"
+                  "id": "growth:5"
                 },
                 {
-                  "id": "spellcraft:soul-capacity:2"
+                  "id": "growth:6"
                 },
                 {
-                  "id": "mastery:wall-of-thorns-living-fortress"
+                  "id": "transformation:3"
+                },
+                {
+                  "id": "water:1"
+                },
+                {
+                  "id": "water:2"
+                },
+                {
+                  "id": "water:3"
                 }
               ],
               "signatures": {
@@ -6261,15 +6030,15 @@
       },
       "resources": {
         "maxHp": 38,
-        "maxSp": 23,
+        "maxSp": 19,
         "gritGranted": 3,
         "speed": 8,
         "remainingCoins": 14
       },
       "development": {
         "level": 7,
-        "current": 5,
-        "spent": 56,
+        "current": 1,
+        "spent": 60,
         "total": 61,
         "expired": 0
       },
@@ -6366,34 +6135,6 @@
           "requiredLevel": 1
         },
         {
-          "id": "transformation:3",
-          "name": "Manyfold Body",
-          "paidDp": 3,
-          "level": 7,
-          "requiredLevel": 3
-        },
-        {
-          "id": "water:1",
-          "name": "Water II",
-          "paidDp": 2,
-          "level": 7,
-          "requiredLevel": 1
-        },
-        {
-          "id": "water:2",
-          "name": "Water III",
-          "paidDp": 2,
-          "level": 7,
-          "requiredLevel": 1
-        },
-        {
-          "id": "water:3",
-          "name": "Winter’s Dominion",
-          "paidDp": 3,
-          "level": 7,
-          "requiredLevel": 3
-        },
-        {
           "id": "wilderness:animal-handling:4",
           "name": "Lead the Herd I",
           "paidDp": 3,
@@ -6422,32 +6163,53 @@
           "requiredLevel": 7
         },
         {
-          "id": "spellcraft",
-          "name": "Spellcraft",
-          "paidDp": 2,
-          "level": 7,
-          "requiredLevel": 1
-        },
-        {
-          "id": "spellcraft:soul-capacity:1",
-          "name": "Soul Capacity I",
-          "paidDp": 1,
-          "level": 7,
-          "requiredLevel": 1
-        },
-        {
-          "id": "spellcraft:soul-capacity:2",
-          "name": "Soul Capacity II",
-          "paidDp": 2,
-          "level": 7,
-          "requiredLevel": 1
-        },
-        {
-          "id": "mastery:wall-of-thorns-living-fortress",
-          "name": "Wall of Thorns — Living Fortress",
+          "id": "growth:4",
+          "name": "Awaken",
           "paidDp": 4,
           "level": 7,
+          "requiredLevel": 3
+        },
+        {
+          "id": "growth:5",
+          "name": "Wall of Thorns",
+          "paidDp": 4,
+          "level": 7,
+          "requiredLevel": 3
+        },
+        {
+          "id": "growth:6",
+          "name": "Transport via Plants",
+          "paidDp": 5,
+          "level": 7,
           "requiredLevel": 7
+        },
+        {
+          "id": "transformation:3",
+          "name": "Manyfold Body",
+          "paidDp": 3,
+          "level": 7,
+          "requiredLevel": 3
+        },
+        {
+          "id": "water:1",
+          "name": "Water II",
+          "paidDp": 2,
+          "level": 7,
+          "requiredLevel": 1
+        },
+        {
+          "id": "water:2",
+          "name": "Water III",
+          "paidDp": 2,
+          "level": 7,
+          "requiredLevel": 1
+        },
+        {
+          "id": "water:3",
+          "name": "Winter’s Dominion",
+          "paidDp": 3,
+          "level": 7,
+          "requiredLevel": 3
         }
       ],
       "signatureChoices": {
@@ -6465,6 +6227,7 @@
           "kind": "ability",
           "action": "Main Action",
           "attribute": "None",
+          "duration": "Fixed 10 minutes; no Sustain.",
           "effect": "**Action:** Main Action · **Attribute:** None\n\n**Target / range / shape:** Self.\n\n**Magic:** Spell · **SP:** 1\n\nOnce per scene, assume the appearance of a familiar Small or Medium ground beast for 10 minutes. Keep your HP, attributes, conditions, resources and Speed. Your equipment melds and provides no effects or resistance. Your form has physical resistance 1 and a natural attack: Main Action, Brawn, adjacent target, 2/3/5 physical damage on Weak/Standard/Strong. You speak only animal calls and cannot cast spells or use equipment. Return to your own shape with a Maneuver or automatically at 0 HP. Changing form never restores HP.\n\n**Duration:** Fixed 10 minutes; no Sustain.\n\n**Equipment / acquisition:** A free hand to cast before transforming."
         },
         {
@@ -6476,6 +6239,7 @@
           "kind": "ability",
           "action": "Passive",
           "attribute": "None",
+          "duration": "The transformation.",
           "effect": "**Action:** Passive · **Attribute:** None\n\n**Target / range / shape:** When casting Borrowed Shape.\n\nYou may choose a Large ground beast: its natural attack deals 3/4/6 physical damage and pushes 1 directly away on Strong. Alternatively choose a Small flying beast: gain fly Speed equal to your Speed and use the ordinary natural attack’s 2/3/5 damage. Keep your own HP and physical resistance 1. Choose a legal space large enough for the form. Returning to your own form while airborne leaves you subject to falling normally.\n\n**Duration:** The transformation.\n\n**Equipment / acquisition:** None."
         },
         {
@@ -6487,6 +6251,7 @@
           "kind": "ability",
           "action": "Passive",
           "attribute": "None",
+          "duration": "The transformation.",
           "effect": "**Action:** Passive · **Attribute:** None\n\n**Target / range / shape:** When casting Borrowed Shape.\n\nChoose one adaptation when transforming: swim at your Speed and breathe water; climb at your Speed; or remain a ground beast and gain 1 Boon to tracking rolls that rely on scent. The adaptation lasts for that transformation. Changing it requires another casting and follows Borrowed Shape’s once-per-scene limit.\n\n**Duration:** The transformation.\n\n**Equipment / acquisition:** None."
         }
       ],
@@ -6563,28 +6328,21 @@
         "spell:growth:6",
         "spell:growth:7",
         "spell:growth:8",
-        "spell:growth:a1",
-        "spell:growth:a2",
-        "spell:growth:a3",
         "spell:transformation:3",
         "spell:transformation:4",
         "spell:transformation:5",
         "spell:transformation:6",
+        "spell:growth:a1",
+        "spell:growth:a2",
+        "spell:growth:a3",
         "spell:transformation:7",
         "spell:transformation:8",
-        "spell:transformation:a1",
-        "spell:transformation:a2",
-        "spell:transformation:a3",
         "spell:water:3",
         "spell:water:4",
         "spell:water:5",
         "spell:water:6",
         "spell:water:7",
-        "spell:water:8",
-        "spell:water:a1",
-        "spell:water:a2",
-        "spell:water:a3",
-        "spell-mastery:wall-of-thorns-living-fortress"
+        "spell:water:8"
       ],
       "spells": [
         {
@@ -6700,30 +6458,6 @@
           "effect": "Step through the tree and emerge beside another living tree you can see within 12 squares. Carry your worn and held equipment. Choose an unoccupied destination with firm support."
         },
         {
-          "id": "spell:growth:a1",
-          "name": "Awaken",
-          "action": "Ritual",
-          "sp": 5,
-          "duration": "Permanent",
-          "effect": "Awaken a speaking mind with one language you know. The being keeps its body, natural senses and ordinary capabilities. It becomes an independent person; agree on any companionship or service through conversation. You can complete this awakening once between safe overnight rests."
-        },
-        {
-          "id": "spell:growth:a2",
-          "name": "Wall of Thorns",
-          "action": "Main Action",
-          "sp": 5,
-          "duration": "1 minute",
-          "effect": "Grow a thorn wall 2 squares high. Moving through one square costs 3 movement and deals 3/5/7 physical damage, set by your casting roll, once per creature each round. Each wall square has 8 HP; fire damages it normally."
-        },
-        {
-          "id": "spell:growth:a3",
-          "name": "Transport via Plants",
-          "action": "Ritual",
-          "sp": 5,
-          "duration": "Instant",
-          "effect": "Travel through the tree to another living tree you personally touched within the past month, up to 10 kilometers away on the same plane. Everyone emerges in safe adjacent squares with carried gear. The destination tree must remain alive and large enough to admit a traveler."
-        },
-        {
           "id": "spell:transformation:3",
           "name": "Longstrider",
           "action": "Main Action",
@@ -6756,6 +6490,30 @@
           "effect": "Give the recipient darkvision to 12 squares. It sees shapes in ordinary darkness; colors appear as shades of gray. Magical darkness follows its own visibility rules."
         },
         {
+          "id": "spell:growth:a1",
+          "name": "Awaken",
+          "action": "Ritual",
+          "sp": 5,
+          "duration": "Permanent",
+          "effect": "Awaken a speaking mind with one language you know. The being keeps its body, natural senses and ordinary capabilities. It becomes an independent person; agree on any companionship or service through conversation. You can complete this awakening once between safe overnight rests."
+        },
+        {
+          "id": "spell:growth:a2",
+          "name": "Wall of Thorns",
+          "action": "Main Action",
+          "sp": 5,
+          "duration": "1 minute",
+          "effect": "Grow a thorn wall 2 squares high. Name up to six creatures when casting; they pass through it at ordinary movement cost and take no damage from its thorns. Others spend 3 movement to cross one square and take 3/5/7 physical damage, set by your casting roll, once per creature each round. Each wall square has 8 HP; fire damages it normally. The wall provides cover. Keep one Wall of Thorns active; casting another ends the first."
+        },
+        {
+          "id": "spell:growth:a3",
+          "name": "Transport via Plants",
+          "action": "Ritual",
+          "sp": 6,
+          "duration": "Instant",
+          "effect": "Travel through the tree to another living tree you personally touched within the past month, up to 100 kilometers away on the same plane. Everyone emerges in safe adjacent squares with carried gear. The destination tree must remain alive and large enough to admit a traveler. An explicit teleportation barrier blocks the journey."
+        },
+        {
           "id": "spell:transformation:7",
           "name": "Polymorph",
           "action": "Main Action",
@@ -6770,30 +6528,6 @@
           "sp": 4,
           "duration": "10 minutes",
           "effect": "The recipient moves through nonmagical difficult terrain at ordinary cost and immediately reduces Slowed by 3. Once each turn it may spend a Maneuver to reduce Grappled 1 or 2 by 2, using your movement magic to slip a loose hold. Grappled 3 requires release by the grappler or outside help."
-        },
-        {
-          "id": "spell:transformation:a1",
-          "name": "Animal Shapes",
-          "action": "Main Action",
-          "sp": 5,
-          "duration": "1 minute",
-          "effect": "Transform each recipient using Polymorph's animal-form procedure. Choose a form and movement mode separately for each. The fixed duration covers the group without Sustain. Each recipient may return to its original body with a Maneuver."
-        },
-        {
-          "id": "spell:transformation:a2",
-          "name": "Shapechange",
-          "action": "Main Action",
-          "sp": 5,
-          "duration": "1 minute",
-          "effect": "Assume a familiar animal shape of Small, Medium or Large size. Keep your HP and attributes. Choose flying, swimming or climbing at your normal Speed, physical resistance 1, and a natural attack using Brawn or Agility for 3/5/7 physical damage. A Maneuver may change the form; otherwise it remains unchanged. Gear merges; return with a Maneuver to speak, use items or cast."
-        },
-        {
-          "id": "spell:transformation:a3",
-          "name": "True Polymorph — Living",
-          "action": "Ritual",
-          "sp": 5,
-          "duration": "24 hours",
-          "effect": "Shape an ordinary living body of Small or Medium size: a humanoid guise or familiar animal. The recipient keeps its mind, HP and attributes. Choose one movement adaptation: swimming or climbing at normal Speed, or flight at Speed 4. Animal bodies use Polymorph's equipment and action rules. The recipient may return with a Maneuver; Greater Restoration also ends the transformation."
         },
         {
           "id": "spell:water:3",
@@ -6842,38 +6576,6 @@
           "sp": 4,
           "duration": "10 minutes",
           "effect": "Raise a solid ice wall 2 squares high. Each square has 8 HP and physical resistance 1; fire damage uses its full value. A destroyed square opens a passage. Existing structures support the wall's weight."
-        },
-        {
-          "id": "spell:water:a1",
-          "name": "Cone of Cold",
-          "action": "Main Action",
-          "sp": 5,
-          "duration": "Instant",
-          "effect": "Release a roaring blast of winter. Deal 4/6/9 cold damage and apply Freezing 1 to each creature in the cone."
-        },
-        {
-          "id": "spell:water:a2",
-          "name": "Freezing Sphere",
-          "action": "Main Action",
-          "sp": 5,
-          "duration": "Instant; frozen water lasts 10 minutes",
-          "effect": "Burst a globe of intense cold for 4/7/10 cold damage. Exposed surface water in the area freezes into a walkable crust; a creature can break one adjacent ice square with a Main Action and a suitable tool."
-        },
-        {
-          "id": "spell:water:a3",
-          "name": "Tsunami",
-          "action": "Main Action",
-          "sp": 5,
-          "duration": "Instant",
-          "effect": "Raise a surging wave from nearby water or conjured spray. Deal 4/6/8 physical damage, push each affected creature 2 squares away from you, and make it Prone on Strong. Stability applies to the push; the water drains away after resolution."
-        },
-        {
-          "id": "spell-mastery:wall-of-thorns-living-fortress",
-          "name": "Wall of Thorns — Living Fortress",
-          "action": "Main Action",
-          "sp": 5,
-          "duration": "10 minutes",
-          "effect": "Main Action · Reason · 5 SP. Raise up to eight connected thorn-wall squares on unoccupied ground within 8 squares. The walls last 10 minutes, are 2 squares high, block movement and provide cover. Name up to six creatures when casting; each may pass through at normal movement cost. Other creatures can spend a Main Action cutting through one adjacent square with a suitable edged tool, taking 3 physical damage before resistance. Fire destroys an affected wall square after that attack resolves. No roll. Damage from cutting thorns is environmental, so resistance may reduce it to 0."
         }
       ],
       "actionCounts": {
@@ -6884,24 +6586,24 @@
         "Other": 0
       },
       "spellCounts": {
-        "total": 36,
+        "total": 29,
         "free": 4,
-        "paid": 32
+        "paid": 25
       },
       "castingBudget": {
-        "maxSp": 23,
+        "maxSp": 19,
         "oncePerRestRecovery": 0,
         "castsAtCost": {
-          "1": 23,
-          "2": 11,
-          "3": 7,
-          "5": 4
+          "1": 19,
+          "2": 9,
+          "3": 6,
+          "5": 3
         },
         "castsAfterRecovery": {
-          "1": 23,
-          "2": 11,
-          "3": 7,
-          "5": 4
+          "1": 19,
+          "2": 9,
+          "3": 6,
+          "5": 3
         },
         "note": "Alternative uses of the same reserve, not simultaneous allocations. Assumes SP is spent before recovery; time, spell-specific limits, components and maintained actions still apply. Signature spells and conditional discounts are described separately."
       },
@@ -6917,13 +6619,24 @@
       ],
       "resolved": "Borrowed Shape supplies an actual early beast form. Its later adaptations and Great Shape cover aquatic, climbing and flying fantasies without resetting HP.",
       "remaining": "Only one transformation per scene and retained personal HP give different attrition from 5e Wild Shape. Shape prevents casting; decide when to be a beast and when to use the books.",
-      "deferred": []
+      "deferred": [
+        {
+          "level": 7,
+          "id": "spellcraft",
+          "reason": "Costs 2 DP. You have 1 DP."
+        },
+        {
+          "level": 7,
+          "id": "spellcraft",
+          "reason": "Costs 2 DP. You have 1 DP."
+        }
+      ]
     },
     {
       "id": "fighter",
       "name": "Corin Ashguard",
       "level": 1,
-      "sourceCommit": "55cbd4c70f13704c684f7ba358f0d75bb62b1f30",
+      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
       "workingTree": false,
       "draft": {
         "name": "Corin Ashguard",
@@ -7142,6 +6855,7 @@
           "kind": "ability",
           "action": "Reaction",
           "attribute": "None (no roll)",
+          "duration": "The triggering defense and immediate counterattack.",
           "effect": "**Action:** Reaction · **Attribute:** None (no roll)\n\n**Target / range / shape:** Self, before a defense against an adjacent enemy.\n\nGain 1 Boon to the defense. After the attack resolves, if the defense was Strong and the attacker is within your reach, make a Basic Melee attack against that attacker. This counterattack is part of the Reaction and does not use your Main Action.\n\n**Duration:** The triggering defense and immediate counterattack.\n\n**Equipment / acquisition:** None.\n\nYou must wield a melee weapon to use this guard and counterattack. A granted counterattack cannot trigger another granted attack."
         }
       ],
@@ -7261,7 +6975,7 @@
       "id": "fighter",
       "name": "Corin Ashguard",
       "level": 3,
-      "sourceCommit": "55cbd4c70f13704c684f7ba358f0d75bb62b1f30",
+      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
       "workingTree": false,
       "draft": {
         "name": "Corin Ashguard",
@@ -7539,6 +7253,7 @@
           "kind": "ability",
           "action": "Reaction",
           "attribute": "None (no roll)",
+          "duration": "The triggering defense and immediate counterattack.",
           "effect": "**Action:** Reaction · **Attribute:** None (no roll)\n\n**Target / range / shape:** Self, before a defense against an adjacent enemy.\n\nGain 1 Boon to the defense. After the attack resolves, if the defense was Strong and the attacker is within your reach, make a Basic Melee attack against that attacker. This counterattack is part of the Reaction and does not use your Main Action.\n\n**Duration:** The triggering defense and immediate counterattack.\n\n**Equipment / acquisition:** None.\n\nYou must wield a melee weapon to use this guard and counterattack. A granted counterattack cannot trigger another granted attack."
         },
         {
@@ -7550,6 +7265,7 @@
           "kind": "ability",
           "action": "Passive",
           "attribute": "None",
+          "duration": "The triggering defense and counterattack.",
           "effect": "**Action:** Passive · **Attribute:** None\n\n**Target / range / shape:** Your Measured Guard.\n\nMeasured Guard grants its Basic Melee counterattack after a Standard or Strong defense. It remains one Reaction: declare the guard before defending, gain its Boon, resolve the triggering attack, then counter if the attacker is still in reach and you can attack.\n\n**Duration:** The triggering defense and counterattack.\n\n**Equipment / acquisition:** A ready melee weapon."
         }
       ],
@@ -7693,7 +7409,7 @@
       "id": "fighter",
       "name": "Corin Ashguard",
       "level": 7,
-      "sourceCommit": "55cbd4c70f13704c684f7ba358f0d75bb62b1f30",
+      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
       "workingTree": false,
       "draft": {
         "name": "Corin Ashguard",
@@ -8115,6 +7831,7 @@
           "kind": "ability",
           "action": "Reaction",
           "attribute": "None (no roll)",
+          "duration": "The triggering defense and immediate counterattack.",
           "effect": "**Action:** Reaction · **Attribute:** None (no roll)\n\n**Target / range / shape:** Self, before a defense against an adjacent enemy.\n\nGain 1 Boon to the defense. After the attack resolves, if the defense was Strong and the attacker is within your reach, make a Basic Melee attack against that attacker. This counterattack is part of the Reaction and does not use your Main Action.\n\n**Duration:** The triggering defense and immediate counterattack.\n\n**Equipment / acquisition:** None.\n\nYou must wield a melee weapon to use this guard and counterattack. A granted counterattack cannot trigger another granted attack."
         },
         {
@@ -8126,6 +7843,7 @@
           "kind": "ability",
           "action": "Passive",
           "attribute": "None",
+          "duration": "Permanent.",
           "effect": "**Action:** Passive · **Attribute:** None\n\n**Target / range / shape:** Self.\n\nEach round you have one additional Reaction usable only for Measured Guard or an opportunity attack. Use at most one Measured Guard against a given attack. Your normal Reaction remains available for any reaction you know.\n\n**Duration:** Permanent.\n\n**Equipment / acquisition:** None."
         },
         {
@@ -8137,6 +7855,7 @@
           "kind": "ability",
           "action": "Passive",
           "attribute": "None",
+          "duration": "The triggering defense and counterattack.",
           "effect": "**Action:** Passive · **Attribute:** None\n\n**Target / range / shape:** Your Measured Guard.\n\nMeasured Guard grants its Basic Melee counterattack after a Standard or Strong defense. It remains one Reaction: declare the guard before defending, gain its Boon, resolve the triggering attack, then counter if the attacker is still in reach and you can attack.\n\n**Duration:** The triggering defense and counterattack.\n\n**Equipment / acquisition:** A ready melee weapon."
         }
       ],
@@ -8337,7 +8056,7 @@
       "id": "monk",
       "name": "Sera Quietstep",
       "level": 1,
-      "sourceCommit": "55cbd4c70f13704c684f7ba358f0d75bb62b1f30",
+      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
       "workingTree": false,
       "draft": {
         "name": "Sera Quietstep",
@@ -8535,6 +8254,7 @@
           "kind": "ability",
           "action": "Reaction",
           "attribute": "None (no roll)",
+          "duration": "The triggering defense and immediate counterattack.",
           "effect": "**Action:** Reaction · **Attribute:** None (no roll)\n\n**Target / range / shape:** Self, before a defense against an adjacent enemy.\n\nGain 1 Boon to the defense. After the attack resolves, if the defense was Strong and the attacker is within your reach, make a Basic Melee attack against that attacker. This counterattack is part of the Reaction and does not use your Main Action.\n\n**Duration:** The triggering defense and immediate counterattack.\n\n**Equipment / acquisition:** None.\n\nYou must wield a melee weapon to use this guard and counterattack. A granted counterattack cannot trigger another granted attack."
         }
       ],
@@ -8627,7 +8347,7 @@
       "id": "monk",
       "name": "Sera Quietstep",
       "level": 3,
-      "sourceCommit": "55cbd4c70f13704c684f7ba358f0d75bb62b1f30",
+      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
       "workingTree": false,
       "draft": {
         "name": "Sera Quietstep",
@@ -8884,6 +8604,7 @@
           "kind": "ability",
           "action": "Reaction",
           "attribute": "None (no roll)",
+          "duration": "The triggering defense and immediate counterattack.",
           "effect": "**Action:** Reaction · **Attribute:** None (no roll)\n\n**Target / range / shape:** Self, before a defense against an adjacent enemy.\n\nGain 1 Boon to the defense. After the attack resolves, if the defense was Strong and the attacker is within your reach, make a Basic Melee attack against that attacker. This counterattack is part of the Reaction and does not use your Main Action.\n\n**Duration:** The triggering defense and immediate counterattack.\n\n**Equipment / acquisition:** None.\n\nYou must wield a melee weapon to use this guard and counterattack. A granted counterattack cannot trigger another granted attack."
         },
         {
@@ -8895,6 +8616,7 @@
           "kind": "ability",
           "action": "Passive",
           "attribute": "None",
+          "duration": "The triggering defense and counterattack.",
           "effect": "**Action:** Passive · **Attribute:** None\n\n**Target / range / shape:** Your Measured Guard.\n\nMeasured Guard grants its Basic Melee counterattack after a Standard or Strong defense. It remains one Reaction: declare the guard before defending, gain its Boon, resolve the triggering attack, then counter if the attacker is still in reach and you can attack.\n\n**Duration:** The triggering defense and counterattack.\n\n**Equipment / acquisition:** A ready melee weapon."
         }
       ],
@@ -9010,7 +8732,7 @@
       "id": "monk",
       "name": "Sera Quietstep",
       "level": 7,
-      "sourceCommit": "55cbd4c70f13704c684f7ba358f0d75bb62b1f30",
+      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
       "workingTree": false,
       "draft": {
         "name": "Sera Quietstep",
@@ -9391,6 +9113,7 @@
           "kind": "ability",
           "action": "Reaction",
           "attribute": "None (no roll)",
+          "duration": "The triggering defense and immediate counterattack.",
           "effect": "**Action:** Reaction · **Attribute:** None (no roll)\n\n**Target / range / shape:** Self, before a defense against an adjacent enemy.\n\nGain 1 Boon to the defense. After the attack resolves, if the defense was Strong and the attacker is within your reach, make a Basic Melee attack against that attacker. This counterattack is part of the Reaction and does not use your Main Action.\n\n**Duration:** The triggering defense and immediate counterattack.\n\n**Equipment / acquisition:** None.\n\nYou must wield a melee weapon to use this guard and counterattack. A granted counterattack cannot trigger another granted attack."
         },
         {
@@ -9402,6 +9125,7 @@
           "kind": "ability",
           "action": "Passive",
           "attribute": "None",
+          "duration": "Permanent.",
           "effect": "**Action:** Passive · **Attribute:** None\n\n**Target / range / shape:** Self.\n\nEach round you have one additional Reaction usable only for Measured Guard or an opportunity attack. Use at most one Measured Guard against a given attack. Your normal Reaction remains available for any reaction you know.\n\n**Duration:** Permanent.\n\n**Equipment / acquisition:** None."
         },
         {
@@ -9413,6 +9137,7 @@
           "kind": "ability",
           "action": "Passive",
           "attribute": "None",
+          "duration": "The triggering defense and counterattack.",
           "effect": "**Action:** Passive · **Attribute:** None\n\n**Target / range / shape:** Your Measured Guard.\n\nMeasured Guard grants its Basic Melee counterattack after a Standard or Strong defense. It remains one Reaction: declare the guard before defending, gain its Boon, resolve the triggering attack, then counter if the attacker is still in reach and you can attack.\n\n**Duration:** The triggering defense and counterattack.\n\n**Equipment / acquisition:** A ready melee weapon."
         }
       ],
@@ -9599,7 +9324,7 @@
       "id": "paladin",
       "name": "Aldren Vowkeeper",
       "level": 1,
-      "sourceCommit": "55cbd4c70f13704c684f7ba358f0d75bb62b1f30",
+      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
       "workingTree": false,
       "draft": {
         "name": "Aldren Vowkeeper",
@@ -9818,6 +9543,7 @@
           "kind": "ability",
           "action": "Passive modifier to a melee weapon attack",
           "attribute": "Use that attack’s attribute",
+          "duration": "The attack.",
           "effect": "**Action:** Passive modifier to a melee weapon attack · **Attribute:** Use that attack’s attribute\n\n**Target / range / shape:** An enemy that damaged one of your allies since the end of your last turn.\n\n**Magic:** Magical weapon modifier · **SP:** 1\n\nOnce on your turn, declare Oathstrike and pay 1 SP before a melee weapon attack against that enemy. Add 1/2/3 radiant damage to the attack on Weak/Standard/Strong. Resolve each damage component’s resistance, then apply the minimum once to the whole attack. This magical weapon modifier is not a separate spell casting and does not require a free hand beyond the weapon’s requirements.\n\n**Duration:** The attack.\n\n**Equipment / acquisition:** The actual melee weapon required by the attack."
         }
       ],
@@ -9943,7 +9669,7 @@
       "id": "paladin",
       "name": "Aldren Vowkeeper",
       "level": 3,
-      "sourceCommit": "55cbd4c70f13704c684f7ba358f0d75bb62b1f30",
+      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
       "workingTree": false,
       "draft": {
         "name": "Aldren Vowkeeper",
@@ -10221,6 +9947,7 @@
           "kind": "ability",
           "action": "Passive modifier to a melee weapon attack",
           "attribute": "Use that attack’s attribute",
+          "duration": "The attack.",
           "effect": "**Action:** Passive modifier to a melee weapon attack · **Attribute:** Use that attack’s attribute\n\n**Target / range / shape:** An enemy that damaged one of your allies since the end of your last turn.\n\n**Magic:** Magical weapon modifier · **SP:** 1\n\nOnce on your turn, declare Oathstrike and pay 1 SP before a melee weapon attack against that enemy. Add 1/2/3 radiant damage to the attack on Weak/Standard/Strong. Resolve each damage component’s resistance, then apply the minimum once to the whole attack. This magical weapon modifier is not a separate spell casting and does not require a free hand beyond the weapon’s requirements.\n\n**Duration:** The attack.\n\n**Equipment / acquisition:** The actual melee weapon required by the attack."
         },
         {
@@ -10232,6 +9959,7 @@
           "kind": "ability",
           "action": "Passive",
           "attribute": "None",
+          "duration": "Immediate; Dazed decays normally.",
           "effect": "**Action:** Passive · **Attribute:** None\n\n**Target / range / shape:** Your Oathstrike target.\n\nOn Standard or Strong Oathstrike also pushes the target 1 square directly away from you. On Strong it also applies Dazed 1. Resolve Stability, collisions and condition immunity normally.\n\n**Duration:** Immediate; Dazed decays normally.\n\n**Equipment / acquisition:** None."
         }
       ],
@@ -10381,7 +10109,7 @@
       "id": "paladin",
       "name": "Aldren Vowkeeper",
       "level": 7,
-      "sourceCommit": "55cbd4c70f13704c684f7ba358f0d75bb62b1f30",
+      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
       "workingTree": false,
       "draft": {
         "name": "Aldren Vowkeeper",
@@ -10803,6 +10531,7 @@
           "kind": "ability",
           "action": "Passive modifier to a melee weapon attack",
           "attribute": "Use that attack’s attribute",
+          "duration": "The attack.",
           "effect": "**Action:** Passive modifier to a melee weapon attack · **Attribute:** Use that attack’s attribute\n\n**Target / range / shape:** An enemy that damaged one of your allies since the end of your last turn.\n\n**Magic:** Magical weapon modifier · **SP:** 1\n\nOnce on your turn, declare Oathstrike and pay 1 SP before a melee weapon attack against that enemy. Add 1/2/3 radiant damage to the attack on Weak/Standard/Strong. Resolve each damage component’s resistance, then apply the minimum once to the whole attack. This magical weapon modifier is not a separate spell casting and does not require a free hand beyond the weapon’s requirements.\n\n**Duration:** The attack.\n\n**Equipment / acquisition:** The actual melee weapon required by the attack."
         },
         {
@@ -10814,6 +10543,7 @@
           "kind": "ability",
           "action": "Main Action",
           "attribute": "Reason",
+          "duration": "Until the start of your next turn.",
           "effect": "**Action:** Main Action · **Attribute:** Reason\n\n**Target / range / shape:** A straight line starting from a point you can see within 5 squares.\n\nMake a Reason roll. Weak: 3 squares long; 1 radiant damage. Standard: 5 squares long; 2 radiant damage. Strong: 7 squares long; 3 radiant damage. The line is 1 square wide and lasts until the start of your next turn. You and allies you choose when you create it are unaffected. A creature takes the damage when the line appears in its square, when it enters a square of the line, or when it starts its turn there. A creature can take this damage only once per round. The line does not block movement.\n\n**Duration:** Until the start of your next turn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 2 SP, usable once per scene. You may have one threshold at a time; creating another ends it. Each creature takes its zone damage at most once per round. Damage dealt by occupying/crossing the persistent zone is non-attack damage and can be reduced to 0."
         },
         {
@@ -10825,6 +10555,7 @@
           "kind": "ability",
           "action": "Passive",
           "attribute": "None",
+          "duration": "Immediate; Dazed decays normally.",
           "effect": "**Action:** Passive · **Attribute:** None\n\n**Target / range / shape:** Your Oathstrike target.\n\nOn Standard or Strong Oathstrike also pushes the target 1 square directly away from you. On Strong it also applies Dazed 1. Resolve Stability, collisions and condition immunity normally.\n\n**Duration:** Immediate; Dazed decays normally.\n\n**Equipment / acquisition:** None."
         }
       ],
@@ -10937,9 +10668,6 @@
         "spell:restoration:6",
         "spell:restoration:7",
         "spell:restoration:8",
-        "spell:restoration:a1",
-        "spell:restoration:a2",
-        "spell:restoration:a3",
         "spell:protection:1",
         "spell:protection:2",
         "spell:protection:3",
@@ -11011,30 +10739,6 @@
           "effect": "Weave wounds closed across a small company. Roll once; each restores 4/6/8 HP after Life resistance."
         },
         {
-          "id": "spell:restoration:a1",
-          "name": "Heal",
-          "action": "Main Action",
-          "sp": 5,
-          "duration": "Instant",
-          "effect": "Flood the recipient with restorative power. Restore 8/12/16 HP after Life resistance and reduce both Bleeding and Poisoned by 2."
-        },
-        {
-          "id": "spell:restoration:a2",
-          "name": "Regenerate",
-          "action": "Ritual",
-          "sp": 5,
-          "duration": "Instant",
-          "effect": "Restore one missing nonvital limb or damaged ordinary sense, and restore 10 HP after Life resistance. The renewed part functions normally when the ritual finishes. Scars can remain as the player describes. This treats physical loss; curses use their named remedies."
-        },
-        {
-          "id": "spell:restoration:a3",
-          "name": "Mass Heal",
-          "action": "Main Action",
-          "sp": 5,
-          "duration": "Instant",
-          "effect": "Roll once for a shared healing total of 12/18/24 HP. Divide it among the chosen recipients, assigning at least 1 to each before Life resistance. Each recipient also reduces Bleeding by 2."
-        },
-        {
           "id": "spell:protection:1",
           "name": "Sacred Flame",
           "action": "Main Action",
@@ -11075,9 +10779,9 @@
         "Other": 0
       },
       "spellCounts": {
-        "total": 15,
+        "total": 12,
         "free": 3,
-        "paid": 12
+        "paid": 9
       },
       "castingBudget": {
         "maxSp": 18,
@@ -11120,7 +10824,7 @@
       "id": "ranger",
       "name": "Eryn Mossarrow",
       "level": 1,
-      "sourceCommit": "55cbd4c70f13704c684f7ba358f0d75bb62b1f30",
+      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
       "workingTree": false,
       "draft": {
         "name": "Eryn Mossarrow",
@@ -11349,6 +11053,7 @@
           "kind": "ability",
           "action": "Maneuver",
           "attribute": "None (no roll)",
+          "duration": "Until you move.",
           "effect": "**Action:** Maneuver · **Attribute:** None (no roll)\n\n**Target / range / shape:** Self; one visible creature.\n\nAim at one visible creature. Until you move, you gain 1 Boon to all attacks you make against that creature and ignore partial cover from it.\n\n**Duration:** Until you move.\n\n**Equipment / acquisition:** A ranged weapon and ammunition.\n\nThe benefit ends when you aim at another target or the scene ends. You must still perceive your target to attack it."
         }
       ],
@@ -11492,7 +11197,7 @@
       "id": "ranger",
       "name": "Eryn Mossarrow",
       "level": 3,
-      "sourceCommit": "55cbd4c70f13704c684f7ba358f0d75bb62b1f30",
+      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
       "workingTree": false,
       "draft": {
         "name": "Eryn Mossarrow",
@@ -11780,6 +11485,7 @@
           "kind": "ability",
           "action": "Maneuver",
           "attribute": "None (no roll)",
+          "duration": "Until you move.",
           "effect": "**Action:** Maneuver · **Attribute:** None (no roll)\n\n**Target / range / shape:** Self; one visible creature.\n\nAim at one visible creature. Until you move, you gain 1 Boon to all attacks you make against that creature and ignore partial cover from it.\n\n**Duration:** Until you move.\n\n**Equipment / acquisition:** A ranged weapon and ammunition.\n\nThe benefit ends when you aim at another target or the scene ends. You must still perceive your target to attack it."
         },
         {
@@ -11791,6 +11497,7 @@
           "kind": "ability",
           "action": "Main Action",
           "attribute": "Agility",
+          "duration": "Immediate.",
           "effect": "**Action:** Main Action · **Attribute:** Agility\n\n**Target / range / shape:** A 2 × 2 area within 10 squares.\n\nRequires a ranged weapon and ammunition. Make one Agility roll and apply it to each creature in the area. Weak: 1 physical damage. Standard: 2 physical damage. Strong: 3 physical damage. Roll once using the worst applicable Boon or Bane among the targets. Each target applies resistance separately. A creature can be affected once per use.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** A ranged weapon and ammunition."
         }
       ],
@@ -11958,7 +11665,7 @@
       "id": "ranger",
       "name": "Eryn Mossarrow",
       "level": 7,
-      "sourceCommit": "55cbd4c70f13704c684f7ba358f0d75bb62b1f30",
+      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
       "workingTree": false,
       "draft": {
         "name": "Eryn Mossarrow",
@@ -12390,6 +12097,7 @@
           "kind": "ability",
           "action": "Maneuver",
           "attribute": "None (no roll)",
+          "duration": "Until you move.",
           "effect": "**Action:** Maneuver · **Attribute:** None (no roll)\n\n**Target / range / shape:** Self; one visible creature.\n\nAim at one visible creature. Until you move, you gain 1 Boon to all attacks you make against that creature and ignore partial cover from it.\n\n**Duration:** Until you move.\n\n**Equipment / acquisition:** A ranged weapon and ammunition.\n\nThe benefit ends when you aim at another target or the scene ends. You must still perceive your target to attack it."
         },
         {
@@ -12401,6 +12109,7 @@
           "kind": "ability",
           "action": "Main Action",
           "attribute": "Agility",
+          "duration": "One day.",
           "effect": "**Action:** Main Action · **Attribute:** Agility\n\n**Target / range / shape:** One visible creature within 12 squares.\n\nRequires a ranged weapon and ammunition. Make a Basic Ranged attack as part of this action. After the attack resolves, the target is marked for one day with the glowing dust of a cave mushroom. While marked, you and each ally who can see it gain 2 Boons to any attack against it, ignore partial cover from it, and the target cannot hide. The mark deals no additional damage.\n\n**Duration:** One day.\n\n**Equipment / acquisition:** A ranged weapon and ammunition.\n\nThis ordinary mark is a physical luminous substance. An attack always applies it unless the target cannot be reached; damage immunity does not prevent marking. Cleaning it off takes 1 minute. Completely covering the mark suspends its visual benefits until exposed.\n\n**Frequency:** Once between safe overnight rests."
         },
         {
@@ -12412,6 +12121,7 @@
           "kind": "ability",
           "action": "Main Action",
           "attribute": "Agility",
+          "duration": "Immediate.",
           "effect": "**Action:** Main Action · **Attribute:** Agility\n\n**Target / range / shape:** A 2 × 2 area within 10 squares.\n\nRequires a ranged weapon and ammunition. Make one Agility roll and apply it to each creature in the area. Weak: 1 physical damage. Standard: 2 physical damage. Strong: 3 physical damage. Roll once using the worst applicable Boon or Bane among the targets. Each target applies resistance separately. A creature can be affected once per use.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** A ranged weapon and ammunition."
         }
       ],
@@ -12540,9 +12250,6 @@
         "spell:water:6",
         "spell:water:7",
         "spell:water:8",
-        "spell:water:a1",
-        "spell:water:a2",
-        "spell:water:a3",
         "spell:earth:3",
         "spell:earth:4"
       ],
@@ -12628,30 +12335,6 @@
           "effect": "Raise a solid ice wall 2 squares high. Each square has 8 HP and physical resistance 1; fire damage uses its full value. A destroyed square opens a passage. Existing structures support the wall's weight."
         },
         {
-          "id": "spell:water:a1",
-          "name": "Cone of Cold",
-          "action": "Main Action",
-          "sp": 5,
-          "duration": "Instant",
-          "effect": "Release a roaring blast of winter. Deal 4/6/9 cold damage and apply Freezing 1 to each creature in the cone."
-        },
-        {
-          "id": "spell:water:a2",
-          "name": "Freezing Sphere",
-          "action": "Main Action",
-          "sp": 5,
-          "duration": "Instant; frozen water lasts 10 minutes",
-          "effect": "Burst a globe of intense cold for 4/7/10 cold damage. Exposed surface water in the area freezes into a walkable crust; a creature can break one adjacent ice square with a Main Action and a suitable tool."
-        },
-        {
-          "id": "spell:water:a3",
-          "name": "Tsunami",
-          "action": "Main Action",
-          "sp": 5,
-          "duration": "Instant",
-          "effect": "Raise a surging wave from nearby water or conjured spray. Deal 4/6/8 physical damage, push each affected creature 2 squares away from you, and make it Prone on Strong. Stability applies to the push; the water drains away after resolution."
-        },
-        {
           "id": "spell:earth:3",
           "name": "Earthwall",
           "action": "Main Action",
@@ -12676,9 +12359,9 @@
         "Other": 1
       },
       "spellCounts": {
-        "total": 15,
+        "total": 12,
         "free": 2,
-        "paid": 13
+        "paid": 10
       },
       "castingBudget": {
         "maxSp": 17,
@@ -12721,7 +12404,7 @@
       "id": "rogue",
       "name": "Pip Nightjar",
       "level": 1,
-      "sourceCommit": "55cbd4c70f13704c684f7ba358f0d75bb62b1f30",
+      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
       "workingTree": false,
       "draft": {
         "name": "Pip Nightjar",
@@ -12939,6 +12622,7 @@
           "kind": "ability",
           "action": "Main Action",
           "attribute": "Agility",
+          "duration": "Immediate; Bleeding uses its normal decay.",
           "effect": "**Action:** Main Action · **Attribute:** Agility\n\n**Target / range / shape:** One creature within reach that has not noticed you or is adjacent to one of your allies.\n\nMake an Agility roll against the target. Weak: 3 physical damage. Standard: 4 physical damage, and the target has Bleeding 1. Strong: 6 physical damage, and the target has Bleeding 2.\n\n**Duration:** Immediate; Bleeding uses its normal decay.\n\n**Equipment / acquisition:** A melee weapon."
         }
       ],
@@ -13059,7 +12743,7 @@
       "id": "rogue",
       "name": "Pip Nightjar",
       "level": 3,
-      "sourceCommit": "55cbd4c70f13704c684f7ba358f0d75bb62b1f30",
+      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
       "workingTree": false,
       "draft": {
         "name": "Pip Nightjar",
@@ -13336,6 +13020,7 @@
           "kind": "ability",
           "action": "Main Action",
           "attribute": "Agility",
+          "duration": "Immediate; Bleeding uses its normal decay.",
           "effect": "**Action:** Main Action · **Attribute:** Agility\n\n**Target / range / shape:** One creature within reach that has not noticed you or is adjacent to one of your allies.\n\nMake an Agility roll against the target. Weak: 3 physical damage. Standard: 4 physical damage, and the target has Bleeding 1. Strong: 6 physical damage, and the target has Bleeding 2.\n\n**Duration:** Immediate; Bleeding uses its normal decay.\n\n**Equipment / acquisition:** A melee weapon."
         },
         {
@@ -13347,6 +13032,7 @@
           "kind": "ability",
           "action": "Passive",
           "attribute": "None",
+          "duration": "Ordinary condition decay.",
           "effect": "**Action:** Passive · **Attribute:** None\n\n**Target / range / shape:** The target of Blade in the Back.\n\nBlade in the Back also applies Slowed 1/2/3 on Weak/Standard/Strong. Apply condition immunity and decay normally. This improves the same attack rather than granting another one.\n\n**Duration:** Ordinary condition decay.\n\n**Equipment / acquisition:** None."
         }
       ],
@@ -13490,7 +13176,7 @@
       "id": "rogue",
       "name": "Pip Nightjar",
       "level": 7,
-      "sourceCommit": "55cbd4c70f13704c684f7ba358f0d75bb62b1f30",
+      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
       "workingTree": false,
       "draft": {
         "name": "Pip Nightjar",
@@ -13901,6 +13587,7 @@
           "kind": "ability",
           "action": "Main Action",
           "attribute": "Agility",
+          "duration": "Immediate; Bleeding uses its normal decay.",
           "effect": "**Action:** Main Action · **Attribute:** Agility\n\n**Target / range / shape:** One creature within reach that has not noticed you or is adjacent to one of your allies.\n\nMake an Agility roll against the target. Weak: 3 physical damage. Standard: 4 physical damage, and the target has Bleeding 1. Strong: 6 physical damage, and the target has Bleeding 2.\n\n**Duration:** Immediate; Bleeding uses its normal decay.\n\n**Equipment / acquisition:** A melee weapon."
         },
         {
@@ -13912,6 +13599,7 @@
           "kind": "ability",
           "action": "Reaction",
           "attribute": "Agility",
+          "duration": "Immediate.",
           "effect": "**Action:** Reaction · **Attribute:** Agility\n\n**Target / range / shape:** The triggering creature within the ordinary range of your ready weapon; use Basic Melee reach or Basic Ranged range as appropriate.\n\nTrigger: another creature you can see declares an action. Make an Agility attack roll with a weapon against the target. Weak: 3 physical damage. The triggering action resolves. Standard: 5 physical damage. The triggering action is interrupted and lost. Strong: 7 physical damage, and the target has Dazed 1. The triggering action is interrupted and lost.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** A weapon.\n\nUse this Reaction once per scene. Declare it before the target resolves its triggering action; resolve this signature first. It grants no further attacks."
         },
         {
@@ -13923,6 +13611,7 @@
           "kind": "ability",
           "action": "Passive",
           "attribute": "None",
+          "duration": "Ordinary condition decay.",
           "effect": "**Action:** Passive · **Attribute:** None\n\n**Target / range / shape:** The target of Blade in the Back.\n\nBlade in the Back also applies Slowed 1/2/3 on Weak/Standard/Strong. Apply condition immunity and decay normally. This improves the same attack rather than granting another one.\n\n**Duration:** Ordinary condition decay.\n\n**Equipment / acquisition:** None."
         }
       ],
@@ -14123,7 +13812,7 @@
       "id": "sorcerer",
       "name": "Ilyra Cinderblood",
       "level": 1,
-      "sourceCommit": "55cbd4c70f13704c684f7ba358f0d75bb62b1f30",
+      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
       "workingTree": false,
       "draft": {
         "name": "Ilyra Cinderblood",
@@ -14351,6 +14040,7 @@
           "kind": "ability",
           "action": "Passive",
           "attribute": "None — no roll",
+          "duration": "For that spell.",
           "effect": "**Action:** Passive · **Attribute:** None — no roll\n\n**Target / range / shape:** One of your spell attacks; choose one visible, unoccupied square within 6 squares of you before rolling.\n\nChoose one of your spell attacks. It can originate from any visible, unoccupied square within 6 squares of you. Determine cover and attack path from that square, but measure range from you. You must know the target’s location. Roll the spell attack normally.\n\n**Duration:** For that spell.\n\n**Equipment / acquisition:** None.\n\nUse this shaping once on your turn. It changes the origin of an existing spell attack and uses that spell’s action, roll and SP; it is not a separate spell."
         }
       ],
@@ -14491,7 +14181,7 @@
       "id": "sorcerer",
       "name": "Ilyra Cinderblood",
       "level": 3,
-      "sourceCommit": "55cbd4c70f13704c684f7ba358f0d75bb62b1f30",
+      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
       "workingTree": false,
       "draft": {
         "name": "Ilyra Cinderblood",
@@ -14788,6 +14478,7 @@
           "kind": "ability",
           "action": "Passive",
           "attribute": "None — no roll",
+          "duration": "For that spell.",
           "effect": "**Action:** Passive · **Attribute:** None — no roll\n\n**Target / range / shape:** One of your spell attacks; choose one visible, unoccupied square within 6 squares of you before rolling.\n\nChoose one of your spell attacks. It can originate from any visible, unoccupied square within 6 squares of you. Determine cover and attack path from that square, but measure range from you. You must know the target’s location. Roll the spell attack normally.\n\n**Duration:** For that spell.\n\n**Equipment / acquisition:** None.\n\nUse this shaping once on your turn. It changes the origin of an existing spell attack and uses that spell’s action, roll and SP; it is not a separate spell."
         },
         {
@@ -14799,6 +14490,7 @@
           "kind": "ability",
           "action": "Reaction",
           "attribute": "None (no roll)",
+          "duration": "Until the end of the ally’s turn.",
           "effect": "**Action:** Reaction · **Attribute:** None (no roll)\n\n**Target / range / shape:** One willing ally on their turn, before they take any action; choose two visible, unoccupied squares within 6 squares of you.\n\nThe two squares become connected windows until the end of the ally’s turn. The ally can use the windows once at any point during their turn, either to move through one and out the other, spending 1 square of movement, or to make one attack through one window, measuring range and cover from the other. The ally must be able to see the window they use. The windows vanish at the end of the ally’s turn. This movement does not provoke opportunity attacks.\n\n**Duration:** Until the end of the ally’s turn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP. Cast at the start of the willing ally’s turn before it acts. The windows grant a passage or attack route, not an extra attack.\n\n**Frequency:** Once per round."
         }
       ],
@@ -14818,9 +14510,6 @@
         "spell:flame:6",
         "spell:flame:7",
         "spell:flame:8",
-        "spell:flame:a1",
-        "spell:flame:a2",
-        "spell:flame:a3",
         "spell:air:3",
         "spell:air:4"
       ],
@@ -14938,30 +14627,6 @@
           "effect": "Wreathe yourself in protective heat. Gain cold resistance 2. A creature that damages you with an adjacent melee attack takes 2 fire damage after its attack resolves, once per attacker per round."
         },
         {
-          "id": "spell:flame:a1",
-          "name": "Fire Storm",
-          "action": "Main Action",
-          "sp": 5,
-          "duration": "Instant",
-          "effect": "Trace a winding furnace across the battlefield. Deal 4/7/10 fire damage to each creature in the chosen squares. Each creature is affected once; exposed unattended flammable objects ignite."
-        },
-        {
-          "id": "spell:flame:a2",
-          "name": "Delayed Blast Fireball",
-          "action": "Main Action",
-          "sp": 5,
-          "duration": "Sustained, up to 3 rounds",
-          "effect": "Place a glowing bead at the point. On casting, or after a later upkeep, you may detonate it. Roll on detonation for 4/6/9 fire damage, adding 1 damage per completed upkeep, maximum +2. Ending sustain or touching the bead detonates it immediately. Every creature in the burst is affected once."
-        },
-        {
-          "id": "spell:flame:a3",
-          "name": "Incendiary Cloud",
-          "action": "Main Action",
-          "sp": 5,
-          "duration": "1 minute",
-          "effect": "Fill the area with opaque, burning smoke. Roll when cast to set fire damage at 3/5/7. Creatures in it immediately take that damage. Thereafter a creature takes it on first entering or ending its turn there, at most once each round including the casting event. A Maneuver can move the cloud’s center up to 2 squares; entering a creature’s square counts as that creature entering the cloud. The cloud remains in place without that Maneuver. Keep one Incendiary Cloud active; casting another ends the first."
-        },
-        {
           "id": "spell:air:3",
           "name": "Fog Cloud",
           "action": "Main Action",
@@ -14986,9 +14651,9 @@
         "Other": 0
       },
       "spellCounts": {
-        "total": 19,
+        "total": 16,
         "free": 4,
-        "paid": 15
+        "paid": 12
       },
       "castingBudget": {
         "maxSp": 20,
@@ -15022,7 +14687,7 @@
       "id": "sorcerer",
       "name": "Ilyra Cinderblood",
       "level": 7,
-      "sourceCommit": "55cbd4c70f13704c684f7ba358f0d75bb62b1f30",
+      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
       "workingTree": false,
       "draft": {
         "name": "Ilyra Cinderblood",
@@ -15214,6 +14879,15 @@
                   "id": "spellcraft:soul-capacity:7"
                 },
                 {
+                  "id": "flame:4"
+                },
+                {
+                  "id": "flame:5"
+                },
+                {
+                  "id": "flame:6"
+                },
+                {
                   "id": "air:2"
                 },
                 {
@@ -15227,18 +14901,6 @@
                 },
                 {
                   "id": "emotion:3"
-                },
-                {
-                  "id": "spellcraft:recovery:2"
-                },
-                {
-                  "id": "spellcraft:recovery:3"
-                },
-                {
-                  "id": "spellcraft:recovery:4"
-                },
-                {
-                  "id": "mastery:meteor-swarm"
                 }
               ],
               "signatures": {
@@ -15266,8 +14928,8 @@
       },
       "development": {
         "level": 7,
-        "current": 3,
-        "spent": 58,
+        "current": 1,
+        "spent": 60,
         "total": 61,
         "expired": 0
       },
@@ -15385,6 +15047,27 @@
           "requiredLevel": 7
         },
         {
+          "id": "flame:4",
+          "name": "Fire Storm",
+          "paidDp": 4,
+          "level": 7,
+          "requiredLevel": 3
+        },
+        {
+          "id": "flame:5",
+          "name": "Delayed Blast Fireball",
+          "paidDp": 4,
+          "level": 7,
+          "requiredLevel": 3
+        },
+        {
+          "id": "flame:6",
+          "name": "Meteor Swarm",
+          "paidDp": 5,
+          "level": 7,
+          "requiredLevel": 7
+        },
+        {
           "id": "air:2",
           "name": "Air III",
           "paidDp": 2,
@@ -15418,34 +15101,6 @@
           "paidDp": 3,
           "level": 7,
           "requiredLevel": 3
-        },
-        {
-          "id": "spellcraft:recovery:2",
-          "name": "Recovery II",
-          "paidDp": 2,
-          "level": 7,
-          "requiredLevel": 1
-        },
-        {
-          "id": "spellcraft:recovery:3",
-          "name": "Recovery III",
-          "paidDp": 2,
-          "level": 7,
-          "requiredLevel": 1
-        },
-        {
-          "id": "spellcraft:recovery:4",
-          "name": "Quiet Renewal I",
-          "paidDp": 3,
-          "level": 7,
-          "requiredLevel": 3
-        },
-        {
-          "id": "mastery:meteor-swarm",
-          "name": "Meteor Swarm",
-          "paidDp": 4,
-          "level": 7,
-          "requiredLevel": 7
         }
       ],
       "signatureChoices": {
@@ -15463,6 +15118,7 @@
           "kind": "ability",
           "action": "Passive",
           "attribute": "None — no roll",
+          "duration": "For that spell.",
           "effect": "**Action:** Passive · **Attribute:** None — no roll\n\n**Target / range / shape:** One of your spell attacks; choose one visible, unoccupied square within 6 squares of you before rolling.\n\nChoose one of your spell attacks. It can originate from any visible, unoccupied square within 6 squares of you. Determine cover and attack path from that square, but measure range from you. You must know the target’s location. Roll the spell attack normally.\n\n**Duration:** For that spell.\n\n**Equipment / acquisition:** None.\n\nUse this shaping once on your turn. It changes the origin of an existing spell attack and uses that spell’s action, roll and SP; it is not a separate spell."
         },
         {
@@ -15474,6 +15130,7 @@
           "kind": "ability",
           "action": "Reaction",
           "attribute": "None (use each spell’s casting attribute)",
+          "duration": "Spell resolves immediately; defense penalty ends at the start of your next turn.",
           "effect": "**Action:** Reaction · **Attribute:** None (use each spell’s casting attribute)\n\n**Target / range / shape:** Your own single-target, instantaneous spell that requires a roll, before its roll.\n\nOnce per scene, choose two distinct legal targets. Resolve the spell separately against each, paying its SP cost once. This shapes the original casting rather than casting a second spell. Take 2 Banes on defense rolls until the start of your next turn. Use the spell’s ordinary range, action, casting requirements and effects for both resolutions.\n\n**Duration:** Spell resolves immediately; defense penalty ends at the start of your next turn.\n\n**Equipment / acquisition:** None."
         },
         {
@@ -15485,6 +15142,7 @@
           "kind": "ability",
           "action": "Reaction",
           "attribute": "None (no roll)",
+          "duration": "Until the end of the ally’s turn.",
           "effect": "**Action:** Reaction · **Attribute:** None (no roll)\n\n**Target / range / shape:** One willing ally on their turn, before they take any action; choose two visible, unoccupied squares within 6 squares of you.\n\nThe two squares become connected windows until the end of the ally’s turn. The ally can use the windows once at any point during their turn, either to move through one and out the other, spending 1 square of movement, or to make one attack through one window, measuring range and cover from the other. The ally must be able to see the window they use. The windows vanish at the end of the ally’s turn. This movement does not provoke opportunity attacks.\n\n**Duration:** Until the end of the ally’s turn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP. Cast at the start of the willing ally’s turn before it acts. The windows grant a passage or attack route, not an extra attack.\n\n**Frequency:** Once per round."
         }
       ],
@@ -15504,28 +15162,21 @@
         "spell:flame:6",
         "spell:flame:7",
         "spell:flame:8",
-        "spell:flame:a1",
-        "spell:flame:a2",
-        "spell:flame:a3",
         "spell:air:3",
         "spell:air:4",
+        "spell:flame:a1",
+        "spell:flame:a2",
+        "spell-mastery:meteor-swarm",
         "spell:air:5",
         "spell:air:6",
         "spell:air:7",
         "spell:air:8",
-        "spell:air:a1",
-        "spell:air:a2",
-        "spell:air:a3",
         "spell:emotion:3",
         "spell:emotion:4",
         "spell:emotion:5",
         "spell:emotion:6",
         "spell:emotion:7",
-        "spell:emotion:8",
-        "spell:emotion:a1",
-        "spell:emotion:a2",
-        "spell:emotion:a3",
-        "spell-mastery:meteor-swarm"
+        "spell:emotion:8"
       ],
       "spells": [
         {
@@ -15641,6 +15292,22 @@
           "effect": "Wreathe yourself in protective heat. Gain cold resistance 2. A creature that damages you with an adjacent melee attack takes 2 fire damage after its attack resolves, once per attacker per round."
         },
         {
+          "id": "spell:air:3",
+          "name": "Fog Cloud",
+          "action": "Main Action",
+          "sp": 1,
+          "duration": "1 minute",
+          "effect": "Gather an opaque bank of fog that blocks sight through its area. Strong wind disperses the cloud. Creatures may navigate by other senses and remembered positions."
+        },
+        {
+          "id": "spell:air:4",
+          "name": "Gust of Wind",
+          "action": "Main Action",
+          "sp": 2,
+          "duration": "Instant",
+          "effect": "Drive a powerful gust along the line. Push each affected creature 1/2/3 squares away from you and disperse ordinary smoke or fog in the line. Stability applies to the push."
+        },
+        {
           "id": "spell:flame:a1",
           "name": "Fire Storm",
           "action": "Main Action",
@@ -15657,28 +15324,12 @@
           "effect": "Place a glowing bead at the point. On casting, or after a later upkeep, you may detonate it. Roll on detonation for 4/6/9 fire damage, adding 1 damage per completed upkeep, maximum +2. Ending sustain or touching the bead detonates it immediately. Every creature in the burst is affected once."
         },
         {
-          "id": "spell:flame:a3",
-          "name": "Incendiary Cloud",
+          "id": "spell-mastery:meteor-swarm",
+          "name": "Meteor Swarm",
           "action": "Main Action",
-          "sp": 5,
-          "duration": "1 minute",
-          "effect": "Fill the area with opaque, burning smoke. Roll when cast to set fire damage at 3/5/7. Creatures in it immediately take that damage. Thereafter a creature takes it on first entering or ending its turn there, at most once each round including the casting event. A Maneuver can move the cloud’s center up to 2 squares; entering a creature’s square counts as that creature entering the cloud. The cloud remains in place without that Maneuver. Keep one Incendiary Cloud active; casting another ends the first."
-        },
-        {
-          "id": "spell:air:3",
-          "name": "Fog Cloud",
-          "action": "Main Action",
-          "sp": 1,
-          "duration": "1 minute",
-          "effect": "Gather an opaque bank of fog that blocks sight through its area. Strong wind disperses the cloud. Creatures may navigate by other senses and remembered positions."
-        },
-        {
-          "id": "spell:air:4",
-          "name": "Gust of Wind",
-          "action": "Main Action",
-          "sp": 2,
+          "sp": 6,
           "duration": "Instant",
-          "effect": "Drive a powerful gust along the line. Push each affected creature 1/2/3 squares away from you and disperse ordinary smoke or fog in the line. Stability applies to the push."
+          "effect": "Call a fall of blazing meteors onto the chosen points. Roll once; every creature within 1 square of a point takes 4/7/10 fire damage, including allies. Overlapping bursts affect a creature once. Exposed unattended flammable objects ignite."
         },
         {
           "id": "spell:air:5",
@@ -15711,30 +15362,6 @@
           "sp": 4,
           "duration": "1 minute",
           "effect": "Raise a wind barrier 3 squares high. Physical ranged attacks through it receive 2 Banes. The wall disperses ordinary airborne smoke and gas in its squares. Creatures pass through at an extra movement cost of 1 per wall square."
-        },
-        {
-          "id": "spell:air:a1",
-          "name": "Chain Lightning",
-          "action": "Main Action",
-          "sp": 5,
-          "duration": "Instant",
-          "effect": "Lightning leaps along your chosen chain. Roll once and deal 4/6/8 lightning damage to each target. Affect each creature once."
-        },
-        {
-          "id": "spell:air:a2",
-          "name": "Control Weather",
-          "action": "Ritual",
-          "sp": 5,
-          "duration": "8 hours",
-          "effect": "Gradually change local weather over the casting hour: clear or gather clouds, bring ordinary rain or snow, or raise or calm strong wind. Choose one weather change. Seasonal temperatures and sound shelter remain relevant. The change creates ordinary weather rather than attack damage."
-        },
-        {
-          "id": "spell:air:a3",
-          "name": "Wind Walk",
-          "action": "Ritual",
-          "sp": 5,
-          "duration": "8 hours",
-          "effect": "Transform the company and carried gear into windborne mist. Each travels at Speed 12, can rise freely, and can speak to fellow travelers. Returning to solid form or mist takes 1 uninterrupted minute. While mist, use movement and observation; handling objects and casting require solid form. On expiry, choose the nearest safe ground within 6 squares."
         },
         {
           "id": "spell:emotion:3",
@@ -15783,38 +15410,6 @@
           "sp": 4,
           "duration": "Instant; conditions decay normally",
           "effect": "Scatter attention with conflicting impulses. Apply Dazed 1/1/2. Each affected creature chooses its remaining action categories normally when its turn begins."
-        },
-        {
-          "id": "spell:emotion:a1",
-          "name": "Mass Suggestion",
-          "action": "Main Action",
-          "sp": 5,
-          "duration": "One social objective, up to 10 minutes",
-          "effect": "Propose one common course of action. Add 3/5/7 progress toward a single attainable group objective. The DA sets the concession and boundaries before casting. A later attempt needs a new relevant contribution."
-        },
-        {
-          "id": "spell:emotion:a2",
-          "name": "Dominate Person",
-          "action": "Main Action",
-          "sp": 5,
-          "duration": "Until the end of its next turn",
-          "effect": "State one brief command: move to a named safe place, release a held object, or perform one ordinary interaction. On its turn the target chooses to perform that command using its own actions or suffer Dazed 1/2/3 from resisting the pressure. Once that choice resolves, the command ends."
-        },
-        {
-          "id": "spell:emotion:a3",
-          "name": "Antipathy/Sympathy",
-          "action": "Ritual",
-          "sp": 5,
-          "duration": "1 hour",
-          "effect": "Choose a recognizable group and either welcome or dread. When a matching creature first enters, it feels the chosen pull and recognizes it as magic. Welcome supplies 1 Boon to your group's first relevant social contribution there; dread applies Frightened 1/2/3, set by your ritual roll, once per creature. Identify the object or place as the fear source."
-        },
-        {
-          "id": "spell-mastery:meteor-swarm",
-          "name": "Meteor Swarm",
-          "action": "Main Action",
-          "sp": 6,
-          "duration": "Instant",
-          "effect": "Main Action · Knowledge · 6 SP. Choose up to three visible points within 12 squares. Roll once; every creature within 1 square of a chosen point takes 4/7/10 fire damage. A creature in overlapping areas takes damage once. Allies are not exempt. Unattended flammable objects ignite. This is one spell, not three separate castings."
         }
       ],
       "actionCounts": {
@@ -15825,13 +15420,13 @@
         "Other": 0
       },
       "spellCounts": {
-        "total": 36,
+        "total": 29,
         "free": 4,
-        "paid": 32
+        "paid": 25
       },
       "castingBudget": {
         "maxSp": 38,
-        "oncePerRestRecovery": 4,
+        "oncePerRestRecovery": 1,
         "castsAtCost": {
           "1": 38,
           "2": 19,
@@ -15839,10 +15434,10 @@
           "5": 7
         },
         "castsAfterRecovery": {
-          "1": 42,
-          "2": 21,
-          "3": 14,
-          "5": 8
+          "1": 39,
+          "2": 19,
+          "3": 13,
+          "5": 7
         },
         "note": "Alternative uses of the same reserve, not simultaneous allocations. Assumes SP is spent before recovery; time, spell-specific limits, components and maintained actions still apply. Signature spells and conditional discounts are described separately."
       },
@@ -15858,13 +15453,19 @@
       ],
       "resolved": "Bent Trajectory remains a shaping identity, with real later spell duplication bounded to instantaneous targets. Reserves and recovery can now grow through the full training tail.",
       "remaining": "The charismatic ability array still gives less SP than a Knowledge-focused arcanist. Shaping is one line, not a free menu of all metamagic; learned Meteor Swarm still requires its SP and actual casting circumstances.",
-      "deferred": []
+      "deferred": [
+        {
+          "level": 7,
+          "id": "spellcraft:recovery:2",
+          "reason": "Costs 2 DP. You have 1 DP."
+        }
+      ]
     },
     {
       "id": "warlock",
       "name": "Vesper Ashpact",
       "level": 1,
-      "sourceCommit": "55cbd4c70f13704c684f7ba358f0d75bb62b1f30",
+      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
       "workingTree": false,
       "draft": {
         "name": "Vesper Ashpact",
@@ -16082,6 +15683,7 @@
           "kind": "ability",
           "action": "Main Action",
           "attribute": "Reason",
+          "duration": "Attack immediate; accepted defense penalty until your next turn.",
           "effect": "**Action:** Main Action · **Attribute:** Reason\n\n**Target / range / shape:** One visible creature within 8 squares.\n\n**Magic:** Spell · **SP:** 0\n\nChoose a patron or supernatural compact with the DA when learning this signature; your choices remain your own. Cast Pact Bolt for 2/3/5 force damage on Weak/Standard/Strong. Once per scene, before this roll, you may accept 1 Bane to defenses until the start of your next turn to gain 1 Boon on the bolt’s roll.\n\n**Duration:** Attack immediate; accepted defense penalty until your next turn.\n\n**Equipment / acquisition:** A free hand."
         }
       ],
@@ -16204,7 +15806,7 @@
       "id": "warlock",
       "name": "Vesper Ashpact",
       "level": 3,
-      "sourceCommit": "55cbd4c70f13704c684f7ba358f0d75bb62b1f30",
+      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
       "workingTree": false,
       "draft": {
         "name": "Vesper Ashpact",
@@ -16491,6 +16093,7 @@
           "kind": "ability",
           "action": "Main Action",
           "attribute": "Reason",
+          "duration": "Attack immediate; accepted defense penalty until your next turn.",
           "effect": "**Action:** Main Action · **Attribute:** Reason\n\n**Target / range / shape:** One visible creature within 8 squares.\n\n**Magic:** Spell · **SP:** 0\n\nChoose a patron or supernatural compact with the DA when learning this signature; your choices remain your own. Cast Pact Bolt for 2/3/5 force damage on Weak/Standard/Strong. Once per scene, before this roll, you may accept 1 Bane to defenses until the start of your next turn to gain 1 Boon on the bolt’s roll.\n\n**Duration:** Attack immediate; accepted defense penalty until your next turn.\n\n**Equipment / acquisition:** A free hand."
         },
         {
@@ -16502,6 +16105,7 @@
           "kind": "ability",
           "action": "Passive",
           "attribute": "None",
+          "duration": "The bolt and ordinary condition decay.",
           "effect": "**Action:** Passive · **Attribute:** None\n\n**Target / range / shape:** Your Pact Bolt.\n\nBefore rolling Pact Bolt, you may choose to bind as well as wound. On Standard reduce its damage by 1 and apply Slowed 1; on Strong reduce damage by 1 and apply Slowed 2. Weak deals the ordinary damage. Apply resistance and attack minimum normally; Slowed decays normally.\n\n**Duration:** The bolt and ordinary condition decay.\n\n**Equipment / acquisition:** None."
         }
       ],
@@ -16663,7 +16267,7 @@
       "id": "warlock",
       "name": "Vesper Ashpact",
       "level": 7,
-      "sourceCommit": "55cbd4c70f13704c684f7ba358f0d75bb62b1f30",
+      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
       "workingTree": false,
       "draft": {
         "name": "Vesper Ashpact",
@@ -17114,6 +16718,7 @@
           "kind": "ability",
           "action": "Main Action",
           "attribute": "Reason",
+          "duration": "Attack immediate; accepted defense penalty until your next turn.",
           "effect": "**Action:** Main Action · **Attribute:** Reason\n\n**Target / range / shape:** One visible creature within 8 squares.\n\n**Magic:** Spell · **SP:** 0\n\nChoose a patron or supernatural compact with the DA when learning this signature; your choices remain your own. Cast Pact Bolt for 2/3/5 force damage on Weak/Standard/Strong. Once per scene, before this roll, you may accept 1 Bane to defenses until the start of your next turn to gain 1 Boon on the bolt’s roll.\n\n**Duration:** Attack immediate; accepted defense penalty until your next turn.\n\n**Equipment / acquisition:** A free hand."
         },
         {
@@ -17125,6 +16730,7 @@
           "kind": "ability",
           "action": "Reaction",
           "attribute": "None",
+          "duration": "Until the start of your next turn.",
           "effect": "**Action:** Reaction · **Attribute:** None\n\n**Target / range / shape:** Self, when you would receive your third death failure.\n\n**Magic:** Magical pact reprieve (not a spell)\n\nOnce between safe overnight rests, delay your death until the start of your next turn. You remain at 0 HP with three failures and make no further death rolls during this delay. Stabilization or healing above 0 clears the danger under ordinary recovery rules. At the start of your next turn, if you still have three failures, you die unless you spend Grit immediately. You can use this specific Reaction while Dying, even if unconscious.\n\n**Duration:** Until the start of your next turn.\n\n**Equipment / acquisition:** None."
         },
         {
@@ -17136,6 +16742,7 @@
           "kind": "ability",
           "action": "Passive",
           "attribute": "None",
+          "duration": "The bolt and ordinary condition decay.",
           "effect": "**Action:** Passive · **Attribute:** None\n\n**Target / range / shape:** Your Pact Bolt.\n\nBefore rolling Pact Bolt, you may choose to bind as well as wound. On Standard reduce its damage by 1 and apply Slowed 1; on Strong reduce damage by 1 and apply Slowed 2. Weak deals the ordinary damage. Apply resistance and attack minimum normally; Slowed decays normally.\n\n**Duration:** The bolt and ordinary condition decay.\n\n**Equipment / acquisition:** None."
         }
       ],
@@ -17155,27 +16762,18 @@
         "spell:binding:6",
         "spell:binding:7",
         "spell:binding:8",
-        "spell:binding:a1",
-        "spell:binding:a2",
-        "spell:binding:a3",
         "spell:spirits:3",
         "spell:spirits:4",
         "spell:spirits:5",
         "spell:spirits:6",
         "spell:spirits:7",
         "spell:spirits:8",
-        "spell:spirits:a1",
-        "spell:spirits:a2",
-        "spell:spirits:a3",
         "spell:calling:3",
         "spell:calling:4",
         "spell:calling:5",
         "spell:calling:6",
         "spell:calling:7",
         "spell:calling:8",
-        "spell:calling:a1",
-        "spell:calling:a2",
-        "spell:calling:a3",
         "spell:perception:3",
         "spell:perception:4",
         "spell:perception:5",
@@ -17295,30 +16893,6 @@
           "effect": "Close binding bands around the target. Apply Slowed 2/3/4 and Paralyzed 1/1/2. Each upkeep renews this casting’s original ratings rather than adding to them. A conscious target may spend a Main Action to attempt escape using the printed hold and escape attributes, even while the bands restrict its actions. Escape or ending Sustain removes this casting’s conditions from the target."
         },
         {
-          "id": "spell:binding:a1",
-          "name": "Dominate Monster",
-          "action": "Main Action",
-          "sp": 5,
-          "duration": "Until the end of its next turn",
-          "effect": "Command one ordinary movement or interaction within the creature's abilities. It may obey using its own actions or take 4/6/8 mental damage and Dazed 1/1/2. Its player chooses for a hero. The command ends after that choice resolves."
-        },
-        {
-          "id": "spell:binding:a2",
-          "name": "Forcecage",
-          "action": "Main Action",
-          "sp": 5,
-          "duration": "1 minute",
-          "effect": "Form a cage around creatures fitting inside its boundary. Your casting roll gives it 10/15/20 HP. When an NPC casts around heroes, each enclosed hero rolls Reason instead. Use the strongest defense to give the shared cage 20/15/10 HP on Weak/Standard/Strong. The bars block bodily passage but allow sight and ranged targeting. The cage has resistance 2 to all damage and takes at least 1 per attack. Teleportation or destroying it permits escape. The caster may end it with a Maneuver."
-        },
-        {
-          "id": "spell:binding:a3",
-          "name": "Imprisonment",
-          "action": "Ritual",
-          "sp": 5,
-          "duration": "Until released or the crystal is broken",
-          "effect": "Enclose the creature in a palm-sized crystal where it sleeps and its needs pause. The crystal has 10 HP and physical resistance 1. Breaking it, Remove Curse, or your Main Action holding it releases the creature into the nearest open square with its prior HP and resources. Keep one such prison at a time."
-        },
-        {
           "id": "spell:spirits:3",
           "name": "Speak with Dead",
           "action": "Ritual",
@@ -17365,30 +16939,6 @@
           "sp": 4,
           "duration": "Instant",
           "effect": "Ask one question. Weak brings a truthful but symbolic clue, Standard a direct answer within the source's knowledge, and Strong adds a relevant warning or lead. The DA establishes the source's identity and disposition through the contact."
-        },
-        {
-          "id": "spell:spirits:a1",
-          "name": "Etherealness",
-          "action": "Main Action",
-          "sp": 5,
-          "duration": "1 minute",
-          "effect": "Step partly into the spirit realm. Move at half Speed through ordinary solid material up to 1 square thick, ending each turn in open space. Observe spirits and physical surroundings as pale outlines. Return with a Maneuver to handle physical objects or cast. Expiry returns you to the nearest open square within 3 squares."
-        },
-        {
-          "id": "spell:spirits:a2",
-          "name": "Create Undead",
-          "action": "Main Action",
-          "sp": 5,
-          "duration": "1 minute, with commands",
-          "effect": "Shape one Undead energy form rated 7 or lower from Summoned Companions. Give its immediate Main command and use the printed profile, normal commands and six-square tether."
-        },
-        {
-          "id": "spell:spirits:a3",
-          "name": "Lifegiving",
-          "action": "Ritual",
-          "sp": 5,
-          "duration": "Instant",
-          "effect": "Consume 100 coins of funerary incense and return the person at 1 HP, with both death roll tallies cleared and fatal injuries closed. The spirit chooses whether to return. Retain scars, spent SP and spent Grit. This uses the person's one lifetime return through Lifegiving, Mass Lifegiving or True Resurrection."
         },
         {
           "id": "spell:calling:3",
@@ -17439,30 +16989,6 @@
           "effect": "Manifest a serpentine storm-dragon using the Storm Column summoned profile. Its shape expresses the spell; use that profile's movement, attacks and defenses. Give one immediate Main command, then normal commands and the six-square tether."
         },
         {
-          "id": "spell:calling:a1",
-          "name": "Conjure Celestial",
-          "action": "Main Action",
-          "sp": 5,
-          "duration": "1 minute, with commands",
-          "effect": "Call a radiant champion using the Oath Flame summoned profile. Give its immediate Main command and follow the normal six-square tether and command procedures. Any healing it performs spends your SP as printed."
-        },
-        {
-          "id": "spell:calling:a2",
-          "name": "Planar Ally",
-          "action": "Ritual",
-          "sp": 5,
-          "duration": "Up to 10 minutes of conversation",
-          "effect": "Invite the being to negotiate one specific service. The DA presents its response, terms and requested payment. Agreement establishes when and how it can assist through its actual capabilities. Any creature that arrives is an independent guest, with the agreed role and duration of service."
-        },
-        {
-          "id": "spell:calling:a3",
-          "name": "Gate — Calling",
-          "action": "Ritual",
-          "sp": 5,
-          "duration": "1 minute",
-          "effect": "Send an invitation naming the destination and purpose. If accepted, open a doorway through which that being and its carried possessions may enter once. The door closes after its arrival or after one minute. The guest acts independently; agree on its service through conversation."
-        },
-        {
           "id": "spell:perception:3",
           "name": "Disguise Self",
           "action": "Main Action",
@@ -17503,9 +17029,9 @@
         "Other": 0
       },
       "spellCounts": {
-        "total": 39,
+        "total": 30,
         "free": 4,
-        "paid": 35
+        "paid": 26
       },
       "castingBudget": {
         "maxSp": 40,
@@ -17542,7 +17068,7 @@
       "id": "wizard",
       "name": "Vaelis Quillstar",
       "level": 1,
-      "sourceCommit": "55cbd4c70f13704c684f7ba358f0d75bb62b1f30",
+      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
       "workingTree": false,
       "draft": {
         "name": "Vaelis Quillstar",
@@ -17801,6 +17327,7 @@
           "kind": "ability",
           "action": "Maneuver",
           "attribute": "Reason",
+          "duration": "Facts remain known; the Boon expires when used or at scene end.",
           "effect": "**Action:** Maneuver · **Attribute:** Reason\n\n**Target / range / shape:** One known ongoing magical effect within 5 squares.\n\n**Magic:** Spell · **SP:** 0\n\nStudy the effect once per scene. Roll Reason and learn 1/2/3 facts on Weak/Standard/Strong, chosen from its purpose, its remaining duration, and the category of its source (creature, object, place or independent spell). Gain 1 Boon to your next roll applying a learned fact this scene. The DA describes what the effect reveals, not unknown true names or hidden personal history.\n\n**Duration:** Facts remain known; the Boon expires when used or at scene end.\n\n**Equipment / acquisition:** A free hand for casting."
         }
       ],
@@ -17973,7 +17500,7 @@
       "id": "wizard",
       "name": "Vaelis Quillstar",
       "level": 3,
-      "sourceCommit": "55cbd4c70f13704c684f7ba358f0d75bb62b1f30",
+      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
       "workingTree": false,
       "draft": {
         "name": "Vaelis Quillstar",
@@ -18301,6 +17828,7 @@
           "kind": "ability",
           "action": "Maneuver",
           "attribute": "Reason",
+          "duration": "Facts remain known; the Boon expires when used or at scene end.",
           "effect": "**Action:** Maneuver · **Attribute:** Reason\n\n**Target / range / shape:** One known ongoing magical effect within 5 squares.\n\n**Magic:** Spell · **SP:** 0\n\nStudy the effect once per scene. Roll Reason and learn 1/2/3 facts on Weak/Standard/Strong, chosen from its purpose, its remaining duration, and the category of its source (creature, object, place or independent spell). Gain 1 Boon to your next roll applying a learned fact this scene. The DA describes what the effect reveals, not unknown true names or hidden personal history.\n\n**Duration:** Facts remain known; the Boon expires when used or at scene end.\n\n**Equipment / acquisition:** A free hand for casting."
         },
         {
@@ -18312,6 +17840,7 @@
           "kind": "ability",
           "action": "Passive",
           "attribute": "None",
+          "duration": "Until used or the scene ends.",
           "effect": "**Action:** Passive · **Attribute:** None\n\n**Target / range / shape:** An effect you have examined with Study the Pattern.\n\nYour next cancellation roll against that effect this scene gains 1 Boon. Your study also reveals whether a specific remedy exists and the kind of evidence needed to discover it. Apply your own learned cancellation ability or a remedy you actually discover.\n\n**Duration:** Until used or the scene ends.\n\n**Equipment / acquisition:** None."
         }
       ],
@@ -18347,10 +17876,7 @@
         "spell:telekinesis:5",
         "spell:telekinesis:6",
         "spell:telekinesis:7",
-        "spell:telekinesis:8",
-        "spell:telekinesis:a1",
-        "spell:telekinesis:a2",
-        "spell:telekinesis:a3"
+        "spell:telekinesis:8"
       ],
       "spells": [
         {
@@ -18480,30 +18006,6 @@
           "sp": 4,
           "duration": "1 minute",
           "effect": "Enclose it in a translucent sphere with 12 HP and resistance 2 to all damage. Attacks from outside strike the sphere; the recipient may roll it 1 square using its movement. Actions affecting the outside require leaving with a Maneuver. Destruction ends the sphere after that damage event."
-        },
-        {
-          "id": "spell:telekinesis:a1",
-          "name": "Wall of Force",
-          "action": "Main Action",
-          "sp": 5,
-          "duration": "1 minute",
-          "effect": "Raise a transparent force wall 2 squares high. It blocks physical passage and attacks across it. All sections share 18 HP and resistance 2 to all damage; attacks always deal at least 1. Destroying the wall opens all its squares."
-        },
-        {
-          "id": "spell:telekinesis:a2",
-          "name": "Disintegrate",
-          "action": "Main Action",
-          "sp": 5,
-          "duration": "Instant",
-          "effect": "A narrow beam deals 6/9/12 force damage. An unattended nonmagical object of Bulk 3 or less is reduced to dust if this damage destroys it. Living targets follow normal HP and dying rules."
-        },
-        {
-          "id": "spell:telekinesis:a3",
-          "name": "Reverse Gravity",
-          "action": "Main Action",
-          "sp": 5,
-          "duration": "Until the end of your next turn",
-          "effect": "Lift each affected creature 1/2/3 squares vertically, stopping at obstacles. It floats at that height until expiry, when it falls normally. A creature holding a fixed support may release it or remain supported. Flying creatures can use their normal movement to leave the area."
         }
       ],
       "actionCounts": {
@@ -18514,9 +18016,9 @@
         "Other": 0
       },
       "spellCounts": {
-        "total": 19,
+        "total": 16,
         "free": 5,
-        "paid": 14
+        "paid": 11
       },
       "castingBudget": {
         "maxSp": 22,
@@ -18556,7 +18058,7 @@
       "id": "wizard",
       "name": "Vaelis Quillstar",
       "level": 7,
-      "sourceCommit": "55cbd4c70f13704c684f7ba358f0d75bb62b1f30",
+      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
       "workingTree": false,
       "draft": {
         "name": "Vaelis Quillstar",
@@ -19048,6 +18550,7 @@
           "kind": "ability",
           "action": "Maneuver",
           "attribute": "Reason",
+          "duration": "Facts remain known; the Boon expires when used or at scene end.",
           "effect": "**Action:** Maneuver · **Attribute:** Reason\n\n**Target / range / shape:** One known ongoing magical effect within 5 squares.\n\n**Magic:** Spell · **SP:** 0\n\nStudy the effect once per scene. Roll Reason and learn 1/2/3 facts on Weak/Standard/Strong, chosen from its purpose, its remaining duration, and the category of its source (creature, object, place or independent spell). Gain 1 Boon to your next roll applying a learned fact this scene. The DA describes what the effect reveals, not unknown true names or hidden personal history.\n\n**Duration:** Facts remain known; the Boon expires when used or at scene end.\n\n**Equipment / acquisition:** A free hand for casting."
         },
         {
@@ -19059,6 +18562,7 @@
           "kind": "ability",
           "action": "Maneuver",
           "attribute": "None (no roll)",
+          "duration": "Until the start of your next turn.",
           "effect": "**Action:** Maneuver · **Attribute:** None (no roll)\n\n**Target / range / shape:** Self and willing allies within 2 squares when used.\n\nEach recipient gains 1 Boon to defenses against spells until the start of your next turn. During that time, each recipient gains Stability 2.\n\n**Duration:** Until the start of your next turn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP. You can communicate any facts already learned with Study the Pattern while creating the ward; others learn exactly the facts you know.\n\n**Frequency:** A new ward replaces your previous ward."
         },
         {
@@ -19070,6 +18574,7 @@
           "kind": "ability",
           "action": "Passive",
           "attribute": "None",
+          "duration": "Until used or the scene ends.",
           "effect": "**Action:** Passive · **Attribute:** None\n\n**Target / range / shape:** An effect you have examined with Study the Pattern.\n\nYour next cancellation roll against that effect this scene gains 1 Boon. Your study also reveals whether a specific remedy exists and the kind of evidence needed to discover it. Apply your own learned cancellation ability or a remedy you actually discover.\n\n**Duration:** Until used or the scene ends.\n\n**Equipment / acquisition:** None."
         }
       ],
@@ -19106,27 +18611,18 @@
         "spell:telekinesis:6",
         "spell:telekinesis:7",
         "spell:telekinesis:8",
-        "spell:telekinesis:a1",
-        "spell:telekinesis:a2",
-        "spell:telekinesis:a3",
         "spell:shaping:3",
         "spell:shaping:4",
         "spell:shaping:5",
         "spell:shaping:6",
         "spell:shaping:7",
         "spell:shaping:8",
-        "spell:shaping:a1",
-        "spell:shaping:a2",
-        "spell:shaping:a3",
         "spell:detection:3",
         "spell:detection:4",
         "spell:detection:5",
         "spell:detection:6",
         "spell:detection:7",
         "spell:detection:8",
-        "spell:detection:a1",
-        "spell:detection:a2",
-        "spell:detection:a3",
         "spell:animation:3",
         "spell:animation:4",
         "spell:animation:5",
@@ -19262,30 +18758,6 @@
           "effect": "Enclose it in a translucent sphere with 12 HP and resistance 2 to all damage. Attacks from outside strike the sphere; the recipient may roll it 1 square using its movement. Actions affecting the outside require leaving with a Maneuver. Destruction ends the sphere after that damage event."
         },
         {
-          "id": "spell:telekinesis:a1",
-          "name": "Wall of Force",
-          "action": "Main Action",
-          "sp": 5,
-          "duration": "1 minute",
-          "effect": "Raise a transparent force wall 2 squares high. It blocks physical passage and attacks across it. All sections share 18 HP and resistance 2 to all damage; attacks always deal at least 1. Destroying the wall opens all its squares."
-        },
-        {
-          "id": "spell:telekinesis:a2",
-          "name": "Disintegrate",
-          "action": "Main Action",
-          "sp": 5,
-          "duration": "Instant",
-          "effect": "A narrow beam deals 6/9/12 force damage. An unattended nonmagical object of Bulk 3 or less is reduced to dust if this damage destroys it. Living targets follow normal HP and dying rules."
-        },
-        {
-          "id": "spell:telekinesis:a3",
-          "name": "Reverse Gravity",
-          "action": "Main Action",
-          "sp": 5,
-          "duration": "Until the end of your next turn",
-          "effect": "Lift each affected creature 1/2/3 squares vertically, stopping at obstacles. It floats at that height until expiry, when it falls normally. A creature holding a fixed support may release it or remain supported. Flying creatures can use their normal movement to leave the area."
-        },
-        {
           "id": "spell:shaping:3",
           "name": "Enlarge/Reduce — Objects",
           "action": "Main Action",
@@ -19332,30 +18804,6 @@
           "sp": 4,
           "duration": "Instant",
           "effect": "Turn loose earth into ordinary stone or ordinary stone into compacted earth. Preserve the material's volume. The DA identifies unsupported structures before casting; changing their support uses the normal collapse procedure."
-        },
-        {
-          "id": "spell:shaping:a1",
-          "name": "Passwall — Workshop",
-          "action": "Ritual",
-          "sp": 5,
-          "duration": "1 hour",
-          "effect": "Make a work opening 1 square wide and 2 high through stone or earth. At expiry the opening closes; occupants emerge at the nearest end first. Secure ordinary supports before using it in a load-bearing wall."
-        },
-        {
-          "id": "spell:shaping:a2",
-          "name": "Meld Wall",
-          "action": "Ritual",
-          "sp": 5,
-          "duration": "Instant",
-          "effect": "Join them into one sound wall or floor, or separate them along one clean seam. Supply adequate support and matching stone. The resulting structure has the strength and vulnerabilities of ordinary masonry."
-        },
-        {
-          "id": "spell:shaping:a3",
-          "name": "True Polymorph — Objects",
-          "action": "Ritual",
-          "sp": 5,
-          "duration": "24 hours",
-          "effect": "Reshape it into another mundane object of equal or smaller Bulk using stone, wood, glass or common iron. Specify its ordinary function and include all necessary parts. At expiry it returns to its original form. It provides ordinary material qualities rather than learned abilities or precious commodities."
         },
         {
           "id": "spell:detection:3",
@@ -19406,30 +18854,6 @@
           "effect": "Add 2/4/6 progress toward understanding one magical effect, with target 6. Each completed analysis reveals its purpose, remaining duration, whether it requires Sustain and one named remedy or interruption method. Use further castings for further effects."
         },
         {
-          "id": "spell:detection:a1",
-          "name": "Detect Magic — Scaling Analysis",
-          "action": "Main Action",
-          "sp": 5,
-          "duration": "Instant",
-          "effect": "Read their relative strength. Learn each source's spell name if known, its SP cost or equivalent strength, and its remaining duration on Standard or Strong; Weak reveals only the strongest source and whether it is sustained. Choose all targets before rolling."
-        },
-        {
-          "id": "spell:detection:a2",
-          "name": "Find the Path",
-          "action": "Ritual",
-          "sp": 5,
-          "duration": "1 hour",
-          "effect": "Sense the direction of an ordinary traversable route to a location you previously visited. At each junction, learn which way continues along that route. Terrain and locks still require ordinary travel and interaction; if no traversable route exists, the reading identifies the nearest obstruction."
-        },
-        {
-          "id": "spell:detection:a3",
-          "name": "Sight True",
-          "action": "Main Action",
-          "sp": 5,
-          "duration": "10 minutes",
-          "effect": "See Invisible targets and recognize visual illusions within 12 squares. Also see the outlines of creatures immediately beyond ordinary cover up to 1 square thick, within 6 squares. Such outlines reveal position; attacks still require a clear path."
-        },
-        {
           "id": "spell:animation:3",
           "name": "Enchanted Rope — Rigging",
           "action": "Ritual",
@@ -19459,7 +18883,7 @@
           "action": "Ritual",
           "sp": 3,
           "duration": "7 days",
-          "effect": "Give it the ability to recognize its name, one voice and three spoken commands. It answers yes or no by a tiny movement or sound and remembers one short instruction. Movement or work uses a separate animation spell and its commands. You may keep one intelligent item of any degree at a time."
+          "effect": "Awaken a mind with Knowledge +1 and memory of three short instructions. Within 6 squares, you communicate telepathically and may use its score for Knowledge rolls, including casting, under the fixed-value item rules. Your own attributes determine DP, class qualifications and maximum SP. Keep one intelligent item of any grade. Movement and work use separate animation and commands."
         }
       ],
       "actionCounts": {
@@ -19470,9 +18894,9 @@
         "Other": 0
       },
       "spellCounts": {
-        "total": 41,
+        "total": 32,
         "free": 5,
-        "paid": 36
+        "paid": 27
       },
       "castingBudget": {
         "maxSp": 40,
@@ -19515,7 +18939,7 @@
       "id": "artificer",
       "name": "Nim Coppercoil",
       "level": 1,
-      "sourceCommit": "55cbd4c70f13704c684f7ba358f0d75bb62b1f30",
+      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
       "workingTree": false,
       "draft": {
         "name": "Nim Coppercoil",
@@ -19754,6 +19178,7 @@
           "kind": "ability",
           "action": "Ritual — 1 hour",
           "attribute": "None",
+          "duration": "Indefinite; no Sustain.",
           "effect": "**Action:** Ritual — 1 hour · **Attribute:** None\n\n**Target / range / shape:** One ordinary item you own within reach.\n\n**Magic:** Bound-item spell · **SP:** 1\n\nPay 1 SP and bind one item with a property chosen when bound: a lamp gives controllable ordinary torchlight; a tool returns to its bearer’s empty hand with a Maneuver from within 3 squares along a clear path; or a shield lets its bearer spend a Reaction once per scene to reduce one attack’s damage by 1 after rolling defense, respecting the attack’s minimum damage. You can have one bound item. A binding lasts until you end or replace it, even if the item is lent or lost. Cancellation target 3 ends its magic but leaves the ordinary item and occupied binding; restore the magic with a new ritual and SP. Lending or re-binding an item does not refresh its limited use.\n\n**Duration:** Indefinite; no Sustain.\n\n**Equipment / acquisition:** Suitable tools and the actual ordinary item."
         }
       ],
@@ -19918,7 +19343,7 @@
       "id": "artificer",
       "name": "Nim Coppercoil",
       "level": 3,
-      "sourceCommit": "55cbd4c70f13704c684f7ba358f0d75bb62b1f30",
+      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
       "workingTree": false,
       "draft": {
         "name": "Nim Coppercoil",
@@ -20226,6 +19651,7 @@
           "kind": "ability",
           "action": "Ritual — 1 hour",
           "attribute": "None",
+          "duration": "Indefinite; no Sustain.",
           "effect": "**Action:** Ritual — 1 hour · **Attribute:** None\n\n**Target / range / shape:** One ordinary item you own within reach.\n\n**Magic:** Bound-item spell · **SP:** 1\n\nPay 1 SP and bind one item with a property chosen when bound: a lamp gives controllable ordinary torchlight; a tool returns to its bearer’s empty hand with a Maneuver from within 3 squares along a clear path; or a shield lets its bearer spend a Reaction once per scene to reduce one attack’s damage by 1 after rolling defense, respecting the attack’s minimum damage. You can have one bound item. A binding lasts until you end or replace it, even if the item is lent or lost. Cancellation target 3 ends its magic but leaves the ordinary item and occupied binding; restore the magic with a new ritual and SP. Lending or re-binding an item does not refresh its limited use.\n\n**Duration:** Indefinite; no Sustain.\n\n**Equipment / acquisition:** Suitable tools and the actual ordinary item."
         },
         {
@@ -20237,6 +19663,7 @@
           "kind": "ability",
           "action": "Passive",
           "attribute": "None",
+          "duration": "While the bindings remain.",
           "effect": "**Action:** Passive · **Attribute:** None\n\n**Target / range / shape:** Your bound items.\n\nYou may maintain two bound items on different ordinary objects. You may also choose this property for a weapon: once per scene, before a weapon attack, its bearer converts that attack’s physical damage to fire or cold. Choose the type before rolling. The damage amount and other effects are unchanged; this adds no second damage component. The converted attack is magical. All binding, casting and cancellation rules of Make It Last apply.\n\n**Duration:** While the bindings remain.\n\n**Equipment / acquisition:** None."
         }
       ],
@@ -20448,7 +19875,7 @@
       "id": "artificer",
       "name": "Nim Coppercoil",
       "level": 7,
-      "sourceCommit": "55cbd4c70f13704c684f7ba358f0d75bb62b1f30",
+      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
       "workingTree": false,
       "draft": {
         "name": "Nim Coppercoil",
@@ -20943,6 +20370,7 @@
           "kind": "ability",
           "action": "Ritual — 1 hour",
           "attribute": "None",
+          "duration": "Indefinite; no Sustain.",
           "effect": "**Action:** Ritual — 1 hour · **Attribute:** None\n\n**Target / range / shape:** One ordinary item you own within reach.\n\n**Magic:** Bound-item spell · **SP:** 1\n\nPay 1 SP and bind one item with a property chosen when bound: a lamp gives controllable ordinary torchlight; a tool returns to its bearer’s empty hand with a Maneuver from within 3 squares along a clear path; or a shield lets its bearer spend a Reaction once per scene to reduce one attack’s damage by 1 after rolling defense, respecting the attack’s minimum damage. You can have one bound item. A binding lasts until you end or replace it, even if the item is lent or lost. Cancellation target 3 ends its magic but leaves the ordinary item and occupied binding; restore the magic with a new ritual and SP. Lending or re-binding an item does not refresh its limited use.\n\n**Duration:** Indefinite; no Sustain.\n\n**Equipment / acquisition:** Suitable tools and the actual ordinary item."
         },
         {
@@ -20954,6 +20382,7 @@
           "kind": "ability",
           "action": "Passive",
           "attribute": "None",
+          "duration": "While the bindings remain.",
           "effect": "**Action:** Passive · **Attribute:** None\n\n**Target / range / shape:** Your bound items.\n\nYou may maintain three bound items. One may carry this masterwork property instead of another property: once between your safe overnight rests, its wearer can spend a Reaction before one defense roll to gain 2 Boons. Track that use against your bond; lending, replacing or re-binding the item does not refresh it. The other available properties are Make It Last’s lamp, returning tool and protective shield.\n\n**Duration:** While the bindings remain.\n\n**Equipment / acquisition:** None."
         },
         {
@@ -20965,6 +20394,7 @@
           "kind": "ability",
           "action": "Passive",
           "attribute": "None",
+          "duration": "While the bindings remain.",
           "effect": "**Action:** Passive · **Attribute:** None\n\n**Target / range / shape:** Your bound items.\n\nYou may maintain two bound items on different ordinary objects. You may also choose this property for a weapon: once per scene, before a weapon attack, its bearer converts that attack’s physical damage to fire or cold. Choose the type before rolling. The damage amount and other effects are unchanged; this adds no second damage component. The converted attack is magical. All binding, casting and cancellation rules of Make It Last apply.\n\n**Duration:** While the bindings remain.\n\n**Equipment / acquisition:** None."
         }
       ],
@@ -21083,27 +20513,18 @@
         "spell:imbuement:6",
         "spell:imbuement:7",
         "spell:imbuement:8",
-        "spell:imbuement:a1",
-        "spell:imbuement:a2",
-        "spell:imbuement:a3",
         "spell:shaping:3",
         "spell:shaping:4",
         "spell:shaping:5",
         "spell:shaping:6",
         "spell:shaping:7",
         "spell:shaping:8",
-        "spell:shaping:a1",
-        "spell:shaping:a2",
-        "spell:shaping:a3",
         "spell:telekinesis:3",
         "spell:telekinesis:4",
         "spell:telekinesis:5",
         "spell:telekinesis:6",
         "spell:telekinesis:7",
         "spell:telekinesis:8",
-        "spell:telekinesis:a1",
-        "spell:telekinesis:a2",
-        "spell:telekinesis:a3",
         "spell:detection:3",
         "spell:detection:4"
       ],
@@ -21221,30 +20642,6 @@
           "effect": "The weapon's damaging attacks gain +1 damage of their normal type before resistance, once per target per attack. Use the highest magical weapon increase. You may keep one Weapon I enchantment at a time."
         },
         {
-          "id": "spell:imbuement:a1",
-          "name": "Contingency",
-          "action": "Ritual",
-          "sp": 5,
-          "duration": "24 hours or until triggered",
-          "effect": "Pay the chosen spell's SP in addition to this ritual. Name a visible or bodily trigger and legal self-directed effect. When triggered while conscious, spend your Reaction to release that spell on yourself. You may keep one Contingency; casting another replaces the earlier preparation."
-        },
-        {
-          "id": "spell:imbuement:a2",
-          "name": "Armor IV",
-          "action": "Ritual",
-          "sp": 5,
-          "duration": "7 days",
-          "effect": "Choose fire, cold, lightning, poison, life, radiant, mental or force. While worn with its normal training, the suit grants resistance 2 to that damage type. Use the highest matching resistance. You may keep one Armor IV enchantment at a time."
-        },
-        {
-          "id": "spell:imbuement:a3",
-          "name": "General IV",
-          "action": "Ritual",
-          "sp": 5,
-          "duration": "7 days",
-          "effect": "Bind one known automatic, non-attack Maneuver spell costing 0 SP to the item. A bearer can use a Maneuver to produce that spell's printed effect from their own position. Only one instance from the item can persist at a time. You may keep one General IV item at a time."
-        },
-        {
           "id": "spell:shaping:3",
           "name": "Enlarge/Reduce — Objects",
           "action": "Main Action",
@@ -21291,30 +20688,6 @@
           "sp": 4,
           "duration": "Instant",
           "effect": "Turn loose earth into ordinary stone or ordinary stone into compacted earth. Preserve the material's volume. The DA identifies unsupported structures before casting; changing their support uses the normal collapse procedure."
-        },
-        {
-          "id": "spell:shaping:a1",
-          "name": "Passwall — Workshop",
-          "action": "Ritual",
-          "sp": 5,
-          "duration": "1 hour",
-          "effect": "Make a work opening 1 square wide and 2 high through stone or earth. At expiry the opening closes; occupants emerge at the nearest end first. Secure ordinary supports before using it in a load-bearing wall."
-        },
-        {
-          "id": "spell:shaping:a2",
-          "name": "Meld Wall",
-          "action": "Ritual",
-          "sp": 5,
-          "duration": "Instant",
-          "effect": "Join them into one sound wall or floor, or separate them along one clean seam. Supply adequate support and matching stone. The resulting structure has the strength and vulnerabilities of ordinary masonry."
-        },
-        {
-          "id": "spell:shaping:a3",
-          "name": "True Polymorph — Objects",
-          "action": "Ritual",
-          "sp": 5,
-          "duration": "24 hours",
-          "effect": "Reshape it into another mundane object of equal or smaller Bulk using stone, wood, glass or common iron. Specify its ordinary function and include all necessary parts. At expiry it returns to its original form. It provides ordinary material qualities rather than learned abilities or precious commodities."
         },
         {
           "id": "spell:telekinesis:3",
@@ -21365,30 +20738,6 @@
           "effect": "Enclose it in a translucent sphere with 12 HP and resistance 2 to all damage. Attacks from outside strike the sphere; the recipient may roll it 1 square using its movement. Actions affecting the outside require leaving with a Maneuver. Destruction ends the sphere after that damage event."
         },
         {
-          "id": "spell:telekinesis:a1",
-          "name": "Wall of Force",
-          "action": "Main Action",
-          "sp": 5,
-          "duration": "1 minute",
-          "effect": "Raise a transparent force wall 2 squares high. It blocks physical passage and attacks across it. All sections share 18 HP and resistance 2 to all damage; attacks always deal at least 1. Destroying the wall opens all its squares."
-        },
-        {
-          "id": "spell:telekinesis:a2",
-          "name": "Disintegrate",
-          "action": "Main Action",
-          "sp": 5,
-          "duration": "Instant",
-          "effect": "A narrow beam deals 6/9/12 force damage. An unattended nonmagical object of Bulk 3 or less is reduced to dust if this damage destroys it. Living targets follow normal HP and dying rules."
-        },
-        {
-          "id": "spell:telekinesis:a3",
-          "name": "Reverse Gravity",
-          "action": "Main Action",
-          "sp": 5,
-          "duration": "Until the end of your next turn",
-          "effect": "Lift each affected creature 1/2/3 squares vertically, stopping at obstacles. It floats at that height until expiry, when it falls normally. A creature holding a fixed support may release it or remain supported. Flying creatures can use their normal movement to leave the area."
-        },
-        {
           "id": "spell:detection:3",
           "name": "Detect Evil and Good",
           "action": "Main Action",
@@ -21413,9 +20762,9 @@
         "Other": 3
       },
       "spellCounts": {
-        "total": 37,
+        "total": 28,
         "free": 4,
-        "paid": 33
+        "paid": 24
       },
       "castingBudget": {
         "maxSp": 21,

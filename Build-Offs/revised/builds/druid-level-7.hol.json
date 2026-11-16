@@ -1,7 +1,7 @@
 {
   "format": "heroes-of-legend-character",
-  "schemaVersion": 6,
-  "sourceCommit": "55cbd4c70f13704c684f7ba358f0d75bb62b1f30",
+  "schemaVersion": 7,
+  "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
   "draft": {
     "name": "Thalen Reedwalker",
     "attributes": {
@@ -194,18 +194,6 @@
         "7": {
           "purchases": [
             {
-              "id": "transformation:3"
-            },
-            {
-              "id": "water:1"
-            },
-            {
-              "id": "water:2"
-            },
-            {
-              "id": "water:3"
-            },
-            {
               "id": "wilderness:animal-handling:4"
             },
             {
@@ -218,16 +206,25 @@
               "id": "wilderness:animal-handling:7"
             },
             {
-              "id": "spellcraft"
+              "id": "growth:4"
             },
             {
-              "id": "spellcraft:soul-capacity:1"
+              "id": "growth:5"
             },
             {
-              "id": "spellcraft:soul-capacity:2"
+              "id": "growth:6"
             },
             {
-              "id": "mastery:wall-of-thorns-living-fortress"
+              "id": "transformation:3"
+            },
+            {
+              "id": "water:1"
+            },
+            {
+              "id": "water:2"
+            },
+            {
+              "id": "water:3"
             }
           ],
           "acquisitions": {},

@@ -1,7 +1,7 @@
 {
   "format": "heroes-of-legend-character",
-  "schemaVersion": 6,
-  "sourceCommit": "55cbd4c70f13704c684f7ba358f0d75bb62b1f30",
+  "schemaVersion": 7,
+  "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
   "draft": {
     "name": "Brunna Hearthward",
     "attributes": {

@@ -53,5 +53,5 @@ if (check)
   );
 else await writeFile(outputPath, serialized);
 console.info(
-  `Verified Forge catalog: ${catalog.disciplines.length} disciplines, ${catalog.spells.length} spells, and ${catalog.nodes.filter((node) => node.kind === "spell-mastery").length} spellbook masteries.`,
+  `Verified Forge catalog: ${catalog.disciplines.length} disciplines, ${catalog.spells.length} spells, and ${catalog.nodes.filter((node) => node.kind === "section" && node.level === 7).length} spellbook masteries.`,
 );

@@ -17,7 +17,7 @@ assert.equal(readdirSync(new URL('builds/',root)).filter(x=>x.endsWith('.hol.jso
 const nodes=new Map(forge.nodes.map(x=>[x.id,x]));let masteryCases=0;
 for(const b of manifest.builds){
  const file=new URL(`builds/${b.id}-level-${b.level}.hol.json`,root);
- const payload=JSON.parse(readFileSync(file));assert.equal(payload.schemaVersion,6);
+ const payload=JSON.parse(readFileSync(file));assert.equal(payload.schemaVersion,7);
  const {draft,preview:h}=readPortableCharacter(payload,catalogs);
  assert(h.valid,`${b.id}/${b.level}: ${JSON.stringify(h.errors)}`);
  assert.equal(h.development.level,b.level);assert.deepEqual(h.development,b.development);assert.deepEqual(h.limits,{maxHp:b.resources.maxHp,maxSp:b.resources.maxSp,gritGranted:b.resources.gritGranted});
@@ -32,7 +32,7 @@ for(const b of manifest.builds){
   assert(n.level<=p.level,`${b.id}: early level gate ${n.id}`);
   assert(n.requires.every(id=>learned.has(id)),`${b.id}: skipped prerequisite ${n.id}`);
   const price=n.kind==='discipline'?cls.disciplineCosts[n.id]:n.dp;assert.equal(price,p.paidDp);spent+=price;learned.add(n.id);
-  if(n.kind==='spell-mastery'){assert.equal(p.level,7);assert.equal(n.requires.length,1);assert.equal(n.requires[0],`${n.bookId}:3`);masteryCases++;}
+  if(n.kind==='section' && n.section==='VII'){assert.equal(p.level,7);assert.equal(n.dp,5);assert.equal(n.spellIds.length,1);assert.equal(n.requires.length,1);assert.equal(n.requires[0],`${n.bookId}:5`);masteryCases++;}
  }
  const bonus=draft.traitIds.includes('trait-human-far-walker')?1:0;
  let total=8+draft.attributes.guile+draft.attributes.knowledge+draft.attributes.reason+bonus;
@@ -54,7 +54,7 @@ for(const b of manifest.builds){
  assert(roundtrip.preview.valid);assert.deepEqual(roundtrip.preview.development,h.development);
  const doc=readFileSync(new URL(`${b.id}.md`,root),'utf8');assert(doc.includes(`builds/${b.id}-level-${b.level}.hol.json`));assert.doesNotMatch(doc,/undefined|NaN|\[object Object\]/);
 }
-assert(masteryCases>=4,'Exercise independent spellbook mastery purchases as well as martial tails');
+assert(masteryCases>=4,'Exercise complete seven-section spellbooks as well as martial tails');
 for(const line of forge.signatureDevelopment.signatures.filter(x=>x.level===7)){
  const late=forgeSignatureLearning(forge,{7:line.id});
  assert.deepEqual(new Set(late.abilityIds),new Set([line.foundationId,line.id]),`${line.lineId}: skipped level3 must not be granted`);

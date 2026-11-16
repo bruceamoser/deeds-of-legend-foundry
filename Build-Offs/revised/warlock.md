@@ -1,6 +1,6 @@
 # Vesper Ashpact: warlock after the rewrite
 
-Pinned authored source `55cbd4c70f13704c684f7ba358f0d75bb62b1f30`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../warlock.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
+Pinned authored source `f0ff9e49df902aad45816da5917a43cd3bfa2009`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../warlock.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
 
 ## What the rewrite changes
 
@@ -17,7 +17,7 @@ No renewable short-rest Pact Magic pool: recovery remains once between overnight
 | DP spent / total | 8 / 9 | 21 / 22 | 58 / 60 |
 | Unspent DP | 1 | 1 | 2 |
 | Learned action choices (Main / Maneuver / Reaction) | 1 / 0 / 0 | 1 / 0 / 0 | 1 / 0 / 1 |
-| Known book spells (free / paid) | 8 (4 / 4) | 12 (4 / 8) | 39 (4 / 35) |
+| Known book spells (free / paid) | 8 (4 / 4) | 12 (4 / 8) | 30 (4 / 26) |
 | Shared reserve: casts at 2 SP | 6 | 12 | 20 |
 | Shared reserve: casts at 5 SP | 2 | 5 | 8 |
 | Extra SP from one recovery rest | 1 | 1 | 4 |
@@ -215,7 +215,7 @@ Before rolling Pact Bolt, you may choose to bind as well as wound. On Standard r
 **Useful actions and improvements:**
 
 
-**Known book spells:** Chill Touch (Main Action; SP 0); Gentle Repose (Ritual; SP 1); Thaumaturgy (Maneuver; SP 0); Command (Main Action; SP 1); Minor Illusion (Maneuver; SP 0); Silent Image (Main Action; SP 1); Familiar (Ritual; SP 0); Find Familiar (Ritual; SP 1); Hold Person (Main Action; SP 1); Magic Circle (Ritual; SP 2); Banishment (Main Action; SP 2); Planar Binding (Ritual; SP 3); Geas (Ritual; SP 3); Hold Monster (Main Action; SP 4); Dominate Monster (Main Action; SP 5); Forcecage (Main Action; SP 5); Imprisonment (Ritual; SP 5); Speak with Dead (Ritual; SP 1); Spirit Guardians (Main Action; SP 2); Lifekeeping (Reaction; SP 2); Animate Dead (Main Action; SP 3); Control Undead (Main Action; SP 3); Contact Other Plane (Ritual; SP 4); Etherealness (Main Action; SP 5); Create Undead (Main Action; SP 5); Lifegiving (Ritual; SP 5); Unseen Servant (Main Action; SP 1); Summon Animal (Main Action; SP 2); Phantom Steed (Ritual; SP 2); Conjure Animals (Main Action; SP 3); Conjure Elemental (Main Action; SP 3); Summon Dragon (Main Action; SP 4); Conjure Celestial (Main Action; SP 5); Planar Ally (Ritual; SP 5); Gate — Calling (Ritual; SP 5); Disguise Self (Main Action; SP 1); Mirror Image (Main Action; SP 2); Invisibility (Main Action; SP 2); Major Image (Main Action; SP 3).
+**Known book spells:** Chill Touch (Main Action; SP 0); Gentle Repose (Ritual; SP 1); Thaumaturgy (Maneuver; SP 0); Command (Main Action; SP 1); Minor Illusion (Maneuver; SP 0); Silent Image (Main Action; SP 1); Familiar (Ritual; SP 0); Find Familiar (Ritual; SP 1); Hold Person (Main Action; SP 1); Magic Circle (Ritual; SP 2); Banishment (Main Action; SP 2); Planar Binding (Ritual; SP 3); Geas (Ritual; SP 3); Hold Monster (Main Action; SP 4); Speak with Dead (Ritual; SP 1); Spirit Guardians (Main Action; SP 2); Lifekeeping (Reaction; SP 2); Animate Dead (Main Action; SP 3); Control Undead (Main Action; SP 3); Contact Other Plane (Ritual; SP 4); Unseen Servant (Main Action; SP 1); Summon Animal (Main Action; SP 2); Phantom Steed (Ritual; SP 2); Conjure Animals (Main Action; SP 3); Conjure Elemental (Main Action; SP 3); Summon Dragon (Main Action; SP 4); Disguise Self (Main Action; SP 1); Mirror Image (Main Action; SP 2); Invisibility (Main Action; SP 2); Major Image (Main Action; SP 3).
 
 **Spell output:** Alternative uses of the same reserve, not simultaneous allocations. Assumes SP is spent before recovery; time, spell-specific limits, components and maintained actions still apply. Signature spells and conditional discounts are described separately. At costs 1/2/3/5 SP, the full reserve funds 40/20/13/8 casts respectively; with the learned once-per-rest recovery it funds 44/22/14/8. Zero-SP spells remain limited by actions and circumstances.
 

@@ -55,3 +55,7 @@ Existing saves apply the current rules automatically. Changed nonmagical and rem
 Validation includes the full package suite, compact real-browser character workflows, atlas learning and saved-character round trips, and revised Build-Offs for all thirteen tropes at levels 1, 3 and 7. The historical comparison documents remain as a dated baseline; `Build-Offs/revised/` is the current legal construction evidence. Numerical legality does not establish combat balance.
 
 Book proof details are recorded in `design/revision/rewrite-299-pdf-quality.md` in the source repository. Final source, PR and deployment links belong to epic #299 and its implementation issues. The native source lock, compendium packs and world Actors are unchanged; native Foundry implementation follows Workshop acceptance.
+
+## November 16 follow-through — spellbook construction (#310)
+
+Bruce subsequently replaced the uneven independent-mastery spellbooks with the same seven-step construction as martial paths. Costs are 1/2/2/3/4/4/5, gates 1/1/1/3/3/3/7, and spell grants 2/2/2/2/1/1/1. All 29 books have one complete path and one final mastery spell. This supersedes the four-section statements above. Source delivery is book #1332; Workshop delivery, decisions and validation are tracked in #310.

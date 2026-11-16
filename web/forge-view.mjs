@@ -17,16 +17,11 @@ const point = (center, angle, distance) => ({
   x: Math.round(center.x + Math.cos(angle) * distance),
   y: Math.round(center.y + Math.sin(angle) * distance),
 });
-function attachedMasteries(graph, path) {
-  const book = graph.books.find((entry) => entry.id === path.bookId);
-  return (book?.masteryIds ?? []).filter((id) => graph.nodes.some((node) => node.id === id));
-}
 
 export function atlasLayout(graph) {
   if (atlasCache.has(graph)) return atlasCache.get(graph);
   const positions = new Map();
   const edges = [];
-  const stems = [];
   const center = { x: 0, y: 0 };
   const directions = [-Math.PI / 2, Math.PI, 0, Math.PI / 2]; // Main, Maneuver, Reaction, wildcard.
   graph.disciplines.forEach((discipline, index) => {
@@ -59,25 +54,9 @@ export function atlasLayout(graph) {
               ? `M ${previous.x} ${previous.y} Q ${tailBend.x} ${tailBend.y} ${target.x} ${target.y}`
               : `M ${previous.x} ${previous.y} L ${target.x} ${target.y}` });
       });
-      const masteries = attachedMasteries(graph, path);
-      if (masteries.length) {
-        const predecessor = path.steps.at(-1);
-        const previous = positions.get(predecessor);
-        const [shoulder, fork] = advanced;
-        // A book keeps its four learned sections. One shared tail reaches the
-        // independent master-spell choices; the junction is not a purchase.
-        stems.push({ from: predecessor, targets: masteries,
-          draw: `M ${previous.x} ${previous.y} Q ${tailBend.x} ${tailBend.y} ${shoulder.x} ${shoulder.y} L ${fork.x} ${fork.y}` });
-        masteries.forEach((id, index) => {
-          const target = point(origin, direction + (index - (masteries.length - 1) / 2) * 0.18, 195);
-          positions.set(id, target);
-          edges.push({ from: predecessor, to: id, sharedStem: predecessor,
-            draw: `M ${fork.x} ${fork.y} L ${target.x} ${target.y}` });
-        });
-      }
     });
   });
-  const result = { positions, edges, stems };
+  const result = { positions, edges };
   atlasCache.set(graph, result);
   return result;
 }
@@ -123,9 +102,9 @@ function visibleDisciplines(model) {
 
 function mapView(model, visible) {
   if (!visible.length) return '<p class="forge-empty">Add a discipline to begin.</p>';
-  const { positions, edges, stems } = atlasLayout(model.graph);
+  const { positions, edges } = atlasLayout(model.graph);
   const paths = visible.flatMap((entry) => entry.paths);
-  const ids = paths.flatMap((path) => [...path.steps, ...attachedMasteries(model.graph, path)]);
+  const ids = paths.flatMap((path) => path.steps);
   const focus = visible.map((entry) => positions.get(entry.id));
   const minX = Math.min(...focus.map((p) => p.x - 245));
   const minY = Math.min(...focus.map((p) => p.y - 255));
@@ -133,9 +112,6 @@ function mapView(model, visible) {
   const height = Math.max(...focus.map((p) => p.y + 230)) - minY;
   const toStyle = (p) => `--node-x:${100 * (p.x - minX) / width}%;--node-y:${100 * (p.y - minY) / height}%`;
   const visibleIds = new Set(ids);
-  const sharedPaths = stems.filter(stem => stem.targets.some(id => visibleIds.has(id))).map(({from, targets, draw}) =>
-    `<path class="forge-branch forge-mastery-stem ${targets.some(id => model.learned.has(id)) ? "is-learned" : ""} ${model.selected?.id === from || targets.includes(model.selected?.id) ? "is-highlighted" : ""}" data-from="${escape(from)}" data-mastery-stem="${escape(from)}" d="${draw}"/>`,
-  ).join("");
   const branchPaths = edges.filter(({ to }) => visibleIds.has(to)).map(({ from, to, draw }) =>
     `<path class="forge-branch ${model.learned.has(to) ? "is-learned" : ""} ${model.selected?.id === to || model.selected?.id === from ? "is-highlighted" : ""}" data-from="${escape(from)}" data-to="${escape(to)}" d="${draw}"/>`,
   ).join("");
@@ -154,7 +130,7 @@ function mapView(model, visible) {
       style: toStyle(positions.get(id)),
     });
   }).join("");
-  return `<div class="forge-map-scroll${model.zoom >= 4 ? " show-node-labels" : ""}" data-zoom="${model.zoom}" tabindex="0" aria-label="Discipline map"><div class="forge-map ${visible.length === 1 ? "forge-map-focus" : "forge-map-overview"}" style="--map-ratio:${width / height};--map-zoom:${model.zoom}"><svg viewBox="${minX} ${minY} ${width} ${height}" preserveAspectRatio="none" aria-hidden="true">${sharedPaths}${branchPaths}</svg>${roots}${steps}</div></div>`;
+  return `<div class="forge-map-scroll${model.zoom >= 4 ? " show-node-labels" : ""}" data-zoom="${model.zoom}" tabindex="0" aria-label="Discipline map"><div class="forge-map ${visible.length === 1 ? "forge-map-focus" : "forge-map-overview"}" style="--map-ratio:${width / height};--map-zoom:${model.zoom}"><svg viewBox="${minX} ${minY} ${width} ${height}" preserveAspectRatio="none" aria-hidden="true">${branchPaths}</svg>${roots}${steps}</div></div>`;
 }
 
 function spellCard(spell) {
@@ -174,7 +150,7 @@ function plural(count, noun) {
 }
 
 function disciplineCount(model, discipline) {
-  const learned = discipline.paths.flatMap((path) => [...path.steps, ...attachedMasteries(model.graph, path)])
+  const learned = discipline.paths.flatMap((path) => path.steps)
     .filter((id) => model.learned.has(id)).map((id) => model.nodes.get(id));
   if (discipline.paths.some((path) => path.bookId)) {
     const spellCount = new Set(learned.flatMap((node) => node.spellIds ?? [])).size;
@@ -261,7 +237,7 @@ function stepRow(model, node, selectedId) {
 
 function pathCard(model, path) {
   const nodes = path.steps.map((id) => model.nodes.get(id));
-  const open = model.openPaths.has(path.id) || (model.selected?.kind === "spell-mastery" && path.steps.includes(model.selected.id));
+  const open = model.openPaths.has(path.id);
   const next = nodes.find((node) => !model.learned.has(node.id));
   const availability = next && model.eligibility(next.id);
   if (!model.showAll && !open && !availability?.eligible) return "";
@@ -285,7 +261,7 @@ function columnView(model) {
   if (!model.studied.length) return '<p class="forge-empty">Add a discipline to start learning.</p>';
   const disciplines = model.filter === "all" ? model.studied : model.studied.filter(entry => entry.id === model.discipline?.id);
   const groups = disciplines.map(discipline => {
-    const paths = discipline.paths.map(path => pathCard(model, path) + attachedMasteries(model.graph, path).map(id => pathCard(model, {id, name: `${path.name} · Master spell`, steps: [id]})).join("")).join("");
+    const paths = discipline.paths.map(path => pathCard(model, path)).join("");
     if (!paths) return "";
     return `<section class="forge-learning-group" data-discipline="${escape(discipline.id)}"><h3>${disciplineToken(discipline.id)} ${escape(discipline.name)} <small>${disciplineCount(model, discipline)}</small></h3><div class="forge-paths">${paths}</div></section>`;
   }).join("");
@@ -342,7 +318,6 @@ function inspector(model) {
   const path = discipline?.paths.find((entry) => entry.id === node.pathId);
   const parentNodes = node.requires.map((id) => model.nodes.get(id));
   const children = model.graph.nodes.filter((entry) => entry.requires.includes(node.id));
-  const masteries = path ? attachedMasteries(model.graph, path).map(id => model.nodes.get(id)) : [];
   const next = children;
   const canRefund = refundable(model, node.id);
   const currency = learned ? "Learned" : `${model.eligibility(node.id).cost ?? "—"} DP`;
@@ -360,9 +335,7 @@ function inspector(model) {
       ${discipline && model.atlasScope !== "discipline" && model.view === "atlas" ? control("forge-filter", discipline.id, "View discipline", "", "small") : ""}
     </div>
     ${relatedList(model, parentNodes, "Earlier learning")}
-    ${relatedList(model, next, node.kind === "discipline" ? "First steps" : next.some(entry => entry.kind === "spell-mastery") ? "Master spells · Level 7" : "Next step")}
-    ${masteries.length && (node.id === path.steps.at(-1) || node.kind === "spell-mastery") ? '<p class="forge-context">Each master spell is a separate choice after learning this book’s section IV.</p>' : ""}
-    ${node.kind === "spell-mastery" ? relatedList(model, masteries.filter(entry => entry.id !== node.id), "Other master spells") : ""}
+    ${relatedList(model, next, node.kind === "discipline" ? "First steps" : "Next step")}
     ${spellSection(model, node)}
   </section>`;
 }

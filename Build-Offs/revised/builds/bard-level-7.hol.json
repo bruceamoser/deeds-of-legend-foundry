@@ -1,7 +1,7 @@
 {
   "format": "heroes-of-legend-character",
-  "schemaVersion": 6,
-  "sourceCommit": "55cbd4c70f13704c684f7ba358f0d75bb62b1f30",
+  "schemaVersion": 7,
+  "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
   "draft": {
     "name": "Lysa Silverstring",
     "attributes": {
@@ -186,6 +186,27 @@
               "id": "influence:negotiation:7"
             },
             {
+              "id": "dreams:0"
+            },
+            {
+              "id": "dreams:1"
+            },
+            {
+              "id": "dreams:2"
+            },
+            {
+              "id": "dreams:3"
+            },
+            {
+              "id": "dreams:4"
+            },
+            {
+              "id": "dreams:5"
+            },
+            {
+              "id": "dreams:6"
+            },
+            {
               "id": "emotion:3"
             },
             {
@@ -199,33 +220,6 @@
             },
             {
               "id": "thought:1"
-            },
-            {
-              "id": "thought:2"
-            },
-            {
-              "id": "guard:shelter:2"
-            },
-            {
-              "id": "guard:shelter:3"
-            },
-            {
-              "id": "guard:shelter:4"
-            },
-            {
-              "id": "dreams:0"
-            },
-            {
-              "id": "dreams:1"
-            },
-            {
-              "id": "dreams:2"
-            },
-            {
-              "id": "dreams:3"
-            },
-            {
-              "id": "mastery:foresight-oracles-dream"
             }
           ],
           "acquisitions": {},
