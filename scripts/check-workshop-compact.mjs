@@ -6,7 +6,8 @@ import { chromium, expect } from "@playwright/test";
 
 const root = resolve("dist/workshop");
 const prefix = "/heroes-of-legend-foundry/";
-const output = resolve("test-results/workshop-compact");
+const viewportWidth = Number(process.env.HOL_TEST_WIDTH ?? 900);
+const output = resolve(`test-results/workshop-compact-${viewportWidth}`);
 const types = {
   ".html": "text/html; charset=utf-8",
   ".mjs": "text/javascript",
@@ -36,7 +37,7 @@ const base = `http://127.0.0.1:${server.address().port}${prefix}`;
 let browser;
 try {
   browser = await chromium.launch();
-  const page = await browser.newPage({ viewport: { width: 900, height: 720 } });
+  const page = await browser.newPage({ viewport: { width: viewportWidth, height: 800 } });
   page.setDefaultTimeout(5000);
   const failures = [];
   page.on("pageerror", (error) => failures.push(error.message));
@@ -56,7 +57,7 @@ try {
   const dialog = page.getByRole("dialog");
   const noOverflow = async (surface) => {
     assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1),
-      `${surface} overflows the 900 px viewport`);
+      `${surface} overflows the ${viewportWidth} px viewport`);
   };
   const capture = async (name) => {
     await page.evaluate(() => document.fonts.ready);
@@ -288,7 +289,7 @@ try {
     await buy("arms:bladework:2").click();
     await buy("arms:bladework:3").click();
     // An expanded branch remains open after its next purchase becomes level-gated.
-    await expect(path("arms:bladework")).toContainText("Sweeping Blade — 3 DP");
+    await expect(path("arms:bladework")).toContainText("Sweeping Blade I — 3 DP");
     await expect(stepControl("arms:bladework:4")).toHaveAccessibleName(/Level 3/);
     await expect(buy("arms:bladework:4")).toHaveCount(0);
     await expect(remaining).toHaveText("5 DP remaining");
@@ -346,21 +347,25 @@ try {
     assert(atlasBox.width >= 850 && atlasBox.height >= 650, "Atlas popup uses the available viewport");
     const map = atlas.locator(".forge-map-scroll");
     await expect(map.locator(".forge-map-root")).toHaveCount(originCatalog.disciplines.length);
-    await expect(map.locator(".forge-map-step")).toHaveCount(originCatalog.disciplines.reduce((sum, entry) => sum + entry.paths.reduce((total, path) => total + path.steps.length, 0), 0));
+    await expect(map.locator(".forge-map-step")).toHaveCount(originCatalog.disciplines.reduce((sum, entry) => sum + entry.paths.reduce((total, path) => total + path.steps.length, 0), 0) + originCatalog.books.reduce((sum, book) => sum + (book.masteryIds?.length ?? 0), 0));
     await expect(map.locator(".forge-map-combination")).toHaveCount(originCatalog.nodes.filter(node => node.kind === "combined").length);
     const stateStyles = await map.evaluate(element => {
       const learned = element.querySelector(".forge-map-step.is-learned");
       const future = element.querySelector(".forge-map-step.is-later");
       return {
         mark: getComputedStyle(learned, "::after").content,
-        learnedBackground: getComputedStyle(learned).backgroundColor,
-        futureBackground: getComputedStyle(future).backgroundColor,
-        futureBorder: getComputedStyle(future).borderStyle,
+        learnedBackground: getComputedStyle(learned.querySelector(".forge-shape-body")).fill,
+        futureBackground: getComputedStyle(future.querySelector(".forge-shape-body")).fill,
+        futureBorder: getComputedStyle(future.querySelector(".forge-shape-body")).stroke,
+        availableHalo: getComputedStyle(element.querySelector(".forge-map-step.is-available .forge-shape-halo")).stroke,
       };
     });
     assert.match(stateStyles.mark, /✓/, "Learned nodes have a visible checkmark in addition to color");
     assert.notEqual(stateStyles.learnedBackground, stateStyles.futureBackground);
-    assert.equal(stateStyles.futureBorder, "dashed", "Future choices use a distinct outline");
+    assert.equal(stateStyles.futureBorder, "rgb(78, 130, 102)", "Future choices have a green outline");
+    assert.equal(stateStyles.availableHalo, "rgb(223, 183, 84)", "Available choices add a gold outer outline");
+    await expect(map.locator(".forge-level-7")).not.toHaveCount(0);
+    await expect(map.locator(".forge-level-3")).not.toHaveCount(0);
     await map.scrollIntoViewIfNeeded();
     const mapBox = await map.boundingBox();
     const beforeZoom = Number(await map.getAttribute("data-zoom"));
@@ -399,7 +404,7 @@ try {
 
     assert.deepEqual(failures, []);
     await rm(resolve(output, "failure.png"), { force: true });
-    console.info("PASS compact Workshop at 900 px: favorites, inline rules, signed rolls, spell filters and upkeep, creator choices, Learning purchases and level gates across reload.");
+    console.info(`PASS compact Workshop at ${viewportWidth} px: favorites, inline rules, signed rolls, spell filters and upkeep, creator choices, seven-step Learning, atlas shapes/zoom/pan and level gates across reload.`);
   } catch (error) {
     await capture("failure");
     console.error("Browser errors:", failures);

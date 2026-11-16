@@ -1,0 +1,144 @@
+{
+  "format": "heroes-of-legend-character",
+  "schemaVersion": 6,
+  "sourceCommit": "55cbd4c70f13704c684f7ba358f0d75bb62b1f30",
+  "draft": {
+    "name": "Brunna Hearthward",
+    "attributes": {
+      "brawn": 0,
+      "fortitude": 1,
+      "agility": 0,
+      "guile": 0,
+      "knowledge": 0,
+      "reason": 2
+    },
+    "traitIds": [
+      "trait-dwarf-deep-constitution",
+      "trait-dwarf-low-center"
+    ],
+    "classDisciplines": [
+      "medicine"
+    ],
+    "languages": {
+      "home": "dwarven",
+      "extraSpoken": []
+    },
+    "purchases": {
+      "0": [],
+      "1": [
+        {
+          "id": "restoration:0"
+        },
+        {
+          "id": "protection:0"
+        },
+        {
+          "id": "sanctuary:0"
+        },
+        {
+          "id": "medicine:first-aid:1"
+        },
+        {
+          "id": "armor"
+        },
+        {
+          "id": "armor:harness:1"
+        }
+      ]
+    },
+    "acquisitions": {},
+    "shopping": [
+      {
+        "id": "item-ordinary-light-armor",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-cleric-1"
+      },
+      {
+        "id": "item-ordinary-shield",
+        "quantity": 1,
+        "hands": 1,
+        "instanceId": "shop-buildoff-cleric-2"
+      },
+      {
+        "id": "item-travel-pack",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-cleric-3"
+      },
+      {
+        "id": "item-food-bundle",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-cleric-4"
+      },
+      {
+        "id": "item-water-flask",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-cleric-5"
+      },
+      {
+        "id": "item-sleeping-roll",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-cleric-6"
+      },
+      {
+        "id": "item-first-aid-supplies",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-cleric-first-aid"
+      }
+    ],
+    "ancestryId": "ancestry-dwarf",
+    "classId": "class-shepherd",
+    "signatureId": "ability-signature-shepherd-gentle-return",
+    "culture": {
+      "id": "origin-culture-cloister-valleys",
+      "pair": 0
+    },
+    "background": {
+      "id": "origin-background-grave-attendant",
+      "pair": 1
+    },
+    "loadout": {
+      "shop-buildoff-cleric-1": {
+        "carried": true,
+        "worn": true,
+        "held": false
+      },
+      "shop-buildoff-cleric-2": {
+        "carried": true,
+        "worn": false,
+        "held": true
+      },
+      "shop-buildoff-cleric-3": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      },
+      "shop-buildoff-cleric-4": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      },
+      "shop-buildoff-cleric-5": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      },
+      "shop-buildoff-cleric-6": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      },
+      "shop-cleric-first-aid": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      }
+    }
+  },
+  "status": "ready"
+}

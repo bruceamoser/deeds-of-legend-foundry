@@ -3,7 +3,7 @@ import {
   maintainForgeSustain, nextForgeTurn, sustainLimit,
 } from "./rules/forge-sustain.mjs";
 import { renderForge, bindForgeInteractions } from "./forge-view.mjs";
-import { forgeSpendSp } from "./rules/forge-vitals.mjs";
+import { signatureSpellCost, isForgeRitual, forgeCastOptions, forgeCastPayment } from "./rules/forge-casting.mjs";
 import { forgeEligibility } from "./rules/forge.mjs";
 import { workshopCatalogs } from "./rules/workshop-forge-catalog.mjs";
 import { forgeArmorRequirement } from "./rules/forge-character.mjs";
@@ -31,7 +31,7 @@ import {
   forgeSpendGrit, forgeStabilize, forgeVitals,
 } from "./rules/forge-vitals.mjs";
 import { itemArrangement } from "./rules/workshop-play.mjs";
-import { normalizeRecovery, payDebt, nextDawn } from "./rules/recovery.mjs";
+import { normalizeForgeRecovery as normalizeRecovery, payForgeDebt as payDebt, nextForgeDawn as nextDawn } from "./rules/forge-recovery.mjs";
 import { passiveAncestryDefenseSources } from "./rules/passive-defenses.mjs";
 import { ancestrySelection } from "./rules/ancestry.mjs";
 import { CONDITION_KINDS, conditionRollSources } from "./rules/conditions.mjs";
@@ -58,7 +58,7 @@ import {
   readPortableCharacter,
   writePortableCharacter,
   MAX_CHARACTER_BYTES,
-  WORKSHOP_PLAYTEST_VERSION,
+  WORKSHOP_PLAYTEST_VERSION, portableVersion,
 } from "./rules/portable-character.mjs";
 
 const $ = (selector) => document.querySelector(selector);
@@ -145,6 +145,7 @@ function notice(text) {
 }
 function get(id) {
   return (
+    preview?.state?.signatureComponents?.find((r) => r.id === id) ??
     catalogs.choices.find((r) => r.id === id) ??
     catalogs.forge.spells.find((r) => r.id === id) ??
     catalogs.inventory.equipment.find((r) => r.id === id) ??
@@ -316,7 +317,7 @@ function matches(r) {
 function sheet() {
   const visibleTabs = sheetTabs();
   if (!visibleTabs.includes(tab)) tab = "Main";
-  return `<div class="sheet-body"><nav class="edge-tabs" role="tablist" aria-label="Character sheet" aria-orientation="vertical">${visibleTabs.map((t) => button(navIcon(t, t), "tab", `id="tab-${t}" aria-label="${t}" role="tab" aria-selected="${tab === t}" aria-controls="panel" tabindex="${tab === t ? 0 : -1}" data-tab="${t}"`)).join("")}</nav><section id="panel" class="panel sheet-panel sheet-${tab.toLowerCase()}" role="tabpanel" aria-labelledby="tab-${tab}">${sheetContent()}</section></div>`;
+  return `<div class="sheet-body"><nav class="edge-tabs" role="tablist" aria-label="Character sheet" aria-orientation="vertical">${visibleTabs.map((t) => button(navIcon(t, t), "tab", `id="tab-${t}" aria-label="${t}" role="tab" aria-selected="${tab === t}" aria-controls="panel" tabindex="${tab === t ? 0 : -1}" data-tab="${t}"`)).join("")}</nav><section id="panel" class="panel sheet-panel sheet-${tab.toLowerCase()}" role="tabpanel" aria-labelledby="tab-${tab}">${learningReviewNotice()}${sheetContent()}</section></div>`;
 }
 function disciplineTable() {
   return `<section class="known-disciplines"><h3>Known disciplines</h3><div class="discipline-strip">${preview.state.learning.disciplines.map(({id, name}) =>
@@ -348,7 +349,7 @@ function sheetContent() {
 function spellbooks() {
   const learned = new Set(preview.state.learning.spells.map(({ id }) => id));
   const books = catalogs.forge.books.map(book => ({ ...book,
-    spells: book.spellIds.filter(id => learned.has(id)).map(get).filter(record =>
+    spells: [...book.spellIds, ...(book.masteryIds ?? []).flatMap(id => catalogs.forge.nodes.find(node => node.id === id)?.spellIds ?? [])].filter(id => learned.has(id)).map(get).filter(record =>
       matchesLibrary(record) && (spellTiming === "all" || record.action === spellTiming)),
   })).filter(book => book.spells.length && (spellDiscipline === "all" || book.disciplineId === spellDiscipline));
   const disciplines = catalogs.forge.disciplines.filter(d => catalogs.forge.books.some(b => b.disciplineId === d.id && b.spellIds.some(id => learned.has(id))));
@@ -382,8 +383,9 @@ function spellProfile(record) {
   return `<dl>${Object.entries({
     Casting: record.actionText ?? record.action,
     SP: record.sp, Attribute: record.attribute, "Target / range": record.target,
-    Duration: record.duration, Trigger: record.trigger,
-  }).filter(([, value]) => value !== undefined).map(([label, value]) =>
+    Duration: record.duration, Trigger: record.trigger, Defense: record.defense,
+    "Hold attribute": record.holdAttribute, "Escape attribute": record.escapeAttribute,
+  }).filter(([, value]) => value != null && value !== "").map(([label, value]) =>
     `<dt>${esc(label)}</dt><dd>${esc(value)}</dd>`).join("")}</dl>${markdown(record.effect)}`;
 }
 
@@ -392,14 +394,16 @@ function learnedImprovements(id) {
     .map((entry) => `<section class="technique-improvement"><h3>${esc(entry.name)}</h3>${markdown(entry.effect)}</section>`).join("");
 }
 
-function castCost(record) {
-  return record?.page ? record.sp : record?.classId || record?.id.startsWith("combined:")
-    ? Number(record.effect?.match(/\b(?:pay )?(\d+) SP\b/i)?.[1] ?? NaN)
-    : NaN;
+const castCost = signatureSpellCost;
+const isRitual = isForgeRitual;
+function castOptions(record) {
+  return forgeCastOptions(draft.play ?? {}, preview.state, record);
 }
-
-function isRitual(record) {
-  return record.action === "Ritual" || record.effect?.startsWith("Ritual");
+function minimumCastCost(record) {
+  return Math.min(...castOptions(record).map(option => option.cost));
+}
+function payCast(record, option) {
+  return forgeCastPayment(playDraft(), liveVitals().limits, preview.state, record, option);
 }
 
 function sustainUnavailable() {
@@ -408,7 +412,7 @@ function sustainUnavailable() {
 
 function currentSustain() {
   const play = draft.play ?? {};
-  const spell = preview.state.learning.spells.find((entry) => entry.id === play.sustain?.spellId);
+  const spell = [...preview.state.learning.spells, ...(preview.state.signatureComponents ?? [])].find((entry) => entry.id === play.sustain?.spellId);
   return { play, spell, active: activeForgeSustain(play, spell, sustainUnavailable()) };
 }
 
@@ -421,7 +425,7 @@ function sustainPanel() {
 
 // The sheet records casting and resources; Foundry/the table owns action timing.
 
-function castFromSheet(id) {
+function castFromSheet(id, optionId = null) {
   const record = get(id);
   const cost = castCost(record);
   const learned = record?.page
@@ -432,25 +436,33 @@ function castFromSheet(id) {
   const vitals = liveVitals();
   if (vitals.hp <= 0 || vitals.dead) throw new Error("Regain HP before casting.");
   if (preview.play.conditionSummary.unconscious.active) throw new Error("Regain consciousness before casting.");
-  if (cost > vitals.sp) throw new Error("You need more SP.");
+  const options = castOptions(record);
+  if (!optionId && options.length > 1) {
+    popup(`Cast ${record.name}`, `<p>Choose how to pay for this spell.</p><div class="dialog-actions">${options.map(option => button(`${option.label} · ${option.cost} SP`, "cast-spell", `data-id="${esc(id)}" data-payment="${esc(option.id)}" ${option.cost > vitals.sp ? "disabled" : ""}`)).join("")}</div><small>Soul Wellspring and Mind Palace each renew after a safe overnight rest.</small>`);
+    return;
+  }
+  optionId ??= "normal";
+  const payment = options.find(option => option.id === optionId);
+  if (!payment) throw new Error("Choose an available spell payment.");
+  if (payment.cost > vitals.sp) throw new Error("You need more SP.");
   const attribute = attributeFor(record);
   const automatic = !attribute || /(?:^|[.!] )No (?:casting )?roll\./i.test(record.effect);
   $("#reference").close();
   if (isRitual(record)) {
-    draft.play = forgeSpendSp(playDraft(), vitals.limits, cost);
+    draft.play = payCast(record, optionId);
     persist();
     render();
-    popup(record.name, `${record.page ? spellProfile(record) : markdown(record.effect)}<p>${cost} SP spent. Finish the printed casting time before resolving the effect.</p>${automatic && !sustainLimit(record) ? "" : `<div class="dialog-actions">${button(automatic ? "Complete Ritual" : "Roll when the Ritual ends", "finish-ritual", `data-id="${esc(id)}"`, "primary")}</div>`}`);
+    popup(record.name, `${record.page ? spellProfile(record) : markdown(record.effect)}<p>${payment.cost} SP spent. Finish the printed casting time before resolving the effect.</p>${automatic && !sustainLimit(record) ? "" : `<div class="dialog-actions">${button(automatic ? "Complete Ritual" : "Roll when the Ritual ends", "finish-ritual", `data-id="${esc(id)}"`, "primary")}</div>`}`);
     return;
   }
   if (!automatic) {
-    openSheetRoll({ key: attribute, id, cast: true });
+    openSheetRoll({ key: attribute, id, cast: true, payment: optionId });
     return;
   }
-  draft.play = beginForgeSustain(forgeSpendSp(playDraft(), vitals.limits, cost), record);
+  draft.play = beginForgeSustain(payCast(record, optionId), record);
   persist();
   render();
-  notice(`Casting recorded: ${record.name}${cost ? ` · ${cost} SP spent` : ""}.`);
+  notice(`Casting recorded: ${record.name}${payment.cost ? ` · ${payment.cost} SP spent` : ""}.`);
 }
 
 function signatureProgress() {
@@ -462,9 +474,7 @@ function signatureProgress() {
     1, 3, 7,
   ]
     .map((tier) => {
-      const id = cls.signatures[tier].find((id) =>
-        preview.state.abilities.includes(id),
-      );
+      const id = preview.state.signatureChoices?.[tier];
       return `<tr><td>${tier}</td><td>${id ? button(esc(name(id)), "reference", `data-id="${id}"`, "table-link") : tier > preview.development.level ? "Available at level " + tier : "Choose a signature"}</td><td>${missing.includes(tier) ? button(`Choose level ${tier} signature`, "choose-signature", `data-tier="${tier}"`, "small") : id ? '<span class="signature-complete">✓</span>' : "—"}</td></tr>`;
     })
     .join("")}</tbody></table></div>`;
@@ -476,7 +486,7 @@ function brief(record) {
   return body.find((b) => b.text)?.text ?? record.reference?.flavor?.[0] ?? "";
 }
 function attributeFor(record) {
-  if (record?.page) return ATTRIBUTES.find((key) => record.attribute?.toLowerCase().startsWith(key));
+  if (record?.page || record?.signatureComponent) return ATTRIBUTES.find((key) => record.attribute?.toLowerCase().startsWith(key));
   // The universal opportunity is one Basic Melee, using that action's printed roll.
   if (record?.id === "ability-opportunity-attack")
     return attributeFor(get("ability-basic-melee"));
@@ -552,7 +562,7 @@ function actionUse(entry) {
   if(entry.inventoryInstance) return entry.inventoryInstance.quantity > 0 && entry.inventoryInstance.inventoryDie > 0 ? itemUseButton(entry.inventoryInstance) : button("Empty","use-supply-dialog","disabled","compact-roll");
   if(r.id === "ability-use-a-healing-potion") return button("Use","potion-dialog",'aria-label="Use a healing potion"',"compact-roll");
   if(r.id === "ability-sustain-spell") return button("Sustain","sustain-spell",currentSustain().active ? "" : "disabled", "compact-roll");
-  if(Number.isInteger(cost)) return button(key?attributeLabel(key):isRitual(r)?"Ritual":"Cast","cast-spell",`data-id="${esc(r.id)}" aria-label="Cast ${esc(r.name)}" ${liveVitals().sp < cost || sustainUnavailable() ? "disabled" : ""}`,"compact-roll");
+  if(Number.isInteger(cost)) return button(key?attributeLabel(key):isRitual(r)?"Ritual":"Cast","cast-spell",`data-id="${esc(r.id)}" aria-label="Cast ${esc(r.name)}" ${liveVitals().sp < minimumCastCost(r) || sustainUnavailable() ? "disabled" : ""}`,"compact-roll");
   if(key) return button(attributeLabel(key),"open-roll",`data-id="${esc(r.id)}" aria-label="Roll ${esc(r.name)}"`,"compact-roll");
   return button("Use","inline-action",`data-id="${esc(r.id)}" aria-label="Use ${esc(r.name)}"`,"compact-roll");
 }
@@ -631,7 +641,7 @@ function mainPanel() {
       `${preview.inventory.bulk} / ${preview.inventory.capacity}`,
     ) +
     row("Encumbrance", preview.inventory.encumbrance) +
-    row("Base stability", preview.summary?.stability ?? 0);
+    row(effectiveTraits().includes("trait-dwarf-low-center") ? "Stability while grounded" : "Base stability", preview.summary?.stability ?? 0);
   return `<div class="main-layout"><div class="action-groups">${left}</div><aside class="play-summary">${collapsible("defenses", "Defenses", defenses, button("Roll defense", "evade", 'aria-label="Roll defense"', "small"))}${conditionBar()}${sustainPanel()}${collapsible("movement-carrying", "Movement & carrying", carrying)}${collapsible("supplies", "Supplies", supplyRows())}${collapsible("passives", "Passives", passiveTable(actions.filter(e=>actionTiming(e.record).includes("Passive"))), "", "box", false)}${collapsible("ancestry-traits", "Ancestry traits", traits, effectiveTraits().includes("trait-oath-bound-the-debt-comes-due") || v.recovery.debtUsed ? button("Recovery", "debt-recovery", "", "small") : "", "box", false)}</aside></div>`;
 }
 function traitBrief(id) {
@@ -879,7 +889,7 @@ function classDisciplineChoice(id) {
 }
 
 function creationSignature(id) {
-  const record = get(id);
+  const record = catalogs.choices.find(record => record.id === id);
   const { rules, flavor } = record.reference;
   const timing = join(actionTiming(record));
   const attribute = attributeFor(record);
@@ -992,9 +1002,12 @@ function acquisitionPath(id) {
       ? `progression.levels.${activeLearningLevel()}.acquisitions.${id}`
       : `acquisitions.${id}`;
 }
+function learningReviewNotice() {
+  return draft.learningReview?.length ? `<aside class="choice-alert" role="status">Your learned paths have changed. ${draft.learningReview.length} earlier choices are ready to rebuild using your available DP. Your equipment and recorded HP/SP are retained. ${button("Review learning", "review-learning", "", "small")} ${button("Dismiss", "dismiss-learning-review", "", "small quiet")}</aside>` : "";
+}
 function requiredChoicesBanner() {
   const pending = preview.errors.filter((e) => e.code === "acquisition");
-  if (!pending.length) return "";
+  if (!pending.length) return learningReviewNotice();
   return `<aside class="choice-alert" role="status" aria-label="Missing choices"><strong>Choices needed</strong><ul>${pending.map((e) => `<li>${button(`<b>${esc(name(e.id))}</b> · ${esc((e.reasons ?? []).map((r) => r.text).join(" "))}`, "locate-choice", `data-id="${esc(e.id)}" data-level="${e.level ?? 0}"`, "table-link")}</li>`).join("")}</ul></aside>`;
 }
 function acquisitions(onlyMissing = false, onlyId = null) {
@@ -1136,9 +1149,7 @@ function missingSignatures() {
     ? [1, 3, 7].filter(
         (tier) =>
           tier <= preview.development.level &&
-          (!cls.signatures[tier].some((id) =>
-            preview.state.abilities.includes(id),
-          ) ||
+          (!cls.signatures[tier].includes(preview.state.signatureChoices?.[tier]) ||
             preview.errors.some(
               (e) =>
                 e.code === "acquisition" && cls.signatures[tier].includes(e.id),
@@ -1189,7 +1200,7 @@ function signatureBuilder() {
   }
   const ids = cls.signatures[signatureTier],
     selected = selectedSignature();
-  const content = `${heading("", `Choose level ${signatureTier} signature`, "")}<div class="cards">${ids.map((id) => `<article class="choice-card ${selected === id ? "chosen" : ""}"><h3>${esc(name(id))}</h3><p class="card-copy">${esc(get(id).reference.flavor[0])}</p><div class="card-actions">${button("Read", "reference", `data-id="${esc(id)}"`, "small quiet")}${button(selected === id ? "Selected" : "Choose", "advance-signature", `data-id="${esc(id)}" data-tier="${signatureTier}"`, "small")}</div></article>`).join("")}</div><section class="box current-build"><h3>Current Build</h3><ul><li>${selected ? esc(name(selected)) : "Choose a signature"}${acquisitions(true)}</li></ul></section>`;
+  const content = `${heading("", `Choose level ${signatureTier} signature`, "")}<div class="cards">${ids.map((id) => `<article class="choice-card ${selected === id ? "chosen" : ""}"><h3>${esc(name(id))}</h3><p class="card-copy">${esc(catalogs.choices.find(record => record.id === id)?.reference?.flavor?.[0] ?? "")}</p><div class="card-actions">${button("Read", "reference", `data-id="${esc(id)}"`, "small quiet")}${button(selected === id ? "Selected" : "Choose", "advance-signature", `data-id="${esc(id)}" data-tier="${signatureTier}"`, "small")}</div></article>`).join("")}</div><section class="box current-build"><h3>Current Build</h3><ul><li>${selected ? esc(name(selected)) : "Choose a signature"}${acquisitions(true)}</li></ul></section>`;
   return learningFrame(content, `Level ${signatureTier} signature`);
 }
 
@@ -1298,7 +1309,7 @@ function library() {
   const current = saved.map((entry) => {
     if (
       entry.character.sourceCommit === catalogs.commit &&
-      entry.character.schemaVersion === WORKSHOP_PLAYTEST_VERSION &&
+      entry.character.schemaVersion === portableVersion(catalogs) &&
       entry.character.draft?.culture?.retainedFrom === undefined &&
       entry.character.draft?.background?.retainedFrom === undefined &&
       !entry.name.endsWith(" (before rules update)")
@@ -1430,21 +1441,21 @@ function recoveryDialog() {
     <h3>Safe overnight rest</h3><p>After eight safe hours including at least six hours of sleep or equivalent rest, restore HP and SP and renew first aid. Count elapsed hours from the start of your record.</p>
     <label>Hour rest finished<input id="hero-rest-hour" type="number" min="${restHour}" max="1000000000" value="${restHour}"></label>
     <div class="dialog-actions">${button("Complete safe rest", "complete-hero-rest", canAct && !v.dying ? "" : "disabled")}</div>
-    ${spRecovery ? `<h3>Spellcraft Recovery</h3><p>After one uninterrupted safe hour, restore ${spRecovery} SP. Use once between safe overnight rests.</p><div class="dialog-actions">${button("Complete one hour", "hero-sp-recovery", canAct && !v.dying && !v.spellcraftRecoveryUsed ? "" : "disabled")}</div>` : ""}
+    ${spRecovery ? `<h3>Spellcraft Recovery</h3><p>After ${preview.state.learning.recoveryMinutes} uninterrupted minutes of safe rest, restore ${spRecovery} SP. Use once between safe overnight rests.</p><div class="dialog-actions">${button(`Complete ${preview.state.learning.recoveryMinutes} minutes`, "hero-sp-recovery", canAct && !v.dying && !v.spellcraftRecoveryUsed ? "" : "disabled")}</div>` : ""}
     <div class="dialog-actions">${button("Record scar", "add-scar", canAct && !v.dying ? "" : "disabled")}</div>`);
 }
 
 function firstAidDialog() {
   popup("Finish first aid", `
     <p>Choose the healer’s treatment and their Knowledge result after the required time.</p>
-    <label>Treatment<select id="aid-treatment"><option value="0">First aid · 10 minutes · 2/4/6 HP</option><option value="1">Field Dressing I · 10 minutes · 3/5/7 HP</option><option value="2">Field Dressing II · 10 minutes · 4/6/8 HP</option><option value="2">Field Dressing III · 5 minutes · 4/6/8 HP</option><option value="2">Emergency Treatment · Main Action · 4/6/8 HP</option></select></label>
+    <label>Treatment<select id="aid-treatment"><option value="0">First aid · 10 minutes · 2/4/6 HP</option><option value="1">Field Dressing I · 10 minutes · 3/5/7 HP</option><option value="2">Field Dressing II · 10 minutes · 4/6/8 HP</option><option value="2">Field Dressing III · 5 minutes · 4/6/8 HP</option><option value="2">Emergency Treatment I · Main Action · 4/6/8 HP</option><option value="emergency2">Emergency Treatment II / III · Main Action · 5/7/9 HP</option><option value="mastery">A Way through Death / Bring Everyone Home · Main Action · 5/8/11 HP</option></select></label>
     <label>Knowledge result<select id="aid-outcome"><option value="weak">Weak</option><option value="standard">Standard</option><option value="strong">Strong</option></select></label>
     <div class="dialog-actions">${button("Record treatment", "record-first-aid", "", "primary")}</div>`);
 }
 
 function debtRecoveryDialog() {
   const v = liveVitals();
-  popup("Recovery until dawn", `<p>${v.recovery.unavailableHp} HP unavailable until next dawn. Healing and safe overnight rest can restore HP to ${v.recoveryMax} / ${v.max}.</p><p>The Debt Comes Due: ${v.recovery.debtUsed ? "used today" : "available"}. Use it after a sheet attribute roll to pay 1 HP and replace that roll with a new result using the same modifiers.</p><p>Declare the next dawn when it occurs in play. This unlocks recovery and refreshes the daily use.</p><div class="dialog-actions">${button("Recovery", "hero-recovery")}${button("Next dawn", "debt-next-dawn", "", "primary")}</div>`);
+  popup("Recovery until dawn", `<p>${v.recovery.unavailableHp} HP unavailable until next dawn. Healing and safe overnight rest can restore HP to ${v.recoveryMax} / ${v.max}.</p><p>The Debt Comes Due: ${v.recovery.debtUsed ? "used since safe overnight rest" : "available"}. Use it after a sheet attribute roll to pay 1 HP and replace that roll with a new result using the same modifiers.</p><p>Declare the next dawn when it occurs in play. Dawn releases that HP for healing. A safe overnight rest renews use of the trait.</p><div class="dialog-actions">${button("Recovery", "hero-recovery")}${button("Next dawn", "debt-next-dawn", "", "primary")}</div>`);
 }
 function resupplyDialog(instance) {
   const item = preview.inventory.items.find((i) => i.instanceId === instance);
@@ -1509,12 +1520,13 @@ let activeRoll = null;
 function deathMarks(v) {
   return `<p>Failure marks <strong>${v.failedDeathRolls} / 3</strong> · Success marks <strong>${v.successfulDeathRolls} / 3</strong></p>`;
 }
-function openSheetRoll({ key, id, death = false, defense = false, cast = false, finishRitual = false }) {
+function openSheetRoll({ key, id, death = false, defense = false, cast = false, finishRitual = false, payment = "normal" }) {
   const record = get(id),
     attribute = death ? "fortitude" : (key ?? attributeFor(record));
   if (!ATTRIBUTES.includes(attribute))
     throw new Error("Choose an attribute for this roll.");
-  activeRoll = { death, id, defense, cast, finishRitual };
+  activeRoll = { death, id, defense, cast, finishRitual, payment };
+  const paymentCost = castOptions(record).find(option => option.id === payment)?.cost;
   const v = liveVitals();
   if (death && (!v.dying || v.failed === 3)) throw new Error("Death rolls are for a Dying hero.");
   popup(
@@ -1540,7 +1552,7 @@ function openSheetRoll({ key, id, death = false, defense = false, cast = false, 
               "",
             )}</div><small>Choose applicable abilities; adjust the attribute and net Boons/Banes above.</small></details>`
     }
-    <div id="recipe-roll-result" role="status" aria-live="polite"></div><div class="dialog-actions">${button(cast ? `Cast and roll${castCost(record) ? ` · ${castCost(record)} SP` : ""}` : "Roll", "roll-sheet", "", "primary")}</div>${record ? `<details ${cast || finishRitual ? "open" : ""}><summary>Rules</summary>${record.page ? spellProfile(record) : markdown(record.effect ?? references.records[id]?.markdown ?? "")}${learnedImprovements(id)}</details>` : ""}`,
+    <div id="recipe-roll-result" role="status" aria-live="polite"></div><div class="dialog-actions">${button(cast ? `Cast and roll${paymentCost ? ` · ${paymentCost} SP` : ""}` : "Roll", "roll-sheet", "", "primary")}</div>${record ? `<details ${cast || finishRitual ? "open" : ""}><summary>Rules</summary>${record.page ? spellProfile(record) : markdown(record.effect ?? references.records[id]?.markdown ?? "")}${learnedImprovements(id)}</details>` : ""}`,
   );
   bindRollSetup($("#reference .reference-body"), {
     getAttributeValue: () => preview.attributes[$("#sheet-roll-attribute").value],
@@ -1554,7 +1566,7 @@ function openSheetRoll({ key, id, death = false, defense = false, cast = false, 
   const automatic = [...conditionRollSources(conditions, {
     mode: death ? "death" : defense ? "defense" : "attribute",
     perceivedSources: [],
-  }), ...(defense ? passiveAncestryDefenseSources(effectiveTraits()) : [])];
+  }), ...(defense && catalogs.forge?.rulesRevision !== 299 ? passiveAncestryDefenseSources(effectiveTraits()) : [])];
   if (death && effectiveTraits().includes("trait-human-weathered")) {
     automatic.push({ kind: "boon", amount: 1 });
     $("#recipe-roll-result").innerHTML = "<p>Never Quite Finished gives 1 Boon to this Fortitude roll.</p>";
@@ -1578,10 +1590,9 @@ function rollSheetDice() {
     throw new Error("Regain HP before resolving this working.");
   if (activeRoll.cast) {
     const record = get(activeRoll.id);
-    const cost = castCost(record);
     if (sustainUnavailable()) throw new Error("Regain consciousness before casting.");
-      draft.play = beginForgeSustain(forgeSpendSp(playDraft(), liveVitals().limits, cost), record);
-      persist();
+    draft.play = beginForgeSustain(payCast(record, activeRoll.payment), record);
+    persist();
     render();
   }
   const result = displayDice(preview.attributes[key], undefined, activeRoll.death);
@@ -1671,7 +1682,7 @@ function recipeRoll(id, recipeId) {
   );
   popup(
     `Craft ${recipe.name}`,
-    `<p><strong>${esc(ability.name)}</strong> · ${title(attribute)} ${signed(preview.attributes[attribute])} · ${recipe.attemptMinutes} min per attempt</p>${recipe.maximumDie ? `<label>Supply<select id="craft-supply">${supplies.map((i) => `<option value="${esc(i.instanceId)}">${esc(name(i.catalogId))} · ${i.inventoryDie ? "d" + i.inventoryDie : "Empty"}</option>`).join("")}<option value="">New supply</option></select></label>` : `<p id="craft-progress">${craftingStatus(recipe)}</p>`}<p>${noRollBrew(id, recipe) ? "Brew to d4 without a roll" : `Weak 1 · Standard ${preview.state.learned.includes("craft:supplies:3") ? "3 · Strong 4" : "2 · Strong 3"} ${recipe.maximumDie ? "supply steps" : "progress"}`}. Tools, materials and time follow the recipe.</p>${netControl({ id: "recipe-net", labelId: "roll-net-value" })}<div id="recipe-roll-result" role="status" aria-live="polite"></div><div class="dialog-actions">${button(noRollBrew(id, recipe) ? "Brew" : "Roll", "roll-recipe", `data-id="${esc(id)}" data-recipe-id="${esc(recipeId)}"`, "primary")}</div><details><summary>Recipe rules</summary>${markdown(references.records[recipeId]?.markdown ?? "")}</details>`,
+    `<p><strong>${esc(ability.name)}</strong> · ${title(attribute)} ${signed(preview.attributes[attribute])} · ${recipe.attemptMinutes} min per attempt</p>${recipe.maximumDie ? `<label>Supply<select id="craft-supply">${supplies.map((i) => `<option value="${esc(i.instanceId)}">${esc(name(i.catalogId))} · ${i.inventoryDie ? "d" + i.inventoryDie : "Empty"}</option>`).join("")}<option value="">New supply</option></select></label>` : `<p id="craft-progress">${craftingStatus(recipe)}</p>`}<p>${noRollBrew(id, recipe) ? "Brew to d4 without a roll" : `Weak 1 · Standard ${(preview.state.learned.includes("craft:supplies:3") || preview.state.learned.includes("craft:workshop:3")) ? "3 · Strong 4" : "2 · Strong 3"} ${recipe.maximumDie ? "supply steps" : "progress"}`}. Tools, materials and time follow the recipe.</p>${netControl({ id: "recipe-net", labelId: "roll-net-value" })}<div id="recipe-roll-result" role="status" aria-live="polite"></div><div class="dialog-actions">${button(noRollBrew(id, recipe) ? "Brew" : "Roll", "roll-recipe", `data-id="${esc(id)}" data-recipe-id="${esc(recipeId)}"`, "primary")}</div><details><summary>Recipe rules</summary>${markdown(references.records[recipeId]?.markdown ?? "")}</details>`,
   );
   if (recipe.maximumDie)
     $("#craft-supply").value = draft.play.crafting[recipeId].supplyId ?? "";
@@ -1687,7 +1698,7 @@ function rollRecipeDice(id, recipeId) {
     recipe: get(recipeId),
     tier: rolled.tier,
     abilityId: id,
-    improved: preview.state.learned.includes("craft:supplies:3"),
+    improved: (preview.state.learned.includes("craft:supplies:3") || preview.state.learned.includes("craft:workshop:3")),
     items: preview.inventory.items,
     supplyId: $("#craft-supply")?.value,
     instanceId: `inventory-${crypto.randomUUID()}`,
@@ -1984,7 +1995,7 @@ function showReference(id) {
   const cost = castCost(r);
   const known = r.page ? preview.state.learning.spells.some((entry) => entry.id === id) : preview.state.abilities.includes(id);
   if (Number.isInteger(cost) && known)
-    body += `<div class="dialog-actions">${button(isRitual(r) ? "Begin Ritual" : "Cast", "cast-spell", `data-id="${esc(id)}" ${preview.limits && !sustainUnavailable() && liveVitals().sp >= cost ? "" : "disabled"}`, "primary")}</div>`;
+    body += `<div class="dialog-actions">${button(isRitual(r) ? "Begin Ritual" : "Cast", "cast-spell", `data-id="${esc(id)}" ${preview.limits && !sustainUnavailable() && liveVitals().sp >= minimumCastCost(r) ? "" : "disabled"}`, "primary")}</div>`;
   const instrument = preview.state.instruments?.find(
     (entry) => entry.abilityId === id,
   )?.instrument;
@@ -2041,7 +2052,7 @@ async function action(target) {
     if (a === "save-scar") next = forgeRecordScar(playDraft(), v.limits, $("#scar-description").value);
     if (a === "complete-hero-rest") next = forgeRest(playDraft(), v.limits, { hour: $("#hero-rest-hour").valueAsNumber });
     if (a === "begin-first-aid") next = forgeBeginFirstAid(playDraft(), v.limits);
-    if (a === "record-first-aid") next = forgeFinishFirstAid(playDraft(), v.limits, $("#aid-outcome").value, { fieldDressing: Number($("#aid-treatment").value) });
+    if (a === "record-first-aid") next = forgeFinishFirstAid(playDraft(), v.limits, $("#aid-outcome").value, { fieldDressing: Number($("#aid-treatment").value), treatment: ["emergency2", "mastery"].includes($("#aid-treatment").value) ? $("#aid-treatment").value : undefined });
     if (a === "interrupt-first-aid") next = forgeInterruptFirstAid(playDraft(), v.limits);
     if (a === "hero-sp-recovery") next = forgeSpellcraftRecovery(playDraft(), v.limits, preview.state.learning.recoverySp);
     if (a === "stabilize-hero") next = forgeStabilize(playDraft(), v.limits);
@@ -2180,7 +2191,7 @@ async function action(target) {
     });
   if (a === "death-roll") return openSheetRoll({ death: true });
   if (a === "roll-sheet") return rollSheetDice();
-  if (a === "cast-spell") return castFromSheet(target.dataset.id);
+  if (a === "cast-spell") return castFromSheet(target.dataset.id, target.dataset.payment);
   if (a === "finish-ritual") {
     if (sustainUnavailable()) throw new Error("Regain consciousness before completing the Ritual.");
     const record = get(target.dataset.id);
@@ -2428,6 +2439,8 @@ async function action(target) {
       draft.classDisciplines = [id];
   }
   if (a === "signature") draft.signatureId = target.dataset.id;
+  if (a === "dismiss-learning-review") delete draft.learningReview;
+  if (a === "review-learning") { mode = "builder"; step = LEARNING_STEP; }
   if (a === "forge-select") {
     forgeSelected = target.dataset.id;
     const node = catalogs.forge.nodes.find(entry => entry.id === forgeSelected);

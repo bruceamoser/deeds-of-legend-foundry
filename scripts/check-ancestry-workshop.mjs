@@ -111,7 +111,7 @@ try {
   await page.getByLabel("Borrowed trait", {exact:true}).selectOption("trait-tallfolk-broad-back");
   await page.getByLabel("Ancestry language", {exact:true}).selectOption("giant");
   await page.getByRole("button", {name:"Read borrowed trait",exact:true}).click();
-  assert((await page.locator("#reference").innerText()).includes("Your Bulk capacity increases by 3."));
+  assert((await page.locator("#reference").innerText()).includes("Gain 3 Bulk capacity."));
   await page.locator("#reference").getByRole("button", {name:"Close",exact:true}).click();
   await page.getByRole("button", {name:"7 Review",exact:true}).click();
   await page.getByRole("button", {name:"View character sheet",exact:true}).click();
@@ -143,7 +143,7 @@ try {
   await page.getByRole("tab", {name:"Main",exact:true}).click();
   assert.match(await page.locator('[data-collapse="movement-carrying"]').innerText(), /8 \/ 13/);
   await page.getByRole("button", {name:"Roll defense",exact:true}).click();
-  assert.equal(await page.locator("#recipe-net").inputValue(),"1", "borrowed Small Target supplies one defense Boon");
+  assert.equal(await page.locator("#recipe-net").inputValue(),"0", "Small Target requires actual cover; borrowing does not grant an unconditional defense Boon");
   await page.keyboard.press("Escape");
   await page.reload();
   await page.getByRole("tab", {name:"Main",exact:true}).waitFor();
@@ -220,7 +220,7 @@ try {
   await page.getByRole("heading", {name:"Creation complete",exact:true}).waitFor();
   assert(await page.getByRole("button", {name:"Export character JSON",exact:true}).isEnabled());
 
-  // The daily reroll pays HP once, keeps its original modifiers and persists its recovery ceiling.
+  // The once-per-overnight-rest reroll pays HP once, keeps its original modifiers and persists its recovery ceiling.
   await seed("ancestry-oath-bound", ["trait-oath-bound-the-debt-comes-due", "trait-oath-bound-neither-here-nor-there"], "sheet");
   const maximum = Number(await page.getByLabel("Current HP", {exact:true}).inputValue());
   await page.getByRole("button", {name:"Roll Brawn",exact:true}).click();
@@ -247,9 +247,11 @@ try {
   await page.locator('[data-action="debt-recovery"]').click();
   await page.getByRole("button", {name:"Next dawn",exact:true}).click();
   assert.equal(Number(await page.getByLabel("Current HP", {exact:true}).inputValue()), Math.ceil(maximum / 2), "dawn unlocks HP without healing");
+  assert.deepEqual((await stored()).character.draft.play.recovery, {unavailableHp:0,debtUsed:true}, "dawn releases HP without refreshing the trait");
   await page.locator("#reference").getByRole("button", {name:"Recovery",exact:true}).click();
   await page.getByRole("button", {name:"Complete safe rest",exact:true}).click();
   assert.equal(Number(await page.getByLabel("Current HP", {exact:true}).inputValue()), maximum);
+  assert.equal((await stored()).character.draft.play.recovery.debtUsed, false, "safe overnight rest refreshes the trait");
   await page.keyboard.press("Escape");
   await page.screenshot({path:`${output}/debt-recovery.png`,fullPage:true});
 
@@ -261,5 +263,5 @@ try {
   assert.match(await page.locator(".journal-page").innerText(), /ancestry/i);
   await page.screenshot({path:`${output}/shared-ancestry-rules.png`,fullPage:true});
   assert.deepEqual(failures, []);
-  console.info("Ancestry workshop passed: ten ancestries, fifty exact trait references, shared vision/procedures, old-ID import/save/reload, mixed ancestry controls/derived benefits/export/reload, explicit legacy-language repair/removal, daily Debt reroll and recovery persistence; no browser errors.");
+  console.info("Ancestry workshop passed: ten ancestries, fifty exact trait references, shared vision/procedures, old-ID import/save/reload, mixed ancestry controls/derived benefits/export/reload, explicit legacy-language repair/removal, overnight-rest Debt reroll and recovery persistence; no browser errors.");
 } finally { await browser.close(); await new Promise(done => server.close(done)); }

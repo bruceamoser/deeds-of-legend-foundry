@@ -301,7 +301,7 @@ try {
     "Choose an item sheet export",
   );
   await page.getByRole("button", { name: "Choose item", exact: true }).click();
-  await choose("Driving Blow I", "arms:impact:1");
+  await choose("Measured Cut I", "arms:bladework:1");
   await expect(page.locator(".rule-card")).toContainText(
     "2/3/5 physical damage",
   );
@@ -332,7 +332,7 @@ try {
     ),
   });
   await page
-    .getByRole("heading", { name: "Driving Blow I", exact: true })
+    .getByRole("heading", { name: "Measured Cut I", exact: true })
     .waitFor();
   await expect(page.getByLabel("Notes", { exact: true })).toHaveValue(
     "Keep this note.",

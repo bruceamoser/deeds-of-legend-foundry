@@ -1,0 +1,147 @@
+{
+  "format": "heroes-of-legend-character",
+  "schemaVersion": 6,
+  "sourceCommit": "55cbd4c70f13704c684f7ba358f0d75bb62b1f30",
+  "draft": {
+    "name": "Eryn Mossarrow",
+    "attributes": {
+      "brawn": 0,
+      "fortitude": 1,
+      "agility": 2,
+      "guile": -1,
+      "knowledge": 1,
+      "reason": 0
+    },
+    "traitIds": [
+      "trait-elf-light-tread",
+      "trait-elf-leaf-listener"
+    ],
+    "classDisciplines": [
+      "marksmanship"
+    ],
+    "languages": {
+      "home": "elven",
+      "extraSpoken": []
+    },
+    "purchases": {
+      "0": [],
+      "1": [
+        {
+          "id": "marksmanship:precision:1"
+        },
+        {
+          "id": "marksmanship:precision:2"
+        },
+        {
+          "id": "marksmanship:readiness:1"
+        },
+        {
+          "id": "wilderness:tracking:1"
+        },
+        {
+          "id": "wilderness:provisioning:1"
+        },
+        {
+          "id": "water:0"
+        },
+        {
+          "id": "earth:0"
+        }
+      ]
+    },
+    "acquisitions": {},
+    "shopping": [
+      {
+        "id": "item-ordinary-ranged-weapon",
+        "quantity": 1,
+        "hands": 2,
+        "instanceId": "shop-buildoff-ranger-0"
+      },
+      {
+        "id": "item-ammunition-bundle",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-ranger-1"
+      },
+      {
+        "id": "item-travel-pack",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-ranger-2"
+      },
+      {
+        "id": "item-food-bundle",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-ranger-3"
+      },
+      {
+        "id": "item-water-flask",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-ranger-4"
+      },
+      {
+        "id": "item-sleeping-roll",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-ranger-5"
+      },
+      {
+        "id": "item-lighting-bundle",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-ranger-6"
+      }
+    ],
+    "ancestryId": "ancestry-elf",
+    "classId": "class-warden",
+    "signatureId": "ability-signature-warden-keep-the-quarry-close",
+    "culture": {
+      "id": "origin-culture-forest-communities",
+      "pair": 0
+    },
+    "background": {
+      "id": "origin-background-poacher",
+      "pair": 1
+    },
+    "loadout": {
+      "shop-buildoff-ranger-0": {
+        "carried": true,
+        "worn": false,
+        "held": true
+      },
+      "shop-buildoff-ranger-1": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      },
+      "shop-buildoff-ranger-2": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      },
+      "shop-buildoff-ranger-3": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      },
+      "shop-buildoff-ranger-4": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      },
+      "shop-buildoff-ranger-5": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      },
+      "shop-buildoff-ranger-6": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      }
+    }
+  },
+  "status": "ready"
+}

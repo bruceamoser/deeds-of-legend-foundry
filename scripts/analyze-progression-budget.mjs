@@ -1,9 +1,7 @@
 /** Analysis only: proposed seven-step nonmagical branch prices, never live rules. */
 import assert from 'node:assert/strict';
 import { readFileSync, writeFileSync } from 'node:fs';
-import { applyForgePlaytest } from '../src/rules/forge-playtest-catalog.mjs';
-const read = name => JSON.parse(readFileSync(new URL(`../static/data/${name}.json`, import.meta.url)));
-const { forge } = applyForgePlaytest(read('forge'), read('forge-references'));
+const forge = JSON.parse(readFileSync(new URL('../docs/rewrite-299-budget-input.json', import.meta.url)));
 const builds = JSON.parse(readFileSync(new URL('../Build-Offs/hol-builds.json', import.meta.url))).builds;
 const attributes = ['brawn', 'agility', 'fortitude', 'guile', 'knowledge', 'reason'];
 const mental = stats => stats.guile + stats.knowledge + stats.reason;
@@ -16,6 +14,7 @@ const proposals = [
   { id:'A', advanced:[2,2,3] },
   { id:'B', advanced:[2,3,4] },
   { id:'C', advanced:[3,3,5] },
+  { id:'D', advanced:[4,4,5] },
 ].map(p=>({...p,costs:[...base,...p.advanced]}));
 const assignments=[];
 function enumerate(values=[]){
@@ -60,7 +59,7 @@ const costComparison=proposals.map(p=>({id:p.id,costs:p.costs,cumulative:p.costs
 assert.deepEqual(distribution.map(d=>d.mentalSum),[-3,-2,-1,0,1,2,3,4,5,6]);
 assert.equal(assignments.length,distribution.reduce((sum,d)=>sum+d.assignments,0));
 assert.equal(laterDp(3),13);assert.equal(laterDp(7),51);
-assert.deepEqual(costComparison.map(p=>[p.level3,p.level7]),[[12,15],[13,17],[14,19]]);
+assert.deepEqual(costComparison.map(p=>[p.level3,p.level7]),[[12,15],[13,17],[14,19],[16,21]]);
 assert.ok(forge.classes.every(c=>forge.disciplines.every(d=>[1,2,3].includes(c.disciplineCosts[d.id]))));
 assert.equal(assignments.length,1246);
 assert.equal(nonmagical.length,11);assert.ok(nonmagical.every(d=>d.paths.length===4));
@@ -83,11 +82,11 @@ assert.ok(pureMagical.every(d=>d.paths.length===4&&d.paths.every(p=>nodes.get(p.
 const magicalBreadth={firstSectionCost:1,spellsPerFirstSection:2,threePureMagicalStartingDisciplines:{books:12,dpForEveryFirstSection:12,spellEntries:24},arcanistFourteenthPointExample:{freeDisciplines:['elements','invocation','force'],additionalDiscipline:'spellcraft',entryCost:forge.classes.find(c=>c.id==='class-arcanist').disciplineCosts.spellcraft,channelingFirstSectionCost:nodes.get('channeling:0').dp,totalDp:14,spellEntries:26},fullBookCost:8,spellsPerFullBook:11};
 assert.equal(magicalBreadth.arcanistFourteenthPointExample.entryCost,1);
 assert.equal(magicalBreadth.arcanistFourteenthPointExample.channelingFirstSectionCost,1);
-const result={status:'Analysis only. Candidate B is recommended, not an approved live rule.',inputs:{attributeBounds:[-2,2],attributeTotal:3,startingFormula:'8 + Guile + Knowledge + Reason',laterAward:'4 + new level',freeStartingDisciplines:3,additionalEntry:'Current complete class-price matrix, 1/2/3 DP',nonmagicalGates:gates,unchangedFirstFourPrices:base,magicalFourSectionPrices:[1,2,2,3],interDisciplineIntersections:'Removed by user direction; no combination-node DP included.',traits:'No trait bonuses in the general range. Current Build-Off characters have no DP-granting traits.',scope:'No new ability effects assumed; level3/7 completion is purely financial and preserves all current Build-Off purchases.'},assignments:assignments.length,distribution,classRanges,costComparison,magicalBreadth,buildBudgets};
+const result={status:'November 16: Bruce selected D, costs 1/2/2/3/4/4/5. A/B/C remain comparison cases; source and app integration underway.',inputs:{attributeBounds:[-2,2],attributeTotal:3,startingFormula:'8 + Guile + Knowledge + Reason',laterAward:'4 + new level',freeStartingDisciplines:3,additionalEntry:'Current complete class-price matrix, 1/2/3 DP',nonmagicalGates:gates,unchangedFirstFourPrices:base,magicalFourSectionPrices:[1,2,2,3],interDisciplineIntersections:'Removed by user direction; no combination-node DP included.',traits:'No trait bonuses in the general range. Current Build-Off characters have no DP-granting traits.',scope:'No new ability effects assumed; level3/7 completion is purely financial and preserves all current Build-Off purchases.'},assignments:assignments.length,distribution,classRanges,costComparison,magicalBreadth,buildBudgets};
 const output=new URL('../docs/rewrite-299-dp-budget.json',import.meta.url);
 const serialized=JSON.stringify(result,null,2)+'\n';
 if(process.argv.includes('--check'))assert.equal(readFileSync(output,'utf8'),serialized,'Regenerate analysis artifact after reviewing input changes.');
 else writeFileSync(output,serialized);
-console.log(`PASS: ${assignments.length} legal attribute assignments; ${classRanges.length} class ranges; ${builds.length} build budgets; three seven-node cost candidates.`);
+console.log(`PASS: ${assignments.length} legal attribute assignments; ${classRanges.length} class ranges; ${builds.length} build budgets; four seven-node cost curves, including approved D.`);
 console.table(distribution);
-console.table(buildBudgets.map(b=>({build:b.id,L1:b.starting,L3:b.level3,L7:b.level7,available3:b.additionalAvailableAt3,available7:b.additionalAvailableAt7,A3:b.completionCeilings.A.level3.completed,B3:b.completionCeilings.B.level3.completed,C3:b.completionCeilings.C.level3.completed,A7:b.completionCeilings.A.level7.completed,B7:b.completionCeilings.B.level7.completed,C7:b.completionCeilings.C.level7.completed})));
+console.table(buildBudgets.map(b=>({build:b.id,L1:b.starting,L3:b.level3,L7:b.level7,available3:b.additionalAvailableAt3,available7:b.additionalAvailableAt7,A3:b.completionCeilings.A.level3.completed,B3:b.completionCeilings.B.level3.completed,C3:b.completionCeilings.C.level3.completed,D3:b.completionCeilings.D.level3.completed,A7:b.completionCeilings.A.level7.completed,B7:b.completionCeilings.B.level7.completed,C7:b.completionCeilings.C.level7.completed,D7:b.completionCeilings.D.level7.completed})));

@@ -1,3 +1,4 @@
+import { reviseForgeLearning } from "./forge-rewrite.mjs";
 import { normalizeWorkshopPlay } from "./workshop-play.mjs";
 import { ATTRIBUTES } from "./character.mjs";
 import { workshopCharacter } from "./workshop-character.mjs";
@@ -7,7 +8,8 @@ export const PORTABLE_FORMAT = "heroes-of-legend-character";
 export const PORTABLE_VERSION = 3;
 export const FORGE_PORTABLE_VERSION = 4;
 export const WORKSHOP_PLAYTEST_VERSION = 5;
-const portableVersion = (catalogs) => catalogs.forge?.playtest
+export const WORKSHOP_REWRITE_VERSION = 6;
+export const portableVersion = (catalogs) => catalogs.forge?.rulesRevision === 299 ? WORKSHOP_REWRITE_VERSION : catalogs.forge?.playtest
   ? WORKSHOP_PLAYTEST_VERSION
   : catalogs.forge ? FORGE_PORTABLE_VERSION : PORTABLE_VERSION;
 export const MAX_CHARACTER_BYTES = 262144;
@@ -130,7 +132,9 @@ function migrateForgeChoices(draft, { forge, legacyChoices = [] }) {
     )?.[1];
     const entryId =
       exact?.entryId ?? alias?.entryId ?? forge.redirects[previousId];
-    choice.pair = (current.bookPairs ?? current.pairs).findIndex((pair) => pair.entryId === entryId);
+    const disciplineId = exact?.disciplineId ?? alias?.disciplineId ?? legacyRoot(old?.pairs?.[choice.pair]?.disciplineId);
+    choice.pair = (current.bookPairs ?? current.pairs).findIndex((pair) => forge.rulesRevision === 299
+      ? pair.disciplineId === disciplineId : pair.entryId === entryId);
   }
 
   const roots = new Set(forge.disciplines.map(({ id }) => id));
@@ -141,7 +145,7 @@ function migrateForgeChoices(draft, { forge, legacyChoices = [] }) {
     const used = new Set();
     draft.classDisciplines = draft.classDisciplines.map((id) => {
       const target = legacyRoot(id);
-      if (!allowed.includes(target) || used.has(target)) return id;
+      if (!roots.has(target) || used.has(target)) return id;
       used.add(target);
       return target;
     });
@@ -257,7 +261,7 @@ export function readPortableCharacter(input, catalogs, languages) {
   if (
     !object(value) ||
     value.format !== PORTABLE_FORMAT ||
-    ![1, 2, PORTABLE_VERSION, FORGE_PORTABLE_VERSION, WORKSHOP_PLAYTEST_VERSION].includes(
+    ![1, 2, PORTABLE_VERSION, FORGE_PORTABLE_VERSION, WORKSHOP_PLAYTEST_VERSION, WORKSHOP_REWRITE_VERSION].includes(
       value.schemaVersion,
     )
   )
@@ -270,8 +274,9 @@ export function readPortableCharacter(input, catalogs, languages) {
   const d = currentCreationDraft(value.draft, value.sourceCommit);
   if (catalogs.forge && value.schemaVersion < FORGE_PORTABLE_VERSION)
     migrateForgeChoices(d, catalogs);
-  if (catalogs.forge?.playtest && value.schemaVersion < WORKSHOP_PLAYTEST_VERSION)
+  if ((catalogs.forge?.playtest || catalogs.forge?.rulesRevision === 299) && value.schemaVersion < WORKSHOP_PLAYTEST_VERSION)
     migrateWorkshopPlaytest(d, catalogs.forge);
+  if (catalogs.forge?.rulesRevision === 299 && value.schemaVersion < WORKSHOP_REWRITE_VERSION) reviseForgeLearning(d, catalogs.forge);
   const fail = () => {
     throw new Error("The character file contains malformed creation choices.");
   };
@@ -484,6 +489,10 @@ export function readPortableCharacter(input, catalogs, languages) {
         if (!string(d.profile[key], key === "story" ? 10000 : 200)) fail();
         draft.profile[key] = d.profile[key];
       }
+  }
+  if (d.learningReview !== undefined) {
+    if (!strings(d.learningReview, 500)) fail();
+    draft.learningReview = [...d.learningReview];
   }
   const preview = workshopCharacter(draft, catalogs, languages);
   return { draft, preview };

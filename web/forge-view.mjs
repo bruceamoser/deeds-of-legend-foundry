@@ -17,78 +17,67 @@ const point = (center, angle, distance) => ({
   x: Math.round(center.x + Math.cos(angle) * distance),
   y: Math.round(center.y + Math.sin(angle) * distance),
 });
-const distance = (a, b) => Math.hypot(a.x - b.x, a.y - b.y);
+function attachedMasteries(graph, path) {
+  const book = graph.books.find((entry) => entry.id === path.bookId);
+  return (book?.masteryIds ?? []).filter((id) => graph.nodes.some((node) => node.id === id));
+}
 
-function atlasLayout(graph) {
+export function atlasLayout(graph) {
   if (atlasCache.has(graph)) return atlasCache.get(graph);
   const positions = new Map();
   const edges = [];
   const center = { x: 0, y: 0 };
-  const outerCount = 12;
-  const innerCount = 6;
-  const ringRadius = [595, 307];
-
+  const directions = [-Math.PI / 2, Math.PI, 0, Math.PI / 2]; // Main, Maneuver, Reaction, wildcard.
   graph.disciplines.forEach((discipline, index) => {
-    let origin = center;
-    if (index < outerCount)
-      origin = point(center, -Math.PI / 2 + index * TAU / outerCount, ringRadius[0]);
-    else if (index < outerCount + innerCount)
-      origin = point(center, -Math.PI / 2 + (index - outerCount + 0.5) * TAU / innerCount, ringRadius[1]);
+    const origin = index < 12
+      ? point(center, -Math.PI / 2 + index * TAU / 12, 1020)
+      : index < 18
+        ? point(center, -Math.PI / 2 + (index - 12 + 0.5) * TAU / 6, 520)
+        : center;
     positions.set(discipline.id, origin);
     discipline.paths.forEach((path, index) => {
-      const direction = -Math.PI / 2 + index * TAU / discipline.paths.length;
-      const radius = 31;
-      const lobe = point(origin, direction, 52);
+      const direction = directions[index];
+      const radius = 40;
+      const lobe = point(origin, direction, 75);
       path.steps.forEach((id, step) => {
-        const angle = direction + Math.PI + step * 1.7 * Math.PI / (path.steps.length - 1);
-        const target = point(lobe, angle, radius);
+        // The first four purchases retain the small loop. The advanced tail
+        // starts at that loop's level-3 endpoint, not at another discipline.
+        const target = step < 4
+          ? point(lobe, direction + Math.PI + step * 1.7 * Math.PI / 3, radius)
+          : point(origin, direction + (6 - step) * 0.2, 135 + (step - 4) * 30);
         const predecessor = path.steps[step - 1] ?? discipline.id;
         const previous = positions.get(predecessor);
+        const tailBend = point(origin, direction + 0.75, 145);
         positions.set(id, target);
-        edges.push({
-          from: predecessor,
-          to: id,
-          draw: step
+        edges.push({ from: predecessor, to: id,
+          draw: step > 0 && step < 4
             ? `M ${previous.x} ${previous.y} A ${radius} ${radius} 0 0 1 ${target.x} ${target.y}`
-            : `M ${previous.x} ${previous.y} L ${target.x} ${target.y}`,
-        });
+            : step === 4
+              ? `M ${previous.x} ${previous.y} Q ${tailBend.x} ${tailBend.y} ${target.x} ${target.y}`
+              : `M ${previous.x} ${previous.y} L ${target.x} ${target.y}` });
+      });
+      const masteries = attachedMasteries(graph, path);
+      masteries.forEach((id, index) => {
+        const predecessor = path.steps.at(-1);
+        const previous = positions.get(predecessor);
+        const target = point(origin, direction + (index - (masteries.length - 1) / 2) * 0.25, 185);
+        positions.set(id, target);
+        const bend = point(origin, direction + 0.75, 145);
+        edges.push({ from: predecessor, to: id,
+          draw: `M ${previous.x} ${previous.y} Q ${bend.x} ${bend.y} ${target.x} ${target.y}` });
       });
     });
   });
-
-  const clusters = graph.disciplines.map((discipline) => positions.get(discipline.id));
-  const placed = [];
-  for (const node of graph.nodes.filter((node) => node.kind === "combined")) {
-    const contacts = node.requires.map((id) => positions.get(id));
-    const midpoint = {
-      x: contacts.reduce((sum, p) => sum + p.x, 0) / contacts.length,
-      y: contacts.reduce((sum, p) => sum + p.y, 0) / contacts.length,
-    };
-    // Place the marker near its actual endpoints without obscuring a branch.
-    let position;
-    for (let radius = 0; !position && radius <= 1_440; radius += 21) {
-      const candidates = Math.max(1, Math.ceil(TAU * radius / 25));
-      for (let index = 0; index < candidates; index++) {
-        const candidate = point(midpoint, index * TAU / candidates, radius);
-        if (
-          clusters.every((p) =>
-            distance(p, candidate) > 95 &&
-            (Math.abs(candidate.x - p.x) > 75 || Math.abs(candidate.y - p.y + 91) > 25),
-          ) &&
-          placed.every((p) => distance(p, candidate) > 45)
-        ) {
-          position = candidate;
-          break;
-        }
-      }
-    }
-    position ??= midpoint;
-    positions.set(node.id, position);
-    placed.push(position);
-  }
   const result = { positions, edges };
   atlasCache.set(graph, result);
   return result;
+}
+
+function nodeShape(level) {
+  const path = level >= 7 ? "M20 3 L37 20 L20 37 L3 20 Z"
+    : level >= 3 ? "M20 3 L37 35 L3 35 Z"
+      : "M20 4 A16 16 0 1 0 20 36 A16 16 0 1 0 20 4 Z";
+  return `<svg class="forge-node-shape" viewBox="0 0 40 40" aria-hidden="true"><path class="forge-shape-halo" d="${path}"/><path class="forge-shape-body" d="${path}"/></svg>`;
 }
 
 function control(action, id, label, attributes = "", className = "") {
@@ -108,7 +97,7 @@ function nodeStatus(model, id) {
 function nodeButton(model, node, content, { className = "", style = "", tabIndex } = {}) {
   const status = nodeStatus(model, node.id);
   const selected = model.selected?.id === node.id;
-  const label = `${node.name}, ${status === "later" ? "requirements to meet" : status}`;
+  const label = `${node.name}${node.kind === "discipline" ? "" : `, level ${node.level}`}, ${status === "later" ? "requirements to meet" : status}`;
   return control(
     "forge-select",
     node.id,
@@ -119,82 +108,41 @@ function nodeButton(model, node, content, { className = "", style = "", tabIndex
 }
 
 function visibleDisciplines(model) {
-  if (model.atlasDiscipline && model.atlasScope === "discipline") {
-    const ids = new Set([model.atlasDiscipline.id]);
-    if (model.selected?.kind === "combined")
-      for (const id of model.selected.requires) ids.add(model.nodes.get(id)?.disciplineId);
-    return model.disciplines.filter((entry) => ids.has(entry.id));
-  }
-  return model.disciplines;
-}
-
-function connectedCombinations(model, visible) {
-  const disciplineIds = new Set(visible.map((entry) => entry.id));
-  return model.combinations.filter((entry) =>
-    entry.requires.some((id) => disciplineIds.has(model.nodes.get(id)?.disciplineId)),
-  );
+  return model.atlasDiscipline && model.atlasScope === "discipline"
+    ? [model.atlasDiscipline] : model.disciplines;
 }
 
 function mapView(model, visible) {
-  if (!visible.length) return `<p class="forge-empty">Begin studying a discipline to see it here. ${control("forge-view", "atlas", "Show whole atlas", "", "small")}</p>`;
-
+  if (!visible.length) return '<p class="forge-empty">Add a discipline to begin.</p>';
   const { positions, edges } = atlasLayout(model.graph);
   const paths = visible.flatMap((entry) => entry.paths);
-  const combinations = connectedCombinations(model, visible);
-  const overview = visible.length > 4;
-  const mapCombinations = overview
-    ? combinations
-    : combinations.filter((node) => node.id === model.selected?.id);
-  const focus = [
-    ...visible.map((entry) => ({ id: entry.id, pad: 105 })),
-    ...mapCombinations.map((entry) => ({ id: entry.id, pad: 25 })),
-  ];
-  const minX = Math.min(...focus.map(({ id, pad }) => positions.get(id).x - pad));
-  const minY = Math.min(...focus.map(({ id, pad }) => positions.get(id).y - pad - 12));
-  const width = Math.max(...focus.map(({ id, pad }) => positions.get(id).x + pad)) - minX;
-  const height = Math.max(...focus.map(({ id, pad }) => positions.get(id).y + pad)) - minY;
+  const ids = paths.flatMap((path) => [...path.steps, ...attachedMasteries(model.graph, path)]);
+  const focus = visible.map((entry) => positions.get(entry.id));
+  const minX = Math.min(...focus.map((p) => p.x - 245));
+  const minY = Math.min(...focus.map((p) => p.y - 255));
+  const width = Math.max(...focus.map((p) => p.x + 245)) - minX;
+  const height = Math.max(...focus.map((p) => p.y + 230)) - minY;
   const toStyle = (p) => `--node-x:${100 * (p.x - minX) / width}%;--node-y:${100 * (p.y - minY) / height}%`;
-  const visibleIds = new Set(paths.flatMap((entry) => entry.steps));
-  const selection = model.selected;
-  const relevantEdges = edges.filter(({ to }) => visibleIds.has(to));
-  const branchPaths = relevantEdges.map(({ from, to, draw }) =>
-    `<path class="forge-branch ${model.learned.has(to) ? "is-learned" : ""} ${selection?.id === to || selection?.id === from ? "is-highlighted" : ""}" data-from="${escape(from)}" data-to="${escape(to)}" d="${draw}"/>`,
+  const visibleIds = new Set(ids);
+  const branchPaths = edges.filter(({ to }) => visibleIds.has(to)).map(({ from, to, draw }) =>
+    `<path class="forge-branch ${model.learned.has(to) ? "is-learned" : ""} ${model.selected?.id === to || model.selected?.id === from ? "is-highlighted" : ""}" data-from="${escape(from)}" data-to="${escape(to)}" d="${draw}"/>`,
   ).join("");
-  const crossPaths = mapCombinations.filter((entry) =>
-    entry.id === selection?.id || entry.requires.includes(selection?.id),
-  ).flatMap((entry) => entry.requires.filter((id) => visibleIds.has(id)).map((id) => {
-    const source = positions.get(id);
-    const destination = positions.get(entry.id);
-    const path = `M ${source.x} ${source.y} Q ${source.x} ${destination.y} ${destination.x} ${destination.y}`;
-    return `<path class="forge-cross ${model.learned.has(id) ? "is-learned" : ""}" data-from="${escape(id)}" data-to="${escape(entry.id)}" d="${path}"/>`;
-  })).join("");
   const roots = visible.map((entry) => {
     const p = positions.get(entry.id);
-    return nodeButton(
-      model,
-      model.nodes.get(entry.id),
-      disciplineToken(entry.id),
-      { className: "forge-map-root", style: toStyle(p) },
-    ) + `<span class="forge-map-name" style="${toStyle({ x: p.x, y: p.y - 91 })}" aria-hidden="true">${escape(entry.name)}</span>`;
+    return nodeButton(model, model.nodes.get(entry.id), disciplineToken(entry.id),
+      { className: "forge-map-root", style: toStyle(p) })
+      + `<span class="forge-map-name" style="${toStyle({ x: p.x, y: p.y - 235 })}" aria-hidden="true">${escape(entry.name)}</span>`;
   }).join("");
-  const steps = paths.flatMap((path) => path.steps.map((id, index) => {
+  const steps = ids.map((id) => {
     const node = model.nodes.get(id);
-    const end = index === path.steps.length - 1;
-    return nodeButton(model, node, "", {
-      className: `forge-map-step${end ? " forge-map-end" : ""}${positions.get(id).x < positions.get(node.disciplineId).x ? " forge-label-left" : ""}`,
+    const root = model.nodes.get(node.requires?.[0]);
+    const origin = positions.get(node.disciplineId ?? root?.disciplineId) ?? positions.get(visible[0].id);
+    return nodeButton(model, node, nodeShape(node.level), {
+      className: `forge-map-step forge-level-${node.level >= 7 ? 7 : node.level >= 3 ? 3 : 1}${node.level >= 7 ? " forge-map-end" : ""}${positions.get(id).x < origin.x ? " forge-label-left" : ""}`,
       style: toStyle(positions.get(id)),
-      tabIndex: undefined,
     });
-  })).join("");
-  const crossNodes = mapCombinations.map((node) =>
-    nodeButton(model, node, String(node.requires.length), {
-      className: "forge-map-combination",
-      style: toStyle(positions.get(node.id)),
-      tabIndex: undefined,
-    }),
-  ).join("");
-  const mapRatio = width / height;
-  return `<div class="forge-map-scroll${model.zoom >= 4 ? " show-node-labels" : ""}" data-zoom="${model.zoom}" tabindex="0" aria-label="Discipline map"><div class="forge-map ${visible.length === 1 ? "forge-map-focus" : "forge-map-overview"}" style="--map-ratio:${mapRatio};--map-zoom:${model.zoom}"><svg viewBox="${minX} ${minY} ${width} ${height}" preserveAspectRatio="none" aria-hidden="true">${branchPaths}${crossPaths}</svg>${roots}${steps}${crossNodes}</div></div>`;
+  }).join("");
+  return `<div class="forge-map-scroll${model.zoom >= 4 ? " show-node-labels" : ""}" data-zoom="${model.zoom}" tabindex="0" aria-label="Discipline map"><div class="forge-map ${visible.length === 1 ? "forge-map-focus" : "forge-map-overview"}" style="--map-ratio:${width / height};--map-zoom:${model.zoom}"><svg viewBox="${minX} ${minY} ${width} ${height}" preserveAspectRatio="none" aria-hidden="true">${branchPaths}</svg>${roots}${steps}</div></div>`;
 }
 
 function spellCard(spell) {
@@ -214,10 +162,13 @@ function plural(count, noun) {
 }
 
 function disciplineCount(model, discipline) {
-  const learned = discipline.paths.flatMap((path) => path.steps)
+  const learned = discipline.paths.flatMap((path) => [...path.steps, ...attachedMasteries(model.graph, path)])
     .filter((id) => model.learned.has(id)).map((id) => model.nodes.get(id));
-  if (discipline.paths.some((path) => path.bookId))
-    return `${plural(new Set(learned.flatMap((node) => node.spellIds ?? [])).size, "spell")} learned`;
+  if (discipline.paths.some((path) => path.bookId)) {
+    const spellCount = new Set(learned.flatMap((node) => node.spellIds ?? [])).size;
+    const trainingCount = learned.filter((node) => !node.spellIds?.length).length;
+    return `${trainingCount ? `${trainingCount} training steps · ` : ""}${plural(spellCount, "spell")} learned`;
+  }
   return `${learned.length} learned`;
 }
 
@@ -243,7 +194,7 @@ function spellSection(model, node) {
 }
 
 function stepSummary(node) {
-  if (node.spellIds?.length) return `Section ${node.section} · ${plural(node.spellIds.length, "spell")}`;
+  if (node.spellIds?.length) return `${node.section ? `Section ${node.section} · ` : ""}${plural(node.spellIds.length, "spell")}`;
   return node.effect ?? "";
 }
 
@@ -298,7 +249,7 @@ function stepRow(model, node, selectedId) {
 
 function pathCard(model, path) {
   const nodes = path.steps.map((id) => model.nodes.get(id));
-  const open = model.openPaths.has(path.id);
+  const open = model.openPaths.has(path.id) || (model.selected?.kind === "spell-mastery" && path.steps.includes(model.selected.id));
   const next = nodes.find((node) => !model.learned.has(node.id));
   const availability = next && model.eligibility(next.id);
   if (!model.showAll && !open && !availability?.eligible) return "";
@@ -322,7 +273,7 @@ function columnView(model) {
   if (!model.studied.length) return '<p class="forge-empty">Add a discipline to start learning.</p>';
   const disciplines = model.filter === "all" ? model.studied : model.studied.filter(entry => entry.id === model.discipline?.id);
   const groups = disciplines.map(discipline => {
-    const paths = discipline.paths.map(path => pathCard(model, path)).join("");
+    const paths = discipline.paths.map(path => pathCard(model, path) + attachedMasteries(model.graph, path).map(id => pathCard(model, {id, name: `${path.name} · Advanced spell`, steps: [id]})).join("")).join("");
     if (!paths) return "";
     return `<section class="forge-learning-group" data-discipline="${escape(discipline.id)}"><h3>${disciplineToken(discipline.id)} ${escape(discipline.name)} <small>${disciplineCount(model, discipline)}</small></h3><div class="forge-paths">${paths}</div></section>`;
   }).join("");
@@ -372,15 +323,14 @@ function relatedList(model, nodes, label, showPath = false) {
 function inspector(model) {
   const node = model.selected;
   if (!node)
-    return '<div class="forge-inspector"><p>Select a discipline, a step, or a combined ability to see what it teaches.</p></div>';
+    return '<div class="forge-inspector"><p>Select a discipline, a technique, or a spell to see what it teaches.</p></div>';
   const availability = model.eligibility(node.id);
   const learned = model.learned.has(node.id);
   const discipline = model.disciplines.find((entry) => entry.id === (node.disciplineId ?? node.id));
   const path = discipline?.paths.find((entry) => entry.id === node.pathId);
   const parentNodes = node.requires.map((id) => model.nodes.get(id));
   const children = model.graph.nodes.filter((entry) => entry.requires.includes(node.id));
-  const next = children.filter((entry) => entry.kind !== "combined");
-  const combined = children.filter((entry) => entry.kind === "combined");
+  const next = children;
   const canRefund = refundable(model, node.id);
   const currency = learned ? "Learned" : `${model.eligibility(node.id).cost ?? "—"} DP`;
   const context = [discipline?.name, path?.name].filter((value) => value && value !== node.name).join(" · ");
@@ -388,7 +338,7 @@ function inspector(model) {
   return `<section class="forge-inspector" id="forge-selection" aria-label="Selected learning" tabindex="-1">
     ${context ? `<p class="forge-context">${escape(context)}${node.section ? ` · Section ${escape(node.section)}` : ""}</p>` : ""}
     <h3>${escape(node.name)}</h3>
-    <p class="forge-meta">${currency}${node.level ? ` · Level ${node.level}` : ""}${node.kind === "combined" ? ` · ${node.requires.length} disciplines` : ""}</p>
+    <p class="forge-meta">${currency}${node.level ? ` · Level ${node.level}` : ""}</p>
     ${description ? `<p class="forge-effect">${escape(description)}</p>` : ""}
     ${!learned ? reasonsList(availability) : ""}
     <div class="forge-inspector-actions">
@@ -396,9 +346,8 @@ function inspector(model) {
       ${learned && canRefund ? control("forge-refund", node.id, "Undo learning") : ""}
       ${discipline && model.atlasScope !== "discipline" && model.view === "atlas" ? control("forge-filter", discipline.id, "View discipline", "", "small") : ""}
     </div>
-    ${relatedList(model, parentNodes, node.kind === "combined" ? "Required endpoints" : "Earlier step", node.kind === "combined")}
+    ${relatedList(model, parentNodes, "Earlier learning")}
     ${relatedList(model, next, node.kind === "discipline" ? "First steps" : "Next step")}
-    ${relatedList(model, combined, "Combined abilities")}
     ${spellSection(model, node)}
   </section>`;
 }
@@ -432,7 +381,6 @@ export function renderForge(graph, state, options = {}) {
     zoom: Math.min(20, Math.max(0.4, Number(options.zoom) || 1)),
     canRefund: options.canRefund ?? options.refundable,
     disciplines: graph.disciplines,
-    combinations: graph.nodes.filter((node) => node.kind === "combined"),
     books: new Map(graph.books.map((book) => [book.id, book])),
     spells: new Map(graph.spells.map((spell) => [spell.id, spell])),
     eligibility: options.eligibility ?? ((id) => forgeEligibility(graph, state, id)),
@@ -440,7 +388,6 @@ export function renderForge(graph, state, options = {}) {
 
   const atlas = view === "atlas";
   const listModel = atlas ? {...model, view: "columns", filter: options.listDiscipline ?? "all", discipline: studied.find(entry => entry.id === options.listDiscipline) ?? discipline, selected: undefined, selection: undefined} : model;
-  const combinations = connectedCombinations(model, model.studied);
   const atlasDialog = atlas ? `<dialog id="forge-atlas-dialog" class="forge-atlas-dialog" aria-labelledby="forge-atlas-title">
     <header><h2 id="forge-atlas-title">Discipline atlas</h2><strong>${state.dp} DP available</strong>${control("forge-view", "columns", "Close", 'aria-label="Close atlas"', "small")}</header>
     <div class="forge-map-toolbar">
@@ -448,7 +395,7 @@ export function renderForge(graph, state, options = {}) {
       ${control("forge-view", "zoom-out", "−", 'aria-label="Zoom out"', "small")}
       ${control("forge-view", "zoom-in", "+", 'aria-label="Zoom in"', "small")}
       ${control("forge-view", "fit", "Fit", 'aria-label="Fit atlas"', "small")}
-      <span class="forge-map-legend"><span class="forge-key forge-key-learned">✓ Learned</span><span class="forge-key forge-key-available">Available</span><span class="forge-key forge-key-later">Requirements to meet</span></span>
+      <span class="forge-map-legend"><span class="forge-key forge-key-learned">✓ Learned</span><span class="forge-key forge-key-available">Available</span><span class="forge-key forge-key-later">Requirements to meet</span><span class="forge-shape-key">○ Level 1 · △ Level 3 · ◇ Level 7</span></span>
     </div>
     <div class="forge-atlas-body">${mapView(model, visibleDisciplines(model))}<aside class="forge-atlas-inspector">${inspector(model)}</aside></div>
   </dialog>` : "";
@@ -460,10 +407,9 @@ export function renderForge(graph, state, options = {}) {
         ${control("forge-view", "atlas", "Atlas", 'aria-haspopup="dialog"', "small")}
       </div></div>
       <div class="forge-surface">${columnView(listModel)}</div>
-      ${!atlas && ["combined", "talent"].includes(selected?.kind) ? inspector(model) : ""}
-      <div class="forge-more"><details class="forge-other-learning" ${!atlas && ["combined", "talent"].includes(selected?.kind) ? "open" : ""}>
-        <summary>Combined abilities and talents</summary>
-        ${relatedList(model, combinations, "Combined abilities")}
+      ${!atlas && selected?.kind === "talent" ? inspector(model) : ""}
+      <div class="forge-more"><details class="forge-other-learning" ${!atlas && selected?.kind === "talent" ? "open" : ""}>
+        <summary>Talents</summary>
         ${relatedList(model, graph.nodes.filter((node) => node.kind === "talent"), "Talents")}
       </details></div>
     </div>

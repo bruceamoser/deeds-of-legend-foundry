@@ -148,10 +148,10 @@ try {
   await page.screenshot({ path: `${output}/foundry-sized-sheet.png` });
   await page.setViewportSize({ width: 1440, height: 1050 });
   await page.getByRole("tab", { name: "Abilities", exact: true }).click();
-  await page.locator('#results [data-action-row="arms:impact:1"] .expand-action').click();
-  const drivingBlow = page.locator('[data-detail-id="arms:impact:1"]');
-  assert.match(await drivingBlow.innerText(), /Driving Blow II.*2 squares/s);
-  assert.match(await drivingBlow.innerText(), /Driving Blow III.*Dazed 1/s);
+  await page.locator('#results [data-action-row="arms:bladework:1"] .expand-action').click();
+  const drivingBlow = page.locator('[data-detail-id="arms:bladework:1"]');
+  assert.match(await drivingBlow.innerText(), /Measured Cut II.*3\/4\/6 physical damage/s);
+  assert.doesNotMatch(await drivingBlow.innerText(), /Measured Cut III/);
   await page.locator(".brand").hover();
   await page.screenshot({ path: `${output}/desktop-abilities.png` });
   await page.getByRole("tab", { name: "Abilities", exact: true }).focus();
@@ -212,7 +212,7 @@ try {
   await page.locator('[data-action="forge-view"][data-id="columns"]').click();
   assert.match(await page.locator(".forge-studied").innerText(), /Armor/);
   assert.match(await page.locator(".forge-studied").innerText(), /Guard/);
-  await page.getByText("Combined abilities and talents", { exact: true }).click();
+  await page.locator(".forge-other-learning > summary").click();
   await page.locator('[data-action="forge-select"][data-id="ability-quick-exit"]').click();
   await page.locator('[data-action="forge-learn"][data-id="ability-quick-exit"]').click();
   assert.equal(await page.locator("[data-dp-remaining]").innerText(), "5 DP remaining");
@@ -495,7 +495,7 @@ try {
   const playFile = `${output}/borin-play.hol.json`;
   await (await playDownload).saveAs(playFile);
   const played = JSON.parse(await readFile(playFile, "utf8"));
-  assert.equal(played.schemaVersion, 5);
+  assert.equal(played.schemaVersion, 6);
   assert.equal(played.draft.play.conditions[0].key, "burning");
   assert(played.draft.progression.levels[3].signatures[3]);
   await page.locator("#import-file").setInputFiles(playFile);
@@ -546,14 +546,18 @@ try {
   await page.setViewportSize({ width: 1440, height: 1050 });
   const response = await page.request.get(`http://127.0.0.1:${server.address().port}${prefix}data/party.json`);
   const crafter = (await response.json()).find((entry) => entry.id === "oren-brass");
+  crafter.draft.progression = {level: 2, levels: {2: {
+    purchases: [1,2,3].map(step => ({id: `craft:workshop:${step}`})), signatures: {},
+    acquisitions: {
+      "craft:workshop:1": {recipes: ["recipe-travel-food", "recipe-bound-torches"]},
+      "craft:workshop:2": {recipes: ["recipe-twisted-cord", "recipe-wooden-brace"]},
+    },
+  }}};
   await page.locator("#import-file").setInputFiles({
     name: "oren.hol.json", mimeType: "application/json",
-    buffer: Buffer.from(JSON.stringify({ format: "heroes-of-legend-character", schemaVersion: 5, draft: crafter.draft })),
+    buffer: Buffer.from(JSON.stringify({ format: "heroes-of-legend-character", schemaVersion: 6, draft: crafter.draft })),
   });
-  await page.getByRole("heading", {name:"Creation complete",exact:true}).waitFor();
-  await page
-    .getByRole("button", { name: "View character sheet", exact: true })
-    .click();
+  await page.getByRole("heading", {name:"Oren Brass",exact:true}).waitFor();
   await page.getByRole("tab", { name: "Main", exact: true }).click();
   assert(
     await page
@@ -788,10 +792,9 @@ try {
     "true",
   );
 
-  // Dance Through Steel supplies a missing melee weapon; its required grip choice
-  // stays reachable after leaving the signature screen, without opening general learning.
+  // A late signature includes its foundation, but a weapon requirement does not
+  // conjure equipment. Selecting the milestone spends no DP and persists.
   const blade = structuredClone(ranged);
-  blade.draft.classId = "class-blade";
   blade.draft.signatureId = "ability-signature-blade-measured-guard";
   blade.draft.attributes.knowledge = 1;
   blade.draft.attributes.guile = -1;
@@ -799,50 +802,24 @@ try {
   blade.draft.shopping = [];
   blade.draft.progression = { level: 7, levels: {} };
   await page.locator("#import-file").setInputFiles({
-    name: "Blade.json",
-    mimeType: "application/json",
+    name: "Blade.json", mimeType: "application/json",
     buffer: Buffer.from(JSON.stringify(blade)),
   });
-  await page
-    .getByRole("button", { name: "Choose level 7 signature", exact: true })
-    .click();
-  await page
-    .locator(
-      '[data-action="advance-signature"][data-id="ability-signature-blade-dance-through-steel"]',
-    )
-    .click();
+  await page.getByRole("button", { name: "Choose level 7 signature", exact: true }).click();
+  await page.locator('[data-action="advance-signature"][data-id="ability-signature-blade-dance-through-steel"]').click();
+  assert.equal(await page.getByLabel("Melee weapon hands", {exact:true}).count(),0);
   await closePicker();
   await page.getByRole("button", { name: "Done", exact: true }).click();
-  assert(
-    await page
-      .getByRole("button", { name: "Choose level 7 signature", exact: true })
-      .isVisible(),
-  );
-  await page.getByRole("button", { name: "Spend DP", exact: true }).click();
-  assert.equal(await page.getByLabel("Melee weapon hands", { exact: true }).count(), 0);
-  await closePicker();
-  await page.getByRole("button", { name: "Done", exact: true }).click();
-  await page
-    .getByRole("button", { name: "Choose level 7 signature", exact: true })
-    .click();
-  await page.getByLabel("Melee weapon hands", { exact: true }).selectOption("1");
-  await closePicker();
-  await page.getByRole("button", { name: "Done", exact: true }).click();
-  assert.equal(
-    await page
-      .getByRole("button", { name: "Choose level 7 signature", exact: true })
-      .count(),
-    0,
-  );
+  assert.equal(await page.getByRole("button", {name:"Choose level 7 signature",exact:true}).count(),0);
   await page.reload();
-  await page.getByRole("heading", {name: "Lira Ashbow", exact: true}).waitFor();
-  assert.equal(await page.getByRole("button", {name: "Choose level 7 signature", exact: true}).count(), 0);
+  await page.getByRole("heading", {name:"Lira Ashbow",exact:true}).waitFor();
+  assert.equal(await page.getByRole("button", {name:"Choose level 7 signature",exact:true}).count(),0);
   const signatureSelection = await page.evaluate(() => {
-    const saved = JSON.parse(localStorage.getItem("hol.workshop.v1"));
+    const saved=JSON.parse(localStorage.getItem("hol.workshop.v1"));
     return saved.character.draft.progression.levels[7];
   });
-  assert.equal(signatureSelection.signatures[7], "ability-signature-blade-dance-through-steel");
-  assert.equal(signatureSelection.acquisitions["ability-signature-blade-dance-through-steel"].meleeHands, 1);
+  assert.equal(signatureSelection.signatures[7],"ability-signature-blade-dance-through-steel");
+  assert.equal(signatureSelection.acquisitions["ability-signature-blade-dance-through-steel"],undefined);
   // Unknown imported IDs remain inert text and repairable choices.
   const odd = { ...exported, draft: structuredClone(exported.draft) };
   odd.draft.classId = "ability-wear-medium-armor";
@@ -905,7 +882,7 @@ try {
   ]) {
     const talent = page.locator(`[data-action="forge-select"][data-id="ability-${id}"]`);
     if (!await talent.isVisible())
-      await page.getByText("Combined abilities and talents", { exact: true }).click();
+      await page.locator(".forge-other-learning > summary").click();
     await talent.click();
     const learn = page.locator(
       `[data-action="forge-learn"][data-id="ability-${id}"]`,
@@ -1089,7 +1066,7 @@ try {
   );
   assert.deepEqual(failures, []);
   console.info(
-    "Workshop passed: fixed scrolling, live attributes, grants, armor/Bulk/supply, grouped actions, crafting rolls, level replay, independent/revisitable signatures, play inventory/languages/conditions, coin override, named saves, schema-5 export/import and 390px layout; no browser errors.",
+    "Workshop passed: fixed scrolling, live attributes, grants, armor/Bulk/supply, grouped actions, crafting rolls, level replay, independent/revisitable signatures, play inventory/languages/conditions, coin override, named saves, schema-6 export/import and 390px layout; no browser errors.",
   );
 } catch (error) {
   await page.screenshot({ path: `${output}/failure.png`, fullPage: true });

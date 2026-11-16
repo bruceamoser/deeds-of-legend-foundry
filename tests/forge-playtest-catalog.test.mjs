@@ -52,18 +52,21 @@ test("every sample identity can take three distinct starting disciplines", () =>
 test("the playtest gates preserve ordered links and require deeper armor training", () => {
   const state = (level, learned) => ({ level, learned, dp: 12 });
   const get = (id) => forge.nodes.find((entry) => entry.id === id);
-  assert.deepEqual([...new Set(forge.nodes.map(node => node.level))].sort((a,b)=>a-b), [0,3,7]);
+  assert.equal(forge.rulesRevision, 299);
+  assert.equal(forge.nodes.filter(node => node.kind === "combined").length, 0);
   for (const discipline of forge.disciplines) {
     for (const path of discipline.paths) {
+      assert.equal(path.steps.length, path.bookId ? 4 : 7, path.id);
       path.steps.forEach((id, index) => {
         const node = get(id);
-        assert.equal(node.level, index === 3 ? 3 : 0, `${id} level gate`);
+        assert.equal(node.level, index < 3 ? 1 : index < 6 ? 3 : 7, `${id} level gate`);
         assert.equal(forgeEligibility(forge, state(1, node.requires), id).eligible, index < 3, `${id} at level 1`);
       });
     }
   }
-  for (const node of forge.nodes.filter(node => node.kind === "combined")) {
+  for (const node of forge.nodes.filter(node => node.kind === "spell-mastery" || node.kind === "mastery")) {
     assert.equal(node.level, 7, node.id);
+    assert.equal(node.requires.length, 1, node.id);
     assert.equal(forgeEligibility(forge, state(6,node.requires), node.id).eligible, false, node.id);
     assert.equal(forgeEligibility(forge, state(7,node.requires), node.id).eligible, true, node.id);
   }
@@ -82,10 +85,9 @@ test("the playtest gates preserve ordered links and require deeper armor trainin
     ).eligible,
     false,
   );
-  assert.deepEqual(get("combined:iron-tempest").requires, [
-    "arms:bladework:4",
-    "armor:harness:4",
-  ]);
+  assert.deepEqual(get("arms:bladework:7").requires, ["arms:bladework:6"]);
+  assert.match(get("armor:harness:3").effect, /medium armor/);
+  assert.match(get("armor:harness:4").effect, /heavy armor/);
   assert.deepEqual(
     ["light", "medium", "heavy"].map(
       (weight) =>
@@ -98,9 +100,10 @@ test("the playtest gates preserve ordered links and require deeper armor trainin
   assert.equal(
     originalRefs.equipment.find(({ id }) => id === "item-ordinary-light-armor")
       .physicalResistance,
-    undefined,
+    1,
   );
-  assert.equal(source.nodes.find(({ id }) => id === "flame:2").level, 0);
+  assert.equal(source.nodes.find(({ id }) => id === "flame:2").level, 1);
+  assert.deepEqual(source, data(""), "overlay does not mutate canonical source");
 });
 
 test("Sustain Spell is a universal Maneuver and its current journal uses zero SP", () => {
@@ -108,10 +111,11 @@ test("Sustain Spell is a universal Maneuver and its current journal uses zero SP
     ({ id }) => id === "ability-sustain-spell",
   );
   assert.equal(action.action, "Maneuver");
-  assert.equal(action.sp, 0);
+  assert.match(action.effect, /Spend 0 SP/);
+  assert.equal(action.dp, null);
   const journals = applyForgePlaytestJournals(data("-journals"));
   const magic = journals.records.find(({ id }) => id === "rule-magic").markdown;
-  assert.match(magic, /Sustain costs 0 SP/);
+  assert.match(magic, /(?:Sustain costs|Spend|costs?) (?:\*\*)?0 SP/i);
   assert.doesNotMatch(magic, /spend a Maneuver and 1 SP/);
 });
 
@@ -133,7 +137,7 @@ test("all class/discipline pairs have explicit entry prices, charged once by sha
       assert.equal(bought.state.dp, 0);
       assert.equal(learnForgeEntry(forge, bought.state, discipline.id).eligible, false);
       for (const path of discipline.paths) {
-        assert.deepEqual(path.steps.map(id => forgeEligibility(forge, state, id).cost), [1, 2, 2, 3]);
+        assert.deepEqual(path.steps.map(id => forgeEligibility(forge, state, id).cost), path.bookId ? [1, 2, 2, 3] : [1, 2, 2, 3, 4, 4, 5]);
       }
     }
     assert.doesNotMatch(cls.referenceMarkdown, /costs 1 DP for every class/);
@@ -150,7 +154,7 @@ test("current learning journal uses class prices and no level-two gates", () => 
   const journals = applyForgePlaytestJournals(data("-journals"));
   for (const id of ["rule-development", "rule-learning"]) {
     const text = journals.records.find(r => r.id === id).markdown;
-    assert.match(text, /class price/);
+    assert.match(text, /1, 2 or 3 DP (?:listed by|printed for) your class/);
     assert.doesNotMatch(text, /level-2 third|Spend 1 DP to begin|discipline for 1 DP/);
   }
 });

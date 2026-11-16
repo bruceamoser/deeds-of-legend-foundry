@@ -1,5 +1,6 @@
 {
-  "sourceCommit": "d4d4b796e1393aaf79557ba39b0f9d51bf419e92",
+  "sourceCommit": "55cbd4c70f13704c684f7ba358f0d75bb62b1f30",
+  "rulesRevision": 299,
   "party": [
     {
       "id": "borin-bridgekeeper",
@@ -32,49 +33,32 @@
         },
         "classId": "class-protector",
         "classDisciplines": [
-          "armor",
           "guard"
         ],
         "signatureId": "ability-signature-protector-between-them",
         "purchases": {
-          "0": [
-            {
-              "id": "armor:harness:2"
-            },
-            {
-              "id": "armor:harness:3"
-            },
-            {
-              "id": "arms:impact:2"
-            },
-            {
-              "id": "arms:impact:3"
-            },
-            {
-              "id": "athletics"
-            },
-            {
-              "id": "athletics:climbing:1"
-            }
-          ],
+          "0": [],
           "1": [
             {
+              "id": "armor:harness:1"
+            },
+            {
+              "id": "arms:bladework:1"
+            },
+            {
+              "id": "arms:bladework:2"
+            },
+            {
+              "id": "arms:impact:1"
+            },
+            {
               "id": "guard:interception:1"
-            },
-            {
-              "id": "guard:interception:2"
-            },
-            {
-              "id": "guard:interception:3"
             },
             {
               "id": "guard:shieldwork:1"
             },
             {
-              "id": "guard:shieldwork:2"
-            },
-            {
-              "id": "guard:shieldwork:3"
+              "id": "guard:shelter:1"
             }
           ]
         },
@@ -204,28 +188,11 @@
         },
         "classId": "class-blade",
         "classDisciplines": [
-          "arms",
           "athletics"
         ],
         "signatureId": "ability-signature-blade-measured-guard",
         "purchases": {
-          "0": [
-            {
-              "id": "marksmanship:pinning:2"
-            },
-            {
-              "id": "marksmanship:pinning:3"
-            },
-            {
-              "id": "wilderness:foraging:2"
-            },
-            {
-              "id": "wilderness:foraging:3"
-            },
-            {
-              "id": "wilderness:tracking:1"
-            }
-          ],
+          "0": [],
           "1": [
             {
               "id": "marksmanship:precision:1"
@@ -234,16 +201,19 @@
               "id": "marksmanship:precision:2"
             },
             {
-              "id": "marksmanship:precision:3"
+              "id": "marksmanship:pinning:1"
             },
             {
-              "id": "athletics:climbing:1"
+              "id": "marksmanship:readiness:1"
             },
             {
-              "id": "athletics:climbing:2"
+              "id": "wilderness:tracking:1"
             },
             {
-              "id": "athletics:climbing:3"
+              "id": "athletics:balance:1"
+            },
+            {
+              "id": "wilderness:provisioning:1"
             }
           ]
         },
@@ -286,16 +256,10 @@
             "instanceId": "shop-example-5"
           },
           {
-            "id": "item-lighting-bundle",
+            "id": "item-ordinary-melee-weapon",
             "quantity": 1,
-            "hands": 0,
-            "instanceId": "shop-example-6"
-          },
-          {
-            "id": "item-rope-coil",
-            "quantity": 1,
-            "hands": 0,
-            "instanceId": "shop-example-7"
+            "hands": 1,
+            "instanceId": "shop-sidearm"
           }
         ],
         "loadout": {
@@ -329,12 +293,7 @@
             "worn": false,
             "held": false
           },
-          "shop-example-6": {
-            "carried": true,
-            "worn": false,
-            "held": false
-          },
-          "shop-example-7": {
+          "shop-sidearm": {
             "carried": true,
             "worn": false,
             "held": false
@@ -373,61 +332,38 @@
         },
         "classId": "class-shepherd",
         "classDisciplines": [
-          "life",
           "medicine"
         ],
         "signatureId": "ability-signature-shepherd-gentle-return",
         "purchases": {
-          "0": [
+          "0": [],
+          "1": [
+            {
+              "id": "restoration:0"
+            },
             {
               "id": "restoration:1"
             },
             {
-              "id": "restoration:2"
+              "id": "growth:0"
             },
             {
-              "id": "wilderness:foraging:2"
+              "id": "wilderness:provisioning:1"
             },
             {
-              "id": "wilderness:foraging:3"
-            },
-            {
-              "id": "medicine"
+              "id": "wilderness:animal-handling:1"
             },
             {
               "id": "medicine:first-aid:1"
             },
             {
               "id": "medicine:first-aid:2"
-            }
-          ],
-          "1": [
-            {
-              "id": "spellcraft"
             },
             {
-              "id": "spellcraft:soul-capacity:1"
+              "id": "medicine:nursing:1"
             },
             {
-              "id": "spellcraft:soul-capacity:2"
-            },
-            {
-              "id": "spellcraft:soul-capacity:3"
-            },
-            {
-              "id": "spellcraft:recovery:1"
-            },
-            {
-              "id": "spellcraft:recovery:2"
-            },
-            {
-              "id": "spellcraft:recovery:3"
-            },
-            {
-              "id": "wilderness:animal-handling:1"
-            },
-            {
-              "id": "wilderness:animal-handling:2"
+              "id": "wilderness:trailcraft:1"
             }
           ]
         },
@@ -530,7 +466,7 @@
         "ancestryId": "ancestry-human",
         "traitIds": [
           "trait-human-far-walker",
-          "trait-human-many-homes"
+          "trait-human-shared-table"
         ],
         "languages": {
           "home": "river-speech",
@@ -547,26 +483,23 @@
         },
         "classId": "class-intellect",
         "classDisciplines": [
-          "craft",
-          "scholarship"
+          "divination"
         ],
-        "signatureId": "ability-signature-intellect-make-the-connection",
+        "signatureId": "ability-signature-intellect-spot-the-leverage",
         "purchases": {
-          "0": [
+          "0": [],
+          "1": [
             {
-              "id": "craft:supplies:1"
+              "id": "craft:repairs:1"
             },
             {
-              "id": "craft:supplies:2"
+              "id": "craft:repairs:2"
             },
             {
-              "id": "craft:supplies:3"
+              "id": "craft:mixtures:1"
             },
             {
-              "id": "scholarship:lore:2"
-            },
-            {
-              "id": "scholarship:lore:3"
+              "id": "craft:safeguards:1"
             },
             {
               "id": "scholarship:investigation:1"
@@ -575,50 +508,17 @@
               "id": "scholarship:investigation:2"
             },
             {
-              "id": "scholarship:investigation:3"
-            }
-          ],
-          "1": [
-            {
-              "id": "craft:repairs:2"
-            },
-            {
-              "id": "craft:repairs:3"
-            },
-            {
-              "id": "craft:construction:1"
-            },
-            {
-              "id": "craft:construction:2"
-            },
-            {
-              "id": "craft:construction:3"
-            },
-            {
               "id": "scholarship:planning:1"
             },
             {
-              "id": "scholarship:planning:2"
+              "id": "portents:0"
             },
             {
-              "id": "scholarship:planning:3"
+              "id": "portents:1"
             }
           ]
         },
-        "acquisitions": {
-          "craft:supplies:1": {
-            "recipes": [
-              "recipe-bound-torches",
-              "recipe-twisted-cord"
-            ]
-          },
-          "craft:supplies:2": {
-            "recipes": [
-              "recipe-travel-food",
-              "recipe-wooden-brace"
-            ]
-          }
-        },
+        "acquisitions": {},
         "shopping": [
           {
             "id": "item-craft-tools",
@@ -746,12 +646,24 @@
         },
         "classId": "class-shadow",
         "classDisciplines": [
-          "subterfuge",
           "athletics"
         ],
         "signatureId": "ability-signature-shadow-fade-behind",
         "purchases": {
-          "0": [
+          "0": [],
+          "1": [
+            {
+              "id": "arms:bladework:1"
+            },
+            {
+              "id": "arms:bladework:2"
+            },
+            {
+              "id": "arms:impact:1"
+            },
+            {
+              "id": "subterfuge:stealth:1"
+            },
             {
               "id": "subterfuge:locks:1"
             },
@@ -759,39 +671,7 @@
               "id": "subterfuge:locks:2"
             },
             {
-              "id": "subterfuge:locks:3"
-            },
-            {
-              "id": "subterfuge:stealth:2"
-            },
-            {
-              "id": "subterfuge:stealth:3"
-            },
-            {
-              "id": "arms:bladework:2"
-            }
-          ],
-          "1": [
-            {
-              "id": "subterfuge:sleight:1"
-            },
-            {
-              "id": "subterfuge:sleight:2"
-            },
-            {
-              "id": "subterfuge:sleight:3"
-            },
-            {
-              "id": "arms:bladework:3"
-            },
-            {
-              "id": "athletics:climbing:1"
-            },
-            {
-              "id": "athletics:climbing:2"
-            },
-            {
-              "id": "athletics:climbing:3"
+              "id": "athletics:balance:1"
             }
           ]
         },
@@ -911,38 +791,27 @@
         },
         "classId": "class-arcanist",
         "classDisciplines": [
-          "elements",
           "spellcraft"
         ],
         "signatureId": "ability-signature-arcanist-deliberate-spark",
         "purchases": {
-          "0": [
+          "0": [],
+          "1": [
+            {
+              "id": "flame:0"
+            },
             {
               "id": "flame:1"
             },
             {
-              "id": "flame:2"
+              "id": "water:0"
             },
             {
-              "id": "water:1"
+              "id": "air:0"
             },
             {
-              "id": "water:2"
+              "id": "portents:0"
             },
-            {
-              "id": "scholarship"
-            },
-            {
-              "id": "scholarship:lore:1"
-            },
-            {
-              "id": "scholarship:lore:2"
-            },
-            {
-              "id": "scholarship:lore:3"
-            }
-          ],
-          "1": [
             {
               "id": "spellcraft:soul-capacity:1"
             },
@@ -950,22 +819,10 @@
               "id": "spellcraft:soul-capacity:2"
             },
             {
-              "id": "spellcraft:soul-capacity:3"
-            },
-            {
               "id": "spellcraft:mind-capacity:1"
             },
             {
-              "id": "spellcraft:mind-capacity:2"
-            },
-            {
-              "id": "spellcraft:mind-capacity:3"
-            },
-            {
               "id": "spellcraft:recovery:1"
-            },
-            {
-              "id": "spellcraft:recovery:2"
             }
           ]
         },

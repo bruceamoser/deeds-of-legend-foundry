@@ -121,7 +121,9 @@
     "test:debt-native": "node scripts/check-debt-native.mjs",
     "audit:rule-rendering": "node scripts/audit-rule-rendering.mjs",
     "test:defense-substitutions": "node scripts/check-defense-substitutions.mjs",
-    "test:workshop-compact": "node scripts/check-workshop-compact.mjs"
+    "test:workshop-compact": "node scripts/check-workshop-compact.mjs",
+    "test:workshop-casting": "node scripts/check-workshop-casting.mjs",
+    "test:build-offs": "node scripts/validate-build-offs.mjs"
   },
   "devDependencies": {
     "@foundryvtt/foundryvtt-cli": "3.0.5",

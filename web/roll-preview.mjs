@@ -17,8 +17,8 @@ const character = workshopCharacter(draft, catalogs);
 const cards = character.state.abilities
   .map((id) => catalogs.choices.find((record) => record.id === id))
   .filter(Boolean);
-const drivingBlow = cards.find((record) => record.id === "arms:impact:1");
-const improvements = character.state.learning.improvements.get(drivingBlow.id) ?? [];
+const attackAbility = cards.find((record) => record.id === "arms:bladework:1");
+const improvements = character.state.learning.improvements.get(attackAbility.id) ?? [];
 const opponent = creatures.creatures.find((record) => record.id === "creature-goblin-scrapper");
 const incoming = opponent.actions.main.actions.find((record) => record.name === "Scrap knife");
 const incomingFields = opponent.reference.specialtyDetails
@@ -27,24 +27,23 @@ const field = (name) => incomingFields.find((entry) => entry.label === name)?.te
 const damageType = field("Damage type").replace(/\.$/, "");
 // Resolve this preview's one printed attack. Other selections remain references
 // for applying their own effects at the table.
+const damageRule = [attackAbility, ...improvements].toReversed()
+  .find((entry) => /\d+\/\d+\/\d+ \w+ damage/.test(entry.effect));
 const [, weak, standard, strong, damageKind] =
-  drivingBlow.effect.match(/for (\d+)\/(\d+)\/(\d+) (\w+) damage/);
+  damageRule.effect.match(/(\d+)\/(\d+)\/(\d+) (\w+) damage/);
 const damageByTier = { weak, standard, strong };
-const pushRule = (improvements.find((entry) => entry.id === "arms:impact:2") ?? drivingBlow).effect;
-const [, pushDistance] = pushRule.match(/push(?:es)? (?:it )?(\d+) squares?/i);
-const dazedRule = improvements.find((entry) => entry.id === "arms:impact:3");
-const dazed = dazedRule?.effect.match(/Dazed (\d+)/)?.[1];
+const bleeding = improvements.find((entry) => entry.id === "arms:bladework:3")
+  ?.effect.match(/Bleeding (\d+)/)?.[1];
 
-function drivingEffect(tier) {
+function attackEffect(tier) {
   const damage = `${damageByTier[tier]} ${damageKind} damage.`;
   if (tier !== "strong") return damage;
-  const push = `Push ${pushDistance} ${pushDistance === "1" ? "square" : "squares"} directly away from you.`;
-  return [damage, push, dazed && `Apply Dazed ${dazed} whether or not the target can be pushed.`]
+  return [damage, "You may move 1 square after the attack.", bleeding && `Apply Bleeding ${bleeding}.`]
     .filter(Boolean).join(" ");
 }
 
 function rollTitle(mode) {
-  if (mode === "ability") return drivingBlow.name;
+  if (mode === "ability") return attackAbility.name;
   if (mode === "defense") return `Defend · ${incoming.name}`;
   return "Attribute check";
 }
@@ -55,10 +54,10 @@ export const previewExample = {
   incoming,
   field,
   inventory: catalogs.inventory,
-  drivingBlow,
+  attackAbility,
   title: rollTitle,
   effect(mode, tier) {
-    if (mode === "ability") return drivingEffect(tier);
+    if (mode === "ability") return attackEffect(tier);
     if (mode === "defense")
       return `${incoming.outcomes[tier]} ${damageType} damage before resistance.`;
     return null;
@@ -70,7 +69,7 @@ let mode = "ability";
 function open(next) {
   mode = next;
   const attribute = mode === "defense" ? incoming.defense.attribute : "brawn";
-  const selected = mode === "ability" ? drivingBlow.id : null;
+  const selected = mode === "ability" ? attackAbility.id : null;
   dialog.innerHTML = `<header><div><small class="hol-roll-context">${esc(draft.name)}${mode === "defense" ? " · Defense" : ""}</small><h2 id="reference-title">${esc(rollTitle(mode))}</h2></div><button type="button" data-close class="quiet">Close</button></header><div class="reference-body">${rollSetup({ attributes: Object.fromEntries(ATTRIBUTES.map((a) => [a, draft.attributes[a]])), selected: attribute, attributeId: "preview-attribute", value: draft.attributes[attribute], netId: "preview-net", labelId: "preview-net-label" })}<details class="hol-roll-abilities" open><summary>Abilities</summary><div class="roll-abilities">${[
     ...cards,
   ]

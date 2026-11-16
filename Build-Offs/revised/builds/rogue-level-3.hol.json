@@ -1,0 +1,166 @@
+{
+  "format": "heroes-of-legend-character",
+  "schemaVersion": 6,
+  "sourceCommit": "55cbd4c70f13704c684f7ba358f0d75bb62b1f30",
+  "draft": {
+    "name": "Pip Nightjar",
+    "attributes": {
+      "brawn": 0,
+      "fortitude": 0,
+      "agility": 2,
+      "guile": 2,
+      "knowledge": 0,
+      "reason": -1
+    },
+    "traitIds": [
+      "trait-halfling-small-passage",
+      "trait-halfling-good-cheer"
+    ],
+    "classDisciplines": [
+      "marksmanship"
+    ],
+    "languages": {
+      "home": "halfling",
+      "extraSpoken": []
+    },
+    "purchases": {
+      "0": [],
+      "1": [
+        {
+          "id": "subterfuge:stealth:1"
+        },
+        {
+          "id": "subterfuge:stealth:2"
+        },
+        {
+          "id": "subterfuge:stealth:3"
+        },
+        {
+          "id": "subterfuge:locks:1"
+        },
+        {
+          "id": "subterfuge:traps:1"
+        },
+        {
+          "id": "subterfuge:sleight:1"
+        },
+        {
+          "id": "athletics:leaping:1"
+        }
+      ]
+    },
+    "acquisitions": {},
+    "shopping": [
+      {
+        "id": "item-ordinary-melee-weapon",
+        "quantity": 1,
+        "hands": 1,
+        "instanceId": "shop-buildoff-rogue-0"
+      },
+      {
+        "id": "item-lock-tools",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-rogue-1"
+      },
+      {
+        "id": "item-travel-pack",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-rogue-2"
+      },
+      {
+        "id": "item-food-bundle",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-rogue-3"
+      },
+      {
+        "id": "item-water-flask",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-rogue-4"
+      },
+      {
+        "id": "item-sleeping-roll",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-rogue-5"
+      }
+    ],
+    "ancestryId": "ancestry-halfling",
+    "classId": "class-shadow",
+    "signatureId": "ability-signature-shadow-soft-landing",
+    "culture": {
+      "id": "origin-culture-free-harbors",
+      "pair": 1
+    },
+    "background": {
+      "id": "origin-background-burglar",
+      "pair": 1
+    },
+    "loadout": {
+      "shop-buildoff-rogue-0": {
+        "carried": true,
+        "worn": false,
+        "held": true
+      },
+      "shop-buildoff-rogue-1": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      },
+      "shop-buildoff-rogue-2": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      },
+      "shop-buildoff-rogue-3": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      },
+      "shop-buildoff-rogue-4": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      },
+      "shop-buildoff-rogue-5": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      }
+    },
+    "progression": {
+      "level": 3,
+      "levels": {
+        "2": {
+          "purchases": [],
+          "acquisitions": {},
+          "signatures": {}
+        },
+        "3": {
+          "purchases": [
+            {
+              "id": "subterfuge:stealth:4"
+            },
+            {
+              "id": "subterfuge:stealth:5"
+            },
+            {
+              "id": "subterfuge:stealth:6"
+            },
+            {
+              "id": "subterfuge:locks:2"
+            }
+          ],
+          "acquisitions": {},
+          "signatures": {
+            "3": "ability-signature-shadow-strike-and-vanish"
+          }
+        }
+      }
+    }
+  },
+  "status": "ready"
+}

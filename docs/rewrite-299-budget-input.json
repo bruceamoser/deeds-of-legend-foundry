@@ -1,0 +1,3582 @@
+{
+  "sourceCommit": "d4d4b796e1393aaf79557ba39b0f9d51bf419e92",
+  "purpose": "Frozen numerical input for the pre-rewrite price comparison; not a playable catalog.",
+  "classes": [
+    {
+      "id": "class-arcanist",
+      "name": "Arcanist",
+      "minimumAttributes": [
+        "agility",
+        "knowledge"
+      ],
+      "disciplineCosts": {
+        "arms": 3,
+        "armor": 3,
+        "guard": 3,
+        "marksmanship": 3,
+        "athletics": 3,
+        "subterfuge": 3,
+        "wilderness": 3,
+        "medicine": 3,
+        "craft": 3,
+        "scholarship": 2,
+        "influence": 3,
+        "elements": 1,
+        "life": 3,
+        "mentalism": 3,
+        "divination": 2,
+        "invocation": 2,
+        "force": 1,
+        "wards": 2,
+        "spellcraft": 1
+      }
+    },
+    {
+      "id": "class-blade",
+      "name": "Blade",
+      "minimumAttributes": [
+        "agility",
+        "brawn"
+      ],
+      "disciplineCosts": {
+        "arms": 1,
+        "armor": 3,
+        "guard": 3,
+        "marksmanship": 1,
+        "athletics": 2,
+        "subterfuge": 2,
+        "wilderness": 3,
+        "medicine": 3,
+        "craft": 3,
+        "scholarship": 3,
+        "influence": 3,
+        "elements": 3,
+        "life": 3,
+        "mentalism": 3,
+        "divination": 3,
+        "invocation": 3,
+        "force": 3,
+        "wards": 3,
+        "spellcraft": 3
+      }
+    },
+    {
+      "id": "class-intellect",
+      "name": "Intellect",
+      "minimumAttributes": [
+        "knowledge",
+        "reason"
+      ],
+      "disciplineCosts": {
+        "arms": 3,
+        "armor": 3,
+        "guard": 3,
+        "marksmanship": 3,
+        "athletics": 3,
+        "subterfuge": 3,
+        "wilderness": 3,
+        "medicine": 2,
+        "craft": 1,
+        "scholarship": 1,
+        "influence": 3,
+        "elements": 3,
+        "life": 3,
+        "mentalism": 2,
+        "divination": 2,
+        "invocation": 3,
+        "force": 2,
+        "wards": 3,
+        "spellcraft": 2
+      }
+    },
+    {
+      "id": "class-leader",
+      "name": "Leader",
+      "minimumAttributes": [
+        "guile",
+        "fortitude"
+      ],
+      "disciplineCosts": {
+        "arms": 2,
+        "armor": 3,
+        "guard": 1,
+        "marksmanship": 3,
+        "athletics": 3,
+        "subterfuge": 3,
+        "wilderness": 3,
+        "medicine": 3,
+        "craft": 3,
+        "scholarship": 2,
+        "influence": 1,
+        "elements": 3,
+        "life": 3,
+        "mentalism": 2,
+        "divination": 3,
+        "invocation": 3,
+        "force": 3,
+        "wards": 2,
+        "spellcraft": 3
+      }
+    },
+    {
+      "id": "class-odd",
+      "name": "Odd",
+      "minimumAttributes": [],
+      "disciplineCosts": {
+        "arms": 2,
+        "armor": 2,
+        "guard": 2,
+        "marksmanship": 2,
+        "athletics": 2,
+        "subterfuge": 2,
+        "wilderness": 2,
+        "medicine": 2,
+        "craft": 2,
+        "scholarship": 2,
+        "influence": 2,
+        "elements": 2,
+        "life": 2,
+        "mentalism": 2,
+        "divination": 2,
+        "invocation": 2,
+        "force": 2,
+        "wards": 2,
+        "spellcraft": 2
+      }
+    },
+    {
+      "id": "class-protector",
+      "name": "Protector",
+      "minimumAttributes": [
+        "fortitude",
+        "reason"
+      ],
+      "disciplineCosts": {
+        "arms": 2,
+        "armor": 1,
+        "guard": 1,
+        "marksmanship": 3,
+        "athletics": 3,
+        "subterfuge": 3,
+        "wilderness": 3,
+        "medicine": 2,
+        "craft": 3,
+        "scholarship": 3,
+        "influence": 3,
+        "elements": 3,
+        "life": 3,
+        "mentalism": 3,
+        "divination": 3,
+        "invocation": 3,
+        "force": 3,
+        "wards": 2,
+        "spellcraft": 3
+      }
+    },
+    {
+      "id": "class-shadow",
+      "name": "Shadow",
+      "minimumAttributes": [
+        "agility",
+        "guile"
+      ],
+      "disciplineCosts": {
+        "arms": 3,
+        "armor": 3,
+        "guard": 3,
+        "marksmanship": 1,
+        "athletics": 2,
+        "subterfuge": 1,
+        "wilderness": 3,
+        "medicine": 3,
+        "craft": 3,
+        "scholarship": 3,
+        "influence": 3,
+        "elements": 3,
+        "life": 3,
+        "mentalism": 2,
+        "divination": 2,
+        "invocation": 3,
+        "force": 3,
+        "wards": 3,
+        "spellcraft": 3
+      }
+    },
+    {
+      "id": "class-shepherd",
+      "name": "Shepherd",
+      "minimumAttributes": [
+        "reason",
+        "guile"
+      ],
+      "disciplineCosts": {
+        "arms": 3,
+        "armor": 3,
+        "guard": 3,
+        "marksmanship": 3,
+        "athletics": 3,
+        "subterfuge": 3,
+        "wilderness": 2,
+        "medicine": 2,
+        "craft": 3,
+        "scholarship": 3,
+        "influence": 3,
+        "elements": 3,
+        "life": 1,
+        "mentalism": 3,
+        "divination": 3,
+        "invocation": 2,
+        "force": 3,
+        "wards": 1,
+        "spellcraft": 2
+      }
+    },
+    {
+      "id": "class-unbalanced",
+      "name": "Unbalanced",
+      "minimumAttributes": [
+        "brawn",
+        "fortitude"
+      ],
+      "disciplineCosts": {
+        "arms": 1,
+        "armor": 2,
+        "guard": 3,
+        "marksmanship": 3,
+        "athletics": 1,
+        "subterfuge": 3,
+        "wilderness": 3,
+        "medicine": 3,
+        "craft": 3,
+        "scholarship": 3,
+        "influence": 3,
+        "elements": 2,
+        "life": 3,
+        "mentalism": 3,
+        "divination": 3,
+        "invocation": 3,
+        "force": 3,
+        "wards": 3,
+        "spellcraft": 3
+      }
+    },
+    {
+      "id": "class-warden",
+      "name": "Warden",
+      "minimumAttributes": [
+        "fortitude",
+        "knowledge"
+      ],
+      "disciplineCosts": {
+        "arms": 2,
+        "armor": 3,
+        "guard": 3,
+        "marksmanship": 1,
+        "athletics": 2,
+        "subterfuge": 3,
+        "wilderness": 1,
+        "medicine": 3,
+        "craft": 3,
+        "scholarship": 3,
+        "influence": 3,
+        "elements": 3,
+        "life": 2,
+        "mentalism": 3,
+        "divination": 2,
+        "invocation": 3,
+        "force": 3,
+        "wards": 3,
+        "spellcraft": 3
+      }
+    }
+  ],
+  "disciplines": [
+    {
+      "id": "arms",
+      "paths": [
+        {
+          "id": "arms:bladework",
+          "name": "Bladework",
+          "steps": [
+            "arms:bladework:1",
+            "arms:bladework:2",
+            "arms:bladework:3",
+            "arms:bladework:4"
+          ]
+        },
+        {
+          "id": "arms:impact",
+          "name": "Impact",
+          "steps": [
+            "arms:impact:1",
+            "arms:impact:2",
+            "arms:impact:3",
+            "arms:impact:4"
+          ]
+        },
+        {
+          "id": "arms:disruption",
+          "name": "Disruption",
+          "steps": [
+            "arms:disruption:1",
+            "arms:disruption:2",
+            "arms:disruption:3",
+            "arms:disruption:4"
+          ]
+        },
+        {
+          "id": "arms:dueling",
+          "name": "Dueling",
+          "steps": [
+            "arms:dueling:1",
+            "arms:dueling:2",
+            "arms:dueling:3",
+            "arms:dueling:4"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "armor",
+      "paths": [
+        {
+          "id": "armor:harness",
+          "name": "Harness",
+          "steps": [
+            "armor:harness:1",
+            "armor:harness:2",
+            "armor:harness:3",
+            "armor:harness:4"
+          ]
+        },
+        {
+          "id": "armor:bracing",
+          "name": "Bracing",
+          "steps": [
+            "armor:bracing:1",
+            "armor:bracing:2",
+            "armor:bracing:3",
+            "armor:bracing:4"
+          ]
+        },
+        {
+          "id": "armor:deflection",
+          "name": "Deflection",
+          "steps": [
+            "armor:deflection:1",
+            "armor:deflection:2",
+            "armor:deflection:3",
+            "armor:deflection:4"
+          ]
+        },
+        {
+          "id": "armor:endurance",
+          "name": "Endurance",
+          "steps": [
+            "armor:endurance:1",
+            "armor:endurance:2",
+            "armor:endurance:3",
+            "armor:endurance:4"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "guard",
+      "paths": [
+        {
+          "id": "guard:interception",
+          "name": "Interception",
+          "steps": [
+            "guard:interception:1",
+            "guard:interception:2",
+            "guard:interception:3",
+            "guard:interception:4"
+          ]
+        },
+        {
+          "id": "guard:shieldwork",
+          "name": "Shieldwork",
+          "steps": [
+            "guard:shieldwork:1",
+            "guard:shieldwork:2",
+            "guard:shieldwork:3",
+            "guard:shieldwork:4"
+          ]
+        },
+        {
+          "id": "guard:shelter",
+          "name": "Shelter",
+          "steps": [
+            "guard:shelter:1",
+            "guard:shelter:2",
+            "guard:shelter:3",
+            "guard:shelter:4"
+          ]
+        },
+        {
+          "id": "guard:watchfulness",
+          "name": "Watchfulness",
+          "steps": [
+            "guard:watchfulness:1",
+            "guard:watchfulness:2",
+            "guard:watchfulness:3",
+            "guard:watchfulness:4"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "marksmanship",
+      "paths": [
+        {
+          "id": "marksmanship:precision",
+          "name": "Precision",
+          "steps": [
+            "marksmanship:precision:1",
+            "marksmanship:precision:2",
+            "marksmanship:precision:3",
+            "marksmanship:precision:4"
+          ]
+        },
+        {
+          "id": "marksmanship:pinning",
+          "name": "Pinning",
+          "steps": [
+            "marksmanship:pinning:1",
+            "marksmanship:pinning:2",
+            "marksmanship:pinning:3",
+            "marksmanship:pinning:4"
+          ]
+        },
+        {
+          "id": "marksmanship:readiness",
+          "name": "Readiness",
+          "steps": [
+            "marksmanship:readiness:1",
+            "marksmanship:readiness:2",
+            "marksmanship:readiness:3",
+            "marksmanship:readiness:4"
+          ]
+        },
+        {
+          "id": "marksmanship:thrown-weapons",
+          "name": "Thrown Weapons",
+          "steps": [
+            "marksmanship:thrown-weapons:1",
+            "marksmanship:thrown-weapons:2",
+            "marksmanship:thrown-weapons:3",
+            "marksmanship:thrown-weapons:4"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "athletics",
+      "paths": [
+        {
+          "id": "athletics:climbing",
+          "name": "Climbing",
+          "steps": [
+            "athletics:climbing:1",
+            "athletics:climbing:2",
+            "athletics:climbing:3",
+            "athletics:climbing:4"
+          ]
+        },
+        {
+          "id": "athletics:leaping",
+          "name": "Leaping",
+          "steps": [
+            "athletics:leaping:1",
+            "athletics:leaping:2",
+            "athletics:leaping:3",
+            "athletics:leaping:4"
+          ]
+        },
+        {
+          "id": "athletics:swimming",
+          "name": "Swimming",
+          "steps": [
+            "athletics:swimming:1",
+            "athletics:swimming:2",
+            "athletics:swimming:3",
+            "athletics:swimming:4"
+          ]
+        },
+        {
+          "id": "athletics:balance",
+          "name": "Balance",
+          "steps": [
+            "athletics:balance:1",
+            "athletics:balance:2",
+            "athletics:balance:3",
+            "athletics:balance:4"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "subterfuge",
+      "paths": [
+        {
+          "id": "subterfuge:stealth",
+          "name": "Stealth",
+          "steps": [
+            "subterfuge:stealth:1",
+            "subterfuge:stealth:2",
+            "subterfuge:stealth:3",
+            "subterfuge:stealth:4"
+          ]
+        },
+        {
+          "id": "subterfuge:locks",
+          "name": "Locks",
+          "steps": [
+            "subterfuge:locks:1",
+            "subterfuge:locks:2",
+            "subterfuge:locks:3",
+            "subterfuge:locks:4"
+          ]
+        },
+        {
+          "id": "subterfuge:sleight",
+          "name": "Sleight",
+          "steps": [
+            "subterfuge:sleight:1",
+            "subterfuge:sleight:2",
+            "subterfuge:sleight:3",
+            "subterfuge:sleight:4"
+          ]
+        },
+        {
+          "id": "subterfuge:traps",
+          "name": "Traps",
+          "steps": [
+            "subterfuge:traps:1",
+            "subterfuge:traps:2",
+            "subterfuge:traps:3",
+            "subterfuge:traps:4"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wilderness",
+      "paths": [
+        {
+          "id": "wilderness:tracking",
+          "name": "Tracking",
+          "steps": [
+            "wilderness:tracking:1",
+            "wilderness:tracking:2",
+            "wilderness:tracking:3",
+            "wilderness:tracking:4"
+          ]
+        },
+        {
+          "id": "wilderness:foraging",
+          "name": "Foraging",
+          "steps": [
+            "wilderness:foraging:1",
+            "wilderness:foraging:2",
+            "wilderness:foraging:3",
+            "wilderness:foraging:4"
+          ]
+        },
+        {
+          "id": "wilderness:shelter",
+          "name": "Shelter",
+          "steps": [
+            "wilderness:shelter:1",
+            "wilderness:shelter:2",
+            "wilderness:shelter:3",
+            "wilderness:shelter:4"
+          ]
+        },
+        {
+          "id": "wilderness:animal-handling",
+          "name": "Animal Handling",
+          "steps": [
+            "wilderness:animal-handling:1",
+            "wilderness:animal-handling:2",
+            "wilderness:animal-handling:3",
+            "wilderness:animal-handling:4"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "medicine",
+      "paths": [
+        {
+          "id": "medicine:first-aid",
+          "name": "First Aid",
+          "steps": [
+            "medicine:first-aid:1",
+            "medicine:first-aid:2",
+            "medicine:first-aid:3",
+            "medicine:first-aid:4"
+          ]
+        },
+        {
+          "id": "medicine:triage",
+          "name": "Triage",
+          "steps": [
+            "medicine:triage:1",
+            "medicine:triage:2",
+            "medicine:triage:3",
+            "medicine:triage:4"
+          ]
+        },
+        {
+          "id": "medicine:diagnosis",
+          "name": "Diagnosis",
+          "steps": [
+            "medicine:diagnosis:1",
+            "medicine:diagnosis:2",
+            "medicine:diagnosis:3",
+            "medicine:diagnosis:4"
+          ]
+        },
+        {
+          "id": "medicine:nursing",
+          "name": "Nursing",
+          "steps": [
+            "medicine:nursing:1",
+            "medicine:nursing:2",
+            "medicine:nursing:3",
+            "medicine:nursing:4"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "craft",
+      "paths": [
+        {
+          "id": "craft:repairs",
+          "name": "Repairs",
+          "steps": [
+            "craft:repairs:1",
+            "craft:repairs:2",
+            "craft:repairs:3",
+            "craft:repairs:4"
+          ]
+        },
+        {
+          "id": "craft:supplies",
+          "name": "Supplies",
+          "steps": [
+            "craft:supplies:1",
+            "craft:supplies:2",
+            "craft:supplies:3",
+            "craft:supplies:4"
+          ]
+        },
+        {
+          "id": "craft:construction",
+          "name": "Construction",
+          "steps": [
+            "craft:construction:1",
+            "craft:construction:2",
+            "craft:construction:3",
+            "craft:construction:4"
+          ]
+        },
+        {
+          "id": "craft:mixtures",
+          "name": "Mixtures",
+          "steps": [
+            "craft:mixtures:1",
+            "craft:mixtures:2",
+            "craft:mixtures:3",
+            "craft:mixtures:4"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scholarship",
+      "paths": [
+        {
+          "id": "scholarship:lore",
+          "name": "Lore",
+          "steps": [
+            "scholarship:lore:1",
+            "scholarship:lore:2",
+            "scholarship:lore:3",
+            "scholarship:lore:4"
+          ]
+        },
+        {
+          "id": "scholarship:investigation",
+          "name": "Investigation",
+          "steps": [
+            "scholarship:investigation:1",
+            "scholarship:investigation:2",
+            "scholarship:investigation:3",
+            "scholarship:investigation:4"
+          ]
+        },
+        {
+          "id": "scholarship:languages",
+          "name": "Languages",
+          "steps": [
+            "scholarship:languages:1",
+            "scholarship:languages:2",
+            "scholarship:languages:3",
+            "scholarship:languages:4"
+          ]
+        },
+        {
+          "id": "scholarship:planning",
+          "name": "Planning",
+          "steps": [
+            "scholarship:planning:1",
+            "scholarship:planning:2",
+            "scholarship:planning:3",
+            "scholarship:planning:4"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "influence",
+      "paths": [
+        {
+          "id": "influence:negotiation",
+          "name": "Negotiation",
+          "steps": [
+            "influence:negotiation:1",
+            "influence:negotiation:2",
+            "influence:negotiation:3",
+            "influence:negotiation:4"
+          ]
+        },
+        {
+          "id": "influence:leadership",
+          "name": "Leadership",
+          "steps": [
+            "influence:leadership:1",
+            "influence:leadership:2",
+            "influence:leadership:3",
+            "influence:leadership:4"
+          ]
+        },
+        {
+          "id": "influence:deception",
+          "name": "Deception",
+          "steps": [
+            "influence:deception:1",
+            "influence:deception:2",
+            "influence:deception:3",
+            "influence:deception:4"
+          ]
+        },
+        {
+          "id": "influence:pressure",
+          "name": "Pressure",
+          "steps": [
+            "influence:pressure:1",
+            "influence:pressure:2",
+            "influence:pressure:3",
+            "influence:pressure:4"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "elements",
+      "paths": [
+        {
+          "id": "elements:flame",
+          "name": "Flame",
+          "bookId": "flame",
+          "steps": [
+            "flame:0",
+            "flame:1",
+            "flame:2",
+            "flame:3"
+          ]
+        },
+        {
+          "id": "elements:water",
+          "name": "Water",
+          "bookId": "water",
+          "steps": [
+            "water:0",
+            "water:1",
+            "water:2",
+            "water:3"
+          ]
+        },
+        {
+          "id": "elements:earth",
+          "name": "Earth",
+          "bookId": "earth",
+          "steps": [
+            "earth:0",
+            "earth:1",
+            "earth:2",
+            "earth:3"
+          ]
+        },
+        {
+          "id": "elements:air",
+          "name": "Air",
+          "bookId": "air",
+          "steps": [
+            "air:0",
+            "air:1",
+            "air:2",
+            "air:3"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "life",
+      "paths": [
+        {
+          "id": "life:restoration",
+          "name": "Restoration",
+          "bookId": "restoration",
+          "steps": [
+            "restoration:0",
+            "restoration:1",
+            "restoration:2",
+            "restoration:3"
+          ]
+        },
+        {
+          "id": "life:transformation",
+          "name": "Transformation",
+          "bookId": "transformation",
+          "steps": [
+            "transformation:0",
+            "transformation:1",
+            "transformation:2",
+            "transformation:3"
+          ]
+        },
+        {
+          "id": "life:growth",
+          "name": "Growth",
+          "bookId": "growth",
+          "steps": [
+            "growth:0",
+            "growth:1",
+            "growth:2",
+            "growth:3"
+          ]
+        },
+        {
+          "id": "life:decay",
+          "name": "Decay",
+          "bookId": "decay",
+          "steps": [
+            "decay:0",
+            "decay:1",
+            "decay:2",
+            "decay:3"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mentalism",
+      "paths": [
+        {
+          "id": "mentalism:thought",
+          "name": "Thought",
+          "bookId": "thought",
+          "steps": [
+            "thought:0",
+            "thought:1",
+            "thought:2",
+            "thought:3"
+          ]
+        },
+        {
+          "id": "mentalism:emotion",
+          "name": "Emotion",
+          "bookId": "emotion",
+          "steps": [
+            "emotion:0",
+            "emotion:1",
+            "emotion:2",
+            "emotion:3"
+          ]
+        },
+        {
+          "id": "mentalism:perception",
+          "name": "Perception",
+          "bookId": "perception",
+          "steps": [
+            "perception:0",
+            "perception:1",
+            "perception:2",
+            "perception:3"
+          ]
+        },
+        {
+          "id": "mentalism:dreams",
+          "name": "Dreams",
+          "bookId": "dreams",
+          "steps": [
+            "dreams:0",
+            "dreams:1",
+            "dreams:2",
+            "dreams:3"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "divination",
+      "paths": [
+        {
+          "id": "divination:detection",
+          "name": "Detection",
+          "bookId": "detection",
+          "steps": [
+            "detection:0",
+            "detection:1",
+            "detection:2",
+            "detection:3"
+          ]
+        },
+        {
+          "id": "divination:farseeing",
+          "name": "Farseeing",
+          "bookId": "farseeing",
+          "steps": [
+            "farseeing:0",
+            "farseeing:1",
+            "farseeing:2",
+            "farseeing:3"
+          ]
+        },
+        {
+          "id": "divination:echoes",
+          "name": "Echoes",
+          "bookId": "echoes",
+          "steps": [
+            "echoes:0",
+            "echoes:1",
+            "echoes:2",
+            "echoes:3"
+          ]
+        },
+        {
+          "id": "divination:portents",
+          "name": "Portents",
+          "bookId": "portents",
+          "steps": [
+            "portents:0",
+            "portents:1",
+            "portents:2",
+            "portents:3"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "invocation",
+      "paths": [
+        {
+          "id": "invocation:spirits",
+          "name": "Spirits",
+          "bookId": "spirits",
+          "steps": [
+            "spirits:0",
+            "spirits:1",
+            "spirits:2",
+            "spirits:3"
+          ]
+        },
+        {
+          "id": "invocation:calling",
+          "name": "Calling",
+          "bookId": "calling",
+          "steps": [
+            "calling:0",
+            "calling:1",
+            "calling:2",
+            "calling:3"
+          ]
+        },
+        {
+          "id": "invocation:binding",
+          "name": "Binding",
+          "bookId": "binding",
+          "steps": [
+            "binding:0",
+            "binding:1",
+            "binding:2",
+            "binding:3"
+          ]
+        },
+        {
+          "id": "invocation:passage",
+          "name": "Passage",
+          "bookId": "passage",
+          "steps": [
+            "passage:0",
+            "passage:1",
+            "passage:2",
+            "passage:3"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "force",
+      "paths": [
+        {
+          "id": "force:telekinesis",
+          "name": "Telekinesis",
+          "bookId": "telekinesis",
+          "steps": [
+            "telekinesis:0",
+            "telekinesis:1",
+            "telekinesis:2",
+            "telekinesis:3"
+          ]
+        },
+        {
+          "id": "force:shaping",
+          "name": "Shaping",
+          "bookId": "shaping",
+          "steps": [
+            "shaping:0",
+            "shaping:1",
+            "shaping:2",
+            "shaping:3"
+          ]
+        },
+        {
+          "id": "force:animation",
+          "name": "Animation",
+          "bookId": "animation",
+          "steps": [
+            "animation:0",
+            "animation:1",
+            "animation:2",
+            "animation:3"
+          ]
+        },
+        {
+          "id": "force:imbuement",
+          "name": "Imbuement",
+          "bookId": "imbuement",
+          "steps": [
+            "imbuement:0",
+            "imbuement:1",
+            "imbuement:2",
+            "imbuement:3"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wards",
+      "paths": [
+        {
+          "id": "wards:protection",
+          "name": "Protection",
+          "bookId": "protection",
+          "steps": [
+            "protection:0",
+            "protection:1",
+            "protection:2",
+            "protection:3"
+          ]
+        },
+        {
+          "id": "wards:unraveling",
+          "name": "Unraveling",
+          "bookId": "unraveling",
+          "steps": [
+            "unraveling:0",
+            "unraveling:1",
+            "unraveling:2",
+            "unraveling:3"
+          ]
+        },
+        {
+          "id": "wards:sanctuary",
+          "name": "Sanctuary",
+          "bookId": "sanctuary",
+          "steps": [
+            "sanctuary:0",
+            "sanctuary:1",
+            "sanctuary:2",
+            "sanctuary:3"
+          ]
+        },
+        {
+          "id": "wards:seals",
+          "name": "Seals",
+          "bookId": "seals",
+          "steps": [
+            "seals:0",
+            "seals:1",
+            "seals:2",
+            "seals:3"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "spellcraft",
+      "paths": [
+        {
+          "id": "spellcraft:soul-capacity",
+          "name": "Soul Capacity",
+          "steps": [
+            "spellcraft:soul-capacity:1",
+            "spellcraft:soul-capacity:2",
+            "spellcraft:soul-capacity:3",
+            "spellcraft:soul-capacity:4"
+          ]
+        },
+        {
+          "id": "spellcraft:mind-capacity",
+          "name": "Mind Capacity",
+          "steps": [
+            "spellcraft:mind-capacity:1",
+            "spellcraft:mind-capacity:2",
+            "spellcraft:mind-capacity:3",
+            "spellcraft:mind-capacity:4"
+          ]
+        },
+        {
+          "id": "spellcraft:recovery",
+          "name": "Recovery",
+          "steps": [
+            "spellcraft:recovery:1",
+            "spellcraft:recovery:2",
+            "spellcraft:recovery:3",
+            "spellcraft:recovery:4"
+          ]
+        },
+        {
+          "id": "spellcraft:channeling",
+          "name": "Channeling",
+          "bookId": "channeling",
+          "steps": [
+            "channeling:0",
+            "channeling:1",
+            "channeling:2",
+            "channeling:3"
+          ]
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "arms",
+      "kind": "discipline",
+      "dp": 1
+    },
+    {
+      "id": "arms:bladework:1",
+      "kind": "technique",
+      "dp": 1
+    },
+    {
+      "id": "arms:bladework:2",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "arms:bladework:3",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "arms:bladework:4",
+      "kind": "technique",
+      "dp": 3
+    },
+    {
+      "id": "arms:impact:1",
+      "kind": "technique",
+      "dp": 1
+    },
+    {
+      "id": "arms:impact:2",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "arms:impact:3",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "arms:impact:4",
+      "kind": "technique",
+      "dp": 3
+    },
+    {
+      "id": "arms:disruption:1",
+      "kind": "technique",
+      "dp": 1
+    },
+    {
+      "id": "arms:disruption:2",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "arms:disruption:3",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "arms:disruption:4",
+      "kind": "technique",
+      "dp": 3
+    },
+    {
+      "id": "arms:dueling:1",
+      "kind": "technique",
+      "dp": 1
+    },
+    {
+      "id": "arms:dueling:2",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "arms:dueling:3",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "arms:dueling:4",
+      "kind": "technique",
+      "dp": 3
+    },
+    {
+      "id": "armor",
+      "kind": "discipline",
+      "dp": 1
+    },
+    {
+      "id": "armor:harness:1",
+      "kind": "technique",
+      "dp": 1
+    },
+    {
+      "id": "armor:harness:2",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "armor:harness:3",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "armor:harness:4",
+      "kind": "technique",
+      "dp": 3
+    },
+    {
+      "id": "armor:bracing:1",
+      "kind": "technique",
+      "dp": 1
+    },
+    {
+      "id": "armor:bracing:2",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "armor:bracing:3",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "armor:bracing:4",
+      "kind": "technique",
+      "dp": 3
+    },
+    {
+      "id": "armor:deflection:1",
+      "kind": "technique",
+      "dp": 1
+    },
+    {
+      "id": "armor:deflection:2",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "armor:deflection:3",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "armor:deflection:4",
+      "kind": "technique",
+      "dp": 3
+    },
+    {
+      "id": "armor:endurance:1",
+      "kind": "technique",
+      "dp": 1
+    },
+    {
+      "id": "armor:endurance:2",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "armor:endurance:3",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "armor:endurance:4",
+      "kind": "technique",
+      "dp": 3
+    },
+    {
+      "id": "guard",
+      "kind": "discipline",
+      "dp": 1
+    },
+    {
+      "id": "guard:interception:1",
+      "kind": "technique",
+      "dp": 1
+    },
+    {
+      "id": "guard:interception:2",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "guard:interception:3",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "guard:interception:4",
+      "kind": "technique",
+      "dp": 3
+    },
+    {
+      "id": "guard:shieldwork:1",
+      "kind": "technique",
+      "dp": 1
+    },
+    {
+      "id": "guard:shieldwork:2",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "guard:shieldwork:3",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "guard:shieldwork:4",
+      "kind": "technique",
+      "dp": 3
+    },
+    {
+      "id": "guard:shelter:1",
+      "kind": "technique",
+      "dp": 1
+    },
+    {
+      "id": "guard:shelter:2",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "guard:shelter:3",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "guard:shelter:4",
+      "kind": "technique",
+      "dp": 3
+    },
+    {
+      "id": "guard:watchfulness:1",
+      "kind": "technique",
+      "dp": 1
+    },
+    {
+      "id": "guard:watchfulness:2",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "guard:watchfulness:3",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "guard:watchfulness:4",
+      "kind": "technique",
+      "dp": 3
+    },
+    {
+      "id": "marksmanship",
+      "kind": "discipline",
+      "dp": 1
+    },
+    {
+      "id": "marksmanship:precision:1",
+      "kind": "technique",
+      "dp": 1
+    },
+    {
+      "id": "marksmanship:precision:2",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "marksmanship:precision:3",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "marksmanship:precision:4",
+      "kind": "technique",
+      "dp": 3
+    },
+    {
+      "id": "marksmanship:pinning:1",
+      "kind": "technique",
+      "dp": 1
+    },
+    {
+      "id": "marksmanship:pinning:2",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "marksmanship:pinning:3",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "marksmanship:pinning:4",
+      "kind": "technique",
+      "dp": 3
+    },
+    {
+      "id": "marksmanship:readiness:1",
+      "kind": "technique",
+      "dp": 1
+    },
+    {
+      "id": "marksmanship:readiness:2",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "marksmanship:readiness:3",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "marksmanship:readiness:4",
+      "kind": "technique",
+      "dp": 3
+    },
+    {
+      "id": "marksmanship:thrown-weapons:1",
+      "kind": "technique",
+      "dp": 1
+    },
+    {
+      "id": "marksmanship:thrown-weapons:2",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "marksmanship:thrown-weapons:3",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "marksmanship:thrown-weapons:4",
+      "kind": "technique",
+      "dp": 3
+    },
+    {
+      "id": "athletics",
+      "kind": "discipline",
+      "dp": 1
+    },
+    {
+      "id": "athletics:climbing:1",
+      "kind": "technique",
+      "dp": 1
+    },
+    {
+      "id": "athletics:climbing:2",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "athletics:climbing:3",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "athletics:climbing:4",
+      "kind": "technique",
+      "dp": 3
+    },
+    {
+      "id": "athletics:leaping:1",
+      "kind": "technique",
+      "dp": 1
+    },
+    {
+      "id": "athletics:leaping:2",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "athletics:leaping:3",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "athletics:leaping:4",
+      "kind": "technique",
+      "dp": 3
+    },
+    {
+      "id": "athletics:swimming:1",
+      "kind": "technique",
+      "dp": 1
+    },
+    {
+      "id": "athletics:swimming:2",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "athletics:swimming:3",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "athletics:swimming:4",
+      "kind": "technique",
+      "dp": 3
+    },
+    {
+      "id": "athletics:balance:1",
+      "kind": "technique",
+      "dp": 1
+    },
+    {
+      "id": "athletics:balance:2",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "athletics:balance:3",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "athletics:balance:4",
+      "kind": "technique",
+      "dp": 3
+    },
+    {
+      "id": "subterfuge",
+      "kind": "discipline",
+      "dp": 1
+    },
+    {
+      "id": "subterfuge:stealth:1",
+      "kind": "technique",
+      "dp": 1
+    },
+    {
+      "id": "subterfuge:stealth:2",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "subterfuge:stealth:3",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "subterfuge:stealth:4",
+      "kind": "technique",
+      "dp": 3
+    },
+    {
+      "id": "subterfuge:locks:1",
+      "kind": "technique",
+      "dp": 1
+    },
+    {
+      "id": "subterfuge:locks:2",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "subterfuge:locks:3",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "subterfuge:locks:4",
+      "kind": "technique",
+      "dp": 3
+    },
+    {
+      "id": "subterfuge:sleight:1",
+      "kind": "technique",
+      "dp": 1
+    },
+    {
+      "id": "subterfuge:sleight:2",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "subterfuge:sleight:3",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "subterfuge:sleight:4",
+      "kind": "technique",
+      "dp": 3
+    },
+    {
+      "id": "subterfuge:traps:1",
+      "kind": "technique",
+      "dp": 1
+    },
+    {
+      "id": "subterfuge:traps:2",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "subterfuge:traps:3",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "subterfuge:traps:4",
+      "kind": "technique",
+      "dp": 3
+    },
+    {
+      "id": "wilderness",
+      "kind": "discipline",
+      "dp": 1
+    },
+    {
+      "id": "wilderness:tracking:1",
+      "kind": "technique",
+      "dp": 1
+    },
+    {
+      "id": "wilderness:tracking:2",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "wilderness:tracking:3",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "wilderness:tracking:4",
+      "kind": "technique",
+      "dp": 3
+    },
+    {
+      "id": "wilderness:foraging:1",
+      "kind": "technique",
+      "dp": 1
+    },
+    {
+      "id": "wilderness:foraging:2",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "wilderness:foraging:3",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "wilderness:foraging:4",
+      "kind": "technique",
+      "dp": 3
+    },
+    {
+      "id": "wilderness:shelter:1",
+      "kind": "technique",
+      "dp": 1
+    },
+    {
+      "id": "wilderness:shelter:2",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "wilderness:shelter:3",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "wilderness:shelter:4",
+      "kind": "technique",
+      "dp": 3
+    },
+    {
+      "id": "wilderness:animal-handling:1",
+      "kind": "technique",
+      "dp": 1
+    },
+    {
+      "id": "wilderness:animal-handling:2",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "wilderness:animal-handling:3",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "wilderness:animal-handling:4",
+      "kind": "technique",
+      "dp": 3
+    },
+    {
+      "id": "medicine",
+      "kind": "discipline",
+      "dp": 1
+    },
+    {
+      "id": "medicine:first-aid:1",
+      "kind": "technique",
+      "dp": 1
+    },
+    {
+      "id": "medicine:first-aid:2",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "medicine:first-aid:3",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "medicine:first-aid:4",
+      "kind": "technique",
+      "dp": 3
+    },
+    {
+      "id": "medicine:triage:1",
+      "kind": "technique",
+      "dp": 1
+    },
+    {
+      "id": "medicine:triage:2",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "medicine:triage:3",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "medicine:triage:4",
+      "kind": "technique",
+      "dp": 3
+    },
+    {
+      "id": "medicine:diagnosis:1",
+      "kind": "technique",
+      "dp": 1
+    },
+    {
+      "id": "medicine:diagnosis:2",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "medicine:diagnosis:3",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "medicine:diagnosis:4",
+      "kind": "technique",
+      "dp": 3
+    },
+    {
+      "id": "medicine:nursing:1",
+      "kind": "technique",
+      "dp": 1
+    },
+    {
+      "id": "medicine:nursing:2",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "medicine:nursing:3",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "medicine:nursing:4",
+      "kind": "technique",
+      "dp": 3
+    },
+    {
+      "id": "craft",
+      "kind": "discipline",
+      "dp": 1
+    },
+    {
+      "id": "craft:repairs:1",
+      "kind": "technique",
+      "dp": 1
+    },
+    {
+      "id": "craft:repairs:2",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "craft:repairs:3",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "craft:repairs:4",
+      "kind": "technique",
+      "dp": 3
+    },
+    {
+      "id": "craft:supplies:1",
+      "kind": "technique",
+      "dp": 1
+    },
+    {
+      "id": "craft:supplies:2",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "craft:supplies:3",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "craft:supplies:4",
+      "kind": "technique",
+      "dp": 3
+    },
+    {
+      "id": "craft:construction:1",
+      "kind": "technique",
+      "dp": 1
+    },
+    {
+      "id": "craft:construction:2",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "craft:construction:3",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "craft:construction:4",
+      "kind": "technique",
+      "dp": 3
+    },
+    {
+      "id": "craft:mixtures:1",
+      "kind": "technique",
+      "dp": 1
+    },
+    {
+      "id": "craft:mixtures:2",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "craft:mixtures:3",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "craft:mixtures:4",
+      "kind": "technique",
+      "dp": 3
+    },
+    {
+      "id": "scholarship",
+      "kind": "discipline",
+      "dp": 1
+    },
+    {
+      "id": "scholarship:lore:1",
+      "kind": "technique",
+      "dp": 1
+    },
+    {
+      "id": "scholarship:lore:2",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "scholarship:lore:3",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "scholarship:lore:4",
+      "kind": "technique",
+      "dp": 3
+    },
+    {
+      "id": "scholarship:investigation:1",
+      "kind": "technique",
+      "dp": 1
+    },
+    {
+      "id": "scholarship:investigation:2",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "scholarship:investigation:3",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "scholarship:investigation:4",
+      "kind": "technique",
+      "dp": 3
+    },
+    {
+      "id": "scholarship:languages:1",
+      "kind": "technique",
+      "dp": 1
+    },
+    {
+      "id": "scholarship:languages:2",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "scholarship:languages:3",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "scholarship:languages:4",
+      "kind": "technique",
+      "dp": 3
+    },
+    {
+      "id": "scholarship:planning:1",
+      "kind": "technique",
+      "dp": 1
+    },
+    {
+      "id": "scholarship:planning:2",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "scholarship:planning:3",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "scholarship:planning:4",
+      "kind": "technique",
+      "dp": 3
+    },
+    {
+      "id": "influence",
+      "kind": "discipline",
+      "dp": 1
+    },
+    {
+      "id": "influence:negotiation:1",
+      "kind": "technique",
+      "dp": 1
+    },
+    {
+      "id": "influence:negotiation:2",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "influence:negotiation:3",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "influence:negotiation:4",
+      "kind": "technique",
+      "dp": 3
+    },
+    {
+      "id": "influence:leadership:1",
+      "kind": "technique",
+      "dp": 1
+    },
+    {
+      "id": "influence:leadership:2",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "influence:leadership:3",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "influence:leadership:4",
+      "kind": "technique",
+      "dp": 3
+    },
+    {
+      "id": "influence:deception:1",
+      "kind": "technique",
+      "dp": 1
+    },
+    {
+      "id": "influence:deception:2",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "influence:deception:3",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "influence:deception:4",
+      "kind": "technique",
+      "dp": 3
+    },
+    {
+      "id": "influence:pressure:1",
+      "kind": "technique",
+      "dp": 1
+    },
+    {
+      "id": "influence:pressure:2",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "influence:pressure:3",
+      "kind": "improvement",
+      "dp": 2
+    },
+    {
+      "id": "influence:pressure:4",
+      "kind": "technique",
+      "dp": 3
+    },
+    {
+      "id": "elements",
+      "kind": "discipline",
+      "dp": 1
+    },
+    {
+      "id": "flame:0",
+      "kind": "section",
+      "dp": 1,
+      "spellIds": [
+        "spell:flame:1",
+        "spell:flame:2"
+      ]
+    },
+    {
+      "id": "flame:1",
+      "kind": "section",
+      "dp": 2,
+      "spellIds": [
+        "spell:flame:3",
+        "spell:flame:4"
+      ]
+    },
+    {
+      "id": "flame:2",
+      "kind": "section",
+      "dp": 2,
+      "spellIds": [
+        "spell:flame:5",
+        "spell:flame:6"
+      ]
+    },
+    {
+      "id": "flame:3",
+      "kind": "section",
+      "dp": 3,
+      "spellIds": [
+        "spell:flame:7",
+        "spell:flame:8",
+        "spell:flame:a1",
+        "spell:flame:a2",
+        "spell:flame:a3"
+      ]
+    },
+    {
+      "id": "water:0",
+      "kind": "section",
+      "dp": 1,
+      "spellIds": [
+        "spell:water:1",
+        "spell:water:2"
+      ]
+    },
+    {
+      "id": "water:1",
+      "kind": "section",
+      "dp": 2,
+      "spellIds": [
+        "spell:water:3",
+        "spell:water:4"
+      ]
+    },
+    {
+      "id": "water:2",
+      "kind": "section",
+      "dp": 2,
+      "spellIds": [
+        "spell:water:5",
+        "spell:water:6"
+      ]
+    },
+    {
+      "id": "water:3",
+      "kind": "section",
+      "dp": 3,
+      "spellIds": [
+        "spell:water:7",
+        "spell:water:8",
+        "spell:water:a1",
+        "spell:water:a2",
+        "spell:water:a3"
+      ]
+    },
+    {
+      "id": "earth:0",
+      "kind": "section",
+      "dp": 1,
+      "spellIds": [
+        "spell:earth:1",
+        "spell:earth:2"
+      ]
+    },
+    {
+      "id": "earth:1",
+      "kind": "section",
+      "dp": 2,
+      "spellIds": [
+        "spell:earth:3",
+        "spell:earth:4"
+      ]
+    },
+    {
+      "id": "earth:2",
+      "kind": "section",
+      "dp": 2,
+      "spellIds": [
+        "spell:earth:5",
+        "spell:earth:6"
+      ]
+    },
+    {
+      "id": "earth:3",
+      "kind": "section",
+      "dp": 3,
+      "spellIds": [
+        "spell:earth:7",
+        "spell:earth:8",
+        "spell:earth:a1",
+        "spell:earth:a2",
+        "spell:earth:a3"
+      ]
+    },
+    {
+      "id": "air:0",
+      "kind": "section",
+      "dp": 1,
+      "spellIds": [
+        "spell:air:1",
+        "spell:air:2"
+      ]
+    },
+    {
+      "id": "air:1",
+      "kind": "section",
+      "dp": 2,
+      "spellIds": [
+        "spell:air:3",
+        "spell:air:4"
+      ]
+    },
+    {
+      "id": "air:2",
+      "kind": "section",
+      "dp": 2,
+      "spellIds": [
+        "spell:air:5",
+        "spell:air:6"
+      ]
+    },
+    {
+      "id": "air:3",
+      "kind": "section",
+      "dp": 3,
+      "spellIds": [
+        "spell:air:7",
+        "spell:air:8",
+        "spell:air:a1",
+        "spell:air:a2",
+        "spell:air:a3"
+      ]
+    },
+    {
+      "id": "life",
+      "kind": "discipline",
+      "dp": 1
+    },
+    {
+      "id": "restoration:0",
+      "kind": "section",
+      "dp": 1,
+      "spellIds": [
+        "spell:restoration:1",
+        "spell:restoration:2"
+      ]
+    },
+    {
+      "id": "restoration:1",
+      "kind": "section",
+      "dp": 2,
+      "spellIds": [
+        "spell:restoration:3",
+        "spell:restoration:4"
+      ]
+    },
+    {
+      "id": "restoration:2",
+      "kind": "section",
+      "dp": 2,
+      "spellIds": [
+        "spell:restoration:5",
+        "spell:restoration:6"
+      ]
+    },
+    {
+      "id": "restoration:3",
+      "kind": "section",
+      "dp": 3,
+      "spellIds": [
+        "spell:restoration:7",
+        "spell:restoration:8",
+        "spell:restoration:a1",
+        "spell:restoration:a2",
+        "spell:restoration:a3"
+      ]
+    },
+    {
+      "id": "transformation:0",
+      "kind": "section",
+      "dp": 1,
+      "spellIds": [
+        "spell:transformation:1",
+        "spell:transformation:2"
+      ]
+    },
+    {
+      "id": "transformation:1",
+      "kind": "section",
+      "dp": 2,
+      "spellIds": [
+        "spell:transformation:3",
+        "spell:transformation:4"
+      ]
+    },
+    {
+      "id": "transformation:2",
+      "kind": "section",
+      "dp": 2,
+      "spellIds": [
+        "spell:transformation:5",
+        "spell:transformation:6"
+      ]
+    },
+    {
+      "id": "transformation:3",
+      "kind": "section",
+      "dp": 3,
+      "spellIds": [
+        "spell:transformation:7",
+        "spell:transformation:8",
+        "spell:transformation:a1",
+        "spell:transformation:a2",
+        "spell:transformation:a3"
+      ]
+    },
+    {
+      "id": "growth:0",
+      "kind": "section",
+      "dp": 1,
+      "spellIds": [
+        "spell:growth:1",
+        "spell:growth:2"
+      ]
+    },
+    {
+      "id": "growth:1",
+      "kind": "section",
+      "dp": 2,
+      "spellIds": [
+        "spell:growth:3",
+        "spell:growth:4"
+      ]
+    },
+    {
+      "id": "growth:2",
+      "kind": "section",
+      "dp": 2,
+      "spellIds": [
+        "spell:growth:5",
+        "spell:growth:6"
+      ]
+    },
+    {
+      "id": "growth:3",
+      "kind": "section",
+      "dp": 3,
+      "spellIds": [
+        "spell:growth:7",
+        "spell:growth:8",
+        "spell:growth:a1",
+        "spell:growth:a2",
+        "spell:growth:a3"
+      ]
+    },
+    {
+      "id": "decay:0",
+      "kind": "section",
+      "dp": 1,
+      "spellIds": [
+        "spell:decay:1",
+        "spell:decay:2"
+      ]
+    },
+    {
+      "id": "decay:1",
+      "kind": "section",
+      "dp": 2,
+      "spellIds": [
+        "spell:decay:3",
+        "spell:decay:4"
+      ]
+    },
+    {
+      "id": "decay:2",
+      "kind": "section",
+      "dp": 2,
+      "spellIds": [
+        "spell:decay:5",
+        "spell:decay:6"
+      ]
+    },
+    {
+      "id": "decay:3",
+      "kind": "section",
+      "dp": 3,
+      "spellIds": [
+        "spell:decay:7",
+        "spell:decay:8",
+        "spell:decay:a1",
+        "spell:decay:a2",
+        "spell:decay:a3"
+      ]
+    },
+    {
+      "id": "mentalism",
+      "kind": "discipline",
+      "dp": 1
+    },
+    {
+      "id": "thought:0",
+      "kind": "section",
+      "dp": 1,
+      "spellIds": [
+        "spell:thought:1",
+        "spell:thought:2"
+      ]
+    },
+    {
+      "id": "thought:1",
+      "kind": "section",
+      "dp": 2,
+      "spellIds": [
+        "spell:thought:3",
+        "spell:thought:4"
+      ]
+    },
+    {
+      "id": "thought:2",
+      "kind": "section",
+      "dp": 2,
+      "spellIds": [
+        "spell:thought:5",
+        "spell:thought:6"
+      ]
+    },
+    {
+      "id": "thought:3",
+      "kind": "section",
+      "dp": 3,
+      "spellIds": [
+        "spell:thought:7",
+        "spell:thought:8",
+        "spell:thought:a1",
+        "spell:thought:a2",
+        "spell:thought:a3"
+      ]
+    },
+    {
+      "id": "emotion:0",
+      "kind": "section",
+      "dp": 1,
+      "spellIds": [
+        "spell:emotion:1",
+        "spell:emotion:2"
+      ]
+    },
+    {
+      "id": "emotion:1",
+      "kind": "section",
+      "dp": 2,
+      "spellIds": [
+        "spell:emotion:3",
+        "spell:emotion:4"
+      ]
+    },
+    {
+      "id": "emotion:2",
+      "kind": "section",
+      "dp": 2,
+      "spellIds": [
+        "spell:emotion:5",
+        "spell:emotion:6"
+      ]
+    },
+    {
+      "id": "emotion:3",
+      "kind": "section",
+      "dp": 3,
+      "spellIds": [
+        "spell:emotion:7",
+        "spell:emotion:8",
+        "spell:emotion:a1",
+        "spell:emotion:a2",
+        "spell:emotion:a3"
+      ]
+    },
+    {
+      "id": "perception:0",
+      "kind": "section",
+      "dp": 1,
+      "spellIds": [
+        "spell:perception:1",
+        "spell:perception:2"
+      ]
+    },
+    {
+      "id": "perception:1",
+      "kind": "section",
+      "dp": 2,
+      "spellIds": [
+        "spell:perception:3",
+        "spell:perception:4"
+      ]
+    },
+    {
+      "id": "perception:2",
+      "kind": "section",
+      "dp": 2,
+      "spellIds": [
+        "spell:perception:5",
+        "spell:perception:6"
+      ]
+    },
+    {
+      "id": "perception:3",
+      "kind": "section",
+      "dp": 3,
+      "spellIds": [
+        "spell:perception:7",
+        "spell:perception:8",
+        "spell:perception:a1",
+        "spell:perception:a2",
+        "spell:perception:a3"
+      ]
+    },
+    {
+      "id": "dreams:0",
+      "kind": "section",
+      "dp": 1,
+      "spellIds": [
+        "spell:dreams:1",
+        "spell:dreams:2"
+      ]
+    },
+    {
+      "id": "dreams:1",
+      "kind": "section",
+      "dp": 2,
+      "spellIds": [
+        "spell:dreams:3",
+        "spell:dreams:4"
+      ]
+    },
+    {
+      "id": "dreams:2",
+      "kind": "section",
+      "dp": 2,
+      "spellIds": [
+        "spell:dreams:5",
+        "spell:dreams:6"
+      ]
+    },
+    {
+      "id": "dreams:3",
+      "kind": "section",
+      "dp": 3,
+      "spellIds": [
+        "spell:dreams:7",
+        "spell:dreams:8",
+        "spell:dreams:a1",
+        "spell:dreams:a2",
+        "spell:dreams:a3"
+      ]
+    },
+    {
+      "id": "divination",
+      "kind": "discipline",
+      "dp": 1
+    },
+    {
+      "id": "detection:0",
+      "kind": "section",
+      "dp": 1,
+      "spellIds": [
+        "spell:detection:1",
+        "spell:detection:2"
+      ]
+    },
+    {
+      "id": "detection:1",
+      "kind": "section",
+      "dp": 2,
+      "spellIds": [
+        "spell:detection:3",
+        "spell:detection:4"
+      ]
+    },
+    {
+      "id": "detection:2",
+      "kind": "section",
+      "dp": 2,
+      "spellIds": [
+        "spell:detection:5",
+        "spell:detection:6"
+      ]
+    },
+    {
+      "id": "detection:3",
+      "kind": "section",
+      "dp": 3,
+      "spellIds": [
+        "spell:detection:7",
+        "spell:detection:8",
+        "spell:detection:a1",
+        "spell:detection:a2",
+        "spell:detection:a3"
+      ]
+    },
+    {
+      "id": "farseeing:0",
+      "kind": "section",
+      "dp": 1,
+      "spellIds": [
+        "spell:farseeing:1",
+        "spell:farseeing:2"
+      ]
+    },
+    {
+      "id": "farseeing:1",
+      "kind": "section",
+      "dp": 2,
+      "spellIds": [
+        "spell:farseeing:3",
+        "spell:farseeing:4"
+      ]
+    },
+    {
+      "id": "farseeing:2",
+      "kind": "section",
+      "dp": 2,
+      "spellIds": [
+        "spell:farseeing:5",
+        "spell:farseeing:6"
+      ]
+    },
+    {
+      "id": "farseeing:3",
+      "kind": "section",
+      "dp": 3,
+      "spellIds": [
+        "spell:farseeing:7",
+        "spell:farseeing:8",
+        "spell:farseeing:a1",
+        "spell:farseeing:a2",
+        "spell:farseeing:a3"
+      ]
+    },
+    {
+      "id": "echoes:0",
+      "kind": "section",
+      "dp": 1,
+      "spellIds": [
+        "spell:echoes:1",
+        "spell:echoes:2"
+      ]
+    },
+    {
+      "id": "echoes:1",
+      "kind": "section",
+      "dp": 2,
+      "spellIds": [
+        "spell:echoes:3",
+        "spell:echoes:4"
+      ]
+    },
+    {
+      "id": "echoes:2",
+      "kind": "section",
+      "dp": 2,
+      "spellIds": [
+        "spell:echoes:5",
+        "spell:echoes:6"
+      ]
+    },
+    {
+      "id": "echoes:3",
+      "kind": "section",
+      "dp": 3,
+      "spellIds": [
+        "spell:echoes:7",
+        "spell:echoes:8",
+        "spell:echoes:a1",
+        "spell:echoes:a2",
+        "spell:echoes:a3"
+      ]
+    },
+    {
+      "id": "portents:0",
+      "kind": "section",
+      "dp": 1,
+      "spellIds": [
+        "spell:portents:1",
+        "spell:portents:2"
+      ]
+    },
+    {
+      "id": "portents:1",
+      "kind": "section",
+      "dp": 2,
+      "spellIds": [
+        "spell:portents:3",
+        "spell:portents:4"
+      ]
+    },
+    {
+      "id": "portents:2",
+      "kind": "section",
+      "dp": 2,
+      "spellIds": [
+        "spell:portents:5",
+        "spell:portents:6"
+      ]
+    },
+    {
+      "id": "portents:3",
+      "kind": "section",
+      "dp": 3,
+      "spellIds": [
+        "spell:portents:7",
+        "spell:portents:8",
+        "spell:portents:a1",
+        "spell:portents:a2",
+        "spell:portents:a3"
+      ]
+    },
+    {
+      "id": "invocation",
+      "kind": "discipline",
+      "dp": 1
+    },
+    {
+      "id": "spirits:0",
+      "kind": "section",
+      "dp": 1,
+      "spellIds": [
+        "spell:spirits:1",
+        "spell:spirits:2"
+      ]
+    },
+    {
+      "id": "spirits:1",
+      "kind": "section",
+      "dp": 2,
+      "spellIds": [
+        "spell:spirits:3",
+        "spell:spirits:4"
+      ]
+    },
+    {
+      "id": "spirits:2",
+      "kind": "section",
+      "dp": 2,
+      "spellIds": [
+        "spell:spirits:5",
+        "spell:spirits:6"
+      ]
+    },
+    {
+      "id": "spirits:3",
+      "kind": "section",
+      "dp": 3,
+      "spellIds": [
+        "spell:spirits:7",
+        "spell:spirits:8",
+        "spell:spirits:a1",
+        "spell:spirits:a2",
+        "spell:spirits:a3"
+      ]
+    },
+    {
+      "id": "calling:0",
+      "kind": "section",
+      "dp": 1,
+      "spellIds": [
+        "spell:calling:1",
+        "spell:calling:2"
+      ]
+    },
+    {
+      "id": "calling:1",
+      "kind": "section",
+      "dp": 2,
+      "spellIds": [
+        "spell:calling:3",
+        "spell:calling:4"
+      ]
+    },
+    {
+      "id": "calling:2",
+      "kind": "section",
+      "dp": 2,
+      "spellIds": [
+        "spell:calling:5",
+        "spell:calling:6"
+      ]
+    },
+    {
+      "id": "calling:3",
+      "kind": "section",
+      "dp": 3,
+      "spellIds": [
+        "spell:calling:7",
+        "spell:calling:8",
+        "spell:calling:a1",
+        "spell:calling:a2",
+        "spell:calling:a3"
+      ]
+    },
+    {
+      "id": "binding:0",
+      "kind": "section",
+      "dp": 1,
+      "spellIds": [
+        "spell:binding:1",
+        "spell:binding:2"
+      ]
+    },
+    {
+      "id": "binding:1",
+      "kind": "section",
+      "dp": 2,
+      "spellIds": [
+        "spell:binding:3",
+        "spell:binding:4"
+      ]
+    },
+    {
+      "id": "binding:2",
+      "kind": "section",
+      "dp": 2,
+      "spellIds": [
+        "spell:binding:5",
+        "spell:binding:6"
+      ]
+    },
+    {
+      "id": "binding:3",
+      "kind": "section",
+      "dp": 3,
+      "spellIds": [
+        "spell:binding:7",
+        "spell:binding:8",
+        "spell:binding:a1",
+        "spell:binding:a2",
+        "spell:binding:a3"
+      ]
+    },
+    {
+      "id": "passage:0",
+      "kind": "section",
+      "dp": 1,
+      "spellIds": [
+        "spell:passage:1",
+        "spell:passage:2"
+      ]
+    },
+    {
+      "id": "passage:1",
+      "kind": "section",
+      "dp": 2,
+      "spellIds": [
+        "spell:passage:3",
+        "spell:passage:4"
+      ]
+    },
+    {
+      "id": "passage:2",
+      "kind": "section",
+      "dp": 2,
+      "spellIds": [
+        "spell:passage:5",
+        "spell:passage:6"
+      ]
+    },
+    {
+      "id": "passage:3",
+      "kind": "section",
+      "dp": 3,
+      "spellIds": [
+        "spell:passage:7",
+        "spell:passage:8",
+        "spell:passage:a1",
+        "spell:passage:a2",
+        "spell:passage:a3"
+      ]
+    },
+    {
+      "id": "force",
+      "kind": "discipline",
+      "dp": 1
+    },
+    {
+      "id": "telekinesis:0",
+      "kind": "section",
+      "dp": 1,
+      "spellIds": [
+        "spell:telekinesis:1",
+        "spell:telekinesis:2"
+      ]
+    },
+    {
+      "id": "telekinesis:1",
+      "kind": "section",
+      "dp": 2,
+      "spellIds": [
+        "spell:telekinesis:3",
+        "spell:telekinesis:4"
+      ]
+    },
+    {
+      "id": "telekinesis:2",
+      "kind": "section",
+      "dp": 2,
+      "spellIds": [
+        "spell:telekinesis:5",
+        "spell:telekinesis:6"
+      ]
+    },
+    {
+      "id": "telekinesis:3",
+      "kind": "section",
+      "dp": 3,
+      "spellIds": [
+        "spell:telekinesis:7",
+        "spell:telekinesis:8",
+        "spell:telekinesis:a1",
+        "spell:telekinesis:a2",
+        "spell:telekinesis:a3"
+      ]
+    },
+    {
+      "id": "shaping:0",
+      "kind": "section",
+      "dp": 1,
+      "spellIds": [
+        "spell:shaping:1",
+        "spell:shaping:2"
+      ]
+    },
+    {
+      "id": "shaping:1",
+      "kind": "section",
+      "dp": 2,
+      "spellIds": [
+        "spell:shaping:3",
+        "spell:shaping:4"
+      ]
+    },
+    {
+      "id": "shaping:2",
+      "kind": "section",
+      "dp": 2,
+      "spellIds": [
+        "spell:shaping:5",
+        "spell:shaping:6"
+      ]
+    },
+    {
+      "id": "shaping:3",
+      "kind": "section",
+      "dp": 3,
+      "spellIds": [
+        "spell:shaping:7",
+        "spell:shaping:8",
+        "spell:shaping:a1",
+        "spell:shaping:a2",
+        "spell:shaping:a3"
+      ]
+    },
+    {
+      "id": "animation:0",
+      "kind": "section",
+      "dp": 1,
+      "spellIds": [
+        "spell:animation:1",
+        "spell:animation:2"
+      ]
+    },
+    {
+      "id": "animation:1",
+      "kind": "section",
+      "dp": 2,
+      "spellIds": [
+        "spell:animation:3",
+        "spell:animation:4"
+      ]
+    },
+    {
+      "id": "animation:2",
+      "kind": "section",
+      "dp": 2,
+      "spellIds": [
+        "spell:animation:5",
+        "spell:animation:6"
+      ]
+    },
+    {
+      "id": "animation:3",
+      "kind": "section",
+      "dp": 3,
+      "spellIds": [
+        "spell:animation:7",
+        "spell:animation:8",
+        "spell:animation:a1",
+        "spell:animation:a2",
+        "spell:animation:a3"
+      ]
+    },
+    {
+      "id": "imbuement:0",
+      "kind": "section",
+      "dp": 1,
+      "spellIds": [
+        "spell:imbuement:1",
+        "spell:imbuement:2"
+      ]
+    },
+    {
+      "id": "imbuement:1",
+      "kind": "section",
+      "dp": 2,
+      "spellIds": [
+        "spell:imbuement:3",
+        "spell:imbuement:4"
+      ]
+    },
+    {
+      "id": "imbuement:2",
+      "kind": "section",
+      "dp": 2,
+      "spellIds": [
+        "spell:imbuement:5",
+        "spell:imbuement:6"
+      ]
+    },
+    {
+      "id": "imbuement:3",
+      "kind": "section",
+      "dp": 3,
+      "spellIds": [
+        "spell:imbuement:7",
+        "spell:imbuement:8",
+        "spell:imbuement:a1",
+        "spell:imbuement:a2",
+        "spell:imbuement:a3"
+      ]
+    },
+    {
+      "id": "wards",
+      "kind": "discipline",
+      "dp": 1
+    },
+    {
+      "id": "protection:0",
+      "kind": "section",
+      "dp": 1,
+      "spellIds": [
+        "spell:protection:1",
+        "spell:protection:2"
+      ]
+    },
+    {
+      "id": "protection:1",
+      "kind": "section",
+      "dp": 2,
+      "spellIds": [
+        "spell:protection:3",
+        "spell:protection:4"
+      ]
+    },
+    {
+      "id": "protection:2",
+      "kind": "section",
+      "dp": 2,
+      "spellIds": [
+        "spell:protection:5",
+        "spell:protection:6"
+      ]
+    },
+    {
+      "id": "protection:3",
+      "kind": "section",
+      "dp": 3,
+      "spellIds": [
+        "spell:protection:7",
+        "spell:protection:8",
+        "spell:protection:a1",
+        "spell:protection:a2",
+        "spell:protection:a3"
+      ]
+    },
+    {
+      "id": "unraveling:0",
+      "kind": "section",
+      "dp": 1,
+      "spellIds": [
+        "spell:unraveling:1",
+        "spell:unraveling:2"
+      ]
+    },
+    {
+      "id": "unraveling:1",
+      "kind": "section",
+      "dp": 2,
+      "spellIds": [
+        "spell:unraveling:3",
+        "spell:unraveling:4"
+      ]
+    },
+    {
+      "id": "unraveling:2",
+      "kind": "section",
+      "dp": 2,
+      "spellIds": [
+        "spell:unraveling:5",
+        "spell:unraveling:6"
+      ]
+    },
+    {
+      "id": "unraveling:3",
+      "kind": "section",
+      "dp": 3,
+      "spellIds": [
+        "spell:unraveling:7",
+        "spell:unraveling:8",
+        "spell:unraveling:a1",
+        "spell:unraveling:a2",
+        "spell:unraveling:a3"
+      ]
+    },
+    {
+      "id": "sanctuary:0",
+      "kind": "section",
+      "dp": 1,
+      "spellIds": [
+        "spell:sanctuary:1",
+        "spell:sanctuary:2"
+      ]
+    },
+    {
+      "id": "sanctuary:1",
+      "kind": "section",
+      "dp": 2,
+      "spellIds": [
+        "spell:sanctuary:3",
+        "spell:sanctuary:4"
+      ]
+    },
+    {
+      "id": "sanctuary:2",
+      "kind": "section",
+      "dp": 2,
+      "spellIds": [
+        "spell:sanctuary:5",
+        "spell:sanctuary:6"
+      ]
+    },
+    {
+      "id": "sanctuary:3",
+      "kind": "section",
+      "dp": 3,
+      "spellIds": [
+        "spell:sanctuary:7",
+        "spell:sanctuary:8",
+        "spell:sanctuary:a1",
+        "spell:sanctuary:a2",
+        "spell:sanctuary:a3"
+      ]
+    },
+    {
+      "id": "seals:0",
+      "kind": "section",
+      "dp": 1,
+      "spellIds": [
+        "spell:seals:1",
+        "spell:seals:2"
+      ]
+    },
+    {
+      "id": "seals:1",
+      "kind": "section",
+      "dp": 2,
+      "spellIds": [
+        "spell:seals:3",
+        "spell:seals:4"
+      ]
+    },
+    {
+      "id": "seals:2",
+      "kind": "section",
+      "dp": 2,
+      "spellIds": [
+        "spell:seals:5",
+        "spell:seals:6"
+      ]
+    },
+    {
+      "id": "seals:3",
+      "kind": "section",
+      "dp": 3,
+      "spellIds": [
+        "spell:seals:7",
+        "spell:seals:8",
+        "spell:seals:a1",
+        "spell:seals:a2",
+        "spell:seals:a3"
+      ]
+    },
+    {
+      "id": "spellcraft",
+      "kind": "discipline",
+      "dp": 1
+    },
+    {
+      "id": "spellcraft:soul-capacity:1",
+      "kind": "training",
+      "dp": 1
+    },
+    {
+      "id": "spellcraft:soul-capacity:2",
+      "kind": "training",
+      "dp": 2
+    },
+    {
+      "id": "spellcraft:soul-capacity:3",
+      "kind": "training",
+      "dp": 2
+    },
+    {
+      "id": "spellcraft:soul-capacity:4",
+      "kind": "training",
+      "dp": 3
+    },
+    {
+      "id": "spellcraft:mind-capacity:1",
+      "kind": "training",
+      "dp": 1
+    },
+    {
+      "id": "spellcraft:mind-capacity:2",
+      "kind": "training",
+      "dp": 2
+    },
+    {
+      "id": "spellcraft:mind-capacity:3",
+      "kind": "training",
+      "dp": 2
+    },
+    {
+      "id": "spellcraft:mind-capacity:4",
+      "kind": "training",
+      "dp": 3
+    },
+    {
+      "id": "spellcraft:recovery:1",
+      "kind": "training",
+      "dp": 1
+    },
+    {
+      "id": "spellcraft:recovery:2",
+      "kind": "training",
+      "dp": 2
+    },
+    {
+      "id": "spellcraft:recovery:3",
+      "kind": "training",
+      "dp": 2
+    },
+    {
+      "id": "spellcraft:recovery:4",
+      "kind": "training",
+      "dp": 3
+    },
+    {
+      "id": "channeling:0",
+      "kind": "section",
+      "dp": 1,
+      "spellIds": [
+        "spell:channeling:1",
+        "spell:channeling:2"
+      ]
+    },
+    {
+      "id": "channeling:1",
+      "kind": "section",
+      "dp": 2,
+      "spellIds": [
+        "spell:channeling:3",
+        "spell:channeling:4"
+      ]
+    },
+    {
+      "id": "channeling:2",
+      "kind": "section",
+      "dp": 2,
+      "spellIds": [
+        "spell:channeling:5",
+        "spell:channeling:6"
+      ]
+    },
+    {
+      "id": "channeling:3",
+      "kind": "section",
+      "dp": 3,
+      "spellIds": [
+        "spell:channeling:7",
+        "spell:channeling:8",
+        "spell:channeling:a1",
+        "spell:channeling:a2",
+        "spell:channeling:a3"
+      ]
+    },
+    {
+      "id": "combined:iron-tempest",
+      "kind": "combined",
+      "dp": 3
+    },
+    {
+      "id": "combined:shatter-the-formation",
+      "kind": "combined",
+      "dp": 3
+    },
+    {
+      "id": "combined:the-unbroken-gate",
+      "kind": "combined",
+      "dp": 3
+    },
+    {
+      "id": "combined:the-last-safe-step",
+      "kind": "combined",
+      "dp": 3
+    },
+    {
+      "id": "combined:anatomist-s-volley",
+      "kind": "combined",
+      "dp": 3
+    },
+    {
+      "id": "combined:steel-across-the-gap",
+      "kind": "combined",
+      "dp": 3
+    },
+    {
+      "id": "combined:silent-entry",
+      "kind": "combined",
+      "dp": 3
+    },
+    {
+      "id": "combined:the-perfect-substitution",
+      "kind": "combined",
+      "dp": 3
+    },
+    {
+      "id": "combined:read-the-killing-ground",
+      "kind": "combined",
+      "dp": 3
+    },
+    {
+      "id": "combined:shelter-against-the-siege",
+      "kind": "combined",
+      "dp": 3
+    },
+    {
+      "id": "combined:a-way-through-death",
+      "kind": "combined",
+      "dp": 3
+    },
+    {
+      "id": "combined:a-treaty-in-common-words",
+      "kind": "combined",
+      "dp": 3
+    },
+    {
+      "id": "combined:break-the-encirclement",
+      "kind": "combined",
+      "dp": 4
+    },
+    {
+      "id": "combined:the-moving-bulwark",
+      "kind": "combined",
+      "dp": 4
+    },
+    {
+      "id": "combined:hunt-at-the-crossroads",
+      "kind": "combined",
+      "dp": 4
+    },
+    {
+      "id": "combined:the-hidden-road",
+      "kind": "combined",
+      "dp": 4
+    },
+    {
+      "id": "combined:the-field-hospital",
+      "kind": "combined",
+      "dp": 4
+    },
+    {
+      "id": "combined:the-truth-before-the-council",
+      "kind": "combined",
+      "dp": 4
+    },
+    {
+      "id": "combined:the-day-we-held",
+      "kind": "combined",
+      "dp": 5
+    },
+    {
+      "id": "combined:bring-everyone-home",
+      "kind": "combined",
+      "dp": 5
+    },
+    {
+      "id": "combined:a-city-opens-its-gates",
+      "kind": "combined",
+      "dp": 5
+    },
+    {
+      "id": "combined:stormsteel-arc",
+      "kind": "combined",
+      "dp": 3
+    },
+    {
+      "id": "combined:the-invisible-shieldbearer",
+      "kind": "combined",
+      "dp": 3
+    },
+    {
+      "id": "combined:borrowed-dawn",
+      "kind": "combined",
+      "dp": 3
+    },
+    {
+      "id": "combined:starfall-volley",
+      "kind": "combined",
+      "dp": 4
+    },
+    {
+      "id": "combined:step-between-heartbeats",
+      "kind": "combined",
+      "dp": 4
+    },
+    {
+      "id": "combined:sanctuary-of-steel",
+      "kind": "combined",
+      "dp": 4
+    },
+    {
+      "id": "combined:colossus-of-the-forge",
+      "kind": "combined",
+      "dp": 5
+    },
+    {
+      "id": "combined:the-road-for-the-lost",
+      "kind": "combined",
+      "dp": 5
+    },
+    {
+      "id": "combined:dawn-on-the-battlefield",
+      "kind": "combined",
+      "dp": 5
+    },
+    {
+      "id": "combined:meteor-swarm",
+      "kind": "combined",
+      "dp": 3
+    },
+    {
+      "id": "combined:wall-of-thorns-living-fortress",
+      "kind": "combined",
+      "dp": 3
+    },
+    {
+      "id": "combined:true-resurrection",
+      "kind": "combined",
+      "dp": 3
+    },
+    {
+      "id": "combined:simulacrum",
+      "kind": "combined",
+      "dp": 3
+    },
+    {
+      "id": "combined:demiplane",
+      "kind": "combined",
+      "dp": 3
+    },
+    {
+      "id": "combined:foresight-shared-vigil",
+      "kind": "combined",
+      "dp": 3
+    },
+    {
+      "id": "combined:storm-of-vengeance",
+      "kind": "combined",
+      "dp": 4
+    },
+    {
+      "id": "combined:mass-lifegiving",
+      "kind": "combined",
+      "dp": 4
+    },
+    {
+      "id": "combined:foresight-oracle-s-dream",
+      "kind": "combined",
+      "dp": 4
+    },
+    {
+      "id": "combined:gate-world-anchor",
+      "kind": "combined",
+      "dp": 5
+    },
+    {
+      "id": "combined:guards-and-wards-living-citadel",
+      "kind": "combined",
+      "dp": 5
+    },
+    {
+      "id": "ability-another-tongue",
+      "kind": "talent",
+      "dp": 1
+    },
+    {
+      "id": "ability-look-over-here",
+      "kind": "talent",
+      "dp": 1
+    },
+    {
+      "id": "ability-quick-exit",
+      "kind": "talent",
+      "dp": 1
+    },
+    {
+      "id": "ability-catch-that",
+      "kind": "talent",
+      "dp": 1
+    },
+    {
+      "id": "ability-message-by-heart",
+      "kind": "talent",
+      "dp": 1
+    },
+    {
+      "id": "ability-a-party-piece",
+      "kind": "talent",
+      "dp": 1
+    }
+  ]
+}

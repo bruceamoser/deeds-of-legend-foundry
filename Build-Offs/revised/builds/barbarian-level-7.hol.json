@@ -1,0 +1,224 @@
+{
+  "format": "heroes-of-legend-character",
+  "schemaVersion": 6,
+  "sourceCommit": "55cbd4c70f13704c684f7ba358f0d75bb62b1f30",
+  "draft": {
+    "name": "Harka Stormshoulder",
+    "attributes": {
+      "brawn": 2,
+      "fortitude": 2,
+      "agility": 0,
+      "guile": -1,
+      "knowledge": -1,
+      "reason": 1
+    },
+    "traitIds": [
+      "trait-tallfolk-long-reach",
+      "trait-tallfolk-built-for-the-weather"
+    ],
+    "classDisciplines": [
+      "armor"
+    ],
+    "languages": {
+      "home": "giant",
+      "extraSpoken": []
+    },
+    "purchases": {
+      "0": [],
+      "1": [
+        {
+          "id": "arms:bladework:1"
+        },
+        {
+          "id": "arms:bladework:2"
+        },
+        {
+          "id": "arms:impact:1"
+        },
+        {
+          "id": "athletics:leaping:1"
+        },
+        {
+          "id": "athletics:balance:1"
+        }
+      ]
+    },
+    "acquisitions": {},
+    "shopping": [
+      {
+        "id": "item-ordinary-melee-weapon",
+        "quantity": 1,
+        "hands": 2,
+        "instanceId": "shop-buildoff-barbarian-0"
+      },
+      {
+        "id": "item-travel-pack",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-barbarian-1"
+      },
+      {
+        "id": "item-food-bundle",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-barbarian-2"
+      },
+      {
+        "id": "item-water-flask",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-barbarian-3"
+      },
+      {
+        "id": "item-sleeping-roll",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-barbarian-4"
+      },
+      {
+        "id": "item-rope-coil",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-barbarian-5"
+      },
+      {
+        "id": "item-lighting-bundle",
+        "quantity": 1,
+        "hands": 0,
+        "instanceId": "shop-buildoff-barbarian-6"
+      }
+    ],
+    "ancestryId": "ancestry-tallfolk",
+    "classId": "class-unbalanced",
+    "signatureId": "ability-signature-unbalanced-wild-approach",
+    "culture": {
+      "id": "origin-culture-grass-sea-clans",
+      "pair": 1
+    },
+    "background": {
+      "id": "origin-background-pit-fighter",
+      "pair": 1
+    },
+    "loadout": {
+      "shop-buildoff-barbarian-0": {
+        "carried": true,
+        "worn": false,
+        "held": true
+      },
+      "shop-buildoff-barbarian-1": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      },
+      "shop-buildoff-barbarian-2": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      },
+      "shop-buildoff-barbarian-3": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      },
+      "shop-buildoff-barbarian-4": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      },
+      "shop-buildoff-barbarian-5": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      },
+      "shop-buildoff-barbarian-6": {
+        "carried": true,
+        "worn": false,
+        "held": false
+      }
+    },
+    "progression": {
+      "level": 7,
+      "levels": {
+        "2": {
+          "purchases": [],
+          "acquisitions": {},
+          "signatures": {}
+        },
+        "3": {
+          "purchases": [
+            {
+              "id": "arms:bladework:3"
+            },
+            {
+              "id": "arms:bladework:4"
+            },
+            {
+              "id": "arms:bladework:5"
+            },
+            {
+              "id": "arms:bladework:6"
+            }
+          ],
+          "acquisitions": {},
+          "signatures": {
+            "3": "ability-signature-unbalanced-raging-recoil"
+          }
+        },
+        "4": {
+          "purchases": [],
+          "acquisitions": {},
+          "signatures": {}
+        },
+        "5": {
+          "purchases": [],
+          "acquisitions": {},
+          "signatures": {}
+        },
+        "6": {
+          "purchases": [],
+          "acquisitions": {},
+          "signatures": {}
+        },
+        "7": {
+          "purchases": [
+            {
+              "id": "arms:bladework:7"
+            },
+            {
+              "id": "athletics:leaping:2"
+            },
+            {
+              "id": "athletics:leaping:3"
+            },
+            {
+              "id": "athletics:leaping:4"
+            },
+            {
+              "id": "athletics:leaping:5"
+            },
+            {
+              "id": "athletics:leaping:6"
+            },
+            {
+              "id": "athletics:leaping:7"
+            },
+            {
+              "id": "arms:impact:2"
+            },
+            {
+              "id": "arms:impact:3"
+            },
+            {
+              "id": "arms:impact:4"
+            }
+          ],
+          "acquisitions": {},
+          "signatures": {
+            "7": "ability-signature-unbalanced-break-their-grip"
+          }
+        }
+      }
+    }
+  },
+  "status": "ready"
+}

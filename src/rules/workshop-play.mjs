@@ -1,6 +1,7 @@
 import { sustainLimit } from "./forge-sustain.mjs";
 import { WOUND_TABLES } from "./damage.mjs";
 import { woundRoll } from "./wounds.mjs";
+import { normalizeForgeRecovery } from "./forge-recovery.mjs";
 import { normalizeRecovery } from "./recovery.mjs";
 import {
   CONDITION_KINDS,
@@ -32,7 +33,7 @@ export function normalizeWorkshopPlay(
   };
   if (value.recovery !== undefined) {
     try {
-      result.recovery = normalizeRecovery(value.recovery);
+      result.recovery = catalogs.forge?.rulesRevision === 299 ? normalizeForgeRecovery(value.recovery) : normalizeRecovery(value.recovery);
     } catch {
       fail();
     }
@@ -44,7 +45,7 @@ export function normalizeWorkshopPlay(
       successfulDeathRolls: 2,
       lastRestHour: Number.MAX_SAFE_INTEGER,
     });
-  if (catalogs.forge?.playtest) numericLimits.workshopTurn = Number.MAX_SAFE_INTEGER - 10;
+  if (catalogs.forge?.playtest || catalogs.forge?.rulesRevision === 299) numericLimits.workshopTurn = Number.MAX_SAFE_INTEGER - 10;
   for (const [key, maximum] of Object.entries(numericLimits)) {
     if (value[key] !== undefined) {
       if (
@@ -73,12 +74,14 @@ export function normalizeWorkshopPlay(
       "firstAidPending",
       "immediateDeathRoll",
       "spellcraftRecoveryUsed",
+      "soulWellspringUsed",
+      "mindPalaceUsed",
     ]) {
       if (value[key] === undefined) continue;
       if (typeof value[key] !== "boolean") fail();
       result[key] = value[key];
     }
-    if (catalogs.forge.playtest) {
+    if (catalogs.forge.playtest || catalogs.forge.rulesRevision === 299) {
       for (const key of ["maneuverSpent", "mainSpent"]) {
         if (value[key] === undefined) continue;
         if (typeof value[key] !== "boolean") fail();
@@ -91,7 +94,9 @@ export function normalizeWorkshopPlay(
         if (!text(spellId) ||
             !Number.isSafeInteger(castTurn) || !Number.isSafeInteger(maintainedTurn) ||
             castTurn < 0 || maintainedTurn < castTurn || maintainedTurn > turn) fail();
-        const limit = sustainLimit(catalogs.forge.spells.find((spell) => spell.id === spellId));
+        const record = catalogs.forge.spells.find(spell => spell.id === spellId)
+          ?? catalogs.forge.signatureDevelopment?.signatures.flatMap(entry => entry.components).find(entry => entry.id === spellId);
+        const limit = sustainLimit(record);
         if (limit && turn < castTurn + limit && turn <= maintainedTurn + 1)
           result.sustain = { spellId, castTurn, maintainedTurn };
       }

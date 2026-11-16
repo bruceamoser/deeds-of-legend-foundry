@@ -11,10 +11,14 @@ const graph = read("forge");
 const catalogs = workshopCatalogs(...["choices", "inventory", "wounds", "forge", "forge-references"].map(read));
 const { party } = read("forge-party");
 
-test("each Forge combination requires all the book's named endpoints", () => {
-  for (const node of graph.nodes.filter(({ kind }) => kind === "combined")) {
+test("each level-seven mastery requires only its own path or spellbook endpoint", () => {
+  assert.equal(graph.nodes.some(node => node.kind === "combined"), false);
+  const masteries = graph.nodes.filter(({ kind, level }) => ["mastery", "spell-mastery", "training"].includes(kind) && level === 7);
+  assert.equal(masteries.length, 67);
+  for (const node of masteries) {
     const state = { level: 7, dp: node.dp, learned: node.requires };
-    assert.equal(node.dp, node.requires.length + 1, node.name);
+    assert.equal(node.requires.length, 1, node.name);
+    assert.equal(node.dp, node.kind === "spell-mastery" ? 4 : 5, node.name);
     assert(forgeEligibility(graph, state, node.id).eligible, node.name);
     for (const omitted of node.requires)
       assert(!forgeEligibility(graph, { ...state, learned: state.learned.filter((id) => id !== omitted) }, node.id).eligible, omitted);
@@ -28,7 +32,7 @@ test("each Forge combination requires all the book's named endpoints", () => {
 });
 
 test("Forge keeps technique improvements on the same attack and teaches all capstone pages at once", () => {
-  let state = { level: 0, dp: 20, learned: [] };
+  let state = { classId: "class-arcanist", level: 1, dp: 40, learned: [] };
   const learn = (id) => {
     const result = learnForgeEntry(graph, state, id);
     assert(result.eligible, result.reasons.join(" "));
@@ -48,8 +52,8 @@ test("Forge keeps technique improvements on the same attack and teaches all caps
 
 test("canonical example heroes match current book numbers and survive a portable round trip", () => {
   const printed = [
-    [19, 6, 8, 8], [15, 6, 2, 8], [15, 13, 5, 7],
-    [13, 6, 9, 8], [13, 6, 4, 7], [13, 20, 15, 7],
+    [20, 4, 8, 8], [15, 3, 0, 7], [15, 7, 5, 7],
+    [13, 7, 9, 8], [13, 7, 7, 7], [13, 13, 15, 7],
   ];
   for (const [{ draft, id }, expected] of party.map((entry, index) => [entry, printed[index]])) {
     const preview = workshopCharacter(draft, catalogs);
@@ -70,17 +74,20 @@ test("levels 3 and 7 grant one signature each and do not duplicate DP, Grit, or 
   const cls = graph.classes.find((record) => record.id === draft.classId);
   const withoutGrant = (tier) => cls.signatures[tier].find((id) => !/grants one/.test(graph.signatures.find((s) => s.id === id).equipment));
   draft.progression = { level: 7, levels: {
-    3: { purchases: [{ id: "arms:impact:4" }], signatures: { 3: withoutGrant(3) } },
-    7: { purchases: [], signatures: { 7: withoutGrant(7) } },
+    3: { purchases: [2,3,4,5].map(step => ({id: `arms:impact:${step}`})), signatures: { 3: withoutGrant(3) } },
+    4: { purchases: [{id: "arms:impact:6"}] },
+    7: { purchases: [{id: "arms:impact:7"}], signatures: { 7: withoutGrant(7) } },
   } };
   draft.play = { hp: 5, sp: 2, gritSpent: 1, scars: ["A thin line over the brow."] };
   const once = workshopCharacter(draft, catalogs);
   assert(once.valid, JSON.stringify(once.errors));
-  assert.equal(once.development.current, 72);
-  assert.equal(once.limits.maxHp, 55);
-  assert.equal(once.limits.maxSp, 18);
+  assert.equal(once.development.current, 31);
+  assert.equal(once.development.total, 8 + 6 + 7 + 8 + 9 + 10 + 11);
+  assert.equal(once.limits.maxHp, 56);
+  assert.equal(once.limits.maxSp, 16);
   assert.equal(once.limits.gritGranted, 3);
-  assert.equal(once.state.abilities.filter((id) => id.startsWith("ability-signature")).length, 3);
+  assert.equal(once.advancementLedger.filter(entry => entry.kind === "signature-grant").length, 2);
+  assert(once.state.learned.includes("arms:impact:7"));
   const twice = readPortableCharacter(writePortableCharacter(draft, catalogs, { ready: true }), catalogs);
   assert.deepEqual(twice.preview.advancementLedger, once.advancementLedger);
   assert.equal(twice.draft.play.sp, 2);

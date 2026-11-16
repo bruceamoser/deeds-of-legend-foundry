@@ -1,9 +1,10 @@
 const ROUND_SECONDS = 6;
 
 export function sustainLimit(record) {
-  const duration = record?.duration?.toLowerCase().match(/^Sustained, up to (\d+) (rounds?|minutes?)$/i);
+  const duration = record?.duration?.match(/^Sustained, up to (\d+) (rounds?|minutes?)$/i)
+    ?? (record?.effect ?? record?.rulesMarkdown)?.match(/Sustain with a Maneuver and 0 SP, for up to (\d+) (rounds?|minutes?)/i);
   if (!duration) return null;
-  return Number(duration[1]) * (duration[2].startsWith("minute") ? 60 / ROUND_SECONDS : 1);
+  return Number(duration[1]) * (duration[2].toLowerCase().startsWith("minute") ? 60 / ROUND_SECONDS : 1);
 }
 
 export function activeForgeSustain(play, spell, incapacitated = false) {

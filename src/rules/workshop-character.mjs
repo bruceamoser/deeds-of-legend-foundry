@@ -1,3 +1,4 @@
+import { forgeAncestryBenefits } from "./forge-ancestry.mjs";
 import { forgeAdvancement, forgeArmorRequirement } from "./forge-character.mjs";
 import { forgeMaximums } from "./forge-vitals.mjs";
 import { workshopPlay } from "./workshop-play.mjs";
@@ -26,7 +27,7 @@ export function workshopCharacter(draft, catalogs, languages) {
     languages,
     catalogs.forge,
   );
-  const playtest = Boolean(catalogs.forge?.playtest);
+  const playtest = Boolean(catalogs.forge?.playtest || catalogs.forge?.rulesRevision === 299);
   const dpBase = playtest ? 4 : 8;
   const target = draft.progression?.level ?? 1;
   if (!Number.isSafeInteger(target) || target < 1 || target > 100)
@@ -103,8 +104,12 @@ export function workshopCharacter(draft, catalogs, languages) {
   const attributes = { ...draft.attributes };
   if (catalogs.forge && items.some((item) => item.worn && item.catalogId === "item-cincture-of-might"))
     attributes.brawn += 1;
-  const capacity = 10 + 3 * attributes.brawn + ancestryBenefits(effectiveTraitIds).capacityBonus;
-  const encumbrance = Math.max(0, bulk - capacity);
+  const stowedBulk = items.filter(item => item.carried && !item.worn && !item.held).reduce((sum, item) => sum + item.bulk, 0);
+  const ancestry = forgeAncestryBenefits(effectiveTraitIds, catalogs.forge, { stowedBulk });
+  const armorBulkRelief = catalogs.forge?.rulesRevision === 299 && state.learned.includes("armor:harness:1")
+    ? Math.min(1, items.filter(item => item.worn && state.learned.includes(forgeArmorRequirement(item.catalogId, true))).reduce((sum, item) => sum + item.bulk, 0)) : 0;
+  const capacity = 10 + 3 * attributes.brawn + ancestry.capacityBonus;
+  const encumbrance = Math.max(0, bulk - armorBulkRelief - capacity);
   const passive = passiveDefenseSources({
     abilities: state.abilities.map((id) => ({
       catalogId: id,
@@ -142,7 +147,7 @@ export function workshopCharacter(draft, catalogs, languages) {
     ancestryHp: catalogs.choices.find((entry) => entry.id === draft.ancestryId).hp,
     classHp: catalogs.choices.find((entry) => entry.id === draft.classId).hp,
     fortitude: draft.attributes.fortitude,
-    fixedHp: ancestryBenefits(effectiveTraitIds).maximumHpBonus,
+    fixedHp: ancestry.maximumHpBonus,
     capacitySp: state.learning.capacitySp,
     startingSp: creation.summary.startingSp,
   }) : null;
@@ -174,7 +179,8 @@ export function workshopCharacter(draft, catalogs, languages) {
           maximumHp: limits?.maxHp ?? creation.summary.maximumHp + maximumHpDelta,
           ...(limits ? { maximumSp: limits.maxSp } : {}),
           gritGranted: state.gritGranted,
-          speed: Math.max(0, creation.summary.unencumberedSpeed - encumbrance),
+          speed: Math.max(0, creation.summary.unencumberedSpeed - encumbrance +
+            Number(catalogs.forge?.rulesRevision === 299 && state.learned.includes("armor:harness:3") && items.some(item => item.worn && state.learned.includes(forgeArmorRequirement(item.catalogId, true))))),
         }
       : null,
   };
@@ -182,6 +188,7 @@ export function workshopCharacter(draft, catalogs, languages) {
 
 export function workshopAbility(character, record) {
   if (!record) return undefined;
+  record = character.state.signatureComponents?.find(entry => entry.id === record.id) ?? record;
   const improvements = character.state.learning?.improvements.get(record.id) ?? [];
   const currentAction = improvements.map((entry) => entry.effect.match(
     /takes (?:a |an )?(Main Action|Maneuver|Reaction)\b/i,
@@ -238,7 +245,7 @@ export function craftingActions(character, catalogs) {
   return character.state.recipes.flatMap((id) => {
     const recipe = catalogs.inventory.recipes.find((r) => r.id === id);
     if (!recipe) return [];
-    return (catalogs.forge ? ["craft:supplies:1"] : recipe.permissions)
+    return (catalogs.forge ? [catalogs.forge.rulesRevision === 299 ? "craft:workshop:1" : "craft:supplies:1"] : recipe.permissions)
       .filter((id) => (catalogs.forge ? character.state.learned : character.state.abilities).includes(id))
       .map((abilityId) => {
         const ability = catalogs.choices.find((r) => r.id === abilityId);

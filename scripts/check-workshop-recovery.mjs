@@ -90,7 +90,7 @@ try {
   assert.equal(await hp.inputValue(), "6");
   assert.equal(await page.getByRole("dialog").getByRole("button", { name: "Begin first aid", exact: true }).isDisabled(), true);
   await page.getByRole("dialog").getByRole("button", { name: "Complete safe rest", exact: true }).click();
-  assert.equal(await hp.inputValue(), "19");
+  assert.equal(await hp.inputValue(), "20");
   assert.equal(await sp.inputValue(), "4");
   assert.equal(await page.getByRole("dialog").getByRole("button", { name: "Begin first aid", exact: true }).isDisabled(), false);
   await page.getByLabel("Hour rest finished", { exact: true }).fill("31");
@@ -118,7 +118,7 @@ try {
   await page.getByRole("tab", { name: "Main", exact: true }).click();
   const favorites = page.locator(".action-groups");
   for (const name of [
-    "Driving Blow",
+    "Driving Opening",
     "Basic Unarmed",
     "Basic Melee",
     "Opportunity Attack",
