@@ -11,7 +11,19 @@
 #app .vital button {color:var(--ink);}
 #app .attributes {padding:0 12px 7px;gap:6px;background:var(--paper);}
 #app .attribute {padding:0;display:block;border:1px solid var(--line);background:#ece8dc;}
-#app .attribute .compact-roll {width:100%;border:0;background:transparent;font-size:14px;}
+#app .attribute .compact-roll {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:2px;
+  width:100%;
+  padding:4px 2px;
+  border:0;
+  background:transparent;
+  font-size:14px;
+  line-height:1.15;
+}
+#app .attribute .compact-roll small {font-size:11px;}
 #app .panel.sheet-panel {padding:8px 12px;}
 #app .main-layout {grid-template-columns:minmax(0,1fr) 214px;gap:10px;}
 #app :is(.action-group,.play-summary>.box,.play-summary>.action-group,.spellbook-sheet) {border:1px solid var(--line);padding:0;border-radius:1px;overflow:hidden;}
