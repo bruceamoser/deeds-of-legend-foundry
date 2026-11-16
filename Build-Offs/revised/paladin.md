@@ -1,6 +1,6 @@
 # Aldren Vowkeeper: paladin after the rewrite
 
-Pinned authored source `55cbd4c70f13704c684f7ba358f0d75bb62b1f30`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../paladin.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
+Pinned authored source `f0ff9e49df902aad45816da5917a43cd3bfa2009`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../paladin.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
 
 ## What the rewrite changes
 
@@ -17,7 +17,7 @@ The rider needs an enemy that harmed an ally. Healing here comes from the restor
 | DP spent / total | 7 / 8 | 20 / 21 | 52 / 59 |
 | Unspent DP | 1 | 1 | 7 |
 | Learned action choices (Main / Maneuver / Reaction) | 1 / 1 / 1 | 2 / 1 / 1 | 4 / 1 / 1 |
-| Known book spells (free / paid) | 2 (1 / 1) | 2 (1 / 1) | 15 (3 / 12) |
+| Known book spells (free / paid) | 2 (1 / 1) | 2 (1 / 1) | 12 (3 / 9) |
 | Shared reserve: casts at 2 SP | 3 | 5 | 9 |
 | Shared reserve: casts at 5 SP | 1 | 2 | 3 |
 | Extra SP from one recovery rest | 0 | 0 | 0 |
@@ -224,7 +224,7 @@ On Standard or Strong Oathstrike also pushes the target 1 square directly away f
 - **Iron Tempest:** Main Action · Brawn. Move up to 3 squares, ignoring extra movement cost from difficult terrain, and attack up to three enemies adjacent at any point along that route. Roll once; each takes 3/5/8 physical damage. Each creature is struck once. Once per scene, you may instead strike four enemies for 4/7/10; after this sweep gain Stability 3 until your next turn starts.
 - **Heavy Armor I:** Passive. You are also trained to wear heavy armor; the suit supplies physical resistance 3. Maneuver: lift one willing or helpless adjacent creature no larger than you. For this turn, carrying it adds no encumbrance and occupies no weapon hand. Put it down in a legal adjacent square when your turn ends. While wearing trained armor, ignore the extra cost of the first square of nonmagical difficult terrain you enter each turn. Heavy Armor’s carrying benefit lasts until the start of your next turn instead of turn end. Heavy Armor’s carrying Maneuver also lets you move 2 squares with the passenger without movement reactions. Place the passenger in a legal adjacent square when the carrying benefit ends.
 
-**Known book spells:** Spare the Dying (Maneuver; SP 0); Cure Wounds (Main Action; SP 1); Healing Word (Maneuver; SP 1); Lesser Restoration (Main Action; SP 2); Prayer of Healing (Ritual; SP 2); Mass Healing Word (Main Action; SP 3); Greater Restoration (Main Action; SP 3); Mass Cure Wounds (Main Action; SP 4); Heal (Main Action; SP 5); Regenerate (Ritual; SP 5); Mass Heal (Main Action; SP 5); Sacred Flame (Main Action; SP 0); Shield (Reaction; SP 0); Mage Armor (Main Action; SP 1); Bladeturn (Reaction; SP 2).
+**Known book spells:** Spare the Dying (Maneuver; SP 0); Cure Wounds (Main Action; SP 1); Healing Word (Maneuver; SP 1); Lesser Restoration (Main Action; SP 2); Prayer of Healing (Ritual; SP 2); Mass Healing Word (Main Action; SP 3); Greater Restoration (Main Action; SP 3); Mass Cure Wounds (Main Action; SP 4); Sacred Flame (Main Action; SP 0); Shield (Reaction; SP 0); Mage Armor (Main Action; SP 1); Bladeturn (Reaction; SP 2).
 
 **Spell output:** Alternative uses of the same reserve, not simultaneous allocations. Assumes SP is spent before recovery; time, spell-specific limits, components and maintained actions still apply. Signature spells and conditional discounts are described separately. At costs 1/2/3/5 SP, the full reserve funds 18/9/6/3 casts respectively; with the learned once-per-rest recovery it funds 18/9/6/3. Zero-SP spells remain limited by actions and circumstances.
 

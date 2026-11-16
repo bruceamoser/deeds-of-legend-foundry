@@ -56,7 +56,7 @@ const select = async (id) => {
   } else {
     const showAll = action("forge-show-all", "toggle");
     if (await showAll.getAttribute("aria-pressed") === "false") await showAll.click();
-    const pathId = id.startsWith("mastery:") ? id : id.startsWith("air:") ? "elements:air" : id.split(":").slice(0, 2).join(":");
+    const pathId = id.startsWith("air:") ? "elements:air" : id.split(":").slice(0, 2).join(":");
     const path = action("forge-path", pathId);
     if (await path.getAttribute("aria-expanded") === "false") await path.click();
     const row = action("forge-step", id);
@@ -159,15 +159,15 @@ try {
   await action("forge-view", "atlas").click();
   const atlas = page.getByRole("dialog", { name: "Discipline atlas", exact: true });
   await expect(atlas).toBeVisible();
-  await select("mastery:stormsteel-arc");
+  await select("air:6");
   const selected = page.locator("#forge-selection:visible");
-  await expect(selected).toContainText("Voice of the Tempest");
+  await expect(selected).toContainText("Earlier learning");
   await expect(selected).not.toContainText("Sweeping Blade");
-  await expect(atlas.locator('[data-action="forge-learn"][data-id="mastery:stormsteel-arc"]')).toBeDisabled();
-  const edges = await page.locator('.forge-branch[data-to="mastery:stormsteel-arc"]').evaluateAll(
+  await expect(atlas.locator('[data-action="forge-learn"][data-id="air:6"]')).toBeDisabled();
+  const edges = await page.locator('.forge-branch[data-to="air:6"]').evaluateAll(
     (elements) => elements.map((element) => element.dataset.from),
   );
-  assert.deepEqual(edges, ["air:3"]);
+  assert.deepEqual(edges, ["air:5"]);
   // Buy through the Atlas inspector, then verify the shared list state.
   await page.locator('.forge-map [data-action="forge-select"][data-id="air:1"]').click();
   await expect(selected).toContainText("2 DP");
@@ -182,18 +182,19 @@ try {
   await expect(selected.locator(".forge-meta")).toContainText("Learned");
   await learn("air:2");
   await learn("air:3");
-  assert.equal(await selected.locator(".forge-spell").count(), 5);
+  assert.equal(await selected.locator(".forge-spell").count(), 2);
   await findDiscipline("arms");
   await findDiscipline("elements");
-  await learn("mastery:stormsteel-arc");
+  for (const step of [4,5,6]) await learn(`air:${step}`);
   await findDiscipline("arms");
   for (const step of [4,5,6,7]) await learn(`arms:bladework:${step}`);
 
   await action("sheet-development").filter({ hasText: "Back to development" }).click();
   await page.getByRole("tab", { name: "Spellbooks", exact: true }).click();
   await expect(page.getByRole("heading", { name: /Zephyra/ })).toBeVisible();
-  assert.equal(await page.locator(".spellbook-sheet tbody tr[data-action-row]").count(), 12);
-  await expect(page.locator('[data-action-row="spell-mastery:stormsteel-arc"]')).toBeVisible();
+  assert.equal(await page.locator(".spellbook-sheet tbody tr[data-action-row]").count(), 11);
+  const airMastery = JSON.parse(await readFile("static/data/forge.json", "utf8")).nodes.find(node => node.id === "air:6").spellIds[0];
+  await expect(page.locator(`[data-action-row="${airMastery}"]`)).toBeVisible();
   await page.getByRole("button", { name: "Expand Elementalism — Air", exact: true }).click();
   await expect(page.locator('[data-detail-id="spell:air:1"]')).toContainText("Maneuver");
   const sp = Number(await page.getByRole("spinbutton", { name: "Current SP" }).inputValue());
@@ -229,7 +230,7 @@ try {
   assert.equal(portable.draft.progression.level, 7);
   assert.equal(portable.draft.play.sp, sp - 3);
   assert.deepEqual(portable.draft.progression.levels[7].purchases.map(({ id }) => id), [
-    "air:1", "air:2", "air:3", "mastery:stormsteel-arc", "arms:bladework:4", "arms:bladework:5", "arms:bladework:6", "arms:bladework:7",
+    "air:1", "air:2", "air:3", "air:4", "air:5", "air:6", "arms:bladework:4", "arms:bladework:5", "arms:bladework:6", "arms:bladework:7",
   ]);
   await page.reload();
   await heading(actorName).waitFor();
@@ -246,7 +247,7 @@ try {
   await action("advance").click();
   await action("forge-view", "columns").click();
   await findDiscipline("elements");
-  await select("mastery:stormsteel-arc");
+  await select("air:6");
   await expect(selected.locator(".forge-meta")).toContainText("Learned");
   assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
     JSON.stringify(await page.evaluate(() => [...document.querySelectorAll("body *")].flatMap((element) => {
@@ -268,7 +269,7 @@ try {
     assert((await page.locator("body").innerText()).trim().length>30, `${file} renders content`);
   }
   assert.deepEqual(failures, []);
-  console.log("PASS Workshop Forge: single creation pool and distinct origin/class access, level gates, single-book master-spell edges and seven-step martial mastery, save/reload/import, and narrow layout.");
+  console.log("PASS Workshop Forge: single creation pool and distinct origin/class access, level gates, seven-step spellbook and martial mastery, save/reload/import, and narrow layout.");
 } catch (error) {
   console.error("Browser errors:", failures);
   throw error;

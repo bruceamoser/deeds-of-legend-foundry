@@ -1,6 +1,6 @@
 # Ilyra Cinderblood: sorcerer after the rewrite
 
-Pinned authored source `55cbd4c70f13704c684f7ba358f0d75bb62b1f30`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../sorcerer.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
+Pinned authored source `f0ff9e49df902aad45816da5917a43cd3bfa2009`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../sorcerer.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
 
 ## What the rewrite changes
 
@@ -14,13 +14,13 @@ The charismatic ability array still gives less SP than a Knowledge-focused arcan
 |---|---|---|---|
 | HP | 14 | 20 | 32 |
 | SP | 10 | 20 | 38 |
-| DP spent / total | 10 / 10 | 22 / 23 | 58 / 61 |
-| Unspent DP | 0 | 1 | 3 |
+| DP spent / total | 10 / 10 | 22 / 23 | 60 / 61 |
+| Unspent DP | 0 | 1 | 1 |
 | Learned action choices (Main / Maneuver / Reaction) | 0 / 0 / 0 | 0 / 0 / 1 | 0 / 0 / 2 |
-| Known book spells (free / paid) | 10 (4 / 6) | 19 (4 / 15) | 36 (4 / 32) |
+| Known book spells (free / paid) | 10 (4 / 6) | 16 (4 / 12) | 29 (4 / 25) |
 | Shared reserve: casts at 2 SP | 5 | 10 | 19 |
 | Shared reserve: casts at 5 SP | 2 | 4 | 7 |
-| Extra SP from one recovery rest | 1 | 1 | 4 |
+| Extra SP from one recovery rest | 1 | 1 | 1 |
 
 ## Character choices
 
@@ -133,13 +133,13 @@ This is a spell costing 0 SP. Cast at the start of the willing ally’s turn bef
 **Useful actions and improvements:**
 
 
-**Known book spells:** Fire Bolt (Main Action; SP 0); Boil Liquid (Ritual; SP 1); Burning Hands (Main Action; SP 1); Heat Metal (Main Action; SP 2); Elementalism — Air (Maneuver; SP 0); Feather Fall (Reaction; SP 1); Vicious Mockery (Main Action; SP 0); Heroism (Main Action; SP 1); Ray of Frost (Main Action; SP 0); Create or Destroy Water (Ritual; SP 1); Scorching Ray (Main Action; SP 2); Wall of Fire (Main Action; SP 3); Fireball (Main Action; SP 3); Fire Shield (Main Action; SP 4); Fire Storm (Main Action; SP 5); Delayed Blast Fireball (Main Action; SP 5); Incendiary Cloud (Main Action; SP 5); Fog Cloud (Main Action; SP 1); Gust of Wind (Main Action; SP 2).
+**Known book spells:** Fire Bolt (Main Action; SP 0); Boil Liquid (Ritual; SP 1); Burning Hands (Main Action; SP 1); Heat Metal (Main Action; SP 2); Elementalism — Air (Maneuver; SP 0); Feather Fall (Reaction; SP 1); Vicious Mockery (Main Action; SP 0); Heroism (Main Action; SP 1); Ray of Frost (Main Action; SP 0); Create or Destroy Water (Ritual; SP 1); Scorching Ray (Main Action; SP 2); Wall of Fire (Main Action; SP 3); Fireball (Main Action; SP 3); Fire Shield (Main Action; SP 4); Fog Cloud (Main Action; SP 1); Gust of Wind (Main Action; SP 2).
 
 **Spell output:** Alternative uses of the same reserve, not simultaneous allocations. Assumes SP is spent before recovery; time, spell-specific limits, components and maintained actions still apply. Signature spells and conditional discounts are described separately. At costs 1/2/3/5 SP, the full reserve funds 20/10/6/4 casts respectively; with the learned once-per-rest recovery it funds 21/10/7/4. Zero-SP spells remain limited by actions and circumstances.
 
 ## Level 7
 
-[Import this ready character](builds/sorcerer-level-7.hol.json). 3 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
+[Import this ready character](builds/sorcerer-level-7.hol.json). 1 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
 
 | Learned purchase | DP paid | Character level |
 |---|---:|---:|
@@ -159,15 +159,14 @@ This is a spell costing 0 SP. Cast at the start of the willing ally’s turn bef
 | Deep Reserves II (`spellcraft:soul-capacity:5`) | 4 | 7 |
 | Deep Reserves III (`spellcraft:soul-capacity:6`) | 4 | 7 |
 | Soul Wellspring (`spellcraft:soul-capacity:7`) | 5 | 7 |
+| Fire Storm (`flame:4`) | 4 | 7 |
+| Delayed Blast Fireball (`flame:5`) | 4 | 7 |
+| Meteor Swarm (`flame:6`) | 5 | 7 |
 | Air III (`air:2`) | 2 | 7 |
 | Voice of the Tempest (`air:3`) | 3 | 7 |
 | Emotion II (`emotion:1`) | 2 | 7 |
 | Emotion III (`emotion:2`) | 2 | 7 |
 | Heartstrings (`emotion:3`) | 3 | 7 |
-| Recovery II (`spellcraft:recovery:2`) | 2 | 7 |
-| Recovery III (`spellcraft:recovery:3`) | 2 | 7 |
-| Quiet Renewal I (`spellcraft:recovery:4`) | 3 | 7 |
-| Meteor Swarm (`mastery:meteor-swarm`) | 4 | 7 |
 
 **Signature choices:** level 1: Bent Trajectory; level 3: Create a Window; level 7: Choose the Edge.
 
@@ -222,13 +221,13 @@ This is a spell costing 0 SP. Cast at the start of the willing ally’s turn bef
 **Useful actions and improvements:**
 
 
-**Known book spells:** Fire Bolt (Main Action; SP 0); Boil Liquid (Ritual; SP 1); Burning Hands (Main Action; SP 1); Heat Metal (Main Action; SP 2); Elementalism — Air (Maneuver; SP 0); Feather Fall (Reaction; SP 1); Vicious Mockery (Main Action; SP 0); Heroism (Main Action; SP 1); Ray of Frost (Main Action; SP 0); Create or Destroy Water (Ritual; SP 1); Scorching Ray (Main Action; SP 2); Wall of Fire (Main Action; SP 3); Fireball (Main Action; SP 3); Fire Shield (Main Action; SP 4); Fire Storm (Main Action; SP 5); Delayed Blast Fireball (Main Action; SP 5); Incendiary Cloud (Main Action; SP 5); Fog Cloud (Main Action; SP 1); Gust of Wind (Main Action; SP 2); Levitate (Main Action; SP 2); Lightning Bolt (Main Action; SP 3); Fly (Main Action; SP 3); Wind Wall (Main Action; SP 4); Chain Lightning (Main Action; SP 5); Control Weather (Ritual; SP 5); Wind Walk (Ritual; SP 5); Charm Person (Main Action; SP 1); Calm Emotions (Main Action; SP 2); Suggestion (Main Action; SP 2); Fear (Main Action; SP 3); Charm Monster (Main Action; SP 3); Confusion (Main Action; SP 4); Mass Suggestion (Main Action; SP 5); Dominate Person (Main Action; SP 5); Antipathy/Sympathy (Ritual; SP 5); Meteor Swarm (Main Action; SP 6).
+**Known book spells:** Fire Bolt (Main Action; SP 0); Boil Liquid (Ritual; SP 1); Burning Hands (Main Action; SP 1); Heat Metal (Main Action; SP 2); Elementalism — Air (Maneuver; SP 0); Feather Fall (Reaction; SP 1); Vicious Mockery (Main Action; SP 0); Heroism (Main Action; SP 1); Ray of Frost (Main Action; SP 0); Create or Destroy Water (Ritual; SP 1); Scorching Ray (Main Action; SP 2); Wall of Fire (Main Action; SP 3); Fireball (Main Action; SP 3); Fire Shield (Main Action; SP 4); Fog Cloud (Main Action; SP 1); Gust of Wind (Main Action; SP 2); Fire Storm (Main Action; SP 5); Delayed Blast Fireball (Main Action; SP 5); Meteor Swarm (Main Action; SP 6); Levitate (Main Action; SP 2); Lightning Bolt (Main Action; SP 3); Fly (Main Action; SP 3); Wind Wall (Main Action; SP 4); Charm Person (Main Action; SP 1); Calm Emotions (Main Action; SP 2); Suggestion (Main Action; SP 2); Fear (Main Action; SP 3); Charm Monster (Main Action; SP 3); Confusion (Main Action; SP 4).
 
-**Spell output:** Alternative uses of the same reserve, not simultaneous allocations. Assumes SP is spent before recovery; time, spell-specific limits, components and maintained actions still apply. Signature spells and conditional discounts are described separately. At costs 1/2/3/5 SP, the full reserve funds 38/19/12/7 casts respectively; with the learned once-per-rest recovery it funds 42/21/14/8. Zero-SP spells remain limited by actions and circumstances.
+**Spell output:** Alternative uses of the same reserve, not simultaneous allocations. Assumes SP is spent before recovery; time, spell-specific limits, components and maintained actions still apply. Signature spells and conditional discounts are described separately. At costs 1/2/3/5 SP, the full reserve funds 38/19/12/7 casts respectively; with the learned once-per-rest recovery it funds 39/19/13/7. Zero-SP spells remain limited by actions and circumstances.
 
 ## Deferred choices
 
-Every planned choice was affordable when scheduled.
+- Level 7: Recovery II — Costs 2 DP. You have 1 DP.
 
 ## Playtest questions
 

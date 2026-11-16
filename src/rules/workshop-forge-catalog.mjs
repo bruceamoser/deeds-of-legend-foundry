@@ -32,7 +32,7 @@ export function workshopCatalogs(choices, inventory, wounds, forge, references =
     startingDisciplines: record.disciplineIds,
   }));
   const nodes = forge.nodes.map((node) => {
-    if (node.kind === "discipline" || node.kind === "section" || node.kind === "spell-mastery") return node;
+    if (node.kind === "discipline" || node.kind === "section") return node;
     const action = node.effect?.match(/^(Main Action|Maneuver|Reaction|Passive|Movement|Ritual|One exchange)(?=\b)/i)?.[1] ??
       (node.effect?.match(/^\d+ (?:minute|hour|day)/i) ? "Timed work" : "Passive");
     const attribute = ["craft:supplies:1", "craft:workshop:1"].includes(node.id) ? "Knowledge" :

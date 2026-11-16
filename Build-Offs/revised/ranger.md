@@ -1,6 +1,6 @@
 # Eryn Mossarrow: ranger after the rewrite
 
-Pinned authored source `55cbd4c70f13704c684f7ba358f0d75bb62b1f30`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../ranger.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
+Pinned authored source `f0ff9e49df902aad45816da5917a43cd3bfa2009`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../ranger.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
 
 ## What the rewrite changes
 
@@ -17,7 +17,7 @@ This hunter line chooses archery over the animal-companion line. It does not get
 | DP spent / total | 8 / 8 | 21 / 21 | 57 / 59 |
 | Unspent DP | 0 | 0 | 2 |
 | Learned action choices (Main / Maneuver / Reaction) | 2 / 1 / 1 | 4 / 1 / 1 | 8 / 1 / 1 |
-| Known book spells (free / paid) | 4 (2 / 2) | 4 (2 / 2) | 15 (2 / 13) |
+| Known book spells (free / paid) | 4 (2 / 2) | 4 (2 / 2) | 12 (2 / 10) |
 | Shared reserve: casts at 2 SP | 2 | 4 | 8 |
 | Shared reserve: casts at 5 SP | 1 | 1 | 3 |
 | Extra SP from one recovery rest | 0 | 0 | 0 |
@@ -230,7 +230,7 @@ Requires a ranged weapon and ammunition. Make one Agility roll and apply it to e
 - **Cut Them Off I:** Main Action · Reason to interpret a visible junction on a trail you followed, or 10 minutes to scout a wider interception route. Add 1/2/3 progress toward finding a physically feasible interception. Completion reveals the route and travel time, not a guarantee of arriving first. Cut Them Off adds 1/3/4 progress. After completing Cut Them Off, you and up to four companions gain 1 Boon on travel rolls to traverse that identified route until its next landmark. Changed or blocked terrain requires a new route.
 - **Unerring Pursuit:** Main Action · Reason at a visible junction, or 10 minutes to scout the surrounding area. From a trail you followed, add 3/5/7 progress toward predicting the quarry’s next reachable landmark from its tracks and known terrain. Completion identifies the best-supported destination and gaps in the evidence. You and up to six companions gain 2 Boons on pursuit and traversal rolls along that route until reaching it. This does not locate a quarry that left no readable evidence.
 
-**Known book spells:** Ray of Frost (Main Action; SP 0); Create or Destroy Water (Ritual; SP 1); Enchanted Rope (Maneuver; SP 0); Loosen Earth (Ritual; SP 1); Purify Food and Drink (Ritual; SP 1); Water Breathing (Main Action; SP 2); Water Walk (Main Action; SP 2); Control Water (Main Action; SP 3); Ice Storm (Main Action; SP 3); Wall of Ice (Main Action; SP 4); Cone of Cold (Main Action; SP 5); Freezing Sphere (Main Action; SP 5); Tsunami (Main Action; SP 5); Earthwall (Main Action; SP 1); Cracks Call (Main Action; SP 2).
+**Known book spells:** Ray of Frost (Main Action; SP 0); Create or Destroy Water (Ritual; SP 1); Enchanted Rope (Maneuver; SP 0); Loosen Earth (Ritual; SP 1); Purify Food and Drink (Ritual; SP 1); Water Breathing (Main Action; SP 2); Water Walk (Main Action; SP 2); Control Water (Main Action; SP 3); Ice Storm (Main Action; SP 3); Wall of Ice (Main Action; SP 4); Earthwall (Main Action; SP 1); Cracks Call (Main Action; SP 2).
 
 **Spell output:** Alternative uses of the same reserve, not simultaneous allocations. Assumes SP is spent before recovery; time, spell-specific limits, components and maintained actions still apply. Signature spells and conditional discounts are described separately. At costs 1/2/3/5 SP, the full reserve funds 17/8/5/3 casts respectively; with the learned once-per-rest recovery it funds 17/8/5/3. Zero-SP spells remain limited by actions and circumstances.
 

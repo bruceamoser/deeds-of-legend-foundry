@@ -13,12 +13,12 @@ const { party } = read("forge-party");
 
 test("each level-seven mastery requires only its own path or spellbook endpoint", () => {
   assert.equal(graph.nodes.some(node => node.kind === "combined"), false);
-  const masteries = graph.nodes.filter(({ kind, level }) => ["mastery", "spell-mastery", "training"].includes(kind) && level === 7);
-  assert.equal(masteries.length, 67);
+  const masteries = graph.nodes.filter(({ kind, level }) => ["mastery", "section", "training"].includes(kind) && level === 7);
+  assert.equal(masteries.length, 76);
   for (const node of masteries) {
     const state = { level: 7, dp: node.dp, learned: node.requires };
     assert.equal(node.requires.length, 1, node.name);
-    assert.equal(node.dp, node.kind === "spell-mastery" ? 4 : 5, node.name);
+    assert.equal(node.dp, 5, node.name);
     assert(forgeEligibility(graph, state, node.id).eligible, node.name);
     for (const omitted of node.requires)
       assert(!forgeEligibility(graph, { ...state, learned: state.learned.filter((id) => id !== omitted) }, node.id).eligible, omitted);
@@ -31,7 +31,7 @@ test("each level-seven mastery requires only its own path or spellbook endpoint"
   }
 });
 
-test("Forge keeps technique improvements on the same attack and teaches all capstone pages at once", () => {
+test("Forge keeps technique improvements on the same attack and teaches one spell per advanced purchase", () => {
   let state = { classId: "class-arcanist", level: 1, dp: 40, learned: [] };
   const learn = (id) => {
     const result = learnForgeEntry(graph, state, id);
@@ -44,7 +44,14 @@ test("Forge keeps technique improvements on the same attack and teaches all caps
   state.level = 3;
   learn("air:3");
   const learning = forgeLearning(graph, state.learned);
-  assert.deepEqual(learning.spells.map(({ page }) => page), ["1", "2", "3", "4", "5", "6", "7", "8", "A1", "A2", "A3"]);
+  assert.deepEqual(learning.spells.map(({ page }) => page), ["1", "2", "3", "4", "5", "6", "7", "8"]);
+  learn("air:4");
+  assert.equal(forgeLearning(graph,state.learned).spells.length,9);
+  learn("air:5");
+  assert.equal(forgeLearning(graph,state.learned).spells.length,10);
+  assert(!forgeEligibility(graph,state,"air:6").eligible);
+  state.level=7;learn("air:6");
+  assert.equal(forgeLearning(graph,state.learned).spells.length,11);
   assert.equal(learning.spells[0].sp, 0);
   assert.deepEqual(learning.improvements.get("arms:impact:1").map(({ id }) => id), ["arms:impact:2", "arms:impact:3"]);
   assert.deepEqual(learning.abilities.map(({ id }) => id), ["arms:impact:1"]);

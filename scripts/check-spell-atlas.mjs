@@ -15,7 +15,7 @@ const granted=workshopCharacter(draft,catalogs).state.learned;
 draft.progression.levels[7].purchases=[
   ...["elements","life","invocation","spellcraft"].filter(id=>!granted.includes(id)),
   ...["flame","restoration","passage"].flatMap(book=>[0,1,2,3].map(step=>`${book}:${step}`)),
-  "mastery:starfall-volley", "spellcraft:soul-capacity:1",
+  "flame:4", "flame:5", "spellcraft:soul-capacity:1",
 ].map(id=>({id}));
 assert(workshopCharacter(draft,catalogs).valid,"The atlas example is a legal current character");
 const character=JSON.parse(writePortableCharacter(draft,catalogs,{ready:true}));
@@ -29,6 +29,20 @@ try {
   const errors=[];page.on("pageerror",error=>errors.push(error.message));
   const base=process.env.HOL_WORKSHOP_URL??`http://127.0.0.1:${server.address().port}${prefix}`;
   await page.goto(base);
+  const legacy=structuredClone(character);
+  legacy.schemaVersion=6;
+  legacy.draft.progression.levels[7].purchases=legacy.draft.progression.levels[7].purchases
+    .filter(p=>!["flame:4","flame:5"].includes(p.id));
+  legacy.draft.progression.levels[7].purchases.push({id:"mastery:meteor-swarm"});
+  legacy.draft.play={hp:7,sp:2,gritSpent:1,favorites:{abilities:["spell:flame:1"],items:[]}};
+  await page.evaluate(character=>localStorage.setItem("hol.workshop.v1",JSON.stringify({character,mode:"sheet",tab:"Development"})),legacy);
+  await page.reload();
+  await expect.poll(()=>page.evaluate(()=>JSON.parse(localStorage.getItem("hol.workshop.v1")).character.schemaVersion)).toBe(7);
+  const migrated=await page.evaluate(()=>JSON.parse(localStorage.getItem("hol.workshop.v1")).character.draft);
+  const migratedIds=migrated.progression.levels[7].purchases.map(p=>p.id);
+  assert(migratedIds.includes("flame:2"));
+  assert(!migratedIds.includes("flame:3")&&!migratedIds.includes("mastery:meteor-swarm"));
+  assert.equal(migrated.play.hp,7);assert.equal(migrated.play.sp,2);assert.equal(migrated.play.gritSpent,1);
   await page.evaluate(character=>localStorage.setItem("hol.workshop.v1",JSON.stringify({character,mode:"sheet",tab:"Development"})),character);
   await page.reload();
   await page.locator('[data-action="advance"]').click();
@@ -38,34 +52,44 @@ try {
   const action=(name,id)=>atlas.locator(`[data-action="${name}"][data-id="${id}"]`);
   const inspector=atlas.locator("#forge-selection");
   await mkdir("test-results/spell-atlas",{recursive:true});
-  for(const [discipline,book,count] of [["elements","flame",2],["life","restoration",4],["invocation","passage",3],["spellcraft",null,0]]){
+  for(const [discipline,book] of [["elements","flame"],["life","restoration"],["invocation","passage"],["spellcraft","channeling"]]){
     await action("forge-filter","all").click();
     await select(discipline);await action("forge-filter",discipline).click();
-    if(book){
-      await select(`${book}:3`);
-      await expect(inspector).toContainText("Master spells · Level 7");
-      await expect(inspector).toContainText("Each master spell is a separate choice");
-      await expect(atlas.locator(`[data-mastery-stem="${book}:3"]`)).toHaveCount(1);
-      await expect(atlas.locator(`.forge-branch[data-from="${book}:3"][data-to]`)).toHaveCount(count);
-      const masterIds=catalogs.forge.books.find(b=>b.id===book).masteryIds;
-      const boxes=await Promise.all(masterIds.map(id=>atlas.locator(`.forge-map [data-id="${id}"]`).boundingBox()));
-      for(const [i,a] of boxes.entries())for(const b of boxes.slice(i+1))
-        assert(a.x+a.width<=b.x || b.x+b.width<=a.x || a.y+a.height<=b.y || b.y+b.height<=a.y,`${book} mastery buttons do not overlap`);
-    } else await expect(atlas.locator(".forge-mastery-stem")).toHaveCount(0);
+    const entry=catalogs.forge.disciplines.find(d=>d.id===discipline);
+    await expect(atlas.locator(".forge-map-step")).toHaveCount(28);
+    await expect(atlas.locator(".forge-map-step.forge-level-1")).toHaveCount(12);
+    await expect(atlas.locator(".forge-map-step.forge-level-3")).toHaveCount(12);
+    await expect(atlas.locator(".forge-map-step.forge-level-7")).toHaveCount(4);
+    await expect(atlas.locator(".forge-mastery-stem")).toHaveCount(0);
+    for(const path of entry.paths) for(const [step,id] of path.steps.entries()) {
+      const parent=path.steps[step-1]??discipline;
+      await expect(atlas.locator(`.forge-branch[data-from="${parent}"][data-to="${id}"]`)).toHaveCount(1);
+    }
+    await select(`${book}:4`);
+    await expect(inspector.locator(".forge-spell")).toHaveCount(1);
+    if(discipline!=="elements") await expect(inspector.locator(".forge-meta")).toContainText("4 DP");
+    await select(`${book}:6`);
+    await expect(inspector.locator(".forge-spell")).toHaveCount(1);
+    await expect(inspector.locator(".forge-meta")).toContainText("5 DP · Level 7");
     await page.mouse.move(1,1);
     await page.screenshot({path:`test-results/spell-atlas/${discipline}.png`});
   }
   await action("forge-filter","all").click();await select("elements");await action("forge-filter","elements").click();
-  await select("mastery:meteor-swarm");
-  await expect(inspector).toContainText("Other master spells");
-  await expect(action("forge-learn","mastery:meteor-swarm")).toBeEnabled();
-  await action("forge-learn","mastery:meteor-swarm").click();
-  await expect(atlas.locator('.forge-map [data-id="mastery:meteor-swarm"]')).toHaveClass(/is-learned/);
-  await expect(atlas.locator('[data-mastery-stem="flame:3"]')).toHaveClass(/is-learned/);
+  await select("flame:6");
+  await expect(action("forge-learn","flame:6")).toBeEnabled();
+  await action("forge-learn","flame:6").click();
+  await expect(atlas.locator('.forge-map [data-id="flame:6"]')).toHaveClass(/is-learned/);
   await action("forge-filter","all").click();await select("life");await action("forge-filter","life").click();
-  for(const id of catalogs.forge.books.find(b=>b.id==="restoration").masteryIds){
-    await select(id);await expect(action("forge-learn",id)).toBeEnabled();
-  }
+  await select("restoration:5");
+  await expect(action("forge-learn","restoration:5")).toBeDisabled();
+  await select("restoration:4");
+  await expect(action("forge-learn","restoration:4")).toBeEnabled();
+  await action("forge-learn","restoration:4").click();
+  await select("restoration:5");
+  await expect(action("forge-learn","restoration:5")).toBeEnabled();
+  await action("forge-learn","restoration:5").click();
+  await select("restoration:6");
+  await expect(action("forge-learn","restoration:6")).toBeEnabled();
   await page.setViewportSize({width:900,height:800});
   await select("restoration:3");await page.mouse.move(1,1);
   await page.screenshot({path:"test-results/spell-atlas/life-900.png"});
@@ -74,7 +98,7 @@ try {
   await page.screenshot({path:"test-results/spell-atlas/life-390.png"});
   await page.keyboard.press("Escape");await page.reload();
   const restored=await page.evaluate(()=>JSON.parse(localStorage.getItem("hol.workshop.v1")).character.draft);
-  assert(restored.progression.levels[7].purchases.some(p=>p.id==="mastery:meteor-swarm"));
+  assert(restored.progression.levels[7].purchases.some(p=>p.id==="flame:6"));
   assert.deepEqual(errors,[]);
-  console.log("PASS spell atlas: shared tails for 1–4 independent masters, real Elements/Life/Invocation/Spellcraft layouts, level shapes, learning and reload, 1000/900/390px.");
+  console.log("PASS spell atlas: equal seven-step paths, 4/4/5 DP single-spell advanced purchases, real Elements/Life/Invocation/Spellcraft layouts, legacy-save refund, sequential learning and reload, 1000/900/390px.");
 } finally {await browser.close();await new Promise(done=>server.close(done));}

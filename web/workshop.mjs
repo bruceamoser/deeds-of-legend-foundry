@@ -349,7 +349,7 @@ function sheetContent() {
 function spellbooks() {
   const learned = new Set(preview.state.learning.spells.map(({ id }) => id));
   const books = catalogs.forge.books.map(book => ({ ...book,
-    spells: [...book.spellIds, ...(book.masteryIds ?? []).flatMap(id => catalogs.forge.nodes.find(node => node.id === id)?.spellIds ?? [])].filter(id => learned.has(id)).map(get).filter(record =>
+    spells: book.spellIds.filter(id => learned.has(id)).map(get).filter(record =>
       matchesLibrary(record) && (spellTiming === "all" || record.action === spellTiming)),
   })).filter(book => book.spells.length && (spellDiscipline === "all" || book.disciplineId === spellDiscipline));
   const disciplines = catalogs.forge.disciplines.filter(d => catalogs.forge.books.some(b => b.disciplineId === d.id && b.spellIds.some(id => learned.has(id))));

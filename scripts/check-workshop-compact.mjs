@@ -347,7 +347,7 @@ try {
     assert(atlasBox.width >= 850 && atlasBox.height >= 650, "Atlas popup uses the available viewport");
     const map = atlas.locator(".forge-map-scroll");
     await expect(map.locator(".forge-map-root")).toHaveCount(originCatalog.disciplines.length);
-    await expect(map.locator(".forge-map-step")).toHaveCount(originCatalog.disciplines.reduce((sum, entry) => sum + entry.paths.reduce((total, path) => total + path.steps.length, 0), 0) + originCatalog.books.reduce((sum, book) => sum + (book.masteryIds?.length ?? 0), 0));
+    await expect(map.locator(".forge-map-step")).toHaveCount(originCatalog.disciplines.reduce((sum, entry) => sum + entry.paths.reduce((total, path) => total + path.steps.length, 0), 0));
     await expect(map.locator(".forge-map-combination")).toHaveCount(originCatalog.nodes.filter(node => node.kind === "combined").length);
     const stateStyles = await map.evaluate(element => {
       const learned = element.querySelector(".forge-map-step.is-learned");

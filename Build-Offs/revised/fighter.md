@@ -1,6 +1,6 @@
 # Corin Ashguard: fighter after the rewrite
 
-Pinned authored source `55cbd4c70f13704c684f7ba358f0d75bb62b1f30`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../fighter.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
+Pinned authored source `f0ff9e49df902aad45816da5917a43cd3bfa2009`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../fighter.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
 
 ## What the rewrite changes
 

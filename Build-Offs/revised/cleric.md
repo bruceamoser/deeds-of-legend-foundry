@@ -1,6 +1,6 @@
 # Brunna Hearthward: cleric after the rewrite
 
-Pinned authored source `55cbd4c70f13704c684f7ba358f0d75bb62b1f30`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../cleric.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
+Pinned authored source `f0ff9e49df902aad45816da5917a43cd3bfa2009`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../cleric.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
 
 ## What the rewrite changes
 
@@ -13,13 +13,13 @@ There is no separate Channel Divinity pool or Turn Undead feature in these selec
 | Measure | HoL 1 | HoL 3 | HoL 7 |
 |---|---|---|---|
 | HP | 18 | 28 | 48 |
-| SP | 6 | 10 | 25 |
-| DP spent / total | 8 / 10 | 22 / 23 | 60 / 61 |
-| Unspent DP | 2 | 1 | 1 |
+| SP | 6 | 10 | 18 |
+| DP spent / total | 8 / 10 | 22 / 23 | 61 / 61 |
+| Unspent DP | 2 | 1 | 0 |
 | Learned action choices (Main / Maneuver / Reaction) | 2 / 0 / 0 | 4 / 0 / 0 | 5 / 0 / 0 |
-| Known book spells (free / paid) | 6 (4 / 2) | 15 (4 / 11) | 34 (4 / 30) |
-| Shared reserve: casts at 2 SP | 3 | 5 | 12 |
-| Shared reserve: casts at 5 SP | 1 | 2 | 5 |
+| Known book spells (free / paid) | 6 (4 / 2) | 12 (4 / 8) | 25 (4 / 21) |
+| Shared reserve: casts at 2 SP | 3 | 5 | 9 |
+| Shared reserve: casts at 5 SP | 1 | 2 | 3 |
 | Extra SP from one recovery rest | 0 | 0 | 0 |
 
 ## Character choices
@@ -133,13 +133,13 @@ This is a spell. You can still cast Mend at its ordinary 1 SP cost instead.
 - **Light Armor I:** Passive. You are trained to wear light armor; the suit supplies physical resistance 1. Ignore 1 Bulk from worn armor when calculating encumbrance, minimum 0 armor Bulk. This does not change its inventory size.
 - **Emergency Treatment I:** Main Action · Knowledge, with medical supplies. Apply Field Dressing’s current healing immediately to an adjacent patient and mark its first-aid attempt used.
 
-**Known book spells:** Spare the Dying (Maneuver; SP 0); Cure Wounds (Main Action; SP 1); Sacred Flame (Main Action; SP 0); Shield (Reaction; SP 0); Resistance (Maneuver; SP 0); Sanctuary (Main Action; SP 1); Healing Word (Maneuver; SP 1); Lesser Restoration (Main Action; SP 2); Prayer of Healing (Ritual; SP 2); Mass Healing Word (Main Action; SP 3); Greater Restoration (Main Action; SP 3); Mass Cure Wounds (Main Action; SP 4); Heal (Main Action; SP 5); Regenerate (Ritual; SP 5); Mass Heal (Main Action; SP 5).
+**Known book spells:** Spare the Dying (Maneuver; SP 0); Cure Wounds (Main Action; SP 1); Sacred Flame (Main Action; SP 0); Shield (Reaction; SP 0); Resistance (Maneuver; SP 0); Sanctuary (Main Action; SP 1); Healing Word (Maneuver; SP 1); Lesser Restoration (Main Action; SP 2); Prayer of Healing (Ritual; SP 2); Mass Healing Word (Main Action; SP 3); Greater Restoration (Main Action; SP 3); Mass Cure Wounds (Main Action; SP 4).
 
 **Spell output:** Alternative uses of the same reserve, not simultaneous allocations. Assumes SP is spent before recovery; time, spell-specific limits, components and maintained actions still apply. Signature spells and conditional discounts are described separately. At costs 1/2/3/5 SP, the full reserve funds 10/5/3/2 casts respectively; with the learned once-per-rest recovery it funds 10/5/3/2. Zero-SP spells remain limited by actions and circumstances.
 
 ## Level 7
 
-[Import this ready character](builds/cleric-level-7.hol.json). 1 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
+[Import this ready character](builds/cleric-level-7.hol.json). 0 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
 
 | Learned purchase | DP paid | Character level |
 |---|---:|---:|
@@ -158,17 +158,15 @@ This is a spell. You can still cast Mend at its ordinary 1 SP cost instead.
 | Emergency Treatment II (`medicine:first-aid:5`) | 4 | 7 |
 | Emergency Treatment III (`medicine:first-aid:6`) | 4 | 7 |
 | A Way through Death (`medicine:first-aid:7`) | 5 | 7 |
+| Heal (`restoration:4`) | 4 | 7 |
+| Regenerate (`restoration:5`) | 4 | 7 |
+| True Resurrection (`restoration:6`) | 5 | 7 |
 | Protection II (`protection:1`) | 2 | 7 |
 | Protection III (`protection:2`) | 2 | 7 |
 | The Unbroken (`protection:3`) | 3 | 7 |
 | Sanctuary II (`sanctuary:1`) | 2 | 7 |
 | Sanctuary III (`sanctuary:2`) | 2 | 7 |
-| Haven (`sanctuary:3`) | 3 | 7 |
 | Spellcraft (`spellcraft`) | 2 | 7 |
-| Soul Capacity I (`spellcraft:soul-capacity:1`) | 1 | 7 |
-| Soul Capacity II (`spellcraft:soul-capacity:2`) | 2 | 7 |
-| Soul Capacity III (`spellcraft:soul-capacity:3`) | 2 | 7 |
-| Borrowed Dawn (`mastery:borrowed-dawn`) | 4 | 7 |
 
 **Signature choices:** level 1: Mend; level 3: Triage; level 7: The Shepherd's Call.
 
@@ -227,13 +225,15 @@ This is a spell. You can still cast Mend at its ordinary 1 SP cost instead.
 - **Emergency Treatment I:** Main Action · Knowledge, with medical supplies. Apply Field Dressing’s current healing immediately to an adjacent patient and mark its first-aid attempt used. Emergency Treatment restores 5/7/9 HP instead of Field Dressing’s amount. Emergency Treatment also reduces Bleeding by 2, and you may move 1 square toward the patient before treating it without movement reactions.
 - **A Way through Death:** Main Action · Knowledge, with medical supplies. Move up to 3 squares to a patient no larger than you, restore 5/8/11 HP using its available first-aid attempt, then carry it up to 3 squares and place it in a legal adjacent square. Both movements ignore movement reactions. You may rescue a patient whose allowance is spent without healing or consuming supplies. A free hand is needed to carry it; no armor training is required.
 
-**Known book spells:** Spare the Dying (Maneuver; SP 0); Cure Wounds (Main Action; SP 1); Sacred Flame (Main Action; SP 0); Shield (Reaction; SP 0); Resistance (Maneuver; SP 0); Sanctuary (Main Action; SP 1); Healing Word (Maneuver; SP 1); Lesser Restoration (Main Action; SP 2); Prayer of Healing (Ritual; SP 2); Mass Healing Word (Main Action; SP 3); Greater Restoration (Main Action; SP 3); Mass Cure Wounds (Main Action; SP 4); Heal (Main Action; SP 5); Regenerate (Ritual; SP 5); Mass Heal (Main Action; SP 5); Mage Armor (Main Action; SP 1); Bladeturn (Reaction; SP 2); Protection from Evil and Good (Main Action; SP 2); Protection from Energy (Main Action; SP 3); Death Ward (Main Action; SP 3); Warding Bond (Main Action; SP 4); Globe of Invulnerability (Main Action; SP 5); Mind Blank (Ritual; SP 5); Prismatic Wall (Main Action; SP 5); Quiet Ways (Main Action; SP 1); Tiny Hut (Ritual; SP 2); Private Sanctum (Ritual; SP 2); Hallow (Ritual; SP 3); Guards and Wards (Ritual; SP 3); Antilife Shell (Main Action; SP 4); Forbiddance (Ritual; SP 5); Magnificent Mansion (Ritual; SP 5); Prismatic Wall — Sanctum (Ritual; SP 5); Borrowed Dawn (Main Action; SP 4).
+**Known book spells:** Spare the Dying (Maneuver; SP 0); Cure Wounds (Main Action; SP 1); Sacred Flame (Main Action; SP 0); Shield (Reaction; SP 0); Resistance (Maneuver; SP 0); Sanctuary (Main Action; SP 1); Healing Word (Maneuver; SP 1); Lesser Restoration (Main Action; SP 2); Prayer of Healing (Ritual; SP 2); Mass Healing Word (Main Action; SP 3); Greater Restoration (Main Action; SP 3); Mass Cure Wounds (Main Action; SP 4); Heal (Main Action; SP 5); Regenerate (Ritual; SP 5); True Resurrection (Ritual; SP 8); Mage Armor (Main Action; SP 1); Bladeturn (Reaction; SP 2); Protection from Evil and Good (Main Action; SP 2); Protection from Energy (Main Action; SP 3); Death Ward (Main Action; SP 3); Warding Bond (Main Action; SP 4); Quiet Ways (Main Action; SP 1); Tiny Hut (Ritual; SP 2); Private Sanctum (Ritual; SP 2); Hallow (Ritual; SP 3).
 
-**Spell output:** Alternative uses of the same reserve, not simultaneous allocations. Assumes SP is spent before recovery; time, spell-specific limits, components and maintained actions still apply. Signature spells and conditional discounts are described separately. At costs 1/2/3/5 SP, the full reserve funds 25/12/8/5 casts respectively; with the learned once-per-rest recovery it funds 25/12/8/5. Zero-SP spells remain limited by actions and circumstances.
+**Spell output:** Alternative uses of the same reserve, not simultaneous allocations. Assumes SP is spent before recovery; time, spell-specific limits, components and maintained actions still apply. Signature spells and conditional discounts are described separately. At costs 1/2/3/5 SP, the full reserve funds 18/9/6/3 casts respectively; with the learned once-per-rest recovery it funds 18/9/6/3. Zero-SP spells remain limited by actions and circumstances.
 
 ## Deferred choices
 
 - Level 3: Protection II — Costs 2 DP. You have 1 DP.
+- Level 7: Haven — Costs 3 DP. You have 2 DP.
+- Level 7: Soul Capacity I — Costs 1 DP. You have 0 DP.
 
 ## Playtest questions
 

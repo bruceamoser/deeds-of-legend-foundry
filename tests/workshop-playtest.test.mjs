@@ -104,13 +104,13 @@ test("a mixed martial and magical build reaches its own level-seven masteries wi
   learnPath("arms:bladework:6");
   assert.equal(forgeEligibility(forge, {...state,level:6}, "arms:bladework:7").eligible,false);
   learnPath("arms:bladework:7");
-  learnPath("air:3");
-  const mastery = "mastery:stormsteel-arc";
-  assert.deepEqual(nodes.get(mastery).requires,["air:3"]);
+  learnPath("air:5");
+  const mastery = "air:6";
+  assert.deepEqual(nodes.get(mastery).requires,["air:5"]);
   assert.equal(forgeEligibility(forge,{...state,level:6},mastery).eligible,false);
-  assert.equal(forgeEligibility(forge,{...state,learned:state.learned.filter(id=>id!=="air:3")},mastery).eligible,false);
+  assert.equal(forgeEligibility(forge,{...state,learned:state.learned.filter(id=>id!=="air:5")},mastery).eligible,false);
   learnPath(mastery);
-  assert.equal(state.dp,26); // 62 - Arms entry3 - path21 - Air8 - mastery4.
+  assert.equal(state.dp,17); // 62 - Arms entry3 - martial path21 - spellbook21.
   assert.ok(!forge.nodes.some(node=>node.kind==="combined"));
 });
 
@@ -129,7 +129,7 @@ test("older portable characters retain identity and resources while changed path
   assert.equal(saved.draft.play.sp, 2);
   assert.equal(saved.preview.limits.maxHp, 20);
   const persisted = JSON.parse(writePortableCharacter(saved.draft, catalogs));
-  assert.equal(persisted.schemaVersion, 6);
+  assert.equal(persisted.schemaVersion, 7);
   assert.deepEqual(persisted.draft, saved.draft);
 });
 

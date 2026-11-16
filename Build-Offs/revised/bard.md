@@ -1,6 +1,6 @@
 # Lysa Silverstring: bard after the rewrite
 
-Pinned authored source `55cbd4c70f13704c684f7ba358f0d75bb62b1f30`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../bard.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
+Pinned authored source `f0ff9e49df902aad45816da5917a43cd3bfa2009`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../bard.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
 
 ## What the rewrite changes
 
@@ -16,8 +16,8 @@ Bardic Inspiration remains an immediate coordinated contribution rather than a b
 | SP | 7 | 11 | 19 |
 | DP spent / total | 10 / 12 | 25 / 25 | 63 / 63 |
 | Unspent DP | 2 | 0 | 0 |
-| Learned action choices (Main / Maneuver / Reaction) | 1 / 2 / 0 | 2 / 3 / 0 | 3 / 4 / 0 |
-| Known book spells (free / paid) | 8 (3 / 5) | 10 (3 / 7) | 40 (4 / 36) |
+| Learned action choices (Main / Maneuver / Reaction) | 1 / 2 / 0 | 2 / 3 / 0 | 3 / 3 / 0 |
+| Known book spells (free / paid) | 8 (3 / 5) | 10 (3 / 7) | 31 (4 / 27) |
 | Shared reserve: casts at 2 SP | 3 | 5 | 9 |
 | Shared reserve: casts at 5 SP | 1 | 2 | 3 |
 | Extra SP from one recovery rest | 0 | 0 | 0 |
@@ -164,20 +164,18 @@ Once per scene, the ally makes one Basic Melee or Basic Ranged attack with its a
 | Common Ground III (`influence:negotiation:6`) | 4 | 3 |
 | Emotion III (`emotion:2`) | 2 | 3 |
 | A Treaty in Common Words (`influence:negotiation:7`) | 5 | 7 |
+| Dreams I (`dreams:0`) | 1 | 7 |
+| Dreams II (`dreams:1`) | 2 | 7 |
+| Dreams III (`dreams:2`) | 2 | 7 |
+| Oneiric Paths (`dreams:3`) | 3 | 7 |
+| Lord Dream (`dreams:4`) | 4 | 7 |
+| Weird (`dreams:5`) | 4 | 7 |
+| Astral Projection (`dreams:6`) | 5 | 7 |
 | Heartstrings (`emotion:3`) | 3 | 7 |
 | Perception II (`perception:1`) | 2 | 7 |
 | Perception III (`perception:2`) | 2 | 7 |
 | Waking Phantasms (`perception:3`) | 3 | 7 |
 | Thought II (`thought:1`) | 2 | 7 |
-| Thought III (`thought:2`) | 2 | 7 |
-| Sheltering Guard II (`guard:shelter:2`) | 2 | 7 |
-| Sheltering Guard III (`guard:shelter:3`) | 2 | 7 |
-| Shield Canopy I (`guard:shelter:4`) | 3 | 7 |
-| Dreams I (`dreams:0`) | 1 | 7 |
-| Dreams II (`dreams:1`) | 2 | 7 |
-| Dreams III (`dreams:2`) | 2 | 7 |
-| Oneiric Paths (`dreams:3`) | 3 | 7 |
-| Foresight — Oracle’s Dream (`mastery:foresight-oracles-dream`) | 4 | 7 |
 
 **Signature choices:** level 1: Follow My Signal; level 3: Press the Opening; level 7: Coordinated Rush.
 
@@ -233,18 +231,19 @@ Once per scene, the ally makes one Basic Melee or Basic Ranged attack with its a
 
 - **Make the Case I:** Main Action · Reason for a brief appeal, or one exchange for a longer discussion. Present a credible argument or offer to someone who understands you; add 1/2/3 progress toward the social objective established by the DA. Make the Case adds 1/3/4 progress. Once per objective, new evidence directly addressing the listener’s stated concern adds 1 extra progress to Make the Case.
 - **Steady Voice I:** Maneuver. One willing ally within 4 squares who hears and understands your reassurance reduces Frightened by 1. No roll.
-- **Sheltering Guard I:** Maneuver. Choose one willing adjacent ally. Until your next turn starts it gains 1 Boon on ranged defenses while adjacent. Reusing this technique replaces its previous effect. No roll. Sheltering Guard can protect two adjacent allies. Sheltering Guard also gives each protected ally Stability 1 while adjacent.
+- **Sheltering Guard I:** Maneuver. Choose one willing adjacent ally. Until your next turn starts it gains 1 Boon on ranged defenses while adjacent. Reusing this technique replaces its previous effect. No roll.
 - **Common Ground I:** Main Action · Reason for a brief proposal, or one exchange for detailed terms. Propose common terms to two willing negotiating sides who understand you. Roll once; add 1/2/3 progress to each side’s separate acceptance objective. Each side retains its established boundaries. Common Ground adds 1/3/4 progress to each objective. Common Ground can address three willing negotiating sides with separate objectives.
 - **A Treaty in Common Words:** 30 minutes · Reason. With willing representatives of up to three sides and a working language, interpreter or shared reference text, formulate one concrete agreement. Roll once; add 3/5/7 progress to each side’s acceptance objective. On completion the DA states that side’s commitments and known reservations plainly. A shared reference permits simple terms; complex terms need adequate translation. No side accepts impossible terms, and the agreement is not magical enforcement.
-- **Shield Canopy I:** Maneuver. Until your next turn starts, you and up to three willing adjacent allies reduce ranged attack damage by 2 after resistance while they remain adjacent. Reusing this technique replaces its previous effect. No roll.
 
-**Known book spells:** Vicious Mockery (Main Action; SP 0); Heroism (Main Action; SP 1); Charm Person (Main Action; SP 1); Calm Emotions (Main Action; SP 2); Minor Illusion (Maneuver; SP 0); Silent Image (Main Action; SP 1); Message (Maneuver; SP 0); Comprehend Languages (Ritual; SP 1); Suggestion (Main Action; SP 2); Fear (Main Action; SP 3); Charm Monster (Main Action; SP 3); Confusion (Main Action; SP 4); Mass Suggestion (Main Action; SP 5); Dominate Person (Main Action; SP 5); Antipathy/Sympathy (Ritual; SP 5); Disguise Self (Main Action; SP 1); Mirror Image (Main Action; SP 2); Invisibility (Main Action; SP 2); Major Image (Main Action; SP 3); Greater Invisibility (Main Action; SP 3); Hallucinatory Terrain (Ritual; SP 4); Mislead (Main Action; SP 5); Seeming (Ritual; SP 5); Programmed Illusion (Ritual; SP 5); Detect Thoughts (Main Action; SP 1); Tongues (Main Action; SP 2); Sending (Ritual; SP 2); Telepathic Bond (Ritual; SP 3); Dreams (Maneuver; SP 0); Sleep (Main Action; SP 1); Dream Message (Ritual; SP 1); Phantasmal Force (Main Action; SP 2); Hypnotic Pattern (Main Action; SP 2); Phantasmal Killer (Main Action; SP 3); Dream (Ritual; SP 3); Sign of Sleep (Ritual; SP 4); Lord Dream (Ritual; SP 5); Weird (Main Action; SP 5); Astral Projection (Ritual; SP 5); Foresight — Oracle’s Dream (Ritual; SP 6).
+**Known book spells:** Vicious Mockery (Main Action; SP 0); Heroism (Main Action; SP 1); Charm Person (Main Action; SP 1); Calm Emotions (Main Action; SP 2); Minor Illusion (Maneuver; SP 0); Silent Image (Main Action; SP 1); Message (Maneuver; SP 0); Comprehend Languages (Ritual; SP 1); Suggestion (Main Action; SP 2); Fear (Main Action; SP 3); Dreams (Maneuver; SP 0); Sleep (Main Action; SP 1); Dream Message (Ritual; SP 1); Phantasmal Force (Main Action; SP 2); Hypnotic Pattern (Main Action; SP 2); Phantasmal Killer (Main Action; SP 3); Dream (Ritual; SP 3); Sign of Sleep (Ritual; SP 4); Lord Dream (Ritual; SP 5); Weird (Main Action; SP 5); Astral Projection (Ritual; SP 6); Charm Monster (Main Action; SP 3); Confusion (Main Action; SP 4); Disguise Self (Main Action; SP 1); Mirror Image (Main Action; SP 2); Invisibility (Main Action; SP 2); Major Image (Main Action; SP 3); Greater Invisibility (Main Action; SP 3); Hallucinatory Terrain (Ritual; SP 4); Detect Thoughts (Main Action; SP 1); Tongues (Main Action; SP 2).
 
 **Spell output:** Alternative uses of the same reserve, not simultaneous allocations. Assumes SP is spent before recovery; time, spell-specific limits, components and maintained actions still apply. Signature spells and conditional discounts are described separately. At costs 1/2/3/5 SP, the full reserve funds 19/9/6/3 casts respectively; with the learned once-per-rest recovery it funds 19/9/6/3. Zero-SP spells remain limited by actions and circumstances.
 
 ## Deferred choices
 
 - Level 3: Heartstrings — Costs 3 DP. You have 0 DP.
+- Level 7: Thought III — Costs 2 DP. You have 0 DP.
+- Level 7: Sheltering Guard II — Costs 2 DP. You have 0 DP.
 
 ## Playtest questions
 
