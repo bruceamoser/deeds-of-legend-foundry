@@ -2,7 +2,7 @@
 
 Bruce authorized this rewrite after reading the ancestry/signature audits and thirteen trope Build-Offs. [#299](https://github.com/bruceamoser/heroes-of-legend-foundry/issues/299) tracks delivery; [book #1328](https://github.com/bruceamoser/heroes-of-legend/issues/1328) tracks authored sources. Native Foundry follows completion of the books and published Workshop, rather than changing in parallel.
 
-The source contract and draft reader explanations are authored in the book repository at `design/reviews/rewrite-299-contract.md` and `design/reviews/rewrite-299-player-rules-draft.md`. They separate Bruce's approved architecture from proposed numerical/content details. The Workshop's existing live engine is still the published baseline until those changes are integrated and tested.
+The source contract and draft reader explanations are authored in the book repository at `design/revision/rewrite-299-contract.md` and `design/revision/rewrite-299-player-rules-draft.md`. They separate Bruce's approved architecture from proposed numerical/content details. The Workshop's existing live engine is still the published baseline until those changes are integrated and tested.
 
 ## Work sequence
 
