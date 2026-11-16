@@ -1,0 +1,1160 @@
+{
+  "status": "Analysis only. Candidate B is recommended, not an approved live rule.",
+  "inputs": {
+    "attributeBounds": [
+      -2,
+      2
+    ],
+    "attributeTotal": 3,
+    "startingFormula": "8 + Guile + Knowledge + Reason",
+    "laterAward": "4 + new level",
+    "freeStartingDisciplines": 3,
+    "additionalEntry": "Current complete class-price matrix, 1/2/3 DP",
+    "nonmagicalGates": [
+      1,
+      1,
+      1,
+      3,
+      3,
+      3,
+      7
+    ],
+    "unchangedFirstFourPrices": [
+      1,
+      2,
+      2,
+      3
+    ],
+    "magicalFourSectionPrices": [
+      1,
+      2,
+      2,
+      3
+    ],
+    "interDisciplineIntersections": "Removed by user direction; no combination-node DP included.",
+    "traits": "No trait bonuses in the general range. Current Build-Off characters have no DP-granting traits.",
+    "scope": "No new ability effects assumed; level3/7 completion is purely financial and preserves all current Build-Off purchases."
+  },
+  "assignments": 1246,
+  "distribution": [
+    {
+      "mentalSum": -3,
+      "startingDp": 5,
+      "assignments": 10,
+      "level3": 18,
+      "level7": 56
+    },
+    {
+      "mentalSum": -2,
+      "startingDp": 6,
+      "assignments": 45,
+      "level3": 19,
+      "level7": 57
+    },
+    {
+      "mentalSum": -1,
+      "startingDp": 7,
+      "assignments": 108,
+      "level3": 20,
+      "level7": 58
+    },
+    {
+      "mentalSum": 0,
+      "startingDp": 8,
+      "assignments": 190,
+      "level3": 21,
+      "level7": 59
+    },
+    {
+      "mentalSum": 1,
+      "startingDp": 9,
+      "assignments": 270,
+      "level3": 22,
+      "level7": 60
+    },
+    {
+      "mentalSum": 2,
+      "startingDp": 10,
+      "assignments": 270,
+      "level3": 23,
+      "level7": 61
+    },
+    {
+      "mentalSum": 3,
+      "startingDp": 11,
+      "assignments": 190,
+      "level3": 24,
+      "level7": 62
+    },
+    {
+      "mentalSum": 4,
+      "startingDp": 12,
+      "assignments": 108,
+      "level3": 25,
+      "level7": 63
+    },
+    {
+      "mentalSum": 5,
+      "startingDp": 13,
+      "assignments": 45,
+      "level3": 26,
+      "level7": 64
+    },
+    {
+      "mentalSum": 6,
+      "startingDp": 14,
+      "assignments": 10,
+      "level3": 27,
+      "level7": 65
+    }
+  ],
+  "classRanges": [
+    {
+      "id": "class-arcanist",
+      "name": "Arcanist",
+      "minimumAttributes": [
+        "agility",
+        "knowledge"
+      ],
+      "assignments": 678,
+      "mentalMin": -3,
+      "mentalMax": 6,
+      "startingMin": 5,
+      "startingMax": 14,
+      "entryCosts": {
+        "1": 3,
+        "2": 4,
+        "3": 12
+      }
+    },
+    {
+      "id": "class-blade",
+      "name": "Blade",
+      "minimumAttributes": [
+        "agility",
+        "brawn"
+      ],
+      "assignments": 678,
+      "mentalMin": -3,
+      "mentalMax": 5,
+      "startingMin": 5,
+      "startingMax": 13,
+      "entryCosts": {
+        "1": 2,
+        "2": 2,
+        "3": 15
+      }
+    },
+    {
+      "id": "class-intellect",
+      "name": "Intellect",
+      "minimumAttributes": [
+        "knowledge",
+        "reason"
+      ],
+      "assignments": 678,
+      "mentalMin": -2,
+      "mentalMax": 6,
+      "startingMin": 6,
+      "startingMax": 14,
+      "entryCosts": {
+        "1": 2,
+        "2": 5,
+        "3": 12
+      }
+    },
+    {
+      "id": "class-leader",
+      "name": "Leader",
+      "minimumAttributes": [
+        "guile",
+        "fortitude"
+      ],
+      "assignments": 678,
+      "mentalMin": -3,
+      "mentalMax": 6,
+      "startingMin": 5,
+      "startingMax": 14,
+      "entryCosts": {
+        "1": 2,
+        "2": 4,
+        "3": 13
+      }
+    },
+    {
+      "id": "class-odd",
+      "name": "Odd",
+      "minimumAttributes": [],
+      "assignments": 1246,
+      "mentalMin": -3,
+      "mentalMax": 6,
+      "startingMin": 5,
+      "startingMax": 14,
+      "entryCosts": {
+        "1": 0,
+        "2": 19,
+        "3": 0
+      }
+    },
+    {
+      "id": "class-protector",
+      "name": "Protector",
+      "minimumAttributes": [
+        "fortitude",
+        "reason"
+      ],
+      "assignments": 678,
+      "mentalMin": -3,
+      "mentalMax": 6,
+      "startingMin": 5,
+      "startingMax": 14,
+      "entryCosts": {
+        "1": 2,
+        "2": 3,
+        "3": 14
+      }
+    },
+    {
+      "id": "class-shadow",
+      "name": "Shadow",
+      "minimumAttributes": [
+        "agility",
+        "guile"
+      ],
+      "assignments": 678,
+      "mentalMin": -3,
+      "mentalMax": 6,
+      "startingMin": 5,
+      "startingMax": 14,
+      "entryCosts": {
+        "1": 2,
+        "2": 3,
+        "3": 14
+      }
+    },
+    {
+      "id": "class-shepherd",
+      "name": "Shepherd",
+      "minimumAttributes": [
+        "reason",
+        "guile"
+      ],
+      "assignments": 678,
+      "mentalMin": -2,
+      "mentalMax": 6,
+      "startingMin": 6,
+      "startingMax": 14,
+      "entryCosts": {
+        "1": 2,
+        "2": 4,
+        "3": 13
+      }
+    },
+    {
+      "id": "class-unbalanced",
+      "name": "Unbalanced",
+      "minimumAttributes": [
+        "brawn",
+        "fortitude"
+      ],
+      "assignments": 678,
+      "mentalMin": -3,
+      "mentalMax": 5,
+      "startingMin": 5,
+      "startingMax": 13,
+      "entryCosts": {
+        "1": 2,
+        "2": 2,
+        "3": 15
+      }
+    },
+    {
+      "id": "class-warden",
+      "name": "Warden",
+      "minimumAttributes": [
+        "fortitude",
+        "knowledge"
+      ],
+      "assignments": 678,
+      "mentalMin": -3,
+      "mentalMax": 6,
+      "startingMin": 5,
+      "startingMax": 14,
+      "entryCosts": {
+        "1": 2,
+        "2": 4,
+        "3": 13
+      }
+    }
+  ],
+  "costComparison": [
+    {
+      "id": "A",
+      "costs": [
+        1,
+        2,
+        2,
+        3,
+        2,
+        2,
+        3
+      ],
+      "cumulative": [
+        1,
+        3,
+        5,
+        8,
+        10,
+        12,
+        15
+      ],
+      "level1": 5,
+      "level3": 12,
+      "level7": 15,
+      "freshCompleteBranchCounts": {
+        "level3": [
+          1,
+          2
+        ],
+        "level7": [
+          3,
+          4
+        ]
+      }
+    },
+    {
+      "id": "B",
+      "costs": [
+        1,
+        2,
+        2,
+        3,
+        2,
+        3,
+        4
+      ],
+      "cumulative": [
+        1,
+        3,
+        5,
+        8,
+        10,
+        13,
+        17
+      ],
+      "level1": 5,
+      "level3": 13,
+      "level7": 17,
+      "freshCompleteBranchCounts": {
+        "level3": [
+          1,
+          2
+        ],
+        "level7": [
+          3,
+          3
+        ]
+      }
+    },
+    {
+      "id": "C",
+      "costs": [
+        1,
+        2,
+        2,
+        3,
+        3,
+        3,
+        5
+      ],
+      "cumulative": [
+        1,
+        3,
+        5,
+        8,
+        11,
+        14,
+        19
+      ],
+      "level1": 5,
+      "level3": 14,
+      "level7": 19,
+      "freshCompleteBranchCounts": {
+        "level3": [
+          1,
+          1
+        ],
+        "level7": [
+          2,
+          3
+        ]
+      }
+    }
+  ],
+  "magicalBreadth": {
+    "firstSectionCost": 1,
+    "spellsPerFirstSection": 2,
+    "threePureMagicalStartingDisciplines": {
+      "books": 12,
+      "dpForEveryFirstSection": 12,
+      "spellEntries": 24
+    },
+    "arcanistFourteenthPointExample": {
+      "freeDisciplines": [
+        "elements",
+        "invocation",
+        "force"
+      ],
+      "additionalDiscipline": "spellcraft",
+      "entryCost": 1,
+      "channelingFirstSectionCost": 1,
+      "totalDp": 14,
+      "spellEntries": 26
+    },
+    "fullBookCost": 8,
+    "spellsPerFullBook": 11
+  },
+  "buildBudgets": [
+    {
+      "id": "barbarian",
+      "name": "Harka Stormshoulder",
+      "class": "Unbalanced",
+      "mentalSum": -1,
+      "starting": 7,
+      "level3": 20,
+      "level7": 58,
+      "creationSpent": 7,
+      "creationSaved": 0,
+      "additionalAvailableAt3": 13,
+      "additionalAvailableAt7": 51,
+      "completionCeilings": {
+        "A": {
+          "level3": {
+            "completed": 1,
+            "additionalSpent": 7,
+            "available": 13,
+            "remaining": 6
+          },
+          "level7": {
+            "completed": 3,
+            "additionalSpent": 38,
+            "available": 51,
+            "remaining": 13
+          }
+        },
+        "B": {
+          "level3": {
+            "completed": 1,
+            "additionalSpent": 8,
+            "available": 13,
+            "remaining": 5
+          },
+          "level7": {
+            "completed": 3,
+            "additionalSpent": 44,
+            "available": 51,
+            "remaining": 7
+          }
+        },
+        "C": {
+          "level3": {
+            "completed": 1,
+            "additionalSpent": 9,
+            "available": 13,
+            "remaining": 4
+          },
+          "level7": {
+            "completed": 3,
+            "additionalSpent": 50,
+            "available": 51,
+            "remaining": 1
+          }
+        }
+      }
+    },
+    {
+      "id": "bard",
+      "name": "Lysa Silverstring",
+      "class": "Leader",
+      "mentalSum": 4,
+      "starting": 12,
+      "level3": 25,
+      "level7": 63,
+      "creationSpent": 12,
+      "creationSaved": 0,
+      "additionalAvailableAt3": 13,
+      "additionalAvailableAt7": 51,
+      "completionCeilings": {
+        "A": {
+          "level3": {
+            "completed": 1,
+            "additionalSpent": 9,
+            "available": 13,
+            "remaining": 4
+          },
+          "level7": {
+            "completed": 3,
+            "additionalSpent": 40,
+            "available": 51,
+            "remaining": 11
+          }
+        },
+        "B": {
+          "level3": {
+            "completed": 1,
+            "additionalSpent": 10,
+            "available": 13,
+            "remaining": 3
+          },
+          "level7": {
+            "completed": 3,
+            "additionalSpent": 46,
+            "available": 51,
+            "remaining": 5
+          }
+        },
+        "C": {
+          "level3": {
+            "completed": 1,
+            "additionalSpent": 11,
+            "available": 13,
+            "remaining": 2
+          },
+          "level7": {
+            "completed": 2,
+            "additionalSpent": 34,
+            "available": 51,
+            "remaining": 17
+          }
+        }
+      }
+    },
+    {
+      "id": "cleric",
+      "name": "Brunna Hearthward",
+      "class": "Shepherd",
+      "mentalSum": 2,
+      "starting": 10,
+      "level3": 23,
+      "level7": 61,
+      "creationSpent": 9,
+      "creationSaved": 1,
+      "additionalAvailableAt3": 14,
+      "additionalAvailableAt7": 52,
+      "completionCeilings": {
+        "A": {
+          "level3": {
+            "completed": 1,
+            "additionalSpent": 11,
+            "available": 14,
+            "remaining": 3
+          },
+          "level7": {
+            "completed": 3,
+            "additionalSpent": 44,
+            "available": 52,
+            "remaining": 8
+          }
+        },
+        "B": {
+          "level3": {
+            "completed": 1,
+            "additionalSpent": 12,
+            "available": 14,
+            "remaining": 2
+          },
+          "level7": {
+            "completed": 3,
+            "additionalSpent": 50,
+            "available": 52,
+            "remaining": 2
+          }
+        },
+        "C": {
+          "level3": {
+            "completed": 1,
+            "additionalSpent": 13,
+            "available": 14,
+            "remaining": 1
+          },
+          "level7": {
+            "completed": 2,
+            "additionalSpent": 37,
+            "available": 52,
+            "remaining": 15
+          }
+        }
+      }
+    },
+    {
+      "id": "druid",
+      "name": "Thalen Reedwalker",
+      "class": "Shepherd",
+      "mentalSum": 2,
+      "starting": 10,
+      "level3": 23,
+      "level7": 61,
+      "creationSpent": 10,
+      "creationSaved": 0,
+      "additionalAvailableAt3": 13,
+      "additionalAvailableAt7": 51,
+      "completionCeilings": {
+        "A": {
+          "level3": {
+            "completed": 1,
+            "additionalSpent": 11,
+            "available": 13,
+            "remaining": 2
+          },
+          "level7": {
+            "completed": 3,
+            "additionalSpent": 44,
+            "available": 51,
+            "remaining": 7
+          }
+        },
+        "B": {
+          "level3": {
+            "completed": 1,
+            "additionalSpent": 12,
+            "available": 13,
+            "remaining": 1
+          },
+          "level7": {
+            "completed": 3,
+            "additionalSpent": 50,
+            "available": 51,
+            "remaining": 1
+          }
+        },
+        "C": {
+          "level3": {
+            "completed": 1,
+            "additionalSpent": 13,
+            "available": 13,
+            "remaining": 0
+          },
+          "level7": {
+            "completed": 2,
+            "additionalSpent": 37,
+            "available": 51,
+            "remaining": 14
+          }
+        }
+      }
+    },
+    {
+      "id": "fighter",
+      "name": "Corin Ashguard",
+      "class": "Blade",
+      "mentalSum": 0,
+      "starting": 8,
+      "level3": 21,
+      "level7": 59,
+      "creationSpent": 8,
+      "creationSaved": 0,
+      "additionalAvailableAt3": 13,
+      "additionalAvailableAt7": 51,
+      "completionCeilings": {
+        "A": {
+          "level3": {
+            "completed": 1,
+            "additionalSpent": 9,
+            "available": 13,
+            "remaining": 4
+          },
+          "level7": {
+            "completed": 3,
+            "additionalSpent": 38,
+            "available": 51,
+            "remaining": 13
+          }
+        },
+        "B": {
+          "level3": {
+            "completed": 1,
+            "additionalSpent": 10,
+            "available": 13,
+            "remaining": 3
+          },
+          "level7": {
+            "completed": 3,
+            "additionalSpent": 44,
+            "available": 51,
+            "remaining": 7
+          }
+        },
+        "C": {
+          "level3": {
+            "completed": 1,
+            "additionalSpent": 11,
+            "available": 13,
+            "remaining": 2
+          },
+          "level7": {
+            "completed": 3,
+            "additionalSpent": 50,
+            "available": 51,
+            "remaining": 1
+          }
+        }
+      }
+    },
+    {
+      "id": "monk",
+      "name": "Sera Quietstep",
+      "class": "Blade",
+      "mentalSum": -1,
+      "starting": 7,
+      "level3": 20,
+      "level7": 58,
+      "creationSpent": 7,
+      "creationSaved": 0,
+      "additionalAvailableAt3": 13,
+      "additionalAvailableAt7": 51,
+      "completionCeilings": {
+        "A": {
+          "level3": {
+            "completed": 1,
+            "additionalSpent": 9,
+            "available": 13,
+            "remaining": 4
+          },
+          "level7": {
+            "completed": 3,
+            "additionalSpent": 38,
+            "available": 51,
+            "remaining": 13
+          }
+        },
+        "B": {
+          "level3": {
+            "completed": 1,
+            "additionalSpent": 10,
+            "available": 13,
+            "remaining": 3
+          },
+          "level7": {
+            "completed": 3,
+            "additionalSpent": 44,
+            "available": 51,
+            "remaining": 7
+          }
+        },
+        "C": {
+          "level3": {
+            "completed": 1,
+            "additionalSpent": 11,
+            "available": 13,
+            "remaining": 2
+          },
+          "level7": {
+            "completed": 3,
+            "additionalSpent": 50,
+            "available": 51,
+            "remaining": 1
+          }
+        }
+      }
+    },
+    {
+      "id": "paladin",
+      "name": "Aldren Vowkeeper",
+      "class": "Protector",
+      "mentalSum": 0,
+      "starting": 8,
+      "level3": 21,
+      "level7": 59,
+      "creationSpent": 8,
+      "creationSaved": 0,
+      "additionalAvailableAt3": 13,
+      "additionalAvailableAt7": 51,
+      "completionCeilings": {
+        "A": {
+          "level3": {
+            "completed": 1,
+            "additionalSpent": 11,
+            "available": 13,
+            "remaining": 2
+          },
+          "level7": {
+            "completed": 3,
+            "additionalSpent": 42,
+            "available": 51,
+            "remaining": 9
+          }
+        },
+        "B": {
+          "level3": {
+            "completed": 1,
+            "additionalSpent": 12,
+            "available": 13,
+            "remaining": 1
+          },
+          "level7": {
+            "completed": 3,
+            "additionalSpent": 48,
+            "available": 51,
+            "remaining": 3
+          }
+        },
+        "C": {
+          "level3": {
+            "completed": 1,
+            "additionalSpent": 13,
+            "available": 13,
+            "remaining": 0
+          },
+          "level7": {
+            "completed": 2,
+            "additionalSpent": 36,
+            "available": 51,
+            "remaining": 15
+          }
+        }
+      }
+    },
+    {
+      "id": "ranger",
+      "name": "Eryn Mossarrow",
+      "class": "Warden",
+      "mentalSum": 0,
+      "starting": 8,
+      "level3": 21,
+      "level7": 59,
+      "creationSpent": 8,
+      "creationSaved": 0,
+      "additionalAvailableAt3": 13,
+      "additionalAvailableAt7": 51,
+      "completionCeilings": {
+        "A": {
+          "level3": {
+            "completed": 1,
+            "additionalSpent": 9,
+            "available": 13,
+            "remaining": 4
+          },
+          "level7": {
+            "completed": 3,
+            "additionalSpent": 40,
+            "available": 51,
+            "remaining": 11
+          }
+        },
+        "B": {
+          "level3": {
+            "completed": 1,
+            "additionalSpent": 10,
+            "available": 13,
+            "remaining": 3
+          },
+          "level7": {
+            "completed": 3,
+            "additionalSpent": 46,
+            "available": 51,
+            "remaining": 5
+          }
+        },
+        "C": {
+          "level3": {
+            "completed": 1,
+            "additionalSpent": 11,
+            "available": 13,
+            "remaining": 2
+          },
+          "level7": {
+            "completed": 2,
+            "additionalSpent": 34,
+            "available": 51,
+            "remaining": 17
+          }
+        }
+      }
+    },
+    {
+      "id": "rogue",
+      "name": "Pip Nightjar",
+      "class": "Shadow",
+      "mentalSum": 1,
+      "starting": 9,
+      "level3": 22,
+      "level7": 60,
+      "creationSpent": 9,
+      "creationSaved": 0,
+      "additionalAvailableAt3": 13,
+      "additionalAvailableAt7": 51,
+      "completionCeilings": {
+        "A": {
+          "level3": {
+            "completed": 1,
+            "additionalSpent": 7,
+            "available": 13,
+            "remaining": 6
+          },
+          "level7": {
+            "completed": 3,
+            "additionalSpent": 38,
+            "available": 51,
+            "remaining": 13
+          }
+        },
+        "B": {
+          "level3": {
+            "completed": 1,
+            "additionalSpent": 8,
+            "available": 13,
+            "remaining": 5
+          },
+          "level7": {
+            "completed": 3,
+            "additionalSpent": 44,
+            "available": 51,
+            "remaining": 7
+          }
+        },
+        "C": {
+          "level3": {
+            "completed": 1,
+            "additionalSpent": 9,
+            "available": 13,
+            "remaining": 4
+          },
+          "level7": {
+            "completed": 3,
+            "additionalSpent": 50,
+            "available": 51,
+            "remaining": 1
+          }
+        }
+      }
+    },
+    {
+      "id": "sorcerer",
+      "name": "Ilyra Cinderblood",
+      "class": "Arcanist",
+      "mentalSum": 2,
+      "starting": 10,
+      "level3": 23,
+      "level7": 61,
+      "creationSpent": 10,
+      "creationSaved": 0,
+      "additionalAvailableAt3": 13,
+      "additionalAvailableAt7": 51,
+      "completionCeilings": {
+        "A": {
+          "level3": {
+            "completed": 0,
+            "additionalSpent": 0,
+            "available": 13,
+            "remaining": 13
+          },
+          "level7": {
+            "completed": 3,
+            "additionalSpent": 47,
+            "available": 51,
+            "remaining": 4
+          }
+        },
+        "B": {
+          "level3": {
+            "completed": 0,
+            "additionalSpent": 0,
+            "available": 13,
+            "remaining": 13
+          },
+          "level7": {
+            "completed": 2,
+            "additionalSpent": 36,
+            "available": 51,
+            "remaining": 15
+          }
+        },
+        "C": {
+          "level3": {
+            "completed": 0,
+            "additionalSpent": 0,
+            "available": 13,
+            "remaining": 13
+          },
+          "level7": {
+            "completed": 2,
+            "additionalSpent": 40,
+            "available": 51,
+            "remaining": 11
+          }
+        }
+      }
+    },
+    {
+      "id": "warlock",
+      "name": "Vesper Ashpact",
+      "class": "Odd",
+      "mentalSum": 1,
+      "starting": 9,
+      "level3": 22,
+      "level7": 60,
+      "creationSpent": 9,
+      "creationSaved": 0,
+      "additionalAvailableAt3": 13,
+      "additionalAvailableAt7": 51,
+      "completionCeilings": {
+        "A": {
+          "level3": {
+            "completed": 0,
+            "additionalSpent": 0,
+            "available": 13,
+            "remaining": 13
+          },
+          "level7": {
+            "completed": 3,
+            "additionalSpent": 47,
+            "available": 51,
+            "remaining": 4
+          }
+        },
+        "B": {
+          "level3": {
+            "completed": 0,
+            "additionalSpent": 0,
+            "available": 13,
+            "remaining": 13
+          },
+          "level7": {
+            "completed": 2,
+            "additionalSpent": 36,
+            "available": 51,
+            "remaining": 15
+          }
+        },
+        "C": {
+          "level3": {
+            "completed": 0,
+            "additionalSpent": 0,
+            "available": 13,
+            "remaining": 13
+          },
+          "level7": {
+            "completed": 2,
+            "additionalSpent": 40,
+            "available": 51,
+            "remaining": 11
+          }
+        }
+      }
+    },
+    {
+      "id": "wizard",
+      "name": "Vaelis Quillstar",
+      "class": "Arcanist",
+      "mentalSum": 3,
+      "starting": 11,
+      "level3": 24,
+      "level7": 62,
+      "creationSpent": 11,
+      "creationSaved": 0,
+      "additionalAvailableAt3": 13,
+      "additionalAvailableAt7": 51,
+      "completionCeilings": {
+        "A": {
+          "level3": {
+            "completed": 1,
+            "additionalSpent": 11,
+            "available": 13,
+            "remaining": 2
+          },
+          "level7": {
+            "completed": 3,
+            "additionalSpent": 44,
+            "available": 51,
+            "remaining": 7
+          }
+        },
+        "B": {
+          "level3": {
+            "completed": 1,
+            "additionalSpent": 12,
+            "available": 13,
+            "remaining": 1
+          },
+          "level7": {
+            "completed": 3,
+            "additionalSpent": 50,
+            "available": 51,
+            "remaining": 1
+          }
+        },
+        "C": {
+          "level3": {
+            "completed": 1,
+            "additionalSpent": 13,
+            "available": 13,
+            "remaining": 0
+          },
+          "level7": {
+            "completed": 2,
+            "additionalSpent": 37,
+            "available": 51,
+            "remaining": 14
+          }
+        }
+      }
+    },
+    {
+      "id": "artificer",
+      "name": "Nim Coppercoil",
+      "class": "Intellect",
+      "mentalSum": 2,
+      "starting": 10,
+      "level3": 23,
+      "level7": 61,
+      "creationSpent": 10,
+      "creationSaved": 0,
+      "additionalAvailableAt3": 13,
+      "additionalAvailableAt7": 51,
+      "completionCeilings": {
+        "A": {
+          "level3": {
+            "completed": 1,
+            "additionalSpent": 9,
+            "available": 13,
+            "remaining": 4
+          },
+          "level7": {
+            "completed": 3,
+            "additionalSpent": 41,
+            "available": 51,
+            "remaining": 10
+          }
+        },
+        "B": {
+          "level3": {
+            "completed": 1,
+            "additionalSpent": 10,
+            "available": 13,
+            "remaining": 3
+          },
+          "level7": {
+            "completed": 3,
+            "additionalSpent": 47,
+            "available": 51,
+            "remaining": 4
+          }
+        },
+        "C": {
+          "level3": {
+            "completed": 1,
+            "additionalSpent": 11,
+            "available": 13,
+            "remaining": 2
+          },
+          "level7": {
+            "completed": 2,
+            "additionalSpent": 34,
+            "available": 51,
+            "remaining": 17
+          }
+        }
+      }
+    }
+  ]
+}
