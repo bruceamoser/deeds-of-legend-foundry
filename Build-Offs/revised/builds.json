@@ -1,14 +1,14 @@
 {
   "rulesRevision": 299,
   "spellbookProgressionRevision": 310,
-  "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
+  "sourceCommit": "87f5141bd6e0da74a10c07b3239e975c7656430a",
   "workingTree": false,
   "builds": [
     {
       "id": "barbarian",
       "name": "Harka Stormshoulder",
       "level": 1,
-      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
+      "sourceCommit": "87f5141bd6e0da74a10c07b3239e975c7656430a",
       "workingTree": false,
       "draft": {
         "name": "Harka Stormshoulder",
@@ -323,7 +323,7 @@
       "id": "barbarian",
       "name": "Harka Stormshoulder",
       "level": 3,
-      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
+      "sourceCommit": "87f5141bd6e0da74a10c07b3239e975c7656430a",
       "workingTree": false,
       "draft": {
         "name": "Harka Stormshoulder",
@@ -727,7 +727,7 @@
       "id": "barbarian",
       "name": "Harka Stormshoulder",
       "level": 7,
-      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
+      "sourceCommit": "87f5141bd6e0da74a10c07b3239e975c7656430a",
       "workingTree": false,
       "draft": {
         "name": "Harka Stormshoulder",
@@ -1324,7 +1324,7 @@
       "id": "bard",
       "name": "Lysa Silverstring",
       "level": 1,
-      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
+      "sourceCommit": "87f5141bd6e0da74a10c07b3239e975c7656430a",
       "workingTree": false,
       "draft": {
         "name": "Lysa Silverstring",
@@ -1718,7 +1718,7 @@
       "id": "bard",
       "name": "Lysa Silverstring",
       "level": 3,
-      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
+      "sourceCommit": "87f5141bd6e0da74a10c07b3239e975c7656430a",
       "workingTree": false,
       "draft": {
         "name": "Lysa Silverstring",
@@ -2235,7 +2235,7 @@
       "id": "bard",
       "name": "Lysa Silverstring",
       "level": 7,
-      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
+      "sourceCommit": "87f5141bd6e0da74a10c07b3239e975c7656430a",
       "workingTree": false,
       "draft": {
         "name": "Lysa Silverstring",
@@ -3132,7 +3132,7 @@
       "id": "cleric",
       "name": "Brunna Hearthward",
       "level": 1,
-      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
+      "sourceCommit": "87f5141bd6e0da74a10c07b3239e975c7656430a",
       "workingTree": false,
       "draft": {
         "name": "Brunna Hearthward",
@@ -3484,7 +3484,7 @@
       "id": "cleric",
       "name": "Brunna Hearthward",
       "level": 3,
-      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
+      "sourceCommit": "87f5141bd6e0da74a10c07b3239e975c7656430a",
       "workingTree": false,
       "draft": {
         "name": "Brunna Hearthward",
@@ -4004,7 +4004,7 @@
       "id": "cleric",
       "name": "Brunna Hearthward",
       "level": 7,
-      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
+      "sourceCommit": "87f5141bd6e0da74a10c07b3239e975c7656430a",
       "workingTree": false,
       "draft": {
         "name": "Brunna Hearthward",
@@ -4824,7 +4824,7 @@
       "id": "druid",
       "name": "Thalen Reedwalker",
       "level": 1,
-      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
+      "sourceCommit": "87f5141bd6e0da74a10c07b3239e975c7656430a",
       "workingTree": false,
       "draft": {
         "name": "Thalen Reedwalker",
@@ -5122,7 +5122,7 @@
           "action": "Ritual",
           "sp": 1,
           "duration": "24 hours",
-          "effect": "Each berry nourishes one creature for one meal when eaten. A berry is consumed by eating it and retains its ordinary Bulk. Food and hunger use this nourishment; HP recovery follows healing spells and treatment."
+          "effect": "Use a Maneuver and a free hand to eat one enchanted berry, restoring 1 HP and receiving nourishment for one meal. You may instead feed it to an adjacent willing living creature; use the recipient and Reaction rules of Use a Healing Potion. The berry is consumed, with no inventory die roll. Apply the normal magical-healing rules. Each berry keeps its magic for 24 hours after the ritual and retains its ordinary Bulk."
         },
         {
           "id": "spell:growth:4",
@@ -5222,7 +5222,7 @@
       "id": "druid",
       "name": "Thalen Reedwalker",
       "level": 3,
-      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
+      "sourceCommit": "87f5141bd6e0da74a10c07b3239e975c7656430a",
       "workingTree": false,
       "draft": {
         "name": "Thalen Reedwalker",
@@ -5619,7 +5619,7 @@
           "action": "Ritual",
           "sp": 1,
           "duration": "24 hours",
-          "effect": "Each berry nourishes one creature for one meal when eaten. A berry is consumed by eating it and retains its ordinary Bulk. Food and hunger use this nourishment; HP recovery follows healing spells and treatment."
+          "effect": "Use a Maneuver and a free hand to eat one enchanted berry, restoring 1 HP and receiving nourishment for one meal. You may instead feed it to an adjacent willing living creature; use the recipient and Reaction rules of Use a Healing Potion. The berry is consumed, with no inventory die roll. Apply the normal magical-healing rules. Each berry keeps its magic for 24 hours after the ritual and retains its ordinary Bulk."
         },
         {
           "id": "spell:growth:4",
@@ -5688,10 +5688,10 @@
         {
           "id": "spell:growth:6",
           "name": "Plant Growth",
-          "action": "Ritual",
+          "action": "Main Action",
           "sp": 3,
           "duration": "24 hours",
-          "effect": "Thicken the plants into difficult terrain. You may leave a connected walking path clear when casting. Alternatively, tend the same area for healthy seasonal growth; that use improves its next ordinary harvest rather than creating immediate food."
+          "effect": "Existing plants immediately swell into dense, tangled growth, making the affected squares difficult terrain. Use the normal difficult-terrain movement costs, including when crawling. Choose any squares to leave clear when casting, including paths through the growth. Creatures already there remain in place and can act normally. The growth lasts 24 hours without Sustain."
         },
         {
           "id": "spell:growth:7",
@@ -5785,7 +5785,7 @@
       "id": "druid",
       "name": "Thalen Reedwalker",
       "level": 7,
-      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
+      "sourceCommit": "87f5141bd6e0da74a10c07b3239e975c7656430a",
       "workingTree": false,
       "draft": {
         "name": "Thalen Reedwalker",
@@ -6367,7 +6367,7 @@
           "action": "Ritual",
           "sp": 1,
           "duration": "24 hours",
-          "effect": "Each berry nourishes one creature for one meal when eaten. A berry is consumed by eating it and retains its ordinary Bulk. Food and hunger use this nourishment; HP recovery follows healing spells and treatment."
+          "effect": "Use a Maneuver and a free hand to eat one enchanted berry, restoring 1 HP and receiving nourishment for one meal. You may instead feed it to an adjacent willing living creature; use the recipient and Reaction rules of Use a Healing Potion. The berry is consumed, with no inventory die roll. Apply the normal magical-healing rules. Each berry keeps its magic for 24 hours after the ritual and retains its ordinary Bulk."
         },
         {
           "id": "spell:growth:4",
@@ -6436,10 +6436,10 @@
         {
           "id": "spell:growth:6",
           "name": "Plant Growth",
-          "action": "Ritual",
+          "action": "Main Action",
           "sp": 3,
           "duration": "24 hours",
-          "effect": "Thicken the plants into difficult terrain. You may leave a connected walking path clear when casting. Alternatively, tend the same area for healthy seasonal growth; that use improves its next ordinary harvest rather than creating immediate food."
+          "effect": "Existing plants immediately swell into dense, tangled growth, making the affected squares difficult terrain. Use the normal difficult-terrain movement costs, including when crawling. Choose any squares to leave clear when casting, including paths through the growth. Creatures already there remain in place and can act normally. The growth lasts 24 hours without Sustain."
         },
         {
           "id": "spell:growth:7",
@@ -6636,7 +6636,7 @@
       "id": "fighter",
       "name": "Corin Ashguard",
       "level": 1,
-      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
+      "sourceCommit": "87f5141bd6e0da74a10c07b3239e975c7656430a",
       "workingTree": false,
       "draft": {
         "name": "Corin Ashguard",
@@ -6975,7 +6975,7 @@
       "id": "fighter",
       "name": "Corin Ashguard",
       "level": 3,
-      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
+      "sourceCommit": "87f5141bd6e0da74a10c07b3239e975c7656430a",
       "workingTree": false,
       "draft": {
         "name": "Corin Ashguard",
@@ -7409,7 +7409,7 @@
       "id": "fighter",
       "name": "Corin Ashguard",
       "level": 7,
-      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
+      "sourceCommit": "87f5141bd6e0da74a10c07b3239e975c7656430a",
       "workingTree": false,
       "draft": {
         "name": "Corin Ashguard",
@@ -8056,7 +8056,7 @@
       "id": "monk",
       "name": "Sera Quietstep",
       "level": 1,
-      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
+      "sourceCommit": "87f5141bd6e0da74a10c07b3239e975c7656430a",
       "workingTree": false,
       "draft": {
         "name": "Sera Quietstep",
@@ -8347,7 +8347,7 @@
       "id": "monk",
       "name": "Sera Quietstep",
       "level": 3,
-      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
+      "sourceCommit": "87f5141bd6e0da74a10c07b3239e975c7656430a",
       "workingTree": false,
       "draft": {
         "name": "Sera Quietstep",
@@ -8732,7 +8732,7 @@
       "id": "monk",
       "name": "Sera Quietstep",
       "level": 7,
-      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
+      "sourceCommit": "87f5141bd6e0da74a10c07b3239e975c7656430a",
       "workingTree": false,
       "draft": {
         "name": "Sera Quietstep",
@@ -9324,7 +9324,7 @@
       "id": "paladin",
       "name": "Aldren Vowkeeper",
       "level": 1,
-      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
+      "sourceCommit": "87f5141bd6e0da74a10c07b3239e975c7656430a",
       "workingTree": false,
       "draft": {
         "name": "Aldren Vowkeeper",
@@ -9669,7 +9669,7 @@
       "id": "paladin",
       "name": "Aldren Vowkeeper",
       "level": 3,
-      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
+      "sourceCommit": "87f5141bd6e0da74a10c07b3239e975c7656430a",
       "workingTree": false,
       "draft": {
         "name": "Aldren Vowkeeper",
@@ -10109,7 +10109,7 @@
       "id": "paladin",
       "name": "Aldren Vowkeeper",
       "level": 7,
-      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
+      "sourceCommit": "87f5141bd6e0da74a10c07b3239e975c7656430a",
       "workingTree": false,
       "draft": {
         "name": "Aldren Vowkeeper",
@@ -10824,7 +10824,7 @@
       "id": "ranger",
       "name": "Eryn Mossarrow",
       "level": 1,
-      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
+      "sourceCommit": "87f5141bd6e0da74a10c07b3239e975c7656430a",
       "workingTree": false,
       "draft": {
         "name": "Eryn Mossarrow",
@@ -11197,7 +11197,7 @@
       "id": "ranger",
       "name": "Eryn Mossarrow",
       "level": 3,
-      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
+      "sourceCommit": "87f5141bd6e0da74a10c07b3239e975c7656430a",
       "workingTree": false,
       "draft": {
         "name": "Eryn Mossarrow",
@@ -11665,7 +11665,7 @@
       "id": "ranger",
       "name": "Eryn Mossarrow",
       "level": 7,
-      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
+      "sourceCommit": "87f5141bd6e0da74a10c07b3239e975c7656430a",
       "workingTree": false,
       "draft": {
         "name": "Eryn Mossarrow",
@@ -12404,7 +12404,7 @@
       "id": "rogue",
       "name": "Pip Nightjar",
       "level": 1,
-      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
+      "sourceCommit": "87f5141bd6e0da74a10c07b3239e975c7656430a",
       "workingTree": false,
       "draft": {
         "name": "Pip Nightjar",
@@ -12743,7 +12743,7 @@
       "id": "rogue",
       "name": "Pip Nightjar",
       "level": 3,
-      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
+      "sourceCommit": "87f5141bd6e0da74a10c07b3239e975c7656430a",
       "workingTree": false,
       "draft": {
         "name": "Pip Nightjar",
@@ -13176,7 +13176,7 @@
       "id": "rogue",
       "name": "Pip Nightjar",
       "level": 7,
-      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
+      "sourceCommit": "87f5141bd6e0da74a10c07b3239e975c7656430a",
       "workingTree": false,
       "draft": {
         "name": "Pip Nightjar",
@@ -13812,7 +13812,7 @@
       "id": "sorcerer",
       "name": "Ilyra Cinderblood",
       "level": 1,
-      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
+      "sourceCommit": "87f5141bd6e0da74a10c07b3239e975c7656430a",
       "workingTree": false,
       "draft": {
         "name": "Ilyra Cinderblood",
@@ -14181,7 +14181,7 @@
       "id": "sorcerer",
       "name": "Ilyra Cinderblood",
       "level": 3,
-      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
+      "sourceCommit": "87f5141bd6e0da74a10c07b3239e975c7656430a",
       "workingTree": false,
       "draft": {
         "name": "Ilyra Cinderblood",
@@ -14687,7 +14687,7 @@
       "id": "sorcerer",
       "name": "Ilyra Cinderblood",
       "level": 7,
-      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
+      "sourceCommit": "87f5141bd6e0da74a10c07b3239e975c7656430a",
       "workingTree": false,
       "draft": {
         "name": "Ilyra Cinderblood",
@@ -15465,7 +15465,7 @@
       "id": "warlock",
       "name": "Vesper Ashpact",
       "level": 1,
-      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
+      "sourceCommit": "87f5141bd6e0da74a10c07b3239e975c7656430a",
       "workingTree": false,
       "draft": {
         "name": "Vesper Ashpact",
@@ -15806,7 +15806,7 @@
       "id": "warlock",
       "name": "Vesper Ashpact",
       "level": 3,
-      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
+      "sourceCommit": "87f5141bd6e0da74a10c07b3239e975c7656430a",
       "workingTree": false,
       "draft": {
         "name": "Vesper Ashpact",
@@ -16267,7 +16267,7 @@
       "id": "warlock",
       "name": "Vesper Ashpact",
       "level": 7,
-      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
+      "sourceCommit": "87f5141bd6e0da74a10c07b3239e975c7656430a",
       "workingTree": false,
       "draft": {
         "name": "Vesper Ashpact",
@@ -17068,7 +17068,7 @@
       "id": "wizard",
       "name": "Vaelis Quillstar",
       "level": 1,
-      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
+      "sourceCommit": "87f5141bd6e0da74a10c07b3239e975c7656430a",
       "workingTree": false,
       "draft": {
         "name": "Vaelis Quillstar",
@@ -17400,7 +17400,7 @@
           "action": "Ritual",
           "sp": 0,
           "duration": "Instant",
-          "effect": "Rejoin a small clean break or tear while holding all its pieces together. Restore ordinary function to that part. Missing components and substantial reconstruction use repair projects."
+          "effect": "Rejoin a small clean break or tear while holding all its pieces together. Restore ordinary function to that part. For an item with HP, the DA states before casting whether this small repair is sufficient and how many HP it restores, following the repair-objective rules. Missing components and substantial reconstruction use repair projects."
         },
         {
           "id": "spell:shaping:2",
@@ -17448,7 +17448,7 @@
           "action": "Maneuver",
           "sp": 0,
           "duration": "Instant",
-          "effect": "Sense whether an active magical effect is present on the target. Learn whether the strongest visible aura is protective, transformative, harmful or informative. Closely concealed sources require examination through stronger pages."
+          "effect": "Sense whether an active magical effect is present on the target. Learn whether the strongest visible aura is protective, transformative, harmful or informative. To investigate a concealed source, first expose it or use a spell that can examine it through the concealment."
         },
         {
           "id": "spell:detection:2",
@@ -17500,7 +17500,7 @@
       "id": "wizard",
       "name": "Vaelis Quillstar",
       "level": 3,
-      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
+      "sourceCommit": "87f5141bd6e0da74a10c07b3239e975c7656430a",
       "workingTree": false,
       "draft": {
         "name": "Vaelis Quillstar",
@@ -17917,7 +17917,7 @@
           "action": "Ritual",
           "sp": 0,
           "duration": "Instant",
-          "effect": "Rejoin a small clean break or tear while holding all its pieces together. Restore ordinary function to that part. Missing components and substantial reconstruction use repair projects."
+          "effect": "Rejoin a small clean break or tear while holding all its pieces together. Restore ordinary function to that part. For an item with HP, the DA states before casting whether this small repair is sufficient and how many HP it restores, following the repair-objective rules. Missing components and substantial reconstruction use repair projects."
         },
         {
           "id": "spell:shaping:2",
@@ -17965,7 +17965,7 @@
           "action": "Maneuver",
           "sp": 0,
           "duration": "Instant",
-          "effect": "Sense whether an active magical effect is present on the target. Learn whether the strongest visible aura is protective, transformative, harmful or informative. Closely concealed sources require examination through stronger pages."
+          "effect": "Sense whether an active magical effect is present on the target. Learn whether the strongest visible aura is protective, transformative, harmful or informative. To investigate a concealed source, first expose it or use a spell that can examine it through the concealment."
         },
         {
           "id": "spell:detection:2",
@@ -18058,7 +18058,7 @@
       "id": "wizard",
       "name": "Vaelis Quillstar",
       "level": 7,
-      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
+      "sourceCommit": "87f5141bd6e0da74a10c07b3239e975c7656430a",
       "workingTree": false,
       "draft": {
         "name": "Vaelis Quillstar",
@@ -18667,7 +18667,7 @@
           "action": "Ritual",
           "sp": 0,
           "duration": "Instant",
-          "effect": "Rejoin a small clean break or tear while holding all its pieces together. Restore ordinary function to that part. Missing components and substantial reconstruction use repair projects."
+          "effect": "Rejoin a small clean break or tear while holding all its pieces together. Restore ordinary function to that part. For an item with HP, the DA states before casting whether this small repair is sufficient and how many HP it restores, following the repair-objective rules. Missing components and substantial reconstruction use repair projects."
         },
         {
           "id": "spell:shaping:2",
@@ -18715,7 +18715,7 @@
           "action": "Maneuver",
           "sp": 0,
           "duration": "Instant",
-          "effect": "Sense whether an active magical effect is present on the target. Learn whether the strongest visible aura is protective, transformative, harmful or informative. Closely concealed sources require examination through stronger pages."
+          "effect": "Sense whether an active magical effect is present on the target. Learn whether the strongest visible aura is protective, transformative, harmful or informative. To investigate a concealed source, first expose it or use a spell that can examine it through the concealment."
         },
         {
           "id": "spell:detection:2",
@@ -18795,7 +18795,7 @@
           "action": "Ritual",
           "sp": 3,
           "duration": "Instant",
-          "effect": "Transform the materials into one mundane item or component of Bulk 6 or less whose construction you understand. Add 3/5/7 progress toward its ordinary crafting objective, using the normal recipe and material quantities. Finish fine details with the required tools."
+          "effect": "Work the materials toward one mundane item or component of Bulk 6 or less whose construction you understand. Each completed ritual adds 3/5/7 progress toward its ordinary crafting objective, using the normal recipe and material quantities. The item is ready when that objective is complete. Finish fine details with the required tools."
         },
         {
           "id": "spell:shaping:8",
@@ -18939,7 +18939,7 @@
       "id": "artificer",
       "name": "Nim Coppercoil",
       "level": 1,
-      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
+      "sourceCommit": "87f5141bd6e0da74a10c07b3239e975c7656430a",
       "workingTree": false,
       "draft": {
         "name": "Nim Coppercoil",
@@ -19259,7 +19259,7 @@
           "action": "Ritual",
           "sp": 0,
           "duration": "Instant",
-          "effect": "Rejoin a small clean break or tear while holding all its pieces together. Restore ordinary function to that part. Missing components and substantial reconstruction use repair projects."
+          "effect": "Rejoin a small clean break or tear while holding all its pieces together. Restore ordinary function to that part. For an item with HP, the DA states before casting whether this small repair is sufficient and how many HP it restores, following the repair-objective rules. Missing components and substantial reconstruction use repair projects."
         },
         {
           "id": "spell:shaping:2",
@@ -19291,7 +19291,7 @@
           "action": "Maneuver",
           "sp": 0,
           "duration": "Instant",
-          "effect": "Sense whether an active magical effect is present on the target. Learn whether the strongest visible aura is protective, transformative, harmful or informative. Closely concealed sources require examination through stronger pages."
+          "effect": "Sense whether an active magical effect is present on the target. Learn whether the strongest visible aura is protective, transformative, harmful or informative. To investigate a concealed source, first expose it or use a spell that can examine it through the concealment."
         },
         {
           "id": "spell:detection:2",
@@ -19343,7 +19343,7 @@
       "id": "artificer",
       "name": "Nim Coppercoil",
       "level": 3,
-      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
+      "sourceCommit": "87f5141bd6e0da74a10c07b3239e975c7656430a",
       "workingTree": false,
       "draft": {
         "name": "Nim Coppercoil",
@@ -19760,7 +19760,7 @@
           "action": "Ritual",
           "sp": 0,
           "duration": "Instant",
-          "effect": "Rejoin a small clean break or tear while holding all its pieces together. Restore ordinary function to that part. Missing components and substantial reconstruction use repair projects."
+          "effect": "Rejoin a small clean break or tear while holding all its pieces together. Restore ordinary function to that part. For an item with HP, the DA states before casting whether this small repair is sufficient and how many HP it restores, following the repair-objective rules. Missing components and substantial reconstruction use repair projects."
         },
         {
           "id": "spell:shaping:2",
@@ -19792,7 +19792,7 @@
           "action": "Maneuver",
           "sp": 0,
           "duration": "Instant",
-          "effect": "Sense whether an active magical effect is present on the target. Learn whether the strongest visible aura is protective, transformative, harmful or informative. Closely concealed sources require examination through stronger pages."
+          "effect": "Sense whether an active magical effect is present on the target. Learn whether the strongest visible aura is protective, transformative, harmful or informative. To investigate a concealed source, first expose it or use a spell that can examine it through the concealment."
         },
         {
           "id": "spell:detection:2",
@@ -19816,7 +19816,7 @@
           "action": "Ritual",
           "sp": 2,
           "duration": "24 hours or until released",
-          "effect": "Pay the stored spell's SP in addition to this ritual. Inscribe its power into the stone. A bearer uses a Main Action to release it, choosing legal targets from their position and using your casting attribute. The stone holds one use; you may keep one prepared Rune Mastery stone at a time."
+          "effect": "Pay the stored spell's SP in addition to this ritual. Inscribe its power into the stone. A bearer uses a Main Action to release it, choosing legal targets from their position and using the stored spell’s printed attribute and your value for it. The stone holds one use; you may keep one prepared Rune Mastery stone at a time."
         }
       ],
       "actionCounts": {
@@ -19875,7 +19875,7 @@
       "id": "artificer",
       "name": "Nim Coppercoil",
       "level": 7,
-      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
+      "sourceCommit": "87f5141bd6e0da74a10c07b3239e975c7656430a",
       "workingTree": false,
       "draft": {
         "name": "Nim Coppercoil",
@@ -20551,7 +20551,7 @@
           "action": "Ritual",
           "sp": 0,
           "duration": "Instant",
-          "effect": "Rejoin a small clean break or tear while holding all its pieces together. Restore ordinary function to that part. Missing components and substantial reconstruction use repair projects."
+          "effect": "Rejoin a small clean break or tear while holding all its pieces together. Restore ordinary function to that part. For an item with HP, the DA states before casting whether this small repair is sufficient and how many HP it restores, following the repair-objective rules. Missing components and substantial reconstruction use repair projects."
         },
         {
           "id": "spell:shaping:2",
@@ -20583,7 +20583,7 @@
           "action": "Maneuver",
           "sp": 0,
           "duration": "Instant",
-          "effect": "Sense whether an active magical effect is present on the target. Learn whether the strongest visible aura is protective, transformative, harmful or informative. Closely concealed sources require examination through stronger pages."
+          "effect": "Sense whether an active magical effect is present on the target. Learn whether the strongest visible aura is protective, transformative, harmful or informative. To investigate a concealed source, first expose it or use a spell that can examine it through the concealment."
         },
         {
           "id": "spell:detection:2",
@@ -20607,7 +20607,7 @@
           "action": "Ritual",
           "sp": 2,
           "duration": "24 hours or until released",
-          "effect": "Pay the stored spell's SP in addition to this ritual. Inscribe its power into the stone. A bearer uses a Main Action to release it, choosing legal targets from their position and using your casting attribute. The stone holds one use; you may keep one prepared Rune Mastery stone at a time."
+          "effect": "Pay the stored spell's SP in addition to this ritual. Inscribe its power into the stone. A bearer uses a Main Action to release it, choosing legal targets from their position and using the stored spell’s printed attribute and your value for it. The stone holds one use; you may keep one prepared Rune Mastery stone at a time."
         },
         {
           "id": "spell:imbuement:5",
@@ -20679,7 +20679,7 @@
           "action": "Ritual",
           "sp": 3,
           "duration": "Instant",
-          "effect": "Transform the materials into one mundane item or component of Bulk 6 or less whose construction you understand. Add 3/5/7 progress toward its ordinary crafting objective, using the normal recipe and material quantities. Finish fine details with the required tools."
+          "effect": "Work the materials toward one mundane item or component of Bulk 6 or less whose construction you understand. Each completed ritual adds 3/5/7 progress toward its ordinary crafting objective, using the normal recipe and material quantities. The item is ready when that objective is complete. Finish fine details with the required tools."
         },
         {
           "id": "spell:shaping:8",
