@@ -136,6 +136,12 @@ try {
   await balance(1);
   await stage(6).click();
   assert.match(await page.locator("#panel").innerText(), /Creation complete/);
+  const spExplanation = page.locator("details").filter({
+    has: page.locator("summary").getByText("How maximum SP is calculated", { exact: true }),
+  });
+  await spExplanation.locator("summary").click();
+  await expect(spExplanation).toContainText("2 base SP");
+  await expect(spExplanation).toContainText("Soul Capacity and Mind Capacity are paths in the Spellcraft discipline");
   const creation = (await data()).character.draft;
   assert.deepEqual(creation.classDisciplines, ["guard"]);
   assert.deepEqual(creation.purchases[0], []);

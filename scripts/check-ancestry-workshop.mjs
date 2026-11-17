@@ -36,8 +36,8 @@ page.on("dialog", async dialog => {
 });
 const output = resolve(process.env.HOL_WORKSHOP_OUTPUT ?? "test-results/ancestry-workshop");
 await mkdir(output, { recursive: true });
-async function seed(ancestryId, traitIds, mode = "builder") {
-  const draft = { ...structuredClone(fixture), ancestryId, traitIds };
+async function seed(ancestryId, traitIds, mode = "builder", overrides = {}) {
+  const draft = { ...structuredClone(fixture), ancestryId, traitIds, ...overrides };
   delete draft.play;
   const character = JSON.parse(writePortableCharacter(draft, catalogs));
   await page.evaluate(saved => localStorage.setItem("hol.workshop.v1", JSON.stringify(saved)), { character, mode, step: 1, tab: "Main", isExample: false });
@@ -51,13 +51,22 @@ try {
   await page.getByRole("heading", {name:fixture.name,exact:true}).waitFor();
   await seed("ancestry-dwarf", []);
   assert.equal(await page.locator('[data-action="ancestry"]').count(), 10);
+  const shorterStride = new Set([
+    "ancestry-deep-dwarf", "ancestry-dwarf", "ancestry-gnome", "ancestry-goblin", "ancestry-halfling",
+  ]);
   for (const ancestry of ancestries) {
     await page.locator(`[data-action="ancestry"][data-id="${ancestry.id}"]`).click();
     assert.equal(await page.locator('input[data-list="traitIds"]').count(), 5, ancestry.name);
+    const card = page.locator(".choice-card").filter({
+      has: page.getByRole("heading", { name: ancestry.name, exact: true }),
+    });
+    const baseSpeed = shorterStride.has(ancestry.id) ? 5 : 6;
+    await expect(card.locator(".card-meta")).toContainText(`Base speed ${baseSpeed} ·`);
     await page.locator(`[data-action="reference"][data-id="${ancestry.id}"]`).click();
     const dialog = page.locator("#reference");
     assert.equal(await dialog.getByRole("heading", {name:ancestry.name,exact:true}).count(), 1);
     const narrative = await dialog.innerText();
+    assert.match(narrative, new RegExp(`base Speed ${baseSpeed}\\b`), `${ancestry.name}: reference Speed`);
     for (const paragraph of ancestry.reference.flavor) assert(narrative.includes(paragraph), `${ancestry.name}: full narrative`);
     assert(!narrative.includes("Prepared for v16.7.0"));
     await dialog.getByRole("button", {name:"Close",exact:true}).click();
@@ -77,6 +86,22 @@ try {
     }
   }
   await page.screenshot({ path: `${output}/ten-ancestries.png`, fullPage: true });
+
+  // With Agility 0 and no carried gear, the sheet shows ancestry Speed plus any selected trait.
+  for (const [id, speedTrait, expected] of [
+    ["ancestry-gnome", null, "5"],
+    ["ancestry-goblin", null, "5"],
+    ["ancestry-goblin", "trait-goblin-run-away-better", "6"],
+    ["ancestry-tallfolk", "trait-tallfolk-you-take-the-blow", "7"],
+  ]) {
+    const ancestry = ancestries.find(record => record.id === id);
+    const otherTraits = ancestry.traits.filter(trait => trait !== "trait-goblin-run-away-better");
+    const traitIds = speedTrait
+      ? [speedTrait, otherTraits.find(trait => trait !== speedTrait)]
+      : otherTraits.slice(0, 2);
+    await seed(id, traitIds, "sheet", { shopping: [], loadout: {} });
+    await expect(page.locator("[data-speed]")).toHaveText(expected);
+  }
 
   // Named saves, imports and subsequent reloads retain published IDs and choices.
   for (const id of ["ancestry-elf", "ancestry-dwarf"]) {

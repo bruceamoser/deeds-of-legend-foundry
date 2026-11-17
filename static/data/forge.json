@@ -7160,7 +7160,7 @@
       }
     }
   },
-  "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+  "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
   "disciplines": [
     {
       "id": "arms",
@@ -17123,394 +17123,6 @@
       "spellIds": [
         "spell:channeling:a3"
       ]
-    },
-    {
-      "id": "ability-another-tongue",
-      "name": "Another Tongue",
-      "level": 1,
-      "dp": 1,
-      "action": "Passive",
-      "attribute": "None (no roll)",
-      "target": "Self",
-      "duration": "Permanent knowledge of the chosen language.",
-      "equipment": "None.",
-      "limits": "Purchase once; choose one language when learned.",
-      "effect": "**Action:** Passive · **Attribute:** None (no roll)\n\n**Target / range / shape:** Self\n\nWhen you learn this ability, choose one ordinary language you do not already know. You can speak and understand it, and read and write its usual script if it has one. Record the language on your sheet. A signed language uses signing instead of speech. Choose from the campaign's ordinary languages with the DA. Secret and supernatural languages are learned through their own paths.\n\n**Duration:** Permanent knowledge of the chosen language.\n\n**Equipment / acquisition:** None.",
-      "reference": {
-        "flavor": [
-          "Learn one ordinary language when you take this ability, including its usual script if it has one."
-        ],
-        "rules": {
-          "details": [
-            {
-              "label": "Action",
-              "value": "Passive"
-            },
-            {
-              "label": "Attribute",
-              "value": "None (no roll)"
-            },
-            {
-              "label": "Target / range / shape",
-              "value": "Self"
-            },
-            {
-              "label": "Duration",
-              "value": "Permanent knowledge of the chosen language."
-            },
-            {
-              "label": "Equipment / acquisition",
-              "value": "None."
-            },
-            {
-              "label": "Limits",
-              "value": "Purchase once; choose one language when learned."
-            },
-            {
-              "label": "Type",
-              "value": "Utility"
-            }
-          ],
-          "body": [
-            {
-              "text": "When you learn this ability, choose one ordinary language you do not already know. You can speak and understand it, and read and write its usual script if it has one. Record the language on your sheet. A signed language uses signing instead of speech. Choose from the campaign's ordinary languages with the DA. Secret and supernatural languages are learned through their own paths."
-            }
-          ],
-          "notes": [
-            {
-              "label": "Tags",
-              "text": "Universal / Skill / Passive"
-            }
-          ]
-        }
-      },
-      "referenceMarkdown": "# Another Tongue\n\n*Learn one ordinary language when you take this ability, including its usual script if it has one.*\n\n## Rules\n\n**Action:** Passive · **Attribute:** None (no roll)\n\n**Target / range / shape:** Self\n\nWhen you learn this ability, choose one ordinary language you do not already know. You can speak and understand it, and read and write its usual script if it has one. Record the language on your sheet. A signed language uses signing instead of speech. Choose from the campaign's ordinary languages with the DA. Secret and supernatural languages are learned through their own paths.\n\n**Duration:** Permanent knowledge of the chosen language.\n\n**Equipment / acquisition:** None.\n\n---\n\n**Tier / minimum level:** 1 · **DP:** 1 · **Requirements to learn:** None\n\n**Type:** Utility\n\n**Tags:** Universal / Skill / Passive\n\n**Limits:** Purchase once; choose one language when learned.\n\n**ID:** another-tongue\n\n[Card conventions](../card-conventions.md)\n",
-      "kind": "talent",
-      "requires": []
-    },
-    {
-      "id": "ability-look-over-here",
-      "name": "Look Over Here!",
-      "level": 1,
-      "dp": 1,
-      "action": "Reaction",
-      "attribute": "None (no roll)",
-      "target": "One ally about to make a defense roll against a sight-dependent attack declared by an adjacent enemy that can see you. Before the roll.",
-      "duration": "The triggering defense roll.",
-      "equipment": "None.",
-      "limits": "Purchase once; each use spends your Reaction.",
-      "effect": "**Action:** Reaction · **Attribute:** None (no roll)\n\n**Target / range / shape:** One ally about to make a defense roll against a sight-dependent attack declared by an adjacent enemy that can see you. Before the roll.\n\nGrant the ally 1 Boon to that defense roll. The distraction affects the defense roll; the attack resolves normally. Apply the normal Boon/Bane rules.\n\n**Duration:** The triggering defense roll.\n\n**Equipment / acquisition:** None.",
-      "reference": {
-        "flavor": [
-          "Choose one ally about to make a defense roll against a sight-dependent attack declared by an adjacent enemy that can see you. Before the roll. Grant the ally 1 Boon to that defense roll. The distraction affects the defense roll. The attack resolves normally. Apply the normal Boon/Bane rules."
-        ],
-        "rules": {
-          "details": [
-            {
-              "label": "Action",
-              "value": "Reaction"
-            },
-            {
-              "label": "Attribute",
-              "value": "None (no roll)"
-            },
-            {
-              "label": "Target / range / shape",
-              "value": "One ally about to make a defense roll against a sight-dependent attack declared by an adjacent enemy that can see you. Before the roll."
-            },
-            {
-              "label": "Duration",
-              "value": "The triggering defense roll."
-            },
-            {
-              "label": "Equipment / acquisition",
-              "value": "None."
-            },
-            {
-              "label": "Limits",
-              "value": "Purchase once; each use spends your Reaction."
-            },
-            {
-              "label": "Type",
-              "value": "Defense"
-            }
-          ],
-          "body": [
-            {
-              "text": "Grant the ally 1 Boon to that defense roll. The distraction affects the defense roll; the attack resolves normally. Apply the normal Boon/Bane rules."
-            }
-          ],
-          "notes": [
-            {
-              "label": "Tags",
-              "text": "Universal / Skill / Reaction"
-            }
-          ]
-        }
-      },
-      "referenceMarkdown": "# Look Over Here!\n\n*Choose one ally about to make a defense roll against a sight-dependent attack declared by an adjacent enemy that can see you. Before the roll. Grant the ally 1 Boon to that defense roll. The distraction affects the defense roll. The attack resolves normally. Apply the normal Boon/Bane rules.*\n\n## Rules\n\n**Action:** Reaction · **Attribute:** None (no roll)\n\n**Target / range / shape:** One ally about to make a defense roll against a sight-dependent attack declared by an adjacent enemy that can see you. Before the roll.\n\nGrant the ally 1 Boon to that defense roll. The distraction affects the defense roll; the attack resolves normally. Apply the normal Boon/Bane rules.\n\n**Duration:** The triggering defense roll.\n\n**Equipment / acquisition:** None.\n\n---\n\n**Tier / minimum level:** 1 · **DP:** 1 · **Requirements to learn:** None\n\n**Type:** Defense\n\n**Tags:** Universal / Skill / Reaction\n\n**Limits:** Purchase once; each use spends your Reaction.\n\n**ID:** look-over-here\n\n[Card conventions](../card-conventions.md)\n",
-      "kind": "talent",
-      "requires": []
-    },
-    {
-      "id": "ability-quick-exit",
-      "name": "Quick Exit",
-      "level": 1,
-      "dp": 1,
-      "action": "Passive",
-      "attribute": "None (no roll)",
-      "target": "Self, when you use Disengage.",
-      "duration": "Until the end of this turn; unused movement expires.",
-      "equipment": "None.",
-      "limits": "Purchase once; this benefit can trigger only once per turn.",
-      "effect": "**Action:** Passive · **Attribute:** None (no roll)\n\n**Target / range / shape:** Self, when you use Disengage.\n\nGain 1 additional square of available movement this turn. Spend it using normal terrain costs and movement restrictions. The bonus applies to the Disengage movement; your Speed and converted movement allowances stay unchanged. Disengage's protection from opportunity attacks applies normally.\n\n**Duration:** Until the end of this turn; unused movement expires.\n\n**Equipment / acquisition:** None.",
-      "reference": {
-        "flavor": [
-          "When you use disengage, gain 1 additional square of available movement this turn. Spend it using normal terrain costs and movement restrictions. The bonus applies to the Disengage movement. Your Speed and converted movement allowances stay unchanged. Disengage's protection from opportunity attacks applies normally."
-        ],
-        "rules": {
-          "details": [
-            {
-              "label": "Action",
-              "value": "Passive"
-            },
-            {
-              "label": "Attribute",
-              "value": "None (no roll)"
-            },
-            {
-              "label": "Target / range / shape",
-              "value": "Self, when you use Disengage."
-            },
-            {
-              "label": "Duration",
-              "value": "Until the end of this turn; unused movement expires."
-            },
-            {
-              "label": "Equipment / acquisition",
-              "value": "None."
-            },
-            {
-              "label": "Limits",
-              "value": "Purchase once; this benefit can trigger only once per turn."
-            },
-            {
-              "label": "Type",
-              "value": "Movement"
-            }
-          ],
-          "body": [
-            {
-              "text": "Gain 1 additional square of available movement this turn. Spend it using normal terrain costs and movement restrictions. The bonus applies to the Disengage movement; your Speed and converted movement allowances stay unchanged. Disengage's protection from opportunity attacks applies normally."
-            }
-          ],
-          "notes": [
-            {
-              "label": "Tags",
-              "text": "Universal / Skill / Passive"
-            }
-          ]
-        }
-      },
-      "referenceMarkdown": "# Quick Exit\n\n*When you use disengage, gain 1 additional square of available movement this turn. Spend it using normal terrain costs and movement restrictions. The bonus applies to the Disengage movement. Your Speed and converted movement allowances stay unchanged. Disengage's protection from opportunity attacks applies normally.*\n\n## Rules\n\n**Action:** Passive · **Attribute:** None (no roll)\n\n**Target / range / shape:** Self, when you use Disengage.\n\nGain 1 additional square of available movement this turn. Spend it using normal terrain costs and movement restrictions. The bonus applies to the Disengage movement; your Speed and converted movement allowances stay unchanged. Disengage's protection from opportunity attacks applies normally.\n\n**Duration:** Until the end of this turn; unused movement expires.\n\n**Equipment / acquisition:** None.\n\n---\n\n**Tier / minimum level:** 1 · **DP:** 1 · **Requirements to learn:** None\n\n**Type:** Movement\n\n**Tags:** Universal / Skill / Passive\n\n**Limits:** Purchase once; this benefit can trigger only once per turn.\n\n**ID:** quick-exit\n\n[Card conventions](../card-conventions.md)\n",
-      "kind": "talent",
-      "requires": []
-    },
-    {
-      "id": "ability-catch-that",
-      "name": "Catch That!",
-      "level": 1,
-      "dp": 1,
-      "action": "Reaction",
-      "attribute": "None (no roll)",
-      "target": "One falling, unattended item in your square or an adjacent square, within reach, before it lands or falls out of reach.",
-      "duration": "Instant.",
-      "equipment": "None.",
-      "limits": "Purchase once; each use spends your Reaction.",
-      "effect": "**Action:** Reaction · **Attribute:** None (no roll)\n\n**Target / range / shape:** One falling, unattended item in your square or an adjacent square, within reach, before it lands or falls out of reach.\n\nCatch the item in a free hand. The item must be small enough to hold in that hand. The ability catches falling objects; attacks and items held by another creature follow their own rules.\n\n**Duration:** Instant.\n\n**Equipment / acquisition:** None.",
-      "reference": {
-        "flavor": [
-          "Your hand darts out to catch a falling object before it hits the ground."
-        ],
-        "rules": {
-          "details": [
-            {
-              "label": "Action",
-              "value": "Reaction"
-            },
-            {
-              "label": "Attribute",
-              "value": "None (no roll)"
-            },
-            {
-              "label": "Target / range / shape",
-              "value": "One falling, unattended item in your square or an adjacent square, within reach, before it lands or falls out of reach."
-            },
-            {
-              "label": "Duration",
-              "value": "Instant."
-            },
-            {
-              "label": "Equipment / acquisition",
-              "value": "None."
-            },
-            {
-              "label": "Limits",
-              "value": "Purchase once; each use spends your Reaction."
-            },
-            {
-              "label": "Type",
-              "value": "Utility"
-            }
-          ],
-          "body": [
-            {
-              "text": "Catch the item in a free hand. The item must be small enough to hold in that hand. The ability catches falling objects; attacks and items held by another creature follow their own rules."
-            }
-          ],
-          "notes": [
-            {
-              "label": "Tags",
-              "text": "Universal / Reaction / Skill"
-            }
-          ]
-        }
-      },
-      "referenceMarkdown": "# Catch That!\n\n*Your hand darts out to catch a falling object before it hits the ground.*\n\n## Rules\n\n**Action:** Reaction · **Attribute:** None (no roll)\n\n**Target / range / shape:** One falling, unattended item in your square or an adjacent square, within reach, before it lands or falls out of reach.\n\nCatch the item in a free hand. The item must be small enough to hold in that hand. The ability catches falling objects; attacks and items held by another creature follow their own rules.\n\n**Duration:** Instant.\n\n**Equipment / acquisition:** None.\n\n---\n\n**Tier / minimum level:** 1 · **DP:** 1 · **Requirements to learn:** None\n\n**Type:** Utility\n\n**Tags:** Universal / Reaction / Skill\n\n**Limits:** Purchase once; each use spends your Reaction.\n\n**ID:** catch-that\n\n[Card conventions](../card-conventions.md)\n",
-      "kind": "talent",
-      "requires": []
-    },
-    {
-      "id": "ability-message-by-heart",
-      "name": "Message by Heart",
-      "level": 1,
-      "dp": 1,
-      "action": "Main Action",
-      "attribute": "None (no roll)",
-      "target": "One message of up to 50 words that you can hear, or read in a script you know.",
-      "duration": "Until you memorize a replacement message.",
-      "equipment": "None.",
-      "limits": "Purchase once; one retained message at a time.",
-      "effect": "**Action:** Main Action · **Attribute:** None (no roll)\n\n**Time:** One minute of rehearsal.\n\n**Target / range / shape:** One message of up to 50 words that you can hear, or read in a script you know.\n\nAfter rehearsing the message for one minute, you can reproduce its words exactly from memory. You may retain unfamiliar words this way without understanding them. You can retain one message at a time; memorizing another replaces it. Recalling the stored message takes only the normal time to speak or write it. Translation and understanding come from your own knowledge or other abilities.\n\n**Duration:** Until you memorize a replacement message.\n\n**Equipment / acquisition:** None.",
-      "reference": {
-        "flavor": [
-          "Choose one message of up to 50 words that you can hear, or read in a script you know. After rehearsing the message for one minute, you can reproduce its words exactly from memory. You may retain unfamiliar words this way without understanding them. You can retain one message at a time. Memorizing another replaces it. Recalling the stored message takes only the normal time to speak or write it. Translation and understanding come from your own knowledge or other abilities."
-        ],
-        "rules": {
-          "details": [
-            {
-              "label": "Action",
-              "value": "Main Action"
-            },
-            {
-              "label": "Attribute",
-              "value": "None (no roll)"
-            },
-            {
-              "label": "Time",
-              "value": "One minute of rehearsal."
-            },
-            {
-              "label": "Target / range / shape",
-              "value": "One message of up to 50 words that you can hear, or read in a script you know."
-            },
-            {
-              "label": "Duration",
-              "value": "Until you memorize a replacement message."
-            },
-            {
-              "label": "Equipment / acquisition",
-              "value": "None."
-            },
-            {
-              "label": "Limits",
-              "value": "Purchase once; one retained message at a time."
-            },
-            {
-              "label": "Type",
-              "value": "Utility"
-            }
-          ],
-          "body": [
-            {
-              "text": "After rehearsing the message for one minute, you can reproduce its words exactly from memory. You may retain unfamiliar words this way without understanding them. You can retain one message at a time; memorizing another replaces it. Recalling the stored message takes only the normal time to speak or write it. Translation and understanding come from your own knowledge or other abilities."
-            }
-          ],
-          "notes": [
-            {
-              "label": "Tags",
-              "text": "Universal / Skill"
-            }
-          ]
-        }
-      },
-      "referenceMarkdown": "# Message by Heart\n\n*Choose one message of up to 50 words that you can hear, or read in a script you know. After rehearsing the message for one minute, you can reproduce its words exactly from memory. You may retain unfamiliar words this way without understanding them. You can retain one message at a time. Memorizing another replaces it. Recalling the stored message takes only the normal time to speak or write it. Translation and understanding come from your own knowledge or other abilities.*\n\n## Rules\n\n**Action:** Main Action · **Attribute:** None (no roll)\n\n**Time:** One minute of rehearsal.\n\n**Target / range / shape:** One message of up to 50 words that you can hear, or read in a script you know.\n\nAfter rehearsing the message for one minute, you can reproduce its words exactly from memory. You may retain unfamiliar words this way without understanding them. You can retain one message at a time; memorizing another replaces it. Recalling the stored message takes only the normal time to speak or write it. Translation and understanding come from your own knowledge or other abilities.\n\n**Duration:** Until you memorize a replacement message.\n\n**Equipment / acquisition:** None.\n\n---\n\n**Tier / minimum level:** 1 · **DP:** 1 · **Requirements to learn:** None\n\n**Type:** Utility\n\n**Tags:** Universal / Skill\n\n**Limits:** Purchase once; one retained message at a time.\n\n**ID:** message-by-heart\n\n[Card conventions](../card-conventions.md)\n",
-      "kind": "talent",
-      "requires": []
-    },
-    {
-      "id": "ability-a-party-piece",
-      "name": "A Party Piece",
-      "level": 1,
-      "dp": 1,
-      "action": "Passive",
-      "attribute": "None (no roll)",
-      "target": "Self, while playing your chosen instrument.",
-      "duration": "While you play the chosen instrument.",
-      "equipment": "Requires an ordinary Musical Instrument (Bulk 1), chosen when you learn this ability; grants none.",
-      "limits": "Purchase once; choose one instrument when learned.",
-      "effect": "**Action:** Passive · **Attribute:** None (no roll)\n\n**Target / range / shape:** Self, while playing your chosen instrument.\n\nWhen you learn this ability, choose one ordinary instrument you own, such as a lute, flute, drum, fiddle or horn. While you play that instrument, gain 1 Boon to any Guile roll. The instrument must be in your hands and in playing condition. The Boon can support performance, persuasion, deception and other Guile approaches that the music carries. Ordinary performance remains available to everyone; a performance with no uncertain consequence needs no roll.\n\n**Duration:** While you play the chosen instrument.\n\n**Equipment / acquisition:** Requires an ordinary Musical Instrument (Bulk 1), chosen when you learn this ability; grants none.",
-      "reference": {
-        "flavor": [
-          "Choose an instrument you own when you learn this ability. Gain 1 Boon to Guile rolls while playing it."
-        ],
-        "rules": {
-          "details": [
-            {
-              "label": "Action",
-              "value": "Passive"
-            },
-            {
-              "label": "Attribute",
-              "value": "None (no roll)"
-            },
-            {
-              "label": "Target / range / shape",
-              "value": "Self, while playing your chosen instrument."
-            },
-            {
-              "label": "Duration",
-              "value": "While you play the chosen instrument."
-            },
-            {
-              "label": "Equipment / acquisition",
-              "value": "Requires an ordinary Musical Instrument (Bulk 1), chosen when you learn this ability; grants none."
-            },
-            {
-              "label": "Limits",
-              "value": "Purchase once; choose one instrument when learned."
-            },
-            {
-              "label": "Type",
-              "value": "Utility"
-            }
-          ],
-          "body": [
-            {
-              "text": "When you learn this ability, choose one ordinary instrument you own, such as a lute, flute, drum, fiddle or horn. While you play that instrument, gain 1 Boon to any Guile roll. The instrument must be in your hands and in playing condition. The Boon can support performance, persuasion, deception and other Guile approaches that the music carries. Ordinary performance remains available to everyone; a performance with no uncertain consequence needs no roll."
-            }
-          ],
-          "notes": [
-            {
-              "label": "Tags",
-              "text": "Universal / Skill / Social / Passive"
-            }
-          ]
-        }
-      },
-      "referenceMarkdown": "# A Party Piece\n\n*Choose an instrument you own when you learn this ability. Gain 1 Boon to Guile rolls while playing it.*\n\n## Rules\n\n**Action:** Passive · **Attribute:** None (no roll)\n\n**Target / range / shape:** Self, while playing your chosen instrument.\n\nWhen you learn this ability, choose one ordinary instrument you own, such as a lute, flute, drum, fiddle or horn. While you play that instrument, gain 1 Boon to any Guile roll. The instrument must be in your hands and in playing condition. The Boon can support performance, persuasion, deception and other Guile approaches that the music carries. Ordinary performance remains available to everyone; a performance with no uncertain consequence needs no roll.\n\n**Duration:** While you play the chosen instrument.\n\n**Equipment / acquisition:** Requires an ordinary Musical Instrument (Bulk 1), chosen when you learn this ability; grants none.\n\n---\n\n**Tier / minimum level:** 1 · **DP:** 1 · **Requirements to learn:** None\n\n**Type:** Utility\n\n**Tags:** Universal / Skill / Social / Passive\n\n**Limits:** Purchase once; choose one instrument when learned.\n\n**ID:** a-party-piece\n\n[Card conventions](../card-conventions.md)\n",
-      "kind": "talent",
-      "requires": []
     }
   ],
   "books": [
@@ -24011,8 +23623,7 @@
         }
       ],
       "coinContribution": 10,
-      "spContribution": 1,
-      "referenceMarkdown": "# Apothecary’s Helper\n\n*You learned the smell of good medicine and the patience of people waiting for it.*\n\n*Which remedy always reminds you of someone?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Scholarship, Medicine.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting SP contribution:** +1 maximum SP.\n\n**Starting coin contribution:** +10 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Apothecary’s Helper\n\n*You learned the smell of good medicine and the patience of people waiting for it.*\n\n*Which remedy always reminds you of someone?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Scholarship, Medicine.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +10 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "origin-background-bargain-keeper",
@@ -24027,8 +23638,7 @@
         }
       ],
       "coinContribution": 7,
-      "spContribution": 1,
-      "referenceMarkdown": "# Bargain Keeper\n\n*You agreed to something in a place where the terms were hard to read.*\n\n*What part of the bargain are you determined to interpret generously?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Elements, Mentalism.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting SP contribution:** +1 maximum SP.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Bargain Keeper\n\n*You agreed to something in a place where the terms were hard to read.*\n\n*What part of the bargain are you determined to interpret generously?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Elements, Mentalism.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "origin-background-beast-reared",
@@ -24043,8 +23653,7 @@
         }
       ],
       "coinContribution": 5,
-      "spContribution": 1,
-      "referenceMarkdown": "# Beast-Reared\n\n*Whether raised, rescued or apprenticed among beasts, you know a world of scent and posture.*\n\n*Which animal behavior do you still find reassuring?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Wilderness, Invocation.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting SP contribution:** +1 maximum SP.\n\n**Starting coin contribution:** +5 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Beast-Reared\n\n*Whether raised, rescued or apprenticed among beasts, you know a world of scent and posture.*\n\n*Which animal behavior do you still find reassuring?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Wilderness, Invocation.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +5 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "origin-background-bone-tender",
@@ -24059,8 +23668,7 @@
         }
       ],
       "coinContribution": 5,
-      "spContribution": 1,
-      "referenceMarkdown": "# Bone Tender\n\n*You prepared the dead with care; eventually some seemed reluctant to leave your company.*\n\n*Who taught you that respect and fear are different things?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Invocation, Life.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting SP contribution:** +1 maximum SP.\n\n**Starting coin contribution:** +5 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Bone Tender\n\n*You prepared the dead with care; eventually some seemed reluctant to leave your company.*\n\n*Who taught you that respect and fear are different things?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Invocation, Life.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +5 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "origin-background-bridge-worker",
@@ -24075,8 +23683,7 @@
         }
       ],
       "coinContribution": 7,
-      "spContribution": 1,
-      "referenceMarkdown": "# Bridge Worker\n\n*You have trusted your weight to a knot you tied yourself.*\n\n*Who was beside you the first time the scaffolding shook?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Craft, Athletics.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting SP contribution:** +1 maximum SP.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Bridge Worker\n\n*You have trusted your weight to a knot you tied yourself.*\n\n*Who was beside you the first time the scaffolding shook?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Craft, Athletics.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "origin-background-burglar",
@@ -24091,8 +23698,7 @@
         }
       ],
       "coinContribution": 7,
-      "spContribution": 1,
-      "referenceMarkdown": "# Burglar\n\n*Every fine house has a service door and every service door has a story.*\n\n*Which room did you leave untouched?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Subterfuge, Athletics.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting SP contribution:** +1 maximum SP.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Burglar\n\n*Every fine house has a service door and every service door has a story.*\n\n*Which room did you leave untouched?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Subterfuge, Athletics.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "origin-background-confidence-artist",
@@ -24107,8 +23713,7 @@
         }
       ],
       "coinContribution": 7,
-      "spContribution": 1,
-      "referenceMarkdown": "# Confidence Artist\n\n*People remember the smile long after they notice what is missing.*\n\n*Who believed in you when you were finally telling the truth?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Arms, Subterfuge.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting SP contribution:** +1 maximum SP.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Confidence Artist\n\n*People remember the smile long after they notice what is missing.*\n\n*Who believed in you when you were finally telling the truth?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Arms, Subterfuge.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "origin-background-court-questioner",
@@ -24123,8 +23728,7 @@
         }
       ],
       "coinContribution": 10,
-      "spContribution": 1,
-      "referenceMarkdown": "# Court Questioner\n\n*You learned that an answer can be perfectly truthful and still hide everything important.*\n\n*Who once answered a question you were afraid to ask?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Scholarship, Influence.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting SP contribution:** +1 maximum SP.\n\n**Starting coin contribution:** +10 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Court Questioner\n\n*You learned that an answer can be perfectly truthful and still hide everything important.*\n\n*Who once answered a question you were afraid to ask?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Scholarship, Influence.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +10 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "origin-background-dragon-dreamer",
@@ -24139,8 +23743,7 @@
         }
       ],
       "coinContribution": 7,
-      "spContribution": 1,
-      "referenceMarkdown": "# Dragon-Dreamer\n\n*You dreamed of heat, wings and a voice calling you kin. Then you woke with smoke on your breath.*\n\n*Was the dream a memory, a gift or an invitation?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Elements, Mentalism.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting SP contribution:** +1 maximum SP.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Dragon-Dreamer\n\n*You dreamed of heat, wings and a voice calling you kin. Then you woke with smoke on your breath.*\n\n*Was the dream a memory, a gift or an invitation?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Elements, Mentalism.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "origin-background-duelist-s-second",
@@ -24155,8 +23758,7 @@
         }
       ],
       "coinContribution": 7,
-      "spContribution": 1,
-      "referenceMarkdown": "# Duelist’s Second\n\n*You checked straps, carried spare blades and stood ready when a formal duel became a messy fight. You learned both the invitation to a clean exchange and the value of armor when it fails.*\n\n*Which duel should never have happened?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Arms, Armor.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting SP contribution:** +1 maximum SP.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Duelist’s Second\n\n*You checked straps, carried spare blades and stood ready when a formal duel became a messy fight. You learned both the invitation to a clean exchange and the value of armor when it fails.*\n\n*Which duel should never have happened?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Arms, Armor.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "origin-background-grave-attendant",
@@ -24171,8 +23773,7 @@
         }
       ],
       "coinContribution": 5,
-      "spContribution": 1,
-      "referenceMarkdown": "# Grave Attendant\n\n*You made sure someone remembered the names after the mourners went home.*\n\n*Whose grave do you still visit?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Medicine, Life.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting SP contribution:** +1 maximum SP.\n\n**Starting coin contribution:** +5 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Grave Attendant\n\n*You made sure someone remembered the names after the mourners went home.*\n\n*Whose grave do you still visit?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Medicine, Life.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +5 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "origin-background-grove-tended",
@@ -24187,8 +23788,7 @@
         }
       ],
       "coinContribution": 5,
-      "spContribution": 1,
-      "referenceMarkdown": "# Grove Tended\n\n*You learned the names of growing things before you learned the names of distant rulers.*\n\n*What place do you consider a patient rather than a possession?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Life, Wilderness.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting SP contribution:** +1 maximum SP.\n\n**Starting coin contribution:** +5 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Grove Tended\n\n*You learned the names of growing things before you learned the names of distant rulers.*\n\n*What place do you consider a patient rather than a possession?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Life, Wilderness.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +5 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "origin-background-household-guard",
@@ -24203,8 +23803,7 @@
         }
       ],
       "coinContribution": 7,
-      "spContribution": 1,
-      "referenceMarkdown": "# Household Guard\n\n*Keeping a household safe meant knowing its people, not only its locks.*\n\n*Whose laughter could you recognize from the gate?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Arms, Guard.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting SP contribution:** +1 maximum SP.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Household Guard\n\n*Keeping a household safe meant knowing its people, not only its locks.*\n\n*Whose laughter could you recognize from the gate?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Arms, Guard.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "origin-background-itinerant-tinker",
@@ -24219,8 +23818,7 @@
         }
       ],
       "coinContribution": 7,
-      "spContribution": 1,
-      "referenceMarkdown": "# Itinerant Tinker\n\n*Your workshop fit on your back, and your reputation traveled a village ahead.*\n\n*What repair earned you a lifelong welcome?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Craft, Influence.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting SP contribution:** +1 maximum SP.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Itinerant Tinker\n\n*Your workshop fit on your back, and your reputation traveled a village ahead.*\n\n*What repair earned you a lifelong welcome?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Craft, Influence.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "origin-background-kennel-keeper",
@@ -24235,8 +23833,7 @@
         }
       ],
       "coinContribution": 7,
-      "spContribution": 1,
-      "referenceMarkdown": "# Kennel Keeper\n\n*The hounds knew your footsteps and the difference between your whistle and anyone else’s.*\n\n*Which companion never came back from a hunt?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Invocation, Wilderness.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting SP contribution:** +1 maximum SP.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Kennel Keeper\n\n*The hounds knew your footsteps and the difference between your whistle and anyone else’s.*\n\n*Which companion never came back from a hunt?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Invocation, Wilderness.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "origin-background-market-chemist",
@@ -24251,8 +23848,7 @@
         }
       ],
       "coinContribution": 10,
-      "spContribution": 1,
-      "referenceMarkdown": "# Market Chemist\n\n*You know which bottle smells like a cure and which only smells expensive.*\n\n*Which customer made you stop exaggerating?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Craft, Scholarship.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting SP contribution:** +1 maximum SP.\n\n**Starting coin contribution:** +10 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Market Chemist\n\n*You know which bottle smells like a cure and which only smells expensive.*\n\n*Which customer made you stop exaggerating?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Craft, Scholarship.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +10 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "origin-background-messenger",
@@ -24267,8 +23863,7 @@
         }
       ],
       "coinContribution": 7,
-      "spContribution": 1,
-      "referenceMarkdown": "# Messenger\n\n*You carried words that changed lives and learned when not to ask what they meant.*\n\n*Which message did you refuse to deliver?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Marksmanship, Influence.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting SP contribution:** +1 maximum SP.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Messenger\n\n*You carried words that changed lives and learned when not to ask what they meant.*\n\n*Which message did you refuse to deliver?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Marksmanship, Influence.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "origin-background-monastery-runaway",
@@ -24283,8 +23878,7 @@
         }
       ],
       "coinContribution": 5,
-      "spContribution": 1,
-      "referenceMarkdown": "# Monastery Runaway\n\n*You left with a discipline in your bones and an unanswered question in your chest.*\n\n*What did you take besides your training?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Athletics, Elements.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting SP contribution:** +1 maximum SP.\n\n**Starting coin contribution:** +5 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Monastery Runaway\n\n*You left with a discipline in your bones and an unanswered question in your chest.*\n\n*What did you take besides your training?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Athletics, Elements.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +5 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "origin-background-oath-witness",
@@ -24299,8 +23893,7 @@
         }
       ],
       "coinContribution": 10,
-      "spContribution": 1,
-      "referenceMarkdown": "# Oath Witness\n\n*You stood beside people as they swore their promises, carrying a bright oath-blade as a reminder that some words demand more than witnesses.*\n\n*Which broken promise still follows you?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Influence, Wards.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting SP contribution:** +1 maximum SP.\n\n**Starting coin contribution:** +10 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Oath Witness\n\n*You stood beside people as they swore their promises, carrying a bright oath-blade as a reminder that some words demand more than witnesses.*\n\n*Which broken promise still follows you?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Influence, Wards.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +10 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "origin-background-physician-s-student",
@@ -24315,8 +23908,7 @@
         }
       ],
       "coinContribution": 10,
-      "spContribution": 1,
-      "referenceMarkdown": "# Physician’s Student\n\n*Bones, bruises and patient observation taught you how a body works—and where it fails.*\n\n*Who taught you to look twice?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Scholarship, Medicine.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting SP contribution:** +1 maximum SP.\n\n**Starting coin contribution:** +10 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Physician’s Student\n\n*Bones, bruises and patient observation taught you how a body works—and where it fails.*\n\n*Who taught you to look twice?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Scholarship, Medicine.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +10 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "origin-background-pit-fighter",
@@ -24331,8 +23923,7 @@
         }
       ],
       "coinContribution": 5,
-      "spContribution": 1,
-      "referenceMarkdown": "# Pit Fighter\n\n*You learned what a crowd sounds like when it decides someone will not get up.*\n\n*Who did you refuse to finish?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Arms, Athletics.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting SP contribution:** +1 maximum SP.\n\n**Starting coin contribution:** +5 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Pit Fighter\n\n*You learned what a crowd sounds like when it decides someone will not get up.*\n\n*Who did you refuse to finish?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Arms, Athletics.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +5 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "origin-background-poacher",
@@ -24347,8 +23938,7 @@
         }
       ],
       "coinContribution": 7,
-      "spContribution": 1,
-      "referenceMarkdown": "# Poacher\n\n*You learned to bring down game quietly or keep the hidden catch cold until it could reach hungry households. A forbidden boundary never made them less hungry.*\n\n*Who looked the other way for you?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Marksmanship, Elements.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting SP contribution:** +1 maximum SP.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Poacher\n\n*You learned to bring down game quietly or keep the hidden catch cold until it could reach hungry households. A forbidden boundary never made them less hungry.*\n\n*Who looked the other way for you?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Marksmanship, Elements.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "origin-background-reluctant-knife",
@@ -24363,8 +23953,7 @@
         }
       ],
       "coinContribution": 5,
-      "spContribution": 1,
-      "referenceMarkdown": "# Reluctant Knife\n\n*Someone once paid you to make a problem disappear. You still decide what that made you.*\n\n*Which name did you cross off without taking the job?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Subterfuge, Arms.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting SP contribution:** +1 maximum SP.\n\n**Starting coin contribution:** +5 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Reluctant Knife\n\n*Someone once paid you to make a problem disappear. You still decide what that made you.*\n\n*Which name did you cross off without taking the job?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Subterfuge, Arms.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +5 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "origin-background-shore-gatherer",
@@ -24379,8 +23968,7 @@
         }
       ],
       "coinContribution": 5,
-      "spContribution": 1,
-      "referenceMarkdown": "# Shore Gatherer\n\n*The shore fed you if you learned when to arrive and what to leave alone.*\n\n*What did the tide bring you once that it should not have?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Wilderness, Athletics.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting SP contribution:** +1 maximum SP.\n\n**Starting coin contribution:** +5 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Shore Gatherer\n\n*The shore fed you if you learned when to arrive and what to leave alone.*\n\n*What did the tide bring you once that it should not have?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Wilderness, Athletics.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +5 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "origin-background-stage-assistant",
@@ -24395,8 +23983,7 @@
         }
       ],
       "coinContribution": 7,
-      "spContribution": 1,
-      "referenceMarkdown": "# Stage Assistant\n\n*You made the impossible happen from behind the curtain.*\n\n*What trick did the star never learn you invented?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Subterfuge, Mentalism.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting SP contribution:** +1 maximum SP.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Stage Assistant\n\n*You made the impossible happen from behind the curtain.*\n\n*What trick did the star never learn you invented?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Subterfuge, Mentalism.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "origin-background-star-touched",
@@ -24411,8 +23998,7 @@
         }
       ],
       "coinContribution": 7,
-      "spContribution": 1,
-      "referenceMarkdown": "# Star-Touched\n\n*A night sky, an old mirror or a deep well showed you more than it should.*\n\n*What familiar sight now seems slightly wrong?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Mentalism, Scholarship.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting SP contribution:** +1 maximum SP.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Star-Touched\n\n*A night sky, an old mirror or a deep well showed you more than it should.*\n\n*What familiar sight now seems slightly wrong?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Mentalism, Scholarship.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "origin-background-storm-survivor",
@@ -24427,8 +24013,7 @@
         }
       ],
       "coinContribution": 5,
-      "spContribution": 1,
-      "referenceMarkdown": "# Storm Survivor\n\n*You came back from the weather with something in your voice that was not there before.*\n\n*What did the storm leave behind?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Elements, Wilderness.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting SP contribution:** +1 maximum SP.\n\n**Starting coin contribution:** +5 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Storm Survivor\n\n*You came back from the weather with something in your voice that was not there before.*\n\n*What did the storm leave behind?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Elements, Wilderness.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +5 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "origin-background-temple-attendant",
@@ -24443,8 +24028,7 @@
         }
       ],
       "coinContribution": 7,
-      "spContribution": 1,
-      "referenceMarkdown": "# Temple Attendant\n\n*You have swept the steps and held the hands of people whose prayers had no words left.*\n\n*What promise outlasted your service?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Wards, Life.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting SP contribution:** +1 maximum SP.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Temple Attendant\n\n*You have swept the steps and held the hands of people whose prayers had no words left.*\n\n*What promise outlasted your service?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Wards, Life.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "origin-background-traveling-player",
@@ -24459,8 +24043,7 @@
         }
       ],
       "coinContribution": 7,
-      "spContribution": 1,
-      "referenceMarkdown": "# Traveling Player\n\n*You have been cheered, chased away, badly paid and invited back under a different name.*\n\n*Which audience surprised you?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Influence, Mentalism.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting SP contribution:** +1 maximum SP.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Traveling Player\n\n*You have been cheered, chased away, badly paid and invited back under a different name.*\n\n*Which audience surprised you?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Influence, Mentalism.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "origin-background-war-drummer",
@@ -24475,8 +24058,7 @@
         }
       ],
       "coinContribution": 7,
-      "spContribution": 1,
-      "referenceMarkdown": "# War Drummer\n\n*You know how to make frightened feet move together.*\n\n*Whose pace do you still hear beneath the beat?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Influence, Guard.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting SP contribution:** +1 maximum SP.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# War Drummer\n\n*You know how to make frightened feet move together.*\n\n*Whose pace do you still hear beneath the beat?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Influence, Guard.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "origin-background-ward-scribe",
@@ -24491,8 +24073,7 @@
         }
       ],
       "coinContribution": 10,
-      "spContribution": 1,
-      "referenceMarkdown": "# Ward Scribe\n\n*Your marks appeared over doors, cradles and caravan wheels. Sometimes they held.*\n\n*Which mark will you never draw carelessly?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Guard, Armor.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting SP contribution:** +1 maximum SP.\n\n**Starting coin contribution:** +10 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Ward Scribe\n\n*Your marks appeared over doors, cradles and caravan wheels. Sometimes they held.*\n\n*Which mark will you never draw carelessly?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Guard, Armor.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +10 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "origin-background-weather-apprentice",
@@ -24507,8 +24088,7 @@
         }
       ],
       "coinContribution": 7,
-      "spContribution": 1,
-      "referenceMarkdown": "# Weather Apprentice\n\n*Your teacher watched the clouds as if reading a difficult letter.*\n\n*Which warning did you finally learn to hear?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Elements, Divination.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting SP contribution:** +1 maximum SP.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Weather Apprentice\n\n*Your teacher watched the clouds as if reading a difficult letter.*\n\n*Which warning did you finally learn to hear?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Elements, Divination.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "origin-culture-border-marches",
@@ -24523,8 +24103,7 @@
         }
       ],
       "coinContribution": 7,
-      "spContribution": 1,
-      "referenceMarkdown": "# Border Marches\n\n*Your neighbors know the difference between vigilance and fear, though keeping that distinction takes work.*\n\n*Who taught you to welcome a traveler and watch the road at once?*\n\n## Rules\n\n**Type:** Culture.\n\n**Discipline choices:** Guard, Marksmanship.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting SP contribution:** +1 maximum SP.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Border Marches\n\n*Your neighbors know the difference between vigilance and fear, though keeping that distinction takes work.*\n\n*Who taught you to welcome a traveler and watch the road at once?*\n\n## Rules\n\n**Type:** Culture.\n\n**Discipline choices:** Guard, Marksmanship.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "origin-culture-cairn-communities",
@@ -24539,8 +24118,7 @@
         }
       ],
       "coinContribution": 5,
-      "spContribution": 1,
-      "referenceMarkdown": "# Cairn Communities\n\n*The dead are remembered at supper and in council, while the living argue freely about their advice.*\n\n*Whose name do you speak when courage runs short?*\n\n## Rules\n\n**Type:** Culture.\n\n**Discipline choices:** Invocation, Life.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting SP contribution:** +1 maximum SP.\n\n**Starting coin contribution:** +5 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Cairn Communities\n\n*The dead are remembered at supper and in council, while the living argue freely about their advice.*\n\n*Whose name do you speak when courage runs short?*\n\n## Rules\n\n**Type:** Culture.\n\n**Discipline choices:** Invocation, Life.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +5 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "origin-culture-cloister-valleys",
@@ -24555,8 +24133,7 @@
         }
       ],
       "coinContribution": 5,
-      "spContribution": 1,
-      "referenceMarkdown": "# Cloister Valleys\n\n*Little lights drift above the cloister paths after dusk. In the quiet rooms below, patient listeners teach troubled minds to find their footing again.*\n\n*Which lesson did you question before you left?*\n\n## Rules\n\n**Type:** Culture.\n\n**Discipline choices:** Wards, Medicine.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting SP contribution:** +1 maximum SP.\n\n**Starting coin contribution:** +5 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Cloister Valleys\n\n*Little lights drift above the cloister paths after dusk. In the quiet rooms below, patient listeners teach troubled minds to find their footing again.*\n\n*Which lesson did you question before you left?*\n\n## Rules\n\n**Type:** Culture.\n\n**Discipline choices:** Wards, Medicine.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +5 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "origin-culture-deep-halls",
@@ -24571,8 +24148,7 @@
         }
       ],
       "coinContribution": 7,
-      "spContribution": 1,
-      "referenceMarkdown": "# Deep Halls\n\n*Homes, gardens and markets fill the chambers beneath the hills; the surface is only one neighborhood.*\n\n*What does your home smell like after the forge fires dim?*\n\n## Rules\n\n**Type:** Culture.\n\n**Discipline choices:** Craft, Armor.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting SP contribution:** +1 maximum SP.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Deep Halls\n\n*Homes, gardens and markets fill the chambers beneath the hills; the surface is only one neighborhood.*\n\n*What does your home smell like after the forge fires dim?*\n\n## Rules\n\n**Type:** Culture.\n\n**Discipline choices:** Craft, Armor.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "origin-culture-ember-cities",
@@ -24587,8 +24163,7 @@
         }
       ],
       "coinContribution": 10,
-      "spContribution": 1,
-      "referenceMarkdown": "# Ember Cities\n\n*Kilns, glassworks and night markets make the streets glow after sundown.*\n\n*What beautiful thing did you first learn to make?*\n\n## Rules\n\n**Type:** Culture.\n\n**Discipline choices:** Elements, Craft.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting SP contribution:** +1 maximum SP.\n\n**Starting coin contribution:** +10 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Ember Cities\n\n*Kilns, glassworks and night markets make the streets glow after sundown.*\n\n*What beautiful thing did you first learn to make?*\n\n## Rules\n\n**Type:** Culture.\n\n**Discipline choices:** Elements, Craft.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +10 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "origin-culture-forest-communities",
@@ -24603,8 +24178,7 @@
         }
       ],
       "coinContribution": 5,
-      "spContribution": 1,
-      "referenceMarkdown": "# Forest Communities\n\n*You learned the woodland paths by gathering beside your elders and learned its stories by giving each remembered speaker a different voice.*\n\n*Which tree marks the way home?*\n\n## Rules\n\n**Type:** Culture.\n\n**Discipline choices:** Wilderness, Mentalism.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting SP contribution:** +1 maximum SP.\n\n**Starting coin contribution:** +5 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Forest Communities\n\n*You learned the woodland paths by gathering beside your elders and learned its stories by giving each remembered speaker a different voice.*\n\n*Which tree marks the way home?*\n\n## Rules\n\n**Type:** Culture.\n\n**Discipline choices:** Wilderness, Mentalism.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +5 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "origin-culture-free-harbors",
@@ -24619,8 +24193,7 @@
         }
       ],
       "coinContribution": 10,
-      "spContribution": 1,
-      "referenceMarkdown": "# Free Harbors\n\n*Cargoes and rumors change hands faster than the tide. You learned to listen in three directions.*\n\n*Who will always give you a berth?*\n\n## Rules\n\n**Type:** Culture.\n\n**Discipline choices:** Influence, Subterfuge.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting SP contribution:** +1 maximum SP.\n\n**Starting coin contribution:** +10 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Free Harbors\n\n*Cargoes and rumors change hands faster than the tide. You learned to listen in three directions.*\n\n*Who will always give you a berth?*\n\n## Rules\n\n**Type:** Culture.\n\n**Discipline choices:** Influence, Subterfuge.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +10 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "origin-culture-gathered-peoples",
@@ -24635,8 +24208,7 @@
         }
       ],
       "coinContribution": 7,
-      "spContribution": 1,
-      "referenceMarkdown": "# Gathered Peoples\n\n*Many peoples share your streets. A quiet thought across a crowded room and a practiced hand with a bandage both say that someone is looking out for you.*\n\n*Which old custom did your new neighbors adopt?*\n\n## Rules\n\n**Type:** Culture.\n\n**Discipline choices:** Mentalism, Medicine.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting SP contribution:** +1 maximum SP.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Gathered Peoples\n\n*Many peoples share your streets. A quiet thought across a crowded room and a practiced hand with a bandage both say that someone is looking out for you.*\n\n*Which old custom did your new neighbors adopt?*\n\n## Rules\n\n**Type:** Culture.\n\n**Discipline choices:** Mentalism, Medicine.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "origin-culture-grass-sea-clans",
@@ -24651,8 +24223,7 @@
         }
       ],
       "coinContribution": 5,
-      "spContribution": 1,
-      "referenceMarkdown": "# Grass Sea Clans\n\n*You grew up beneath an open sky, watching riders test their aim and blades at the gathering grounds before the herds moved on.*\n\n*What promise brings you back to the traveling camp?*\n\n## Rules\n\n**Type:** Culture.\n\n**Discipline choices:** Marksmanship, Arms.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting SP contribution:** +1 maximum SP.\n\n**Starting coin contribution:** +5 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Grass Sea Clans\n\n*You grew up beneath an open sky, watching riders test their aim and blades at the gathering grounds before the herds moved on.*\n\n*What promise brings you back to the traveling camp?*\n\n## Rules\n\n**Type:** Culture.\n\n**Discipline choices:** Marksmanship, Arms.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +5 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "origin-culture-highland-holds",
@@ -24667,8 +24238,7 @@
         }
       ],
       "coinContribution": 7,
-      "spContribution": 1,
-      "referenceMarkdown": "# Highland Holds\n\n*Your neighbors keep winter in their storehouses and thunder in their songs. Frost preserves the harvest; a sharp report carries a warning across the crags.*\n\n*What did your neighbors trust you to carry?*\n\n## Rules\n\n**Type:** Culture.\n\n**Discipline choices:** Elements, Wilderness.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting SP contribution:** +1 maximum SP.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Highland Holds\n\n*Your neighbors keep winter in their storehouses and thunder in their songs. Frost preserves the harvest; a sharp report carries a warning across the crags.*\n\n*What did your neighbors trust you to carry?*\n\n## Rules\n\n**Type:** Culture.\n\n**Discipline choices:** Elements, Wilderness.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "origin-culture-island-kinships",
@@ -24683,8 +24253,7 @@
         }
       ],
       "coinContribution": 7,
-      "spContribution": 1,
-      "referenceMarkdown": "# Island Kinships\n\n*You grew up with a horizon on every side and family on more than one shore.*\n\n*What signal means home is waiting?*\n\n## Rules\n\n**Type:** Culture.\n\n**Discipline choices:** Wilderness, Elements.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting SP contribution:** +1 maximum SP.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Island Kinships\n\n*You grew up with a horizon on every side and family on more than one shore.*\n\n*What signal means home is waiting?*\n\n## Rules\n\n**Type:** Culture.\n\n**Discipline choices:** Wilderness, Elements.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "origin-culture-learning-houses",
@@ -24699,8 +24268,7 @@
         }
       ],
       "coinContribution": 10,
-      "spContribution": 1,
-      "referenceMarkdown": "# Learning Houses\n\n*Debate followed you from the lesson room to supper. Curiosity was a habit before it was a profession.*\n\n*Which question earned you trouble?*\n\n## Rules\n\n**Type:** Culture.\n\n**Discipline choices:** Scholarship, Elements.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting SP contribution:** +1 maximum SP.\n\n**Starting coin contribution:** +10 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Learning Houses\n\n*Debate followed you from the lesson room to supper. Curiosity was a habit before it was a profession.*\n\n*Which question earned you trouble?*\n\n## Rules\n\n**Type:** Culture.\n\n**Discipline choices:** Scholarship, Elements.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +10 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "origin-culture-oasis-cities",
@@ -24715,8 +24283,7 @@
         }
       ],
       "coinContribution": 10,
-      "spContribution": 1,
-      "referenceMarkdown": "# Oasis Cities\n\n*Water is hospitality, memory and responsibility. Every caravan brings another version of the world.*\n\n*Whose well did your family help keep?*\n\n## Rules\n\n**Type:** Culture.\n\n**Discipline choices:** Influence, Scholarship.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting SP contribution:** +1 maximum SP.\n\n**Starting coin contribution:** +10 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Oasis Cities\n\n*Water is hospitality, memory and responsibility. Every caravan brings another version of the world.*\n\n*Whose well did your family help keep?*\n\n## Rules\n\n**Type:** Culture.\n\n**Discipline choices:** Influence, Scholarship.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +10 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "origin-culture-reed-villages",
@@ -24731,8 +24298,7 @@
         }
       ],
       "coinContribution": 5,
-      "spContribution": 1,
-      "referenceMarkdown": "# Reed Villages\n\n*On cold mornings, elders shape icy handholds along the pilings. At night, families leave a place by the fire for the ancestors who still watch over them.*\n\n*Which channel could you navigate with your eyes closed?*\n\n## Rules\n\n**Type:** Culture.\n\n**Discipline choices:** Elements, Invocation.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting SP contribution:** +1 maximum SP.\n\n**Starting coin contribution:** +5 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Reed Villages\n\n*On cold mornings, elders shape icy handholds along the pilings. At night, families leave a place by the fire for the ancestors who still watch over them.*\n\n*Which channel could you navigate with your eyes closed?*\n\n## Rules\n\n**Type:** Culture.\n\n**Discipline choices:** Elements, Invocation.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +5 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "origin-culture-river-settlements",
@@ -24747,8 +24313,7 @@
         }
       ],
       "coinContribution": 7,
-      "spContribution": 1,
-      "referenceMarkdown": "# River Settlements\n\n*The river gives your people passage and livelihood. You learned to cross its currents and to lend breath to those it almost took.*\n\n*What do you miss about the sound of the docks?*\n\n## Rules\n\n**Type:** Culture.\n\n**Discipline choices:** Athletics, Life.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting SP contribution:** +1 maximum SP.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# River Settlements\n\n*The river gives your people passage and livelihood. You learned to cross its currents and to lend breath to those it almost took.*\n\n*What do you miss about the sound of the docks?*\n\n## Rules\n\n**Type:** Culture.\n\n**Discipline choices:** Athletics, Life.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "origin-culture-terrace-towns",
@@ -24763,8 +24328,7 @@
         }
       ],
       "coinContribution": 5,
-      "spContribution": 1,
-      "referenceMarkdown": "# Terrace Towns\n\n*Children swing between the terraces while lamplighters carry warm light along the evening stairs. You learned to make a steep place feel like home.*\n\n*Which impossible-looking route was your childhood shortcut?*\n\n## Rules\n\n**Type:** Culture.\n\n**Discipline choices:** Athletics, Wards.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting SP contribution:** +1 maximum SP.\n\n**Starting coin contribution:** +5 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Terrace Towns\n\n*Children swing between the terraces while lamplighters carry warm light along the evening stairs. You learned to make a steep place feel like home.*\n\n*Which impossible-looking route was your childhood shortcut?*\n\n## Rules\n\n**Type:** Culture.\n\n**Discipline choices:** Athletics, Wards.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +5 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "origin-culture-traveling-companies",
@@ -24779,8 +24343,7 @@
         }
       ],
       "coinContribution": 7,
-      "spContribution": 1,
-      "referenceMarkdown": "# Traveling Companies\n\n*You learned to hold an audience with a flashing blade, a sweeping bow and the well-timed distraction that lets a companion make their entrance.*\n\n*What song announced your arrival?*\n\n## Rules\n\n**Type:** Culture.\n\n**Discipline choices:** Arms, Subterfuge.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting SP contribution:** +1 maximum SP.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Traveling Companies\n\n*You learned to hold an audience with a flashing blade, a sweeping bow and the well-timed distraction that lets a companion make their entrance.*\n\n*What song announced your arrival?*\n\n## Rules\n\n**Type:** Culture.\n\n**Discipline choices:** Arms, Subterfuge.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "origin-culture-walled-communities",
@@ -24795,8 +24358,7 @@
         }
       ],
       "coinContribution": 10,
-      "spContribution": 1,
-      "referenceMarkdown": "# Walled Communities\n\n*Your home knows the comfort of a gate and the danger of believing it solves everything.*\n\n*Who always greeted you from the wall?*\n\n## Rules\n\n**Type:** Culture.\n\n**Discipline choices:** Armor, Guard.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting SP contribution:** +1 maximum SP.\n\n**Starting coin contribution:** +10 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Walled Communities\n\n*Your home knows the comfort of a gate and the danger of believing it solves everything.*\n\n*Who always greeted you from the wall?*\n\n## Rules\n\n**Type:** Culture.\n\n**Discipline choices:** Armor, Guard.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +10 coins. See [starting coins](../starting-coins.md).\n"
     }
   ],
   "classes": [
@@ -35330,23 +34892,128 @@
       "hpContribution": 2,
       "spContribution": 1,
       "baseSpeed": 5,
-      "coinContribution": 2
+      "coinContribution": 2,
+      "reference": {
+        "flavor": [
+          "Grey skin, great watchful eyes and a quiet step beneath the weight of the world.",
+          "The ancestors of Deep Dwarves went farther down. Over long generations, the people of the depths became shorter and slighter than their surface cousins. Their skin ranges through shades of grey, and their large eyes gather the faint light of the underground. Narrow shoulders and economical movements suit passages where a broad surface dwarf would struggle.",
+          "Many are naturally shy. They watch before approaching, speak after listening and prefer a familiar companion to the attention of a crowded room. Reserve does not diminish curiosity, courage or conviction. A quiet Deep Dwarf may be the first to notice danger and the one who refuses to abandon a friend.",
+          "Stone, darkness and small changes in air or vibration shape their experience. Those raised above ground bring the same sensitive bodies to unfamiliar surroundings. No ancestral instinct supplies a map of tunnels they have never walked."
+        ],
+        "rules": {
+          "details": [],
+          "body": [
+            {
+              "text": "Choose two of the five traits below. Temperamental tendencies are invitations, not a required personality. Any ancestry may grow up in any culture. Each chosen characteristic carries the benefits and side effects in its description."
+            },
+            {
+              "text": "Starting values: HP contribution +2 at creation and per level; base Speed 5."
+            },
+            {
+              "items": [
+                "Eyes for the Dark — You study the passage in a faint wash of reflected light.",
+                "The Stone Tells You — You rest your palm against the floor and wait for the answering tread.",
+                "A Sense of Depth — You wake in the dark and know which wall lies beneath the mountain.",
+                "A Patient Breath — You slow your breathing while the others hurry through the stale passage.",
+                "Through the Narrow Places — You lower your head and slip beneath the fallen beam without breaking stride."
+              ]
+            },
+            {
+              "text": "Starting SP contribution: +1 maximum SP at creation."
+            },
+            {
+              "text": "Starting coin contribution: +2 coins. See starting coins."
+            }
+          ],
+          "notes": []
+        }
+      }
     },
     {
       "id": "ancestry-gnome",
       "name": "Gnome",
       "hpContribution": 1,
       "spContribution": 3,
-      "baseSpeed": 6,
-      "coinContribution": 0
+      "baseSpeed": 5,
+      "coinContribution": 0,
+      "reference": {
+        "flavor": [
+          "Tiny fey bodies, long lives and minds forever asking what else a thing could become.",
+          "Gnomes are fey creatures, smaller even than halflings, with deft hands, keen senses and an intelligence that can make a complicated device seem almost embarrassingly obvious. Their faces carry the expressions of long experience, however easily a stranger mistakes their stature for youth.",
+          "Some say the gnomes left the world of fairie to explore possibilities its inhabitants had overlooked. Others insist they were thrown out, and disagree enthusiastically about what invention caused the trouble. Gnomes tell both stories. Whether anyone remembers the whole truth is another question.",
+          "Inventing and tinkering delight many gnomes: an unfamiliar mechanism invites examination, an accepted limitation invites an experiment. Others apply that same searching intelligence to music, medicine, argument or the behavior of friends. A gnome does not inherit a workshop or a profession. Their fey nature and extraordinary mind travel with them wherever they grow up."
+        ],
+        "rules": {
+          "details": [],
+          "body": [
+            {
+              "text": "Choose two of the five traits below. Temperamental tendencies are invitations, not a required personality. Any ancestry may grow up in any culture. Each chosen characteristic carries the benefits and side effects in its description."
+            },
+            {
+              "text": "Starting values: HP contribution +1 at creation and per level; base Speed 5; Size Small."
+            },
+            {
+              "items": [
+                "What’s It Made Of? — You turn the device over, already asking why its maker put the hinge there.",
+                "Eyes from Elsewhere — The painted door is convincing. Its shadow has forgotten where the sun is.",
+                "Fingers in the Works — You ease one small part out of place, and the whole machine loses its argument.",
+                "Small Target — You tuck yourself behind the low stone as the arrow strikes its edge.",
+                "Bright Idea — You draw three lines in the dust, add a spoon, and the answer takes shape."
+              ]
+            },
+            {
+              "text": "Starting SP contribution: +3 maximum SP at creation."
+            },
+            {
+              "text": "Starting coin contribution: +0 coins. See starting coins."
+            }
+          ],
+          "notes": []
+        }
+      }
     },
     {
       "id": "ancestry-goblin",
       "name": "Goblin",
       "hpContribution": 1,
       "spContribution": 1,
-      "baseSpeed": 6,
-      "coinContribution": 1
+      "baseSpeed": 5,
+      "coinContribution": 1,
+      "reference": {
+        "flavor": [
+          "Quick hands, shared effort and a future finally open to your own making.",
+          "Goblins are small, quick-bodied people with prominent ears and alert, expressive faces. For generations, orcs enslaved them, and outsiders learned to associate goblins with the cruelty of those who held them. Freedom did not immediately erase that reputation. It did give goblins the chance to build lives whose purpose was their own.",
+          "Many now seek a place through useful work, trade, exploration and the steady proof of being a reliable neighbor. Resourcefulness honed under deprivation can become skilled repair, careful husbandry or a gift for seeing value where others see rubbish. Cooperation can become friendship and enterprise rather than a necessity of survival.",
+          "A goblin adventurer may want to support a community, win recognition or simply discover what freedom feels like beyond familiar roads. Others were born free and have never seen an orc. Their ancestry carries a history; each goblin chooses what to make of the life ahead."
+        ],
+        "rules": {
+          "details": [],
+          "body": [
+            {
+              "text": "Choose two of the five traits below. Temperamental tendencies are invitations, not a required personality. Any ancestry may grow up in any culture. Each chosen characteristic carries the benefits and side effects in its description."
+            },
+            {
+              "text": "Starting values: HP contribution +1 at creation and per level; base Speed 5; Size Small."
+            },
+            {
+              "items": [
+                "Waste Nothing — You turn the broken hinge over. There is good work left in it yet.",
+                "Better Together — Your companion draws their eye, and you know exactly when to step in.",
+                "Quick on Your Feet — You are halfway across the yard before the others have found their stride.",
+                "The Other Side of the Fire — You recognize the guarded silence and make your offer without stepping closer.",
+                "Quick Hands — The awkward bundle settles into your grip before anyone notices it slipping."
+              ]
+            },
+            {
+              "text": "Starting SP contribution: +1 maximum SP at creation."
+            },
+            {
+              "text": "Starting coin contribution: +1 coins. See starting coins."
+            }
+          ],
+          "notes": []
+        }
+      }
     },
     {
       "id": "ancestry-halfling",
@@ -35354,7 +35021,41 @@
       "hpContribution": 1,
       "spContribution": 1,
       "baseSpeed": 5,
-      "coinContribution": 3
+      "coinContribution": 3,
+      "reference": {
+        "flavor": [
+          "Quiet feet, a generous table and courage that surprises people who judge by height.",
+          "Halflings are small, compact people, larger than gnomes, with a gift for making limited space comfortable. Others often notice their height before noticing the person, a mistake a halfling may patiently correct or quietly put to use.",
+          "Hospitality and good company are familiar pleasures, but a generous table does not require an easy life. Courage can live beside trembling knees, a sharp tongue beside warm manners, and a taste for home beside an irresistible curiosity about the road. A halfling raised far from halfling communities brings their own customs to those possibilities."
+        ],
+        "rules": {
+          "details": [],
+          "body": [
+            {
+              "text": "Choose two of the five traits below. These are invitations to a familiar fantasy, not a required personality. Any ancestry may grow up in any culture."
+            },
+            {
+              "text": "Starting values: HP contribution +1 at creation and per level; base Speed 5; Size Small."
+            },
+            {
+              "items": [
+                "Bigger on the Inside — Your knees may shake. Your friends will never see you leave them.",
+                "Under Their Noses — The grand folk rarely remember to look beneath the table.",
+                "Quick Tongue — You can talk your way through a negotiation, an argument or an accusation.",
+                "A Little Luck — The latch catches your coat a heartbeat before you step into trouble.",
+                "Endless Pockets — Your clothes have pockets in places that should not have pockets, and they hold more than they should."
+              ]
+            },
+            {
+              "text": "Starting SP contribution: +1 maximum SP at creation."
+            },
+            {
+              "text": "Starting coin contribution: +3 coins. See starting coins."
+            }
+          ],
+          "notes": []
+        }
+      }
     },
     {
       "id": "ancestry-high-elf",
@@ -35362,7 +35063,42 @@
       "hpContribution": 2,
       "spContribution": 2,
       "baseSpeed": 6,
-      "coinContribution": 1
+      "coinContribution": 1,
+      "reference": {
+        "flavor": [
+          "Tall, strong and deliberate; a long life leaves room to consider every word.",
+          "High Elves are tall and strongly built, with pointed ears and the fine, angular facial structure that leads outsiders to call them kin to Wood Elves. They are a different ancestry. Beside a compact, restless Wood Elf, a High Elf has the presence of a standing stone: upright, composed and difficult to hurry.",
+          "Their long lives encourage a broad view of consequences. Many listen through an argument before speaking, practice a movement until it wastes no effort, or remember a slight long after its author has forgotten it. Confidence can harden into arrogance, especially when patience is mistaken for superior judgment. Others learn that living a long time is no guarantee of being right.",
+          "A High Elf might be a laborer, a wanderer or a scholar. Strength and deliberation belong to their physical and temperamental inheritance; wealth, titles and courtly manners depend on the life they have led."
+        ],
+        "rules": {
+          "details": [],
+          "body": [
+            {
+              "text": "Choose two of the five traits below. Temperamental tendencies are invitations, not a required personality. Any ancestry may grow up in any culture. Each chosen characteristic carries the benefits and side effects in its description."
+            },
+            {
+              "text": "Starting values: HP contribution +2 at creation and per level; base Speed 6."
+            },
+            {
+              "items": [
+                "The Practised Hand — You turn the tiny fitting once, then set it exactly where it belongs.",
+                "Still Water — You let the clamor spend itself before deciding what deserves your attention.",
+                "Starlight Eyes — Under the last light of evening, you can still count the stitches.",
+                "Measured Strength — You set your feet, test the weight and lift without a wasted motion.",
+                "The Weight of Centuries — You close your eyes, and the room returns as it stood a lifetime ago."
+              ]
+            },
+            {
+              "text": "Starting SP contribution: +2 maximum SP at creation."
+            },
+            {
+              "text": "Starting coin contribution: +1 coins. See starting coins."
+            }
+          ],
+          "notes": []
+        }
+      }
     },
     {
       "id": "ancestry-dwarf",
@@ -35370,7 +35106,42 @@
       "hpContribution": 3,
       "spContribution": 0,
       "baseSpeed": 5,
-      "coinContribution": 2
+      "coinContribution": 2,
+      "reference": {
+        "flavor": [
+          "Broad shoulders, patient hands and a home made where mountain meets open sky.",
+          "Long ago, dwarven peoples took different roads. Some built their halls within mountains opening onto the surface world. Others traveled deeper into the earth. Centuries of separation, perhaps much longer, have left their descendants visibly different.",
+          "Hill Dwarves are the broad, stocky surface people: solid limbs, strong backs, dense hair and faces weathered by forge heat, mountain wind or ordinary years of work. Their halls connect stone interiors to roads, daylight and neighboring communities. Deep Dwarves are their distant kin, but a stranger would seldom mistake one for the other.",
+          "Endurance, craft and a lasting memory are familiar expressions of Hill Dwarf identity. A remembered debt may be a kindness worth returning as readily as an injury worth answering. A dwarf need not live in a mountain, work a forge or keep a grudge; the same steady body can belong to a sailor, gardener or traveling musician."
+        ],
+        "rules": {
+          "details": [],
+          "body": [
+            {
+              "text": "Choose two of the five traits below. Temperamental tendencies are invitations, not a required personality. Any ancestry may grow up in any culture. Each chosen characteristic carries the benefits and side effects in its description."
+            },
+            {
+              "text": "Starting values: HP contribution +3 at creation and per level; base Speed 5."
+            },
+            {
+              "items": [
+                "Hard as Bedrock — Your ancestors did not dig a home from the mountain by yielding politely.",
+                "Stone Mason — You know a mason’s lie by the stone around it.",
+                "Stoic Bearing — Let the storm waste its strength on you.",
+                "An Honest Maker’s Hand — Your thumb finds the seam; your ear knows the ring of sound metal.",
+                "A Grudge Well Kept — You remember who struck first. You intend them to remember what followed."
+              ]
+            },
+            {
+              "text": "Starting SP contribution: +0 maximum SP at creation."
+            },
+            {
+              "text": "Starting coin contribution: +2 coins. See starting coins."
+            }
+          ],
+          "notes": []
+        }
+      }
     },
     {
       "id": "ancestry-human",
@@ -35378,7 +35149,41 @@
       "hpContribution": 2,
       "spContribution": 1,
       "baseSpeed": 6,
-      "coinContribution": 1
+      "coinContribution": 1,
+      "reference": {
+        "flavor": [
+          "Restless, adaptable and fiercely invested in a life that never feels long enough.",
+          "Humans have no single stature, complexion or way of making a home. A short life beside the elder peoples can give an ordinary season an urgent importance: learn the trade, mend the friendship, see what lies beyond the ridge. Some make roots; others make roads between the places they love.",
+          "Adaptability takes many forms. One human gathers languages and acquaintances; another learns by failing until a stubborn problem yields. Neither ambition nor restlessness is compulsory. A human hero may want a quiet life enough to undertake a dangerous journey to protect it."
+        ],
+        "rules": {
+          "details": [],
+          "body": [
+            {
+              "text": "Choose two of the five traits below. These are invitations to a familiar fantasy, not a required personality. Any ancestry may grow up in any culture."
+            },
+            {
+              "text": "Starting values: HP contribution +2 at creation and per level; base Speed 6."
+            },
+            {
+              "items": [
+                "Never Quite Finished — There is always one more person to help, one more hill to cross.",
+                "Adaptable — You learn quickly, turning every new experience into another useful skill.",
+                "A Foot in Two Worlds — You learned early that a stranger is sometimes only a person whose words you do not know.",
+                "Ingenuity — You look at what is available and build the tool you need.",
+                "The Impossible Streak — Someone says it cannot be done, and you hear a challenge."
+              ]
+            },
+            {
+              "text": "Starting SP contribution: +1 maximum SP at creation."
+            },
+            {
+              "text": "Starting coin contribution: +1 coins. See starting coins."
+            }
+          ],
+          "notes": []
+        }
+      }
     },
     {
       "id": "ancestry-oath-bound",
@@ -35386,7 +35191,45 @@
       "hpContribution": 2,
       "spContribution": 2,
       "baseSpeed": 6,
-      "coinContribution": 0
+      "coinContribution": 0,
+      "reference": {
+        "flavor": [
+          "Made for a purpose. Set adrift before you learned what it was.",
+          "Oath-Bound are constructs brought into existence by an oath holder. Each was made for a higher purpose and carries a destiny, yet begins their life without knowing what that purpose or destiny is. They have been given existence without an explanation: a ship set adrift, with neither a chart nor a remembered destination.",
+          "Their oath holder is the source of that existence. An Oath-Bound may recognize a name, a presence or a sign of the one who made them. Calling upon that connection can bring conviction, understanding or strength. The answer may feel intimate even when the being who gives it remains a mystery.",
+          "Life among other peoples gives them relationships, work and ambitions of their own. A journey might uncover why they were made, or simply teach them what they value while searching. The character’s choices belong to the player; their hidden purpose offers a mystery to discover together with the Dungeon Architect."
+        ],
+        "rules": {
+          "details": [],
+          "body": [
+            {
+              "text": "Choose two of the five traits below. Temperamental tendencies are invitations, not a required personality. Any ancestry may grow up in any culture. Each chosen characteristic carries the benefits and side effects in its description."
+            },
+            {
+              "text": "Starting values: HP contribution +2 at creation and per level; base Speed 6."
+            },
+            {
+              "text": "Constructed life: Use the shared Oath-Bound recovery rules."
+            },
+            {
+              "items": [
+                "The Answering Voice — You reach toward the presence that made you, and certainty settles into your voice.",
+                "Borrowed Knowing — You know the answer before you know where the memory came from.",
+                "The Debt Comes Due — You ask for another chance, and a little of the life you were given answers.",
+                "The Will That Made You — Something in you remembers that your work is unfinished.",
+                "A Hand on the Rudder — For a moment, the world is less bewildering and the next step feels clearer."
+              ]
+            },
+            {
+              "text": "Starting SP contribution: +2 maximum SP at creation."
+            },
+            {
+              "text": "Starting coin contribution: +0 coins. See starting coins."
+            }
+          ],
+          "notes": []
+        }
+      }
     },
     {
       "id": "ancestry-tallfolk",
@@ -35394,7 +35237,42 @@
       "hpContribution": 3,
       "spContribution": 0,
       "baseSpeed": 6,
-      "coinContribution": 1
+      "coinContribution": 1,
+      "reference": {
+        "flavor": [
+          "Long limbs, great hands and a world whose doorways rarely give you room.",
+          "Tallfolk stand well above most neighboring peoples. Long arms, powerful frames and large hands make their scale evident even when they sit quietly. A borrowed chair, a crowded wagon or a low lintel can demand more thought than a heavy load.",
+          "Some enjoy the attention their height brings; others become practiced at folding themselves out of the way. Their bodies offer reach and leverage, but neither strength nor stature decides their character. A Tallfolk healer may work with extraordinary gentleness, while a shy scholar learns to endure being the first person everyone notices.",
+          "Their origins and communities belong to the campaign. They need no named giant ancestor or distant kingdom to take their place beside other adventurers. Choose how your hero lives at this scale, and which of its advantages they have learned to use."
+        ],
+        "rules": {
+          "details": [],
+          "body": [
+            {
+              "text": "Choose two of the five traits below. Temperamental tendencies are invitations, not a required personality. Any ancestry may grow up in any culture. Each chosen characteristic carries the benefits and side effects in its description."
+            },
+            {
+              "text": "Starting values: HP contribution +3 at creation and per level; base Speed 6."
+            },
+            {
+              "items": [
+                "Long Reach — You catch the latch above your companions’ heads without rising onto your toes.",
+                "Broad Back — You settle the awkward load across your shoulders and leave a hand free for the door.",
+                "A Big Shadow — You unfold to your full height, and wait for the room to notice.",
+                "Built for the Weather — You pull your collar closed and keep pace through the driving sleet.",
+                "Long Stride — You cross the courtyard in a few easy strides while your companions hurry to keep pace."
+              ]
+            },
+            {
+              "text": "Starting SP contribution: +0 maximum SP at creation."
+            },
+            {
+              "text": "Starting coin contribution: +1 coins. See starting coins."
+            }
+          ],
+          "notes": []
+        }
+      }
     },
     {
       "id": "ancestry-elf",
@@ -35402,7 +35280,42 @@
       "hpContribution": 2,
       "spContribution": 1,
       "baseSpeed": 6,
-      "coinContribution": 2
+      "coinContribution": 2,
+      "reference": {
+        "flavor": [
+          "Short, dark-haired and quick; the next possibility is already tugging at your sleeve.",
+          "Wood Elves are shorter and more lightly built than High Elves, with dark hair, nimble limbs and expressive, angular faces. Similar ears and facial structures have given both peoples the name elf in other tongues. A Wood Elf watching a High Elf deliberate may wonder how anyone can bear to leave an interesting idea untried for so long.",
+          "Quick movement often accompanies quick feeling. Curiosity, anger and affection can arrive with equal force; many Wood Elves trust the first useful opening and discover its consequences afterward. Their rashness can become daring, and their impulsiveness can become generosity. Neither prevents a Wood Elf from learning patience or taking a promise seriously.",
+          "Their bodies lend themselves to balance and movement. Woodlands give those gifts abundant expression, but a Wood Elf raised among rooftops, ships or crowded streets remains a Wood Elf. Their community determines what those quick hands learn to do."
+        ],
+        "rules": {
+          "details": [],
+          "body": [
+            {
+              "text": "Choose two of the five traits below. Temperamental tendencies are invitations, not a required personality. Any ancestry may grow up in any culture. Each chosen characteristic carries the benefits and side effects in its description."
+            },
+            {
+              "text": "Starting values: HP contribution +2 at creation and per level; base Speed 6."
+            },
+            {
+              "items": [
+                "Footfall on the Leaves — Even the fallen leaves seem reluctant to betray your passing.",
+                "A Lifetime Ago — You remember when the old road was new.",
+                "Nature’s Whispers — A startled bird tells you what a shouted warning never could.",
+                "Grace of the Elder Folk — Where others hurry, you seem simply to arrive.",
+                "Dream beneath the Stars — Your body rests while part of you walks old paths."
+              ]
+            },
+            {
+              "text": "Starting SP contribution: +1 maximum SP at creation."
+            },
+            {
+              "text": "Starting coin contribution: +2 coins. See starting coins."
+            }
+          ],
+          "notes": []
+        }
+      }
     }
   ],
   "basicActions": [

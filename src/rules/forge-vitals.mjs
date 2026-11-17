@@ -5,9 +5,11 @@ const cap = (value, max) => Math.min(max, Math.max(0, value));
 const integer = (value, fallback = 0) =>
   Number.isSafeInteger(value) ? value : fallback;
 
-export function forgeStartingSp(ancestry, culture, background, cls, attributes) {
-  const originSp = [ancestry, culture, background].reduce((sum, record) => sum + (record?.spContribution ?? 0), 0);
-  return originSp + 2 * Math.max(0, attributes[cls?.spAttribute] ?? 0);
+export const FORGE_BASE_SP = 2;
+
+export function forgeStartingSp(ancestry, culture, background, cls, attributes, baseSp) {
+  const base = baseSp ?? (culture?.spContribution ?? 0) + (background?.spContribution ?? 0);
+  return base + (ancestry?.spContribution ?? 0) + 2 * Math.max(0, attributes[cls?.spAttribute] ?? 0);
 }
 
 export function forgeMaximums({

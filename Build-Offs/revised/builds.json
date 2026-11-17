@@ -1,14 +1,14 @@
 {
   "rulesRevision": 299,
   "spellbookProgressionRevision": 310,
-  "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+  "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
   "workingTree": false,
   "builds": [
     {
       "id": "barbarian",
       "name": "Harka Stormshoulder",
       "level": 1,
-      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
       "workingTree": false,
       "draft": {
         "name": "Harka Stormshoulder",
@@ -323,7 +323,7 @@
       "id": "barbarian",
       "name": "Harka Stormshoulder",
       "level": 3,
-      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
       "workingTree": false,
       "draft": {
         "name": "Harka Stormshoulder",
@@ -727,7 +727,7 @@
       "id": "barbarian",
       "name": "Harka Stormshoulder",
       "level": 7,
-      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
       "workingTree": false,
       "draft": {
         "name": "Harka Stormshoulder",
@@ -1324,7 +1324,7 @@
       "id": "bard",
       "name": "Lysa Silverstring",
       "level": 1,
-      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
       "workingTree": false,
       "draft": {
         "name": "Lysa Silverstring",
@@ -1718,7 +1718,7 @@
       "id": "bard",
       "name": "Lysa Silverstring",
       "level": 3,
-      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
       "workingTree": false,
       "draft": {
         "name": "Lysa Silverstring",
@@ -2235,7 +2235,7 @@
       "id": "bard",
       "name": "Lysa Silverstring",
       "level": 7,
-      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
       "workingTree": false,
       "draft": {
         "name": "Lysa Silverstring",
@@ -3132,7 +3132,7 @@
       "id": "cleric",
       "name": "Brunna Hearthward",
       "level": 1,
-      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
       "workingTree": false,
       "draft": {
         "name": "Brunna Hearthward",
@@ -3484,7 +3484,7 @@
       "id": "cleric",
       "name": "Brunna Hearthward",
       "level": 3,
-      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
       "workingTree": false,
       "draft": {
         "name": "Brunna Hearthward",
@@ -4004,7 +4004,7 @@
       "id": "cleric",
       "name": "Brunna Hearthward",
       "level": 7,
-      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
       "workingTree": false,
       "draft": {
         "name": "Brunna Hearthward",
@@ -4824,7 +4824,7 @@
       "id": "druid",
       "name": "Thalen Reedwalker",
       "level": 1,
-      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
       "workingTree": false,
       "draft": {
         "name": "Thalen Reedwalker",
@@ -5222,7 +5222,7 @@
       "id": "druid",
       "name": "Thalen Reedwalker",
       "level": 3,
-      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
       "workingTree": false,
       "draft": {
         "name": "Thalen Reedwalker",
@@ -5785,7 +5785,7 @@
       "id": "druid",
       "name": "Thalen Reedwalker",
       "level": 7,
-      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
       "workingTree": false,
       "draft": {
         "name": "Thalen Reedwalker",
@@ -6636,7 +6636,7 @@
       "id": "fighter",
       "name": "Corin Ashguard",
       "level": 1,
-      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
       "workingTree": false,
       "draft": {
         "name": "Corin Ashguard",
@@ -6975,7 +6975,7 @@
       "id": "fighter",
       "name": "Corin Ashguard",
       "level": 3,
-      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
       "workingTree": false,
       "draft": {
         "name": "Corin Ashguard",
@@ -7409,7 +7409,7 @@
       "id": "fighter",
       "name": "Corin Ashguard",
       "level": 7,
-      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
       "workingTree": false,
       "draft": {
         "name": "Corin Ashguard",
@@ -8056,7 +8056,7 @@
       "id": "monk",
       "name": "Sera Quietstep",
       "level": 1,
-      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
       "workingTree": false,
       "draft": {
         "name": "Sera Quietstep",
@@ -8347,7 +8347,7 @@
       "id": "monk",
       "name": "Sera Quietstep",
       "level": 3,
-      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
       "workingTree": false,
       "draft": {
         "name": "Sera Quietstep",
@@ -8732,7 +8732,7 @@
       "id": "monk",
       "name": "Sera Quietstep",
       "level": 7,
-      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
       "workingTree": false,
       "draft": {
         "name": "Sera Quietstep",
@@ -9324,7 +9324,7 @@
       "id": "paladin",
       "name": "Aldren Vowkeeper",
       "level": 1,
-      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
       "workingTree": false,
       "draft": {
         "name": "Aldren Vowkeeper",
@@ -9669,7 +9669,7 @@
       "id": "paladin",
       "name": "Aldren Vowkeeper",
       "level": 3,
-      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
       "workingTree": false,
       "draft": {
         "name": "Aldren Vowkeeper",
@@ -10109,7 +10109,7 @@
       "id": "paladin",
       "name": "Aldren Vowkeeper",
       "level": 7,
-      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
       "workingTree": false,
       "draft": {
         "name": "Aldren Vowkeeper",
@@ -10824,7 +10824,7 @@
       "id": "ranger",
       "name": "Eryn Mossarrow",
       "level": 1,
-      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
       "workingTree": false,
       "draft": {
         "name": "Eryn Mossarrow",
@@ -11197,7 +11197,7 @@
       "id": "ranger",
       "name": "Eryn Mossarrow",
       "level": 3,
-      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
       "workingTree": false,
       "draft": {
         "name": "Eryn Mossarrow",
@@ -11665,7 +11665,7 @@
       "id": "ranger",
       "name": "Eryn Mossarrow",
       "level": 7,
-      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
       "workingTree": false,
       "draft": {
         "name": "Eryn Mossarrow",
@@ -12404,7 +12404,7 @@
       "id": "rogue",
       "name": "Pip Nightjar",
       "level": 1,
-      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
       "workingTree": false,
       "draft": {
         "name": "Pip Nightjar",
@@ -12743,7 +12743,7 @@
       "id": "rogue",
       "name": "Pip Nightjar",
       "level": 3,
-      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
       "workingTree": false,
       "draft": {
         "name": "Pip Nightjar",
@@ -13176,7 +13176,7 @@
       "id": "rogue",
       "name": "Pip Nightjar",
       "level": 7,
-      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
       "workingTree": false,
       "draft": {
         "name": "Pip Nightjar",
@@ -13812,7 +13812,7 @@
       "id": "sorcerer",
       "name": "Ilyra Cinderblood",
       "level": 1,
-      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
       "workingTree": false,
       "draft": {
         "name": "Ilyra Cinderblood",
@@ -14181,7 +14181,7 @@
       "id": "sorcerer",
       "name": "Ilyra Cinderblood",
       "level": 3,
-      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
       "workingTree": false,
       "draft": {
         "name": "Ilyra Cinderblood",
@@ -14687,7 +14687,7 @@
       "id": "sorcerer",
       "name": "Ilyra Cinderblood",
       "level": 7,
-      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
       "workingTree": false,
       "draft": {
         "name": "Ilyra Cinderblood",
@@ -15465,7 +15465,7 @@
       "id": "warlock",
       "name": "Vesper Ashpact",
       "level": 1,
-      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
       "workingTree": false,
       "draft": {
         "name": "Vesper Ashpact",
@@ -15806,7 +15806,7 @@
       "id": "warlock",
       "name": "Vesper Ashpact",
       "level": 3,
-      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
       "workingTree": false,
       "draft": {
         "name": "Vesper Ashpact",
@@ -16267,7 +16267,7 @@
       "id": "warlock",
       "name": "Vesper Ashpact",
       "level": 7,
-      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
       "workingTree": false,
       "draft": {
         "name": "Vesper Ashpact",
@@ -17068,7 +17068,7 @@
       "id": "wizard",
       "name": "Vaelis Quillstar",
       "level": 1,
-      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
       "workingTree": false,
       "draft": {
         "name": "Vaelis Quillstar",
@@ -17500,7 +17500,7 @@
       "id": "wizard",
       "name": "Vaelis Quillstar",
       "level": 3,
-      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
       "workingTree": false,
       "draft": {
         "name": "Vaelis Quillstar",
@@ -18058,7 +18058,7 @@
       "id": "wizard",
       "name": "Vaelis Quillstar",
       "level": 7,
-      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
       "workingTree": false,
       "draft": {
         "name": "Vaelis Quillstar",
@@ -18939,7 +18939,7 @@
       "id": "artificer",
       "name": "Nim Coppercoil",
       "level": 1,
-      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
       "workingTree": false,
       "draft": {
         "name": "Nim Coppercoil",
@@ -19097,7 +19097,7 @@
         "maxHp": 13,
         "maxSp": 9,
         "gritGranted": 1,
-        "speed": 6,
+        "speed": 5,
         "remainingCoins": 2
       },
       "development": {
@@ -19343,7 +19343,7 @@
       "id": "artificer",
       "name": "Nim Coppercoil",
       "level": 3,
-      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
       "workingTree": false,
       "draft": {
         "name": "Nim Coppercoil",
@@ -19534,7 +19534,7 @@
         "maxHp": 17,
         "maxSp": 13,
         "gritGranted": 2,
-        "speed": 6,
+        "speed": 5,
         "remainingCoins": 2
       },
       "development": {
@@ -19875,7 +19875,7 @@
       "id": "artificer",
       "name": "Nim Coppercoil",
       "level": 7,
-      "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+      "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
       "workingTree": false,
       "draft": {
         "name": "Nim Coppercoil",
@@ -20147,7 +20147,7 @@
         "maxHp": 25,
         "maxSp": 21,
         "gritGranted": 3,
-        "speed": 6,
+        "speed": 5,
         "remainingCoins": 2
       },
       "development": {

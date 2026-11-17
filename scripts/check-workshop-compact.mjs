@@ -226,6 +226,10 @@ try {
     await byLabel("Background discipline").selectOption("0");
     await expect(byLabel("Culture").locator("option:checked")).toHaveText("Walled Communities — Armor / Guard");
     await expect(byLabel("Background").locator("option:checked")).toHaveText(/^Household Guard — /);
+    for (const benefits of await page.locator(".creation-benefits").all()) {
+      await expect(benefits).toContainText("starting coins");
+      await expect(benefits).not.toContainText("SP");
+    }
     await expect(identity).not.toContainText("Protector");
     await noOverflow("Origins");
     await capture("creator-origins");

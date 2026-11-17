@@ -212,9 +212,8 @@ try {
   await page.locator('[data-action="forge-view"][data-id="columns"]').click();
   assert.match(await page.locator(".forge-studied").innerText(), /Armor/);
   assert.match(await page.locator(".forge-studied").innerText(), /Guard/);
-  await page.locator(".forge-other-learning > summary").click();
-  await page.locator('[data-action="forge-select"][data-id="ability-quick-exit"]').click();
-  await page.locator('[data-action="forge-learn"][data-id="ability-quick-exit"]').click();
+  assert.equal(await page.locator(".forge-other-learning").count(), 0);
+  await page.locator('[data-action="forge-learn"][data-id="guard:watchfulness:1"]').click();
   assert.equal(await page.locator("[data-dp-remaining]").innerText(), "5 DP remaining");
   await page.getByRole("button", { name: "Done", exact: true }).click();
   assert.equal(await page.locator('[data-dp="spent"]').innerText(), "9");
@@ -855,93 +854,37 @@ try {
   await page.getByRole("button", { name: "4 Class", exact: true }).click();
   await page.getByRole("combobox", { name: "Class", exact: true }).selectOption("class-protector");
   assert.match(await page.locator(".creation-summary").innerText(), /Protector/);
-  // Buy the new shared options through the real learning UI and retain their choices.
+  // A schema-7 character can enter the current Workshop with now-retired talents.
   const utility = structuredClone(exported);
-  utility.draft.purchases = { 0: [], 1: [] };
-  utility.draft.shopping = [{id: "item-musical-instrument", quantity: 1}];
-  delete utility.draft.progression;
-  delete utility.draft.play;
+  assert.equal(utility.schemaVersion, 7);
+  utility.draft.purchases = {
+    0: [],
+    1: [{ id: "guard:shelter:1" }, { id: "ability-another-tongue" }],
+  };
+  utility.draft.acquisitions = { "ability-another-tongue": { languageId: "goblin" } };
+  utility.draft.progression = {
+    level: 2,
+    levels: {
+      2: { purchases: [{ id: "ability-a-party-piece" }], acquisitions: { "ability-a-party-piece": { instrument: "flute" } } },
+    },
+  };
+  utility.draft.play = { hp: 9, sp: 1, favorites: { abilities: ["ability-quick-exit", "ability-basic-melee"], items: [] } };
   await page.locator("#import-file").setInputFiles({
-    name: "utility.json",
+    name: "older-talent-build.json",
     mimeType: "application/json",
     buffer: Buffer.from(JSON.stringify(utility)),
   });
-  await page
-    .getByRole("button", { name: "5 Learning", exact: true })
-    .click();
-  const initialDp = Number(
-    (await page.locator("[data-dp-remaining]").innerText()).split(" ")[0],
-  );
-  for (const [id, name] of [
-    ["another-tongue", "Another Tongue"],
-    ["a-party-piece", "A Party Piece"],
-    ["message-by-heart", "Message by Heart"],
-    ["catch-that", "Catch That!"],
-    ["quick-exit", "Quick Exit"],
-    ["look-over-here", "Look Over Here!"],
-  ]) {
-    const talent = page.locator(`[data-action="forge-select"][data-id="ability-${id}"]`);
-    if (!await talent.isVisible())
-      await page.locator(".forge-other-learning > summary").click();
-    await talent.click();
-    const learn = page.locator(
-      `[data-action="forge-learn"][data-id="ability-${id}"]`,
-    );
-    assert.match(await page.locator("#forge-selection .forge-meta").innerText(), /1 DP/);
-    assert.match(await page.locator("#forge-selection").innerText(), new RegExp(name));
-    await learn.click();
-    assert.equal(await learn.count(), 0);
-    if (id === "another-tongue")
-      await page.getByLabel("Language", { exact: true }).selectOption("goblin");
-    if (id === "a-party-piece") {
-      await page
-        .getByLabel("Chosen ordinary instrument", { exact: true })
-        .fill("flute");
-      await page
-        .getByLabel("Chosen ordinary instrument", { exact: true })
-        .press("Tab");
-    }
-  }
-  assert.equal(
-    await page.locator("[data-dp-remaining]").innerText(),
-    `${initialDp - 6} DP remaining`,
-  );
-  await page.screenshot({ path: `${output}/one-dp-learning.png` });
-  await closePicker();
-  await page.getByRole("button", { name: "7 Review", exact: true }).click();
-  await page
-    .getByRole("button", { name: "View character sheet", exact: true })
-    .click();
-  await page.getByRole("tab", { name: "Character", exact: true }).click();
-  assert.match(await page.locator(".language-table").innerText(), /Goblin/);
-  await page.getByRole("tab", { name: "Abilities", exact: true }).click();
-  await page.getByRole("button", { name: "A Party Piece", exact: true }).click();
-  assert.match(await page.locator('[data-detail-id="ability-a-party-piece"]').innerText(), /Your instrument: flute/);
-  await page.getByRole("button", { name: "Message by Heart", exact: true }).click();
-  await page.getByLabel("Memorized message", { exact: true }).fill("Meet by the old bridge at dawn.");
-  await page.getByRole("button", { name: "Save message", exact: true }).click();
-  await page.reload();
-  await page.getByRole("button", { name: "Message by Heart", exact: true }).click();
-  assert.equal(
-    await page.getByLabel("Memorized message", { exact: true }).inputValue(),
-    "Meet by the old bridge at dawn.",
-  );
-  await page.screenshot({ path: `${output}/memorized-message.png` });
+  await page.getByText("DP spent on removed choices is available again.", { exact: false }).waitFor();
   const savedUtility = await page.evaluate(
-    () => JSON.parse(localStorage.getItem("hol.workshop.v1")).character,
+    () => JSON.parse(localStorage.getItem("hol.workshop.v1")).character.draft,
   );
-  assert.equal(
-    savedUtility.draft.acquisitions["ability-another-tongue"].languageId,
-    "goblin",
-  );
-  assert.equal(
-    savedUtility.draft.acquisitions["ability-a-party-piece"].instrument,
-    "flute",
-  );
-  assert.equal(
-    savedUtility.draft.play.memorizedMessage,
-    "Meet by the old bridge at dawn.",
-  );
+  assert.deepEqual(savedUtility.purchases[1], [{ id: "guard:shelter:1" }]);
+  assert.deepEqual(savedUtility.progression.levels[2].purchases, []);
+  assert.deepEqual(savedUtility.acquisitions, {});
+  assert.deepEqual(savedUtility.progression.levels[2].acquisitions, {});
+  assert.deepEqual(savedUtility.play.favorites.abilities, ["ability-basic-melee"]);
+  assert.equal(savedUtility.play.hp, 9);
+  assert.equal(savedUtility.play.sp, 1);
   // Every saved/imported hero uses the current catalog immediately, without a version choice.
   const previous = structuredClone(exported);
   previous.sourceCommit = "64089a1c8961d7faff172f179448a8b6e57827ef";
