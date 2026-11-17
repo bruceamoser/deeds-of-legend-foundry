@@ -25,7 +25,7 @@ import {
 } from "./rules/workshop-resources.mjs";
 import { HEALING_POTION_IDS } from "./rules/potions.mjs";
 import {
-  advanceForgeVitals, forgeBeginFirstAid, forgeCanSpendGrit, forgeDamage,
+  FORGE_BASE_SP, advanceForgeVitals, forgeBeginFirstAid, forgeCanSpendGrit, forgeDamage,
   forgeDeathRoll, forgeFinalizeDeath, forgeFinishFirstAid, forgeHeal,
   forgeInterruptFirstAid, forgeRecordScar, forgeRest, forgeSpellcraftRecovery,
   forgeSpendGrit, forgeStabilize, forgeVitals,
@@ -784,6 +784,13 @@ function creationSummary() {
 function creationHeading(label, hint) {
   return `<div class="creation-heading"><h2 tabindex="-1" id="panel-title">${esc(label)}</h2><p>${esc(hint)}</p></div>`;
 }
+function startingSpExplanation() {
+  if (catalogs.forge.rulesRevision !== 299) return "";
+  return `<details class="planned"><summary>How maximum SP is calculated</summary>
+    <p>Start with ${FORGE_BASE_SP} base SP. Add your ancestry’s contribution and twice your class’s listed attribute if it is positive. Gain 2 maximum SP each level after level 1.</p>
+    <p>Soul Capacity and Mind Capacity are paths in the Spellcraft discipline. The first entry in either path adds 2 to your maximum SP. Add each learned increase once to the same reserve. Later capacity gains leave your current SP as it is.</p>
+  </details>`;
+}
 function builder() {
   return `<div class="wizard creation-wizard"><nav class="creation-steps" aria-label="Creation steps">${steps.map((label, i) => button(`<span>${i + 1}.</span> ${label}`, "step", `aria-label="${i + 1} ${label}" ${step === i ? 'aria-current="step"' : ""} data-step="${i}"`)).join("")}</nav><div class="wizard-body">${creationSummary()}${requiredChoicesBanner()}${step === EQUIPMENT_STEP ? contextStrip() : ""}<section id="panel" class="panel" aria-labelledby="panel-title">${builderContent()}</section><footer class="wizard-footer">${button(step ? `← ${steps[step - 1]}` : "View sheet", step ? "back" : "sheet")}<small>${storageAvailable ? "Draft saved in this browser · Revisit any step" : "Export JSON to keep your draft"}</small>${step < REVIEW_STEP ? button(`Continue to ${steps[step + 1].toLowerCase()} →`, "next", "", "primary") : button("View character sheet", "sheet", "", "primary")}</footer></div></div>`;
 }
@@ -814,7 +821,7 @@ function builderContent() {
       : `<ul class="error-list">${errors()
           .map((e) => `<li>${esc(e)}</li>`)
           .join("")}</ul>`
-  }${preview.errors.some((entry) => entry.code === "purchase" && !entry.level) ? `<div class="dialog-actions">${button("Review learning", "step", `data-step="${LEARNING_STEP}"`)}</div>` : ""}<div class="columns" style="margin-top:12px"><section class="box"><h3>Your character</h3>${row("Maximum HP", preview.summary?.maximumHp ?? "—")}${row("Maximum SP", preview.summary?.maximumSp ?? "—")}${row("Grit", preview.summary?.gritGranted ?? "—")}${row("Speed", preview.summary?.speed ?? "—")}${row("Culture discipline", name(chosenOriginDiscipline("culture")))}${row("Background discipline", name(chosenOriginDiscipline("background")))}${row("Class discipline", name(draft.classDisciplines[0]))}${row("Starting DP left", preview.stages[1].dp)}${row("Coins", preview.inventory.remainingCoins)}</section><section class="box"><h3>Take your hero with you</h3>${button("Export character JSON", "ready-export", preview.valid ? "" : "disabled", "primary")}<p class="file-hint">Import this file into Character Workshop to open your hero on another browser.</p>${button("Save draft JSON", "export", "", "quiet")}</section></div><details class="planned"><summary>Creation ledger</summary>${ledgerTable()}</details>`;
+  }${preview.errors.some((entry) => entry.code === "purchase" && !entry.level) ? `<div class="dialog-actions">${button("Review learning", "step", `data-step="${LEARNING_STEP}"`)}</div>` : ""}<div class="columns" style="margin-top:12px"><section class="box"><h3>Your character</h3>${row("Maximum HP", preview.summary?.maximumHp ?? "—")}${row("Maximum SP", preview.summary?.maximumSp ?? "—")}${row("Grit", preview.summary?.gritGranted ?? "—")}${row("Speed", preview.summary?.speed ?? "—")}${row("Culture discipline", name(chosenOriginDiscipline("culture")))}${row("Background discipline", name(chosenOriginDiscipline("background")))}${row("Class discipline", name(draft.classDisciplines[0]))}${row("Starting DP left", preview.stages[1].dp)}${row("Coins", preview.inventory.remainingCoins)}</section><section class="box"><h3>Take your hero with you</h3>${button("Export character JSON", "ready-export", preview.valid ? "" : "disabled", "primary")}<p class="file-hint">Import this file into Character Workshop to open your hero on another browser.</p>${button("Save draft JSON", "export", "", "quiet")}</section></div>${startingSpExplanation()}<details class="planned"><summary>Creation ledger</summary>${ledgerTable()}</details>`;
 }
 function chosenOriginDiscipline(kind) {
   const selection = draft[kind];
@@ -849,7 +856,7 @@ function originChoice(kind) {
     <select id="creation-${kind}" data-origin="${kind}">${option("", `Choose ${kind}`, !record)}${originOptions.join("")}</select>
     ${record ? `<div class="origin-grants">
       <label>${title(kind)} discipline<select aria-label="${title(kind)} discipline" data-origin-discipline="${kind}">${option("", "Choose a discipline", !record.pairs[selection.pair])}${disciplineOptions.join("")}</select></label>
-      <div class="creation-benefits"><span>Origin benefits · ${creatorModifier(record.spContribution ?? 1)} starting SP · ${creatorModifier(record.coins)} coins</span>${button("Origin rules", "reference", `data-id="${esc(record.id)}"`, "table-link")}</div>
+      <div class="creation-benefits"><span>${creatorModifier(record.coins)} starting coins</span>${button("Origin rules", "reference", `data-id="${esc(record.id)}"`, "table-link")}</div>
     </div>
     ${discipline ? `<details class="creation-inline" open><summary>${esc(discipline.name)} · ${discipline.paths.length} paths</summary>
       <p>${esc(discipline.theme)}</p><p class="creation-muted">${esc(join(discipline.paths.map(({ name }) => name)))}</p>
@@ -1013,7 +1020,7 @@ function acquisitionPath(id) {
       : `acquisitions.${id}`;
 }
 function learningReviewNotice() {
-  return draft.learningReview?.length ? `<aside class="choice-alert" role="status">Your learned paths have changed. ${draft.learningReview.length} earlier choices are ready to rebuild using your available DP. Your equipment and recorded HP/SP are retained. ${button("Review learning", "review-learning", "", "small")} ${button("Dismiss", "dismiss-learning-review", "", "small quiet")}</aside>` : "";
+  return draft.learningReview?.length ? `<aside class="choice-alert" role="status">Your learned options have changed. DP spent on removed choices is available again. ${button("Review learning", "review-learning", "", "small")} ${button("Dismiss", "dismiss-learning-review", "", "small quiet")}</aside>` : "";
 }
 function requiredChoicesBanner() {
   const pending = preview.errors.filter((e) => e.code === "acquisition");

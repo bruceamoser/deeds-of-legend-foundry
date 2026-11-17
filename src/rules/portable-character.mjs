@@ -1,4 +1,4 @@
-import { reviseForgeLearning, reviseSpellbookLearning } from "./forge-rewrite.mjs";
+import { reviseForgeLearning, reviseSmallTalents, reviseSpellbookLearning } from "./forge-rewrite.mjs";
 import { normalizeWorkshopPlay } from "./workshop-play.mjs";
 import { ATTRIBUTES } from "./character.mjs";
 import { workshopCharacter } from "./workshop-character.mjs";
@@ -279,6 +279,7 @@ export function readPortableCharacter(input, catalogs, languages) {
     migrateWorkshopPlaytest(d, catalogs.forge);
   if (catalogs.forge?.rulesRevision === 299 && value.schemaVersion < WORKSHOP_REWRITE_VERSION) reviseForgeLearning(d, catalogs.forge);
   if (catalogs.forge?.spellbookProgressionRevision === 310 && value.schemaVersion < SPELLBOOK_PROGRESSION_VERSION) reviseSpellbookLearning(d, catalogs.forge);
+  if (catalogs.forge?.rulesRevision === 299) reviseSmallTalents(d, catalogs.forge);
   const fail = () => {
     throw new Error("The character file contains malformed creation choices.");
   };

@@ -375,6 +375,7 @@ export function renderForge(graph, state, options = {}) {
   };
 
   const atlas = view === "atlas";
+  const talents = graph.nodes.filter((node) => node.kind === "talent");
   const listModel = atlas ? {...model, view: "columns", filter: options.listDiscipline ?? "all", discipline: studied.find(entry => entry.id === options.listDiscipline) ?? discipline, selected: undefined, selection: undefined} : model;
   const atlasDialog = atlas ? `<dialog id="forge-atlas-dialog" class="forge-atlas-dialog" aria-labelledby="forge-atlas-title">
     <header><h2 id="forge-atlas-title">Discipline atlas</h2><strong>${state.dp} DP available</strong>${control("forge-view", "columns", "Close", 'aria-label="Close atlas"', "small")}</header>
@@ -396,10 +397,10 @@ export function renderForge(graph, state, options = {}) {
       </div></div>
       <div class="forge-surface">${columnView(listModel)}</div>
       ${!atlas && selected?.kind === "talent" ? inspector(model) : ""}
-      <div class="forge-more"><details class="forge-other-learning" ${!atlas && selected?.kind === "talent" ? "open" : ""}>
+      ${talents.length ? `<div class="forge-more"><details class="forge-other-learning" ${!atlas && selected?.kind === "talent" ? "open" : ""}>
         <summary>Talents</summary>
-        ${relatedList(model, graph.nodes.filter((node) => node.kind === "talent"), "Talents")}
-      </details></div>
+        ${relatedList(model, talents, "Talents")}
+      </details></div>` : ""}
     </div>
     ${disciplineChooser(model)}${atlasDialog}
   </div>`;

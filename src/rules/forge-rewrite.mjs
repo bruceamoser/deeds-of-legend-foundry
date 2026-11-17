@@ -46,3 +46,43 @@ export function reviseSpellbookLearning(draft, graph) {
   }
   if (removed.length) draft.learningReview = [...new Set([...(draft.learningReview ?? []), ...removed])];
 }
+export const SMALL_TALENT_IDS = Object.freeze([
+  "ability-another-tongue",
+  "ability-a-party-piece",
+  "ability-catch-that",
+  "ability-look-over-here",
+  "ability-message-by-heart",
+  "ability-quick-exit",
+]);
+
+/** Retired purchases no longer draw from the replayed DP ledger. Apply this
+ * even to schema-7 saves, using the current graph rather than the save version.
+ */
+export function reviseSmallTalents(draft, graph) {
+  const current = new Set(graph.nodes.map(({ id }) => id));
+  const retired = new Set(SMALL_TALENT_IDS.filter((id) => !current.has(id)));
+  if (!retired.size) return;
+
+  const removed = [];
+  const withoutRetired = (list) => Array.isArray(list) ? list.filter((purchase) => {
+    if (!retired.has(purchase?.id)) return true;
+    removed.push(purchase.id);
+    return false;
+  }) : list;
+  for (const stage of [0, 1]) {
+    if (Array.isArray(draft.purchases?.[stage]))
+      draft.purchases[stage] = withoutRetired(draft.purchases[stage]);
+  }
+  for (const level of Object.values(draft.progression?.levels ?? {})) {
+    if (!level || typeof level !== "object") continue;
+    if (Array.isArray(level.purchases)) level.purchases = withoutRetired(level.purchases);
+    if (level.acquisitions) for (const id of retired) delete level.acquisitions[id];
+  }
+  for (const id of retired) {
+    if (draft.acquisitions) delete draft.acquisitions[id];
+    if (draft.basicActions) delete draft.basicActions[id];
+  }
+  if (Array.isArray(draft.play?.favorites?.abilities))
+    draft.play.favorites.abilities = draft.play.favorites.abilities.filter((id) => !retired.has(id));
+  if (removed.length) draft.learningReview = [...new Set([...(draft.learningReview ?? []), ...removed])];
+}

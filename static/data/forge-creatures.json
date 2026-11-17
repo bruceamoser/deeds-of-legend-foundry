@@ -1,5 +1,5 @@
 {
-  "sourceCommit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+  "sourceCommit": "eba265e029d7143399d0dee70b18a2531fcc032b",
   "baseCommit": "24e545e6d860e8c1b03a21356fd22cae1c039785",
   "creatures": [
     {
@@ -15,7 +15,7 @@
         "cv": 18
       },
       "source": {
-        "commit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+        "commit": "eba265e029d7143399d0dee70b18a2531fcc032b",
         "path": "design/bestiary/creatures/ancestor-guardian.md",
         "sha256": "b3d7fe4c10fb3208ddab0849e4d7f93e0e9a4de9baacd702f472a1b4fbc4350b"
       },
@@ -371,7 +371,7 @@
         "cv": 18
       },
       "source": {
-        "commit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+        "commit": "eba265e029d7143399d0dee70b18a2531fcc032b",
         "path": "design/bestiary/creatures/animated-armor.md",
         "sha256": "696a272c1a7c5187ed0fcd33e8753b40268a91296c82deacbd70f41518547503"
       },
@@ -712,7 +712,7 @@
         "cv": 25
       },
       "source": {
-        "commit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+        "commit": "eba265e029d7143399d0dee70b18a2531fcc032b",
         "path": "design/bestiary/creatures/barrow-guard.md",
         "sha256": "f07f27e0e3d009b5034be565de4b6870be6fcacecad1aa505942f00a5d6448b6"
       },
@@ -1088,7 +1088,7 @@
         "cv": 13
       },
       "source": {
-        "commit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+        "commit": "eba265e029d7143399d0dee70b18a2531fcc032b",
         "path": "design/bestiary/creatures/battle-chaplain.md",
         "sha256": "5e93c12fd6921d673f823611f750be88f843086e6c0a4d3439136f016417546f"
       },
@@ -1416,7 +1416,7 @@
         "cv": 18
       },
       "source": {
-        "commit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+        "commit": "eba265e029d7143399d0dee70b18a2531fcc032b",
         "path": "design/bestiary/creatures/blood-bat-swarm.md",
         "sha256": "42e3bac51f7b39afcb50d4d07cbb9337fdef6c92e6fe0e0551e676e1122973c0"
       },
@@ -1755,7 +1755,7 @@
         "cv": 61
       },
       "source": {
-        "commit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+        "commit": "eba265e029d7143399d0dee70b18a2531fcc032b",
         "path": "design/bestiary/creatures/chimera.md",
         "sha256": "b0760ad4471979e3781ed18ded59263018ad387b3692405e122c865fd5427a6f"
       },
@@ -2163,7 +2163,7 @@
         "cv": 36
       },
       "source": {
-        "commit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+        "commit": "eba265e029d7143399d0dee70b18a2531fcc032b",
         "path": "design/bestiary/creatures/cloud-giant.md",
         "sha256": "0e56f78cfdb82d170abfa54dc4ed099aaa35700b391edd13d2a20aa6f5d46991"
       },
@@ -2539,7 +2539,7 @@
         "cv": 18
       },
       "source": {
-        "commit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+        "commit": "eba265e029d7143399d0dee70b18a2531fcc032b",
         "path": "design/bestiary/creatures/crypt-ghoul.md",
         "sha256": "52b129b7e466b6f66814d58d2b965b3c73a0dbf49c9ca29f0b6a61b6cabd1733"
       },
@@ -2953,7 +2953,7 @@
         "cv": 34
       },
       "source": {
-        "commit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+        "commit": "eba265e029d7143399d0dee70b18a2531fcc032b",
         "path": "design/bestiary/creatures/dawn-emissary.md",
         "sha256": "2a5dc68d074ec4012a1fde2dd3b3433e499a5dfca87130223cd4a2a66d5d700b"
       },
@@ -3312,7 +3312,7 @@
         "cv": 27
       },
       "source": {
-        "commit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+        "commit": "eba265e029d7143399d0dee70b18a2531fcc032b",
         "path": "design/bestiary/creatures/gargoyle.md",
         "sha256": "751c6ac6096f63327565a50b66b0de4c3b5ab06c89aaebed9f259b49d4657748"
       },
@@ -3696,7 +3696,7 @@
         "cv": 5
       },
       "source": {
-        "commit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+        "commit": "eba265e029d7143399d0dee70b18a2531fcc032b",
         "path": "design/bestiary/creatures/giant-rat.md",
         "sha256": "13ab616d1ae80485cbbb8dfcef8a5349e4cc0a93d3efbcb694ddfd975da355e4"
       },
@@ -4006,7 +4006,7 @@
         "cv": 14
       },
       "source": {
-        "commit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+        "commit": "eba265e029d7143399d0dee70b18a2531fcc032b",
         "path": "design/bestiary/creatures/gnoll-tracker.md",
         "sha256": "cc9635aacd8809982f47eb5af34e58edfbdd02a9b5726efa4c681eb813b7147e"
       },
@@ -4332,7 +4332,7 @@
         "cv": 88
       },
       "source": {
-        "commit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+        "commit": "eba265e029d7143399d0dee70b18a2531fcc032b",
         "path": "design/bestiary/creatures/green-dragon.md",
         "sha256": "0adaeef46bb73442d3f4dd231b276a717a7640654072e7eade4f043268070ba8"
       },
@@ -4745,7 +4745,7 @@
         "cv": 22
       },
       "source": {
-        "commit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+        "commit": "eba265e029d7143399d0dee70b18a2531fcc032b",
         "path": "design/bestiary/creatures/hobgoblin-shieldguard.md",
         "sha256": "ce82de48e148be576d7b86b0be0cb9945a7802c0bbb684362a5b95c965873820"
       },
@@ -5081,7 +5081,7 @@
         "cv": 30
       },
       "source": {
-        "commit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+        "commit": "eba265e029d7143399d0dee70b18a2531fcc032b",
         "path": "design/bestiary/creatures/manticore.md",
         "sha256": "5eb916beeae326a5c1377bce088af9d6d6158cc0468a105dea99896b601b879f"
       },
@@ -5486,7 +5486,7 @@
         "cv": 28
       },
       "source": {
-        "commit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+        "commit": "eba265e029d7143399d0dee70b18a2531fcc032b",
         "path": "design/bestiary/creatures/moon-hart.md",
         "sha256": "7560602018377a1c2f8a056691a520b255d17b1173327b7fb5501e1f4392a44e"
       },
@@ -5859,7 +5859,7 @@
         "cv": 27
       },
       "source": {
-        "commit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+        "commit": "eba265e029d7143399d0dee70b18a2531fcc032b",
         "path": "design/bestiary/creatures/owlbear.md",
         "sha256": "586757543e0a039e93b1250feec38e2f534760320e7faa7fc6e19931bebe1131"
       },
@@ -6262,7 +6262,7 @@
         "cv": 22
       },
       "source": {
-        "commit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+        "commit": "eba265e029d7143399d0dee70b18a2531fcc032b",
         "path": "design/bestiary/creatures/redcap.md",
         "sha256": "53bd6e4308a9d5769b85a172479c61e5c2bd237e50dfdcd57e74a72e30692147"
       },
@@ -6593,7 +6593,7 @@
         "cv": 17
       },
       "source": {
-        "commit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+        "commit": "eba265e029d7143399d0dee70b18a2531fcc032b",
         "path": "design/bestiary/creatures/reef-hunter.md",
         "sha256": "c55226ab1fb570cf8e1a0b6abdac9d655cd7d9b3c8da029ffc83e494123618a5"
       },
@@ -6921,7 +6921,7 @@
         "cv": 37
       },
       "source": {
-        "commit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+        "commit": "eba265e029d7143399d0dee70b18a2531fcc032b",
         "path": "design/bestiary/creatures/shambling-mound.md",
         "sha256": "c6aee87afe98e5ee4dd982b0745f10fa7db2477421403d1e7fb02d39413bfec8"
       },
@@ -7270,7 +7270,7 @@
         "cv": 17
       },
       "source": {
-        "commit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+        "commit": "eba265e029d7143399d0dee70b18a2531fcc032b",
         "path": "design/bestiary/creatures/shield-soldier.md",
         "sha256": "d732c6772dbf3caf34199dadc5b7b3f9ebd5b9c74c7ea64f842464a8d9857d29"
       },
@@ -7595,7 +7595,7 @@
         "cv": 25
       },
       "source": {
-        "commit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+        "commit": "eba265e029d7143399d0dee70b18a2531fcc032b",
         "path": "design/bestiary/creatures/skeleton-champion.md",
         "sha256": "c1448111b660f38d7e05dd90f79c8156c2a4f76f442a3568053b6547e1b549f8"
       },
@@ -7989,7 +7989,7 @@
         "cv": 13
       },
       "source": {
-        "commit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+        "commit": "eba265e029d7143399d0dee70b18a2531fcc032b",
         "path": "design/bestiary/creatures/spore-shepherd.md",
         "sha256": "ac7a4a1bce57ad93c1e97eb2ad12ec5f11b65a97e1e810e52b577403f37f4416"
       },
@@ -8308,7 +8308,7 @@
         "cv": 24
       },
       "source": {
-        "commit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+        "commit": "eba265e029d7143399d0dee70b18a2531fcc032b",
         "path": "design/bestiary/creatures/vampire-spawn.md",
         "sha256": "a55e87509d239f7449f51ee47fb6458a2a6fafbc49c134676d4be6a5e17ea951"
       },
@@ -8673,7 +8673,7 @@
         "cv": 29
       },
       "source": {
-        "commit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+        "commit": "eba265e029d7143399d0dee70b18a2531fcc032b",
         "path": "design/bestiary/creatures/veteran-captain.md",
         "sha256": "6a004907963ad9daf8357e8ea889d425b0c23dc18e0cf46436c80ed5e5f161e4"
       },
@@ -9007,7 +9007,7 @@
         "cv": 19
       },
       "source": {
-        "commit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+        "commit": "eba265e029d7143399d0dee70b18a2531fcc032b",
         "path": "design/bestiary/creatures/walking-thorn.md",
         "sha256": "21f080646b385a3848628a42399f46e84c7e67b9694ae48b71c18ba465a84f5c"
       },
@@ -9338,7 +9338,7 @@
         "cv": 26
       },
       "source": {
-        "commit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+        "commit": "eba265e029d7143399d0dee70b18a2531fcc032b",
         "path": "design/bestiary/creatures/werewolf.md",
         "sha256": "8e20812728392159454d92485b8bf8c3d643312ae3fe3cfa6b2c4207db2259ce"
       },
@@ -9668,7 +9668,7 @@
       "rulesMarkdown": "Choose one visible adjacent living ally and keep a free hand. Resolve opportunity attacks for casting, then pay the creature’s printed SP cost from its reserve. A summoned healer uses its controller’s reserve. Roll the creature’s healing attribute and apply its printed HP outcomes and the recipient’s Life resistance. For an NPC healer, the DA chooses the target and a player makes the roll. You can instead direct the spell at a creature whose profile says healing harms it. Keep the range, free hand and SP cost, and use the healing values as Life damage. A player defending against this attack rolls Fortitude and reads the creature’s defense outcomes.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
       "referenceMarkdown": "# Battle Mending\n\n*Light travels from the healer’s shaking hands into another body, leaving the healer visibly diminished.*\n\n## Rules\n\n**ID:** monster-battle-mending\n\n\n**Action:** Main Action; spell\n\nChoose one visible adjacent living ally and keep a free hand. Resolve opportunity attacks for casting, then pay the creature’s printed SP cost from its reserve. A summoned healer uses its controller’s reserve. Roll the creature’s healing attribute and apply its printed HP outcomes and the recipient’s Life resistance. For an NPC healer, the DA chooses the target and a player makes the roll. You can instead direct the spell at a creature whose profile says healing harms it. Keep the range, free hand and SP cost, and use the healing values as Life damage. A player defending against this attack rolls Fortitude and reads the creature’s defense outcomes.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
       "source": {
-        "commit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+        "commit": "eba265e029d7143399d0dee70b18a2531fcc032b",
         "path": "design/monster-abilities/battle-mending.md",
         "sha256": "a5d1342884e7ee071555af086d867c6eeef0aa16e9cf22502b7e6ede66b68612"
       },
@@ -9684,7 +9684,7 @@
       "rulesMarkdown": "Before a visible enemy attacks a willing ally adjacent to this creature, hinder the attack if this creature can see the attacker. Apply 1 Bane if the attacker rolls or grant the ally 1 Boon if the ally rolls defense. This creature must also be adjacent to the attacker, or hold a shield the DA judges can obstruct the attack. No movement, target substitution or damage transfer. For a single player area attack, use the normal worst-target modifiers; do not roll again.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
       "referenceMarkdown": "# Cover a Companion\n\n*The guardian steps into the line of danger, making the attacker work around its raised guard.*\n\n## Rules\n\n**ID:** monster-cover-a-companion\n\n**Action:** Reaction\n\nBefore a visible enemy attacks a willing ally adjacent to this creature, hinder the attack if this creature can see the attacker. Apply 1 Bane if the attacker rolls or grant the ally 1 Boon if the ally rolls defense. This creature must also be adjacent to the attacker, or hold a shield the DA judges can obstruct the attack. No movement, target substitution or damage transfer. For a single player area attack, use the normal worst-target modifiers; do not roll again.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
       "source": {
-        "commit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+        "commit": "eba265e029d7143399d0dee70b18a2531fcc032b",
         "path": "design/monster-abilities/cover-a-companion.md",
         "sha256": "e17ed34ebb5bbdbe57f0c5a7b3bac27ca380f5e9ddcffbaee978ffc24bea77d2"
       },
@@ -9700,7 +9700,7 @@
       "rulesMarkdown": "At the printed outcomes, restore at most 1 or 2 HP to the attacker, never more than the HP actually lost by a living target to this attack after resistance. Life resistance on the recipient reduces this recovery, minimum 1 only if a positive amount is transferred. No recovery from a target that loses 0 HP or is not living. This transfer grants no treatment.\n\nActual damage, targeting and defense attribute are printed on the creature card.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
       "referenceMarkdown": "# Life-taking Bite\n\n*Stolen warmth returns color to the predator’s face.*\n\n## Rules\n\n**ID:** monster-life-taking-bite\n\n\n**Action:** Main Action\n\nAt the printed outcomes, restore at most 1 or 2 HP to the attacker, never more than the HP actually lost by a living target to this attack after resistance. Life resistance on the recipient reduces this recovery, minimum 1 only if a positive amount is transferred. No recovery from a target that loses 0 HP or is not living. This transfer grants no treatment.\n\nActual damage, targeting and defense attribute are printed on the creature card.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
       "source": {
-        "commit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+        "commit": "eba265e029d7143399d0dee70b18a2531fcc032b",
         "path": "design/monster-abilities/life-taking-bite.md",
         "sha256": "e957053a1be781230ff88828290a5a6c7fb0f05fcefa84c977c1485612f9bf62"
       },
@@ -9716,7 +9716,7 @@
       "rulesMarkdown": "Place a veil in up to 3 connected visible squares within 3 squares until its next turn. It provides partial cover when an attack crosses the veil. Use the usual cover rules. It does not grant Hidden, block movement or cause damage.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
       "referenceMarkdown": "# Draw a Veil\n\n*Mist gathers in a thin curtain that blurs the line of approach.*\n\n## Rules\n\n**ID:** monster-mist-veil\n\n\n**Action:** Maneuver\n\nPlace a veil in up to 3 connected visible squares within 3 squares until its next turn. It provides partial cover when an attack crosses the veil. Use the usual cover rules. It does not grant Hidden, block movement or cause damage.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
       "source": {
-        "commit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+        "commit": "eba265e029d7143399d0dee70b18a2531fcc032b",
         "path": "design/monster-abilities/mist-veil.md",
         "sha256": "3500389cd2fae4ce3319c4fc29529e5a5048a8a4bc374648a30f82eb7e12cf73"
       },
@@ -9732,7 +9732,7 @@
       "rulesMarkdown": "Use the printed attack. Standard also applies Bleeding 1; Strong applies Bleeding 2. Bleeding resolves and decays at the target’s turn end. At 0 HP follow the ordinary Dying and immediate death-roll rules.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
       "referenceMarkdown": "# Rending Blow\n\n*The claws snag and drag; blood follows the withdrawing talons.*\n\n## Rules\n\n**ID:** monster-rending-blow\n\n\n**Action:** Main Action\n\nUse the printed attack. Standard also applies Bleeding 1; Strong applies Bleeding 2. Bleeding resolves and decays at the target’s turn end. At 0 HP follow the ordinary Dying and immediate death-roll rules.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
       "source": {
-        "commit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+        "commit": "eba265e029d7143399d0dee70b18a2531fcc032b",
         "path": "design/monster-abilities/rending-blow.md",
         "sha256": "5686040087bb64c4d0a85c4faadb2d7a5ce8bd958937f732f62fd292a096f192"
       },
@@ -9748,7 +9748,7 @@
       "rulesMarkdown": "Fill up to 3 connected empty squares within 3 squares with spores until the start of this creature's next turn. The spores provide partial cover when an attack crosses them. Use the usual cover rules. The spores do not grant Hidden or cause a condition or damage. Reusing this ability replaces its previous cloud.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
       "referenceMarkdown": "# Spore Curtain\n\n*A slow shake of its crown releases a drifting veil of pale spores that hangs between the trunks.*\n\n## Rules\n\n**ID:** monster-spore-curtain\n\n**Action:** Maneuver\n\nFill up to 3 connected empty squares within 3 squares with spores until the start of this creature's next turn. The spores provide partial cover when an attack crosses them. Use the usual cover rules. The spores do not grant Hidden or cause a condition or damage. Reusing this ability replaces its previous cloud.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
       "source": {
-        "commit": "f0ff9e49df902aad45816da5917a43cd3bfa2009",
+        "commit": "eba265e029d7143399d0dee70b18a2531fcc032b",
         "path": "design/monster-abilities/spore-curtain.md",
         "sha256": "093fc8db9fbf9c7aff6a9c9277464edd613be209ef9d42cd1732229051430495"
       },
@@ -9767,7 +9767,7 @@
       "source": {
         "path": "design/bestiary/summons/moon-hart.md",
         "sha256": "769cc3dfbcb4dc2f92b84e4c00fc672f682940d388d95d759d9e5d7725c866d9",
-        "commit": "f0ff9e49df902aad45816da5917a43cd3bfa2009"
+        "commit": "eba265e029d7143399d0dee70b18a2531fcc032b"
       }
     }
   ]

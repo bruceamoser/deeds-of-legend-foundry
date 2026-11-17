@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
-import { parseAbilityReference } from "./choices.mjs";
+import { parseAbilityReference, parseAncestryReference } from "./choices.mjs";
+import { SMALL_TALENT_IDS } from "../../src/rules/forge-rewrite.mjs";
 
 const branchCosts = [1, 2, 2, 3, 4, 4, 5];
 const branchLevels = [1, 1, 1, 3, 3, 3, 7];
@@ -346,6 +347,7 @@ export function parseForge(read, list, sourceCommit) {
     const id = file.split("/").at(-1).replace(/\.md$/, "");
     const kind = id.split("-")[0];
     const choiceNames = match(text, /^\*\*Discipline choices:\*\* (.+)\.$/m, file)[1].split(", ");
+    const sp = text.match(/\*\*Starting SP contribution:\*\* \+(\d+) maximum SP/);
     assert.equal(choiceNames.length, 2, file);
     const pairs = choiceNames.map((name) => {
       const discipline = disciplineByName.get(name);
@@ -359,7 +361,7 @@ export function parseForge(read, list, sourceCommit) {
       kind,
       pairs,
       coinContribution: coins(text),
-      spContribution: Number(match(text, /\*\*Starting SP contribution:\*\* \+(\d+) maximum SP/, file)[1]),
+      ...(sp ? { spContribution: Number(sp[1]) } : {}),
       referenceMarkdown: text,
     };
   });
@@ -459,6 +461,7 @@ export function parseForge(read, list, sourceCommit) {
         spContribution: Number(match(text, /\*\*Starting SP contribution:\*\* \+(\d+) maximum SP/, file)[1]),
         baseSpeed: Number(speed),
         coinContribution: coins(text),
+        reference: parseAncestryReference(text, "ancestry"),
       };
     });
 
@@ -479,6 +482,8 @@ export function parseForge(read, list, sourceCommit) {
   }
 
   index(nodes, (node) => node.id, "node");
+  const talents = nodes.filter((node) => node.kind === "talent").map(({ id }) => id);
+  if (talents.length) assert.deepEqual(talents.sort(), [...SMALL_TALENT_IDS].sort(), "Legacy Small Talents catalog");
   index(spells, (spell) => spell.id, "spell including masteries");
   const allNodeIds = new Set(nodes.map((node) => node.id));
   for (const node of nodes) for (const prerequisite of node.requires ?? []) assert.ok(allNodeIds.has(prerequisite), `${node.id}: unknown prerequisite ${prerequisite}`);
@@ -503,9 +508,8 @@ export function parseForge(read, list, sourceCommit) {
       origins.length,
       ancestries.length,
       basicActions.length,
-      nodes.filter((node) => node.kind === "talent").length,
     ],
-    [19, 29, 319, 29, 10, 90, 50, 10, 19, 6],
+    [19, 29, 319, 29, 10, 90, 50, 10, 19],
     "Forge catalog coverage",
   );
   return {

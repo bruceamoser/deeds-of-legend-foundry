@@ -139,7 +139,7 @@ try {
       level: 7,
       levels: {
         2: {
-          purchases: [{ id: "ability-another-tongue" }],
+          purchases: [{ id: "craft" }, { id: "craft:workshop:1" }],
           signatures: {},
           acquisitions: {},
         },
@@ -152,7 +152,7 @@ try {
   await page.reload();
   await page
     .getByRole("status", { name: "Missing choices", exact: true })
-    .locator('[data-action="locate-choice"][data-id="ability-another-tongue"][data-level="2"]')
+    .locator('[data-action="locate-choice"][data-id="craft:workshop:1"][data-level="2"]')
     .click();
   assert.match(await page.locator(".identity-line p").innerText(), /Level 7/);
   await page.getByRole("heading", { name: "Level 2 learning", exact: true }).waitFor();
@@ -160,16 +160,16 @@ try {
   await page.reload();
   await page.getByRole("heading", { name: "Level 2 learning", exact: true }).waitFor();
   assert.match(await page.locator(".context-strip").innerText(), /Level 2/);
-  await page
-    .locator('[data-acquisition="ability-another-tongue"]')
-    .getByLabel("Language", { exact: true })
-    .selectOption("goblin");
-  const savedLevel = await page.evaluate(
-    () =>
-      JSON.parse(localStorage.getItem("hol.workshop.v1")).character.draft
-        .progression.level,
+  const recipeChoices = page.locator('[data-acquisition="craft:workshop:1"]');
+  await recipeChoices.locator('input[value="recipe-bound-torches"]').check();
+  await recipeChoices.locator('input[value="recipe-travel-food"]').click();
+  const progression = await page.evaluate(
+    () => JSON.parse(localStorage.getItem("hol.workshop.v1")).character.draft.progression,
   );
-  assert.equal(savedLevel, 7);
+  assert.equal(progression.level, 7);
+  assert.deepEqual(progression.levels[2].acquisitions["craft:workshop:1"].recipes, [
+    "recipe-bound-torches", "recipe-travel-food",
+  ]);
   await page.evaluate(() => {
     const saved = JSON.parse(localStorage.getItem("hol.workshop.v1"));
     saved.character.draft.purchases[1] = saved.character.draft.purchases[1].filter(

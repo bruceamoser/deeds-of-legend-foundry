@@ -154,3 +154,33 @@ test("class-priced discipline purchases replay, refund, and export at their paid
   assert.ok(overBudget.errors.some(error => error.code === "purchase"));
   assert.equal(draft.purchases[1].length, 4, "unaffordable stored choices remain repairable");
 });
+
+test("schema-7 imports return DP for retired Small Talents and keep active purchases", () => {
+  const first = "ability-another-tongue";
+  const later = "ability-quick-exit";
+  assert(!forge.nodes.some(({ kind }) => kind === "talent"));
+  assert(!forge.basicActions.some(({ id }) => [first, later].includes(id)));
+  const legacy = structuredClone(forge);
+  for (const id of [first, later]) legacy.nodes.push({ id, kind: "talent", level: 1, dp: 1, requires: [] });
+  const legacyCatalogs = workshopCatalogs(data("choices"), data("inventory"), data("wounds"), legacy, references);
+
+  const draft = example("borin-bridgekeeper");
+  draft.purchases[1] = purchases("guard:shelter:1", first);
+  draft.acquisitions = { [first]: { languageId: "goblin" } };
+  draft.progression = { level: 2, levels: { 2: { purchases: purchases("guard:watchfulness:1", later) } } };
+  draft.play = { hp: 9, sp: 1, favorites: { abilities: [later, "ability-basic-melee"], items: [] } };
+  const old = { format: PORTABLE_FORMAT, schemaVersion: 7, draft };
+  const prior = readPortableCharacter(old, legacyCatalogs);
+  assert(prior.preview.valid, JSON.stringify(prior.preview.errors));
+  const migrated = readPortableCharacter(old, catalogs);
+  assert(migrated.preview.valid, JSON.stringify(migrated.preview.errors));
+  assert.equal(migrated.preview.development.current, prior.preview.development.current + 2);
+  assert.deepEqual(migrated.draft.purchases[1], purchases("guard:shelter:1"));
+  assert.deepEqual(migrated.draft.progression.levels[2].purchases, purchases("guard:watchfulness:1"));
+  assert.deepEqual(migrated.draft.acquisitions, {});
+  assert.deepEqual(migrated.draft.play.favorites.abilities, ["ability-basic-melee"]);
+  assert.deepEqual([migrated.draft.play.hp, migrated.draft.play.sp], [9, 1]);
+  const reloaded = readPortableCharacter(writePortableCharacter(migrated.draft, catalogs), catalogs);
+  assert.deepEqual(reloaded.draft, migrated.draft);
+  assert.equal(reloaded.preview.development.current, migrated.preview.development.current);
+});
