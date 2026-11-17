@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import {createServer} from "node:http";
-import {readFile} from "node:fs/promises";
+import {readFile, mkdir} from "node:fs/promises";
 import {resolve, extname, sep} from "node:path";
 import {chromium, expect} from "@playwright/test";
 import {workshopCatalogs} from "../src/rules/workshop-forge-catalog.mjs";
@@ -58,6 +58,39 @@ try {
   await action("sustain-spell").click();
   assert.equal((await state()).sp,8);
   assert.equal((await state()).sustain.maintainedTurn,1);
+  const nature=await fixture("druid");
+  nature.purchases={0:[],1:[]}; nature.acquisitions={};
+  for(const level of Object.values(nature.progression.levels)){level.purchases=[];level.acquisitions={};}
+  const natureGrants=workshopCharacter(nature,catalogs).state.learned;
+  nature.progression.levels[7].purchases=[
+    ...["life"].filter(id=>!natureGrants.includes(id)),
+    ...["growth","transformation"].flatMap(book=>[0,1,2,3,4,5].map(step=>`${book}:${step}`)),
+  ].map(id=>({id}));
+  await load(nature);
+  await page.getByRole("tab",{name:"Spellbooks",exact:true}).click();
+  for(const name of ["Goodberry","Plant Growth","Shapechange"]){
+    const spell=catalogs.forge.spells.find(spell=>spell.name===name);
+    const row=page.locator(`[data-action-row="${spell.id}"]`);
+    const book=row.locator("xpath=ancestor::details[1]");
+    if(await book.getAttribute("open") === null) await book.locator(":scope > summary").click();
+    await expect(row.locator(".timing-cell")).toHaveText(spell.actionText);
+    await row.getByRole("button",{name:`Expand ${name}`,exact:true}).click();
+    await expect(page.locator(`[data-detail-id="${spell.id}"]`)).toContainText(spell.effect);
+  }
+  await page.getByRole("button",{name:"Favorite Plant Growth",exact:true}).click();
+  await mkdir("test-results/workshop-sync",{recursive:true});
+  await page.screenshot({path:"test-results/workshop-sync/spellbook-inline.png",fullPage:true});
+  const beforePlant=await page.evaluate(()=>JSON.parse(localStorage.getItem("hol.workshop.v1")).character.draft);
+  await page.locator('[data-action-row="spell:growth:6"] [data-action="cast-spell"]').click();
+  await expect(page.getByRole("dialog")).not.toBeVisible();
+  await expect(page.getByText("Casting recorded: Plant Growth · 3 SP spent.", {exact:true})).toBeVisible();
+  assert.equal((await state()).sp,5,"Plant Growth spends 3 SP once");
+  assert(!((await state()).sustain),"Plant Growth has no Sustain obligation");
+  await close(); await page.reload();
+  const afterPlant=await page.evaluate(()=>JSON.parse(localStorage.getItem("hol.workshop.v1")).character.draft);
+  assert.equal(afterPlant.play.sp,5);
+  assert.deepEqual(afterPlant.progression,beforePlant.progression);
+  assert.deepEqual(afterPlant.play.favorites,beforePlant.play.favorites);
   const artisan=await fixture("artificer");
   // Keep the actual legal origins/signatures/equipment, exchanging learned purchases
   // for both capacity paths. All purchases are validated with the real ledger.
@@ -88,6 +121,14 @@ try {
   await close();await cast(ritual);
   await expect(page.locator('[data-payment="mind"]')).toBeVisible();
   await expect(page.locator('[data-payment="soul"]')).toBeVisible();
+  await close();
+  await page.evaluate(()=>{const saved=JSON.parse(localStorage.getItem("hol.workshop.v1"));saved.mode="builder";saved.step=6;localStorage.setItem("hol.workshop.v1",JSON.stringify(saved));});
+  await page.reload();
+  const formula=page.locator("details").filter({has:page.locator("summary",{hasText:"How maximum SP is calculated"})});
+  await formula.locator("summary").click();
+  await expect(formula).toContainText("Maximum SP = 2 × level + ancestry SP + 2 × positive class mental attribute + Spellcraft bonuses + other SP bonuses.");
+  await formula.scrollIntoViewIfNeeded();
+  await page.screenshot({path:"test-results/workshop-sync/maximum-sp-formula.png"});
   assert.deepEqual(errors,[]);
   console.log("Workshop casting browser checks passed: signature costs, ritual timing, optional payments, persistence and rest.");
 } finally {await browser?.close();await new Promise(done=>server.close(done));}

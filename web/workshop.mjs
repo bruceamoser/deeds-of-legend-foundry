@@ -25,7 +25,7 @@ import {
 } from "./rules/workshop-resources.mjs";
 import { HEALING_POTION_IDS } from "./rules/potions.mjs";
 import {
-  FORGE_BASE_SP, advanceForgeVitals, forgeBeginFirstAid, forgeCanSpendGrit, forgeDamage,
+  advanceForgeVitals, forgeBeginFirstAid, forgeCanSpendGrit, forgeDamage,
   forgeDeathRoll, forgeFinalizeDeath, forgeFinishFirstAid, forgeHeal,
   forgeInterruptFirstAid, forgeRecordScar, forgeRest, forgeSpellcraftRecovery,
   forgeSpendGrit, forgeStabilize, forgeVitals,
@@ -787,7 +787,7 @@ function creationHeading(label, hint) {
 function startingSpExplanation() {
   if (catalogs.forge.rulesRevision !== 299) return "";
   return `<details class="planned"><summary>How maximum SP is calculated</summary>
-    <p>Start with ${FORGE_BASE_SP} base SP. Add your ancestry’s contribution and twice your class’s listed attribute if it is positive. Gain 2 maximum SP each level after level 1.</p>
+    <p>Maximum SP = 2 × level + ancestry SP + 2 × positive class mental attribute + Spellcraft bonuses + other SP bonuses.</p>
     <p>Soul Capacity and Mind Capacity are paths in the Spellcraft discipline. The first entry in either path adds 2 to your maximum SP. Add each learned increase once to the same reserve. Later capacity gains leave your current SP as it is.</p>
   </details>`;
 }

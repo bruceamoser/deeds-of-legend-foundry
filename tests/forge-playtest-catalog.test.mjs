@@ -154,7 +154,7 @@ test("current learning journal uses class prices and no level-two gates", () => 
   const journals = applyForgePlaytestJournals(data("-journals"));
   for (const id of ["rule-development", "rule-learning"]) {
     const text = journals.records.find(r => r.id === id).markdown;
-    assert.match(text, /1, 2 or 3 DP (?:listed by|printed for) your class/);
+    assert.match(text, /1, 2 or 3 DP (?:listed by|listed for|printed for) your class/);
     assert.doesNotMatch(text, /level-2 third|Spend 1 DP to begin|discipline for 1 DP/);
   }
 });
