@@ -74,6 +74,21 @@ try {
     await page.mouse.move(1,1);
     await page.screenshot({path:`test-results/spell-atlas/${discipline}.png`});
   }
+  // Render the exact current source effects and their timing in the atlas.
+  for (const [discipline, nodeId, name, timing, effect] of [
+    ["life", "growth:1", "Goodberry", "Ritual", /1 HP/],
+    ["life", "growth:2", "Plant Growth", "Main Action", /difficult terrain/],
+    ["life", "transformation:5", "Shapechange", "Main Action", /Main Action to bite or claw one adjacent creature/],
+  ]) {
+    await action("forge-filter", "all").click();
+    await select(discipline); await action("forge-filter", discipline).click();
+    await select(nodeId);
+    const spell = inspector.locator(".forge-spell").filter({has: page.locator("summary", {hasText: name})});
+    await spell.locator("summary").click();
+    await expect(spell).toContainText(timing);
+    await expect(spell.locator("p")).toHaveText(catalogs.forge.spells.find(spell => spell.name === name).effect);
+    await expect(spell.locator("p")).toContainText(effect);
+  }
   await action("forge-filter","all").click();await select("elements");await action("forge-filter","elements").click();
   await select("flame:6");
   await expect(action("forge-learn","flame:6")).toBeEnabled();

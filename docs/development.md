@@ -1733,3 +1733,19 @@ world and records cleanup with its evidence. Portable import delegates native
 JSON unchanged and builds complete native documents for the explicit workshop
 format, validating current rules before replacing Actor contents. Native import
 preserves destination identity, ownership, folder and sort.
+
+## Refreshing the Workshop's book revision
+
+Use the approved immutable book commit with `scripts/import-forge.mjs --refresh-lock`,
+then run `scripts/import-workshop-forge.mjs` against the same checkout. Regenerate
+`Build-Offs/revised/` with `node scripts/generate-revised-build-offs.mjs` from those
+imported catalogs (without `--working-tree`). Keep the original historical Build-Offs.
+The current examples must share the Forge pin even when their character choices and
+resource totals are unchanged.
+
+Run `validate:forge`, `build:workshop`, `test:build-offs`, `npm run check`, and the
+browser test scripts listed in `.github/workflows/pages.yml`. A successful package
+check alone does not verify the publication fixtures or all Workshop surfaces.
+Review generated spell timing, effective creature statistics and any changed
+example totals separately from provenance and editorial changes. Keep the native
+source lock unchanged until native integration is explicitly authorized.
