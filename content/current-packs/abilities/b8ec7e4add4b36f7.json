@@ -1,0 +1,47 @@
+{
+  "_key": "!items!b8ec7e4add4b36f7",
+  "_id": "b8ec7e4add4b36f7",
+  "name": "Interpose III",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Before Interpose you may move 1 square to reach the ally without movement reactions.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "guard:interception:3",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "guard:interception:3",
+        "level": 1,
+        "cost": 2,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Before Interpose you may move 1 square to reach the ally without movement reactions.",
+        "improves": "guard:interception:1",
+        "requires": [
+          "guard:interception:2"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

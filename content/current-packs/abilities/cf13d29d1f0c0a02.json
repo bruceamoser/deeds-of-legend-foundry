@@ -1,0 +1,65 @@
+{
+  "_key": "!items!cf13d29d1f0c0a02",
+  "_id": "cf13d29d1f0c0a02",
+  "name": "Quiet Ways",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>Self and up to three willing creatures within 3 squares</dd></div><div><dt>Duration</dt><dd>10 minutes</dd></div></dl><p>Soften footfalls and rustling gear. Recipients gain 1 Boon to sneaking that depends on quiet movement. Speech and deliberate noise remain audible.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:sanctuary:3",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:sanctuary:3",
+        "level": 1,
+        "cost": 2,
+        "action": "Main Action",
+        "sp": 1,
+        "range": "Self and up to three willing creatures within 3 squares",
+        "duration": "10 minutes",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Soften footfalls and rustling gear. Recipients gain 1 Boon to sneaking that depends on quiet movement. Speech and deliberate noise remain audible.",
+        "improves": null,
+        "requires": [
+          "sanctuary:0"
+        ],
+        "bookId": "sanctuary"
+      },
+      "spell": {
+        "id": "spell:sanctuary:3",
+        "name": "Quiet Ways",
+        "bookId": "sanctuary",
+        "page": "3",
+        "section": "II",
+        "sp": 1,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Self and up to three willing creatures within 3 squares",
+        "duration": "10 minutes",
+        "effect": "Soften footfalls and rustling gear. Recipients gain 1 Boon to sneaking that depends on quiet movement. Speech and deliberate noise remain audible."
+      }
+    }
+  },
+  "effects": []
+}

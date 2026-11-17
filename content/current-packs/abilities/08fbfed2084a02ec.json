@@ -1,0 +1,47 @@
+{
+  "_key": "!items!08fbfed2084a02ec",
+  "_id": "08fbfed2084a02ec",
+  "name": "Split the Flight III",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Split the Flight deals 2/3/5 physical damage. You may also spend a Main Action observing one visible creature within 12 squares to mark a vulnerable part of its anatomy or construction for this scene; no roll. The DA identifies a plausible exposed part, or states that none is visible.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "2 physical damage",
+      "standard": "3 physical damage",
+      "strong": "5 physical damage"
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "marksmanship:precision:6",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "marksmanship:precision:6",
+        "level": 3,
+        "cost": 4,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Split the Flight deals 2/3/5 physical damage. You may also spend a Main Action observing one visible creature within 12 squares to mark a vulnerable part of its anatomy or construction for this scene; no roll. The DA identifies a plausible exposed part, or states that none is visible.",
+        "improves": "marksmanship:precision:4",
+        "requires": [
+          "marksmanship:precision:5"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

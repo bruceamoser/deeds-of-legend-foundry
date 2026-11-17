@@ -1,0 +1,47 @@
+{
+  "_key": "!items!20a82687ed12004f",
+  "_id": "20a82687ed12004f",
+  "name": "Draw the Line I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>One exchange</dd></div><div><dt>Attribute</dt><dd>Brawn</dd></div></dl><p>One exchange · Brawn. State a credible immediate consequence you can carry out to a listener who perceives and understands the threat; add 1/2/3 progress toward a limited concession established by the DA.</p>",
+    "activity": {
+      "action": "other",
+      "rollMode": "attribute",
+      "attribute": "brawn",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "influence:pressure:1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "technique",
+        "nodeId": "influence:pressure:1",
+        "level": 1,
+        "cost": 1,
+        "action": "One exchange",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": "Brawn",
+        "defenseAttribute": null,
+        "effect": "One exchange · Brawn. State a credible immediate consequence you can carry out to a listener who perceives and understands the threat; add 1/2/3 progress toward a limited concession established by the DA.",
+        "improves": null,
+        "requires": [
+          "influence"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

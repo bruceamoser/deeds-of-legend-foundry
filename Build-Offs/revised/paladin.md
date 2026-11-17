@@ -1,6 +1,6 @@
 # Aldren Vowkeeper: paladin after the rewrite
 
-Pinned authored source `87f5141bd6e0da74a10c07b3239e975c7656430a`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../paladin.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
+Pinned authored source `f71eac4c46fce6906d6dfbd1638ee98b10a6c538`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../paladin.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
 
 ## What the rewrite changes
 
@@ -113,15 +113,17 @@ Once on your turn, declare Oathstrike and pay 1 SP before a melee weapon attack 
 
 <details><summary>Rebuking Light: complete signature component</summary>
 
-**Action:** Passive · **Attribute:** None
+**Action:** Passive modifier to a melee weapon attack · **Attribute:** Use that attack’s attribute
 
-**Target / range / shape:** Your Oathstrike target.
+**Target / range / shape:** An enemy that damaged one of your allies since the end of your last turn.
 
-On Standard or Strong Oathstrike also pushes the target 1 square directly away from you. On Strong it also applies Dazed 1. Resolve Stability, collisions and condition immunity normally.
+Once on your turn, declare this modifier and pay 1 SP before a melee weapon attack against that enemy. Add 1/2/3 radiant damage to the attack on Weak/Standard/Strong. On Standard or Strong, also push the target 1 square directly away from you. On Strong, also apply Dazed 1. Resolve each damage component’s resistance, then apply the minimum once to the whole attack. Resolve Stability, collisions and condition immunity normally.
 
-**Duration:** Immediate; Dazed decays normally.
+**Duration:** The attack and immediate push; Dazed uses normal decay.
 
-**Equipment / acquisition:** None.
+**Equipment / acquisition:** The actual melee weapon required by the attack.
+
+This magical weapon modifier is not a separate spell casting and requires no free hand beyond the weapon’s requirements.
 
 </details>
 
@@ -184,6 +186,22 @@ Once on your turn, declare Oathstrike and pay 1 SP before a melee weapon attack 
 
 </details>
 
+<details><summary>Rebuking Light: complete signature component</summary>
+
+**Action:** Passive modifier to a melee weapon attack · **Attribute:** Use that attack’s attribute
+
+**Target / range / shape:** An enemy that damaged one of your allies since the end of your last turn.
+
+Once on your turn, declare this modifier and pay 1 SP before a melee weapon attack against that enemy. Add 1/2/3 radiant damage to the attack on Weak/Standard/Strong. On Standard or Strong, also push the target 1 square directly away from you. On Strong, also apply Dazed 1. Resolve each damage component’s resistance, then apply the minimum once to the whole attack. Resolve Stability, collisions and condition immunity normally.
+
+**Duration:** The attack and immediate push; Dazed uses normal decay.
+
+**Equipment / acquisition:** The actual melee weapon required by the attack.
+
+This magical weapon modifier is not a separate spell casting and requires no free hand beyond the weapon’s requirements.
+
+</details>
+
 <details><summary>Radiant Threshold: complete signature component</summary>
 
 **Action:** Main Action · **Attribute:** Reason
@@ -197,20 +215,6 @@ Make a Reason roll. Weak: 3 squares long; 1 radiant damage. Standard: 5 squares 
 **Equipment / acquisition:** A free hand for casting.
 
 This is a spell costing 2 SP, usable once per scene. You may have one threshold at a time; creating another ends it. Each creature takes its zone damage at most once per round. Damage dealt by occupying/crossing the persistent zone is non-attack damage and can be reduced to 0.
-
-</details>
-
-<details><summary>Rebuking Light: complete signature component</summary>
-
-**Action:** Passive · **Attribute:** None
-
-**Target / range / shape:** Your Oathstrike target.
-
-On Standard or Strong Oathstrike also pushes the target 1 square directly away from you. On Strong it also applies Dazed 1. Resolve Stability, collisions and condition immunity normally.
-
-**Duration:** Immediate; Dazed decays normally.
-
-**Equipment / acquisition:** None.
 
 </details>
 

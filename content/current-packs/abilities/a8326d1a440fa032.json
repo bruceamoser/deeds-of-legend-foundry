@@ -1,0 +1,65 @@
+{
+  "_key": "!items!a8326d1a440fa032",
+  "_id": "a8326d1a440fa032",
+  "name": "Dispel True",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>4</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div><div><dt>Range</dt><dd>Up to three visible ongoing spells within 6 squares</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Choose one shared cancellation total of 4/6/8 progress and divide it among the effects, assigning at least 1 to each. Each target is 2 plus that spell&#39;s printed SP cost. End each effect whose objective is completed.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:unraveling:8",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:unraveling:8",
+        "level": 3,
+        "cost": 3,
+        "action": "Main Action",
+        "sp": 4,
+        "range": "Up to three visible ongoing spells within 6 squares",
+        "duration": "Instant",
+        "attribute": "Knowledge",
+        "defenseAttribute": null,
+        "effect": "Choose one shared cancellation total of 4/6/8 progress and divide it among the effects, assigning at least 1 to each. Each target is 2 plus that spell's printed SP cost. End each effect whose objective is completed.",
+        "improves": null,
+        "requires": [
+          "unraveling:2"
+        ],
+        "bookId": "unraveling"
+      },
+      "spell": {
+        "id": "spell:unraveling:8",
+        "name": "Dispel True",
+        "bookId": "unraveling",
+        "page": "8",
+        "section": "IV",
+        "sp": 4,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "Knowledge",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Up to three visible ongoing spells within 6 squares",
+        "duration": "Instant",
+        "effect": "Choose one shared cancellation total of 4/6/8 progress and divide it among the effects, assigning at least 1 to each. Each target is 2 plus that spell's printed SP cost. End each effect whose objective is completed."
+      }
+    }
+  },
+  "effects": []
+}

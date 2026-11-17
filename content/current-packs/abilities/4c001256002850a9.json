@@ -1,0 +1,65 @@
+{
+  "_key": "!items!4c001256002850a9",
+  "_id": "4c001256002850a9",
+  "name": "Prismatic Wall",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div><div><dt>Defense</dt><dd>Agility</dd></div><div><dt>Range</dt><dd>Six connected unoccupied squares within 8 squares</dd></div><div><dt>Duration</dt><dd>1 minute</dd></div></dl><p>Raise a luminous wall 2 squares high that blocks sight. Roll on casting to set radiant damage at 4/6/8. A creature crossing it takes that damage and Slowed 2, once per creature each round. The caster can end the wall with a Maneuver.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:protection:a3",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:protection:a3",
+        "level": 7,
+        "cost": 5,
+        "action": "Main Action",
+        "sp": 5,
+        "range": "Six connected unoccupied squares within 8 squares",
+        "duration": "1 minute",
+        "attribute": "Knowledge",
+        "defenseAttribute": "Agility",
+        "effect": "Raise a luminous wall 2 squares high that blocks sight. Roll on casting to set radiant damage at 4/6/8. A creature crossing it takes that damage and Slowed 2, once per creature each round. The caster can end the wall with a Maneuver.",
+        "improves": null,
+        "requires": [
+          "protection:5"
+        ],
+        "bookId": "protection"
+      },
+      "spell": {
+        "id": "spell:protection:a3",
+        "name": "Prismatic Wall",
+        "bookId": "protection",
+        "page": "A3",
+        "section": "VII",
+        "sp": 5,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "Knowledge",
+        "defense": "Agility",
+        "defenseAttribute": "Agility",
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Six connected unoccupied squares within 8 squares",
+        "duration": "1 minute",
+        "effect": "Raise a luminous wall 2 squares high that blocks sight. Roll on casting to set radiant damage at 4/6/8. A creature crossing it takes that damage and Slowed 2, once per creature each round. The caster can end the wall with a Maneuver."
+      }
+    }
+  },
+  "effects": []
+}

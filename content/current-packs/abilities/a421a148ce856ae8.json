@@ -1,0 +1,66 @@
+{
+  "_key": "!items!a421a148ce856ae8",
+  "_id": "a421a148ce856ae8",
+  "name": "Awaken",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 8 hours</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One willing ordinary animal or living tree beside you; 100 coins of rare incense consumed</dd></div><div><dt>Duration</dt><dd>Permanent</dd></div></dl><p>Awaken a speaking mind with one language you know. The being keeps its body, natural senses and ordinary capabilities. It becomes an independent person; agree on any companionship or service through conversation. You can complete this awakening once between safe overnight rests.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:growth:a1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:growth:a1",
+        "level": 3,
+        "cost": 4,
+        "action": "Ritual · 8 hours",
+        "sp": 5,
+        "range": "One willing ordinary animal or living tree beside you; 100 coins of rare incense consumed",
+        "duration": "Permanent",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Awaken a speaking mind with one language you know. The being keeps its body, natural senses and ordinary capabilities. It becomes an independent person; agree on any companionship or service through conversation. You can complete this awakening once between safe overnight rests.",
+        "improves": null,
+        "requires": [
+          "growth:3"
+        ],
+        "bookId": "growth"
+      },
+      "spell": {
+        "id": "spell:growth:a1",
+        "name": "Awaken",
+        "bookId": "growth",
+        "page": "A1",
+        "section": "V",
+        "sp": 5,
+        "action": "Ritual",
+        "actionText": "Ritual · 8 hours",
+        "ritualTime": "8 hours",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One willing ordinary animal or living tree beside you; 100 coins of rare incense consumed",
+        "duration": "Permanent",
+        "effect": "Awaken a speaking mind with one language you know. The being keeps its body, natural senses and ordinary capabilities. It becomes an independent person; agree on any companionship or service through conversation. You can complete this awakening once between safe overnight rests."
+      }
+    }
+  },
+  "effects": []
+}

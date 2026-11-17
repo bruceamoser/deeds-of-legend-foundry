@@ -1,0 +1,47 @@
+{
+  "_key": "!items!182dcbd7f099cd66",
+  "_id": "182dcbd7f099cd66",
+  "name": "Empty-Hand Strike I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Brawn</dd></div></dl><p>Main Action · Brawn or Agility, chosen before rolling. Strike one adjacent creature unarmed for 2/3/5 physical damage. Choose an available hand, foot or other natural contact; restraint that prevents that contact prevents the strike.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "brawn",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "2 physical damage",
+      "standard": "3 physical damage",
+      "strong": "5 physical damage"
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "arms:unarmed:1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "technique",
+        "nodeId": "arms:unarmed:1",
+        "level": 1,
+        "cost": 1,
+        "action": "Main Action",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": "Brawn",
+        "defenseAttribute": null,
+        "effect": "Main Action · Brawn or Agility, chosen before rolling. Strike one adjacent creature unarmed for 2/3/5 physical damage. Choose an available hand, foot or other natural contact; restraint that prevents that contact prevents the strike.",
+        "improves": null,
+        "requires": [
+          "arms"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

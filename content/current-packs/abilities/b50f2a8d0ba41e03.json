@@ -1,0 +1,47 @@
+{
+  "_key": "!items!b50f2a8d0ba41e03",
+  "_id": "b50f2a8d0ba41e03",
+  "name": "Field Dressing III",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Field Dressing’s first aid takes 5 minutes. Its bandaging can be performed as a Maneuver.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "medicine:first-aid:3",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "medicine:first-aid:3",
+        "level": 1,
+        "cost": 2,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Field Dressing’s first aid takes 5 minutes. Its bandaging can be performed as a Maneuver.",
+        "improves": "medicine:first-aid:1",
+        "requires": [
+          "medicine:first-aid:2"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

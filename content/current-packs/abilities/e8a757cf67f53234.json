@@ -1,0 +1,66 @@
+{
+  "_key": "!items!e8a757cf67f53234",
+  "_id": "e8a757cf67f53234",
+  "name": "Past Truth",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 hour</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One adjacent site and one specific event within the past year</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>View up to ten minutes of that event from a fixed point at the site. The vision shows what happened there, including audible speech. Magical concealment that obscured the event remains part of the vision.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:echoes:a2",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:echoes:a2",
+        "level": 3,
+        "cost": 4,
+        "action": "Ritual · 1 hour",
+        "sp": 5,
+        "range": "One adjacent site and one specific event within the past year",
+        "duration": "Instant",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "View up to ten minutes of that event from a fixed point at the site. The vision shows what happened there, including audible speech. Magical concealment that obscured the event remains part of the vision.",
+        "improves": null,
+        "requires": [
+          "echoes:4"
+        ],
+        "bookId": "echoes"
+      },
+      "spell": {
+        "id": "spell:echoes:a2",
+        "name": "Past Truth",
+        "bookId": "echoes",
+        "page": "A2",
+        "section": "VI",
+        "sp": 5,
+        "action": "Ritual",
+        "actionText": "Ritual · 1 hour",
+        "ritualTime": "1 hour",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One adjacent site and one specific event within the past year",
+        "duration": "Instant",
+        "effect": "View up to ten minutes of that event from a fixed point at the site. The vision shows what happened there, including audible speech. Magical concealment that obscured the event remains part of the vision."
+      }
+    }
+  },
+  "effects": []
+}

@@ -1,0 +1,66 @@
+{
+  "_key": "!items!a0f7f27aa3773684",
+  "_id": "a0f7f27aa3773684",
+  "name": "Enchanted Rope — Rigging",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 minute</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One unattended rope up to 12 squares long within 3 squares</dd></div><div><dt>Duration</dt><dd>10 minutes</dd></div></dl><p>Teach the rope a sequence of up to three knots or anchors in reachable open space. Spend a Maneuver to advance one step. It supports ordinary rope loads after securing itself and retains its normal strength.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:animation:3",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:animation:3",
+        "level": 1,
+        "cost": 2,
+        "action": "Ritual · 1 minute",
+        "sp": 1,
+        "range": "One unattended rope up to 12 squares long within 3 squares",
+        "duration": "10 minutes",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Teach the rope a sequence of up to three knots or anchors in reachable open space. Spend a Maneuver to advance one step. It supports ordinary rope loads after securing itself and retains its normal strength.",
+        "improves": null,
+        "requires": [
+          "animation:0"
+        ],
+        "bookId": "animation"
+      },
+      "spell": {
+        "id": "spell:animation:3",
+        "name": "Enchanted Rope — Rigging",
+        "bookId": "animation",
+        "page": "3",
+        "section": "II",
+        "sp": 1,
+        "action": "Ritual",
+        "actionText": "Ritual · 1 minute",
+        "ritualTime": "1 minute",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One unattended rope up to 12 squares long within 3 squares",
+        "duration": "10 minutes",
+        "effect": "Teach the rope a sequence of up to three knots or anchors in reachable open space. Spend a Maneuver to advance one step. It supports ordinary rope loads after securing itself and retains its normal strength."
+      }
+    }
+  },
+  "effects": []
+}

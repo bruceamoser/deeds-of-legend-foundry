@@ -1,0 +1,66 @@
+{
+  "_key": "!items!80ee4d4821e7f645",
+  "_id": "80ee4d4821e7f645",
+  "name": "Telepathic Bond",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 minute</dd></div><div><dt>SP</dt><dd>3</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>Self and up to five willing creatures within 3 squares</dd></div><div><dt>Duration</dt><dd>1 hour</dd></div></dl><p>Create a shared mental conversation reaching 1 kilometer. Participants exchange words and simple images by intent while conscious. Each participant may leave the link at any time.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:thought:6",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:thought:6",
+        "level": 1,
+        "cost": 2,
+        "action": "Ritual · 1 minute",
+        "sp": 3,
+        "range": "Self and up to five willing creatures within 3 squares",
+        "duration": "1 hour",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Create a shared mental conversation reaching 1 kilometer. Participants exchange words and simple images by intent while conscious. Each participant may leave the link at any time.",
+        "improves": null,
+        "requires": [
+          "thought:1"
+        ],
+        "bookId": "thought"
+      },
+      "spell": {
+        "id": "spell:thought:6",
+        "name": "Telepathic Bond",
+        "bookId": "thought",
+        "page": "6",
+        "section": "III",
+        "sp": 3,
+        "action": "Ritual",
+        "actionText": "Ritual · 1 minute",
+        "ritualTime": "1 minute",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Self and up to five willing creatures within 3 squares",
+        "duration": "1 hour",
+        "effect": "Create a shared mental conversation reaching 1 kilometer. Participants exchange words and simple images by intent while conscious. Each participant may leave the link at any time."
+      }
+    }
+  },
+  "effects": []
+}

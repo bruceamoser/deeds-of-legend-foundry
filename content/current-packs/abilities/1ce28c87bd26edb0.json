@@ -1,0 +1,66 @@
+{
+  "_key": "!items!1ce28c87bd26edb0",
+  "_id": "1ce28c87bd26edb0",
+  "name": "Comprehend Languages",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 minute</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>Self; spoken words heard or writing touched</dd></div><div><dt>Duration</dt><dd>1 hour</dd></div></dl><p>Understand the literal meaning of one language at a time. Read at an ordinary pace. Cultural references, ciphers and deliberate codes retain their own interpretation challenges.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:thought:2",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:thought:2",
+        "level": 1,
+        "cost": 1,
+        "action": "Ritual · 1 minute",
+        "sp": 1,
+        "range": "Self; spoken words heard or writing touched",
+        "duration": "1 hour",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Understand the literal meaning of one language at a time. Read at an ordinary pace. Cultural references, ciphers and deliberate codes retain their own interpretation challenges.",
+        "improves": null,
+        "requires": [
+          "mentalism"
+        ],
+        "bookId": "thought"
+      },
+      "spell": {
+        "id": "spell:thought:2",
+        "name": "Comprehend Languages",
+        "bookId": "thought",
+        "page": "2",
+        "section": "I",
+        "sp": 1,
+        "action": "Ritual",
+        "actionText": "Ritual · 1 minute",
+        "ritualTime": "1 minute",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Self; spoken words heard or writing touched",
+        "duration": "1 hour",
+        "effect": "Understand the literal meaning of one language at a time. Read at an ordinary pace. Cultural references, ciphers and deliberate codes retain their own interpretation challenges."
+      }
+    }
+  },
+  "effects": []
+}

@@ -1,0 +1,65 @@
+{
+  "_key": "!items!a75da818710df697",
+  "_id": "a75da818710df697",
+  "name": "Minor Illusion",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>SP</dt><dd>0</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One point within 6 squares; a sound or still image fitting one square</dd></div><div><dt>Duration</dt><dd>1 minute</dd></div></dl><p>Create a simple sound or stationary visual image. An image is insubstantial; a sound can be as loud as ordinary speech. Physical interaction reveals the illusion. You can keep one Minor Illusion at a time.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:perception:1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:perception:1",
+        "level": 1,
+        "cost": 1,
+        "action": "Maneuver",
+        "sp": 0,
+        "range": "One point within 6 squares; a sound or still image fitting one square",
+        "duration": "1 minute",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Create a simple sound or stationary visual image. An image is insubstantial; a sound can be as loud as ordinary speech. Physical interaction reveals the illusion. You can keep one Minor Illusion at a time.",
+        "improves": null,
+        "requires": [
+          "mentalism"
+        ],
+        "bookId": "perception"
+      },
+      "spell": {
+        "id": "spell:perception:1",
+        "name": "Minor Illusion",
+        "bookId": "perception",
+        "page": "1",
+        "section": "I",
+        "sp": 0,
+        "action": "Maneuver",
+        "actionText": "Maneuver",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One point within 6 squares; a sound or still image fitting one square",
+        "duration": "1 minute",
+        "effect": "Create a simple sound or stationary visual image. An image is insubstantial; a sound can be as loud as ordinary speech. Physical interaction reveals the illusion. You can keep one Minor Illusion at a time."
+      }
+    }
+  },
+  "effects": []
+}

@@ -1,0 +1,372 @@
+{
+  "_key": "!actors!15d95ee1f3007644",
+  "_id": "15d95ee1f3007644",
+  "name": "Walking Furnace",
+  "type": "creature",
+  "img": "systems/heroes-of-legend/assets/creatures/fc08a5c0127fdfec1ad890336394c772ea6f499868d8adbbeb9ad0671481a9cd.webp",
+  "prototypeToken": {
+    "width": 2,
+    "height": 2,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/fc08a5c0127fdfec1ad890336394c772ea6f499868d8adbbeb9ad0671481a9cd.webp"
+    }
+  },
+  "system": {
+    "schemaVersion": 1,
+    "attributes": {
+      "brawn": {
+        "base": 2
+      },
+      "fortitude": {
+        "base": 2
+      },
+      "agility": {
+        "base": -1
+      },
+      "guile": {
+        "base": -2
+      },
+      "knowledge": {
+        "base": 0
+      },
+      "reason": {
+        "base": 0
+      }
+    },
+    "attributesSource": "Brawn +2; Fortitude +2; Agility -1; Guile -2; Knowledge +0; Reason +0",
+    "health": {
+      "value": 30,
+      "baseMax": 30,
+      "sourceText": "30"
+    },
+    "cv": 34,
+    "speed": 4,
+    "speedSource": "4",
+    "alternateSpeeds": [],
+    "size": 2,
+    "sizeLabel": "2x2 squares",
+    "sizeSource": "2 (2x2 squares)",
+    "footprint": {
+      "width": 2,
+      "height": 2
+    },
+    "armor": 2,
+    "armorMarker": "*",
+    "armorSource": "2\\*",
+    "stability": 1,
+    "threat": {
+      "boons": 0,
+      "banes": 1,
+      "sourceText": "1 Bane"
+    },
+    "evasion": {
+      "boons": 1,
+      "banes": 0,
+      "sourceText": "1 Boon"
+    },
+    "weaknesses": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "resistances": {
+      "numeric": [
+        {
+          "type": "Physical",
+          "value": 2
+        },
+        {
+          "type": "Fire",
+          "value": 3
+        }
+      ],
+      "special": [],
+      "sourceText": "Physical (2), Fire (3)"
+    },
+    "immunities": [
+      "Bleeding",
+      "Poisoned",
+      "Asleep"
+    ],
+    "basicMelee": {
+      "weak": 5,
+      "standard": 3,
+      "strong": 2,
+      "defenseAttribute": "agility",
+      "orientation": "player-defense"
+    },
+    "actions": {
+      "orientation": "player-defense",
+      "entries": [
+        {
+          "id": "main-0",
+          "category": "main",
+          "name": "Basic Melee",
+          "abilityId": "",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "5",
+            "standard": "3",
+            "strong": "2"
+          },
+          "effect": "5/3/2",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "main-1",
+          "category": "main",
+          "name": "Iron ram",
+          "abilityId": "",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "7",
+            "standard": "5",
+            "strong": "3"
+          },
+          "effect": "7/5/3",
+          "referenceMarkdown": "### Iron ram\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** physical."
+        },
+        {
+          "id": "main-2",
+          "category": "main",
+          "name": "Furnace breath",
+          "abilityId": "",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "8 + Burning 2",
+            "standard": "6 + Burning 1",
+            "strong": "4"
+          },
+          "effect": "8 + Burning 2 / 6 + Burning 1 / 4",
+          "referenceMarkdown": "### Furnace breath\n\n*Its chest swells and light leaks between its teeth; there is one terrible instant to scatter.*\n\n**Target:** All creatures in a cone of 3 rows, 1/3/5 squares wide. **Player defense:** Agility. **Damage type:** fire.\n\n**Weak defense:** Burning 2. **Standard defense:** Burning 1.\n\n**Limit:** Cannot use this attack on consecutive turns, regardless of result."
+        },
+        {
+          "id": "maneuver-0",
+          "category": "maneuver",
+          "name": "Stoke the Core",
+          "abilityId": "monster-stoke-the-core",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Next damaging Main Action attack this turn: +1 Fire damage per target.",
+          "referenceMarkdown": "### Stoke the Core\n\n*Coals brighten inside its body and a hot breath spills between teeth or iron seams.*\n\nAdd 1 Fire damage to its next damaging Main Action attack before the end of this turn. Apply it once per target damaged by that attack, using the normal mixed-damage resistance and minimum rules. This grants no extra attack or Burning. Repeated uses do not add more Fire damage."
+        },
+        {
+          "id": "maneuver-1",
+          "category": "maneuver",
+          "name": "Defend",
+          "abilityId": "",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "+1 Bane",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "reaction-0",
+          "category": "reaction",
+          "name": "Heated Hide",
+          "abilityId": "monster-heated-hide",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "After adjacent attack deals HP damage: attacker gains Burning 1; not from free attacks.",
+          "referenceMarkdown": "### Heated Hide\n\n*The struck scales flare, and a lash of heat follows the retreating blade.*\n\nAfter an adjacent attacker deals HP damage to this creature, spend Reaction to apply Burning 1 to that attacker. It is a condition, not a free attack, and cannot trigger this ability in return. No trigger when the incoming action is itself a free attack. Summoned forms never receive this Reaction."
+        },
+        {
+          "id": "reaction-1",
+          "category": "reaction",
+          "name": "Opportunity Attack",
+          "abilityId": "",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Basic Melee",
+          "referenceMarkdown": ""
+        }
+      ],
+      "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates one complete outcome. All attacks use the printed Threat unless stated otherwise.",
+      "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Iron ram | Agility | 7/5/3 |\n| Furnace breath | Agility | 8 + Burning 2 / 6 + Burning 1 / 4 |",
+      "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Stoke the Core | Next damaging Main Action attack this turn: +1 Fire damage per target. |\n| Defend | +1 Bane |",
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Heated Hide | After adjacent attack deals HP damage: attacker gains Burning 1; not from free attacks. |\n| Opportunity Attack | Basic Melee |"
+    },
+    "details": {
+      "flavorMarkdown": "*A mobile foundry furnace on thick iron legs, with a bellows chest and a hinged firebox mouth. Old production orders still govern the heat and weight of its machinery.*",
+      "specialtyMarkdown": "### Iron ram\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** physical.\n\n### Furnace breath\n\n*Its chest swells and light leaks between its teeth; there is one terrible instant to scatter.*\n\n**Target:** All creatures in a cone of 3 rows, 1/3/5 squares wide. **Player defense:** Agility. **Damage type:** fire.\n\n**Weak defense:** Burning 2. **Standard defense:** Burning 1.\n\n**Limit:** Cannot use this attack on consecutive turns, regardless of result.\n\n### Stoke the Core\n\n*Coals brighten inside its body and a hot breath spills between teeth or iron seams.*\n\nAdd 1 Fire damage to its next damaging Main Action attack before the end of this turn. Apply it once per target damaged by that attack, using the normal mixed-damage resistance and minimum rules. This grants no extra attack or Burning. Repeated uses do not add more Fire damage.\n\n### Heated Hide\n\n*The struck scales flare, and a lash of heat follows the retreating blade.*\n\nAfter an adjacent attacker deals HP damage to this creature, spend Reaction to apply Burning 1 to that attacker. It is a condition, not a free attack, and cannot trigger this ability in return. No trigger when the incoming action is itself a free attack. Summoned forms never receive this Reaction.",
+      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.\n\n**Heavy Frame — Passive:** Stability 1; an explicit creature trait, not a bonus from size.\n\n**Lifeless Body:** does not breathe or eat; only the listed immunities apply.\n\n**Healing:** Construct: ordinary HP healing does not repair it; destroyed at 0. Combat repair requires an explicit repair ability. Workshop repair remains a design question.\n\n**Senses:** Ordinary sight and hearing.\n\n**Signs:** Cinders spill from heavy tracks through the foundry.\n\n**Purpose:** Keep the old production line running.\n\n**Tactics and retreat:** Breathe along the work lane, then hammer anyone who reaches the body.\n\n**Counterplay and conversation:** Open the release valves from outside its path; stop the bellows rather than feeding it more fuel.\n\n**Habitat:** Foundry; ruin · **Communication:** None\n\n**Loot:** Maker’s plans and 40 coins of salvage; summoned machinery yields nothing permanent.\n\n**Summoning:** Construct 7 — [player reference](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/summons/walking-furnace.md).",
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-walking-furnace\n\n\n**Category:** Construct · **Role:** Area artillery · **CV:** 34\n\n**Difficulty rationale:** A slow or broad exposed body gives the attacker a Boon. Its dangerous attack imposes defense Banes.\n\n**Reference damage:** 3/5/7\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.8\n\n**Action review (#1279):** U 1.55 → 1.8: Maneuver allowance +0.1, Reaction allowance +0.15. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.\n\n**Regeneration per turn:** 0\n\nReference I=3.596, O=4.596. CV uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/encounters.md); action choices, Stability and control are not simulated. Recalibration remains required.\n\n**Ability sources:** [breath](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/breath.md), [Heated Hide](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/heated-hide.md), [lifeless body](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/lifeless-body.md), [Stoke the Core](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/stoke-the-core.md).\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/roster.md) · [Agreed Stability](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/rules/stability.md)"
+    },
+    "biography": ""
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-walking-furnace",
+        "asset": "assets/creatures/fc08a5c0127fdfec1ad890336394c772ea6f499868d8adbbeb9ad0671481a9cd.webp",
+        "sha256": "36f9b0c91e7cb51f4ba39a5a07ffbe9a9d2fa908b783804645d7ad1954be6e56",
+        "sourceSha256": "fc08a5c0127fdfec1ad890336394c772ea6f499868d8adbbeb9ad0671481a9cd",
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
+      "catalogId": "creature-walking-furnace",
+      "source": {
+        "path": "design/bestiary/creatures/walking-furnace.md",
+        "sha256": "043d1265d756c18daae41e7b971d43263c175c59f53677d00a5cdfc38fdfbc13"
+      },
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Printed profile · specialty automation pending",
+      "specialtyAutomation": "pending",
+      "classification": {
+        "category": "Construct",
+        "role": "Area artillery",
+        "cv": 34
+      },
+      "family": "Golems and animated guardians",
+      "abilitySources": [
+        {
+          "label": "breath",
+          "id": "monster-breath",
+          "path": "design/monster-abilities/breath.md",
+          "sha256": "af8befd0a08c187250f8183e6a99afecd387e1a798a4164f499a0185f863bdc8"
+        },
+        {
+          "label": "Heated Hide",
+          "id": "monster-heated-hide",
+          "path": "design/monster-abilities/heated-hide.md",
+          "sha256": "d1e74d6d2923aac89143a819db7b5f9fc98dcee9b6e8458c195f585241facaad"
+        },
+        {
+          "label": "lifeless body",
+          "id": "monster-lifeless-body",
+          "path": "design/monster-abilities/lifeless-body.md",
+          "sha256": "248c16c6e641d2042cd94a05e7e8bfce03b5177f4f57cda241b46d9b16de4d81"
+        },
+        {
+          "label": "Stoke the Core",
+          "id": "monster-stoke-the-core",
+          "path": "design/monster-abilities/stoke-the-core.md",
+          "sha256": "3e14e1dcf0d68589ae2dfd7fa19130b04671a74adb0816eb328df8d5abf2131f"
+        }
+      ],
+      "monsterAbilityTemplates": [
+        {
+          "id": "monster-breath",
+          "path": "design/monster-abilities/breath.md",
+          "sha256": "af8befd0a08c187250f8183e6a99afecd387e1a798a4164f499a0185f863bdc8",
+          "name": "Gathered Breath",
+          "action": "Main Action",
+          "flavorMarkdown": "*Its chest swells and light leaks between its teeth; there is one terrible instant to scatter.*",
+          "rulesMarkdown": "Use the printed area attack. It is not a spell. After using it, this creature cannot use this named attack on its next turn. Each affected player defends separately; a player-controlled creature rolls once at the worst target modifiers. Allies in the area are affected. The first use is available; describe the visible preparation before resolving it, not as an extra interrupt window.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Gathered Breath\n\n*Its chest swells and light leaks between its teeth; there is one terrible instant to scatter.*\n\n## Rules\n\n**ID:** monster-breath\n\n\n**Action:** Main Action\n\nUse the printed area attack. It is not a spell. After using it, this creature cannot use this named attack on its next turn. Each affected player defends separately; a player-controlled creature rolls once at the worst target modifiers. Allies in the area are affected. The first use is available; describe the visible preparation before resolving it, not as an extra interrupt window.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/breath.md",
+            "sha256": "af8befd0a08c187250f8183e6a99afecd387e1a798a4164f499a0185f863bdc8"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-heated-hide",
+          "path": "design/monster-abilities/heated-hide.md",
+          "sha256": "d1e74d6d2923aac89143a819db7b5f9fc98dcee9b6e8458c195f585241facaad",
+          "name": "Heated Hide",
+          "action": "Reaction",
+          "flavorMarkdown": "*The struck scales flare, and a lash of heat follows the retreating blade.*",
+          "rulesMarkdown": "After an adjacent attacker deals HP damage to this creature, spend Reaction to apply Burning 1 to that attacker. It is a condition, not a free attack, and cannot trigger this ability in return. No trigger when the incoming action is itself a free attack. Summoned forms never receive this Reaction.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Heated Hide\n\n*The struck scales flare, and a lash of heat follows the retreating blade.*\n\n## Rules\n\n**ID:** monster-heated-hide\n\n\n**Action:** Reaction\n\nAfter an adjacent attacker deals HP damage to this creature, spend Reaction to apply Burning 1 to that attacker. It is a condition, not a free attack, and cannot trigger this ability in return. No trigger when the incoming action is itself a free attack. Summoned forms never receive this Reaction.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/heated-hide.md",
+            "sha256": "d1e74d6d2923aac89143a819db7b5f9fc98dcee9b6e8458c195f585241facaad"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-lifeless-body",
+          "path": "design/monster-abilities/lifeless-body.md",
+          "sha256": "248c16c6e641d2042cd94a05e7e8bfce03b5177f4f57cda241b46d9b16de4d81",
+          "name": "Lifeless Body",
+          "action": "Passive",
+          "flavorMarkdown": "*Nothing breathes beneath the torn coat; nothing living looks through the visor.*",
+          "rulesMarkdown": "The card must list its exact condition immunities; this trait grants no additional unlisted ones. It does not breathe or need food. Undead entries marked healing-harmed take a healing result as Life damage; constructs marked repair-only do not regain HP from ordinary healing. Neither rule prevents physical attacks from dealing their normal minimum damage.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Lifeless Body\n\n*Nothing breathes beneath the torn coat; nothing living looks through the visor.*\n\n## Rules\n\n**ID:** monster-lifeless-body\n\n\n**Action:** Passive\n\nThe card must list its exact condition immunities; this trait grants no additional unlisted ones. It does not breathe or need food. Undead entries marked healing-harmed take a healing result as Life damage; constructs marked repair-only do not regain HP from ordinary healing. Neither rule prevents physical attacks from dealing their normal minimum damage.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/lifeless-body.md",
+            "sha256": "248c16c6e641d2042cd94a05e7e8bfce03b5177f4f57cda241b46d9b16de4d81"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-stoke-the-core",
+          "path": "design/monster-abilities/stoke-the-core.md",
+          "sha256": "3e14e1dcf0d68589ae2dfd7fa19130b04671a74adb0816eb328df8d5abf2131f",
+          "name": "Stoke the Core",
+          "action": "Maneuver",
+          "flavorMarkdown": "*Coals brighten inside its body and a hot breath spills between teeth or iron seams.*",
+          "rulesMarkdown": "Add 1 Fire damage to its next damaging Main Action attack before the end of this turn. Apply it once per target damaged by that attack, using the normal mixed-damage resistance and minimum rules. This grants no extra attack or Burning. Repeated uses do not add more Fire damage.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Stoke the Core\n\n*Coals brighten inside its body and a hot breath spills between teeth or iron seams.*\n\n## Rules\n\n**ID:** monster-stoke-the-core\n\n**Action:** Maneuver\n\nAdd 1 Fire damage to its next damaging Main Action attack before the end of this turn. Apply it once per target damaged by that attack, using the normal mixed-damage resistance and minimum rules. This grants no extra attack or Burning. Repeated uses do not add more Fire damage.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/stoke-the-core.md",
+            "sha256": "3e14e1dcf0d68589ae2dfd7fa19130b04671a74adb0816eb328df8d5abf2131f"
+          },
+          "automation": "pending"
+        }
+      ],
+      "summoning": {
+        "eligible": true,
+        "summonId": "summon-walking-furnace",
+        "path": "design/bestiary/summons/walking-furnace.md",
+        "eligibility": "Construct 7",
+        "sourceText": "Construct 7 — [player reference](../summons/walking-furnace.md)."
+      }
+    }
+  }
+}

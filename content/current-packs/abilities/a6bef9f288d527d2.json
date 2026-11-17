@@ -1,0 +1,47 @@
+{
+  "_key": "!items!a6bef9f288d527d2",
+  "_id": "a6bef9f288d527d2",
+  "name": "Driving Opening III",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Driving Opening also applies Slowed 2 on Strong to that target. Before rolling the modified attack against a living creature with positive HP, you may declare it nonlethal: if its damage would reduce the target to 0 HP, leave it at 1 HP and make it Unconscious for 1 minute or until it next takes damage. It falls Prone.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "arms:impact:3",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "arms:impact:3",
+        "level": 1,
+        "cost": 2,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Driving Opening also applies Slowed 2 on Strong to that target. Before rolling the modified attack against a living creature with positive HP, you may declare it nonlethal: if its damage would reduce the target to 0 HP, leave it at 1 HP and make it Unconscious for 1 minute or until it next takes damage. It falls Prone.",
+        "improves": "arms:impact:1",
+        "requires": [
+          "arms:impact:2"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

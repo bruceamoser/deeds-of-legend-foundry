@@ -1,0 +1,47 @@
+{
+  "_key": "!items!ba2a938217f10032",
+  "_id": "ba2a938217f10032",
+  "name": "Unyielding Shell",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Reaction</dd></div></dl><p>Reaction. After a defense roll, before damage from that attack is applied, reduce its damage by 4 after resistance. Until your next turn starts, reduce damage from each further attack against you by 3 after resistance. Once per scene, this response also prevents new Bleeding and Dazed from the triggering attack; its other effects remain.</p>",
+    "activity": {
+      "action": "reaction",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "armor:deflection:7",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "mastery",
+        "nodeId": "armor:deflection:7",
+        "level": 7,
+        "cost": 5,
+        "action": "Reaction",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Reaction. After a defense roll, before damage from that attack is applied, reduce its damage by 4 after resistance. Until your next turn starts, reduce damage from each further attack against you by 3 after resistance. Once per scene, this response also prevents new Bleeding and Dazed from the triggering attack; its other effects remain.",
+        "improves": null,
+        "requires": [
+          "armor:deflection:6"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

@@ -1,9 +1,11 @@
+import {assertCurrentGameplayActor} from "../rules/current-character.mjs";
+import { nativeForgeArmorSources } from "../rules/native-armor.mjs";
+import {nativeDamageState} from "../rules/native-health.mjs";
 import { conditionApplication } from "./condition-apply.mjs";
 import { assertNoPendingTurn } from "./turn-lock.mjs";
 import { classifyRoll } from "../rules/roll.mjs";
 import { damageEvent, canonicalDamageType } from "../rules/damage.mjs";
-import { passiveDefenseSources } from "../rules/passive-defenses.mjs";
-import { normalizeRecovery } from "../rules/recovery.mjs";
+import { normalizeForgeRecovery } from "../rules/forge-recovery.mjs";
 import {
   enqueueCharacterOperation,
   isCreationAuthority,
@@ -21,36 +23,40 @@ function passiveCatalogRecords(actor, type) {
           ? item.system.catalogId
           : item.getFlag(ID, "catalogId")) ?? "",
       worn: type === "equipment" ? item.system.worn : undefined,
+      carried: type === "equipment" ? item.system.carried : undefined,
       quantity: type === "equipment" ? item.system.quantity : undefined,
       source: structuredClone(item.getFlag(ID, "source") ?? null),
     }))
     .sort((a, b) => a.instanceId.localeCompare(b.instanceId));
 }
 export function damageBasis(actor) {
+  assertCurrentGameplayActor(actor);
   if (!["character", "creature"].includes(actor?.type) || actor.pack)
     throw new Error("Choose a world character or creature.");
-  const resolved = passiveDefenseSources({
-    abilities: passiveCatalogRecords(actor, "ability"),
-    equipment: passiveCatalogRecords(actor, "equipment"),
-  });
+  const resolved = {resistances: actor.type === "character" ? nativeForgeArmorSources(
+    (actor.getFlag(ID,"forgeLearned") ?? []).map(catalogId=>({catalogId})),
+    passiveCatalogRecords(actor,"equipment")) : [], weaknesses:[]};
   const passiveDefenses = structuredClone({
+    immunities: (actor.system.damageImmunities ?? []).map(canonicalDamageType),
     resistances: [...resolved.resistances, ...(actor.system.resistances?.numeric ?? []).map(source => ({ ...source, type: canonicalDamageType(source.type), label: "Printed resistance" }))],
     weaknesses: [...resolved.weaknesses, ...(actor.system.weaknesses?.numeric ?? []).map(source => ({ ...source, type: canonicalDamageType(source.type), label: "Printed weakness" }))],
   });
   return {
     actorUuid: actor.uuid,
     hp: actor.system.health.value,
+    ...(actor.type === "character" ? {forgeVitals:structuredClone(actor.getFlag(ID,"forgeVitals")??{}),
+      sp:actor.system.sp?.value??0,maxSp:actor.system.sp?.max??0,gritSpent:actor.system.grit?.spent??0,gritGranted:actor.system.grit?.granted??0}:{}),
     maxHp: actor.system.health.max,
     gritAvailable: actor.system.grit?.available ?? 0,
-    ...(actor.type === "character" ? { recovery: normalizeRecovery(actor.system.recovery) } : {}),
-    survival: structuredClone(actor.getFlag(ID, "survival") ?? null),
+    ...(actor.type === "character" ? { recovery: normalizeForgeRecovery(actor.system.recovery) } : {}),
+
     revision: actor.getFlag(ID, "damageRevision") ?? 0,
     equipmentRevision: actor.getFlag(ID, "equipmentRevision") ?? 0,
     passiveDefenses,
     printedArmor: actor.type === "creature" ? actor.system.armor : 0,
   };
 }
-export function damagePreview(actor, basis, draft, { bypassResistance = false } = {}) {
+export function damagePreview(actor, basis, draft, { bypassResistance = false, isAttack = true, eventId = null } = {}) {
   const resistances = [
       ...(basis.passiveDefenses?.resistances ?? []),
       ...(draft.resistances ?? []),
@@ -72,17 +78,18 @@ export function damagePreview(actor, basis, draft, { bypassResistance = false } 
     if (typeof source.label !== "string" || !source.label.trim())
       throw new Error("Label each damage modifier source.");
   const event = damageEvent({
+    isAttack,
+    immunities: basis.passiveDefenses?.immunities ?? [],
     components: draft.components.map(component => ({...component,type:canonicalDamageType(component.type)})),
     resistances: bypassResistance ? [] : sources.map(source => ({...source,type:canonicalDamageType(source.type)})),
     weaknesses: bypassResistance ? [] : weaknesses.map(source => ({...source,type:canonicalDamageType(source.type)})),
   });
-  // Consequences are separate player actions. HP corrections never need a
-  // survival-state reconciliation before this button can be used again.
-  const survival = null, wound = false, after = Math.max(0, basis.hp - event.total);
+  // HP and the current death-roll obligation are one proposed state change.
+  const health = actor.type === "character" ? nativeDamageState({...basis,state:basis.forgeVitals??{}},event.total,eventId) : null;
+  const after = health?.hp ?? Math.max(0, basis.hp - event.total);
   return {
     event,
-    survival,
-    wound,
+    ...(health ? {forgeVitals:health.forgeVitals,deathRollRequired:health.deathRollRequired} : {}),
     after,
     resistances: sources,
     weaknesses,
@@ -131,7 +138,7 @@ export function defenseDamage(message) {
 }
 /** Run within the defense coordinator operation. The GM-authored attack and
  * saved native dice authorize only its exact fixed outcome, never arbitrary damage.
- * HP, survival, event and receipt share one Actor update for crash-safe replay. */
+ * HP, death state, event and receipt share one Actor update for crash-safe replay. */
 export async function settleDefenseDamage(message) {
   if (!isCreationAuthority()) throw new Error("Only the active GM coordinator can settle defense damage.");
   const snapshot = message.getFlag(ID, "roll");
@@ -152,21 +159,18 @@ export async function settleDefenseDamage(message) {
   }
   assertNoPendingTurn(actor);
   const basis = damageBasis(actor);
-  const plan = damagePreview(actor, basis, { components: defense.components });
+  const plan = damagePreview(actor, basis, { components: defense.components }, {eventId:defense.eventId});
   const record = { eventId: defense.eventId, requestId: message.id,
     authorId: message.author.id, rollMessageId: message.id,
     kind: "defense-damage", source, before: basis.hp, after: plan.after,
-    event: plan.event, resistances: plan.resistances, weaknesses: plan.weaknesses,
-    wound: plan.wound };
+    event: plan.event, deathRollRequired:Boolean(plan.deathRollRequired), resistances: plan.resistances, weaknesses: plan.weaknesses,
+    };
   const changes = { "system.health.value": plan.after,
     [`flags.${ID}.damageRevision`]: basis.revision + 1,
     [`flags.${ID}.damageEvents.${defense.eventId}`]: record,
     [`flags.${ID}.operationReceipts.${message.id}`]: { applied: true, kind: "defense-damage", source } };
-  if (plan.survival) changes[`flags.${ID}.survival`] = plan.survival;
-  else changes[`flags.${ID}.creatureDefeated`] = plan.after === 0;
-  if (plan.wound) changes[`flags.${ID}.pendingWounds.${defense.eventId}`] = {
-    eventId: defense.eventId, priorWounds: plan.survival.wounds - 1,
-    types: plan.event.woundTypes, status: "awaiting-roll" };
+  if (plan.forgeVitals) changes[`flags.${ID}.forgeVitals`] = plan.forgeVitals;
+  if (actor.type === "creature") changes[`flags.${ID}.creatureDefeated`] = plan.after === 0;
   actor.validate({ changes: foundry.utils.expandObject(changes), strict: true, fallback: false });
   await writeAuthorityDocument(actor, changes);
   Hooks.callAll("holDamageApplied", { actor, event: record });
@@ -189,6 +193,7 @@ export async function requestDamage(
     sourceMessageId: rollMessageId ?? attackMessageId,
     label: draft.reason || "Damage", resistances: draft.resistances, weaknesses: draft.weaknesses,
     bypassResistance: draft.conditionKey === "bleeding",
+    isAttack: !draft.conditionKey && (source != null || draft.isAttack !== false),
   });
   try {
     await ChatMessage.create({ content: `${foundry.utils.escapeHTML(actor.name)}: ${result.total} damage · HP ${result.before} → ${result.after}. Edit HP to correct a mistake.` });
@@ -256,9 +261,9 @@ async function apply(id) {
   const basis = damageBasis(actor);
   if (JSON.stringify(basis) !== JSON.stringify(request.basis))
     throw new Error(
-      "HP, survival or defenses changed. Review the damage preview again.",
+      "HP or defenses changed. Review the damage preview again.",
     );
-  const plan = damagePreview(actor, basis, draft, { bypassResistance: conditionKey === "bleeding" });
+  const plan = damagePreview(actor, basis, draft, { bypassResistance: conditionKey === "bleeding", isAttack: !conditionKey && draft.isAttack !== false, eventId });
   const record = {
     eventId,
     requestId: id,
@@ -269,11 +274,11 @@ async function apply(id) {
     before: basis.hp,
     after: plan.after,
     event: plan.event,
+    deathRollRequired:Boolean(plan.deathRollRequired),
     resistances: plan.resistances,
     weaknesses: plan.weaknesses,
     kind: conditionKey ? "condition-damage" : attackLink ? "basic-melee-damage" : request.rollMessageId ? "defense-damage" : "manual-damage",
     reason: typeof draft.reason === "string" ? draft.reason.trim() : "",
-    wound: plan.wound,
   };
   const changes = {
     "system.health.value": plan.after,
@@ -285,15 +290,8 @@ async function apply(id) {
       request: signature,
     },
   };
-  if (plan.survival) changes[`flags.${ID}.survival`] = plan.survival;
-  else changes[`flags.${ID}.creatureDefeated`] = plan.after === 0;
-  if (plan.wound)
-    changes[`flags.${ID}.pendingWounds.${eventId}`] = {
-      eventId,
-      priorWounds: plan.survival.wounds - 1,
-      types: plan.event.woundTypes,
-      status: "awaiting-roll",
-    };
+  if (plan.forgeVitals) changes[`flags.${ID}.forgeVitals`] = plan.forgeVitals;
+  if (actor.type === "creature") changes[`flags.${ID}.creatureDefeated`] = plan.after === 0;
   actor.validate({
     changes: foundry.utils.expandObject(changes),
     strict: true,
@@ -301,7 +299,7 @@ async function apply(id) {
   });
   await writeAuthorityDocument(actor, changes);
   await message.update({
-    content: `Damage applied: ${plan.event.total}; HP ${basis.hp} → ${plan.after}.${plan.wound ? " A wound is awaiting resolution." : ""}`,
+    content: `Damage applied: ${plan.event.total}; HP ${basis.hp} → ${plan.after}.`,
   });
   Hooks.callAll("holDamageApplied", { actor, event: record });
   return { status: "complete", replay: false };

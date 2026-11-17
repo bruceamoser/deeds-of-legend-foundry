@@ -1,0 +1,47 @@
+{
+  "_key": "!items!1a3a02a8b328a7a0",
+  "_id": "1a3a02a8b328a7a0",
+  "name": "Hold the Moment I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Reaction</dd></div></dl><p>Reaction. When a living patient within 2 squares is about to make a death roll, move up to 2 squares to reach it without movement reactions and use a free hand to grant that roll 2 Boons. After the roll, reduce its Bleeding by 2 with suitable bandaging. This spends one Reaction and does not grant another death roll.</p>",
+    "activity": {
+      "action": "reaction",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "medicine:resuscitation:4",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "technique",
+        "nodeId": "medicine:resuscitation:4",
+        "level": 3,
+        "cost": 3,
+        "action": "Reaction",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Reaction. When a living patient within 2 squares is about to make a death roll, move up to 2 squares to reach it without movement reactions and use a free hand to grant that roll 2 Boons. After the roll, reduce its Bleeding by 2 with suitable bandaging. This spends one Reaction and does not grant another death roll.",
+        "improves": null,
+        "requires": [
+          "medicine:resuscitation:3"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

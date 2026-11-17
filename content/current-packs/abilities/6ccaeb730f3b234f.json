@@ -1,0 +1,65 @@
+{
+  "_key": "!items!6ccaeb730f3b234f",
+  "_id": "6ccaeb730f3b234f",
+  "name": "Cracks Call",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div><div><dt>Range</dt><dd>One visible unoccupied 2-square section of stone within 6 squares</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Split ordinary stone along an existing weakness. Add 2/4/6 progress toward a DA-set demolition objective declared before casting. Creatures supported by collapsing stone may use their normal falling responses. Magical barriers use their own removal procedures.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:earth:4",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:earth:4",
+        "level": 1,
+        "cost": 2,
+        "action": "Main Action",
+        "sp": 2,
+        "range": "One visible unoccupied 2-square section of stone within 6 squares",
+        "duration": "Instant",
+        "attribute": "Knowledge",
+        "defenseAttribute": null,
+        "effect": "Split ordinary stone along an existing weakness. Add 2/4/6 progress toward a DA-set demolition objective declared before casting. Creatures supported by collapsing stone may use their normal falling responses. Magical barriers use their own removal procedures.",
+        "improves": null,
+        "requires": [
+          "earth:0"
+        ],
+        "bookId": "earth"
+      },
+      "spell": {
+        "id": "spell:earth:4",
+        "name": "Cracks Call",
+        "bookId": "earth",
+        "page": "4",
+        "section": "II",
+        "sp": 2,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "Knowledge",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One visible unoccupied 2-square section of stone within 6 squares",
+        "duration": "Instant",
+        "effect": "Split ordinary stone along an existing weakness. Add 2/4/6 progress toward a DA-set demolition objective declared before casting. Creatures supported by collapsing stone may use their normal falling responses. Magical barriers use their own removal procedures."
+      }
+    }
+  },
+  "effects": []
+}

@@ -1,0 +1,65 @@
+{
+  "_key": "!items!d3ef6be5fc556de5",
+  "_id": "d3ef6be5fc556de5",
+  "name": "Fear",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>3</dd></div><div><dt>Attribute</dt><dd>Guile</dd></div><div><dt>Defense</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>Every creature in a 3-square cone that can perceive you</dd></div><div><dt>Duration</dt><dd>Instant; conditions decay normally</dd></div></dl><p>Appear as an overwhelming source of dread. Apply Frightened 1/2/3, with you as its source. Each creature retains control of its movement and decisions.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "guile",
+      "defenseAttribute": "reason"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:emotion:6",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:emotion:6",
+        "level": 1,
+        "cost": 2,
+        "action": "Main Action",
+        "sp": 3,
+        "range": "Every creature in a 3-square cone that can perceive you",
+        "duration": "Instant; conditions decay normally",
+        "attribute": "Guile",
+        "defenseAttribute": "Reason",
+        "effect": "Appear as an overwhelming source of dread. Apply Frightened 1/2/3, with you as its source. Each creature retains control of its movement and decisions.",
+        "improves": null,
+        "requires": [
+          "emotion:1"
+        ],
+        "bookId": "emotion"
+      },
+      "spell": {
+        "id": "spell:emotion:6",
+        "name": "Fear",
+        "bookId": "emotion",
+        "page": "6",
+        "section": "III",
+        "sp": 3,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "Guile",
+        "defense": "Reason",
+        "defenseAttribute": "Reason",
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Every creature in a 3-square cone that can perceive you",
+        "duration": "Instant; conditions decay normally",
+        "effect": "Appear as an overwhelming source of dread. Apply Frightened 1/2/3, with you as its source. Each creature retains control of its movement and decisions."
+      }
+    }
+  },
+  "effects": []
+}

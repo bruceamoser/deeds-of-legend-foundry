@@ -1,0 +1,47 @@
+{
+  "_key": "!items!67f08a9c892743f1",
+  "_id": "67f08a9c892743f1",
+  "name": "Hold the Pass I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div></dl><p>Maneuver. Choose up to two visible creatures within 8 squares. Before your turn ends, your next Main Action ranged or thrown attack applies Slowed 1 to each chosen creature it attacks, on any result. This grants no extra targets or attacks and replaces Hobbling Aim for that attack.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "marksmanship:pinning:4",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "technique",
+        "nodeId": "marksmanship:pinning:4",
+        "level": 3,
+        "cost": 3,
+        "action": "Maneuver",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Maneuver. Choose up to two visible creatures within 8 squares. Before your turn ends, your next Main Action ranged or thrown attack applies Slowed 1 to each chosen creature it attacks, on any result. This grants no extra targets or attacks and replaces Hobbling Aim for that attack.",
+        "improves": null,
+        "requires": [
+          "marksmanship:pinning:3"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

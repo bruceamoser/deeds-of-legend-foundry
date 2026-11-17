@@ -20,6 +20,7 @@ jobs:
       - run: npm ci
       - run: npm run build:workshop
       - run: npx playwright install --with-deps chromium
+      - run: npm run test:signature-rendering
       - name: Read immutable rulebook revision
         id: book
         run: node -e 'const fs=require("fs"); fs.appendFileSync(process.env.GITHUB_OUTPUT, "commit="+JSON.parse(fs.readFileSync("content/source-lock.json")).commit+"\n")'

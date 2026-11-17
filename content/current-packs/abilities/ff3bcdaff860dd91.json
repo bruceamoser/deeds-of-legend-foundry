@@ -1,0 +1,65 @@
+{
+  "_key": "!items!ff3bcdaff860dd91",
+  "_id": "ff3bcdaff860dd91",
+  "name": "Darkvision",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>3</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One willing creature within 3 squares</dd></div><div><dt>Duration</dt><dd>1 hour</dd></div></dl><p>Give the recipient darkvision to 12 squares. It sees shapes in ordinary darkness; colors appear as shades of gray. Magical darkness follows its own visibility rules.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:transformation:6",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:transformation:6",
+        "level": 1,
+        "cost": 2,
+        "action": "Main Action",
+        "sp": 3,
+        "range": "One willing creature within 3 squares",
+        "duration": "1 hour",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Give the recipient darkvision to 12 squares. It sees shapes in ordinary darkness; colors appear as shades of gray. Magical darkness follows its own visibility rules.",
+        "improves": null,
+        "requires": [
+          "transformation:1"
+        ],
+        "bookId": "transformation"
+      },
+      "spell": {
+        "id": "spell:transformation:6",
+        "name": "Darkvision",
+        "bookId": "transformation",
+        "page": "6",
+        "section": "III",
+        "sp": 3,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One willing creature within 3 squares",
+        "duration": "1 hour",
+        "effect": "Give the recipient darkvision to 12 squares. It sees shapes in ordinary darkness; colors appear as shades of gray. Magical darkness follows its own visibility rules."
+      }
+    }
+  },
+  "effects": []
+}

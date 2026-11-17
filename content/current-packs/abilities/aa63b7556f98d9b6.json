@@ -1,0 +1,47 @@
+{
+  "_key": "!items!aa63b7556f98d9b6",
+  "_id": "aa63b7556f98d9b6",
+  "name": "Riposte I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Reaction</dd></div><div><dt>Attribute</dt><dd>Brawn</dd></div></dl><p>Reaction · Brawn. After a melee attack against you resolves, attack its source if adjacent for 2/3/5 physical damage. You must survive and be able to act.</p>",
+    "activity": {
+      "action": "reaction",
+      "rollMode": "attribute",
+      "attribute": "brawn",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "2 physical damage",
+      "standard": "3 physical damage",
+      "strong": "5 physical damage"
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "arms:dueling:4",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "technique",
+        "nodeId": "arms:dueling:4",
+        "level": 3,
+        "cost": 3,
+        "action": "Reaction",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": "Brawn",
+        "defenseAttribute": null,
+        "effect": "Reaction · Brawn. After a melee attack against you resolves, attack its source if adjacent for 2/3/5 physical damage. You must survive and be able to act.",
+        "improves": null,
+        "requires": [
+          "arms:dueling:3"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

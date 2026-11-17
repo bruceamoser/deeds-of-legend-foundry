@@ -1,0 +1,65 @@
+{
+  "_key": "!items!75dbdda14177e54a",
+  "_id": "75dbdda14177e54a",
+  "name": "Tongues",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One willing creature within 3 squares</dd></div><div><dt>Duration</dt><dd>1 hour</dd></div></dl><p>The recipient can understand and speak the ordinary languages of creatures addressing it. Its voice remains its own. Reading and writing use languages it already knows.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:thought:4",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:thought:4",
+        "level": 1,
+        "cost": 2,
+        "action": "Main Action",
+        "sp": 2,
+        "range": "One willing creature within 3 squares",
+        "duration": "1 hour",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "The recipient can understand and speak the ordinary languages of creatures addressing it. Its voice remains its own. Reading and writing use languages it already knows.",
+        "improves": null,
+        "requires": [
+          "thought:0"
+        ],
+        "bookId": "thought"
+      },
+      "spell": {
+        "id": "spell:thought:4",
+        "name": "Tongues",
+        "bookId": "thought",
+        "page": "4",
+        "section": "II",
+        "sp": 2,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One willing creature within 3 squares",
+        "duration": "1 hour",
+        "effect": "The recipient can understand and speak the ordinary languages of creatures addressing it. Its voice remains its own. Reading and writing use languages it already knows."
+      }
+    }
+  },
+  "effects": []
+}

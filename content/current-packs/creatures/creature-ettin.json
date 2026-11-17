@@ -1,0 +1,342 @@
+{
+  "_key": "!actors!c074f1d15538f645",
+  "_id": "c074f1d15538f645",
+  "name": "Ettin",
+  "type": "creature",
+  "img": "systems/heroes-of-legend/assets/creatures/9ccd819e9a3ebd0190b901283bc3ea4839dd8d1797032ddb0d89ef0130cb3823.webp",
+  "prototypeToken": {
+    "width": 2,
+    "height": 2,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/9ccd819e9a3ebd0190b901283bc3ea4839dd8d1797032ddb0d89ef0130cb3823.webp"
+    }
+  },
+  "system": {
+    "schemaVersion": 1,
+    "attributes": {
+      "brawn": {
+        "base": 2
+      },
+      "fortitude": {
+        "base": 2
+      },
+      "agility": {
+        "base": 0
+      },
+      "guile": {
+        "base": -1
+      },
+      "knowledge": {
+        "base": -1
+      },
+      "reason": {
+        "base": 0
+      }
+    },
+    "attributesSource": "Brawn +2; Fortitude +2; Agility +0; Guile -1; Knowledge -1; Reason +0",
+    "health": {
+      "value": 34,
+      "baseMax": 34,
+      "sourceText": "34"
+    },
+    "cv": 53,
+    "speed": 6,
+    "speedSource": "6",
+    "alternateSpeeds": [],
+    "size": 2,
+    "sizeLabel": "2x2 squares",
+    "sizeSource": "2 (2x2 squares)",
+    "footprint": {
+      "width": 2,
+      "height": 2
+    },
+    "armor": 1,
+    "armorMarker": "",
+    "armorSource": "1",
+    "stability": 1,
+    "threat": {
+      "boons": 0,
+      "banes": 1,
+      "sourceText": "1 Bane"
+    },
+    "evasion": {
+      "boons": 0,
+      "banes": 0,
+      "sourceText": "None"
+    },
+    "weaknesses": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "resistances": {
+      "numeric": [
+        {
+          "type": "Physical",
+          "value": 1
+        }
+      ],
+      "special": [],
+      "sourceText": "Physical (1)"
+    },
+    "immunities": [],
+    "basicMelee": {
+      "weak": 5,
+      "standard": 3,
+      "strong": 2,
+      "defenseAttribute": "agility",
+      "orientation": "player-defense"
+    },
+    "actions": {
+      "orientation": "player-defense",
+      "entries": [
+        {
+          "id": "main-0",
+          "category": "main",
+          "name": "Basic Melee",
+          "abilityId": "",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "5",
+            "standard": "3",
+            "strong": "2"
+          },
+          "effect": "5/3/2",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "main-1",
+          "category": "main",
+          "name": "Quarreling clubs",
+          "abilityId": "",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "9 + Push 3",
+            "standard": "6 + Push 1",
+            "strong": "3"
+          },
+          "effect": "9 + Push 3 / 6 + Push 1 / 3",
+          "referenceMarkdown": "### Quarreling clubs\n\n**Target:** Up to two adjacent creatures; each player rolls defense separately. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Push 3. **Standard defense:** Push 1.\n\n**Limit:** Apply Stability, terrain costs and normal collision rules to the printed distance."
+        },
+        {
+          "id": "main-2",
+          "category": "main",
+          "name": "Thrown stone",
+          "abilityId": "",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "7",
+            "standard": "5",
+            "strong": "3"
+          },
+          "effect": "7/5/3",
+          "referenceMarkdown": "### Thrown stone\n\n**Target:** One visible creature within 7 squares. **Player defense:** Agility. **Damage type:** physical.\n\n**Limit:** Requires an available loose stone; picking it up is part of this attack. No stone means this attack is unavailable."
+        },
+        {
+          "id": "maneuver-0",
+          "category": "maneuver",
+          "name": "Divided Watch",
+          "abilityId": "",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "+1 Bane against next attack before next turn.",
+          "referenceMarkdown": "### Divided Watch\n\n*One head follows the threat while the other watches the escape route.*\n\nThe next player attack against it before its next turn has 1 additional Bane; when player-controlled, its next defense instead gains 1 Boon. Consumed by that attack even if canceled. Does not stack with itself."
+        },
+        {
+          "id": "maneuver-1",
+          "category": "maneuver",
+          "name": "Defend",
+          "abilityId": "",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "+1 Bane",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "reaction-0",
+          "category": "reaction",
+          "name": "Second Head Watches",
+          "abilityId": "monster-second-head-watches",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "When an enemy within 2 starts a provoking action: Basic Melee before it resolves.",
+          "referenceMarkdown": "### Second Head Watches\n\n*While one head snaps forward, another turns toward the hand reaching for a spell or weapon.*\n\nWhen a visible enemy within 2 squares starts an action that normally provokes an opportunity attack, make one free Basic Melee attack against it before the action resolves. Spend the Reaction. The 2-square reach applies only to this Reaction; the provoking action continues if its actor remains capable. No specialty attack or free-attack chain; cannot trigger from a free attack or its granted movement. This grants no extra Reaction and is an alternative to the normal adjacent opportunity attack."
+        },
+        {
+          "id": "reaction-1",
+          "category": "reaction",
+          "name": "Opportunity Attack",
+          "abilityId": "",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Basic Melee",
+          "referenceMarkdown": ""
+        }
+      ],
+      "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates a complete outcome. All attacks use printed Threat unless stated otherwise.",
+      "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Quarreling clubs | Agility | 9 + Push 3 / 6 + Push 1 / 3 |\n| Thrown stone | Agility | 7/5/3 |",
+      "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Divided Watch | +1 Bane against next attack before next turn. |\n| Defend | +1 Bane |",
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Second Head Watches | When an enemy within 2 starts a provoking action: Basic Melee before it resolves. |\n| Opportunity Attack | Basic Melee |"
+    },
+    "details": {
+      "flavorMarkdown": "*Two heads argue over a shared body dressed in mismatched trophies, each keeping a different account of the day's events.*",
+      "specialtyMarkdown": "### Quarreling clubs\n\n**Target:** Up to two adjacent creatures; each player rolls defense separately. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Push 3. **Standard defense:** Push 1.\n\n**Limit:** Apply Stability, terrain costs and normal collision rules to the printed distance.\n\n### Thrown stone\n\n**Target:** One visible creature within 7 squares. **Player defense:** Agility. **Damage type:** physical.\n\n**Limit:** Requires an available loose stone; picking it up is part of this attack. No stone means this attack is unavailable.\n\n### Divided Watch\n\n*One head follows the threat while the other watches the escape route.*\n\nThe next player attack against it before its next turn has 1 additional Bane; when player-controlled, its next defense instead gains 1 Boon. Consumed by that attack even if canceled. Does not stack with itself.\n\n### Second Head Watches\n\n*While one head snaps forward, another turns toward the hand reaching for a spell or weapon.*\n\nWhen a visible enemy within 2 squares starts an action that normally provokes an opportunity attack, make one free Basic Melee attack against it before the action resolves. Spend the Reaction. The 2-square reach applies only to this Reaction; the provoking action continues if its actor remains capable. No specialty attack or free-attack chain; cannot trigger from a free attack or its granted movement. This grants no extra Reaction and is an alternative to the normal adjacent opportunity attack.",
+      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until its next turn. Combines with Evasion through normal Boon/Bane rules; repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature; spend its Reaction before the provoking action resolves. That action continues if capable.\n\n**Heavy Frame — Passive:** Stability 1; an explicit trait, not a bonus calculated from Size.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Ordinary sight and hearing.\n\n**Tactics and retreat:** Keep one head watching while the clubs threaten two adjacent foes. A dispersed party deprives it of the two-target swing.\n\n**Encounter and conversation:** A promise made to only one head may buy time but rarely settles the matter.\n\n**Habitat:** Highland; quarry; remote stronghold · **Communication:** Common and Giant\n\n**Loot:** Choose possessions or a clue in its lair that fits the adventure. If a body part is useful or valuable, state its use and value before awarding it.\n\n**Summoning:** Ineligible.",
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-ettin\n\n\n**Category:** Giant · **Role:** Displacer · **CV:** 53\n\n### Creature-roll reference\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Quarreling clubs | Brawn | 1 Boon | 3 physical damage. | 6 physical damage. Push 1. | 9 physical damage. Push 3. |\n| Thrown stone | Brawn | 1 Boon | 3 physical damage. | 5 physical damage. | 7 physical damage. |\n\nUse the attributes above for defenses named by incoming attacks. Same targeting, limits and costs apply; no opposed second roll.\n\n### CV worksheet\n\n**Reference damage:** 3/6/9\n\n**Reference type:** physical\n\n**Expected targets:** 2\n\n**Utility factor:** 1.75\n\n**Action review (#1279):** U 1.6 → 1.75: Maneuver allowance +0, Reaction allowance +0.15. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.\n\n**Regeneration per turn:** 0\n\nReference I=4.000, O=11.787. Uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/encounters.md). Utility is provisional and does not simulate control, positioning or summon choices.\n\n**Ability sources:** [driving blow](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/driving-blow.md), [Second Head Watches](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/second-head-watches.md), [two headed watch](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/two-headed-watch.md).\n\n**Coverage reference:** [Pathfinder family survey](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/family-survey.md); original HOL prose and mechanics.\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/roster.md) · [Stability](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/rules/stability.md)"
+    },
+    "biography": ""
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-ettin",
+        "asset": "assets/creatures/9ccd819e9a3ebd0190b901283bc3ea4839dd8d1797032ddb0d89ef0130cb3823.webp",
+        "sha256": "8a467f5e8e7731ec3f52a7bede228a63f120153cfdac3d250ad9f5f654a13904",
+        "sourceSha256": "9ccd819e9a3ebd0190b901283bc3ea4839dd8d1797032ddb0d89ef0130cb3823",
+        "width": 640,
+        "height": 768,
+        "sourceWidth": 1145,
+        "sourceHeight": 1374,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
+      "catalogId": "creature-ettin",
+      "source": {
+        "path": "design/bestiary/creatures/ettin.md",
+        "sha256": "98fa9b0d7e093e04a7ab07d1fac62d641e801bfb7b43d4ffba9a9dd4bf229827"
+      },
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Printed profile · specialty automation pending",
+      "specialtyAutomation": "pending",
+      "classification": {
+        "category": "Giant",
+        "role": "Displacer",
+        "cv": 53
+      },
+      "family": "Giants and trolls",
+      "abilitySources": [
+        {
+          "label": "driving blow",
+          "id": "monster-driving-blow",
+          "path": "design/monster-abilities/driving-blow.md",
+          "sha256": "38b3406cbcb2f57fdc1bbf57f09857b7ef8a9fd7b35e311dc812476677e6b276"
+        },
+        {
+          "label": "Second Head Watches",
+          "id": "monster-second-head-watches",
+          "path": "design/monster-abilities/second-head-watches.md",
+          "sha256": "5fe1a81418ac74da89b477fe7a9b4f6af41c6704e448358a1f9afc5e613de54a"
+        },
+        {
+          "label": "two headed watch",
+          "id": "monster-two-headed-watch",
+          "path": "design/monster-abilities/two-headed-watch.md",
+          "sha256": "7192dbc1395d6652d8ab9f8868e4003fe19839b92354d9ba2fac19527e7a8989"
+        }
+      ],
+      "monsterAbilityTemplates": [
+        {
+          "id": "monster-driving-blow",
+          "path": "design/monster-abilities/driving-blow.md",
+          "sha256": "38b3406cbcb2f57fdc1bbf57f09857b7ef8a9fd7b35e311dc812476677e6b276",
+          "name": "Driving Blow",
+          "action": "Main Action",
+          "flavorMarkdown": "*The blow lands with enough force to send its victim stumbling backward.*",
+          "rulesMarkdown": "Use the printed attack. Standard pushes the target 1 square; Strong pushes it 2. Apply Stability before moving. This is a rider, not a separate attack or Force action.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Driving Blow\n\n*The blow lands with enough force to send its victim stumbling backward.*\n\n## Rules\n\n**ID:** monster-driving-blow\n\n\n**Action:** Main Action\n\nUse the printed attack. Standard pushes the target 1 square; Strong pushes it 2. Apply Stability before moving. This is a rider, not a separate attack or Force action.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/driving-blow.md",
+            "sha256": "38b3406cbcb2f57fdc1bbf57f09857b7ef8a9fd7b35e311dc812476677e6b276"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-second-head-watches",
+          "path": "design/monster-abilities/second-head-watches.md",
+          "sha256": "5fe1a81418ac74da89b477fe7a9b4f6af41c6704e448358a1f9afc5e613de54a",
+          "name": "Second Head Watches",
+          "action": "Reaction",
+          "flavorMarkdown": "*While one head snaps forward, another turns toward the hand reaching for a spell or weapon.*",
+          "rulesMarkdown": "When a visible enemy within 2 squares starts an action that normally provokes an opportunity attack, make one free Basic Melee attack against it before the action resolves. Spend the Reaction. The 2-square reach applies only to this Reaction; the provoking action continues if its actor remains capable. No specialty attack or free-attack chain; cannot trigger from a free attack or its granted movement. This grants no extra Reaction and is an alternative to the normal adjacent opportunity attack.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Second Head Watches\n\n*While one head snaps forward, another turns toward the hand reaching for a spell or weapon.*\n\n## Rules\n\n**ID:** monster-second-head-watches\n\n**Action:** Reaction\n\nWhen a visible enemy within 2 squares starts an action that normally provokes an opportunity attack, make one free Basic Melee attack against it before the action resolves. Spend the Reaction. The 2-square reach applies only to this Reaction; the provoking action continues if its actor remains capable. No specialty attack or free-attack chain; cannot trigger from a free attack or its granted movement. This grants no extra Reaction and is an alternative to the normal adjacent opportunity attack.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/second-head-watches.md",
+            "sha256": "5fe1a81418ac74da89b477fe7a9b4f6af41c6704e448358a1f9afc5e613de54a"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-two-headed-watch",
+          "path": "design/monster-abilities/two-headed-watch.md",
+          "sha256": "7192dbc1395d6652d8ab9f8868e4003fe19839b92354d9ba2fac19527e7a8989",
+          "name": "Divided Watch",
+          "action": "Maneuver",
+          "flavorMarkdown": "*One head follows the threat while the other watches the escape route.*",
+          "rulesMarkdown": "The next player attack against it before its next turn has 1 additional Bane; when player-controlled, its next defense instead gains 1 Boon. Consumed by that attack even if canceled. Does not stack with itself.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Divided Watch\n\n*One head follows the threat while the other watches the escape route.*\n\n## Rules\n\n**ID:** monster-two-headed-watch\n\n\n**Action:** Maneuver\n\nThe next player attack against it before its next turn has 1 additional Bane; when player-controlled, its next defense instead gains 1 Boon. Consumed by that attack even if canceled. Does not stack with itself.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/two-headed-watch.md",
+            "sha256": "7192dbc1395d6652d8ab9f8868e4003fe19839b92354d9ba2fac19527e7a8989"
+          },
+          "automation": "pending"
+        }
+      ],
+      "summoning": {
+        "eligible": false,
+        "summonId": null,
+        "path": null,
+        "eligibility": null,
+        "sourceText": "Ineligible."
+      }
+    }
+  }
+}

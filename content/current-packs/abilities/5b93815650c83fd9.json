@@ -1,0 +1,46 @@
+{
+  "_key": "!items!5b93815650c83fd9",
+  "_id": "5b93815650c83fd9",
+  "name": "Go Berserk",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Self.</dd></div><div><dt>Duration</dt><dd>Until the end of the scene, or until you end it.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Frequency</dt><dd>Once per scene.</dd></div></dl><p>Enter a rage until the end of the scene. While raging, you gain 1 Boon to attack rolls, have 1 Bane to defense rolls, and gain physical resistance 1. You can end the rage at will. It also ends if you fall unconscious or enter Dying.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-signature-unbalanced-wild-approach",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "ability",
+        "nodeId": "ability-signature-unbalanced-wild-approach",
+        "level": 1,
+        "cost": 0,
+        "action": "Maneuver",
+        "sp": null,
+        "range": "Self.",
+        "duration": "Until the end of the scene, or until you end it.",
+        "attribute": "None (no roll)",
+        "defenseAttribute": null,
+        "effect": "**Action:** Maneuver · **Attribute:** None (no roll)\n\n**Target / range / shape:** Self.\n\nEnter a rage until the end of the scene. While raging, you gain 1 Boon to attack rolls, have 1 Bane to defense rolls, and gain physical resistance 1. You can end the rage at will. It also ends if you fall unconscious or enter Dying.\n\n**Duration:** Until the end of the scene, or until you end it.\n\n**Equipment / acquisition:** None.\n\n**Frequency:** Once per scene.",
+        "improves": null,
+        "requires": [],
+        "bookId": null,
+        "magic": null
+      }
+    }
+  },
+  "effects": []
+}

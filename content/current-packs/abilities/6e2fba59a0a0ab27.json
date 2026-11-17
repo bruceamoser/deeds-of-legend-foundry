@@ -1,0 +1,66 @@
+{
+  "_key": "!items!6e2fba59a0a0ab27",
+  "_id": "6e2fba59a0a0ab27",
+  "name": "Find the Path",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 10 minutes</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>Self; a known fixed destination within 1 kilometer</dd></div><div><dt>Duration</dt><dd>1 hour</dd></div></dl><p>Sense the direction of an ordinary traversable route to a location you previously visited. At each junction, learn which way continues along that route. Terrain and locks still require ordinary travel and interaction; if no traversable route exists, the reading identifies the nearest obstruction.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:detection:a2",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:detection:a2",
+        "level": 3,
+        "cost": 4,
+        "action": "Ritual · 10 minutes",
+        "sp": 5,
+        "range": "Self; a known fixed destination within 1 kilometer",
+        "duration": "1 hour",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Sense the direction of an ordinary traversable route to a location you previously visited. At each junction, learn which way continues along that route. Terrain and locks still require ordinary travel and interaction; if no traversable route exists, the reading identifies the nearest obstruction.",
+        "improves": null,
+        "requires": [
+          "detection:4"
+        ],
+        "bookId": "detection"
+      },
+      "spell": {
+        "id": "spell:detection:a2",
+        "name": "Find the Path",
+        "bookId": "detection",
+        "page": "A2",
+        "section": "VI",
+        "sp": 5,
+        "action": "Ritual",
+        "actionText": "Ritual · 10 minutes",
+        "ritualTime": "10 minutes",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Self; a known fixed destination within 1 kilometer",
+        "duration": "1 hour",
+        "effect": "Sense the direction of an ordinary traversable route to a location you previously visited. At each junction, learn which way continues along that route. Terrain and locks still require ordinary travel and interaction; if no traversable route exists, the reading identifies the nearest obstruction."
+      }
+    }
+  },
+  "effects": []
+}

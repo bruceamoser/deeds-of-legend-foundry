@@ -1,0 +1,46 @@
+{
+  "_key": "!items!c3af321a41dc3f11",
+  "_id": "c3af321a41dc3f11",
+  "name": "Over the Top",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>One willing ally your size or smaller within reach.</dd></div><div><dt>Duration</dt><dd>Immediate.</dd></div><div><dt>Equipment / acquisition</dt><dd>A free hand; the ally needs a ready melee weapon or free hand for its Basic Melee attack.</dd></div></dl><p>Throw the ally up to 4 squares in a direction you choose, ignoring difficult terrain and passing over occupied squares. The ally must land standing in a free square. If it lands adjacent to an enemy, it may immediately make one Basic Melee attack against that enemy with 1 Boon. That attack is part of your action, not the ally&#39;s turn. The ally takes no damage from the throw.</p><p>Use once per scene. The landing square must be legal and empty; a granted attack cannot grant further attacks.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-signature-unbalanced-fling-the-captive",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "ability",
+        "nodeId": "ability-signature-unbalanced-fling-the-captive",
+        "level": 3,
+        "cost": 0,
+        "action": "Maneuver",
+        "sp": null,
+        "range": "One willing ally your size or smaller within reach.",
+        "duration": "Immediate.",
+        "attribute": "None (no roll)",
+        "defenseAttribute": null,
+        "effect": "**Action:** Maneuver · **Attribute:** None (no roll)\n\n**Target / range / shape:** One willing ally your size or smaller within reach.\n\nThrow the ally up to 4 squares in a direction you choose, ignoring difficult terrain and passing over occupied squares. The ally must land standing in a free square. If it lands adjacent to an enemy, it may immediately make one Basic Melee attack against that enemy with 1 Boon. That attack is part of your action, not the ally's turn. The ally takes no damage from the throw.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** A free hand; the ally needs a ready melee weapon or free hand for its Basic Melee attack.\n\nUse once per scene. The landing square must be legal and empty; a granted attack cannot grant further attacks.",
+        "improves": null,
+        "requires": [],
+        "bookId": null,
+        "magic": null
+      }
+    }
+  },
+  "effects": []
+}

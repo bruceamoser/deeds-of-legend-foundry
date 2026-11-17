@@ -1,6 +1,6 @@
 # Brunna Hearthward: cleric after the rewrite
 
-Pinned authored source `87f5141bd6e0da74a10c07b3239e975c7656430a`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../cleric.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
+Pinned authored source `f71eac4c46fce6906d6dfbd1638ee98b10a6c538`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../cleric.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
 
 ## What the rewrite changes
 
@@ -117,13 +117,13 @@ This is a spell; use its printed 1 SP cost and ordinary casting rules.
 
 **Target / range / shape:** One or two living allies within 3 squares.
 
-pay 2 SP before rolling. You must have enough SP to pay this cost. Requires a free hand. Make a Reason roll. Choose one or two allies. One ally: restore 6 HP on Weak, 11 HP on Standard, 16 HP on Strong. Two allies: restore 4 HP each on Weak, 7 HP each on Standard, 10 HP each on Strong. Reduce the restored amount by each target's Life resistance, to a minimum of 1 if HP is missing, and never exceed maximum HP. A Dying or stabilized living creature can receive this healing. This does not erase scars or restore the dead.
+Pay 2 SP before rolling. You must have enough SP to pay this cost. Requires a free hand. Make a Reason roll. Choose one or two allies. One ally: restore 6 HP on Weak, 11 HP on Standard, 16 HP on Strong. Two allies: restore 4 HP each on Weak, 7 HP each on Standard, 10 HP each on Strong. Reduce the restored amount by each target's Life resistance, to a minimum of 1 if HP is missing, and never exceed maximum HP. A Dying or stabilized living creature can receive this healing. This does not erase scars or restore the dead.
 
 **Duration:** Immediate.
 
 **Equipment / acquisition:** A free hand.
 
-This is a spell. You can still cast Mend at its ordinary 1 SP cost instead.
+This is a spell.
 
 </details>
 
@@ -186,6 +186,22 @@ This is a spell; use its printed 1 SP cost and ordinary casting rules.
 
 </details>
 
+<details><summary>Triage: complete signature component</summary>
+
+**Action:** Main Action · **Attribute:** Reason
+
+**Target / range / shape:** One or two living allies within 3 squares.
+
+Pay 2 SP before rolling. You must have enough SP to pay this cost. Requires a free hand. Make a Reason roll. Choose one or two allies. One ally: restore 6 HP on Weak, 11 HP on Standard, 16 HP on Strong. Two allies: restore 4 HP each on Weak, 7 HP each on Standard, 10 HP each on Strong. Reduce the restored amount by each target's Life resistance, to a minimum of 1 if HP is missing, and never exceed maximum HP. A Dying or stabilized living creature can receive this healing. This does not erase scars or restore the dead.
+
+**Duration:** Immediate.
+
+**Equipment / acquisition:** A free hand.
+
+This is a spell.
+
+</details>
+
 <details><summary>The Shepherd's Call: complete signature component</summary>
 
 **Action:** 10 minutes · **Attribute:** None (no roll)
@@ -199,22 +215,6 @@ Mark each target with a physical sigil. The first time a marked character would 
 **Equipment / acquisition:** A free hand for casting.
 
 This is a ritual spell costing 0 SP, usable once between safe overnight rests. Unused sigils expire at dawn; a creature may bear one sigil at a time.
-
-</details>
-
-<details><summary>Triage: complete signature component</summary>
-
-**Action:** Main Action · **Attribute:** Reason
-
-**Target / range / shape:** One or two living allies within 3 squares.
-
-pay 2 SP before rolling. You must have enough SP to pay this cost. Requires a free hand. Make a Reason roll. Choose one or two allies. One ally: restore 6 HP on Weak, 11 HP on Standard, 16 HP on Strong. Two allies: restore 4 HP each on Weak, 7 HP each on Standard, 10 HP each on Strong. Reduce the restored amount by each target's Life resistance, to a minimum of 1 if HP is missing, and never exceed maximum HP. A Dying or stabilized living creature can receive this healing. This does not erase scars or restore the dead.
-
-**Duration:** Immediate.
-
-**Equipment / acquisition:** A free hand.
-
-This is a spell. You can still cast Mend at its ordinary 1 SP cost instead.
 
 </details>
 

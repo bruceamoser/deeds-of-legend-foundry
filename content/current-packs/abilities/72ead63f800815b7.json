@@ -1,0 +1,66 @@
+{
+  "_key": "!items!72ead63f800815b7",
+  "_id": "72ead63f800815b7",
+  "name": "Goodberry",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 minute</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>Up to six ordinary berries held by you</dd></div><div><dt>Duration</dt><dd>24 hours</dd></div></dl><p>Use a Maneuver and a free hand to eat one enchanted berry, restoring 1 HP and receiving nourishment for one meal. You may instead feed it to an adjacent willing living creature; use the recipient and Reaction rules of Use a Healing Potion. The berry is consumed, with no inventory die roll. Apply the normal magical-healing rules. Each berry keeps its magic for 24 hours after the ritual and retains its ordinary Bulk.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:growth:3",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:growth:3",
+        "level": 1,
+        "cost": 2,
+        "action": "Ritual · 1 minute",
+        "sp": 1,
+        "range": "Up to six ordinary berries held by you",
+        "duration": "24 hours",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Use a Maneuver and a free hand to eat one enchanted berry, restoring 1 HP and receiving nourishment for one meal. You may instead feed it to an adjacent willing living creature; use the recipient and Reaction rules of Use a Healing Potion. The berry is consumed, with no inventory die roll. Apply the normal magical-healing rules. Each berry keeps its magic for 24 hours after the ritual and retains its ordinary Bulk.",
+        "improves": null,
+        "requires": [
+          "growth:0"
+        ],
+        "bookId": "growth"
+      },
+      "spell": {
+        "id": "spell:growth:3",
+        "name": "Goodberry",
+        "bookId": "growth",
+        "page": "3",
+        "section": "II",
+        "sp": 1,
+        "action": "Ritual",
+        "actionText": "Ritual · 1 minute",
+        "ritualTime": "1 minute",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Up to six ordinary berries held by you",
+        "duration": "24 hours",
+        "effect": "Use a Maneuver and a free hand to eat one enchanted berry, restoring 1 HP and receiving nourishment for one meal. You may instead feed it to an adjacent willing living creature; use the recipient and Reaction rules of Use a Healing Potion. The berry is consumed, with no inventory die roll. Apply the normal magical-healing rules. Each berry keeps its magic for 24 hours after the ritual and retains its ordinary Bulk."
+      }
+    }
+  },
+  "effects": []
+}

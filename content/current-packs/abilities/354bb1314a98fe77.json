@@ -1,0 +1,125 @@
+{
+  "_key": "!items!354bb1314a98fe77",
+  "_id": "354bb1314a98fe77",
+  "name": "Out of Body",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Self.</dd></div><div><dt>Magic</dt><dd>Spell</dd></div><div><dt>SP</dt><dd>0</dd></div><div><dt>Duration</dt><dd>Until the end of your turn.</dd></div><div><dt>Equipment / acquisition</dt><dd>A free hand for casting.</dd></div></dl><p>Your body falls prone and cannot act, move or take Reactions. It has 3 defense Banes. Your spirit appears in your square or an adjacent free square.</p><p>The spirit has Speed 5, can speak, can pass through nonmagical solid objects and creatures, and is not a legal target for ordinary attacks. It cannot attack, cast spells, use equipment or physically interact with objects. Its movement does not provoke opportunity attacks. Magical attacks can target it; resolve them against your normal defenses, and damage to the spirit is damage to your body. If your body drops to 0 HP, the projection ends.</p><p>At the end of your turn, choose one:</p><p>- <strong>Snap Back:</strong> Your spirit returns to your body.<br>- <strong>Manifest:</strong> Your body appears in the spirit’s square or the nearest free square that is not separated from your body by a solid barrier, prone. The projection ends.</p><p>If no legal Manifest square exists, you can only Snap Back.</p><p>This is a spell costing 0 SP, usable once per scene. Attacks explicitly described as magical and spells may target the spirit; ordinary attacks target your body instead.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-signature-odd-wrong-place-for-that",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "ability-signature-odd-wrong-place-for-that",
+        "level": 3,
+        "cost": 0,
+        "action": "Main Action",
+        "sp": 0,
+        "range": "Self.",
+        "duration": "Until the end of your turn.",
+        "attribute": "None (no roll)",
+        "defenseAttribute": null,
+        "effect": "**Action:** Main Action · **Attribute:** None (no roll)\n\n**Target / range / shape:** Self.\n\nYour body falls prone and cannot act, move or take Reactions. It has 3 defense Banes. Your spirit appears in your square or an adjacent free square.\n\nThe spirit has Speed 5, can speak, can pass through nonmagical solid objects and creatures, and is not a legal target for ordinary attacks. It cannot attack, cast spells, use equipment or physically interact with objects. Its movement does not provoke opportunity attacks. Magical attacks can target it; resolve them against your normal defenses, and damage to the spirit is damage to your body. If your body drops to 0 HP, the projection ends.\n\nAt the end of your turn, choose one:\n\n- **Snap Back:** Your spirit returns to your body.\n- **Manifest:** Your body appears in the spirit’s square or the nearest free square that is not separated from your body by a solid barrier, prone. The projection ends.\n\nIf no legal Manifest square exists, you can only Snap Back.\n\n**Duration:** Until the end of your turn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP, usable once per scene. Attacks explicitly described as magical and spells may target the spirit; ordinary attacks target your body instead.",
+        "improves": null,
+        "requires": [],
+        "bookId": null,
+        "magic": "Spell"
+      },
+      "spell": {
+        "id": "ability-signature-odd-wrong-place-for-that",
+        "name": "Out of Body",
+        "level": 3,
+        "dp": null,
+        "action": "Main Action",
+        "attribute": "None (no roll)",
+        "target": "Self.",
+        "duration": "Until the end of your turn.",
+        "equipment": "A free hand for casting.",
+        "limits": "One signature choice at each of levels 1, 3 and 7.",
+        "effect": "**Action:** Main Action · **Attribute:** None (no roll)\n\n**Target / range / shape:** Self.\n\nYour body falls prone and cannot act, move or take Reactions. It has 3 defense Banes. Your spirit appears in your square or an adjacent free square.\n\nThe spirit has Speed 5, can speak, can pass through nonmagical solid objects and creatures, and is not a legal target for ordinary attacks. It cannot attack, cast spells, use equipment or physically interact with objects. Its movement does not provoke opportunity attacks. Magical attacks can target it; resolve them against your normal defenses, and damage to the spirit is damage to your body. If your body drops to 0 HP, the projection ends.\n\nAt the end of your turn, choose one:\n\n- **Snap Back:** Your spirit returns to your body.\n- **Manifest:** Your body appears in the spirit’s square or the nearest free square that is not separated from your body by a solid barrier, prone. The projection ends.\n\nIf no legal Manifest square exists, you can only Snap Back.\n\n**Duration:** Until the end of your turn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP, usable once per scene. Attacks explicitly described as magical and spells may target the spirit; ordinary attacks target your body instead.",
+        "reference": {
+          "flavor": [
+            "The spirits lend you words, perspective and remembered lives."
+          ],
+          "rules": {
+            "details": [
+              {
+                "label": "Action",
+                "value": "Main Action"
+              },
+              {
+                "label": "Attribute",
+                "value": "None (no roll)"
+              },
+              {
+                "label": "Target / range / shape",
+                "value": "Self."
+              },
+              {
+                "label": "Magic",
+                "value": "Spell"
+              },
+              {
+                "label": "SP",
+                "value": "0"
+              },
+              {
+                "label": "Duration",
+                "value": "Until the end of your turn."
+              },
+              {
+                "label": "Equipment / acquisition",
+                "value": "A free hand for casting."
+              }
+            ],
+            "body": [
+              {
+                "text": "Your body falls prone and cannot act, move or take Reactions. It has 3 defense Banes. Your spirit appears in your square or an adjacent free square."
+              },
+              {
+                "text": "The spirit has Speed 5, can speak, can pass through nonmagical solid objects and creatures, and is not a legal target for ordinary attacks. It cannot attack, cast spells, use equipment or physically interact with objects. Its movement does not provoke opportunity attacks. Magical attacks can target it; resolve them against your normal defenses, and damage to the spirit is damage to your body. If your body drops to 0 HP, the projection ends."
+              },
+              {
+                "text": "At the end of your turn, choose one:"
+              },
+              {
+                "text": "- **Snap Back:** Your spirit returns to your body.\n- **Manifest:** Your body appears in the spirit’s square or the nearest free square that is not separated from your body by a solid barrier, prone. The projection ends."
+              },
+              {
+                "text": "If no legal Manifest square exists, you can only Snap Back."
+              },
+              {
+                "text": "This is a spell costing 0 SP, usable once per scene. Attacks explicitly described as magical and spells may target the spirit; ordinary attacks target your body instead."
+              }
+            ],
+            "notes": []
+          }
+        },
+        "referenceMarkdown": "**Action:** Main Action · **Attribute:** None (no roll)\n\n**Target / range / shape:** Self.\n\nYour body falls prone and cannot act, move or take Reactions. It has 3 defense Banes. Your spirit appears in your square or an adjacent free square.\n\nThe spirit has Speed 5, can speak, can pass through nonmagical solid objects and creatures, and is not a legal target for ordinary attacks. It cannot attack, cast spells, use equipment or physically interact with objects. Its movement does not provoke opportunity attacks. Magical attacks can target it; resolve them against your normal defenses, and damage to the spirit is damage to your body. If your body drops to 0 HP, the projection ends.\n\nAt the end of your turn, choose one:\n\n- **Snap Back:** Your spirit returns to your body.\n- **Manifest:** Your body appears in the spirit’s square or the nearest free square that is not separated from your body by a solid barrier, prone. The projection ends.\n\nIf no legal Manifest square exists, you can only Snap Back.\n\n**Duration:** Until the end of your turn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP, usable once per scene. Attacks explicitly described as magical and spells may target the spirit; ordinary attacks target your body instead.",
+        "classId": "class-odd",
+        "lineId": "odd:borrowed-tongue",
+        "signatureComponent": true,
+        "kind": "ability",
+        "sp": 0,
+        "magic": "Spell",
+        "rulesMarkdown": "**Action:** Main Action · **Attribute:** None (no roll)\n\n**Target / range / shape:** Self.\n\nYour body falls prone and cannot act, move or take Reactions. It has 3 defense Banes. Your spirit appears in your square or an adjacent free square.\n\nThe spirit has Speed 5, can speak, can pass through nonmagical solid objects and creatures, and is not a legal target for ordinary attacks. It cannot attack, cast spells, use equipment or physically interact with objects. Its movement does not provoke opportunity attacks. Magical attacks can target it; resolve them against your normal defenses, and damage to the spirit is damage to your body. If your body drops to 0 HP, the projection ends.\n\nAt the end of your turn, choose one:\n\n- **Snap Back:** Your spirit returns to your body.\n- **Manifest:** Your body appears in the spirit’s square or the nearest free square that is not separated from your body by a solid barrier, prone. The projection ends.\n\nIf no legal Manifest square exists, you can only Snap Back.\n\n**Duration:** Until the end of your turn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP, usable once per scene. Attacks explicitly described as magical and spells may target the spirit; ordinary attacks target your body instead."
+      }
+    }
+  },
+  "effects": []
+}

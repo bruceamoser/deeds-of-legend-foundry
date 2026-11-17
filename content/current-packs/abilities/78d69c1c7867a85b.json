@@ -1,0 +1,47 @@
+{
+  "_key": "!items!78d69c1c7867a85b",
+  "_id": "78d69c1c7867a85b",
+  "name": "Watch through the Night",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>During a safe overnight rest, spend your two quiet hours tending up to four willing patients with suitable supplies. Each gains 2 Boons on its next Fortitude roll against an existing nonmagical disease before its next safe overnight rest, and reduces temporary Poisoned by 2 at the end of this care. Each patient benefits once per rest. Normal sleep, healing and recovery requirements remain; this is not an additional rest.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "medicine:nursing:7",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "mastery",
+        "nodeId": "medicine:nursing:7",
+        "level": 7,
+        "cost": 5,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "During a safe overnight rest, spend your two quiet hours tending up to four willing patients with suitable supplies. Each gains 2 Boons on its next Fortitude roll against an existing nonmagical disease before its next safe overnight rest, and reduces temporary Poisoned by 2 at the end of this care. Each patient benefits once per rest. Normal sleep, healing and recovery requirements remain; this is not an additional rest.",
+        "improves": null,
+        "requires": [
+          "medicine:nursing:6"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

@@ -1,0 +1,390 @@
+{
+  "_key": "!actors!d7a7015d30cbba51",
+  "_id": "d7a7015d30cbba51",
+  "name": "Mummy King",
+  "type": "creature",
+  "img": "systems/heroes-of-legend/assets/creatures/926a02d833c629ab7e0afae18ea53c841daf82c67439448daf2df8bac14d6787.webp",
+  "prototypeToken": {
+    "width": 1,
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/926a02d833c629ab7e0afae18ea53c841daf82c67439448daf2df8bac14d6787.webp"
+    }
+  },
+  "system": {
+    "schemaVersion": 1,
+    "attributes": {
+      "brawn": {
+        "base": 2
+      },
+      "fortitude": {
+        "base": 2
+      },
+      "agility": {
+        "base": 0
+      },
+      "guile": {
+        "base": -1
+      },
+      "knowledge": {
+        "base": -1
+      },
+      "reason": {
+        "base": 0
+      }
+    },
+    "attributesSource": "Brawn +2; Fortitude +2; Agility +0; Guile -1; Knowledge -1; Reason +0",
+    "health": {
+      "value": 38,
+      "baseMax": 38,
+      "sourceText": "38"
+    },
+    "cv": 44,
+    "speed": 5,
+    "speedSource": "5",
+    "alternateSpeeds": [],
+    "size": 1,
+    "sizeLabel": "medium",
+    "sizeSource": "1 (medium)",
+    "footprint": {
+      "width": 1,
+      "height": 1
+    },
+    "armor": 2,
+    "armorMarker": "",
+    "armorSource": "2",
+    "stability": 1,
+    "threat": {
+      "boons": 0,
+      "banes": 2,
+      "sourceText": "2 Banes"
+    },
+    "evasion": {
+      "boons": 0,
+      "banes": 0,
+      "sourceText": "None"
+    },
+    "weaknesses": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "resistances": {
+      "numeric": [
+        {
+          "type": "Physical",
+          "value": 2
+        }
+      ],
+      "special": [],
+      "sourceText": "Physical (2)"
+    },
+    "immunities": [
+      "Bleeding",
+      "Poisoned",
+      "Asleep"
+    ],
+    "basicMelee": {
+      "weak": 5,
+      "standard": 3,
+      "strong": 2,
+      "defenseAttribute": "agility",
+      "orientation": "player-defense"
+    },
+    "actions": {
+      "orientation": "player-defense",
+      "entries": [
+        {
+          "id": "main-0",
+          "category": "main",
+          "name": "Basic Melee",
+          "abilityId": "",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "5",
+            "standard": "3",
+            "strong": "2"
+          },
+          "effect": "5/3/2",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "main-1",
+          "category": "main",
+          "name": "Scepter of the last court",
+          "abilityId": "",
+          "attributeKey": "reason",
+          "defenseSource": "Reason",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "10 + Frightened 2 of this creature",
+            "standard": "7 + Frightened 1 of this creature",
+            "strong": "4"
+          },
+          "effect": "10 + Frightened 2 of this creature / 7 + Frightened 1 of this creature / 4",
+          "referenceMarkdown": "### Scepter of the last court\n\n**Target:** One visible creature within 5 squares. **Player defense:** Reason. **Damage type:** Life.\n\n**Weak defense:** Frightened 2 of this creature. **Standard defense:** Frightened 1 of this creature."
+        },
+        {
+          "id": "maneuver-0",
+          "category": "maneuver",
+          "name": "Make Room",
+          "abilityId": "",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "One ally within 3 may spend Reaction to move 2.",
+          "referenceMarkdown": "### Make Room\n\n*A clipped order sends one companion into the opening before it closes.*\n\nOne willing active ally within 3 squares that can hear it may spend that ally’s Reaction to move up to 2 squares. Movement provokes normally and pays terrain costs. An uncommanded summon cannot act; summons have no Reaction to spend."
+        },
+        {
+          "id": "maneuver-1",
+          "category": "maneuver",
+          "name": "Defend",
+          "abilityId": "",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "+1 Bane",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "reaction-0",
+          "category": "reaction",
+          "name": "Rally at the Blow",
+          "abilityId": "monster-rally-at-the-blow",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "After an ally within 3 takes HP damage: reduce Frightened 1; ward its next defense.",
+          "referenceMarkdown": "### Rally at the Blow\n\n*A sharp call catches the wounded companion's attention before pain can turn into panic.*\n\nAfter a visible willing ally within 3 squares takes HP damage from an attack, reduce that ally's Frightened by 1 if it can hear this creature. Then give it 1 Boon on its next defense before the start of this creature's next turn; for an NPC ally impose 1 Bane on the corresponding player attack. The defense benefit is consumed on that roll even if canceled and does not stack with itself. No healing or action is granted."
+        },
+        {
+          "id": "reaction-1",
+          "category": "reaction",
+          "name": "Clinging Recoil",
+          "abilityId": "monster-clinging-recoil",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "After adjacent attack deals HP damage: attacker gains Slowed 2.",
+          "referenceMarkdown": "### Clinging Recoil\n\n*A ruined hand closes on cloth and flesh even as the blow tears through the corpse.*\n\nAfter an adjacent attacker’s attack resolves and deals HP damage to this creature, apply Slowed 2 to that attacker. This creature must survive and remain capable. No trigger from a free attack or another retaliatory effect. This grants no grapple, extra damage or equipment destruction."
+        },
+        {
+          "id": "reaction-2",
+          "category": "reaction",
+          "name": "Opportunity Attack",
+          "abilityId": "",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Basic Melee",
+          "referenceMarkdown": ""
+        }
+      ],
+      "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates a complete outcome. All attacks use printed Threat unless stated otherwise.",
+      "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Scepter of the last court | Reason | 10 + Frightened 2 of this creature / 7 + Frightened 1 of this creature / 4 |",
+      "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Make Room | One ally within 3 may spend Reaction to move 2. |\n| Defend | +1 Bane |",
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Rally at the Blow | After an ally within 3 takes HP damage: reduce Frightened 1; ward its next defense. |\n| Clinging Recoil | After adjacent attack deals HP damage: attacker gains Slowed 2. |\n| Opportunity Attack | Basic Melee |"
+    },
+    "details": {
+      "flavorMarkdown": "*Gold leaf has worn from the mask of this ancient ruler, but the surviving eye still expects a court to kneel.*",
+      "specialtyMarkdown": "### Scepter of the last court\n\n**Target:** One visible creature within 5 squares. **Player defense:** Reason. **Damage type:** Life.\n\n**Weak defense:** Frightened 2 of this creature. **Standard defense:** Frightened 1 of this creature.\n\n### Make Room\n\n*A clipped order sends one companion into the opening before it closes.*\n\nOne willing active ally within 3 squares that can hear it may spend that ally’s Reaction to move up to 2 squares. Movement provokes normally and pays terrain costs. An uncommanded summon cannot act; summons have no Reaction to spend.\n\n### Clinging Recoil\n\n*A ruined hand closes on cloth and flesh even as the blow tears through the corpse.*\n\nAfter an adjacent attacker’s attack resolves and deals HP damage to this creature, apply Slowed 2 to that attacker. This creature must survive and remain capable. No trigger from a free attack or another retaliatory effect. This grants no grapple, extra damage or equipment destruction.\n\n### Rally at the Blow\n\n*A sharp call catches the wounded companion's attention before pain can turn into panic.*\n\nAfter a visible willing ally within 3 squares takes HP damage from an attack, reduce that ally's Frightened by 1 if it can hear this creature. Then give it 1 Boon on its next defense before the start of this creature's next turn; for an NPC ally impose 1 Bane on the corresponding player attack. The defense benefit is consumed on that roll even if canceled and does not stack with itself. No healing or action is granted.",
+      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until its next turn. Combines with Evasion through normal Boon/Bane rules; repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature; spend its Reaction before the provoking action resolves. That action continues if capable.\n\n**Lifeless Body — Passive:** Does not breathe or eat; only its listed immunities apply.\n\n**Heavy Frame — Passive:** Stability 1; an explicit trait, not a bonus calculated from Size.\n\n**Healing:** Healing-harmed: ordinary healing resolves as Life damage instead; no beneficial riders.\n\n**Against offensive healing:** Its controller uses Fortitude defense when player-controlled; a player attacking it rolls only their attack.\n\n**Senses:** Dark sight 6 squares; ordinary hearing.\n\n**Tactics and retreat:** Keep a guard between itself and a challenger; spend Make Room only when that guard still has a Reaction.\n\n**Encounter and conversation:** The royal seal commands the wrong heir; deciphering the succession can divide its servants.\n\n**Habitat:** Crypt; burial ground; ruined settlement · **Communication:** Common; understands old oaths\n\n**Loot:** Choose possessions or a clue in its lair that fits the adventure. If a body part is useful or valuable, state its use and value before awarding it.\n\n**Summoning:** Ineligible.",
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-mummy-king\n\n\n**Category:** Undead · **Role:** Fear controller · **CV:** 44\n\n### Creature-roll reference\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Scepter of the last court | Brawn | 2 Boons | 4 Life damage. | 7 Life damage. Frightened 1 of this creature. | 10 Life damage. Frightened 2 of this creature. |\n\nUse the attributes above for defenses named by incoming attacks. Same targeting, limits and costs apply; no opposed second roll.\n\n### CV worksheet\n\n**Reference damage:** 4/7/10\n\n**Reference type:** Life\n\n**Expected targets:** 1\n\n**Utility factor:** 1.4\n\n**Action review (#1279):** U 1.3 → 1.4: Maneuver allowance +0, Reaction allowance +0.1. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.\n\n**Regeneration per turn:** 0\n\nReference I=3.000, O=8.518. Uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/encounters.md). Utility is provisional and does not simulate control, positioning or summon choices.\n\n**Ability sources:** [Clinging Recoil](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/clinging-recoil.md), [commanding step](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/commanding-step.md), [dread cry](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/dread-cry.md), [lifeless body](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/lifeless-body.md), [Rally at the Blow](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/rally-at-the-blow.md).\n\n**Coverage reference:** [Pathfinder family survey](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/family-survey.md); original HOL prose and mechanics.\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/roster.md) · [Stability](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/rules/stability.md)"
+    },
+    "biography": ""
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-mummy-king",
+        "asset": "assets/creatures/926a02d833c629ab7e0afae18ea53c841daf82c67439448daf2df8bac14d6787.webp",
+        "sha256": "d22614d79c2e41994202ec9e2adfe415c777c2a67101651205e2e9ef09cd0e43",
+        "sourceSha256": "926a02d833c629ab7e0afae18ea53c841daf82c67439448daf2df8bac14d6787",
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
+      "catalogId": "creature-mummy-king",
+      "source": {
+        "path": "design/bestiary/creatures/mummy-king.md",
+        "sha256": "5925ff4bb2adebc89376e9636c2e1235c8fed2c70e01830d295628f6e12eb821"
+      },
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Printed profile · specialty automation pending",
+      "specialtyAutomation": "pending",
+      "classification": {
+        "category": "Undead",
+        "role": "Fear controller",
+        "cv": 44
+      },
+      "family": "Mummies",
+      "abilitySources": [
+        {
+          "label": "Clinging Recoil",
+          "id": "monster-clinging-recoil",
+          "path": "design/monster-abilities/clinging-recoil.md",
+          "sha256": "57afa37d2ce3e0d92be90bc698dde273499d9e7474fd303e627b9ec7405edf1f"
+        },
+        {
+          "label": "commanding step",
+          "id": "monster-commanding-step",
+          "path": "design/monster-abilities/commanding-step.md",
+          "sha256": "420c6d8bea618b0b92ca08d6d9d6eeab38d4527aed680202fd2116daebf42120"
+        },
+        {
+          "label": "dread cry",
+          "id": "monster-dread-cry",
+          "path": "design/monster-abilities/dread-cry.md",
+          "sha256": "d35c9d9fb02cdf716d44665b41a99421c1089cddcf9bc2e736a192e27d27efe0"
+        },
+        {
+          "label": "lifeless body",
+          "id": "monster-lifeless-body",
+          "path": "design/monster-abilities/lifeless-body.md",
+          "sha256": "248c16c6e641d2042cd94a05e7e8bfce03b5177f4f57cda241b46d9b16de4d81"
+        },
+        {
+          "label": "Rally at the Blow",
+          "id": "monster-rally-at-the-blow",
+          "path": "design/monster-abilities/rally-at-the-blow.md",
+          "sha256": "51c98f971cd6e353a9e5aff1820ba50a34ebefc4775ad79366efa1b46758a63a"
+        }
+      ],
+      "monsterAbilityTemplates": [
+        {
+          "id": "monster-clinging-recoil",
+          "path": "design/monster-abilities/clinging-recoil.md",
+          "sha256": "57afa37d2ce3e0d92be90bc698dde273499d9e7474fd303e627b9ec7405edf1f",
+          "name": "Clinging Recoil",
+          "action": "Reaction",
+          "flavorMarkdown": "*Something catches the striking limb: a clutching hand, a string of slime or a fold of adhesive flesh that drags at the next hurried step.*",
+          "rulesMarkdown": "After an adjacent attacker’s attack resolves and deals HP damage to this creature, apply Slowed 2 to that attacker. This creature must survive and remain capable. No trigger from a free attack or another retaliatory effect. This grants no grapple, extra damage or equipment destruction.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Clinging Recoil\n\n*Something catches the striking limb: a clutching hand, a string of slime or a fold of adhesive flesh that drags at the next hurried step.*\n\n## Rules\n\n**ID:** monster-clinging-recoil\n\n**Action:** Reaction\n\nAfter an adjacent attacker’s attack resolves and deals HP damage to this creature, apply Slowed 2 to that attacker. This creature must survive and remain capable. No trigger from a free attack or another retaliatory effect. This grants no grapple, extra damage or equipment destruction.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/clinging-recoil.md",
+            "sha256": "57afa37d2ce3e0d92be90bc698dde273499d9e7474fd303e627b9ec7405edf1f"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-commanding-step",
+          "path": "design/monster-abilities/commanding-step.md",
+          "sha256": "420c6d8bea618b0b92ca08d6d9d6eeab38d4527aed680202fd2116daebf42120",
+          "name": "Make Room",
+          "action": "Maneuver",
+          "flavorMarkdown": "*A clipped order sends one companion into the opening before it closes.*",
+          "rulesMarkdown": "One willing active ally within 3 squares that can hear it may spend that ally’s Reaction to move up to 2 squares. Movement provokes normally and pays terrain costs. An uncommanded summon cannot act; summons have no Reaction to spend.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Make Room\n\n*A clipped order sends one companion into the opening before it closes.*\n\n## Rules\n\n**ID:** monster-commanding-step\n\n\n**Action:** Maneuver\n\nOne willing active ally within 3 squares that can hear it may spend that ally’s Reaction to move up to 2 squares. Movement provokes normally and pays terrain costs. An uncommanded summon cannot act; summons have no Reaction to spend.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/commanding-step.md",
+            "sha256": "420c6d8bea618b0b92ca08d6d9d6eeab38d4527aed680202fd2116daebf42120"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-dread-cry",
+          "path": "design/monster-abilities/dread-cry.md",
+          "sha256": "d35c9d9fb02cdf716d44665b41a99421c1089cddcf9bc2e736a192e27d27efe0",
+          "name": "Dread Cry",
+          "action": "Main Action",
+          "flavorMarkdown": "*Its cry seems to come from somewhere behind your ribs.*",
+          "rulesMarkdown": "A printed mental attack applies Frightened 1/2/3 on Weak/Standard/Strong, with no damage unless separately printed. The source is this creature; Banes apply while the target perceives it. The cry must be heard. Ordinary decay applies and no second save is made.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Dread Cry\n\n*Its cry seems to come from somewhere behind your ribs.*\n\n## Rules\n\n**ID:** monster-dread-cry\n\n\n**Action:** Main Action\n\nA printed mental attack applies Frightened 1/2/3 on Weak/Standard/Strong, with no damage unless separately printed. The source is this creature; Banes apply while the target perceives it. The cry must be heard. Ordinary decay applies and no second save is made.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/dread-cry.md",
+            "sha256": "d35c9d9fb02cdf716d44665b41a99421c1089cddcf9bc2e736a192e27d27efe0"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-lifeless-body",
+          "path": "design/monster-abilities/lifeless-body.md",
+          "sha256": "248c16c6e641d2042cd94a05e7e8bfce03b5177f4f57cda241b46d9b16de4d81",
+          "name": "Lifeless Body",
+          "action": "Passive",
+          "flavorMarkdown": "*Nothing breathes beneath the torn coat; nothing living looks through the visor.*",
+          "rulesMarkdown": "The card must list its exact condition immunities; this trait grants no additional unlisted ones. It does not breathe or need food. Undead entries marked healing-harmed take a healing result as Life damage; constructs marked repair-only do not regain HP from ordinary healing. Neither rule prevents physical attacks from dealing their normal minimum damage.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Lifeless Body\n\n*Nothing breathes beneath the torn coat; nothing living looks through the visor.*\n\n## Rules\n\n**ID:** monster-lifeless-body\n\n\n**Action:** Passive\n\nThe card must list its exact condition immunities; this trait grants no additional unlisted ones. It does not breathe or need food. Undead entries marked healing-harmed take a healing result as Life damage; constructs marked repair-only do not regain HP from ordinary healing. Neither rule prevents physical attacks from dealing their normal minimum damage.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/lifeless-body.md",
+            "sha256": "248c16c6e641d2042cd94a05e7e8bfce03b5177f4f57cda241b46d9b16de4d81"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-rally-at-the-blow",
+          "path": "design/monster-abilities/rally-at-the-blow.md",
+          "sha256": "51c98f971cd6e353a9e5aff1820ba50a34ebefc4775ad79366efa1b46758a63a",
+          "name": "Rally at the Blow",
+          "action": "Reaction",
+          "flavorMarkdown": "*A sharp call catches the wounded companion's attention before pain can turn into panic.*",
+          "rulesMarkdown": "After a visible willing ally within 3 squares takes HP damage from an attack, reduce that ally's Frightened by 1 if it can hear this creature. Then give it 1 Boon on its next defense before the start of this creature's next turn; for an NPC ally impose 1 Bane on the corresponding player attack. The defense benefit is consumed on that roll even if canceled and does not stack with itself. No healing or action is granted.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Rally at the Blow\n\n*A sharp call catches the wounded companion's attention before pain can turn into panic.*\n\n## Rules\n\n**ID:** monster-rally-at-the-blow\n\n**Action:** Reaction\n\nAfter a visible willing ally within 3 squares takes HP damage from an attack, reduce that ally's Frightened by 1 if it can hear this creature. Then give it 1 Boon on its next defense before the start of this creature's next turn; for an NPC ally impose 1 Bane on the corresponding player attack. The defense benefit is consumed on that roll even if canceled and does not stack with itself. No healing or action is granted.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/rally-at-the-blow.md",
+            "sha256": "51c98f971cd6e353a9e5aff1820ba50a34ebefc4775ad79366efa1b46758a63a"
+          },
+          "automation": "pending"
+        }
+      ],
+      "summoning": {
+        "eligible": false,
+        "summonId": null,
+        "path": null,
+        "eligibility": null,
+        "sourceText": "Ineligible."
+      }
+    }
+  }
+}

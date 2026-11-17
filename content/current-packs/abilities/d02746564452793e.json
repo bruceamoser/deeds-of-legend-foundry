@@ -1,0 +1,47 @@
+{
+  "_key": "!items!d02746564452793e",
+  "_id": "d02746564452793e",
+  "name": "Break the Line I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Brawn</dd></div></dl><p>Main Action · Brawn. Attack up to two adjacent enemies. Roll once; each takes 1/2/3 physical damage and is pushed 1 square directly away. Resolve collisions normally.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "brawn",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "guard:shieldwork:4",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "technique",
+        "nodeId": "guard:shieldwork:4",
+        "level": 3,
+        "cost": 3,
+        "action": "Main Action",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": "Brawn",
+        "defenseAttribute": null,
+        "effect": "Main Action · Brawn. Attack up to two adjacent enemies. Roll once; each takes 1/2/3 physical damage and is pushed 1 square directly away. Resolve collisions normally.",
+        "improves": null,
+        "requires": [
+          "guard:shieldwork:3"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

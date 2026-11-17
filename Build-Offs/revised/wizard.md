@@ -1,6 +1,6 @@
 # Vaelis Quillstar: wizard after the rewrite
 
-Pinned authored source `87f5141bd6e0da74a10c07b3239e975c7656430a`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../wizard.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
+Pinned authored source `f71eac4c46fce6906d6dfbd1638ee98b10a6c538`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../wizard.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
 
 ## What the rewrite changes
 
@@ -16,7 +16,7 @@ Fixed book sections differ from learning or copying arbitrary individual 5e spel
 | SP | 10 | 22 | 40 |
 | DP spent / total | 11 / 11 | 23 / 24 | 61 / 62 |
 | Unspent DP | 0 | 1 | 1 |
-| Learned action choices (Main / Maneuver / Reaction) | 1 / 1 / 0 | 1 / 1 / 0 | 1 / 2 / 0 |
+| Learned action choices (Main / Maneuver / Reaction) | 1 / 1 / 0 | 1 / 2 / 0 | 1 / 3 / 0 |
 | Known book spells (free / paid) | 12 (5 / 7) | 16 (5 / 11) | 32 (5 / 27) |
 | Shared reserve: casts at 2 SP | 5 | 11 | 20 |
 | Shared reserve: casts at 5 SP | 2 | 4 | 8 |
@@ -119,15 +119,19 @@ Study the effect once per scene. Roll Reason and learn 1/2/3 facts on Weak/Stand
 
 <details><summary>Reading the Weave: complete signature component</summary>
 
-**Action:** Passive · **Attribute:** None
+**Action:** Maneuver · **Attribute:** Reason
 
-**Target / range / shape:** An effect you have examined with Study the Pattern.
+**Target / range / shape:** One known ongoing magical effect within 5 squares.
 
-Your next cancellation roll against that effect this scene gains 1 Boon. Your study also reveals whether a specific remedy exists and the kind of evidence needed to discover it. Apply your own learned cancellation ability or a remedy you actually discover.
+Study the effect once per scene. Roll Reason and learn 1/2/3 facts on Weak/Standard/Strong, chosen from its purpose, remaining duration, and source category (creature, object, place or independent spell). Gain 1 Boon to your next roll applying a learned fact this scene. The DA describes what the effect reveals, not unknown true names or hidden personal history.
 
-**Duration:** Until used or the scene ends.
+Your next cancellation roll against that effect this scene also gains 1 Boon. The examination reveals whether a specific remedy exists and the kind of evidence needed to discover it. Use the learned facts with your cancellation abilities or to seek the remedy.
 
-**Equipment / acquisition:** None.
+**Duration:** Facts remain known; each Boon expires when used or at scene end.
+
+**Equipment / acquisition:** A free hand for casting.
+
+This is a spell costing 0 SP.
 
 </details>
 
@@ -193,6 +197,24 @@ Study the effect once per scene. Roll Reason and learn 1/2/3 facts on Weak/Stand
 
 </details>
 
+<details><summary>Reading the Weave: complete signature component</summary>
+
+**Action:** Maneuver · **Attribute:** Reason
+
+**Target / range / shape:** One known ongoing magical effect within 5 squares.
+
+Study the effect once per scene. Roll Reason and learn 1/2/3 facts on Weak/Standard/Strong, chosen from its purpose, remaining duration, and source category (creature, object, place or independent spell). Gain 1 Boon to your next roll applying a learned fact this scene. The DA describes what the effect reveals, not unknown true names or hidden personal history.
+
+Your next cancellation roll against that effect this scene also gains 1 Boon. The examination reveals whether a specific remedy exists and the kind of evidence needed to discover it. Use the learned facts with your cancellation abilities or to seek the remedy.
+
+**Duration:** Facts remain known; each Boon expires when used or at scene end.
+
+**Equipment / acquisition:** A free hand for casting.
+
+This is a spell costing 0 SP.
+
+</details>
+
 <details><summary>Open the Circle: complete signature component</summary>
 
 **Action:** Maneuver · **Attribute:** None (no roll)
@@ -205,23 +227,9 @@ Each recipient gains 1 Boon to defenses against spells until the start of your n
 
 **Equipment / acquisition:** A free hand for casting.
 
-This is a spell costing 0 SP. You can communicate any facts already learned with Study the Pattern while creating the ward; others learn exactly the facts you know.
+This is a spell costing 0 SP. If you also know Study the Pattern or Reading the Weave, you can communicate facts already learned with either while creating the ward; others learn exactly the facts you know.
 
 **Frequency:** A new ward replaces your previous ward.
-
-</details>
-
-<details><summary>Reading the Weave: complete signature component</summary>
-
-**Action:** Passive · **Attribute:** None
-
-**Target / range / shape:** An effect you have examined with Study the Pattern.
-
-Your next cancellation roll against that effect this scene gains 1 Boon. Your study also reveals whether a specific remedy exists and the kind of evidence needed to discover it. Apply your own learned cancellation ability or a remedy you actually discover.
-
-**Duration:** Until used or the scene ends.
-
-**Equipment / acquisition:** None.
 
 </details>
 

@@ -1,0 +1,65 @@
+{
+  "_key": "!items!3802fb057e73f9ae",
+  "_id": "3802fb057e73f9ae",
+  "name": "True Strike",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>0</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Defense</dt><dd>Brawn against a melee weapon; Agility against a ranged weapon</dd></div><div><dt>Range</dt><dd>One adjacent creature with a melee weapon, or one visible creature within 8 squares with a ranged weapon</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Follow a brief vision of the opening to come. Make one weapon attack using Reason and deal 2/3/5 physical damage. Use the weapon&#39;s ordinary hand and ammunition requirements.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "reason",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "2 physical damage",
+      "standard": "3 physical damage",
+      "strong": "5 physical damage"
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:portents:1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:portents:1",
+        "level": 1,
+        "cost": 1,
+        "action": "Main Action",
+        "sp": 0,
+        "range": "One adjacent creature with a melee weapon, or one visible creature within 8 squares with a ranged weapon",
+        "duration": "Instant",
+        "attribute": "Reason",
+        "defenseAttribute": "Brawn against a melee weapon; Agility against a ranged weapon",
+        "effect": "Follow a brief vision of the opening to come. Make one weapon attack using Reason and deal 2/3/5 physical damage. Use the weapon's ordinary hand and ammunition requirements.",
+        "improves": null,
+        "requires": [
+          "divination"
+        ],
+        "bookId": "portents"
+      },
+      "spell": {
+        "id": "spell:portents:1",
+        "name": "True Strike",
+        "bookId": "portents",
+        "page": "1",
+        "section": "I",
+        "sp": 0,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "Reason",
+        "defense": "Brawn against a melee weapon; Agility against a ranged weapon",
+        "defenseAttribute": "Brawn against a melee weapon; Agility against a ranged weapon",
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One adjacent creature with a melee weapon, or one visible creature within 8 squares with a ranged weapon",
+        "duration": "Instant",
+        "effect": "Follow a brief vision of the opening to come. Make one weapon attack using Reason and deal 2/3/5 physical damage. Use the weapon's ordinary hand and ammunition requirements."
+      }
+    }
+  },
+  "effects": []
+}

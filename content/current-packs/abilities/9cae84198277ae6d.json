@@ -1,0 +1,47 @@
+{
+  "_key": "!items!9cae84198277ae6d",
+  "_id": "9cae84198277ae6d",
+  "name": "Prepare the Remedy III",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Prepare the Remedy’s dose reduces its toxin’s Poisoned by 3 instead of 2.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "medicine:diagnosis:6",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "medicine:diagnosis:6",
+        "level": 3,
+        "cost": 4,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Prepare the Remedy’s dose reduces its toxin’s Poisoned by 3 instead of 2.",
+        "improves": "medicine:diagnosis:4",
+        "requires": [
+          "medicine:diagnosis:5"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

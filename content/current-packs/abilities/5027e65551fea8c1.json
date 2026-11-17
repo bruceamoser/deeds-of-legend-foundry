@@ -1,0 +1,47 @@
+{
+  "_key": "!items!5027e65551fea8c1",
+  "_id": "5027e65551fea8c1",
+  "name": "Heavy Armor III",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Heavy Armor’s carrying Maneuver also lets you move 2 squares with the passenger without movement reactions. Place the passenger in a legal adjacent square when the carrying benefit ends.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "armor:harness:6",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "armor:harness:6",
+        "level": 3,
+        "cost": 4,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Heavy Armor’s carrying Maneuver also lets you move 2 squares with the passenger without movement reactions. Place the passenger in a legal adjacent square when the carrying benefit ends.",
+        "improves": "armor:harness:4",
+        "requires": [
+          "armor:harness:5"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

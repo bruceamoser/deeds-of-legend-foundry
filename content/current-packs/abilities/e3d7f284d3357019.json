@@ -1,0 +1,66 @@
+{
+  "_key": "!items!e3d7f284d3357019",
+  "_id": "e3d7f284d3357019",
+  "name": "Regenerate",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 hour</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One willing adjacent living creature throughout the ritual</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Restore one missing nonvital limb or damaged ordinary sense, and restore 10 HP after Life resistance. The renewed part functions normally when the ritual finishes. Scars can remain as the player describes. This treats physical loss; curses use their named remedies.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:restoration:a2",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:restoration:a2",
+        "level": 3,
+        "cost": 4,
+        "action": "Ritual · 1 hour",
+        "sp": 5,
+        "range": "One willing adjacent living creature throughout the ritual",
+        "duration": "Instant",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Restore one missing nonvital limb or damaged ordinary sense, and restore 10 HP after Life resistance. The renewed part functions normally when the ritual finishes. Scars can remain as the player describes. This treats physical loss; curses use their named remedies.",
+        "improves": null,
+        "requires": [
+          "restoration:4"
+        ],
+        "bookId": "restoration"
+      },
+      "spell": {
+        "id": "spell:restoration:a2",
+        "name": "Regenerate",
+        "bookId": "restoration",
+        "page": "A2",
+        "section": "VI",
+        "sp": 5,
+        "action": "Ritual",
+        "actionText": "Ritual · 1 hour",
+        "ritualTime": "1 hour",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One willing adjacent living creature throughout the ritual",
+        "duration": "Instant",
+        "effect": "Restore one missing nonvital limb or damaged ordinary sense, and restore 10 HP after Life resistance. The renewed part functions normally when the ritual finishes. Scars can remain as the player describes. This treats physical loss; curses use their named remedies."
+      }
+    }
+  },
+  "effects": []
+}

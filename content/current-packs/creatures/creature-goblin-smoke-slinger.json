@@ -1,0 +1,276 @@
+{
+  "_key": "!actors!1b67ac317b3c49f2",
+  "_id": "1b67ac317b3c49f2",
+  "name": "Goblin Smoke Slinger",
+  "type": "creature",
+  "img": "systems/heroes-of-legend/assets/creatures/1cfee132d00a29e6b4a8e310e9729a8f738a3d58a47b737a17baa0b69eb47e3d.webp",
+  "prototypeToken": {
+    "width": 1,
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/1cfee132d00a29e6b4a8e310e9729a8f738a3d58a47b737a17baa0b69eb47e3d.webp"
+    }
+  },
+  "system": {
+    "schemaVersion": 1,
+    "attributes": {
+      "brawn": {
+        "base": 0
+      },
+      "fortitude": {
+        "base": 0
+      },
+      "agility": {
+        "base": 1
+      },
+      "guile": {
+        "base": 2
+      },
+      "knowledge": {
+        "base": 1
+      },
+      "reason": {
+        "base": 0
+      }
+    },
+    "attributesSource": "Brawn +0; Fortitude +0; Agility +1; Guile +2; Knowledge +1; Reason +0",
+    "health": {
+      "value": 10,
+      "baseMax": 10,
+      "sourceText": "10"
+    },
+    "cv": 10,
+    "speed": 6,
+    "speedSource": "6",
+    "alternateSpeeds": [],
+    "size": 1,
+    "sizeLabel": "medium",
+    "sizeSource": "1 (medium)",
+    "footprint": {
+      "width": 1,
+      "height": 1
+    },
+    "armor": 0,
+    "armorMarker": "",
+    "armorSource": "0",
+    "stability": 0,
+    "threat": {
+      "boons": 0,
+      "banes": 0,
+      "sourceText": "None"
+    },
+    "evasion": {
+      "boons": 0,
+      "banes": 1,
+      "sourceText": "1 Bane"
+    },
+    "weaknesses": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "resistances": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "immunities": [],
+    "basicMelee": {
+      "weak": 5,
+      "standard": 3,
+      "strong": 2,
+      "defenseAttribute": "agility",
+      "orientation": "player-defense"
+    },
+    "actions": {
+      "orientation": "player-defense",
+      "entries": [
+        {
+          "id": "main-0",
+          "category": "main",
+          "name": "Basic Melee",
+          "abilityId": "",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "5",
+            "standard": "3",
+            "strong": "2"
+          },
+          "effect": "5/3/2",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "main-1",
+          "category": "main",
+          "name": "Sling stone",
+          "abilityId": "",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "5",
+            "standard": "3",
+            "strong": "2"
+          },
+          "effect": "5/3/2",
+          "referenceMarkdown": "### Sling stone\n\n**Ammunition:** inventory d6. After each use, roll the inventory die; on 1, reduce d6 to d4, or d4 to empty. Cannot use this attack while empty.\n\n**Target:** One visible creature within 6 squares. **Player defense:** Agility. **Damage type:** physical."
+        },
+        {
+          "id": "maneuver-0",
+          "category": "maneuver",
+          "name": "Smoke pots",
+          "abilityId": "",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Place heavy cover in up to 3 connected squares within 3 squares until its next turn. Once per scene.",
+          "referenceMarkdown": "### Smoke pots\n\nPlace heavy cover in up to 3 connected visible squares within 3 squares until the start of this creature’s next turn. Smoke does not block movement or create damage. Creatures completely concealed cannot be individually targeted. Once per scene."
+        },
+        {
+          "id": "maneuver-1",
+          "category": "maneuver",
+          "name": "Defend",
+          "abilityId": "",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "+1 Bane",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "reaction-0",
+          "category": "reaction",
+          "name": "Slip the Rush",
+          "abilityId": "monster-slip-the-rush",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "After an enemy voluntarily closes: move 1; no opportunity from that enemy.",
+          "referenceMarkdown": "### Slip the Rush\n\n*As the pursuer lunges into reach, it ducks sideways through the space the rush left open.*\n\nAfter a visible enemy ends voluntary movement adjacent to this creature, move up to 1 square without provoking from that enemy. Other opportunity attacks and normal terrain costs apply. This movement grants no attack; it cannot trigger from forced movement or movement granted by a free attack."
+        },
+        {
+          "id": "reaction-1",
+          "category": "reaction",
+          "name": "Opportunity Attack",
+          "abilityId": "",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Basic Melee",
+          "referenceMarkdown": ""
+        }
+      ],
+      "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates one complete outcome. All attacks use the printed Threat unless stated otherwise.",
+      "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Sling stone | Agility | 5/3/2 |",
+      "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Smoke pots | Place heavy cover in up to 3 connected squares within 3 squares until its next turn. Once per scene. |\n| Defend | +1 Bane |",
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Slip the Rush | After an enemy voluntarily closes: move 1; no opportunity from that enemy. |\n| Opportunity Attack | Basic Melee |"
+    },
+    "details": {
+      "flavorMarkdown": "*A nimble goblin carrying a sling and clay smoke pots in padded loops. Soot-stained fingers and a scarf over the mouth mark a specialist in covering a crew’s retreat.*",
+      "specialtyMarkdown": "### Sling stone\n\n**Ammunition:** inventory d6. After each use, roll the inventory die; on 1, reduce d6 to d4, or d4 to empty. Cannot use this attack while empty.\n\n**Target:** One visible creature within 6 squares. **Player defense:** Agility. **Damage type:** physical.\n\n### Smoke pots\n\nPlace heavy cover in up to 3 connected visible squares within 3 squares until the start of this creature’s next turn. Smoke does not block movement or create damage. Creatures completely concealed cannot be individually targeted. Once per scene.\n\n### Slip the Rush\n\n*As the pursuer lunges into reach, it ducks sideways through the space the rush left open.*\n\nAfter a visible enemy ends voluntary movement adjacent to this creature, move up to 1 square without provoking from that enemy. Other opportunity attacks and normal terrain costs apply. This movement grants no attack; it cannot trigger from forced movement or movement granted by a free attack.",
+      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Ordinary sight and hearing.\n\n**Signs:** Sooty handprints and broken clay bulbs.\n\n**Purpose:** Get the crew out with its haul.\n\n**Tactics and retreat:** Cover the escape route with smoke, then use stones to discourage pursuit.\n\n**Counterplay and conversation:** Approach from upwind or block the escape route before the smoke rises.\n\n**Habitat:** Ruin; settlement · **Communication:** Common and Goblin\n\n**Loot:** Sling, 5 coins; unused smoke pots only if their scene use remains.\n\n**Summoning:** Ineligible.",
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-goblin-smoke-slinger\n\n\n**Category:** Mortal · **Role:** Controller · **CV:** 10\n\n### Creature-roll reference\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Sling stone | Agility | None | 2 physical damage. | 3 physical damage. | 5 physical damage. |\n\nThe incoming attack names the defense attribute; use the six values above. Same targeting, costs and limits apply in either perspective. No opposed second roll.\n\n\n### CV worksheet\n\n**Difficulty rationale:** An agile or elusive body warrants attack Banes. Ordinary attack difficulty; riders and positioning carry the threat.\n\n**Reference damage:** 2/3/5\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.4\n\n**Action review (#1279):** U 1.3 → 1.4: Maneuver allowance +0, Reaction allowance +0.1. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.\n\n**Regeneration per turn:** 0\n\nReference I=4.404, O=2.162. CV uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/encounters.md); action choices, Stability and control are not simulated. Recalibration remains required.\n\n**Ability sources:** [Slip the Rush](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/slip-the-rush.md).\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/roster.md) · [Agreed Stability](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/rules/stability.md)"
+    },
+    "biography": ""
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-goblin-smoke-slinger",
+        "asset": "assets/creatures/1cfee132d00a29e6b4a8e310e9729a8f738a3d58a47b737a17baa0b69eb47e3d.webp",
+        "sha256": "6cb381144a15c9f7e1bd9978d4ca3455c63682d28e0af6e4799142cde4a55d57",
+        "sourceSha256": "1cfee132d00a29e6b4a8e310e9729a8f738a3d58a47b737a17baa0b69eb47e3d",
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
+      "catalogId": "creature-goblin-smoke-slinger",
+      "source": {
+        "path": "design/bestiary/creatures/goblin-smoke-slinger.md",
+        "sha256": "d1b67246cc0d8d06a468d139e20f7ca28690d3f62342b027e61aaede50532e14"
+      },
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Printed profile · specialty automation pending",
+      "specialtyAutomation": "pending",
+      "classification": {
+        "category": "Mortal",
+        "role": "Controller",
+        "cv": 10
+      },
+      "family": "Goblins",
+      "abilitySources": [
+        {
+          "label": "Slip the Rush",
+          "id": "monster-slip-the-rush",
+          "path": "design/monster-abilities/slip-the-rush.md",
+          "sha256": "dc616a139a0db7f2e7dfd3c695c3ae301518d3b065c57c34b01c19f7a97f5a5e"
+        }
+      ],
+      "monsterAbilityTemplates": [
+        {
+          "id": "monster-slip-the-rush",
+          "path": "design/monster-abilities/slip-the-rush.md",
+          "sha256": "dc616a139a0db7f2e7dfd3c695c3ae301518d3b065c57c34b01c19f7a97f5a5e",
+          "name": "Slip the Rush",
+          "action": "Reaction",
+          "flavorMarkdown": "*As the pursuer lunges into reach, it ducks sideways through the space the rush left open.*",
+          "rulesMarkdown": "After a visible enemy ends voluntary movement adjacent to this creature, move up to 1 square without provoking from that enemy. Other opportunity attacks and normal terrain costs apply. This movement grants no attack; it cannot trigger from forced movement or movement granted by a free attack.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Slip the Rush\n\n*As the pursuer lunges into reach, it ducks sideways through the space the rush left open.*\n\n## Rules\n\n**ID:** monster-slip-the-rush\n\n**Action:** Reaction\n\nAfter a visible enemy ends voluntary movement adjacent to this creature, move up to 1 square without provoking from that enemy. Other opportunity attacks and normal terrain costs apply. This movement grants no attack; it cannot trigger from forced movement or movement granted by a free attack.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/slip-the-rush.md",
+            "sha256": "dc616a139a0db7f2e7dfd3c695c3ae301518d3b065c57c34b01c19f7a97f5a5e"
+          },
+          "automation": "pending"
+        }
+      ],
+      "summoning": {
+        "eligible": false,
+        "summonId": null,
+        "path": null,
+        "eligibility": null,
+        "sourceText": "Ineligible."
+      }
+    }
+  }
+}

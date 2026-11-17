@@ -1,0 +1,47 @@
+{
+  "_key": "!items!2f36e971083a43a9",
+  "_id": "2f36e971083a43a9",
+  "name": "Turn the Trap I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Reaction</dd></div></dl><p>Reaction. When a nonmagical trap you identified begins to trigger, use tools in hand to shift a reachable trigger or guide one willing adjacent creature 1 square to a legal destination before the trap resolves. This movement triggers no movement reactions; the trap then resolves normally at its actual area. Once per triggering event. You can also reconfigure an identified trap with 10 minutes and tools: roll Guile for 1/2/3 progress; completion establishes one reachable trigger or safe bypass without increasing damage or scale.</p>",
+    "activity": {
+      "action": "reaction",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "subterfuge:traps:4",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "technique",
+        "nodeId": "subterfuge:traps:4",
+        "level": 3,
+        "cost": 3,
+        "action": "Reaction",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Reaction. When a nonmagical trap you identified begins to trigger, use tools in hand to shift a reachable trigger or guide one willing adjacent creature 1 square to a legal destination before the trap resolves. This movement triggers no movement reactions; the trap then resolves normally at its actual area. Once per triggering event. You can also reconfigure an identified trap with 10 minutes and tools: roll Guile for 1/2/3 progress; completion establishes one reachable trigger or safe bypass without increasing damage or scale.",
+        "improves": null,
+        "requires": [
+          "subterfuge:traps:3"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

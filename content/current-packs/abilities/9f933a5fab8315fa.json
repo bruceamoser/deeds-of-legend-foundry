@@ -1,0 +1,47 @@
+{
+  "_key": "!items!9f933a5fab8315fa",
+  "_id": "9f933a5fab8315fa",
+  "name": "Trail Workshop I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div></dl><p>Passive. Learn two recipes from Bound Torches, Fletched Ammunition, Travel Food, Twisted Cord and Wooden Brace. With tools and ingredients, work at the recipe’s interval and roll Knowledge for 1/2/3 progress or inventory steps; its output cap applies. You may also build a brace, barricade or shelter with structural materials: 1 hour and Knowledge for 1/2/3 progress toward the DA’s construction objective.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "craft:workshop:1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "technique",
+        "nodeId": "craft:workshop:1",
+        "level": 1,
+        "cost": 1,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": "Knowledge",
+        "defenseAttribute": null,
+        "effect": "Passive. Learn two recipes from Bound Torches, Fletched Ammunition, Travel Food, Twisted Cord and Wooden Brace. With tools and ingredients, work at the recipe’s interval and roll Knowledge for 1/2/3 progress or inventory steps; its output cap applies. You may also build a brace, barricade or shelter with structural materials: 1 hour and Knowledge for 1/2/3 progress toward the DA’s construction objective.",
+        "improves": null,
+        "requires": [
+          "craft"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

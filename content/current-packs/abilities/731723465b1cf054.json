@@ -1,0 +1,47 @@
+{
+  "_key": "!items!731723465b1cf054",
+  "_id": "731723465b1cf054",
+  "name": "Reconstruct the Scene I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div></dl><p>Main Action · Reason to compare up to three clues already in hand, or 10 minutes to reconstruct a larger investigated scene. Add 1/2/3 progress toward the order of up to three related events. On completion the DA states supported conclusions and gaps; this reveals no unseen thoughts.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "reason",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "scholarship:investigation:4",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "technique",
+        "nodeId": "scholarship:investigation:4",
+        "level": 3,
+        "cost": 3,
+        "action": "Main Action",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": "Reason",
+        "defenseAttribute": null,
+        "effect": "Main Action · Reason to compare up to three clues already in hand, or 10 minutes to reconstruct a larger investigated scene. Add 1/2/3 progress toward the order of up to three related events. On completion the DA states supported conclusions and gaps; this reveals no unseen thoughts.",
+        "improves": null,
+        "requires": [
+          "scholarship:investigation:3"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

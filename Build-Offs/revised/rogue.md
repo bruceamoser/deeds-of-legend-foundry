@@ -1,6 +1,6 @@
 # Pip Nightjar: rogue after the rewrite
 
-Pinned authored source `87f5141bd6e0da74a10c07b3239e975c7656430a`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../rogue.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
+Pinned authored source `f71eac4c46fce6906d6dfbd1638ee98b10a6c538`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../rogue.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
 
 ## What the rewrite changes
 
@@ -16,7 +16,7 @@ Blade in the Back is its own attack rather than bonus Sneak Attack dice. The bui
 | SP | 7 | 11 | 19 |
 | DP spent / total | 9 / 9 | 22 / 22 | 56 / 60 |
 | Unspent DP | 0 | 0 | 4 |
-| Learned action choices (Main / Maneuver / Reaction) | 2 / 2 / 1 | 2 / 3 / 1 | 4 / 4 / 2 |
+| Learned action choices (Main / Maneuver / Reaction) | 2 / 2 / 1 | 3 / 3 / 1 | 5 / 4 / 2 |
 | Known book spells (free / paid) | 0 (0 / 0) | 0 (0 / 0) | 0 (0 / 0) |
 | Shared reserve: casts at 2 SP | 3 | 5 | 9 |
 | Shared reserve: casts at 5 SP | 1 | 2 | 3 |
@@ -112,15 +112,15 @@ Make an Agility roll against the target. Weak: 3 physical damage. Standard: 4 ph
 
 <details><summary>Hamstring: complete signature component</summary>
 
-**Action:** Passive · **Attribute:** None
+**Action:** Main Action · **Attribute:** Agility
 
-**Target / range / shape:** The target of Blade in the Back.
+**Target / range / shape:** One creature within melee reach that has not noticed you or is adjacent to one of your allies.
 
-Blade in the Back also applies Slowed 1/2/3 on Weak/Standard/Strong. Apply condition immunity and decay normally. This improves the same attack rather than granting another one.
+Make an Agility roll against the target. On Weak, deal 3 physical damage and apply Slowed 1. On Standard, deal 4 physical damage and apply Bleeding 1 and Slowed 2. On Strong, deal 6 physical damage and apply Bleeding 2 and Slowed 3. This is one attack, not an additional attack. Apply condition immunity and normal decay.
 
-**Duration:** Ordinary condition decay.
+**Duration:** Attack immediate; conditions use normal decay.
 
-**Equipment / acquisition:** None.
+**Equipment / acquisition:** A melee weapon.
 
 </details>
 
@@ -182,6 +182,20 @@ Make an Agility roll against the target. Weak: 3 physical damage. Standard: 4 ph
 
 </details>
 
+<details><summary>Hamstring: complete signature component</summary>
+
+**Action:** Main Action · **Attribute:** Agility
+
+**Target / range / shape:** One creature within melee reach that has not noticed you or is adjacent to one of your allies.
+
+Make an Agility roll against the target. On Weak, deal 3 physical damage and apply Slowed 1. On Standard, deal 4 physical damage and apply Bleeding 1 and Slowed 2. On Strong, deal 6 physical damage and apply Bleeding 2 and Slowed 3. This is one attack, not an additional attack. Apply condition immunity and normal decay.
+
+**Duration:** Attack immediate; conditions use normal decay.
+
+**Equipment / acquisition:** A melee weapon.
+
+</details>
+
 <details><summary>The Half-Second: complete signature component</summary>
 
 **Action:** Reaction · **Attribute:** Agility
@@ -195,20 +209,6 @@ Trigger: another creature you can see declares an action. Make an Agility attack
 **Equipment / acquisition:** A weapon.
 
 Use this Reaction once per scene. Declare it before the target resolves its triggering action; resolve this signature first. It grants no further attacks.
-
-</details>
-
-<details><summary>Hamstring: complete signature component</summary>
-
-**Action:** Passive · **Attribute:** None
-
-**Target / range / shape:** The target of Blade in the Back.
-
-Blade in the Back also applies Slowed 1/2/3 on Weak/Standard/Strong. Apply condition immunity and decay normally. This improves the same attack rather than granting another one.
-
-**Duration:** Ordinary condition decay.
-
-**Equipment / acquisition:** None.
 
 </details>
 

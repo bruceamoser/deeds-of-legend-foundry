@@ -1,0 +1,65 @@
+{
+  "_key": "!items!b6fa911fb7f7ce4d",
+  "_id": "b6fa911fb7f7ce4d",
+  "name": "Antimagic Field",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>A 1-square-radius area centered on you</dd></div><div><dt>Duration</dt><dd>Sustained, up to 1 minute</dd></div></dl><p>Create a quiet zone where magical effects, including your own, are suspended except for this field and its upkeep. Casting and magical targeting operate outside the zone; ongoing durations continue to pass inside it. Effects resume after leaving if their durations remain. Mundane equipment and ordinary actions work normally.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:unraveling:a1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:unraveling:a1",
+        "level": 3,
+        "cost": 4,
+        "action": "Main Action",
+        "sp": 5,
+        "range": "A 1-square-radius area centered on you",
+        "duration": "Sustained, up to 1 minute",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Create a quiet zone where magical effects, including your own, are suspended except for this field and its upkeep. Casting and magical targeting operate outside the zone; ongoing durations continue to pass inside it. Effects resume after leaving if their durations remain. Mundane equipment and ordinary actions work normally.",
+        "improves": null,
+        "requires": [
+          "unraveling:3"
+        ],
+        "bookId": "unraveling"
+      },
+      "spell": {
+        "id": "spell:unraveling:a1",
+        "name": "Antimagic Field",
+        "bookId": "unraveling",
+        "page": "A1",
+        "section": "V",
+        "sp": 5,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "A 1-square-radius area centered on you",
+        "duration": "Sustained, up to 1 minute",
+        "effect": "Create a quiet zone where magical effects, including your own, are suspended except for this field and its upkeep. Casting and magical targeting operate outside the zone; ongoing durations continue to pass inside it. Effects resume after leaving if their durations remain. Mundane equipment and ordinary actions work normally."
+      }
+    }
+  },
+  "effects": []
+}

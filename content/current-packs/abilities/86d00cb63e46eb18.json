@@ -1,0 +1,47 @@
+{
+  "_key": "!items!86d00cb63e46eb18",
+  "_id": "86d00cb63e46eb18",
+  "name": "Ready the Remedy I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div></dl><p>Maneuver. Administer one prepared medical remedy you carry to an adjacent patient, using its printed effect. It must be a remedy ordinarily administered as a Main Action, not a spell, ritual or healing potion. Alternatively apply Patient Care and give that patient 1 Boon on its next Fortitude roll against an existing nonmagical disease before your next turn ends. No additional roll.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "medicine:nursing:4",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "technique",
+        "nodeId": "medicine:nursing:4",
+        "level": 3,
+        "cost": 3,
+        "action": "Maneuver",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Maneuver. Administer one prepared medical remedy you carry to an adjacent patient, using its printed effect. It must be a remedy ordinarily administered as a Main Action, not a spell, ritual or healing potion. Alternatively apply Patient Care and give that patient 1 Boon on its next Fortitude roll against an existing nonmagical disease before your next turn ends. No additional roll.",
+        "improves": null,
+        "requires": [
+          "medicine:nursing:3"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

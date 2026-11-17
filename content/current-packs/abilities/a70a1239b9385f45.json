@@ -1,0 +1,47 @@
+{
+  "_key": "!items!a70a1239b9385f45",
+  "_id": "a70a1239b9385f45",
+  "name": "Field Repair III",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Field Repair gains 1 Boon when you can reach and work on all damaged components.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "craft:repairs:6",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "craft:repairs:6",
+        "level": 3,
+        "cost": 4,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Field Repair gains 1 Boon when you can reach and work on all damaged components.",
+        "improves": "craft:repairs:4",
+        "requires": [
+          "craft:repairs:5"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

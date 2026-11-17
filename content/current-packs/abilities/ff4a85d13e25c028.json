@@ -1,0 +1,65 @@
+{
+  "_key": "!items!ff4a85d13e25c028",
+  "_id": "ff4a85d13e25c028",
+  "name": "Mage Armor",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>Self</dd></div><div><dt>Duration</dt><dd>8 hours</dd></div></dl><p>Clothe yourself in a protective magical outline. Gain physical resistance 1, using the highest matching resistance. The armor persists for eight hours without Sustain.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:protection:3",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:protection:3",
+        "level": 1,
+        "cost": 2,
+        "action": "Main Action",
+        "sp": 1,
+        "range": "Self",
+        "duration": "8 hours",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Clothe yourself in a protective magical outline. Gain physical resistance 1, using the highest matching resistance. The armor persists for eight hours without Sustain.",
+        "improves": null,
+        "requires": [
+          "protection:0"
+        ],
+        "bookId": "protection"
+      },
+      "spell": {
+        "id": "spell:protection:3",
+        "name": "Mage Armor",
+        "bookId": "protection",
+        "page": "3",
+        "section": "II",
+        "sp": 1,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Self",
+        "duration": "8 hours",
+        "effect": "Clothe yourself in a protective magical outline. Gain physical resistance 1, using the highest matching resistance. The armor persists for eight hours without Sustain."
+      }
+    }
+  },
+  "effects": []
+}

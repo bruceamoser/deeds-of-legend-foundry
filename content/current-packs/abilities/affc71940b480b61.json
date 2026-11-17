@@ -1,0 +1,65 @@
+{
+  "_key": "!items!affc71940b480b61",
+  "_id": "affc71940b480b61",
+  "name": "Confusion",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>4</dd></div><div><dt>Attribute</dt><dd>Guile</dd></div><div><dt>Defense</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>Up to three creatures within 6 squares</dd></div><div><dt>Duration</dt><dd>Instant; conditions decay normally</dd></div></dl><p>Scatter attention with conflicting impulses. Apply Dazed 1/1/2. Each affected creature chooses its remaining action categories normally when its turn begins.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "guile",
+      "defenseAttribute": "reason"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:emotion:8",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:emotion:8",
+        "level": 3,
+        "cost": 3,
+        "action": "Main Action",
+        "sp": 4,
+        "range": "Up to three creatures within 6 squares",
+        "duration": "Instant; conditions decay normally",
+        "attribute": "Guile",
+        "defenseAttribute": "Reason",
+        "effect": "Scatter attention with conflicting impulses. Apply Dazed 1/1/2. Each affected creature chooses its remaining action categories normally when its turn begins.",
+        "improves": null,
+        "requires": [
+          "emotion:2"
+        ],
+        "bookId": "emotion"
+      },
+      "spell": {
+        "id": "spell:emotion:8",
+        "name": "Confusion",
+        "bookId": "emotion",
+        "page": "8",
+        "section": "IV",
+        "sp": 4,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "Guile",
+        "defense": "Reason",
+        "defenseAttribute": "Reason",
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Up to three creatures within 6 squares",
+        "duration": "Instant; conditions decay normally",
+        "effect": "Scatter attention with conflicting impulses. Apply Dazed 1/1/2. Each affected creature chooses its remaining action categories normally when its turn begins."
+      }
+    }
+  },
+  "effects": []
+}

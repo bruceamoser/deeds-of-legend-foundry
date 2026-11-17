@@ -1,0 +1,66 @@
+{
+  "_key": "!items!fc2d371eb5c164ce",
+  "_id": "fc2d371eb5c164ce",
+  "name": "Heat Metal — Forge",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 10 minutes</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One unattended metal workpiece of Bulk 3 or less within reach</dd></div><div><dt>Duration</dt><dd>10 minutes</dd></div></dl><p>Heat it evenly to forging temperature or cool it to a safe working temperature. Use suitable tools to shape it with ordinary Craft procedures. The workpiece cools naturally when the duration ends.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:shaping:5",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:shaping:5",
+        "level": 1,
+        "cost": 2,
+        "action": "Ritual · 10 minutes",
+        "sp": 2,
+        "range": "One unattended metal workpiece of Bulk 3 or less within reach",
+        "duration": "10 minutes",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Heat it evenly to forging temperature or cool it to a safe working temperature. Use suitable tools to shape it with ordinary Craft procedures. The workpiece cools naturally when the duration ends.",
+        "improves": null,
+        "requires": [
+          "shaping:1"
+        ],
+        "bookId": "shaping"
+      },
+      "spell": {
+        "id": "spell:shaping:5",
+        "name": "Heat Metal — Forge",
+        "bookId": "shaping",
+        "page": "5",
+        "section": "III",
+        "sp": 2,
+        "action": "Ritual",
+        "actionText": "Ritual · 10 minutes",
+        "ritualTime": "10 minutes",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One unattended metal workpiece of Bulk 3 or less within reach",
+        "duration": "10 minutes",
+        "effect": "Heat it evenly to forging temperature or cool it to a safe working temperature. Use suitable tools to shape it with ordinary Craft procedures. The workpiece cools naturally when the duration ends."
+      }
+    }
+  },
+  "effects": []
+}

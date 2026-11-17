@@ -1,0 +1,46 @@
+{
+  "_key": "!items!367767550a19e447",
+  "_id": "367767550a19e447",
+  "name": "Read the Room",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>Guile</dd></div><div><dt>Target / range / shape</dt><dd>One creature within 5 squares that you can see.</dd></div><div><dt>Duration</dt><dd>The scene.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Frequency</dt><dd>Once per scene per creature.</dd></div></dl><p>Make a Guile roll against the target. An intent is what the creature wants from this exchange or what it means to do next. Weak: learn one intent. Standard: learn one intent, and gain 1 Boon to your next social roll against it. Strong: learn one intent, and gain 2 Boons to your next social roll against it.</p><p>Information about intention does not compel the target to follow that intention.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "attribute",
+      "attribute": "guile",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-signature-shadow-pass-the-guard",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "ability",
+        "nodeId": "ability-signature-shadow-pass-the-guard",
+        "level": 3,
+        "cost": 0,
+        "action": "Maneuver",
+        "sp": null,
+        "range": "One creature within 5 squares that you can see.",
+        "duration": "The scene.",
+        "attribute": "Guile",
+        "defenseAttribute": null,
+        "effect": "**Action:** Maneuver · **Attribute:** Guile\n\n**Target / range / shape:** One creature within 5 squares that you can see.\n\nMake a Guile roll against the target. An intent is what the creature wants from this exchange or what it means to do next. Weak: learn one intent. Standard: learn one intent, and gain 1 Boon to your next social roll against it. Strong: learn one intent, and gain 2 Boons to your next social roll against it.\n\n**Duration:** The scene.\n\n**Equipment / acquisition:** None.\n\nInformation about intention does not compel the target to follow that intention.\n\n**Frequency:** Once per scene per creature.",
+        "improves": null,
+        "requires": [],
+        "bookId": null,
+        "magic": null
+      }
+    }
+  },
+  "effects": []
+}

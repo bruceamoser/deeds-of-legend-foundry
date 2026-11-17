@@ -1,0 +1,47 @@
+{
+  "_key": "!items!e0c844866100e768",
+  "_id": "e0c844866100e768",
+  "name": "Brace II",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Brace grants Stability 2.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "armor:bracing:2",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "armor:bracing:2",
+        "level": 1,
+        "cost": 2,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Brace grants Stability 2.",
+        "improves": "armor:bracing:1",
+        "requires": [
+          "armor:bracing:1"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

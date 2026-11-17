@@ -1,0 +1,47 @@
+{
+  "_key": "!items!5d92693ff10262d2",
+  "_id": "5d92693ff10262d2",
+  "name": "Wild Harvest III",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Wild Harvest gathers both food and water in the same hour when both exist, each at the rolled yield. Its ordinary shelter takes 30 minutes.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "wilderness:provisioning:3",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "wilderness:provisioning:3",
+        "level": 1,
+        "cost": 2,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Wild Harvest gathers both food and water in the same hour when both exist, each at the rolled yield. Its ordinary shelter takes 30 minutes.",
+        "improves": "wilderness:provisioning:1",
+        "requires": [
+          "wilderness:provisioning:2"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

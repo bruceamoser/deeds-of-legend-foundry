@@ -1,0 +1,47 @@
+{
+  "_key": "!items!202f39f7941f8b40",
+  "_id": "202f39f7941f8b40",
+  "name": "Measured Cut II",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Measured Cut deals 3/4/6 physical damage.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "3 physical damage",
+      "standard": "4 physical damage",
+      "strong": "6 physical damage"
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "arms:bladework:2",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "arms:bladework:2",
+        "level": 1,
+        "cost": 2,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Measured Cut deals 3/4/6 physical damage.",
+        "improves": "arms:bladework:1",
+        "requires": [
+          "arms:bladework:1"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

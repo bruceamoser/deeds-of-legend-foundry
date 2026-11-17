@@ -1,0 +1,66 @@
+{
+  "_key": "!items!107590997a9fe1b1",
+  "_id": "107590997a9fe1b1",
+  "name": "Plane Shift",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 hour</dd></div><div><dt>SP</dt><dd>4</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>Self and up to five willing adjacent creatures; one known planar anchor</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Consume 100 coins of tuned incense and travel to an anchor you personally visited or whose attunement you possess. Arrive beside it in safe open space. A sealed or unavailable anchor leaves the party at its origin with an impression of the obstruction.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:passage:8",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:passage:8",
+        "level": 3,
+        "cost": 3,
+        "action": "Ritual · 1 hour",
+        "sp": 4,
+        "range": "Self and up to five willing adjacent creatures; one known planar anchor",
+        "duration": "Instant",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Consume 100 coins of tuned incense and travel to an anchor you personally visited or whose attunement you possess. Arrive beside it in safe open space. A sealed or unavailable anchor leaves the party at its origin with an impression of the obstruction.",
+        "improves": null,
+        "requires": [
+          "passage:2"
+        ],
+        "bookId": "passage"
+      },
+      "spell": {
+        "id": "spell:passage:8",
+        "name": "Plane Shift",
+        "bookId": "passage",
+        "page": "8",
+        "section": "IV",
+        "sp": 4,
+        "action": "Ritual",
+        "actionText": "Ritual · 1 hour",
+        "ritualTime": "1 hour",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Self and up to five willing adjacent creatures; one known planar anchor",
+        "duration": "Instant",
+        "effect": "Consume 100 coins of tuned incense and travel to an anchor you personally visited or whose attunement you possess. Arrive beside it in safe open space. A sealed or unavailable anchor leaves the party at its origin with an impression of the obstruction."
+      }
+    }
+  },
+  "effects": []
+}

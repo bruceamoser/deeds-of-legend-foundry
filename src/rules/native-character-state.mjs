@@ -1,38 +1,26 @@
-import { survivalState } from "./survival.mjs";
-import { normalizeRecovery } from "./recovery.mjs";
+import { normalizeForgeRecovery } from "./forge-recovery.mjs";
+import { forgeVitals } from "./forge-vitals.mjs";
 const ID = "heroes-of-legend";
 
-/** Map portable identities to native Item IDs only after the grant plan exists. */
-export function importedCharacterState(draft, preview, items, instanceIds = {}) {
-  const play = draft.play ?? {};
-  const recovery = normalizeRecovery(play.recovery);
-  const byInstance = new Map(items.map(item => [item.flags?.[ID]?.acquisitionInstance, item._id]));
-  for (const [instanceId, nativeId] of Object.entries(instanceIds)) byInstance.set(instanceId,nativeId);
-  const byCatalog = new Map(items.filter(item => item.type === "ability").map(item => [item.flags?.[ID]?.catalogId, item._id]));
-  const favorites = [
-    ...(play.favorites?.abilities ?? []).map(id => byCatalog.get(id)),
-    ...(play.favorites?.items ?? []).map(id => byInstance.get(id)),
-  ].filter(Boolean);
-  const hp = Math.min(preview.summary.maximumHp, play.hp ?? preview.summary.maximumHp);
-  const marks = hp ? 0 : (play.failedDeathRolls ?? 0);
-  const status = hp ? "active" : marks === 3 || play.lastWords ? "lastWords" : "dying";
-  const survival = status === "lastWords"
-    ? { ...survivalState({hp, maxHp: preview.summary.maximumHp, wounds: play.wounds?.length ?? 0, gritAvailable: Math.max(0, preview.summary.gritGranted - (play.gritSpent ?? 0)), marks: Math.min(2, marks)}), status, marks: 3, lastWordsAt: 0, lastWordsEnds: 2 }
-    : survivalState({hp, maxHp: preview.summary.maximumHp, wounds: play.wounds?.length ?? 0, gritAvailable: Math.max(0, preview.summary.gritGranted - (play.gritSpent ?? 0)), marks});
-  const crafting = structuredClone(play.crafting ?? {});
-  if (play.recovery !== undefined) survival.recovery = recovery;
-  for (const project of Object.values(crafting)) {
-    if (project.supplyId) {
-      const nativeId = byInstance.get(project.supplyId);
-      if (!nativeId) throw new Error("A crafting project refers to a supply that is no longer present. Select its current supply in the workshop before importing.");
-      project.supplyId = nativeId;
-    }
-  }
-  return {
-    "system.recovery": recovery,
-    [`flags.${ID}.characterSheet`]: {favorites, basicActions: draft.basicActions ?? {}, closed: play.collapsed ?? {}},
-    [`flags.${ID}.craftingState`]: crafting,
-    [`flags.${ID}.survival`]: survival,
+/** Current heroes use Forge death/recovery state; never synthesize legacy wounds. */
+export function currentNativeCharacterChanges(draft, preview, { preserveResources, previousLevel = 0, level = previousLevel, hpPerLevel = 0 } = {}) {
+  const limits = preview.limits;
+  const play = forgeVitals(draft.play, limits);
+  const current = preserveResources;
+  const changes = {
+    name: draft.name.trim(),
+    [`flags.${ID}.forgeMovement`]: {speedBase: preview.summary.unencumberedSpeed - draft.attributes.agility},
+    "system.health.baseMax": limits.maxHp,
+    "system.health.value": current ? Math.min(limits.maxHp, current.health.value > 0 ? current.health.value + Math.max(0,level-previousLevel)*hpPerLevel : 0) : play.hp,
+    "system.recovery": current ? structuredClone(current.recovery ?? normalizeForgeRecovery(draft.play?.recovery)) : normalizeForgeRecovery(draft.play?.recovery),
+    "system.sp.max": limits.maxSp,
+    "system.sp.value": current ? Math.min(limits.maxSp, current.sp?.value ?? 0) : play.sp,
+    "system.grit.granted": limits.gritGranted,
+    "system.grit.spent": current ? current.grit.spent : play.gritSpent,
+    "system.biography": draft.profile?.story ?? "",
     [`flags.${ID}.profile`]: structuredClone(draft.profile ?? {}),
+    [`flags.${ID}.forgeVitals`]: Object.fromEntries(["dying", "dead", "failedDeathRolls", "successfulDeathRolls", "gritTrigger", "scars", "firstAidUsed", "firstAidPending", "spellcraftRecoveryUsed"].map(key => [key, structuredClone(play[key])])),
   };
+  for (const [key, value] of Object.entries(draft.attributes)) changes[`system.attributes.${key}.base`] = value;
+  return changes;
 }

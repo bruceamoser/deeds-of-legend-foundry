@@ -1,0 +1,66 @@
+{
+  "_key": "!items!015e555f4e6b36b6",
+  "_id": "015e555f4e6b36b6",
+  "name": "True Polymorph — Living",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 hour</dd></div><div><dt>SP</dt><dd>6</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One willing adjacent creature; 100 coins of transformative incense consumed</dd></div><div><dt>Duration</dt><dd>24 hours</dd></div></dl><p>Shape an ordinary living body of Small, Medium or Large size: a humanoid guise or familiar animal. The recipient keeps its mind, HP and attributes. Choose swimming, climbing or flight at its normal Speed as the body&#39;s movement adaptation. Animal bodies use Polymorph&#39;s equipment and action rules. The recipient may return with a Maneuver; Greater Restoration also ends the transformation.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:transformation:a3",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:transformation:a3",
+        "level": 7,
+        "cost": 5,
+        "action": "Ritual · 1 hour",
+        "sp": 6,
+        "range": "One willing adjacent creature; 100 coins of transformative incense consumed",
+        "duration": "24 hours",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Shape an ordinary living body of Small, Medium or Large size: a humanoid guise or familiar animal. The recipient keeps its mind, HP and attributes. Choose swimming, climbing or flight at its normal Speed as the body's movement adaptation. Animal bodies use Polymorph's equipment and action rules. The recipient may return with a Maneuver; Greater Restoration also ends the transformation.",
+        "improves": null,
+        "requires": [
+          "transformation:5"
+        ],
+        "bookId": "transformation"
+      },
+      "spell": {
+        "id": "spell:transformation:a3",
+        "name": "True Polymorph — Living",
+        "bookId": "transformation",
+        "page": "A3",
+        "section": "VII",
+        "sp": 6,
+        "action": "Ritual",
+        "actionText": "Ritual · 1 hour",
+        "ritualTime": "1 hour",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One willing adjacent creature; 100 coins of transformative incense consumed",
+        "duration": "24 hours",
+        "effect": "Shape an ordinary living body of Small, Medium or Large size: a humanoid guise or familiar animal. The recipient keeps its mind, HP and attributes. Choose swimming, climbing or flight at its normal Speed as the body's movement adaptation. Animal bodies use Polymorph's equipment and action rules. The recipient may return with a Maneuver; Greater Restoration also ends the transformation."
+      }
+    }
+  },
+  "effects": []
+}

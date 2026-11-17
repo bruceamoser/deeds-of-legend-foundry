@@ -1,0 +1,47 @@
+{
+  "_key": "!items!14f9d99c31aaad2c",
+  "_id": "14f9d99c31aaad2c",
+  "name": "Emergency Treatment II",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Emergency Treatment restores 5/7/9 HP instead of Field Dressing’s amount.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "medicine:first-aid:5",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "medicine:first-aid:5",
+        "level": 3,
+        "cost": 4,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Emergency Treatment restores 5/7/9 HP instead of Field Dressing’s amount.",
+        "improves": "medicine:first-aid:4",
+        "requires": [
+          "medicine:first-aid:4"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

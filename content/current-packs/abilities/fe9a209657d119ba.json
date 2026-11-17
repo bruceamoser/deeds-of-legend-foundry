@@ -1,0 +1,65 @@
+{
+  "_key": "!items!fe9a209657d119ba",
+  "_id": "fe9a209657d119ba",
+  "name": "Alter Self",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>Self</dd></div><div><dt>Duration</dt><dd>10 minutes</dd></div></dl><p>Choose one adaptation: gills for water breathing, webbing for swimming at normal Speed, or a changed face and voice. Keep your size and attributes. Changing the chosen adaptation requires another casting.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:transformation:4",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:transformation:4",
+        "level": 1,
+        "cost": 2,
+        "action": "Main Action",
+        "sp": 2,
+        "range": "Self",
+        "duration": "10 minutes",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Choose one adaptation: gills for water breathing, webbing for swimming at normal Speed, or a changed face and voice. Keep your size and attributes. Changing the chosen adaptation requires another casting.",
+        "improves": null,
+        "requires": [
+          "transformation:0"
+        ],
+        "bookId": "transformation"
+      },
+      "spell": {
+        "id": "spell:transformation:4",
+        "name": "Alter Self",
+        "bookId": "transformation",
+        "page": "4",
+        "section": "II",
+        "sp": 2,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Self",
+        "duration": "10 minutes",
+        "effect": "Choose one adaptation: gills for water breathing, webbing for swimming at normal Speed, or a changed face and voice. Keep your size and attributes. Changing the chosen adaptation requires another casting."
+      }
+    }
+  },
+  "effects": []
+}

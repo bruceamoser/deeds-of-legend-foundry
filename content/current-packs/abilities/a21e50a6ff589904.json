@@ -1,0 +1,46 @@
+{
+  "_key": "!items!a21e50a6ff589904",
+  "_id": "a21e50a6ff589904",
+  "name": "Lead the Way",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Self; any willing allies within 3 squares who can see or hear you.</dd></div><div><dt>Duration</dt><dd>During your movement.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Frequency</dt><dd>Once on your turn.</dd></div></dl><p>When you move using your Speed, any willing ally within 3 squares who can see or hear you may move with you at the same time, following your path, up to the distance you move, to a maximum of 2 squares. An ally who comes within 3 squares during your movement may join for the remainder of that movement. The allies spend no movement. This movement follows normal opportunity attack rules.</p><p>Spend the Maneuver before beginning the linked movement. Allies follow legal routes along your path and end in separate legal squares.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-signature-leader-lead-the-step",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "ability",
+        "nodeId": "ability-signature-leader-lead-the-step",
+        "level": 1,
+        "cost": 0,
+        "action": "Maneuver",
+        "sp": null,
+        "range": "Self; any willing allies within 3 squares who can see or hear you.",
+        "duration": "During your movement.",
+        "attribute": "None (no roll)",
+        "defenseAttribute": null,
+        "effect": "**Action:** Maneuver · **Attribute:** None (no roll)\n\n**Target / range / shape:** Self; any willing allies within 3 squares who can see or hear you.\n\nWhen you move using your Speed, any willing ally within 3 squares who can see or hear you may move with you at the same time, following your path, up to the distance you move, to a maximum of 2 squares. An ally who comes within 3 squares during your movement may join for the remainder of that movement. The allies spend no movement. This movement follows normal opportunity attack rules.\n\n**Duration:** During your movement.\n\n**Equipment / acquisition:** None.\n\nSpend the Maneuver before beginning the linked movement. Allies follow legal routes along your path and end in separate legal squares.\n\n**Frequency:** Once on your turn.",
+        "improves": null,
+        "requires": [],
+        "bookId": null,
+        "magic": null
+      }
+    }
+  },
+  "effects": []
+}

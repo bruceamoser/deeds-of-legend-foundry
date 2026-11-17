@@ -1,0 +1,65 @@
+{
+  "_key": "!items!e7d9ca77c3474e89",
+  "_id": "e7d9ca77c3474e89",
+  "name": "Hues",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>SP</dt><dd>0</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>Self or one willing adjacent creature</dd></div><div><dt>Duration</dt><dd>1 hour</dd></div></dl><p>Change the color and pattern of hair, skin or fur. Choose ordinary or vivid colors. The recipient retains its silhouette, voice and other identifying features.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:transformation:1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:transformation:1",
+        "level": 1,
+        "cost": 1,
+        "action": "Maneuver",
+        "sp": 0,
+        "range": "Self or one willing adjacent creature",
+        "duration": "1 hour",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Change the color and pattern of hair, skin or fur. Choose ordinary or vivid colors. The recipient retains its silhouette, voice and other identifying features.",
+        "improves": null,
+        "requires": [
+          "life"
+        ],
+        "bookId": "transformation"
+      },
+      "spell": {
+        "id": "spell:transformation:1",
+        "name": "Hues",
+        "bookId": "transformation",
+        "page": "1",
+        "section": "I",
+        "sp": 0,
+        "action": "Maneuver",
+        "actionText": "Maneuver",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Self or one willing adjacent creature",
+        "duration": "1 hour",
+        "effect": "Change the color and pattern of hair, skin or fur. Choose ordinary or vivid colors. The recipient retains its silhouette, voice and other identifying features."
+      }
+    }
+  },
+  "effects": []
+}

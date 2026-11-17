@@ -1,0 +1,66 @@
+{
+  "_key": "!items!eea6d7ff19a63d46",
+  "_id": "eea6d7ff19a63d46",
+  "name": "Teleport",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 minute</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>Self and up to five willing adjacent creatures; a personally visited place within 100 kilometers</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Travel with carried gear to the remembered place. Arrive in safe open squares within 3 squares of it. If that space is unavailable, remain at your origin and learn that the destination is obstructed.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:passage:a1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:passage:a1",
+        "level": 3,
+        "cost": 4,
+        "action": "Ritual · 1 minute",
+        "sp": 5,
+        "range": "Self and up to five willing adjacent creatures; a personally visited place within 100 kilometers",
+        "duration": "Instant",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Travel with carried gear to the remembered place. Arrive in safe open squares within 3 squares of it. If that space is unavailable, remain at your origin and learn that the destination is obstructed.",
+        "improves": null,
+        "requires": [
+          "passage:3"
+        ],
+        "bookId": "passage"
+      },
+      "spell": {
+        "id": "spell:passage:a1",
+        "name": "Teleport",
+        "bookId": "passage",
+        "page": "A1",
+        "section": "V",
+        "sp": 5,
+        "action": "Ritual",
+        "actionText": "Ritual · 1 minute",
+        "ritualTime": "1 minute",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Self and up to five willing adjacent creatures; a personally visited place within 100 kilometers",
+        "duration": "Instant",
+        "effect": "Travel with carried gear to the remembered place. Arrive in safe open squares within 3 squares of it. If that space is unavailable, remain at your origin and learn that the destination is obstructed."
+      }
+    }
+  },
+  "effects": []
+}

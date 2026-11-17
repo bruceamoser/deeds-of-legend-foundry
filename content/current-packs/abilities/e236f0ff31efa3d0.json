@@ -1,0 +1,46 @@
+{
+  "_key": "!items!e236f0ff31efa3d0",
+  "_id": "e236f0ff31efa3d0",
+  "name": "Borrowed Tongue",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Self; one language you hear spoken.</dd></div><div><dt>Duration</dt><dd>Until the end of the scene.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Frequency</dt><dd>Once per scene; one language at a time.</dd></div></dl><p>A spirit that knows the language possesses you. You understand and speak that language for the scene. You do not read or write it.</p><p>This is a consensual spirit invitation and a spell costing 0 SP. You retain control of your actions.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-signature-odd-sideways-thinking",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "ability",
+        "nodeId": "ability-signature-odd-sideways-thinking",
+        "level": 1,
+        "cost": 0,
+        "action": "Maneuver",
+        "sp": null,
+        "range": "Self; one language you hear spoken.",
+        "duration": "Until the end of the scene.",
+        "attribute": "None (no roll)",
+        "defenseAttribute": null,
+        "effect": "**Action:** Maneuver\n\n**Attribute:** None (no roll)\n\n**Target / range / shape:** Self; one language you hear spoken.\n\nA spirit that knows the language possesses you. You understand and speak that language for the scene. You do not read or write it.\n\n**Duration:** Until the end of the scene.\n\n**Equipment / acquisition:** None.\n\nThis is a consensual spirit invitation and a spell costing 0 SP. You retain control of your actions.\n\n**Frequency:** Once per scene; one language at a time.",
+        "improves": null,
+        "requires": [],
+        "bookId": null,
+        "magic": null
+      }
+    }
+  },
+  "effects": []
+}

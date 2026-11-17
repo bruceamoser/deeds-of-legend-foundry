@@ -1,0 +1,65 @@
+{
+  "_key": "!items!520b8e8b1e24b2ec",
+  "_id": "520b8e8b1e24b2ec",
+  "name": "Enchanted Rope",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>SP</dt><dd>0</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One unattended rope up to 6 squares long within 3 squares</dd></div><div><dt>Duration</dt><dd>1 minute</dd></div></dl><p>Guide the rope&#39;s free end through a reachable opening and tie or undo one ordinary knot. It can secure itself to a suitable anchor. It bears its ordinary load and moves through unoccupied space.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:earth:1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:earth:1",
+        "level": 1,
+        "cost": 1,
+        "action": "Maneuver",
+        "sp": 0,
+        "range": "One unattended rope up to 6 squares long within 3 squares",
+        "duration": "1 minute",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Guide the rope's free end through a reachable opening and tie or undo one ordinary knot. It can secure itself to a suitable anchor. It bears its ordinary load and moves through unoccupied space.",
+        "improves": null,
+        "requires": [
+          "elements"
+        ],
+        "bookId": "earth"
+      },
+      "spell": {
+        "id": "spell:earth:1",
+        "name": "Enchanted Rope",
+        "bookId": "earth",
+        "page": "1",
+        "section": "I",
+        "sp": 0,
+        "action": "Maneuver",
+        "actionText": "Maneuver",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One unattended rope up to 6 squares long within 3 squares",
+        "duration": "1 minute",
+        "effect": "Guide the rope's free end through a reachable opening and tie or undo one ordinary knot. It can secure itself to a suitable anchor. It bears its ordinary load and moves through unoccupied space."
+      }
+    }
+  },
+  "effects": []
+}

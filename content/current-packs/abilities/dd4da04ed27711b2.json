@@ -1,0 +1,65 @@
+{
+  "_key": "!items!dd4da04ed27711b2",
+  "_id": "dd4da04ed27711b2",
+  "name": "Directed Siphon",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>3</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Defense</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>One donor and one different recipient within 6 squares, each with its own SP reserve</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Transfer 2/3/5 SP from the donor to the recipient. Willing participants may accept the full Strong amount automatically; if either is unwilling, roll once using the least favorable applicable modifiers. Limit transfer to the donor&#39;s current SP and recipient&#39;s missing SP. Pay the casting cost from your own reserve first.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "reason",
+      "defenseAttribute": "reason"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:channeling:7",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:channeling:7",
+        "level": 3,
+        "cost": 3,
+        "action": "Main Action",
+        "sp": 3,
+        "range": "One donor and one different recipient within 6 squares, each with its own SP reserve",
+        "duration": "Instant",
+        "attribute": "Reason",
+        "defenseAttribute": "Reason",
+        "effect": "Transfer 2/3/5 SP from the donor to the recipient. Willing participants may accept the full Strong amount automatically; if either is unwilling, roll once using the least favorable applicable modifiers. Limit transfer to the donor's current SP and recipient's missing SP. Pay the casting cost from your own reserve first.",
+        "improves": null,
+        "requires": [
+          "channeling:2"
+        ],
+        "bookId": "channeling"
+      },
+      "spell": {
+        "id": "spell:channeling:7",
+        "name": "Directed Siphon",
+        "bookId": "channeling",
+        "page": "7",
+        "section": "IV",
+        "sp": 3,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "Reason",
+        "defense": "Reason",
+        "defenseAttribute": "Reason",
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One donor and one different recipient within 6 squares, each with its own SP reserve",
+        "duration": "Instant",
+        "effect": "Transfer 2/3/5 SP from the donor to the recipient. Willing participants may accept the full Strong amount automatically; if either is unwilling, roll once using the least favorable applicable modifiers. Limit transfer to the donor's current SP and recipient's missing SP. Pay the casting cost from your own reserve first."
+      }
+    }
+  },
+  "effects": []
+}

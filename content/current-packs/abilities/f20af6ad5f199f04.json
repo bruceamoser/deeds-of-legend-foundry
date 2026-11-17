@@ -1,0 +1,46 @@
+{
+  "_key": "!items!f20af6ad5f199f04",
+  "_id": "f20af6ad5f199f04",
+  "name": "Steady Voice",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>Guile</dd></div><div><dt>Target / range / shape</dt><dd>One ally within 3 squares that can hear and understand you.</dd></div><div><dt>Duration</dt><dd>Immediate.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div></dl><p>Make a Guile roll. Choose Frightened or Dazed on the target. Weak: reduce that condition by 1. Standard: reduce it by 1, and the target gains 1 Boon to its next roll to resist fear or Daze. Strong: reduce it by 2, and the target gains 1 Boon to its next roll to resist fear or Daze. If the target has neither condition, it gains the Boon on a Standard or Strong result.</p><p>An unused Boon expires at the start of your next turn. This reassuring voice is an ordinary ability, not a spell.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "attribute",
+      "attribute": "guile",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-signature-shepherd-ease-the-burden",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "ability",
+        "nodeId": "ability-signature-shepherd-ease-the-burden",
+        "level": 1,
+        "cost": 0,
+        "action": "Maneuver",
+        "sp": null,
+        "range": "One ally within 3 squares that can hear and understand you.",
+        "duration": "Immediate.",
+        "attribute": "Guile",
+        "defenseAttribute": null,
+        "effect": "**Action:** Maneuver · **Attribute:** Guile\n\n**Target / range / shape:** One ally within 3 squares that can hear and understand you.\n\nMake a Guile roll. Choose Frightened or Dazed on the target. Weak: reduce that condition by 1. Standard: reduce it by 1, and the target gains 1 Boon to its next roll to resist fear or Daze. Strong: reduce it by 2, and the target gains 1 Boon to its next roll to resist fear or Daze. If the target has neither condition, it gains the Boon on a Standard or Strong result.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** None.\n\nAn unused Boon expires at the start of your next turn. This reassuring voice is an ordinary ability, not a spell.",
+        "improves": null,
+        "requires": [],
+        "bookId": null,
+        "magic": null
+      }
+    }
+  },
+  "effects": []
+}

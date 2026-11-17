@@ -1,0 +1,65 @@
+{
+  "_key": "!items!1883f628c0c14272",
+  "_id": "1883f628c0c14272",
+  "name": "Light",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>SP</dt><dd>0</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One willing held or unattended object within 3 squares</dd></div><div><dt>Duration</dt><dd>1 hour</dd></div></dl><p>Make it shed bright light to 6 squares and dim light for another 3. Choose the color. You may keep one Light casting at a time and end it with a Maneuver.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:imbuement:1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:imbuement:1",
+        "level": 1,
+        "cost": 1,
+        "action": "Maneuver",
+        "sp": 0,
+        "range": "One willing held or unattended object within 3 squares",
+        "duration": "1 hour",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Make it shed bright light to 6 squares and dim light for another 3. Choose the color. You may keep one Light casting at a time and end it with a Maneuver.",
+        "improves": null,
+        "requires": [
+          "force"
+        ],
+        "bookId": "imbuement"
+      },
+      "spell": {
+        "id": "spell:imbuement:1",
+        "name": "Light",
+        "bookId": "imbuement",
+        "page": "1",
+        "section": "I",
+        "sp": 0,
+        "action": "Maneuver",
+        "actionText": "Maneuver",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One willing held or unattended object within 3 squares",
+        "duration": "1 hour",
+        "effect": "Make it shed bright light to 6 squares and dim light for another 3. Choose the color. You may keep one Light casting at a time and end it with a Maneuver."
+      }
+    }
+  },
+  "effects": []
+}

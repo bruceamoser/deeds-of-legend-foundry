@@ -1,0 +1,65 @@
+{
+  "_key": "!items!12c721d7b80565e4",
+  "_id": "12c721d7b80565e4",
+  "name": "Anticipations I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>Self</dd></div><div><dt>Duration</dt><dd>1 minute</dd></div></dl><p>Read the next immediate threat. Once during the duration, gain 2 Boons to one defense you declare before rolling. The spell ends when you use that benefit.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:portents:5",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:portents:5",
+        "level": 1,
+        "cost": 2,
+        "action": "Main Action",
+        "sp": 2,
+        "range": "Self",
+        "duration": "1 minute",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Read the next immediate threat. Once during the duration, gain 2 Boons to one defense you declare before rolling. The spell ends when you use that benefit.",
+        "improves": null,
+        "requires": [
+          "portents:1"
+        ],
+        "bookId": "portents"
+      },
+      "spell": {
+        "id": "spell:portents:5",
+        "name": "Anticipations I",
+        "bookId": "portents",
+        "page": "5",
+        "section": "III",
+        "sp": 2,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Self",
+        "duration": "1 minute",
+        "effect": "Read the next immediate threat. Once during the duration, gain 2 Boons to one defense you declare before rolling. The spell ends when you use that benefit."
+      }
+    }
+  },
+  "effects": []
+}

@@ -1,0 +1,47 @@
+{
+  "_key": "!items!e8fb28fcbdeb8214",
+  "_id": "e8fb28fcbdeb8214",
+  "name": "Brace III",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>While Brace lasts, a push or pull that Stability reduces to 0 also fails to knock you Prone; its damage and other effects still apply.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "armor:bracing:3",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "armor:bracing:3",
+        "level": 1,
+        "cost": 2,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "While Brace lasts, a push or pull that Stability reduces to 0 also fails to knock you Prone; its damage and other effects still apply.",
+        "improves": "armor:bracing:1",
+        "requires": [
+          "armor:bracing:2"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

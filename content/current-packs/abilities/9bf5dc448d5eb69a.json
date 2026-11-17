@@ -1,0 +1,47 @@
+{
+  "_key": "!items!9bf5dc448d5eb69a",
+  "_id": "9bf5dc448d5eb69a",
+  "name": "Ordered Mind III",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Increase maximum SP by another 3; this path now grants +16 maximum SP.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spellcraft:mind-capacity:6",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "training",
+        "nodeId": "spellcraft:mind-capacity:6",
+        "level": 3,
+        "cost": 4,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Increase maximum SP by another 3; this path now grants +16 maximum SP.",
+        "improves": "spellcraft:mind-capacity:4",
+        "requires": [
+          "spellcraft:mind-capacity:5"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

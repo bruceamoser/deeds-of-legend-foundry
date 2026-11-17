@@ -1,0 +1,286 @@
+{
+  "_key": "!actors!d5c5014627644feb",
+  "_id": "d5c5014627644feb",
+  "name": "Hook-beak",
+  "type": "creature",
+  "img": "systems/heroes-of-legend/assets/creatures/5a526515e3d7020381b346904ac46ee9952c69e0a7fb5442f36002c9ec681887.webp",
+  "prototypeToken": {
+    "width": 2,
+    "height": 2,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/5a526515e3d7020381b346904ac46ee9952c69e0a7fb5442f36002c9ec681887.webp"
+    }
+  },
+  "system": {
+    "schemaVersion": 1,
+    "attributes": {
+      "brawn": {
+        "base": 2
+      },
+      "fortitude": {
+        "base": 2
+      },
+      "agility": {
+        "base": 1
+      },
+      "guile": {
+        "base": 0
+      },
+      "knowledge": {
+        "base": -2
+      },
+      "reason": {
+        "base": 1
+      }
+    },
+    "attributesSource": "Brawn +2; Fortitude +2; Agility +1; Guile +0; Knowledge -2; Reason +1",
+    "health": {
+      "value": 23,
+      "baseMax": 23,
+      "sourceText": "23"
+    },
+    "cv": 18,
+    "speed": 7,
+    "speedSource": "7; climb 4",
+    "alternateSpeeds": [
+      {
+        "mode": "climb",
+        "value": 4
+      }
+    ],
+    "size": 2,
+    "sizeLabel": "2x2 squares",
+    "sizeSource": "2 (2x2 squares)",
+    "footprint": {
+      "width": 2,
+      "height": 2
+    },
+    "armor": 0,
+    "armorMarker": "",
+    "armorSource": "0",
+    "stability": 1,
+    "threat": {
+      "boons": 0,
+      "banes": 1,
+      "sourceText": "1 Bane"
+    },
+    "evasion": {
+      "boons": 0,
+      "banes": 0,
+      "sourceText": "None"
+    },
+    "weaknesses": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "resistances": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "immunities": [],
+    "basicMelee": {
+      "weak": 5,
+      "standard": 3,
+      "strong": 2,
+      "defenseAttribute": "agility",
+      "orientation": "player-defense"
+    },
+    "actions": {
+      "orientation": "player-defense",
+      "entries": [
+        {
+          "id": "main-0",
+          "category": "main",
+          "name": "Basic Melee",
+          "abilityId": "",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "5",
+            "standard": "3",
+            "strong": "2"
+          },
+          "effect": "5/3/2",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "main-1",
+          "category": "main",
+          "name": "Hooked rush",
+          "abilityId": "",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "7 + After moving 2 toward target, Prone",
+            "standard": "5 + After moving 2 toward target, Prone",
+            "strong": "3"
+          },
+          "effect": "7 + After moving 2 toward target, Prone / 5 + After moving 2 toward target, Prone / 3",
+          "referenceMarkdown": "### Hooked rush\n\n*It gathers itself, then arrives in a rush of claws and weight.*\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** After moving 2 toward target, Prone. **Standard defense:** After moving 2 toward target, Prone."
+        },
+        {
+          "id": "maneuver-0",
+          "category": "maneuver",
+          "name": "Stalking Step",
+          "abilityId": "monster-stalking-step",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Move 2 to cover or concealment; no opportunity from one chosen enemy.",
+          "referenceMarkdown": "### Stalking Step\n\n*It folds into the broken light, leaving only a leaf moving where it stood.*\n\nMove up to 2 squares without provoking from one visible enemy chosen before moving, ending in a square with cover or concealment from that enemy. Pay normal terrain costs and provoke normally from other enemies. Does not grant Hidden; a separate Hide action still needs concealment and a roll when uncertain."
+        },
+        {
+          "id": "maneuver-1",
+          "category": "maneuver",
+          "name": "Defend",
+          "abilityId": "",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "+1 Bane",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "reaction-0",
+          "category": "reaction",
+          "name": "Opportunity Attack",
+          "abilityId": "",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Basic Melee",
+          "referenceMarkdown": ""
+        }
+      ],
+      "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates one complete outcome. All attacks use the printed Threat unless stated otherwise.",
+      "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Hooked rush | Agility | 7 + After moving 2 toward target, Prone / 5 + After moving 2 toward target, Prone / 3 |",
+      "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Stalking Step | Move 2 to cover or concealment; no opportunity from one chosen enemy. |\n| Defend | +1 Bane |",
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Opportunity Attack | Basic Melee |"
+    },
+    "details": {
+      "flavorMarkdown": "*A bear-sized forest predator with dense feathers, hooked claws and a heavy curved beak. Its powerful shoulders and keen eyes make it an effective defender of a concealed nest.*",
+      "specialtyMarkdown": "### Hooked rush\n\n*It gathers itself, then arrives in a rush of claws and weight.*\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** After moving 2 toward target, Prone. **Standard defense:** After moving 2 toward target, Prone.\n\n### Stalking Step\n\n*It folds into the broken light, leaving only a leaf moving where it stood.*\n\nMove up to 2 squares without provoking from one visible enemy chosen before moving, ending in a square with cover or concealment from that enemy. Pay normal terrain costs and provoke normally from other enemies. Does not grant Hidden; a separate Hide action still needs concealment and a roll when uncertain.",
+      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.\n\n**Heavy Frame — Passive:** Stability 1; an explicit creature trait, not a bonus from size.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Ordinary sight and hearing.\n\n**Signs:** Trees carry both claw marks and ragged tufts of feathers.\n\n**Purpose:** Keep intruders from a nest hidden under fallen timber.\n\n**Tactics and retreat:** Pounce from the side of the trail and stand over a downed threat.\n\n**Counterplay and conversation:** Avoid the nest and make a wide, visible retreat.\n\n**Habitat:** Deep forest · **Communication:** None\n\n**Loot:** An old traveler’s charm caught in the nest.\n\n**Summoning:** Ineligible.",
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-hook-beak\n\n\n**Category:** Beast · **Role:** Territorial hunter · **CV:** 18\n\n### Creature-roll reference\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Hooked rush | Brawn | 1 Boon | 3 physical damage. | 5 physical damage. After moving 2 toward target, Prone. | 7 physical damage. After moving 2 toward target, Prone. |\n\nThe incoming attack names the defense attribute; use the six values above. Same targeting, costs and limits apply in either perspective. No opposed second roll.\n\n\n### CV worksheet\n\n**Difficulty rationale:** No innate attack modifier; armor, cover and chosen actions provide its defenses. Its dangerous attack imposes defense Banes.\n\n**Reference damage:** 3/5/7\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.25\n\n**Action review (#1279):** U 1.2 → 1.25: Maneuver allowance +0.05, Reaction allowance +0. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.\n\n**Regeneration per turn:** 0\n\nReference I=5.000, O=4.596. CV uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/encounters.md); action choices, Stability and control are not simulated. Recalibration remains required.\n\n**Ability sources:** [pounce](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/pounce.md), [Stalking Step](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/stalking-step.md).\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/roster.md) · [Agreed Stability](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/rules/stability.md)"
+    },
+    "biography": ""
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-hook-beak",
+        "asset": "assets/creatures/5a526515e3d7020381b346904ac46ee9952c69e0a7fb5442f36002c9ec681887.webp",
+        "sha256": "4e60e55b5ee904b82ead8603d970e630f705e9fc2cf211d075754da80d2ea8ba",
+        "sourceSha256": "5a526515e3d7020381b346904ac46ee9952c69e0a7fb5442f36002c9ec681887",
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
+      "catalogId": "creature-hook-beak",
+      "source": {
+        "path": "design/bestiary/creatures/hook-beak.md",
+        "sha256": "d860cc19933e007e72f79cfbaef4812c9e029c781a0cb6a40d2c08ae64f7bd2f"
+      },
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Printed profile · specialty automation pending",
+      "specialtyAutomation": "pending",
+      "classification": {
+        "category": "Beast",
+        "role": "Territorial hunter",
+        "cv": 18
+      },
+      "family": "Fantastic hunters and guardians",
+      "abilitySources": [
+        {
+          "label": "pounce",
+          "id": "monster-pounce",
+          "path": "design/monster-abilities/pounce.md",
+          "sha256": "cca3f2a4e205132c94511ac28420a070bad93e1d6e8d52a500137bd4c9a707a7"
+        },
+        {
+          "label": "Stalking Step",
+          "id": "monster-stalking-step",
+          "path": "design/monster-abilities/stalking-step.md",
+          "sha256": "6796ed679f378e16688ea33179f69b864c6788ebe4b2d3ea605c9b9ce29fad97"
+        }
+      ],
+      "monsterAbilityTemplates": [
+        {
+          "id": "monster-pounce",
+          "path": "design/monster-abilities/pounce.md",
+          "sha256": "cca3f2a4e205132c94511ac28420a070bad93e1d6e8d52a500137bd4c9a707a7",
+          "name": "Pounce",
+          "action": "Main Action",
+          "flavorMarkdown": "*It gathers itself, then arrives in a rush of claws and weight.*",
+          "rulesMarkdown": "Use the printed attack. If the creature moved at least 2 squares toward this target immediately before the attack this turn, Standard or Strong also makes the target Prone. Movement is paid normally, not supplied by Pounce.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Pounce\n\n*It gathers itself, then arrives in a rush of claws and weight.*\n\n## Rules\n\n**ID:** monster-pounce\n\n\n**Action:** Main Action\n\nUse the printed attack. If the creature moved at least 2 squares toward this target immediately before the attack this turn, Standard or Strong also makes the target Prone. Movement is paid normally, not supplied by Pounce.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/pounce.md",
+            "sha256": "cca3f2a4e205132c94511ac28420a070bad93e1d6e8d52a500137bd4c9a707a7"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-stalking-step",
+          "path": "design/monster-abilities/stalking-step.md",
+          "sha256": "6796ed679f378e16688ea33179f69b864c6788ebe4b2d3ea605c9b9ce29fad97",
+          "name": "Stalking Step",
+          "action": "Maneuver",
+          "flavorMarkdown": "*It folds into the broken light, leaving only a leaf moving where it stood.*",
+          "rulesMarkdown": "Move up to 2 squares without provoking from one visible enemy chosen before moving, ending in a square with cover or concealment from that enemy. Pay normal terrain costs and provoke normally from other enemies. Does not grant Hidden; a separate Hide action still needs concealment and a roll when uncertain.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Stalking Step\n\n*It folds into the broken light, leaving only a leaf moving where it stood.*\n\n## Rules\n\n**ID:** monster-stalking-step\n\n\n**Action:** Maneuver\n\nMove up to 2 squares without provoking from one visible enemy chosen before moving, ending in a square with cover or concealment from that enemy. Pay normal terrain costs and provoke normally from other enemies. Does not grant Hidden; a separate Hide action still needs concealment and a roll when uncertain.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/stalking-step.md",
+            "sha256": "6796ed679f378e16688ea33179f69b864c6788ebe4b2d3ea605c9b9ce29fad97"
+          },
+          "automation": "pending"
+        }
+      ],
+      "summoning": {
+        "eligible": false,
+        "summonId": null,
+        "path": null,
+        "eligibility": null,
+        "sourceText": "Ineligible."
+      }
+    }
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "_key": "!items!090715f8474d5564",
+  "_id": "090715f8474d5564",
+  "name": "Protection from Evil and Good",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One willing creature within 3 squares</dd></div><div><dt>Duration</dt><dd>10 minutes</dd></div></dl><p>Ward the recipient against summoned forms, undead and spirits. It gains 1 Boon to defenses against attacks and hostile spells from those creatures.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:protection:5",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:protection:5",
+        "level": 1,
+        "cost": 2,
+        "action": "Main Action",
+        "sp": 2,
+        "range": "One willing creature within 3 squares",
+        "duration": "10 minutes",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Ward the recipient against summoned forms, undead and spirits. It gains 1 Boon to defenses against attacks and hostile spells from those creatures.",
+        "improves": null,
+        "requires": [
+          "protection:1"
+        ],
+        "bookId": "protection"
+      },
+      "spell": {
+        "id": "spell:protection:5",
+        "name": "Protection from Evil and Good",
+        "bookId": "protection",
+        "page": "5",
+        "section": "III",
+        "sp": 2,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One willing creature within 3 squares",
+        "duration": "10 minutes",
+        "effect": "Ward the recipient against summoned forms, undead and spirits. It gains 1 Boon to defenses against attacks and hostile spells from those creatures."
+      }
+    }
+  },
+  "effects": []
+}

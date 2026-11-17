@@ -1,0 +1,46 @@
+{
+  "_key": "!items!bbe734cf92bab566",
+  "_id": "bbe734cf92bab566",
+  "name": "Earthbreaker",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Brawn</dd></div><div><dt>Target / range / shape</dt><dd>Self; each enemy within 2 squares.</dd></div><div><dt>Duration</dt><dd>Immediate.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Frequency</dt><dd>Once per scene.</dd></div></dl><p>Make a Brawn roll and apply it to every enemy in range. Weak: 2 physical damage, and push 1 square directly away from you. Standard: 4 physical damage, push 2 squares, and it is Prone. Strong: 6 physical damage, push 3 squares, and it is Prone and Dazed 1. Structures and unattended objects in the area take double damage. Resolve collisions normally. This does not move you.</p><p>Use ordinary object HP, resistance and collision rules. Fixed barriers stop forced movement even if the damage breaks them.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "brawn",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-signature-unbalanced-scatter-the-line",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "ability",
+        "nodeId": "ability-signature-unbalanced-scatter-the-line",
+        "level": 7,
+        "cost": 0,
+        "action": "Main Action",
+        "sp": null,
+        "range": "Self; each enemy within 2 squares.",
+        "duration": "Immediate.",
+        "attribute": "Brawn",
+        "defenseAttribute": null,
+        "effect": "**Action:** Main Action · **Attribute:** Brawn\n\n**Target / range / shape:** Self; each enemy within 2 squares.\n\nMake a Brawn roll and apply it to every enemy in range. Weak: 2 physical damage, and push 1 square directly away from you. Standard: 4 physical damage, push 2 squares, and it is Prone. Strong: 6 physical damage, push 3 squares, and it is Prone and Dazed 1. Structures and unattended objects in the area take double damage. Resolve collisions normally. This does not move you.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** None.\n\nUse ordinary object HP, resistance and collision rules. Fixed barriers stop forced movement even if the damage breaks them.\n\n**Frequency:** Once per scene.",
+        "improves": null,
+        "requires": [],
+        "bookId": null,
+        "magic": null
+      }
+    }
+  },
+  "effects": []
+}

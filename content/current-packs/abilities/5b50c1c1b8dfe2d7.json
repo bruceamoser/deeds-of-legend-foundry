@@ -1,0 +1,66 @@
+{
+  "_key": "!items!5b50c1c1b8dfe2d7",
+  "_id": "5b50c1c1b8dfe2d7",
+  "name": "Long Ear",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 10 minutes</dd></div><div><dt>SP</dt><dd>3</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One point you have visited within 1 kilometer</dd></div><div><dt>Duration</dt><dd>10 minutes</dd></div></dl><p>Place a stationary listening sensor. Spend a Main Action to listen from it until your next turn begins. It hears ordinary sounds within 6 squares of that point, subject to intervening barriers and noise.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:farseeing:7",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:farseeing:7",
+        "level": 3,
+        "cost": 3,
+        "action": "Ritual · 10 minutes",
+        "sp": 3,
+        "range": "One point you have visited within 1 kilometer",
+        "duration": "10 minutes",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Place a stationary listening sensor. Spend a Main Action to listen from it until your next turn begins. It hears ordinary sounds within 6 squares of that point, subject to intervening barriers and noise.",
+        "improves": null,
+        "requires": [
+          "farseeing:2"
+        ],
+        "bookId": "farseeing"
+      },
+      "spell": {
+        "id": "spell:farseeing:7",
+        "name": "Long Ear",
+        "bookId": "farseeing",
+        "page": "7",
+        "section": "IV",
+        "sp": 3,
+        "action": "Ritual",
+        "actionText": "Ritual · 10 minutes",
+        "ritualTime": "10 minutes",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One point you have visited within 1 kilometer",
+        "duration": "10 minutes",
+        "effect": "Place a stationary listening sensor. Spend a Main Action to listen from it until your next turn begins. It hears ordinary sounds within 6 squares of that point, subject to intervening barriers and noise."
+      }
+    }
+  },
+  "effects": []
+}

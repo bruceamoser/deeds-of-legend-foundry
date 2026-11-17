@@ -1,5 +1,6 @@
-import {reconcileTurnRoster} from "../rules/encounter.mjs";
-import {openEncounterPanel,encounterGroups,endEncounter} from "./encounter.mjs";
+import {requestCombat,combatSide} from "../services/combat.mjs";
+import {reconcileTurnRoster,availableParticipants} from "../rules/encounter.mjs";
+import {openEncounterPanel,encounterGroups,endEncounter,resolveAmbush} from "./encounter.mjs";
 import {finishCombatParticipant} from "../dialogs/turn-end.mjs";
 import {chooseCombatParticipant} from "../dialogs/turn-choice.mjs";
 const ID="heroes-of-legend";
@@ -10,12 +11,14 @@ export function renderHOLCombatTracker(app,element){
  const button=(parent,label,action)=>{const b=document.createElement("button");b.type="button";b.textContent=label;b.addEventListener("click",async()=>{b.disabled=true;try{await action();}catch(error){ui.notifications.error(error.message);}finally{if(b.isConnected)b.disabled=false;}});parent.append(b);};
  button(section,"Open encounter",()=>openEncounterPanel(combat));
  const saved=combat.getFlag(ID,"encounter"),state=saved?reconcileTurnRoster(saved,combat.combatants.map(c=>({id:c.id,side:c.getFlag(ID,"side")??(c.actor?.hasPlayerOwner?"players":"opposition")}))):null,current=combat.combatants.get(state?.current);
- const round=document.createElement("small");round.textContent=`Round ${state?.round??1}`;section.append(round);
- const participants=combat.combatants.filter(c=>!(c.hidden&&!game.user.isGM)).map(c=>({id:c.id,group:c.actor?.type==="character"?"players":"creatures",combatant:c}));
+ if(!state){button(section,"Opening roll",()=>requestCombat(combat,"start"));if(game.user.isGM)button(section,"Ambush",()=>resolveAmbush(combat));}
+ const eligible=state?.startingSide?new Set(availableParticipants(state).map(p=>p.id)):null;
+ const round=document.createElement("small");round.textContent=`Round ${state?.round??1}${state?.startingSide?` · ${state.nextSide==="players"?"Players":"Opposition"} choose next`:""}`;section.append(round);
+ const participants=combat.combatants.filter(c=>!(c.hidden&&!game.user.isGM)).map(c=>({id:c.id,group:combatSide(c)==="players"?"players":"creatures",combatant:c}));
  const groups=encounterGroups(participants);
  if(current){const label=document.createElement("strong");label.textContent=current.hidden&&!game.user.isGM?"Turn in progress":`${current.name}’s turn`;section.append(label);if(game.user.isGM||current.actor?.isOwner)button(section,"Finish turn",()=>finishCombatParticipant(combat));}
- else for(const group of groups){
-  const choices=group.participants.filter(({combatant:c})=>!(state?.acted??[]).includes(c.id)&&(game.user.isGM||c.actor?.isOwner));if(!choices.length)continue;
+ else if(state) for(const group of groups){
+  const choices=group.participants.filter(({combatant:c})=>(!eligible||eligible.has(c.id))&&!(state?.acted??[]).includes(c.id)&&(game.user.isGM||c.actor?.isOwner));if(!choices.length)continue;
   const box=document.createElement("div");box.className="hol-combat-choices";const label=document.createElement("strong");label.textContent=group.label;box.append(label);section.append(box);
   for(const {combatant:c}of choices)button(box,`Choose ${c.name}`,()=>chooseCombatParticipant(combat,c.id));
  }

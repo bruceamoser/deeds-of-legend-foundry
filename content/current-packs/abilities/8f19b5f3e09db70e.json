@@ -1,0 +1,66 @@
+{
+  "_key": "!items!8f19b5f3e09db70e",
+  "_id": "8f19b5f3e09db70e",
+  "name": "Weapon I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 hour</dd></div><div><dt>SP</dt><dd>4</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One weapon beside you; 25 coins of enchanting oil consumed</dd></div><div><dt>Duration</dt><dd>24 hours</dd></div></dl><p>The weapon&#39;s damaging attacks gain +1 damage of their normal type before resistance, once per target per attack. Use the highest magical weapon increase. You may keep one Weapon I enchantment at a time.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:imbuement:8",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:imbuement:8",
+        "level": 3,
+        "cost": 3,
+        "action": "Ritual · 1 hour",
+        "sp": 4,
+        "range": "One weapon beside you; 25 coins of enchanting oil consumed",
+        "duration": "24 hours",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "The weapon's damaging attacks gain +1 damage of their normal type before resistance, once per target per attack. Use the highest magical weapon increase. You may keep one Weapon I enchantment at a time.",
+        "improves": null,
+        "requires": [
+          "imbuement:2"
+        ],
+        "bookId": "imbuement"
+      },
+      "spell": {
+        "id": "spell:imbuement:8",
+        "name": "Weapon I",
+        "bookId": "imbuement",
+        "page": "8",
+        "section": "IV",
+        "sp": 4,
+        "action": "Ritual",
+        "actionText": "Ritual · 1 hour",
+        "ritualTime": "1 hour",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One weapon beside you; 25 coins of enchanting oil consumed",
+        "duration": "24 hours",
+        "effect": "The weapon's damaging attacks gain +1 damage of their normal type before resistance, once per target per attack. Use the highest magical weapon increase. You may keep one Weapon I enchantment at a time."
+      }
+    }
+  },
+  "effects": []
+}

@@ -1,0 +1,65 @@
+{
+  "_key": "!items!18750c7456d03139",
+  "_id": "18750c7456d03139",
+  "name": "Dominate Person",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>Guile</dd></div><div><dt>Defense</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>One creature within 6 squares that understands you</dd></div><div><dt>Duration</dt><dd>Until the end of its next turn</dd></div></dl><p>State one brief command: move to a named safe place, release a held object, or perform one ordinary interaction. On its turn the target chooses to perform that command using its own actions or suffer Dazed 1/2/3 from resisting the pressure. Once that choice resolves, the command ends.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "guile",
+      "defenseAttribute": "reason"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:emotion:a2",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:emotion:a2",
+        "level": 3,
+        "cost": 4,
+        "action": "Main Action",
+        "sp": 5,
+        "range": "One creature within 6 squares that understands you",
+        "duration": "Until the end of its next turn",
+        "attribute": "Guile",
+        "defenseAttribute": "Reason",
+        "effect": "State one brief command: move to a named safe place, release a held object, or perform one ordinary interaction. On its turn the target chooses to perform that command using its own actions or suffer Dazed 1/2/3 from resisting the pressure. Once that choice resolves, the command ends.",
+        "improves": null,
+        "requires": [
+          "emotion:4"
+        ],
+        "bookId": "emotion"
+      },
+      "spell": {
+        "id": "spell:emotion:a2",
+        "name": "Dominate Person",
+        "bookId": "emotion",
+        "page": "A2",
+        "section": "VI",
+        "sp": 5,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "Guile",
+        "defense": "Reason",
+        "defenseAttribute": "Reason",
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One creature within 6 squares that understands you",
+        "duration": "Until the end of its next turn",
+        "effect": "State one brief command: move to a named safe place, release a held object, or perform one ordinary interaction. On its turn the target chooses to perform that command using its own actions or suffer Dazed 1/2/3 from resisting the pressure. Once that choice resolves, the command ends."
+      }
+    }
+  },
+  "effects": []
+}

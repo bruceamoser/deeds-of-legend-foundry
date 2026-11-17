@@ -1,0 +1,47 @@
+{
+  "_key": "!items!d3b30992020b594b",
+  "_id": "d3b30992020b594b",
+  "name": "Follow My Leap III",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Follow My Leap can guide two willing adjacent allies through the jump, each to a different legal square adjacent to your destination.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "athletics:leaping:6",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "athletics:leaping:6",
+        "level": 3,
+        "cost": 4,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Follow My Leap can guide two willing adjacent allies through the jump, each to a different legal square adjacent to your destination.",
+        "improves": "athletics:leaping:4",
+        "requires": [
+          "athletics:leaping:5"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

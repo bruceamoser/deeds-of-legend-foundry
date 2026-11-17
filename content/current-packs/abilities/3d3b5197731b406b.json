@@ -1,0 +1,65 @@
+{
+  "_key": "!items!3d3b5197731b406b",
+  "_id": "3d3b5197731b406b",
+  "name": "Hold Person",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Defense</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>One humanoid creature within 6 squares</dd></div><div><dt>Duration</dt><dd>Sustained, up to 1 minute</dd></div><div><dt>Hold attribute</dt><dd>Reason</dd></div><div><dt>Escape attribute</dt><dd>Reason</dd></div></dl><p>Bands of pale light grip its limbs. Apply Slowed 1/2/3; on Strong also apply Paralyzed 1. Each upkeep renews this casting’s original ratings rather than adding to them. A conscious target may spend a Main Action to attempt escape using the printed hold and escape attributes, even while these bands restrict its actions. Escape ends this casting’s conditions on that target; ending Sustain removes them.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "reason",
+      "defenseAttribute": "reason"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:binding:3",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:binding:3",
+        "level": 1,
+        "cost": 2,
+        "action": "Main Action",
+        "sp": 1,
+        "range": "One humanoid creature within 6 squares",
+        "duration": "Sustained, up to 1 minute",
+        "attribute": "Reason",
+        "defenseAttribute": "Reason",
+        "effect": "Bands of pale light grip its limbs. Apply Slowed 1/2/3; on Strong also apply Paralyzed 1. Each upkeep renews this casting’s original ratings rather than adding to them. A conscious target may spend a Main Action to attempt escape using the printed hold and escape attributes, even while these bands restrict its actions. Escape ends this casting’s conditions on that target; ending Sustain removes them.",
+        "improves": null,
+        "requires": [
+          "binding:0"
+        ],
+        "bookId": "binding"
+      },
+      "spell": {
+        "id": "spell:binding:3",
+        "name": "Hold Person",
+        "bookId": "binding",
+        "page": "3",
+        "section": "II",
+        "sp": 1,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "Reason",
+        "defense": "Reason",
+        "defenseAttribute": "Reason",
+        "holdAttribute": "Reason",
+        "escapeAttribute": "Reason",
+        "target": "One humanoid creature within 6 squares",
+        "duration": "Sustained, up to 1 minute",
+        "effect": "Bands of pale light grip its limbs. Apply Slowed 1/2/3; on Strong also apply Paralyzed 1. Each upkeep renews this casting’s original ratings rather than adding to them. A conscious target may spend a Main Action to attempt escape using the printed hold and escape attributes, even while these bands restrict its actions. Escape ends this casting’s conditions on that target; ending Sustain removes them."
+      }
+    }
+  },
+  "effects": []
+}

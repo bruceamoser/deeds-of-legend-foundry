@@ -1,0 +1,47 @@
+{
+  "_key": "!items!1454bf0236999610",
+  "_id": "1454bf0236999610",
+  "name": "Wild Harvest I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Timed work</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div></dl><p>1 hour · Knowledge. Search an accessible area with plausible resources; gather 1/2/3 person-days of food, or that much drinkable water if a source exists. The DA defines the area before rolling. You can also spend 1 hour with available materials to shelter two people from ordinary rain and wind, without a roll.</p>",
+    "activity": {
+      "action": "other",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "wilderness:provisioning:1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "technique",
+        "nodeId": "wilderness:provisioning:1",
+        "level": 1,
+        "cost": 1,
+        "action": "Timed work",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": "Knowledge",
+        "defenseAttribute": null,
+        "effect": "1 hour · Knowledge. Search an accessible area with plausible resources; gather 1/2/3 person-days of food, or that much drinkable water if a source exists. The DA defines the area before rolling. You can also spend 1 hour with available materials to shelter two people from ordinary rain and wind, without a roll.",
+        "improves": null,
+        "requires": [
+          "wilderness"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

@@ -1,0 +1,47 @@
+{
+  "_key": "!items!e2c041bb47fb4c11",
+  "_id": "e2c041bb47fb4c11",
+  "name": "Quiet Passage III",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Quiet Passage extends its Boon to one willing adjacent companion moving with you through the same concealment.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "subterfuge:stealth:3",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "subterfuge:stealth:3",
+        "level": 1,
+        "cost": 2,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Quiet Passage extends its Boon to one willing adjacent companion moving with you through the same concealment.",
+        "improves": "subterfuge:stealth:1",
+        "requires": [
+          "subterfuge:stealth:2"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

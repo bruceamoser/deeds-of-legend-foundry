@@ -1,0 +1,47 @@
+{
+  "_key": "!items!f3637606bcd830c3",
+  "_id": "f3637606bcd830c3",
+  "name": "Hold Their Attention I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Reaction</dd></div><div><dt>Attribute</dt><dd>Guile</dd></div></dl><p>Reaction · Guile. When up to three listeners within 6 squares who understand you begin to turn attention from your ongoing plausible distraction, renew it with a new detail before they act. Add 1/2/3 progress toward holding their attention for one minute. On completion allies gain 1 Boon on unnoticed tasks outside those listeners’ direct sight for that minute. Once per distinct interruption; you may also begin this distraction through an ordinary exchange.</p>",
+    "activity": {
+      "action": "reaction",
+      "rollMode": "attribute",
+      "attribute": "guile",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "influence:rejoinder:4",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "technique",
+        "nodeId": "influence:rejoinder:4",
+        "level": 3,
+        "cost": 3,
+        "action": "Reaction",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": "Guile",
+        "defenseAttribute": null,
+        "effect": "Reaction · Guile. When up to three listeners within 6 squares who understand you begin to turn attention from your ongoing plausible distraction, renew it with a new detail before they act. Add 1/2/3 progress toward holding their attention for one minute. On completion allies gain 1 Boon on unnoticed tasks outside those listeners’ direct sight for that minute. Once per distinct interruption; you may also begin this distraction through an ordinary exchange.",
+        "improves": null,
+        "requires": [
+          "influence:rejoinder:3"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

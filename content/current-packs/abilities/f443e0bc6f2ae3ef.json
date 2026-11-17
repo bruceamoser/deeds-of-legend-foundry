@@ -1,0 +1,47 @@
+{
+  "_key": "!items!f443e0bc6f2ae3ef",
+  "_id": "f443e0bc6f2ae3ef",
+  "name": "Deep Reserves II",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Increase maximum SP by another 3; this path now grants +13 maximum SP.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spellcraft:soul-capacity:5",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "training",
+        "nodeId": "spellcraft:soul-capacity:5",
+        "level": 3,
+        "cost": 4,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Increase maximum SP by another 3; this path now grants +13 maximum SP.",
+        "improves": "spellcraft:soul-capacity:4",
+        "requires": [
+          "spellcraft:soul-capacity:4"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

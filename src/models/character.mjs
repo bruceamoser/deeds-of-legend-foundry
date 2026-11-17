@@ -1,11 +1,12 @@
+import {equipmentAttributeValue} from "../rules/effective-attributes.mjs";
 import {
   ATTRIBUTES,
   characterSummary,
   validateCharacter,
 } from "../rules/character.mjs";
 import { StrictNumberField as NumberField } from "./fields.mjs";
-import { normalizeRecovery } from "../rules/recovery.mjs";
-const { SchemaField, StringField, BooleanField } = foundry.data.fields;
+import { normalizeForgeRecovery } from "../rules/forge-recovery.mjs";
+const { ArrayField, SchemaField, StringField, BooleanField } = foundry.data.fields;
 const integer = (initial, min = 0, max) =>
   new NumberField({
     required: true,
@@ -29,11 +30,14 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
         ),
       ),
       health: new SchemaField({ value: integer(12), baseMax: integer(12, 1) }),
-      grit: new SchemaField({ granted: integer(2), spent: integer(0) }),
+      grit: new SchemaField({ granted: integer(1), spent: integer(0) }),
+      sp: new SchemaField({ value: integer(0), max: integer(0) }),
       recovery: new SchemaField({
-        unavailableHp: integer(0, 0, 1),
+        unavailableHp: integer(0, 0),
         debtUsed: new BooleanField({ required: true, nullable: false, initial: false }),
       }),
+      damageImmunities: new ArrayField(new StringField({required:true, nullable:false, blank:false}), {required:true, nullable:false, initial:[]}),
+      conditionImmunities: new ArrayField(new StringField({required:true, nullable:false, blank:false}), {required:true, nullable:false, initial:[]}),
       memorizedMessage: new StringField({
         required: true,
         nullable: false,
@@ -49,14 +53,17 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
   }
   static validateJoint(data) {
     validateCharacter(data);
-    normalizeRecovery(data.recovery);
+    normalizeForgeRecovery(data.recovery);
   }
   prepareDerivedData() {
     const summary = characterSummary(this);
     this.health.max = summary.healthMax;
     this.grit.available = summary.gritAvailable;
-    for (const key of ATTRIBUTES)
-      this.attributes[key].effective = this.attributes[key].base;
+    this.attributeEffectErrors = [];
+    for (const key of ATTRIBUTES) {
+      try {this.attributes[key].effective = equipmentAttributeValue(this.attributes[key].base,this.parent?.items??[],key);}
+      catch(error) {this.attributes[key].effective = null;this.attributeEffectErrors.push(error.message);}
+    }
   }
   get attributeTotal() {
     return characterSummary(this).attributeTotal;

@@ -1,0 +1,47 @@
+{
+  "_key": "!items!3edb80ef5c085b58",
+  "_id": "3edb80ef5c085b58",
+  "name": "The Last Safe Step",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Reaction</dd></div></dl><p>Reaction. When an ally within 4 squares is about to take damage from an attack or fall, move up to 4 squares to reach it. If you reach it, move together up to 2 more squares and reduce that damage by 4 after resistance. Neither creature triggers movement reactions during this rescue. An attack still resolves against its original target; a fall ends only if the destination supports both creatures. Fall damage can reach 0. No roll beyond the original defense.</p>",
+    "activity": {
+      "action": "reaction",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "guard:interception:7",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "mastery",
+        "nodeId": "guard:interception:7",
+        "level": 7,
+        "cost": 5,
+        "action": "Reaction",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Reaction. When an ally within 4 squares is about to take damage from an attack or fall, move up to 4 squares to reach it. If you reach it, move together up to 2 more squares and reduce that damage by 4 after resistance. Neither creature triggers movement reactions during this rescue. An attack still resolves against its original target; a fall ends only if the destination supports both creatures. Fall damage can reach 0. No roll beyond the original defense.",
+        "improves": null,
+        "requires": [
+          "guard:interception:6"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

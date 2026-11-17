@@ -1,0 +1,47 @@
+{
+  "_key": "!items!3a24af92bca2f721",
+  "_id": "3a24af92bca2f721",
+  "name": "Keep Them Breathing I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Reaction</dd></div></dl><p>Reaction. Before an adjacent living creature rolls a death roll, support its breathing with a free hand and grant that roll 1 Boon. Apply its result normally. No extra roll or healing.</p>",
+    "activity": {
+      "action": "reaction",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "medicine:resuscitation:1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "technique",
+        "nodeId": "medicine:resuscitation:1",
+        "level": 1,
+        "cost": 1,
+        "action": "Reaction",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Reaction. Before an adjacent living creature rolls a death roll, support its breathing with a free hand and grant that roll 1 Boon. Apply its result normally. No extra roll or healing.",
+        "improves": null,
+        "requires": [
+          "medicine"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

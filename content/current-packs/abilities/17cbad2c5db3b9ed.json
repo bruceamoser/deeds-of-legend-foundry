@@ -1,0 +1,66 @@
+{
+  "_key": "!items!17cbad2c5db3b9ed",
+  "_id": "17cbad2c5db3b9ed",
+  "name": "Arcane Lock",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 minute</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One adjacent closed door or container</dd></div><div><dt>Duration</dt><dd>8 hours</dd></div></dl><p>Add magical fastening. An ordinary opening objective increases by 3 progress. Name up to six creatures who may operate it normally. Knock ends the magical fastening automatically. Completing a cancellation objective also ends it. Physical locks remain in place.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:seals:3",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:seals:3",
+        "level": 1,
+        "cost": 2,
+        "action": "Ritual · 1 minute",
+        "sp": 1,
+        "range": "One adjacent closed door or container",
+        "duration": "8 hours",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Add magical fastening. An ordinary opening objective increases by 3 progress. Name up to six creatures who may operate it normally. Knock ends the magical fastening automatically. Completing a cancellation objective also ends it. Physical locks remain in place.",
+        "improves": null,
+        "requires": [
+          "seals:0"
+        ],
+        "bookId": "seals"
+      },
+      "spell": {
+        "id": "spell:seals:3",
+        "name": "Arcane Lock",
+        "bookId": "seals",
+        "page": "3",
+        "section": "II",
+        "sp": 1,
+        "action": "Ritual",
+        "actionText": "Ritual · 1 minute",
+        "ritualTime": "1 minute",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One adjacent closed door or container",
+        "duration": "8 hours",
+        "effect": "Add magical fastening. An ordinary opening objective increases by 3 progress. Name up to six creatures who may operate it normally. Knock ends the magical fastening automatically. Completing a cancellation objective also ends it. Physical locks remain in place."
+      }
+    }
+  },
+  "effects": []
+}

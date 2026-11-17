@@ -1,0 +1,66 @@
+{
+  "_key": "!items!b43f6c03484b2448",
+  "_id": "b43f6c03484b2448",
+  "name": "Gentle Repose",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 minute</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One adjacent corpse</dd></div><div><dt>Duration</dt><dd>24 hours</dd></div></dl><p>Preserve the body from ordinary decay. Time under Gentle Repose still counts toward any spell&#39;s stated resurrection deadline; preservation keeps the remains suitable for examination or rites.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:spirits:2",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:spirits:2",
+        "level": 1,
+        "cost": 1,
+        "action": "Ritual · 1 minute",
+        "sp": 1,
+        "range": "One adjacent corpse",
+        "duration": "24 hours",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Preserve the body from ordinary decay. Time under Gentle Repose still counts toward any spell's stated resurrection deadline; preservation keeps the remains suitable for examination or rites.",
+        "improves": null,
+        "requires": [
+          "invocation"
+        ],
+        "bookId": "spirits"
+      },
+      "spell": {
+        "id": "spell:spirits:2",
+        "name": "Gentle Repose",
+        "bookId": "spirits",
+        "page": "2",
+        "section": "I",
+        "sp": 1,
+        "action": "Ritual",
+        "actionText": "Ritual · 1 minute",
+        "ritualTime": "1 minute",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One adjacent corpse",
+        "duration": "24 hours",
+        "effect": "Preserve the body from ordinary decay. Time under Gentle Repose still counts toward any spell's stated resurrection deadline; preservation keeps the remains suitable for examination or rites."
+      }
+    }
+  },
+  "effects": []
+}

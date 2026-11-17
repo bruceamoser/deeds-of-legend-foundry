@@ -1,0 +1,46 @@
+{
+  "_key": "!items!93208881fb8bc29b",
+  "_id": "93208881fb8bc29b",
+  "name": "Blow the Horn",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>Guile</dd></div><div><dt>Target / range / shape</dt><dd>Every enemy within 5 squares that can hear you.</dd></div><div><dt>Duration</dt><dd>Conditions use normal decay.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div></dl><p>Make one Guile roll and apply the result to each target. On a Weak result, apply Frightened 1. On a Standard result, apply Frightened 1 and Dazed 1. On a Strong result, apply Frightened 2 and Dazed 1.</p><p>Use once per scene. Roll using the least favorable applicable Boons/Banes. Apply hearing requirements and condition immunities normally.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "attribute",
+      "attribute": "guile",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-signature-leader-hold-your-nerve",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "ability",
+        "nodeId": "ability-signature-leader-hold-your-nerve",
+        "level": 3,
+        "cost": 0,
+        "action": "Maneuver",
+        "sp": null,
+        "range": "Every enemy within 5 squares that can hear you.",
+        "duration": "Conditions use normal decay.",
+        "attribute": "Guile",
+        "defenseAttribute": null,
+        "effect": "**Action:** Maneuver · **Attribute:** Guile\n\n**Target / range / shape:** Every enemy within 5 squares that can hear you.\n\nMake one Guile roll and apply the result to each target. On a Weak result, apply Frightened 1. On a Standard result, apply Frightened 1 and Dazed 1. On a Strong result, apply Frightened 2 and Dazed 1.\n\n**Duration:** Conditions use normal decay.\n\n**Equipment / acquisition:** None.\n\nUse once per scene. Roll using the least favorable applicable Boons/Banes. Apply hearing requirements and condition immunities normally.",
+        "improves": null,
+        "requires": [],
+        "bookId": null,
+        "magic": null
+      }
+    }
+  },
+  "effects": []
+}

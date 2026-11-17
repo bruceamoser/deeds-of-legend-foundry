@@ -98,7 +98,7 @@ export class DamagePanel extends foundry.applications.api.HandlebarsApplicationM
       const output = this.element.querySelector("[data-preview]");
       try {
         const plan = damagePreview(this.actor, this.basis, this.draft());
-        output.textContent = `${plan.event.total} damage · HP ${this.basis.hp} → ${plan.after}${plan.survival ? ` · ${plan.survival.status}` : ""}${plan.wound ? " · New wound" : ""}`;
+        output.textContent = `${plan.event.total} damage · HP ${this.basis.hp} → ${plan.after}`;
       } catch (e) {
         output.textContent = e.message;
       }

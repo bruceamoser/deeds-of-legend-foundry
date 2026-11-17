@@ -1,0 +1,65 @@
+{
+  "_key": "!items!3eae1e9f51da3470",
+  "_id": "3eae1e9f51da3470",
+  "name": "Mass Cure Wounds",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>4</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>Up to three living creatures within 6 squares</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Weave wounds closed across a small company. Roll once; each restores 4/6/8 HP after Life resistance.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "reason",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:restoration:8",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:restoration:8",
+        "level": 3,
+        "cost": 3,
+        "action": "Main Action",
+        "sp": 4,
+        "range": "Up to three living creatures within 6 squares",
+        "duration": "Instant",
+        "attribute": "Reason",
+        "defenseAttribute": null,
+        "effect": "Weave wounds closed across a small company. Roll once; each restores 4/6/8 HP after Life resistance.",
+        "improves": null,
+        "requires": [
+          "restoration:2"
+        ],
+        "bookId": "restoration"
+      },
+      "spell": {
+        "id": "spell:restoration:8",
+        "name": "Mass Cure Wounds",
+        "bookId": "restoration",
+        "page": "8",
+        "section": "IV",
+        "sp": 4,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "Reason",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Up to three living creatures within 6 squares",
+        "duration": "Instant",
+        "effect": "Weave wounds closed across a small company. Roll once; each restores 4/6/8 HP after Life resistance."
+      }
+    }
+  },
+  "effects": []
+}

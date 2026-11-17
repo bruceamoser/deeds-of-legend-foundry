@@ -1,0 +1,47 @@
+{
+  "_key": "!items!e4e6f24b3a751c8d",
+  "_id": "e4e6f24b3a751c8d",
+  "name": "Catch Them Falling III",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Catch Them Falling can catch a creature one Size larger than you when your footing and anchor support both creatures.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "athletics:balance:6",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "athletics:balance:6",
+        "level": 3,
+        "cost": 4,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Catch Them Falling can catch a creature one Size larger than you when your footing and anchor support both creatures.",
+        "improves": "athletics:balance:4",
+        "requires": [
+          "athletics:balance:5"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

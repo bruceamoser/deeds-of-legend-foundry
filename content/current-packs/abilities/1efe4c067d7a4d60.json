@@ -1,0 +1,45 @@
+{
+  "_key": "!items!1efe4c067d7a4d60",
+  "_id": "1efe4c067d7a4d60",
+  "name": "Basic Throw",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Brawn</dd></div><div><dt>Range</dt><dd>One visible creature within 3 squares</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>**Action:** Main Action · **Attribute:** Brawn</p><p>**Target / range / shape:** One visible creature within 3 squares</p><p>Choose your target and make the attack.</p><p>- **Weak:** 2 physical damage.<br>- **Standard:** 3 physical damage.<br>- **Strong:** 5 physical damage.</p><p>**Duration:** Instant</p><p>**Equipment / acquisition:** Requires a suitable carried object; grants none. The thrown object lands in the target square.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "brawn",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-basic-throw",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "ability",
+        "nodeId": "ability-basic-throw",
+        "level": 0,
+        "cost": 0,
+        "action": "Main Action",
+        "sp": null,
+        "range": "One visible creature within 3 squares",
+        "duration": "Instant",
+        "attribute": "Brawn",
+        "defenseAttribute": null,
+        "effect": "**Action:** Main Action · **Attribute:** Brawn\n\n**Target / range / shape:** One visible creature within 3 squares\n\nChoose your target and make the attack.\n\n- **Weak:** 2 physical damage.\n- **Standard:** 3 physical damage.\n- **Strong:** 5 physical damage.\n\n**Duration:** Instant\n\n**Equipment / acquisition:** Requires a suitable carried object; grants none. The thrown object lands in the target square.",
+        "improves": null,
+        "requires": [],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

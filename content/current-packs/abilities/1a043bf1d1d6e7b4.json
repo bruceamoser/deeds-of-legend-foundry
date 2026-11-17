@@ -1,0 +1,65 @@
+{
+  "_key": "!items!1a043bf1d1d6e7b4",
+  "_id": "1a043bf1d1d6e7b4",
+  "name": "Mirror Image",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>Self</dd></div><div><dt>Duration</dt><dd>1 minute or until three attacks resolve against you</dd></div></dl><p>Create three shifting doubles. Gain 1 Boon to defenses against attacks that depend on seeing you. After each such attack resolves, one double vanishes. The remaining doubles provide the same single Boon.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:perception:4",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:perception:4",
+        "level": 1,
+        "cost": 2,
+        "action": "Main Action",
+        "sp": 2,
+        "range": "Self",
+        "duration": "1 minute or until three attacks resolve against you",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Create three shifting doubles. Gain 1 Boon to defenses against attacks that depend on seeing you. After each such attack resolves, one double vanishes. The remaining doubles provide the same single Boon.",
+        "improves": null,
+        "requires": [
+          "perception:0"
+        ],
+        "bookId": "perception"
+      },
+      "spell": {
+        "id": "spell:perception:4",
+        "name": "Mirror Image",
+        "bookId": "perception",
+        "page": "4",
+        "section": "II",
+        "sp": 2,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Self",
+        "duration": "1 minute or until three attacks resolve against you",
+        "effect": "Create three shifting doubles. Gain 1 Boon to defenses against attacks that depend on seeing you. After each such attack resolves, one double vanishes. The remaining doubles provide the same single Boon."
+      }
+    }
+  },
+  "effects": []
+}

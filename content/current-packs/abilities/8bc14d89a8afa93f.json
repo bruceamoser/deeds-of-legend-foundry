@@ -1,0 +1,65 @@
+{
+  "_key": "!items!8bc14d89a8afa93f",
+  "_id": "8bc14d89a8afa93f",
+  "name": "Plant Growth",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>3</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>A 6-by-6-square patch of existing ordinary vegetation within 6 squares</dd></div><div><dt>Duration</dt><dd>24 hours</dd></div></dl><p>Existing plants immediately swell into dense, tangled growth, making the affected squares difficult terrain. Use the normal difficult-terrain movement costs, including when crawling. Choose any squares to leave clear when casting, including paths through the growth. Creatures already there remain in place and can act normally. The growth lasts 24 hours without Sustain.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:growth:6",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:growth:6",
+        "level": 1,
+        "cost": 2,
+        "action": "Main Action",
+        "sp": 3,
+        "range": "A 6-by-6-square patch of existing ordinary vegetation within 6 squares",
+        "duration": "24 hours",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Existing plants immediately swell into dense, tangled growth, making the affected squares difficult terrain. Use the normal difficult-terrain movement costs, including when crawling. Choose any squares to leave clear when casting, including paths through the growth. Creatures already there remain in place and can act normally. The growth lasts 24 hours without Sustain.",
+        "improves": null,
+        "requires": [
+          "growth:1"
+        ],
+        "bookId": "growth"
+      },
+      "spell": {
+        "id": "spell:growth:6",
+        "name": "Plant Growth",
+        "bookId": "growth",
+        "page": "6",
+        "section": "III",
+        "sp": 3,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "A 6-by-6-square patch of existing ordinary vegetation within 6 squares",
+        "duration": "24 hours",
+        "effect": "Existing plants immediately swell into dense, tangled growth, making the affected squares difficult terrain. Use the normal difficult-terrain movement costs, including when crawling. Choose any squares to leave clear when casting, including paths through the growth. Creatures already there remain in place and can act normally. The growth lasts 24 hours without Sustain."
+      }
+    }
+  },
+  "effects": []
+}

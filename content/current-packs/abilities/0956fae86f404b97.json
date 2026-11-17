@@ -1,0 +1,113 @@
+{
+  "_key": "!items!0956fae86f404b97",
+  "_id": "0956fae86f404b97",
+  "name": "The Unseen Procession",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>You and each ally within 5 squares; each enemy within 5 squares.</dd></div><div><dt>Magic</dt><dd>Spell</dd></div><div><dt>SP</dt><dd>0</dd></div><div><dt>Duration</dt><dd>Until the end of your next turn.</dd></div><div><dt>Equipment / acquisition</dt><dd>A free hand for casting.</dd></div></dl><p>Once per scene, spectral figures fill the area. You and each ally gain 1 Boon to your next defense and may move 1 square without provoking. Each enemy gains 1 Bane to its next attack.</p><p>This is a spell costing 0 SP. When the same attack would suffer both this spell’s attack Bane and its recipient’s defense Boon, apply only one of them.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-signature-odd-an-unexpected-exit",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "ability-signature-odd-an-unexpected-exit",
+        "level": 7,
+        "cost": 0,
+        "action": "Main Action",
+        "sp": 0,
+        "range": "You and each ally within 5 squares; each enemy within 5 squares.",
+        "duration": "Until the end of your next turn.",
+        "attribute": "None (no roll)",
+        "defenseAttribute": null,
+        "effect": "**Action:** Main Action · **Attribute:** None (no roll)\n\n**Target / range / shape:** You and each ally within 5 squares; each enemy within 5 squares.\n\nOnce per scene, spectral figures fill the area. You and each ally gain 1 Boon to your next defense and may move 1 square without provoking. Each enemy gains 1 Bane to its next attack.\n\n**Duration:** Until the end of your next turn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP. When the same attack would suffer both this spell’s attack Bane and its recipient’s defense Boon, apply only one of them.",
+        "improves": null,
+        "requires": [],
+        "bookId": null,
+        "magic": "Spell"
+      },
+      "spell": {
+        "id": "ability-signature-odd-an-unexpected-exit",
+        "name": "The Unseen Procession",
+        "level": 7,
+        "dp": null,
+        "action": "Main Action",
+        "attribute": "None (no roll)",
+        "target": "You and each ally within 5 squares; each enemy within 5 squares.",
+        "duration": "Until the end of your next turn.",
+        "equipment": "A free hand for casting.",
+        "limits": "One signature choice at each of levels 1, 3 and 7.",
+        "effect": "**Action:** Main Action · **Attribute:** None (no roll)\n\n**Target / range / shape:** You and each ally within 5 squares; each enemy within 5 squares.\n\nOnce per scene, spectral figures fill the area. You and each ally gain 1 Boon to your next defense and may move 1 square without provoking. Each enemy gains 1 Bane to its next attack.\n\n**Duration:** Until the end of your next turn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP. When the same attack would suffer both this spell’s attack Bane and its recipient’s defense Boon, apply only one of them.",
+        "reference": {
+          "flavor": [
+            "You make the familiar world answer in an unfamiliar voice."
+          ],
+          "rules": {
+            "details": [
+              {
+                "label": "Action",
+                "value": "Main Action"
+              },
+              {
+                "label": "Attribute",
+                "value": "None (no roll)"
+              },
+              {
+                "label": "Target / range / shape",
+                "value": "You and each ally within 5 squares; each enemy within 5 squares."
+              },
+              {
+                "label": "Magic",
+                "value": "Spell"
+              },
+              {
+                "label": "SP",
+                "value": "0"
+              },
+              {
+                "label": "Duration",
+                "value": "Until the end of your next turn."
+              },
+              {
+                "label": "Equipment / acquisition",
+                "value": "A free hand for casting."
+              }
+            ],
+            "body": [
+              {
+                "text": "Once per scene, spectral figures fill the area. You and each ally gain 1 Boon to your next defense and may move 1 square without provoking. Each enemy gains 1 Bane to its next attack."
+              },
+              {
+                "text": "This is a spell costing 0 SP. When the same attack would suffer both this spell’s attack Bane and its recipient’s defense Boon, apply only one of them."
+              }
+            ],
+            "notes": []
+          }
+        },
+        "referenceMarkdown": "**Action:** Main Action · **Attribute:** None (no roll)\n\n**Target / range / shape:** You and each ally within 5 squares; each enemy within 5 squares.\n\nOnce per scene, spectral figures fill the area. You and each ally gain 1 Boon to your next defense and may move 1 square without provoking. Each enemy gains 1 Bane to its next attack.\n\n**Duration:** Until the end of your next turn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP. When the same attack would suffer both this spell’s attack Bane and its recipient’s defense Boon, apply only one of them.",
+        "classId": "class-odd",
+        "lineId": "odd:use-their-voice",
+        "signatureComponent": true,
+        "kind": "ability",
+        "sp": 0,
+        "magic": "Spell",
+        "rulesMarkdown": "**Action:** Main Action · **Attribute:** None (no roll)\n\n**Target / range / shape:** You and each ally within 5 squares; each enemy within 5 squares.\n\nOnce per scene, spectral figures fill the area. You and each ally gain 1 Boon to your next defense and may move 1 square without provoking. Each enemy gains 1 Bane to its next attack.\n\n**Duration:** Until the end of your next turn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP. When the same attack would suffer both this spell’s attack Bane and its recipient’s defense Boon, apply only one of them."
+      }
+    }
+  },
+  "effects": []
+}

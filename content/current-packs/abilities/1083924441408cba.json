@@ -1,0 +1,45 @@
+{
+  "_key": "!items!1083924441408cba",
+  "_id": "1083924441408cba",
+  "name": "Stand",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Movement</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Range</dt><dd>Self, while prone</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>**Action:** Movement · **Attribute:** None — no roll</p><p>**Target / range / shape:** Self, while prone</p><p>Spend 2 squares of movement to stand. This spends movement, not a Maneuver.</p><p>**Duration:** Instant</p><p>**Equipment / acquisition:** None.</p>",
+    "activity": {
+      "action": "movement",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-stand",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "ability",
+        "nodeId": "ability-stand",
+        "level": 0,
+        "cost": 0,
+        "action": "Movement",
+        "sp": null,
+        "range": "Self, while prone",
+        "duration": "Instant",
+        "attribute": "None — no roll",
+        "defenseAttribute": null,
+        "effect": "**Action:** Movement · **Attribute:** None — no roll\n\n**Target / range / shape:** Self, while prone\n\nSpend 2 squares of movement to stand. This spends movement, not a Maneuver.\n\n**Duration:** Instant\n\n**Equipment / acquisition:** None.",
+        "improves": null,
+        "requires": [],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

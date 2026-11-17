@@ -1,6 +1,6 @@
 # Corin Ashguard: fighter after the rewrite
 
-Pinned authored source `87f5141bd6e0da74a10c07b3239e975c7656430a`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../fighter.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
+Pinned authored source `f71eac4c46fce6906d6dfbd1638ee98b10a6c538`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../fighter.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
 
 ## What the rewrite changes
 
@@ -16,7 +16,7 @@ No Second Wind pool or exact Action Surge is selected. Heavy-armor training is r
 | SP | 3 | 7 | 15 |
 | DP spent / total | 7 / 8 | 20 / 21 | 56 / 59 |
 | Unspent DP | 1 | 1 | 3 |
-| Learned action choices (Main / Maneuver / Reaction) | 1 / 1 / 3 | 2 / 1 / 3 | 3 / 1 / 5 |
+| Learned action choices (Main / Maneuver / Reaction) | 1 / 1 / 3 | 2 / 1 / 4 | 3 / 1 / 6 |
 | Known book spells (free / paid) | 0 (0 / 0) | 0 (0 / 0) | 0 (0 / 0) |
 | Shared reserve: casts at 2 SP | 1 | 3 | 7 |
 | Shared reserve: casts at 5 SP | 0 | 1 | 3 |
@@ -114,13 +114,13 @@ You must wield a melee weapon to use this guard and counterattack. A granted cou
 
 <details><summary>Return Stroke: complete signature component</summary>
 
-**Action:** Passive · **Attribute:** None
+**Action:** Reaction · **Attribute:** None (roll the triggering defense normally)
 
-**Target / range / shape:** Your Measured Guard.
+**Target / range / shape:** Self, before a defense against an adjacent enemy.
 
-Measured Guard grants its Basic Melee counterattack after a Standard or Strong defense. It remains one Reaction: declare the guard before defending, gain its Boon, resolve the triggering attack, then counter if the attacker is still in reach and you can attack.
+Declare this guard before defending and gain 1 Boon to the defense. Resolve the triggering attack. After a Standard or Strong defense, if the attacker is still within your melee reach and you can attack, make one Basic Melee attack against it. The counterattack is part of this Reaction and does not use your Main Action. A granted counterattack cannot trigger another granted attack.
 
-**Duration:** The triggering defense and counterattack.
+**Duration:** The triggering defense and immediate counterattack.
 
 **Equipment / acquisition:** A ready melee weapon.
 
@@ -186,31 +186,31 @@ You must wield a melee weapon to use this guard and counterattack. A granted cou
 
 </details>
 
+<details><summary>Return Stroke: complete signature component</summary>
+
+**Action:** Reaction · **Attribute:** None (roll the triggering defense normally)
+
+**Target / range / shape:** Self, before a defense against an adjacent enemy.
+
+Declare this guard before defending and gain 1 Boon to the defense. Resolve the triggering attack. After a Standard or Strong defense, if the attacker is still within your melee reach and you can attack, make one Basic Melee attack against it. The counterattack is part of this Reaction and does not use your Main Action. A granted counterattack cannot trigger another granted attack.
+
+**Duration:** The triggering defense and immediate counterattack.
+
+**Equipment / acquisition:** A ready melee weapon.
+
+</details>
+
 <details><summary>Twitch Reflexes: complete signature component</summary>
 
 **Action:** Passive · **Attribute:** None
 
 **Target / range / shape:** Self.
 
-Each round you have one additional Reaction usable only for Measured Guard or an opportunity attack. Use at most one Measured Guard against a given attack. Your normal Reaction remains available for any reaction you know.
+Each round you have one additional Reaction usable for an opportunity attack. Your normal Reaction remains available for any reaction you know. If you also know Measured Guard or Return Stroke, you may spend this additional Reaction on either instead. Use one of these guards against a given attack.
 
 **Duration:** Permanent.
 
 **Equipment / acquisition:** None.
-
-</details>
-
-<details><summary>Return Stroke: complete signature component</summary>
-
-**Action:** Passive · **Attribute:** None
-
-**Target / range / shape:** Your Measured Guard.
-
-Measured Guard grants its Basic Melee counterattack after a Standard or Strong defense. It remains one Reaction: declare the guard before defending, gain its Boon, resolve the triggering attack, then counter if the attacker is still in reach and you can attack.
-
-**Duration:** The triggering defense and counterattack.
-
-**Equipment / acquisition:** A ready melee weapon.
 
 </details>
 

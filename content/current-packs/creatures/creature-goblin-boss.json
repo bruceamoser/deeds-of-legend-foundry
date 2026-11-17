@@ -1,0 +1,325 @@
+{
+  "_key": "!actors!a5da533280d93981",
+  "_id": "a5da533280d93981",
+  "name": "Goblin Boss",
+  "type": "creature",
+  "img": "systems/heroes-of-legend/assets/creatures/3497671b1a5eaac88f7542a9b49d7d7a866c441a6a49d658f56e006ce0c0b8be.webp",
+  "prototypeToken": {
+    "width": 1,
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/3497671b1a5eaac88f7542a9b49d7d7a866c441a6a49d658f56e006ce0c0b8be.webp"
+    }
+  },
+  "system": {
+    "schemaVersion": 1,
+    "attributes": {
+      "brawn": {
+        "base": 0
+      },
+      "fortitude": {
+        "base": 0
+      },
+      "agility": {
+        "base": 2
+      },
+      "guile": {
+        "base": 1
+      },
+      "knowledge": {
+        "base": 0
+      },
+      "reason": {
+        "base": 1
+      }
+    },
+    "attributesSource": "Brawn +0; Fortitude +0; Agility +2; Guile +1; Knowledge +0; Reason +1",
+    "health": {
+      "value": 18,
+      "baseMax": 18,
+      "sourceText": "18"
+    },
+    "cv": 21,
+    "speed": 6,
+    "speedSource": "6",
+    "alternateSpeeds": [],
+    "size": 1,
+    "sizeLabel": "medium",
+    "sizeSource": "1 (medium)",
+    "footprint": {
+      "width": 1,
+      "height": 1
+    },
+    "armor": 1,
+    "armorMarker": "",
+    "armorSource": "1",
+    "stability": 0,
+    "threat": {
+      "boons": 0,
+      "banes": 1,
+      "sourceText": "1 Bane"
+    },
+    "evasion": {
+      "boons": 0,
+      "banes": 1,
+      "sourceText": "1 Bane"
+    },
+    "weaknesses": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "resistances": {
+      "numeric": [
+        {
+          "type": "Physical",
+          "value": 1
+        }
+      ],
+      "special": [],
+      "sourceText": "Physical (1)"
+    },
+    "immunities": [],
+    "basicMelee": {
+      "weak": 5,
+      "standard": 3,
+      "strong": 2,
+      "defenseAttribute": "agility",
+      "orientation": "player-defense"
+    },
+    "actions": {
+      "orientation": "player-defense",
+      "entries": [
+        {
+          "id": "main-0",
+          "category": "main",
+          "name": "Basic Melee",
+          "abilityId": "",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "5",
+            "standard": "3",
+            "strong": "2"
+          },
+          "effect": "5/3/2",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "main-1",
+          "category": "main",
+          "name": "Borrowed officer's blade",
+          "abilityId": "",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "7 + Prone",
+            "standard": "5",
+            "strong": "3"
+          },
+          "effect": "7 + Prone / 5 / 3",
+          "referenceMarkdown": "### Borrowed officer's blade\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Prone."
+        },
+        {
+          "id": "maneuver-0",
+          "category": "maneuver",
+          "name": "Make Room",
+          "abilityId": "",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "One ally within 3 may spend Reaction to move 2.",
+          "referenceMarkdown": "### Make Room\n\n*A clipped order sends one companion into the opening before it closes.*\n\nOne willing active ally within 3 squares that can hear it may spend that ally’s Reaction to move up to 2 squares. Movement provokes normally and pays terrain costs. An uncommanded summon cannot act; summons have no Reaction to spend."
+        },
+        {
+          "id": "maneuver-1",
+          "category": "maneuver",
+          "name": "Defend",
+          "abilityId": "",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "+1 Bane",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "reaction-0",
+          "category": "reaction",
+          "name": "Rally at the Blow",
+          "abilityId": "monster-rally-at-the-blow",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "After an ally within 3 takes HP damage: reduce Frightened 1; ward its next defense.",
+          "referenceMarkdown": "### Rally at the Blow\n\n*A sharp call catches the wounded companion's attention before pain can turn into panic.*\n\nAfter a visible willing ally within 3 squares takes HP damage from an attack, reduce that ally's Frightened by 1 if it can hear this creature. Then give it 1 Boon on its next defense before the start of this creature's next turn; for an NPC ally impose 1 Bane on the corresponding player attack. The defense benefit is consumed on that roll even if canceled and does not stack with itself. No healing or action is granted."
+        },
+        {
+          "id": "reaction-1",
+          "category": "reaction",
+          "name": "Opportunity Attack",
+          "abilityId": "",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Basic Melee",
+          "referenceMarkdown": ""
+        }
+      ],
+      "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates a complete outcome. All attacks use printed Threat unless stated otherwise.",
+      "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Borrowed officer's blade | Agility | 7 + Prone / 5 / 3 |",
+      "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Make Room | One ally within 3 may spend Reaction to move 2. |\n| Defend | +1 Bane |",
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Rally at the Blow | After an ally within 3 takes HP damage: reduce Frightened 1; ward its next defense. |\n| Opportunity Attack | Basic Melee |"
+    },
+    "details": {
+      "flavorMarkdown": "*An oversized officer's coat hangs from a goblin who has altered every pocket to hold maps, snacks and emergency bribes.*",
+      "specialtyMarkdown": "### Borrowed officer's blade\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Prone.\n\n### Make Room\n\n*A clipped order sends one companion into the opening before it closes.*\n\nOne willing active ally within 3 squares that can hear it may spend that ally’s Reaction to move up to 2 squares. Movement provokes normally and pays terrain costs. An uncommanded summon cannot act; summons have no Reaction to spend.\n\n### Rally at the Blow\n\n*A sharp call catches the wounded companion's attention before pain can turn into panic.*\n\nAfter a visible willing ally within 3 squares takes HP damage from an attack, reduce that ally's Frightened by 1 if it can hear this creature. Then give it 1 Boon on its next defense before the start of this creature's next turn; for an NPC ally impose 1 Bane on the corresponding player attack. The defense benefit is consumed on that roll even if canceled and does not stack with itself. No healing or action is granted.",
+      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until its next turn. Combines with Evasion through normal Boon/Bane rules; repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature; spend its Reaction before the provoking action resolves. That action continues if capable.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Ordinary sight and hearing.\n\n**Tactics and retreat:** Send a companion into a useful opening, then join the exposed flank. The order consumes that companion's Reaction rather than granting a free attack.\n\n**Encounter and conversation:** The boss needs a victory the settlement can celebrate more than another pile of bodies.\n\n**Habitat:** Settlement; frontier; contested road · **Communication:** Common and its community’s language\n\n**Loot:** Ordinary carried gear and 8 coins; special rewards belong to the adventure.\n\n**Summoning:** Ineligible.",
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-goblin-boss\n\n\n**Category:** Mortal · **Role:** Knockdown fighter · **CV:** 21\n\n### Creature-roll reference\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Borrowed officer's blade | Brawn | 1 Boon | 3 physical damage. | 5 physical damage. | 7 physical damage. Prone. |\n\nUse the attributes above for defenses named by incoming attacks. Same targeting, limits and costs apply; no opposed second roll.\n\n### CV worksheet\n\n**Reference damage:** 3/5/7\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.4\n\n**Action review (#1279):** U 1.3 → 1.4: Maneuver allowance +0, Reaction allowance +0.1. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.\n\n**Regeneration per turn:** 0\n\nReference I=3.404, O=4.596. Uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/encounters.md). Utility is provisional and does not simulate control, positioning or summon choices.\n\n**Ability sources:** [commanding step](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/commanding-step.md), [knockdown strike](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/knockdown-strike.md), [Rally at the Blow](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/rally-at-the-blow.md).\n\n**Coverage reference:** [Pathfinder family survey](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/family-survey.md); original HOL prose and mechanics.\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/roster.md) · [Stability](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/rules/stability.md)"
+    },
+    "biography": ""
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-goblin-boss",
+        "asset": "assets/creatures/3497671b1a5eaac88f7542a9b49d7d7a866c441a6a49d658f56e006ce0c0b8be.webp",
+        "sha256": "86385fa8f1ad75aa627cc9769c94777196be26bfbc379f46d90f6d8263894273",
+        "sourceSha256": "3497671b1a5eaac88f7542a9b49d7d7a866c441a6a49d658f56e006ce0c0b8be",
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
+      "catalogId": "creature-goblin-boss",
+      "source": {
+        "path": "design/bestiary/creatures/goblin-boss.md",
+        "sha256": "8dcb39a80eb498c36fc7e14471f854ef24c65395226dab8d184092a056949ac1"
+      },
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Printed profile · specialty automation pending",
+      "specialtyAutomation": "pending",
+      "classification": {
+        "category": "Mortal",
+        "role": "Knockdown fighter",
+        "cv": 21
+      },
+      "family": "Goblins",
+      "abilitySources": [
+        {
+          "label": "commanding step",
+          "id": "monster-commanding-step",
+          "path": "design/monster-abilities/commanding-step.md",
+          "sha256": "420c6d8bea618b0b92ca08d6d9d6eeab38d4527aed680202fd2116daebf42120"
+        },
+        {
+          "label": "knockdown strike",
+          "id": "monster-knockdown-strike",
+          "path": "design/monster-abilities/knockdown-strike.md",
+          "sha256": "14ed0e2bc7179f15ebab748a8ae9c27b9cf38f7e013790e84cf0a85b839a1961"
+        },
+        {
+          "label": "Rally at the Blow",
+          "id": "monster-rally-at-the-blow",
+          "path": "design/monster-abilities/rally-at-the-blow.md",
+          "sha256": "51c98f971cd6e353a9e5aff1820ba50a34ebefc4775ad79366efa1b46758a63a"
+        }
+      ],
+      "monsterAbilityTemplates": [
+        {
+          "id": "monster-commanding-step",
+          "path": "design/monster-abilities/commanding-step.md",
+          "sha256": "420c6d8bea618b0b92ca08d6d9d6eeab38d4527aed680202fd2116daebf42120",
+          "name": "Make Room",
+          "action": "Maneuver",
+          "flavorMarkdown": "*A clipped order sends one companion into the opening before it closes.*",
+          "rulesMarkdown": "One willing active ally within 3 squares that can hear it may spend that ally’s Reaction to move up to 2 squares. Movement provokes normally and pays terrain costs. An uncommanded summon cannot act; summons have no Reaction to spend.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Make Room\n\n*A clipped order sends one companion into the opening before it closes.*\n\n## Rules\n\n**ID:** monster-commanding-step\n\n\n**Action:** Maneuver\n\nOne willing active ally within 3 squares that can hear it may spend that ally’s Reaction to move up to 2 squares. Movement provokes normally and pays terrain costs. An uncommanded summon cannot act; summons have no Reaction to spend.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/commanding-step.md",
+            "sha256": "420c6d8bea618b0b92ca08d6d9d6eeab38d4527aed680202fd2116daebf42120"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-knockdown-strike",
+          "path": "design/monster-abilities/knockdown-strike.md",
+          "sha256": "14ed0e2bc7179f15ebab748a8ae9c27b9cf38f7e013790e84cf0a85b839a1961",
+          "name": "Knockdown Strike",
+          "action": "Main Action",
+          "flavorMarkdown": "*The target’s footing gives way beneath the force of the blow.*",
+          "rulesMarkdown": "Apply Prone only at the printed outcomes. Stability does not prevent Prone. Standing costs 2 squares of movement; no extra attack modifier is added.\n\nActual damage, targeting and defense attribute are printed on the creature card.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Knockdown Strike\n\n*The target’s footing gives way beneath the force of the blow.*\n\n## Rules\n\n**ID:** monster-knockdown-strike\n\n\n**Action:** Main Action\n\nApply Prone only at the printed outcomes. Stability does not prevent Prone. Standing costs 2 squares of movement; no extra attack modifier is added.\n\nActual damage, targeting and defense attribute are printed on the creature card.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/knockdown-strike.md",
+            "sha256": "14ed0e2bc7179f15ebab748a8ae9c27b9cf38f7e013790e84cf0a85b839a1961"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-rally-at-the-blow",
+          "path": "design/monster-abilities/rally-at-the-blow.md",
+          "sha256": "51c98f971cd6e353a9e5aff1820ba50a34ebefc4775ad79366efa1b46758a63a",
+          "name": "Rally at the Blow",
+          "action": "Reaction",
+          "flavorMarkdown": "*A sharp call catches the wounded companion's attention before pain can turn into panic.*",
+          "rulesMarkdown": "After a visible willing ally within 3 squares takes HP damage from an attack, reduce that ally's Frightened by 1 if it can hear this creature. Then give it 1 Boon on its next defense before the start of this creature's next turn; for an NPC ally impose 1 Bane on the corresponding player attack. The defense benefit is consumed on that roll even if canceled and does not stack with itself. No healing or action is granted.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Rally at the Blow\n\n*A sharp call catches the wounded companion's attention before pain can turn into panic.*\n\n## Rules\n\n**ID:** monster-rally-at-the-blow\n\n**Action:** Reaction\n\nAfter a visible willing ally within 3 squares takes HP damage from an attack, reduce that ally's Frightened by 1 if it can hear this creature. Then give it 1 Boon on its next defense before the start of this creature's next turn; for an NPC ally impose 1 Bane on the corresponding player attack. The defense benefit is consumed on that roll even if canceled and does not stack with itself. No healing or action is granted.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/rally-at-the-blow.md",
+            "sha256": "51c98f971cd6e353a9e5aff1820ba50a34ebefc4775ad79366efa1b46758a63a"
+          },
+          "automation": "pending"
+        }
+      ],
+      "summoning": {
+        "eligible": false,
+        "summonId": null,
+        "path": null,
+        "eligibility": null,
+        "sourceText": "Ineligible."
+      }
+    }
+  }
+}

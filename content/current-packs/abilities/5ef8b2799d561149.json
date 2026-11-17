@@ -1,0 +1,45 @@
+{
+  "_key": "!items!5ef8b2799d561149",
+  "_id": "5ef8b2799d561149",
+  "name": "Defend",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Range</dt><dd>Self</dd></div><div><dt>Duration</dt><dd>Until the start of your next turn</dd></div></dl><p>**Action:** Maneuver · **Attribute:** None — no roll</p><p>**Target / range / shape:** Self</p><p>Gain 1 Boon to defense rolls. Repeating this same benefit does not increase it. Shield Block is a separate source and stacks through Boon/Bane rules.</p><p>**Duration:** Until the start of your next turn</p><p>**Equipment / acquisition:** None.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-defend",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "ability",
+        "nodeId": "ability-defend",
+        "level": 0,
+        "cost": 0,
+        "action": "Maneuver",
+        "sp": null,
+        "range": "Self",
+        "duration": "Until the start of your next turn",
+        "attribute": "None — no roll",
+        "defenseAttribute": null,
+        "effect": "**Action:** Maneuver · **Attribute:** None — no roll\n\n**Target / range / shape:** Self\n\nGain 1 Boon to defense rolls. Repeating this same benefit does not increase it. Shield Block is a separate source and stacks through Boon/Bane rules.\n\n**Duration:** Until the start of your next turn\n\n**Equipment / acquisition:** None.",
+        "improves": null,
+        "requires": [],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

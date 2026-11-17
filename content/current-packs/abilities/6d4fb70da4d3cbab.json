@@ -1,0 +1,66 @@
+{
+  "_key": "!items!6d4fb70da4d3cbab",
+  "_id": "6d4fb70da4d3cbab",
+  "name": "Item Vision",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 10 minutes</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>One object held throughout the ritual</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>See a brief scene involving its most recent owner within the last month. Weak reveals the owner&#39;s appearance, Standard also the scene&#39;s surroundings, and Strong also one spoken exchange of up to twenty words.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "reason",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:echoes:4",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:echoes:4",
+        "level": 1,
+        "cost": 2,
+        "action": "Ritual · 10 minutes",
+        "sp": 2,
+        "range": "One object held throughout the ritual",
+        "duration": "Instant",
+        "attribute": "Reason",
+        "defenseAttribute": null,
+        "effect": "See a brief scene involving its most recent owner within the last month. Weak reveals the owner's appearance, Standard also the scene's surroundings, and Strong also one spoken exchange of up to twenty words.",
+        "improves": null,
+        "requires": [
+          "echoes:0"
+        ],
+        "bookId": "echoes"
+      },
+      "spell": {
+        "id": "spell:echoes:4",
+        "name": "Item Vision",
+        "bookId": "echoes",
+        "page": "4",
+        "section": "II",
+        "sp": 2,
+        "action": "Ritual",
+        "actionText": "Ritual · 10 minutes",
+        "ritualTime": "10 minutes",
+        "attribute": "Reason",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One object held throughout the ritual",
+        "duration": "Instant",
+        "effect": "See a brief scene involving its most recent owner within the last month. Weak reveals the owner's appearance, Standard also the scene's surroundings, and Strong also one spoken exchange of up to twenty words."
+      }
+    }
+  },
+  "effects": []
+}

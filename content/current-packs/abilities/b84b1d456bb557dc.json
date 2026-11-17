@@ -1,0 +1,47 @@
+{
+  "_key": "!items!b84b1d456bb557dc",
+  "_id": "b84b1d456bb557dc",
+  "name": "A Line for Everyone II",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>A Line for Everyone can rig up to 15 squares of carried rope; creatures using it gain 1 Boon on climbing rolls for remaining hazards.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "athletics:climbing:5",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "athletics:climbing:5",
+        "level": 3,
+        "cost": 4,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "A Line for Everyone can rig up to 15 squares of carried rope; creatures using it gain 1 Boon on climbing rolls for remaining hazards.",
+        "improves": "athletics:climbing:4",
+        "requires": [
+          "athletics:climbing:4"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

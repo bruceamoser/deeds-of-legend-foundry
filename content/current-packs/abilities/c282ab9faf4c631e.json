@@ -1,0 +1,47 @@
+{
+  "_key": "!items!c282ab9faf4c631e",
+  "_id": "c282ab9faf4c631e",
+  "name": "Covering Fire II",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Covering Fire has attack range 12 squares and can protect an ally within 6 squares.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "marksmanship:readiness:5",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "marksmanship:readiness:5",
+        "level": 3,
+        "cost": 4,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Covering Fire has attack range 12 squares and can protect an ally within 6 squares.",
+        "improves": "marksmanship:readiness:4",
+        "requires": [
+          "marksmanship:readiness:4"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

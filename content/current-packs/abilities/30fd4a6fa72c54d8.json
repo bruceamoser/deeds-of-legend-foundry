@@ -1,0 +1,66 @@
+{
+  "_key": "!items!30fd4a6fa72c54d8",
+  "_id": "30fd4a6fa72c54d8",
+  "name": "Planar Binding",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 hour</dd></div><div><dt>SP</dt><dd>3</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One willing extraplanar creature beside you; 50 coins of incense consumed</dd></div><div><dt>Duration</dt><dd>One agreed service, up to 24 hours</dd></div></dl><p>Seal a clearly spoken agreement defining service, payment and release. Both parties hear the terms. Each gains immediate awareness if the other deliberately breaks them; the injured party may then end the binding and any unpaid obligation. The creature retains its own actions and personality.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:binding:6",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:binding:6",
+        "level": 1,
+        "cost": 2,
+        "action": "Ritual · 1 hour",
+        "sp": 3,
+        "range": "One willing extraplanar creature beside you; 50 coins of incense consumed",
+        "duration": "One agreed service, up to 24 hours",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Seal a clearly spoken agreement defining service, payment and release. Both parties hear the terms. Each gains immediate awareness if the other deliberately breaks them; the injured party may then end the binding and any unpaid obligation. The creature retains its own actions and personality.",
+        "improves": null,
+        "requires": [
+          "binding:1"
+        ],
+        "bookId": "binding"
+      },
+      "spell": {
+        "id": "spell:binding:6",
+        "name": "Planar Binding",
+        "bookId": "binding",
+        "page": "6",
+        "section": "III",
+        "sp": 3,
+        "action": "Ritual",
+        "actionText": "Ritual · 1 hour",
+        "ritualTime": "1 hour",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One willing extraplanar creature beside you; 50 coins of incense consumed",
+        "duration": "One agreed service, up to 24 hours",
+        "effect": "Seal a clearly spoken agreement defining service, payment and release. Both parties hear the terms. Each gains immediate awareness if the other deliberately breaks them; the injured party may then end the binding and any unpaid obligation. The creature retains its own actions and personality."
+      }
+    }
+  },
+  "effects": []
+}

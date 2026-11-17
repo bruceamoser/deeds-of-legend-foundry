@@ -1,0 +1,47 @@
+{
+  "_key": "!items!19ff7c45a4841df0",
+  "_id": "19ff7c45a4841df0",
+  "name": "Open under Pressure II",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Open under Pressure adds 1/3/4 progress.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "subterfuge:locks:5",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "subterfuge:locks:5",
+        "level": 3,
+        "cost": 4,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Open under Pressure adds 1/3/4 progress.",
+        "improves": "subterfuge:locks:4",
+        "requires": [
+          "subterfuge:locks:4"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

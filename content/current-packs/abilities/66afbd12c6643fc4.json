@@ -1,0 +1,66 @@
+{
+  "_key": "!items!66afbd12c6643fc4",
+  "_id": "66afbd12c6643fc4",
+  "name": "Guards and Wards",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 hour</dd></div><div><dt>SP</dt><dd>3</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>A building of up to six connected rooms beside you</dd></div><div><dt>Duration</dt><dd>8 hours</dd></div></dl><p>Ward the rooms with soft warning bells. Name up to six guests. When another creature opens an exterior door or window, you hear its location while within 100 squares. It receives Slowed 1 on first entry, once per creature. Doors remain physically operable and warnings persist even after that slowing ends.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:sanctuary:7",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:sanctuary:7",
+        "level": 3,
+        "cost": 3,
+        "action": "Ritual · 1 hour",
+        "sp": 3,
+        "range": "A building of up to six connected rooms beside you",
+        "duration": "8 hours",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Ward the rooms with soft warning bells. Name up to six guests. When another creature opens an exterior door or window, you hear its location while within 100 squares. It receives Slowed 1 on first entry, once per creature. Doors remain physically operable and warnings persist even after that slowing ends.",
+        "improves": null,
+        "requires": [
+          "sanctuary:2"
+        ],
+        "bookId": "sanctuary"
+      },
+      "spell": {
+        "id": "spell:sanctuary:7",
+        "name": "Guards and Wards",
+        "bookId": "sanctuary",
+        "page": "7",
+        "section": "IV",
+        "sp": 3,
+        "action": "Ritual",
+        "actionText": "Ritual · 1 hour",
+        "ritualTime": "1 hour",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "A building of up to six connected rooms beside you",
+        "duration": "8 hours",
+        "effect": "Ward the rooms with soft warning bells. Name up to six guests. When another creature opens an exterior door or window, you hear its location while within 100 squares. It receives Slowed 1 on first entry, once per creature. Doors remain physically operable and warnings persist even after that slowing ends."
+      }
+    }
+  },
+  "effects": []
+}

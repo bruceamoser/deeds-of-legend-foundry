@@ -1,0 +1,66 @@
+{
+  "_key": "!items!5632178bb1d28920",
+  "_id": "5632178bb1d28920",
+  "name": "Foresight — Shared Vigil",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 10 minutes</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>Self and up to three willing creatures within 3 squares</dd></div><div><dt>Duration</dt><dd>1 hour</dd></div></dl><p>Link your awareness of approaching danger. Linked creatures within 12 squares of you receive a warning when any linked member perceives a threat. If it alerts the group before the attack, roll initiative normally. Once each round, after one linked creature rolls a defense, it may reroll the entire roll and keep either result. The group shares this one reroll. The link carries warnings. Keep one Shared Vigil link active; casting another ends the first.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell-mastery:foresight-shared-vigil",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell-mastery:foresight-shared-vigil",
+        "level": 7,
+        "cost": 5,
+        "action": "Ritual · 10 minutes",
+        "sp": 5,
+        "range": "Self and up to three willing creatures within 3 squares",
+        "duration": "1 hour",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Link your awareness of approaching danger. Linked creatures within 12 squares of you receive a warning when any linked member perceives a threat. If it alerts the group before the attack, roll initiative normally. Once each round, after one linked creature rolls a defense, it may reroll the entire roll and keep either result. The group shares this one reroll. The link carries warnings. Keep one Shared Vigil link active; casting another ends the first.",
+        "improves": null,
+        "requires": [
+          "portents:5"
+        ],
+        "bookId": "portents"
+      },
+      "spell": {
+        "id": "spell-mastery:foresight-shared-vigil",
+        "name": "Foresight — Shared Vigil",
+        "bookId": "portents",
+        "page": "A3",
+        "section": "VII",
+        "sp": 5,
+        "action": "Ritual",
+        "actionText": "Ritual · 10 minutes",
+        "ritualTime": "10 minutes",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Self and up to three willing creatures within 3 squares",
+        "duration": "1 hour",
+        "effect": "Link your awareness of approaching danger. Linked creatures within 12 squares of you receive a warning when any linked member perceives a threat. If it alerts the group before the attack, roll initiative normally. Once each round, after one linked creature rolls a defense, it may reroll the entire roll and keep either result. The group shares this one reroll. The link carries warnings. Keep one Shared Vigil link active; casting another ends the first."
+      }
+    }
+  },
+  "effects": []
+}

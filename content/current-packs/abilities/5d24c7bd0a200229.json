@@ -1,0 +1,113 @@
+{
+  "_key": "!items!5d24c7bd0a200229",
+  "_id": "5d24c7bd0a200229",
+  "name": "Use Their Voice",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>One enemy within 5 squares that can hear you; one willing ally within 5 squares that can see or hear you.</dd></div><div><dt>Magic</dt><dd>Spell</dd></div><div><dt>SP</dt><dd>0</dd></div><div><dt>Duration</dt><dd>Movement is immediate; the Boon expires when used or at the start of your next turn.</dd></div><div><dt>Equipment / acquisition</dt><dd>A free hand for casting.</dd></div></dl><p>The spirit calls out in the target’s own voice from a point you choose within 5 squares. The target turns toward the voice. The ally may move up to 2 squares without provoking and gains 1 Boon to its next attack against that target before the start of your next turn.</p><p>This is a spell costing 0 SP, usable once per scene. Turning toward the voice costs the target no action and does not compel any other behavior.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-signature-odd-useful-interruption",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "ability-signature-odd-useful-interruption",
+        "level": 1,
+        "cost": 0,
+        "action": "Maneuver",
+        "sp": 0,
+        "range": "One enemy within 5 squares that can hear you; one willing ally within 5 squares that can see or hear you.",
+        "duration": "Movement is immediate; the Boon expires when used or at the start of your next turn.",
+        "attribute": "None (no roll)",
+        "defenseAttribute": null,
+        "effect": "**Action:** Maneuver · **Attribute:** None (no roll)\n\n**Target / range / shape:** One enemy within 5 squares that can hear you; one willing ally within 5 squares that can see or hear you.\n\nThe spirit calls out in the target’s own voice from a point you choose within 5 squares. The target turns toward the voice. The ally may move up to 2 squares without provoking and gains 1 Boon to its next attack against that target before the start of your next turn.\n\n**Duration:** Movement is immediate; the Boon expires when used or at the start of your next turn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP, usable once per scene. Turning toward the voice costs the target no action and does not compel any other behavior.",
+        "improves": null,
+        "requires": [],
+        "bookId": null,
+        "magic": "Spell"
+      },
+      "spell": {
+        "id": "ability-signature-odd-useful-interruption",
+        "name": "Use Their Voice",
+        "level": 1,
+        "dp": null,
+        "action": "Maneuver",
+        "attribute": "None (no roll)",
+        "target": "One enemy within 5 squares that can hear you; one willing ally within 5 squares that can see or hear you.",
+        "duration": "Movement is immediate; the Boon expires when used or at the start of your next turn.",
+        "equipment": "A free hand for casting.",
+        "limits": "One signature choice at each of levels 1, 3 and 7.",
+        "effect": "**Action:** Maneuver · **Attribute:** None (no roll)\n\n**Target / range / shape:** One enemy within 5 squares that can hear you; one willing ally within 5 squares that can see or hear you.\n\nThe spirit calls out in the target’s own voice from a point you choose within 5 squares. The target turns toward the voice. The ally may move up to 2 squares without provoking and gains 1 Boon to its next attack against that target before the start of your next turn.\n\n**Duration:** Movement is immediate; the Boon expires when used or at the start of your next turn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP, usable once per scene. Turning toward the voice costs the target no action and does not compel any other behavior.",
+        "reference": {
+          "flavor": [
+            "You make the familiar world answer in an unfamiliar voice."
+          ],
+          "rules": {
+            "details": [
+              {
+                "label": "Action",
+                "value": "Maneuver"
+              },
+              {
+                "label": "Attribute",
+                "value": "None (no roll)"
+              },
+              {
+                "label": "Target / range / shape",
+                "value": "One enemy within 5 squares that can hear you; one willing ally within 5 squares that can see or hear you."
+              },
+              {
+                "label": "Magic",
+                "value": "Spell"
+              },
+              {
+                "label": "SP",
+                "value": "0"
+              },
+              {
+                "label": "Duration",
+                "value": "Movement is immediate; the Boon expires when used or at the start of your next turn."
+              },
+              {
+                "label": "Equipment / acquisition",
+                "value": "A free hand for casting."
+              }
+            ],
+            "body": [
+              {
+                "text": "The spirit calls out in the target’s own voice from a point you choose within 5 squares. The target turns toward the voice. The ally may move up to 2 squares without provoking and gains 1 Boon to its next attack against that target before the start of your next turn."
+              },
+              {
+                "text": "This is a spell costing 0 SP, usable once per scene. Turning toward the voice costs the target no action and does not compel any other behavior."
+              }
+            ],
+            "notes": []
+          }
+        },
+        "referenceMarkdown": "**Action:** Maneuver · **Attribute:** None (no roll)\n\n**Target / range / shape:** One enemy within 5 squares that can hear you; one willing ally within 5 squares that can see or hear you.\n\nThe spirit calls out in the target’s own voice from a point you choose within 5 squares. The target turns toward the voice. The ally may move up to 2 squares without provoking and gains 1 Boon to its next attack against that target before the start of your next turn.\n\n**Duration:** Movement is immediate; the Boon expires when used or at the start of your next turn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP, usable once per scene. Turning toward the voice costs the target no action and does not compel any other behavior.",
+        "classId": "class-odd",
+        "lineId": "odd:use-their-voice",
+        "signatureComponent": true,
+        "kind": "ability",
+        "sp": 0,
+        "magic": "Spell",
+        "rulesMarkdown": "**Action:** Maneuver · **Attribute:** None (no roll)\n\n**Target / range / shape:** One enemy within 5 squares that can hear you; one willing ally within 5 squares that can see or hear you.\n\nThe spirit calls out in the target’s own voice from a point you choose within 5 squares. The target turns toward the voice. The ally may move up to 2 squares without provoking and gains 1 Boon to its next attack against that target before the start of your next turn.\n\n**Duration:** Movement is immediate; the Boon expires when used or at the start of your next turn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP, usable once per scene. Turning toward the voice costs the target no action and does not compel any other behavior."
+      }
+    }
+  },
+  "effects": []
+}

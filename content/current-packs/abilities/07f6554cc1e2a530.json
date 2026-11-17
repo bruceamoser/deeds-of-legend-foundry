@@ -1,0 +1,47 @@
+{
+  "_key": "!items!07f6554cc1e2a530",
+  "_id": "07f6554cc1e2a530",
+  "name": "Sure Ascent III",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>You may keep one hand free while stationary on a climb with usable holds. Sure Ascent’s Main Action climbs up to 4 squares.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "athletics:climbing:3",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "athletics:climbing:3",
+        "level": 1,
+        "cost": 2,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "You may keep one hand free while stationary on a climb with usable holds. Sure Ascent’s Main Action climbs up to 4 squares.",
+        "improves": "athletics:climbing:1",
+        "requires": [
+          "athletics:climbing:2"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

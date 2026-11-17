@@ -1,0 +1,66 @@
+{
+  "_key": "!items!5dca44bc1539ac02",
+  "_id": "5dca44bc1539ac02",
+  "name": "Hallow",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 hour</dd></div><div><dt>SP</dt><dd>3</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>A fixed 4-square-radius site beside you; 50 coins of incense consumed</dd></div><div><dt>Duration</dt><dd>24 hours</dd></div></dl><p>Consecrate the site. Willing occupants gain 1 Boon to defenses against undead and spirits while inside. Ordinary remains there resist decay for the duration. Choose the site&#39;s visible symbol when casting.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:sanctuary:6",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:sanctuary:6",
+        "level": 1,
+        "cost": 2,
+        "action": "Ritual · 1 hour",
+        "sp": 3,
+        "range": "A fixed 4-square-radius site beside you; 50 coins of incense consumed",
+        "duration": "24 hours",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Consecrate the site. Willing occupants gain 1 Boon to defenses against undead and spirits while inside. Ordinary remains there resist decay for the duration. Choose the site's visible symbol when casting.",
+        "improves": null,
+        "requires": [
+          "sanctuary:1"
+        ],
+        "bookId": "sanctuary"
+      },
+      "spell": {
+        "id": "spell:sanctuary:6",
+        "name": "Hallow",
+        "bookId": "sanctuary",
+        "page": "6",
+        "section": "III",
+        "sp": 3,
+        "action": "Ritual",
+        "actionText": "Ritual · 1 hour",
+        "ritualTime": "1 hour",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "A fixed 4-square-radius site beside you; 50 coins of incense consumed",
+        "duration": "24 hours",
+        "effect": "Consecrate the site. Willing occupants gain 1 Boon to defenses against undead and spirits while inside. Ordinary remains there resist decay for the duration. Choose the site's visible symbol when casting."
+      }
+    }
+  },
+  "effects": []
+}

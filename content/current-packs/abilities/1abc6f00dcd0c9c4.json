@@ -1,0 +1,66 @@
+{
+  "_key": "!items!1abc6f00dcd0c9c4",
+  "_id": "1abc6f00dcd0c9c4",
+  "name": "Analysis",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 10 minutes</dd></div><div><dt>SP</dt><dd>4</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>One adjacent object, creature or fixed magical effect</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Add 2/4/6 progress toward understanding one magical effect, with target 6. Each completed analysis reveals its purpose, remaining duration, whether it requires Sustain and one named remedy or interruption method. Use further castings for further effects.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "reason",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:detection:8",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:detection:8",
+        "level": 3,
+        "cost": 3,
+        "action": "Ritual · 10 minutes",
+        "sp": 4,
+        "range": "One adjacent object, creature or fixed magical effect",
+        "duration": "Instant",
+        "attribute": "Reason",
+        "defenseAttribute": null,
+        "effect": "Add 2/4/6 progress toward understanding one magical effect, with target 6. Each completed analysis reveals its purpose, remaining duration, whether it requires Sustain and one named remedy or interruption method. Use further castings for further effects.",
+        "improves": null,
+        "requires": [
+          "detection:2"
+        ],
+        "bookId": "detection"
+      },
+      "spell": {
+        "id": "spell:detection:8",
+        "name": "Analysis",
+        "bookId": "detection",
+        "page": "8",
+        "section": "IV",
+        "sp": 4,
+        "action": "Ritual",
+        "actionText": "Ritual · 10 minutes",
+        "ritualTime": "10 minutes",
+        "attribute": "Reason",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One adjacent object, creature or fixed magical effect",
+        "duration": "Instant",
+        "effect": "Add 2/4/6 progress toward understanding one magical effect, with target 6. Each completed analysis reveals its purpose, remaining duration, whether it requires Sustain and one named remedy or interruption method. Use further castings for further effects."
+      }
+    }
+  },
+  "effects": []
+}

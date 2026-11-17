@@ -1,0 +1,47 @@
+{
+  "_key": "!items!1944aa69d7064c03",
+  "_id": "1944aa69d7064c03",
+  "name": "Patient Care I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div></dl><p>Maneuver. With suitable water, blankets or other supplies and a free hand, reduce temporary Burning or Freezing on one adjacent patient by 2, minimum 0. No roll, HP restoration or first-aid attempt.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "medicine:nursing:1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "technique",
+        "nodeId": "medicine:nursing:1",
+        "level": 1,
+        "cost": 1,
+        "action": "Maneuver",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Maneuver. With suitable water, blankets or other supplies and a free hand, reduce temporary Burning or Freezing on one adjacent patient by 2, minimum 0. No roll, HP restoration or first-aid attempt.",
+        "improves": null,
+        "requires": [
+          "medicine"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

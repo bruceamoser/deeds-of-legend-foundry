@@ -1,0 +1,65 @@
+{
+  "_key": "!items!81a176fecb5e84f1",
+  "_id": "81a176fecb5e84f1",
+  "name": "Fly",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>3</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>Self or one willing creature within 3 squares</dd></div><div><dt>Duration</dt><dd>1 minute</dd></div></dl><p>The recipient flies using its normal Speed and movement. On expiry it descends safely up to 3 squares; remaining unsupported distance is a normal fall.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:air:7",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:air:7",
+        "level": 3,
+        "cost": 3,
+        "action": "Main Action",
+        "sp": 3,
+        "range": "Self or one willing creature within 3 squares",
+        "duration": "1 minute",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "The recipient flies using its normal Speed and movement. On expiry it descends safely up to 3 squares; remaining unsupported distance is a normal fall.",
+        "improves": null,
+        "requires": [
+          "air:2"
+        ],
+        "bookId": "air"
+      },
+      "spell": {
+        "id": "spell:air:7",
+        "name": "Fly",
+        "bookId": "air",
+        "page": "7",
+        "section": "IV",
+        "sp": 3,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Self or one willing creature within 3 squares",
+        "duration": "1 minute",
+        "effect": "The recipient flies using its normal Speed and movement. On expiry it descends safely up to 3 squares; remaining unsupported distance is a normal fall."
+      }
+    }
+  },
+  "effects": []
+}

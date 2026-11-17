@@ -1,0 +1,369 @@
+{
+  "_key": "!actors!57e199f781baea1e",
+  "_id": "57e199f781baea1e",
+  "name": "Lantern Angel",
+  "type": "creature",
+  "img": "systems/heroes-of-legend/assets/creatures/538633c813c53a0ea87769db4314f77c8f39169f128567226cf21d540b7e510f.webp",
+  "prototypeToken": {
+    "width": 1,
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/538633c813c53a0ea87769db4314f77c8f39169f128567226cf21d540b7e510f.webp"
+    }
+  },
+  "system": {
+    "schemaVersion": 1,
+    "attributes": {
+      "brawn": {
+        "base": 0
+      },
+      "fortitude": {
+        "base": 1
+      },
+      "agility": {
+        "base": 1
+      },
+      "guile": {
+        "base": 1
+      },
+      "knowledge": {
+        "base": 2
+      },
+      "reason": {
+        "base": 2
+      }
+    },
+    "attributesSource": "Brawn +0; Fortitude +1; Agility +1; Guile +1; Knowledge +2; Reason +2",
+    "health": {
+      "value": 14,
+      "baseMax": 14,
+      "sourceText": "14"
+    },
+    "cv": 16,
+    "speed": 5,
+    "speedSource": "5; fly 7",
+    "alternateSpeeds": [
+      {
+        "mode": "fly",
+        "value": 7
+      }
+    ],
+    "size": 1,
+    "sizeLabel": "medium",
+    "sizeSource": "1 (medium)",
+    "footprint": {
+      "width": 1,
+      "height": 1
+    },
+    "armor": 0,
+    "armorMarker": "*",
+    "armorSource": "0\\*",
+    "stability": 0,
+    "threat": {
+      "boons": 0,
+      "banes": 0,
+      "sourceText": "None"
+    },
+    "evasion": {
+      "boons": 0,
+      "banes": 1,
+      "sourceText": "1 Bane"
+    },
+    "weaknesses": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "resistances": {
+      "numeric": [
+        {
+          "type": "Radiant",
+          "value": 2
+        }
+      ],
+      "special": [],
+      "sourceText": "Radiant (2)"
+    },
+    "immunities": [],
+    "basicMelee": {
+      "weak": 5,
+      "standard": 3,
+      "strong": 2,
+      "defenseAttribute": "agility",
+      "orientation": "player-defense"
+    },
+    "actions": {
+      "orientation": "player-defense",
+      "entries": [
+        {
+          "id": "main-0",
+          "category": "main",
+          "name": "Basic Melee",
+          "abilityId": "",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "5",
+            "standard": "3",
+            "strong": "2"
+          },
+          "effect": "5/3/2",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "main-1",
+          "category": "main",
+          "name": "Guiding ray",
+          "abilityId": "",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "5 + Blinded 2",
+            "standard": "3 + Blinded 1",
+            "strong": "2"
+          },
+          "effect": "5 + Blinded 2 / 3 + Blinded 1 / 2",
+          "referenceMarkdown": "### Guiding ray\n\n**Target:** One visible creature within 6 squares. **Player defense:** Agility. **Damage type:** radiant.\n\n**Weak defense:** Blinded 2. **Standard defense:** Blinded 1."
+        },
+        {
+          "id": "maneuver-0",
+          "category": "maneuver",
+          "name": "Guide the Light",
+          "abilityId": "monster-guide-the-light",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Brightly light 3 connected squares within 3 until its next turn.",
+          "referenceMarkdown": "### Guide the Light\n\n*A ribbon of lanternlight runs along the path, picking out each stone on the way to shelter.*\n\nBrightly light up to 3 connected squares within 3 squares until the start of this creature's next turn. Requires an unobstructed path from this creature to each square; it may choose unlit squares. Ordinary darkness imposes no Boons or Banes for seeing those squares; cover, concealment and hiding still use the normal rules. This neither reveals Hidden creatures automatically nor penetrates opaque obstacles. Reusing this ability replaces its previous illuminated area."
+        },
+        {
+          "id": "maneuver-1",
+          "category": "maneuver",
+          "name": "Warding Light",
+          "abilityId": "monster-warding-light",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Ally within 3: reduce Frightened 1; +1 Boon on next mental defense.",
+          "referenceMarkdown": "### Warding Light\n\n*A warm light settles over one companion like a hand on the shoulder.*\n\nOne willing ally within 3 squares reduces Frightened by 1. Until this creature’s next turn, that ally also has 1 Boon on its next defense against a mental attack; for an NPC ally, impose 1 Bane on that player attack. Consumed even if canceled; does not stack with itself."
+        },
+        {
+          "id": "maneuver-2",
+          "category": "maneuver",
+          "name": "Defend",
+          "abilityId": "",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "+1 Bane",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "reaction-0",
+          "category": "reaction",
+          "name": "Sheltering Light",
+          "abilityId": "monster-sheltering-light",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Before an ally within 3 takes attack damage: Physical resistance 2 for that attack.",
+          "referenceMarkdown": "### Sheltering Light\n\n*Light gathers over a companion like overlapping feathers, taking the harsh edge from the impact.*\n\nBefore one visible willing ally within 3 squares takes damage from an attack, grant that ally Physical resistance 2 for that attack only. Use the highest matching resistance, not an added reduction; minimum damage rules remain. This does not heal, transfer damage or grant resistance to other types."
+        },
+        {
+          "id": "reaction-1",
+          "category": "reaction",
+          "name": "Opportunity Attack",
+          "abilityId": "",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Basic Melee",
+          "referenceMarkdown": ""
+        }
+      ],
+      "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates a complete outcome. All attacks use printed Threat unless stated otherwise.",
+      "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Guiding ray | Agility | 5 + Blinded 2 / 3 + Blinded 1 / 2 |",
+      "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Guide the Light | Brightly light 3 connected squares within 3 until its next turn. |\n| Warding Light | Ally within 3: reduce Frightened 1; +1 Boon on next mental defense. |\n| Defend | +1 Bane |",
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Sheltering Light | Before an ally within 3 takes attack damage: Physical resistance 2 for that attack. |\n| Opportunity Attack | Basic Melee |"
+    },
+    "details": {
+      "flavorMarkdown": "*A small winged guardian carries a light within its chest, brightening whenever it finds someone who is lost.*",
+      "specialtyMarkdown": "### Guiding ray\n\n**Target:** One visible creature within 6 squares. **Player defense:** Agility. **Damage type:** radiant.\n\n**Weak defense:** Blinded 2. **Standard defense:** Blinded 1.\n\n### Warding Light\n\n*A warm light settles over one companion like a hand on the shoulder.*\n\nOne willing ally within 3 squares reduces Frightened by 1. Until this creature’s next turn, that ally also has 1 Boon on its next defense against a mental attack; for an NPC ally, impose 1 Bane on that player attack. Consumed even if canceled; does not stack with itself.\n\n### Sheltering Light\n\n*Light gathers over a companion like overlapping feathers, taking the harsh edge from the impact.*\n\nBefore one visible willing ally within 3 squares takes damage from an attack, grant that ally Physical resistance 2 for that attack only. Use the highest matching resistance, not an added reduction; minimum damage rules remain. This does not heal, transfer damage or grant resistance to other types.\n\n### Guide the Light\n\n*A ribbon of lanternlight runs along the path, picking out each stone on the way to shelter.*\n\nBrightly light up to 3 connected squares within 3 squares until the start of this creature's next turn. Requires an unobstructed path from this creature to each square; it may choose unlit squares. Ordinary darkness imposes no Boons or Banes for seeing those squares; cover, concealment and hiding still use the normal rules. This neither reveals Hidden creatures automatically nor penetrates opaque obstacles. Reusing this ability replaces its previous illuminated area.",
+      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until its next turn. Combines with Evasion through normal Boon/Bane rules; repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature; spend its Reaction before the provoking action resolves. That action continues if capable.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Ordinary sight and hearing.\n\n**Tactics and retreat:** Flash at a pursuer and steady the frightened traveler it was sent to find. It favors escape over punishment.\n\n**Encounter and conversation:** Its instructions prioritize one missing traveler while a larger rescue unfolds nearby.\n\n**Habitat:** Sacred boundary; refuge; contested oath · **Communication:** Common\n\n**Loot:** Choose possessions or a clue in its lair that fits the adventure. If a body part is useful or valuable, state its use and value before awarding it.\n\n**Summoning:** Ineligible.",
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-lantern-angel\n\n\n**Category:** Celestial · **Role:** Sight disruptor · **CV:** 16\n\n### Creature-roll reference\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Guiding ray | Reason | None | 2 radiant damage. | 3 radiant damage. Blinded 1. | 5 radiant damage. Blinded 2. |\n\nUse the attributes above for defenses named by incoming attacks. Same targeting, limits and costs apply; no opposed second roll.\n\n### CV worksheet\n\n**Reference damage:** 2/3/5\n\n**Reference type:** radiant\n\n**Expected targets:** 1\n\n**Utility factor:** 1.6\n\n**Action review (#1279):** U 1.45 → 1.6: Maneuver allowance +0.05, Reaction allowance +0.1. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.\n\n**Regeneration per turn:** 0\n\nReference I=4.404, O=3.162. Uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/encounters.md). Utility is provisional and does not simulate control, positioning or summon choices.\n\n**Ability sources:** [dazzling strike](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/dazzling-strike.md), [Guide the Light](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/guide-the-light.md), [Sheltering Light](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/sheltering-light.md), [warding light](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/warding-light.md).\n\n**Coverage reference:** [Pathfinder family survey](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/family-survey.md); original HOL prose and mechanics.\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/roster.md) · [Stability](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/rules/stability.md)"
+    },
+    "biography": ""
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-lantern-angel",
+        "asset": "assets/creatures/538633c813c53a0ea87769db4314f77c8f39169f128567226cf21d540b7e510f.webp",
+        "sha256": "20aa83644668eeb59a85db2c384eed8ce1cfa77095669b30b093546534319e0a",
+        "sourceSha256": "538633c813c53a0ea87769db4314f77c8f39169f128567226cf21d540b7e510f",
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
+      "catalogId": "creature-lantern-angel",
+      "source": {
+        "path": "design/bestiary/creatures/lantern-angel.md",
+        "sha256": "fa569e6f2d4bf37a4751fdaf984fa35df22788e21e5708fc7e3e4acdd64e8792"
+      },
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Printed profile · specialty automation pending",
+      "specialtyAutomation": "pending",
+      "classification": {
+        "category": "Celestial",
+        "role": "Sight disruptor",
+        "cv": 16
+      },
+      "family": "Celestial guides and champions",
+      "abilitySources": [
+        {
+          "label": "dazzling strike",
+          "id": "monster-dazzling-strike",
+          "path": "design/monster-abilities/dazzling-strike.md",
+          "sha256": "8e56d772f0e831427a59fa79dfe0c7cff4ee54f1a00b69850a0b2cdac947ff50"
+        },
+        {
+          "label": "Guide the Light",
+          "id": "monster-guide-the-light",
+          "path": "design/monster-abilities/guide-the-light.md",
+          "sha256": "47d3a086111231c4fdf702a980818fbb0acfbc1867a1f4c6e0e898536653779d"
+        },
+        {
+          "label": "Sheltering Light",
+          "id": "monster-sheltering-light",
+          "path": "design/monster-abilities/sheltering-light.md",
+          "sha256": "018734662d30a44935b3065bb1fa17fe9bfba3df97654aa01ebaaea607fcf0a3"
+        },
+        {
+          "label": "warding light",
+          "id": "monster-warding-light",
+          "path": "design/monster-abilities/warding-light.md",
+          "sha256": "218cf722468293e82d5b939fe75ed9a9f3db27bcd6515bc62310b4b499e03805"
+        }
+      ],
+      "monsterAbilityTemplates": [
+        {
+          "id": "monster-dazzling-strike",
+          "path": "design/monster-abilities/dazzling-strike.md",
+          "sha256": "8e56d772f0e831427a59fa79dfe0c7cff4ee54f1a00b69850a0b2cdac947ff50",
+          "name": "Dazzling Strike",
+          "action": "Main Action",
+          "flavorMarkdown": "*Light or a sudden wash of sensation overwhelms the target’s sight.*",
+          "rulesMarkdown": "The printed attack applies Blinded for the listed duration. Use normal decay; no permanent blindness is implied.\n\nActual damage, targeting and defense attribute are printed on the creature card.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Dazzling Strike\n\n*Light or a sudden wash of sensation overwhelms the target’s sight.*\n\n## Rules\n\n**ID:** monster-dazzling-strike\n\n\n**Action:** Main Action\n\nThe printed attack applies Blinded for the listed duration. Use normal decay; no permanent blindness is implied.\n\nActual damage, targeting and defense attribute are printed on the creature card.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/dazzling-strike.md",
+            "sha256": "8e56d772f0e831427a59fa79dfe0c7cff4ee54f1a00b69850a0b2cdac947ff50"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-guide-the-light",
+          "path": "design/monster-abilities/guide-the-light.md",
+          "sha256": "47d3a086111231c4fdf702a980818fbb0acfbc1867a1f4c6e0e898536653779d",
+          "name": "Guide the Light",
+          "action": "Maneuver",
+          "flavorMarkdown": "*A ribbon of lanternlight runs along the path, picking out each stone on the way to shelter.*",
+          "rulesMarkdown": "Brightly light up to 3 connected squares within 3 squares until the start of this creature's next turn. Requires an unobstructed path from this creature to each square; it may choose unlit squares. Ordinary darkness imposes no Boons or Banes for seeing those squares; cover, concealment and hiding still use the normal rules. This neither reveals Hidden creatures automatically nor penetrates opaque obstacles. Reusing this ability replaces its previous illuminated area.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Guide the Light\n\n*A ribbon of lanternlight runs along the path, picking out each stone on the way to shelter.*\n\n## Rules\n\n**ID:** monster-guide-the-light\n\n**Action:** Maneuver\n\nBrightly light up to 3 connected squares within 3 squares until the start of this creature's next turn. Requires an unobstructed path from this creature to each square; it may choose unlit squares. Ordinary darkness imposes no Boons or Banes for seeing those squares; cover, concealment and hiding still use the normal rules. This neither reveals Hidden creatures automatically nor penetrates opaque obstacles. Reusing this ability replaces its previous illuminated area.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/guide-the-light.md",
+            "sha256": "47d3a086111231c4fdf702a980818fbb0acfbc1867a1f4c6e0e898536653779d"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-sheltering-light",
+          "path": "design/monster-abilities/sheltering-light.md",
+          "sha256": "018734662d30a44935b3065bb1fa17fe9bfba3df97654aa01ebaaea607fcf0a3",
+          "name": "Sheltering Light",
+          "action": "Reaction",
+          "flavorMarkdown": "*Light gathers over a companion like overlapping feathers, taking the harsh edge from the impact.*",
+          "rulesMarkdown": "Before one visible willing ally within 3 squares takes damage from an attack, grant that ally Physical resistance 2 for that attack only. Use the highest matching resistance, not an added reduction; minimum damage rules remain. This does not heal, transfer damage or grant resistance to other types.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Sheltering Light\n\n*Light gathers over a companion like overlapping feathers, taking the harsh edge from the impact.*\n\n## Rules\n\n**ID:** monster-sheltering-light\n\n**Action:** Reaction\n\nBefore one visible willing ally within 3 squares takes damage from an attack, grant that ally Physical resistance 2 for that attack only. Use the highest matching resistance, not an added reduction; minimum damage rules remain. This does not heal, transfer damage or grant resistance to other types.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/sheltering-light.md",
+            "sha256": "018734662d30a44935b3065bb1fa17fe9bfba3df97654aa01ebaaea607fcf0a3"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-warding-light",
+          "path": "design/monster-abilities/warding-light.md",
+          "sha256": "218cf722468293e82d5b939fe75ed9a9f3db27bcd6515bc62310b4b499e03805",
+          "name": "Warding Light",
+          "action": "Maneuver",
+          "flavorMarkdown": "*A warm light settles over one companion like a hand on the shoulder.*",
+          "rulesMarkdown": "One willing ally within 3 squares reduces Frightened by 1. Until this creature’s next turn, that ally also has 1 Boon on its next defense against a mental attack; for an NPC ally, impose 1 Bane on that player attack. Consumed even if canceled; does not stack with itself.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Warding Light\n\n*A warm light settles over one companion like a hand on the shoulder.*\n\n## Rules\n\n**ID:** monster-warding-light\n\n\n**Action:** Maneuver\n\nOne willing ally within 3 squares reduces Frightened by 1. Until this creature’s next turn, that ally also has 1 Boon on its next defense against a mental attack; for an NPC ally, impose 1 Bane on that player attack. Consumed even if canceled; does not stack with itself.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/warding-light.md",
+            "sha256": "218cf722468293e82d5b939fe75ed9a9f3db27bcd6515bc62310b4b499e03805"
+          },
+          "automation": "pending"
+        }
+      ],
+      "summoning": {
+        "eligible": false,
+        "summonId": null,
+        "path": null,
+        "eligibility": null,
+        "sourceText": "Ineligible."
+      }
+    }
+  }
+}

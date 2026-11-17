@@ -1,0 +1,66 @@
+{
+  "_key": "!items!9d61abb28bc6f38e",
+  "_id": "9d61abb28bc6f38e",
+  "name": "Mind Blank",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 10 minutes</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One willing adjacent creature</dd></div><div><dt>Duration</dt><dd>8 hours</dd></div></dl><p>Veil its thoughts. Grant mental resistance 3 and 2 Boons to defenses against mental spells. Reading its memories or locating it through divination requires its consent while the veil lasts. Ordinary observation and conversation remain available.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:protection:a2",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:protection:a2",
+        "level": 3,
+        "cost": 4,
+        "action": "Ritual · 10 minutes",
+        "sp": 5,
+        "range": "One willing adjacent creature",
+        "duration": "8 hours",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Veil its thoughts. Grant mental resistance 3 and 2 Boons to defenses against mental spells. Reading its memories or locating it through divination requires its consent while the veil lasts. Ordinary observation and conversation remain available.",
+        "improves": null,
+        "requires": [
+          "protection:4"
+        ],
+        "bookId": "protection"
+      },
+      "spell": {
+        "id": "spell:protection:a2",
+        "name": "Mind Blank",
+        "bookId": "protection",
+        "page": "A2",
+        "section": "VI",
+        "sp": 5,
+        "action": "Ritual",
+        "actionText": "Ritual · 10 minutes",
+        "ritualTime": "10 minutes",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One willing adjacent creature",
+        "duration": "8 hours",
+        "effect": "Veil its thoughts. Grant mental resistance 3 and 2 Boons to defenses against mental spells. Reading its memories or locating it through divination requires its consent while the veil lasts. Ordinary observation and conversation remain available."
+      }
+    }
+  },
+  "effects": []
+}

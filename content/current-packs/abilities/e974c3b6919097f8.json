@@ -1,0 +1,65 @@
+{
+  "_key": "!items!e974c3b6919097f8",
+  "_id": "e974c3b6919097f8",
+  "name": "Tree Skin",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>3</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One willing creature within 3 squares</dd></div><div><dt>Duration</dt><dd>1 minute</dd></div></dl><p>Bark covers the recipient&#39;s skin. Grant physical resistance 2 and Stability 1. Use the highest applicable resistance and Stability.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:growth:7",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:growth:7",
+        "level": 3,
+        "cost": 3,
+        "action": "Main Action",
+        "sp": 3,
+        "range": "One willing creature within 3 squares",
+        "duration": "1 minute",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Bark covers the recipient's skin. Grant physical resistance 2 and Stability 1. Use the highest applicable resistance and Stability.",
+        "improves": null,
+        "requires": [
+          "growth:2"
+        ],
+        "bookId": "growth"
+      },
+      "spell": {
+        "id": "spell:growth:7",
+        "name": "Tree Skin",
+        "bookId": "growth",
+        "page": "7",
+        "section": "IV",
+        "sp": 3,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One willing creature within 3 squares",
+        "duration": "1 minute",
+        "effect": "Bark covers the recipient's skin. Grant physical resistance 2 and Stability 1. Use the highest applicable resistance and Stability."
+      }
+    }
+  },
+  "effects": []
+}

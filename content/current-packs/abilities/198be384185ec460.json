@@ -1,0 +1,65 @@
+{
+  "_key": "!items!198be384185ec460",
+  "_id": "198be384185ec460",
+  "name": "Gust of Wind",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div><div><dt>Defense</dt><dd>Brawn</dd></div><div><dt>Range</dt><dd>Every creature along a straight 6-square line from you</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Drive a powerful gust along the line. Push each affected creature 1/2/3 squares away from you and disperse ordinary smoke or fog in the line. Stability applies to the push.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "brawn"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:air:4",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:air:4",
+        "level": 1,
+        "cost": 2,
+        "action": "Main Action",
+        "sp": 2,
+        "range": "Every creature along a straight 6-square line from you",
+        "duration": "Instant",
+        "attribute": "Knowledge",
+        "defenseAttribute": "Brawn",
+        "effect": "Drive a powerful gust along the line. Push each affected creature 1/2/3 squares away from you and disperse ordinary smoke or fog in the line. Stability applies to the push.",
+        "improves": null,
+        "requires": [
+          "air:0"
+        ],
+        "bookId": "air"
+      },
+      "spell": {
+        "id": "spell:air:4",
+        "name": "Gust of Wind",
+        "bookId": "air",
+        "page": "4",
+        "section": "II",
+        "sp": 2,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "Knowledge",
+        "defense": "Brawn",
+        "defenseAttribute": "Brawn",
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Every creature along a straight 6-square line from you",
+        "duration": "Instant",
+        "effect": "Drive a powerful gust along the line. Push each affected creature 1/2/3 squares away from you and disperse ordinary smoke or fog in the line. Stability applies to the push."
+      }
+    }
+  },
+  "effects": []
+}

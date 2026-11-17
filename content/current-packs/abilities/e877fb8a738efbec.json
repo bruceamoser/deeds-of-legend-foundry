@@ -1,0 +1,65 @@
+{
+  "_key": "!items!e877fb8a738efbec",
+  "_id": "e877fb8a738efbec",
+  "name": "Mind Probe",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Defense</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>One creature within 3 squares</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Press into a guarded thought. Deal 3/5/7 mental damage and learn one immediate intention the target is considering. For a hero, its player states that intention. The target recognizes your intrusion.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "reason",
+      "defenseAttribute": "reason"
+    },
+    "outcomes": {
+      "weak": "3 mental damage",
+      "standard": "5 mental damage",
+      "strong": "7 mental damage"
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:thought:a2",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:thought:a2",
+        "level": 3,
+        "cost": 4,
+        "action": "Main Action",
+        "sp": 5,
+        "range": "One creature within 3 squares",
+        "duration": "Instant",
+        "attribute": "Reason",
+        "defenseAttribute": "Reason",
+        "effect": "Press into a guarded thought. Deal 3/5/7 mental damage and learn one immediate intention the target is considering. For a hero, its player states that intention. The target recognizes your intrusion.",
+        "improves": null,
+        "requires": [
+          "thought:4"
+        ],
+        "bookId": "thought"
+      },
+      "spell": {
+        "id": "spell:thought:a2",
+        "name": "Mind Probe",
+        "bookId": "thought",
+        "page": "A2",
+        "section": "VI",
+        "sp": 5,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "Reason",
+        "defense": "Reason",
+        "defenseAttribute": "Reason",
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One creature within 3 squares",
+        "duration": "Instant",
+        "effect": "Press into a guarded thought. Deal 3/5/7 mental damage and learn one immediate intention the target is considering. For a hero, its player states that intention. The target recognizes your intrusion."
+      }
+    }
+  },
+  "effects": []
+}

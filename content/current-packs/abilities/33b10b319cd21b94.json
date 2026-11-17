@@ -1,0 +1,65 @@
+{
+  "_key": "!items!33b10b319cd21b94",
+  "_id": "33b10b319cd21b94",
+  "name": "Greater Restoration",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>3</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>One adjacent living creature</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Choose one temporary condition; reduce it by 2/4/6. Alternatively, end one curse or lasting condition whose source names Greater Restoration as its remedy. That alternative is automatic and replaces the rolled reduction.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "reason",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:restoration:7",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:restoration:7",
+        "level": 3,
+        "cost": 3,
+        "action": "Main Action",
+        "sp": 3,
+        "range": "One adjacent living creature",
+        "duration": "Instant",
+        "attribute": "Reason",
+        "defenseAttribute": null,
+        "effect": "Choose one temporary condition; reduce it by 2/4/6. Alternatively, end one curse or lasting condition whose source names Greater Restoration as its remedy. That alternative is automatic and replaces the rolled reduction.",
+        "improves": null,
+        "requires": [
+          "restoration:2"
+        ],
+        "bookId": "restoration"
+      },
+      "spell": {
+        "id": "spell:restoration:7",
+        "name": "Greater Restoration",
+        "bookId": "restoration",
+        "page": "7",
+        "section": "IV",
+        "sp": 3,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "Reason",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One adjacent living creature",
+        "duration": "Instant",
+        "effect": "Choose one temporary condition; reduce it by 2/4/6. Alternatively, end one curse or lasting condition whose source names Greater Restoration as its remedy. That alternative is automatic and replaces the rolled reduction."
+      }
+    }
+  },
+  "effects": []
+}

@@ -1,0 +1,65 @@
+{
+  "_key": "!items!e0a8ca8a7f3c2f10",
+  "_id": "e0a8ca8a7f3c2f10",
+  "name": "Find Traps",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>One visible 3-by-3-square area within 6 squares</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Sense intentionally prepared mechanisms or magical triggers that could harm an entrant. Add 1/2/3 progress toward a search objective set by the DA. At completion identify each detected trigger&#39;s location and how it is activated; disarming uses its own procedure.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "reason",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:detection:4",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:detection:4",
+        "level": 1,
+        "cost": 2,
+        "action": "Main Action",
+        "sp": 2,
+        "range": "One visible 3-by-3-square area within 6 squares",
+        "duration": "Instant",
+        "attribute": "Reason",
+        "defenseAttribute": null,
+        "effect": "Sense intentionally prepared mechanisms or magical triggers that could harm an entrant. Add 1/2/3 progress toward a search objective set by the DA. At completion identify each detected trigger's location and how it is activated; disarming uses its own procedure.",
+        "improves": null,
+        "requires": [
+          "detection:0"
+        ],
+        "bookId": "detection"
+      },
+      "spell": {
+        "id": "spell:detection:4",
+        "name": "Find Traps",
+        "bookId": "detection",
+        "page": "4",
+        "section": "II",
+        "sp": 2,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "Reason",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One visible 3-by-3-square area within 6 squares",
+        "duration": "Instant",
+        "effect": "Sense intentionally prepared mechanisms or magical triggers that could harm an entrant. Add 1/2/3 progress toward a search objective set by the DA. At completion identify each detected trigger's location and how it is activated; disarming uses its own procedure."
+      }
+    }
+  },
+  "effects": []
+}

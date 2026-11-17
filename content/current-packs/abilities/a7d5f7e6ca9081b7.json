@@ -1,0 +1,47 @@
+{
+  "_key": "!items!a7d5f7e6ca9081b7",
+  "_id": "a7d5f7e6ca9081b7",
+  "name": "Reconstruct the Scene III",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Reconstruct the Scene may connect up to five related events, with 1 Boon when at least two independent sources corroborate the sequence.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "scholarship:investigation:6",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "scholarship:investigation:6",
+        "level": 3,
+        "cost": 4,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Reconstruct the Scene may connect up to five related events, with 1 Boon when at least two independent sources corroborate the sequence.",
+        "improves": "scholarship:investigation:4",
+        "requires": [
+          "scholarship:investigation:5"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

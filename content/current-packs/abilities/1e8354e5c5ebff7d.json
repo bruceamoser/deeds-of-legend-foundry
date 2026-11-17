@@ -1,0 +1,65 @@
+{
+  "_key": "!items!1e8354e5c5ebff7d",
+  "_id": "1e8354e5c5ebff7d",
+  "name": "Create Undead",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One open space within 3 squares</dd></div><div><dt>Duration</dt><dd>1 minute, with commands</dd></div></dl><p>Shape one Undead energy form rated 7 or lower from Summoned Companions. Give its immediate Main command and use the printed profile, normal commands and six-square tether.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:spirits:a2",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:spirits:a2",
+        "level": 3,
+        "cost": 4,
+        "action": "Main Action",
+        "sp": 5,
+        "range": "One open space within 3 squares",
+        "duration": "1 minute, with commands",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Shape one Undead energy form rated 7 or lower from Summoned Companions. Give its immediate Main command and use the printed profile, normal commands and six-square tether.",
+        "improves": null,
+        "requires": [
+          "spirits:4"
+        ],
+        "bookId": "spirits"
+      },
+      "spell": {
+        "id": "spell:spirits:a2",
+        "name": "Create Undead",
+        "bookId": "spirits",
+        "page": "A2",
+        "section": "VI",
+        "sp": 5,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One open space within 3 squares",
+        "duration": "1 minute, with commands",
+        "effect": "Shape one Undead energy form rated 7 or lower from Summoned Companions. Give its immediate Main command and use the printed profile, normal commands and six-square tether."
+      }
+    }
+  },
+  "effects": []
+}

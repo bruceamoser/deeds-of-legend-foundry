@@ -1,0 +1,65 @@
+{
+  "_key": "!items!8726b8cef4515900",
+  "_id": "8726b8cef4515900",
+  "name": "Druidcraft",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>SP</dt><dd>0</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One ordinary plant or patch of soil within 3 squares</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Open a flower, ripen one already-growing fruit, make a seed sprout, or read whether rain is likely here in the next day. The growth affects one hand-sized part of the plant.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:growth:1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:growth:1",
+        "level": 1,
+        "cost": 1,
+        "action": "Maneuver",
+        "sp": 0,
+        "range": "One ordinary plant or patch of soil within 3 squares",
+        "duration": "Instant",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Open a flower, ripen one already-growing fruit, make a seed sprout, or read whether rain is likely here in the next day. The growth affects one hand-sized part of the plant.",
+        "improves": null,
+        "requires": [
+          "life"
+        ],
+        "bookId": "growth"
+      },
+      "spell": {
+        "id": "spell:growth:1",
+        "name": "Druidcraft",
+        "bookId": "growth",
+        "page": "1",
+        "section": "I",
+        "sp": 0,
+        "action": "Maneuver",
+        "actionText": "Maneuver",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One ordinary plant or patch of soil within 3 squares",
+        "duration": "Instant",
+        "effect": "Open a flower, ripen one already-growing fruit, make a seed sprout, or read whether rain is likely here in the next day. The growth affects one hand-sized part of the plant."
+      }
+    }
+  },
+  "effects": []
+}

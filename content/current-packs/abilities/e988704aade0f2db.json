@@ -1,0 +1,47 @@
+{
+  "_key": "!items!e988704aade0f2db",
+  "_id": "e988704aade0f2db",
+  "name": "Ricochet III",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Ricochet deals 2/3/5 physical damage to each target.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "2 physical damage",
+      "standard": "3 physical damage",
+      "strong": "5 physical damage"
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "marksmanship:thrown-weapons:6",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "marksmanship:thrown-weapons:6",
+        "level": 3,
+        "cost": 4,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Ricochet deals 2/3/5 physical damage to each target.",
+        "improves": "marksmanship:thrown-weapons:4",
+        "requires": [
+          "marksmanship:thrown-weapons:5"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

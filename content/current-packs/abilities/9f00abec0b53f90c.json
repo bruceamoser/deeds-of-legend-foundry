@@ -1,0 +1,65 @@
+{
+  "_key": "!items!9f00abec0b53f90c",
+  "_id": "9f00abec0b53f90c",
+  "name": "Lightning Bolt",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>3</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div><div><dt>Defense</dt><dd>Agility</dd></div><div><dt>Range</dt><dd>Every creature along an 8-square line from you</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Send a crackling stroke along the line. Deal 3/5/7 lightning damage to each creature, once each.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "3 lightning damage",
+      "standard": "5 lightning damage",
+      "strong": "7 lightning damage"
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:air:6",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:air:6",
+        "level": 1,
+        "cost": 2,
+        "action": "Main Action",
+        "sp": 3,
+        "range": "Every creature along an 8-square line from you",
+        "duration": "Instant",
+        "attribute": "Knowledge",
+        "defenseAttribute": "Agility",
+        "effect": "Send a crackling stroke along the line. Deal 3/5/7 lightning damage to each creature, once each.",
+        "improves": null,
+        "requires": [
+          "air:1"
+        ],
+        "bookId": "air"
+      },
+      "spell": {
+        "id": "spell:air:6",
+        "name": "Lightning Bolt",
+        "bookId": "air",
+        "page": "6",
+        "section": "III",
+        "sp": 3,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "Knowledge",
+        "defense": "Agility",
+        "defenseAttribute": "Agility",
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Every creature along an 8-square line from you",
+        "duration": "Instant",
+        "effect": "Send a crackling stroke along the line. Deal 3/5/7 lightning damage to each creature, once each."
+      }
+    }
+  },
+  "effects": []
+}

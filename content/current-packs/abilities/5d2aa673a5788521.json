@@ -1,0 +1,66 @@
+{
+  "_key": "!items!5d2aa673a5788521",
+  "_id": "5d2aa673a5788521",
+  "name": "Tiny Hut",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 10 minutes</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>A fixed 2-square-radius dome on clear ground beside you</dd></div><div><dt>Duration</dt><dd>8 hours</dd></div></dl><p>Create a weatherproof shelter for six Medium creatures and their ordinary gear. It has an openable entrance and translucent walls. Ordinary rain, snow and wind stay outside; occupants can leave and return. The shelter provides cover but no resistance to attacks. Choose a safe site for overnight recovery.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:sanctuary:4",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:sanctuary:4",
+        "level": 1,
+        "cost": 2,
+        "action": "Ritual · 10 minutes",
+        "sp": 2,
+        "range": "A fixed 2-square-radius dome on clear ground beside you",
+        "duration": "8 hours",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Create a weatherproof shelter for six Medium creatures and their ordinary gear. It has an openable entrance and translucent walls. Ordinary rain, snow and wind stay outside; occupants can leave and return. The shelter provides cover but no resistance to attacks. Choose a safe site for overnight recovery.",
+        "improves": null,
+        "requires": [
+          "sanctuary:0"
+        ],
+        "bookId": "sanctuary"
+      },
+      "spell": {
+        "id": "spell:sanctuary:4",
+        "name": "Tiny Hut",
+        "bookId": "sanctuary",
+        "page": "4",
+        "section": "II",
+        "sp": 2,
+        "action": "Ritual",
+        "actionText": "Ritual · 10 minutes",
+        "ritualTime": "10 minutes",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "A fixed 2-square-radius dome on clear ground beside you",
+        "duration": "8 hours",
+        "effect": "Create a weatherproof shelter for six Medium creatures and their ordinary gear. It has an openable entrance and translucent walls. Ordinary rain, snow and wind stay outside; occupants can leave and return. The shelter provides cover but no resistance to attacks. Choose a safe site for overnight recovery."
+      }
+    }
+  },
+  "effects": []
+}

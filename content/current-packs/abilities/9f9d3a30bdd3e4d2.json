@@ -1,0 +1,65 @@
+{
+  "_key": "!items!9f9d3a30bdd3e4d2",
+  "_id": "9f9d3a30bdd3e4d2",
+  "name": "Fire Bolt",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>0</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div><div><dt>Defense</dt><dd>Agility</dd></div><div><dt>Range</dt><dd>One creature within 8 squares</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Hurl a bright ember. Deal 2/3/5 fire damage.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "2 fire damage",
+      "standard": "3 fire damage",
+      "strong": "5 fire damage"
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:flame:1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:flame:1",
+        "level": 1,
+        "cost": 1,
+        "action": "Main Action",
+        "sp": 0,
+        "range": "One creature within 8 squares",
+        "duration": "Instant",
+        "attribute": "Knowledge",
+        "defenseAttribute": "Agility",
+        "effect": "Hurl a bright ember. Deal 2/3/5 fire damage.",
+        "improves": null,
+        "requires": [
+          "elements"
+        ],
+        "bookId": "flame"
+      },
+      "spell": {
+        "id": "spell:flame:1",
+        "name": "Fire Bolt",
+        "bookId": "flame",
+        "page": "1",
+        "section": "I",
+        "sp": 0,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "Knowledge",
+        "defense": "Agility",
+        "defenseAttribute": "Agility",
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One creature within 8 squares",
+        "duration": "Instant",
+        "effect": "Hurl a bright ember. Deal 2/3/5 fire damage."
+      }
+    }
+  },
+  "effects": []
+}

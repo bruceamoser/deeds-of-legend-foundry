@@ -1,0 +1,66 @@
+{
+  "_key": "!items!3f1a5f27868278a4",
+  "_id": "3f1a5f27868278a4",
+  "name": "Passwall",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 minute</dd></div><div><dt>SP</dt><dd>3</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One adjacent ordinary wall up to 2 squares thick</dd></div><div><dt>Duration</dt><dd>10 minutes</dd></div></dl><p>Open a passage 1 square wide and 2 high through wood, earth or stone. At expiry, creatures inside move to the nearest open end before the material returns. The opening preserves the surrounding structure&#39;s ordinary support.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:passage:7",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:passage:7",
+        "level": 3,
+        "cost": 3,
+        "action": "Ritual · 1 minute",
+        "sp": 3,
+        "range": "One adjacent ordinary wall up to 2 squares thick",
+        "duration": "10 minutes",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Open a passage 1 square wide and 2 high through wood, earth or stone. At expiry, creatures inside move to the nearest open end before the material returns. The opening preserves the surrounding structure's ordinary support.",
+        "improves": null,
+        "requires": [
+          "passage:2"
+        ],
+        "bookId": "passage"
+      },
+      "spell": {
+        "id": "spell:passage:7",
+        "name": "Passwall",
+        "bookId": "passage",
+        "page": "7",
+        "section": "IV",
+        "sp": 3,
+        "action": "Ritual",
+        "actionText": "Ritual · 1 minute",
+        "ritualTime": "1 minute",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One adjacent ordinary wall up to 2 squares thick",
+        "duration": "10 minutes",
+        "effect": "Open a passage 1 square wide and 2 high through wood, earth or stone. At expiry, creatures inside move to the nearest open end before the material returns. The opening preserves the surrounding structure's ordinary support."
+      }
+    }
+  },
+  "effects": []
+}

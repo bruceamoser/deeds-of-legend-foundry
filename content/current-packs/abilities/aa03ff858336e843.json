@@ -1,0 +1,47 @@
+{
+  "_key": "!items!aa03ff858336e843",
+  "_id": "aa03ff858336e843",
+  "name": "Catch Your Balance II",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Catch Your Balance can also catch a secure ledge within reach when you begin to fall, leaving you hanging instead. You need a free hand.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "athletics:balance:2",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "athletics:balance:2",
+        "level": 1,
+        "cost": 2,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Catch Your Balance can also catch a secure ledge within reach when you begin to fall, leaving you hanging instead. You need a free hand.",
+        "improves": "athletics:balance:1",
+        "requires": [
+          "athletics:balance:1"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

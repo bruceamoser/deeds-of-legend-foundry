@@ -1,0 +1,65 @@
+{
+  "_key": "!items!f14de4b8f70521e8",
+  "_id": "f14de4b8f70521e8",
+  "name": "Misty Step",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>Self; an unoccupied supported square you can see within 2 squares</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Step through a curl of mist to the chosen square with your carried gear. This teleportation traverses the intervening space instantly.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:passage:2",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:passage:2",
+        "level": 1,
+        "cost": 1,
+        "action": "Maneuver",
+        "sp": 1,
+        "range": "Self; an unoccupied supported square you can see within 2 squares",
+        "duration": "Instant",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Step through a curl of mist to the chosen square with your carried gear. This teleportation traverses the intervening space instantly.",
+        "improves": null,
+        "requires": [
+          "invocation"
+        ],
+        "bookId": "passage"
+      },
+      "spell": {
+        "id": "spell:passage:2",
+        "name": "Misty Step",
+        "bookId": "passage",
+        "page": "2",
+        "section": "I",
+        "sp": 1,
+        "action": "Maneuver",
+        "actionText": "Maneuver",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Self; an unoccupied supported square you can see within 2 squares",
+        "duration": "Instant",
+        "effect": "Step through a curl of mist to the chosen square with your carried gear. This teleportation traverses the intervening space instantly."
+      }
+    }
+  },
+  "effects": []
+}

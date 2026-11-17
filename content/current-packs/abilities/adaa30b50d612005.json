@@ -1,0 +1,47 @@
+{
+  "_key": "!items!adaa30b50d612005",
+  "_id": "adaa30b50d612005",
+  "name": "Open under Pressure I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Guile</dd></div></dl><p>Main Action · Guile, with lock tools. Work on a nonmagical lock already examined through at least one Patient Hand attempt; add 1/2/3 progress. You may repeat this faster action until that lock opens, provided its workings remain accessible.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "guile",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "subterfuge:locks:4",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "technique",
+        "nodeId": "subterfuge:locks:4",
+        "level": 3,
+        "cost": 3,
+        "action": "Main Action",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": "Guile",
+        "defenseAttribute": null,
+        "effect": "Main Action · Guile, with lock tools. Work on a nonmagical lock already examined through at least one Patient Hand attempt; add 1/2/3 progress. You may repeat this faster action until that lock opens, provided its workings remain accessible.",
+        "improves": null,
+        "requires": [
+          "subterfuge:locks:3"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

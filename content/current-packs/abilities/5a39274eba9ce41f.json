@@ -1,0 +1,66 @@
+{
+  "_key": "!items!5a39274eba9ce41f",
+  "_id": "5a39274eba9ce41f",
+  "name": "Augury",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 minute</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One course of action you intend to begin within 10 minutes</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Ask whether the contemplated course is likely to bring benefit, danger, both or neither during the next hour. The DA answers from current circumstances. New decisions can change the outcome. Ask once per distinct proposed course between overnight rests.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:portents:3",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:portents:3",
+        "level": 1,
+        "cost": 2,
+        "action": "Ritual · 1 minute",
+        "sp": 1,
+        "range": "One course of action you intend to begin within 10 minutes",
+        "duration": "Instant",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Ask whether the contemplated course is likely to bring benefit, danger, both or neither during the next hour. The DA answers from current circumstances. New decisions can change the outcome. Ask once per distinct proposed course between overnight rests.",
+        "improves": null,
+        "requires": [
+          "portents:0"
+        ],
+        "bookId": "portents"
+      },
+      "spell": {
+        "id": "spell:portents:3",
+        "name": "Augury",
+        "bookId": "portents",
+        "page": "3",
+        "section": "II",
+        "sp": 1,
+        "action": "Ritual",
+        "actionText": "Ritual · 1 minute",
+        "ritualTime": "1 minute",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One course of action you intend to begin within 10 minutes",
+        "duration": "Instant",
+        "effect": "Ask whether the contemplated course is likely to bring benefit, danger, both or neither during the next hour. The DA answers from current circumstances. New decisions can change the outcome. Ask once per distinct proposed course between overnight rests."
+      }
+    }
+  },
+  "effects": []
+}

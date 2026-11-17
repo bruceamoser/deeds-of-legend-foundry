@@ -1,0 +1,46 @@
+{
+  "_key": "!items!70b1d7b0e0e34e44",
+  "_id": "70b1d7b0e0e34e44",
+  "name": "Volley",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Agility</dd></div><div><dt>Target / range / shape</dt><dd>A 2 × 2 area within 10 squares.</dd></div><div><dt>Duration</dt><dd>Immediate.</dd></div><div><dt>Equipment / acquisition</dt><dd>A ranged weapon and ammunition.</dd></div></dl><p>Requires a ranged weapon and ammunition. Make one Agility roll and apply it to each creature in the area. Weak: 1 physical damage. Standard: 2 physical damage. Strong: 3 physical damage. Roll once using the worst applicable Boon or Bane among the targets. Each target applies resistance separately. A creature can be affected once per use.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "agility",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-signature-warden-stay-on-the-scent",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "ability",
+        "nodeId": "ability-signature-warden-stay-on-the-scent",
+        "level": 3,
+        "cost": 0,
+        "action": "Main Action",
+        "sp": null,
+        "range": "A 2 × 2 area within 10 squares.",
+        "duration": "Immediate.",
+        "attribute": "Agility",
+        "defenseAttribute": null,
+        "effect": "**Action:** Main Action · **Attribute:** Agility\n\n**Target / range / shape:** A 2 × 2 area within 10 squares.\n\nRequires a ranged weapon and ammunition. Make one Agility roll and apply it to each creature in the area. Weak: 1 physical damage. Standard: 2 physical damage. Strong: 3 physical damage. Roll once using the worst applicable Boon or Bane among the targets. Each target applies resistance separately. A creature can be affected once per use.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** A ranged weapon and ammunition.",
+        "improves": null,
+        "requires": [],
+        "bookId": null,
+        "magic": null
+      }
+    }
+  },
+  "effects": []
+}

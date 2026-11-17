@@ -1,0 +1,47 @@
+{
+  "_key": "!items!ffd5ea3836f17de5",
+  "_id": "ffd5ea3836f17de5",
+  "name": "Measured Shot I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Agility</dd></div></dl><p>Main Action · Agility. Attack one creature within 8 squares for 2/3/5 physical damage.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "agility",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "2 physical damage",
+      "standard": "3 physical damage",
+      "strong": "5 physical damage"
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "marksmanship:precision:1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "technique",
+        "nodeId": "marksmanship:precision:1",
+        "level": 1,
+        "cost": 1,
+        "action": "Main Action",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": "Agility",
+        "defenseAttribute": null,
+        "effect": "Main Action · Agility. Attack one creature within 8 squares for 2/3/5 physical damage.",
+        "improves": null,
+        "requires": [
+          "marksmanship"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

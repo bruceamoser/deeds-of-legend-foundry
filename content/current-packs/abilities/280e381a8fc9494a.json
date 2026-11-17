@@ -1,0 +1,113 @@
+{
+  "_key": "!items!280e381a8fc9494a",
+  "_id": "280e381a8fc9494a",
+  "name": "Folded Aegis",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Self.</dd></div><div><dt>Magic</dt><dd>Spell</dd></div><div><dt>SP</dt><dd>0</dd></div><div><dt>Duration</dt><dd>2 hours.</dd></div><div><dt>Equipment / acquisition</dt><dd>A free hand for casting.</dd></div></dl><p>For 2 hours, you are wrapped in magical heavy armor. You gain physical resistance 3, fire resistance 3 and cold resistance 3. Use the highest matching resistance for each damage type, to the normal cap of 3. The armor is weightless and needs no armor training.</p><p>This is a spell costing 0 SP, usable once between safe overnight rests. Its duration is fixed and requires no Sustain. Cancellation ends the armor; the cancellation progress target is 2.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-signature-arcanist-fold-the-distance",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "ability-signature-arcanist-fold-the-distance",
+        "level": 7,
+        "cost": 0,
+        "action": "Main Action",
+        "sp": 0,
+        "range": "Self.",
+        "duration": "2 hours.",
+        "attribute": "None (no roll)",
+        "defenseAttribute": null,
+        "effect": "**Action:** Main Action · **Attribute:** None (no roll)\n\n**Target / range / shape:** Self.\n\nFor 2 hours, you are wrapped in magical heavy armor. You gain physical resistance 3, fire resistance 3 and cold resistance 3. Use the highest matching resistance for each damage type, to the normal cap of 3. The armor is weightless and needs no armor training.\n\n**Duration:** 2 hours.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP, usable once between safe overnight rests. Its duration is fixed and requires no Sustain. Cancellation ends the armor; the cancellation progress target is 2.",
+        "improves": null,
+        "requires": [],
+        "bookId": null,
+        "magic": "Spell"
+      },
+      "spell": {
+        "id": "ability-signature-arcanist-fold-the-distance",
+        "name": "Folded Aegis",
+        "level": 7,
+        "dp": null,
+        "action": "Main Action",
+        "attribute": "None (no roll)",
+        "target": "Self.",
+        "duration": "2 hours.",
+        "equipment": "A free hand for casting.",
+        "limits": "One signature choice at each of levels 1, 3 and 7.",
+        "effect": "**Action:** Main Action · **Attribute:** None (no roll)\n\n**Target / range / shape:** Self.\n\nFor 2 hours, you are wrapped in magical heavy armor. You gain physical resistance 3, fire resistance 3 and cold resistance 3. Use the highest matching resistance for each damage type, to the normal cap of 3. The armor is weightless and needs no armor training.\n\n**Duration:** 2 hours.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP, usable once between safe overnight rests. Its duration is fixed and requires no Sustain. Cancellation ends the armor; the cancellation progress target is 2.",
+        "reference": {
+          "flavor": [
+            "You turn unstable magic into motion and shelter."
+          ],
+          "rules": {
+            "details": [
+              {
+                "label": "Action",
+                "value": "Main Action"
+              },
+              {
+                "label": "Attribute",
+                "value": "None (no roll)"
+              },
+              {
+                "label": "Target / range / shape",
+                "value": "Self."
+              },
+              {
+                "label": "Magic",
+                "value": "Spell"
+              },
+              {
+                "label": "SP",
+                "value": "0"
+              },
+              {
+                "label": "Duration",
+                "value": "2 hours."
+              },
+              {
+                "label": "Equipment / acquisition",
+                "value": "A free hand for casting."
+              }
+            ],
+            "body": [
+              {
+                "text": "For 2 hours, you are wrapped in magical heavy armor. You gain physical resistance 3, fire resistance 3 and cold resistance 3. Use the highest matching resistance for each damage type, to the normal cap of 3. The armor is weightless and needs no armor training."
+              },
+              {
+                "text": "This is a spell costing 0 SP, usable once between safe overnight rests. Its duration is fixed and requires no Sustain. Cancellation ends the armor; the cancellation progress target is 2."
+              }
+            ],
+            "notes": []
+          }
+        },
+        "referenceMarkdown": "**Action:** Main Action · **Attribute:** None (no roll)\n\n**Target / range / shape:** Self.\n\nFor 2 hours, you are wrapped in magical heavy armor. You gain physical resistance 3, fire resistance 3 and cold resistance 3. Use the highest matching resistance for each damage type, to the normal cap of 3. The armor is weightless and needs no armor training.\n\n**Duration:** 2 hours.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP, usable once between safe overnight rests. Its duration is fixed and requires no Sustain. Cancellation ends the armor; the cancellation progress target is 2.",
+        "classId": "class-arcanist",
+        "lineId": "arcanist:deliberate-spark",
+        "signatureComponent": true,
+        "kind": "ability",
+        "sp": 0,
+        "magic": "Spell",
+        "rulesMarkdown": "**Action:** Main Action · **Attribute:** None (no roll)\n\n**Target / range / shape:** Self.\n\nFor 2 hours, you are wrapped in magical heavy armor. You gain physical resistance 3, fire resistance 3 and cold resistance 3. Use the highest matching resistance for each damage type, to the normal cap of 3. The armor is weightless and needs no armor training.\n\n**Duration:** 2 hours.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP, usable once between safe overnight rests. Its duration is fixed and requires no Sustain. Cancellation ends the armor; the cancellation progress target is 2."
+      }
+    }
+  },
+  "effects": []
+}

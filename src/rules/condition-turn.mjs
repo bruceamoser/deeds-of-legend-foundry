@@ -37,6 +37,7 @@ export function conditionTurn({
   const plan = conditionEndPlan(contributions, {
     ...policy,
     turnId,
+    immunities: passiveDefenses.immunities ?? [],
     resistances: [
       ...(passiveDefenses.resistances ?? []),
       ...(policy.resistances ?? []),

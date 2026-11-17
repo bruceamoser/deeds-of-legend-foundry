@@ -1,0 +1,66 @@
+{
+  "_key": "!items!90b48a4d9f59a609",
+  "_id": "90b48a4d9f59a609",
+  "name": "Private Sanctum",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 10 minutes</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One fixed room up to 6 by 6 squares beside you</dd></div><div><dt>Duration</dt><dd>8 hours</dd></div></dl><p>Seal ordinary sound inside the room and make its windows opaque from outside. Remote magical sensors report only a blank space unless their caster completes a cancellation objective against this working. Doors remain usable by ordinary means.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:sanctuary:5",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:sanctuary:5",
+        "level": 1,
+        "cost": 2,
+        "action": "Ritual · 10 minutes",
+        "sp": 2,
+        "range": "One fixed room up to 6 by 6 squares beside you",
+        "duration": "8 hours",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Seal ordinary sound inside the room and make its windows opaque from outside. Remote magical sensors report only a blank space unless their caster completes a cancellation objective against this working. Doors remain usable by ordinary means.",
+        "improves": null,
+        "requires": [
+          "sanctuary:1"
+        ],
+        "bookId": "sanctuary"
+      },
+      "spell": {
+        "id": "spell:sanctuary:5",
+        "name": "Private Sanctum",
+        "bookId": "sanctuary",
+        "page": "5",
+        "section": "III",
+        "sp": 2,
+        "action": "Ritual",
+        "actionText": "Ritual · 10 minutes",
+        "ritualTime": "10 minutes",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One fixed room up to 6 by 6 squares beside you",
+        "duration": "8 hours",
+        "effect": "Seal ordinary sound inside the room and make its windows opaque from outside. Remote magical sensors report only a blank space unless their caster completes a cancellation objective against this working. Doors remain usable by ordinary means."
+      }
+    }
+  },
+  "effects": []
+}

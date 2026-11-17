@@ -1,0 +1,66 @@
+{
+  "_key": "!items!a373e2f1ca12d960",
+  "_id": "a373e2f1ca12d960",
+  "name": "Locate Object",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 minute</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One familiar object within 100 squares</dd></div><div><dt>Duration</dt><dd>10 minutes</dd></div></dl><p>Sense its direction while holding an item of the same material. Choose a specific object you have handled or the nearest example of a common kind. Magical concealment expressly blocking divination stops the signal.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:farseeing:3",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:farseeing:3",
+        "level": 1,
+        "cost": 2,
+        "action": "Ritual · 1 minute",
+        "sp": 1,
+        "range": "One familiar object within 100 squares",
+        "duration": "10 minutes",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Sense its direction while holding an item of the same material. Choose a specific object you have handled or the nearest example of a common kind. Magical concealment expressly blocking divination stops the signal.",
+        "improves": null,
+        "requires": [
+          "farseeing:0"
+        ],
+        "bookId": "farseeing"
+      },
+      "spell": {
+        "id": "spell:farseeing:3",
+        "name": "Locate Object",
+        "bookId": "farseeing",
+        "page": "3",
+        "section": "II",
+        "sp": 1,
+        "action": "Ritual",
+        "actionText": "Ritual · 1 minute",
+        "ritualTime": "1 minute",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One familiar object within 100 squares",
+        "duration": "10 minutes",
+        "effect": "Sense its direction while holding an item of the same material. Choose a specific object you have handled or the nearest example of a common kind. Magical concealment expressly blocking divination stops the signal."
+      }
+    }
+  },
+  "effects": []
+}

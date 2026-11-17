@@ -1,73 +1,41 @@
+import { nativeWorkshopLearnedItems, nativeWorkshopEquipmentItems } from "./native-workshop-state.mjs";
+import { currentNativeCharacterChanges } from "../rules/native-character-state.mjs";
 import { ancestryTokenFootprint } from "../rules/ancestry-token.mjs";
-import { readPortableCharacter } from "../rules/portable-character.mjs";
-import { nativePlayEffects } from "../rules/native-play-import.mjs";
-import { importedCharacterState } from "../rules/native-character-state.mjs";
-import { buildCharacterItems } from "./creation.mjs";
-import { loadCatalogs } from "./catalog.mjs";
+import { readPortableCharacter, writePortableCharacter, MAX_CHARACTER_BYTES } from "../rules/portable-character.mjs";
+import { validateContributions } from "../rules/conditions.mjs";
+import { loadWorkshopCatalogs } from "./catalog.mjs";
 import { getCampaignLanguageConfiguration } from "./languages.mjs";
-
-const ID = "heroes-of-legend";
-
-/** Native Import Data replaces contents; never reuse grants from its destination. */
-export function buildPortableActorSource(source, catalogs, languages, { woundsCatalog } = {}) {
-  const { draft, preview } = readPortableCharacter(source, catalogs, languages.definitions);
-  if (!preview.valid)
-    throw new Error("Finish the character's unresolved choices in the workshop before importing it into an Actor.");
-  const { items, createdIds, reusedIds, instanceIds } = buildCharacterItems(
-    { toObject: () => ({ items: [] }), items: [] },
-    [...preview.state.abilities, ...catalogs.choices.filter(record => record.kind === "ability" && record.universal).map(record => record.id)],
-    preview.inventory.items,
-    { ...catalogs, grantKind: "creation" },
-  );
-  const effects = nativePlayEffects(draft, catalogs, { randomID: () => foundry.utils.randomID(), woundsCatalog });
-  const changes = {
-    name: draft.name.trim(),
-    type: "character",
-    prototypeToken: { name: draft.name.trim(), actorLink: true, ...ancestryTokenFootprint(draft.ancestryId) },
-    items,
-    effects: effects.effects,
-    "system.health.baseMax": preview.summary.maximumHp,
-    "system.health.value": Math.min(preview.summary.maximumHp, draft.play?.hp ?? preview.summary.maximumHp),
-    "system.grit.granted": preview.summary.gritGranted,
-    "system.grit.spent": Math.min(preview.summary.gritGranted, draft.play?.gritSpent ?? 0),
-    "system.biography": draft.profile?.story ?? "",
-    "system.memorizedMessage": draft.play?.memorizedMessage ?? "",
-    [`flags.${ID}.development`]: {
-      ...preview.state,
-      stage: "advancement",
-      safePlace: preview.state.level > 1 ? false : preview.state.safePlace,
-      sourceCommit: catalogs.commit,
-      creation: structuredClone(draft),
-      creationSummary: preview.creation.summary,
-      languages: preview.play.languages,
-      ledger: [...preview.ledger, ...preview.advancementLedger],
-      coins: preview.inventory.remainingCoins,
-    },
-    [`flags.${ID}.creationReceipt`]: {
-      status: "complete", revision: 1, requestId: foundry.utils.randomID(),
-      sourceCommit: catalogs.commit, languageBasis: languages.basis,
-      createdIds, reusedIds, createdEffectIds: effects.effects.map(effect => effect._id),
-    },
-    [`flags.${ID}.wounds`]: effects.wounds,
-    ...importedCharacterState(draft, preview, items, instanceIds),
-  };
-  for (const [key, value] of Object.entries(preview.summary.creationAttributes))
-    changes[`system.attributes.${key}.base`] = value;
-  return foundry.utils.expandObject(changes);
+const ID="heroes-of-legend";
+const CURRENT_RULES_MESSAGE="This older character format is no longer playable. Recreate the hero in the current Character Workshop and import its current character file.";
+function currentPortable(source) {
+  if(typeof source==="string" && new TextEncoder().encode(source).length>MAX_CHARACTER_BYTES)throw new Error("Character file is too large.");
+  const value=typeof source==="string"?JSON.parse(source):source;
+  if(![4,5,6,7].includes(value?.schemaVersion))throw new Error(CURRENT_RULES_MESSAGE);
+  return value;
 }
-
+/** Current Workshop imports replace contents; retired PC rules have no native import path. */
+export function buildPortableActorSource(source,catalogs,languages) {
+  if(catalogs.forge?.rulesRevision!==299)throw new Error("Native character import requires the installed current Workshop rules.");
+  const value=currentPortable(source);
+  const {draft,preview}=readPortableCharacter(value,catalogs,languages.definitions);
+  if(!preview.valid)throw new Error("Finish the character's unresolved choices in the current workshop before importing it into an Actor.");
+  const portable=JSON.parse(writePortableCharacter(draft,catalogs,{ready:true,languages:languages.definitions}));
+  const items=[...nativeWorkshopLearnedItems(preview,catalogs),...nativeWorkshopEquipmentItems(preview,catalogs)].map(item=>({_id:foundry.utils.randomID(),...item}));
+  validateContributions(draft.play?.conditions??[]);
+  const effects=(draft.play?.conditions??[]).map(condition=>{
+    const id=foundry.utils.randomID();
+    return {_id:id,name:`${condition.key} ${condition.rating}`,img:"icons/svg/aura.svg",disabled:false,statuses:[`hol.${condition.key}`],flags:{[ID]:{condition:{...condition,id},workshopConditionId:condition.id}}};
+  });
+  return foundry.utils.expandObject({
+    ...currentNativeCharacterChanges(draft,preview),type:"character",
+    prototypeToken:{name:draft.name.trim(),actorLink:true,...ancestryTokenFootprint(draft.ancestryId)},items,effects,
+    [`flags.${ID}.forgeLearned`]:preview.state.learned,
+    [`flags.${ID}.nativeWorkshop`]:{revision:1,portable,inventoryInstances:preview.inventory.items.map(item=>item.instanceId),view:{mode:"sheet"}},
+    [`flags.${ID}.creationReceipt`]:{status:"complete",revision:1,sourceCommit:catalogs.commit,currentWorkshop:true},
+    [`flags.${ID}.development`]:{...preview.state,creation:draft,languages:preview.play.languages,sourceCommit:catalogs.commit,coins:preview.inventory.remainingCoins},
+  });
+}
 export async function portableActorSource(source) {
-  const catalogs = await loadCatalogs();
-  const languages = getCampaignLanguageConfiguration();
-  // Validate before fetching an optional wound catalog or allocating native IDs.
-  const { draft, preview } = readPortableCharacter(source, catalogs, languages.definitions);
-  if (!preview.valid)
-    throw new Error("Finish the character's unresolved choices in the workshop before importing it into an Actor.");
-  let woundsCatalog;
-  if (draft.play?.wounds?.some(wound => wound.catalogId)) {
-    const response = await fetch("systems/heroes-of-legend/data/wounds.json");
-    if (!response.ok) throw new Error("Cannot load the wound catalog required by this character.");
-    woundsCatalog = await response.json();
-  }
-  return buildPortableActorSource(source, catalogs, languages, { woundsCatalog });
+  currentPortable(source);
+  return buildPortableActorSource(source,await loadWorkshopCatalogs(),getCampaignLanguageConfiguration());
 }

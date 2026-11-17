@@ -1,0 +1,65 @@
+{
+  "_key": "!items!2403f1f1b6bf8ac0",
+  "_id": "2403f1f1b6bf8ac0",
+  "name": "Sanctuary",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One willing creature within 3 squares</dd></div><div><dt>Duration</dt><dd>1 minute</dd></div></dl><p>Give the recipient 1 Boon to defenses while it attends to healing, movement or other peaceful actions. Its first attack or harmful spell ends the ward after that action resolves.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:sanctuary:2",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:sanctuary:2",
+        "level": 1,
+        "cost": 1,
+        "action": "Main Action",
+        "sp": 1,
+        "range": "One willing creature within 3 squares",
+        "duration": "1 minute",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Give the recipient 1 Boon to defenses while it attends to healing, movement or other peaceful actions. Its first attack or harmful spell ends the ward after that action resolves.",
+        "improves": null,
+        "requires": [
+          "wards"
+        ],
+        "bookId": "sanctuary"
+      },
+      "spell": {
+        "id": "spell:sanctuary:2",
+        "name": "Sanctuary",
+        "bookId": "sanctuary",
+        "page": "2",
+        "section": "I",
+        "sp": 1,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One willing creature within 3 squares",
+        "duration": "1 minute",
+        "effect": "Give the recipient 1 Boon to defenses while it attends to healing, movement or other peaceful actions. Its first attack or harmful spell ends the ward after that action resolves."
+      }
+    }
+  },
+  "effects": []
+}

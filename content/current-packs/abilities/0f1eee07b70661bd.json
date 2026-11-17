@@ -1,0 +1,47 @@
+{
+  "_key": "!items!0f1eee07b70661bd",
+  "_id": "0f1eee07b70661bd",
+  "name": "Light Fingers I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>Guile</dd></div></dl><p>Maneuver · Guile, with a free hand. Palm or plant one unattended palm-sized object within reach; add 1/2/3 progress toward doing so unnoticed. The DA sets the objective and whether scrutiny permits the attempt. The object moves when that objective completes.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "attribute",
+      "attribute": "guile",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "subterfuge:sleight:1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "technique",
+        "nodeId": "subterfuge:sleight:1",
+        "level": 1,
+        "cost": 1,
+        "action": "Maneuver",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": "Guile",
+        "defenseAttribute": null,
+        "effect": "Maneuver · Guile, with a free hand. Palm or plant one unattended palm-sized object within reach; add 1/2/3 progress toward doing so unnoticed. The DA sets the objective and whether scrutiny permits the attempt. The object moves when that objective completes.",
+        "improves": null,
+        "requires": [
+          "subterfuge"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

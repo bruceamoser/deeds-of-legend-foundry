@@ -1,0 +1,65 @@
+{
+  "_key": "!items!99d954624feb8a11",
+  "_id": "99d954624feb8a11",
+  "name": "Control Water",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>3</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>A 4-by-4-square area of existing water within 8 squares, up to 2 squares deep</dd></div><div><dt>Duration</dt><dd>Sustained, up to 1 minute</dd></div></dl><p>Part, raise or redirect the water by up to 2 squares. Each upkeep can reshape it within that area. Swimming creatures move with the flow up to 2 squares each upkeep; a creature holding a fixed support stays in place. Released water returns to its natural course.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:water:6",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:water:6",
+        "level": 1,
+        "cost": 2,
+        "action": "Main Action",
+        "sp": 3,
+        "range": "A 4-by-4-square area of existing water within 8 squares, up to 2 squares deep",
+        "duration": "Sustained, up to 1 minute",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Part, raise or redirect the water by up to 2 squares. Each upkeep can reshape it within that area. Swimming creatures move with the flow up to 2 squares each upkeep; a creature holding a fixed support stays in place. Released water returns to its natural course.",
+        "improves": null,
+        "requires": [
+          "water:1"
+        ],
+        "bookId": "water"
+      },
+      "spell": {
+        "id": "spell:water:6",
+        "name": "Control Water",
+        "bookId": "water",
+        "page": "6",
+        "section": "III",
+        "sp": 3,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "A 4-by-4-square area of existing water within 8 squares, up to 2 squares deep",
+        "duration": "Sustained, up to 1 minute",
+        "effect": "Part, raise or redirect the water by up to 2 squares. Each upkeep can reshape it within that area. Swimming creatures move with the flow up to 2 squares each upkeep; a creature holding a fixed support stays in place. Released water returns to its natural course."
+      }
+    }
+  },
+  "effects": []
+}

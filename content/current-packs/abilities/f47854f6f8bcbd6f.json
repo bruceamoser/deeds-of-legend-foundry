@@ -1,0 +1,65 @@
+{
+  "_key": "!items!f47854f6f8bcbd6f",
+  "_id": "f47854f6f8bcbd6f",
+  "name": "Detect Magic — Threads",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>SP</dt><dd>0</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One visible magical effect within 3 squares</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>See its magical threads. Learn whether it is sustained, fixed-duration or permanent, and which creature is presently sustaining it if that creature is visible.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:unraveling:1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:unraveling:1",
+        "level": 1,
+        "cost": 1,
+        "action": "Maneuver",
+        "sp": 0,
+        "range": "One visible magical effect within 3 squares",
+        "duration": "Instant",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "See its magical threads. Learn whether it is sustained, fixed-duration or permanent, and which creature is presently sustaining it if that creature is visible.",
+        "improves": null,
+        "requires": [
+          "wards"
+        ],
+        "bookId": "unraveling"
+      },
+      "spell": {
+        "id": "spell:unraveling:1",
+        "name": "Detect Magic — Threads",
+        "bookId": "unraveling",
+        "page": "1",
+        "section": "I",
+        "sp": 0,
+        "action": "Maneuver",
+        "actionText": "Maneuver",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One visible magical effect within 3 squares",
+        "duration": "Instant",
+        "effect": "See its magical threads. Learn whether it is sustained, fixed-duration or permanent, and which creature is presently sustaining it if that creature is visible."
+      }
+    }
+  },
+  "effects": []
+}

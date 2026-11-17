@@ -1,0 +1,66 @@
+{
+  "_key": "!items!7b9141794429f362",
+  "_id": "7b9141794429f362",
+  "name": "Mending",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 minute</dd></div><div><dt>SP</dt><dd>0</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One unattended mundane item of Bulk 1 or less in your hands</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Rejoin a small clean break or tear while holding all its pieces together. Restore ordinary function to that part. For an item with HP, the DA states before casting whether this small repair is sufficient and how many HP it restores, following the repair-objective rules. Missing components and substantial reconstruction use repair projects.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:shaping:1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:shaping:1",
+        "level": 1,
+        "cost": 1,
+        "action": "Ritual · 1 minute",
+        "sp": 0,
+        "range": "One unattended mundane item of Bulk 1 or less in your hands",
+        "duration": "Instant",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Rejoin a small clean break or tear while holding all its pieces together. Restore ordinary function to that part. For an item with HP, the DA states before casting whether this small repair is sufficient and how many HP it restores, following the repair-objective rules. Missing components and substantial reconstruction use repair projects.",
+        "improves": null,
+        "requires": [
+          "force"
+        ],
+        "bookId": "shaping"
+      },
+      "spell": {
+        "id": "spell:shaping:1",
+        "name": "Mending",
+        "bookId": "shaping",
+        "page": "1",
+        "section": "I",
+        "sp": 0,
+        "action": "Ritual",
+        "actionText": "Ritual · 1 minute",
+        "ritualTime": "1 minute",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One unattended mundane item of Bulk 1 or less in your hands",
+        "duration": "Instant",
+        "effect": "Rejoin a small clean break or tear while holding all its pieces together. Restore ordinary function to that part. For an item with HP, the DA states before casting whether this small repair is sufficient and how many HP it restores, following the repair-objective rules. Missing components and substantial reconstruction use repair projects."
+      }
+    }
+  },
+  "effects": []
+}

@@ -1,0 +1,47 @@
+{
+  "_key": "!items!3b81908d0784f699",
+  "_id": "3b81908d0784f699",
+  "name": "Driving Opening I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div></dl><p>Maneuver. Choose one visible creature. Before your turn ends, your next Main Action melee weapon attack against it also pushes it 1 square directly away from your attack position on Strong. This modifies one attack, not each target of a sweep. Reusing this technique replaces its unused effect.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "arms:impact:1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "technique",
+        "nodeId": "arms:impact:1",
+        "level": 1,
+        "cost": 1,
+        "action": "Maneuver",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Maneuver. Choose one visible creature. Before your turn ends, your next Main Action melee weapon attack against it also pushes it 1 square directly away from your attack position on Strong. This modifies one attack, not each target of a sweep. Reusing this technique replaces its unused effect.",
+        "improves": null,
+        "requires": [
+          "arms"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

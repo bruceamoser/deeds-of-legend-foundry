@@ -1,0 +1,47 @@
+{
+  "_key": "!items!bc8ed96d8153ff6b",
+  "_id": "bc8ed96d8153ff6b",
+  "name": "Break the Line III",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Break the Line pushes 2 squares instead of 1; on Strong each target also becomes Prone.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "guard:shieldwork:6",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "guard:shieldwork:6",
+        "level": 3,
+        "cost": 4,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Break the Line pushes 2 squares instead of 1; on Strong each target also becomes Prone.",
+        "improves": "guard:shieldwork:4",
+        "requires": [
+          "guard:shieldwork:5"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

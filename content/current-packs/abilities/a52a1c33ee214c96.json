@@ -1,0 +1,113 @@
+{
+  "_key": "!items!a52a1c33ee214c96",
+  "_id": "a52a1c33ee214c96",
+  "name": "A Door Where There Wasn’t",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Self; one nonmagical barrier within reach.</dd></div><div><dt>Magic</dt><dd>Spell</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Duration</dt><dd>Until you pass through or the end of your next turn.</dd></div><div><dt>Equipment / acquisition</dt><dd>A free hand for casting.</dd></div></dl><p>A door-sized opening appears in the barrier. Only you and your worn or carried gear can pass through it. The opening closes immediately after you pass through or at the end of your next turn.</p><p>This is a spell costing 1 SP, usable once per scene. The barrier can be at most 1 square thick, and you must see a safe, empty destination on its far side. Movement through the opening uses ordinary movement. Cancellation target 3 closes the opening.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-signature-odd-change-the-question",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "ability-signature-odd-change-the-question",
+        "level": 3,
+        "cost": 0,
+        "action": "Maneuver",
+        "sp": 1,
+        "range": "Self; one nonmagical barrier within reach.",
+        "duration": "Until you pass through or the end of your next turn.",
+        "attribute": "None (no roll)",
+        "defenseAttribute": null,
+        "effect": "**Action:** Maneuver · **Attribute:** None (no roll)\n\n**Target / range / shape:** Self; one nonmagical barrier within reach.\n\nA door-sized opening appears in the barrier. Only you and your worn or carried gear can pass through it. The opening closes immediately after you pass through or at the end of your next turn.\n\n**Duration:** Until you pass through or the end of your next turn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 1 SP, usable once per scene. The barrier can be at most 1 square thick, and you must see a safe, empty destination on its far side. Movement through the opening uses ordinary movement. Cancellation target 3 closes the opening.",
+        "improves": null,
+        "requires": [],
+        "bookId": null,
+        "magic": "Spell"
+      },
+      "spell": {
+        "id": "ability-signature-odd-change-the-question",
+        "name": "A Door Where There Wasn’t",
+        "level": 3,
+        "dp": null,
+        "action": "Maneuver",
+        "attribute": "None (no roll)",
+        "target": "Self; one nonmagical barrier within reach.",
+        "duration": "Until you pass through or the end of your next turn.",
+        "equipment": "A free hand for casting.",
+        "limits": "One signature choice at each of levels 1, 3 and 7.",
+        "effect": "**Action:** Maneuver · **Attribute:** None (no roll)\n\n**Target / range / shape:** Self; one nonmagical barrier within reach.\n\nA door-sized opening appears in the barrier. Only you and your worn or carried gear can pass through it. The opening closes immediately after you pass through or at the end of your next turn.\n\n**Duration:** Until you pass through or the end of your next turn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 1 SP, usable once per scene. The barrier can be at most 1 square thick, and you must see a safe, empty destination on its far side. Movement through the opening uses ordinary movement. Cancellation target 3 closes the opening.",
+        "reference": {
+          "flavor": [
+            "You make the familiar world answer in an unfamiliar voice."
+          ],
+          "rules": {
+            "details": [
+              {
+                "label": "Action",
+                "value": "Maneuver"
+              },
+              {
+                "label": "Attribute",
+                "value": "None (no roll)"
+              },
+              {
+                "label": "Target / range / shape",
+                "value": "Self; one nonmagical barrier within reach."
+              },
+              {
+                "label": "Magic",
+                "value": "Spell"
+              },
+              {
+                "label": "SP",
+                "value": "1"
+              },
+              {
+                "label": "Duration",
+                "value": "Until you pass through or the end of your next turn."
+              },
+              {
+                "label": "Equipment / acquisition",
+                "value": "A free hand for casting."
+              }
+            ],
+            "body": [
+              {
+                "text": "A door-sized opening appears in the barrier. Only you and your worn or carried gear can pass through it. The opening closes immediately after you pass through or at the end of your next turn."
+              },
+              {
+                "text": "This is a spell costing 1 SP, usable once per scene. The barrier can be at most 1 square thick, and you must see a safe, empty destination on its far side. Movement through the opening uses ordinary movement. Cancellation target 3 closes the opening."
+              }
+            ],
+            "notes": []
+          }
+        },
+        "referenceMarkdown": "**Action:** Maneuver · **Attribute:** None (no roll)\n\n**Target / range / shape:** Self; one nonmagical barrier within reach.\n\nA door-sized opening appears in the barrier. Only you and your worn or carried gear can pass through it. The opening closes immediately after you pass through or at the end of your next turn.\n\n**Duration:** Until you pass through or the end of your next turn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 1 SP, usable once per scene. The barrier can be at most 1 square thick, and you must see a safe, empty destination on its far side. Movement through the opening uses ordinary movement. Cancellation target 3 closes the opening.",
+        "classId": "class-odd",
+        "lineId": "odd:use-their-voice",
+        "signatureComponent": true,
+        "kind": "ability",
+        "sp": 1,
+        "magic": "Spell",
+        "rulesMarkdown": "**Action:** Maneuver · **Attribute:** None (no roll)\n\n**Target / range / shape:** Self; one nonmagical barrier within reach.\n\nA door-sized opening appears in the barrier. Only you and your worn or carried gear can pass through it. The opening closes immediately after you pass through or at the end of your next turn.\n\n**Duration:** Until you pass through or the end of your next turn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 1 SP, usable once per scene. The barrier can be at most 1 square thick, and you must see a safe, empty destination on its far side. Movement through the opening uses ordinary movement. Cancellation target 3 closes the opening."
+      }
+    }
+  },
+  "effects": []
+}

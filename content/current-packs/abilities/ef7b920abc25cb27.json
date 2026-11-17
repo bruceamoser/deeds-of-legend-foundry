@@ -1,0 +1,65 @@
+{
+  "_key": "!items!ef7b920abc25cb27",
+  "_id": "ef7b920abc25cb27",
+  "name": "Jump",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One willing creature within 3 squares</dd></div><div><dt>Duration</dt><dd>Until the end of its next turn</dd></div></dl><p>The recipient&#39;s next jump can cover up to 4 squares horizontally or 2 vertically using its normal movement. Choose a reachable landing place and spend movement for the distance traveled.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:transformation:2",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:transformation:2",
+        "level": 1,
+        "cost": 1,
+        "action": "Maneuver",
+        "sp": 1,
+        "range": "One willing creature within 3 squares",
+        "duration": "Until the end of its next turn",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "The recipient's next jump can cover up to 4 squares horizontally or 2 vertically using its normal movement. Choose a reachable landing place and spend movement for the distance traveled.",
+        "improves": null,
+        "requires": [
+          "life"
+        ],
+        "bookId": "transformation"
+      },
+      "spell": {
+        "id": "spell:transformation:2",
+        "name": "Jump",
+        "bookId": "transformation",
+        "page": "2",
+        "section": "I",
+        "sp": 1,
+        "action": "Maneuver",
+        "actionText": "Maneuver",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One willing creature within 3 squares",
+        "duration": "Until the end of its next turn",
+        "effect": "The recipient's next jump can cover up to 4 squares horizontally or 2 vertically using its normal movement. Choose a reachable landing place and spend movement for the distance traveled."
+      }
+    }
+  },
+  "effects": []
+}

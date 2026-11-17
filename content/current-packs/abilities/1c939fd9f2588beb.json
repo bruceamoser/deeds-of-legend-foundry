@@ -1,0 +1,65 @@
+{
+  "_key": "!items!1c939fd9f2588beb",
+  "_id": "1c939fd9f2588beb",
+  "name": "Heal",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>One living creature within 3 squares</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Flood the recipient with restorative power. Restore 8/12/16 HP after Life resistance and reduce both Bleeding and Poisoned by 2.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "reason",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:restoration:a1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:restoration:a1",
+        "level": 3,
+        "cost": 4,
+        "action": "Main Action",
+        "sp": 5,
+        "range": "One living creature within 3 squares",
+        "duration": "Instant",
+        "attribute": "Reason",
+        "defenseAttribute": null,
+        "effect": "Flood the recipient with restorative power. Restore 8/12/16 HP after Life resistance and reduce both Bleeding and Poisoned by 2.",
+        "improves": null,
+        "requires": [
+          "restoration:3"
+        ],
+        "bookId": "restoration"
+      },
+      "spell": {
+        "id": "spell:restoration:a1",
+        "name": "Heal",
+        "bookId": "restoration",
+        "page": "A1",
+        "section": "V",
+        "sp": 5,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "Reason",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One living creature within 3 squares",
+        "duration": "Instant",
+        "effect": "Flood the recipient with restorative power. Restore 8/12/16 HP after Life resistance and reduce both Bleeding and Poisoned by 2."
+      }
+    }
+  },
+  "effects": []
+}

@@ -1,0 +1,65 @@
+{
+  "_key": "!items!7178f3989188325a",
+  "_id": "7178f3989188325a",
+  "name": "Grease",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>Four connected ground squares within 6 squares</dd></div><div><dt>Duration</dt><dd>1 minute</dd></div></dl><p>Coat the ground in slippery magical grease. It becomes difficult terrain. A creature entering from outside may move carefully for 2 additional movement, or become Prone after moving into its first greasy square. Choose when entering.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:shaping:2",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:shaping:2",
+        "level": 1,
+        "cost": 1,
+        "action": "Main Action",
+        "sp": 1,
+        "range": "Four connected ground squares within 6 squares",
+        "duration": "1 minute",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Coat the ground in slippery magical grease. It becomes difficult terrain. A creature entering from outside may move carefully for 2 additional movement, or become Prone after moving into its first greasy square. Choose when entering.",
+        "improves": null,
+        "requires": [
+          "force"
+        ],
+        "bookId": "shaping"
+      },
+      "spell": {
+        "id": "spell:shaping:2",
+        "name": "Grease",
+        "bookId": "shaping",
+        "page": "2",
+        "section": "I",
+        "sp": 1,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Four connected ground squares within 6 squares",
+        "duration": "1 minute",
+        "effect": "Coat the ground in slippery magical grease. It becomes difficult terrain. A creature entering from outside may move carefully for 2 additional movement, or become Prone after moving into its first greasy square. Choose when entering."
+      }
+    }
+  },
+  "effects": []
+}

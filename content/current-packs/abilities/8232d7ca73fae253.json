@@ -1,0 +1,66 @@
+{
+  "_key": "!items!8232d7ca73fae253",
+  "_id": "8232d7ca73fae253",
+  "name": "Glyph of Warding",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 10 minutes</dd></div><div><dt>SP</dt><dd>3</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div><div><dt>Defense</dt><dd>Agility</dd></div><div><dt>Range</dt><dd>One fixed surface within reach; burst within 1 square of it</dd></div><div><dt>Duration</dt><dd>8 hours or until triggered</dd></div></dl><p>Inscribe a visible glyph and define a creature crossing or touching its surface as the trigger. On the first trigger, every creature in the burst takes 3/5/7 force damage, set by your ritual roll. The glyph triggers once. Moving its surface more than 1 square ends it safely.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:seals:6",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:seals:6",
+        "level": 1,
+        "cost": 2,
+        "action": "Ritual · 10 minutes",
+        "sp": 3,
+        "range": "One fixed surface within reach; burst within 1 square of it",
+        "duration": "8 hours or until triggered",
+        "attribute": "Knowledge",
+        "defenseAttribute": "Agility",
+        "effect": "Inscribe a visible glyph and define a creature crossing or touching its surface as the trigger. On the first trigger, every creature in the burst takes 3/5/7 force damage, set by your ritual roll. The glyph triggers once. Moving its surface more than 1 square ends it safely.",
+        "improves": null,
+        "requires": [
+          "seals:1"
+        ],
+        "bookId": "seals"
+      },
+      "spell": {
+        "id": "spell:seals:6",
+        "name": "Glyph of Warding",
+        "bookId": "seals",
+        "page": "6",
+        "section": "III",
+        "sp": 3,
+        "action": "Ritual",
+        "actionText": "Ritual · 10 minutes",
+        "ritualTime": "10 minutes",
+        "attribute": "Knowledge",
+        "defense": "Agility",
+        "defenseAttribute": "Agility",
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One fixed surface within reach; burst within 1 square of it",
+        "duration": "8 hours or until triggered",
+        "effect": "Inscribe a visible glyph and define a creature crossing or touching its surface as the trigger. On the first trigger, every creature in the burst takes 3/5/7 force damage, set by your ritual roll. The glyph triggers once. Moving its surface more than 1 square ends it safely."
+      }
+    }
+  },
+  "effects": []
+}

@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import {settleTurnConditions,turnEndContent} from "../src/services/turn-end-conditions.mjs";
 const ID="heroes-of-legend";
 function fixture({hp=20,owner=true,synthetic=false}={}) {
- const flags={},effects=[];let writes=0;
+ const flags={nativeWorkshop:{portable:{format:'heroes-of-legend-character',schemaVersion:7,draft:{}}}},effects=[];let writes=0;
  const actor={uuid:synthetic?"Scene.fixture.Token.hero.Actor.hero":"Actor.hero",name:"Ari",type:"character",isToken:synthetic,items:[],system:{health:{value:hp,max:20},grit:{available:2},resistances:{numeric:[{type:"fire",value:2}]},weaknesses:{numeric:[]}},getFlag:(_,key)=>flags[key],testUserPermission:()=>owner,toObject:()=>({effects:structuredClone(effects)})};
  Object.defineProperty(actor,"effects",{get:()=>effects.map(data=>({...data,id:data._id,active:!data.disabled,getFlag:(_,key)=>data.flags?.[ID]?.[key]}))});
  const add=(key,rating,persistence="temporary")=>{const id=`effect${effects.length}`;effects.push({_id:id,name:key,statuses:[`hol.${key}`],showIcon:2,flags:{[ID]:{condition:{id,key,rating,persistence,source:"Hazard",order:effects.length}}}});};
@@ -11,10 +11,10 @@ function fixture({hp=20,owner=true,synthetic=false}={}) {
  globalThis.CONST={ACTIVE_EFFECT_SHOW_ICON:{NEVER:0}};globalThis.foundry={utils:{escapeHTML:value=>value.replaceAll('<','&lt;')}};
  return {actor,flags,effects,add,write,get writes(){return writes;}};
 }
-test("turn-end damage uses matching resistance/minimum, Bleeding bypasses it, Poisoned only decays",async()=>{
+test("turn-end damage uses matching resistance without an attack minimum, Bleeding bypasses it, Poisoned only decays",async()=>{
  const f=fixture();f.add("burning",1);f.add("bleeding",2);f.add("poisoned",3);
  const result=await settleTurnConditions(f.actor,"combat-1-turn",{author:{},write:f.write});
- assert.equal(f.actor.system.health.value,17);assert.equal(result.events[0].total,1);assert.equal(result.events[0].event.minimumApplied,true);assert.equal(result.events[1].total,2);assert.equal(result.events[1].bypassResistance,true);
+ assert.equal(f.actor.system.health.value,18);assert.equal(result.events[0].total,0);assert.equal(result.events[0].event.minimumApplied,false);assert.equal(result.events[1].total,2);assert.equal(result.events[1].bypassResistance,true);
  assert.deepEqual(result.changes.map(c=>[c.key,c.after]),[["burning",0],["bleeding",1],["poisoned",2]]);
  assert(f.effects[0].disabled);assert.equal(f.effects[0].showIcon,0);assert.deepEqual(f.effects[0].statuses,[]);
  assert.match(turnEndContent(result),/resistance applied/);assert.match(turnEndContent(result),/Poisoned 3 → 2/);
@@ -43,4 +43,15 @@ test("an actor write rejected before settlement leaves the turn retryable, while
  await assert.rejects(settleTurnConditions(f.actor,"retry",{author:{},write:async(...args)=>{await f.write(...args);throw Error("Confirmation lost");}}),/Confirmation lost/);
  assert.equal(f.actor.system.health.value,18);
  const recovered=await settleTurnConditions(f.actor,"retry",{author:{},write:f.write});assert.equal(recovered.replay,true);assert.equal(f.writes,1);assert.equal(f.actor.system.health.value,18);
+});
+
+test("a tick causing a fall and a later tick at zero persist distinct current death timing without legacy wounds",async()=>{
+ const f=fixture({hp:1});f.add("burning",3);f.add("bleeding",2);
+ const result=await settleTurnConditions(f.actor,"fall-ticks",{author:{},write:f.write});
+ assert.equal(result.after,0);assert.equal(f.flags.forgeVitals.dying,true);assert.deepEqual(f.flags.forgeVitals.immediateDeathRolls,["fall-ticks-bleeding"]);assert.equal(f.flags.survival,undefined);assert.equal(f.flags.pendingWounds,undefined);
+ await settleTurnConditions(f.actor,"fall-ticks",{author:{},write:f.write});assert.deepEqual(f.flags.forgeVitals.immediateDeathRolls,["fall-ticks-bleeding"]);assert.equal(f.writes,1);
+});
+test("immune zero-damage tick at zero HP decays without a death roll or waking sleep",async()=>{
+ const f=fixture({hp:0});f.actor.system.damageImmunities=["fire"];f.add("burning",3);f.add("asleep",2,"starred");
+ const result=await settleTurnConditions(f.actor,"immune-tick",{author:{},write:f.write});assert.equal(result.events[0].total,0);assert.deepEqual(f.flags.forgeVitals.immediateDeathRolls,[]);assert.equal(f.effects[0].flags[ID].condition.rating,2);assert.equal(f.effects[1].disabled,undefined);
 });

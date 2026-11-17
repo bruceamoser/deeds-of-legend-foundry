@@ -1,0 +1,47 @@
+{
+  "_key": "!items!eac807f7f9c96637",
+  "_id": "eac807f7f9c96637",
+  "name": "Take the Blow I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Reaction</dd></div></dl><p>Reaction. Before an adjacent ally rolls defense against a single-target attack, become its target if the attacker can legally target you. Roll your defense and receive all effects; the ally receives none.</p>",
+    "activity": {
+      "action": "reaction",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "guard:interception:4",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "technique",
+        "nodeId": "guard:interception:4",
+        "level": 3,
+        "cost": 3,
+        "action": "Reaction",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Reaction. Before an adjacent ally rolls defense against a single-target attack, become its target if the attacker can legally target you. Roll your defense and receive all effects; the ally receives none.",
+        "improves": null,
+        "requires": [
+          "guard:interception:3"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

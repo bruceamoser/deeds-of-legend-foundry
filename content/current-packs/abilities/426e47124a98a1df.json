@@ -1,0 +1,47 @@
+{
+  "_key": "!items!426e47124a98a1df",
+  "_id": "426e47124a98a1df",
+  "name": "Trail Warning II",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Trail Warning reaches 6 squares.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "wilderness:trailcraft:2",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "wilderness:trailcraft:2",
+        "level": 1,
+        "cost": 2,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Trail Warning reaches 6 squares.",
+        "improves": "wilderness:trailcraft:1",
+        "requires": [
+          "wilderness:trailcraft:1"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

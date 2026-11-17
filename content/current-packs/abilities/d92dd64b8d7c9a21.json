@@ -1,0 +1,46 @@
+{
+  "_key": "!items!d92dd64b8d7c9a21",
+  "_id": "d92dd64b8d7c9a21",
+  "name": "Shatter the Guard",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Target / range / shape</dt><dd>One visible foe within 5 squares.</dd></div><div><dt>Duration</dt><dd>Study until the start of your next turn; resistance reduction until scene end.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div></dl><p>Study the foe. Until the start of your next turn, your next weapon attack against it may use Knowledge instead of its ordinary attribute. Use that attack’s actual range, weapon requirements, damage and effects. You may study once on your turn; a new study replaces the previous one.</p><p>Once per scene, after resolving that studied weapon attack, reduce one of the target’s existing resistances by 1, minimum 0, until scene end. Each target can suffer this reduction only once from Shatter the Guard, regardless of source. Immunity is unchanged.</p><p>If you also know Predict the Motion, its defense benefit applies while this study lasts.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-signature-intellect-expose-the-mechanism",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "ability",
+        "nodeId": "ability-signature-intellect-expose-the-mechanism",
+        "level": 7,
+        "cost": 0,
+        "action": "Maneuver",
+        "sp": null,
+        "range": "One visible foe within 5 squares.",
+        "duration": "Study until the start of your next turn; resistance reduction until scene end.",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "**Action:** Maneuver · **Attribute:** None\n\n**Target / range / shape:** One visible foe within 5 squares.\n\nStudy the foe. Until the start of your next turn, your next weapon attack against it may use Knowledge instead of its ordinary attribute. Use that attack’s actual range, weapon requirements, damage and effects. You may study once on your turn; a new study replaces the previous one.\n\nOnce per scene, after resolving that studied weapon attack, reduce one of the target’s existing resistances by 1, minimum 0, until scene end. Each target can suffer this reduction only once from Shatter the Guard, regardless of source. Immunity is unchanged.\n\n**Duration:** Study until the start of your next turn; resistance reduction until scene end.\n\n**Equipment / acquisition:** None.\n\nIf you also know Predict the Motion, its defense benefit applies while this study lasts.",
+        "improves": null,
+        "requires": [],
+        "bookId": null,
+        "magic": null
+      }
+    }
+  },
+  "effects": []
+}

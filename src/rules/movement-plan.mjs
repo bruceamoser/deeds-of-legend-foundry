@@ -10,7 +10,7 @@
  * never infers them.
  */
 export const MOVEMENT_RULES_SOURCE = Object.freeze({
-  commit: "295e858c1b6fee044a0261bf9f437636efeff2bf",
+  commit: "87f5141bd6e0da74a10c07b3239e975c7656430a",
   paths: Object.freeze([
     "design/rules/foundations.md",
     "design/rules/session-resolution.md",
@@ -120,9 +120,10 @@ function readApproach(value, takeoff) {
   return approach;
 }
 
-function ordinaryCost(square) {
+function ordinaryCost(square, prone = false) {
   if (square.occupant === "standing")
     throw new Error("Standing occupied squares cannot be traversed.");
+  if (prone) return square.terrain === "difficult" ? 3 : 2;
   return square.terrain === "difficult" ||
     square.occupant === "prone" ||
     square.access !== "walk"
@@ -166,7 +167,7 @@ function addSafe(a, b) {
   return result;
 }
 
-function planPath({ movement, path: rawPath, squares: rawSquares, barriers }) {
+function planPath({ movement, path: rawPath, squares: rawSquares, barriers, prone = false }) {
   const movementAvailable = movementInteger(movement),
     path = readPath(rawPath, "Movement path"),
     squares = readSquares(rawSquares),
@@ -175,7 +176,7 @@ function planPath({ movement, path: rawPath, squares: rawSquares, barriers }) {
     steps = [];
   let spent = 0;
   for (let index = 1; index < path.length; index++) {
-    const cost = ordinaryCost(facts[index]);
+    const cost = ordinaryCost(facts[index], prone);
     spent = addSafe(spent, cost);
     steps.push({ to: { ...path[index] }, cost });
   }
@@ -195,10 +196,12 @@ export function planOrdinaryMovement({
   path,
   squares,
   barriers = [],
+  prone = false,
 }) {
+  if (typeof prone !== "boolean") throw new Error("Prone movement state must be boolean.");
   return {
-    kind: "ordinary",
-    ...planPath({ movement, path, squares, barriers }),
+    kind: prone ? "crawl" : "ordinary",
+    ...planPath({ movement, path, squares, barriers, prone }),
   };
 }
 

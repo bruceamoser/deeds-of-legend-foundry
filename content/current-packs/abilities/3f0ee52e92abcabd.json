@@ -1,0 +1,65 @@
+{
+  "_key": "!items!3f0ee52e92abcabd",
+  "_id": "3f0ee52e92abcabd",
+  "name": "Circle of Death",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>6</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Defense</dt><dd>Fortitude</dd></div><div><dt>Range</dt><dd>Every living creature in a 3-square-radius burst within 10 squares</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>A ring of pallor spreads from the chosen point. Deal 5/8/11 life damage and apply Poisoned 1 to each living creature in the burst, including allies. Each creature is affected once. Resolve damage and dying by the ordinary rules.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "reason",
+      "defenseAttribute": "fortitude"
+    },
+    "outcomes": {
+      "weak": "5 life damage",
+      "standard": "8 life damage",
+      "strong": "11 life damage"
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:decay:a3",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:decay:a3",
+        "level": 7,
+        "cost": 5,
+        "action": "Main Action",
+        "sp": 6,
+        "range": "Every living creature in a 3-square-radius burst within 10 squares",
+        "duration": "Instant",
+        "attribute": "Reason",
+        "defenseAttribute": "Fortitude",
+        "effect": "A ring of pallor spreads from the chosen point. Deal 5/8/11 life damage and apply Poisoned 1 to each living creature in the burst, including allies. Each creature is affected once. Resolve damage and dying by the ordinary rules.",
+        "improves": null,
+        "requires": [
+          "decay:5"
+        ],
+        "bookId": "decay"
+      },
+      "spell": {
+        "id": "spell:decay:a3",
+        "name": "Circle of Death",
+        "bookId": "decay",
+        "page": "A3",
+        "section": "VII",
+        "sp": 6,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "Reason",
+        "defense": "Fortitude",
+        "defenseAttribute": "Fortitude",
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Every living creature in a 3-square-radius burst within 10 squares",
+        "duration": "Instant",
+        "effect": "A ring of pallor spreads from the chosen point. Deal 5/8/11 life damage and apply Poisoned 1 to each living creature in the burst, including allies. Each creature is affected once. Resolve damage and dying by the ordinary rules."
+      }
+    }
+  },
+  "effects": []
+}

@@ -1,0 +1,291 @@
+{
+  "_key": "!actors!af15496cae709396",
+  "_id": "af15496cae709396",
+  "name": "Merfolk Tideguard",
+  "type": "creature",
+  "img": "systems/heroes-of-legend/assets/creatures/0f0edf229c204a91fa5b4c7569458615c1d2f05a28fa9555abde2206b4b74ac8.webp",
+  "prototypeToken": {
+    "width": 1,
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/0f0edf229c204a91fa5b4c7569458615c1d2f05a28fa9555abde2206b4b74ac8.webp"
+    }
+  },
+  "system": {
+    "schemaVersion": 1,
+    "attributes": {
+      "brawn": {
+        "base": 2
+      },
+      "fortitude": {
+        "base": 2
+      },
+      "agility": {
+        "base": 0
+      },
+      "guile": {
+        "base": -1
+      },
+      "knowledge": {
+        "base": -1
+      },
+      "reason": {
+        "base": 0
+      }
+    },
+    "attributesSource": "Brawn +2; Fortitude +2; Agility +0; Guile -1; Knowledge -1; Reason +0",
+    "health": {
+      "value": 18,
+      "baseMax": 18,
+      "sourceText": "18"
+    },
+    "cv": 19,
+    "speed": 2,
+    "speedSource": "2; swim 8",
+    "alternateSpeeds": [
+      {
+        "mode": "swim",
+        "value": 8
+      }
+    ],
+    "size": 1,
+    "sizeLabel": "medium",
+    "sizeSource": "1 (medium)",
+    "footprint": {
+      "width": 1,
+      "height": 1
+    },
+    "armor": 1,
+    "armorMarker": "",
+    "armorSource": "1",
+    "stability": 0,
+    "threat": {
+      "boons": 0,
+      "banes": 1,
+      "sourceText": "1 Bane"
+    },
+    "evasion": {
+      "boons": 0,
+      "banes": 0,
+      "sourceText": "None"
+    },
+    "weaknesses": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "resistances": {
+      "numeric": [
+        {
+          "type": "Physical",
+          "value": 1
+        }
+      ],
+      "special": [],
+      "sourceText": "Physical (1)"
+    },
+    "immunities": [],
+    "basicMelee": {
+      "weak": 5,
+      "standard": 3,
+      "strong": 2,
+      "defenseAttribute": "agility",
+      "orientation": "player-defense"
+    },
+    "actions": {
+      "orientation": "player-defense",
+      "entries": [
+        {
+          "id": "main-0",
+          "category": "main",
+          "name": "Basic Melee",
+          "abilityId": "",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "5",
+            "standard": "3",
+            "strong": "2"
+          },
+          "effect": "5/3/2",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "main-1",
+          "category": "main",
+          "name": "Tide fork",
+          "abilityId": "",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "7 + Pull 3",
+            "standard": "5 + Pull 1",
+            "strong": "3"
+          },
+          "effect": "7 + Pull 3 / 5 + Pull 1 / 3",
+          "referenceMarkdown": "### Tide fork\n\n**Target:** One visible creature within 2 squares. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Pull 3. **Standard defense:** Pull 1.\n\n**Limit:** Apply Stability, terrain costs and normal collision rules to the printed distance."
+        },
+        {
+          "id": "maneuver-0",
+          "category": "maneuver",
+          "name": "Ride the Current",
+          "abilityId": "monster-read-the-current",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Swim 3; no opportunity from one chosen visible enemy.",
+          "referenceMarkdown": "### Ride the Current\n\n*It catches a moving seam of water and lets the current carry its weight.*\n\nWhile in water, move up to 3 squares using its printed swim speed without provoking from one visible enemy chosen before moving. Pay normal terrain costs and provoke normally from other enemies. On dry ground this Maneuver has no effect."
+        },
+        {
+          "id": "maneuver-1",
+          "category": "maneuver",
+          "name": "Defend",
+          "abilityId": "",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "+1 Bane",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "reaction-0",
+          "category": "reaction",
+          "name": "Opportunity Attack",
+          "abilityId": "",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Basic Melee",
+          "referenceMarkdown": ""
+        }
+      ],
+      "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates a complete outcome. All attacks use printed Threat unless stated otherwise.",
+      "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Tide fork | Agility | 7 + Pull 3 / 5 + Pull 1 / 3 |",
+      "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Ride the Current | Swim 3; no opportunity from one chosen visible enemy. |\n| Defend | +1 Bane |",
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Opportunity Attack | Basic Melee |"
+    },
+    "details": {
+      "flavorMarkdown": "*A strong swimmer in shell-laced armor patrols with a forked spear and a line for rescuing exhausted companions.*",
+      "specialtyMarkdown": "### Tide fork\n\n**Target:** One visible creature within 2 squares. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Pull 3. **Standard defense:** Pull 1.\n\n**Limit:** Apply Stability, terrain costs and normal collision rules to the printed distance.\n\n### Ride the Current\n\n*It catches a moving seam of water and lets the current carry its weight.*\n\nWhile in water, move up to 3 squares using its printed swim speed without provoking from one visible enemy chosen before moving. Pay normal terrain costs and provoke normally from other enemies. On dry ground this Maneuver has no effect.",
+      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until its next turn. Combines with Evasion through normal Boon/Bane rules; repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature; spend its Reaction before the provoking action resolves. That action continues if capable.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Ordinary sight and hearing.\n\n**Tactics and retreat:** Pull a foe toward a channel the guard can traverse quickly. Forced movement still pays terrain and Stability costs.\n\n**Encounter and conversation:** The guard is closing a channel because something larger is hunting beyond it.\n\n**Habitat:** Settlement; frontier; contested road · **Communication:** Common and its community’s language\n\n**Loot:** Ordinary carried gear and 8 coins; special rewards belong to the adventure.\n\n**Summoning:** Ineligible.",
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-merfolk-tideguard\n\n\n**Category:** Mortal · **Role:** Position hunter · **CV:** 19\n\n### Creature-roll reference\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Tide fork | Brawn | 1 Boon | 3 physical damage. | 5 physical damage. Pull 1. | 7 physical damage. Pull 3. |\n\nUse the attributes above for defenses named by incoming attacks. Same targeting, limits and costs apply; no opposed second roll.\n\n### CV worksheet\n\n**Reference damage:** 3/5/7\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.35\n\n**Action review (#1279):** U 1.3 → 1.35: Maneuver allowance +0.05, Reaction allowance +0. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.\n\n**Regeneration per turn:** 0\n\nReference I=4.000, O=4.596. Uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/encounters.md). Utility is provisional and does not simulate control, positioning or summon choices.\n\n**Ability sources:** [dragging strike](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/dragging-strike.md), [Ride the Current](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/read-the-current.md).\n\n**Coverage reference:** [Pathfinder family survey](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/family-survey.md); original HOL prose and mechanics.\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/roster.md) · [Stability](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/rules/stability.md)"
+    },
+    "biography": ""
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-merfolk-tideguard",
+        "asset": "assets/creatures/0f0edf229c204a91fa5b4c7569458615c1d2f05a28fa9555abde2206b4b74ac8.webp",
+        "sha256": "0d1777f89f35b5ed4042c905955760e883b1579eabfb4ebefe3c30fff07c4717",
+        "sourceSha256": "0f0edf229c204a91fa5b4c7569458615c1d2f05a28fa9555abde2206b4b74ac8",
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
+      "catalogId": "creature-merfolk-tideguard",
+      "source": {
+        "path": "design/bestiary/creatures/merfolk-tideguard.md",
+        "sha256": "b203e803cdc2427790b35315ad6ba89e74a86ad57a5adec200e77e38bf13eaa8"
+      },
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Printed profile · specialty automation pending",
+      "specialtyAutomation": "pending",
+      "classification": {
+        "category": "Mortal",
+        "role": "Position hunter",
+        "cv": 19
+      },
+      "family": "Mortal communities",
+      "abilitySources": [
+        {
+          "label": "dragging strike",
+          "id": "monster-dragging-strike",
+          "path": "design/monster-abilities/dragging-strike.md",
+          "sha256": "7541376cfbd846a05a0de76b0e6b4023a20645fda0ad0904d642bb7dbbdd9afb"
+        },
+        {
+          "label": "Ride the Current",
+          "id": "monster-read-the-current",
+          "path": "design/monster-abilities/read-the-current.md",
+          "sha256": "cc2db3df646c2f8c8f66b2248e2b148c1ef0666c6b150c5109372d50e738c659"
+        }
+      ],
+      "monsterAbilityTemplates": [
+        {
+          "id": "monster-dragging-strike",
+          "path": "design/monster-abilities/dragging-strike.md",
+          "sha256": "7541376cfbd846a05a0de76b0e6b4023a20645fda0ad0904d642bb7dbbdd9afb",
+          "name": "Dragging Strike",
+          "action": "Main Action",
+          "flavorMarkdown": "*A hook, current or reaching limb pulls the target toward the threat.*",
+          "rulesMarkdown": "The printed attack pulls the listed distance toward the attacker. Apply Stability and normal terrain/collision rules. No extra grapple unless printed.\n\nActual damage, targeting and defense attribute are printed on the creature card.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Dragging Strike\n\n*A hook, current or reaching limb pulls the target toward the threat.*\n\n## Rules\n\n**ID:** monster-dragging-strike\n\n\n**Action:** Main Action\n\nThe printed attack pulls the listed distance toward the attacker. Apply Stability and normal terrain/collision rules. No extra grapple unless printed.\n\nActual damage, targeting and defense attribute are printed on the creature card.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/dragging-strike.md",
+            "sha256": "7541376cfbd846a05a0de76b0e6b4023a20645fda0ad0904d642bb7dbbdd9afb"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-read-the-current",
+          "path": "design/monster-abilities/read-the-current.md",
+          "sha256": "cc2db3df646c2f8c8f66b2248e2b148c1ef0666c6b150c5109372d50e738c659",
+          "name": "Ride the Current",
+          "action": "Maneuver",
+          "flavorMarkdown": "*It catches a moving seam of water and lets the current carry its weight.*",
+          "rulesMarkdown": "While in water, move up to 3 squares using its printed swim speed without provoking from one visible enemy chosen before moving. Pay normal terrain costs and provoke normally from other enemies. On dry ground this Maneuver has no effect.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Ride the Current\n\n*It catches a moving seam of water and lets the current carry its weight.*\n\n## Rules\n\n**ID:** monster-read-the-current\n\n\n**Action:** Maneuver\n\nWhile in water, move up to 3 squares using its printed swim speed without provoking from one visible enemy chosen before moving. Pay normal terrain costs and provoke normally from other enemies. On dry ground this Maneuver has no effect.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/read-the-current.md",
+            "sha256": "cc2db3df646c2f8c8f66b2248e2b148c1ef0666c6b150c5109372d50e738c659"
+          },
+          "automation": "pending"
+        }
+      ],
+      "summoning": {
+        "eligible": false,
+        "summonId": null,
+        "path": null,
+        "eligibility": null,
+        "sourceText": "Ineligible."
+      }
+    }
+  }
+}

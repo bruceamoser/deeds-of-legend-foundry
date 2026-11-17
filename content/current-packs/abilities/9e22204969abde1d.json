@@ -1,0 +1,47 @@
+{
+  "_key": "!items!9e22204969abde1d",
+  "_id": "9e22204969abde1d",
+  "name": "The Field Hospital",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Timed work</dd></div></dl><p>30 minutes, with medical supplies and a safe prepared shelter. Treat up to six patients, using each available first-aid attempt. Roll Knowledge once; each restores 5/8/11 HP and reduces temporary Bleeding or Poisoned by 2, choosing separately per patient. A patient with a spent allowance receives condition care only. Supplies must cover all patients. This creates no extra first-aid allowance, SP recovery or overnight rest.</p>",
+    "activity": {
+      "action": "other",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "medicine:diagnosis:7",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "mastery",
+        "nodeId": "medicine:diagnosis:7",
+        "level": 7,
+        "cost": 5,
+        "action": "Timed work",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "30 minutes, with medical supplies and a safe prepared shelter. Treat up to six patients, using each available first-aid attempt. Roll Knowledge once; each restores 5/8/11 HP and reduces temporary Bleeding or Poisoned by 2, choosing separately per patient. A patient with a spent allowance receives condition care only. Supplies must cover all patients. This creates no extra first-aid allowance, SP recovery or overnight rest.",
+        "improves": null,
+        "requires": [
+          "medicine:diagnosis:6"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

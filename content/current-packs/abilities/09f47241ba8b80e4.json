@@ -1,0 +1,65 @@
+{
+  "_key": "!items!09f47241ba8b80e4",
+  "_id": "09f47241ba8b80e4",
+  "name": "Levitate — Objects",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One unattended object of Bulk 3 or less within 6 squares</dd></div><div><dt>Duration</dt><dd>Sustained, up to 1 minute</dd></div></dl><p>Lift it up to 3 squares from its supporting surface. Each upkeep moves it up to 2 squares through open space. Place it gently when the spell ends. It can carry its ordinary contents, but living riders require their own movement or support.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:telekinesis:5",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:telekinesis:5",
+        "level": 1,
+        "cost": 2,
+        "action": "Main Action",
+        "sp": 2,
+        "range": "One unattended object of Bulk 3 or less within 6 squares",
+        "duration": "Sustained, up to 1 minute",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Lift it up to 3 squares from its supporting surface. Each upkeep moves it up to 2 squares through open space. Place it gently when the spell ends. It can carry its ordinary contents, but living riders require their own movement or support.",
+        "improves": null,
+        "requires": [
+          "telekinesis:1"
+        ],
+        "bookId": "telekinesis"
+      },
+      "spell": {
+        "id": "spell:telekinesis:5",
+        "name": "Levitate — Objects",
+        "bookId": "telekinesis",
+        "page": "5",
+        "section": "III",
+        "sp": 2,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One unattended object of Bulk 3 or less within 6 squares",
+        "duration": "Sustained, up to 1 minute",
+        "effect": "Lift it up to 3 squares from its supporting surface. Each upkeep moves it up to 2 squares through open space. Place it gently when the spell ends. It can carry its ordinary contents, but living riders require their own movement or support."
+      }
+    }
+  },
+  "effects": []
+}

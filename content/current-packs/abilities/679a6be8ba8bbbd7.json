@@ -1,0 +1,65 @@
+{
+  "_key": "!items!679a6be8ba8bbbd7",
+  "_id": "679a6be8ba8bbbd7",
+  "name": "Telekinesis",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>3</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div><div><dt>Defense</dt><dd>Brawn</dd></div><div><dt>Range</dt><dd>One creature or unattended object within 6 squares</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Move a creature 1/2/3 squares toward a visible supported destination, applying Stability. Alternatively, automatically move an unattended object of Bulk 6 or less up to 3 squares. The route must be open and wide enough for the target.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "brawn"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:telekinesis:7",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:telekinesis:7",
+        "level": 3,
+        "cost": 3,
+        "action": "Main Action",
+        "sp": 3,
+        "range": "One creature or unattended object within 6 squares",
+        "duration": "Instant",
+        "attribute": "Knowledge",
+        "defenseAttribute": "Brawn",
+        "effect": "Move a creature 1/2/3 squares toward a visible supported destination, applying Stability. Alternatively, automatically move an unattended object of Bulk 6 or less up to 3 squares. The route must be open and wide enough for the target.",
+        "improves": null,
+        "requires": [
+          "telekinesis:2"
+        ],
+        "bookId": "telekinesis"
+      },
+      "spell": {
+        "id": "spell:telekinesis:7",
+        "name": "Telekinesis",
+        "bookId": "telekinesis",
+        "page": "7",
+        "section": "IV",
+        "sp": 3,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "Knowledge",
+        "defense": "Brawn",
+        "defenseAttribute": "Brawn",
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One creature or unattended object within 6 squares",
+        "duration": "Instant",
+        "effect": "Move a creature 1/2/3 squares toward a visible supported destination, applying Stability. Alternatively, automatically move an unattended object of Bulk 6 or less up to 3 squares. The route must be open and wide enough for the target."
+      }
+    }
+  },
+  "effects": []
+}

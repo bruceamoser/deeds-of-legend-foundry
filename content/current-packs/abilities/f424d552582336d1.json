@@ -1,0 +1,113 @@
+{
+  "_key": "!items!f424d552582336d1",
+  "_id": "f424d552582336d1",
+  "name": "Deliberate Spark",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Target / range / shape</dt><dd>One corner of your square; each creature in the four squares that share that corner and are in line of effect.</dd></div><div><dt>Magic</dt><dd>Spell</dd></div><div><dt>SP</dt><dd>0</dd></div><div><dt>Duration</dt><dd>Immediate.</dd></div><div><dt>Equipment / acquisition</dt><dd>A free hand for casting.</dd></div></dl><p>Choose a corner of your square and spark a brief flare of gas there. Each creature in the four squares that share that corner, including you, is pushed 2 squares directly away from that corner. A creature in more than one of those squares is pushed once. The spark does not provoke opportunity attacks. Resolve the push as forced movement; normal collision rules apply.</p><p>This is a spell costing 0 SP, usable once on your turn. Its casting does not provoke opportunity attacks.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-signature-arcanist-deliberate-spark",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "ability-signature-arcanist-deliberate-spark",
+        "level": 1,
+        "cost": 0,
+        "action": "Maneuver",
+        "sp": 0,
+        "range": "One corner of your square; each creature in the four squares that share that corner and are in line of effect.",
+        "duration": "Immediate.",
+        "attribute": "None — no roll",
+        "defenseAttribute": null,
+        "effect": "**Action:** Maneuver · **Attribute:** None — no roll\n\n**Target / range / shape:** One corner of your square; each creature in the four squares that share that corner and are in line of effect.\n\nChoose a corner of your square and spark a brief flare of gas there. Each creature in the four squares that share that corner, including you, is pushed 2 squares directly away from that corner. A creature in more than one of those squares is pushed once. The spark does not provoke opportunity attacks. Resolve the push as forced movement; normal collision rules apply.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP, usable once on your turn. Its casting does not provoke opportunity attacks.",
+        "improves": null,
+        "requires": [],
+        "bookId": null,
+        "magic": "Spell"
+      },
+      "spell": {
+        "id": "ability-signature-arcanist-deliberate-spark",
+        "name": "Deliberate Spark",
+        "level": 1,
+        "dp": null,
+        "action": "Maneuver",
+        "attribute": "None — no roll",
+        "target": "One corner of your square; each creature in the four squares that share that corner and are in line of effect.",
+        "duration": "Immediate.",
+        "equipment": "A free hand for casting.",
+        "limits": "One signature choice at each of levels 1, 3 and 7.",
+        "effect": "**Action:** Maneuver · **Attribute:** None — no roll\n\n**Target / range / shape:** One corner of your square; each creature in the four squares that share that corner and are in line of effect.\n\nChoose a corner of your square and spark a brief flare of gas there. Each creature in the four squares that share that corner, including you, is pushed 2 squares directly away from that corner. A creature in more than one of those squares is pushed once. The spark does not provoke opportunity attacks. Resolve the push as forced movement; normal collision rules apply.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP, usable once on your turn. Its casting does not provoke opportunity attacks.",
+        "reference": {
+          "flavor": [
+            "You turn unstable magic into motion and shelter."
+          ],
+          "rules": {
+            "details": [
+              {
+                "label": "Action",
+                "value": "Maneuver"
+              },
+              {
+                "label": "Attribute",
+                "value": "None — no roll"
+              },
+              {
+                "label": "Target / range / shape",
+                "value": "One corner of your square; each creature in the four squares that share that corner and are in line of effect."
+              },
+              {
+                "label": "Magic",
+                "value": "Spell"
+              },
+              {
+                "label": "SP",
+                "value": "0"
+              },
+              {
+                "label": "Duration",
+                "value": "Immediate."
+              },
+              {
+                "label": "Equipment / acquisition",
+                "value": "A free hand for casting."
+              }
+            ],
+            "body": [
+              {
+                "text": "Choose a corner of your square and spark a brief flare of gas there. Each creature in the four squares that share that corner, including you, is pushed 2 squares directly away from that corner. A creature in more than one of those squares is pushed once. The spark does not provoke opportunity attacks. Resolve the push as forced movement; normal collision rules apply."
+              },
+              {
+                "text": "This is a spell costing 0 SP, usable once on your turn. Its casting does not provoke opportunity attacks."
+              }
+            ],
+            "notes": []
+          }
+        },
+        "referenceMarkdown": "**Action:** Maneuver · **Attribute:** None — no roll\n\n**Target / range / shape:** One corner of your square; each creature in the four squares that share that corner and are in line of effect.\n\nChoose a corner of your square and spark a brief flare of gas there. Each creature in the four squares that share that corner, including you, is pushed 2 squares directly away from that corner. A creature in more than one of those squares is pushed once. The spark does not provoke opportunity attacks. Resolve the push as forced movement; normal collision rules apply.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP, usable once on your turn. Its casting does not provoke opportunity attacks.",
+        "classId": "class-arcanist",
+        "lineId": "arcanist:deliberate-spark",
+        "signatureComponent": true,
+        "kind": "ability",
+        "sp": 0,
+        "magic": "Spell",
+        "rulesMarkdown": "**Action:** Maneuver · **Attribute:** None — no roll\n\n**Target / range / shape:** One corner of your square; each creature in the four squares that share that corner and are in line of effect.\n\nChoose a corner of your square and spark a brief flare of gas there. Each creature in the four squares that share that corner, including you, is pushed 2 squares directly away from that corner. A creature in more than one of those squares is pushed once. The spark does not provoke opportunity attacks. Resolve the push as forced movement; normal collision rules apply.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP, usable once on your turn. Its casting does not provoke opportunity attacks."
+      }
+    }
+  },
+  "effects": []
+}

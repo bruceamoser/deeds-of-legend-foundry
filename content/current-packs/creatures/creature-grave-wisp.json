@@ -1,0 +1,329 @@
+{
+  "_key": "!actors!87ce66fc68db62cd",
+  "_id": "87ce66fc68db62cd",
+  "name": "Grave Wisp",
+  "type": "creature",
+  "img": "systems/heroes-of-legend/assets/creatures/88baa473cee3375b2367803a1493c814f19a8d4e6851694d66ce3bbbac102aae.webp",
+  "prototypeToken": {
+    "width": 1,
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/88baa473cee3375b2367803a1493c814f19a8d4e6851694d66ce3bbbac102aae.webp"
+    }
+  },
+  "system": {
+    "schemaVersion": 1,
+    "attributes": {
+      "brawn": {
+        "base": -2
+      },
+      "fortitude": {
+        "base": 0
+      },
+      "agility": {
+        "base": 2
+      },
+      "guile": {
+        "base": 1
+      },
+      "knowledge": {
+        "base": 0
+      },
+      "reason": {
+        "base": 1
+      }
+    },
+    "attributesSource": "Brawn -2; Fortitude +0; Agility +2; Guile +1; Knowledge +0; Reason +1",
+    "health": {
+      "value": 6,
+      "baseMax": 6,
+      "sourceText": "6"
+    },
+    "cv": 7,
+    "speed": 0,
+    "speedSource": "0; fly 6",
+    "alternateSpeeds": [
+      {
+        "mode": "fly",
+        "value": 6
+      }
+    ],
+    "size": 1,
+    "sizeLabel": "medium",
+    "sizeSource": "1 (medium)",
+    "footprint": {
+      "width": 1,
+      "height": 1
+    },
+    "armor": 0,
+    "armorMarker": "",
+    "armorSource": "0",
+    "stability": 0,
+    "threat": {
+      "boons": 0,
+      "banes": 0,
+      "sourceText": "None"
+    },
+    "evasion": {
+      "boons": 0,
+      "banes": 1,
+      "sourceText": "1 Bane"
+    },
+    "weaknesses": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "resistances": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "immunities": [
+      "Bleeding",
+      "Poisoned",
+      "Asleep"
+    ],
+    "basicMelee": {
+      "weak": 4,
+      "standard": 2,
+      "strong": 1,
+      "defenseAttribute": "agility",
+      "orientation": "player-defense"
+    },
+    "actions": {
+      "orientation": "player-defense",
+      "entries": [
+        {
+          "id": "main-0",
+          "category": "main",
+          "name": "Basic Melee",
+          "abilityId": "",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "4",
+            "standard": "2",
+            "strong": "1"
+          },
+          "effect": "4/2/1",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "main-1",
+          "category": "main",
+          "name": "Cold spark",
+          "abilityId": "",
+          "attributeKey": "fortitude",
+          "defenseSource": "Fortitude",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "3",
+            "standard": "2",
+            "strong": "1"
+          },
+          "effect": "3/2/1",
+          "referenceMarkdown": "### Cold spark\n\n**Target:** One visible creature within 3 squares. **Player defense:** Fortitude. **Damage type:** cold."
+        },
+        {
+          "id": "maneuver-0",
+          "category": "maneuver",
+          "name": "Guide the Light",
+          "abilityId": "monster-guide-the-light",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Brightly light 3 connected squares within 3 until its next turn.",
+          "referenceMarkdown": "### Guide the Light\n\n*A ribbon of lanternlight runs along the path, picking out each stone on the way to shelter.*\n\nBrightly light up to 3 connected squares within 3 squares until the start of this creature's next turn. Requires an unobstructed path from this creature to each square; it may choose unlit squares. Ordinary darkness imposes no Boons or Banes for seeing those squares; cover, concealment and hiding still use the normal rules. This neither reveals Hidden creatures automatically nor penetrates opaque obstacles. Reusing this ability replaces its previous illuminated area."
+        },
+        {
+          "id": "maneuver-1",
+          "category": "maneuver",
+          "name": "Defend",
+          "abilityId": "",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "+1 Bane",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "reaction-0",
+          "category": "reaction",
+          "name": "Flicker Aside",
+          "abilityId": "monster-flicker-aside",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "After taking HP damage: teleport 1 to a visible empty legal square.",
+          "referenceMarkdown": "### Flicker Aside\n\n*Its outline gutters like a flame in a draft and catches again just beyond the reaching hand.*\n\nAfter an attack resolves and deals HP damage to this creature, teleport to a visible empty square within 1 square. This creature must survive and remain capable. The destination must support its footprint and be reachable by an unobstructed straight path; this does not pass through walls or occupied squares. No opportunity attacks from this teleport. No trigger from a free attack; no attack is granted."
+        },
+        {
+          "id": "reaction-1",
+          "category": "reaction",
+          "name": "Opportunity Attack",
+          "abilityId": "",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Basic Melee",
+          "referenceMarkdown": ""
+        }
+      ],
+      "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates one complete outcome. All attacks use the printed Threat unless stated otherwise.",
+      "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 4/2/1 |\n| Cold spark | Fortitude | 3/2/1 |",
+      "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Guide the Light | Brightly light 3 connected squares within 3 until its next turn. |\n| Defend | +1 Bane |",
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Flicker Aside | After taking HP damage: teleport 1 to a visible empty legal square. |\n| Opportunity Attack | Basic Melee |"
+    },
+    "details": {
+      "flavorMarkdown": "*A pale drifting light with the faint suggestion of a face deep inside it. The wisp is a dead person’s lingering need for a witness, not a source of useful flame.*",
+      "specialtyMarkdown": "### Cold spark\n\n**Target:** One visible creature within 3 squares. **Player defense:** Fortitude. **Damage type:** cold.\n\n### Flicker Aside\n\n*Its outline gutters like a flame in a draft and catches again just beyond the reaching hand.*\n\nAfter an attack resolves and deals HP damage to this creature, teleport to a visible empty square within 1 square. This creature must survive and remain capable. The destination must support its footprint and be reachable by an unobstructed straight path; this does not pass through walls or occupied squares. No opportunity attacks from this teleport. No trigger from a free attack; no attack is granted.\n\n### Guide the Light\n\n*A ribbon of lanternlight runs along the path, picking out each stone on the way to shelter.*\n\nBrightly light up to 3 connected squares within 3 squares until the start of this creature's next turn. Requires an unobstructed path from this creature to each square; it may choose unlit squares. Ordinary darkness imposes no Boons or Banes for seeing those squares; cover, concealment and hiding still use the normal rules. This neither reveals Hidden creatures automatically nor penetrates opaque obstacles. Reusing this ability replaces its previous illuminated area.",
+      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.\n\n**Lifeless Body:** does not breathe or eat; only the listed immunities apply.\n\n**Healing:** Healing-harmed: ordinary healing resolves as Life damage instead; no beneficial riders.\n\n**Against offensive healing:** controller defends with Fortitude if this is player-controlled; a player attacking it still rolls only their attack.\n\n**Senses:** Dark sight 6 squares.\n\n**Signs:** Small lights move against the wind above sunken ground.\n\n**Purpose:** Draw a witness to the place where someone was forgotten.\n\n**Tactics and retreat:** Stay beyond melee reach and use a cold sting only if pursued.\n\n**Counterplay and conversation:** Listen to the pattern of its movement; it may be leading toward a grave, not an ambush.\n\n**Habitat:** Marsh; graveyard · **Communication:** None\n\n**Loot:** A buried name or object, not treasure carried by the light.\n\n**Summoning:** Undead 1 — [player reference](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/summons/grave-wisp.md).",
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-grave-wisp\n\n\n**Category:** Undead · **Role:** Lurer · **CV:** 7\n\n**Difficulty rationale:** An agile or elusive body warrants attack Banes. Ordinary attack difficulty; riders and positioning carry the threat.\n\n**Reference damage:** 1/2/3\n\n**Reference type:** cold\n\n**Expected targets:** 1\n\n**Utility factor:** 1.25\n\n**Action review (#1279):** U 1.1 → 1.25: Maneuver allowance +0.05, Reaction allowance +0.1. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.\n\n**Regeneration per turn:** 0\n\nReference I=4.404, O=2.000. CV uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/encounters.md); action choices, Stability and control are not simulated. Recalibration remains required.\n\n**Ability sources:** [Flicker Aside](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/flicker-aside.md), [Guide the Light](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/guide-the-light.md), [lifeless body](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/lifeless-body.md).\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/roster.md) · [Agreed Stability](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/rules/stability.md)"
+    },
+    "biography": ""
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-grave-wisp",
+        "asset": "assets/creatures/88baa473cee3375b2367803a1493c814f19a8d4e6851694d66ce3bbbac102aae.webp",
+        "sha256": "b3e829b09d13e837ca75798cdeb945e5790d51e83e78bf1f4450ac6118acba2d",
+        "sourceSha256": "88baa473cee3375b2367803a1493c814f19a8d4e6851694d66ce3bbbac102aae",
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
+      "catalogId": "creature-grave-wisp",
+      "source": {
+        "path": "design/bestiary/creatures/grave-wisp.md",
+        "sha256": "b973502a2dba730412591603d55151692175331e81eb664c7d3f31b2ff7c28fa"
+      },
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Printed profile · specialty automation pending",
+      "specialtyAutomation": "pending",
+      "classification": {
+        "category": "Undead",
+        "role": "Lurer",
+        "cv": 7
+      },
+      "family": "Ghosts, shadows and wraiths",
+      "abilitySources": [
+        {
+          "label": "Flicker Aside",
+          "id": "monster-flicker-aside",
+          "path": "design/monster-abilities/flicker-aside.md",
+          "sha256": "a7b83551d94cfbdb670102c36287532efd3bef72f1981337e21415dac9833206"
+        },
+        {
+          "label": "Guide the Light",
+          "id": "monster-guide-the-light",
+          "path": "design/monster-abilities/guide-the-light.md",
+          "sha256": "47d3a086111231c4fdf702a980818fbb0acfbc1867a1f4c6e0e898536653779d"
+        },
+        {
+          "label": "lifeless body",
+          "id": "monster-lifeless-body",
+          "path": "design/monster-abilities/lifeless-body.md",
+          "sha256": "248c16c6e641d2042cd94a05e7e8bfce03b5177f4f57cda241b46d9b16de4d81"
+        }
+      ],
+      "monsterAbilityTemplates": [
+        {
+          "id": "monster-flicker-aside",
+          "path": "design/monster-abilities/flicker-aside.md",
+          "sha256": "a7b83551d94cfbdb670102c36287532efd3bef72f1981337e21415dac9833206",
+          "name": "Flicker Aside",
+          "action": "Reaction",
+          "flavorMarkdown": "*Its outline gutters like a flame in a draft and catches again just beyond the reaching hand.*",
+          "rulesMarkdown": "After an attack resolves and deals HP damage to this creature, teleport to a visible empty square within 1 square. This creature must survive and remain capable. The destination must support its footprint and be reachable by an unobstructed straight path; this does not pass through walls or occupied squares. No opportunity attacks from this teleport. No trigger from a free attack; no attack is granted.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Flicker Aside\n\n*Its outline gutters like a flame in a draft and catches again just beyond the reaching hand.*\n\n## Rules\n\n**ID:** monster-flicker-aside\n\n**Action:** Reaction\n\nAfter an attack resolves and deals HP damage to this creature, teleport to a visible empty square within 1 square. This creature must survive and remain capable. The destination must support its footprint and be reachable by an unobstructed straight path; this does not pass through walls or occupied squares. No opportunity attacks from this teleport. No trigger from a free attack; no attack is granted.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/flicker-aside.md",
+            "sha256": "a7b83551d94cfbdb670102c36287532efd3bef72f1981337e21415dac9833206"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-guide-the-light",
+          "path": "design/monster-abilities/guide-the-light.md",
+          "sha256": "47d3a086111231c4fdf702a980818fbb0acfbc1867a1f4c6e0e898536653779d",
+          "name": "Guide the Light",
+          "action": "Maneuver",
+          "flavorMarkdown": "*A ribbon of lanternlight runs along the path, picking out each stone on the way to shelter.*",
+          "rulesMarkdown": "Brightly light up to 3 connected squares within 3 squares until the start of this creature's next turn. Requires an unobstructed path from this creature to each square; it may choose unlit squares. Ordinary darkness imposes no Boons or Banes for seeing those squares; cover, concealment and hiding still use the normal rules. This neither reveals Hidden creatures automatically nor penetrates opaque obstacles. Reusing this ability replaces its previous illuminated area.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Guide the Light\n\n*A ribbon of lanternlight runs along the path, picking out each stone on the way to shelter.*\n\n## Rules\n\n**ID:** monster-guide-the-light\n\n**Action:** Maneuver\n\nBrightly light up to 3 connected squares within 3 squares until the start of this creature's next turn. Requires an unobstructed path from this creature to each square; it may choose unlit squares. Ordinary darkness imposes no Boons or Banes for seeing those squares; cover, concealment and hiding still use the normal rules. This neither reveals Hidden creatures automatically nor penetrates opaque obstacles. Reusing this ability replaces its previous illuminated area.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/guide-the-light.md",
+            "sha256": "47d3a086111231c4fdf702a980818fbb0acfbc1867a1f4c6e0e898536653779d"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-lifeless-body",
+          "path": "design/monster-abilities/lifeless-body.md",
+          "sha256": "248c16c6e641d2042cd94a05e7e8bfce03b5177f4f57cda241b46d9b16de4d81",
+          "name": "Lifeless Body",
+          "action": "Passive",
+          "flavorMarkdown": "*Nothing breathes beneath the torn coat; nothing living looks through the visor.*",
+          "rulesMarkdown": "The card must list its exact condition immunities; this trait grants no additional unlisted ones. It does not breathe or need food. Undead entries marked healing-harmed take a healing result as Life damage; constructs marked repair-only do not regain HP from ordinary healing. Neither rule prevents physical attacks from dealing their normal minimum damage.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Lifeless Body\n\n*Nothing breathes beneath the torn coat; nothing living looks through the visor.*\n\n## Rules\n\n**ID:** monster-lifeless-body\n\n\n**Action:** Passive\n\nThe card must list its exact condition immunities; this trait grants no additional unlisted ones. It does not breathe or need food. Undead entries marked healing-harmed take a healing result as Life damage; constructs marked repair-only do not regain HP from ordinary healing. Neither rule prevents physical attacks from dealing their normal minimum damage.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/lifeless-body.md",
+            "sha256": "248c16c6e641d2042cd94a05e7e8bfce03b5177f4f57cda241b46d9b16de4d81"
+          },
+          "automation": "pending"
+        }
+      ],
+      "summoning": {
+        "eligible": true,
+        "summonId": "summon-grave-wisp",
+        "path": "design/bestiary/summons/grave-wisp.md",
+        "eligibility": "Undead 1",
+        "sourceText": "Undead 1 — [player reference](../summons/grave-wisp.md)."
+      }
+    }
+  }
+}

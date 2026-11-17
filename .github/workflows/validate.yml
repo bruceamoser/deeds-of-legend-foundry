@@ -34,6 +34,7 @@ jobs:
         env:
           HOL_BOOK_REPOSITORY: ${{ github.workspace }}/.book-source
       - run: npm run build:workshop
+      - run: npm run test:signature-rendering
       - name: Read the Character Workshop rulebook revision
         id: forge-book
         run: node -e 'const fs=require("fs"); fs.appendFileSync(process.env.GITHUB_OUTPUT, "commit="+JSON.parse(fs.readFileSync("content/forge-source-lock.json")).commit+"\n")'
@@ -54,6 +55,7 @@ jobs:
       - run: npm run test:workshop
       - run: npm run test:ancestry-workshop
       - run: npm run test:workshop-play
+      - run: npm run test:workshop-mount
       - run: npm run test:workshop-casting
       - run: npm run test:workshop-sustain
       - run: npm run test:workshop-resources

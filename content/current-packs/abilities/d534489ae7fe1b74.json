@@ -1,0 +1,46 @@
+{
+  "_key": "!items!d534489ae7fe1b74",
+  "_id": "d534489ae7fe1b74",
+  "name": "Deathless Rage",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Self.</dd></div><div><dt>Duration</dt><dd>Rage until scene end or until ended; reprieve until the end of your next turn.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div></dl><p>Enter a rage until the end of the scene. While raging, gain 1 Boon to attack rolls, 1 Bane to defense rolls, and physical resistance 1. You can end the rage at will. It also ends if you fall unconscious or enter Dying.</p><p>Once per scene, when damage would reduce you to 0 HP during this rage, remain at 1 HP. If you regain HP before the end of your next turn, the reprieve ends and you keep that HP. Otherwise, fall to 0 HP and begin Dying at the end of that turn. Further damage can still bring you to 0 during the reprieve. If you survive reaching 0, record a scar as usual.</p><p>Use this rage once per scene. If you also know Go Berserk or Pain Feeds the Fire, all share that rage use. Pain Feeds the Fire’s damage-triggered Boon applies only if you also know that signature.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-signature-unbalanced-break-their-grip",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "ability",
+        "nodeId": "ability-signature-unbalanced-break-their-grip",
+        "level": 7,
+        "cost": 0,
+        "action": "Maneuver",
+        "sp": null,
+        "range": "Self.",
+        "duration": "Rage until scene end or until ended; reprieve until the end of your next turn.",
+        "attribute": "None (no roll)",
+        "defenseAttribute": null,
+        "effect": "**Action:** Maneuver · **Attribute:** None (no roll)\n\n**Target / range / shape:** Self.\n\nEnter a rage until the end of the scene. While raging, gain 1 Boon to attack rolls, 1 Bane to defense rolls, and physical resistance 1. You can end the rage at will. It also ends if you fall unconscious or enter Dying.\n\nOnce per scene, when damage would reduce you to 0 HP during this rage, remain at 1 HP. If you regain HP before the end of your next turn, the reprieve ends and you keep that HP. Otherwise, fall to 0 HP and begin Dying at the end of that turn. Further damage can still bring you to 0 during the reprieve. If you survive reaching 0, record a scar as usual.\n\n**Duration:** Rage until scene end or until ended; reprieve until the end of your next turn.\n\n**Equipment / acquisition:** None.\n\nUse this rage once per scene. If you also know Go Berserk or Pain Feeds the Fire, all share that rage use. Pain Feeds the Fire’s damage-triggered Boon applies only if you also know that signature.",
+        "improves": null,
+        "requires": [],
+        "bookId": null,
+        "magic": null
+      }
+    }
+  },
+  "effects": []
+}

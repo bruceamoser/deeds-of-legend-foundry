@@ -1,3 +1,6 @@
+import {assertCurrentGameplayActor} from "../rules/current-character.mjs";
+import {coordinateNativeGameplay,registerNativeGameplayHandler} from "./native-workshop-coordinator.mjs";
+import { tracksConsumable } from "./consumables.mjs";
 import { createActionMessage, shouldProcessRequest } from "./authority.mjs";
 import { ensureAuthorityReady } from "./authority.mjs";
 import { inventoryCheck } from "../rules/inventory.mjs";
@@ -84,6 +87,10 @@ function assertNoInventoryConflict(actor, requestId = null) {
     );
 }
 
+export function assertSupplyActionAvailable(actor) {
+  assertNoInventoryConflict(actor);
+}
+
 function requestRecipients(actor) {
   return game.users
     .filter(
@@ -110,6 +117,7 @@ export async function requestInventory(
   if (!actor.testUserPermission(game.user, "OWNER"))
     throw new Error("Only an owner or the DA can check this item’s supply.");
   if (item.system.quantity === 0) throw new Error("This item has no quantity remaining.");
+  if (!tracksConsumable(item)) throw new Error("Supply tracking is disabled for this item. Use it without checking its die.");
   activeInventoryDie(item.system.inventoryDie);
   assertNoInventoryConflict(actor);
   assertCurrentBasis(actor, basis);
@@ -620,6 +628,10 @@ async function apply(id, requestedActorUuid) {
   }
 
   const createdReservation = !pending;
+  if (createdReservation && kind === "check") {
+    const item=actor.items.get(request?.basis?.item?.itemId);
+    if(item && !tracksConsumable(item)) throw new Error("Supply tracking is disabled for this item. Use it without checking its die.");
+  }
   let continuationMessage = null;
 
   if (kind === "check")
@@ -788,71 +800,92 @@ export function registerInventoryRequests() {
   });
 }
 
-const supplyQueues = new Map();
-/** One supply-die button press: roll, step down on 1, then report the actual use. */
-export function consumeOwnedSupply(actor, item, {operationId = foundry.utils.randomID(), label = ""} = {}) {
-  const previous = supplyQueues.get(actor.uuid) ?? Promise.resolve();
-  const run = previous.catch(() => {}).then(async () => {
-    if (!actor.testUserPermission(game.user,"OWNER") || actor.pack) throw new Error("Choose an actor you own.");
-    if (!/^[A-Za-z0-9_-]{1,100}$/.test(operationId)) throw new Error("Invalid supply action identity.");
-    const saved = actor.getFlag(ID,"supplyActions")?.[operationId];
-    let record = saved;
-    if (saved && saved.itemId !== item?.id) throw new Error("This supply action refers to another item.");
-    if (!record) {
-      item = actor.items.get(item?.id);
-      if (!item || item.type !== "equipment" || item.actor?.uuid !== actor.uuid) throw new Error("Choose an owned supply item.");
-      if (!item.system.quantity || !item.system.inventoryDie) throw new Error(`${item.name} is depleted.`);
-      const before = activeInventoryDie(item.system.inventoryDie);
-      const roll = await new foundry.dice.Roll(`1d${before}`).evaluate({allowInteractive:false});
-      const retained = roll.dice[0]?.results?.find(result=>result.active)?.result;
-      const result = inventoryCheck({die:before,retained});
-      record = {operationId,itemId:item.id,itemName:item.name,actorUuid:actor.uuid,actorName:actor.name,label,
-        ...result,nativeRoll:roll.toJSON(),messageId:null};
-      const items = actor.toObject().items;
-      const target = items.find(candidate=>candidate._id===item.id);
-      if (!target) throw new Error("The supply item is unavailable.");
-      target.system.inventoryDie = result.after;
-      const {updateOwnedDocument} = await import("./documents.mjs");
-      await updateOwnedDocument(actor,{items,[`flags.${ID}.inventoryRevision`]:(actor.getFlag(ID,"inventoryRevision")??0)+1,[`flags.${ID}.supplyActions.${operationId}`]:record});
-    }
-    let message = game.messages.get(record.messageId) ?? game.messages.find(message=>message.getFlag(ID,"supplyResult")?.operationId===operationId && message.getFlag(ID,"supplyResult")?.actorUuid===actor.uuid);
-    if (!message) {
-      const escape = foundry.utils.escapeHTML;
-      const state = supplyResultState(record);
-      const content = `<section class="hol-chat-card hol-supply-chat"><p class="hol-chat-effect"><strong>${escape(record.actorName)}</strong> used <strong>${escape(record.itemName)}</strong></p><div class="hol-chat-bar"><span>d${record.before} · rolled <strong>${record.retained}</strong></span><strong>${state}</strong></div></section>`;
-      message = await ChatMessage.create({speaker:ChatMessage.getSpeaker({actor}),content,rolls:[foundry.dice.Roll.fromData(record.nativeRoll)],flags:{[ID]:{supplyResult:{...record,nativeRoll:undefined}}}});
-      await actor.update({[`flags.${ID}.supplyActions.${operationId}.messageId`]:message.id});
-    }
-    return {...record,message,replay:Boolean(saved)};
-  });
-  supplyQueues.set(actor.uuid,run);
-  run.finally(()=>{if(supplyQueues.get(actor.uuid)===run)supplyQueues.delete(actor.uuid);}).catch(()=>{});
-  return run;
+/** Owner requests, including GM clicks, always use the single managed queue. */
+export function consumeOwnedSupply(actor,item,{operationId=foundry.utils.randomID(),label=""}={}) {
+  if(!actor?.testUserPermission(game.user,"OWNER")||actor.pack||item?.actor?.uuid!==actor.uuid)return Promise.reject(new Error("Choose an owned supply item."));
+  return coordinateNativeGameplay(actor,{kind:"supply",operationId,payload:{itemId:item.id,label}});
 }
-
+registerNativeGameplayHandler("supply",executeOwnedSupply);
+/** DA correction after inspecting chat and manually setting the actual Item die.
+ * This confirms a missing original result; it never evaluates another die. */
+export function reconcileOwnedSupply(actor,item,{operationId}={}) {
+  if(!game.user.isGM)return Promise.reject(new Error("Only the DA can reconcile a missing supply result."));
+  const saved=actor.getFlag(ID,"supplyActions")?.[operationId];
+  return coordinateNativeGameplay(actor,{kind:"supply-reconcile",operationId:saved?.authorityOperationId??operationId,payload:{itemId:item.id,supplyOperationId:operationId}});
+}
+registerNativeGameplayHandler("supply-reconcile",async(actor,payload,context)=>{
+  if(!context.author.isGM)throw new Error("Only the DA can reconcile a missing supply result.");
+  const supplyOperationId=payload.supplyOperationId??context.operationId;
+  const saved=actor.getFlag(ID,"supplyActions")?.[supplyOperationId],item=actor.items.get(payload.itemId);
+  if(!saved||(saved.authorityOperationId??supplyOperationId)!==context.operationId||saved.itemId!==item?.id||saved.phase!=="rolling")throw new Error("Choose the original interrupted supply action and its owned Item.");
+  const record={...saved,phase:"applied",after:item.system.inventoryDie,reconciled:true,reconciledBy:context.author.id};
+  await context.write({[`flags.${ID}.supplyActions.${supplyOperationId}`]:record},record);
+  return record;
+});
+async function executeOwnedSupply(actor,{itemId,label=""},context) {
+  assertCurrentGameplayActor(actor);
+  const operationId=context.operationId;
+  if(!actor.testUserPermission(context.author,"OWNER")||actor.pack)throw new Error("Choose an actor you own.");
+  if(!/^[A-Za-z0-9_-]{1,100}$/.test(operationId))throw new Error("Invalid supply action identity.");
+  let record=structuredClone(actor.getFlag(ID,"supplyActions")?.[operationId]??null),item=actor.items.get(itemId);
+  if(record&&record.itemId!==itemId)throw new Error("This supply action refers to another item.");
+  if(!record) {
+    if(!item||item.type!=="equipment"||item.actor?.uuid!==actor.uuid)throw new Error("Choose an owned supply item.");
+    if(!Number.isSafeInteger(item.system.quantity)||item.system.quantity<1)throw new Error(`${item.name} is depleted.`);
+    assertSupplyActionAvailable(actor);
+    const before=item.system.inventoryDie,tracked=tracksConsumable(item);
+    if(tracked)activeInventoryDie(before);
+    record={operationId,authorityOperationId:context.rootOperationId??operationId,itemId,itemName:item.name,actorUuid:actor.uuid,actorName:actor.name,label,tracked,before,after:before,phase:tracked?"rolling":"applied",messageId:null};
+    await context.write({[`flags.${ID}.supplyActions.${operationId}`]:record},record);
+    if(tracked) {
+      const roll=await new foundry.dice.Roll(`1d${before}`).evaluate({allowInteractive:false});
+      const retained=roll.dice[0]?.results?.find(result=>result.active)?.result;
+      record={...record,...inventoryCheck({die:before,retained}),nativeRoll:roll.toJSON(),phase:"rolled"};
+      await context.write({[`flags.${ID}.supplyActions.${operationId}`]:record},record);
+    }
+  } else if(record.phase==="rolling")throw new Error("The original supply die may already have rolled. Do not roll again. Ask the DA to inspect the original use, correct this Item's supply die, and follow the missing-supply-result recovery instructions.");
+  if(record.phase==="rolled") {
+    item=actor.items.get(itemId);if(!item)throw new Error("The original supply Item is unavailable. Restore it before completing the saved result.");
+    if(![record.before,record.after].includes(item.system.inventoryDie))throw new Error("This supply changed after the saved roll. Ask the DA to reconcile it; do not roll again.");
+    if(item.system.inventoryDie===record.before && record.after!==record.before)await item.update({"system.inventoryDie":record.after});
+    record={...record,phase:"applied"};
+    await context.write({[`flags.${ID}.supplyActions.${operationId}`]:record,[`flags.${ID}.inventoryRevision`]:(actor.getFlag(ID,"inventoryRevision")??0)+1},record);
+  }
+  if(record.tracked!==false && record.nativeRoll) {
+    let message=game.messages.get(record.messageId)??game.messages.find(message=>message.getFlag(ID,"supplyResult")?.operationId===operationId&&message.getFlag(ID,"supplyResult")?.actorUuid===actor.uuid);
+    if(!message) {
+      const escape=foundry.utils.escapeHTML;
+      message=await ChatMessage.create({speaker:ChatMessage.getSpeaker({actor}),content:`<section class="hol-chat-card hol-supply-chat"><p class="hol-chat-effect"><strong>${escape(record.actorName)}</strong> used <strong>${escape(record.itemName)}</strong></p><div class="hol-chat-bar"><span>d${record.before} · rolled <strong>${record.retained}</strong></span><strong>${supplyResultState(record)}</strong></div></section>`,rolls:[foundry.dice.Roll.fromData(record.nativeRoll)],flags:{[ID]:{supplyResult:{...record,nativeRoll:undefined}}}});
+      record={...record,messageId:message.id};await context.write({[`flags.${ID}.supplyActions.${operationId}`]:record},record);
+    }
+  }
+  return record;
+}
 
 /** Keep the size change and the final depletion state distinct in the compact card. */
 export function supplyResultState(result) {
   const changed=result.after!==result.before;
   return `${changed ? `Moved down one size · d${result.before} → ${result.after ? `d${result.after}` : "0"} · ` : ""}${result.exhausted ? "Depleted" : "Not depleted"}`;
 }
-/** Manual correction after an accidental resupply. No roll or chat message. */
-export function depleteOwnedSupply(actor,item) {
-  if(!actor)return Promise.reject(new Error("Choose an owned supply item."));
-  const previous=supplyQueues.get(actor.uuid) ?? Promise.resolve();
-  const run=previous.catch(()=>{}).then(async()=>{
-    if(actor.pack || !actor.testUserPermission(game.user,"OWNER"))throw new Error("Choose an actor you own.");
-    item=actor.items.get(item?.id);
-    if(!item || item.type!=="equipment" || item.actor?.uuid!==actor.uuid)throw new Error("Choose an owned supply item.");
-    if(item.system.inventoryDie===0)return {status:"complete",changed:false};
-    activeInventoryDie(item.system.inventoryDie);
-    const items=actor.toObject().items,target=items.find(source=>source._id===item.id);
-    if(!target)throw new Error("This supply item is unavailable.");
-    target.system.inventoryDie=0;
-    const {updateOwnedDocument}=await import("./documents.mjs");
-    await updateOwnedDocument(actor,{items,[`flags.${ID}.inventoryRevision`]:(actor.getFlag(ID,"inventoryRevision")??0)+1});
-    return {status:"complete",changed:true};
-  });
-  supplyQueues.set(actor.uuid,run);run.finally(()=>{if(supplyQueues.get(actor.uuid)===run)supplyQueues.delete(actor.uuid);}).catch(()=>{});
-  return run;
+/** Explicit correction uses the same GM queue and changes only this Item die. */
+export function depleteOwnedSupply(actor,item,{operationId=foundry.utils.randomID()}={}) {
+  if(!actor?.testUserPermission(game.user,"OWNER")||item?.actor?.uuid!==actor.uuid)return Promise.reject(new Error("Choose an owned supply item."));
+  return coordinateNativeGameplay(actor,{kind:"supply-deplete",operationId,payload:{itemId:item.id}});
 }
+registerNativeGameplayHandler("supply-deplete",async(actor,{itemId},context)=>{
+  let item=actor.items.get(itemId),record=structuredClone(actor.getFlag(ID,"supplyActions")?.[context.operationId]??null);
+  if(!item||item.type!=="equipment"||item.actor?.uuid!==actor.uuid||!actor.testUserPermission(context.author,"OWNER"))throw new Error("Choose an owned supply item.");
+  if(!record){
+    assertSupplyActionAvailable(actor);
+    if(item.system.inventoryDie!==0)activeInventoryDie(item.system.inventoryDie);
+    record={operationId:context.operationId,itemId,kind:"manual-deplete",phase:"rolled",before:item.system.inventoryDie,after:0};
+    await context.write({[`flags.${ID}.supplyActions.${context.operationId}`]:record},record);
+  }
+  if(record.itemId!==itemId||record.kind!=="manual-deplete")throw new Error("This saved depletion belongs to a different action.");
+  if(record.phase!=="applied") {
+    if(![record.before,0].includes(item.system.inventoryDie))throw new Error("This supply changed. Review the manual correction before retrying.");
+    if(item.system.inventoryDie!==0)await item.update({"system.inventoryDie":0});
+    record={...record,phase:"applied"};await context.write({[`flags.${ID}.supplyActions.${context.operationId}`]:record,[`flags.${ID}.inventoryRevision`]:(actor.getFlag(ID,"inventoryRevision")??0)+1},record);
+  }
+  return {status:"complete",changed:record.before!==0};
+});

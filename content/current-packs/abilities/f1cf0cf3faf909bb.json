@@ -1,0 +1,65 @@
+{
+  "_key": "!items!f1cf0cf3faf909bb",
+  "_id": "f1cf0cf3faf909bb",
+  "name": "Disguise Self",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>Self</dd></div><div><dt>Duration</dt><dd>1 hour</dd></div></dl><p>Change your apparent face, clothing and proportions within your existing size. Your voice and tangible shape remain physical. Touch reveals mismatches; close inspection uses the shared illusion procedure.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:perception:3",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:perception:3",
+        "level": 1,
+        "cost": 2,
+        "action": "Main Action",
+        "sp": 1,
+        "range": "Self",
+        "duration": "1 hour",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Change your apparent face, clothing and proportions within your existing size. Your voice and tangible shape remain physical. Touch reveals mismatches; close inspection uses the shared illusion procedure.",
+        "improves": null,
+        "requires": [
+          "perception:0"
+        ],
+        "bookId": "perception"
+      },
+      "spell": {
+        "id": "spell:perception:3",
+        "name": "Disguise Self",
+        "bookId": "perception",
+        "page": "3",
+        "section": "II",
+        "sp": 1,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Self",
+        "duration": "1 hour",
+        "effect": "Change your apparent face, clothing and proportions within your existing size. Your voice and tangible shape remain physical. Touch reveals mismatches; close inspection uses the shared illusion procedure."
+      }
+    }
+  },
+  "effects": []
+}

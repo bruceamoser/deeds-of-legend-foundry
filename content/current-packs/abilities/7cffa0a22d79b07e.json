@@ -1,0 +1,47 @@
+{
+  "_key": "!items!7cffa0a22d79b07e",
+  "_id": "7cffa0a22d79b07e",
+  "name": "Soul Capacity III",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Increase maximum SP by another 3; this path now grants +7 maximum SP.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spellcraft:soul-capacity:3",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "training",
+        "nodeId": "spellcraft:soul-capacity:3",
+        "level": 1,
+        "cost": 2,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Increase maximum SP by another 3; this path now grants +7 maximum SP.",
+        "improves": "spellcraft:soul-capacity:1",
+        "requires": [
+          "spellcraft:soul-capacity:2"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

@@ -1,0 +1,47 @@
+{
+  "_key": "!items!0015afc6ac77b24f",
+  "_id": "0015afc6ac77b24f",
+  "name": "Battering Stroke II",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Battering Stroke also applies Slowed 2 on Strong. Its modified attack may use Driving Opening’s learned nonlethal declaration.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "arms:impact:5",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "arms:impact:5",
+        "level": 3,
+        "cost": 4,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Battering Stroke also applies Slowed 2 on Strong. Its modified attack may use Driving Opening’s learned nonlethal declaration.",
+        "improves": "arms:impact:4",
+        "requires": [
+          "arms:impact:4"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

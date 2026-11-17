@@ -1,0 +1,65 @@
+{
+  "_key": "!items!713110ef70a82ad6",
+  "_id": "713110ef70a82ad6",
+  "name": "Chill Touch",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>0</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Defense</dt><dd>Fortitude</dd></div><div><dt>Range</dt><dd>One creature within 6 squares</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>A spectral hand closes around the target. Deal 2/3/5 life damage.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "reason",
+      "defenseAttribute": "fortitude"
+    },
+    "outcomes": {
+      "weak": "2 life damage",
+      "standard": "3 life damage",
+      "strong": "5 life damage"
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:spirits:1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:spirits:1",
+        "level": 1,
+        "cost": 1,
+        "action": "Main Action",
+        "sp": 0,
+        "range": "One creature within 6 squares",
+        "duration": "Instant",
+        "attribute": "Reason",
+        "defenseAttribute": "Fortitude",
+        "effect": "A spectral hand closes around the target. Deal 2/3/5 life damage.",
+        "improves": null,
+        "requires": [
+          "invocation"
+        ],
+        "bookId": "spirits"
+      },
+      "spell": {
+        "id": "spell:spirits:1",
+        "name": "Chill Touch",
+        "bookId": "spirits",
+        "page": "1",
+        "section": "I",
+        "sp": 0,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "Reason",
+        "defense": "Fortitude",
+        "defenseAttribute": "Fortitude",
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One creature within 6 squares",
+        "duration": "Instant",
+        "effect": "A spectral hand closes around the target. Deal 2/3/5 life damage."
+      }
+    }
+  },
+  "effects": []
+}

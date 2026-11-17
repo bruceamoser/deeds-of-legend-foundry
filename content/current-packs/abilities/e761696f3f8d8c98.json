@@ -1,0 +1,47 @@
+{
+  "_key": "!items!e761696f3f8d8c98",
+  "_id": "e761696f3f8d8c98",
+  "name": "Iron Tempest",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Brawn</dd></div></dl><p>Main Action · Brawn. Move up to 3 squares, ignoring extra movement cost from difficult terrain, and attack up to three enemies adjacent at any point along that route. Roll once; each takes 3/5/8 physical damage. Each creature is struck once. Once per scene, you may instead strike four enemies for 4/7/10; after this sweep gain Stability 3 until your next turn starts.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "brawn",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "arms:bladework:7",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "mastery",
+        "nodeId": "arms:bladework:7",
+        "level": 7,
+        "cost": 5,
+        "action": "Main Action",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": "Brawn",
+        "defenseAttribute": null,
+        "effect": "Main Action · Brawn. Move up to 3 squares, ignoring extra movement cost from difficult terrain, and attack up to three enemies adjacent at any point along that route. Roll once; each takes 3/5/8 physical damage. Each creature is struck once. Once per scene, you may instead strike four enemies for 4/7/10; after this sweep gain Stability 3 until your next turn starts.",
+        "improves": null,
+        "requires": [
+          "arms:bladework:6"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

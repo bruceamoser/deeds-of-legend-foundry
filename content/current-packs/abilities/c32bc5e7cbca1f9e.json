@@ -1,0 +1,65 @@
+{
+  "_key": "!items!c32bc5e7cbca1f9e",
+  "_id": "c32bc5e7cbca1f9e",
+  "name": "Cure Wounds",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>One adjacent living creature</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Close fresh injuries with a warm touch. Restore 3/5/7 HP, applying the recipient&#39;s Life resistance and maximum HP.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "reason",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:restoration:2",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:restoration:2",
+        "level": 1,
+        "cost": 1,
+        "action": "Main Action",
+        "sp": 1,
+        "range": "One adjacent living creature",
+        "duration": "Instant",
+        "attribute": "Reason",
+        "defenseAttribute": null,
+        "effect": "Close fresh injuries with a warm touch. Restore 3/5/7 HP, applying the recipient's Life resistance and maximum HP.",
+        "improves": null,
+        "requires": [
+          "life"
+        ],
+        "bookId": "restoration"
+      },
+      "spell": {
+        "id": "spell:restoration:2",
+        "name": "Cure Wounds",
+        "bookId": "restoration",
+        "page": "2",
+        "section": "I",
+        "sp": 1,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "Reason",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One adjacent living creature",
+        "duration": "Instant",
+        "effect": "Close fresh injuries with a warm touch. Restore 3/5/7 HP, applying the recipient's Life resistance and maximum HP."
+      }
+    }
+  },
+  "effects": []
+}

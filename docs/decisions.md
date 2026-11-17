@@ -344,3 +344,44 @@ Goodberry now heals **1 HP per berry**, with a Maneuver to eat one and the heali
 The Workshop receives the canonical descriptions, actions and reader-facing book edits, including the relocated objectives/social rules. Native Foundry remains on its prior pin pending its separate integration phase. These are rule/reference synchronization changes, not new automated terrain, healing or action-enforcement systems.
 
 Workshop source is pinned to book commit `87f5141bd6e0da74a10c07b3239e975c7656430a` (book PRs #1351/#1353). Local acceptance passed 836 tests, Forge source validation, spell-atlas rendering and sheet casting/reload regressions. Plant Growth spends 3 SP once with no ritual or Sustain; its favorite, purchases and spent reserve survive reload. Rendered formula and inline Growth spell details were inspected at a compact desktop size. The updated creature overlays preserve the effective 192-creature/126-ability/73-summon roster and its numeric stats.
+
+
+## November 17 — native Workshop and consumable controls (#325–#329)
+
+Bruce authorized bringing the approved books and published Workshop into native
+Foundry, using the Workshop’s NPC, creature, item, roll, chat and tool pages as
+references alongside the PC sheet and character creator. The source for this
+port is book commit `87f5141bd6e0da74a10c07b3239e975c7656430a`.
+Implementation and acceptance status are recorded in [the port ledger](native-workshop-port-325.md).
+
+Bruce also requested independent campaign checkboxes for tracking consumable
+types: ammunition, lighting, potions, food, water, crafting materials and other
+supplies. An unchecked type still requires an owned item and applies its usual
+effect, but does not roll or deplete its supply die. These settings default to
+tracking. Renaming an owned item changes its displayed name while preserving its
+catalog identity, mechanics and acquisition history.
+
+Lighting a torch is a Maneuver requiring a free hand. It occupies that hand and
+lights the bearer’s square and three squares around them. While lit, its lighting
+bundle receives one supply check per hour of **Foundry game time**. Extinguished
+time does not count; partial hours carry forward. A completed combat round adds
+six seconds. Disabled lighting tracking pauses consumption, not illumination.
+Extinguishing or depletion restores the preceding token light when another
+effect or the DA has not changed it in the meantime. These controls do not reveal
+hidden tokens or automate environmental visibility rulings.
+
+
+## November 17 — no old-character compatibility
+
+Bruce clarified that this remains a playtest: do not maintain code to support old
+characters. A character must migrate into the current rules or be invalid. This
+release marks older native Actors invalid for play and requires a new current
+hero. Their stored documents remain untouched for inspection/export; that is data
+preservation, not a playable older edition. Legacy character creation, advancement,
+wound and survival registrations are removed. Current gameplay services reject
+unsupported old characters, and the retired portable-character importer is removed.
+Only current Workshop normalization is supported.
+
+## Independent signature choices — #330
+
+Bruce clarified that signatures are individual choices at levels 1, 3 and 7, with no required order or automatically granted earlier abilities. Brief optional interactions with another separately learned signature are welcome. Full earlier ability text must not be copied inside later cards. Book PR #1355 corrected all ninety choices and the shared teaching; the reviewed source is `f71eac4c46fce6906d6dfbd1638ee98b10a6c538`. The engine, native Items and reference packs use each selected signature’s own complete rules and retain all selections. Seventeen higher-level procedures needed standalone activation/effect details; optional synergies remain prose conditions, never grants. Native and Workshop follow-through is tracked in #330.

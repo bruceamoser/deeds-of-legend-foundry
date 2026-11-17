@@ -1,0 +1,66 @@
+{
+  "_key": "!items!23d91ae35fb11898",
+  "_id": "23d91ae35fb11898",
+  "name": "Vision Guide",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 10 minutes</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>One adjacent site</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Ask how one visible trace came to be here. Add 1/2/3 progress toward a historical inquiry objective, target 3. At completion see the event that left that trace, if it occurred within the last year.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "reason",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:echoes:5",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:echoes:5",
+        "level": 1,
+        "cost": 2,
+        "action": "Ritual · 10 minutes",
+        "sp": 2,
+        "range": "One adjacent site",
+        "duration": "Instant",
+        "attribute": "Reason",
+        "defenseAttribute": null,
+        "effect": "Ask how one visible trace came to be here. Add 1/2/3 progress toward a historical inquiry objective, target 3. At completion see the event that left that trace, if it occurred within the last year.",
+        "improves": null,
+        "requires": [
+          "echoes:1"
+        ],
+        "bookId": "echoes"
+      },
+      "spell": {
+        "id": "spell:echoes:5",
+        "name": "Vision Guide",
+        "bookId": "echoes",
+        "page": "5",
+        "section": "III",
+        "sp": 2,
+        "action": "Ritual",
+        "actionText": "Ritual · 10 minutes",
+        "ritualTime": "10 minutes",
+        "attribute": "Reason",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One adjacent site",
+        "duration": "Instant",
+        "effect": "Ask how one visible trace came to be here. Add 1/2/3 progress toward a historical inquiry objective, target 3. At completion see the event that left that trace, if it occurred within the last year."
+      }
+    }
+  },
+  "effects": []
+}

@@ -1,0 +1,47 @@
+{
+  "_key": "!items!2a9b4d7f6283b674",
+  "_id": "2a9b4d7f6283b674",
+  "name": "Unerring Pursuit",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div></dl><p>Main Action · Reason at a visible junction, or 10 minutes to scout the surrounding area. From a trail you followed, add 3/5/7 progress toward predicting the quarry’s next reachable landmark from its tracks and known terrain. Completion identifies the best-supported destination and gaps in the evidence. You and up to six companions gain 2 Boons on pursuit and traversal rolls along that route until reaching it. This does not locate a quarry that left no readable evidence.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "reason",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "wilderness:tracking:7",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "mastery",
+        "nodeId": "wilderness:tracking:7",
+        "level": 7,
+        "cost": 5,
+        "action": "Main Action",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": "Reason",
+        "defenseAttribute": null,
+        "effect": "Main Action · Reason at a visible junction, or 10 minutes to scout the surrounding area. From a trail you followed, add 3/5/7 progress toward predicting the quarry’s next reachable landmark from its tracks and known terrain. Completion identifies the best-supported destination and gaps in the evidence. You and up to six companions gain 2 Boons on pursuit and traversal rolls along that route until reaching it. This does not locate a quarry that left no readable evidence.",
+        "improves": null,
+        "requires": [
+          "wilderness:tracking:6"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

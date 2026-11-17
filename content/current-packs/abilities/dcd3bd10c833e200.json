@@ -1,0 +1,65 @@
+{
+  "_key": "!items!dcd3bd10c833e200",
+  "_id": "dcd3bd10c833e200",
+  "name": "Dimension Door",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>Self and one adjacent willing creature; a visible destination within 8 squares</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Step together through a brief doorway. Arrive in unoccupied supported squares beside the destination with carried gear. If the destination lacks room, remain at your origin and receive a clear impression of the obstruction.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:passage:4",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:passage:4",
+        "level": 1,
+        "cost": 2,
+        "action": "Main Action",
+        "sp": 2,
+        "range": "Self and one adjacent willing creature; a visible destination within 8 squares",
+        "duration": "Instant",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Step together through a brief doorway. Arrive in unoccupied supported squares beside the destination with carried gear. If the destination lacks room, remain at your origin and receive a clear impression of the obstruction.",
+        "improves": null,
+        "requires": [
+          "passage:0"
+        ],
+        "bookId": "passage"
+      },
+      "spell": {
+        "id": "spell:passage:4",
+        "name": "Dimension Door",
+        "bookId": "passage",
+        "page": "4",
+        "section": "II",
+        "sp": 2,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Self and one adjacent willing creature; a visible destination within 8 squares",
+        "duration": "Instant",
+        "effect": "Step together through a brief doorway. Arrive in unoccupied supported squares beside the destination with carried gear. If the destination lacks room, remain at your origin and receive a clear impression of the obstruction."
+      }
+    }
+  },
+  "effects": []
+}

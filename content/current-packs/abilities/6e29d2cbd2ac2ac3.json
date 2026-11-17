@@ -1,0 +1,47 @@
+{
+  "_key": "!items!6e29d2cbd2ac2ac3",
+  "_id": "6e29d2cbd2ac2ac3",
+  "name": "Bridge of Words II",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Bridge of Words takes 5 minutes and can include up to three willing speakers who share the unfamiliar language.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "scholarship:languages:5",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "scholarship:languages:5",
+        "level": 3,
+        "cost": 4,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Bridge of Words takes 5 minutes and can include up to three willing speakers who share the unfamiliar language.",
+        "improves": "scholarship:languages:4",
+        "requires": [
+          "scholarship:languages:4"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

@@ -1,0 +1,47 @@
+{
+  "_key": "!items!fd1688d6db6c48d7",
+  "_id": "fd1688d6db6c48d7",
+  "name": "Battering Stroke I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div></dl><p>Maneuver. Prepare your next Main Action melee weapon attack against one chosen visible creature before this turn ends. That attack pushes the target 2 squares directly away on any result; resolve collisions normally. On Strong it also applies Dazed 1. This replaces Driving Opening on that attack.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "arms:impact:4",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "technique",
+        "nodeId": "arms:impact:4",
+        "level": 3,
+        "cost": 3,
+        "action": "Maneuver",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Maneuver. Prepare your next Main Action melee weapon attack against one chosen visible creature before this turn ends. That attack pushes the target 2 squares directly away on any result; resolve collisions normally. On Strong it also applies Dazed 1. This replaces Driving Opening on that attack.",
+        "improves": null,
+        "requires": [
+          "arms:impact:3"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

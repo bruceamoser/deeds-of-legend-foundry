@@ -1,0 +1,65 @@
+{
+  "_key": "!items!f98ab25c0cbdaad0",
+  "_id": "f98ab25c0cbdaad0",
+  "name": "Burning Hands",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div><div><dt>Defense</dt><dd>Agility</dd></div><div><dt>Range</dt><dd>Every creature in a 3-square cone from you</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Sweep your hands outward in a fan of flame. Deal 2/3/5 fire damage to each creature in the cone.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "2 fire damage",
+      "standard": "3 fire damage",
+      "strong": "5 fire damage"
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:flame:3",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:flame:3",
+        "level": 1,
+        "cost": 2,
+        "action": "Main Action",
+        "sp": 1,
+        "range": "Every creature in a 3-square cone from you",
+        "duration": "Instant",
+        "attribute": "Knowledge",
+        "defenseAttribute": "Agility",
+        "effect": "Sweep your hands outward in a fan of flame. Deal 2/3/5 fire damage to each creature in the cone.",
+        "improves": null,
+        "requires": [
+          "flame:0"
+        ],
+        "bookId": "flame"
+      },
+      "spell": {
+        "id": "spell:flame:3",
+        "name": "Burning Hands",
+        "bookId": "flame",
+        "page": "3",
+        "section": "II",
+        "sp": 1,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "Knowledge",
+        "defense": "Agility",
+        "defenseAttribute": "Agility",
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Every creature in a 3-square cone from you",
+        "duration": "Instant",
+        "effect": "Sweep your hands outward in a fan of flame. Deal 2/3/5 fire damage to each creature in the cone."
+      }
+    }
+  },
+  "effects": []
+}

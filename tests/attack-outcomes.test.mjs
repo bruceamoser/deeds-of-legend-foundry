@@ -35,7 +35,7 @@ test("all supported absolute damage-first catalog tiers resolve canonical fixed 
       }
       count++;
     }
-  assert.equal(count, 249);
+  assert.equal(count, 252);
 });
 test("every damage enum produces a fixed typed outcome with conditions", () => {
   for (const type of DAMAGE_TYPES)
@@ -139,12 +139,12 @@ test("Reckless Charge's three extra-damage modifiers never become standalone dam
   assert.deepEqual(resolvedAttackEffects("Deal 4 physical damage."), {components:[{type:"physical",amount:4}],conditions:[]});
 });
 
-test("Foul Wind retains its three printed poison profiles and leaves unsupported damage manual", () => {
+test("Foul Wind resolves its three printed canonical poison damage profiles", () => {
   const record = records.find(record => record.name === "Foul Wind");
   const outcomes = printedAbilityRoll(record).outcomes;
-  assert(!DAMAGE_TYPES.includes("poison"));
+  assert(DAMAGE_TYPES.includes("poison"));
   for (const [tier, amount] of Object.entries({weak:1, standard:2, strong:4})) {
     assert.match(outcomes[tier], new RegExp(`\\b${amount} poison damage`));
-    assert.equal(resolvedAttackEffects(outcomes[tier]), null, tier);
+    assert.deepEqual(resolvedAttackEffects(outcomes[tier]), {components:[{type:"poison",amount}],conditions:[]}, tier);
   }
 });

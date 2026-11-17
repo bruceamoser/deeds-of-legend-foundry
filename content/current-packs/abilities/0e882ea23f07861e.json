@@ -1,0 +1,45 @@
+{
+  "_key": "!items!0e882ea23f07861e",
+  "_id": "0e882ea23f07861e",
+  "name": "Opportunity Attack",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Reaction</dd></div><div><dt>Attribute</dt><dd>Brawn for the granted attack</dd></div><div><dt>Range</dt><dd>An adjacent creature triggering an opportunity</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>**Action:** Reaction · **Attribute:** Brawn for the granted attack</p><p>**Target / range / shape:** An adjacent creature triggering an opportunity</p><p>Spend your Reaction when an adjacent creature starts a provoking action. Resolve one [Basic Melee](basic-melee.md) attack with a melee weapon you are holding, or one [Basic Unarmed](basic-unarmed.md) attack if you have a free hand. The Reaction pays for the attack. Use its normal roll and outcomes.</p><p>Leaving your reach voluntarily, casting, standing, stowing an item, or retrieving one can provoke. Resolve your attack before the triggering action takes effect. The creature continues its action if it remains capable. Forced movement does not provoke.</p><p>**Duration:** Instant</p><p>**Equipment / acquisition:** A held melee weapon or a free hand.</p>",
+    "activity": {
+      "action": "reaction",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-opportunity-attack",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "ability",
+        "nodeId": "ability-opportunity-attack",
+        "level": 0,
+        "cost": 0,
+        "action": "Reaction",
+        "sp": null,
+        "range": "An adjacent creature triggering an opportunity",
+        "duration": "Instant",
+        "attribute": "Brawn for the granted attack",
+        "defenseAttribute": null,
+        "effect": "**Action:** Reaction · **Attribute:** Brawn for the granted attack\n\n**Target / range / shape:** An adjacent creature triggering an opportunity\n\nSpend your Reaction when an adjacent creature starts a provoking action. Resolve one [Basic Melee](basic-melee.md) attack with a melee weapon you are holding, or one [Basic Unarmed](basic-unarmed.md) attack if you have a free hand. The Reaction pays for the attack. Use its normal roll and outcomes.\n\nLeaving your reach voluntarily, casting, standing, stowing an item, or retrieving one can provoke. Resolve your attack before the triggering action takes effect. The creature continues its action if it remains capable. Forced movement does not provoke.\n\n**Duration:** Instant\n\n**Equipment / acquisition:** A held melee weapon or a free hand.",
+        "improves": null,
+        "requires": [],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

@@ -1,0 +1,65 @@
+{
+  "_key": "!items!cc4a225e57a37e56",
+  "_id": "cc4a225e57a37e56",
+  "name": "Enlarge/Reduce — Objects",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One unattended nonmagical object of Bulk 2 or less within 3 squares</dd></div><div><dt>Duration</dt><dd>10 minutes</dd></div></dl><p>Double or halve its dimensions and Bulk, rounding Bulk up with a minimum of 1. Its material and function remain ordinary. It returns to original size at expiry; allow enough space for either size when casting.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:shaping:3",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:shaping:3",
+        "level": 1,
+        "cost": 2,
+        "action": "Main Action",
+        "sp": 1,
+        "range": "One unattended nonmagical object of Bulk 2 or less within 3 squares",
+        "duration": "10 minutes",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Double or halve its dimensions and Bulk, rounding Bulk up with a minimum of 1. Its material and function remain ordinary. It returns to original size at expiry; allow enough space for either size when casting.",
+        "improves": null,
+        "requires": [
+          "shaping:0"
+        ],
+        "bookId": "shaping"
+      },
+      "spell": {
+        "id": "spell:shaping:3",
+        "name": "Enlarge/Reduce — Objects",
+        "bookId": "shaping",
+        "page": "3",
+        "section": "II",
+        "sp": 1,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One unattended nonmagical object of Bulk 2 or less within 3 squares",
+        "duration": "10 minutes",
+        "effect": "Double or halve its dimensions and Bulk, rounding Bulk up with a minimum of 1. Its material and function remain ordinary. It returns to original size at expiry; allow enough space for either size when casting."
+      }
+    }
+  },
+  "effects": []
+}

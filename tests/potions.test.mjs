@@ -280,9 +280,9 @@ test("a living other recipient spends a Reaction; a zero-HP recipient does not",
   );
   assert.equal(zero.costs.recipient.reaction, 0);
   assert.equal(zero.healing.restored, 6);
-  assert.equal(zero.recipientSurvival.status, "active");
+  assert.equal(zero.recipientSurvival.dying, false);
   assert.equal(zero.recipientSurvival.hp, 6);
-  assert.equal(zero.recipientSurvival.marks, 0);
+  assert.equal(zero.recipientSurvival.failedDeathRolls, 0);
 });
 
 test("target and hand requirements stay strict while tracked action restrictions give guidance", () => {
@@ -424,7 +424,7 @@ test("exhausted bottles, terminal recipients and summons cannot be planned", () 
     () => planHealingPotion(base({ inventoryDie: 6 })),
     /inventory d4/,
   );
-  const lastWords = enterLastWords(dying());
+  const lastWords = {...dying(),dead:true};
   assert.throws(
     () =>
       planHealingPotion(
@@ -443,7 +443,7 @@ test("exhausted bottles, terminal recipients and summons cannot be planned", () 
           },
         }),
       ),
-    /lastWords|ordinary potion/,
+    /died|ordinary potion/,
   );
   assert.throws(
     () =>
@@ -454,11 +454,11 @@ test("exhausted bottles, terminal recipients and summons cannot be planned", () 
             ownTurn: true,
             turn: turn(),
             items: freeHand,
-            survival: { ...dying(), status: "dead" },
+            survival: { ...dying(), dead: true },
           },
           recipient: {
             actorId: "actor-giver",
-            survival: { ...dying(), status: "dead" },
+            survival: { ...dying(), dead: true },
             conditions: {},
           },
         }),

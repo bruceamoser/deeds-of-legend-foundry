@@ -1,0 +1,65 @@
+{
+  "_key": "!items!0def9057bd6a8692",
+  "_id": "0def9057bd6a8692",
+  "name": "Resilient Sphere",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>4</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One willing creature within 3 squares</dd></div><div><dt>Duration</dt><dd>1 minute</dd></div></dl><p>Enclose it in a translucent sphere with 12 HP and resistance 2 to all damage. Attacks from outside strike the sphere; the recipient may roll it 1 square using its movement. Actions affecting the outside require leaving with a Maneuver. Destruction ends the sphere after that damage event.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:telekinesis:8",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:telekinesis:8",
+        "level": 3,
+        "cost": 3,
+        "action": "Main Action",
+        "sp": 4,
+        "range": "One willing creature within 3 squares",
+        "duration": "1 minute",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Enclose it in a translucent sphere with 12 HP and resistance 2 to all damage. Attacks from outside strike the sphere; the recipient may roll it 1 square using its movement. Actions affecting the outside require leaving with a Maneuver. Destruction ends the sphere after that damage event.",
+        "improves": null,
+        "requires": [
+          "telekinesis:2"
+        ],
+        "bookId": "telekinesis"
+      },
+      "spell": {
+        "id": "spell:telekinesis:8",
+        "name": "Resilient Sphere",
+        "bookId": "telekinesis",
+        "page": "8",
+        "section": "IV",
+        "sp": 4,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One willing creature within 3 squares",
+        "duration": "1 minute",
+        "effect": "Enclose it in a translucent sphere with 12 HP and resistance 2 to all damage. Attacks from outside strike the sphere; the recipient may roll it 1 square using its movement. Actions affecting the outside require leaving with a Maneuver. Destruction ends the sphere after that damage event."
+      }
+    }
+  },
+  "effects": []
+}

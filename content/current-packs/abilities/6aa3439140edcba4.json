@@ -1,0 +1,65 @@
+{
+  "_key": "!items!6aa3439140edcba4",
+  "_id": "6aa3439140edcba4",
+  "name": "Meld into Stone",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>Self; one adjacent natural stone mass large enough to hold you</dd></div><div><dt>Duration</dt><dd>10 minutes</dd></div></dl><p>Step inside the stone with your carried gear. You can hear muffled sounds and may emerge from your entry face with a Maneuver. While inside, rest and observe; manipulating the outside world requires emerging. If the stone is broken apart, emerge into the nearest open square and take 3 physical damage.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:earth:5",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:earth:5",
+        "level": 1,
+        "cost": 2,
+        "action": "Main Action",
+        "sp": 2,
+        "range": "Self; one adjacent natural stone mass large enough to hold you",
+        "duration": "10 minutes",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Step inside the stone with your carried gear. You can hear muffled sounds and may emerge from your entry face with a Maneuver. While inside, rest and observe; manipulating the outside world requires emerging. If the stone is broken apart, emerge into the nearest open square and take 3 physical damage.",
+        "improves": null,
+        "requires": [
+          "earth:1"
+        ],
+        "bookId": "earth"
+      },
+      "spell": {
+        "id": "spell:earth:5",
+        "name": "Meld into Stone",
+        "bookId": "earth",
+        "page": "5",
+        "section": "III",
+        "sp": 2,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Self; one adjacent natural stone mass large enough to hold you",
+        "duration": "10 minutes",
+        "effect": "Step inside the stone with your carried gear. You can hear muffled sounds and may emerge from your entry face with a Maneuver. While inside, rest and observe; manipulating the outside world requires emerging. If the stone is broken apart, emerge into the nearest open square and take 3 physical damage."
+      }
+    }
+  },
+  "effects": []
+}

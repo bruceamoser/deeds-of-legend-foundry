@@ -1,0 +1,65 @@
+{
+  "_key": "!items!d655b4fbca427d31",
+  "_id": "d655b4fbca427d31",
+  "name": "Contagion",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>4</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Defense</dt><dd>Fortitude</dd></div><div><dt>Range</dt><dd>One adjacent living creature</dd></div><div><dt>Duration</dt><dd>10 minutes or until treated</dd></div></dl><p>Inflict Poisoned 1/2/3*. This magical sickness persists at that rating until you end it with a Maneuver, Lesser Restoration treats it, or a successful 10-minute Knowledge treatment reaches 3 progress at 1/2/3 per attempt. It fades after 10 minutes in any case.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "reason",
+      "defenseAttribute": "fortitude"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:decay:8",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:decay:8",
+        "level": 3,
+        "cost": 3,
+        "action": "Main Action",
+        "sp": 4,
+        "range": "One adjacent living creature",
+        "duration": "10 minutes or until treated",
+        "attribute": "Reason",
+        "defenseAttribute": "Fortitude",
+        "effect": "Inflict Poisoned 1/2/3*. This magical sickness persists at that rating until you end it with a Maneuver, Lesser Restoration treats it, or a successful 10-minute Knowledge treatment reaches 3 progress at 1/2/3 per attempt. It fades after 10 minutes in any case.",
+        "improves": null,
+        "requires": [
+          "decay:2"
+        ],
+        "bookId": "decay"
+      },
+      "spell": {
+        "id": "spell:decay:8",
+        "name": "Contagion",
+        "bookId": "decay",
+        "page": "8",
+        "section": "IV",
+        "sp": 4,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "Reason",
+        "defense": "Fortitude",
+        "defenseAttribute": "Fortitude",
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One adjacent living creature",
+        "duration": "10 minutes or until treated",
+        "effect": "Inflict Poisoned 1/2/3*. This magical sickness persists at that rating until you end it with a Maneuver, Lesser Restoration treats it, or a successful 10-minute Knowledge treatment reaches 3 progress at 1/2/3 per attempt. It fades after 10 minutes in any case."
+      }
+    }
+  },
+  "effects": []
+}

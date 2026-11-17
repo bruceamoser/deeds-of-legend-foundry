@@ -1,0 +1,47 @@
+{
+  "_key": "!items!148b4ffa66f1c949",
+  "_id": "148b4ffa66f1c949",
+  "name": "Weather the Storm III",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Weather the Storm reduces later physical attack damage by 2 instead of 1.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "armor:deflection:6",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "armor:deflection:6",
+        "level": 3,
+        "cost": 4,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Weather the Storm reduces later physical attack damage by 2 instead of 1.",
+        "improves": "armor:deflection:4",
+        "requires": [
+          "armor:deflection:5"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

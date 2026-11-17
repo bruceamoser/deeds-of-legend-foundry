@@ -1,0 +1,65 @@
+{
+  "_key": "!items!b5c0de3e63cc4358",
+  "_id": "b5c0de3e63cc4358",
+  "name": "Ray of Frost",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>0</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div><div><dt>Range</dt><dd>One creature within 8 squares</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Send a needle of frost into the target. Deal 2/3/5 cold damage.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "2 cold damage",
+      "standard": "3 cold damage",
+      "strong": "5 cold damage"
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:water:1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:water:1",
+        "level": 1,
+        "cost": 1,
+        "action": "Main Action",
+        "sp": 0,
+        "range": "One creature within 8 squares",
+        "duration": "Instant",
+        "attribute": "Knowledge",
+        "defenseAttribute": null,
+        "effect": "Send a needle of frost into the target. Deal 2/3/5 cold damage.",
+        "improves": null,
+        "requires": [
+          "elements"
+        ],
+        "bookId": "water"
+      },
+      "spell": {
+        "id": "spell:water:1",
+        "name": "Ray of Frost",
+        "bookId": "water",
+        "page": "1",
+        "section": "I",
+        "sp": 0,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "Knowledge",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One creature within 8 squares",
+        "duration": "Instant",
+        "effect": "Send a needle of frost into the target. Deal 2/3/5 cold damage."
+      }
+    }
+  },
+  "effects": []
+}

@@ -1,0 +1,65 @@
+{
+  "_key": "!items!a0c5e74efb1537a4",
+  "_id": "a0c5e74efb1537a4",
+  "name": "Charm Person",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Attribute</dt><dd>Guile</dd></div><div><dt>Defense</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>One creature within 3 squares that can hear and understand you</dd></div><div><dt>Duration</dt><dd>Until the social exchange ends, up to 10 minutes</dd></div></dl><p>Offer an appealing introduction. Add 1/2/3 progress toward an attainable social objective involving a friendly hearing or small favor. During the exchange, the target senses you as approachable. The DA establishes the concession and its boundaries before casting.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "guile",
+      "defenseAttribute": "reason"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:emotion:3",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:emotion:3",
+        "level": 1,
+        "cost": 2,
+        "action": "Main Action",
+        "sp": 1,
+        "range": "One creature within 3 squares that can hear and understand you",
+        "duration": "Until the social exchange ends, up to 10 minutes",
+        "attribute": "Guile",
+        "defenseAttribute": "Reason",
+        "effect": "Offer an appealing introduction. Add 1/2/3 progress toward an attainable social objective involving a friendly hearing or small favor. During the exchange, the target senses you as approachable. The DA establishes the concession and its boundaries before casting.",
+        "improves": null,
+        "requires": [
+          "emotion:0"
+        ],
+        "bookId": "emotion"
+      },
+      "spell": {
+        "id": "spell:emotion:3",
+        "name": "Charm Person",
+        "bookId": "emotion",
+        "page": "3",
+        "section": "II",
+        "sp": 1,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "Guile",
+        "defense": "Reason",
+        "defenseAttribute": "Reason",
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One creature within 3 squares that can hear and understand you",
+        "duration": "Until the social exchange ends, up to 10 minutes",
+        "effect": "Offer an appealing introduction. Add 1/2/3 progress toward an attainable social objective involving a friendly hearing or small favor. During the exchange, the target senses you as approachable. The DA establishes the concession and its boundaries before casting."
+      }
+    }
+  },
+  "effects": []
+}

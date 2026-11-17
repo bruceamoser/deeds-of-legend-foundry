@@ -1,0 +1,66 @@
+{
+  "_key": "!items!cda00dc3d592e172",
+  "_id": "cda00dc3d592e172",
+  "name": "Loosen Earth",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 minute</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One unoccupied square of loose earth within 3 squares, up to 1 square deep</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Loosen, shift or pile the soil into an adjacent unoccupied square. Work around buried structures and roots. The resulting earth is ordinary material.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:earth:2",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:earth:2",
+        "level": 1,
+        "cost": 1,
+        "action": "Ritual · 1 minute",
+        "sp": 1,
+        "range": "One unoccupied square of loose earth within 3 squares, up to 1 square deep",
+        "duration": "Instant",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Loosen, shift or pile the soil into an adjacent unoccupied square. Work around buried structures and roots. The resulting earth is ordinary material.",
+        "improves": null,
+        "requires": [
+          "elements"
+        ],
+        "bookId": "earth"
+      },
+      "spell": {
+        "id": "spell:earth:2",
+        "name": "Loosen Earth",
+        "bookId": "earth",
+        "page": "2",
+        "section": "I",
+        "sp": 1,
+        "action": "Ritual",
+        "actionText": "Ritual · 1 minute",
+        "ritualTime": "1 minute",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One unoccupied square of loose earth within 3 squares, up to 1 square deep",
+        "duration": "Instant",
+        "effect": "Loosen, shift or pile the soil into an adjacent unoccupied square. Work around buried structures and roots. The resulting earth is ordinary material."
+      }
+    }
+  },
+  "effects": []
+}

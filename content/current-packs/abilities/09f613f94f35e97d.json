@@ -1,0 +1,47 @@
+{
+  "_key": "!items!09f613f94f35e97d",
+  "_id": "09f613f94f35e97d",
+  "name": "Field Dressing II",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Field Dressing’s first aid restores 4/6/8 HP; its immediate bandaging reduces Bleeding by 3.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "medicine:first-aid:2",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "medicine:first-aid:2",
+        "level": 1,
+        "cost": 2,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Field Dressing’s first aid restores 4/6/8 HP; its immediate bandaging reduces Bleeding by 3.",
+        "improves": "medicine:first-aid:1",
+        "requires": [
+          "medicine:first-aid:1"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

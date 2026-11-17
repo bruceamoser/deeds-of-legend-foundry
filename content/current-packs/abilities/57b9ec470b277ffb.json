@@ -1,0 +1,65 @@
+{
+  "_key": "!items!57b9ec470b277ffb",
+  "_id": "57b9ec470b277ffb",
+  "name": "Earthwall",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>Three connected unoccupied ground squares within 6 squares</dd></div><div><dt>Duration</dt><dd>10 minutes</dd></div></dl><p>Raise a bank of packed earth 1 square high. It provides cover and costs 2 movement to climb. Each bank square has 6 HP and physical resistance 1.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:earth:3",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:earth:3",
+        "level": 1,
+        "cost": 2,
+        "action": "Main Action",
+        "sp": 1,
+        "range": "Three connected unoccupied ground squares within 6 squares",
+        "duration": "10 minutes",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Raise a bank of packed earth 1 square high. It provides cover and costs 2 movement to climb. Each bank square has 6 HP and physical resistance 1.",
+        "improves": null,
+        "requires": [
+          "earth:0"
+        ],
+        "bookId": "earth"
+      },
+      "spell": {
+        "id": "spell:earth:3",
+        "name": "Earthwall",
+        "bookId": "earth",
+        "page": "3",
+        "section": "II",
+        "sp": 1,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Three connected unoccupied ground squares within 6 squares",
+        "duration": "10 minutes",
+        "effect": "Raise a bank of packed earth 1 square high. It provides cover and costs 2 movement to climb. Each bank square has 6 HP and physical resistance 1."
+      }
+    }
+  },
+  "effects": []
+}

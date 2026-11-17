@@ -1,3 +1,5 @@
+import {updateNativeWorkshopOperation,completeNativeWorkshopOperation} from './native-workshop-coordinator.mjs';
+import {tracksConsumable} from "./consumables.mjs";
 import {assertSummonPresent} from "../rules/summon-profile.mjs";
 import {summonAttackConfiguration} from "../rules/creature-sheet-profile.mjs";
 import {resolvedAttackEffects} from "../rules/attack-outcomes.mjs";
@@ -39,11 +41,22 @@ export async function rollPrepared(actor, basis, draft) {
     const {rangedAmmunition} = await import("./ranged-ammunition.mjs");
     ammunition = rangedAmmunition(actor,draft.rangedWeaponItemId);
   }
+  let nativeAttackOperationId;
+  if(actor.type==='character'&&['ability-basic-melee','ability-basic-ranged','ability-basic-unarmed'].includes(actor.items.get(draft.abilityItemId)?.getFlag('heroes-of-legend','catalogId'))){
+    draft.nativeAttackOperationId??=foundry.utils.randomID();nativeAttackOperationId=draft.nativeAttackOperationId;
+    await (await import('./abilities.mjs')).prepareNativeBasicAttack(actor,draft.abilityItemId,nativeAttackOperationId,current.actorTokenUuid);
+    const operation=actor.getFlag('heroes-of-legend','nativeWorkshopPendingRoll');
+    await updateNativeWorkshopOperation(actor,{...operation,status:'evaluating'});
+  }
   const prepared = prepareRoll(current, draft);
   const mode = game.settings.get("core", "messageMode");
   const { roll, snapshot } = await evaluatePreparedRoll(actor, basis, draft, {
     allowInteractive: mode !== "blind",
   });
+  if(nativeAttackOperationId){
+    const operation=actor.getFlag('heroes-of-legend','nativeWorkshopPendingRoll');
+    await updateNativeWorkshopOperation(actor,{...operation,status:'evaluated',faces:roll.dice[0].results.filter(result=>!result.rerolled).map(result=>result.result),formula:roll.formula});
+  }
   const message = await roll.toMessage(
     {
       speaker: ChatMessage.getSpeaker({ actor }),
@@ -54,12 +67,13 @@ export async function rollPrepared(actor, basis, draft) {
     },
     { messageMode: mode },
   );
-  if (ammunition) {
+  if (ammunition && tracksConsumable(ammunition.ammo)) {
     try {
       const {consumeOwnedSupply} = await import("./inventory.mjs");
       await consumeOwnedSupply(actor,ammunition.ammo,{operationId:message.id,label:ammunition.ammo.name});
     } catch(error) { ui.notifications.error(`Attack rolled; ammunition check failed: ${error.message}`); }
   }
+  if(nativeAttackOperationId){await completeNativeWorkshopOperation(actor,nativeAttackOperationId);delete draft.nativeAttackOperationId;}
   return message;
 }
 export async function evaluatePreparedRoll(
@@ -110,7 +124,6 @@ export async function evaluatePreparedRoll(
     attributeKey: basis.attributeKey,
     mode: basis.mode,
     perception: structuredClone(draft.perception ?? {}),
-    woundApplicability: structuredClone(draft.woundApplicability ?? {}),
     ...plan,
     retained,
     dice: roll.dice[0].results.map((die, index) => ({ index, face: die.result, kept: Boolean(die.active) })),
@@ -192,11 +205,6 @@ export function renderRollSummary(message, element) {
     outcome.className = "hol-chat-effect hol-chat-ability-outcome";
     outcome.textContent = result.ability.outcomes[result.tier] || result.ability.effect;
     summary.append(outcome);
-  }
-  if (result.mode === "death") {
-    const effect = document.createElement("p"); effect.className = "hol-chat-effect";
-    effect.textContent = result.natural === "fumble" ? "Two death marks." : result.natural === "critical" ? "Regain 1 HP." : result.tier === "weak" ? "One death mark." : result.tier === "strong" ? "Stabilize." : "No change.";
-    summary.append(effect);
   }
   if (result.natural !== "none") {
     const natural = document.createElement("p");

@@ -1,0 +1,65 @@
+{
+  "_key": "!items!40c57091bc4fb300",
+  "_id": "40c57091bc4fb300",
+  "name": "Etherealness",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>Self and carried gear</dd></div><div><dt>Duration</dt><dd>1 minute</dd></div></dl><p>Step partly into the spirit realm. Move at half Speed through ordinary solid material up to 1 square thick, ending each turn in open space. Observe spirits and physical surroundings as pale outlines. Return with a Maneuver to handle physical objects or cast. Expiry returns you to the nearest open square within 3 squares.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:spirits:a1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:spirits:a1",
+        "level": 3,
+        "cost": 4,
+        "action": "Main Action",
+        "sp": 5,
+        "range": "Self and carried gear",
+        "duration": "1 minute",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Step partly into the spirit realm. Move at half Speed through ordinary solid material up to 1 square thick, ending each turn in open space. Observe spirits and physical surroundings as pale outlines. Return with a Maneuver to handle physical objects or cast. Expiry returns you to the nearest open square within 3 squares.",
+        "improves": null,
+        "requires": [
+          "spirits:3"
+        ],
+        "bookId": "spirits"
+      },
+      "spell": {
+        "id": "spell:spirits:a1",
+        "name": "Etherealness",
+        "bookId": "spirits",
+        "page": "A1",
+        "section": "V",
+        "sp": 5,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Self and carried gear",
+        "duration": "1 minute",
+        "effect": "Step partly into the spirit realm. Move at half Speed through ordinary solid material up to 1 square thick, ending each turn in open space. Observe spirits and physical surroundings as pale outlines. Return with a Maneuver to handle physical objects or cast. Expiry returns you to the nearest open square within 3 squares."
+      }
+    }
+  },
+  "effects": []
+}

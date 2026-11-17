@@ -1749,3 +1749,54 @@ check alone does not verify the publication fixtures or all Workshop surfaces.
 Review generated spell timing, effective creature statistics and any changed
 example totals separately from provenance and editorial changes. Keep the native
 source lock unchanged until native integration is explicitly authorized.
+
+
+## Current native Workshop acceptance — #325
+
+The native port is now authorized against the current Forge/book pin. It ships
+the shared Workshop controller and current reference packs. Historical runtime
+records above describe earlier releases; they are not evidence for this port.
+See [the current acceptance ledger](native-workshop-port-325.md).
+
+Use the dedicated empty `hol-native-325` world on local port 30025 for the new
+suites. They require explicit `HOL_TEST_URL=http://localhost:30025`,
+`HOL_TEST_ALLOW_WRITES=1`, and `HOL_TEST_ISOLATED_WORLD=1`. The other-surface suite
+also requires `HOL_NATIVE_RUNTIME_LEASE=gameplay` and supports
+`HOL_NATIVE_PHASE=cards`, `play`, or `supplies`. Run these **sequentially**, with no
+other browser test using that world, and inspect the recorded cleanup/errors.
+`npm run test:native-workshop` exercises the PC flow;
+`npm run test:native-surfaces` exercises the selected other-surface phase.
+`npm run test:workshop-mount` is a standalone-browser mount regression that needs
+no Foundry license and runs in CI.
+
+The final native candidate should be tested from the extracted release ZIP after
+stopping the local runtime, rather than rebuilding files under an active test.
+The licensed Foundry application and its data, keys and databases stay outside Git.
+
+### Recovering a missing direct supply result
+
+Direct supply/ammunition uses now run on the same designated GM queue as character saves and damage. A saved result can be resumed without another roll. An interrupted die evaluation remains blocked because its original result may be unknown.
+
+For that exceptional missing-result case, the DA reviews the original use and corrects the affected Item’s supply die once through its normal native card. With the affected token selected, the following GM console action confirms that correction without rolling or consuming again:
+
+```js
+const actor = canvas.tokens.controlled[0].actor;
+const pending = Object.values(actor.getFlag('heroes-of-legend', 'supplyActions') ?? {})
+  .find(record => record.phase === 'rolling');
+const { reconcileOwnedSupply } = await import('/systems/heroes-of-legend/services/inventory.mjs');
+await reconcileOwnedSupply(actor, actor.items.get(pending.itemId), { operationId: pending.operationId });
+```
+
+This closes the original managed operation and retains its audit record. It is a deliberate DA reconciliation, not an automatic reroll or refund.
+
+### Interrupted supply results
+
+Native supply checks use the shared GM queue and update only the selected Item's
+supply die. Saved results can be completed without rolling again. If execution
+stopped before the original die result was saved, the action stays blocked: the
+DA inspects the existing chat/result, corrects that Item's die in its editor, then
+calls `reconcileOwnedSupply(actor, item, {operationId})` from
+`systems/heroes-of-legend/services/inventory.mjs`. Use the original key in the
+Actor's `flags.heroes-of-legend.supplyActions` whose phase is `rolling`.
+This confirmation performs no roll. For a nested torch check it also resolves the
+saved outer operation, so the hourly clock can continue without a second check.

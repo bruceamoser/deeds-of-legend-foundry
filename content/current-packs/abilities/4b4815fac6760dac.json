@@ -1,0 +1,116 @@
+{
+  "_key": "!items!4b4815fac6760dac",
+  "_id": "4b4815fac6760dac",
+  "name": "Shape of the Wild",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Target / range / shape</dt><dd>Self.</dd></div><div><dt>Magic</dt><dd>Spell</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Duration</dt><dd>Fixed 10 minutes; no Sustain.</dd></div><div><dt>Equipment / acquisition</dt><dd>A free hand to cast before transforming.</dd></div></dl><p>Once per scene, assume the appearance of a familiar Small or Medium ground beast for 10 minutes. Keep your HP, attributes, conditions, resources and Speed. Your equipment melds and provides no effects or resistance. Your form has physical resistance 1 and a natural attack: Main Action, Brawn, adjacent target, 2/3/5 physical damage on Weak/Standard/Strong. You speak only animal calls and cannot cast spells or use equipment. Return to your own shape with a Maneuver or automatically at 0 HP. Changing form never restores HP.</p><p>Choose one adaptation when transforming: swim at your Speed and breathe water; climb at your Speed; or remain a ground beast and gain 1 Boon to tracking rolls that rely on scent. It lasts for this transformation. Changing it requires another casting and follows this signature’s once-per-scene limit.</p><p>This is a spell costing 1 SP. If you also know Borrowed Shape, both signatures share the same once-per-scene transformation use.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-signature-shepherd-shape-of-the-wild",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "ability-signature-shepherd-shape-of-the-wild",
+        "level": 3,
+        "cost": 0,
+        "action": "Main Action",
+        "sp": 1,
+        "range": "Self.",
+        "duration": "Fixed 10 minutes; no Sustain.",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "**Action:** Main Action · **Attribute:** None\n\n**Target / range / shape:** Self.\n\nOnce per scene, assume the appearance of a familiar Small or Medium ground beast for 10 minutes. Keep your HP, attributes, conditions, resources and Speed. Your equipment melds and provides no effects or resistance. Your form has physical resistance 1 and a natural attack: Main Action, Brawn, adjacent target, 2/3/5 physical damage on Weak/Standard/Strong. You speak only animal calls and cannot cast spells or use equipment. Return to your own shape with a Maneuver or automatically at 0 HP. Changing form never restores HP.\n\nChoose one adaptation when transforming: swim at your Speed and breathe water; climb at your Speed; or remain a ground beast and gain 1 Boon to tracking rolls that rely on scent. It lasts for this transformation. Changing it requires another casting and follows this signature’s once-per-scene limit.\n\n**Duration:** Fixed 10 minutes; no Sustain.\n\n**Equipment / acquisition:** A free hand to cast before transforming.\n\nThis is a spell costing 1 SP. If you also know Borrowed Shape, both signatures share the same once-per-scene transformation use.",
+        "improves": null,
+        "requires": [],
+        "bookId": null,
+        "magic": "Spell"
+      },
+      "spell": {
+        "id": "ability-signature-shepherd-shape-of-the-wild",
+        "name": "Shape of the Wild",
+        "level": 3,
+        "dp": null,
+        "action": "Main Action",
+        "attribute": "None",
+        "target": "Self.",
+        "duration": "Fixed 10 minutes; no Sustain.",
+        "equipment": "A free hand to cast before transforming.",
+        "limits": "One signature choice at each of levels 1, 3 and 7.",
+        "effect": "**Action:** Main Action · **Attribute:** None\n\n**Target / range / shape:** Self.\n\nOnce per scene, assume the appearance of a familiar Small or Medium ground beast for 10 minutes. Keep your HP, attributes, conditions, resources and Speed. Your equipment melds and provides no effects or resistance. Your form has physical resistance 1 and a natural attack: Main Action, Brawn, adjacent target, 2/3/5 physical damage on Weak/Standard/Strong. You speak only animal calls and cannot cast spells or use equipment. Return to your own shape with a Maneuver or automatically at 0 HP. Changing form never restores HP.\n\nChoose one adaptation when transforming: swim at your Speed and breathe water; climb at your Speed; or remain a ground beast and gain 1 Boon to tracking rolls that rely on scent. It lasts for this transformation. Changing it requires another casting and follows this signature’s once-per-scene limit.\n\n**Duration:** Fixed 10 minutes; no Sustain.\n\n**Equipment / acquisition:** A free hand to cast before transforming.\n\nThis is a spell costing 1 SP. If you also know Borrowed Shape, both signatures share the same once-per-scene transformation use.",
+        "reference": {
+          "flavor": [
+            "The wild lends you another shape without taking away your own life."
+          ],
+          "rules": {
+            "details": [
+              {
+                "label": "Action",
+                "value": "Main Action"
+              },
+              {
+                "label": "Attribute",
+                "value": "None"
+              },
+              {
+                "label": "Target / range / shape",
+                "value": "Self."
+              },
+              {
+                "label": "Magic",
+                "value": "Spell"
+              },
+              {
+                "label": "SP",
+                "value": "1"
+              },
+              {
+                "label": "Duration",
+                "value": "Fixed 10 minutes; no Sustain."
+              },
+              {
+                "label": "Equipment / acquisition",
+                "value": "A free hand to cast before transforming."
+              }
+            ],
+            "body": [
+              {
+                "text": "Once per scene, assume the appearance of a familiar Small or Medium ground beast for 10 minutes. Keep your HP, attributes, conditions, resources and Speed. Your equipment melds and provides no effects or resistance. Your form has physical resistance 1 and a natural attack: Main Action, Brawn, adjacent target, 2/3/5 physical damage on Weak/Standard/Strong. You speak only animal calls and cannot cast spells or use equipment. Return to your own shape with a Maneuver or automatically at 0 HP. Changing form never restores HP."
+              },
+              {
+                "text": "Choose one adaptation when transforming: swim at your Speed and breathe water; climb at your Speed; or remain a ground beast and gain 1 Boon to tracking rolls that rely on scent. It lasts for this transformation. Changing it requires another casting and follows this signature’s once-per-scene limit."
+              },
+              {
+                "text": "This is a spell costing 1 SP. If you also know Borrowed Shape, both signatures share the same once-per-scene transformation use."
+              }
+            ],
+            "notes": []
+          }
+        },
+        "referenceMarkdown": "**Action:** Main Action · **Attribute:** None\n\n**Target / range / shape:** Self.\n\nOnce per scene, assume the appearance of a familiar Small or Medium ground beast for 10 minutes. Keep your HP, attributes, conditions, resources and Speed. Your equipment melds and provides no effects or resistance. Your form has physical resistance 1 and a natural attack: Main Action, Brawn, adjacent target, 2/3/5 physical damage on Weak/Standard/Strong. You speak only animal calls and cannot cast spells or use equipment. Return to your own shape with a Maneuver or automatically at 0 HP. Changing form never restores HP.\n\nChoose one adaptation when transforming: swim at your Speed and breathe water; climb at your Speed; or remain a ground beast and gain 1 Boon to tracking rolls that rely on scent. It lasts for this transformation. Changing it requires another casting and follows this signature’s once-per-scene limit.\n\n**Duration:** Fixed 10 minutes; no Sustain.\n\n**Equipment / acquisition:** A free hand to cast before transforming.\n\nThis is a spell costing 1 SP. If you also know Borrowed Shape, both signatures share the same once-per-scene transformation use.",
+        "classId": "class-shepherd",
+        "lineId": "shepherd:borrowed-shape",
+        "signatureComponent": true,
+        "kind": "ability",
+        "sp": 1,
+        "magic": "Spell",
+        "rulesMarkdown": "**Action:** Main Action · **Attribute:** None\n\n**Target / range / shape:** Self.\n\nOnce per scene, assume the appearance of a familiar Small or Medium ground beast for 10 minutes. Keep your HP, attributes, conditions, resources and Speed. Your equipment melds and provides no effects or resistance. Your form has physical resistance 1 and a natural attack: Main Action, Brawn, adjacent target, 2/3/5 physical damage on Weak/Standard/Strong. You speak only animal calls and cannot cast spells or use equipment. Return to your own shape with a Maneuver or automatically at 0 HP. Changing form never restores HP.\n\nChoose one adaptation when transforming: swim at your Speed and breathe water; climb at your Speed; or remain a ground beast and gain 1 Boon to tracking rolls that rely on scent. It lasts for this transformation. Changing it requires another casting and follows this signature’s once-per-scene limit.\n\n**Duration:** Fixed 10 minutes; no Sustain.\n\n**Equipment / acquisition:** A free hand to cast before transforming.\n\nThis is a spell costing 1 SP. If you also know Borrowed Shape, both signatures share the same once-per-scene transformation use."
+      }
+    }
+  },
+  "effects": []
+}

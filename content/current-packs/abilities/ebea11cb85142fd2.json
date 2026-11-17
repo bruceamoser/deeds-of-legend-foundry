@@ -1,0 +1,45 @@
+{
+  "_key": "!items!ebea11cb85142fd2",
+  "_id": "ebea11cb85142fd2",
+  "name": "Handle an Item",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Varies</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Range</dt><dd>An accessible item</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>**Action:** Varies · **Attribute:** None — no roll</p><p>**Target / range / shape:** An accessible item</p><p>Drawing a weapon is included in its attack action. Dropping is free. Proper stowing or picking up costs a Maneuver. Ordinary item use follows its own card. No free two-handed grip exception is assumed.</p><p>**Duration:** Instant</p><p>**Equipment / acquisition:** None.</p>",
+    "activity": {
+      "action": "other",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-handle-an-item",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "ability",
+        "nodeId": "ability-handle-an-item",
+        "level": 0,
+        "cost": 0,
+        "action": "Varies",
+        "sp": null,
+        "range": "An accessible item",
+        "duration": "Instant",
+        "attribute": "None — no roll",
+        "defenseAttribute": null,
+        "effect": "**Action:** Varies · **Attribute:** None — no roll\n\n**Target / range / shape:** An accessible item\n\nDrawing a weapon is included in its attack action. Dropping is free. Proper stowing or picking up costs a Maneuver. Ordinary item use follows its own card. No free two-handed grip exception is assumed.\n\n**Duration:** Instant\n\n**Equipment / acquisition:** None.",
+        "improves": null,
+        "requires": [],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

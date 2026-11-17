@@ -1,0 +1,47 @@
+{
+  "_key": "!items!805a6d18bdb5d97b",
+  "_id": "805a6d18bdb5d97b",
+  "name": "Common Ground II",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Common Ground adds 1/3/4 progress to each objective.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "influence:negotiation:5",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "influence:negotiation:5",
+        "level": 3,
+        "cost": 4,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Common Ground adds 1/3/4 progress to each objective.",
+        "improves": "influence:negotiation:4",
+        "requires": [
+          "influence:negotiation:4"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

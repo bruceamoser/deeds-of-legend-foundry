@@ -1,0 +1,47 @@
+{
+  "_key": "!items!57ab0ce932e4bdfc",
+  "_id": "57ab0ce932e4bdfc",
+  "name": "Smoke in a Bottle I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Timed work</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div></dl><p>1 hour · Knowledge, with alchemical tools and one purchased batch of smoke ingredients. Add 1/2/3 progress toward target 3 to prepare one smoke flask. Maneuver: throw a prepared flask to a visible point within 4 squares, consuming it. Smoke fills a 1-square-radius area until your next turn ends and blocks sight through it. No throwing roll.</p>",
+    "activity": {
+      "action": "other",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "craft:mixtures:1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "technique",
+        "nodeId": "craft:mixtures:1",
+        "level": 1,
+        "cost": 1,
+        "action": "Timed work",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": "Knowledge",
+        "defenseAttribute": null,
+        "effect": "1 hour · Knowledge, with alchemical tools and one purchased batch of smoke ingredients. Add 1/2/3 progress toward target 3 to prepare one smoke flask. Maneuver: throw a prepared flask to a visible point within 4 squares, consuming it. Smoke fills a 1-square-radius area until your next turn ends and blocks sight through it. No throwing roll.",
+        "improves": null,
+        "requires": [
+          "craft"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

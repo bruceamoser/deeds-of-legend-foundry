@@ -1,0 +1,65 @@
+{
+  "_key": "!items!d8d1099173f6d54a",
+  "_id": "d8d1099173f6d54a",
+  "name": "Inner Thoughts",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>4</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Defense</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>One creature within 3 squares</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Read a thought connected to one question you speak aloud. Learn 1/2/3 relevant images or associations from its present thinking. The recipient knows the question and intrusion; responses remain bounded by its actual knowledge.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "reason",
+      "defenseAttribute": "reason"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:thought:8",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:thought:8",
+        "level": 3,
+        "cost": 3,
+        "action": "Main Action",
+        "sp": 4,
+        "range": "One creature within 3 squares",
+        "duration": "Instant",
+        "attribute": "Reason",
+        "defenseAttribute": "Reason",
+        "effect": "Read a thought connected to one question you speak aloud. Learn 1/2/3 relevant images or associations from its present thinking. The recipient knows the question and intrusion; responses remain bounded by its actual knowledge.",
+        "improves": null,
+        "requires": [
+          "thought:2"
+        ],
+        "bookId": "thought"
+      },
+      "spell": {
+        "id": "spell:thought:8",
+        "name": "Inner Thoughts",
+        "bookId": "thought",
+        "page": "8",
+        "section": "IV",
+        "sp": 4,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "Reason",
+        "defense": "Reason",
+        "defenseAttribute": "Reason",
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One creature within 3 squares",
+        "duration": "Instant",
+        "effect": "Read a thought connected to one question you speak aloud. Learn 1/2/3 relevant images or associations from its present thinking. The recipient knows the question and intrusion; responses remain bounded by its actual knowledge."
+      }
+    }
+  },
+  "effects": []
+}

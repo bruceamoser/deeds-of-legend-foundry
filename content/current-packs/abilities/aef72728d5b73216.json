@@ -1,0 +1,47 @@
+{
+  "_key": "!items!aef72728d5b73216",
+  "_id": "aef72728d5b73216",
+  "name": "Read the Evidence I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div></dl><p>Main Action · Reason. Examine one accessible clue within reach; add 1/2/3 progress toward a concrete question about it. Searching a scene instead takes 10 minutes per attempt. You may also recall a relevant fact about a subject or reliable description: 1 minute, Knowledge, 1/2/3 progress toward a question set before rolling.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "reason",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "scholarship:investigation:1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "technique",
+        "nodeId": "scholarship:investigation:1",
+        "level": 1,
+        "cost": 1,
+        "action": "Main Action",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": "Reason",
+        "defenseAttribute": null,
+        "effect": "Main Action · Reason. Examine one accessible clue within reach; add 1/2/3 progress toward a concrete question about it. Searching a scene instead takes 10 minutes per attempt. You may also recall a relevant fact about a subject or reliable description: 1 minute, Knowledge, 1/2/3 progress toward a question set before rolling.",
+        "improves": null,
+        "requires": [
+          "scholarship"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

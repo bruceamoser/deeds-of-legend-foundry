@@ -1,0 +1,47 @@
+{
+  "_key": "!items!6d769a3c0b3b019c",
+  "_id": "6d769a3c0b3b019c",
+  "name": "Running Vault II",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Running Vault reaches up to 3 squares.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "athletics:leaping:2",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "athletics:leaping:2",
+        "level": 1,
+        "cost": 2,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Running Vault reaches up to 3 squares.",
+        "improves": "athletics:leaping:1",
+        "requires": [
+          "athletics:leaping:1"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

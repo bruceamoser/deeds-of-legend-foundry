@@ -1,0 +1,65 @@
+{
+  "_key": "!items!d2d82469b561371f",
+  "_id": "d2d82469b561371f",
+  "name": "Siphon Power",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Defense</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>One creature within 3 squares with its own SP reserve</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Transfer 1/2/3 of the target&#39;s current SP into your reserve, limited by its available SP and your missing SP after paying the casting cost. Every point received leaves the target&#39;s reserve. An empty reserve transfers 0.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "reason",
+      "defenseAttribute": "reason"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:channeling:4",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:channeling:4",
+        "level": 1,
+        "cost": 2,
+        "action": "Main Action",
+        "sp": 2,
+        "range": "One creature within 3 squares with its own SP reserve",
+        "duration": "Instant",
+        "attribute": "Reason",
+        "defenseAttribute": "Reason",
+        "effect": "Transfer 1/2/3 of the target's current SP into your reserve, limited by its available SP and your missing SP after paying the casting cost. Every point received leaves the target's reserve. An empty reserve transfers 0.",
+        "improves": null,
+        "requires": [
+          "channeling:0"
+        ],
+        "bookId": "channeling"
+      },
+      "spell": {
+        "id": "spell:channeling:4",
+        "name": "Siphon Power",
+        "bookId": "channeling",
+        "page": "4",
+        "section": "II",
+        "sp": 2,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "Reason",
+        "defense": "Reason",
+        "defenseAttribute": "Reason",
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One creature within 3 squares with its own SP reserve",
+        "duration": "Instant",
+        "effect": "Transfer 1/2/3 of the target's current SP into your reserve, limited by its available SP and your missing SP after paying the casting cost. Every point received leaves the target's reserve. An empty reserve transfers 0."
+      }
+    }
+  },
+  "effects": []
+}

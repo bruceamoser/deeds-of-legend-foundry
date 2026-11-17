@@ -1,0 +1,66 @@
+{
+  "_key": "!items!3209d1727716b110",
+  "_id": "3209d1727716b110",
+  "name": "Gate — Calling",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 10 minutes</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One named willing being on another plane; arrival within 3 squares of you</dd></div><div><dt>Duration</dt><dd>1 minute</dd></div></dl><p>Send an invitation naming the destination and purpose. If accepted, open a doorway through which that being and its carried possessions may enter once. The door closes after its arrival or after one minute. The guest acts independently; agree on its service through conversation.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:calling:a3",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:calling:a3",
+        "level": 7,
+        "cost": 5,
+        "action": "Ritual · 10 minutes",
+        "sp": 5,
+        "range": "One named willing being on another plane; arrival within 3 squares of you",
+        "duration": "1 minute",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Send an invitation naming the destination and purpose. If accepted, open a doorway through which that being and its carried possessions may enter once. The door closes after its arrival or after one minute. The guest acts independently; agree on its service through conversation.",
+        "improves": null,
+        "requires": [
+          "calling:5"
+        ],
+        "bookId": "calling"
+      },
+      "spell": {
+        "id": "spell:calling:a3",
+        "name": "Gate — Calling",
+        "bookId": "calling",
+        "page": "A3",
+        "section": "VII",
+        "sp": 5,
+        "action": "Ritual",
+        "actionText": "Ritual · 10 minutes",
+        "ritualTime": "10 minutes",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One named willing being on another plane; arrival within 3 squares of you",
+        "duration": "1 minute",
+        "effect": "Send an invitation naming the destination and purpose. If accepted, open a doorway through which that being and its carried possessions may enter once. The door closes after its arrival or after one minute. The guest acts independently; agree on its service through conversation."
+      }
+    }
+  },
+  "effects": []
+}

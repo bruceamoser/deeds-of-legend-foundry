@@ -1,0 +1,105 @@
+{
+  "_key": "!items!7d24ba3029bae9d7",
+  "_id": "7d24ba3029bae9d7",
+  "name": "The Price Deferred",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Reaction</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Target / range / shape</dt><dd>Self, when you would receive your third death failure.</dd></div><div><dt>Magic</dt><dd>Magical pact reprieve (not a spell)</dd></div><div><dt>Duration</dt><dd>Until the start of your next turn.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div></dl><p>Once between safe overnight rests, delay your death until the start of your next turn. You remain at 0 HP with three failures and make no further death rolls during this delay. Stabilization or healing above 0 clears the danger under ordinary recovery rules. At the start of your next turn, if you still have three failures, you die unless you spend Grit immediately. You can use this specific Reaction while Dying, even if unconscious.</p>",
+    "activity": {
+      "action": "reaction",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-signature-odd-the-price-deferred",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "ability-signature-odd-the-price-deferred",
+        "level": 7,
+        "cost": 0,
+        "action": "Reaction",
+        "sp": null,
+        "range": "Self, when you would receive your third death failure.",
+        "duration": "Until the start of your next turn.",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "**Action:** Reaction · **Attribute:** None\n\n**Target / range / shape:** Self, when you would receive your third death failure.\n\n**Magic:** Magical pact reprieve (not a spell)\n\nOnce between safe overnight rests, delay your death until the start of your next turn. You remain at 0 HP with three failures and make no further death rolls during this delay. Stabilization or healing above 0 clears the danger under ordinary recovery rules. At the start of your next turn, if you still have three failures, you die unless you spend Grit immediately. You can use this specific Reaction while Dying, even if unconscious.\n\n**Duration:** Until the start of your next turn.\n\n**Equipment / acquisition:** None.",
+        "improves": null,
+        "requires": [],
+        "bookId": null,
+        "magic": "Magical pact reprieve (not a spell)"
+      },
+      "spell": {
+        "id": "ability-signature-odd-the-price-deferred",
+        "name": "The Price Deferred",
+        "level": 7,
+        "dp": null,
+        "action": "Reaction",
+        "attribute": "None",
+        "target": "Self, when you would receive your third death failure.",
+        "duration": "Until the start of your next turn.",
+        "equipment": "None.",
+        "limits": "One signature choice at each of levels 1, 3 and 7.",
+        "effect": "**Action:** Reaction · **Attribute:** None\n\n**Target / range / shape:** Self, when you would receive your third death failure.\n\n**Magic:** Magical pact reprieve (not a spell)\n\nOnce between safe overnight rests, delay your death until the start of your next turn. You remain at 0 HP with three failures and make no further death rolls during this delay. Stabilization or healing above 0 clears the danger under ordinary recovery rules. At the start of your next turn, if you still have three failures, you die unless you spend Grit immediately. You can use this specific Reaction while Dying, even if unconscious.\n\n**Duration:** Until the start of your next turn.\n\n**Equipment / acquisition:** None.",
+        "reference": {
+          "flavor": [
+            "A supernatural compact lends your purpose a voice and a weapon."
+          ],
+          "rules": {
+            "details": [
+              {
+                "label": "Action",
+                "value": "Reaction"
+              },
+              {
+                "label": "Attribute",
+                "value": "None"
+              },
+              {
+                "label": "Target / range / shape",
+                "value": "Self, when you would receive your third death failure."
+              },
+              {
+                "label": "Magic",
+                "value": "Magical pact reprieve (not a spell)"
+              },
+              {
+                "label": "Duration",
+                "value": "Until the start of your next turn."
+              },
+              {
+                "label": "Equipment / acquisition",
+                "value": "None."
+              }
+            ],
+            "body": [
+              {
+                "text": "Once between safe overnight rests, delay your death until the start of your next turn. You remain at 0 HP with three failures and make no further death rolls during this delay. Stabilization or healing above 0 clears the danger under ordinary recovery rules. At the start of your next turn, if you still have three failures, you die unless you spend Grit immediately. You can use this specific Reaction while Dying, even if unconscious."
+              }
+            ],
+            "notes": []
+          }
+        },
+        "referenceMarkdown": "**Action:** Reaction · **Attribute:** None\n\n**Target / range / shape:** Self, when you would receive your third death failure.\n\n**Magic:** Magical pact reprieve (not a spell)\n\nOnce between safe overnight rests, delay your death until the start of your next turn. You remain at 0 HP with three failures and make no further death rolls during this delay. Stabilization or healing above 0 clears the danger under ordinary recovery rules. At the start of your next turn, if you still have three failures, you die unless you spend Grit immediately. You can use this specific Reaction while Dying, even if unconscious.\n\n**Duration:** Until the start of your next turn.\n\n**Equipment / acquisition:** None.",
+        "classId": "class-odd",
+        "lineId": "odd:the-bargain",
+        "signatureComponent": true,
+        "kind": "ability",
+        "magic": "Magical pact reprieve (not a spell)",
+        "rulesMarkdown": "**Action:** Reaction · **Attribute:** None\n\n**Target / range / shape:** Self, when you would receive your third death failure.\n\n**Magic:** Magical pact reprieve (not a spell)\n\nOnce between safe overnight rests, delay your death until the start of your next turn. You remain at 0 HP with three failures and make no further death rolls during this delay. Stabilization or healing above 0 clears the danger under ordinary recovery rules. At the start of your next turn, if you still have three failures, you die unless you spend Grit immediately. You can use this specific Reaction while Dying, even if unconscious.\n\n**Duration:** Until the start of your next turn.\n\n**Equipment / acquisition:** None."
+      }
+    }
+  },
+  "effects": []
+}

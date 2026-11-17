@@ -1,0 +1,46 @@
+{
+  "_key": "!items!464b3d7b190b29cf",
+  "_id": "464b3d7b190b29cf",
+  "name": "Mark the Quarry",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Agility</dd></div><div><dt>Target / range / shape</dt><dd>One visible creature within 12 squares.</dd></div><div><dt>Duration</dt><dd>One day.</dd></div><div><dt>Equipment / acquisition</dt><dd>A ranged weapon and ammunition.</dd></div><div><dt>Frequency</dt><dd>Once between safe overnight rests.</dd></div></dl><p>Requires a ranged weapon and ammunition. Make a Basic Ranged attack as part of this action. After the attack resolves, the target is marked for one day with the glowing dust of a cave mushroom. While marked, you and each ally who can see it gain 2 Boons to any attack against it, ignore partial cover from it, and the target cannot hide. The mark deals no additional damage.</p><p>This ordinary mark is a physical luminous substance. An attack always applies it unless the target cannot be reached; damage immunity does not prevent marking. Cleaning it off takes 1 minute. Completely covering the mark suspends its visual benefits until exposed.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "agility",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-signature-warden-turn-the-hunt",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "ability",
+        "nodeId": "ability-signature-warden-turn-the-hunt",
+        "level": 7,
+        "cost": 0,
+        "action": "Main Action",
+        "sp": null,
+        "range": "One visible creature within 12 squares.",
+        "duration": "One day.",
+        "attribute": "Agility",
+        "defenseAttribute": null,
+        "effect": "**Action:** Main Action · **Attribute:** Agility\n\n**Target / range / shape:** One visible creature within 12 squares.\n\nRequires a ranged weapon and ammunition. Make a Basic Ranged attack as part of this action. After the attack resolves, the target is marked for one day with the glowing dust of a cave mushroom. While marked, you and each ally who can see it gain 2 Boons to any attack against it, ignore partial cover from it, and the target cannot hide. The mark deals no additional damage.\n\n**Duration:** One day.\n\n**Equipment / acquisition:** A ranged weapon and ammunition.\n\nThis ordinary mark is a physical luminous substance. An attack always applies it unless the target cannot be reached; damage immunity does not prevent marking. Cleaning it off takes 1 minute. Completely covering the mark suspends its visual benefits until exposed.\n\n**Frequency:** Once between safe overnight rests.",
+        "improves": null,
+        "requires": [],
+        "bookId": null,
+        "magic": null
+      }
+    }
+  },
+  "effects": []
+}

@@ -1,0 +1,45 @@
+{
+  "_key": "!items!8027a05f3a5988e8",
+  "_id": "8027a05f3a5988e8",
+  "name": "Move",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Movement</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Range</dt><dd>Self</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>**Action:** Movement · **Attribute:** None — no roll</p><p>**Target / range / shape:** Self</p><p>Spend up to Speed in movement squares, split around your actions. Each normal square costs 1 movement and each difficult square costs 2. While Prone, crawl for 2 per normal square or 3 per difficult square. Straight and diagonal steps cost the same. You may cross an occupied square if its occupant is Prone. Pay the higher of 2 movement or your usual cost to enter it, and finish in a free square. Crawling out of melee reach can provoke an opportunity attack.</p><p>**Duration:** Instant</p><p>**Equipment / acquisition:** None.</p>",
+    "activity": {
+      "action": "movement",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-move",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "ability",
+        "nodeId": "ability-move",
+        "level": 0,
+        "cost": 0,
+        "action": "Movement",
+        "sp": null,
+        "range": "Self",
+        "duration": "Instant",
+        "attribute": "None — no roll",
+        "defenseAttribute": null,
+        "effect": "**Action:** Movement · **Attribute:** None — no roll\n\n**Target / range / shape:** Self\n\nSpend up to Speed in movement squares, split around your actions. Each normal square costs 1 movement and each difficult square costs 2. While Prone, crawl for 2 per normal square or 3 per difficult square. Straight and diagonal steps cost the same. You may cross an occupied square if its occupant is Prone. Pay the higher of 2 movement or your usual cost to enter it, and finish in a free square. Crawling out of melee reach can provoke an opportunity attack.\n\n**Duration:** Instant\n\n**Equipment / acquisition:** None.",
+        "improves": null,
+        "requires": [],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

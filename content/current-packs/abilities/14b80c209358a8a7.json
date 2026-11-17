@@ -1,0 +1,66 @@
+{
+  "_key": "!items!14b80c209358a8a7",
+  "_id": "14b80c209358a8a7",
+  "name": "Gate — World Anchor",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 7 days, 8 hours each day</dd></div><div><dt>SP</dt><dd>10</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>Two known prepared stone anchors and 1,000 coins of materials consumed</dd></div><div><dt>Duration</dt><dd>Permanent, until an anchor is destroyed or the pair is replaced</dd></div></dl><p>Prepare both sites with their owners’ permission and pay 10 SP on each workday. Join the anchors with a permanent paired gateway, 2 squares wide, even across planes. Create two keys. At either anchor, a keyholder may spend a Main Action and 3 of their own SP to open both ends for 10 minutes, or a Maneuver to close them. Anyone can cross an open gateway. Each anchor has 30 HP and physical resistance 3 and takes at least 1 damage per attack. Destroying either ends the connection. Keep one pair; completing another ends the first.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell-mastery:gate-world-anchor",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell-mastery:gate-world-anchor",
+        "level": 7,
+        "cost": 5,
+        "action": "Ritual · 7 days, 8 hours each day",
+        "sp": 10,
+        "range": "Two known prepared stone anchors and 1,000 coins of materials consumed",
+        "duration": "Permanent, until an anchor is destroyed or the pair is replaced",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Prepare both sites with their owners’ permission and pay 10 SP on each workday. Join the anchors with a permanent paired gateway, 2 squares wide, even across planes. Create two keys. At either anchor, a keyholder may spend a Main Action and 3 of their own SP to open both ends for 10 minutes, or a Maneuver to close them. Anyone can cross an open gateway. Each anchor has 30 HP and physical resistance 3 and takes at least 1 damage per attack. Destroying either ends the connection. Keep one pair; completing another ends the first.",
+        "improves": null,
+        "requires": [
+          "seals:5"
+        ],
+        "bookId": "seals"
+      },
+      "spell": {
+        "id": "spell-mastery:gate-world-anchor",
+        "name": "Gate — World Anchor",
+        "bookId": "seals",
+        "page": "A3",
+        "section": "VII",
+        "sp": 10,
+        "action": "Ritual",
+        "actionText": "Ritual · 7 days, 8 hours each day",
+        "ritualTime": "7 days, 8 hours each day",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Two known prepared stone anchors and 1,000 coins of materials consumed",
+        "duration": "Permanent, until an anchor is destroyed or the pair is replaced",
+        "effect": "Prepare both sites with their owners’ permission and pay 10 SP on each workday. Join the anchors with a permanent paired gateway, 2 squares wide, even across planes. Create two keys. At either anchor, a keyholder may spend a Main Action and 3 of their own SP to open both ends for 10 minutes, or a Maneuver to close them. Anyone can cross an open gateway. Each anchor has 30 HP and physical resistance 3 and takes at least 1 damage per attack. Destroying either ends the connection. Keep one pair; completing another ends the first."
+      }
+    }
+  },
+  "effects": []
+}

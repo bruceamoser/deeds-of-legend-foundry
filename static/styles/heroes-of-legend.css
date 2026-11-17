@@ -283,3 +283,10 @@
 
 .heroes-of-legend .hol-action-uses {display:flex;align-items:center;justify-content:space-between;gap:8px;padding:3px 8px;font-size:12px;color:var(--hol-ink,#26392f);border-bottom:1px solid #cdbd96;}
 .heroes-of-legend .hol-action-uses button {flex:0 0 auto;width:auto;min-height:24px;padding:2px 7px;font-size:11px;}
+/* Native frame only: Workshop controls/styles live in their isolated surface. */
+.heroes-of-legend.hol-workshop-character .window-content { padding:0; overflow:hidden; }
+.heroes-of-legend.hol-workshop-character .hol-native-workshop,
+.heroes-of-legend.hol-workshop-character .hol-workshop-mount { height:100%;min-height:0;width:100%; }
+.heroes-of-legend.hol-workshop-character .hol-workshop-entry {padding:24px;font-size:18px;}
+
+.heroes-of-legend.hol-equipment .hol-attribute-effect-row{display:grid;grid-template-columns:1fr 1.4fr 4.5em auto;gap:6px;align-items:center;margin:6px 0;font-size:14px}.heroes-of-legend.hol-equipment .hol-attribute-effect-row label{display:flex;gap:4px;align-items:center;font-size:13px}.heroes-of-legend.hol-equipment .hol-attribute-effects p{font-size:14px;line-height:1.3}.heroes-of-legend.hol-equipment .hol-attribute-effect-row input[type=number]{min-width:0;width:100%}

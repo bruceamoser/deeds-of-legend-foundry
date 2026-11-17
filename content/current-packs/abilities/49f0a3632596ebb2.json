@@ -1,0 +1,47 @@
+{
+  "_key": "!items!49f0a3632596ebb2",
+  "_id": "49f0a3632596ebb2",
+  "name": "Empty-Hand Tempest",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Brawn</dd></div></dl><p>Main Action · Brawn or Agility. Move up to 4 squares without movement reactions and strike up to three different adjacent creatures along that route. Roll once; each takes 3/5/7 physical damage, and on Strong becomes Prone. You may declare these strikes nonlethal before rolling. Once per scene, after the strikes, move up to 2 further squares without movement reactions.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "brawn",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "arms:unarmed:7",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "mastery",
+        "nodeId": "arms:unarmed:7",
+        "level": 7,
+        "cost": 5,
+        "action": "Main Action",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": "Brawn",
+        "defenseAttribute": null,
+        "effect": "Main Action · Brawn or Agility. Move up to 4 squares without movement reactions and strike up to three different adjacent creatures along that route. Roll once; each takes 3/5/7 physical damage, and on Strong becomes Prone. You may declare these strikes nonlethal before rolling. Once per scene, after the strikes, move up to 2 further squares without movement reactions.",
+        "improves": null,
+        "requires": [
+          "arms:unarmed:6"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

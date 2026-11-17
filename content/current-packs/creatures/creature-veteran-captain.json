@@ -1,0 +1,342 @@
+{
+  "_key": "!actors!6c78051c3c130b8f",
+  "_id": "6c78051c3c130b8f",
+  "name": "Veteran Captain",
+  "type": "creature",
+  "img": "systems/heroes-of-legend/assets/creatures/e989d385c3dab43e5480ae7a75fea5515e94d7c86a44d19b8ca3e1b8006b4867.webp",
+  "prototypeToken": {
+    "width": 1,
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/e989d385c3dab43e5480ae7a75fea5515e94d7c86a44d19b8ca3e1b8006b4867.webp"
+    }
+  },
+  "system": {
+    "schemaVersion": 1,
+    "attributes": {
+      "brawn": {
+        "base": 1
+      },
+      "fortitude": {
+        "base": 2
+      },
+      "agility": {
+        "base": 1
+      },
+      "guile": {
+        "base": 1
+      },
+      "knowledge": {
+        "base": 1
+      },
+      "reason": {
+        "base": 1
+      }
+    },
+    "attributesSource": "Brawn +1; Fortitude +2; Agility +1; Guile +1; Knowledge +1; Reason +1",
+    "health": {
+      "value": 24,
+      "baseMax": 24,
+      "sourceText": "24"
+    },
+    "cv": 29,
+    "speed": 6,
+    "speedSource": "6",
+    "alternateSpeeds": [],
+    "size": 1,
+    "sizeLabel": "medium",
+    "sizeSource": "1 (medium)",
+    "footprint": {
+      "width": 1,
+      "height": 1
+    },
+    "armor": 2,
+    "armorMarker": "",
+    "armorSource": "2",
+    "stability": 0,
+    "threat": {
+      "boons": 0,
+      "banes": 1,
+      "sourceText": "1 Bane"
+    },
+    "evasion": {
+      "boons": 0,
+      "banes": 1,
+      "sourceText": "1 Bane"
+    },
+    "weaknesses": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "resistances": {
+      "numeric": [
+        {
+          "type": "Physical",
+          "value": 2
+        }
+      ],
+      "special": [],
+      "sourceText": "Physical (2)"
+    },
+    "immunities": [],
+    "basicMelee": {
+      "weak": 5,
+      "standard": 3,
+      "strong": 2,
+      "defenseAttribute": "agility",
+      "orientation": "player-defense"
+    },
+    "actions": {
+      "orientation": "player-defense",
+      "entries": [
+        {
+          "id": "main-0",
+          "category": "main",
+          "name": "Basic Melee",
+          "abilityId": "",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "5",
+            "standard": "3",
+            "strong": "2"
+          },
+          "effect": "5/3/2",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "main-1",
+          "category": "main",
+          "name": "Commanding cut",
+          "abilityId": "",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "7",
+            "standard": "5",
+            "strong": "4"
+          },
+          "effect": "7/5/4",
+          "referenceMarkdown": "### Commanding cut\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** physical."
+        },
+        {
+          "id": "maneuver-0",
+          "category": "maneuver",
+          "name": "Rally",
+          "abilityId": "monster-rally",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "One hearing ally within 3 squares either removes Frightened 1 or gains 1 Boon to its next attack before this creature’s next turn (1 additional Bane to its target’s defense if an NPC). Same named bonus does not stack; no free attack.",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "maneuver-1",
+          "category": "maneuver",
+          "name": "Close the Line",
+          "abilityId": "",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "One willing ally within 3 squares that can hear may move 1 square immediately, ending adjacent to another ally. This voluntary movement provokes normally; once per turn.",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "maneuver-2",
+          "category": "maneuver",
+          "name": "Defend",
+          "abilityId": "",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "+1 Bane",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "reaction-0",
+          "category": "reaction",
+          "name": "Cover a Companion",
+          "abilityId": "monster-cover-a-companion",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Hinder an attack on an adjacent ally if it can obstruct the attacker. See details.",
+          "referenceMarkdown": "### Cover a Companion\n\n*The guardian steps into the line of danger, making the attacker work around its raised guard.*\n\nBefore a visible enemy attacks a willing ally adjacent to this creature, hinder the attack if this creature can see the attacker. Apply 1 Bane if the attacker rolls or grant the ally 1 Boon if the ally rolls defense. This creature must also be adjacent to the attacker, or hold a shield the DA judges can obstruct the attack. No movement, target substitution or damage transfer. For a single player area attack, use the normal worst-target modifiers; do not roll again."
+        },
+        {
+          "id": "reaction-1",
+          "category": "reaction",
+          "name": "Opportunity Attack",
+          "abilityId": "",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Basic Melee",
+          "referenceMarkdown": ""
+        }
+      ],
+      "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates one complete outcome. All attacks use the printed Threat unless stated otherwise.",
+      "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Commanding cut | Agility | 7/5/4 |",
+      "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Rally | One hearing ally within 3 squares either removes Frightened 1 or gains 1 Boon to its next attack before this creature’s next turn (1 additional Bane to its target’s defense if an NPC). Same named bonus does not stack; no free attack. |\n| Close the Line | One willing ally within 3 squares that can hear may move 1 square immediately, ending adjacent to another ally. This voluntary movement provokes normally; once per turn. |\n| Defend | +1 Bane |",
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Cover a Companion | Hinder an attack on an adjacent ally if it can obstruct the attacker. See details. |\n| Opportunity Attack | Basic Melee |"
+    },
+    "details": {
+      "flavorMarkdown": "*A seasoned officer with maintained armor, visible campaign scars and a weapon worn smooth at the grip. Authority rests on experience and the ability to bring people home alive.*",
+      "specialtyMarkdown": "### Commanding cut\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** physical.\n\n### Cover a Companion\n\n*The guardian steps into the line of danger, making the attacker work around its raised guard.*\n\nBefore a visible enemy attacks a willing ally adjacent to this creature, hinder the attack if this creature can see the attacker. Apply 1 Bane if the attacker rolls or grant the ally 1 Boon if the ally rolls defense. This creature must also be adjacent to the attacker, or hold a shield the DA judges can obstruct the attack. No movement, target substitution or damage transfer. For a single player area attack, use the normal worst-target modifiers; do not roll again.",
+      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Ordinary sight and hearing.\n\n**Signs:** A camp has dry powder, covered food and posted escape routes.\n\n**Purpose:** Complete the assignment with as few losses as possible.\n\n**Tactics and retreat:** Rally a threatened ally, attack whoever breaks the line, and offer terms before a rout.\n\n**Counterplay and conversation:** Cut communication or reveal that the employer has betrayed the troops.\n\n**Habitat:** Fort; battlefield · **Communication:** Common and one regional language\n\n**Loot:** Melee weapon, medium armor, order papers and 25 coins.\n\n**Summoning:** Ineligible.",
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-veteran-captain\n\n\n**Category:** Mortal · **Role:** Leader · **CV:** 29\n\n### Creature-roll reference\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Commanding cut | Brawn | 1 Boon | 4 physical damage. | 5 physical damage. | 7 physical damage. |\n\nThe incoming attack names the defense attribute; use the six values above. Same targeting, costs and limits apply in either perspective. No opposed second roll.\n\n\n### CV worksheet\n\n**Difficulty rationale:** An agile or elusive body warrants attack Banes. Its dangerous attack imposes defense Banes.\n\n**Reference damage:** 4/5/7\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.4\n\n**Action review (#1279):** U 1.3 → 1.4: Maneuver allowance +0, Reaction allowance +0.1. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.\n\n**Regeneration per turn:** 0\n\nReference I=2.404, O=4.653. CV uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/encounters.md); action choices, Stability and control are not simulated. Recalibration remains required.\n\n**Ability sources:** [Cover a Companion](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/cover-a-companion.md), [rally](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/rally.md), [veteran captain close the line](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/veteran-captain-close-the-line.md).\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/roster.md) · [Agreed Stability](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/rules/stability.md)"
+    },
+    "biography": ""
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-veteran-captain",
+        "asset": "assets/creatures/e989d385c3dab43e5480ae7a75fea5515e94d7c86a44d19b8ca3e1b8006b4867.webp",
+        "sha256": "2282113c69cc07933538b57ee759551c126bf6fb31c5d0e820c0a36e41a38a77",
+        "sourceSha256": "e989d385c3dab43e5480ae7a75fea5515e94d7c86a44d19b8ca3e1b8006b4867",
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
+      "catalogId": "creature-veteran-captain",
+      "source": {
+        "path": "design/bestiary/creatures/veteran-captain.md",
+        "sha256": "6a004907963ad9daf8357e8ea889d425b0c23dc18e0cf46436c80ed5e5f161e4"
+      },
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Printed profile · specialty automation pending",
+      "specialtyAutomation": "pending",
+      "classification": {
+        "category": "Mortal",
+        "role": "Leader",
+        "cv": 29
+      },
+      "family": "Mortal",
+      "abilitySources": [
+        {
+          "label": "Cover a Companion",
+          "id": "monster-cover-a-companion",
+          "path": "design/monster-abilities/cover-a-companion.md",
+          "sha256": "e17ed34ebb5bbdbe57f0c5a7b3bac27ca380f5e9ddcffbaee978ffc24bea77d2"
+        },
+        {
+          "label": "rally",
+          "id": "monster-rally",
+          "path": "design/monster-abilities/rally.md",
+          "sha256": "b7b76dfe3363632a7a9cbcb91614ac1929bf0a494b59670de9a39513aa55b0e2"
+        },
+        {
+          "label": "veteran captain close the line",
+          "id": "monster-veteran-captain-close-the-line",
+          "path": "design/monster-abilities/veteran-captain-close-the-line.md",
+          "sha256": "bf35ca342db0ffae200409ced1deb215f20d0ac91e03282bb70e99c034af0517"
+        }
+      ],
+      "monsterAbilityTemplates": [
+        {
+          "id": "monster-cover-a-companion",
+          "path": "design/monster-abilities/cover-a-companion.md",
+          "sha256": "e17ed34ebb5bbdbe57f0c5a7b3bac27ca380f5e9ddcffbaee978ffc24bea77d2",
+          "name": "Cover a Companion",
+          "action": "Reaction",
+          "flavorMarkdown": "*The guardian steps into the line of danger, making the attacker work around its raised guard.*",
+          "rulesMarkdown": "Before a visible enemy attacks a willing ally adjacent to this creature, hinder the attack if this creature can see the attacker. Apply 1 Bane if the attacker rolls or grant the ally 1 Boon if the ally rolls defense. This creature must also be adjacent to the attacker, or hold a shield the DA judges can obstruct the attack. No movement, target substitution or damage transfer. For a single player area attack, use the normal worst-target modifiers; do not roll again.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Cover a Companion\n\n*The guardian steps into the line of danger, making the attacker work around its raised guard.*\n\n## Rules\n\n**ID:** monster-cover-a-companion\n\n**Action:** Reaction\n\nBefore a visible enemy attacks a willing ally adjacent to this creature, hinder the attack if this creature can see the attacker. Apply 1 Bane if the attacker rolls or grant the ally 1 Boon if the ally rolls defense. This creature must also be adjacent to the attacker, or hold a shield the DA judges can obstruct the attack. No movement, target substitution or damage transfer. For a single player area attack, use the normal worst-target modifiers; do not roll again.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/cover-a-companion.md",
+            "sha256": "e17ed34ebb5bbdbe57f0c5a7b3bac27ca380f5e9ddcffbaee978ffc24bea77d2"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-rally",
+          "path": "design/monster-abilities/rally.md",
+          "sha256": "b7b76dfe3363632a7a9cbcb91614ac1929bf0a494b59670de9a39513aa55b0e2",
+          "name": "Rally",
+          "action": "Maneuver",
+          "flavorMarkdown": "*A barked order cuts through the noise, and a wavering fighter finds their footing.*",
+          "rulesMarkdown": "Choose one ally within 3 squares that can hear this creature. Remove 1 Frightened from that ally. Alternatively, grant 1 Boon to the ally’s next attack before the start of this creature’s next turn (1 Threat Bane if an NPC attacks a player). Multiple copies of this named bonus do not stack. No free attack is granted.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Rally\n\n*A barked order cuts through the noise, and a wavering fighter finds their footing.*\n\n## Rules\n\n**ID:** monster-rally\n\n\n**Action:** Maneuver\n\nChoose one ally within 3 squares that can hear this creature. Remove 1 Frightened from that ally. Alternatively, grant 1 Boon to the ally’s next attack before the start of this creature’s next turn (1 Threat Bane if an NPC attacks a player). Multiple copies of this named bonus do not stack. No free attack is granted.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/rally.md",
+            "sha256": "b7b76dfe3363632a7a9cbcb91614ac1929bf0a494b59670de9a39513aa55b0e2"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-veteran-captain-close-the-line",
+          "path": "design/monster-abilities/veteran-captain-close-the-line.md",
+          "sha256": "bf35ca342db0ffae200409ced1deb215f20d0ac91e03282bb70e99c034af0517",
+          "name": "Close the Line",
+          "action": "Maneuver",
+          "flavorMarkdown": "*The captain points to the gap before anyone else sees it.*",
+          "rulesMarkdown": "One willing ally within 3 squares that can hear may move 1 square immediately, ending adjacent to another ally. This voluntary movement provokes normally; once per turn.\n\n**Limits:** Costs its Maneuver; no extra action is granted.",
+          "referenceMarkdown": "# Close the Line\n\n*The captain points to the gap before anyone else sees it.*\n\n## Rules\n\n**ID:** monster-veteran-captain-close-the-line\n\n\n**Action:** Maneuver\n\nOne willing ally within 3 squares that can hear may move 1 square immediately, ending adjacent to another ally. This voluntary movement provokes normally; once per turn.\n\n**Limits:** Costs its Maneuver; no extra action is granted.\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/veteran-captain-close-the-line.md",
+            "sha256": "bf35ca342db0ffae200409ced1deb215f20d0ac91e03282bb70e99c034af0517"
+          },
+          "automation": "pending"
+        }
+      ],
+      "summoning": {
+        "eligible": false,
+        "summonId": null,
+        "path": null,
+        "eligibility": null,
+        "sourceText": "Ineligible."
+      }
+    }
+  }
+}

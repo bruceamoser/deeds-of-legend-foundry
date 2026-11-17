@@ -1,0 +1,312 @@
+{
+  "_key": "!actors!aa9961cb38862c6c",
+  "_id": "aa9961cb38862c6c",
+  "name": "Stone Knuckle",
+  "type": "creature",
+  "img": "systems/heroes-of-legend/assets/creatures/b4a3841a3827eb44b4256baaa5b5608f2ef198917ee36f92a24f44d62f5de099.webp",
+  "prototypeToken": {
+    "width": 1,
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/b4a3841a3827eb44b4256baaa5b5608f2ef198917ee36f92a24f44d62f5de099.webp"
+    }
+  },
+  "system": {
+    "schemaVersion": 1,
+    "attributes": {
+      "brawn": {
+        "base": 2
+      },
+      "fortitude": {
+        "base": 1
+      },
+      "agility": {
+        "base": -1
+      },
+      "guile": {
+        "base": -1
+      },
+      "knowledge": {
+        "base": -1
+      },
+      "reason": {
+        "base": 0
+      }
+    },
+    "attributesSource": "Brawn +2; Fortitude +1; Agility -1; Guile -1; Knowledge -1; Reason +0",
+    "health": {
+      "value": 12,
+      "baseMax": 12,
+      "sourceText": "12"
+    },
+    "cv": 9,
+    "speed": 4,
+    "speedSource": "4; burrow 2",
+    "alternateSpeeds": [
+      {
+        "mode": "burrow",
+        "value": 2
+      }
+    ],
+    "size": 1,
+    "sizeLabel": "medium",
+    "sizeSource": "1 (medium)",
+    "footprint": {
+      "width": 1,
+      "height": 1
+    },
+    "armor": 1,
+    "armorMarker": "",
+    "armorSource": "1",
+    "stability": 1,
+    "threat": {
+      "boons": 0,
+      "banes": 0,
+      "sourceText": "None"
+    },
+    "evasion": {
+      "boons": 0,
+      "banes": 0,
+      "sourceText": "None"
+    },
+    "weaknesses": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "resistances": {
+      "numeric": [
+        {
+          "type": "Physical",
+          "value": 1
+        }
+      ],
+      "special": [],
+      "sourceText": "Physical (1)"
+    },
+    "immunities": [
+      "Bleeding",
+      "Poisoned",
+      "Asleep"
+    ],
+    "basicMelee": {
+      "weak": 5,
+      "standard": 3,
+      "strong": 2,
+      "defenseAttribute": "agility",
+      "orientation": "player-defense"
+    },
+    "actions": {
+      "orientation": "player-defense",
+      "entries": [
+        {
+          "id": "main-0",
+          "category": "main",
+          "name": "Basic Melee",
+          "abilityId": "",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "5",
+            "standard": "3",
+            "strong": "2"
+          },
+          "effect": "5/3/2",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "main-1",
+          "category": "main",
+          "name": "Pebble fist",
+          "abilityId": "",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "4",
+            "standard": "3",
+            "strong": "2"
+          },
+          "effect": "4/3/2",
+          "referenceMarkdown": "### Pebble fist\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** physical."
+        },
+        {
+          "id": "maneuver-0",
+          "category": "maneuver",
+          "name": "Plant the Weight",
+          "abilityId": "monster-brace-ground",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "On solid ground: Stability 3 until its next turn; highest source only.",
+          "referenceMarkdown": "### Plant the Weight\n\n*It spreads its stance and settles its weight into the ground.*\n\nWhile standing on solid ground, gain Stability 3 until its next turn. Use the highest source only, never add sources."
+        },
+        {
+          "id": "maneuver-1",
+          "category": "maneuver",
+          "name": "Defend",
+          "abilityId": "",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "+1 Bane",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "reaction-0",
+          "category": "reaction",
+          "name": "Lock the Frame",
+          "abilityId": "monster-lock-the-frame",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Before forced movement on solid ground: Stability 3 for that movement.",
+          "referenceMarkdown": "### Lock the Frame\n\n*The joints grind shut and the body becomes a single weight planted against the shove.*\n\nBefore this creature is forcibly moved while on solid ground, gain Stability 3 for that forced movement only. Use the highest source. In a collision chain, declare before its Stability is deducted; prior collision damage still resolves. This does not resist Prone or grapples."
+        },
+        {
+          "id": "reaction-1",
+          "category": "reaction",
+          "name": "Opportunity Attack",
+          "abilityId": "",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Basic Melee",
+          "referenceMarkdown": ""
+        }
+      ],
+      "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates one complete outcome. All attacks use the printed Threat unless stated otherwise.",
+      "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Pebble fist | Agility | 4/3/2 |",
+      "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Plant the Weight | On solid ground: Stability 3 until its next turn; highest source only. |\n| Defend | +1 Bane |",
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Lock the Frame | Before forced movement on solid ground: Stability 3 for that movement. |\n| Opportunity Attack | Basic Melee |"
+    },
+    "details": {
+      "flavorMarkdown": "*A squat elemental assembled from pebbles and rough stones around a dense central core. Its blunt hands and planted feet suit it to guarding a small patch of ground.*",
+      "specialtyMarkdown": "### Pebble fist\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** physical.\n\n### Lock the Frame\n\n*The joints grind shut and the body becomes a single weight planted against the shove.*\n\nBefore this creature is forcibly moved while on solid ground, gain Stability 3 for that forced movement only. Use the highest source. In a collision chain, declare before its Stability is deducted; prior collision damage still resolves. This does not resist Prone or grapples.\n\n### Plant the Weight\n\n*It spreads its stance and settles its weight into the ground.*\n\nWhile standing on solid ground, gain Stability 3 until its next turn. Use the highest source only, never add sources.",
+      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.\n\n**Heavy Frame — Passive:** Stability 1; an explicit creature trait, not a bonus from size.\n\n**Healing:** Elemental: magical HP healing applies; cannot swallow potions. Printed immunities only.\n\n**Senses:** Ordinary sight and hearing.\n\n**Signs:** Fresh pebbles pile around an undisturbed buried marker.\n\n**Purpose:** Keep the ground around its resting place unbroken.\n\n**Tactics and retreat:** Defend a narrow route and jab whoever tries to move it.\n\n**Counterplay and conversation:** Restore the marker or agree to dig elsewhere.\n\n**Habitat:** Quarry; cave · **Communication:** None\n\n**Loot:** No gemstones are guaranteed inside it.\n\n**Summoning:** Elemental 1 — [player reference](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/summons/stone-knuckle.md).",
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-stone-knuckle\n\n\n**Category:** Elemental · **Role:** Small blocker · **CV:** 9\n\n**Difficulty rationale:** No innate attack modifier; armor, cover and chosen actions provide its defenses. Ordinary attack difficulty; riders and positioning carry the threat.\n\n**Reference damage:** 2/3/4\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.2\n\n**Action review (#1279):** U 1.1 → 1.2: Maneuver allowance +0.05, Reaction allowance +0.05. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.\n\n**Regeneration per turn:** 0\n\nReference I=4.000, O=2.000. CV uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/encounters.md); action choices, Stability and control are not simulated. Recalibration remains required.\n\n**Ability sources:** [Plant the Weight](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/brace-ground.md), [Lock the Frame](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/lock-the-frame.md).\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/roster.md) · [Agreed Stability](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/rules/stability.md)"
+    },
+    "biography": ""
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-stone-knuckle",
+        "asset": "assets/creatures/b4a3841a3827eb44b4256baaa5b5608f2ef198917ee36f92a24f44d62f5de099.webp",
+        "sha256": "4f75339b05f495e57726a0d51c844a47adb19669ae7117654ce77d3e20f50a86",
+        "sourceSha256": "b4a3841a3827eb44b4256baaa5b5608f2ef198917ee36f92a24f44d62f5de099",
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
+      "catalogId": "creature-stone-knuckle",
+      "source": {
+        "path": "design/bestiary/creatures/stone-knuckle.md",
+        "sha256": "57c2258a6cb0bec393babdaa9185c51ff558ad37f85769b454794c7399e02be4"
+      },
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Printed profile · specialty automation pending",
+      "specialtyAutomation": "pending",
+      "classification": {
+        "category": "Elemental",
+        "role": "Small blocker",
+        "cv": 9
+      },
+      "family": "Elemental",
+      "abilitySources": [
+        {
+          "label": "Plant the Weight",
+          "id": "monster-brace-ground",
+          "path": "design/monster-abilities/brace-ground.md",
+          "sha256": "44e9935b7e9ca1b0062e00df0ba15e789c3de578dc3659f79f3c8497c559e61f"
+        },
+        {
+          "label": "Lock the Frame",
+          "id": "monster-lock-the-frame",
+          "path": "design/monster-abilities/lock-the-frame.md",
+          "sha256": "5bd1acc51f685b552dcb2f8c4a8aecb6fb4ab10629af7cdf4fccbc16e3c07afd"
+        }
+      ],
+      "monsterAbilityTemplates": [
+        {
+          "id": "monster-brace-ground",
+          "path": "design/monster-abilities/brace-ground.md",
+          "sha256": "44e9935b7e9ca1b0062e00df0ba15e789c3de578dc3659f79f3c8497c559e61f",
+          "name": "Plant the Weight",
+          "action": "Maneuver",
+          "flavorMarkdown": "*It spreads its stance and settles its weight into the ground.*",
+          "rulesMarkdown": "While standing on solid ground, gain Stability 3 until its next turn. Use the highest source only, never add sources.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Plant the Weight\n\n*It spreads its stance and settles its weight into the ground.*\n\n## Rules\n\n**ID:** monster-brace-ground\n\n\n**Action:** Maneuver\n\nWhile standing on solid ground, gain Stability 3 until its next turn. Use the highest source only, never add sources.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/brace-ground.md",
+            "sha256": "44e9935b7e9ca1b0062e00df0ba15e789c3de578dc3659f79f3c8497c559e61f"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-lock-the-frame",
+          "path": "design/monster-abilities/lock-the-frame.md",
+          "sha256": "5bd1acc51f685b552dcb2f8c4a8aecb6fb4ab10629af7cdf4fccbc16e3c07afd",
+          "name": "Lock the Frame",
+          "action": "Reaction",
+          "flavorMarkdown": "*The joints grind shut and the body becomes a single weight planted against the shove.*",
+          "rulesMarkdown": "Before this creature is forcibly moved while on solid ground, gain Stability 3 for that forced movement only. Use the highest source. In a collision chain, declare before its Stability is deducted; prior collision damage still resolves. This does not resist Prone or grapples.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Lock the Frame\n\n*The joints grind shut and the body becomes a single weight planted against the shove.*\n\n## Rules\n\n**ID:** monster-lock-the-frame\n\n**Action:** Reaction\n\nBefore this creature is forcibly moved while on solid ground, gain Stability 3 for that forced movement only. Use the highest source. In a collision chain, declare before its Stability is deducted; prior collision damage still resolves. This does not resist Prone or grapples.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/lock-the-frame.md",
+            "sha256": "5bd1acc51f685b552dcb2f8c4a8aecb6fb4ab10629af7cdf4fccbc16e3c07afd"
+          },
+          "automation": "pending"
+        }
+      ],
+      "summoning": {
+        "eligible": true,
+        "summonId": "summon-stone-knuckle",
+        "path": "design/bestiary/summons/stone-knuckle.md",
+        "eligibility": "Elemental 1",
+        "sourceText": "Elemental 1 — [player reference](../summons/stone-knuckle.md)."
+      }
+    }
+  }
+}

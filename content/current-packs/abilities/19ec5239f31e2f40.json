@@ -1,0 +1,47 @@
+{
+  "_key": "!items!19ec5239f31e2f40",
+  "_id": "19ec5239f31e2f40",
+  "name": "Turn the Trap II",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Turn the Trap’s reconfiguration adds 1/3/4 progress.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "subterfuge:traps:5",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "subterfuge:traps:5",
+        "level": 3,
+        "cost": 4,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Turn the Trap’s reconfiguration adds 1/3/4 progress.",
+        "improves": "subterfuge:traps:4",
+        "requires": [
+          "subterfuge:traps:4"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

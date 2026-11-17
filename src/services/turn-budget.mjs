@@ -1,3 +1,4 @@
+import {assertCurrentGameplayActor} from "../rules/current-character.mjs";
 import { isSummon } from "../rules/summon-profile.mjs";
 import { actorContributions } from "./conditions.mjs";
 import { conditionActionRestrictions } from "../rules/conditions.mjs";
@@ -13,34 +14,40 @@ import {
   movementBreakdown,
   movementProfile,
 } from "../rules/movement-budget.mjs";
-import { actorWoundContributionPlan } from "./wound-effects.mjs";
-import { ancestryBenefits, ancestryTraitIds } from "../rules/ancestry.mjs";
+import { ancestryTraitIds } from "../rules/ancestry.mjs";
+import {forgeArmorRequirement} from "../rules/forge-character.mjs";
+import {forgeAncestryBenefits} from "../rules/forge-ancestry.mjs";
 const ID = "heroes-of-legend";
 export function actionConditions(actor) {
+  assertCurrentGameplayActor(actor);
   const conditions = conditionActionRestrictions(actorContributions(actor));
   if (actor.system.health?.value === 0) conditions.unconscious = true;
   return conditions;
 }
 export function actorMovement(actor) {
+  assertCurrentGameplayActor(actor);
   if (actor.type === "creature")
     return { speed: actor.system.speed, source: "printed-creature-speed" };
-  const speedBase =
-    actor.getFlag(ID, "development")?.creationSummary?.speedBase;
-  const capacityBonus = ancestryBenefits(ancestryTraitIds(
-    actor.getFlag(ID, "development")?.creation ?? {},
-  )).capacityBonus;
-  const wounds = actorWoundContributionPlan(actor).movement;
-  return movementProfile({
-    speedBase,
+  const speedBase = actor.getFlag(ID,"forgeMovement")?.speedBase;
+  const items=actor.items.filter(item=>item.type==='equipment').map(item=>item.system);
+  const stowedBulk=items.filter(item=>item.quantity>0&&item.carried!==false&&!item.held&&!item.worn).reduce((sum,item)=>sum+item.bulk*item.quantity,0);
+  const capacityBonus=forgeAncestryBenefits(ancestryTraitIds(actor.getFlag(ID,"nativeWorkshop").portable.draft),{rulesRevision:299},{stowedBulk}).capacityBonus;
+  const learned=actor.getFlag(ID,"forgeLearned")??[];
+  const trainedArmor=items.filter(item=>item.worn&&item.quantity>0&&item.carried!==false&&learned.includes(forgeArmorRequirement(item.catalogId,true)));
+  const armorRelief=learned.includes('armor:harness:1')?Math.min(1,trainedArmor.reduce((sum,item)=>sum+item.bulk*item.quantity,0)):0;
+  const armorSpeed=Number(learned.includes('armor:harness:3')&&trainedArmor.length>0);
+  const profile=movementProfile({
+    speedBase: speedBase+armorSpeed,
     agility: actor.system.attributes?.agility?.effective,
     brawn: actor.system.attributes?.brawn?.effective,
     capacityBonus,
     items: actor.items
       .filter((i) => i.type === "equipment")
       .map((i) => i.system),
-    woundPenalty: wounds.penalty,
-    woundSources: wounds.sources,
   });
+  const encumbrance=Math.max(0,profile.bulk-armorRelief-profile.capacity);
+  const speed=Math.max(0,profile.unencumbered-encumbrance);
+  return {...profile,encumbrance,speed,speedBeforeWounds:speed,armorBulkRelief:armorRelief};
 }
 export function initialBudgets(combat, roster) {
   return Object.fromEntries(

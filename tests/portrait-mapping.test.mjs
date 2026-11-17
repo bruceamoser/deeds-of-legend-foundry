@@ -52,5 +52,6 @@ test("release retains runtime catalogs including summon profiles and omits build
   for (const name of ['creatures'])
     await assert.rejects(access(new URL(`dist/heroes-of-legend/data/${name}.json`,root)),{code:'ENOENT'});
   const runtime=await readFile(new URL('src/services/catalog.mjs',root),'utf8');
-  assert(runtime.includes('["choices", "inventory"]'));
+  assert(runtime.includes('return loadWorkshopCatalogs()'));
+  assert(runtime.includes('["choices", "inventory", "wounds", "forge", "forge-references"]'));
 });

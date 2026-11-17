@@ -1,0 +1,47 @@
+{
+  "_key": "!items!266901df296b6628",
+  "_id": "266901df296b6628",
+  "name": "Ironbound Advance I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div></dl><p>Main Action. Move up to your Speed, ignoring extra movement cost from nonmagical difficult terrain. Until your next turn starts, gain Stability 2 and reduce damage from attacks against you by 1 after resistance.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "armor:advance:4",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "technique",
+        "nodeId": "armor:advance:4",
+        "level": 3,
+        "cost": 3,
+        "action": "Main Action",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Main Action. Move up to your Speed, ignoring extra movement cost from nonmagical difficult terrain. Until your next turn starts, gain Stability 2 and reduce damage from attacks against you by 1 after resistance.",
+        "improves": null,
+        "requires": [
+          "armor:advance:3"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

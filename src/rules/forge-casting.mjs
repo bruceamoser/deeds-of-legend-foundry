@@ -1,16 +1,26 @@
 import { forgeSpendSp } from "./forge-vitals.mjs";
 
-/** Read a casting cost, never an SP grant mentioned in an ordinary ability. */
+const magicText=record=>record?.effect ?? record?.rulesMarkdown ?? '';
+export function isForgeModifier(record) {
+  return /(?:magical )?weapon modifier/i.test(record?.magic ?? '') || /magical weapon modifier/i.test(magicText(record));
+}
+export function isForgeSpell(record) {
+  if(!record || isForgeModifier(record)) return false;
+  const text=magicText(record);
+  return Boolean(record.page || record.kind==='spell' || /\bspell\b/i.test(record.magic ?? '')
+    || /\*\*Magic:\*\*[^\n]*\bspell\b/i.test(text) || /\bThis is a spell(?:[.;,]|\s|$)/i.test(text));
+}
+
+/** Read an explicit magical payment, never an SP grant in an ordinary ability. */
 export function signatureSpellCost(record) {
   if (!record) return NaN;
   if (Number.isSafeInteger(record.sp) && record.sp >= 0) return record.sp;
   const text = record.effect ?? record.rulesMarkdown ?? "";
   const explicit = text.match(/\*\*SP:\*\*\s*(\d+)\b/i) ?? text.match(/\bThis is a spell costing (\d+) SP\b/i);
   if (explicit) return Number(explicit[1]);
-  const magic = record.magic === "Spell" || record.kind === "spell" || Boolean(record.page)
-    || /\*\*Magic:\*\*\s*Spell\b/i.test(text);
+  const magic = isForgeSpell(record) || isForgeModifier(record);
   if (!magic) return NaN;
-  // Legacy magical cards sometimes put the cost in their casting instruction.
+  // Explicit spells may put the cost in their own casting instruction.
   return Number(text.match(/\b(?:pay|spend|costs?)\s+(\d+)\s+SP\b/i)?.[1] ?? NaN);
 }
 
@@ -24,7 +34,7 @@ export function forgeCastOptions(play = {}, state = {}, record) {
   const cost = signatureSpellCost(record);
   if (!Number.isSafeInteger(cost)) return [];
   const options = [{ id: "normal", label: "Pay printed SP", cost }];
-  if (!cost) return options;
+  if (!cost || isForgeModifier(record)) return options;
   const learned = new Set(state.learned ?? []);
   const soul = learned.has("spellcraft:soul-capacity:7") && !play.soulWellspringUsed;
   const mind = learned.has("spellcraft:mind-capacity:7") && !play.mindPalaceUsed && isForgeRitual(record);

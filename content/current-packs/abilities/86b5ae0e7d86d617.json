@@ -1,0 +1,46 @@
+{
+  "_key": "!items!86b5ae0e7d86d617",
+  "_id": "86b5ae0e7d86d617",
+  "name": "Test the Hypothesis",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>One minute</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Self and up to three allies who can hear and understand you.</dd></div><div><dt>Duration</dt><dd>The plan and its stated limits remain known; each Boon expires when used or at the end of the scene.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Frequency</dt><dd>Once per scene.</dd></div><div><dt>Time</dt><dd>One minute.</dd></div></dl><p>Spend one minute forming a plan from the evidence and observations available. State the plan. The DA confirms what is true, what remains uncertain, and one contradiction or risk. You and each chosen ally gain 2 Boons to your next roll that directly follows the plan.</p><p>You can maintain one plan at a time. A new plan replaces its unused Boons; new relevant evidence is required to plan again for the same objective this scene.</p>",
+    "activity": {
+      "action": "other",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-signature-intellect-test-the-hypothesis",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "ability",
+        "nodeId": "ability-signature-intellect-test-the-hypothesis",
+        "level": 7,
+        "cost": 0,
+        "action": "One minute",
+        "sp": null,
+        "range": "Self and up to three allies who can hear and understand you.",
+        "duration": "The plan and its stated limits remain known; each Boon expires when used or at the end of the scene.",
+        "attribute": "None (no roll)",
+        "defenseAttribute": null,
+        "effect": "**Action:** One minute · **Attribute:** None (no roll)\n\n**Time:** One minute.\n\n**Target / range / shape:** Self and up to three allies who can hear and understand you.\n\nSpend one minute forming a plan from the evidence and observations available. State the plan. The DA confirms what is true, what remains uncertain, and one contradiction or risk. You and each chosen ally gain 2 Boons to your next roll that directly follows the plan.\n\n**Duration:** The plan and its stated limits remain known; each Boon expires when used or at the end of the scene.\n\n**Equipment / acquisition:** None.\n\nYou can maintain one plan at a time. A new plan replaces its unused Boons; new relevant evidence is required to plan again for the same objective this scene.\n\n**Frequency:** Once per scene.",
+        "improves": null,
+        "requires": [],
+        "bookId": null,
+        "magic": null
+      }
+    }
+  },
+  "effects": []
+}

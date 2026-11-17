@@ -1,0 +1,47 @@
+{
+  "_key": "!items!08b76dfe63b55f13",
+  "_id": "08b76dfe63b55f13",
+  "name": "Sweeping Blade III",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Sweeping Blade also pushes each target 1 square directly away on Strong. Resolve collisions normally.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "arms:bladework:6",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "arms:bladework:6",
+        "level": 3,
+        "cost": 4,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Sweeping Blade also pushes each target 1 square directly away on Strong. Resolve collisions normally.",
+        "improves": "arms:bladework:4",
+        "requires": [
+          "arms:bladework:5"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

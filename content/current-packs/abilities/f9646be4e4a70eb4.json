@@ -1,0 +1,65 @@
+{
+  "_key": "!items!f9646be4e4a70eb4",
+  "_id": "f9646be4e4a70eb4",
+  "name": "Resistance",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>SP</dt><dd>0</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One willing creature within 3 squares</dd></div><div><dt>Duration</dt><dd>Until your next turn ends</dd></div></dl><p>Choose fire, cold, lightning or poison. Grant resistance 1 to that type, using the highest matching resistance.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:sanctuary:1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:sanctuary:1",
+        "level": 1,
+        "cost": 1,
+        "action": "Maneuver",
+        "sp": 0,
+        "range": "One willing creature within 3 squares",
+        "duration": "Until your next turn ends",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Choose fire, cold, lightning or poison. Grant resistance 1 to that type, using the highest matching resistance.",
+        "improves": null,
+        "requires": [
+          "wards"
+        ],
+        "bookId": "sanctuary"
+      },
+      "spell": {
+        "id": "spell:sanctuary:1",
+        "name": "Resistance",
+        "bookId": "sanctuary",
+        "page": "1",
+        "section": "I",
+        "sp": 0,
+        "action": "Maneuver",
+        "actionText": "Maneuver",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One willing creature within 3 squares",
+        "duration": "Until your next turn ends",
+        "effect": "Choose fire, cold, lightning or poison. Grant resistance 1 to that type, using the highest matching resistance."
+      }
+    }
+  },
+  "effects": []
+}

@@ -1,0 +1,65 @@
+{
+  "_key": "!items!f5ae0fb46b734816",
+  "_id": "f5ae0fb46b734816",
+  "name": "Meteor Swarm",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>6</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div><div><dt>Defense</dt><dd>Agility</dd></div><div><dt>Range</dt><dd>Up to three visible points within 12 squares; every creature within 1 square of any point</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Call a fall of blazing meteors onto the chosen points. Roll once; every creature within 1 square of a point takes 4/7/10 fire damage, including allies. Overlapping bursts affect a creature once. Exposed unattended flammable objects ignite.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell-mastery:meteor-swarm",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell-mastery:meteor-swarm",
+        "level": 7,
+        "cost": 5,
+        "action": "Main Action",
+        "sp": 6,
+        "range": "Up to three visible points within 12 squares; every creature within 1 square of any point",
+        "duration": "Instant",
+        "attribute": "Knowledge",
+        "defenseAttribute": "Agility",
+        "effect": "Call a fall of blazing meteors onto the chosen points. Roll once; every creature within 1 square of a point takes 4/7/10 fire damage, including allies. Overlapping bursts affect a creature once. Exposed unattended flammable objects ignite.",
+        "improves": null,
+        "requires": [
+          "flame:5"
+        ],
+        "bookId": "flame"
+      },
+      "spell": {
+        "id": "spell-mastery:meteor-swarm",
+        "name": "Meteor Swarm",
+        "bookId": "flame",
+        "page": "A3",
+        "section": "VII",
+        "sp": 6,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "Knowledge",
+        "defense": "Agility",
+        "defenseAttribute": "Agility",
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Up to three visible points within 12 squares; every creature within 1 square of any point",
+        "duration": "Instant",
+        "effect": "Call a fall of blazing meteors onto the chosen points. Roll once; every creature within 1 square of a point takes 4/7/10 fire damage, including allies. Overlapping bursts affect a creature once. Exposed unattended flammable objects ignite."
+      }
+    }
+  },
+  "effects": []
+}

@@ -1,6 +1,6 @@
 # Lysa Silverstring: bard after the rewrite
 
-Pinned authored source `87f5141bd6e0da74a10c07b3239e975c7656430a`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../bard.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
+Pinned authored source `f71eac4c46fce6906d6dfbd1638ee98b10a6c538`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../bard.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
 
 ## What the rewrite changes
 
@@ -197,6 +197,20 @@ Your signal may be speech, signs or music the recipients can perceive.
 
 </details>
 
+<details><summary>Press the Opening: complete signature component</summary>
+
+**Action:** Maneuver · **Attribute:** None
+
+**Target / range / shape:** One willing ally within 4 squares that can perceive your signal.
+
+Once per scene, the ally makes one Basic Melee or Basic Ranged attack with its actual weapon and ordinary range. The attack uses the ally’s roll and is part of your Maneuver. A Strong melee attack may also push its target 1 square directly away from the ally. A granted attack cannot grant another attack.
+
+**Duration:** Immediate.
+
+**Equipment / acquisition:** None.
+
+</details>
+
 <details><summary>Coordinated Rush: complete signature component</summary>
 
 **Action:** Main Action · **Attribute:** None (no roll)
@@ -210,20 +224,6 @@ Each ally may move up to 3 squares without provoking, then make one Basic Melee 
 **Equipment / acquisition:** None.
 
 Use once per scene. Granted attacks cannot grant further attacks.
-
-</details>
-
-<details><summary>Press the Opening: complete signature component</summary>
-
-**Action:** Maneuver · **Attribute:** None
-
-**Target / range / shape:** One willing ally within 4 squares that can perceive your signal.
-
-Once per scene, the ally makes one Basic Melee or Basic Ranged attack with its actual weapon and ordinary range. The attack uses the ally’s roll and is part of your Maneuver. A Strong melee attack may also push its target 1 square directly away from the ally. A granted attack cannot grant another attack.
-
-**Duration:** Immediate.
-
-**Equipment / acquisition:** None.
 
 </details>
 

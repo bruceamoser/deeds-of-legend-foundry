@@ -1,0 +1,47 @@
+{
+  "_key": "!items!d978249da11ac4df",
+  "_id": "d978249da11ac4df",
+  "name": "Screen the Company",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div></dl><p>Maneuver. Throw up to three prepared smoke flasks at visible points within 8 squares, consuming each. Each cloud fills a 2-square radius until the end of your second turn after throwing. You and up to three willing allies within 3 squares may each move 2 squares afterward; creatures whose sight of a traveler is blocked by these clouds cannot make movement reactions against that movement. Smoke blocks allies’ sight as well. No roll.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "craft:mixtures:7",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "mastery",
+        "nodeId": "craft:mixtures:7",
+        "level": 7,
+        "cost": 5,
+        "action": "Maneuver",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Maneuver. Throw up to three prepared smoke flasks at visible points within 8 squares, consuming each. Each cloud fills a 2-square radius until the end of your second turn after throwing. You and up to three willing allies within 3 squares may each move 2 squares afterward; creatures whose sight of a traveler is blocked by these clouds cannot make movement reactions against that movement. Smoke blocks allies’ sight as well. No roll.",
+        "improves": null,
+        "requires": [
+          "craft:mixtures:6"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

@@ -1,0 +1,66 @@
+{
+  "_key": "!items!905f02ba47a36f54",
+  "_id": "905f02ba47a36f54",
+  "name": "Sign of Sleep",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 10 minutes</dd></div><div><dt>SP</dt><dd>4</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Defense</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>One visible mark on an object within reach</dd></div><div><dt>Duration</dt><dd>8 hours or until triggered</dd></div></dl><p>The first creature to read or closely examine the mark receives Slowed 2/3/4 and Asleep 1/1/2, set by your casting roll. Its appearance suggests a magical inscription. Damage or waking ends Asleep normally. The mark triggers once.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "reason",
+      "defenseAttribute": "reason"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:dreams:8",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:dreams:8",
+        "level": 3,
+        "cost": 3,
+        "action": "Ritual · 10 minutes",
+        "sp": 4,
+        "range": "One visible mark on an object within reach",
+        "duration": "8 hours or until triggered",
+        "attribute": "Reason",
+        "defenseAttribute": "Reason",
+        "effect": "The first creature to read or closely examine the mark receives Slowed 2/3/4 and Asleep 1/1/2, set by your casting roll. Its appearance suggests a magical inscription. Damage or waking ends Asleep normally. The mark triggers once.",
+        "improves": null,
+        "requires": [
+          "dreams:2"
+        ],
+        "bookId": "dreams"
+      },
+      "spell": {
+        "id": "spell:dreams:8",
+        "name": "Sign of Sleep",
+        "bookId": "dreams",
+        "page": "8",
+        "section": "IV",
+        "sp": 4,
+        "action": "Ritual",
+        "actionText": "Ritual · 10 minutes",
+        "ritualTime": "10 minutes",
+        "attribute": "Reason",
+        "defense": "Reason",
+        "defenseAttribute": "Reason",
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One visible mark on an object within reach",
+        "duration": "8 hours or until triggered",
+        "effect": "The first creature to read or closely examine the mark receives Slowed 2/3/4 and Asleep 1/1/2, set by your casting roll. Its appearance suggests a magical inscription. Damage or waking ends Asleep normally. The mark triggers once."
+      }
+    }
+  },
+  "effects": []
+}

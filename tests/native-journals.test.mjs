@@ -18,8 +18,10 @@ test("two native audience books retain every pinned source as an identified page
   assert.ok(position("design/ancestries/human.md") < position("design/ancestries/wood-elf.md"));
   assert.ok(position("design/classes/protector.md") < position("design/classes/blade.md"));
   assert.ok(position("design/player-book/manuscript/06-playing.md") < position("design/player-book/manuscript/07-adventure.md"));
-  assert.equal(index.records.length,1065);
-  assert.equal(books.reduce((n,book)=>n+book.pages.filter(page=>page.flags?.["heroes-of-legend"]?.ruleSource).length,0),1065);
+  const journalLock=JSON.parse(await readFile(new URL("content/native-journals-source-lock.json",root)));
+  assert.equal(index.sourceCommit,journalLock.commit);
+  assert.equal(index.records.length,journalLock.records.length);
+  assert.equal(books.reduce((n,book)=>n+book.pages.filter(page=>page.flags?.["heroes-of-legend"]?.ruleSource).length,0),journalLock.records.length);
   for(const record of index.records){
     assert.equal(record.id,stableFoundryId(record.pack,"native-rule-book"));
     assert.equal(record.pageId,stableFoundryId(({"design/ancestries/wood-elf.md":"design/ancestries/elf.md","design/ancestries/hill-dwarf.md":"design/ancestries/dwarf.md"}[record.path]??record.path),"native-rule-page"));
@@ -102,4 +104,25 @@ test("shared vision and ancestry procedures stay linked inside the player book w
     const record = index.records.find(record => record.path === `design/ancestries/${current}.md`);
     assert.equal(record.pageId, stableFoundryId(`design/ancestries/${old}.md`, "native-rule-page"));
   }
+});
+
+
+test("native references publish current Forge procedures and all spellbook blocks",async()=>{
+ const forge=JSON.parse(await readFile(new URL("static/data/forge.json",root)));
+ assert.equal(index.sourceCommit,forge.sourceCommit);
+ assert.equal(index.records.filter(record=>record.path.startsWith("design/spellbooks/")).length,29);
+ for(const path of ["design/rules/magic.md","design/rules/learning.md","design/rules/recovery.md","design/player-book/manuscript/02a-starting-sp.md","design/cards/sustain-spell.md","design/disciplines/spellcraft.md"]){
+  assert.ok(index.records.some(record=>record.path===path),path);
+ }
+ const scars=index.records.find(record=>record.path==="design/rules/wounds.md");
+ assert.equal(scars.name,"Scars and Survival");
+ assert.equal(scars.section,"12 · Scars and Survival");
+ assert.ok(!index.records.some(record=>record.section.includes("Wound Tables")));
+ const player=books.find(book=>book.flags["heroes-of-legend"].ruleBook.key==="player-rules");
+ const recovery=index.records.find(record=>record.path==="design/rules/recovery.md");
+ const text=player.pages.find(page=>page._id===recovery.pageId).text.content;
+ assert.match(text,/Fortitude/);
+ assert.doesNotMatch(text,/roll.*wound table/i);
+ const redirects=JSON.parse(await readFile(new URL("content/forge-source-lock.json",root)));
+ for(const record of index.records.filter(record=>record.path.startsWith("design/cards/"))) assert.ok(redirects.records[record.path],`Retired card shipped: ${record.path}`);
 });

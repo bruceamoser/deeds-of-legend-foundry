@@ -1,0 +1,66 @@
+{
+  "_key": "!items!1924f233035669f1",
+  "_id": "1924f233035669f1",
+  "name": "Control Weather",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 hour</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>The open sky within 1 kilometer of your ritual site</dd></div><div><dt>Duration</dt><dd>8 hours</dd></div></dl><p>Gradually change local weather over the casting hour: clear or gather clouds, bring ordinary rain or snow, or raise or calm strong wind. Choose one weather change. Seasonal temperatures and sound shelter remain relevant. The change creates ordinary weather rather than attack damage.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:air:a2",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:air:a2",
+        "level": 3,
+        "cost": 4,
+        "action": "Ritual · 1 hour",
+        "sp": 5,
+        "range": "The open sky within 1 kilometer of your ritual site",
+        "duration": "8 hours",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Gradually change local weather over the casting hour: clear or gather clouds, bring ordinary rain or snow, or raise or calm strong wind. Choose one weather change. Seasonal temperatures and sound shelter remain relevant. The change creates ordinary weather rather than attack damage.",
+        "improves": null,
+        "requires": [
+          "air:4"
+        ],
+        "bookId": "air"
+      },
+      "spell": {
+        "id": "spell:air:a2",
+        "name": "Control Weather",
+        "bookId": "air",
+        "page": "A2",
+        "section": "VI",
+        "sp": 5,
+        "action": "Ritual",
+        "actionText": "Ritual · 1 hour",
+        "ritualTime": "1 hour",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "The open sky within 1 kilometer of your ritual site",
+        "duration": "8 hours",
+        "effect": "Gradually change local weather over the casting hour: clear or gather clouds, bring ordinary rain or snow, or raise or calm strong wind. Choose one weather change. Seasonal temperatures and sound shelter remain relevant. The change creates ordinary weather rather than attack damage."
+      }
+    }
+  },
+  "effects": []
+}

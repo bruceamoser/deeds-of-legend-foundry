@@ -1,0 +1,65 @@
+{
+  "_key": "!items!be8e30c6ae350101",
+  "_id": "be8e30c6ae350101",
+  "name": "Conjure Celestial",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One open space within 3 squares</dd></div><div><dt>Duration</dt><dd>1 minute, with commands</dd></div></dl><p>Call a radiant champion using the Oath Flame summoned profile. Give its immediate Main command and follow the normal six-square tether and command procedures. Any healing it performs spends your SP as printed.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:calling:a1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:calling:a1",
+        "level": 3,
+        "cost": 4,
+        "action": "Main Action",
+        "sp": 5,
+        "range": "One open space within 3 squares",
+        "duration": "1 minute, with commands",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Call a radiant champion using the Oath Flame summoned profile. Give its immediate Main command and follow the normal six-square tether and command procedures. Any healing it performs spends your SP as printed.",
+        "improves": null,
+        "requires": [
+          "calling:3"
+        ],
+        "bookId": "calling"
+      },
+      "spell": {
+        "id": "spell:calling:a1",
+        "name": "Conjure Celestial",
+        "bookId": "calling",
+        "page": "A1",
+        "section": "V",
+        "sp": 5,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One open space within 3 squares",
+        "duration": "1 minute, with commands",
+        "effect": "Call a radiant champion using the Oath Flame summoned profile. Give its immediate Main command and follow the normal six-square tether and command procedures. Any healing it performs spends your SP as printed."
+      }
+    }
+  },
+  "effects": []
+}

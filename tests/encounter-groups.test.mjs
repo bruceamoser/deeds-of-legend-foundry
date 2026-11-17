@@ -5,7 +5,7 @@ import {createContext,SourceTextModule,SyntheticModule} from 'node:vm';
 async function load(game){
  const context=createContext({game,foundry:{applications:{api:{ApplicationV2:class{},HandlebarsApplicationMixin:base=>base}}}});
  const module=new SourceTextModule(await readFile(new URL('../src/applications/encounter.mjs',import.meta.url),'utf8'),{context});
- await module.link(async()=>{const dep=new SyntheticModule(['reconcileTurnRoster','chooseCombatParticipant','finishCombatParticipant'],function(){for(const key of ['reconcileTurnRoster','chooseCombatParticipant','finishCombatParticipant'])this.setExport(key,()=>{});},{context});await dep.link(()=>{});await dep.evaluate();return dep;});await module.evaluate();return module.namespace;
+ await module.link(async()=>{const dep=new SyntheticModule(['reconcileTurnRoster','availableParticipants','combatSide','requestCombat','chooseCombatParticipant','finishCombatParticipant'],function(){for(const key of ['reconcileTurnRoster','availableParticipants','combatSide','requestCombat','chooseCombatParticipant','finishCombatParticipant'])this.setExport(key,()=>{});},{context});await dep.link(()=>{});await dep.evaluate();return dep;});await module.evaluate();return module.namespace;
 }
 test('encounter groups keep players before creatures and retain their turn data',async()=>{
  const {encounterGroups}=await load({});

@@ -1,0 +1,47 @@
+{
+  "_key": "!items!70b06b3dcbab542a",
+  "_id": "70b06b3dcbab542a",
+  "name": "Take the Blow III",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>When Take the Blow intercepts a melee attack immediately following the attacker’s voluntary movement, give your defense 1 Boon. After it resolves, the attacker’s remaining voluntary movement this turn becomes 0; forced movement still applies.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "guard:interception:6",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "guard:interception:6",
+        "level": 3,
+        "cost": 4,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "When Take the Blow intercepts a melee attack immediately following the attacker’s voluntary movement, give your defense 1 Boon. After it resolves, the attacker’s remaining voluntary movement this turn becomes 0; forced movement still applies.",
+        "improves": "guard:interception:4",
+        "requires": [
+          "guard:interception:5"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

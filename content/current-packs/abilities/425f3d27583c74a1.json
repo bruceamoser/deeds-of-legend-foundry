@@ -1,0 +1,65 @@
+{
+  "_key": "!items!425f3d27583c74a1",
+  "_id": "425f3d27583c74a1",
+  "name": "Water Breathing",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>Up to three willing creatures within 3 squares</dd></div><div><dt>Duration</dt><dd>1 hour</dd></div></dl><p>Give the recipients the ability to breathe water as readily as air. Their movement and pressure tolerance remain those of their bodies.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:water:4",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:water:4",
+        "level": 1,
+        "cost": 2,
+        "action": "Main Action",
+        "sp": 2,
+        "range": "Up to three willing creatures within 3 squares",
+        "duration": "1 hour",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Give the recipients the ability to breathe water as readily as air. Their movement and pressure tolerance remain those of their bodies.",
+        "improves": null,
+        "requires": [
+          "water:0"
+        ],
+        "bookId": "water"
+      },
+      "spell": {
+        "id": "spell:water:4",
+        "name": "Water Breathing",
+        "bookId": "water",
+        "page": "4",
+        "section": "II",
+        "sp": 2,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Up to three willing creatures within 3 squares",
+        "duration": "1 hour",
+        "effect": "Give the recipients the ability to breathe water as readily as air. Their movement and pressure tolerance remain those of their bodies."
+      }
+    }
+  },
+  "effects": []
+}

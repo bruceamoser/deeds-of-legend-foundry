@@ -1,0 +1,65 @@
+{
+  "_key": "!items!9069f21568f651cb",
+  "_id": "9069f21568f651cb",
+  "name": "Summon Dragon",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>4</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One open space within 3 squares</dd></div><div><dt>Duration</dt><dd>1 minute, with commands</dd></div></dl><p>Manifest a serpentine storm-dragon using the Storm Column summoned profile. Its shape expresses the spell; use that profile&#39;s movement, attacks and defenses. Give one immediate Main command, then normal commands and the six-square tether.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:calling:8",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:calling:8",
+        "level": 3,
+        "cost": 3,
+        "action": "Main Action",
+        "sp": 4,
+        "range": "One open space within 3 squares",
+        "duration": "1 minute, with commands",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Manifest a serpentine storm-dragon using the Storm Column summoned profile. Its shape expresses the spell; use that profile's movement, attacks and defenses. Give one immediate Main command, then normal commands and the six-square tether.",
+        "improves": null,
+        "requires": [
+          "calling:2"
+        ],
+        "bookId": "calling"
+      },
+      "spell": {
+        "id": "spell:calling:8",
+        "name": "Summon Dragon",
+        "bookId": "calling",
+        "page": "8",
+        "section": "IV",
+        "sp": 4,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One open space within 3 squares",
+        "duration": "1 minute, with commands",
+        "effect": "Manifest a serpentine storm-dragon using the Storm Column summoned profile. Its shape expresses the spell; use that profile's movement, attacks and defenses. Give one immediate Main command, then normal commands and the six-square tether."
+      }
+    }
+  },
+  "effects": []
+}

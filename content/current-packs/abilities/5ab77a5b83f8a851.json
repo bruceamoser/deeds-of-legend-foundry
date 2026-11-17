@@ -1,0 +1,65 @@
+{
+  "_key": "!items!5ab77a5b83f8a851",
+  "_id": "5ab77a5b83f8a851",
+  "name": "Freedom of Movement",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>4</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One willing creature within 3 squares</dd></div><div><dt>Duration</dt><dd>10 minutes</dd></div></dl><p>The recipient moves through nonmagical difficult terrain at ordinary cost and immediately reduces Slowed by 3. Once each turn it may spend a Maneuver to reduce Grappled 1 or 2 by 2, using your movement magic to slip a loose hold. Grappled 3 requires release by the grappler or outside help.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:transformation:8",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:transformation:8",
+        "level": 3,
+        "cost": 3,
+        "action": "Main Action",
+        "sp": 4,
+        "range": "One willing creature within 3 squares",
+        "duration": "10 minutes",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "The recipient moves through nonmagical difficult terrain at ordinary cost and immediately reduces Slowed by 3. Once each turn it may spend a Maneuver to reduce Grappled 1 or 2 by 2, using your movement magic to slip a loose hold. Grappled 3 requires release by the grappler or outside help.",
+        "improves": null,
+        "requires": [
+          "transformation:2"
+        ],
+        "bookId": "transformation"
+      },
+      "spell": {
+        "id": "spell:transformation:8",
+        "name": "Freedom of Movement",
+        "bookId": "transformation",
+        "page": "8",
+        "section": "IV",
+        "sp": 4,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One willing creature within 3 squares",
+        "duration": "10 minutes",
+        "effect": "The recipient moves through nonmagical difficult terrain at ordinary cost and immediately reduces Slowed by 3. Once each turn it may spend a Maneuver to reduce Grappled 1 or 2 by 2, using your movement magic to slip a loose hold. Grappled 3 requires release by the grappler or outside help."
+      }
+    }
+  },
+  "effects": []
+}

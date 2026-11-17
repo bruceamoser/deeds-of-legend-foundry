@@ -1,0 +1,45 @@
+{
+  "_key": "!items!630dfa4b78e57726",
+  "_id": "630dfa4b78e57726",
+  "name": "Reduce a Condition",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Range</dt><dd>Self or one adjacent creature</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>**Action:** Main Action · **Attribute:** None — no roll</p><p>**Target / range / shape:** Self or one adjacent creature</p><p>With a plausible method, reduce Bleeding, Burning, or Freezing by 1. This is not a general cure for all conditions. A persistent source can require a specific remedy.</p><p>**Duration:** Instant</p><p>**Equipment / acquisition:** None.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-reduce-a-condition",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "ability",
+        "nodeId": "ability-reduce-a-condition",
+        "level": 0,
+        "cost": 0,
+        "action": "Main Action",
+        "sp": null,
+        "range": "Self or one adjacent creature",
+        "duration": "Instant",
+        "attribute": "None — no roll",
+        "defenseAttribute": null,
+        "effect": "**Action:** Main Action · **Attribute:** None — no roll\n\n**Target / range / shape:** Self or one adjacent creature\n\nWith a plausible method, reduce Bleeding, Burning, or Freezing by 1. This is not a general cure for all conditions. A persistent source can require a specific remedy.\n\n**Duration:** Instant\n\n**Equipment / acquisition:** None.",
+        "improves": null,
+        "requires": [],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

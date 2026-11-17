@@ -1,0 +1,47 @@
+{
+  "_key": "!items!9d11ef07688d92f2",
+  "_id": "9d11ef07688d92f2",
+  "name": "A City Opens Its Gates",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Timed work</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div></dl><p>1 day · Reason. Through an on-site demonstration of a feasible civic project, broker one agreement among up to four willing factions you can communicate with. Build a visible model or working example with real materials. Roll once; add 4/7/10 progress to each faction’s separate agreement objective. Completion secures the commitments established by the DA, such as access, labor or a ceasefire. New terms need a new objective; this creates neither resources nor control over a settlement.</p>",
+    "activity": {
+      "action": "other",
+      "rollMode": "attribute",
+      "attribute": "reason",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "craft:workshop:7",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "mastery",
+        "nodeId": "craft:workshop:7",
+        "level": 7,
+        "cost": 5,
+        "action": "Timed work",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": "Reason",
+        "defenseAttribute": null,
+        "effect": "1 day · Reason. Through an on-site demonstration of a feasible civic project, broker one agreement among up to four willing factions you can communicate with. Build a visible model or working example with real materials. Roll once; add 4/7/10 progress to each faction’s separate agreement objective. Completion secures the commitments established by the DA, such as access, labor or a ceasefire. New terms need a new objective; this creates neither resources nor control over a settlement.",
+        "improves": null,
+        "requires": [
+          "craft:workshop:6"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

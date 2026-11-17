@@ -1,0 +1,66 @@
+{
+  "_key": "!items!cf0c289ae9133c1c",
+  "_id": "cf0c289ae9133c1c",
+  "name": "Cancel True",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Reaction · when a visible caster finishes a spell</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div><div><dt>Range</dt><dd>The spell; caster within 8 squares</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Add 3/5/7 cancellation progress toward target 2 plus its printed SP cost. At completion it ends before resolving. Otherwise its caster receives 2 Banes on any resolution roll, and incomplete cancellation progress expires.</p>",
+    "activity": {
+      "action": "reaction",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:unraveling:a2",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:unraveling:a2",
+        "level": 3,
+        "cost": 4,
+        "action": "Reaction · when a visible caster finishes a spell",
+        "sp": 5,
+        "range": "The spell; caster within 8 squares",
+        "duration": "Instant",
+        "attribute": "Knowledge",
+        "defenseAttribute": null,
+        "effect": "Add 3/5/7 cancellation progress toward target 2 plus its printed SP cost. At completion it ends before resolving. Otherwise its caster receives 2 Banes on any resolution roll, and incomplete cancellation progress expires.",
+        "improves": null,
+        "requires": [
+          "unraveling:4"
+        ],
+        "bookId": "unraveling"
+      },
+      "spell": {
+        "id": "spell:unraveling:a2",
+        "name": "Cancel True",
+        "bookId": "unraveling",
+        "page": "A2",
+        "section": "VI",
+        "sp": 5,
+        "action": "Reaction",
+        "actionText": "Reaction · when a visible caster finishes a spell",
+        "trigger": "when a visible caster finishes a spell",
+        "attribute": "Knowledge",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "The spell; caster within 8 squares",
+        "duration": "Instant",
+        "effect": "Add 3/5/7 cancellation progress toward target 2 plus its printed SP cost. At completion it ends before resolving. Otherwise its caster receives 2 Banes on any resolution roll, and incomplete cancellation progress expires."
+      }
+    }
+  },
+  "effects": []
+}

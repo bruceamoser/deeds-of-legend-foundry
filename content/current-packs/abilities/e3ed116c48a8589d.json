@@ -1,0 +1,46 @@
+{
+  "_key": "!items!e3ed116c48a8589d",
+  "_id": "e3ed116c48a8589d",
+  "name": "Refuse the Rout",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Self and up to three willing allies within 4 squares that can hear you.</dd></div><div><dt>Duration</dt><dd>Condition reduction and movement are immediate; Boons expire when used or the start of your next turn.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div></dl><p>Each recipient reduces one Frightened or Dazed condition by up to 2, to a minimum of 0, and gains 1 Boon to its next defense before the start of your next turn. Each may immediately move 1 square without provoking. Resolve movement in an order you choose. This applies to ordinary conditions.</p><p>Use once per scene. A starred condition requires its own stated remedy.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-signature-leader-refuse-the-rout",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "ability",
+        "nodeId": "ability-signature-leader-refuse-the-rout",
+        "level": 7,
+        "cost": 0,
+        "action": "Maneuver",
+        "sp": null,
+        "range": "Self and up to three willing allies within 4 squares that can hear you.",
+        "duration": "Condition reduction and movement are immediate; Boons expire when used or the start of your next turn.",
+        "attribute": "None (no roll)",
+        "defenseAttribute": null,
+        "effect": "**Action:** Maneuver · **Attribute:** None (no roll)\n\n**Target / range / shape:** Self and up to three willing allies within 4 squares that can hear you.\n\nEach recipient reduces one Frightened or Dazed condition by up to 2, to a minimum of 0, and gains 1 Boon to its next defense before the start of your next turn. Each may immediately move 1 square without provoking. Resolve movement in an order you choose. This applies to ordinary conditions.\n\n**Duration:** Condition reduction and movement are immediate; Boons expire when used or the start of your next turn.\n\n**Equipment / acquisition:** None.\n\nUse once per scene. A starred condition requires its own stated remedy.",
+        "improves": null,
+        "requires": [],
+        "bookId": null,
+        "magic": null
+      }
+    }
+  },
+  "effects": []
+}

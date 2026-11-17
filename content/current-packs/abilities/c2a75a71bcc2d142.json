@@ -1,0 +1,47 @@
+{
+  "_key": "!items!c2a75a71bcc2d142",
+  "_id": "c2a75a71bcc2d142",
+  "name": "Hunt at the Crossroads",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Timed work</dd></div></dl><p>10 minutes. Prepare an ambush along a trail you have followed, at a site you have surveyed by actually examining its routes and sight lines. Choose up to four willing allies and a visible trigger line up to 6 squares long. Once before your next safe overnight rest, when a tracked enemy crosses the line, you and each chosen ally may spend an available Reaction to make one known basic attack against it if in range. These attacks gain 1 Boon and +2 damage. Preparation ends if you leave the site. Resolve awareness and initiative normally; preparation grants no additional surprise turn.</p>",
+    "activity": {
+      "action": "other",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "marksmanship:readiness:7",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "mastery",
+        "nodeId": "marksmanship:readiness:7",
+        "level": 7,
+        "cost": 5,
+        "action": "Timed work",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "10 minutes. Prepare an ambush along a trail you have followed, at a site you have surveyed by actually examining its routes and sight lines. Choose up to four willing allies and a visible trigger line up to 6 squares long. Once before your next safe overnight rest, when a tracked enemy crosses the line, you and each chosen ally may spend an available Reaction to make one known basic attack against it if in range. These attacks gain 1 Boon and +2 damage. Preparation ends if you leave the site. Resolve awareness and initiative normally; preparation grants no additional surprise turn.",
+        "improves": null,
+        "requires": [
+          "marksmanship:readiness:6"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

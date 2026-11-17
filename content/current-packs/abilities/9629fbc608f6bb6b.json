@@ -1,0 +1,47 @@
+{
+  "_key": "!items!9629fbc608f6bb6b",
+  "_id": "9629fbc608f6bb6b",
+  "name": "Rally the Line III",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Each ally affected by Rally the Line may move 1 square toward you without movement reactions.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "influence:leadership:6",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "influence:leadership:6",
+        "level": 3,
+        "cost": 4,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Each ally affected by Rally the Line may move 1 square toward you without movement reactions.",
+        "improves": "influence:leadership:4",
+        "requires": [
+          "influence:leadership:5"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

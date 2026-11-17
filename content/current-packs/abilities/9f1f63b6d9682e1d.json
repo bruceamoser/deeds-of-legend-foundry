@@ -1,0 +1,65 @@
+{
+  "_key": "!items!9f1f63b6d9682e1d",
+  "_id": "9f1f63b6d9682e1d",
+  "name": "Greater Invisibility",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>3</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>Self or one willing creature within 3 squares</dd></div><div><dt>Duration</dt><dd>1 minute</dd></div></dl><p>Make the recipient and carried gear Invisible. It may continue attacking and casting while this effect lasts. Attacking still reveals its location and ends Hidden normally.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:perception:7",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:perception:7",
+        "level": 3,
+        "cost": 3,
+        "action": "Main Action",
+        "sp": 3,
+        "range": "Self or one willing creature within 3 squares",
+        "duration": "1 minute",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Make the recipient and carried gear Invisible. It may continue attacking and casting while this effect lasts. Attacking still reveals its location and ends Hidden normally.",
+        "improves": null,
+        "requires": [
+          "perception:2"
+        ],
+        "bookId": "perception"
+      },
+      "spell": {
+        "id": "spell:perception:7",
+        "name": "Greater Invisibility",
+        "bookId": "perception",
+        "page": "7",
+        "section": "IV",
+        "sp": 3,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Self or one willing creature within 3 squares",
+        "duration": "1 minute",
+        "effect": "Make the recipient and carried gear Invisible. It may continue attacking and casting while this effect lasts. Attacking still reveals its location and ends Hidden normally."
+      }
+    }
+  },
+  "effects": []
+}

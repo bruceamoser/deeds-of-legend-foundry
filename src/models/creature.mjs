@@ -103,6 +103,7 @@ export class CreatureData extends foundry.abstract.TypeDataModel {
       evasion: modifier(),
       weaknesses: mitigations(),
       resistances: mitigations(),
+      damageImmunities: new ArrayField(text(), {required:true, nullable:false, initial:[]}),
       immunities: new ArrayField(text(), {
         required: true,
         nullable: false,

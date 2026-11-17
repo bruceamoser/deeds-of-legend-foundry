@@ -1,0 +1,65 @@
+{
+  "_key": "!items!77e8a28839c3f3dc",
+  "_id": "77e8a28839c3f3dc",
+  "name": "Conjure Elemental",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>3</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One open space within 3 squares</dd></div><div><dt>Duration</dt><dd>1 minute, with commands</dd></div></dl><p>Call one Elemental profile rated 3 or lower. Use its printed statistics, immediate Main command, normal command economy and six-square tether.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:calling:7",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:calling:7",
+        "level": 3,
+        "cost": 3,
+        "action": "Main Action",
+        "sp": 3,
+        "range": "One open space within 3 squares",
+        "duration": "1 minute, with commands",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Call one Elemental profile rated 3 or lower. Use its printed statistics, immediate Main command, normal command economy and six-square tether.",
+        "improves": null,
+        "requires": [
+          "calling:2"
+        ],
+        "bookId": "calling"
+      },
+      "spell": {
+        "id": "spell:calling:7",
+        "name": "Conjure Elemental",
+        "bookId": "calling",
+        "page": "7",
+        "section": "IV",
+        "sp": 3,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One open space within 3 squares",
+        "duration": "1 minute, with commands",
+        "effect": "Call one Elemental profile rated 3 or lower. Use its printed statistics, immediate Main command, normal command economy and six-square tether."
+      }
+    }
+  },
+  "effects": []
+}

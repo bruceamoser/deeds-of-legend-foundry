@@ -1,0 +1,47 @@
+{
+  "_key": "!items!346ac8ded2a4bd0c",
+  "_id": "346ac8ded2a4bd0c",
+  "name": "Hold the Pass II",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Hold the Pass can choose creatures within 12 squares.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "marksmanship:pinning:5",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "marksmanship:pinning:5",
+        "level": 3,
+        "cost": 4,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Hold the Pass can choose creatures within 12 squares.",
+        "improves": "marksmanship:pinning:4",
+        "requires": [
+          "marksmanship:pinning:4"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

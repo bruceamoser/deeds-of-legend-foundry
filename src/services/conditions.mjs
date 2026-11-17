@@ -1,4 +1,5 @@
-import {woundRecovered} from "../rules/wound-contributions.mjs";
+import {coordinateNativeGameplay,registerNativeGameplayHandler} from './native-workshop-coordinator.mjs';
+import {assertCurrentGameplayActor,isCurrentCharacter} from "../rules/current-character.mjs";
 import { createActionMessage, shouldProcessRequest } from "./authority.mjs";
 import { ensureAuthorityReady } from "./authority.mjs";
 import { assertNoPendingTurn } from "./turn-lock.mjs";
@@ -17,9 +18,7 @@ export function actorContributions(actor) {
   const records = actor.effects
     .filter(
       (e) =>
-        e.active && !e.getFlag(ID, "retired") && e.getFlag(ID, "condition") &&
-        (e.getFlag(ID, "condition").persistence !== "starred" ||
-          !woundRecovered(actor.getFlag?.(ID,"wounds")?.[e.getFlag(ID,"woundEvent")])),
+        e.active && !e.getFlag(ID, "retired") && e.getFlag(ID, "condition") && !e.getFlag(ID,"woundEvent"),
     )
     .map((e) => ({ ...structuredClone(e.getFlag(ID, "condition")), id: e.id }));
   validateContributions(records);
@@ -50,7 +49,8 @@ export function registerHOLStatuses() {
   CONFIG.specialStatusEffects.INVISIBLE = "hol.invisible";
 }
 export async function requestCondition(actor, kind, payload = {}) {
-  await ensureAuthorityReady();
+  assertCurrentGameplayActor(actor);
+  await ensureAuthorityReady({shared:true,coordinated:true});
   return createActionMessage({
     content: "Condition adjustment requested.",
     flags: {
@@ -63,7 +63,7 @@ export async function requestCondition(actor, kind, payload = {}) {
         },
       },
     },
-  });
+  },{shared:true,coordinated:true});
 }
 export function resolveConditionRequest(id) {
   return enqueueCharacterOperation(() => apply(id), { requestId: id });
@@ -80,6 +80,7 @@ async function apply(id, {message = game.messages.get(id), request = message?.ge
   )
     throw new Error("Invalid condition target or adjustment.");
   if (!message?.author || !actor.testUserPermission(message.author, "OWNER")) throw new Error("Only an owner or the Dungeon Architect can adjust conditions.");
+  assertCurrentGameplayActor(actor);
   const receipt = actor.getFlag(ID, "operationReceipts")?.[id];
   if (receipt?.applied) {
     if (
@@ -116,6 +117,8 @@ async function apply(id, {message = game.messages.get(id), request = message?.ge
       order: Date.now(),
     };
     validateContributions([condition]);
+    if ([...(actor.system?.conditionImmunities ?? []), ...(actor.system?.immunities ?? [])].some(key => key.toLowerCase() === condition.key))
+      throw new Error(`${actor.name} is immune to ${condition.key}.`);
     const existing=effects.find(effect=>active.some(c=>c.id===effect._id)&&!effect.disabled&&!effect.flags?.[ID]?.retired&&!effect.flags?.[ID]?.woundEvent && effect.flags?.[ID]?.condition?.key===condition.key && effect.flags[ID].condition.persistence===condition.persistence && (!["frightened","grappled"].includes(condition.key)||effect.flags[ID].condition.source===condition.source));
     if(existing){
       createdId=existing._id;
@@ -243,11 +246,17 @@ async function postOwnedCondition(actor,condition,operationId,content=conditionC
   catch(error){ui.notifications.warn(`Condition applied to ${actor.name}; chat could not be posted: ${error.message}`);return null;}
 }
 const conditionQueues = new Map();
-/** Explicit effect application used by Apply Damage; no GM or source input is required. */
-export function applyOwnedCondition(actor, key, rating = 1, {operationId = foundry.utils.randomID(), persistence = null, source = "", postChat = true} = {}) {
+/** Explicit effect application shares the designated GM’s managed Actor queue. */
+export function applyOwnedCondition(actor,key,rating=1,options={}){
+ const operationId=options.operationId??foundry.utils.randomID();
+ return coordinateNativeGameplay(actor,{kind:'condition',operationId,payload:{key,rating,options:{...options,operationId}}});
+}
+registerNativeGameplayHandler('condition',(actor,payload,context)=>executeOwnedCondition(actor,payload.key,payload.rating,payload.options,context));
+function executeOwnedCondition(actor, key, rating = 1, {operationId = foundry.utils.randomID(), persistence = null, source = "", postChat = true} = {},context) {
   const previous = conditionQueues.get(actor.uuid) ?? Promise.resolve();
   const run = previous.catch(() => {}).then(async () => {
-    if (!actor.testUserPermission(game.user,"OWNER") || actor.pack) throw new Error("Choose an actor you own.");
+    assertCurrentGameplayActor(actor);
+    if (!actor.testUserPermission(context.author,"OWNER") || actor.pack) throw new Error("Choose an actor you own.");
     if (!Object.hasOwn(CONDITION_KINDS,key)) throw new Error("Unknown condition.");
     if (!/^[A-Za-z0-9_-]{1,160}$/.test(operationId)) throw new Error("Invalid condition action identity.");
     const kind = CONDITION_KINDS[key];
@@ -262,9 +271,8 @@ export function applyOwnedCondition(actor, key, rating = 1, {operationId = found
     }
     const request = {actorUuid:actor.uuid,kind:"add",key,rating,persistence,source:source || actor.name,revision:actor.getFlag(ID,"conditionRevision") ?? 0};
     let presentation;
-    const result = await apply(operationId,{request,message:{author:game.user,update:async changes=>{presentation=changes.content;}},write:async(document,changes)=>{
-      const {updateOwnedDocument} = await import("./documents.mjs");
-      return updateOwnedDocument(document,changes);
+    const result = await apply(operationId,{request,message:{author:context.author,update:async changes=>{presentation=changes.content;}},write:async(document,changes)=>{
+      return context.write(changes,{status:"complete",replay:false});
     }});
     if (postChat) await postOwnedCondition(actor,request,operationId,presentation);
     return result;
@@ -279,6 +287,7 @@ export async function hideRetiredConditionIcons() {
   const actors = new Map(game.actors.contents.map(actor=>[actor.uuid,actor]));
   for (const scene of game.scenes) for (const token of scene.tokens) if(token.actor) actors.set(token.actor.uuid,token.actor);
   for (const actor of actors.values()) {
+    if(actor.type==='character'&&!isCurrentCharacter(actor))continue;
     if(!actor.testUserPermission(game.user,"OWNER"))continue;
     const updates=actor.effects.filter(effect=>effect.getFlag(ID,"condition") && (effect.disabled || effect.getFlag(ID,"retired")) && effect.showIcon!==CONST.ACTIVE_EFFECT_SHOW_ICON.NEVER)
       .map(effect=>({_id:effect.id,showIcon:CONST.ACTIVE_EFFECT_SHOW_ICON.NEVER}));

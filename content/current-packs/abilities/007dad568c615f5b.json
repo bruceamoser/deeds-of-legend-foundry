@@ -1,0 +1,65 @@
+{
+  "_key": "!items!007dad568c615f5b",
+  "_id": "007dad568c615f5b",
+  "name": "Dominate Monster",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Defense</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>One creature within 6 squares that perceives your command</dd></div><div><dt>Duration</dt><dd>Until the end of its next turn</dd></div></dl><p>Command one ordinary movement or interaction within the creature&#39;s abilities. It may obey using its own actions or take 4/6/8 mental damage and Dazed 1/1/2. Its player chooses for a hero. The command ends after that choice resolves.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "reason",
+      "defenseAttribute": "reason"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:binding:a1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:binding:a1",
+        "level": 3,
+        "cost": 4,
+        "action": "Main Action",
+        "sp": 5,
+        "range": "One creature within 6 squares that perceives your command",
+        "duration": "Until the end of its next turn",
+        "attribute": "Reason",
+        "defenseAttribute": "Reason",
+        "effect": "Command one ordinary movement or interaction within the creature's abilities. It may obey using its own actions or take 4/6/8 mental damage and Dazed 1/1/2. Its player chooses for a hero. The command ends after that choice resolves.",
+        "improves": null,
+        "requires": [
+          "binding:3"
+        ],
+        "bookId": "binding"
+      },
+      "spell": {
+        "id": "spell:binding:a1",
+        "name": "Dominate Monster",
+        "bookId": "binding",
+        "page": "A1",
+        "section": "V",
+        "sp": 5,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "Reason",
+        "defense": "Reason",
+        "defenseAttribute": "Reason",
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One creature within 6 squares that perceives your command",
+        "duration": "Until the end of its next turn",
+        "effect": "Command one ordinary movement or interaction within the creature's abilities. It may obey using its own actions or take 4/6/8 mental damage and Dazed 1/1/2. Its player chooses for a hero. The command ends after that choice resolves."
+      }
+    }
+  },
+  "effects": []
+}

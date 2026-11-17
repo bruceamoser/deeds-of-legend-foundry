@@ -1,0 +1,66 @@
+{
+  "_key": "!items!28e082e8d9aff75c",
+  "_id": "28e082e8d9aff75c",
+  "name": "Shield",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Reaction · before the roll for an attack your magical shield can block</dd></div><div><dt>SP</dt><dd>0</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>Self</dd></div><div><dt>Duration</dt><dd>Until the start of your next turn</dd></div></dl><p>Raise a translucent shield in a free hand. Declare this Reaction before the roll for an attack the shield could block; the DA judges its coverage as for an ordinary shield. While keeping that hand available until your next turn starts, gain 1 Boon on defenses against attacks it can block. If an attacker rolls instead, apply 1 Bane to that roll. Shield and Shield Block supply the same shield benefit: use it once, while combining Defend and other modifiers normally. Ending the spell frees the hand. This Reaction casting does not provoke an opportunity attack.</p>",
+    "activity": {
+      "action": "reaction",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:protection:2",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:protection:2",
+        "level": 1,
+        "cost": 1,
+        "action": "Reaction · before the roll for an attack your magical shield can block",
+        "sp": 0,
+        "range": "Self",
+        "duration": "Until the start of your next turn",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Raise a translucent shield in a free hand. Declare this Reaction before the roll for an attack the shield could block; the DA judges its coverage as for an ordinary shield. While keeping that hand available until your next turn starts, gain 1 Boon on defenses against attacks it can block. If an attacker rolls instead, apply 1 Bane to that roll. Shield and Shield Block supply the same shield benefit: use it once, while combining Defend and other modifiers normally. Ending the spell frees the hand. This Reaction casting does not provoke an opportunity attack.",
+        "improves": null,
+        "requires": [
+          "wards"
+        ],
+        "bookId": "protection"
+      },
+      "spell": {
+        "id": "spell:protection:2",
+        "name": "Shield",
+        "bookId": "protection",
+        "page": "2",
+        "section": "I",
+        "sp": 0,
+        "action": "Reaction",
+        "actionText": "Reaction · before the roll for an attack your magical shield can block",
+        "trigger": "before the roll for an attack your magical shield can block",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Self",
+        "duration": "Until the start of your next turn",
+        "effect": "Raise a translucent shield in a free hand. Declare this Reaction before the roll for an attack the shield could block; the DA judges its coverage as for an ordinary shield. While keeping that hand available until your next turn starts, gain 1 Boon on defenses against attacks it can block. If an attacker rolls instead, apply 1 Bane to that roll. Shield and Shield Block supply the same shield benefit: use it once, while combining Defend and other modifiers normally. Ending the spell frees the hand. This Reaction casting does not provoke an opportunity attack."
+      }
+    }
+  },
+  "effects": []
+}

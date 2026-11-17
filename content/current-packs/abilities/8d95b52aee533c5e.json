@@ -1,0 +1,47 @@
+{
+  "_key": "!items!8d95b52aee533c5e",
+  "_id": "8d95b52aee533c5e",
+  "name": "Ricochet I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Agility</dd></div></dl><p>Main Action · Agility. Throw one weapon at two creatures within 4 squares of you and 2 squares of each other. Roll once; each takes 1/2/4 physical damage. The weapon lands beside the second target.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "agility",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "marksmanship:thrown-weapons:4",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "technique",
+        "nodeId": "marksmanship:thrown-weapons:4",
+        "level": 3,
+        "cost": 3,
+        "action": "Main Action",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": "Agility",
+        "defenseAttribute": null,
+        "effect": "Main Action · Agility. Throw one weapon at two creatures within 4 squares of you and 2 squares of each other. Roll once; each takes 1/2/4 physical damage. The weapon lands beside the second target.",
+        "improves": null,
+        "requires": [
+          "marksmanship:thrown-weapons:3"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

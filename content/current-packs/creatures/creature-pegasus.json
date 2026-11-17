@@ -1,0 +1,325 @@
+{
+  "_key": "!actors!0b4605c60a7653ab",
+  "_id": "0b4605c60a7653ab",
+  "name": "Pegasus",
+  "type": "creature",
+  "img": "systems/heroes-of-legend/assets/creatures/fa23d6a65845b7c96c7c2bcd894b5d7cc7215f77714c6f1faf9a64d08d8eb9c1.webp",
+  "prototypeToken": {
+    "width": 2,
+    "height": 2,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/fa23d6a65845b7c96c7c2bcd894b5d7cc7215f77714c6f1faf9a64d08d8eb9c1.webp"
+    }
+  },
+  "system": {
+    "schemaVersion": 1,
+    "attributes": {
+      "brawn": {
+        "base": 0
+      },
+      "fortitude": {
+        "base": 0
+      },
+      "agility": {
+        "base": 2
+      },
+      "guile": {
+        "base": 1
+      },
+      "knowledge": {
+        "base": 0
+      },
+      "reason": {
+        "base": 1
+      }
+    },
+    "attributesSource": "Brawn +0; Fortitude +0; Agility +2; Guile +1; Knowledge +0; Reason +1",
+    "health": {
+      "value": 24,
+      "baseMax": 24,
+      "sourceText": "24"
+    },
+    "cv": 23,
+    "speed": 9,
+    "speedSource": "9; fly 10",
+    "alternateSpeeds": [
+      {
+        "mode": "fly",
+        "value": 10
+      }
+    ],
+    "size": 2,
+    "sizeLabel": "2x2 squares",
+    "sizeSource": "2 (2x2 squares)",
+    "footprint": {
+      "width": 2,
+      "height": 2
+    },
+    "armor": 0,
+    "armorMarker": "",
+    "armorSource": "0",
+    "stability": 1,
+    "threat": {
+      "boons": 0,
+      "banes": 0,
+      "sourceText": "None"
+    },
+    "evasion": {
+      "boons": 0,
+      "banes": 1,
+      "sourceText": "1 Bane"
+    },
+    "weaknesses": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "resistances": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "immunities": [],
+    "basicMelee": {
+      "weak": 5,
+      "standard": 3,
+      "strong": 2,
+      "defenseAttribute": "agility",
+      "orientation": "player-defense"
+    },
+    "actions": {
+      "orientation": "player-defense",
+      "entries": [
+        {
+          "id": "main-0",
+          "category": "main",
+          "name": "Basic Melee",
+          "abilityId": "",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "5",
+            "standard": "3",
+            "strong": "2"
+          },
+          "effect": "5/3/2",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "main-1",
+          "category": "main",
+          "name": "Skyward hooves",
+          "abilityId": "",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "7 + Push 3",
+            "standard": "5 + Push 1",
+            "strong": "3"
+          },
+          "effect": "7 + Push 3 / 5 + Push 1 / 3",
+          "referenceMarkdown": "### Skyward hooves\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Push 3. **Standard defense:** Push 1.\n\n**Limit:** Apply Stability, terrain costs and normal collision rules to the printed distance."
+        },
+        {
+          "id": "maneuver-0",
+          "category": "maneuver",
+          "name": "Wing Step",
+          "abilityId": "monster-wing-step",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Fly 2; no opportunity from one chosen visible enemy.",
+          "referenceMarkdown": "### Wing Step\n\n*A single hard wingbeat carries it toward a better angle.*\n\nMove up to 2 squares using its printed fly speed without provoking from one visible enemy chosen before moving. Pay normal terrain costs and provoke normally from other enemies. This grants no attack, automatic lift of another creature or hovering exception."
+        },
+        {
+          "id": "maneuver-1",
+          "category": "maneuver",
+          "name": "Defend",
+          "abilityId": "",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "+1 Bane",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "reaction-0",
+          "category": "reaction",
+          "name": "Bank Away",
+          "abilityId": "monster-bank-away",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "After taking ranged HP damage: fly 2; provokes.",
+          "referenceMarkdown": "### Bank Away\n\n*A struck feather spins loose as the great wings tilt and carry the creature out of the firing line.*\n\nAfter a ranged attack resolves and deals HP damage to this creature, fly up to 2 squares using its printed fly speed. Pay normal terrain costs, provoke normally and finish in a legal position. This creature must survive and remain capable of flight. No trigger from a free attack; no attack or automatic lift of a held creature."
+        },
+        {
+          "id": "reaction-1",
+          "category": "reaction",
+          "name": "Opportunity Attack",
+          "abilityId": "",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Basic Melee",
+          "referenceMarkdown": ""
+        }
+      ],
+      "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates a complete outcome. All attacks use printed Threat unless stated otherwise.",
+      "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Skyward hooves | Agility | 7 + Push 3 / 5 + Push 1 / 3 |",
+      "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Wing Step | Fly 2; no opportunity from one chosen visible enemy. |\n| Defend | +1 Bane |",
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Bank Away | After taking ranged HP damage: fly 2; provokes. |\n| Opportunity Attack | Basic Melee |"
+    },
+    "details": {
+      "flavorMarkdown": "*A winged horse shakes rain from its mane, its great flight feathers scarred by storms rather than battle.*",
+      "specialtyMarkdown": "### Skyward hooves\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Push 3. **Standard defense:** Push 1.\n\n**Limit:** Apply Stability, terrain costs and normal collision rules to the printed distance.\n\n### Wing Step\n\n*A single hard wingbeat carries it toward a better angle.*\n\nMove up to 2 squares using its printed fly speed without provoking from one visible enemy chosen before moving. Pay normal terrain costs and provoke normally from other enemies. This grants no attack, automatic lift of another creature or hovering exception.\n\n### Bank Away\n\n*A struck feather spins loose as the great wings tilt and carry the creature out of the firing line.*\n\nAfter a ranged attack resolves and deals HP damage to this creature, fly up to 2 squares using its printed fly speed. Pay normal terrain costs, provoke normally and finish in a legal position. This creature must survive and remain capable of flight. No trigger from a free attack; no attack or automatic lift of a held creature.",
+      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until its next turn. Combines with Evasion through normal Boon/Bane rules; repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature; spend its Reaction before the provoking action resolves. That action continues if capable.\n\n**Heavy Frame — Passive:** Stability 1; an explicit trait, not a bonus calculated from Size.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Ordinary sight and hearing.\n\n**Tactics and retreat:** Push a threat away from a rescuer and use flight to reach safe ground. Carrying a rider does not add attacks or bypass occupancy.\n\n**Encounter and conversation:** It will carry someone toward a rescue but refuses a harness offered as ownership.\n\n**Habitat:** Wild frontier; ancient ruin · **Communication:** None\n\n**Loot:** Choose possessions or a clue in its lair that fits the adventure. If a body part is useful or valuable, state its use and value before awarding it.\n\n**Summoning:** Ineligible.",
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-pegasus\n\n\n**Category:** Beast · **Role:** Displacer · **CV:** 23\n\n### Creature-roll reference\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Skyward hooves | Brawn | None | 3 physical damage. | 5 physical damage. Push 1. | 7 physical damage. Push 3. |\n\nUse the attributes above for defenses named by incoming attacks. Same targeting, limits and costs apply; no opposed second roll.\n\n### CV worksheet\n\n**Reference damage:** 3/5/7\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.6\n\n**Action review (#1279):** U 1.45 → 1.6: Maneuver allowance +0.05, Reaction allowance +0.1. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.\n\n**Regeneration per turn:** 0\n\nReference I=4.404, O=4.000. Uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/encounters.md). Utility is provisional and does not simulate control, positioning or summon choices.\n\n**Ability sources:** [Bank Away](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/bank-away.md), [driving blow](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/driving-blow.md), [Wing Step](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/wing-step.md).\n\n**Coverage reference:** [Pathfinder family survey](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/family-survey.md); original HOL prose and mechanics.\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/roster.md) · [Stability](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/rules/stability.md)"
+    },
+    "biography": ""
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-pegasus",
+        "asset": "assets/creatures/fa23d6a65845b7c96c7c2bcd894b5d7cc7215f77714c6f1faf9a64d08d8eb9c1.webp",
+        "sha256": "576851ee7b1888e4fd52c4e2b00243458cdd33b0b97aad9ca31f4b23efe3b68d",
+        "sourceSha256": "fa23d6a65845b7c96c7c2bcd894b5d7cc7215f77714c6f1faf9a64d08d8eb9c1",
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
+      "catalogId": "creature-pegasus",
+      "source": {
+        "path": "design/bestiary/creatures/pegasus.md",
+        "sha256": "885ec4269be241ba0442834ef3090c81c2b8d593e950ffd3deda102dc1939946"
+      },
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Printed profile · specialty automation pending",
+      "specialtyAutomation": "pending",
+      "classification": {
+        "category": "Beast",
+        "role": "Displacer",
+        "cv": 23
+      },
+      "family": "Fantastic hunters and guardians",
+      "abilitySources": [
+        {
+          "label": "Bank Away",
+          "id": "monster-bank-away",
+          "path": "design/monster-abilities/bank-away.md",
+          "sha256": "887da6d8aef40e39b84cc014888987bfdba0b3fdab79cac1676106140afdc82f"
+        },
+        {
+          "label": "driving blow",
+          "id": "monster-driving-blow",
+          "path": "design/monster-abilities/driving-blow.md",
+          "sha256": "38b3406cbcb2f57fdc1bbf57f09857b7ef8a9fd7b35e311dc812476677e6b276"
+        },
+        {
+          "label": "Wing Step",
+          "id": "monster-wing-step",
+          "path": "design/monster-abilities/wing-step.md",
+          "sha256": "2c6ada11d4acf3ee1748e92674a42b9173c128bd6761e88b84373160b8b4b098"
+        }
+      ],
+      "monsterAbilityTemplates": [
+        {
+          "id": "monster-bank-away",
+          "path": "design/monster-abilities/bank-away.md",
+          "sha256": "887da6d8aef40e39b84cc014888987bfdba0b3fdab79cac1676106140afdc82f",
+          "name": "Bank Away",
+          "action": "Reaction",
+          "flavorMarkdown": "*A struck feather spins loose as the great wings tilt and carry the creature out of the firing line.*",
+          "rulesMarkdown": "After a ranged attack resolves and deals HP damage to this creature, fly up to 2 squares using its printed fly speed. Pay normal terrain costs, provoke normally and finish in a legal position. This creature must survive and remain capable of flight. No trigger from a free attack; no attack or automatic lift of a held creature.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Bank Away\n\n*A struck feather spins loose as the great wings tilt and carry the creature out of the firing line.*\n\n## Rules\n\n**ID:** monster-bank-away\n\n**Action:** Reaction\n\nAfter a ranged attack resolves and deals HP damage to this creature, fly up to 2 squares using its printed fly speed. Pay normal terrain costs, provoke normally and finish in a legal position. This creature must survive and remain capable of flight. No trigger from a free attack; no attack or automatic lift of a held creature.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/bank-away.md",
+            "sha256": "887da6d8aef40e39b84cc014888987bfdba0b3fdab79cac1676106140afdc82f"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-driving-blow",
+          "path": "design/monster-abilities/driving-blow.md",
+          "sha256": "38b3406cbcb2f57fdc1bbf57f09857b7ef8a9fd7b35e311dc812476677e6b276",
+          "name": "Driving Blow",
+          "action": "Main Action",
+          "flavorMarkdown": "*The blow lands with enough force to send its victim stumbling backward.*",
+          "rulesMarkdown": "Use the printed attack. Standard pushes the target 1 square; Strong pushes it 2. Apply Stability before moving. This is a rider, not a separate attack or Force action.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Driving Blow\n\n*The blow lands with enough force to send its victim stumbling backward.*\n\n## Rules\n\n**ID:** monster-driving-blow\n\n\n**Action:** Main Action\n\nUse the printed attack. Standard pushes the target 1 square; Strong pushes it 2. Apply Stability before moving. This is a rider, not a separate attack or Force action.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/driving-blow.md",
+            "sha256": "38b3406cbcb2f57fdc1bbf57f09857b7ef8a9fd7b35e311dc812476677e6b276"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-wing-step",
+          "path": "design/monster-abilities/wing-step.md",
+          "sha256": "2c6ada11d4acf3ee1748e92674a42b9173c128bd6761e88b84373160b8b4b098",
+          "name": "Wing Step",
+          "action": "Maneuver",
+          "flavorMarkdown": "*A single hard wingbeat carries it toward a better angle.*",
+          "rulesMarkdown": "Move up to 2 squares using its printed fly speed without provoking from one visible enemy chosen before moving. Pay normal terrain costs and provoke normally from other enemies. This grants no attack, automatic lift of another creature or hovering exception.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Wing Step\n\n*A single hard wingbeat carries it toward a better angle.*\n\n## Rules\n\n**ID:** monster-wing-step\n\n\n**Action:** Maneuver\n\nMove up to 2 squares using its printed fly speed without provoking from one visible enemy chosen before moving. Pay normal terrain costs and provoke normally from other enemies. This grants no attack, automatic lift of another creature or hovering exception.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/wing-step.md",
+            "sha256": "2c6ada11d4acf3ee1748e92674a42b9173c128bd6761e88b84373160b8b4b098"
+          },
+          "automation": "pending"
+        }
+      ],
+      "summoning": {
+        "eligible": false,
+        "summonId": null,
+        "path": null,
+        "eligibility": null,
+        "sourceText": "Ineligible."
+      }
+    }
+  }
+}

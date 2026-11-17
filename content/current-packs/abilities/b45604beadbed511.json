@@ -1,0 +1,47 @@
+{
+  "_key": "!items!b45604beadbed511",
+  "_id": "b45604beadbed511",
+  "name": "Hobbling Aim II",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Hobbling Aim applies Slowed 2 on Strong.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "marksmanship:pinning:2",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "marksmanship:pinning:2",
+        "level": 1,
+        "cost": 2,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Hobbling Aim applies Slowed 2 on Strong.",
+        "improves": "marksmanship:pinning:1",
+        "requires": [
+          "marksmanship:pinning:1"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

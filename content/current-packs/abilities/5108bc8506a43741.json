@@ -1,0 +1,65 @@
+{
+  "_key": "!items!5108bc8506a43741",
+  "_id": "5108bc8506a43741",
+  "name": "Mage Seal",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>SP</dt><dd>0</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One closed unattended container within 1 square</dd></div><div><dt>Duration</dt><dd>1 hour</dd></div></dl><p>Place a visible personal mark across its opening. Opening the container visibly breaks the mark. You recognize your own seal and whether it was broken when you next inspect it.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:seals:1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:seals:1",
+        "level": 1,
+        "cost": 1,
+        "action": "Maneuver",
+        "sp": 0,
+        "range": "One closed unattended container within 1 square",
+        "duration": "1 hour",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Place a visible personal mark across its opening. Opening the container visibly breaks the mark. You recognize your own seal and whether it was broken when you next inspect it.",
+        "improves": null,
+        "requires": [
+          "wards"
+        ],
+        "bookId": "seals"
+      },
+      "spell": {
+        "id": "spell:seals:1",
+        "name": "Mage Seal",
+        "bookId": "seals",
+        "page": "1",
+        "section": "I",
+        "sp": 0,
+        "action": "Maneuver",
+        "actionText": "Maneuver",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One closed unattended container within 1 square",
+        "duration": "1 hour",
+        "effect": "Place a visible personal mark across its opening. Opening the container visibly breaks the mark. You recognize your own seal and whether it was broken when you next inspect it."
+      }
+    }
+  },
+  "effects": []
+}

@@ -1,0 +1,66 @@
+{
+  "_key": "!items!aaa4e06a6d2861ff",
+  "_id": "aaa4e06a6d2861ff",
+  "name": "Planar Ally",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 hour</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One named otherworldly being with which you have an established relationship</dd></div><div><dt>Duration</dt><dd>Up to 10 minutes of conversation</dd></div></dl><p>Invite the being to negotiate one specific service. The DA presents its response, terms and requested payment. Agreement establishes when and how it can assist through its actual capabilities. Any creature that arrives is an independent guest, with the agreed role and duration of service.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:calling:a2",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:calling:a2",
+        "level": 3,
+        "cost": 4,
+        "action": "Ritual · 1 hour",
+        "sp": 5,
+        "range": "One named otherworldly being with which you have an established relationship",
+        "duration": "Up to 10 minutes of conversation",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Invite the being to negotiate one specific service. The DA presents its response, terms and requested payment. Agreement establishes when and how it can assist through its actual capabilities. Any creature that arrives is an independent guest, with the agreed role and duration of service.",
+        "improves": null,
+        "requires": [
+          "calling:4"
+        ],
+        "bookId": "calling"
+      },
+      "spell": {
+        "id": "spell:calling:a2",
+        "name": "Planar Ally",
+        "bookId": "calling",
+        "page": "A2",
+        "section": "VI",
+        "sp": 5,
+        "action": "Ritual",
+        "actionText": "Ritual · 1 hour",
+        "ritualTime": "1 hour",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One named otherworldly being with which you have an established relationship",
+        "duration": "Up to 10 minutes of conversation",
+        "effect": "Invite the being to negotiate one specific service. The DA presents its response, terms and requested payment. Agreement establishes when and how it can assist through its actual capabilities. Any creature that arrives is an independent guest, with the agreed role and duration of service."
+      }
+    }
+  },
+  "effects": []
+}

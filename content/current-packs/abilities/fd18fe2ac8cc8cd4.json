@@ -1,0 +1,66 @@
+{
+  "_key": "!items!fd18fe2ac8cc8cd4",
+  "_id": "fd18fe2ac8cc8cd4",
+  "name": "Passwall — Workshop",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 10 minutes</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One adjacent ordinary wall up to 2 squares thick</dd></div><div><dt>Duration</dt><dd>1 hour</dd></div></dl><p>Make a work opening 1 square wide and 2 high through stone or earth. At expiry the opening closes; occupants emerge at the nearest end first. Secure ordinary supports before using it in a load-bearing wall.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:shaping:a1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:shaping:a1",
+        "level": 3,
+        "cost": 4,
+        "action": "Ritual · 10 minutes",
+        "sp": 5,
+        "range": "One adjacent ordinary wall up to 2 squares thick",
+        "duration": "1 hour",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Make a work opening 1 square wide and 2 high through stone or earth. At expiry the opening closes; occupants emerge at the nearest end first. Secure ordinary supports before using it in a load-bearing wall.",
+        "improves": null,
+        "requires": [
+          "shaping:3"
+        ],
+        "bookId": "shaping"
+      },
+      "spell": {
+        "id": "spell:shaping:a1",
+        "name": "Passwall — Workshop",
+        "bookId": "shaping",
+        "page": "A1",
+        "section": "V",
+        "sp": 5,
+        "action": "Ritual",
+        "actionText": "Ritual · 10 minutes",
+        "ritualTime": "10 minutes",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One adjacent ordinary wall up to 2 squares thick",
+        "duration": "1 hour",
+        "effect": "Make a work opening 1 square wide and 2 high through stone or earth. At expiry the opening closes; occupants emerge at the nearest end first. Secure ordinary supports before using it in a load-bearing wall."
+      }
+    }
+  },
+  "effects": []
+}

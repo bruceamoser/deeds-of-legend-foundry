@@ -1,0 +1,46 @@
+{
+  "_key": "!items!089c0c6ab2580115",
+  "_id": "089c0c6ab2580115",
+  "name": "Predict the Motion",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Target / range / shape</dt><dd>One visible foe within 5 squares.</dd></div><div><dt>Duration</dt><dd>Until the start of your next turn.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div></dl><p>Study the foe. Until the start of your next turn, your next weapon attack against it may use Knowledge instead of its ordinary attribute. Use that attack’s actual range, weapon requirements, damage and effects. While this study lasts, you may also use Knowledge instead of Brawn or Agility to defend against that foe’s attacks; other defense attributes remain unchanged. You may study once on your turn; a new study replaces the previous one.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-signature-intellect-predict-the-motion",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "ability",
+        "nodeId": "ability-signature-intellect-predict-the-motion",
+        "level": 3,
+        "cost": 0,
+        "action": "Maneuver",
+        "sp": null,
+        "range": "One visible foe within 5 squares.",
+        "duration": "Until the start of your next turn.",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "**Action:** Maneuver · **Attribute:** None\n\n**Target / range / shape:** One visible foe within 5 squares.\n\nStudy the foe. Until the start of your next turn, your next weapon attack against it may use Knowledge instead of its ordinary attribute. Use that attack’s actual range, weapon requirements, damage and effects. While this study lasts, you may also use Knowledge instead of Brawn or Agility to defend against that foe’s attacks; other defense attributes remain unchanged. You may study once on your turn; a new study replaces the previous one.\n\n**Duration:** Until the start of your next turn.\n\n**Equipment / acquisition:** None.",
+        "improves": null,
+        "requires": [],
+        "bookId": null,
+        "magic": null
+      }
+    }
+  },
+  "effects": []
+}

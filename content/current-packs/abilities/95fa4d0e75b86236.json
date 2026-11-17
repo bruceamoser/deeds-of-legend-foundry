@@ -1,0 +1,65 @@
+{
+  "_key": "!items!95fa4d0e75b86236",
+  "_id": "95fa4d0e75b86236",
+  "name": "Wall of Force",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>Six connected unoccupied squares within 8 squares</dd></div><div><dt>Duration</dt><dd>1 minute</dd></div></dl><p>Raise a transparent force wall 2 squares high. It blocks physical passage and attacks across it. All sections share 18 HP and resistance 2 to all damage; attacks always deal at least 1. Destroying the wall opens all its squares.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:telekinesis:a1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:telekinesis:a1",
+        "level": 3,
+        "cost": 4,
+        "action": "Main Action",
+        "sp": 5,
+        "range": "Six connected unoccupied squares within 8 squares",
+        "duration": "1 minute",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Raise a transparent force wall 2 squares high. It blocks physical passage and attacks across it. All sections share 18 HP and resistance 2 to all damage; attacks always deal at least 1. Destroying the wall opens all its squares.",
+        "improves": null,
+        "requires": [
+          "telekinesis:3"
+        ],
+        "bookId": "telekinesis"
+      },
+      "spell": {
+        "id": "spell:telekinesis:a1",
+        "name": "Wall of Force",
+        "bookId": "telekinesis",
+        "page": "A1",
+        "section": "V",
+        "sp": 5,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Six connected unoccupied squares within 8 squares",
+        "duration": "1 minute",
+        "effect": "Raise a transparent force wall 2 squares high. It blocks physical passage and attacks across it. All sections share 18 HP and resistance 2 to all damage; attacks always deal at least 1. Destroying the wall opens all its squares."
+      }
+    }
+  },
+  "effects": []
+}

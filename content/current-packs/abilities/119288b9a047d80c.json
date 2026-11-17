@@ -1,0 +1,47 @@
+{
+  "_key": "!items!119288b9a047d80c",
+  "_id": "119288b9a047d80c",
+  "name": "A Roof before Nightfall III",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>A Roof before Nightfall takes 30 minutes with materials already gathered, and you gain 1 Boon on subsequent repair rolls for that shelter.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "craft:workshop:6",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "craft:workshop:6",
+        "level": 3,
+        "cost": 4,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "A Roof before Nightfall takes 30 minutes with materials already gathered, and you gain 1 Boon on subsequent repair rolls for that shelter.",
+        "improves": "craft:workshop:4",
+        "requires": [
+          "craft:workshop:5"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

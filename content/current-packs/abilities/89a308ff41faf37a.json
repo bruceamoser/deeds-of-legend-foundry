@@ -1,0 +1,47 @@
+{
+  "_key": "!items!89a308ff41faf37a",
+  "_id": "89a308ff41faf37a",
+  "name": "Cut Them Off III",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>After completing Cut Them Off, you and up to four companions gain 1 Boon on travel rolls to traverse that identified route until its next landmark. Changed or blocked terrain requires a new route.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "wilderness:tracking:6",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "wilderness:tracking:6",
+        "level": 3,
+        "cost": 4,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "After completing Cut Them Off, you and up to four companions gain 1 Boon on travel rolls to traverse that identified route until its next landmark. Changed or blocked terrain requires a new route.",
+        "improves": "wilderness:tracking:4",
+        "requires": [
+          "wilderness:tracking:5"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

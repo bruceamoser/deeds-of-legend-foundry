@@ -1,0 +1,110 @@
+{
+  "_key": "!items!c6082d561a2895c4",
+  "_id": "c6082d561a2895c4",
+  "name": "Make It Last",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual — 1 hour</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Target / range / shape</dt><dd>One ordinary item you own within reach.</dd></div><div><dt>Magic</dt><dd>Bound-item spell</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Duration</dt><dd>Indefinite; no Sustain.</dd></div><div><dt>Equipment / acquisition</dt><dd>Suitable tools and the actual ordinary item.</dd></div></dl><p>Pay 1 SP and bind one item with a property chosen when bound: a lamp gives controllable ordinary torchlight; a tool returns to its bearer’s empty hand with a Maneuver from within 3 squares along a clear path; or a shield lets its bearer spend a Reaction once per scene to reduce one attack’s damage by 1 after rolling defense, respecting the attack’s minimum damage. You can have one bound item. A binding lasts until you end or replace it, even if the item is lent or lost. Cancellation target 3 ends its magic but leaves the ordinary item and occupied binding; restore the magic with a new ritual and SP. Lending or re-binding an item does not refresh its limited use.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-signature-intellect-make-it-last",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "ability-signature-intellect-make-it-last",
+        "level": 1,
+        "cost": 0,
+        "action": "Ritual — 1 hour",
+        "sp": 1,
+        "range": "One ordinary item you own within reach.",
+        "duration": "Indefinite; no Sustain.",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "**Action:** Ritual — 1 hour · **Attribute:** None\n\n**Target / range / shape:** One ordinary item you own within reach.\n\n**Magic:** Bound-item spell · **SP:** 1\n\nPay 1 SP and bind one item with a property chosen when bound: a lamp gives controllable ordinary torchlight; a tool returns to its bearer’s empty hand with a Maneuver from within 3 squares along a clear path; or a shield lets its bearer spend a Reaction once per scene to reduce one attack’s damage by 1 after rolling defense, respecting the attack’s minimum damage. You can have one bound item. A binding lasts until you end or replace it, even if the item is lent or lost. Cancellation target 3 ends its magic but leaves the ordinary item and occupied binding; restore the magic with a new ritual and SP. Lending or re-binding an item does not refresh its limited use.\n\n**Duration:** Indefinite; no Sustain.\n\n**Equipment / acquisition:** Suitable tools and the actual ordinary item.",
+        "improves": null,
+        "requires": [],
+        "bookId": null,
+        "magic": "Bound-item spell"
+      },
+      "spell": {
+        "id": "ability-signature-intellect-make-it-last",
+        "name": "Make It Last",
+        "level": 1,
+        "dp": null,
+        "action": "Ritual — 1 hour",
+        "attribute": "None",
+        "target": "One ordinary item you own within reach.",
+        "duration": "Indefinite; no Sustain.",
+        "equipment": "Suitable tools and the actual ordinary item.",
+        "limits": "One signature choice at each of levels 1, 3 and 7.",
+        "effect": "**Action:** Ritual — 1 hour · **Attribute:** None\n\n**Target / range / shape:** One ordinary item you own within reach.\n\n**Magic:** Bound-item spell · **SP:** 1\n\nPay 1 SP and bind one item with a property chosen when bound: a lamp gives controllable ordinary torchlight; a tool returns to its bearer’s empty hand with a Maneuver from within 3 squares along a clear path; or a shield lets its bearer spend a Reaction once per scene to reduce one attack’s damage by 1 after rolling defense, respecting the attack’s minimum damage. You can have one bound item. A binding lasts until you end or replace it, even if the item is lent or lost. Cancellation target 3 ends its magic but leaves the ordinary item and occupied binding; restore the magic with a new ritual and SP. Lending or re-binding an item does not refresh its limited use.\n\n**Duration:** Indefinite; no Sustain.\n\n**Equipment / acquisition:** Suitable tools and the actual ordinary item.",
+        "reference": {
+          "flavor": [
+            "Your careful work leaves useful magic in familiar tools."
+          ],
+          "rules": {
+            "details": [
+              {
+                "label": "Action",
+                "value": "Ritual — 1 hour"
+              },
+              {
+                "label": "Attribute",
+                "value": "None"
+              },
+              {
+                "label": "Target / range / shape",
+                "value": "One ordinary item you own within reach."
+              },
+              {
+                "label": "Magic",
+                "value": "Bound-item spell"
+              },
+              {
+                "label": "SP",
+                "value": "1"
+              },
+              {
+                "label": "Duration",
+                "value": "Indefinite; no Sustain."
+              },
+              {
+                "label": "Equipment / acquisition",
+                "value": "Suitable tools and the actual ordinary item."
+              }
+            ],
+            "body": [
+              {
+                "text": "Pay 1 SP and bind one item with a property chosen when bound: a lamp gives controllable ordinary torchlight; a tool returns to its bearer’s empty hand with a Maneuver from within 3 squares along a clear path; or a shield lets its bearer spend a Reaction once per scene to reduce one attack’s damage by 1 after rolling defense, respecting the attack’s minimum damage. You can have one bound item. A binding lasts until you end or replace it, even if the item is lent or lost. Cancellation target 3 ends its magic but leaves the ordinary item and occupied binding; restore the magic with a new ritual and SP. Lending or re-binding an item does not refresh its limited use."
+              }
+            ],
+            "notes": []
+          }
+        },
+        "referenceMarkdown": "**Action:** Ritual — 1 hour · **Attribute:** None\n\n**Target / range / shape:** One ordinary item you own within reach.\n\n**Magic:** Bound-item spell · **SP:** 1\n\nPay 1 SP and bind one item with a property chosen when bound: a lamp gives controllable ordinary torchlight; a tool returns to its bearer’s empty hand with a Maneuver from within 3 squares along a clear path; or a shield lets its bearer spend a Reaction once per scene to reduce one attack’s damage by 1 after rolling defense, respecting the attack’s minimum damage. You can have one bound item. A binding lasts until you end or replace it, even if the item is lent or lost. Cancellation target 3 ends its magic but leaves the ordinary item and occupied binding; restore the magic with a new ritual and SP. Lending or re-binding an item does not refresh its limited use.\n\n**Duration:** Indefinite; no Sustain.\n\n**Equipment / acquisition:** Suitable tools and the actual ordinary item.",
+        "classId": "class-intellect",
+        "lineId": "intellect:make-it-last",
+        "signatureComponent": true,
+        "kind": "ability",
+        "sp": 1,
+        "magic": "Bound-item spell",
+        "rulesMarkdown": "**Action:** Ritual — 1 hour · **Attribute:** None\n\n**Target / range / shape:** One ordinary item you own within reach.\n\n**Magic:** Bound-item spell · **SP:** 1\n\nPay 1 SP and bind one item with a property chosen when bound: a lamp gives controllable ordinary torchlight; a tool returns to its bearer’s empty hand with a Maneuver from within 3 squares along a clear path; or a shield lets its bearer spend a Reaction once per scene to reduce one attack’s damage by 1 after rolling defense, respecting the attack’s minimum damage. You can have one bound item. A binding lasts until you end or replace it, even if the item is lent or lost. Cancellation target 3 ends its magic but leaves the ordinary item and occupied binding; restore the magic with a new ritual and SP. Lending or re-binding an item does not refresh its limited use.\n\n**Duration:** Indefinite; no Sustain.\n\n**Equipment / acquisition:** Suitable tools and the actual ordinary item."
+      }
+    }
+  },
+  "effects": []
+}

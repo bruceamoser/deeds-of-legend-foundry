@@ -14,11 +14,11 @@ export async function settleTurnConditions(actor,turnId,{author=game.user,write=
  // Numbered instances add. Each duration-only condition also decays once as a
  // combined rating, while starred and maintained contributions retain their rating.
  const plan=conditionEndPlan(contributions,{turnId,durationPolicies:{blinded:"combined",deafened:"combined",asleep:"combined",paralyzed:"combined"}});
- let hp=basis.hp;
+ let hp=basis.hp,forgeState=basis.forgeVitals;
  const events=plan.events.map(event=>{
   const type=event.condition==="burning"?"fire":event.condition==="freezing"?"cold":"physical";
-  const result=damagePreview(actor,{...basis,hp},{components:[{type,amount:event.rating}]},{bypassResistance:event.condition==="bleeding"});
-  const output={condition:event.condition,rating:event.rating,type,before:hp,after:result.after,total:result.event.total,event:result.event,bypassResistance:event.condition==="bleeding"};hp=result.after;return output;
+  const result=damagePreview(actor,{...basis,hp,forgeVitals:forgeState},{components:[{type,amount:event.rating}]},{bypassResistance:event.condition==="bleeding",isAttack:false,eventId:event.id});
+  const output={condition:event.condition,rating:event.rating,type,before:hp,after:result.after,total:result.event.total,deathRollRequired:Boolean(result.deathRollRequired),event:result.event,bypassResistance:event.condition==="bleeding"};hp=result.after;forgeState=result.forgeVitals??forgeState;return output;
  });
  const remaining=new Map(plan.contributions.map(condition=>[condition.id,condition]));
  // Damage ends Asleep in the canonical rules, including a starred sleep source.
@@ -33,7 +33,7 @@ export async function settleTurnConditions(actor,turnId,{author=game.user,write=
  const afterSummary=conditionSummary([...remaining.values()]);
  const changes=Object.keys(beforeSummary).filter(key=>beforeSummary[key].rating!==afterSummary[key].rating).map(key=>({key,before:beforeSummary[key].rating,after:afterSummary[key].rating}));
  const receipt={turnId,actorUuid:actor.uuid,name:actor.name,before:basis.hp,after:hp,events,changes};
- await write(actor,{"system.health.value":hp,effects,[`flags.${ID}.conditionRevision`]:(actor.getFlag(ID,"conditionRevision")??0)+1,[`flags.${ID}.damageRevision`]:(actor.getFlag(ID,"damageRevision")??0)+1,[`flags.${ID}.turnEndConditions.${turnId}`]:receipt});
+ await write(actor,{"system.health.value":hp,effects,...(forgeState?{[`flags.${ID}.forgeVitals`]:forgeState}:{}),[`flags.${ID}.conditionRevision`]:(actor.getFlag(ID,"conditionRevision")??0)+1,[`flags.${ID}.damageRevision`]:(actor.getFlag(ID,"damageRevision")??0)+1,[`flags.${ID}.turnEndConditions.${turnId}`]:receipt});
  return receipt;
 }
 export function turnEndContent(result) {

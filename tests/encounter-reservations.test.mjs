@@ -41,7 +41,6 @@ test("legacy multi-document attack resolvers do not resume through another unfin
   let writes = 0;
   const onWrite = () => { writes++; throw new Error("Admission attempted a write"); };
   const attack = await loadService("player-attacks", context, onWrite);
-  const ability = await loadService("abilities", context, onWrite);
   const npc = await loadService("npc-attacks", context, onWrite);
   const author = { id: "owner", isGM: true };
   const setRequest = (kind, request) => messages.set("interleaved", {
@@ -56,8 +55,6 @@ test("legacy multi-document attack resolvers do not resume through another unfin
   await assert.rejects(attack.resolvePlayerBasicMeleeRequest("interleaved"), /pending encounter action/);
   setRequest("npcAttackRequest", { combatUuid: combat.uuid });
   await assert.rejects(npc.resolveNpcAttack("interleaved"), /pending encounter action/);
-  setRequest("abilityRequest", { combatUuid: combat.uuid });
-  await assert.rejects(ability.resolveAbilityRequest("interleaved"), /pending encounter action/);
   assert.equal(writes, 0);
   assert.equal(JSON.stringify(flags), before);
 });

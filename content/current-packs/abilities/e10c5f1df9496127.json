@@ -1,0 +1,66 @@
+{
+  "_key": "!items!e10c5f1df9496127",
+  "_id": "e10c5f1df9496127",
+  "name": "True Polymorph — Objects",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 10 minutes</dd></div><div><dt>SP</dt><dd>6</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One unattended nonmagical object of Bulk 12 or less; 100 coins of reagents consumed</dd></div><div><dt>Duration</dt><dd>Until dismissed or replaced</dd></div></dl><p>Reshape it into one mundane object of equal or smaller Bulk made of stone, wood, glass or common iron. Choose an ordinary function whose construction you understand, with all necessary parts. It has that material’s ordinary qualities and provides no precious substances or learned abilities. Keep one such transformation at a time; dismissing it, completing another, or unraveling it returns the surviving material to its original form. Separated pieces remain parts of the same transformation, not new objects to copy.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:shaping:a3",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:shaping:a3",
+        "level": 7,
+        "cost": 5,
+        "action": "Ritual · 10 minutes",
+        "sp": 6,
+        "range": "One unattended nonmagical object of Bulk 12 or less; 100 coins of reagents consumed",
+        "duration": "Until dismissed or replaced",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Reshape it into one mundane object of equal or smaller Bulk made of stone, wood, glass or common iron. Choose an ordinary function whose construction you understand, with all necessary parts. It has that material’s ordinary qualities and provides no precious substances or learned abilities. Keep one such transformation at a time; dismissing it, completing another, or unraveling it returns the surviving material to its original form. Separated pieces remain parts of the same transformation, not new objects to copy.",
+        "improves": null,
+        "requires": [
+          "shaping:5"
+        ],
+        "bookId": "shaping"
+      },
+      "spell": {
+        "id": "spell:shaping:a3",
+        "name": "True Polymorph — Objects",
+        "bookId": "shaping",
+        "page": "A3",
+        "section": "VII",
+        "sp": 6,
+        "action": "Ritual",
+        "actionText": "Ritual · 10 minutes",
+        "ritualTime": "10 minutes",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One unattended nonmagical object of Bulk 12 or less; 100 coins of reagents consumed",
+        "duration": "Until dismissed or replaced",
+        "effect": "Reshape it into one mundane object of equal or smaller Bulk made of stone, wood, glass or common iron. Choose an ordinary function whose construction you understand, with all necessary parts. It has that material’s ordinary qualities and provides no precious substances or learned abilities. Keep one such transformation at a time; dismissing it, completing another, or unraveling it returns the surviving material to its original form. Separated pieces remain parts of the same transformation, not new objects to copy."
+      }
+    }
+  },
+  "effects": []
+}

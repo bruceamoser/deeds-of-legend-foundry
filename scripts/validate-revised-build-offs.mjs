@@ -55,11 +55,8 @@ for(const b of manifest.builds){
  const doc=readFileSync(new URL(`${b.id}.md`,root),'utf8');assert(doc.includes(`builds/${b.id}-level-${b.level}.hol.json`));assert.doesNotMatch(doc,/undefined|NaN|\[object Object\]/);
 }
 assert(masteryCases>=4,'Exercise complete seven-section spellbooks as well as martial tails');
-for(const line of forge.signatureDevelopment.signatures.filter(x=>x.level===7)){
- const late=forgeSignatureLearning(forge,{7:line.id});
- assert.deepEqual(new Set(late.abilityIds),new Set([line.foundationId,line.id]),`${line.lineId}: skipped level3 must not be granted`);
- const three=forge.signatureDevelopment.signatures.find(x=>x.lineId===line.lineId&&x.level===3);
- const deep=forgeSignatureLearning(forge,{1:line.foundationId,3:three.id,7:line.id});
- assert.equal(deep.components.length,3);assert.equal(new Set(deep.abilityIds).size,3);
+for(const choice of forge.signatureDevelopment.signatures){
+ const independent=forgeSignatureLearning(forge,{[choice.level]:choice.id});
+ assert.deepEqual(independent.abilityIds,[choice.id],`${choice.id}: only this selected ability is granted`);
 }
-console.log('PASS: 39 current portable builds, manual DP/SP arithmetic, prerequisites/gates, actual inventory,21-DP paths,4 spellmasteries, and30 signature late-entry/deep-development compositions.');
+console.log('PASS: 39 current portable builds, manual DP/SP arithmetic, prerequisites/gates, actual inventory,21-DP paths,4 spellmasteries, and90 independent signature choices.');

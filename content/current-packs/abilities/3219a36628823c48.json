@@ -1,0 +1,46 @@
+{
+  "_key": "!items!3219a36628823c48",
+  "_id": "3219a36628823c48",
+  "name": "Hamstring",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Agility</dd></div><div><dt>Target / range / shape</dt><dd>One creature within melee reach that has not noticed you or is adjacent to one of your allies.</dd></div><div><dt>Duration</dt><dd>Attack immediate; conditions use normal decay.</dd></div><div><dt>Equipment / acquisition</dt><dd>A melee weapon.</dd></div></dl><p>Make an Agility roll against the target. On Weak, deal 3 physical damage and apply Slowed 1. On Standard, deal 4 physical damage and apply Bleeding 1 and Slowed 2. On Strong, deal 6 physical damage and apply Bleeding 2 and Slowed 3. This is one attack, not an additional attack. Apply condition immunity and normal decay.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "agility",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-signature-shadow-strike-and-vanish",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "ability",
+        "nodeId": "ability-signature-shadow-strike-and-vanish",
+        "level": 3,
+        "cost": 0,
+        "action": "Main Action",
+        "sp": null,
+        "range": "One creature within melee reach that has not noticed you or is adjacent to one of your allies.",
+        "duration": "Attack immediate; conditions use normal decay.",
+        "attribute": "Agility",
+        "defenseAttribute": null,
+        "effect": "**Action:** Main Action · **Attribute:** Agility\n\n**Target / range / shape:** One creature within melee reach that has not noticed you or is adjacent to one of your allies.\n\nMake an Agility roll against the target. On Weak, deal 3 physical damage and apply Slowed 1. On Standard, deal 4 physical damage and apply Bleeding 1 and Slowed 2. On Strong, deal 6 physical damage and apply Bleeding 2 and Slowed 3. This is one attack, not an additional attack. Apply condition immunity and normal decay.\n\n**Duration:** Attack immediate; conditions use normal decay.\n\n**Equipment / acquisition:** A melee weapon.",
+        "improves": null,
+        "requires": [],
+        "bookId": null,
+        "magic": null
+      }
+    }
+  },
+  "effects": []
+}

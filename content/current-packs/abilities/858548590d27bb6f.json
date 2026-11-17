@@ -1,0 +1,65 @@
+{
+  "_key": "!items!858548590d27bb6f",
+  "_id": "858548590d27bb6f",
+  "name": "Vicious Mockery",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>0</dd></div><div><dt>Attribute</dt><dd>Guile</dd></div><div><dt>Defense</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>One creature within 6 squares that can hear you</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Turn a cutting phrase into a psychic sting. Deal 2/3/5 mental damage.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "guile",
+      "defenseAttribute": "reason"
+    },
+    "outcomes": {
+      "weak": "2 mental damage",
+      "standard": "3 mental damage",
+      "strong": "5 mental damage"
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:emotion:1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:emotion:1",
+        "level": 1,
+        "cost": 1,
+        "action": "Main Action",
+        "sp": 0,
+        "range": "One creature within 6 squares that can hear you",
+        "duration": "Instant",
+        "attribute": "Guile",
+        "defenseAttribute": "Reason",
+        "effect": "Turn a cutting phrase into a psychic sting. Deal 2/3/5 mental damage.",
+        "improves": null,
+        "requires": [
+          "mentalism"
+        ],
+        "bookId": "emotion"
+      },
+      "spell": {
+        "id": "spell:emotion:1",
+        "name": "Vicious Mockery",
+        "bookId": "emotion",
+        "page": "1",
+        "section": "I",
+        "sp": 0,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "Guile",
+        "defense": "Reason",
+        "defenseAttribute": "Reason",
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One creature within 6 squares that can hear you",
+        "duration": "Instant",
+        "effect": "Turn a cutting phrase into a psychic sting. Deal 2/3/5 mental damage."
+      }
+    }
+  },
+  "effects": []
+}

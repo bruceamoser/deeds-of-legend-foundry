@@ -1,0 +1,65 @@
+{
+  "_key": "!items!1ca70119d5d1f020",
+  "_id": "1ca70119d5d1f020",
+  "name": "Detect Magic — Scaling Analysis",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>Up to three visible magical sources within 6 squares</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Read their relative strength. Learn each source&#39;s spell name if known, its SP cost or equivalent strength, and its remaining duration on Standard or Strong; Weak reveals only the strongest source and whether it is sustained. Choose all targets before rolling.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "reason",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:detection:a1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:detection:a1",
+        "level": 3,
+        "cost": 4,
+        "action": "Main Action",
+        "sp": 5,
+        "range": "Up to three visible magical sources within 6 squares",
+        "duration": "Instant",
+        "attribute": "Reason",
+        "defenseAttribute": null,
+        "effect": "Read their relative strength. Learn each source's spell name if known, its SP cost or equivalent strength, and its remaining duration on Standard or Strong; Weak reveals only the strongest source and whether it is sustained. Choose all targets before rolling.",
+        "improves": null,
+        "requires": [
+          "detection:3"
+        ],
+        "bookId": "detection"
+      },
+      "spell": {
+        "id": "spell:detection:a1",
+        "name": "Detect Magic — Scaling Analysis",
+        "bookId": "detection",
+        "page": "A1",
+        "section": "V",
+        "sp": 5,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "Reason",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Up to three visible magical sources within 6 squares",
+        "duration": "Instant",
+        "effect": "Read their relative strength. Learn each source's spell name if known, its SP cost or equivalent strength, and its remaining duration on Standard or Strong; Weak reveals only the strongest source and whether it is sustained. Choose all targets before rolling."
+      }
+    }
+  },
+  "effects": []
+}

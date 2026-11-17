@@ -1,3 +1,5 @@
+import {expireStaleBenefits} from './benefits.mjs';
+import {initialBudgets,prepareParticipantBudget} from './turn-budget.mjs';
 import {settleSummonExpiry} from "./summon-lifecycle.mjs";
 import {summonState} from "../rules/summon-profile.mjs";
 import {settleTurnConditions,turnEndContent} from "./turn-end-conditions.mjs";
@@ -9,7 +11,9 @@ import {
   writeAuthorityDocument,
 } from "./authority.mjs";
 import {
-  startTurnSelection,
+  startEncounter,
+  chooseParticipant,
+  finishTurn,
   reconcileTurnRoster,
   selectTurn,
   finishSelectedTurn,
@@ -23,8 +27,15 @@ export function combatSide(combatant) {
 }
 export async function requestCombat(combat, kind, payload = {}) {
   if (!combat) throw new Error("Choose an encounter before requesting an action.");
-  await ensureAuthorityReady({ shared: true });
+  await ensureAuthorityReady({ shared: true, coordinated: true });
+  let openingRoll;
+  if (kind === "start") {
+    if (combat.getFlag(ID,"encounter")) throw new Error("This encounter has already started.");
+    if (!game.user.isGM && !combat.combatants.some(participant=>participant.actor?.testUserPermission(game.user,"OWNER"))) throw new Error("Join this encounter with a character you own before starting it.");
+    openingRoll = await new foundry.dice.Roll("3d6").evaluate();
+  }
   return createActionMessage({
+    ...(openingRoll ? {rolls:[openingRoll]} : {}),
     content: `Encounter ${kind} requested.`,
     ...(kind === "start"
       ? {}
@@ -43,7 +54,7 @@ export async function requestCombat(combat, kind, payload = {}) {
         },
       },
     },
-  }, { shared: true });
+  }, { shared: true, coordinated: true });
 }
 export function resolveCombatRequest(id, combatUuid) {
   return enqueueCharacterOperation(() => apply(id, combatUuid), {
@@ -60,7 +71,7 @@ async function apply(id, combatUuid) {
   if (
     combat?.documentName !== "Combat" ||
     !message.author ||
-    !["start", "choose", "finish", "roster"].includes(request.kind)
+    !["start", "ambush", "choose", "finish", "roster"].includes(request.kind)
   )
     throw new Error("Invalid encounter request.");
   const receipt = combat.getFlag(ID, "operationReceipts")?.[id];
@@ -72,6 +83,7 @@ async function apply(id, combatUuid) {
       throw new Error(
         "Completed request was changed; its receipt cannot be reused.",
       );
+    await expireStaleBenefits(combat);
     await presentResult(message, combat);
     return { status: "complete", replay: true };
   }
@@ -101,20 +113,34 @@ async function apply(id, combatUuid) {
     );
   let next,turnEnd;
   const participants = () => combat.combatants.filter(c=>!summonState(c.actor)?.record).map(c=>({id:c.id,side:combatSide(c)}));
-  if (request.kind === "start") {
+  if (["start", "ambush"].includes(request.kind)) {
     if (state) throw new Error("This encounter has already started.");
-    next = startTurnSelection(participants());
+    if (request.kind === "ambush") next = startEncounter(participants(), null, {ambushSide: request.side});
+    else {
+      const roll = message.rolls?.[0];
+      if (message.rolls?.length !== 1 || roll?.formula !== "3d6" || roll.dice?.length !== 1 || roll.dice[0].faces !== 6)
+        throw new Error("Opening initiative requires one unmodified native 3d6 roll.");
+      const faces = roll.dice[0].results.filter(result => result.active !== false).map(result => result.result);
+      next = startEncounter(participants(),faces);
+    }
+    next.budgets=initialBudgets(combat,next.roster);
   } else if (request.kind === "choose") {
     if (summonState(actor)?.record) throw new Error("Summons act through their controller's commands. Choose the controller's turn.");
     if (!combat.combatants.has(request.id)) throw new Error("That participant is no longer in the encounter.");
-    const current = state ? reconcileTurnRoster(state,participants()) : startTurnSelection(participants());
-    next = selectTurn(current, request.id);
+    if (!state) throw new Error("Make the opening roll, or have the DA resolve an ambush first.");
+    const current = reconcileTurnRoster(state,participants());
+    next = current.startingSide ? chooseParticipant(current,request.id) : selectTurn(current, request.id);
+    const prepared=prepareParticipantBudget(combat,next,request.id,request,message.author);
+    next.budgets={...(next.budgets??{}),[request.id]:prepared.budget};
+    next.speedProfiles={...(next.speedProfiles??{}),[request.id]:prepared.profile};
+    if(prepared.ruling)next.speedRulings={...(next.speedRulings??{}),[request.id]:prepared.ruling};
+
   } else if (request.kind === "finish") {
     if (!state) throw new Error("Choose a participant first.");
     const current=reconcileTurnRoster(state,participants());
     await settleSummonExpiry(combat,actor,state);
     turnEnd=await settleTurnConditions(actor,`${combat.id}-${state.serial}-${state.current}`,{author:message.author});
-    next = finishSelectedTurn(current);
+    next = current.startingSide ? finishTurn(current) : finishSelectedTurn(current);
   } else {
     if (!state) throw new Error("Choose a participant first.");
     if (request.mode !== "withdraw" && !combat.combatants.has(request.id)) throw new Error("Add the combatant first.");
@@ -122,6 +148,7 @@ async function apply(id, combatUuid) {
     next=structuredClone(state);next.revision++;
     next.roster=next.roster.filter(participant=>participant.id!==request.id);
     if(request.mode!=="withdraw")next.roster.push({id:request.id,side:combatSide(combat.combatants.get(request.id)),withdrawn:false});
+    if(request.mode!=="withdraw"&&!next.budgets?.[request.id])next.budgets={...(next.budgets??{}),...initialBudgets(combat,[{id:request.id}])};
   }
   if (!isCreationAuthority()) return { status: "authority-lost" };
   const turn = next.current
@@ -142,7 +169,9 @@ async function apply(id, combatUuid) {
       ...(turnEnd?{turnEnd}:{}),
     },
   };
-  await writeAuthorityDocument(combat, commit);
+  const completedRounds = state ? Math.max(0,next.round-state.round) : 0;
+  await writeAuthorityDocument(combat, commit, completedRounds ? {worldTime:{delta:6*completedRounds}} : {});
+  await expireStaleBenefits(combat);
   await presentResult(message, combat);
   return { status: "complete", replay: false };
 }
@@ -161,7 +190,9 @@ async function presentResult(message, combat) {
   const result=combat.getFlag(ID,"operationReceipts")?.[message.id]?.turnEnd;
   if(result){await message.update({content:turnEndContent(result)});return;}
   const current=combat.combatants.get(state.current);
-  await message.update({content:current ? `${foundry.utils.escapeHTML(current.name)}’s turn.` : kind === "finish" ? "Turn finished." : "Encounter ready."});
+  const opening=state.opening?.ambushSide ? "Ambush" : state.opening ? `Opening ${state.opening.total}` : "";
+  const side=state.nextSide === "players" ? "Players" : "Opposition";
+  await message.update({content:current ? `${foundry.utils.escapeHTML(current.name)}’s turn.` : state.startingSide ? `${opening ? `${opening} · ` : ""}${side} choose next. ${state.startingSide === "players" ? "Players" : "Opposition"} start each round.` : kind === "finish" ? "Turn finished." : "Encounter ready."});
 }
 export function registerCombatRequests() {
   Hooks.on("createChatMessage", (message) => {

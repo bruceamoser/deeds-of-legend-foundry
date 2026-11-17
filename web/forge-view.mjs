@@ -408,6 +408,7 @@ export function renderForge(graph, state, options = {}) {
 
 /** Bind pointer and search interactions to the stable Workshop app container. */
 export function bindForgeInteractions(container, { onZoom = () => {} } = {}) {
+  const lifetime = new AbortController();
   let drag;
   let suppressClick = false;
   let query = "";
@@ -488,7 +489,7 @@ export function bindForgeInteractions(container, { onZoom = () => {} } = {}) {
   }
 
   for (const type of ["pointerup", "pointercancel", "lostpointercapture"])
-    container.ownerDocument.addEventListener(type, finishPan);
+    container.ownerDocument.addEventListener(type, finishPan, {signal:lifetime.signal});
 
   container.addEventListener("click", (event) => {
     if (suppressClick && event.target.closest(".forge-map-scroll") && event.detail) {
@@ -500,7 +501,7 @@ export function bindForgeInteractions(container, { onZoom = () => {} } = {}) {
       candidateScroll = event.target.closest(".forge-chooser-list").scrollTop;
   }, { capture: true });
 
-  return function syncForge() {
+  const syncForge = function() {
     const atlas = container.querySelector("#forge-atlas-dialog");
     if (atlas && atlas !== previousAtlas) {
       atlas.showModal();
@@ -536,4 +537,6 @@ export function bindForgeInteractions(container, { onZoom = () => {} } = {}) {
       dialog.querySelector('[data-id="close"]').click();
     });
   };
+  syncForge.dispose = () => lifetime.abort();
+  return syncForge;
 }

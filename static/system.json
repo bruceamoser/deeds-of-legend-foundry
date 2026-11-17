@@ -1,8 +1,8 @@
 {
   "id": "heroes-of-legend",
   "title": "Heroes of Legend",
-  "description": "Heroes of Legend for Foundry VTT V14: approved playtest abilities, guided heroes, native character and creature sheets, 3d6 tools, wounds, crafting, equipment and player/DA journals. Most specialty effects resolve at the table; registered summons track commands and end-turn disappearance.",
-  "version": "2.8.2",
+  "description": "Heroes of Legend for Foundry VTT V14: guided character creation, discipline learning and spellbooks, compact character and creature sheets, player rolls, HP and spell points, scars and recovery, equipment, and player/DA rulebooks. Specialty effects resolve at the table unless their controls provide an explicit procedure.",
+  "version": "3.0.0",
   "authors": [
     {
       "name": "Bruce Moser"
@@ -11,7 +11,7 @@
   "url": "https://github.com/bruceamoser/heroes-of-legend-foundry",
   "compatibility": {
     "minimum": "14.367",
-    "verified": "14.369",
+    "verified": "14.370",
     "maximum": "14"
   },
   "esmodules": [
@@ -89,19 +89,6 @@
         "TRUSTED": "NONE",
         "GAMEMASTER": "OWNER"
       }
-    },
-    {
-      "name": "wounds",
-      "label": "Heroes of Legend Wound Tables",
-      "type": "RollTable",
-      "path": "packs/wounds",
-      "system": "heroes-of-legend",
-      "ownership": {
-        "PLAYER": "OBSERVER",
-        "TRUSTED": "OBSERVER",
-        "ASSISTANT": "OBSERVER",
-        "GAMEMASTER": "OWNER"
-      }
     }
   ],
   "styles": [
@@ -113,9 +100,8 @@
     "styles/native-tools.css",
     "styles/native-library.css",
     "styles/roll-dialog.css",
-    "styles/native-chat.css",
-    "styles/creation-parity.css"
+    "styles/native-chat.css"
   ],
   "manifest": "https://github.com/bruceamoser/heroes-of-legend-foundry/releases/latest/download/system.json",
-  "download": "https://github.com/bruceamoser/heroes-of-legend-foundry/releases/download/v2.8.2/heroes-of-legend.zip"
+  "download": "https://github.com/bruceamoser/heroes-of-legend-foundry/releases/download/v3.0.0/heroes-of-legend.zip"
 }

@@ -1,0 +1,66 @@
+{
+  "_key": "!items!d7b3956d0ef759f0",
+  "_id": "d7b3956d0ef759f0",
+  "name": "Continual Flame",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 10 minutes</dd></div><div><dt>SP</dt><dd>3</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One unattended object held throughout the ritual; 10 coins of luminous oil consumed</dd></div><div><dt>Duration</dt><dd>7 days</dd></div></dl><p>Kindle a cool magical flame that sheds bright light to 6 squares. It illuminates without consuming fuel. You may keep up to three such flames; creating a fourth ends the oldest.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:imbuement:6",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:imbuement:6",
+        "level": 1,
+        "cost": 2,
+        "action": "Ritual · 10 minutes",
+        "sp": 3,
+        "range": "One unattended object held throughout the ritual; 10 coins of luminous oil consumed",
+        "duration": "7 days",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Kindle a cool magical flame that sheds bright light to 6 squares. It illuminates without consuming fuel. You may keep up to three such flames; creating a fourth ends the oldest.",
+        "improves": null,
+        "requires": [
+          "imbuement:1"
+        ],
+        "bookId": "imbuement"
+      },
+      "spell": {
+        "id": "spell:imbuement:6",
+        "name": "Continual Flame",
+        "bookId": "imbuement",
+        "page": "6",
+        "section": "III",
+        "sp": 3,
+        "action": "Ritual",
+        "actionText": "Ritual · 10 minutes",
+        "ritualTime": "10 minutes",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One unattended object held throughout the ritual; 10 coins of luminous oil consumed",
+        "duration": "7 days",
+        "effect": "Kindle a cool magical flame that sheds bright light to 6 squares. It illuminates without consuming fuel. You may keep up to three such flames; creating a fourth ends the oldest."
+      }
+    }
+  },
+  "effects": []
+}
