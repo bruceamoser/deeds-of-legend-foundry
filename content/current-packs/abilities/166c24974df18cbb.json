@@ -1,0 +1,65 @@
+{
+  "_key": "!items!166c24974df18cbb",
+  "_id": "166c24974df18cbb",
+  "name": "Staying",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div><div><dt>Defense</dt><dd>Brawn</dd></div><div><dt>Range</dt><dd>One creature within 6 squares</dd></div><div><dt>Duration</dt><dd>Sustained, up to 1 minute</dd></div><div><dt>Hold attribute</dt><dd>Knowledge</dd></div><div><dt>Escape attribute</dt><dd>Brawn</dd></div></dl><p>Invisible pressure pins the target’s movement. Apply Slowed 1/2/3. On Strong, also Slide it 1 square to a visible supported square, applying Stability. Each upkeep renews the original Slowed rating without another Slide. A conscious target may spend a Main Action to escape using the printed attributes. Escape or ending Sustain removes this casting’s Slowed.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "brawn"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:telekinesis:4",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:telekinesis:4",
+        "level": 1,
+        "cost": 2,
+        "action": "Main Action",
+        "sp": 2,
+        "range": "One creature within 6 squares",
+        "duration": "Sustained, up to 1 minute",
+        "attribute": "Knowledge",
+        "defenseAttribute": "Brawn",
+        "effect": "Invisible pressure pins the target’s movement. Apply Slowed 1/2/3. On Strong, also Slide it 1 square to a visible supported square, applying Stability. Each upkeep renews the original Slowed rating without another Slide. A conscious target may spend a Main Action to escape using the printed attributes. Escape or ending Sustain removes this casting’s Slowed.",
+        "improves": null,
+        "requires": [
+          "telekinesis:0"
+        ],
+        "bookId": "telekinesis"
+      },
+      "spell": {
+        "id": "spell:telekinesis:4",
+        "name": "Staying",
+        "bookId": "telekinesis",
+        "page": "4",
+        "section": "II",
+        "sp": 2,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "Knowledge",
+        "defense": "Brawn",
+        "defenseAttribute": "Brawn",
+        "holdAttribute": "Knowledge",
+        "escapeAttribute": "Brawn",
+        "target": "One creature within 6 squares",
+        "duration": "Sustained, up to 1 minute",
+        "effect": "Invisible pressure pins the target’s movement. Apply Slowed 1/2/3. On Strong, also Slide it 1 square to a visible supported square, applying Stability. Each upkeep renews the original Slowed rating without another Slide. A conscious target may spend a Main Action to escape using the printed attributes. Escape or ending Sustain removes this casting’s Slowed."
+      }
+    }
+  },
+  "effects": []
+}

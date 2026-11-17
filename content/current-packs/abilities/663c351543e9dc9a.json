@@ -1,0 +1,65 @@
+{
+  "_key": "!items!663c351543e9dc9a",
+  "_id": "663c351543e9dc9a",
+  "name": "Channel Spell",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>3</dd></div><div><dt>Attribute</dt><dd>As the transmitted spell</dd></div><div><dt>Range</dt><dd>One willing ally within 6 squares; targets measured from that ally</dd></div><div><dt>Duration</dt><dd>As the transmitted spell</dd></div></dl><p>Choose one known Main Action spell from outside the Channeling book costing at most 3 SP. Pay its normal cost plus this spell&#39;s 3 SP. The ally spends its Reaction immediately to release it from its position, choosing legal targets; you make any casting roll with the spell&#39;s attribute. Resolve it once. You remain responsible for any sustain and duration.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:channeling:6",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:channeling:6",
+        "level": 1,
+        "cost": 2,
+        "action": "Main Action",
+        "sp": 3,
+        "range": "One willing ally within 6 squares; targets measured from that ally",
+        "duration": "As the transmitted spell",
+        "attribute": "As the transmitted spell",
+        "defenseAttribute": null,
+        "effect": "Choose one known Main Action spell from outside the Channeling book costing at most 3 SP. Pay its normal cost plus this spell's 3 SP. The ally spends its Reaction immediately to release it from its position, choosing legal targets; you make any casting roll with the spell's attribute. Resolve it once. You remain responsible for any sustain and duration.",
+        "improves": null,
+        "requires": [
+          "channeling:1"
+        ],
+        "bookId": "channeling"
+      },
+      "spell": {
+        "id": "spell:channeling:6",
+        "name": "Channel Spell",
+        "bookId": "channeling",
+        "page": "6",
+        "section": "III",
+        "sp": 3,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "As the transmitted spell",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One willing ally within 6 squares; targets measured from that ally",
+        "duration": "As the transmitted spell",
+        "effect": "Choose one known Main Action spell from outside the Channeling book costing at most 3 SP. Pay its normal cost plus this spell's 3 SP. The ally spends its Reaction immediately to release it from its position, choosing legal targets; you make any casting roll with the spell's attribute. Resolve it once. You remain responsible for any sustain and duration."
+      }
+    }
+  },
+  "effects": []
+}

@@ -1,0 +1,47 @@
+{
+  "_key": "!items!4251f1ad877769b1",
+  "_id": "4251f1ad877769b1",
+  "name": "The Long Road",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div></dl><p>Main Action. Once per scene, guide up to four willing allies initially within 3 squares along legal routes up to 6 squares each, moving up to 6 squares yourself. All ignore movement reactions and must finish within 3 squares of you. Instead of one willing traveler, carry a helpless creature no larger than you, without additional encumbrance for this move; place it adjacent afterward. This does not heal or stabilize. No roll.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "guard:watchfulness:7",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "mastery",
+        "nodeId": "guard:watchfulness:7",
+        "level": 7,
+        "cost": 5,
+        "action": "Main Action",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Main Action. Once per scene, guide up to four willing allies initially within 3 squares along legal routes up to 6 squares each, moving up to 6 squares yourself. All ignore movement reactions and must finish within 3 squares of you. Instead of one willing traveler, carry a helpless creature no larger than you, without additional encumbrance for this move; place it adjacent afterward. This does not heal or stabilize. No roll.",
+        "improves": null,
+        "requires": [
+          "guard:watchfulness:6"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

@@ -1,0 +1,47 @@
+{
+  "_key": "!items!01d83874941a8d2b",
+  "_id": "01d83874941a8d2b",
+  "name": "Make the Case I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div></dl><p>Main Action · Reason for a brief appeal, or one exchange for a longer discussion. Present a credible argument or offer to someone who understands you; add 1/2/3 progress toward the social objective established by the DA.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "reason",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "influence:negotiation:1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "technique",
+        "nodeId": "influence:negotiation:1",
+        "level": 1,
+        "cost": 1,
+        "action": "Main Action",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": "Reason",
+        "defenseAttribute": null,
+        "effect": "Main Action · Reason for a brief appeal, or one exchange for a longer discussion. Present a credible argument or offer to someone who understands you; add 1/2/3 progress toward the social objective established by the DA.",
+        "improves": null,
+        "requires": [
+          "influence"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

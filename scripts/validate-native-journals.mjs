@@ -1,7 +1,9 @@
 import { readFile, readdir } from "node:fs/promises";
 import { createHash } from "node:crypto";
 export async function validateNativeJournals(root) {
-  const lock = JSON.parse(await readFile(new URL("content/source-lock.json", root)));
+  const lock = JSON.parse(await readFile(new URL("content/native-journals-source-lock.json", root)));
+  const forgeLock = JSON.parse(await readFile(new URL("content/forge-source-lock.json", root)));
+  if (lock.commit !== forgeLock.commit) throw new Error("Native reference books and current Workshop must share their approved source.");
   const index = JSON.parse(await readFile(new URL("static/data/journal-index.json", root)));
   const expected = lock.records.filter(record => record.path.endsWith(".md"));
   if (index.sourceCommit !== lock.commit || index.records.length !== expected.length || new Set(index.records.map(record => record.path)).size !== expected.length) throw new Error("Native journal coverage differs from the pinned sources.");

@@ -1,0 +1,47 @@
+{
+  "_key": "!items!f71d9b1fbb21e26b",
+  "_id": "f71d9b1fbb21e26b",
+  "name": "Smoke in a Bottle II",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Smoke in a Bottle flasks have throwing range 6 squares.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "craft:mixtures:2",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "craft:mixtures:2",
+        "level": 1,
+        "cost": 2,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Smoke in a Bottle flasks have throwing range 6 squares.",
+        "improves": "craft:mixtures:1",
+        "requires": [
+          "craft:mixtures:1"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

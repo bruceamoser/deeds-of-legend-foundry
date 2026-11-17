@@ -1,0 +1,337 @@
+{
+  "_key": "!actors!21683c348dcff85c",
+  "_id": "21683c348dcff85c",
+  "name": "Hill Ogre",
+  "type": "creature",
+  "img": "systems/heroes-of-legend/assets/creatures/0890183aa65768cca22994df4b987df1a914d837c1d7ec61c76ff27eb6c8a982.webp",
+  "prototypeToken": {
+    "width": 2,
+    "height": 2,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/0890183aa65768cca22994df4b987df1a914d837c1d7ec61c76ff27eb6c8a982.webp"
+    }
+  },
+  "system": {
+    "schemaVersion": 1,
+    "attributes": {
+      "brawn": {
+        "base": 2
+      },
+      "fortitude": {
+        "base": 2
+      },
+      "agility": {
+        "base": -1
+      },
+      "guile": {
+        "base": 0
+      },
+      "knowledge": {
+        "base": -1
+      },
+      "reason": {
+        "base": 0
+      }
+    },
+    "attributesSource": "Brawn +2; Fortitude +2; Agility -1; Guile +0; Knowledge -1; Reason +0",
+    "health": {
+      "value": 28,
+      "baseMax": 28,
+      "sourceText": "28"
+    },
+    "cv": 20,
+    "speed": 6,
+    "speedSource": "6",
+    "alternateSpeeds": [],
+    "size": 2,
+    "sizeLabel": "2x2 squares",
+    "sizeSource": "2 (2x2 squares)",
+    "footprint": {
+      "width": 2,
+      "height": 2
+    },
+    "armor": 0,
+    "armorMarker": "",
+    "armorSource": "0",
+    "stability": 1,
+    "threat": {
+      "boons": 0,
+      "banes": 1,
+      "sourceText": "1 Bane"
+    },
+    "evasion": {
+      "boons": 1,
+      "banes": 0,
+      "sourceText": "1 Boon"
+    },
+    "weaknesses": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "resistances": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "immunities": [],
+    "basicMelee": {
+      "weak": 5,
+      "standard": 3,
+      "strong": 2,
+      "defenseAttribute": "agility",
+      "orientation": "player-defense"
+    },
+    "actions": {
+      "orientation": "player-defense",
+      "entries": [
+        {
+          "id": "main-0",
+          "category": "main",
+          "name": "Basic Melee",
+          "abilityId": "",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "5",
+            "standard": "3",
+            "strong": "2"
+          },
+          "effect": "5/3/2",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "main-1",
+          "category": "main",
+          "name": "Timber club",
+          "abilityId": "",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "8 + Push 2",
+            "standard": "5 + Push 1",
+            "strong": "4"
+          },
+          "effect": "8 + Push 2 / 5 + Push 1 / 4",
+          "referenceMarkdown": "### Timber club\n\n*The blow lands with enough force to send its victim stumbling backward.*\n\n**Target:** One creature within 2 squares. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Push 2. **Standard defense:** Push 1."
+        },
+        {
+          "id": "main-2",
+          "category": "main",
+          "name": "Hurl aside",
+          "abilityId": "",
+          "attributeKey": "brawn",
+          "defenseSource": "Brawn",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "5 + push 4",
+            "standard": "3 + push 3",
+            "strong": "2 + push 1"
+          },
+          "effect": "5 + push 4 / 3 + push 3 / 2 + push 1",
+          "referenceMarkdown": "### Hurl aside\n\n*One broad hand sweeps the obstacle from the ogre’s path.*\n\n**Target:** One adjacent creature. **Player defense:** Brawn. **Damage type:** physical.\n\n**Weak defense:** push 4. **Standard defense:** push 3. **Strong defense:** push 1."
+        },
+        {
+          "id": "maneuver-0",
+          "category": "maneuver",
+          "name": "Threatening Roar",
+          "abilityId": "",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "One hearing creature within 3 squares gains Frightened 1 of the ogre; once per turn.",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "maneuver-1",
+          "category": "maneuver",
+          "name": "Defend",
+          "abilityId": "",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "+1 Bane",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "reaction-0",
+          "category": "reaction",
+          "name": "Bat Aside the Missile",
+          "abilityId": "monster-bat-aside-the-missile",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Before a physical ranged attack: +1 Bane; not against areas.",
+          "referenceMarkdown": "### Bat Aside the Missile\n\n*A broad hand or haft meets the incoming missile with the ease of brushing a branch aside.*\n\nBefore one physical ranged attack from a visible attacker against this creature is rolled, impose 1 Bane on that attack. Against an NPC attack, grant 1 Boon to its defense instead. No protection against area attacks; no missile is returned and the attack still resolves."
+        },
+        {
+          "id": "reaction-1",
+          "category": "reaction",
+          "name": "Opportunity Attack",
+          "abilityId": "",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Basic Melee",
+          "referenceMarkdown": ""
+        }
+      ],
+      "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates one complete outcome. All attacks use the printed Threat unless stated otherwise.",
+      "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Timber club | Agility | 8 + Push 2 / 5 + Push 1 / 4 |\n| Hurl aside | Brawn | 5 + push 4 / 3 + push 3 / 2 + push 1 |",
+      "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Threatening Roar | One hearing creature within 3 squares gains Frightened 1 of the ogre; once per turn. |\n| Defend | +1 Bane |",
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Bat Aside the Missile | Before a physical ranged attack: +1 Bane; not against areas. |\n| Opportunity Attack | Basic Melee |"
+    },
+    "details": {
+      "flavorMarkdown": "*A heavily built giant with thick hands, blunt features and clothing pieced together from sacks and hides. Its strength is formidable, but its needs and fears are often straightforward.*",
+      "specialtyMarkdown": "### Timber club\n\n*The blow lands with enough force to send its victim stumbling backward.*\n\n**Target:** One creature within 2 squares. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Push 2. **Standard defense:** Push 1.\n\n### Hurl aside\n\n*One broad hand sweeps the obstacle from the ogre’s path.*\n\n**Target:** One adjacent creature. **Player defense:** Brawn. **Damage type:** physical.\n\n**Weak defense:** push 4. **Standard defense:** push 3. **Strong defense:** push 1.\n\n### Bat Aside the Missile\n\n*A broad hand or haft meets the incoming missile with the ease of brushing a branch aside.*\n\nBefore one physical ranged attack from a visible attacker against this creature is rolled, impose 1 Bane on that attack. Against an NPC attack, grant 1 Boon to its defense instead. No protection against area attacks; no missile is returned and the attack still resolves.",
+      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.\n\n**Heavy Frame — Passive:** Stability 1; an explicit creature trait, not a bonus from size.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Ordinary sight and hearing.\n\n**Signs:** Crushed fences mark a route between isolated farms.\n\n**Purpose:** Get food, useful company or a place where people stop chasing it.\n\n**Tactics and retreat:** Push the loudest threat away and pick a fight with one opponent at a time.\n\n**Counterplay and conversation:** Offer a task it can understand and a meal it does not have to steal.\n\n**Habitat:** Hill; ruined farm · **Communication:** Common and Giant\n\n**Loot:** Mismatched belongings and 18 coins; return stolen goods when practical.\n\n**Summoning:** Ineligible.",
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-hill-ogre\n\n\n**Category:** Giant · **Role:** Brute · **CV:** 20\n\n### Creature-roll reference\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Timber club | Brawn | 1 Boon | 4 physical damage. | 5 physical damage. Push 1. | 8 physical damage. Push 2. |\n| Hurl aside | Brawn | 1 Boon | 2 physical damage; push 1. | 3 physical damage; push 3. | 5 physical damage; push 4. |\n\nThe incoming attack names the defense attribute; use the six values above. Same targeting, costs and limits apply in either perspective. No opposed second roll.\n\n\n### CV worksheet\n\n**Difficulty rationale:** A slow or broad exposed body gives the attacker a Boon. Its dangerous attack imposes defense Banes.\n\n**Reference damage:** 4/5/8\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.3\n\n**Action review (#1279):** U 1.2 → 1.3: Maneuver allowance +0, Reaction allowance +0.1. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.\n\n**Regeneration per turn:** 0\n\nReference I=5.596, O=5.008. CV uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/encounters.md); action choices, Stability and control are not simulated. Recalibration remains required.\n\n**Ability sources:** [Bat Aside the Missile](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/bat-aside-the-missile.md), [driving blow](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/driving-blow.md), [hill ogre threatening roar](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/hill-ogre-threatening-roar.md).\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/roster.md) · [Agreed Stability](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/rules/stability.md)"
+    },
+    "biography": ""
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-hill-ogre",
+        "asset": "assets/creatures/0890183aa65768cca22994df4b987df1a914d837c1d7ec61c76ff27eb6c8a982.webp",
+        "sha256": "a310df114036bc732ae3e32321e97561a01a0119df1142ab3e039a21696e933b",
+        "sourceSha256": "0890183aa65768cca22994df4b987df1a914d837c1d7ec61c76ff27eb6c8a982",
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
+      "catalogId": "creature-hill-ogre",
+      "source": {
+        "path": "design/bestiary/creatures/hill-ogre.md",
+        "sha256": "8b2826043275e37490a396471bce748606d2ea318698f8def41c1316d2969a65"
+      },
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Printed profile · specialty automation pending",
+      "specialtyAutomation": "pending",
+      "classification": {
+        "category": "Giant",
+        "role": "Brute",
+        "cv": 20
+      },
+      "family": "Ogres",
+      "abilitySources": [
+        {
+          "label": "Bat Aside the Missile",
+          "id": "monster-bat-aside-the-missile",
+          "path": "design/monster-abilities/bat-aside-the-missile.md",
+          "sha256": "15c9510df66322b501bed76dfacb9a1843ef46ce2bddf989fd080c4ebb528056"
+        },
+        {
+          "label": "driving blow",
+          "id": "monster-driving-blow",
+          "path": "design/monster-abilities/driving-blow.md",
+          "sha256": "38b3406cbcb2f57fdc1bbf57f09857b7ef8a9fd7b35e311dc812476677e6b276"
+        },
+        {
+          "label": "hill ogre threatening roar",
+          "id": "monster-hill-ogre-threatening-roar",
+          "path": "design/monster-abilities/hill-ogre-threatening-roar.md",
+          "sha256": "1e3ff00a1488380fe9d2bd99e325d47b22707c71ffdd5f38ea734cc853952c33"
+        }
+      ],
+      "monsterAbilityTemplates": [
+        {
+          "id": "monster-bat-aside-the-missile",
+          "path": "design/monster-abilities/bat-aside-the-missile.md",
+          "sha256": "15c9510df66322b501bed76dfacb9a1843ef46ce2bddf989fd080c4ebb528056",
+          "name": "Bat Aside the Missile",
+          "action": "Reaction",
+          "flavorMarkdown": "*A broad hand or haft meets the incoming missile with the ease of brushing a branch aside.*",
+          "rulesMarkdown": "Before one physical ranged attack from a visible attacker against this creature is rolled, impose 1 Bane on that attack. Against an NPC attack, grant 1 Boon to its defense instead. No protection against area attacks; no missile is returned and the attack still resolves.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Bat Aside the Missile\n\n*A broad hand or haft meets the incoming missile with the ease of brushing a branch aside.*\n\n## Rules\n\n**ID:** monster-bat-aside-the-missile\n\n**Action:** Reaction\n\nBefore one physical ranged attack from a visible attacker against this creature is rolled, impose 1 Bane on that attack. Against an NPC attack, grant 1 Boon to its defense instead. No protection against area attacks; no missile is returned and the attack still resolves.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/bat-aside-the-missile.md",
+            "sha256": "15c9510df66322b501bed76dfacb9a1843ef46ce2bddf989fd080c4ebb528056"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-driving-blow",
+          "path": "design/monster-abilities/driving-blow.md",
+          "sha256": "38b3406cbcb2f57fdc1bbf57f09857b7ef8a9fd7b35e311dc812476677e6b276",
+          "name": "Driving Blow",
+          "action": "Main Action",
+          "flavorMarkdown": "*The blow lands with enough force to send its victim stumbling backward.*",
+          "rulesMarkdown": "Use the printed attack. Standard pushes the target 1 square; Strong pushes it 2. Apply Stability before moving. This is a rider, not a separate attack or Force action.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Driving Blow\n\n*The blow lands with enough force to send its victim stumbling backward.*\n\n## Rules\n\n**ID:** monster-driving-blow\n\n\n**Action:** Main Action\n\nUse the printed attack. Standard pushes the target 1 square; Strong pushes it 2. Apply Stability before moving. This is a rider, not a separate attack or Force action.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/driving-blow.md",
+            "sha256": "38b3406cbcb2f57fdc1bbf57f09857b7ef8a9fd7b35e311dc812476677e6b276"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-hill-ogre-threatening-roar",
+          "path": "design/monster-abilities/hill-ogre-threatening-roar.md",
+          "sha256": "1e3ff00a1488380fe9d2bd99e325d47b22707c71ffdd5f38ea734cc853952c33",
+          "name": "Threatening Roar",
+          "action": "Maneuver",
+          "flavorMarkdown": "*A bellow rolls out of the ogre’s broad chest.*",
+          "rulesMarkdown": "One hearing creature within 3 squares gains Frightened 1 of the ogre; once per turn.\n\n**Limits:** Costs its Maneuver; no extra action is granted.",
+          "referenceMarkdown": "# Threatening Roar\n\n*A bellow rolls out of the ogre’s broad chest.*\n\n## Rules\n\n**ID:** monster-hill-ogre-threatening-roar\n\n\n**Action:** Maneuver\n\nOne hearing creature within 3 squares gains Frightened 1 of the ogre; once per turn.\n\n**Limits:** Costs its Maneuver; no extra action is granted.\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/hill-ogre-threatening-roar.md",
+            "sha256": "1e3ff00a1488380fe9d2bd99e325d47b22707c71ffdd5f38ea734cc853952c33"
+          },
+          "automation": "pending"
+        }
+      ],
+      "summoning": {
+        "eligible": false,
+        "summonId": null,
+        "path": null,
+        "eligibility": null,
+        "sourceText": "Ineligible."
+      }
+    }
+  }
+}

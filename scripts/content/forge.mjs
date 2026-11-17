@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { parseAbilityReference, parseAncestryReference } from "./choices.mjs";
+import {forgeSignatureRecord} from "../../src/rules/forge-signatures.mjs";
 import { SMALL_TALENT_IDS } from "../../src/rules/forge-rewrite.mjs";
 
 const branchCosts = [1, 2, 2, 3, 4, 4, 5];
@@ -205,6 +206,23 @@ function readCard(text) {
   };
 }
 
+/** Only the current independent schema is accepted for source imports. */
+export function normalizeSignatureDevelopment(source) {
+  assert.equal(source.schemaVersion,2,"Current signature metadata schema 2 is required");
+  assert.deepEqual(source.choiceLevels,[1,3,7]);
+  const signatures=source.signatures.map(entry=>{
+    for(const key of ['components','foundationId','includes','conditionalIncludes','upgradeFrom'])
+      assert.ok(!Object.hasOwn(entry,key),`${entry.id}: independent signature metadata cannot contain ${key}`);
+    const rulesMarkdown=entry.rulesMarkdown;
+    assert.ok(typeof rulesMarkdown==='string' && rulesMarkdown.trim(),`${entry.id}: own signature rules missing`);
+    assert.ok([1,3,7].includes(entry.level),`${entry.id}: invalid milestone`);
+    return {id:entry.id,name:entry.name,classId:entry.classId,level:entry.level,
+      ...(entry.lineId?{lineId:entry.lineId}:{}),rulesMarkdown};
+  });
+  index(signatures,entry=>entry.id,'independent signature');
+  return {schemaVersion:2,choiceLevels:[1,3,7],signatures,displaced:source.displaced ?? []};
+}
+
 export function parseForge(read, list, sourceCommit) {
   const disciplines = [],
     nodes = [],
@@ -212,7 +230,8 @@ export function parseForge(read, list, sourceCommit) {
     books = [];
   const development = read("design/development.md");
   assert.ok(/8.*Guile.*Knowledge.*Reason/s.test(development), "Current creation DP rules missing");
-  const signatureDevelopment = JSON.parse(read("design/signature-development.json"));
+  const signatureSource = JSON.parse(read("design/signature-development.json"));
+  const signatureDevelopment = normalizeSignatureDevelopment(signatureSource);
   assert.deepEqual(signatureDevelopment.choiceLevels, [1, 3, 7]);
   const signatureMetadata = index(signatureDevelopment.signatures, (entry) => entry.id, "signature development");
   const endpointEntries = [
@@ -415,11 +434,9 @@ export function parseForge(read, list, sourceCommit) {
             const metadata = signatureMetadata.get(filename);
             assert.ok(metadata, `Missing signature development ${filename}`);
             assert.equal(metadata.classId, id); assert.equal(metadata.level, card.level);
-            const abilityId = (sourceId) => sourceId ? `ability-${sourceId}` : null;
-            signatures.push({ ...card, classId: id, lineId: metadata.lineId,
-              foundationId: abilityId(metadata.foundationId), upgradeFrom: abilityId(metadata.upgradeFrom),
-              includes: metadata.includes.map(abilityId), conditionalIncludes: metadata.conditionalIncludes.map(abilityId),
-              components: metadata.components.map((component) => ({...component, id: abilityId(component.id)})) });
+            if(signatureSource.schemaVersion===2) assert.equal(card.effect.trim(),metadata.rulesMarkdown.trim(),`${filename}: signature metadata must match its own card rules`);
+            const own={...metadata,id:card.id};
+            signatures.push(forgeSignatureRecord({signatureDevelopment:{schemaVersion:2,signatures:[own]}},{...card,classId:id}));
             return card.id;
           });
           assert.equal(ids.length, 3, `${id} level ${level} signatures`);
@@ -490,10 +507,7 @@ export function parseForge(read, list, sourceCommit) {
   const abilityId = (id) => id ? `ability-${id}` : null;
   const importedDevelopment = {
     ...signatureDevelopment,
-    signatures: signatureDevelopment.signatures.map((entry) => ({ ...entry,
-      id: abilityId(entry.id), foundationId: abilityId(entry.foundationId), upgradeFrom: abilityId(entry.upgradeFrom),
-      includes: entry.includes.map(abilityId), conditionalIncludes: entry.conditionalIncludes.map(abilityId),
-      components: entry.components.map((component) => ({ ...component, id: abilityId(component.id) })) })),
+    signatures: signatureDevelopment.signatures.map((entry) => ({ ...entry,id:abilityId(entry.id) })),
     displaced: signatureDevelopment.displaced.map((entry) => ({ ...entry, id: abilityId(entry.id) })),
   };
   for (const entry of importedDevelopment.displaced) assert.ok(allNodeIds.has(entry.destination) || spells.some((spell) => spell.id === entry.destination), `Missing rehomed concept ${entry.id}: ${entry.destination}`);

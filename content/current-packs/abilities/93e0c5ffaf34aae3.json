@@ -1,0 +1,65 @@
+{
+  "_key": "!items!93e0c5ffaf34aae3",
+  "_id": "93e0c5ffaf34aae3",
+  "name": "Sleep",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Defense</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>One creature within 4 squares</dd></div><div><dt>Duration</dt><dd>Instant; conditions decay normally</dd></div></dl><p>Send drowsiness over the target. Apply Slowed 1/2/3; on Strong also apply Asleep 1. Damage or ordinary waking procedures end Asleep.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "reason",
+      "defenseAttribute": "reason"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:dreams:2",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:dreams:2",
+        "level": 1,
+        "cost": 1,
+        "action": "Main Action",
+        "sp": 1,
+        "range": "One creature within 4 squares",
+        "duration": "Instant; conditions decay normally",
+        "attribute": "Reason",
+        "defenseAttribute": "Reason",
+        "effect": "Send drowsiness over the target. Apply Slowed 1/2/3; on Strong also apply Asleep 1. Damage or ordinary waking procedures end Asleep.",
+        "improves": null,
+        "requires": [
+          "mentalism"
+        ],
+        "bookId": "dreams"
+      },
+      "spell": {
+        "id": "spell:dreams:2",
+        "name": "Sleep",
+        "bookId": "dreams",
+        "page": "2",
+        "section": "I",
+        "sp": 1,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "Reason",
+        "defense": "Reason",
+        "defenseAttribute": "Reason",
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One creature within 4 squares",
+        "duration": "Instant; conditions decay normally",
+        "effect": "Send drowsiness over the target. Apply Slowed 1/2/3; on Strong also apply Asleep 1. Damage or ordinary waking procedures end Asleep."
+      }
+    }
+  },
+  "effects": []
+}

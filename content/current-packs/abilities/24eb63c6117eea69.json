@@ -1,0 +1,65 @@
+{
+  "_key": "!items!24eb63c6117eea69",
+  "_id": "24eb63c6117eea69",
+  "name": "Blink",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>Self</dd></div><div><dt>Duration</dt><dd>1 minute or three uses</dd></div></dl><p>After an attack against you resolves, you may spend your Reaction to teleport to an unoccupied supported square within 2 squares that you can see. Each use consumes one of this spell&#39;s three blinks.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:passage:3",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:passage:3",
+        "level": 1,
+        "cost": 2,
+        "action": "Main Action",
+        "sp": 1,
+        "range": "Self",
+        "duration": "1 minute or three uses",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "After an attack against you resolves, you may spend your Reaction to teleport to an unoccupied supported square within 2 squares that you can see. Each use consumes one of this spell's three blinks.",
+        "improves": null,
+        "requires": [
+          "passage:0"
+        ],
+        "bookId": "passage"
+      },
+      "spell": {
+        "id": "spell:passage:3",
+        "name": "Blink",
+        "bookId": "passage",
+        "page": "3",
+        "section": "II",
+        "sp": 1,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Self",
+        "duration": "1 minute or three uses",
+        "effect": "After an attack against you resolves, you may spend your Reaction to teleport to an unoccupied supported square within 2 squares that you can see. Each use consumes one of this spell's three blinks."
+      }
+    }
+  },
+  "effects": []
+}

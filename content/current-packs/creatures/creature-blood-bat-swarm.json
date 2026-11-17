@@ -1,0 +1,313 @@
+{
+  "_key": "!actors!cc9b809b0fd3c5fd",
+  "_id": "cc9b809b0fd3c5fd",
+  "name": "Blood Bat Swarm",
+  "type": "creature",
+  "img": "systems/heroes-of-legend/assets/creatures/447d56df9f23531674ca0c13dfcd5ada266192e8d4127a6fe1fa1bab73a55fb8.webp",
+  "prototypeToken": {
+    "width": 2,
+    "height": 2,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/447d56df9f23531674ca0c13dfcd5ada266192e8d4127a6fe1fa1bab73a55fb8.webp"
+    }
+  },
+  "system": {
+    "schemaVersion": 1,
+    "attributes": {
+      "brawn": {
+        "base": 0
+      },
+      "fortitude": {
+        "base": 1
+      },
+      "agility": {
+        "base": 2
+      },
+      "guile": {
+        "base": 0
+      },
+      "knowledge": {
+        "base": -2
+      },
+      "reason": {
+        "base": 1
+      }
+    },
+    "attributesSource": "Brawn +0; Fortitude +1; Agility +2; Guile +0; Knowledge -2; Reason +1",
+    "health": {
+      "value": 18,
+      "baseMax": 18,
+      "sourceText": "18"
+    },
+    "cv": 18,
+    "speed": 1,
+    "speedSource": "1; fly 8",
+    "alternateSpeeds": [
+      {
+        "mode": "fly",
+        "value": 8
+      }
+    ],
+    "size": 2,
+    "sizeLabel": "2x2 squares",
+    "sizeSource": "2 (2x2 squares)",
+    "footprint": {
+      "width": 2,
+      "height": 2
+    },
+    "armor": 2,
+    "armorMarker": "",
+    "armorSource": "2",
+    "stability": 0,
+    "threat": {
+      "boons": 0,
+      "banes": 0,
+      "sourceText": "None"
+    },
+    "evasion": {
+      "boons": 0,
+      "banes": 1,
+      "sourceText": "1 Bane"
+    },
+    "weaknesses": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "resistances": {
+      "numeric": [
+        {
+          "type": "Physical",
+          "value": 2
+        }
+      ],
+      "special": [],
+      "sourceText": "Physical (2)"
+    },
+    "immunities": [],
+    "basicMelee": {
+      "weak": 5,
+      "standard": 3,
+      "strong": 2,
+      "defenseAttribute": "agility",
+      "orientation": "player-defense"
+    },
+    "actions": {
+      "orientation": "player-defense",
+      "entries": [
+        {
+          "id": "main-0",
+          "category": "main",
+          "name": "Basic Melee",
+          "abilityId": "",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "5",
+            "standard": "3",
+            "strong": "2"
+          },
+          "effect": "5/3/2",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "main-1",
+          "category": "main",
+          "name": "Thousand bites",
+          "abilityId": "",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "5 + Bleeding 2",
+            "standard": "3 + Bleeding 1",
+            "strong": "2"
+          },
+          "effect": "5 + Bleeding 2 / 3 + Bleeding 1 / 2",
+          "referenceMarkdown": "### Thousand bites\n\n*The claws snag and drag; blood follows the withdrawing talons.*\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Bleeding 2. **Standard defense:** Bleeding 1."
+        },
+        {
+          "id": "maneuver-0",
+          "category": "maneuver",
+          "name": "Defend",
+          "abilityId": "",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "+1 Bane",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "reaction-0",
+          "category": "reaction",
+          "name": "Scatter Before the Blast",
+          "abilityId": "monster-scatter-before-the-blast",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Before an area attack: +1 Bane to that attack.",
+          "referenceMarkdown": "### Scatter Before the Blast\n\n*The swarm opens around the incoming sweep, then folds back into a ragged cloud of wings or fur.*\n\nBefore an area attack that includes this creature is rolled, impose 1 Bane on that attack. Against an NPC area attack, grant 1 Boon to this creature's defense instead. This protection belongs to the swarm; a player area attack still uses one roll with the worst relevant target modifiers. No movement, new swarm or immunity is granted."
+        },
+        {
+          "id": "reaction-1",
+          "category": "reaction",
+          "name": "Opportunity Attack",
+          "abilityId": "",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Basic Melee",
+          "referenceMarkdown": ""
+        }
+      ],
+      "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates one complete outcome. All attacks use the printed Threat unless stated otherwise.",
+      "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Thousand bites | Agility | 5 + Bleeding 2 / 3 + Bleeding 1 / 2 |",
+      "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Defend | +1 Bane |",
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Scatter Before the Blast | Before an area attack: +1 Bane to that attack. |\n| Opportunity Attack | Basic Melee |"
+    },
+    "details": {
+      "flavorMarkdown": "*A flock of small blood-feeding bats, recognizable by red mouths and pale bellies beneath dark wings. Their numbers protect individual bodies until a broad attack scatters them.*",
+      "specialtyMarkdown": "### Thousand bites\n\n*The claws snag and drag; blood follows the withdrawing talons.*\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Bleeding 2. **Standard defense:** Bleeding 1.\n\n### Scatter Before the Blast\n\n*The swarm opens around the incoming sweep, then folds back into a ragged cloud of wings or fur.*\n\nBefore an area attack that includes this creature is rolled, impose 1 Bane on that attack. Against an NPC area attack, grant 1 Boon to this creature's defense instead. This protection belongs to the swarm; a player area attack still uses one roll with the worst relevant target modifiers. No movement, new swarm or immunity is granted.",
+      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.\n\n**Scatter Body:** Area attacks ignore its physical DR, not other resistance. One HP pool and one turn; cannot overlap another creature at rest.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Ordinary sight and hearing.\n\n**Signs:** Livestock wake with shallow cuts and panic at dusk.\n\n**Purpose:** Feed quickly and return to the roost.\n\n**Tactics and retreat:** Rend the nearest isolated target, then retreat if the swarm is badly damaged.\n\n**Counterplay and conversation:** Fight under a low roof and use area effects; protect the livestock behind screens.\n\n**Habitat:** Cavern; pasture · **Communication:** None\n\n**Loot:** No carried treasure.\n\n**Summoning:** Ineligible.",
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-blood-bat-swarm\n\n\n**Category:** Animal · **Role:** Flying swarm · **CV:** 18\n\n### Creature-roll reference\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Thousand bites | Agility | None | 2 physical damage. | 3 physical damage. Bleeding 1. | 5 physical damage. Bleeding 2. |\n\nThe incoming attack names the defense attribute; use the six values above. Same targeting, costs and limits apply in either perspective. No opposed second roll.\n\n\n### CV worksheet\n\n**Difficulty rationale:** An agile or elusive body warrants attack Banes. Ordinary attack difficulty; riders and positioning carry the threat.\n\n**Reference damage:** 2/3/5\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.45\n\n**Action review (#1279):** U 1.35 → 1.45: Maneuver allowance +0, Reaction allowance +0.1. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.\n\n**Regeneration per turn:** 0\n\nReference I=2.404, O=2.162. CV uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/encounters.md); action choices, Stability and control are not simulated. Recalibration remains required.\n\n**Ability sources:** [rending blow](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/rending-blow.md), [Scatter Before the Blast](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/scatter-before-the-blast.md), [scatter body](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/scatter-body.md).\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/roster.md) · [Agreed Stability](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/rules/stability.md)"
+    },
+    "biography": ""
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-blood-bat-swarm",
+        "asset": "assets/creatures/447d56df9f23531674ca0c13dfcd5ada266192e8d4127a6fe1fa1bab73a55fb8.webp",
+        "sha256": "a3330e36e18f8f8f69ff01fe246b081d704d07525a51a1c479f9cc7fb870465c",
+        "sourceSha256": "447d56df9f23531674ca0c13dfcd5ada266192e8d4127a6fe1fa1bab73a55fb8",
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
+      "catalogId": "creature-blood-bat-swarm",
+      "source": {
+        "path": "design/bestiary/creatures/blood-bat-swarm.md",
+        "sha256": "42e3bac51f7b39afcb50d4d07cbb9337fdef6c92e6fe0e0551e676e1122973c0"
+      },
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Printed profile · specialty automation pending",
+      "specialtyAutomation": "pending",
+      "classification": {
+        "category": "Animal",
+        "role": "Flying swarm",
+        "cv": 18
+      },
+      "family": "Animal",
+      "abilitySources": [
+        {
+          "label": "rending blow",
+          "id": "monster-rending-blow",
+          "path": "design/monster-abilities/rending-blow.md",
+          "sha256": "5686040087bb64c4d0a85c4faadb2d7a5ce8bd958937f732f62fd292a096f192"
+        },
+        {
+          "label": "Scatter Before the Blast",
+          "id": "monster-scatter-before-the-blast",
+          "path": "design/monster-abilities/scatter-before-the-blast.md",
+          "sha256": "0c032a62e8467c2ff89c96e41ec5a0adb11431a8ea0c65d9432f3c362d914960"
+        },
+        {
+          "label": "scatter body",
+          "id": "monster-scatter-body",
+          "path": "design/monster-abilities/scatter-body.md",
+          "sha256": "6a67db60810f255ef544609a2f4f47feb2e5dd57987492d84c5d30afc39c9045"
+        }
+      ],
+      "monsterAbilityTemplates": [
+        {
+          "id": "monster-rending-blow",
+          "path": "design/monster-abilities/rending-blow.md",
+          "sha256": "5686040087bb64c4d0a85c4faadb2d7a5ce8bd958937f732f62fd292a096f192",
+          "name": "Rending Blow",
+          "action": "Main Action",
+          "flavorMarkdown": "*The claws snag and drag; blood follows the withdrawing talons.*",
+          "rulesMarkdown": "Use the printed attack. Standard also applies Bleeding 1; Strong applies Bleeding 2. Bleeding resolves and decays at the target’s turn end. At 0 HP follow the ordinary Dying and immediate death-roll rules.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Rending Blow\n\n*The claws snag and drag; blood follows the withdrawing talons.*\n\n## Rules\n\n**ID:** monster-rending-blow\n\n\n**Action:** Main Action\n\nUse the printed attack. Standard also applies Bleeding 1; Strong applies Bleeding 2. Bleeding resolves and decays at the target’s turn end. At 0 HP follow the ordinary Dying and immediate death-roll rules.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/rending-blow.md",
+            "sha256": "5686040087bb64c4d0a85c4faadb2d7a5ce8bd958937f732f62fd292a096f192"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-scatter-before-the-blast",
+          "path": "design/monster-abilities/scatter-before-the-blast.md",
+          "sha256": "0c032a62e8467c2ff89c96e41ec5a0adb11431a8ea0c65d9432f3c362d914960",
+          "name": "Scatter Before the Blast",
+          "action": "Reaction",
+          "flavorMarkdown": "*The swarm opens around the incoming sweep, then folds back into a ragged cloud of wings or fur.*",
+          "rulesMarkdown": "Before an area attack that includes this creature is rolled, impose 1 Bane on that attack. Against an NPC area attack, grant 1 Boon to this creature's defense instead. This protection belongs to the swarm; a player area attack still uses one roll with the worst relevant target modifiers. No movement, new swarm or immunity is granted.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Scatter Before the Blast\n\n*The swarm opens around the incoming sweep, then folds back into a ragged cloud of wings or fur.*\n\n## Rules\n\n**ID:** monster-scatter-before-the-blast\n\n**Action:** Reaction\n\nBefore an area attack that includes this creature is rolled, impose 1 Bane on that attack. Against an NPC area attack, grant 1 Boon to this creature's defense instead. This protection belongs to the swarm; a player area attack still uses one roll with the worst relevant target modifiers. No movement, new swarm or immunity is granted.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/scatter-before-the-blast.md",
+            "sha256": "0c032a62e8467c2ff89c96e41ec5a0adb11431a8ea0c65d9432f3c362d914960"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-scatter-body",
+          "path": "design/monster-abilities/scatter-body.md",
+          "sha256": "6a67db60810f255ef544609a2f4f47feb2e5dd57987492d84c5d30afc39c9045",
+          "name": "Scatter Body",
+          "action": "Passive",
+          "flavorMarkdown": "*The shape bursts apart around the weapon and closes again as crawling fragments.*",
+          "rulesMarkdown": "The creature’s printed physical resistance represents its dispersed body. An area attack ignores that physical resistance, but not unrelated resistance. It still occupies its footprint and cannot overlap another creature at rest. No extra attacks from individual members; one HP pool and one turn.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Scatter Body\n\n*The shape bursts apart around the weapon and closes again as crawling fragments.*\n\n## Rules\n\n**ID:** monster-scatter-body\n\n\n**Action:** Passive\n\nThe creature’s printed physical resistance represents its dispersed body. An area attack ignores that physical resistance, but not unrelated resistance. It still occupies its footprint and cannot overlap another creature at rest. No extra attacks from individual members; one HP pool and one turn.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/scatter-body.md",
+            "sha256": "6a67db60810f255ef544609a2f4f47feb2e5dd57987492d84c5d30afc39c9045"
+          },
+          "automation": "pending"
+        }
+      ],
+      "summoning": {
+        "eligible": false,
+        "summonId": null,
+        "path": null,
+        "eligibility": null,
+        "sourceText": "Ineligible."
+      }
+    }
+  }
+}

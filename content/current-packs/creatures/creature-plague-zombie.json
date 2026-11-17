@@ -1,0 +1,346 @@
+{
+  "_key": "!actors!479a7f9e0c4d9c0d",
+  "_id": "479a7f9e0c4d9c0d",
+  "name": "Plague Zombie",
+  "type": "creature",
+  "img": "systems/heroes-of-legend/assets/creatures/2ab5effb71b32ddfc29b9552defbe089aacd6cabd9e062d32f36d3fdc038a8c8.webp",
+  "prototypeToken": {
+    "width": 1,
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/2ab5effb71b32ddfc29b9552defbe089aacd6cabd9e062d32f36d3fdc038a8c8.webp"
+    }
+  },
+  "system": {
+    "schemaVersion": 1,
+    "attributes": {
+      "brawn": {
+        "base": 2
+      },
+      "fortitude": {
+        "base": 2
+      },
+      "agility": {
+        "base": 0
+      },
+      "guile": {
+        "base": -1
+      },
+      "knowledge": {
+        "base": -1
+      },
+      "reason": {
+        "base": 0
+      }
+    },
+    "attributesSource": "Brawn +2; Fortitude +2; Agility +0; Guile -1; Knowledge -1; Reason +0",
+    "health": {
+      "value": 18,
+      "baseMax": 18,
+      "sourceText": "18"
+    },
+    "cv": 12,
+    "speed": 4,
+    "speedSource": "4",
+    "alternateSpeeds": [],
+    "size": 1,
+    "sizeLabel": "medium",
+    "sizeSource": "1 (medium)",
+    "footprint": {
+      "width": 1,
+      "height": 1
+    },
+    "armor": 0,
+    "armorMarker": "",
+    "armorSource": "0",
+    "stability": 0,
+    "threat": {
+      "boons": 0,
+      "banes": 0,
+      "sourceText": "None"
+    },
+    "evasion": {
+      "boons": 0,
+      "banes": 0,
+      "sourceText": "None"
+    },
+    "weaknesses": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "resistances": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "immunities": [
+      "Bleeding",
+      "Poisoned",
+      "Asleep"
+    ],
+    "basicMelee": {
+      "weak": 5,
+      "standard": 3,
+      "strong": 2,
+      "defenseAttribute": "agility",
+      "orientation": "player-defense"
+    },
+    "actions": {
+      "orientation": "player-defense",
+      "entries": [
+        {
+          "id": "main-0",
+          "category": "main",
+          "name": "Basic Melee",
+          "abilityId": "",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "5",
+            "standard": "3",
+            "strong": "2"
+          },
+          "effect": "5/3/2",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "main-1",
+          "category": "main",
+          "name": "Grave-soaked hands",
+          "abilityId": "",
+          "attributeKey": "fortitude",
+          "defenseSource": "Fortitude",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "5 + Poisoned 2",
+            "standard": "3 + Poisoned 1",
+            "strong": "2"
+          },
+          "effect": "5 + Poisoned 2 / 3 + Poisoned 1 / 2",
+          "referenceMarkdown": "### Grave-soaked hands\n\n**Target:** One adjacent creature. **Player defense:** Fortitude. **Damage type:** physical.\n\n**Weak defense:** Poisoned 2. **Standard defense:** Poisoned 1."
+        },
+        {
+          "id": "maneuver-0",
+          "category": "maneuver",
+          "name": "Grave Stench",
+          "abilityId": "",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "One adjacent breathing target: Poisoned 1.",
+          "referenceMarkdown": "### Grave Stench\n\n*The creature exhales a breath of wet earth and spoiled meat.*\n\nOne adjacent breathing creature gains Poisoned 1. Once per turn; no damage."
+        },
+        {
+          "id": "maneuver-1",
+          "category": "maneuver",
+          "name": "Defend",
+          "abilityId": "",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "+1 Bane",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "reaction-0",
+          "category": "reaction",
+          "name": "Clinging Recoil",
+          "abilityId": "monster-clinging-recoil",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "After adjacent attack deals HP damage: attacker gains Slowed 2.",
+          "referenceMarkdown": "### Clinging Recoil\n\n*A ruined hand closes on cloth and flesh even as the blow tears through the corpse.*\n\nAfter an adjacent attacker’s attack resolves and deals HP damage to this creature, apply Slowed 2 to that attacker. This creature must survive and remain capable. No trigger from a free attack or another retaliatory effect. This grants no grapple, extra damage or equipment destruction."
+        },
+        {
+          "id": "reaction-1",
+          "category": "reaction",
+          "name": "Opportunity Attack",
+          "abilityId": "",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Basic Melee",
+          "referenceMarkdown": ""
+        }
+      ],
+      "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates a complete outcome. All attacks use printed Threat unless stated otherwise.",
+      "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Grave-soaked hands | Fortitude | 5 + Poisoned 2 / 3 + Poisoned 1 / 2 |",
+      "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Grave Stench | One adjacent breathing target: Poisoned 1. |\n| Defend | +1 Bane |",
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Clinging Recoil | After adjacent attack deals HP damage: attacker gains Slowed 2. |\n| Opportunity Attack | Basic Melee |"
+    },
+    "details": {
+      "flavorMarkdown": "*Wet burial cloth clings to a swollen corpse, and clouds of grave flies escape whenever its jaw falls open.*",
+      "specialtyMarkdown": "### Grave-soaked hands\n\n**Target:** One adjacent creature. **Player defense:** Fortitude. **Damage type:** physical.\n\n**Weak defense:** Poisoned 2. **Standard defense:** Poisoned 1.\n\n### Grave Stench\n\n*The creature exhales a breath of wet earth and spoiled meat.*\n\nOne adjacent breathing creature gains Poisoned 1. Once per turn; no damage.\n\n### Clinging Recoil\n\n*A ruined hand closes on cloth and flesh even as the blow tears through the corpse.*\n\nAfter an adjacent attacker’s attack resolves and deals HP damage to this creature, apply Slowed 2 to that attacker. This creature must survive and remain capable. No trigger from a free attack or another retaliatory effect. This grants no grapple, extra damage or equipment destruction.",
+      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until its next turn. Combines with Evasion through normal Boon/Bane rules; repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature; spend its Reaction before the provoking action resolves. That action continues if capable.\n\n**Lifeless Body — Passive:** Does not breathe or eat; only its listed immunities apply.\n\n**Healing:** Healing-harmed: ordinary healing resolves as Life damage instead; no beneficial riders.\n\n**Against offensive healing:** Its controller uses Fortitude defense when player-controlled; a player attacking it rolls only their attack.\n\n**Senses:** Dark sight 6 squares; ordinary hearing.\n\n**Tactics and retreat:** Close until Grave Stench matters, then keep following the familiar route even when a healthier target offers itself.\n\n**Encounter and conversation:** It shambles toward a familiar household; the survivors need an escort before the streets fill.\n\n**Habitat:** Crypt; burial ground; ruined settlement · **Communication:** Common\n\n**Loot:** Choose possessions or a clue in its lair that fits the adventure. If a body part is useful or valuable, state its use and value before awarding it.\n\n**Summoning:** Undead 3 — [player reference](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/summons/plague-zombie.md).",
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-plague-zombie\n\n\n**Category:** Undead · **Role:** Debuffer · **CV:** 12\n\n### CV worksheet\n\n**Reference damage:** 2/3/5\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.4\n\n**Action review (#1279):** U 1.3 → 1.4: Maneuver allowance +0, Reaction allowance +0.1. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.\n\n**Regeneration per turn:** 0\n\nReference I=5.000, O=2.162. Uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/encounters.md). Utility is provisional and does not simulate control, positioning or summon choices.\n\n**Ability sources:** [Clinging Recoil](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/clinging-recoil.md), [foul exhalation](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/foul-exhalation.md), [lifeless body](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/lifeless-body.md), [venom](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/venom.md).\n\n**Coverage reference:** [Pathfinder family survey](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/family-survey.md); original HOL prose and mechanics.\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/roster.md) · [Stability](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/rules/stability.md)"
+    },
+    "biography": ""
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-plague-zombie",
+        "asset": "assets/creatures/2ab5effb71b32ddfc29b9552defbe089aacd6cabd9e062d32f36d3fdc038a8c8.webp",
+        "sha256": "0a577b0484ea12c2b26d6cad75f39d8169f8aa1b4e02add143f9e072a834b731",
+        "sourceSha256": "2ab5effb71b32ddfc29b9552defbe089aacd6cabd9e062d32f36d3fdc038a8c8",
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
+      "catalogId": "creature-plague-zombie",
+      "source": {
+        "path": "design/bestiary/creatures/plague-zombie.md",
+        "sha256": "6f7b22e341f5de834a13072bd472ce9a201adcf0ec5ef2e316ba0beba1c10747"
+      },
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Printed profile · specialty automation pending",
+      "specialtyAutomation": "pending",
+      "classification": {
+        "category": "Undead",
+        "role": "Debuffer",
+        "cv": 12
+      },
+      "family": "Zombies",
+      "abilitySources": [
+        {
+          "label": "Clinging Recoil",
+          "id": "monster-clinging-recoil",
+          "path": "design/monster-abilities/clinging-recoil.md",
+          "sha256": "57afa37d2ce3e0d92be90bc698dde273499d9e7474fd303e627b9ec7405edf1f"
+        },
+        {
+          "label": "foul exhalation",
+          "id": "monster-foul-exhalation",
+          "path": "design/monster-abilities/foul-exhalation.md",
+          "sha256": "077cf3648cf640ee020ffddafc6e7a74b74fee72956ac791edba7b72c25b8c5c"
+        },
+        {
+          "label": "lifeless body",
+          "id": "monster-lifeless-body",
+          "path": "design/monster-abilities/lifeless-body.md",
+          "sha256": "248c16c6e641d2042cd94a05e7e8bfce03b5177f4f57cda241b46d9b16de4d81"
+        },
+        {
+          "label": "venom",
+          "id": "monster-venom",
+          "path": "design/monster-abilities/venom.md",
+          "sha256": "7f9de07c3efecfa084b884f9b9032c9f6cc9d113e4f2c5428a32070b0f5e38fe"
+        }
+      ],
+      "monsterAbilityTemplates": [
+        {
+          "id": "monster-clinging-recoil",
+          "path": "design/monster-abilities/clinging-recoil.md",
+          "sha256": "57afa37d2ce3e0d92be90bc698dde273499d9e7474fd303e627b9ec7405edf1f",
+          "name": "Clinging Recoil",
+          "action": "Reaction",
+          "flavorMarkdown": "*Something catches the striking limb: a clutching hand, a string of slime or a fold of adhesive flesh that drags at the next hurried step.*",
+          "rulesMarkdown": "After an adjacent attacker’s attack resolves and deals HP damage to this creature, apply Slowed 2 to that attacker. This creature must survive and remain capable. No trigger from a free attack or another retaliatory effect. This grants no grapple, extra damage or equipment destruction.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Clinging Recoil\n\n*Something catches the striking limb: a clutching hand, a string of slime or a fold of adhesive flesh that drags at the next hurried step.*\n\n## Rules\n\n**ID:** monster-clinging-recoil\n\n**Action:** Reaction\n\nAfter an adjacent attacker’s attack resolves and deals HP damage to this creature, apply Slowed 2 to that attacker. This creature must survive and remain capable. No trigger from a free attack or another retaliatory effect. This grants no grapple, extra damage or equipment destruction.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/clinging-recoil.md",
+            "sha256": "57afa37d2ce3e0d92be90bc698dde273499d9e7474fd303e627b9ec7405edf1f"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-foul-exhalation",
+          "path": "design/monster-abilities/foul-exhalation.md",
+          "sha256": "077cf3648cf640ee020ffddafc6e7a74b74fee72956ac791edba7b72c25b8c5c",
+          "name": "Grave Stench",
+          "action": "Maneuver",
+          "flavorMarkdown": "*The creature exhales a breath of wet earth and spoiled meat.*",
+          "rulesMarkdown": "One adjacent breathing creature gains Poisoned 1. Once per turn; no damage.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Grave Stench\n\n*The creature exhales a breath of wet earth and spoiled meat.*\n\n## Rules\n\n**ID:** monster-foul-exhalation\n\n\n**Action:** Maneuver\n\nOne adjacent breathing creature gains Poisoned 1. Once per turn; no damage.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/foul-exhalation.md",
+            "sha256": "077cf3648cf640ee020ffddafc6e7a74b74fee72956ac791edba7b72c25b8c5c"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-lifeless-body",
+          "path": "design/monster-abilities/lifeless-body.md",
+          "sha256": "248c16c6e641d2042cd94a05e7e8bfce03b5177f4f57cda241b46d9b16de4d81",
+          "name": "Lifeless Body",
+          "action": "Passive",
+          "flavorMarkdown": "*Nothing breathes beneath the torn coat; nothing living looks through the visor.*",
+          "rulesMarkdown": "The card must list its exact condition immunities; this trait grants no additional unlisted ones. It does not breathe or need food. Undead entries marked healing-harmed take a healing result as Life damage; constructs marked repair-only do not regain HP from ordinary healing. Neither rule prevents physical attacks from dealing their normal minimum damage.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Lifeless Body\n\n*Nothing breathes beneath the torn coat; nothing living looks through the visor.*\n\n## Rules\n\n**ID:** monster-lifeless-body\n\n\n**Action:** Passive\n\nThe card must list its exact condition immunities; this trait grants no additional unlisted ones. It does not breathe or need food. Undead entries marked healing-harmed take a healing result as Life damage; constructs marked repair-only do not regain HP from ordinary healing. Neither rule prevents physical attacks from dealing their normal minimum damage.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/lifeless-body.md",
+            "sha256": "248c16c6e641d2042cd94a05e7e8bfce03b5177f4f57cda241b46d9b16de4d81"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-venom",
+          "path": "design/monster-abilities/venom.md",
+          "sha256": "7f9de07c3efecfa084b884f9b9032c9f6cc9d113e4f2c5428a32070b0f5e38fe",
+          "name": "Venom",
+          "action": "Main Action",
+          "flavorMarkdown": "*A needle catches the skin, and a bitter numbness spreads from the puncture.*",
+          "rulesMarkdown": "Use the printed attack. Standard also applies Poisoned 1; Strong applies Poisoned 2. Poisoned gives Banes, not additional HP damage, and follows ordinary decay. No second resistance roll.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Venom\n\n*A needle catches the skin, and a bitter numbness spreads from the puncture.*\n\n## Rules\n\n**ID:** monster-venom\n\n\n**Action:** Main Action\n\nUse the printed attack. Standard also applies Poisoned 1; Strong applies Poisoned 2. Poisoned gives Banes, not additional HP damage, and follows ordinary decay. No second resistance roll.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/venom.md",
+            "sha256": "7f9de07c3efecfa084b884f9b9032c9f6cc9d113e4f2c5428a32070b0f5e38fe"
+          },
+          "automation": "pending"
+        }
+      ],
+      "summoning": {
+        "eligible": true,
+        "summonId": "summon-plague-zombie",
+        "path": "design/bestiary/summons/plague-zombie.md",
+        "eligibility": "Undead 3",
+        "sourceText": "Undead 3 — [player reference](../summons/plague-zombie.md)."
+      }
+    }
+  }
+}

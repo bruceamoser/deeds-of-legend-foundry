@@ -1,0 +1,46 @@
+{
+  "_key": "!items!4bcf1d14d918e9d3",
+  "_id": "4bcf1d14d918e9d3",
+  "name": "Twitch Reflexes",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Target / range / shape</dt><dd>Self.</dd></div><div><dt>Duration</dt><dd>Permanent.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div></dl><p>Each round you have one additional Reaction usable for an opportunity attack. Your normal Reaction remains available for any reaction you know. If you also know Measured Guard or Return Stroke, you may spend this additional Reaction on either instead. Use one of these guards against a given attack.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-signature-blade-sweeping-entry",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "ability",
+        "nodeId": "ability-signature-blade-sweeping-entry",
+        "level": 7,
+        "cost": 0,
+        "action": "Passive",
+        "sp": null,
+        "range": "Self.",
+        "duration": "Permanent.",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "**Action:** Passive · **Attribute:** None\n\n**Target / range / shape:** Self.\n\nEach round you have one additional Reaction usable for an opportunity attack. Your normal Reaction remains available for any reaction you know. If you also know Measured Guard or Return Stroke, you may spend this additional Reaction on either instead. Use one of these guards against a given attack.\n\n**Duration:** Permanent.\n\n**Equipment / acquisition:** None.",
+        "improves": null,
+        "requires": [],
+        "bookId": null,
+        "magic": null
+      }
+    }
+  },
+  "effects": []
+}

@@ -1,6 +1,6 @@
 # Vesper Ashpact: warlock after the rewrite
 
-Pinned authored source `87f5141bd6e0da74a10c07b3239e975c7656430a`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../warlock.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
+Pinned authored source `f71eac4c46fce6906d6dfbd1638ee98b10a6c538`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../warlock.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
 
 ## What the rewrite changes
 
@@ -16,7 +16,7 @@ No renewable short-rest Pact Magic pool: recovery remains once between overnight
 | SP | 12 | 25 | 40 |
 | DP spent / total | 8 / 9 | 21 / 22 | 58 / 60 |
 | Unspent DP | 1 | 1 | 2 |
-| Learned action choices (Main / Maneuver / Reaction) | 1 / 0 / 0 | 1 / 0 / 0 | 1 / 0 / 1 |
+| Learned action choices (Main / Maneuver / Reaction) | 1 / 0 / 0 | 2 / 0 / 0 | 2 / 0 / 1 |
 | Known book spells (free / paid) | 8 (4 / 4) | 12 (4 / 8) | 30 (4 / 26) |
 | Shared reserve: casts at 2 SP | 6 | 12 | 20 |
 | Shared reserve: casts at 5 SP | 2 | 5 | 8 |
@@ -112,15 +112,17 @@ Choose a patron or supernatural compact with the DA when learning this signature
 
 <details><summary>Pact’s Claim: complete signature component</summary>
 
-**Action:** Passive · **Attribute:** None
+**Action:** Main Action · **Attribute:** Reason
 
-**Target / range / shape:** Your Pact Bolt.
+**Target / range / shape:** One visible creature within 8 squares.
 
-Before rolling Pact Bolt, you may choose to bind as well as wound. On Standard reduce its damage by 1 and apply Slowed 1; on Strong reduce damage by 1 and apply Slowed 2. Weak deals the ordinary damage. Apply resistance and attack minimum normally; Slowed decays normally.
+Cast a binding bolt for 2/3/5 force damage on Weak/Standard/Strong. Before rolling, you may choose to bind as well as wound: on Standard, reduce the damage by 1 and apply Slowed 1; on Strong, reduce the damage by 1 and apply Slowed 2. Weak deals its ordinary damage. Apply resistance and attack minimum normally; Slowed decays normally.
 
-**Duration:** The bolt and ordinary condition decay.
+**Duration:** Attack immediate; Slowed uses ordinary decay.
 
-**Equipment / acquisition:** None.
+**Equipment / acquisition:** A free hand.
+
+This is a spell costing 0 SP. If you also know The Bargain, you may use its once-per-scene defense-Bane bargain on this bolt; that remains the same limited use.
 
 </details>
 
@@ -182,6 +184,22 @@ Choose a patron or supernatural compact with the DA when learning this signature
 
 </details>
 
+<details><summary>Pact’s Claim: complete signature component</summary>
+
+**Action:** Main Action · **Attribute:** Reason
+
+**Target / range / shape:** One visible creature within 8 squares.
+
+Cast a binding bolt for 2/3/5 force damage on Weak/Standard/Strong. Before rolling, you may choose to bind as well as wound: on Standard, reduce the damage by 1 and apply Slowed 1; on Strong, reduce the damage by 1 and apply Slowed 2. Weak deals its ordinary damage. Apply resistance and attack minimum normally; Slowed decays normally.
+
+**Duration:** Attack immediate; Slowed uses ordinary decay.
+
+**Equipment / acquisition:** A free hand.
+
+This is a spell costing 0 SP. If you also know The Bargain, you may use its once-per-scene defense-Bane bargain on this bolt; that remains the same limited use.
+
+</details>
+
 <details><summary>The Price Deferred: complete signature component</summary>
 
 **Action:** Reaction · **Attribute:** None
@@ -193,20 +211,6 @@ Choose a patron or supernatural compact with the DA when learning this signature
 Once between safe overnight rests, delay your death until the start of your next turn. You remain at 0 HP with three failures and make no further death rolls during this delay. Stabilization or healing above 0 clears the danger under ordinary recovery rules. At the start of your next turn, if you still have three failures, you die unless you spend Grit immediately. You can use this specific Reaction while Dying, even if unconscious.
 
 **Duration:** Until the start of your next turn.
-
-**Equipment / acquisition:** None.
-
-</details>
-
-<details><summary>Pact’s Claim: complete signature component</summary>
-
-**Action:** Passive · **Attribute:** None
-
-**Target / range / shape:** Your Pact Bolt.
-
-Before rolling Pact Bolt, you may choose to bind as well as wound. On Standard reduce its damage by 1 and apply Slowed 1; on Strong reduce damage by 1 and apply Slowed 2. Weak deals the ordinary damage. Apply resistance and attack minimum normally; Slowed decays normally.
-
-**Duration:** The bolt and ordinary condition decay.
 
 **Equipment / acquisition:** None.
 

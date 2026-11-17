@@ -1,0 +1,47 @@
+{
+  "_key": "!items!6315b66da77a0060",
+  "_id": "6315b66da77a0060",
+  "name": "Wild Accord",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div></dl><p>Maneuver · Reason. Give a familiar, cooperative nonmagical animal group of up to twelve one understandable direction: follow, wait, scatter to safety or approach a named visible place. Add 3/5/7 progress to the DA’s objective for overcoming present fear or confusion; ordinary cooperation with a safe instruction needs no roll. Completion gets the group carrying out that direction. This grants no attacks or additional combat turns; serious danger or mistreatment ends cooperation.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "attribute",
+      "attribute": "reason",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "wilderness:animal-handling:7",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "mastery",
+        "nodeId": "wilderness:animal-handling:7",
+        "level": 7,
+        "cost": 5,
+        "action": "Maneuver",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": "Reason",
+        "defenseAttribute": null,
+        "effect": "Maneuver · Reason. Give a familiar, cooperative nonmagical animal group of up to twelve one understandable direction: follow, wait, scatter to safety or approach a named visible place. Add 3/5/7 progress to the DA’s objective for overcoming present fear or confusion; ordinary cooperation with a safe instruction needs no roll. Completion gets the group carrying out that direction. This grants no attacks or additional combat turns; serious danger or mistreatment ends cooperation.",
+        "improves": null,
+        "requires": [
+          "wilderness:animal-handling:6"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

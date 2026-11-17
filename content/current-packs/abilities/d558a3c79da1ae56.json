@@ -1,0 +1,47 @@
+{
+  "_key": "!items!d558a3c79da1ae56",
+  "_id": "d558a3c79da1ae56",
+  "name": "Perfect Repose",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>The same single recovery rest restores 12 SP in total and takes 30 uninterrupted minutes of safe rest or quiet leisure instead of an hour. It remains once between safe overnight rests and does not count as a safe overnight rest. No Grit, first-aid allowance or other limited use is refreshed.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spellcraft:recovery:7",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "training",
+        "nodeId": "spellcraft:recovery:7",
+        "level": 7,
+        "cost": 5,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "The same single recovery rest restores 12 SP in total and takes 30 uninterrupted minutes of safe rest or quiet leisure instead of an hour. It remains once between safe overnight rests and does not count as a safe overnight rest. No Grit, first-aid allowance or other limited use is refreshed.",
+        "improves": null,
+        "requires": [
+          "spellcraft:recovery:6"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

@@ -1,0 +1,295 @@
+{
+  "_key": "!actors!7de25d12088845b8",
+  "_id": "7de25d12088845b8",
+  "name": "Nightmare",
+  "type": "creature",
+  "img": "systems/heroes-of-legend/assets/creatures/68fad3aa791217f026dacd8327d5c71cd1e759c365447148642670ad5e1ac3a0.webp",
+  "prototypeToken": {
+    "width": 1,
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/68fad3aa791217f026dacd8327d5c71cd1e759c365447148642670ad5e1ac3a0.webp"
+    }
+  },
+  "system": {
+    "schemaVersion": 1,
+    "attributes": {
+      "brawn": {
+        "base": 0
+      },
+      "fortitude": {
+        "base": 1
+      },
+      "agility": {
+        "base": 1
+      },
+      "guile": {
+        "base": 1
+      },
+      "knowledge": {
+        "base": 2
+      },
+      "reason": {
+        "base": 2
+      }
+    },
+    "attributesSource": "Brawn +0; Fortitude +1; Agility +1; Guile +1; Knowledge +2; Reason +2",
+    "health": {
+      "value": 28,
+      "baseMax": 28,
+      "sourceText": "28"
+    },
+    "cv": 31,
+    "speed": 9,
+    "speedSource": "9; fly 8",
+    "alternateSpeeds": [
+      {
+        "mode": "fly",
+        "value": 8
+      }
+    ],
+    "size": 1,
+    "sizeLabel": "medium",
+    "sizeSource": "1 (medium)",
+    "footprint": {
+      "width": 1,
+      "height": 1
+    },
+    "armor": 1,
+    "armorMarker": "*",
+    "armorSource": "1\\*",
+    "stability": 1,
+    "threat": {
+      "boons": 0,
+      "banes": 1,
+      "sourceText": "1 Bane"
+    },
+    "evasion": {
+      "boons": 0,
+      "banes": 1,
+      "sourceText": "1 Bane"
+    },
+    "weaknesses": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "resistances": {
+      "numeric": [
+        {
+          "type": "Physical",
+          "value": 1
+        },
+        {
+          "type": "Fire",
+          "value": 2
+        }
+      ],
+      "special": [],
+      "sourceText": "Physical (1), Fire (2)"
+    },
+    "immunities": [],
+    "basicMelee": {
+      "weak": 5,
+      "standard": 3,
+      "strong": 2,
+      "defenseAttribute": "agility",
+      "orientation": "player-defense"
+    },
+    "actions": {
+      "orientation": "player-defense",
+      "entries": [
+        {
+          "id": "main-0",
+          "category": "main",
+          "name": "Basic Melee",
+          "abilityId": "",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "5",
+            "standard": "3",
+            "strong": "2"
+          },
+          "effect": "5/3/2",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "main-1",
+          "category": "main",
+          "name": "Funeral hooves",
+          "abilityId": "",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "8 + Frightened 2 of this creature",
+            "standard": "5 + Frightened 1 of this creature",
+            "strong": "3"
+          },
+          "effect": "8 + Frightened 2 of this creature / 5 + Frightened 1 of this creature / 3",
+          "referenceMarkdown": "### Funeral hooves\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** fire.\n\n**Weak defense:** Frightened 2 of this creature. **Standard defense:** Frightened 1 of this creature."
+        },
+        {
+          "id": "maneuver-0",
+          "category": "maneuver",
+          "name": "Slip Through Shadow",
+          "abilityId": "",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Move 2 through dim light/darkness; no opportunities.",
+          "referenceMarkdown": "### Slip Through Shadow\n\n*Its outline folds into a seam of darkness and gathers again a few steps away.*\n\nMove up to 2 squares through connected dimly lit or dark squares without provoking. Normal terrain and occupancy rules apply. Does not grant Hidden or allow passage through solid objects."
+        },
+        {
+          "id": "maneuver-1",
+          "category": "maneuver",
+          "name": "Defend",
+          "abilityId": "",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "+1 Bane",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "reaction-0",
+          "category": "reaction",
+          "name": "Opportunity Attack",
+          "abilityId": "",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Basic Melee",
+          "referenceMarkdown": ""
+        }
+      ],
+      "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates a complete outcome. All attacks use printed Threat unless stated otherwise.",
+      "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Funeral hooves | Agility | 8 + Frightened 2 of this creature / 5 + Frightened 1 of this creature / 3 |",
+      "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Slip Through Shadow | Move 2 through dim light/darkness; no opportunities. |\n| Defend | +1 Bane |",
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Opportunity Attack | Basic Melee |"
+    },
+    "details": {
+      "flavorMarkdown": "*A dark horse runs on smoking hooves, with a mane that streams backward even when it stands still.*",
+      "specialtyMarkdown": "### Funeral hooves\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** fire.\n\n**Weak defense:** Frightened 2 of this creature. **Standard defense:** Frightened 1 of this creature.\n\n### Slip Through Shadow\n\n*Its outline folds into a seam of darkness and gathers again a few steps away.*\n\nMove up to 2 squares through connected dimly lit or dark squares without provoking. Normal terrain and occupancy rules apply. Does not grant Hidden or allow passage through solid objects.",
+      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until its next turn. Combines with Evasion through normal Boon/Bane rules; repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature; spend its Reaction before the provoking action resolves. That action continues if capable.\n\n**Heavy Frame — Passive:** Stability 1; an explicit trait, not a bonus calculated from Size.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Dark sight 6 squares; ordinary hearing.\n\n**Tactics and retreat:** Drive a threat away from the offered saddle, then use darkness to change position. Its movement cannot pass through a sealed stable wall.\n\n**Encounter and conversation:** It returns to the place its last rider broke an oath, offering a saddle to anyone willing to finish the journey.\n\n**Habitat:** Broken shrine; summoned court; place of conflict · **Communication:** Common\n\n**Loot:** Choose possessions or a clue in its lair that fits the adventure. If a body part is useful or valuable, state its use and value before awarding it.\n\n**Summoning:** Ineligible.",
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-nightmare\n\n\n**Category:** Fiend · **Role:** Fear controller · **CV:** 31\n\n### Creature-roll reference\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Funeral hooves | Reason | 1 Boon | 3 fire damage. | 5 fire damage. Frightened 1 of this creature. | 8 fire damage. Frightened 2 of this creature. |\n\nUse the attributes above for defenses named by incoming attacks. Same targeting, limits and costs apply; no opposed second roll.\n\n### CV worksheet\n\n**Reference damage:** 3/5/8\n\n**Reference type:** fire\n\n**Expected targets:** 1\n\n**Utility factor:** 1.45\n\n**Regeneration per turn:** 0\n\nReference I=3.404, O=5.951. Uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/encounters.md). Utility is provisional and does not simulate control, positioning or summon choices.\n\n**Ability sources:** [dread cry](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/dread-cry.md), [shadow slip](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/shadow-slip.md).\n\n**Coverage reference:** [Pathfinder family survey](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/family-survey.md); original HOL prose and mechanics.\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/roster.md) · [Stability](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/rules/stability.md)"
+    },
+    "biography": ""
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-nightmare",
+        "asset": "assets/creatures/68fad3aa791217f026dacd8327d5c71cd1e759c365447148642670ad5e1ac3a0.webp",
+        "sha256": "9a9d7e7610f098ceb295a15d17e3bd89c3ca730384bff9b4196df98d3cc7c398",
+        "sourceSha256": "68fad3aa791217f026dacd8327d5c71cd1e759c365447148642670ad5e1ac3a0",
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
+      "catalogId": "creature-nightmare",
+      "source": {
+        "path": "design/bestiary/creatures/nightmare.md",
+        "sha256": "eae1faab3190284a36f4ed57388225881eaa57d26bea45b3197b3305697db05f"
+      },
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Printed profile · specialty automation pending",
+      "specialtyAutomation": "pending",
+      "classification": {
+        "category": "Fiend",
+        "role": "Fear controller",
+        "cv": 31
+      },
+      "family": "Fiends and infernal bargains",
+      "abilitySources": [
+        {
+          "label": "dread cry",
+          "id": "monster-dread-cry",
+          "path": "design/monster-abilities/dread-cry.md",
+          "sha256": "d35c9d9fb02cdf716d44665b41a99421c1089cddcf9bc2e736a192e27d27efe0"
+        },
+        {
+          "label": "shadow slip",
+          "id": "monster-shadow-slip",
+          "path": "design/monster-abilities/shadow-slip.md",
+          "sha256": "b728000e9500465ce779b15c217ad18c6aa86a31a94e5bed43b7cb838f8eeab0"
+        }
+      ],
+      "monsterAbilityTemplates": [
+        {
+          "id": "monster-dread-cry",
+          "path": "design/monster-abilities/dread-cry.md",
+          "sha256": "d35c9d9fb02cdf716d44665b41a99421c1089cddcf9bc2e736a192e27d27efe0",
+          "name": "Dread Cry",
+          "action": "Main Action",
+          "flavorMarkdown": "*Its cry seems to come from somewhere behind your ribs.*",
+          "rulesMarkdown": "A printed mental attack applies Frightened 1/2/3 on Weak/Standard/Strong, with no damage unless separately printed. The source is this creature; Banes apply while the target perceives it. The cry must be heard. Ordinary decay applies and no second save is made.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Dread Cry\n\n*Its cry seems to come from somewhere behind your ribs.*\n\n## Rules\n\n**ID:** monster-dread-cry\n\n\n**Action:** Main Action\n\nA printed mental attack applies Frightened 1/2/3 on Weak/Standard/Strong, with no damage unless separately printed. The source is this creature; Banes apply while the target perceives it. The cry must be heard. Ordinary decay applies and no second save is made.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/dread-cry.md",
+            "sha256": "d35c9d9fb02cdf716d44665b41a99421c1089cddcf9bc2e736a192e27d27efe0"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-shadow-slip",
+          "path": "design/monster-abilities/shadow-slip.md",
+          "sha256": "b728000e9500465ce779b15c217ad18c6aa86a31a94e5bed43b7cb838f8eeab0",
+          "name": "Slip Through Shadow",
+          "action": "Maneuver",
+          "flavorMarkdown": "*Its outline folds into a seam of darkness and gathers again a few steps away.*",
+          "rulesMarkdown": "Move up to 2 squares through connected dimly lit or dark squares without provoking. Normal terrain and occupancy rules apply. Does not grant Hidden or allow passage through solid objects.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Slip Through Shadow\n\n*Its outline folds into a seam of darkness and gathers again a few steps away.*\n\n## Rules\n\n**ID:** monster-shadow-slip\n\n\n**Action:** Maneuver\n\nMove up to 2 squares through connected dimly lit or dark squares without provoking. Normal terrain and occupancy rules apply. Does not grant Hidden or allow passage through solid objects.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/shadow-slip.md",
+            "sha256": "b728000e9500465ce779b15c217ad18c6aa86a31a94e5bed43b7cb838f8eeab0"
+          },
+          "automation": "pending"
+        }
+      ],
+      "summoning": {
+        "eligible": false,
+        "summonId": null,
+        "path": null,
+        "eligibility": null,
+        "sourceText": "Ineligible."
+      }
+    }
+  }
+}

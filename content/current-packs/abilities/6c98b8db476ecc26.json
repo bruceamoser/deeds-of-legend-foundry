@@ -1,0 +1,47 @@
+{
+  "_key": "!items!6c98b8db476ecc26",
+  "_id": "6c98b8db476ecc26",
+  "name": "Shield Bash III",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Shield Bash also knocks its target Prone on Strong after the push.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "guard:shieldwork:3",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "guard:shieldwork:3",
+        "level": 1,
+        "cost": 2,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Shield Bash also knocks its target Prone on Strong after the push.",
+        "improves": "guard:shieldwork:1",
+        "requires": [
+          "guard:shieldwork:2"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

@@ -1,0 +1,65 @@
+{
+  "_key": "!items!6a2f23bcdb101dab",
+  "_id": "6a2f23bcdb101dab",
+  "name": "Dancing Weapon",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div><div><dt>Range</dt><dd>One unattended melee weapon within 3 squares; attack within 6 squares</dd></div><div><dt>Duration</dt><dd>1 minute, with commands</dd></div></dl><p>Set the weapon dancing as a single summoned form with 6 HP, Speed 4 and your attributes for defenses. Give one immediate Main command to attack for 2/4/6 physical damage or perform an ordinary manipulation. Further activity uses normal commands and the six-square tether; it has no independent Reaction.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "2 physical damage",
+      "standard": "4 physical damage",
+      "strong": "6 physical damage"
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:animation:4",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:animation:4",
+        "level": 1,
+        "cost": 2,
+        "action": "Main Action",
+        "sp": 2,
+        "range": "One unattended melee weapon within 3 squares; attack within 6 squares",
+        "duration": "1 minute, with commands",
+        "attribute": "Knowledge",
+        "defenseAttribute": null,
+        "effect": "Set the weapon dancing as a single summoned form with 6 HP, Speed 4 and your attributes for defenses. Give one immediate Main command to attack for 2/4/6 physical damage or perform an ordinary manipulation. Further activity uses normal commands and the six-square tether; it has no independent Reaction.",
+        "improves": null,
+        "requires": [
+          "animation:0"
+        ],
+        "bookId": "animation"
+      },
+      "spell": {
+        "id": "spell:animation:4",
+        "name": "Dancing Weapon",
+        "bookId": "animation",
+        "page": "4",
+        "section": "II",
+        "sp": 2,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "Knowledge",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One unattended melee weapon within 3 squares; attack within 6 squares",
+        "duration": "1 minute, with commands",
+        "effect": "Set the weapon dancing as a single summoned form with 6 HP, Speed 4 and your attributes for defenses. Give one immediate Main command to attack for 2/4/6 physical damage or perform an ordinary manipulation. Further activity uses normal commands and the six-square tether; it has no independent Reaction."
+      }
+    }
+  },
+  "effects": []
+}

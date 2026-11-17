@@ -1,0 +1,66 @@
+{
+  "_key": "!items!68870a6f59760b4d",
+  "_id": "68870a6f59760b4d",
+  "name": "Spell Anticipations",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Reaction · when a visible caster begins a spell targeting you</dd></div><div><dt>SP</dt><dd>3</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>Self; caster within 8 squares</dd></div><div><dt>Duration</dt><dd>The triggering spell</dd></div></dl><p>Recognize its magical approach. Learn the spell&#39;s action, damage type or principal condition before choosing any remaining response. Gain 1 Boon to your defense against that spell.</p>",
+    "activity": {
+      "action": "reaction",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:portents:6",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:portents:6",
+        "level": 1,
+        "cost": 2,
+        "action": "Reaction · when a visible caster begins a spell targeting you",
+        "sp": 3,
+        "range": "Self; caster within 8 squares",
+        "duration": "The triggering spell",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Recognize its magical approach. Learn the spell's action, damage type or principal condition before choosing any remaining response. Gain 1 Boon to your defense against that spell.",
+        "improves": null,
+        "requires": [
+          "portents:1"
+        ],
+        "bookId": "portents"
+      },
+      "spell": {
+        "id": "spell:portents:6",
+        "name": "Spell Anticipations",
+        "bookId": "portents",
+        "page": "6",
+        "section": "III",
+        "sp": 3,
+        "action": "Reaction",
+        "actionText": "Reaction · when a visible caster begins a spell targeting you",
+        "trigger": "when a visible caster begins a spell targeting you",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Self; caster within 8 squares",
+        "duration": "The triggering spell",
+        "effect": "Recognize its magical approach. Learn the spell's action, damage type or principal condition before choosing any remaining response. Gain 1 Boon to your defense against that spell."
+      }
+    }
+  },
+  "effects": []
+}

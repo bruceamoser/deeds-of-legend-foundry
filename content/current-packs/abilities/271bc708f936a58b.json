@@ -1,0 +1,47 @@
+{
+  "_key": "!items!271bc708f936a58b",
+  "_id": "271bc708f936a58b",
+  "name": "Patient Translation I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Timed work</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div></dl><p>10 minutes · Knowledge, with a glossary or parallel text. Add 1/2/3 progress toward translating one short passage in an unfamiliar nonmagical language. A reference is required; ciphers need a separate objective.</p>",
+    "activity": {
+      "action": "other",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "scholarship:languages:1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "technique",
+        "nodeId": "scholarship:languages:1",
+        "level": 1,
+        "cost": 1,
+        "action": "Timed work",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": "Knowledge",
+        "defenseAttribute": null,
+        "effect": "10 minutes · Knowledge, with a glossary or parallel text. Add 1/2/3 progress toward translating one short passage in an unfamiliar nonmagical language. A reference is required; ciphers need a separate objective.",
+        "improves": null,
+        "requires": [
+          "scholarship"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

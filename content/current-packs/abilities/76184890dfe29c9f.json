@@ -1,0 +1,47 @@
+{
+  "_key": "!items!76184890dfe29c9f",
+  "_id": "76184890dfe29c9f",
+  "name": "Defy the Fall",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Reaction</dd></div></dl><p>Reaction. When a rope-linked group begins to fall, secure its rope to an anchor within reach or hold it yourself. Arrest the falls of up to four connected creatures whose combined weight the rope and anchor can bear; if holding it yourself, the load cannot exceed twice your normal carrying capacity. They hang from the rope and take no damage from this arrested fall. Spend a Main Action on each following turn to hold it yourself; releasing or losing the support resumes the fall. No roll.</p>",
+    "activity": {
+      "action": "reaction",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "athletics:balance:7",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "mastery",
+        "nodeId": "athletics:balance:7",
+        "level": 7,
+        "cost": 5,
+        "action": "Reaction",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Reaction. When a rope-linked group begins to fall, secure its rope to an anchor within reach or hold it yourself. Arrest the falls of up to four connected creatures whose combined weight the rope and anchor can bear; if holding it yourself, the load cannot exceed twice your normal carrying capacity. They hang from the rope and take no damage from this arrested fall. Spend a Main Action on each following turn to hold it yourself; releasing or losing the support resumes the fall. No roll.",
+        "improves": null,
+        "requires": [
+          "athletics:balance:6"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

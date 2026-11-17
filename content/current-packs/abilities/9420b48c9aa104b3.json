@@ -1,0 +1,66 @@
+{
+  "_key": "!items!9420b48c9aa104b3",
+  "_id": "9420b48c9aa104b3",
+  "name": "Rune Mastery",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 10 minutes</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One held rune-stone and one known Main Action spell costing at most 2 SP</dd></div><div><dt>Duration</dt><dd>24 hours or until released</dd></div></dl><p>Pay the stored spell&#39;s SP in addition to this ritual. Inscribe its power into the stone. A bearer uses a Main Action to release it, choosing legal targets from their position and using the stored spell’s printed attribute and your value for it. The stone holds one use; you may keep one prepared Rune Mastery stone at a time.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:imbuement:4",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:imbuement:4",
+        "level": 1,
+        "cost": 2,
+        "action": "Ritual · 10 minutes",
+        "sp": 2,
+        "range": "One held rune-stone and one known Main Action spell costing at most 2 SP",
+        "duration": "24 hours or until released",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Pay the stored spell's SP in addition to this ritual. Inscribe its power into the stone. A bearer uses a Main Action to release it, choosing legal targets from their position and using the stored spell’s printed attribute and your value for it. The stone holds one use; you may keep one prepared Rune Mastery stone at a time.",
+        "improves": null,
+        "requires": [
+          "imbuement:0"
+        ],
+        "bookId": "imbuement"
+      },
+      "spell": {
+        "id": "spell:imbuement:4",
+        "name": "Rune Mastery",
+        "bookId": "imbuement",
+        "page": "4",
+        "section": "II",
+        "sp": 2,
+        "action": "Ritual",
+        "actionText": "Ritual · 10 minutes",
+        "ritualTime": "10 minutes",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One held rune-stone and one known Main Action spell costing at most 2 SP",
+        "duration": "24 hours or until released",
+        "effect": "Pay the stored spell's SP in addition to this ritual. Inscribe its power into the stone. A bearer uses a Main Action to release it, choosing legal targets from their position and using the stored spell’s printed attribute and your value for it. The stone holds one use; you may keep one prepared Rune Mastery stone at a time."
+      }
+    }
+  },
+  "effects": []
+}

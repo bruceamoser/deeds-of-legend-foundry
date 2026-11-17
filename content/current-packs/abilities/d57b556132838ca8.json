@@ -1,0 +1,65 @@
+{
+  "_key": "!items!d57b556132838ca8",
+  "_id": "d57b556132838ca8",
+  "name": "Sight True",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>6</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>Self</dd></div><div><dt>Duration</dt><dd>1 hour</dd></div></dl><p>See Invisible targets and recognize visual illusions and disguising magic within 12 squares. Also see the outlines of creatures and magical effects immediately beyond ordinary cover up to 1 square thick, within 6 squares. The outlines reveal position; attacks still require a clear path. Explicit wards against divination retain their protection.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:detection:a3",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:detection:a3",
+        "level": 7,
+        "cost": 5,
+        "action": "Main Action",
+        "sp": 6,
+        "range": "Self",
+        "duration": "1 hour",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "See Invisible targets and recognize visual illusions and disguising magic within 12 squares. Also see the outlines of creatures and magical effects immediately beyond ordinary cover up to 1 square thick, within 6 squares. The outlines reveal position; attacks still require a clear path. Explicit wards against divination retain their protection.",
+        "improves": null,
+        "requires": [
+          "detection:5"
+        ],
+        "bookId": "detection"
+      },
+      "spell": {
+        "id": "spell:detection:a3",
+        "name": "Sight True",
+        "bookId": "detection",
+        "page": "A3",
+        "section": "VII",
+        "sp": 6,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Self",
+        "duration": "1 hour",
+        "effect": "See Invisible targets and recognize visual illusions and disguising magic within 12 squares. Also see the outlines of creatures and magical effects immediately beyond ordinary cover up to 1 square thick, within 6 squares. The outlines reveal position; attacks still require a clear path. Explicit wards against divination retain their protection."
+      }
+    }
+  },
+  "effects": []
+}

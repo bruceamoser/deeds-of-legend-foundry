@@ -1,0 +1,47 @@
+{
+  "_key": "!items!e85115ded712f70b",
+  "_id": "e85115ded712f70b",
+  "name": "Battering Stroke III",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Battering Stroke also sets the target’s movement to 0 until the end of its next turn on Strong. Forced movement still affects it.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "arms:impact:6",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "arms:impact:6",
+        "level": 3,
+        "cost": 4,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Battering Stroke also sets the target’s movement to 0 until the end of its next turn on Strong. Forced movement still affects it.",
+        "improves": "arms:impact:4",
+        "requires": [
+          "arms:impact:5"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

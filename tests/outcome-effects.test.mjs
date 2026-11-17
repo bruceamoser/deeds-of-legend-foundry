@@ -57,3 +57,8 @@ test("mixed attack outcomes retain fixed damage and conditions while flagging ot
   ])
     assert.equal(attackOutcomeEffects(text), null);
 });
+
+test('untracked ammunition still requires its owned assigned stack but preserves an exhausted pool',()=>{
+ const before=globalThis.game;globalThis.game={settings:{get:()=>false}};
+ try {const weapon={id:'bow',name:'Bow',type:'equipment',system:{catalogId:'item-ordinary-ranged-weapon',quantity:1,held:true},getFlag:()=> 'arrows'},ammo={id:'arrows',type:'equipment',system:{catalogId:'item-ammunition-bundle',quantity:1,inventoryDie:0}};const actor={items:[weapon,ammo]};actor.items.get=id=>actor.items.find(item=>item.id===id);assert.equal(rangedAmmunition(actor).ammo,ammo);assert.equal(ammo.system.inventoryDie,0);ammo.system.quantity=0;assert.throws(()=>rangedAmmunition(actor),/Assign ammunition/);}finally{globalThis.game=before;}
+});

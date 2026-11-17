@@ -1,0 +1,66 @@
+{
+  "_key": "!items!06ec291a7189f9a4",
+  "_id": "06ec291a7189f9a4",
+  "name": "Mind Scan",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 10 minutes</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>One willing adjacent creature throughout the ritual</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Search one area of its remembered experience together. Add 2/4/6 progress toward a DA-set recollection objective. The subject chooses which memories to explore and can halt the ritual.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "reason",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:thought:a1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:thought:a1",
+        "level": 3,
+        "cost": 4,
+        "action": "Ritual · 10 minutes",
+        "sp": 5,
+        "range": "One willing adjacent creature throughout the ritual",
+        "duration": "Instant",
+        "attribute": "Reason",
+        "defenseAttribute": null,
+        "effect": "Search one area of its remembered experience together. Add 2/4/6 progress toward a DA-set recollection objective. The subject chooses which memories to explore and can halt the ritual.",
+        "improves": null,
+        "requires": [
+          "thought:3"
+        ],
+        "bookId": "thought"
+      },
+      "spell": {
+        "id": "spell:thought:a1",
+        "name": "Mind Scan",
+        "bookId": "thought",
+        "page": "A1",
+        "section": "V",
+        "sp": 5,
+        "action": "Ritual",
+        "actionText": "Ritual · 10 minutes",
+        "ritualTime": "10 minutes",
+        "attribute": "Reason",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One willing adjacent creature throughout the ritual",
+        "duration": "Instant",
+        "effect": "Search one area of its remembered experience together. Add 2/4/6 progress toward a DA-set recollection objective. The subject chooses which memories to explore and can halt the ritual."
+      }
+    }
+  },
+  "effects": []
+}

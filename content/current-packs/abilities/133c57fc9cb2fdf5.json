@@ -1,0 +1,47 @@
+{
+  "_key": "!items!133c57fc9cb2fdf5",
+  "_id": "133c57fc9cb2fdf5",
+  "name": "Common Ground I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div></dl><p>Main Action · Reason for a brief proposal, or one exchange for detailed terms. Propose common terms to two willing negotiating sides who understand you. Roll once; add 1/2/3 progress to each side’s separate acceptance objective. Each side retains its established boundaries.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "reason",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "influence:negotiation:4",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "technique",
+        "nodeId": "influence:negotiation:4",
+        "level": 3,
+        "cost": 3,
+        "action": "Main Action",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": "Reason",
+        "defenseAttribute": null,
+        "effect": "Main Action · Reason for a brief proposal, or one exchange for detailed terms. Propose common terms to two willing negotiating sides who understand you. Roll once; add 1/2/3 progress to each side’s separate acceptance objective. Each side retains its established boundaries.",
+        "improves": null,
+        "requires": [
+          "influence:negotiation:3"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

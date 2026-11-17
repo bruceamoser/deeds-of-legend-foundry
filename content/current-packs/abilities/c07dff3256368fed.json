@@ -1,0 +1,66 @@
+{
+  "_key": "!items!c07dff3256368fed",
+  "_id": "c07dff3256368fed",
+  "name": "Familiar",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 hour</dd></div><div><dt>SP</dt><dd>0</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One willing ordinary Small animal beside you</dd></div><div><dt>Duration</dt><dd>Until either ends the bond</dd></div></dl><p>Form a companionship bond through food and care. You sense whether the animal is calm, frightened or hurt while within 6 squares. It remains an ordinary independent animal with its own needs. You may keep one Familiar bond; forming another releases the first.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:calling:1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:calling:1",
+        "level": 1,
+        "cost": 1,
+        "action": "Ritual · 1 hour",
+        "sp": 0,
+        "range": "One willing ordinary Small animal beside you",
+        "duration": "Until either ends the bond",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Form a companionship bond through food and care. You sense whether the animal is calm, frightened or hurt while within 6 squares. It remains an ordinary independent animal with its own needs. You may keep one Familiar bond; forming another releases the first.",
+        "improves": null,
+        "requires": [
+          "invocation"
+        ],
+        "bookId": "calling"
+      },
+      "spell": {
+        "id": "spell:calling:1",
+        "name": "Familiar",
+        "bookId": "calling",
+        "page": "1",
+        "section": "I",
+        "sp": 0,
+        "action": "Ritual",
+        "actionText": "Ritual · 1 hour",
+        "ritualTime": "1 hour",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One willing ordinary Small animal beside you",
+        "duration": "Until either ends the bond",
+        "effect": "Form a companionship bond through food and care. You sense whether the animal is calm, frightened or hurt while within 6 squares. It remains an ordinary independent animal with its own needs. You may keep one Familiar bond; forming another releases the first."
+      }
+    }
+  },
+  "effects": []
+}

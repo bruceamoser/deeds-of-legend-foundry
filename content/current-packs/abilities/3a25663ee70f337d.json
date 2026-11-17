@@ -1,0 +1,46 @@
+{
+  "_key": "!items!3a25663ee70f337d",
+  "_id": "3a25663ee70f337d",
+  "name": "Blade in the Back",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Agility</dd></div><div><dt>Target / range / shape</dt><dd>One creature within reach that has not noticed you or is adjacent to one of your allies.</dd></div><div><dt>Duration</dt><dd>Immediate; Bleeding uses its normal decay.</dd></div><div><dt>Equipment / acquisition</dt><dd>A melee weapon.</dd></div></dl><p>Make an Agility roll against the target. Weak: 3 physical damage. Standard: 4 physical damage, and the target has Bleeding 1. Strong: 6 physical damage, and the target has Bleeding 2.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "agility",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-signature-shadow-soft-landing",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "ability",
+        "nodeId": "ability-signature-shadow-soft-landing",
+        "level": 1,
+        "cost": 0,
+        "action": "Main Action",
+        "sp": null,
+        "range": "One creature within reach that has not noticed you or is adjacent to one of your allies.",
+        "duration": "Immediate; Bleeding uses its normal decay.",
+        "attribute": "Agility",
+        "defenseAttribute": null,
+        "effect": "**Action:** Main Action · **Attribute:** Agility\n\n**Target / range / shape:** One creature within reach that has not noticed you or is adjacent to one of your allies.\n\nMake an Agility roll against the target. Weak: 3 physical damage. Standard: 4 physical damage, and the target has Bleeding 1. Strong: 6 physical damage, and the target has Bleeding 2.\n\n**Duration:** Immediate; Bleeding uses its normal decay.\n\n**Equipment / acquisition:** A melee weapon.",
+        "improves": null,
+        "requires": [],
+        "bookId": null,
+        "magic": null
+      }
+    }
+  },
+  "effects": []
+}

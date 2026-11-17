@@ -488,10 +488,11 @@ test("a native custom ability without catalog flags does not disable damage or r
       health: { value: 9, max: 12 },
       grit: { available: 0 },
     },
-    getFlag: () => null,
+    getFlag: (_,key) => key==='nativeWorkshop'?{portable:{format:'heroes-of-legend-character',schemaVersion:7,draft:{}}}:null,
   };
   const basis = damageBasis(actor);
   assert.deepEqual(basis.passiveDefenses, {
+    immunities: [],
     resistances: [],
     weaknesses: [],
   });
@@ -512,112 +513,12 @@ test("a native custom ability without catalog flags does not disable damage or r
   );
 });
 
-test("damage basis snapshots passive provenance as mutable serializable JSON", () => {
-  const abilityId = "ability-wear-medium-armor",
-    armorId = "item-ordinary-medium-armor",
-    abilitySource = recordSource(abilityId),
-    armorSource = recordSource(armorId);
-  const actor = {
-    type: "character",
-    uuid: "Actor.passive-json",
-    pack: null,
-    items: [
-      {
-        id: "ability-instance",
-        type: "ability",
-        getFlag: (scope, key) => {
-          if (key === "catalogId") return abilityId;
-          if (key === "source") return abilitySource;
-          return null;
-        },
-      },
-      {
-        id: "armor-instance",
-        type: "equipment",
-        system: {
-          catalogId: armorId,
-          worn: true,
-        },
-        getFlag: (scope, key) => (key === "source" ? armorSource : null),
-      },
-    ],
-    system: {
-      health: { value: 8, max: 12 },
-      grit: { available: 0 },
-    },
-    getFlag: () => null,
-  };
-  const basis = damageBasis(actor),
-    snapshot = basis.passiveDefenses.resistances[0];
-  assert.deepEqual(snapshot, {
-    sourceId: "passive-wear-medium-armor:armor-instance",
-    type: "physical",
-    value: 2,
-    label: "Wear Medium Armor with ordinary medium armor",
-    automatic: true,
-    provenance: [
-      {
-        kind: "ability",
-        catalogId: abilityId,
-        ...PASSIVE_DEFENSE_DEFINITIONS[abilityId].source,
-      },
-      {
-        kind: "equipment",
-        catalogId: armorId,
-        ...PASSIVE_DEFENSE_DEFINITIONS[armorId].source,
-      },
-    ],
-  });
-  assert.deepEqual(JSON.parse(JSON.stringify(basis)), basis);
-  assert.equal(Object.isFrozen(snapshot), false);
-  assert.equal(Object.isFrozen(snapshot.provenance), false);
-  assert.ok(snapshot.provenance.every((record) => !Object.isFrozen(record)));
-
-  snapshot.provenance[0].path = "snapshot-only.md";
-  snapshot.provenance.push({ kind: "snapshot-only" });
-  assert.equal(recordSource(abilityId).path, abilitySource.path);
-  assert.equal(
-    PASSIVE_DEFENSE_DEFINITIONS[abilityId].source.path,
-    abilitySource.path,
-  );
-});
-
-test("a stale worn snapshot changes the damage basis even when equipment revision is unchanged", () => {
-  const winter = {
-    id: "winter-instance",
-    type: "equipment",
-    system: {
-      catalogId: "item-winter-lining",
-      worn: true,
-      hands: 0,
-      held: false,
-      quantity: 1,
-    },
-    getFlag: (scope, key) =>
-      key === "source" ? recordSource("item-winter-lining") : null,
-  };
-  const actor = {
-    type: "character",
-    uuid: "Actor.passive",
-    pack: null,
-    items: [winter],
-    system: {
-      health: { value: 8, max: 12 },
-      grit: { available: 0 },
-    },
-    getFlag: (scope, key) =>
-      ({
-        survival: null,
-        damageRevision: 2,
-        equipmentRevision: 7,
-      })[key],
-  };
-  const before = damageBasis(actor);
-  assert.equal(before.equipmentRevision, 7);
-  assert.equal(before.passiveDefenses.resistances[0].type, "cold");
-  winter.system.worn = false;
-  const after = damageBasis(actor);
-  assert.equal(after.equipmentRevision, 7);
-  assert.deepEqual(after.passiveDefenses.resistances, []);
-  assert.notDeepEqual(before, after);
+test("current native armor snapshots change when worn equipment changes and ignore retired training Items",()=>{
+ const flags={nativeWorkshop:{portable:{format:'heroes-of-legend-character',schemaVersion:7,draft:{}}},forgeLearned:['armor:harness:3']};
+ const armor={id:'armor',type:'equipment',system:{catalogId:'item-ordinary-medium-armor',worn:true,carried:true,quantity:1},getFlag:()=>null};
+ const actor={type:'character',uuid:'Actor.armor',items:[armor],system:{health:{value:8,max:12}},getFlag:(_,key)=>flags[key]};
+ const before=damageBasis(actor);assert.equal(before.passiveDefenses.resistances[0].value,2);assert.deepEqual(JSON.parse(JSON.stringify(before)),before);
+ armor.system.worn=false;assert.deepEqual(damageBasis(actor).passiveDefenses.resistances,[]);
+ armor.system.worn=true;flags.forgeLearned=[];actor.items.push({id:'old',type:'ability',getFlag:()=> 'ability-wear-medium-armor'});
+ assert.deepEqual(damageBasis(actor).passiveDefenses.resistances,[]);
 });

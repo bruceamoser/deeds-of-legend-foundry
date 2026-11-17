@@ -1,0 +1,66 @@
+{
+  "_key": "!items!46b331ded739b4e2",
+  "_id": "46b331ded739b4e2",
+  "name": "Simulacrum",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 8 hours</dd></div><div><dt>SP</dt><dd>8</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One willing adjacent living model; 300 coins of sculpting materials consumed</dd></div><div><dt>Duration</dt><dd>Until destroyed or replaced</dd></div></dl><p>Sculpt the model’s appearance and voice into a likeness with 10 HP, 0 SP, 0 Grit, your Speed and defense attributes. Give one immediate Main command. Thereafter, a normal Main command directs an ordinary task or Basic Melee attack: Knowledge, 2/3/5 physical damage. Unlike other summons, it remains inert when uncommanded, beyond the six-square tether, or while you are unconscious or dead. It responds only to your commands while you are conscious and within that range. It has no Reactions, spells, learned abilities or healing. At 0 HP or when you create another, it disappears without harming the model.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell-mastery:simulacrum",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell-mastery:simulacrum",
+        "level": 7,
+        "cost": 5,
+        "action": "Ritual · 8 hours",
+        "sp": 8,
+        "range": "One willing adjacent living model; 300 coins of sculpting materials consumed",
+        "duration": "Until destroyed or replaced",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Sculpt the model’s appearance and voice into a likeness with 10 HP, 0 SP, 0 Grit, your Speed and defense attributes. Give one immediate Main command. Thereafter, a normal Main command directs an ordinary task or Basic Melee attack: Knowledge, 2/3/5 physical damage. Unlike other summons, it remains inert when uncommanded, beyond the six-square tether, or while you are unconscious or dead. It responds only to your commands while you are conscious and within that range. It has no Reactions, spells, learned abilities or healing. At 0 HP or when you create another, it disappears without harming the model.",
+        "improves": null,
+        "requires": [
+          "animation:5"
+        ],
+        "bookId": "animation"
+      },
+      "spell": {
+        "id": "spell-mastery:simulacrum",
+        "name": "Simulacrum",
+        "bookId": "animation",
+        "page": "A3",
+        "section": "VII",
+        "sp": 8,
+        "action": "Ritual",
+        "actionText": "Ritual · 8 hours",
+        "ritualTime": "8 hours",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One willing adjacent living model; 300 coins of sculpting materials consumed",
+        "duration": "Until destroyed or replaced",
+        "effect": "Sculpt the model’s appearance and voice into a likeness with 10 HP, 0 SP, 0 Grit, your Speed and defense attributes. Give one immediate Main command. Thereafter, a normal Main command directs an ordinary task or Basic Melee attack: Knowledge, 2/3/5 physical damage. Unlike other summons, it remains inert when uncommanded, beyond the six-square tether, or while you are unconscious or dead. It responds only to your commands while you are conscious and within that range. It has no Reactions, spells, learned abilities or healing. At 0 HP or when you create another, it disappears without harming the model."
+      }
+    }
+  },
+  "effects": []
+}

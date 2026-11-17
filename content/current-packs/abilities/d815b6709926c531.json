@@ -1,0 +1,47 @@
+{
+  "_key": "!items!d815b6709926c531",
+  "_id": "d815b6709926c531",
+  "name": "Rescue Step I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div></dl><p>Maneuver. Move up to 2 squares to a willing ally, then move with it up to 2 more squares. Both creatures ignore movement reactions during this movement and finish adjacent. You can carry a helpless ally no larger than you instead, with a free hand and normal carrying limits. No roll.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "guard:watchfulness:4",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "technique",
+        "nodeId": "guard:watchfulness:4",
+        "level": 3,
+        "cost": 3,
+        "action": "Maneuver",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Maneuver. Move up to 2 squares to a willing ally, then move with it up to 2 more squares. Both creatures ignore movement reactions during this movement and finish adjacent. You can carry a helpless ally no larger than you instead, with a free hand and normal carrying limits. No roll.",
+        "improves": null,
+        "requires": [
+          "guard:watchfulness:3"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

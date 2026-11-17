@@ -1,0 +1,66 @@
+{
+  "_key": "!items!f9c950e8a209f379",
+  "_id": "f9c950e8a209f379",
+  "name": "Phantom Steed",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 minute</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One open square within 3 squares</dd></div><div><dt>Duration</dt><dd>1 hour, with commands</dd></div></dl><p>Shape a spectral riding horse using the Warhorse summoned profile. Give its immediate Main command. Continue directing it through the normal command procedure; movement carries its rider using the ordinary mounted movement rules and six-square tether.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:calling:5",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:calling:5",
+        "level": 1,
+        "cost": 2,
+        "action": "Ritual · 1 minute",
+        "sp": 2,
+        "range": "One open square within 3 squares",
+        "duration": "1 hour, with commands",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Shape a spectral riding horse using the Warhorse summoned profile. Give its immediate Main command. Continue directing it through the normal command procedure; movement carries its rider using the ordinary mounted movement rules and six-square tether.",
+        "improves": null,
+        "requires": [
+          "calling:1"
+        ],
+        "bookId": "calling"
+      },
+      "spell": {
+        "id": "spell:calling:5",
+        "name": "Phantom Steed",
+        "bookId": "calling",
+        "page": "5",
+        "section": "III",
+        "sp": 2,
+        "action": "Ritual",
+        "actionText": "Ritual · 1 minute",
+        "ritualTime": "1 minute",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One open square within 3 squares",
+        "duration": "1 hour, with commands",
+        "effect": "Shape a spectral riding horse using the Warhorse summoned profile. Give its immediate Main command. Continue directing it through the normal command procedure; movement carries its rider using the ordinary mounted movement rules and six-square tether."
+      }
+    }
+  },
+  "effects": []
+}

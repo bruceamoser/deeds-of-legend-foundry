@@ -1,0 +1,47 @@
+{
+  "_key": "!items!0a2fdbadd7c66724",
+  "_id": "0a2fdbadd7c66724",
+  "name": "Stand Like Stone I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div></dl><p>Maneuver. Until your next turn starts, gain Stability 3 and cannot be moved against your will or knocked Prone while standing on a supporting surface. You cannot move voluntarily during this stance. No roll.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "armor:bracing:4",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "technique",
+        "nodeId": "armor:bracing:4",
+        "level": 3,
+        "cost": 3,
+        "action": "Maneuver",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Maneuver. Until your next turn starts, gain Stability 3 and cannot be moved against your will or knocked Prone while standing on a supporting surface. You cannot move voluntarily during this stance. No roll.",
+        "improves": null,
+        "requires": [
+          "armor:bracing:3"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

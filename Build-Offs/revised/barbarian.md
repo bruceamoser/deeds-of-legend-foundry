@@ -1,6 +1,6 @@
 # Harka Stormshoulder: barbarian after the rewrite
 
-Pinned authored source `87f5141bd6e0da74a10c07b3239e975c7656430a`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../barbarian.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
+Pinned authored source `f71eac4c46fce6906d6dfbd1638ee98b10a6c538`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../barbarian.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
 
 ## What the rewrite changes
 
@@ -16,7 +16,7 @@ This is a dangerous berserker rather than a copy of daily Rage uses. Rage and li
 | SP | 2 | 6 | 14 |
 | DP spent / total | 6 / 7 | 19 / 20 | 51 / 58 |
 | Unspent DP | 1 | 1 | 7 |
-| Learned action choices (Main / Maneuver / Reaction) | 1 / 3 / 1 | 2 / 3 / 1 | 3 / 6 / 1 |
+| Learned action choices (Main / Maneuver / Reaction) | 1 / 3 / 1 | 2 / 4 / 1 | 3 / 8 / 1 |
 | Known book spells (free / paid) | 0 (0 / 0) | 0 (0 / 0) | 0 (0 / 0) |
 | Shared reserve: casts at 2 SP | 1 | 3 | 7 |
 | Shared reserve: casts at 5 SP | 0 | 1 | 2 |
@@ -111,15 +111,19 @@ Enter a rage until the end of the scene. While raging, you gain 1 Boon to attack
 
 <details><summary>Pain Feeds the Fire: complete signature component</summary>
 
-**Action:** Passive · **Attribute:** None
+**Action:** Maneuver · **Attribute:** None (no roll)
 
-**Target / range / shape:** Self while Go Berserk is active.
+**Target / range / shape:** Self.
 
-When an enemy damages you during your rage, gain 1 Boon to your next attack before the end of your next turn. Repeated damage does not accumulate these Boons. Damage you or an ally deliberately deal to you, and hazards you deliberately enter to hurt yourself, do not trigger it. Hostile forced movement into a hazard does trigger it.
+Enter a rage until the end of the scene. While raging, gain 1 Boon to attack rolls, 1 Bane to defense rolls, and physical resistance 1. You can end the rage at will. It also ends if you fall unconscious or enter Dying.
 
-**Duration:** Until the next attack or the end of your next turn.
+When an enemy damages you during this rage, gain 1 Boon to your next attack before the end of your next turn. Repeated damage does not accumulate these Boons. Damage you or an ally deliberately deal to you, and hazards you deliberately enter to hurt yourself, do not trigger it. Hostile forced movement into a hazard does trigger it.
+
+**Duration:** Rage until scene end or until ended; damage-triggered Boon until your next attack or the end of your next turn.
 
 **Equipment / acquisition:** None.
+
+Use once per scene. If you also know Go Berserk, both signatures share that rage use.
 
 </details>
 
@@ -179,31 +183,39 @@ Enter a rage until the end of the scene. While raging, you gain 1 Boon to attack
 
 </details>
 
-<details><summary>Deathless Rage: complete signature component</summary>
+<details><summary>Pain Feeds the Fire: complete signature component</summary>
 
-**Action:** Passive · **Attribute:** None (no roll)
+**Action:** Maneuver · **Attribute:** None (no roll)
 
-**Target / range / shape:** Self, while Go Berserk is active.
+**Target / range / shape:** Self.
 
-Once per scene, when damage would reduce you to 0 HP while [Go Berserk](signature-unbalanced-wild-approach.md) is active, remain at 1 HP. If you regain HP before the end of your next turn, the reprieve ends and you keep that HP. Otherwise, fall to 0 HP and begin Dying at the end of that turn. Further damage can still bring you to 0 during the reprieve. If you survive reaching 0, record a scar as usual.
+Enter a rage until the end of the scene. While raging, gain 1 Boon to attack rolls, 1 Bane to defense rolls, and physical resistance 1. You can end the rage at will. It also ends if you fall unconscious or enter Dying.
 
-**Duration:** Until the end of your next turn.
+When an enemy damages you during this rage, gain 1 Boon to your next attack before the end of your next turn. Repeated damage does not accumulate these Boons. Damage you or an ally deliberately deal to you, and hazards you deliberately enter to hurt yourself, do not trigger it. Hostile forced movement into a hazard does trigger it.
+
+**Duration:** Rage until scene end or until ended; damage-triggered Boon until your next attack or the end of your next turn.
 
 **Equipment / acquisition:** None.
+
+Use once per scene. If you also know Go Berserk, both signatures share that rage use.
 
 </details>
 
-<details><summary>Pain Feeds the Fire: complete signature component</summary>
+<details><summary>Deathless Rage: complete signature component</summary>
 
-**Action:** Passive · **Attribute:** None
+**Action:** Maneuver · **Attribute:** None (no roll)
 
-**Target / range / shape:** Self while Go Berserk is active.
+**Target / range / shape:** Self.
 
-When an enemy damages you during your rage, gain 1 Boon to your next attack before the end of your next turn. Repeated damage does not accumulate these Boons. Damage you or an ally deliberately deal to you, and hazards you deliberately enter to hurt yourself, do not trigger it. Hostile forced movement into a hazard does trigger it.
+Enter a rage until the end of the scene. While raging, gain 1 Boon to attack rolls, 1 Bane to defense rolls, and physical resistance 1. You can end the rage at will. It also ends if you fall unconscious or enter Dying.
 
-**Duration:** Until the next attack or the end of your next turn.
+Once per scene, when damage would reduce you to 0 HP during this rage, remain at 1 HP. If you regain HP before the end of your next turn, the reprieve ends and you keep that HP. Otherwise, fall to 0 HP and begin Dying at the end of that turn. Further damage can still bring you to 0 during the reprieve. If you survive reaching 0, record a scar as usual.
+
+**Duration:** Rage until scene end or until ended; reprieve until the end of your next turn.
 
 **Equipment / acquisition:** None.
+
+Use this rage once per scene. If you also know Go Berserk or Pain Feeds the Fire, all share that rage use. Pain Feeds the Fire’s damage-triggered Boon applies only if you also know that signature.
 
 </details>
 

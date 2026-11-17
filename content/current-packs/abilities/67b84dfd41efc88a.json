@@ -1,0 +1,65 @@
+{
+  "_key": "!items!67b84dfd41efc88a",
+  "_id": "67b84dfd41efc88a",
+  "name": "Calm Emotions",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>Up to three creatures within 6 squares that can hear you</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Send a steadying hush through the group. Reduce each target&#39;s Frightened by 1/2/3. Willing listeners may also pause an argument long enough for one person to speak.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "reason",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:emotion:4",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:emotion:4",
+        "level": 1,
+        "cost": 2,
+        "action": "Main Action",
+        "sp": 2,
+        "range": "Up to three creatures within 6 squares that can hear you",
+        "duration": "Instant",
+        "attribute": "Reason",
+        "defenseAttribute": null,
+        "effect": "Send a steadying hush through the group. Reduce each target's Frightened by 1/2/3. Willing listeners may also pause an argument long enough for one person to speak.",
+        "improves": null,
+        "requires": [
+          "emotion:0"
+        ],
+        "bookId": "emotion"
+      },
+      "spell": {
+        "id": "spell:emotion:4",
+        "name": "Calm Emotions",
+        "bookId": "emotion",
+        "page": "4",
+        "section": "II",
+        "sp": 2,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "Reason",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Up to three creatures within 6 squares that can hear you",
+        "duration": "Instant",
+        "effect": "Send a steadying hush through the group. Reduce each target's Frightened by 1/2/3. Willing listeners may also pause an argument long enough for one person to speak."
+      }
+    }
+  },
+  "effects": []
+}

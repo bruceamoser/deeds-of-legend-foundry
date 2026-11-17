@@ -1,0 +1,65 @@
+{
+  "_key": "!items!e98784d5c984b6db",
+  "_id": "e98784d5c984b6db",
+  "name": "Silent Image",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>An image fitting a 2-by-2-square space within 6 squares</dd></div><div><dt>Duration</dt><dd>1 minute</dd></div></dl><p>Shape a silent moving image. A Maneuver may move it up to 3 squares and alter its gestures. Physical interaction reveals its insubstantial nature; observers may examine it using the shared illusion procedure. Without directing it, the image stays in place and repeats its last simple performance.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:perception:2",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:perception:2",
+        "level": 1,
+        "cost": 1,
+        "action": "Main Action",
+        "sp": 1,
+        "range": "An image fitting a 2-by-2-square space within 6 squares",
+        "duration": "1 minute",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Shape a silent moving image. A Maneuver may move it up to 3 squares and alter its gestures. Physical interaction reveals its insubstantial nature; observers may examine it using the shared illusion procedure. Without directing it, the image stays in place and repeats its last simple performance.",
+        "improves": null,
+        "requires": [
+          "mentalism"
+        ],
+        "bookId": "perception"
+      },
+      "spell": {
+        "id": "spell:perception:2",
+        "name": "Silent Image",
+        "bookId": "perception",
+        "page": "2",
+        "section": "I",
+        "sp": 1,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "An image fitting a 2-by-2-square space within 6 squares",
+        "duration": "1 minute",
+        "effect": "Shape a silent moving image. A Maneuver may move it up to 3 squares and alter its gestures. Physical interaction reveals its insubstantial nature; observers may examine it using the shared illusion procedure. Without directing it, the image stays in place and repeats its last simple performance."
+      }
+    }
+  },
+  "effects": []
+}

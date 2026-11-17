@@ -1,0 +1,117 @@
+{
+  "_key": "!items!3353531abf1d08f3",
+  "_id": "3353531abf1d08f3",
+  "name": "Open the Circle",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Self and willing allies within 2 squares when used.</dd></div><div><dt>Magic</dt><dd>Spell</dd></div><div><dt>SP</dt><dd>0</dd></div><div><dt>Duration</dt><dd>Until the start of your next turn.</dd></div><div><dt>Equipment / acquisition</dt><dd>A free hand for casting.</dd></div><div><dt>Frequency</dt><dd>A new ward replaces your previous ward.</dd></div></dl><p>Each recipient gains 1 Boon to defenses against spells until the start of your next turn. During that time, each recipient gains Stability 2.</p><p>This is a spell costing 0 SP. If you also know Study the Pattern or Reading the Weave, you can communicate facts already learned with either while creating the ward; others learn exactly the facts you know.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-signature-arcanist-open-the-circle",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "ability-signature-arcanist-open-the-circle",
+        "level": 7,
+        "cost": 0,
+        "action": "Maneuver",
+        "sp": 0,
+        "range": "Self and willing allies within 2 squares when used.",
+        "duration": "Until the start of your next turn.",
+        "attribute": "None (no roll)",
+        "defenseAttribute": null,
+        "effect": "**Action:** Maneuver · **Attribute:** None (no roll)\n\n**Target / range / shape:** Self and willing allies within 2 squares when used.\n\nEach recipient gains 1 Boon to defenses against spells until the start of your next turn. During that time, each recipient gains Stability 2.\n\n**Duration:** Until the start of your next turn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP. If you also know Study the Pattern or Reading the Weave, you can communicate facts already learned with either while creating the ward; others learn exactly the facts you know.\n\n**Frequency:** A new ward replaces your previous ward.",
+        "improves": null,
+        "requires": [],
+        "bookId": null,
+        "magic": "Spell"
+      },
+      "spell": {
+        "id": "ability-signature-arcanist-open-the-circle",
+        "name": "Open the Circle",
+        "level": 7,
+        "dp": null,
+        "action": "Maneuver",
+        "attribute": "None (no roll)",
+        "target": "Self and willing allies within 2 squares when used.",
+        "duration": "Until the start of your next turn.",
+        "equipment": "A free hand for casting.",
+        "limits": "One signature choice at each of levels 1, 3 and 7.",
+        "effect": "**Action:** Maneuver · **Attribute:** None (no roll)\n\n**Target / range / shape:** Self and willing allies within 2 squares when used.\n\nEach recipient gains 1 Boon to defenses against spells until the start of your next turn. During that time, each recipient gains Stability 2.\n\n**Duration:** Until the start of your next turn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP. If you also know Study the Pattern or Reading the Weave, you can communicate facts already learned with either while creating the ward; others learn exactly the facts you know.\n\n**Frequency:** A new ward replaces your previous ward.",
+        "reference": {
+          "flavor": [
+            "Patterns in magic reveal their purpose to your patient scrutiny."
+          ],
+          "rules": {
+            "details": [
+              {
+                "label": "Action",
+                "value": "Maneuver"
+              },
+              {
+                "label": "Attribute",
+                "value": "None (no roll)"
+              },
+              {
+                "label": "Target / range / shape",
+                "value": "Self and willing allies within 2 squares when used."
+              },
+              {
+                "label": "Magic",
+                "value": "Spell"
+              },
+              {
+                "label": "SP",
+                "value": "0"
+              },
+              {
+                "label": "Duration",
+                "value": "Until the start of your next turn."
+              },
+              {
+                "label": "Equipment / acquisition",
+                "value": "A free hand for casting."
+              },
+              {
+                "label": "Frequency",
+                "value": "A new ward replaces your previous ward."
+              }
+            ],
+            "body": [
+              {
+                "text": "Each recipient gains 1 Boon to defenses against spells until the start of your next turn. During that time, each recipient gains Stability 2."
+              },
+              {
+                "text": "This is a spell costing 0 SP. If you also know Study the Pattern or Reading the Weave, you can communicate facts already learned with either while creating the ward; others learn exactly the facts you know."
+              }
+            ],
+            "notes": []
+          }
+        },
+        "referenceMarkdown": "**Action:** Maneuver · **Attribute:** None (no roll)\n\n**Target / range / shape:** Self and willing allies within 2 squares when used.\n\nEach recipient gains 1 Boon to defenses against spells until the start of your next turn. During that time, each recipient gains Stability 2.\n\n**Duration:** Until the start of your next turn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP. If you also know Study the Pattern or Reading the Weave, you can communicate facts already learned with either while creating the ward; others learn exactly the facts you know.\n\n**Frequency:** A new ward replaces your previous ward.",
+        "classId": "class-arcanist",
+        "lineId": "arcanist:study-the-pattern",
+        "signatureComponent": true,
+        "kind": "ability",
+        "sp": 0,
+        "magic": "Spell",
+        "rulesMarkdown": "**Action:** Maneuver · **Attribute:** None (no roll)\n\n**Target / range / shape:** Self and willing allies within 2 squares when used.\n\nEach recipient gains 1 Boon to defenses against spells until the start of your next turn. During that time, each recipient gains Stability 2.\n\n**Duration:** Until the start of your next turn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP. If you also know Study the Pattern or Reading the Weave, you can communicate facts already learned with either while creating the ward; others learn exactly the facts you know.\n\n**Frequency:** A new ward replaces your previous ward."
+      }
+    }
+  },
+  "effects": []
+}

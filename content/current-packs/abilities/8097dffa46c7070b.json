@@ -1,0 +1,66 @@
+{
+  "_key": "!items!8097dffa46c7070b",
+  "_id": "8097dffa46c7070b",
+  "name": "Legend Lore",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 hour</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>One adjacent historic object or site; 25 coins of incense consumed</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Ask one question about an important event in its history. Weak reveals one truthful clue, Standard a brief accurate account, and Strong the account plus a practical lead to evidence or another witness. The DA draws from the object&#39;s real past.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "reason",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:echoes:a1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:echoes:a1",
+        "level": 3,
+        "cost": 4,
+        "action": "Ritual · 1 hour",
+        "sp": 5,
+        "range": "One adjacent historic object or site; 25 coins of incense consumed",
+        "duration": "Instant",
+        "attribute": "Reason",
+        "defenseAttribute": null,
+        "effect": "Ask one question about an important event in its history. Weak reveals one truthful clue, Standard a brief accurate account, and Strong the account plus a practical lead to evidence or another witness. The DA draws from the object's real past.",
+        "improves": null,
+        "requires": [
+          "echoes:3"
+        ],
+        "bookId": "echoes"
+      },
+      "spell": {
+        "id": "spell:echoes:a1",
+        "name": "Legend Lore",
+        "bookId": "echoes",
+        "page": "A1",
+        "section": "V",
+        "sp": 5,
+        "action": "Ritual",
+        "actionText": "Ritual · 1 hour",
+        "ritualTime": "1 hour",
+        "attribute": "Reason",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One adjacent historic object or site; 25 coins of incense consumed",
+        "duration": "Instant",
+        "effect": "Ask one question about an important event in its history. Weak reveals one truthful clue, Standard a brief accurate account, and Strong the account plus a practical lead to evidence or another witness. The DA draws from the object's real past."
+      }
+    }
+  },
+  "effects": []
+}

@@ -1,0 +1,65 @@
+{
+  "_key": "!items!dbfc27d97d89d493",
+  "_id": "dbfc27d97d89d493",
+  "name": "Wall of Stone",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>4</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>Six connected unoccupied squares on solid ground within 8 squares</dd></div><div><dt>Duration</dt><dd>1 hour</dd></div></dl><p>Raise a stone wall 2 squares high. Each section has 12 HP and physical resistance 2. It can include openings you shape when casting. At expiry the conjured stone crumbles into harmless dust.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:earth:8",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:earth:8",
+        "level": 3,
+        "cost": 3,
+        "action": "Main Action",
+        "sp": 4,
+        "range": "Six connected unoccupied squares on solid ground within 8 squares",
+        "duration": "1 hour",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Raise a stone wall 2 squares high. Each section has 12 HP and physical resistance 2. It can include openings you shape when casting. At expiry the conjured stone crumbles into harmless dust.",
+        "improves": null,
+        "requires": [
+          "earth:2"
+        ],
+        "bookId": "earth"
+      },
+      "spell": {
+        "id": "spell:earth:8",
+        "name": "Wall of Stone",
+        "bookId": "earth",
+        "page": "8",
+        "section": "IV",
+        "sp": 4,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Six connected unoccupied squares on solid ground within 8 squares",
+        "duration": "1 hour",
+        "effect": "Raise a stone wall 2 squares high. Each section has 12 HP and physical resistance 2. It can include openings you shape when casting. At expiry the conjured stone crumbles into harmless dust."
+      }
+    }
+  },
+  "effects": []
+}

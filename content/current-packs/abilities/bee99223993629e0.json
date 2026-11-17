@@ -1,0 +1,47 @@
+{
+  "_key": "!items!bee99223993629e0",
+  "_id": "bee99223993629e0",
+  "name": "Screen the Retreat II",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Screen the Retreat may place its two flasks within 8 squares.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "craft:mixtures:5",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "craft:mixtures:5",
+        "level": 3,
+        "cost": 4,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Screen the Retreat may place its two flasks within 8 squares.",
+        "improves": "craft:mixtures:4",
+        "requires": [
+          "craft:mixtures:4"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

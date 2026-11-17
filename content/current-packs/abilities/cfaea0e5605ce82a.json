@@ -1,0 +1,65 @@
+{
+  "_key": "!items!cfaea0e5605ce82a",
+  "_id": "cfaea0e5605ce82a",
+  "name": "Protection from Energy",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>3</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One willing creature within 3 squares</dd></div><div><dt>Duration</dt><dd>1 minute</dd></div></dl><p>Choose fire, cold, lightning or poison. Grant resistance 2 to that type for the duration, using the highest matching resistance.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:protection:6",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:protection:6",
+        "level": 1,
+        "cost": 2,
+        "action": "Main Action",
+        "sp": 3,
+        "range": "One willing creature within 3 squares",
+        "duration": "1 minute",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Choose fire, cold, lightning or poison. Grant resistance 2 to that type for the duration, using the highest matching resistance.",
+        "improves": null,
+        "requires": [
+          "protection:1"
+        ],
+        "bookId": "protection"
+      },
+      "spell": {
+        "id": "spell:protection:6",
+        "name": "Protection from Energy",
+        "bookId": "protection",
+        "page": "6",
+        "section": "III",
+        "sp": 3,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One willing creature within 3 squares",
+        "duration": "1 minute",
+        "effect": "Choose fire, cold, lightning or poison. Grant resistance 2 to that type for the duration, using the highest matching resistance."
+      }
+    }
+  },
+  "effects": []
+}

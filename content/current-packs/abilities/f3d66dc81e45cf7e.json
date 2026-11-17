@@ -1,0 +1,47 @@
+{
+  "_key": "!items!f3d66dc81e45cf7e",
+  "_id": "f3d66dc81e45cf7e",
+  "name": "The Moving Bulwark",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div></dl><p>Maneuver. Once per scene, choose up to four willing allies within 3 squares who can perceive your signal. You and each chosen ally may move 2 squares without movement reactions. Until your next turn starts, you and chosen allies within 3 squares gain 1 Boon on defense and reduce attack damage by 3 after resistance. Leaving range suspends the protection until returning. No roll.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "guard:shelter:7",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "mastery",
+        "nodeId": "guard:shelter:7",
+        "level": 7,
+        "cost": 5,
+        "action": "Maneuver",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Maneuver. Once per scene, choose up to four willing allies within 3 squares who can perceive your signal. You and each chosen ally may move 2 squares without movement reactions. Until your next turn starts, you and chosen allies within 3 squares gain 1 Boon on defense and reduce attack damage by 3 after resistance. Leaving range suspends the protection until returning. No roll.",
+        "improves": null,
+        "requires": [
+          "guard:shelter:6"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

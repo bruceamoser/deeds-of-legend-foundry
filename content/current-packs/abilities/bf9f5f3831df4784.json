@@ -1,0 +1,47 @@
+{
+  "_key": "!items!bf9f5f3831df4784",
+  "_id": "bf9f5f3831df4784",
+  "name": "Light Fingers III",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Light Fingers can also target an accessible object worn or carried by a distracted creature, other than a held weapon, secured container or worn armor.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "subterfuge:sleight:3",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "subterfuge:sleight:3",
+        "level": 1,
+        "cost": 2,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Light Fingers can also target an accessible object worn or carried by a distracted creature, other than a held weapon, secured container or worn armor.",
+        "improves": "subterfuge:sleight:1",
+        "requires": [
+          "subterfuge:sleight:2"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

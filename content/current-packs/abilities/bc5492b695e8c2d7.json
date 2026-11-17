@@ -1,0 +1,66 @@
+{
+  "_key": "!items!bc5492b695e8c2d7",
+  "_id": "bc5492b695e8c2d7",
+  "name": "Lifegiving",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 minute</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One willing dead person whose intact body is adjacent; death within the past minute</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Consume 100 coins of funerary incense and return the person at 1 HP, with both death roll tallies cleared and fatal injuries closed. The spirit chooses whether to return. Retain scars, spent SP and spent Grit. This uses the person&#39;s one lifetime return through resurrection magic.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:spirits:a3",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:spirits:a3",
+        "level": 7,
+        "cost": 5,
+        "action": "Ritual · 1 minute",
+        "sp": 5,
+        "range": "One willing dead person whose intact body is adjacent; death within the past minute",
+        "duration": "Instant",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Consume 100 coins of funerary incense and return the person at 1 HP, with both death roll tallies cleared and fatal injuries closed. The spirit chooses whether to return. Retain scars, spent SP and spent Grit. This uses the person's one lifetime return through resurrection magic.",
+        "improves": null,
+        "requires": [
+          "spirits:5"
+        ],
+        "bookId": "spirits"
+      },
+      "spell": {
+        "id": "spell:spirits:a3",
+        "name": "Lifegiving",
+        "bookId": "spirits",
+        "page": "A3",
+        "section": "VII",
+        "sp": 5,
+        "action": "Ritual",
+        "actionText": "Ritual · 1 minute",
+        "ritualTime": "1 minute",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One willing dead person whose intact body is adjacent; death within the past minute",
+        "duration": "Instant",
+        "effect": "Consume 100 coins of funerary incense and return the person at 1 HP, with both death roll tallies cleared and fatal injuries closed. The spirit chooses whether to return. Retain scars, spent SP and spent Grit. This uses the person's one lifetime return through resurrection magic."
+      }
+    }
+  },
+  "effects": []
+}

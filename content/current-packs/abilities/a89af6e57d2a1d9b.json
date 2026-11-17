@@ -1,0 +1,47 @@
+{
+  "_key": "!items!a89af6e57d2a1d9b",
+  "_id": "a89af6e57d2a1d9b",
+  "name": "Gentle Hand III",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Gentle Hand may address three animals sharing the same cause of agitation as one objective.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "wilderness:animal-handling:3",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "wilderness:animal-handling:3",
+        "level": 1,
+        "cost": 2,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Gentle Hand may address three animals sharing the same cause of agitation as one objective.",
+        "improves": "wilderness:animal-handling:1",
+        "requires": [
+          "wilderness:animal-handling:2"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

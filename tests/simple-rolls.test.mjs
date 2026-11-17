@@ -107,7 +107,7 @@ test("attack follows one native target and unregisters its target hook", async (
   };
   shared.readDraft();
   assert.equal(shared.draft.perception.Ogre, "no");
-  assert.equal(shared.draft.woundApplicability.injury, "does-not-apply");
+  assert.equal(shared.draft.woundApplicability, undefined);
   assert.equal(shared.draft.adjustment, -3);
   assert.equal(shared.draft.adjustmentOverride, false);
   await shared._onClose({});

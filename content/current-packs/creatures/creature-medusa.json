@@ -1,0 +1,325 @@
+{
+  "_key": "!actors!c59b98bbb02fd666",
+  "_id": "c59b98bbb02fd666",
+  "name": "Medusa",
+  "type": "creature",
+  "img": "systems/heroes-of-legend/assets/creatures/354252cd34ec63b56ab4195cda5b0829571a1e2cbb93ad70b4ffa6bfac0a9388.webp",
+  "prototypeToken": {
+    "width": 1,
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/354252cd34ec63b56ab4195cda5b0829571a1e2cbb93ad70b4ffa6bfac0a9388.webp"
+    }
+  },
+  "system": {
+    "schemaVersion": 1,
+    "attributes": {
+      "brawn": {
+        "base": 0
+      },
+      "fortitude": {
+        "base": 0
+      },
+      "agility": {
+        "base": 2
+      },
+      "guile": {
+        "base": 1
+      },
+      "knowledge": {
+        "base": 0
+      },
+      "reason": {
+        "base": 1
+      }
+    },
+    "attributesSource": "Brawn +0; Fortitude +0; Agility +2; Guile +1; Knowledge +0; Reason +1",
+    "health": {
+      "value": 26,
+      "baseMax": 26,
+      "sourceText": "26"
+    },
+    "cv": 31,
+    "speed": 6,
+    "speedSource": "6",
+    "alternateSpeeds": [],
+    "size": 1,
+    "sizeLabel": "medium",
+    "sizeSource": "1 (medium)",
+    "footprint": {
+      "width": 1,
+      "height": 1
+    },
+    "armor": 1,
+    "armorMarker": "",
+    "armorSource": "1",
+    "stability": 0,
+    "threat": {
+      "boons": 0,
+      "banes": 1,
+      "sourceText": "1 Bane"
+    },
+    "evasion": {
+      "boons": 0,
+      "banes": 1,
+      "sourceText": "1 Bane"
+    },
+    "weaknesses": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "resistances": {
+      "numeric": [
+        {
+          "type": "Physical",
+          "value": 1
+        }
+      ],
+      "special": [],
+      "sourceText": "Physical (1)"
+    },
+    "immunities": [],
+    "basicMelee": {
+      "weak": 5,
+      "standard": 3,
+      "strong": 2,
+      "defenseAttribute": "agility",
+      "orientation": "player-defense"
+    },
+    "actions": {
+      "orientation": "player-defense",
+      "entries": [
+        {
+          "id": "main-0",
+          "category": "main",
+          "name": "Basic Melee",
+          "abilityId": "",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "5",
+            "standard": "3",
+            "strong": "2"
+          },
+          "effect": "5/3/2",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "main-1",
+          "category": "main",
+          "name": "Stoneward gaze",
+          "abilityId": "",
+          "attributeKey": "fortitude",
+          "defenseSource": "Fortitude",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "7 + Paralyzed 1",
+            "standard": "5",
+            "strong": "3"
+          },
+          "effect": "7 + Paralyzed 1 / 5 / 3",
+          "referenceMarkdown": "### Stoneward gaze\n\n**Target:** Only a creature that can see this creature. One visible creature within 4 squares. **Player defense:** Fortitude. **Damage type:** physical.\n\n**Weak defense:** Paralyzed 1.\n\n**Limit:** Cannot use this attack on consecutive turns, regardless of result."
+        },
+        {
+          "id": "maneuver-0",
+          "category": "maneuver",
+          "name": "Study the Opening",
+          "abilityId": "",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "+1 Threat Bane on next attack this turn.",
+          "referenceMarkdown": "### Study the Opening\n\n*It waits for a tell in the stance, then turns its attention to the exposed line.*\n\nIts next attack before the end of this turn imposes 1 additional Bane on player defense, or gains 1 Boon when player-controlled. One attack only; no stacking with itself."
+        },
+        {
+          "id": "maneuver-1",
+          "category": "maneuver",
+          "name": "Defend",
+          "abilityId": "",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "+1 Bane",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "reaction-0",
+          "category": "reaction",
+          "name": "Warning Hiss",
+          "abilityId": "monster-warning-hiss",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Before a hearing adjacent enemy makes a melee attack: +1 Bane.",
+          "referenceMarkdown": "### Warning Hiss\n\n*The snakes beneath the hood rear together, filling the attacker's vision with open mouths and hissing fangs.*\n\nBefore one adjacent enemy that can hear it makes a melee attack against this creature, impose 1 Bane on that attack. Against an NPC attack, grant 1 Boon to its defense instead. No Frightened condition, extra gaze or counterattack is granted."
+        },
+        {
+          "id": "reaction-1",
+          "category": "reaction",
+          "name": "Opportunity Attack",
+          "abilityId": "",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Basic Melee",
+          "referenceMarkdown": ""
+        }
+      ],
+      "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates a complete outcome. All attacks use printed Threat unless stated otherwise.",
+      "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Stoneward gaze | Fortitude | 7 + Paralyzed 1 / 5 / 3 |",
+      "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Study the Opening | +1 Threat Bane on next attack this turn. |\n| Defend | +1 Bane |",
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Warning Hiss | Before a hearing adjacent enemy makes a melee attack: +1 Bane. |\n| Opportunity Attack | Basic Melee |"
+    },
+    "details": {
+      "flavorMarkdown": "*Living serpents stir beneath a medusa's hood, while polished stones hang at the belt as reminders of unfinished sculptures.*",
+      "specialtyMarkdown": "### Stoneward gaze\n\n**Target:** Only a creature that can see this creature. One visible creature within 4 squares. **Player defense:** Fortitude. **Damage type:** physical.\n\n**Weak defense:** Paralyzed 1.\n\n**Limit:** Cannot use this attack on consecutive turns, regardless of result.\n\n### Study the Opening\n\n*It waits for a tell in the stance, then turns its attention to the exposed line.*\n\nIts next attack before the end of this turn imposes 1 additional Bane on player defense, or gains 1 Boon when player-controlled. One attack only; no stacking with itself.\n\n### Warning Hiss\n\n*The snakes beneath the hood rear together, filling the attacker's vision with open mouths and hissing fangs.*\n\nBefore one adjacent enemy that can hear it makes a melee attack against this creature, impose 1 Bane on that attack. Against an NPC attack, grant 1 Boon to its defense instead. No Frightened condition, extra gaze or counterattack is granted.",
+      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until its next turn. Combines with Evasion through normal Boon/Bane rules; repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature; spend its Reaction before the provoking action resolves. That action continues if capable.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Ordinary sight and hearing.\n\n**Tactics and retreat:** Study an opening before the gaze, then reposition or use Basic Melee during its required pause. A target that cannot see the medusa is safe from this gaze.\n\n**Encounter and conversation:** The medusa has been blamed for statues far older than its arrival and wants the true sculptor found.\n\n**Habitat:** Settlement; frontier; contested road · **Communication:** Common and its community’s language\n\n**Loot:** Ordinary carried gear and 8 coins; special rewards belong to the adventure.\n\n**Summoning:** Ineligible.",
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-medusa\n\n\n**Category:** Mortal · **Role:** Disabler · **CV:** 31\n\n### Creature-roll reference\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Stoneward gaze | Brawn | 1 Boon | 3 physical damage. | 5 physical damage. | 7 physical damage. Paralyzed 1. |\n\nUse the attributes above for defenses named by incoming attacks. Same targeting, limits and costs apply; no opposed second roll.\n\n### CV worksheet\n\n**Reference damage:** 3/5/7\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.7\n\n**Action review (#1279):** U 1.6 → 1.7: Maneuver allowance +0, Reaction allowance +0.1. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.\n\n**Regeneration per turn:** 0\n\nReference I=3.404, O=4.596. Uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/encounters.md). Utility is provisional and does not simulate control, positioning or summon choices.\n\n**Ability sources:** [numbing strike](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/numbing-strike.md), [Warning Hiss](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/warning-hiss.md), [watch the opening](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/watch-the-opening.md).\n\n**Coverage reference:** [Pathfinder family survey](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/family-survey.md); original HOL prose and mechanics.\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/roster.md) · [Stability](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/rules/stability.md)"
+    },
+    "biography": ""
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-medusa",
+        "asset": "assets/creatures/354252cd34ec63b56ab4195cda5b0829571a1e2cbb93ad70b4ffa6bfac0a9388.webp",
+        "sha256": "575c2c6d1974adb6568c82f6d030d95c2cd9016737db75f9f9dc19527fb9426b",
+        "sourceSha256": "354252cd34ec63b56ab4195cda5b0829571a1e2cbb93ad70b4ffa6bfac0a9388",
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
+      "catalogId": "creature-medusa",
+      "source": {
+        "path": "design/bestiary/creatures/medusa.md",
+        "sha256": "422d11422faa814fcac575f58fa012a1299aa71d44b7f0c471198e0cd3879dcd"
+      },
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Printed profile · specialty automation pending",
+      "specialtyAutomation": "pending",
+      "classification": {
+        "category": "Mortal",
+        "role": "Disabler",
+        "cv": 31
+      },
+      "family": "Legendary people",
+      "abilitySources": [
+        {
+          "label": "numbing strike",
+          "id": "monster-numbing-strike",
+          "path": "design/monster-abilities/numbing-strike.md",
+          "sha256": "d9bd9109809a7d1990c95ff1d4e3868d5093f961640e31d69101a188149364b3"
+        },
+        {
+          "label": "Warning Hiss",
+          "id": "monster-warning-hiss",
+          "path": "design/monster-abilities/warning-hiss.md",
+          "sha256": "e3cb7a9a1320e285610e880deb7f2c2c0186773c09bc64b5db973577c88b8f24"
+        },
+        {
+          "label": "watch the opening",
+          "id": "monster-watch-the-opening",
+          "path": "design/monster-abilities/watch-the-opening.md",
+          "sha256": "9e50f6e5c25e935c79473c28e26e7335a353fefaaa1e076fc4aab4360dd82208"
+        }
+      ],
+      "monsterAbilityTemplates": [
+        {
+          "id": "monster-numbing-strike",
+          "path": "design/monster-abilities/numbing-strike.md",
+          "sha256": "d9bd9109809a7d1990c95ff1d4e3868d5093f961640e31d69101a188149364b3",
+          "name": "Numbing Strike",
+          "action": "Main Action",
+          "flavorMarkdown": "*The struck limb goes rigid for one terrifying instant.*",
+          "rulesMarkdown": "The worst player defense outcome applies Paralyzed 1 as printed. This attack cannot be used on consecutive turns, regardless of outcome. This is not lasting petrification.\n\nActual damage, targeting and defense attribute are printed on the creature card.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Numbing Strike\n\n*The struck limb goes rigid for one terrifying instant.*\n\n## Rules\n\n**ID:** monster-numbing-strike\n\n\n**Action:** Main Action\n\nThe worst player defense outcome applies Paralyzed 1 as printed. This attack cannot be used on consecutive turns, regardless of outcome. This is not lasting petrification.\n\nActual damage, targeting and defense attribute are printed on the creature card.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/numbing-strike.md",
+            "sha256": "d9bd9109809a7d1990c95ff1d4e3868d5093f961640e31d69101a188149364b3"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-warning-hiss",
+          "path": "design/monster-abilities/warning-hiss.md",
+          "sha256": "e3cb7a9a1320e285610e880deb7f2c2c0186773c09bc64b5db973577c88b8f24",
+          "name": "Warning Hiss",
+          "action": "Reaction",
+          "flavorMarkdown": "*Fangs bare and a sharp hiss cuts across the attacker's concentration as the weapon comes down.*",
+          "rulesMarkdown": "Before one adjacent enemy that can hear it makes a melee attack against this creature, impose 1 Bane on that attack. Against an NPC attack, grant 1 Boon to its defense instead. No Frightened condition, extra gaze or counterattack is granted.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Warning Hiss\n\n*Fangs bare and a sharp hiss cuts across the attacker's concentration as the weapon comes down.*\n\n## Rules\n\n**ID:** monster-warning-hiss\n\n**Action:** Reaction\n\nBefore one adjacent enemy that can hear it makes a melee attack against this creature, impose 1 Bane on that attack. Against an NPC attack, grant 1 Boon to its defense instead. No Frightened condition, extra gaze or counterattack is granted.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/warning-hiss.md",
+            "sha256": "e3cb7a9a1320e285610e880deb7f2c2c0186773c09bc64b5db973577c88b8f24"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-watch-the-opening",
+          "path": "design/monster-abilities/watch-the-opening.md",
+          "sha256": "9e50f6e5c25e935c79473c28e26e7335a353fefaaa1e076fc4aab4360dd82208",
+          "name": "Study the Opening",
+          "action": "Maneuver",
+          "flavorMarkdown": "*It waits for a tell in the stance, then turns its attention to the exposed line.*",
+          "rulesMarkdown": "Its next attack before the end of this turn imposes 1 additional Bane on player defense, or gains 1 Boon when player-controlled. One attack only; no stacking with itself.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Study the Opening\n\n*It waits for a tell in the stance, then turns its attention to the exposed line.*\n\n## Rules\n\n**ID:** monster-watch-the-opening\n\n\n**Action:** Maneuver\n\nIts next attack before the end of this turn imposes 1 additional Bane on player defense, or gains 1 Boon when player-controlled. One attack only; no stacking with itself.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/watch-the-opening.md",
+            "sha256": "9e50f6e5c25e935c79473c28e26e7335a353fefaaa1e076fc4aab4360dd82208"
+          },
+          "automation": "pending"
+        }
+      ],
+      "summoning": {
+        "eligible": false,
+        "summonId": null,
+        "path": null,
+        "eligibility": null,
+        "sourceText": "Ineligible."
+      }
+    }
+  }
+}

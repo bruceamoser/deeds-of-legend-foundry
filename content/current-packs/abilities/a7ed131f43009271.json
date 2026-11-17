@@ -1,0 +1,47 @@
+{
+  "_key": "!items!a7ed131f43009271",
+  "_id": "a7ed131f43009271",
+  "name": "Turn Back the Danger II",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Turn Back the Danger reaches 6 squares.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "wilderness:trailcraft:5",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "wilderness:trailcraft:5",
+        "level": 3,
+        "cost": 4,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Turn Back the Danger reaches 6 squares.",
+        "improves": "wilderness:trailcraft:4",
+        "requires": [
+          "wilderness:trailcraft:4"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

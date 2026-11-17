@@ -1,0 +1,47 @@
+{
+  "_key": "!items!c2b8607551e5af58",
+  "_id": "c2b8607551e5af58",
+  "name": "Riposte II",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Riposte deals 3/4/6 physical damage.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "3 physical damage",
+      "standard": "4 physical damage",
+      "strong": "6 physical damage"
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "arms:dueling:5",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "arms:dueling:5",
+        "level": 3,
+        "cost": 4,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Riposte deals 3/4/6 physical damage.",
+        "improves": "arms:dueling:4",
+        "requires": [
+          "arms:dueling:4"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

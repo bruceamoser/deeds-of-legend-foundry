@@ -8,7 +8,7 @@ import { chapterContentsHTML } from "./content/journal-sections.mjs";
 import { renderMarkdown } from "../src/sheets/creature-reference.mjs";
 
 const root = new URL("../", import.meta.url);
-const lock = JSON.parse(await readFile(new URL("content/source-lock.json", root)));
+const lock = JSON.parse(await readFile(new URL("content/native-journals-source-lock.json", root)));
 const source = process.env.HOL_RULES_REPO ?? fileURLToPath(new URL("../../heroes-of-legend/", import.meta.url));
 const output = new URL("content/journals/", root);
 const records = lock.records.filter(r => r.path.endsWith(".md"));
@@ -40,7 +40,7 @@ function markup(markdown, path) {
 }
 // Book order follows the approved Player builder and DA source manifest. Every
 // pinned source remains present, including references outside the printed books.
-const playerSections = ["1 · Welcome", "2 · Create Your Hero", "3 · Ancestry, Culture and Background", "4 · Classes", "5 · Disciplines and Character Paths", "6 · Playing the Game", "7 · Beyond the Battlefield", "8 · Harm and Recovery", "9 · Abilities", "10 · Equipment and Recipes", "11 · Summoned Companions", "12 · Wound Tables", "13 · Ready-to-Play Heroes", "14 · Table References", "Source references"];
+const playerSections = ["1 · Welcome", "2 · Create Your Hero", "3 · Ancestry, Culture and Background", "4 · Classes", "5 · Disciplines and Character Paths", "6 · Playing the Game", "7 · Beyond the Battlefield", "8 · Harm and Recovery", "9 · Basic Actions", "10 · Equipment and Recipes", "11 · Summoned Companions", "12 · Scars and Survival", "13 · Ready-to-Play Heroes", "14 · Table References", "Source references"];
 const daManifest = JSON.parse(execFileSync("git", ["-C", source, "show", `${lock.commit}:design/da-book/source-manifest.json`], {encoding:"utf8"}));
 const daChapters = [...daManifest.chapters, ...daManifest.appendices].map(path => `design/${path}`);
 const manuscripts = new Map();
@@ -61,6 +61,9 @@ function sectionOf(path) {
   }
   const chapter = path.match(/player-book\/manuscript\/(\d+)-/);
   if (chapter) return Number(chapter[1])-1;
+  if (path.endsWith("02a-starting-sp.md")) return 1;
+  if (path.startsWith("design/spellbooks/") || /rules\/(magic|learning)/.test(path)) return 4;
+  if (path.endsWith("rules/objectives.md")) return 6;
   if (/ancestries|ancestry-procedures|origins|intro-(ancestry|culture|background)/.test(path)) return 2;
   if (/classes|cards\/signature-/.test(path)) return 3;
   if (/disciplines|paths/.test(path)) return 4;

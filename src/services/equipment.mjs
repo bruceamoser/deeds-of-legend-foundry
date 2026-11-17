@@ -1,3 +1,4 @@
+import {validateEquipmentAttributeArrangement} from "../rules/effective-attributes.mjs";
 import { updateOwnedDocument } from "./documents.mjs";
 import { shouldProcessRequest, enqueueCharacterOperation } from "./authority.mjs";
 const ID = "heroes-of-legend";
@@ -31,6 +32,7 @@ export function requestEquipment(actor, _basis, items, _capacity, _reason = "") 
       source.system.hands=state.hands;source.system.held=state.held;source.system.worn=state.worn;
       source.system.carried=state.carried ?? current.items.find(item=>item.id===source._id).carried;
     }
+    validateEquipmentAttributeArrangement(sources);
     await updateOwnedDocument(actor,{items:sources,[`flags.${ID}.equipmentRevision`]:current.revision+1});
     return {status:"complete"};
   });

@@ -1,0 +1,47 @@
+{
+  "_key": "!items!52242c00e8790dea",
+  "_id": "52242c00e8790dea",
+  "name": "Terms of Surrender I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div></dl><p>Main Action · Reason. Offer a feasible surrender to up to three enemies who understand you. Roll once; add 1/2/3 progress to their shared objective if they share a motive, otherwise to one chosen enemy’s objective. They continue acting until an objective completes.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "reason",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "influence:pressure:4",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "technique",
+        "nodeId": "influence:pressure:4",
+        "level": 3,
+        "cost": 3,
+        "action": "Main Action",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": "Reason",
+        "defenseAttribute": null,
+        "effect": "Main Action · Reason. Offer a feasible surrender to up to three enemies who understand you. Roll once; add 1/2/3 progress to their shared objective if they share a motive, otherwise to one chosen enemy’s objective. They continue acting until an objective completes.",
+        "improves": null,
+        "requires": [
+          "influence:pressure:3"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

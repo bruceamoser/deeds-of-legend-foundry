@@ -1,0 +1,66 @@
+{
+  "_key": "!items!8c9a19e89436904f",
+  "_id": "8c9a19e89436904f",
+  "name": "Transport via Plants",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 minute</dd></div><div><dt>SP</dt><dd>6</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>Self and up to five willing creatures beside a living tree</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Travel through the tree to another living tree you personally touched within the past month, up to 100 kilometers away on the same plane. Everyone emerges in safe adjacent squares with carried gear. The destination tree must remain alive and large enough to admit a traveler. An explicit teleportation barrier blocks the journey.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:growth:a3",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:growth:a3",
+        "level": 7,
+        "cost": 5,
+        "action": "Ritual · 1 minute",
+        "sp": 6,
+        "range": "Self and up to five willing creatures beside a living tree",
+        "duration": "Instant",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Travel through the tree to another living tree you personally touched within the past month, up to 100 kilometers away on the same plane. Everyone emerges in safe adjacent squares with carried gear. The destination tree must remain alive and large enough to admit a traveler. An explicit teleportation barrier blocks the journey.",
+        "improves": null,
+        "requires": [
+          "growth:5"
+        ],
+        "bookId": "growth"
+      },
+      "spell": {
+        "id": "spell:growth:a3",
+        "name": "Transport via Plants",
+        "bookId": "growth",
+        "page": "A3",
+        "section": "VII",
+        "sp": 6,
+        "action": "Ritual",
+        "actionText": "Ritual · 1 minute",
+        "ritualTime": "1 minute",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Self and up to five willing creatures beside a living tree",
+        "duration": "Instant",
+        "effect": "Travel through the tree to another living tree you personally touched within the past month, up to 100 kilometers away on the same plane. Everyone emerges in safe adjacent squares with carried gear. The destination tree must remain alive and large enough to admit a traveler. An explicit teleportation barrier blocks the journey."
+      }
+    }
+  },
+  "effects": []
+}

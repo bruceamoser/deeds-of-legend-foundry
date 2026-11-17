@@ -32,3 +32,11 @@ export function effectiveRollDraft(plan, value = plan.net, overridden = false) {
     banesLabel: "Player modifier override",
   };
 }
+
+/** DA-judged cover belongs to whichever side rolls, once. Visibility/path remain
+ * targeting requirements; heavy cover still has a usable path. */
+export function coverRollSources({ mode, cover = "none" }) {
+  if (!["none", "partial", "heavy"].includes(cover)) throw new Error("Choose none, partial or heavy cover.");
+  if (!['attack', 'defense'].includes(mode) || cover === "none") return [];
+  return [{id: "target-cover", kind: mode === "attack" ? "bane" : "boon", amount: cover === "partial" ? 1 : 3, label: `${cover === "partial" ? "Partial" : "Heavy"} cover`, automatic: false, sourceIds: []}];
+}

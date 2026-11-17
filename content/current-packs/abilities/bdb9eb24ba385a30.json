@@ -1,0 +1,47 @@
+{
+  "_key": "!items!bdb9eb24ba385a30",
+  "_id": "bdb9eb24ba385a30",
+  "name": "Shield Canopy II",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>When you use Shield Canopy, you may first move 1 square toward an ally without movement reactions; choose protected allies after moving.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "guard:shelter:5",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "guard:shelter:5",
+        "level": 3,
+        "cost": 4,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "When you use Shield Canopy, you may first move 1 square toward an ally without movement reactions; choose protected allies after moving.",
+        "improves": "guard:shelter:4",
+        "requires": [
+          "guard:shelter:4"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

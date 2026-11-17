@@ -67,19 +67,10 @@ test("contextual ancestry traits and narrative lookalikes do not grant permanent
   assert.throws(() => ancestryBenefits("trait-gnome-small-target"), /stable IDs/);
 });
 
-test("native roll preparation applies Small Target once and reverses it for player attacks", async () => {
-  const { prepareRoll } = await import("../src/services/roll-preparation.mjs");
-  const basis = {attribute: 2, contributions: [], woundModifiers: [], incoming: null};
-  const defense = prepareRoll({...basis, mode: "defense", benefits: passiveAncestryDefenseSources(["trait-gnome-small-target"])});
-  assert.equal(defense.net, 1);
-  const attack = prepareRoll({...basis, mode: "attack", benefits: [], targetAncestryDefenseSources: passiveAncestryDefenseSources(["trait-gnome-small-target"], {attackerRolls: true})});
-  assert.equal(attack.net, -1);
-  assert.equal(prepareRoll({...basis, mode: "attack", benefits: [], targetAncestryDefenseSources: attack.sources}, {boons:1}).net, 0);
-});
 test("native movement reads borrowed Broad Back while preserving committed Speed and resource history", async()=>{
   const {actorMovement}=await import("../src/services/turn-budget.mjs");
   const development={creationSummary:{speedBase:6},creation:{ancestryId:"ancestry-human",traitIds:["trait-human-many-homes","trait-human-weathered"],borrowedAncestryId:"ancestry-tallfolk",borrowedTraitId:"trait-tallfolk-broad-back"},ledger:[{kind:"purchase",delta:-2}]};
-  const actor={type:"character",effects:[],items:[{type:"equipment",system:{bulk:16,quantity:1}}],system:{attributes:{agility:{effective:0},brawn:{effective:1}},health:{value:3},grit:{spent:1}},getFlag:(_id,key)=>key==="development"?development:undefined};
+  const actor={type:"character",effects:[],items:[{type:"equipment",system:{bulk:16,quantity:1}}],system:{attributes:{agility:{effective:0},brawn:{effective:1}},health:{value:3},grit:{spent:1}},getFlag:(_id,key)=>({nativeWorkshop:{portable:{format:"heroes-of-legend-character",schemaVersion:7,draft:development.creation}},forgeMovement:{speedBase:6}})[key]};
   const before=JSON.stringify({development,system:actor.system});
   const movement=actorMovement(actor);
   assert.equal(movement.capacity,16);

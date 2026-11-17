@@ -4,7 +4,7 @@ const ID = "heroes-of-legend";
 export function benefitCurrent(effect) {
   if (!effect.active) return false;
   const benefit = effect.getFlag(ID, "benefit");
-  if (!benefit) return false;
+  if (!benefit || benefit.current !== true) return false;
   if (benefit.manual) return true;
   const combat = game.combats.get(benefit.anchor?.combatId),
     state = combat?.getFlag(ID, "encounter"),

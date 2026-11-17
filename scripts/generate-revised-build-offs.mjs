@@ -47,7 +47,7 @@ const plans={
 };
 const deepSignature=(draft,level)=>{
  const first=forge.signatureDevelopment.signatures.find(x=>x.id===draft.signatureId);
- return forge.signatureDevelopment.signatures.find(x=>x.lineId===first.lineId&&x.level===level).id;
+ return (forge.signatureDevelopment.signatures.find(x=>first.lineId&&x.lineId===first.lineId&&x.level===level) ?? forge.signatureDevelopment.signatures.find(x=>x.classId===first.classId&&x.level===level)).id;
 };
 const sourcePrefix=working?'Working-tree authoring verification; regenerate after the reviewed source is pinned.':'Pinned authored source';
 const all=[];

@@ -1,0 +1,66 @@
+{
+  "_key": "!items!84a9a6a37c9d7a92",
+  "_id": "84a9a6a37c9d7a92",
+  "name": "Detect Poison and Disease",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 minute</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>Food, drink or one willing creature within 1 square</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Determine whether ordinary poison or disease is present and identify its broad type: ingested, inhaled, contact or bodily infection. The reading helps select suitable treatment.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:detection:2",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:detection:2",
+        "level": 1,
+        "cost": 1,
+        "action": "Ritual · 1 minute",
+        "sp": 1,
+        "range": "Food, drink or one willing creature within 1 square",
+        "duration": "Instant",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Determine whether ordinary poison or disease is present and identify its broad type: ingested, inhaled, contact or bodily infection. The reading helps select suitable treatment.",
+        "improves": null,
+        "requires": [
+          "divination"
+        ],
+        "bookId": "detection"
+      },
+      "spell": {
+        "id": "spell:detection:2",
+        "name": "Detect Poison and Disease",
+        "bookId": "detection",
+        "page": "2",
+        "section": "I",
+        "sp": 1,
+        "action": "Ritual",
+        "actionText": "Ritual · 1 minute",
+        "ritualTime": "1 minute",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Food, drink or one willing creature within 1 square",
+        "duration": "Instant",
+        "effect": "Determine whether ordinary poison or disease is present and identify its broad type: ingested, inhaled, contact or bodily infection. The reading helps select suitable treatment."
+      }
+    }
+  },
+  "effects": []
+}

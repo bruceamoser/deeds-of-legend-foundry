@@ -791,8 +791,8 @@ try {
     "true",
   );
 
-  // A late signature includes its foundation, but a weapon requirement does not
-  // conjure equipment. Selecting the milestone spends no DP and persists.
+  // A late signature grants only itself; Twitch Reflexes has no acquisition
+  // grant. Selecting the milestone spends no DP and persists.
   const blade = structuredClone(ranged);
   blade.draft.signatureId = "ability-signature-blade-measured-guard";
   blade.draft.attributes.knowledge = 1;
@@ -805,7 +805,7 @@ try {
     buffer: Buffer.from(JSON.stringify(blade)),
   });
   await page.getByRole("button", { name: "Choose level 7 signature", exact: true }).click();
-  await page.locator('[data-action="advance-signature"][data-id="ability-signature-blade-dance-through-steel"]').click();
+  await page.locator('[data-action="advance-signature"][data-id="ability-signature-blade-sweeping-entry"]').click();
   assert.equal(await page.getByLabel("Melee weapon hands", {exact:true}).count(),0);
   await closePicker();
   await page.getByRole("button", { name: "Done", exact: true }).click();
@@ -817,8 +817,8 @@ try {
     const saved=JSON.parse(localStorage.getItem("hol.workshop.v1"));
     return saved.character.draft.progression.levels[7];
   });
-  assert.equal(signatureSelection.signatures[7],"ability-signature-blade-dance-through-steel");
-  assert.equal(signatureSelection.acquisitions["ability-signature-blade-dance-through-steel"],undefined);
+  assert.equal(signatureSelection.signatures[7],"ability-signature-blade-sweeping-entry");
+  assert.equal(signatureSelection.acquisitions["ability-signature-blade-sweeping-entry"],undefined);
   // Unknown imported IDs remain inert text and repairable choices.
   const odd = { ...exported, draft: structuredClone(exported.draft) };
   odd.draft.classId = "ability-wear-medium-armor";

@@ -1,0 +1,47 @@
+{
+  "_key": "!items!3d5e0500536b5e63",
+  "_id": "3d5e0500536b5e63",
+  "name": "Counterexample II",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Counterexample grants 2 Boons.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "scholarship:disputation:2",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "scholarship:disputation:2",
+        "level": 1,
+        "cost": 2,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Counterexample grants 2 Boons.",
+        "improves": "scholarship:disputation:1",
+        "requires": [
+          "scholarship:disputation:1"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

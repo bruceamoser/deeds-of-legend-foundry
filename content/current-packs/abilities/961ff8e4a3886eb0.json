@@ -1,0 +1,47 @@
+{
+  "_key": "!items!961ff8e4a3886eb0",
+  "_id": "961ff8e4a3886eb0",
+  "name": "Follow My Leap I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div></dl><p>Maneuver. Use Running Vault and guide one willing adjacent ally through the same jump immediately after you. It lands adjacent to your destination; both landings must be legal.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "athletics:leaping:4",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "technique",
+        "nodeId": "athletics:leaping:4",
+        "level": 3,
+        "cost": 3,
+        "action": "Maneuver",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Maneuver. Use Running Vault and guide one willing adjacent ally through the same jump immediately after you. It lands adjacent to your destination; both landings must be legal.",
+        "improves": null,
+        "requires": [
+          "athletics:leaping:3"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

@@ -1,0 +1,47 @@
+{
+  "_key": "!items!9c85b07ae4be76b2",
+  "_id": "9c85b07ae4be76b2",
+  "name": "Bridge of Words I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Timed work</dd></div></dl><p>10 minutes with a willing speaker and usable shared signs or reference text. Establish simple communication about directions, quantities and immediate needs for this conversation, without a roll. Abstract bargains and hidden meanings still require translation.</p>",
+    "activity": {
+      "action": "other",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "scholarship:languages:4",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "technique",
+        "nodeId": "scholarship:languages:4",
+        "level": 3,
+        "cost": 3,
+        "action": "Timed work",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "10 minutes with a willing speaker and usable shared signs or reference text. Establish simple communication about directions, quantities and immediate needs for this conversation, without a roll. Abstract bargains and hidden meanings still require translation.",
+        "improves": null,
+        "requires": [
+          "scholarship:languages:3"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

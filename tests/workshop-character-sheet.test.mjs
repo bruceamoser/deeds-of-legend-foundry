@@ -1,0 +1,144 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import vm from 'node:vm';
+import {readFile} from 'node:fs/promises';
+import {rollCard,resourceCard} from '../src/rules/chat-cards.mjs';
+import {inventoryCheck} from '../src/rules/inventory.mjs';
+import {classifyRoll} from '../src/rules/roll.mjs';
+const source=(await readFile(new URL('../src/sheets/workshop-character.mjs',import.meta.url),'utf8')).replace(/^import .*\n/gm,'').replaceAll('export ','')+'\nglobalThis.Sheet=WorkshopCharacterSheet;';
+function fixture(overrides={}) {
+  const calls=[];
+  class Base {
+    constructor(){this.isEditable=true;const flags={};this.actor={testUserPermission:()=>true,items:[],getFlag:(namespace,key)=>flags[key],update:async changes=>{for(const [path,value]of Object.entries(changes)){const key=path.split('.').at(-1);if(key.startsWith('-='))delete flags[key.slice(2)];else flags[key]=value;}}};}
+    async _prepareContext(){return {};}
+    _replaceHTML(){calls.push('replace');}
+    async close(){calls.push('close');}
+  }
+  class Roll {
+    constructor(formula){this.formula=formula;calls.push(formula);this.dice=[{results:[2,4,5,6].map(result=>({result}))}];}
+    async evaluate(options){calls.push(options);return this;}
+    async toMessage(data,options){calls.push({data,options});}
+  }
+  const context={foundry:{utils:{randomID:()=>"operation-test"},applications:{api:{HandlebarsApplicationMixin:cls=>cls},sheets:{ActorSheetV2:Base}},dice:{Roll}},
+    game:{user:{id:'owner'},settings:{get:()=> 'blind'}},ChatMessage:{getSpeaker:()=>({actor:'hero'})},
+    queueMicrotask,structuredClone,CharacterSheet:Base,classifyRoll,rollCard,resourceCard,inventoryCheck,ui:{notifications:{info(){},error(){}}},
+    claimNativeWorkshopOperation:async(actor,operation)=>{await actor.update({"flags.heroes-of-legend.nativeWorkshopPendingRoll":operation});return operation;},
+    updateNativeWorkshopOperation:async(actor,operation)=>{await actor.update({"flags.heroes-of-legend.nativeWorkshopPendingRoll":operation});return operation;},
+    completeNativeWorkshopOperation:async(actor,id)=>actor.update({"flags.heroes-of-legend.-=nativeWorkshopPendingRoll":null}),
+    reconcileNativeWorkshopOperation:async(actor,id)=>actor.update({"flags.heroes-of-legend.-=nativeWorkshopPendingRoll":null}),
+    saveNativeWorkshopState:async(actor,state,options)=>{calls.push(options);return {...state,revision:options.expectedRevision+1};},
+    saveNativeWorkshopIdentity:async()=>({character:{draft:{}},revision:4,mode:"sheet"}),
+    commitNativeWorkshopCharacter:async()=>({character:{draft:{}},revision:5,mode:'sheet'}),...overrides};
+  vm.runInNewContext(source,context);
+  return {sheet:new context.Sheet(),calls,context};
+}
+test('native Workshop dice use retained Foundry dice and V14 message visibility',async()=>{
+  const {sheet,calls}=fixture();
+  const faces=await sheet.rollDice({count:4,sides:6,kind:'attribute',net:-1,attribute:2});
+  assert.deepEqual(Array.from(faces),[2,4,5,6]);assert.equal(sheet.preparedRollId,undefined);assert.equal(calls[0],'4d6kl3+2');
+  assert.equal(calls[1].allowInteractive,false);
+  assert.equal(calls[2].options.messageMode,'blind');
+  assert.match(calls[2].data.content,/hol-chat-verdict standard/);assert.match(calls[2].data.content,/<strong>13<\/strong>/);
+});
+test('native observers cannot save, commit or roll',async()=>{
+  const {sheet,calls}=fixture();sheet.isEditable=false;
+  await assert.rejects(sheet.saveState({}),/owner/);
+  await assert.rejects(sheet.commitState({}),/owner/);
+  await assert.rejects(sheet.rollDice({}),/owner/);
+  assert.equal(calls.length,0);
+});
+test('native acknowledged saves advance revision; explicit commit returns sheet',async()=>{
+  const {sheet}=fixture();sheet.revision=2;
+  await sheet.saveState({mode:'builder'});assert.equal(sheet.revision,3);assert.equal(sheet.writing,0);
+  let state;sheet.controller={setState:value=>{state=value;}};
+  await sheet.commitState({});assert.equal(sheet.revision,5);assert.equal(state.mode,'sheet');assert.equal(state.tab,'Main');
+});
+test('native frame preserves controller on document rerender and flushes before disposal',async()=>{
+  const {sheet,calls}=fixture();sheet.element={querySelector:()=>({})};
+  sheet.controller={flush:async()=>{calls.push('flush');},dispose:()=>{calls.push('dispose');}};
+  sheet._replaceHTML({},null,{});assert.equal(calls.length,0);
+  await sheet.close();assert.deepEqual(calls,['flush','dispose','close']);
+});
+test('older actors receive an invalid-current-rules entry without modifying documents',async()=>{
+  const {sheet}=fixture();sheet.actor.items=[{id:'existing'}];
+  const context=await sheet._prepareContext({});assert.equal(context.legacy,true);assert.equal(context.workshopReady,false);
+});
+test('native same-revision updates refresh live resources and read-only permission',async()=>{
+  const loaded={revision:3,mode:'sheet',character:{draft:{play:{hp:2}}}};
+  const {sheet}=fixture({loadNativeWorkshopState:async()=>loaded});
+  sheet.revision=3;sheet.host={};sheet.isEditable=false;
+  sheet.element={querySelector:()=>({})};let refreshed;
+  sheet.controller={getState:()=>({mode:'sheet',character:{draft:{play:{hp:9}}}}),setState:state=>{refreshed=state;}};
+  // Supply the lifecycle hook provided by Foundry's base class in this fixture.
+  Object.getPrototypeOf(Object.getPrototypeOf(sheet))._onRender=async()=>{};
+  await sheet._onRender({},{});
+  assert.equal(refreshed.character.draft.play.hp,2);assert.equal(sheet.host.readOnly,true);
+});
+test('native own pending writes keep the mounted draft',async()=>{
+  let loads=0;
+  const {sheet}=fixture({loadNativeWorkshopState:async()=>{loads++;}});
+  sheet.host={};sheet.writing=1;sheet.element={querySelector:()=>({})};
+  sheet.controller={setState:()=>assert.fail('must not replace draft during own write')};
+  Object.getPrototypeOf(Object.getPrototypeOf(sheet))._onRender=async()=>{};
+  await sheet._onRender({},{});assert.equal(loads,0);
+});
+test('identity completion uses identity service without construction commit',async()=>{
+  let identities=0;
+  const {sheet}=fixture({saveNativeWorkshopIdentity:async()=>{identities++;return {revision:7,character:{draft:{name:'Renamed'}}};},commitNativeWorkshopCharacter:()=>assert.fail('identity cannot rebuild character')});
+  let refreshed;sheet.controller={setState:state=>{refreshed=state;}};
+  await sheet.saveIdentity({draft:{name:'Renamed'}});
+  assert.equal(identities,1);assert.equal(sheet.revision,7);assert.equal(refreshed.character.draft.name,'Renamed');
+});
+test('failed native chat acknowledgment leaves durable evaluated dice and blocks another roll',async()=>{
+  const {sheet,calls,context}=fixture();
+  context.foundry.dice.Roll.prototype.toMessage=async()=>{throw new Error('lost chat acknowledgment');};
+  await assert.rejects(sheet.rollDice({count:4,sides:6,kind:'attribute',net:1,attribute:2}),/lost chat/);
+  const marker=sheet.actor.getFlag('heroes-of-legend','nativeWorkshopPendingRoll');
+  assert.equal(marker.status,'evaluated');assert.deepEqual(Array.from(marker.faces),[2,4,5,6]);
+  await assert.rejects(sheet.rollDice({count:4,sides:6,kind:'attribute',net:1,attribute:2}),/reconciliation/);
+  assert.equal(calls.filter(call=>typeof call==='string' && /d6/.test(call)).length,1);
+});
+test('failed death-state save preserves operation marker and forbids reroll',async()=>{
+  const {sheet}=fixture({saveNativeWorkshopState:async()=>{throw new Error('lost state acknowledgment');}});
+  await sheet.rollDice({count:4,sides:6,kind:'death',net:1,attribute:0});
+  await assert.rejects(sheet.saveState({mode:'sheet'}),/lost state/);
+  assert.equal(sheet.actor.getFlag('heroes-of-legend','nativeWorkshopPendingRoll').status,'evaluated');
+  await assert.rejects(sheet.rollDice({count:4,sides:6,kind:'death',net:1,attribute:0}),/reconciliation/);
+});
+test('native saves retain the immutable enqueue-time play basis',async()=>{
+  const {sheet,calls}=fixture();const basis={basePlay:{hp:4,sp:7}};
+  sheet.basePlay={hp:2,sp:7};await sheet.saveState({mode:'sheet'},basis);
+  assert.equal(calls[0].basePlay.hp,4);assert.equal(calls[0].basePlay.sp,7);
+});
+
+test('open native sheet refreshes imported name and story outside Edit',async()=>{
+  const loaded={revision:4,mode:'sheet',character:{draft:{name:'Imported hero',profile:{story:'Imported story'},play:{hp:2}}}};
+  const {sheet}=fixture({loadNativeWorkshopState:async()=>loaded});
+  sheet.revision=3;sheet.host={};sheet.element={querySelector:()=>({})};let refreshed;
+  sheet.controller={getState:()=>({mode:'sheet',tab:'Character',editing:false,character:{draft:{name:'Previous hero',profile:{story:'Previous story'},play:{hp:9}}}}),setState:state=>{refreshed=state;}};
+  Object.getPrototypeOf(Object.getPrototypeOf(sheet))._onRender=async()=>{};
+  await sheet._onRender({},{});
+  assert.equal(refreshed.character.draft.name,'Imported hero');
+  assert.equal(refreshed.character.draft.profile.story,'Imported story');
+  assert.equal(refreshed.character.draft.play.hp,2);
+  assert.equal(refreshed.tab,'Character');assert.equal(refreshed.editing,false);
+});
+test('native Edit retains local name and story while refreshing live resources',async()=>{
+  const loaded={revision:4,mode:'sheet',character:{draft:{name:'External hero',profile:{story:'External story'},play:{hp:2}}}};
+  const {sheet}=fixture({loadNativeWorkshopState:async()=>loaded});
+  sheet.revision=3;sheet.host={};sheet.element={querySelector:()=>({})};let refreshed;
+  sheet.controller={getState:()=>({mode:'sheet',editing:true,character:{draft:{name:'Local pending name',profile:{story:'Local pending story'},play:{hp:9}}}}),setState:state=>{refreshed=state;}};
+  Object.getPrototypeOf(Object.getPrototypeOf(sheet))._onRender=async()=>{};
+  await sheet._onRender({},{});
+  assert.equal(refreshed.character.draft.name,'Local pending name');
+  assert.equal(refreshed.character.draft.profile.story,'Local pending story');
+  assert.equal(refreshed.character.draft.play.hp,2);assert.equal(refreshed.editing,true);
+});
+
+test('new hero entry creates a blank Actor without copying invalid character data',async()=>{
+  let created;const {sheet,context}=fixture({Actor:{create:async source=>{created=source;return {sheet:{render:async()=>{}}};}}});
+  sheet.actor.name='Invalid old hero';sheet.actor.img='old-portrait.webp';
+  await context.Sheet.recreateWorkshop.call(sheet);
+  assert.equal(created.name,'New hero');assert.equal(created.type,'character');
+  assert.deepEqual(Object.keys(created).sort(),['name','type']);
+});

@@ -1,0 +1,47 @@
+{
+  "_key": "!items!d99f8f9b7277ad7e",
+  "_id": "d99f8f9b7277ad7e",
+  "name": "Field Repair I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div></dl><p>Main Action · Knowledge, with tools and materials. Repair an item already examined through at least one Mend and Fit work attempt; add 1/2/3 progress. Repeat this faster action until the repair completes. Completion restores its ordinary function; HP restoration for an object with HP is set as part of the repair objective before work.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "craft:repairs:4",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "technique",
+        "nodeId": "craft:repairs:4",
+        "level": 3,
+        "cost": 3,
+        "action": "Main Action",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": "Knowledge",
+        "defenseAttribute": null,
+        "effect": "Main Action · Knowledge, with tools and materials. Repair an item already examined through at least one Mend and Fit work attempt; add 1/2/3 progress. Repeat this faster action until the repair completes. Completion restores its ordinary function; HP restoration for an object with HP is set as part of the repair objective before work.",
+        "improves": null,
+        "requires": [
+          "craft:repairs:3"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

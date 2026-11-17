@@ -1,0 +1,66 @@
+{
+  "_key": "!items!419741be489524ec",
+  "_id": "419741be489524ec",
+  "name": "Anticipations True",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Reaction · after you roll a defense</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>Self</dd></div><div><dt>Duration</dt><dd>The triggering defense</dd></div></dl><p>Follow an alternate future. Reroll the whole defense and keep either result. Use at most one Anticipations True casting on a given defense.</p>",
+    "activity": {
+      "action": "reaction",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:portents:a2",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:portents:a2",
+        "level": 3,
+        "cost": 4,
+        "action": "Reaction · after you roll a defense",
+        "sp": 5,
+        "range": "Self",
+        "duration": "The triggering defense",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Follow an alternate future. Reroll the whole defense and keep either result. Use at most one Anticipations True casting on a given defense.",
+        "improves": null,
+        "requires": [
+          "portents:4"
+        ],
+        "bookId": "portents"
+      },
+      "spell": {
+        "id": "spell:portents:a2",
+        "name": "Anticipations True",
+        "bookId": "portents",
+        "page": "A2",
+        "section": "VI",
+        "sp": 5,
+        "action": "Reaction",
+        "actionText": "Reaction · after you roll a defense",
+        "trigger": "after you roll a defense",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Self",
+        "duration": "The triggering defense",
+        "effect": "Follow an alternate future. Reroll the whole defense and keep either result. Use at most one Anticipations True casting on a given defense."
+      }
+    }
+  },
+  "effects": []
+}

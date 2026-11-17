@@ -1,0 +1,47 @@
+{
+  "_key": "!items!ffd1afcb036e2c89",
+  "_id": "ffd1afcb036e2c89",
+  "name": "Save the Work I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Reaction</dd></div></dl><p>Reaction. When a visible component fails during a nonmagical project within reach, use a free hand and suitable tools to preserve one recoverable component or batch of ingredients from that failure. It grants no progress and does not prevent other consequences. Once per project between safe overnight rests; the DA identifies what can physically be caught or secured.</p>",
+    "activity": {
+      "action": "reaction",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "craft:safeguards:4",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "technique",
+        "nodeId": "craft:safeguards:4",
+        "level": 3,
+        "cost": 3,
+        "action": "Reaction",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Reaction. When a visible component fails during a nonmagical project within reach, use a free hand and suitable tools to preserve one recoverable component or batch of ingredients from that failure. It grants no progress and does not prevent other consequences. Once per project between safe overnight rests; the DA identifies what can physically be caught or secured.",
+        "improves": null,
+        "requires": [
+          "craft:safeguards:3"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

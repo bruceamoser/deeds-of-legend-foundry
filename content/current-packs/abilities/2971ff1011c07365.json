@@ -1,0 +1,66 @@
+{
+  "_key": "!items!2971ff1011c07365",
+  "_id": "2971ff1011c07365",
+  "name": "Long Sense True",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 hour</dd></div><div><dt>SP</dt><dd>6</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>Self and up to three willing creatures you personally know on the same plane</dd></div><div><dt>Duration</dt><dd>8 hours</dd></div></dl><p>Establish a remote sensory link with each recipient. A linked creature may spend a Main Action to see and hear from one consenting member until its next turn begins, while that member continues using its own senses. During that interval the observer’s own sight and hearing rest at the remote point; touch can still alert it to nearby contact. A member can leave the link at any time. Magical concealment operates at each viewpoint. Keep one Long Sense True link active; casting another ends the first.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:farseeing:a3",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:farseeing:a3",
+        "level": 7,
+        "cost": 5,
+        "action": "Ritual · 1 hour",
+        "sp": 6,
+        "range": "Self and up to three willing creatures you personally know on the same plane",
+        "duration": "8 hours",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Establish a remote sensory link with each recipient. A linked creature may spend a Main Action to see and hear from one consenting member until its next turn begins, while that member continues using its own senses. During that interval the observer’s own sight and hearing rest at the remote point; touch can still alert it to nearby contact. A member can leave the link at any time. Magical concealment operates at each viewpoint. Keep one Long Sense True link active; casting another ends the first.",
+        "improves": null,
+        "requires": [
+          "farseeing:5"
+        ],
+        "bookId": "farseeing"
+      },
+      "spell": {
+        "id": "spell:farseeing:a3",
+        "name": "Long Sense True",
+        "bookId": "farseeing",
+        "page": "A3",
+        "section": "VII",
+        "sp": 6,
+        "action": "Ritual",
+        "actionText": "Ritual · 1 hour",
+        "ritualTime": "1 hour",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Self and up to three willing creatures you personally know on the same plane",
+        "duration": "8 hours",
+        "effect": "Establish a remote sensory link with each recipient. A linked creature may spend a Main Action to see and hear from one consenting member until its next turn begins, while that member continues using its own senses. During that interval the observer’s own sight and hearing rest at the remote point; touch can still alert it to nearby contact. A member can leave the link at any time. Magical concealment operates at each viewpoint. Keep one Long Sense True link active; casting another ends the first."
+      }
+    }
+  },
+  "effects": []
+}

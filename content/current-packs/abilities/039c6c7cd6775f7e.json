@@ -1,0 +1,47 @@
+{
+  "_key": "!items!039c6c7cd6775f7e",
+  "_id": "039c6c7cd6775f7e",
+  "name": "Shatter the Formation",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Brawn</dd></div></dl><p>Main Action · Brawn, with a melee weapon and shield. Attack up to three adjacent enemies. Roll once; each takes 2/4/6 physical damage and is pushed up to 2 squares directly away. On Strong each also becomes Prone. Blocked movement stops the push, not damage or Prone; resolve collisions normally. Each target is struck once.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "brawn",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "guard:shieldwork:7",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "mastery",
+        "nodeId": "guard:shieldwork:7",
+        "level": 7,
+        "cost": 5,
+        "action": "Main Action",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": "Brawn",
+        "defenseAttribute": null,
+        "effect": "Main Action · Brawn, with a melee weapon and shield. Attack up to three adjacent enemies. Roll once; each takes 2/4/6 physical damage and is pushed up to 2 squares directly away. On Strong each also becomes Prone. Blocked movement stops the push, not damage or Prone; resolve collisions normally. Each target is struck once.",
+        "improves": null,
+        "requires": [
+          "guard:shieldwork:6"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

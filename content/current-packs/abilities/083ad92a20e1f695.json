@@ -1,0 +1,45 @@
+{
+  "_key": "!items!083ad92a20e1f695",
+  "_id": "083ad92a20e1f695",
+  "name": "Force",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Brawn</dd></div><div><dt>Range</dt><dd>An adjacent obstacle, grapple, or creature</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>**Action:** Main Action · **Attribute:** Brawn</p><p>**Target / range / shape:** An adjacent obstacle, grapple, or creature</p><p>Before rolling, choose to reduce an obstacle’s remaining strength, reduce your own Grappled rating, or push a creature. The DA establishes any obstacle target. At Grappled 3 or higher, escape requires release by a grappler or an outside intervention that breaks the hold.</p><p>- **Weak:** Add 1 progress, reduce Grappled by 1, or push 1 square.<br>- **Standard:** Add 2 progress, reduce Grappled by 2, or push 2 squares.<br>- **Strong:** Add 3 progress, reduce Grappled by 3, or push 3 squares.</p><p>**Stability:** apply it only to the push option, not obstacle progress or Grappled reduction.</p><p>**Duration:** Instant</p><p>**Equipment / acquisition:** None.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "brawn",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-force",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "ability",
+        "nodeId": "ability-force",
+        "level": 0,
+        "cost": 0,
+        "action": "Main Action",
+        "sp": null,
+        "range": "An adjacent obstacle, grapple, or creature",
+        "duration": "Instant",
+        "attribute": "Brawn",
+        "defenseAttribute": null,
+        "effect": "**Action:** Main Action · **Attribute:** Brawn\n\n**Target / range / shape:** An adjacent obstacle, grapple, or creature\n\nBefore rolling, choose to reduce an obstacle’s remaining strength, reduce your own Grappled rating, or push a creature. The DA establishes any obstacle target. At Grappled 3 or higher, escape requires release by a grappler or an outside intervention that breaks the hold.\n\n- **Weak:** Add 1 progress, reduce Grappled by 1, or push 1 square.\n- **Standard:** Add 2 progress, reduce Grappled by 2, or push 2 squares.\n- **Strong:** Add 3 progress, reduce Grappled by 3, or push 3 squares.\n\n**Stability:** apply it only to the push option, not obstacle progress or Grappled reduction.\n\n**Duration:** Instant\n\n**Equipment / acquisition:** None.",
+        "improves": null,
+        "requires": [],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

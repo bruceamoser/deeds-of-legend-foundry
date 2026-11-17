@@ -1,0 +1,47 @@
+{
+  "_key": "!items!02d43ae61c4a4e8f",
+  "_id": "02d43ae61c4a4e8f",
+  "name": "Make It Whole",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div></dl><p>Main Action · Knowledge, with tools and matching replacement parts. Add 3/5/7 progress toward repairing one examined nonmagical mechanism or object within reach, including a shattered item whose essential pieces or replacements are available. The DA fixes the complete repair objective and restored HP before work. Completing it restores normal function, not magical properties or expended ammunition. Large structures still require access to every affected section.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "craft:repairs:7",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "mastery",
+        "nodeId": "craft:repairs:7",
+        "level": 7,
+        "cost": 5,
+        "action": "Main Action",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": "Knowledge",
+        "defenseAttribute": null,
+        "effect": "Main Action · Knowledge, with tools and matching replacement parts. Add 3/5/7 progress toward repairing one examined nonmagical mechanism or object within reach, including a shattered item whose essential pieces or replacements are available. The DA fixes the complete repair objective and restored HP before work. Completing it restores normal function, not magical properties or expended ammunition. Large structures still require access to every affected section.",
+        "improves": null,
+        "requires": [
+          "craft:repairs:6"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

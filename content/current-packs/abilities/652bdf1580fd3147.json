@@ -1,0 +1,47 @@
+{
+  "_key": "!items!652bdf1580fd3147",
+  "_id": "652bdf1580fd3147",
+  "name": "Soul Wellspring",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Passive. Increase maximum SP by another 4; this path now grants +20 maximum SP. Once between safe overnight rests, when you spend SP to cast a spell, you may pay up to 2 of its SP from this reserve without reducing current SP. Declare the amount before casting; any unused part of that one payment is lost, not saved for another spell. This grants no additional casting or current-SP recovery.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spellcraft:soul-capacity:7",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "training",
+        "nodeId": "spellcraft:soul-capacity:7",
+        "level": 7,
+        "cost": 5,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Passive. Increase maximum SP by another 4; this path now grants +20 maximum SP. Once between safe overnight rests, when you spend SP to cast a spell, you may pay up to 2 of its SP from this reserve without reducing current SP. Declare the amount before casting; any unused part of that one payment is lost, not saved for another spell. This grants no additional casting or current-SP recovery.",
+        "improves": null,
+        "requires": [
+          "spellcraft:soul-capacity:6"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

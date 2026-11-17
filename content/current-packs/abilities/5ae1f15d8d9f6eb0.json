@@ -1,0 +1,65 @@
+{
+  "_key": "!items!5ae1f15d8d9f6eb0",
+  "_id": "5ae1f15d8d9f6eb0",
+  "name": "Draw Power",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One adjacent willing creature with its own SP reserve</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>After paying this spell&#39;s 1 SP cost, receive up to 3 SP from the donor, limited by its current reserve and your missing SP. The donor chooses the amount and loses exactly what you receive.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:channeling:3",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:channeling:3",
+        "level": 1,
+        "cost": 2,
+        "action": "Main Action",
+        "sp": 1,
+        "range": "One adjacent willing creature with its own SP reserve",
+        "duration": "Instant",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "After paying this spell's 1 SP cost, receive up to 3 SP from the donor, limited by its current reserve and your missing SP. The donor chooses the amount and loses exactly what you receive.",
+        "improves": null,
+        "requires": [
+          "channeling:0"
+        ],
+        "bookId": "channeling"
+      },
+      "spell": {
+        "id": "spell:channeling:3",
+        "name": "Draw Power",
+        "bookId": "channeling",
+        "page": "3",
+        "section": "II",
+        "sp": 1,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One adjacent willing creature with its own SP reserve",
+        "duration": "Instant",
+        "effect": "After paying this spell's 1 SP cost, receive up to 3 SP from the donor, limited by its current reserve and your missing SP. The donor chooses the amount and loses exactly what you receive."
+      }
+    }
+  },
+  "effects": []
+}

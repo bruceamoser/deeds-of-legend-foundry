@@ -1,0 +1,47 @@
+{
+  "_key": "!items!78a70f28189cbc07",
+  "_id": "78a70f28189cbc07",
+  "name": "Riposte III",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>After Riposte, move 1 square without movement reactions; on Strong also apply Dazed 1 to its target.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "arms:dueling:6",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "arms:dueling:6",
+        "level": 3,
+        "cost": 4,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "After Riposte, move 1 square without movement reactions; on Strong also apply Dazed 1 to its target.",
+        "improves": "arms:dueling:4",
+        "requires": [
+          "arms:dueling:5"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

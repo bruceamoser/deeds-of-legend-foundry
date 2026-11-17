@@ -1,0 +1,47 @@
+{
+  "_key": "!items!231b11bb0e0f1e9f",
+  "_id": "231b11bb0e0f1e9f",
+  "name": "Anatomist’s Volley",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Agility</dd></div></dl><p>Main Action · Agility. Attack up to three enemies within 12 squares whose vulnerable anatomy or construction you have observed through Split the Flight’s study or established evidence. Roll once; each takes 3/5/8 physical damage, ignoring up to 2 physical resistance. Immunity and other reductions still apply. Study does not create a vulnerability where none exists.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "agility",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "marksmanship:precision:7",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "mastery",
+        "nodeId": "marksmanship:precision:7",
+        "level": 7,
+        "cost": 5,
+        "action": "Main Action",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": "Agility",
+        "defenseAttribute": null,
+        "effect": "Main Action · Agility. Attack up to three enemies within 12 squares whose vulnerable anatomy or construction you have observed through Split the Flight’s study or established evidence. Roll once; each takes 3/5/8 physical damage, ignoring up to 2 physical resistance. Immunity and other reductions still apply. Study does not create a vulnerability where none exists.",
+        "improves": null,
+        "requires": [
+          "marksmanship:precision:6"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

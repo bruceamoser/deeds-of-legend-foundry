@@ -1,0 +1,47 @@
+{
+  "_key": "!items!94a2fdaca99c6089",
+  "_id": "94a2fdaca99c6089",
+  "name": "Lead the Herd III",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Lead the Herd can guide twelve calm animals, and you gain 1 Boon on handling rolls to keep that herd together in ordinary travel.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "wilderness:animal-handling:6",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "wilderness:animal-handling:6",
+        "level": 3,
+        "cost": 4,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Lead the Herd can guide twelve calm animals, and you gain 1 Boon on handling rolls to keep that herd together in ordinary travel.",
+        "improves": "wilderness:animal-handling:4",
+        "requires": [
+          "wilderness:animal-handling:5"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

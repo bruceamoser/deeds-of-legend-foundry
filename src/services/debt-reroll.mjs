@@ -1,26 +1,27 @@
+import {assertCurrentGameplayActor} from "../rules/current-character.mjs";
+import {payForgeDebt} from "../rules/forge-recovery.mjs";
 import { createActionMessage, ensureAuthorityReady, writeAuthorityDocument } from "./authority.mjs";
 import { damageBasis } from "./damage.mjs";
-import { payDebt } from "../rules/recovery.mjs";
 import { ancestryTraitIds } from "../rules/ancestry.mjs";
 import { debtRerollPlan, debtReplacement } from "../rules/debt-reroll.mjs";
-import { validateSurvival } from "../rules/survival.mjs";
 
 const ID = "heroes-of-legend";
 const same = (a, b) => JSON.stringify(a) === JSON.stringify(b);
 
 export async function requestDebtReroll(actor, source) {
+  assertCurrentGameplayActor(actor);
   if (!actor?.testUserPermission(game.user, "OWNER")) throw new Error("Only this hero’s owner can pay HP for a reroll.");
   if (!source?.isContentVisible) throw new Error("Choose a visible ordinary attribute check.");
   const rollSnapshot = source.getFlag(ID, "roll");
   debtRerollPlan(rollSnapshot);
   if (rollSnapshot.actorUuid !== actor.uuid) throw new Error("The roll belongs to another hero.");
-  await ensureAuthorityReady();
+  await ensureAuthorityReady({shared:true,coordinated:true});
   return createActionMessage({
     content: "The Debt Comes Due reroll requested.",
     whisper: game.users.filter(user => user.isGM || user.id === game.user.id).map(user => user.id),
     flags: { [ID]: { recoveryRequest: { actorUuid: actor.uuid, basis: damageBasis(actor),
       draft: { kind: "debt", rollMessageId: source.id, rollSnapshot } } } },
-  });
+  },{shared:true,coordinated:true});
 }
 
 async function present(actor, operation) {
@@ -39,6 +40,7 @@ async function present(actor, operation) {
 
 /** Called only by the serialized recovery coordinator after verifying Actor ownership. */
 export async function applyDebtReroll(actor, message, request, basis, signature) {
+  assertCurrentGameplayActor(actor);
   if (actor.type !== "character" || actor.pack || !message.author || !actor.testUserPermission(message.author, "OWNER"))
     throw new Error("Only this hero’s owner can pay HP for a reroll.");
   const correction = request.draft.kind === "debt-result";
@@ -60,7 +62,7 @@ export async function applyDebtReroll(actor, message, request, basis, signature)
   } else if (correction) throw new Error("Choose a saved interrupted Debt reroll.");
 
   if (!operation) {
-    if (!same(basis, request.basis)) throw new Error("HP, survival or defenses changed. Review the reroll again.");
+    if (!same(basis, request.basis)) throw new Error("HP or defenses changed. Review the reroll again.");
     const source = game.messages.get(request.draft.rollMessageId);
     const original = source?.getFlag(ID, "roll");
     debtRerollPlan(original);
@@ -68,9 +70,9 @@ export async function applyDebtReroll(actor, message, request, basis, signature)
       throw new Error("The original attribute check changed.");
     const retained = source.rolls?.[0]?.dice?.[0]?.results.filter(die => die.active).map(die => die.result);
     if (!same(retained, original.retained)) throw new Error("The original native dice do not match the check.");
-    const development = actor.getFlag(ID, "development") ?? {};
-    const payment = payDebt({ hp: basis.hp, maxHp: basis.maxHp, recovery: basis.recovery,
-      traitIds: ancestryTraitIds(development.creation ?? {traitIds:development.ancestryTraitIds}) });
+    const draft = actor.getFlag(ID,"nativeWorkshop").portable.draft;
+    const payment = payForgeDebt({ hp: basis.hp, maxHp: basis.maxHp, recovery: basis.recovery,
+      traitIds: ancestryTraitIds(draft) });
     operation = { status: "rolling", requestId, sourceMessageId: source.id, original:structuredClone(original),
       signature, authorId: message.author.id };
     const changes = {
@@ -78,10 +80,7 @@ export async function applyDebtReroll(actor, message, request, basis, signature)
       [`flags.${ID}.debtRerolls.${requestId}`]: operation,
       [`flags.${ID}.damageRevision`]: basis.revision + 1,
     };
-    if (basis.survival) {
-      if (["lastWords", "dead"].includes(basis.survival.status)) throw new Error("The Debt Comes Due cannot reverse Last Words or death.");
-      changes[`flags.${ID}.survival`] = validateSurvival({...basis.survival,hp:payment.hp,recovery:payment.recovery});
-    }
+
     actor.validate({ changes: foundry.utils.expandObject(changes), strict: true, fallback: false });
     await writeAuthorityDocument(actor, changes);
   }

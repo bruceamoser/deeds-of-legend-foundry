@@ -1,0 +1,65 @@
+{
+  "_key": "!items!4e877bf87839c25a",
+  "_id": "4e877bf87839c25a",
+  "name": "Fog Cloud",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>A 2-square-radius cloud centered within 6 squares</dd></div><div><dt>Duration</dt><dd>1 minute</dd></div></dl><p>Gather an opaque bank of fog that blocks sight through its area. Strong wind disperses the cloud. Creatures may navigate by other senses and remembered positions.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:air:3",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:air:3",
+        "level": 1,
+        "cost": 2,
+        "action": "Main Action",
+        "sp": 1,
+        "range": "A 2-square-radius cloud centered within 6 squares",
+        "duration": "1 minute",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Gather an opaque bank of fog that blocks sight through its area. Strong wind disperses the cloud. Creatures may navigate by other senses and remembered positions.",
+        "improves": null,
+        "requires": [
+          "air:0"
+        ],
+        "bookId": "air"
+      },
+      "spell": {
+        "id": "spell:air:3",
+        "name": "Fog Cloud",
+        "bookId": "air",
+        "page": "3",
+        "section": "II",
+        "sp": 1,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "A 2-square-radius cloud centered within 6 squares",
+        "duration": "1 minute",
+        "effect": "Gather an opaque bank of fog that blocks sight through its area. Strong wind disperses the cloud. Creatures may navigate by other senses and remembered positions."
+      }
+    }
+  },
+  "effects": []
+}

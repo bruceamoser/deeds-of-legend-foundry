@@ -1,0 +1,65 @@
+{
+  "_key": "!items!4aad1dcefa89764c",
+  "_id": "4aad1dcefa89764c",
+  "name": "Chain Lightning",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div><div><dt>Defense</dt><dd>Agility</dd></div><div><dt>Range</dt><dd>Up to four creatures within 10 squares; each within 3 squares of another target</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Lightning leaps along your chosen chain. Roll once and deal 4/6/8 lightning damage to each target. Affect each creature once.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "4 lightning damage",
+      "standard": "6 lightning damage",
+      "strong": "8 lightning damage"
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:air:a1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:air:a1",
+        "level": 3,
+        "cost": 4,
+        "action": "Main Action",
+        "sp": 5,
+        "range": "Up to four creatures within 10 squares; each within 3 squares of another target",
+        "duration": "Instant",
+        "attribute": "Knowledge",
+        "defenseAttribute": "Agility",
+        "effect": "Lightning leaps along your chosen chain. Roll once and deal 4/6/8 lightning damage to each target. Affect each creature once.",
+        "improves": null,
+        "requires": [
+          "air:3"
+        ],
+        "bookId": "air"
+      },
+      "spell": {
+        "id": "spell:air:a1",
+        "name": "Chain Lightning",
+        "bookId": "air",
+        "page": "A1",
+        "section": "V",
+        "sp": 5,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "Knowledge",
+        "defense": "Agility",
+        "defenseAttribute": "Agility",
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Up to four creatures within 10 squares; each within 3 squares of another target",
+        "duration": "Instant",
+        "effect": "Lightning leaps along your chosen chain. Roll once and deal 4/6/8 lightning damage to each target. Affect each creature once."
+      }
+    }
+  },
+  "effects": []
+}

@@ -1,0 +1,65 @@
+{
+  "_key": "!items!b0a19ac92bb344aa",
+  "_id": "b0a19ac92bb344aa",
+  "name": "Reverse Gravity",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div><div><dt>Defense</dt><dd>Agility</dd></div><div><dt>Range</dt><dd>Every creature in a 2-square-radius area within 8 squares</dd></div><div><dt>Duration</dt><dd>Until the end of your next turn</dd></div></dl><p>Lift each affected creature 2/4/6 squares vertically from its starting position, stopping at solid obstacles. It floats there until expiry, then falls from that height using the normal falling rules. A creature already holding a fixed support may keep its grip and remain supported. A floating creature may use ordinary movement to climb a reachable fixed surface or fly out of the affected area; leaving the area ends its levitation. This working affects the chosen creatures once, when cast.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:telekinesis:a3",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:telekinesis:a3",
+        "level": 7,
+        "cost": 5,
+        "action": "Main Action",
+        "sp": 5,
+        "range": "Every creature in a 2-square-radius area within 8 squares",
+        "duration": "Until the end of your next turn",
+        "attribute": "Knowledge",
+        "defenseAttribute": "Agility",
+        "effect": "Lift each affected creature 2/4/6 squares vertically from its starting position, stopping at solid obstacles. It floats there until expiry, then falls from that height using the normal falling rules. A creature already holding a fixed support may keep its grip and remain supported. A floating creature may use ordinary movement to climb a reachable fixed surface or fly out of the affected area; leaving the area ends its levitation. This working affects the chosen creatures once, when cast.",
+        "improves": null,
+        "requires": [
+          "telekinesis:5"
+        ],
+        "bookId": "telekinesis"
+      },
+      "spell": {
+        "id": "spell:telekinesis:a3",
+        "name": "Reverse Gravity",
+        "bookId": "telekinesis",
+        "page": "A3",
+        "section": "VII",
+        "sp": 5,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "Knowledge",
+        "defense": "Agility",
+        "defenseAttribute": "Agility",
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Every creature in a 2-square-radius area within 8 squares",
+        "duration": "Until the end of your next turn",
+        "effect": "Lift each affected creature 2/4/6 squares vertically from its starting position, stopping at solid obstacles. It floats there until expiry, then falls from that height using the normal falling rules. A creature already holding a fixed support may keep its grip and remain supported. A floating creature may use ordinary movement to climb a reachable fixed surface or fly out of the affected area; leaving the area ends its levitation. This working affects the chosen creatures once, when cast."
+      }
+    }
+  },
+  "effects": []
+}

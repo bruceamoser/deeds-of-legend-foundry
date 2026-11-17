@@ -1,0 +1,47 @@
+{
+  "_key": "!items!b1f7c2090ef5a64b",
+  "_id": "b1f7c2090ef5a64b",
+  "name": "Read the Trail I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div></dl><p>Main Action · Reason. Read tracks or signs immediately before you; add 1/2/3 progress toward identifying direction, approximate numbers and freshness. Following a trail to the next landmark takes 10 minutes per attempt instead. The DA defines each objective from accessible evidence.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "reason",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "wilderness:tracking:1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "technique",
+        "nodeId": "wilderness:tracking:1",
+        "level": 1,
+        "cost": 1,
+        "action": "Main Action",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": "Reason",
+        "defenseAttribute": null,
+        "effect": "Main Action · Reason. Read tracks or signs immediately before you; add 1/2/3 progress toward identifying direction, approximate numbers and freshness. Following a trail to the next landmark takes 10 minutes per attempt instead. The DA defines each objective from accessible evidence.",
+        "improves": null,
+        "requires": [
+          "wilderness"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

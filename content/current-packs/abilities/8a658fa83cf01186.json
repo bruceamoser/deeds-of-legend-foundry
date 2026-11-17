@@ -1,0 +1,65 @@
+{
+  "_key": "!items!8a658fa83cf01186",
+  "_id": "8a658fa83cf01186",
+  "name": "Magic Missile",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div><div><dt>Defense</dt><dd>Agility</dd></div><div><dt>Range</dt><dd>Up to three creatures within 8 squares</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Send luminous darts along clear paths. Roll once for a shared total of 3/5/7 force damage; divide it before resistance, assigning at least 1 to each target. Each target takes one damage event.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:telekinesis:3",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:telekinesis:3",
+        "level": 1,
+        "cost": 2,
+        "action": "Main Action",
+        "sp": 1,
+        "range": "Up to three creatures within 8 squares",
+        "duration": "Instant",
+        "attribute": "Knowledge",
+        "defenseAttribute": "Agility",
+        "effect": "Send luminous darts along clear paths. Roll once for a shared total of 3/5/7 force damage; divide it before resistance, assigning at least 1 to each target. Each target takes one damage event.",
+        "improves": null,
+        "requires": [
+          "telekinesis:0"
+        ],
+        "bookId": "telekinesis"
+      },
+      "spell": {
+        "id": "spell:telekinesis:3",
+        "name": "Magic Missile",
+        "bookId": "telekinesis",
+        "page": "3",
+        "section": "II",
+        "sp": 1,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "Knowledge",
+        "defense": "Agility",
+        "defenseAttribute": "Agility",
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Up to three creatures within 8 squares",
+        "duration": "Instant",
+        "effect": "Send luminous darts along clear paths. Roll once for a shared total of 3/5/7 force damage; divide it before resistance, assigning at least 1 to each target. Each target takes one damage event."
+      }
+    }
+  },
+  "effects": []
+}

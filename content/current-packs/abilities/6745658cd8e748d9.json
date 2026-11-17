@@ -1,0 +1,47 @@
+{
+  "_key": "!items!6745658cd8e748d9",
+  "_id": "6745658cd8e748d9",
+  "name": "Steady Voice III",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Steady Voice affects two willing allies within range.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "influence:leadership:3",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "influence:leadership:3",
+        "level": 1,
+        "cost": 2,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Steady Voice affects two willing allies within range.",
+        "improves": "influence:leadership:1",
+        "requires": [
+          "influence:leadership:2"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

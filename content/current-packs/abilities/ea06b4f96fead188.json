@@ -1,0 +1,47 @@
+{
+  "_key": "!items!ea06b4f96fead188",
+  "_id": "ea06b4f96fead188",
+  "name": "Steady Voice II",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Steady Voice reduces Frightened by 2.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "influence:leadership:2",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "influence:leadership:2",
+        "level": 1,
+        "cost": 2,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Steady Voice reduces Frightened by 2.",
+        "improves": "influence:leadership:1",
+        "requires": [
+          "influence:leadership:1"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

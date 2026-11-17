@@ -5,7 +5,6 @@ import { workshopPlay } from "./workshop-play.mjs";
 import { creationPreview } from "./creation.mjs";
 import { awardMilestones } from "./development.mjs";
 import { advancementPreview } from "./advancement.mjs";
-import { inventoryTotals } from "./acquisition.mjs";
 import { passiveDefenseSources } from "./passive-defenses.mjs";
 import { currentAncestryId, ancestryBenefits, ancestrySelection } from "./ancestry.mjs";
 
@@ -16,7 +15,7 @@ export const emptyLevelDraft = () => ({
 });
 
 /** Rebuild from choices so lowering/revisiting a level cannot duplicate grants. */
-export function workshopCharacter(draft, catalogs, languages) {
+export function workshopCharacter(draft, catalogs, languages, { projectInventory, projectAttributes } = {}) {
   languages ??= catalogs.languages;
   draft = { ...draft, ancestryId: currentAncestryId(draft.ancestryId) };
   const effectiveTraitIds = ancestrySelection(draft, catalogs.choices).traitIds;
@@ -77,7 +76,7 @@ export function workshopCharacter(draft, catalogs, languages) {
     state.languages ?? creation.summary?.languages ?? [],
     catalogs,
   );
-  const items = play.inventory.map((item) => {
+  const mappedItems = play.inventory.map((item) => {
     const definition = catalogs.inventory.equipment.find(
       (r) => r.id === item.catalogId,
     );
@@ -93,18 +92,20 @@ export function workshopCharacter(draft, catalogs, languages) {
       definition,
     };
   });
+  const projection = projectInventory?.(mappedItems) ?? { items: mappedItems, additional: [] };
+  const items = projection.items;
+  const burdenItems = [...items, ...(projection.additional ?? [])];
   const outfit = items.find(
     (i) => i.catalogId === "item-travel-clothes" && i.worn,
   );
-  const bulk = inventoryTotals(
-    items.filter((i) => i.carried),
-    catalogs.inventory,
-    { wornOutfitId: outfit?.instanceId },
-  ).bulk;
-  const attributes = { ...draft.attributes };
+  // Exactly one worn outfit remains descriptive; spare outfits still count.
+  const bulk = Math.max(0, burdenItems.filter(item => item.carried).reduce((sum, item) => sum + item.bulk, 0)
+    - (outfit ? outfit.bulk / outfit.quantity : 0));
+  let attributes = { ...draft.attributes };
   if (catalogs.forge && items.some((item) => item.worn && item.catalogId === "item-cincture-of-might"))
     attributes.brawn += 1;
-  const stowedBulk = items.filter(item => item.carried && !item.worn && !item.held).reduce((sum, item) => sum + item.bulk, 0);
+  if (projectAttributes) attributes = projectAttributes(attributes);
+  const stowedBulk = burdenItems.filter(item => item.carried && !item.worn && !item.held).reduce((sum, item) => sum + item.bulk, 0);
   const ancestry = forgeAncestryBenefits(effectiveTraitIds, catalogs.forge, { stowedBulk });
   const armorBulkRelief = catalogs.forge?.rulesRevision === 299 && state.learned.includes("armor:harness:1")
     ? Math.min(1, items.filter(item => item.worn && state.learned.includes(forgeArmorRequirement(item.catalogId, true))).reduce((sum, item) => sum + item.bulk, 0)) : 0;

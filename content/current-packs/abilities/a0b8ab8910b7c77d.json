@@ -1,0 +1,66 @@
+{
+  "_key": "!items!a0b8ab8910b7c77d",
+  "_id": "a0b8ab8910b7c77d",
+  "name": "Armor IV",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 8 hours</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One suit of armor beside you; 100 coins of enchanting oil consumed</dd></div><div><dt>Duration</dt><dd>7 days</dd></div></dl><p>Choose fire, cold, lightning, poison, life, radiant, mental or force. While worn with its normal training, the suit grants resistance 2 to that damage type. Use the highest matching resistance. You may keep one Armor IV enchantment at a time.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:imbuement:a2",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:imbuement:a2",
+        "level": 3,
+        "cost": 4,
+        "action": "Ritual · 8 hours",
+        "sp": 5,
+        "range": "One suit of armor beside you; 100 coins of enchanting oil consumed",
+        "duration": "7 days",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Choose fire, cold, lightning, poison, life, radiant, mental or force. While worn with its normal training, the suit grants resistance 2 to that damage type. Use the highest matching resistance. You may keep one Armor IV enchantment at a time.",
+        "improves": null,
+        "requires": [
+          "imbuement:4"
+        ],
+        "bookId": "imbuement"
+      },
+      "spell": {
+        "id": "spell:imbuement:a2",
+        "name": "Armor IV",
+        "bookId": "imbuement",
+        "page": "A2",
+        "section": "VI",
+        "sp": 5,
+        "action": "Ritual",
+        "actionText": "Ritual · 8 hours",
+        "ritualTime": "8 hours",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One suit of armor beside you; 100 coins of enchanting oil consumed",
+        "duration": "7 days",
+        "effect": "Choose fire, cold, lightning, poison, life, radiant, mental or force. While worn with its normal training, the suit grants resistance 2 to that damage type. Use the highest matching resistance. You may keep one Armor IV enchantment at a time."
+      }
+    }
+  },
+  "effects": []
+}

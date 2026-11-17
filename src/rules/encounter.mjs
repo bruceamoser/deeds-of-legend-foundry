@@ -11,18 +11,21 @@ function participant(p) {
     throw new Error("Invalid encounter participant.");
   return { id: p.id, side: p.side };
 }
-export function startEncounter(participants, faces) {
-  if (
+export function startEncounter(participants, faces, { ambushSide = null, warned = false } = {}) {
+  if (ambushSide !== null && !SIDES.includes(ambushSide)) throw new Error("Choose the ambushing starting side.");
+  if (typeof warned !== "boolean") throw new Error("Identify whether the group was warned.");
+  const ambush = ambushSide !== null && !warned;
+  if (!ambush && (
     !Array.isArray(faces) ||
     faces.length !== 3 ||
     faces.some((n) => !Number.isInteger(n) || n < 1 || n > 6)
-  )
+  ))
     throw new Error("Opening roll requires three unmodified d6.");
   const roster = participants.map(participant);
   if (!roster.length || new Set(roster.map((p) => p.id)).size !== roster.length)
     throw new Error("Choose a nonempty unique roster.");
-  const total = faces.reduce((a, b) => a + b, 0),
-    startingSide = total >= 12 ? "players" : "opposition";
+  const total = ambush ? null : faces.reduce((a, b) => a + b, 0),
+    startingSide = ambush ? ambushSide : total >= 12 ? "players" : "opposition";
   const state = {
     schemaVersion: 1,
     revision: 1,
@@ -32,7 +35,7 @@ export function startEncounter(participants, faces) {
     nextSide: startingSide,
     current: null,
     acted: [],
-    opening: { faces: [...faces], total },
+    opening: ambush ? { ambushSide } : { faces: [...faces], total },
     roster: roster.map((p) => ({ ...p, eligibleRound: 1, withdrawn: false })),
     history: [],
   };
@@ -149,10 +152,11 @@ export function reconcileTurnRoster(state,participants) {
   const next=structuredClone(state),roster=participants.map(participant);
   if(new Set(roster.map(p=>p.id)).size!==roster.length)throw new Error("Choose a unique roster.");
   const ids=new Set(roster.map(p=>p.id));
-  next.roster=roster.map(p=>({...p,withdrawn:false}));
+  next.roster=roster.map(p=>({...p,...(state.startingSide?{eligibleRound:state.roster.find(old=>old.id===p.id)?.eligibleRound??state.round}:{}),withdrawn:false}));
   next.acted=[...new Set((next.acted??[]).filter(id=>ids.has(id)))];
   if(next.current&&!ids.has(next.current))next.current=null;
-  if(!next.current&&roster.length&&roster.every(p=>next.acted.includes(p.id))){next.round++;next.acted=[];}
+  if(!next.current&&roster.length&&roster.every(p=>next.acted.includes(p.id))){next.round++;next.acted=[];if(next.startingSide)next.nextSide=next.startingSide;}
+  if(next.startingSide&&!next.current)next.nextSide=availableSide(next,next.nextSide??next.startingSide);
   return next;
 }
 export function availableTurnParticipants(state) {

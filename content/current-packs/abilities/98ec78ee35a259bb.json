@@ -1,0 +1,66 @@
+{
+  "_key": "!items!98ec78ee35a259bb",
+  "_id": "98ec78ee35a259bb",
+  "name": "Programmed Illusion",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 hour</dd></div><div><dt>SP</dt><dd>6</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One fixed 6-by-6-square space within reach</dd></div><div><dt>Duration</dt><dd>7 days</dd></div></dl><p>Prepare a moving illusion with sound, scent and harmless temperature, performing a sequence lasting up to 5 minutes. Set one visible or audible trigger within 12 squares when casting. A matching event begins the performance; after it finishes, the illusion waits 10 minutes before it can trigger again. The scene stays within its prepared area and follows the same recorded sequence each time. Physical interaction reveals its insubstantial nature; observers may examine it using the shared illusion procedure. Keep one Programmed Illusion active; casting another ends the first.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:perception:a3",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:perception:a3",
+        "level": 7,
+        "cost": 5,
+        "action": "Ritual · 1 hour",
+        "sp": 6,
+        "range": "One fixed 6-by-6-square space within reach",
+        "duration": "7 days",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Prepare a moving illusion with sound, scent and harmless temperature, performing a sequence lasting up to 5 minutes. Set one visible or audible trigger within 12 squares when casting. A matching event begins the performance; after it finishes, the illusion waits 10 minutes before it can trigger again. The scene stays within its prepared area and follows the same recorded sequence each time. Physical interaction reveals its insubstantial nature; observers may examine it using the shared illusion procedure. Keep one Programmed Illusion active; casting another ends the first.",
+        "improves": null,
+        "requires": [
+          "perception:5"
+        ],
+        "bookId": "perception"
+      },
+      "spell": {
+        "id": "spell:perception:a3",
+        "name": "Programmed Illusion",
+        "bookId": "perception",
+        "page": "A3",
+        "section": "VII",
+        "sp": 6,
+        "action": "Ritual",
+        "actionText": "Ritual · 1 hour",
+        "ritualTime": "1 hour",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One fixed 6-by-6-square space within reach",
+        "duration": "7 days",
+        "effect": "Prepare a moving illusion with sound, scent and harmless temperature, performing a sequence lasting up to 5 minutes. Set one visible or audible trigger within 12 squares when casting. A matching event begins the performance; after it finishes, the illusion waits 10 minutes before it can trigger again. The scene stays within its prepared area and follows the same recorded sequence each time. Physical interaction reveals its insubstantial nature; observers may examine it using the shared illusion procedure. Keep one Programmed Illusion active; casting another ends the first."
+      }
+    }
+  },
+  "effects": []
+}

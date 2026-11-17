@@ -1,0 +1,47 @@
+{
+  "_key": "!items!aa77ea8712045861",
+  "_id": "aa77ea8712045861",
+  "name": "Hurl II",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Hurl has range 6 squares.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "marksmanship:thrown-weapons:2",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "marksmanship:thrown-weapons:2",
+        "level": 1,
+        "cost": 2,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Hurl has range 6 squares.",
+        "improves": "marksmanship:thrown-weapons:1",
+        "requires": [
+          "marksmanship:thrown-weapons:1"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

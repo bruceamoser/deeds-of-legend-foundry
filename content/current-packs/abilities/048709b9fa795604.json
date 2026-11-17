@@ -1,0 +1,65 @@
+{
+  "_key": "!items!048709b9fa795604",
+  "_id": "048709b9fa795604",
+  "name": "Heat Metal",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div><div><dt>Defense</dt><dd>Fortitude</dd></div><div><dt>Range</dt><dd>One visible metal item worn or held within 6 squares</dd></div><div><dt>Duration</dt><dd>Sustained, up to 1 minute</dd></div></dl><p>Heat the item until it glows. Its wearer or holder takes 2/3/5 fire damage when cast. Each later upkeep deals 1 fire damage to a creature still touching the item; this continuing heat is not an attack and resistance can reduce it to 0. A holder may drop it immediately after damage. Worn items take their normal removal time. The heat ends when Sustain ends.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "fortitude"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:flame:4",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:flame:4",
+        "level": 1,
+        "cost": 2,
+        "action": "Main Action",
+        "sp": 2,
+        "range": "One visible metal item worn or held within 6 squares",
+        "duration": "Sustained, up to 1 minute",
+        "attribute": "Knowledge",
+        "defenseAttribute": "Fortitude",
+        "effect": "Heat the item until it glows. Its wearer or holder takes 2/3/5 fire damage when cast. Each later upkeep deals 1 fire damage to a creature still touching the item; this continuing heat is not an attack and resistance can reduce it to 0. A holder may drop it immediately after damage. Worn items take their normal removal time. The heat ends when Sustain ends.",
+        "improves": null,
+        "requires": [
+          "flame:0"
+        ],
+        "bookId": "flame"
+      },
+      "spell": {
+        "id": "spell:flame:4",
+        "name": "Heat Metal",
+        "bookId": "flame",
+        "page": "4",
+        "section": "II",
+        "sp": 2,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "Knowledge",
+        "defense": "Fortitude",
+        "defenseAttribute": "Fortitude",
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One visible metal item worn or held within 6 squares",
+        "duration": "Sustained, up to 1 minute",
+        "effect": "Heat the item until it glows. Its wearer or holder takes 2/3/5 fire damage when cast. Each later upkeep deals 1 fire damage to a creature still touching the item; this continuing heat is not an attack and resistance can reduce it to 0. A holder may drop it immediately after damage. Worn items take their normal removal time. The heat ends when Sustain ends."
+      }
+    }
+  },
+  "effects": []
+}

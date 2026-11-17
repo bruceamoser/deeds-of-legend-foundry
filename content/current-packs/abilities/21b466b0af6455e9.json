@@ -1,0 +1,47 @@
+{
+  "_key": "!items!21b466b0af6455e9",
+  "_id": "21b466b0af6455e9",
+  "name": "Sure Ascent II",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Sure Ascent lets you climb at 1 square per movement spent during ordinary movement. Its Main Action climbs up to 3 squares.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "athletics:climbing:2",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "athletics:climbing:2",
+        "level": 1,
+        "cost": 2,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Sure Ascent lets you climb at 1 square per movement spent during ordinary movement. Its Main Action climbs up to 3 squares.",
+        "improves": "athletics:climbing:1",
+        "requires": [
+          "athletics:climbing:1"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

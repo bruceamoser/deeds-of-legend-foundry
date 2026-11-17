@@ -1,0 +1,47 @@
+{
+  "_key": "!items!5ac615de75f85a4f",
+  "_id": "5ac615de75f85a4f",
+  "name": "Interpose I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Reaction</dd></div></dl><p>Reaction. After an adjacent ally rolls defense, before applying physical damage from that attack, reduce that damage by 1 after resistance. You must be able to reach the ally. No roll.</p>",
+    "activity": {
+      "action": "reaction",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "guard:interception:1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "technique",
+        "nodeId": "guard:interception:1",
+        "level": 1,
+        "cost": 1,
+        "action": "Reaction",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Reaction. After an adjacent ally rolls defense, before applying physical damage from that attack, reduce that damage by 1 after resistance. You must be able to reach the ally. No roll.",
+        "improves": null,
+        "requires": [
+          "guard"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

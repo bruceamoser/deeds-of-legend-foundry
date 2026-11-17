@@ -1,0 +1,47 @@
+{
+  "_key": "!items!25965756d38d0cf3",
+  "_id": "25965756d38d0cf3",
+  "name": "Heavy Armor I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Passive. You are also trained to wear heavy armor; the suit supplies physical resistance 3. Maneuver: lift one willing or helpless adjacent creature no larger than you. For this turn, carrying it adds no encumbrance and occupies no weapon hand. Put it down in a legal adjacent square when your turn ends.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "armor:harness:4",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "technique",
+        "nodeId": "armor:harness:4",
+        "level": 3,
+        "cost": 3,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Passive. You are also trained to wear heavy armor; the suit supplies physical resistance 3. Maneuver: lift one willing or helpless adjacent creature no larger than you. For this turn, carrying it adds no encumbrance and occupies no weapon hand. Put it down in a legal adjacent square when your turn ends.",
+        "improves": null,
+        "requires": [
+          "armor:harness:3"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

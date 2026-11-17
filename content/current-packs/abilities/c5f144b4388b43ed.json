@@ -1,0 +1,66 @@
+{
+  "_key": "!items!c5f144b4388b43ed",
+  "_id": "c5f144b4388b43ed",
+  "name": "Imprisonment",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 10 minutes</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One willing or continuously restrained adjacent creature; a 100-coin crystal consumed</dd></div><div><dt>Duration</dt><dd>Until released or the crystal is broken</dd></div></dl><p>Enclose the creature in a palm-sized crystal where it sleeps and its needs pause. The crystal has 10 HP and physical resistance 1. Breaking it, Remove Curse, or your Main Action holding it releases the creature into the nearest open square with its prior HP and resources. Keep one such prison at a time.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:binding:a3",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:binding:a3",
+        "level": 7,
+        "cost": 5,
+        "action": "Ritual · 10 minutes",
+        "sp": 5,
+        "range": "One willing or continuously restrained adjacent creature; a 100-coin crystal consumed",
+        "duration": "Until released or the crystal is broken",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Enclose the creature in a palm-sized crystal where it sleeps and its needs pause. The crystal has 10 HP and physical resistance 1. Breaking it, Remove Curse, or your Main Action holding it releases the creature into the nearest open square with its prior HP and resources. Keep one such prison at a time.",
+        "improves": null,
+        "requires": [
+          "binding:5"
+        ],
+        "bookId": "binding"
+      },
+      "spell": {
+        "id": "spell:binding:a3",
+        "name": "Imprisonment",
+        "bookId": "binding",
+        "page": "A3",
+        "section": "VII",
+        "sp": 5,
+        "action": "Ritual",
+        "actionText": "Ritual · 10 minutes",
+        "ritualTime": "10 minutes",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One willing or continuously restrained adjacent creature; a 100-coin crystal consumed",
+        "duration": "Until released or the crystal is broken",
+        "effect": "Enclose the creature in a palm-sized crystal where it sleeps and its needs pause. The crystal has 10 HP and physical resistance 1. Breaking it, Remove Curse, or your Main Action holding it releases the creature into the nearest open square with its prior HP and resources. Keep one such prison at a time."
+      }
+    }
+  },
+  "effects": []
+}

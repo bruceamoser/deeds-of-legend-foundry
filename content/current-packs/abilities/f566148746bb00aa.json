@@ -1,0 +1,45 @@
+{
+  "_key": "!items!f566148746bb00aa",
+  "_id": "f566148746bb00aa",
+  "name": "Command a Summon",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action or Maneuver</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Range</dt><dd>One of your summons within 6 squares of you.</dd></div><div><dt>Duration</dt><dd>Granted actions are used immediately during your turn; none are saved for later turns.</dd></div></dl><p>**Action:** Main Action or Maneuver · **Attribute:** None — no roll</p><p>**Target / range / shape:** One of your summons within 6 squares of you.</p><p>Spend Main Action to grant it Main Action plus Maneuver, or spend Maneuver to grant it Maneuver plus movement. Resolve its activity during your turn. Normal downward conversions apply; a Main command can convert the granted Maneuver to movement before an attack.</p><p>One command per summon on your turn. You may command two different summons using your Main Action and Maneuver. A new summon receives the summoning card’s immediate free Main command, which counts as its command that turn.</p><p>At the end of your turn, each of your summons that received no command that turn disappears. A command gives the summon activity for this turn. Existing conditions, durations and passive defenses continue to apply. See the [summoning rules](../rules/summoning.md) for the tether and command limits.</p><p>Name the desired task; the chosen bestiary summon profile determines whether it can perform it and the action/roll required. A command grants neither extra capabilities nor automatic success. See the [command examples and bestiary requirements](../rules/summoning.md).</p><p>**Duration:** Granted actions are used immediately during your turn; none are saved for later turns.</p><p>**Equipment / acquisition:** None.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-command-a-summon",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "ability",
+        "nodeId": "ability-command-a-summon",
+        "level": 0,
+        "cost": 0,
+        "action": "Main Action or Maneuver",
+        "sp": null,
+        "range": "One of your summons within 6 squares of you.",
+        "duration": "Granted actions are used immediately during your turn; none are saved for later turns.",
+        "attribute": "None — no roll",
+        "defenseAttribute": null,
+        "effect": "**Action:** Main Action or Maneuver · **Attribute:** None — no roll\n\n**Target / range / shape:** One of your summons within 6 squares of you.\n\nSpend Main Action to grant it Main Action plus Maneuver, or spend Maneuver to grant it Maneuver plus movement. Resolve its activity during your turn. Normal downward conversions apply; a Main command can convert the granted Maneuver to movement before an attack.\n\nOne command per summon on your turn. You may command two different summons using your Main Action and Maneuver. A new summon receives the summoning card’s immediate free Main command, which counts as its command that turn.\n\nAt the end of your turn, each of your summons that received no command that turn disappears. A command gives the summon activity for this turn. Existing conditions, durations and passive defenses continue to apply. See the [summoning rules](../rules/summoning.md) for the tether and command limits.\n\nName the desired task; the chosen bestiary summon profile determines whether it can perform it and the action/roll required. A command grants neither extra capabilities nor automatic success. See the [command examples and bestiary requirements](../rules/summoning.md).\n\n**Duration:** Granted actions are used immediately during your turn; none are saved for later turns.\n\n**Equipment / acquisition:** None.",
+        "improves": null,
+        "requires": [],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

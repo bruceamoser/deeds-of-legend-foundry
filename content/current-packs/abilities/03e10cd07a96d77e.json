@@ -1,0 +1,46 @@
+{
+  "_key": "!items!03e10cd07a96d77e",
+  "_id": "03e10cd07a96d77e",
+  "name": "Stand Together",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Target / range / shape</dt><dd>Self and one adjacent willing ally.</dd></div><div><dt>Duration</dt><dd>Until your next turn or adjacency is lost.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div></dl><p>You and the ally gain 1 Boon to defense rolls while remaining adjacent, until the start of your next turn. Once per scene, before either recipient rolls one of these defenses, you may increase that defense’s benefit to 2 Boons, without an additional action.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-signature-leader-stand-together",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "ability",
+        "nodeId": "ability-signature-leader-stand-together",
+        "level": 1,
+        "cost": 0,
+        "action": "Maneuver",
+        "sp": null,
+        "range": "Self and one adjacent willing ally.",
+        "duration": "Until your next turn or adjacency is lost.",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "**Action:** Maneuver · **Attribute:** None\n\n**Target / range / shape:** Self and one adjacent willing ally.\n\nYou and the ally gain 1 Boon to defense rolls while remaining adjacent, until the start of your next turn. Once per scene, before either recipient rolls one of these defenses, you may increase that defense’s benefit to 2 Boons, without an additional action.\n\n**Duration:** Until your next turn or adjacency is lost.\n\n**Equipment / acquisition:** None.",
+        "improves": null,
+        "requires": [],
+        "bookId": null,
+        "magic": null
+      }
+    }
+  },
+  "effects": []
+}

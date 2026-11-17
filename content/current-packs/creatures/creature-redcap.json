@@ -1,0 +1,325 @@
+{
+  "_key": "!actors!92624b50578d1917",
+  "_id": "92624b50578d1917",
+  "name": "Redcap",
+  "type": "creature",
+  "img": "systems/heroes-of-legend/assets/creatures/acbbd6b3dbcd8b76d6f16b6e6c72a8de49a3aebb72a236ee7cf0e4f5368935d9.webp",
+  "prototypeToken": {
+    "width": 1,
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/acbbd6b3dbcd8b76d6f16b6e6c72a8de49a3aebb72a236ee7cf0e4f5368935d9.webp"
+    }
+  },
+  "system": {
+    "schemaVersion": 1,
+    "attributes": {
+      "brawn": {
+        "base": 0
+      },
+      "fortitude": {
+        "base": 0
+      },
+      "agility": {
+        "base": 2
+      },
+      "guile": {
+        "base": 1
+      },
+      "knowledge": {
+        "base": 0
+      },
+      "reason": {
+        "base": 1
+      }
+    },
+    "attributesSource": "Brawn +0; Fortitude +0; Agility +2; Guile +1; Knowledge +0; Reason +1",
+    "health": {
+      "value": 20,
+      "baseMax": 20,
+      "sourceText": "20"
+    },
+    "cv": 22,
+    "speed": 6,
+    "speedSource": "6",
+    "alternateSpeeds": [],
+    "size": 1,
+    "sizeLabel": "medium",
+    "sizeSource": "1 (medium)",
+    "footprint": {
+      "width": 1,
+      "height": 1
+    },
+    "armor": 1,
+    "armorMarker": "",
+    "armorSource": "1",
+    "stability": 0,
+    "threat": {
+      "boons": 0,
+      "banes": 1,
+      "sourceText": "1 Bane"
+    },
+    "evasion": {
+      "boons": 0,
+      "banes": 1,
+      "sourceText": "1 Bane"
+    },
+    "weaknesses": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "resistances": {
+      "numeric": [
+        {
+          "type": "Physical",
+          "value": 1
+        }
+      ],
+      "special": [],
+      "sourceText": "Physical (1)"
+    },
+    "immunities": [],
+    "basicMelee": {
+      "weak": 5,
+      "standard": 3,
+      "strong": 2,
+      "defenseAttribute": "agility",
+      "orientation": "player-defense"
+    },
+    "actions": {
+      "orientation": "player-defense",
+      "entries": [
+        {
+          "id": "main-0",
+          "category": "main",
+          "name": "Basic Melee",
+          "abilityId": "",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "5",
+            "standard": "3",
+            "strong": "2"
+          },
+          "effect": "5/3/2",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "main-1",
+          "category": "main",
+          "name": "Iron-heeled kick",
+          "abilityId": "",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "7 + Bleeding 2",
+            "standard": "5 + Bleeding 1",
+            "strong": "3"
+          },
+          "effect": "7 + Bleeding 2 / 5 + Bleeding 1 / 3",
+          "referenceMarkdown": "### Iron-heeled kick\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Bleeding 2. **Standard defense:** Bleeding 1."
+        },
+        {
+          "id": "maneuver-0",
+          "category": "maneuver",
+          "name": "Shoulder Through",
+          "abilityId": "",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Push one adjacent target 1; Stability applies.",
+          "referenceMarkdown": "### Shoulder Through\n\n*It lowers its weight and makes the space in front of it suddenly too small.*\n\nPush one adjacent creature 1 square. Apply Stability and normal collision rules. Once per turn; no separate damage."
+        },
+        {
+          "id": "maneuver-1",
+          "category": "maneuver",
+          "name": "Defend",
+          "abilityId": "",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "+1 Bane",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "reaction-0",
+          "category": "reaction",
+          "name": "Break the Approach",
+          "abilityId": "monster-break-the-approach",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "After an enemy voluntarily closes: push 1; Stability applies.",
+          "referenceMarkdown": "### Break the Approach\n\n*It lashes out with shoulder or horn, spoiling the straight line of the charging foe.*\n\nAfter a visible enemy ends voluntary movement adjacent to this creature, push that enemy 1 square directly away. Apply Stability, terrain costs and normal collision rules; no separate attack damage. Forced movement and movement granted by a free attack cannot trigger this."
+        },
+        {
+          "id": "reaction-1",
+          "category": "reaction",
+          "name": "Opportunity Attack",
+          "abilityId": "",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Basic Melee",
+          "referenceMarkdown": ""
+        }
+      ],
+      "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates a complete outcome. All attacks use printed Threat unless stated otherwise.",
+      "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Iron-heeled kick | Agility | 7 + Bleeding 2 / 5 + Bleeding 1 / 3 |",
+      "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Shoulder Through | Push one adjacent target 1; Stability applies. |\n| Defend | +1 Bane |",
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Break the Approach | After an enemy voluntarily closes: push 1; Stability applies. |\n| Opportunity Attack | Basic Melee |"
+    },
+    "details": {
+      "flavorMarkdown": "*A small hard-eyed fey wears heavy iron boots and a dark cap that never quite dries.*",
+      "specialtyMarkdown": "### Iron-heeled kick\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Bleeding 2. **Standard defense:** Bleeding 1.\n\n### Shoulder Through\n\n*It lowers its weight and makes the space in front of it suddenly too small.*\n\nPush one adjacent creature 1 square. Apply Stability and normal collision rules. Once per turn; no separate damage.\n\n### Break the Approach\n\n*It lashes out with shoulder or horn, spoiling the straight line of the charging foe.*\n\nAfter a visible enemy ends voluntary movement adjacent to this creature, push that enemy 1 square directly away. Apply Stability, terrain costs and normal collision rules; no separate attack damage. Forced movement and movement granted by a free attack cannot trigger this.",
+      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until its next turn. Combines with Evasion through normal Boon/Bane rules; repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature; spend its Reaction before the provoking action resolves. That action continues if capable.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Ordinary sight and hearing.\n\n**Tactics and retreat:** Rush into the space where the iron boots matter, then shoulder an intruder off its claimed path. It becomes less bold when the party controls that space.\n\n**Encounter and conversation:** It has claimed an abandoned battlefield as a garden and counts every visitor as a trespasser.\n\n**Habitat:** Old woodland; crossroads; hidden court · **Communication:** Common\n\n**Loot:** Choose possessions or a clue in its lair that fits the adventure. If a body part is useful or valuable, state its use and value before awarding it.\n\n**Summoning:** Fey 3 — [player reference](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/summons/redcap.md).",
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-redcap\n\n\n**Category:** Fey · **Role:** Attrition striker · **CV:** 22\n\n### CV worksheet\n\n**Reference damage:** 3/5/7\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.4\n\n**Action review (#1279):** U 1.3 → 1.4: Maneuver allowance +0, Reaction allowance +0.1. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.\n\n**Regeneration per turn:** 0\n\nReference I=3.404, O=4.596. Uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/encounters.md). Utility is provisional and does not simulate control, positioning or summon choices.\n\n**Ability sources:** [barrel through](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/barrel-through.md), [Break the Approach](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/break-the-approach.md), [rending blow](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/rending-blow.md).\n\n**Coverage reference:** [Pathfinder family survey](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/family-survey.md); original HOL prose and mechanics.\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/roster.md) · [Stability](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/rules/stability.md)"
+    },
+    "biography": ""
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-redcap",
+        "asset": "assets/creatures/acbbd6b3dbcd8b76d6f16b6e6c72a8de49a3aebb72a236ee7cf0e4f5368935d9.webp",
+        "sha256": "d6232c3ee2f3a2bd52b27228528100caeec4ab386f0cfaeb3b0fc9974055fbcb",
+        "sourceSha256": "acbbd6b3dbcd8b76d6f16b6e6c72a8de49a3aebb72a236ee7cf0e4f5368935d9",
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
+      "catalogId": "creature-redcap",
+      "source": {
+        "path": "design/bestiary/creatures/redcap.md",
+        "sha256": "1712e1b09bd77e84952c933c584f9b885ea9bcdd75ce691c9a15b3601c6c8ce4"
+      },
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Printed profile · specialty automation pending",
+      "specialtyAutomation": "pending",
+      "classification": {
+        "category": "Fey",
+        "role": "Attrition striker",
+        "cv": 22
+      },
+      "family": "Fey — classic",
+      "abilitySources": [
+        {
+          "label": "barrel through",
+          "id": "monster-barrel-through",
+          "path": "design/monster-abilities/barrel-through.md",
+          "sha256": "2817154accc7d427340cfcaa6c07447067dad0bf329628f615774d8d1086ce59"
+        },
+        {
+          "label": "Break the Approach",
+          "id": "monster-break-the-approach",
+          "path": "design/monster-abilities/break-the-approach.md",
+          "sha256": "0cca1a4008284400eb8ac6814f739a29ab1f3d30518098e0a9749b1cdfe9ae5d"
+        },
+        {
+          "label": "rending blow",
+          "id": "monster-rending-blow",
+          "path": "design/monster-abilities/rending-blow.md",
+          "sha256": "5686040087bb64c4d0a85c4faadb2d7a5ce8bd958937f732f62fd292a096f192"
+        }
+      ],
+      "monsterAbilityTemplates": [
+        {
+          "id": "monster-barrel-through",
+          "path": "design/monster-abilities/barrel-through.md",
+          "sha256": "2817154accc7d427340cfcaa6c07447067dad0bf329628f615774d8d1086ce59",
+          "name": "Shoulder Through",
+          "action": "Maneuver",
+          "flavorMarkdown": "*It lowers its weight and makes the space in front of it suddenly too small.*",
+          "rulesMarkdown": "Push one adjacent creature 1 square. Apply Stability and normal collision rules. Once per turn; no separate damage.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Shoulder Through\n\n*It lowers its weight and makes the space in front of it suddenly too small.*\n\n## Rules\n\n**ID:** monster-barrel-through\n\n\n**Action:** Maneuver\n\nPush one adjacent creature 1 square. Apply Stability and normal collision rules. Once per turn; no separate damage.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/barrel-through.md",
+            "sha256": "2817154accc7d427340cfcaa6c07447067dad0bf329628f615774d8d1086ce59"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-break-the-approach",
+          "path": "design/monster-abilities/break-the-approach.md",
+          "sha256": "0cca1a4008284400eb8ac6814f739a29ab1f3d30518098e0a9749b1cdfe9ae5d",
+          "name": "Break the Approach",
+          "action": "Reaction",
+          "flavorMarkdown": "*It lashes out with shoulder or horn, spoiling the straight line of the charging foe.*",
+          "rulesMarkdown": "After a visible enemy ends voluntary movement adjacent to this creature, push that enemy 1 square directly away. Apply Stability, terrain costs and normal collision rules; no separate attack damage. Forced movement and movement granted by a free attack cannot trigger this.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Break the Approach\n\n*It lashes out with shoulder or horn, spoiling the straight line of the charging foe.*\n\n## Rules\n\n**ID:** monster-break-the-approach\n\n**Action:** Reaction\n\nAfter a visible enemy ends voluntary movement adjacent to this creature, push that enemy 1 square directly away. Apply Stability, terrain costs and normal collision rules; no separate attack damage. Forced movement and movement granted by a free attack cannot trigger this.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/break-the-approach.md",
+            "sha256": "0cca1a4008284400eb8ac6814f739a29ab1f3d30518098e0a9749b1cdfe9ae5d"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-rending-blow",
+          "path": "design/monster-abilities/rending-blow.md",
+          "sha256": "5686040087bb64c4d0a85c4faadb2d7a5ce8bd958937f732f62fd292a096f192",
+          "name": "Rending Blow",
+          "action": "Main Action",
+          "flavorMarkdown": "*The claws snag and drag; blood follows the withdrawing talons.*",
+          "rulesMarkdown": "Use the printed attack. Standard also applies Bleeding 1; Strong applies Bleeding 2. Bleeding resolves and decays at the target’s turn end. At 0 HP follow the ordinary Dying and immediate death-roll rules.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Rending Blow\n\n*The claws snag and drag; blood follows the withdrawing talons.*\n\n## Rules\n\n**ID:** monster-rending-blow\n\n\n**Action:** Main Action\n\nUse the printed attack. Standard also applies Bleeding 1; Strong applies Bleeding 2. Bleeding resolves and decays at the target’s turn end. At 0 HP follow the ordinary Dying and immediate death-roll rules.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/rending-blow.md",
+            "sha256": "5686040087bb64c4d0a85c4faadb2d7a5ce8bd958937f732f62fd292a096f192"
+          },
+          "automation": "pending"
+        }
+      ],
+      "summoning": {
+        "eligible": true,
+        "summonId": "summon-redcap",
+        "path": "design/bestiary/summons/redcap.md",
+        "eligibility": "Fey 3",
+        "sourceText": "Fey 3 — [player reference](../summons/redcap.md)."
+      }
+    }
+  }
+}

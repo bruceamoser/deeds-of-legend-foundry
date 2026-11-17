@@ -1,0 +1,66 @@
+{
+  "_key": "!items!7c612621b1cb343b",
+  "_id": "7c612621b1cb343b",
+  "name": "Intuitions",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Reaction · before you roll a defense</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>Self</dd></div><div><dt>Duration</dt><dd>The triggering defense</dd></div></dl><p>A momentary warning sharpens your response. Gain 1 Boon to that defense.</p>",
+    "activity": {
+      "action": "reaction",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:portents:4",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:portents:4",
+        "level": 1,
+        "cost": 2,
+        "action": "Reaction · before you roll a defense",
+        "sp": 2,
+        "range": "Self",
+        "duration": "The triggering defense",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "A momentary warning sharpens your response. Gain 1 Boon to that defense.",
+        "improves": null,
+        "requires": [
+          "portents:0"
+        ],
+        "bookId": "portents"
+      },
+      "spell": {
+        "id": "spell:portents:4",
+        "name": "Intuitions",
+        "bookId": "portents",
+        "page": "4",
+        "section": "II",
+        "sp": 2,
+        "action": "Reaction",
+        "actionText": "Reaction · before you roll a defense",
+        "trigger": "before you roll a defense",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Self",
+        "duration": "The triggering defense",
+        "effect": "A momentary warning sharpens your response. Gain 1 Boon to that defense."
+      }
+    }
+  },
+  "effects": []
+}

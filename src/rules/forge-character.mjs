@@ -1,4 +1,4 @@
-import { forgeSignatureLearning } from "./forge-signatures.mjs";
+import { forgeSignatureLearning, forgeSignatureRecord } from "./forge-signatures.mjs";
 import { ATTRIBUTES } from "./character.mjs";
 import { ancestryBenefits, ancestrySelection } from "./ancestry.mjs";
 import { acquireAbility } from "./acquisition.mjs";
@@ -35,7 +35,7 @@ function applyLearning(state, id, selections, inventory, languages, errors, know
 }
 
 export function forgeInventory(inventory, graph) {
-  const current = new Map([...graph.signatures, ...graph.nodes.filter((node) => node.kind === "talent")].map((record) => [record.id, record]));
+  const current = new Map([...graph.signatures.map(record=>forgeSignatureRecord(graph,record)), ...graph.nodes.filter((node) => node.kind === "talent")].map((record) => [record.id, record]));
   return {
     ...inventory,
     acquisitions: [

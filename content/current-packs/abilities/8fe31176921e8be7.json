@@ -1,0 +1,66 @@
+{
+  "_key": "!items!8fe31176921e8be7",
+  "_id": "8fe31176921e8be7",
+  "name": "Delving",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 hour</dd></div><div><dt>SP</dt><dd>3</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>One adjacent object or ruin</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Add 2/4/6 progress toward uncovering one named part of its history, target 6. At completion learn who made it, its intended purpose, and one subsequent event relevant to your question, reaching back up to a century.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "reason",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:echoes:6",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:echoes:6",
+        "level": 1,
+        "cost": 2,
+        "action": "Ritual · 1 hour",
+        "sp": 3,
+        "range": "One adjacent object or ruin",
+        "duration": "Instant",
+        "attribute": "Reason",
+        "defenseAttribute": null,
+        "effect": "Add 2/4/6 progress toward uncovering one named part of its history, target 6. At completion learn who made it, its intended purpose, and one subsequent event relevant to your question, reaching back up to a century.",
+        "improves": null,
+        "requires": [
+          "echoes:1"
+        ],
+        "bookId": "echoes"
+      },
+      "spell": {
+        "id": "spell:echoes:6",
+        "name": "Delving",
+        "bookId": "echoes",
+        "page": "6",
+        "section": "III",
+        "sp": 3,
+        "action": "Ritual",
+        "actionText": "Ritual · 1 hour",
+        "ritualTime": "1 hour",
+        "attribute": "Reason",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One adjacent object or ruin",
+        "duration": "Instant",
+        "effect": "Add 2/4/6 progress toward uncovering one named part of its history, target 6. At completion learn who made it, its intended purpose, and one subsequent event relevant to your question, reaching back up to a century."
+      }
+    }
+  },
+  "effects": []
+}

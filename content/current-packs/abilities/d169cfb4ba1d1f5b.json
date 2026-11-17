@@ -1,0 +1,65 @@
+{
+  "_key": "!items!d169cfb4ba1d1f5b",
+  "_id": "d169cfb4ba1d1f5b",
+  "name": "Wind Wall",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>4</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>Six connected unoccupied squares within 6 squares</dd></div><div><dt>Duration</dt><dd>1 minute</dd></div></dl><p>Raise a wind barrier 3 squares high. Physical ranged attacks through it receive 2 Banes. The wall disperses ordinary airborne smoke and gas in its squares. Creatures pass through at an extra movement cost of 1 per wall square.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:air:8",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:air:8",
+        "level": 3,
+        "cost": 3,
+        "action": "Main Action",
+        "sp": 4,
+        "range": "Six connected unoccupied squares within 6 squares",
+        "duration": "1 minute",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Raise a wind barrier 3 squares high. Physical ranged attacks through it receive 2 Banes. The wall disperses ordinary airborne smoke and gas in its squares. Creatures pass through at an extra movement cost of 1 per wall square.",
+        "improves": null,
+        "requires": [
+          "air:2"
+        ],
+        "bookId": "air"
+      },
+      "spell": {
+        "id": "spell:air:8",
+        "name": "Wind Wall",
+        "bookId": "air",
+        "page": "8",
+        "section": "IV",
+        "sp": 4,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Six connected unoccupied squares within 6 squares",
+        "duration": "1 minute",
+        "effect": "Raise a wind barrier 3 squares high. Physical ranged attacks through it receive 2 Banes. The wall disperses ordinary airborne smoke and gas in its squares. Creatures pass through at an extra movement cost of 1 per wall square."
+      }
+    }
+  },
+  "effects": []
+}

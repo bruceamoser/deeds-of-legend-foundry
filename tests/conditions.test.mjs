@@ -63,7 +63,7 @@ test("condition events stay distinct, apply weakness/resistance correctly, and B
   );
   assert.deepEqual(
     plan.events.map((e) => e.damage.total),
-    [1, 1, 3],
+    [0, 0, 3],
   );
   assert.equal(plan.events[0].damage.breakdown[0].beforeResistance, 3);
   assert(plan.events[2].bypassResistance);

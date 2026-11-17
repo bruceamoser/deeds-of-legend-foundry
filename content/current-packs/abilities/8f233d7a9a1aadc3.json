@@ -1,0 +1,65 @@
+{
+  "_key": "!items!8f233d7a9a1aadc3",
+  "_id": "8f233d7a9a1aadc3",
+  "name": "Spike Growth",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Defense</dt><dd>Agility</dd></div><div><dt>Range</dt><dd>A 2-square-radius patch of soil within 6 squares</dd></div><div><dt>Duration</dt><dd>1 minute</dd></div></dl><p>Raise sharp growth that makes the area difficult terrain. Roll when cast to set physical damage at 2/3/5. Each creature takes that damage the first time each round it moves through at least one affected square. The growth is visible on inspection. Keep one Spike Growth active; casting another ends the first.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "reason",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:growth:5",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:growth:5",
+        "level": 1,
+        "cost": 2,
+        "action": "Main Action",
+        "sp": 2,
+        "range": "A 2-square-radius patch of soil within 6 squares",
+        "duration": "1 minute",
+        "attribute": "Reason",
+        "defenseAttribute": "Agility",
+        "effect": "Raise sharp growth that makes the area difficult terrain. Roll when cast to set physical damage at 2/3/5. Each creature takes that damage the first time each round it moves through at least one affected square. The growth is visible on inspection. Keep one Spike Growth active; casting another ends the first.",
+        "improves": null,
+        "requires": [
+          "growth:1"
+        ],
+        "bookId": "growth"
+      },
+      "spell": {
+        "id": "spell:growth:5",
+        "name": "Spike Growth",
+        "bookId": "growth",
+        "page": "5",
+        "section": "III",
+        "sp": 2,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "Reason",
+        "defense": "Agility",
+        "defenseAttribute": "Agility",
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "A 2-square-radius patch of soil within 6 squares",
+        "duration": "1 minute",
+        "effect": "Raise sharp growth that makes the area difficult terrain. Roll when cast to set physical damage at 2/3/5. Each creature takes that damage the first time each round it moves through at least one affected square. The growth is visible on inspection. Keep one Spike Growth active; casting another ends the first."
+      }
+    }
+  },
+  "effects": []
+}

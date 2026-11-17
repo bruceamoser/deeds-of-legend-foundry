@@ -1,0 +1,47 @@
+{
+  "_key": "!items!fa4759c7b623d848",
+  "_id": "fa4759c7b623d848",
+  "name": "Counterexample III",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Counterexample may aid two listeners assessing the same claim, before their rolls. Reaction: after you have seen a creature make the same attack earlier in this scene, warn one ally within 6 squares before its defense against that repeated attack; if it understands you, grant 1 defense Boon. Once per attacker per scene.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "scholarship:disputation:3",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "scholarship:disputation:3",
+        "level": 1,
+        "cost": 2,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Counterexample may aid two listeners assessing the same claim, before their rolls. Reaction: after you have seen a creature make the same attack earlier in this scene, warn one ally within 6 squares before its defense against that repeated attack; if it understands you, grant 1 defense Boon. Once per attacker per scene.",
+        "improves": "scholarship:disputation:1",
+        "requires": [
+          "scholarship:disputation:2"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

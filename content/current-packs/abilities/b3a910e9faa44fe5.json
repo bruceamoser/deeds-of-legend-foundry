@@ -1,0 +1,47 @@
+{
+  "_key": "!items!b3a910e9faa44fe5",
+  "_id": "b3a910e9faa44fe5",
+  "name": "A Camp without a Trace III",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>A Camp without a Trace’s ordinary shelter accommodates six people, and concealment attempts take 15 minutes instead of 30.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "wilderness:provisioning:6",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "wilderness:provisioning:6",
+        "level": 3,
+        "cost": 4,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "A Camp without a Trace’s ordinary shelter accommodates six people, and concealment attempts take 15 minutes instead of 30.",
+        "improves": "wilderness:provisioning:4",
+        "requires": [
+          "wilderness:provisioning:5"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

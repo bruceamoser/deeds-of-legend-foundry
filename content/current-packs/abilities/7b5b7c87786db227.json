@@ -1,0 +1,46 @@
+{
+  "_key": "!items!7b5b7c87786db227",
+  "_id": "7b5b7c87786db227",
+  "name": "Pain Feeds the Fire",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Self.</dd></div><div><dt>Duration</dt><dd>Rage until scene end or until ended; damage-triggered Boon until your next attack or the end of your next turn.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div></dl><p>Enter a rage until the end of the scene. While raging, gain 1 Boon to attack rolls, 1 Bane to defense rolls, and physical resistance 1. You can end the rage at will. It also ends if you fall unconscious or enter Dying.</p><p>When an enemy damages you during this rage, gain 1 Boon to your next attack before the end of your next turn. Repeated damage does not accumulate these Boons. Damage you or an ally deliberately deal to you, and hazards you deliberately enter to hurt yourself, do not trigger it. Hostile forced movement into a hazard does trigger it.</p><p>Use once per scene. If you also know Go Berserk, both signatures share that rage use.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-signature-unbalanced-raging-recoil",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "ability",
+        "nodeId": "ability-signature-unbalanced-raging-recoil",
+        "level": 3,
+        "cost": 0,
+        "action": "Maneuver",
+        "sp": null,
+        "range": "Self.",
+        "duration": "Rage until scene end or until ended; damage-triggered Boon until your next attack or the end of your next turn.",
+        "attribute": "None (no roll)",
+        "defenseAttribute": null,
+        "effect": "**Action:** Maneuver · **Attribute:** None (no roll)\n\n**Target / range / shape:** Self.\n\nEnter a rage until the end of the scene. While raging, gain 1 Boon to attack rolls, 1 Bane to defense rolls, and physical resistance 1. You can end the rage at will. It also ends if you fall unconscious or enter Dying.\n\nWhen an enemy damages you during this rage, gain 1 Boon to your next attack before the end of your next turn. Repeated damage does not accumulate these Boons. Damage you or an ally deliberately deal to you, and hazards you deliberately enter to hurt yourself, do not trigger it. Hostile forced movement into a hazard does trigger it.\n\n**Duration:** Rage until scene end or until ended; damage-triggered Boon until your next attack or the end of your next turn.\n\n**Equipment / acquisition:** None.\n\nUse once per scene. If you also know Go Berserk, both signatures share that rage use.",
+        "improves": null,
+        "requires": [],
+        "bookId": null,
+        "magic": null
+      }
+    }
+  },
+  "effects": []
+}

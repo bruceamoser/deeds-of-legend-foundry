@@ -1,0 +1,66 @@
+{
+  "_key": "!items!b2d8234ee5d39fd0",
+  "_id": "b2d8234ee5d39fd0",
+  "name": "Magnificent Mansion",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 10 minutes</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One doorway on an adjacent solid surface</dd></div><div><dt>Duration</dt><dd>8 hours</dd></div></dl><p>Open a comfortable refuge with six furnished rooms, clean water and bedding for twelve. The entrance remains fixed and visible; you may open or close it with a Maneuver while beside it. At expiry occupants and their possessions emerge into safe space beside the original entrance. Furnishings remain part of the refuge. Food is brought by the guests.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:sanctuary:a2",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:sanctuary:a2",
+        "level": 3,
+        "cost": 4,
+        "action": "Ritual · 10 minutes",
+        "sp": 5,
+        "range": "One doorway on an adjacent solid surface",
+        "duration": "8 hours",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Open a comfortable refuge with six furnished rooms, clean water and bedding for twelve. The entrance remains fixed and visible; you may open or close it with a Maneuver while beside it. At expiry occupants and their possessions emerge into safe space beside the original entrance. Furnishings remain part of the refuge. Food is brought by the guests.",
+        "improves": null,
+        "requires": [
+          "sanctuary:4"
+        ],
+        "bookId": "sanctuary"
+      },
+      "spell": {
+        "id": "spell:sanctuary:a2",
+        "name": "Magnificent Mansion",
+        "bookId": "sanctuary",
+        "page": "A2",
+        "section": "VI",
+        "sp": 5,
+        "action": "Ritual",
+        "actionText": "Ritual · 10 minutes",
+        "ritualTime": "10 minutes",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One doorway on an adjacent solid surface",
+        "duration": "8 hours",
+        "effect": "Open a comfortable refuge with six furnished rooms, clean water and bedding for twelve. The entrance remains fixed and visible; you may open or close it with a Maneuver while beside it. At expiry occupants and their possessions emerge into safe space beside the original entrance. Furnishings remain part of the refuge. Food is brought by the guests."
+      }
+    }
+  },
+  "effects": []
+}

@@ -1,0 +1,65 @@
+{
+  "_key": "!items!9a45bd32e3dca7a2",
+  "_id": "9a45bd32e3dca7a2",
+  "name": "Nightsight",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>SP</dt><dd>0</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>Self</dd></div><div><dt>Duration</dt><dd>10 minutes</dd></div></dl><p>See clearly in dim light within 6 squares. In complete darkness, perceive only shapes already illuminated by a light source.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:farseeing:1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:farseeing:1",
+        "level": 1,
+        "cost": 1,
+        "action": "Maneuver",
+        "sp": 0,
+        "range": "Self",
+        "duration": "10 minutes",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "See clearly in dim light within 6 squares. In complete darkness, perceive only shapes already illuminated by a light source.",
+        "improves": null,
+        "requires": [
+          "divination"
+        ],
+        "bookId": "farseeing"
+      },
+      "spell": {
+        "id": "spell:farseeing:1",
+        "name": "Nightsight",
+        "bookId": "farseeing",
+        "page": "1",
+        "section": "I",
+        "sp": 0,
+        "action": "Maneuver",
+        "actionText": "Maneuver",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Self",
+        "duration": "10 minutes",
+        "effect": "See clearly in dim light within 6 squares. In complete darkness, perceive only shapes already illuminated by a light source."
+      }
+    }
+  },
+  "effects": []
+}

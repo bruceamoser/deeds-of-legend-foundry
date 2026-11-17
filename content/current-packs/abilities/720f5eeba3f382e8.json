@@ -1,0 +1,47 @@
+{
+  "_key": "!items!720f5eeba3f382e8",
+  "_id": "720f5eeba3f382e8",
+  "name": "Prepare the Remedy II",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Prepare the Remedy adds 1/3/4 progress.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "medicine:diagnosis:5",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "medicine:diagnosis:5",
+        "level": 3,
+        "cost": 4,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Prepare the Remedy adds 1/3/4 progress.",
+        "improves": "medicine:diagnosis:4",
+        "requires": [
+          "medicine:diagnosis:4"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

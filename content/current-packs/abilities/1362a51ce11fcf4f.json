@@ -1,0 +1,66 @@
+{
+  "_key": "!items!1362a51ce11fcf4f",
+  "_id": "1362a51ce11fcf4f",
+  "name": "Watch True",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 hour</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>Up to four fixed points you have visited within 1 kilometer</dd></div><div><dt>Duration</dt><dd>8 hours</dd></div></dl><p>Prepare a network of stationary observation points. A Main Action lets you see and hear from one until your next turn begins. Choose a different point with another Main Action. Magical concealment and ordinary barriers operate at each viewpoint.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:farseeing:a1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:farseeing:a1",
+        "level": 3,
+        "cost": 4,
+        "action": "Ritual · 1 hour",
+        "sp": 5,
+        "range": "Up to four fixed points you have visited within 1 kilometer",
+        "duration": "8 hours",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Prepare a network of stationary observation points. A Main Action lets you see and hear from one until your next turn begins. Choose a different point with another Main Action. Magical concealment and ordinary barriers operate at each viewpoint.",
+        "improves": null,
+        "requires": [
+          "farseeing:3"
+        ],
+        "bookId": "farseeing"
+      },
+      "spell": {
+        "id": "spell:farseeing:a1",
+        "name": "Watch True",
+        "bookId": "farseeing",
+        "page": "A1",
+        "section": "V",
+        "sp": 5,
+        "action": "Ritual",
+        "actionText": "Ritual · 1 hour",
+        "ritualTime": "1 hour",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Up to four fixed points you have visited within 1 kilometer",
+        "duration": "8 hours",
+        "effect": "Prepare a network of stationary observation points. A Main Action lets you see and hear from one until your next turn begins. Choose a different point with another Main Action. Magical concealment and ordinary barriers operate at each viewpoint."
+      }
+    }
+  },
+  "effects": []
+}

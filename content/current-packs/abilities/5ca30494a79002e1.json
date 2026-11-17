@@ -1,0 +1,65 @@
+{
+  "_key": "!items!5ca30494a79002e1",
+  "_id": "5ca30494a79002e1",
+  "name": "Give Power",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One adjacent willing creature with its own SP reserve</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>After paying this spell&#39;s 1 SP cost, transfer up to 3 of your remaining SP to the recipient. Choose the amount up to its missing SP. Subtract every point received from your reserve.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:channeling:2",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:channeling:2",
+        "level": 1,
+        "cost": 1,
+        "action": "Main Action",
+        "sp": 1,
+        "range": "One adjacent willing creature with its own SP reserve",
+        "duration": "Instant",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "After paying this spell's 1 SP cost, transfer up to 3 of your remaining SP to the recipient. Choose the amount up to its missing SP. Subtract every point received from your reserve.",
+        "improves": null,
+        "requires": [
+          "spellcraft"
+        ],
+        "bookId": "channeling"
+      },
+      "spell": {
+        "id": "spell:channeling:2",
+        "name": "Give Power",
+        "bookId": "channeling",
+        "page": "2",
+        "section": "I",
+        "sp": 1,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One adjacent willing creature with its own SP reserve",
+        "duration": "Instant",
+        "effect": "After paying this spell's 1 SP cost, transfer up to 3 of your remaining SP to the recipient. Choose the amount up to its missing SP. Subtract every point received from your reserve."
+      }
+    }
+  },
+  "effects": []
+}

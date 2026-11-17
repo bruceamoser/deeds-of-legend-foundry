@@ -1,0 +1,46 @@
+{
+  "_key": "!items!7bd583c0f4da4f77",
+  "_id": "7bd583c0f4da4f77",
+  "name": "The Cannonball",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Brawn</dd></div><div><dt>Target / range / shape</dt><dd>One creature within 4 squares.</dd></div><div><dt>Duration</dt><dd>Immediate; Prone and Dazed use their normal rules.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div></dl><p>Move up to 4 squares in a straight line toward the target, ignoring difficult terrain. If you end adjacent to it, make a Brawn roll. Weak: 4 physical damage to the target. You take 3 physical damage and are Prone. Standard: 8 physical damage, and the target is Prone. You take 2 physical damage. Strong: 12 physical damage, and the target is Prone and Dazed 1. You take 1 physical damage and are Dazed 1. If you cannot move at least 2 squares, you cannot use this ability. Resolve collisions normally.</p><p>Use once per scene. Its self-inflicted damage is non-attack damage, reduced by matching resistance to a minimum of 0; it is not an HP payment. It cannot trigger Pain Feeds the Fire.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "brawn",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-signature-unbalanced-crash-down",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "ability",
+        "nodeId": "ability-signature-unbalanced-crash-down",
+        "level": 7,
+        "cost": 0,
+        "action": "Main Action",
+        "sp": null,
+        "range": "One creature within 4 squares.",
+        "duration": "Immediate; Prone and Dazed use their normal rules.",
+        "attribute": "Brawn",
+        "defenseAttribute": null,
+        "effect": "**Action:** Main Action · **Attribute:** Brawn\n\n**Target / range / shape:** One creature within 4 squares.\n\nMove up to 4 squares in a straight line toward the target, ignoring difficult terrain. If you end adjacent to it, make a Brawn roll. Weak: 4 physical damage to the target. You take 3 physical damage and are Prone. Standard: 8 physical damage, and the target is Prone. You take 2 physical damage. Strong: 12 physical damage, and the target is Prone and Dazed 1. You take 1 physical damage and are Dazed 1. If you cannot move at least 2 squares, you cannot use this ability. Resolve collisions normally.\n\n**Duration:** Immediate; Prone and Dazed use their normal rules.\n\n**Equipment / acquisition:** None.\n\nUse once per scene. Its self-inflicted damage is non-attack damage, reduced by matching resistance to a minimum of 0; it is not an HP payment. It cannot trigger Pain Feeds the Fire.",
+        "improves": null,
+        "requires": [],
+        "bookId": null,
+        "magic": null
+      }
+    }
+  },
+  "effects": []
+}

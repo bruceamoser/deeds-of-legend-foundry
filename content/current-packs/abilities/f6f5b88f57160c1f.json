@@ -1,0 +1,46 @@
+{
+  "_key": "!items!f6f5b88f57160c1f",
+  "_id": "f6f5b88f57160c1f",
+  "name": "Death from the Blind Spot",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Agility</dd></div><div><dt>Target / range / shape</dt><dd>One creature you have damaged or tracked this scene.</dd></div><div><dt>Duration</dt><dd>Immediate; Prone and Dazed use their normal rules.</dd></div><div><dt>Equipment / acquisition</dt><dd>A melee weapon.</dd></div><div><dt>Frequency</dt><dd>Once per scene.</dd></div></dl><p>This ability consumes your Main Action and your movement for the turn. Move up to 6 squares to a square adjacent to the target, ignoring difficult terrain and without provoking. Then make one melee attack with 1 Boon. Weak: 6 physical damage. Standard: 9 physical damage, and the target is Prone. Strong: 12 physical damage, and the target is Prone and Dazed 1. If you cannot reach a square adjacent to the target, you cannot use this ability.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "agility",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-signature-warden-know-what-you-hunt",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "ability",
+        "nodeId": "ability-signature-warden-know-what-you-hunt",
+        "level": 7,
+        "cost": 0,
+        "action": "Main Action",
+        "sp": null,
+        "range": "One creature you have damaged or tracked this scene.",
+        "duration": "Immediate; Prone and Dazed use their normal rules.",
+        "attribute": "Agility",
+        "defenseAttribute": null,
+        "effect": "**Action:** Main Action · **Attribute:** Agility\n\n**Target / range / shape:** One creature you have damaged or tracked this scene.\n\nThis ability consumes your Main Action and your movement for the turn. Move up to 6 squares to a square adjacent to the target, ignoring difficult terrain and without provoking. Then make one melee attack with 1 Boon. Weak: 6 physical damage. Standard: 9 physical damage, and the target is Prone. Strong: 12 physical damage, and the target is Prone and Dazed 1. If you cannot reach a square adjacent to the target, you cannot use this ability.\n\n**Duration:** Immediate; Prone and Dazed use their normal rules.\n\n**Equipment / acquisition:** A melee weapon.\n\n**Frequency:** Once per scene.",
+        "improves": null,
+        "requires": [],
+        "bookId": null,
+        "magic": null
+      }
+    }
+  },
+  "effects": []
+}

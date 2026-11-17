@@ -1,0 +1,66 @@
+{
+  "_key": "!items!dbc2e3634a7bdb70",
+  "_id": "dbc2e3634a7bdb70",
+  "name": "Divination",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 10 minutes</dd></div><div><dt>SP</dt><dd>3</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>One specific undertaking planned for the next day</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Seek a warning. Weak reveals one relevant omen, Standard adds a concrete obstacle, and Strong adds a practical way to prepare. The DA describes possibilities based on present circumstances, not a compulsory future.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "reason",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:portents:7",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:portents:7",
+        "level": 3,
+        "cost": 3,
+        "action": "Ritual · 10 minutes",
+        "sp": 3,
+        "range": "One specific undertaking planned for the next day",
+        "duration": "Instant",
+        "attribute": "Reason",
+        "defenseAttribute": null,
+        "effect": "Seek a warning. Weak reveals one relevant omen, Standard adds a concrete obstacle, and Strong adds a practical way to prepare. The DA describes possibilities based on present circumstances, not a compulsory future.",
+        "improves": null,
+        "requires": [
+          "portents:2"
+        ],
+        "bookId": "portents"
+      },
+      "spell": {
+        "id": "spell:portents:7",
+        "name": "Divination",
+        "bookId": "portents",
+        "page": "7",
+        "section": "IV",
+        "sp": 3,
+        "action": "Ritual",
+        "actionText": "Ritual · 10 minutes",
+        "ritualTime": "10 minutes",
+        "attribute": "Reason",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One specific undertaking planned for the next day",
+        "duration": "Instant",
+        "effect": "Seek a warning. Weak reveals one relevant omen, Standard adds a concrete obstacle, and Strong adds a practical way to prepare. The DA describes possibilities based on present circumstances, not a compulsory future."
+      }
+    }
+  },
+  "effects": []
+}

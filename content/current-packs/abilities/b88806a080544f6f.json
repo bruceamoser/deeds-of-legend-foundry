@@ -1,0 +1,47 @@
+{
+  "_key": "!items!b88806a080544f6f",
+  "_id": "b88806a080544f6f",
+  "name": "Hobbling Aim III",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Hobbling Aim also applies Slowed 1 on Standard.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "marksmanship:pinning:3",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "marksmanship:pinning:3",
+        "level": 1,
+        "cost": 2,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Hobbling Aim also applies Slowed 1 on Standard.",
+        "improves": "marksmanship:pinning:1",
+        "requires": [
+          "marksmanship:pinning:2"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

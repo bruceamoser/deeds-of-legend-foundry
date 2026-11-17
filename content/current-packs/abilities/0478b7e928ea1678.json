@@ -1,0 +1,65 @@
+{
+  "_key": "!items!0478b7e928ea1678",
+  "_id": "0478b7e928ea1678",
+  "name": "Major Image",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>3</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>An image fitting a 3-by-3-square space within 8 squares</dd></div><div><dt>Duration</dt><dd>1 minute</dd></div></dl><p>Create a moving illusion with sound, scent and harmless temperature. A Maneuver can move it 3 squares and change its performance. Touch reveals its insubstantial nature. It may conceal a real feature visually; physical terrain remains as it was. Without directing it, the image stays in place and repeats its last simple performance.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:perception:6",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:perception:6",
+        "level": 1,
+        "cost": 2,
+        "action": "Main Action",
+        "sp": 3,
+        "range": "An image fitting a 3-by-3-square space within 8 squares",
+        "duration": "1 minute",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Create a moving illusion with sound, scent and harmless temperature. A Maneuver can move it 3 squares and change its performance. Touch reveals its insubstantial nature. It may conceal a real feature visually; physical terrain remains as it was. Without directing it, the image stays in place and repeats its last simple performance.",
+        "improves": null,
+        "requires": [
+          "perception:1"
+        ],
+        "bookId": "perception"
+      },
+      "spell": {
+        "id": "spell:perception:6",
+        "name": "Major Image",
+        "bookId": "perception",
+        "page": "6",
+        "section": "III",
+        "sp": 3,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "An image fitting a 3-by-3-square space within 8 squares",
+        "duration": "1 minute",
+        "effect": "Create a moving illusion with sound, scent and harmless temperature. A Maneuver can move it 3 squares and change its performance. Touch reveals its insubstantial nature. It may conceal a real feature visually; physical terrain remains as it was. Without directing it, the image stays in place and repeats its last simple performance."
+      }
+    }
+  },
+  "effects": []
+}

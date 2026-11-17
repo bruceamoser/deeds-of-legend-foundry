@@ -7,6 +7,8 @@ export const DAMAGE_TYPE = Object.freeze({
   MENTAL: "mental",
   RADIANT: "radiant",
   LIFE: "life",
+  POISON: "poison",
+  FORCE: "force",
 });
 export const DAMAGE_TYPES = Object.freeze(Object.values(DAMAGE_TYPE));
 export const DAMAGE_TYPE_LABELS = Object.freeze(
@@ -50,7 +52,10 @@ function highestByType(sources) {
   }
   return values;
 }
-export function damageEvent({ components, weaknesses = [], resistances = [] }) {
+export function damageEvent({ components, weaknesses = [], resistances = [], immunities = [], isAttack = true }) {
+  if (typeof isAttack !== "boolean") throw new TypeError("Identify attack damage explicitly.");
+  if (!Array.isArray(immunities)) throw new TypeError("Damage immunities must be an array.");
+  const immune = new Set(immunities.map(type));
   if (!Array.isArray(components))
     throw new TypeError("Damage components must be an array");
   const original = new Map();
@@ -63,6 +68,8 @@ export function damageEvent({ components, weaknesses = [], resistances = [] }) {
         integer((original.get(key) ?? 0) + amount, "Combined damage"),
       );
   }
+  const immuneComponents = [...original].filter(([key]) => immune.has(key)).map(([type, amount]) => ({type, amount}));
+  for (const key of immune) original.delete(key);
   const weakness = highestByType(weaknesses),
     resistance = highestByType(resistances);
   const breakdown = [...original].map(([type, amount]) => {
@@ -82,19 +89,21 @@ export function damageEvent({ components, weaknesses = [], resistances = [] }) {
     breakdown.reduce((sum, c) => sum + c.afterResistance, 0),
     "Event damage",
   );
-  const minimumApplied = breakdown.length > 0 && subtotal === 0;
+  const minimumApplied = isAttack && breakdown.length > 0 && subtotal === 0;
   const total = minimumApplied ? 1 : subtotal;
   const highest = Math.max(0, ...breakdown.map((c) => c.afterResistance));
   const woundTypes = breakdown
-    .filter((c) => minimumApplied || c.afterResistance === highest)
+    .filter((c) => minimumApplied || (highest > 0 && c.afterResistance === highest))
     .map((c) => c.type);
   return {
     breakdown,
+    immuneComponents,
+    isAttack,
     subtotal,
     minimumApplied,
     total,
     woundTypes,
-    woundTables: [...new Set(woundTypes.map((t) => WOUND_TABLES[t]))],
+    woundTables: [...new Set(woundTypes.map((t) => WOUND_TABLES[t]).filter(Boolean))],
   };
 }
 export function healingPlan({

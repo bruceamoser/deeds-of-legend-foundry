@@ -1,32 +1,17 @@
+import {assertCurrentGameplayActor} from "../rules/current-character.mjs";
+import {equipmentAttributeValue} from "../rules/effective-attributes.mjs";
+import {coverRollSources} from "../rules/situational-adjustment.mjs";
 import {assertSummonPresent} from "../rules/summon-profile.mjs";
-import { contextualAbilitySources } from "../rules/one-dp-play.mjs";
-import { abilityDefinition } from "../rules/ability-definitions.mjs";
 import { validReferenceAttack } from "../rules/creature-actions.mjs";
 import { numericCreatureAction } from "../rules/numeric-creature-actions.mjs";
 import { ATTRIBUTES } from "../rules/character.mjs";
 import { conditionRollSources } from "../rules/conditions.mjs";
 import { targetEvasionSources } from "../rules/player-attacks.mjs";
-import { ancestryTraitIds } from "../rules/ancestry.mjs";
-import { passiveAncestryDefenseSources } from "../rules/passive-defenses.mjs";
 import { sourceRollPlan } from "../rules/roll-sources.mjs";
-import {
-  defenseSubstitutionOptions,
-  selectedDefenseSubstitution,
-} from "../rules/defense-substitutions.mjs";
-import { selectedWoundRollSources } from "../rules/wound-contributions.mjs";
 import { actorContributions } from "./conditions.mjs";
 import { defenseBenefits } from "./benefits.mjs";
-import { actorWoundContributionPlan } from "./wound-effects.mjs";
 const ID = "heroes-of-legend";
-export function partyPieceReference(actor) {
-  const instrument = actor.items.find(item => item.type === "equipment" &&
-    item.system?.quantity > 0 && item.system?.held &&
-    (item.system.catalogId ?? item.getFlag?.(ID, "catalogId")) === "item-musical-instrument");
-  if (!instrument) return null;
-  return actor.items.find(item => item.type === "ability" &&
-    item.getFlag(ID, "catalogId") === "ability-a-party-piece" &&
-    abilityDefinition(item.getFlag(ID, "catalogId"), item.getFlag(ID, "source")))?.uuid ?? null;
-}
+
 export function incomingAttackContext(attackMessageId) {
   const message = game.messages.get(attackMessageId),
     incoming = message?.getFlag(ID, "attackCard");
@@ -51,9 +36,8 @@ export function incomingAttackContext(attackMessageId) {
 }
 
 /**
- * Budget-backed Shield Block alone requires the GM's immutable attack record
- * and receipt. Ordinary defense remains available for legacy or historical
- * cards whose encounter is no longer loaded.
+ * Applying defense damage requires the GM’s immutable incoming attack record
+ * and receipt. Ordinary defense rolls remain available without an encounter.
  */
 export function verifiedIncomingAttackContext(attackMessageId) {
   const attack = incomingAttackContext(attackMessageId);
@@ -103,6 +87,7 @@ export function rollBasis(
   defenderTokenUuid = null,
   { actorTokenUuid = null, targetTokenUuid = null } = {},
 ) {
+  assertCurrentGameplayActor(actor);
   assertSummonPresent(actor);
   if (!["attribute", "attack", "defense", "death"].includes(mode))
     throw new Error("Unsupported shared roll context.");
@@ -117,20 +102,11 @@ export function rollBasis(
   // creates a ChatMessage only; it never mutates the defender's documents.
   if (mode !== "defense" && !actor.testUserPermission(game.user, "OWNER"))
     throw new Error(game.i18n.localize("HOL.NoPermission"));
-  let survival = null;
-  if (mode === "death") {
-    const state = actor.getFlag("heroes-of-legend", "survival");
-    if (attributeKey !== "fortitude" || actor.type !== "character")
-      throw new Error("Death rolls use a character's Fortitude.");
-    survival = {...structuredClone(state ?? {}), hp: actor.system.health.value,
-      gritAvailable: actor.system.grit.available, pending: false};
-  }
+  if(mode==='death')throw new Error('Use the current Workshop Fortitude death-roll control.');
 
   const contributions = actorContributions(actor).sort((a, b) =>
     a.id.localeCompare(b.id),
   );
-  const woundModifiers =
-    mode === "death" ? [] : actorWoundContributionPlan(actor).rollModifiers;
   if (
     actor.system.health?.value === 0 &&
     !contributions.some((c) => c.key === "unconscious")
@@ -156,7 +132,7 @@ export function rollBasis(
     actorToken =
       typeof actorTokenUuid === "string"
         ? fromUuidSync(actorTokenUuid)
-        : actor.token;
+        : actor.token ?? (()=>{const tokens=(globalThis.canvas?.tokens?.controlled??[]).map(token=>token.document??token).filter(token=>token.actor?.uuid===actor.uuid);return tokens.length===1?tokens[0]:null;})();
     const selected = [...(game.user.targets ?? [])];
     targetToken = typeof targetTokenUuid === "string" ? fromUuidSync(targetTokenUuid)
       : selected.length === 1 ? selected[0].document ?? selected[0] : null;
@@ -175,9 +151,7 @@ export function rollBasis(
   return {
     attackMessageId,
     defenderTokenUuid,
-    survival,
     incoming,
-    partyPiece: partyPieceReference(actor),
     actorUuid: actor.uuid,
     ...(mode === "attack"
       ? {
@@ -187,10 +161,6 @@ export function rollBasis(
           targetContributions: (targetActor ? actorContributions(targetActor) : []).sort((a, b) =>
             a.id.localeCompare(b.id),
           ),
-          targetAncestryDefenseSources: passiveAncestryDefenseSources(
-            ancestryTraitIds(targetActor?.getFlag?.(ID, "development")?.creation ?? {}),
-            { attackerRolls: true },
-          ),
           targetEvasion:
             targetActor?.type === "creature"
               ? structuredClone(targetActor.system.evasion)
@@ -199,25 +169,16 @@ export function rollBasis(
       : {}),
     attributeKey,
     mode,
-    attribute: actor.system.attributes[attributeKey].effective,
+    attribute: actor.type === "character" ? equipmentAttributeValue(actor.system.attributes[attributeKey].base,actor.items??[],attributeKey) : actor.system.attributes[attributeKey].effective,
     contributions,
-    woundModifiers,
-    benefits:
-      mode === "defense"
-        ? [...defenseBenefits(actor, { incomingAttack: Boolean(incoming) }),
-            ...passiveAncestryDefenseSources(ancestryTraitIds(actor.getFlag(ID, "development")?.creation ?? {}))]
-        : [],
-    ...(mode === "defense"
-      ? { defenseSubstitutions: defenseSubstitutionOptions(actor) }
-      : {}),
+    benefits: mode==='defense' ? defenseBenefits(actor,{incomingAttack:Boolean(incoming)}) : [],
   };
 }
 export function prepareRoll(basis, draft = {}) {
-  const substitution = selectedDefenseSubstitution(basis, draft);
   const fears = [
     ...new Set(
       basis.contributions
-        .filter((c) => basis.mode !== "death" && c.key === "frightened")
+        .filter((c) => c.key === "frightened")
         .map((c) => c.source),
     ),
   ];
@@ -225,31 +186,17 @@ export function prepareRoll(basis, draft = {}) {
   if (fears.some((source) => !["yes", "no"].includes(perception[source])))
     throw new Error("Choose whether each fear source is currently perceived.");
   const sources = [
+    ...coverRollSources({mode: basis.mode, cover: draft.cover ?? "none"}),
     ...conditionRollSources(basis.contributions, {
       mode: basis.mode,
       perceivedSources: fears.filter((source) => perception[source] === "yes"),
       targetContributions: basis.targetContributions ?? [],
     }),
-    ...selectedWoundRollSources(
-      basis.mode === "death" ? [] : (basis.woundModifiers ?? []),
-      draft.woundApplicability ?? {},
-    ),
     ...basis.benefits,
-    ...contextualAbilitySources({...basis, attributeKey: substitution?.attributeKey ?? basis.attributeKey}, draft),
   ];
-  if (substitution?.boons)
-    sources.push({
-      id: `defense-substitution-${substitution.itemUuid}`,
-      kind: "boon",
-      amount: substitution.boons,
-      label: substitution.name,
-      automatic: true,
-      sourceIds: [substitution.itemUuid],
-    });
   if (basis.mode === "attack")
     sources.push(
       ...targetEvasionSources(basis.targetEvasion, basis.targetTokenUuid),
-      ...(basis.targetAncestryDefenseSources ?? []),
     );
   if (basis.incoming)
     for (const [field, kind] of [
@@ -289,8 +236,7 @@ export function prepareRoll(basis, draft = {}) {
       });
   }
   return {
-    ...sourceRollPlan(substitution?.attribute ?? basis.attribute, sources),
-    resolvedAttributeKey: substitution?.attributeKey ?? basis.attributeKey,
-    defenseSubstitutionItemUuid: substitution?.itemUuid ?? null,
+    ...sourceRollPlan(basis.attribute, sources),
+    resolvedAttributeKey: basis.attributeKey,
   };
 }

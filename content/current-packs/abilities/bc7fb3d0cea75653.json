@@ -1,0 +1,66 @@
+{
+  "_key": "!items!bc7fb3d0cea75653",
+  "_id": "bc7fb3d0cea75653",
+  "name": "Long Door",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 minute</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>Self and up to three adjacent willing creatures; a known destination within 100 squares</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Travel to a place you personally visited within the last day. Arrive in open supported squares at that location. If occupied or obstructed, arrive at the nearest safe space within 3 squares; if none exists, the ritual leaves you at your origin.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:passage:5",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:passage:5",
+        "level": 1,
+        "cost": 2,
+        "action": "Ritual · 1 minute",
+        "sp": 2,
+        "range": "Self and up to three adjacent willing creatures; a known destination within 100 squares",
+        "duration": "Instant",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Travel to a place you personally visited within the last day. Arrive in open supported squares at that location. If occupied or obstructed, arrive at the nearest safe space within 3 squares; if none exists, the ritual leaves you at your origin.",
+        "improves": null,
+        "requires": [
+          "passage:1"
+        ],
+        "bookId": "passage"
+      },
+      "spell": {
+        "id": "spell:passage:5",
+        "name": "Long Door",
+        "bookId": "passage",
+        "page": "5",
+        "section": "III",
+        "sp": 2,
+        "action": "Ritual",
+        "actionText": "Ritual · 1 minute",
+        "ritualTime": "1 minute",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Self and up to three adjacent willing creatures; a known destination within 100 squares",
+        "duration": "Instant",
+        "effect": "Travel to a place you personally visited within the last day. Arrive in open supported squares at that location. If occupied or obstructed, arrive at the nearest safe space within 3 squares; if none exists, the ritual leaves you at your origin."
+      }
+    }
+  },
+  "effects": []
+}

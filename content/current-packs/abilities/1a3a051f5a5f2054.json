@@ -1,0 +1,65 @@
+{
+  "_key": "!items!1a3a051f5a5f2054",
+  "_id": "1a3a051f5a5f2054",
+  "name": "Hypnotic Pattern",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Defense</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>Up to three creatures in a 2-square-radius area within 8 squares that can see the pattern</dd></div><div><dt>Duration</dt><dd>Instant; conditions decay normally</dd></div></dl><p>Weave a mesmerizing display. Apply Dazed 1/1/2 to each chosen target. Sight is required when the spell resolves.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "reason",
+      "defenseAttribute": "reason"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:dreams:5",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:dreams:5",
+        "level": 1,
+        "cost": 2,
+        "action": "Main Action",
+        "sp": 2,
+        "range": "Up to three creatures in a 2-square-radius area within 8 squares that can see the pattern",
+        "duration": "Instant; conditions decay normally",
+        "attribute": "Reason",
+        "defenseAttribute": "Reason",
+        "effect": "Weave a mesmerizing display. Apply Dazed 1/1/2 to each chosen target. Sight is required when the spell resolves.",
+        "improves": null,
+        "requires": [
+          "dreams:1"
+        ],
+        "bookId": "dreams"
+      },
+      "spell": {
+        "id": "spell:dreams:5",
+        "name": "Hypnotic Pattern",
+        "bookId": "dreams",
+        "page": "5",
+        "section": "III",
+        "sp": 2,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "Reason",
+        "defense": "Reason",
+        "defenseAttribute": "Reason",
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Up to three creatures in a 2-square-radius area within 8 squares that can see the pattern",
+        "duration": "Instant; conditions decay normally",
+        "effect": "Weave a mesmerizing display. Apply Dazed 1/1/2 to each chosen target. Sight is required when the spell resolves."
+      }
+    }
+  },
+  "effects": []
+}

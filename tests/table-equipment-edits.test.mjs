@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {requestEquipment,equipmentBasis} from '../src/services/equipment.mjs';
-import {depleteOwnedSupply,supplyResultState} from '../src/services/inventory.mjs';
+import {supplyResultState} from '../src/services/inventory.mjs';
 const ID='heroes-of-legend';
 function fixture(owner=true){
  const flags={},source=[{_id:'sword',name:'Excalibur',type:'equipment',system:{catalogId:'item-ordinary-melee-weapon',description:'A blade of legend.',hands:2,held:false,worn:false,carried:true,quantity:1,inventoryDie:0}},{_id:'bow',name:'Bow',type:'equipment',system:{hands:2,held:false,worn:false,carried:true,quantity:1,inventoryDie:8}}];let writes=0;
@@ -20,12 +20,6 @@ test('owner arrangement is silent and permits equipment exceeding hand capacity 
 test('equipment permission and document identity remain enforced without hand regulation',async()=>{
  const denied=fixture(false);await assert.rejects(requestEquipment(denied.actor,null,[],2),/owner/);assert.equal(denied.writes,0);
  const f=fixture(),basis=equipmentBasis(f.actor);await assert.rejects(requestEquipment(f.actor,basis,[basis.items[0],basis.items[0]],2),/list changed/);assert.equal(f.writes,0);
-});
-test('manual depletion is an immediate silent correction preserving item quantity and other edits',async()=>{
- const f=fixture();const result=await depleteOwnedSupply(f.actor,f.actor.items.get('bow'));
- assert.equal(result.changed,true);assert.equal(f.source[1].system.inventoryDie,0);assert.equal(f.source[1].system.quantity,1);assert.equal(f.source[0].name,'Excalibur');
- assert.equal((await depleteOwnedSupply(f.actor,f.actor.items.get('bow'))).changed,false);assert.equal(f.writes,1);
- const denied=fixture(false);await assert.rejects(depleteOwnedSupply(denied.actor,denied.actor.items.get('bow')),/own/);assert.equal(denied.writes,0);
 });
 test('supply cards distinguish moving down one die size from depletion',()=>{
  assert.equal(supplyResultState({before:8,after:6,exhausted:false}),'Moved down one size · d8 → d6 · Not depleted');

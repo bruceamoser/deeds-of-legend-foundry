@@ -1,0 +1,47 @@
+{
+  "_key": "!items!e0b45d9da98d9cc0",
+  "_id": "e0b45d9da98d9cc0",
+  "name": "Light Armor III",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>You are also trained to wear medium armor; the suit supplies physical resistance 2. Your Speed increases by 1 while wearing armor you are trained to use.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "armor:harness:3",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "armor:harness:3",
+        "level": 1,
+        "cost": 2,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "You are also trained to wear medium armor; the suit supplies physical resistance 2. Your Speed increases by 1 while wearing armor you are trained to use.",
+        "improves": "armor:harness:1",
+        "requires": [
+          "armor:harness:2"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

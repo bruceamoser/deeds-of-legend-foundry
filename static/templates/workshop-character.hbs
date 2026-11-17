@@ -1,0 +1,16 @@
+<section class="hol-native-workshop">
+  {{#if workshopReady}}
+    <div data-workshop-mount class="hol-workshop-mount" aria-label="Character Workshop"></div>
+  {{else}}
+    <div class="hol-workshop-entry">
+      <h2>{{actorName}}</h2>
+      {{#if legacy}}
+        <p>This character is invalid under the current rules. Its existing data remains available through Foundry’s document export. Create a new hero with the current rules to play.</p>
+        {{#if canCreate}}<button type="button" data-action="recreateWorkshop">Create new hero</button>{{/if}}
+      {{else}}
+        <p>Build this hero with the complete Character Workshop. Choices remain a draft until you complete Review and choose Create hero.</p>
+        {{#if canCreate}}<button type="button" data-action="startWorkshop">Create hero in Workshop</button>{{else}}<p>The owner must create this hero first.</p>{{/if}}
+      {{/if}}
+    </div>
+  {{/if}}
+</section>

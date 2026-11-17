@@ -1,0 +1,65 @@
+{
+  "_key": "!items!789967ac0a4a1715",
+  "_id": "789967ac0a4a1715",
+  "name": "Hold Monster",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>4</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Defense</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>One creature within 6 squares</dd></div><div><dt>Duration</dt><dd>Sustained, up to 1 minute</dd></div><div><dt>Hold attribute</dt><dd>Reason</dd></div><div><dt>Escape attribute</dt><dd>Reason</dd></div></dl><p>Close binding bands around the target. Apply Slowed 2/3/4 and Paralyzed 1/1/2. Each upkeep renews this casting’s original ratings rather than adding to them. A conscious target may spend a Main Action to attempt escape using the printed hold and escape attributes, even while the bands restrict its actions. Escape or ending Sustain removes this casting’s conditions from the target.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "reason",
+      "defenseAttribute": "reason"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:binding:8",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:binding:8",
+        "level": 3,
+        "cost": 3,
+        "action": "Main Action",
+        "sp": 4,
+        "range": "One creature within 6 squares",
+        "duration": "Sustained, up to 1 minute",
+        "attribute": "Reason",
+        "defenseAttribute": "Reason",
+        "effect": "Close binding bands around the target. Apply Slowed 2/3/4 and Paralyzed 1/1/2. Each upkeep renews this casting’s original ratings rather than adding to them. A conscious target may spend a Main Action to attempt escape using the printed hold and escape attributes, even while the bands restrict its actions. Escape or ending Sustain removes this casting’s conditions from the target.",
+        "improves": null,
+        "requires": [
+          "binding:2"
+        ],
+        "bookId": "binding"
+      },
+      "spell": {
+        "id": "spell:binding:8",
+        "name": "Hold Monster",
+        "bookId": "binding",
+        "page": "8",
+        "section": "IV",
+        "sp": 4,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "Reason",
+        "defense": "Reason",
+        "defenseAttribute": "Reason",
+        "holdAttribute": "Reason",
+        "escapeAttribute": "Reason",
+        "target": "One creature within 6 squares",
+        "duration": "Sustained, up to 1 minute",
+        "effect": "Close binding bands around the target. Apply Slowed 2/3/4 and Paralyzed 1/1/2. Each upkeep renews this casting’s original ratings rather than adding to them. A conscious target may spend a Main Action to attempt escape using the printed hold and escape attributes, even while the bands restrict its actions. Escape or ending Sustain removes this casting’s conditions from the target."
+      }
+    }
+  },
+  "effects": []
+}

@@ -1,0 +1,66 @@
+{
+  "_key": "!items!24b1909b8168c724",
+  "_id": "24b1909b8168c724",
+  "name": "Feather Fall",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Reaction · when a creature begins falling</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One visible creature within 6 squares</dd></div><div><dt>Duration</dt><dd>Until it lands, up to 1 minute</dd></div></dl><p>A cushion of air slows the descent to 2 squares each round. The recipient lands upright and unharmed from this fall if the destination supports it.</p>",
+    "activity": {
+      "action": "reaction",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:air:2",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:air:2",
+        "level": 1,
+        "cost": 1,
+        "action": "Reaction · when a creature begins falling",
+        "sp": 1,
+        "range": "One visible creature within 6 squares",
+        "duration": "Until it lands, up to 1 minute",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "A cushion of air slows the descent to 2 squares each round. The recipient lands upright and unharmed from this fall if the destination supports it.",
+        "improves": null,
+        "requires": [
+          "elements"
+        ],
+        "bookId": "air"
+      },
+      "spell": {
+        "id": "spell:air:2",
+        "name": "Feather Fall",
+        "bookId": "air",
+        "page": "2",
+        "section": "I",
+        "sp": 1,
+        "action": "Reaction",
+        "actionText": "Reaction · when a creature begins falling",
+        "trigger": "when a creature begins falling",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One visible creature within 6 squares",
+        "duration": "Until it lands, up to 1 minute",
+        "effect": "A cushion of air slows the descent to 2 squares each round. The recipient lands upright and unharmed from this fall if the destination supports it."
+      }
+    }
+  },
+  "effects": []
+}

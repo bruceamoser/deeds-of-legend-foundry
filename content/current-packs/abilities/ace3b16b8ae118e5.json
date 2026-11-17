@@ -1,0 +1,47 @@
+{
+  "_key": "!items!ace3b16b8ae118e5",
+  "_id": "ace3b16b8ae118e5",
+  "name": "Split the Flight I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Agility</dd></div></dl><p>Main Action · Agility. Attack up to three creatures within 8 squares. Roll once; each takes 1/2/4 physical damage. Each is struck once.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "agility",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "marksmanship:precision:4",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "technique",
+        "nodeId": "marksmanship:precision:4",
+        "level": 3,
+        "cost": 3,
+        "action": "Main Action",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": "Agility",
+        "defenseAttribute": null,
+        "effect": "Main Action · Agility. Attack up to three creatures within 8 squares. Roll once; each takes 1/2/4 physical damage. Each is struck once.",
+        "improves": null,
+        "requires": [
+          "marksmanship:precision:3"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

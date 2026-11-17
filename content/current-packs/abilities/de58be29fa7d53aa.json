@@ -1,0 +1,47 @@
+{
+  "_key": "!items!de58be29fa7d53aa",
+  "_id": "de58be29fa7d53aa",
+  "name": "Make the Case II",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Make the Case adds 1/3/4 progress.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "influence:negotiation:2",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "influence:negotiation:2",
+        "level": 1,
+        "cost": 2,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Make the Case adds 1/3/4 progress.",
+        "improves": "influence:negotiation:1",
+        "requires": [
+          "influence:negotiation:1"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

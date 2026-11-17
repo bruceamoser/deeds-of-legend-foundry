@@ -6,7 +6,6 @@ import {
 } from "../src/rules/defense-abilities.mjs";
 import {
   defenseBenefitSources,
-  shieldBenefitReuse,
   upsertBenefitEffect,
 } from "../src/rules/defense-benefits.mjs";
 import { isShieldEquipment } from "../src/rules/equipment-identity.mjs";
@@ -137,110 +136,6 @@ test("Defend and Shield Block stack while repeated or ineligible sources do not"
       heldShieldUuids: [],
     }).map((source) => source.label),
     ["Defend maneuver"],
-  );
-});
-
-test("High Guard replaces Shield Block with two Boons and still stacks with Defend", () => {
-  const entries = [
-    {
-      key: "shield-block",
-      sourceId: "ability-shield-block",
-      effectUuid: "old",
-      shieldItemUuid: "shield",
-    },
-    { key: "defend", effectUuid: "defend" },
-    {
-      key: "shield-block",
-      sourceId: "ability-high-guard",
-      effectUuid: "high",
-      shieldItemUuid: "shield",
-    },
-  ];
-  const sources = defenseBenefitSources(entries, {
-    incomingAttack: true,
-    heldShieldUuids: ["shield"],
-  });
-  assert.deepEqual(
-    sources.map(({ label, amount }) => [label, amount]),
-    [
-      ["Defend maneuver", 1],
-      ["High Guard", 2],
-    ],
-  );
-  assert.deepEqual(
-    defenseBenefitSources(entries, {
-      incomingAttack: true,
-      heldShieldUuids: [],
-    }).map(({ label }) => label),
-    ["Defend maneuver"],
-  );
-  assert.deepEqual(
-    defenseBenefitSources(entries, {
-      incomingAttack: false,
-      heldShieldUuids: ["shield"],
-    }).map(({ label }) => label),
-    ["Defend maneuver"],
-  );
-  assert.equal(
-    defenseAbilityAvailability("ability-high-guard", {
-      attackMessageId: "attack",
-      heldShieldUuids: ["shield"],
-      remaining: { reaction: 1 },
-    }).available,
-    true,
-  );
-});
-
-test("High Guard follows the ordinary start-of-next-turn shield benefit expiry", (t) => {
-  const previous = globalThis.game;
-  t.after(() => {
-    globalThis.game = previous;
-  });
-  let turnId = "defender-turn-1";
-  globalThis.game = {
-    combats: {
-      get: () => ({
-        getFlag: () => ({ budgets: { defender: { turnId } } }),
-      }),
-    },
-  };
-  const effect = {
-    active: true,
-    getFlag: () => ({
-      key: "shield-block",
-      sourceId: "ability-high-guard",
-      anchor: {
-        combatId: "combat",
-        participantId: "defender",
-        turnId: "defender-turn-1",
-      },
-    }),
-  };
-  assert.equal(benefitCurrent(effect), true);
-  turnId = "defender-turn-2";
-  assert.equal(benefitCurrent(effect), false);
-});
-
-test("High Guard pays one Reaction and subsequent Shield Block preserves its strength", () => {
-  assert.deepEqual(shieldBenefitReuse("high-guard-v1", null), {
-    free: false,
-    preserve: false,
-  });
-  assert.deepEqual(
-    shieldBenefitReuse("high-guard-v1", "ability-shield-block"),
-    { free: false, preserve: false },
-  );
-  assert.deepEqual(shieldBenefitReuse("high-guard-v1", "ability-high-guard"), {
-    free: false,
-    preserve: false,
-  });
-  assert.deepEqual(
-    shieldBenefitReuse("shield-block-v1", "ability-high-guard"),
-    { free: true, preserve: true },
-  );
-  assert.deepEqual(
-    shieldBenefitReuse("shield-block-v1", "ability-high-guard", false),
-    { free: true, preserve: false },
   );
 });
 

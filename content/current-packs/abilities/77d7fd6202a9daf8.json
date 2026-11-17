@@ -1,0 +1,47 @@
+{
+  "_key": "!items!77d7fd6202a9daf8",
+  "_id": "77d7fd6202a9daf8",
+  "name": "Safe Passage",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Reaction</dd></div></dl><p>Reaction. When one visible natural hazard threatens a group within 6 squares, warn up to six willing companions who can perceive you. Each may move up to 2 squares along a legal route you can see before the hazard resolves, without movement reactions. Each gains 2 Boons on any remaining avoidance roll against that event. Once per hazard event; it does not cancel the hazard, cross impassable terrain or reveal hidden threats.</p>",
+    "activity": {
+      "action": "reaction",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "wilderness:trailcraft:7",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "mastery",
+        "nodeId": "wilderness:trailcraft:7",
+        "level": 7,
+        "cost": 5,
+        "action": "Reaction",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Reaction. When one visible natural hazard threatens a group within 6 squares, warn up to six willing companions who can perceive you. Each may move up to 2 squares along a legal route you can see before the hazard resolves, without movement reactions. Each gains 2 Boons on any remaining avoidance roll against that event. Once per hazard event; it does not cancel the hazard, cross impassable terrain or reveal hidden threats.",
+        "improves": null,
+        "requires": [
+          "wilderness:trailcraft:6"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

@@ -1,0 +1,65 @@
+{
+  "_key": "!items!65f261c6064a4b1a",
+  "_id": "65f261c6064a4b1a",
+  "name": "Greater Channel",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>4</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Defense</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>Two different creatures within 6 squares with their own SP reserves</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Choose a donor and recipient. Transfer up to 8 existing SP with both parties&#39; consent. If either is unwilling, transfer 3/5/7 instead. Roll once using the least favorable applicable modifiers. Apply the donor&#39;s available and recipient&#39;s missing SP limits after paying your own casting cost.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "reason",
+      "defenseAttribute": "reason"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:channeling:8",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:channeling:8",
+        "level": 3,
+        "cost": 3,
+        "action": "Main Action",
+        "sp": 4,
+        "range": "Two different creatures within 6 squares with their own SP reserves",
+        "duration": "Instant",
+        "attribute": "Reason",
+        "defenseAttribute": "Reason",
+        "effect": "Choose a donor and recipient. Transfer up to 8 existing SP with both parties' consent. If either is unwilling, transfer 3/5/7 instead. Roll once using the least favorable applicable modifiers. Apply the donor's available and recipient's missing SP limits after paying your own casting cost.",
+        "improves": null,
+        "requires": [
+          "channeling:2"
+        ],
+        "bookId": "channeling"
+      },
+      "spell": {
+        "id": "spell:channeling:8",
+        "name": "Greater Channel",
+        "bookId": "channeling",
+        "page": "8",
+        "section": "IV",
+        "sp": 4,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "Reason",
+        "defense": "Reason",
+        "defenseAttribute": "Reason",
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Two different creatures within 6 squares with their own SP reserves",
+        "duration": "Instant",
+        "effect": "Choose a donor and recipient. Transfer up to 8 existing SP with both parties' consent. If either is unwilling, transfer 3/5/7 instead. Roll once using the least favorable applicable modifiers. Apply the donor's available and recipient's missing SP limits after paying your own casting cost."
+      }
+    }
+  },
+  "effects": []
+}

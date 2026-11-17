@@ -1,0 +1,66 @@
+{
+  "_key": "!items!0cb9fad13c992a81",
+  "_id": "0cb9fad13c992a81",
+  "name": "Dream Message",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 10 minutes</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One willing sleeping creature you personally know on the same plane</dd></div><div><dt>Duration</dt><dd>1 minute</dd></div></dl><p>Appear in a short dream and exchange up to fifty words each. The recipient recognizes you and remembers the conversation on waking. The ritual reaches the subject only while it is asleep.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:dreams:3",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:dreams:3",
+        "level": 1,
+        "cost": 2,
+        "action": "Ritual · 10 minutes",
+        "sp": 1,
+        "range": "One willing sleeping creature you personally know on the same plane",
+        "duration": "1 minute",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Appear in a short dream and exchange up to fifty words each. The recipient recognizes you and remembers the conversation on waking. The ritual reaches the subject only while it is asleep.",
+        "improves": null,
+        "requires": [
+          "dreams:0"
+        ],
+        "bookId": "dreams"
+      },
+      "spell": {
+        "id": "spell:dreams:3",
+        "name": "Dream Message",
+        "bookId": "dreams",
+        "page": "3",
+        "section": "II",
+        "sp": 1,
+        "action": "Ritual",
+        "actionText": "Ritual · 10 minutes",
+        "ritualTime": "10 minutes",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One willing sleeping creature you personally know on the same plane",
+        "duration": "1 minute",
+        "effect": "Appear in a short dream and exchange up to fifty words each. The recipient recognizes you and remembers the conversation on waking. The ritual reaches the subject only while it is asleep."
+      }
+    }
+  },
+  "effects": []
+}

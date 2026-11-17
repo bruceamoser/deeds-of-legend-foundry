@@ -1,0 +1,65 @@
+{
+  "_key": "!items!d228ec1623d29102",
+  "_id": "d228ec1623d29102",
+  "name": "Enlarge/Reduce — Living",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One willing creature within 3 squares</dd></div><div><dt>Duration</dt><dd>1 minute</dd></div></dl><p>Change its size by one category, Small to Medium or Medium to Large, or the reverse. Adjust occupied space to 1 or 2 squares on each side as appropriate. Enlarged creatures gain Stability 1; reduced creatures gain 1 Boon to moving through tight spaces. Equipment changes with the body; attacks retain their printed damage.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:transformation:5",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:transformation:5",
+        "level": 1,
+        "cost": 2,
+        "action": "Main Action",
+        "sp": 2,
+        "range": "One willing creature within 3 squares",
+        "duration": "1 minute",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Change its size by one category, Small to Medium or Medium to Large, or the reverse. Adjust occupied space to 1 or 2 squares on each side as appropriate. Enlarged creatures gain Stability 1; reduced creatures gain 1 Boon to moving through tight spaces. Equipment changes with the body; attacks retain their printed damage.",
+        "improves": null,
+        "requires": [
+          "transformation:1"
+        ],
+        "bookId": "transformation"
+      },
+      "spell": {
+        "id": "spell:transformation:5",
+        "name": "Enlarge/Reduce — Living",
+        "bookId": "transformation",
+        "page": "5",
+        "section": "III",
+        "sp": 2,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One willing creature within 3 squares",
+        "duration": "1 minute",
+        "effect": "Change its size by one category, Small to Medium or Medium to Large, or the reverse. Adjust occupied space to 1 or 2 squares on each side as appropriate. Enlarged creatures gain Stability 1; reduced creatures gain 1 Boon to moving through tight spaces. Equipment changes with the body; attacks retain their printed damage."
+      }
+    }
+  },
+  "effects": []
+}

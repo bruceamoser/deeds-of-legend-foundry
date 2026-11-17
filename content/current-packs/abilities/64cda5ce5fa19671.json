@@ -1,0 +1,47 @@
+{
+  "_key": "!items!64cda5ce5fa19671",
+  "_id": "64cda5ce5fa19671",
+  "name": "Prevent Catastrophe",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Reaction</dd></div></dl><p>Reaction. Once per scene, when an observed nonmagical structure or mechanism within reach begins to collapse, jam or burst, use tools and a suitable support to hold it for one round before its failure resolves. It must be no larger than a doorway, wagon or 2-square section of a larger structure. Creatures have time to escape or repair it; unresolved failure occurs at the end of your next turn. Attacks, magic and continued damage resolve normally and can destroy the support sooner. No roll; the support must physically bear the load.</p>",
+    "activity": {
+      "action": "reaction",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "craft:safeguards:7",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "mastery",
+        "nodeId": "craft:safeguards:7",
+        "level": 7,
+        "cost": 5,
+        "action": "Reaction",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Reaction. Once per scene, when an observed nonmagical structure or mechanism within reach begins to collapse, jam or burst, use tools and a suitable support to hold it for one round before its failure resolves. It must be no larger than a doorway, wagon or 2-square section of a larger structure. Creatures have time to escape or repair it; unresolved failure occurs at the end of your next turn. Attacks, magic and continued damage resolve normally and can destroy the support sooner. No roll; the support must physically bear the load.",
+        "improves": null,
+        "requires": [
+          "craft:safeguards:6"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

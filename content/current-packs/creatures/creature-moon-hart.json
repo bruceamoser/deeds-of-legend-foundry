@@ -1,0 +1,359 @@
+{
+  "_key": "!actors!746b0f454099a677",
+  "_id": "746b0f454099a677",
+  "name": "Moon Hart",
+  "type": "creature",
+  "img": "systems/heroes-of-legend/assets/creatures/a7d67b275f996a189bef898878b619ea68f1c91f142c60966d2ba69ed588c301.webp",
+  "prototypeToken": {
+    "width": 2,
+    "height": 2,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/a7d67b275f996a189bef898878b619ea68f1c91f142c60966d2ba69ed588c301.webp"
+    }
+  },
+  "system": {
+    "schemaVersion": 1,
+    "attributes": {
+      "brawn": {
+        "base": 1
+      },
+      "fortitude": {
+        "base": 2
+      },
+      "agility": {
+        "base": 2
+      },
+      "guile": {
+        "base": 1
+      },
+      "knowledge": {
+        "base": 1
+      },
+      "reason": {
+        "base": 2
+      }
+    },
+    "attributesSource": "Brawn +1; Fortitude +2; Agility +2; Guile +1; Knowledge +1; Reason +2",
+    "health": {
+      "value": 26,
+      "baseMax": 26,
+      "sourceText": "26"
+    },
+    "cv": 28,
+    "speed": 9,
+    "speedSource": "9",
+    "alternateSpeeds": [],
+    "size": 2,
+    "sizeLabel": "2x2 squares",
+    "sizeSource": "2 (2x2 squares)",
+    "footprint": {
+      "width": 2,
+      "height": 2
+    },
+    "armor": 0,
+    "armorMarker": "",
+    "armorSource": "0",
+    "stability": 1,
+    "threat": {
+      "boons": 0,
+      "banes": 0,
+      "sourceText": "None"
+    },
+    "evasion": {
+      "boons": 0,
+      "banes": 1,
+      "sourceText": "1 Bane"
+    },
+    "weaknesses": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "resistances": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "immunities": [],
+    "basicMelee": {
+      "weak": 5,
+      "standard": 3,
+      "strong": 2,
+      "defenseAttribute": "agility",
+      "orientation": "player-defense"
+    },
+    "actions": {
+      "orientation": "player-defense",
+      "entries": [
+        {
+          "id": "main-0",
+          "category": "main",
+          "name": "Basic Melee",
+          "abilityId": "",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "5",
+            "standard": "3",
+            "strong": "2"
+          },
+          "effect": "5/3/2",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "main-1",
+          "category": "main",
+          "name": "Moonlit antlers",
+          "abilityId": "",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "7 + Push 2",
+            "standard": "5 + Push 1",
+            "strong": "4"
+          },
+          "effect": "7 + Push 2 / 5 + Push 1 / 4",
+          "referenceMarkdown": "### Moonlit antlers\n\n*The blow lands with enough force to send its victim stumbling backward.*\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** radiant.\n\n**Weak defense:** Push 2. **Standard defense:** Push 1."
+        },
+        {
+          "id": "main-2",
+          "category": "main",
+          "name": "Battle Mending",
+          "abilityId": "monster-battle-mending",
+          "attributeKey": "fortitude",
+          "defenseSource": "Fortitude (if harmful)",
+          "harmfulOnly": true,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "See details",
+          "referenceMarkdown": "### Battle Mending\n\nOne adjacent living ally; free hand (the hart’s antlers provide this). Pay 3 SP first; the creature has a 6 SP reserve and must have enough to pay. A player rolls this creature’s Reason: Weak heals 5, Standard 10, Strong 15 HP. Life resistance reduces healing, minimum 1. This spell provokes. Against a healing-harmed target instead, use Fortitude defense: Weak takes 15, Standard 10, Strong 5 Life damage. Same cost; no healing riders."
+        },
+        {
+          "id": "maneuver-0",
+          "category": "maneuver",
+          "name": "Warding Light",
+          "abilityId": "monster-warding-light",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Ally within 3: reduce Frightened 1; +1 Boon on its next mental defense.",
+          "referenceMarkdown": "### Warding Light\n\n*A warm light settles over one companion like a hand on the shoulder.*\n\nOne willing ally within 3 squares reduces Frightened by 1. Until this creature’s next turn, that ally also has 1 Boon on its next defense against a mental attack; for an NPC ally, impose 1 Bane on that player attack. Consumed even if canceled; does not stack with itself."
+        },
+        {
+          "id": "maneuver-1",
+          "category": "maneuver",
+          "name": "Defend",
+          "abilityId": "",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "+1 Bane",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "reaction-0",
+          "category": "reaction",
+          "name": "Sheltering Light",
+          "abilityId": "monster-sheltering-light",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Before an ally within 3 takes attack damage: Physical resistance 2 for that attack.",
+          "referenceMarkdown": "### Sheltering Light\n\n*Light gathers over a companion like overlapping feathers, taking the harsh edge from the impact.*\n\nBefore one visible willing ally within 3 squares takes damage from an attack, grant that ally Physical resistance 2 for that attack only. Use the highest matching resistance, not an added reduction; minimum damage rules remain. This does not heal, transfer damage or grant resistance to other types."
+        },
+        {
+          "id": "reaction-1",
+          "category": "reaction",
+          "name": "Opportunity Attack",
+          "abilityId": "",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Basic Melee",
+          "referenceMarkdown": ""
+        }
+      ],
+      "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates one complete outcome. All attacks use the printed Threat unless stated otherwise.",
+      "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Moonlit antlers | Agility | 7 + Push 2 / 5 + Push 1 / 4 |\n| Battle Mending | Fortitude (if harmful) | See details |",
+      "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Warding Light | Ally within 3: reduce Frightened 1; +1 Boon on its next mental defense. |\n| Defend | +1 Bane |",
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Sheltering Light | Before an ally within 3 takes attack damage: Physical resistance 2 for that attack. |\n| Opportunity Attack | Basic Melee |"
+    },
+    "details": {
+      "flavorMarkdown": "*A luminous white hart with silver antlers and dark, thoughtful eyes. Its presence is associated with safe paths, lost travelers and the life energy spent to bring someone home.*",
+      "specialtyMarkdown": "### Moonlit antlers\n\n*The blow lands with enough force to send its victim stumbling backward.*\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** radiant.\n\n**Weak defense:** Push 2. **Standard defense:** Push 1.\n\n### Battle Mending\n\nOne adjacent living ally; free hand (the hart’s antlers provide this). Pay 3 SP first; the creature has a 6 SP reserve and must have enough to pay. A player rolls this creature’s Reason: Weak heals 5, Standard 10, Strong 15 HP. Life resistance reduces healing, minimum 1. This spell provokes. Against a healing-harmed target instead, use Fortitude defense: Weak takes 15, Standard 10, Strong 5 Life damage. Same cost; no healing riders.\n\n### Sheltering Light\n\n*Light gathers over a companion like overlapping feathers, taking the harsh edge from the impact.*\n\nBefore one visible willing ally within 3 squares takes damage from an attack, grant that ally Physical resistance 2 for that attack only. Use the highest matching resistance, not an added reduction; minimum damage rules remain. This does not heal, transfer damage or grant resistance to other types.\n\n### Warding Light\n\n*A warm light settles over one companion like a hand on the shoulder.*\n\nOne willing ally within 3 squares reduces Frightened by 1. Until this creature’s next turn, that ally also has 1 Boon on its next defense against a mental attack; for an NPC ally, impose 1 Bane on that player attack. Consumed even if canceled; does not stack with itself.",
+      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.\n\n**Heavy Frame — Passive:** Stability 1; an explicit creature trait, not a bonus from size.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Ordinary sight and hearing.\n\n**Signs:** Silver hoof prints fade when the sun reaches them.\n\n**Purpose:** Lead the lost out of places that mean to keep them.\n\n**Tactics and retreat:** Heal a companion, then push pursuers aside; never stay to punish a defeated foe.\n\n**Counterplay and conversation:** Show that someone needs rescue rather than trying to capture it.\n\n**Habitat:** Moonlit forest · **Communication:** Understands Common and Fey; communicates through simple images\n\n**Loot:** A safe route or a returned lost possession.\n\n**Summoning:** Fey 7 — [player reference](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/summons/moon-hart.md).",
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-moon-hart\n\n\n**Category:** Fey · **Role:** Rescuer · **CV:** 28\n\n**Difficulty rationale:** An agile or elusive body warrants attack Banes. Ordinary attack difficulty; riders and positioning carry the threat.\n\n**Reference damage:** 4/5/7\n\n**Reference type:** radiant\n\n**Expected targets:** 1\n\n**Utility factor:** 1.65\n\n**Action review (#1279):** U 1.5 → 1.65: Maneuver allowance +0.05, Reaction allowance +0.1. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.\n\n**Regeneration per turn:** 0\n\nReference I=4.404, O=5.162. CV uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/encounters.md); action choices, Stability and control are not simulated. Recalibration remains required.\n\n**Ability sources:** [battle mending](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/battle-mending.md), [driving blow](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/driving-blow.md), [Sheltering Light](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/sheltering-light.md), [Warding Light](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/warding-light.md).\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/roster.md) · [Agreed Stability](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/rules/stability.md)"
+    },
+    "biography": ""
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-moon-hart",
+        "asset": "assets/creatures/a7d67b275f996a189bef898878b619ea68f1c91f142c60966d2ba69ed588c301.webp",
+        "sha256": "776195f2f09f7202395401b2fbd56c6d81ab15c351c67ffd59e733eb99718de6",
+        "sourceSha256": "a7d67b275f996a189bef898878b619ea68f1c91f142c60966d2ba69ed588c301",
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
+      "catalogId": "creature-moon-hart",
+      "source": {
+        "path": "design/bestiary/creatures/moon-hart.md",
+        "sha256": "7560602018377a1c2f8a056691a520b255d17b1173327b7fb5501e1f4392a44e"
+      },
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Printed profile · specialty automation pending",
+      "specialtyAutomation": "pending",
+      "classification": {
+        "category": "Fey",
+        "role": "Rescuer",
+        "cv": 28
+      },
+      "family": "Fey",
+      "abilitySources": [
+        {
+          "label": "battle mending",
+          "id": "monster-battle-mending",
+          "path": "design/monster-abilities/battle-mending.md",
+          "sha256": "a5d1342884e7ee071555af086d867c6eeef0aa16e9cf22502b7e6ede66b68612"
+        },
+        {
+          "label": "driving blow",
+          "id": "monster-driving-blow",
+          "path": "design/monster-abilities/driving-blow.md",
+          "sha256": "38b3406cbcb2f57fdc1bbf57f09857b7ef8a9fd7b35e311dc812476677e6b276"
+        },
+        {
+          "label": "Sheltering Light",
+          "id": "monster-sheltering-light",
+          "path": "design/monster-abilities/sheltering-light.md",
+          "sha256": "018734662d30a44935b3065bb1fa17fe9bfba3df97654aa01ebaaea607fcf0a3"
+        },
+        {
+          "label": "Warding Light",
+          "id": "monster-warding-light",
+          "path": "design/monster-abilities/warding-light.md",
+          "sha256": "218cf722468293e82d5b939fe75ed9a9f3db27bcd6515bc62310b4b499e03805"
+        }
+      ],
+      "monsterAbilityTemplates": [
+        {
+          "id": "monster-battle-mending",
+          "path": "design/monster-abilities/battle-mending.md",
+          "sha256": "a5d1342884e7ee071555af086d867c6eeef0aa16e9cf22502b7e6ede66b68612",
+          "name": "Battle Mending",
+          "action": "Main Action; spell",
+          "flavorMarkdown": "*Light travels from the healer’s shaking hands into another body, leaving the healer visibly diminished.*",
+          "rulesMarkdown": "Choose one visible adjacent living ally and keep a free hand. Resolve opportunity attacks for casting, then pay the creature’s printed SP cost from its reserve. A summoned healer uses its controller’s reserve. Roll the creature’s healing attribute and apply its printed HP outcomes and the recipient’s Life resistance. For an NPC healer, the DA chooses the target and a player makes the roll. You can instead direct the spell at a creature whose profile says healing harms it. Keep the range, free hand and SP cost, and use the healing values as Life damage. A player defending against this attack rolls Fortitude and reads the creature’s defense outcomes.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Battle Mending\n\n*Light travels from the healer’s shaking hands into another body, leaving the healer visibly diminished.*\n\n## Rules\n\n**ID:** monster-battle-mending\n\n\n**Action:** Main Action; spell\n\nChoose one visible adjacent living ally and keep a free hand. Resolve opportunity attacks for casting, then pay the creature’s printed SP cost from its reserve. A summoned healer uses its controller’s reserve. Roll the creature’s healing attribute and apply its printed HP outcomes and the recipient’s Life resistance. For an NPC healer, the DA chooses the target and a player makes the roll. You can instead direct the spell at a creature whose profile says healing harms it. Keep the range, free hand and SP cost, and use the healing values as Life damage. A player defending against this attack rolls Fortitude and reads the creature’s defense outcomes.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/battle-mending.md",
+            "sha256": "a5d1342884e7ee071555af086d867c6eeef0aa16e9cf22502b7e6ede66b68612"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-driving-blow",
+          "path": "design/monster-abilities/driving-blow.md",
+          "sha256": "38b3406cbcb2f57fdc1bbf57f09857b7ef8a9fd7b35e311dc812476677e6b276",
+          "name": "Driving Blow",
+          "action": "Main Action",
+          "flavorMarkdown": "*The blow lands with enough force to send its victim stumbling backward.*",
+          "rulesMarkdown": "Use the printed attack. Standard pushes the target 1 square; Strong pushes it 2. Apply Stability before moving. This is a rider, not a separate attack or Force action.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Driving Blow\n\n*The blow lands with enough force to send its victim stumbling backward.*\n\n## Rules\n\n**ID:** monster-driving-blow\n\n\n**Action:** Main Action\n\nUse the printed attack. Standard pushes the target 1 square; Strong pushes it 2. Apply Stability before moving. This is a rider, not a separate attack or Force action.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/driving-blow.md",
+            "sha256": "38b3406cbcb2f57fdc1bbf57f09857b7ef8a9fd7b35e311dc812476677e6b276"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-sheltering-light",
+          "path": "design/monster-abilities/sheltering-light.md",
+          "sha256": "018734662d30a44935b3065bb1fa17fe9bfba3df97654aa01ebaaea607fcf0a3",
+          "name": "Sheltering Light",
+          "action": "Reaction",
+          "flavorMarkdown": "*Light gathers over a companion like overlapping feathers, taking the harsh edge from the impact.*",
+          "rulesMarkdown": "Before one visible willing ally within 3 squares takes damage from an attack, grant that ally Physical resistance 2 for that attack only. Use the highest matching resistance, not an added reduction; minimum damage rules remain. This does not heal, transfer damage or grant resistance to other types.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Sheltering Light\n\n*Light gathers over a companion like overlapping feathers, taking the harsh edge from the impact.*\n\n## Rules\n\n**ID:** monster-sheltering-light\n\n**Action:** Reaction\n\nBefore one visible willing ally within 3 squares takes damage from an attack, grant that ally Physical resistance 2 for that attack only. Use the highest matching resistance, not an added reduction; minimum damage rules remain. This does not heal, transfer damage or grant resistance to other types.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/sheltering-light.md",
+            "sha256": "018734662d30a44935b3065bb1fa17fe9bfba3df97654aa01ebaaea607fcf0a3"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-warding-light",
+          "path": "design/monster-abilities/warding-light.md",
+          "sha256": "218cf722468293e82d5b939fe75ed9a9f3db27bcd6515bc62310b4b499e03805",
+          "name": "Warding Light",
+          "action": "Maneuver",
+          "flavorMarkdown": "*A warm light settles over one companion like a hand on the shoulder.*",
+          "rulesMarkdown": "One willing ally within 3 squares reduces Frightened by 1. Until this creature’s next turn, that ally also has 1 Boon on its next defense against a mental attack; for an NPC ally, impose 1 Bane on that player attack. Consumed even if canceled; does not stack with itself.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Warding Light\n\n*A warm light settles over one companion like a hand on the shoulder.*\n\n## Rules\n\n**ID:** monster-warding-light\n\n\n**Action:** Maneuver\n\nOne willing ally within 3 squares reduces Frightened by 1. Until this creature’s next turn, that ally also has 1 Boon on its next defense against a mental attack; for an NPC ally, impose 1 Bane on that player attack. Consumed even if canceled; does not stack with itself.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/warding-light.md",
+            "sha256": "218cf722468293e82d5b939fe75ed9a9f3db27bcd6515bc62310b4b499e03805"
+          },
+          "automation": "pending"
+        }
+      ],
+      "summoning": {
+        "eligible": true,
+        "summonId": "summon-moon-hart",
+        "path": "design/bestiary/summons/moon-hart.md",
+        "eligibility": "Fey 7",
+        "sourceText": "Fey 7 — [player reference](../summons/moon-hart.md)."
+      }
+    }
+  }
+}

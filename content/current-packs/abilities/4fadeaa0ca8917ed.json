@@ -1,0 +1,66 @@
+{
+  "_key": "!items!4fadeaa0ca8917ed",
+  "_id": "4fadeaa0ca8917ed",
+  "name": "Sequester",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 hour</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One willing creature or unattended object beside you; 100 coins of incense consumed</dd></div><div><dt>Duration</dt><dd>7 days</dd></div></dl><p>Place it in a concealed, motionless magical sleep or stasis. It becomes Invisible and its bodily needs pause. Touching it with the token you designate, Remove Curse, or expiry awakens and reveals it. Record its HP and SP on entry; those values return unchanged.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:seals:a2",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:seals:a2",
+        "level": 3,
+        "cost": 4,
+        "action": "Ritual · 1 hour",
+        "sp": 5,
+        "range": "One willing creature or unattended object beside you; 100 coins of incense consumed",
+        "duration": "7 days",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Place it in a concealed, motionless magical sleep or stasis. It becomes Invisible and its bodily needs pause. Touching it with the token you designate, Remove Curse, or expiry awakens and reveals it. Record its HP and SP on entry; those values return unchanged.",
+        "improves": null,
+        "requires": [
+          "seals:4"
+        ],
+        "bookId": "seals"
+      },
+      "spell": {
+        "id": "spell:seals:a2",
+        "name": "Sequester",
+        "bookId": "seals",
+        "page": "A2",
+        "section": "VI",
+        "sp": 5,
+        "action": "Ritual",
+        "actionText": "Ritual · 1 hour",
+        "ritualTime": "1 hour",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One willing creature or unattended object beside you; 100 coins of incense consumed",
+        "duration": "7 days",
+        "effect": "Place it in a concealed, motionless magical sleep or stasis. It becomes Invisible and its bodily needs pause. Touching it with the token you designate, Remove Curse, or expiry awakens and reveals it. Record its HP and SP on entry; those values return unchanged."
+      }
+    }
+  },
+  "effects": []
+}

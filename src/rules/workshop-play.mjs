@@ -1,3 +1,4 @@
+import {forgeSignatureComponent} from "./forge-signatures.mjs";
 import { sustainLimit } from "./forge-sustain.mjs";
 import { WOUND_TABLES } from "./damage.mjs";
 import { woundRoll } from "./wounds.mjs";
@@ -95,7 +96,7 @@ export function normalizeWorkshopPlay(
             !Number.isSafeInteger(castTurn) || !Number.isSafeInteger(maintainedTurn) ||
             castTurn < 0 || maintainedTurn < castTurn || maintainedTurn > turn) fail();
         const record = catalogs.forge.spells.find(spell => spell.id === spellId)
-          ?? catalogs.forge.signatureDevelopment?.signatures.flatMap(entry => entry.components).find(entry => entry.id === spellId);
+          ?? forgeSignatureComponent(catalogs.forge,spellId);
         const limit = sustainLimit(record);
         if (limit && turn < castTurn + limit && turn <= maintainedTurn + 1)
           result.sustain = { spellId, castTurn, maintainedTurn };
@@ -289,11 +290,15 @@ export function normalizeWorkshopPlay(
             !instance(id) ||
             !object(v) ||
             Object.keys(v).some(
-              (k) => !["quantity", "inventoryDie"].includes(k),
+              (k) => !["quantity", "inventoryDie", "name"].includes(k),
             )
           )
             fail();
           const next = {};
+          if (v.name !== undefined) {
+            if (typeof v.name !== "string" || !v.name.trim() || v.name.trim().length > 200) fail();
+            next.name = v.name.trim();
+          }
           if (v.quantity !== undefined) {
             if (
               !Number.isSafeInteger(v.quantity) ||

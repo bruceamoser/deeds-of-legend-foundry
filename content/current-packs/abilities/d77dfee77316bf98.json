@@ -1,0 +1,66 @@
+{
+  "_key": "!items!d77dfee77316bf98",
+  "_id": "d77dfee77316bf98",
+  "name": "Rechanneling",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Reaction · when a visible spell transfers SP between creatures</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>The transfer and a replacement recipient within 6 squares</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Add 3/5/7 cancellation progress against the transfer, target 2 plus its casting SP cost. At completion, redirect its stated transferred amount to the replacement recipient, limited by the original donor&#39;s available SP and the new recipient&#39;s missing SP. Otherwise the original transfer resolves. Pay your own casting cost separately.</p>",
+    "activity": {
+      "action": "reaction",
+      "rollMode": "attribute",
+      "attribute": "reason",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:channeling:a2",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:channeling:a2",
+        "level": 3,
+        "cost": 4,
+        "action": "Reaction · when a visible spell transfers SP between creatures",
+        "sp": 5,
+        "range": "The transfer and a replacement recipient within 6 squares",
+        "duration": "Instant",
+        "attribute": "Reason",
+        "defenseAttribute": null,
+        "effect": "Add 3/5/7 cancellation progress against the transfer, target 2 plus its casting SP cost. At completion, redirect its stated transferred amount to the replacement recipient, limited by the original donor's available SP and the new recipient's missing SP. Otherwise the original transfer resolves. Pay your own casting cost separately.",
+        "improves": null,
+        "requires": [
+          "channeling:4"
+        ],
+        "bookId": "channeling"
+      },
+      "spell": {
+        "id": "spell:channeling:a2",
+        "name": "Rechanneling",
+        "bookId": "channeling",
+        "page": "A2",
+        "section": "VI",
+        "sp": 5,
+        "action": "Reaction",
+        "actionText": "Reaction · when a visible spell transfers SP between creatures",
+        "trigger": "when a visible spell transfers SP between creatures",
+        "attribute": "Reason",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "The transfer and a replacement recipient within 6 squares",
+        "duration": "Instant",
+        "effect": "Add 3/5/7 cancellation progress against the transfer, target 2 plus its casting SP cost. At completion, redirect its stated transferred amount to the replacement recipient, limited by the original donor's available SP and the new recipient's missing SP. Otherwise the original transfer resolves. Pay your own casting cost separately."
+      }
+    }
+  },
+  "effects": []
+}

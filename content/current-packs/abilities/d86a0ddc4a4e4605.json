@@ -1,0 +1,66 @@
+{
+  "_key": "!items!d86a0ddc4a4e4605",
+  "_id": "d86a0ddc4a4e4605",
+  "name": "Boil Liquid",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 minute</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One unattended container within 1 square; up to 10 liters</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Bring its liquid to a rolling boil. The liquid then cools naturally; handle it with suitable protection.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:flame:2",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:flame:2",
+        "level": 1,
+        "cost": 1,
+        "action": "Ritual · 1 minute",
+        "sp": 1,
+        "range": "One unattended container within 1 square; up to 10 liters",
+        "duration": "Instant",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Bring its liquid to a rolling boil. The liquid then cools naturally; handle it with suitable protection.",
+        "improves": null,
+        "requires": [
+          "elements"
+        ],
+        "bookId": "flame"
+      },
+      "spell": {
+        "id": "spell:flame:2",
+        "name": "Boil Liquid",
+        "bookId": "flame",
+        "page": "2",
+        "section": "I",
+        "sp": 1,
+        "action": "Ritual",
+        "actionText": "Ritual · 1 minute",
+        "ritualTime": "1 minute",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One unattended container within 1 square; up to 10 liters",
+        "duration": "Instant",
+        "effect": "Bring its liquid to a rolling boil. The liquid then cools naturally; handle it with suitable protection."
+      }
+    }
+  },
+  "effects": []
+}

@@ -1,3 +1,6 @@
+import * as currentCharacter from '../src/rules/current-character.mjs';
+import * as nativeHealth from "../src/rules/native-health.mjs";
+import * as forgeRecovery from "../src/rules/forge-recovery.mjs";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
@@ -8,7 +11,7 @@ import * as debt from "../src/rules/debt-reroll.mjs";
 import * as ancestry from "../src/rules/ancestry.mjs";
 import { survivalState, validateSurvival, receiveHealing, safeBreath, chooseSurvival, resolveSurvival, startSurvivalTurn } from "../src/rules/survival.mjs";
 import { recoveryPreview } from "../src/services/recovery.mjs";
-import { importedCharacterState } from "../src/rules/native-character-state.mjs";
+
 
 const ID = "heroes-of-legend";
 function original() {
@@ -20,7 +23,7 @@ function original() {
 async function fixture({failWrite = 0, failRoll = false, failPresent = false} = {}) {
   let writes = 0, rolls = 0, requested;
   const formulas = [];
-  const flags = {development:{creation:{traitIds:["trait-oath-bound-the-debt-comes-due"]}},
+  const flags = {nativeWorkshop:{portable:{format:'heroes-of-legend-character',schemaVersion:7,draft:{traitIds:['trait-oath-bound-the-debt-comes-due']}}},development:{creation:{traitIds:["trait-oath-bound-the-debt-comes-due"]}},
     survival:survivalState({hp:10,maxHp:20,wounds:3,gritAvailable:1,ownTurn:5})};
   const owner = {id:"owner",isGM:false}, gm = {id:"gm",isGM:true};
   const actor = {uuid:"Actor.hero",type:"character",system:{health:{value:10,max:20},recovery:{unavailableHp:0,debtUsed:false}},
@@ -47,7 +50,8 @@ async function fixture({failWrite = 0, failRoll = false, failPresent = false} = 
       target[keys.at(-1)]=structuredClone(value);
     }
   };
-  const dependencies = {
+  const dependencies = {"../rules/current-character.mjs":currentCharacter,
+    "../rules/native-health.mjs":nativeHealth,"../rules/forge-recovery.mjs":forgeRecovery,
     "./authority.mjs":{ensureAuthorityReady:async()=>{},createActionMessage:async data=>(requested=data),
       writeAuthorityDocument:async(_actor,changes)=>{writes++;applyChanges(changes);if(writes===failWrite)throw new Error("acknowledgement lost");}},
     "./damage.mjs":{damageBasis:basis}, "../rules/recovery.mjs":recovery,
@@ -77,7 +81,7 @@ test("native Debt retains original attribute/pool and natural dice, replaces the
   assert.deepEqual(f.formulas,["4d6kh3 + (1)"]);
   assert.equal(f.actor.system.health.value,9);
   assert.deepEqual(f.actor.system.recovery,{unavailableHp:1,debtUsed:true});
-  assert.deepEqual(f.flags.survival,{...before,hp:9,recovery:{unavailableHp:1,debtUsed:true}});
+  assert.deepEqual(f.flags.survival,before);
   assert.equal(f.sourceFlags.roll.attribute,1);
   assert.equal(f.sourceFlags.roll.net,1);
   assert.equal(f.sourceFlags.roll.natural,"critical");
@@ -140,33 +144,4 @@ test("native interruption and source edits preserve saved payment/result without
   assert.equal(f.rolls,1);assert.equal(f.actor.system.health.value,9);
   const edited=await fixture();edited.sourceFlags.roll.attribute=2;
   await assert.rejects(edited.apply(),/pool changed/);assert.equal(edited.writes,0);
-});
-
-test("dawn only unlocks recovery; Debt preserves survival history and Grit never lowers corrected HP",()=>{
-  const debtAccounting={unavailableHp:1,debtUsed:true};
-  const state={...survivalState({hp:10,maxHp:20,wounds:3,gritAvailable:1,ownTurn:5,recovery:debtAccounting}),due:5,choice:{kind:"roll",turn:4,resolved:true}};
-  const actor={type:"character",getFlag:(_id,key)=>key==="development"?{creation:{traitIds:["trait-oath-bound-the-debt-comes-due"]}}:undefined};
-  const basis={hp:10,maxHp:20,recovery:debtAccounting,survival:state,gritAvailable:1};
-  const dawn=recoveryPreview(actor,basis,{kind:"dawn"});
-  assert.equal(dawn.after,10);assert.deepEqual(dawn.state,{...state,recovery:{unavailableHp:0,debtUsed:false}});
-  const payment=recoveryPreview(actor,{...basis,recovery:{unavailableHp:0,debtUsed:false},survival:{...state,recovery:{unavailableHp:0,debtUsed:false}}},{kind:"debt"});
-  assert.deepEqual(payment.state,{...state,hp:9});
-  const high={...basis,hp:20,survival:{...state,hp:20}};
-  assert.equal(recoveryPreview(actor,high,{kind:"grit"}).after,20);
-  assert.equal(recoveryPreview(actor,high,{kind:"breath"}).after,20);
-  assert.equal(recoveryPreview(actor,high,{kind:"heal",amount:6,lifeResistance:0}).after,20);
-  const dying=survivalState({hp:0,maxHp:20,gritAvailable:1,recovery:debtAccounting});
-  assert.equal(resolveSurvival(chooseSurvival(startSurvivalTurn(dying,1),"grit")).hp,19);
-  assert.equal(receiveHealing({...state,hp:18},20).hp,19);
-  assert.equal(safeBreath({...state,hp:18}).hp,19);
-});
-
-test("portable-to-native bridge preserves recovery accounting beside live HP and wound survival state",()=>{
-  const recovery={unavailableHp:1,debtUsed:true};
-  const changes=importedCharacterState({play:{hp:9,recovery,gritSpent:1,wounds:[{id:"scar"}]}},{summary:{maximumHp:20,gritGranted:2}},[]);
-  assert.deepEqual(changes["system.recovery"],recovery);
-  assert.equal(changes[`flags.${ID}.survival`].hp,9);
-  assert.equal(changes[`flags.${ID}.survival`].wounds,1);
-  assert.equal(changes[`flags.${ID}.survival`].gritAvailable,1);
-  assert.deepEqual(changes[`flags.${ID}.survival`].recovery,recovery);
 });

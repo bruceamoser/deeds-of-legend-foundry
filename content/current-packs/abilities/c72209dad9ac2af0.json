@@ -1,0 +1,46 @@
+{
+  "_key": "!items!c72209dad9ac2af0",
+  "_id": "c72209dad9ac2af0",
+  "name": "Press On",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>Brawn</dd></div><div><dt>Target / range / shape</dt><dd>Self, then one enemy within melee reach.</dd></div><div><dt>Duration</dt><dd>Movement and attack immediate; defense penalty until your next turn.</dd></div><div><dt>Equipment / acquisition</dt><dd>A ready melee weapon.</dd></div></dl><p>Move up to 2 squares toward a visible enemy, following ordinary opportunity attack rules. Make one Basic Melee attack with your ready melee weapon against a creature you can reach. After the attack, you may step 1 square to a legal empty square without provoking. The attack and step are part of this Maneuver and leave your Main Action available. Take 1 Bane to defenses until the start of your next turn; repeated uses do not multiply that penalty.</p><p>Use twice per scene. If you also know Reckless Charge, its uses count against these same two uses; learning both does not add a third charge.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "attribute",
+      "attribute": "brawn",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-signature-blade-press-on",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "ability",
+        "nodeId": "ability-signature-blade-press-on",
+        "level": 3,
+        "cost": 0,
+        "action": "Maneuver",
+        "sp": null,
+        "range": "Self, then one enemy within melee reach.",
+        "duration": "Movement and attack immediate; defense penalty until your next turn.",
+        "attribute": "Brawn",
+        "defenseAttribute": null,
+        "effect": "**Action:** Maneuver · **Attribute:** Brawn\n\n**Target / range / shape:** Self, then one enemy within melee reach.\n\nMove up to 2 squares toward a visible enemy, following ordinary opportunity attack rules. Make one Basic Melee attack with your ready melee weapon against a creature you can reach. After the attack, you may step 1 square to a legal empty square without provoking. The attack and step are part of this Maneuver and leave your Main Action available. Take 1 Bane to defenses until the start of your next turn; repeated uses do not multiply that penalty.\n\n**Duration:** Movement and attack immediate; defense penalty until your next turn.\n\n**Equipment / acquisition:** A ready melee weapon.\n\nUse twice per scene. If you also know Reckless Charge, its uses count against these same two uses; learning both does not add a third charge.",
+        "improves": null,
+        "requires": [],
+        "bookId": null,
+        "magic": null
+      }
+    }
+  },
+  "effects": []
+}

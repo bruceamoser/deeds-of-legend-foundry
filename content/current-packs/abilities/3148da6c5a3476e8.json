@@ -1,0 +1,65 @@
+{
+  "_key": "!items!3148da6c5a3476e8",
+  "_id": "3148da6c5a3476e8",
+  "name": "Mass Suggestion",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>Guile</dd></div><div><dt>Defense</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>Up to six creatures within 6 squares that understand you and share a motive</dd></div><div><dt>Duration</dt><dd>One social objective, up to 10 minutes</dd></div></dl><p>Propose one common course of action. Add 3/5/7 progress toward a single attainable group objective. The DA sets the concession and boundaries before casting. A later attempt needs a new relevant contribution.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "guile",
+      "defenseAttribute": "reason"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:emotion:a1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:emotion:a1",
+        "level": 3,
+        "cost": 4,
+        "action": "Main Action",
+        "sp": 5,
+        "range": "Up to six creatures within 6 squares that understand you and share a motive",
+        "duration": "One social objective, up to 10 minutes",
+        "attribute": "Guile",
+        "defenseAttribute": "Reason",
+        "effect": "Propose one common course of action. Add 3/5/7 progress toward a single attainable group objective. The DA sets the concession and boundaries before casting. A later attempt needs a new relevant contribution.",
+        "improves": null,
+        "requires": [
+          "emotion:3"
+        ],
+        "bookId": "emotion"
+      },
+      "spell": {
+        "id": "spell:emotion:a1",
+        "name": "Mass Suggestion",
+        "bookId": "emotion",
+        "page": "A1",
+        "section": "V",
+        "sp": 5,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "Guile",
+        "defense": "Reason",
+        "defenseAttribute": "Reason",
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Up to six creatures within 6 squares that understand you and share a motive",
+        "duration": "One social objective, up to 10 minutes",
+        "effect": "Propose one common course of action. Add 3/5/7 progress toward a single attainable group objective. The DA sets the concession and boundaries before casting. A later attempt needs a new relevant contribution."
+      }
+    }
+  },
+  "effects": []
+}

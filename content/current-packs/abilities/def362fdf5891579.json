@@ -1,0 +1,66 @@
+{
+  "_key": "!items!def362fdf5891579",
+  "_id": "def362fdf5891579",
+  "name": "High Intelligence",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 8 hours</dd></div><div><dt>SP</dt><dd>4</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One prepared object beside you; 150 coins of reagents consumed</dd></div><div><dt>Duration</dt><dd>7 days</dd></div></dl><p>Awaken a mind with Knowledge +3, one language you know and a chosen personality. It hears within 3 squares and remembers its week&#39;s experiences. Within 6 squares, you communicate telepathically and may use its score for Knowledge rolls, including casting, under the fixed-value item rules. Your own attributes determine DP, class qualifications and maximum SP. This replaces your prior intelligent item; physical activity uses separate animation and commands.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:animation:8",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:animation:8",
+        "level": 3,
+        "cost": 3,
+        "action": "Ritual · 8 hours",
+        "sp": 4,
+        "range": "One prepared object beside you; 150 coins of reagents consumed",
+        "duration": "7 days",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Awaken a mind with Knowledge +3, one language you know and a chosen personality. It hears within 3 squares and remembers its week's experiences. Within 6 squares, you communicate telepathically and may use its score for Knowledge rolls, including casting, under the fixed-value item rules. Your own attributes determine DP, class qualifications and maximum SP. This replaces your prior intelligent item; physical activity uses separate animation and commands.",
+        "improves": null,
+        "requires": [
+          "animation:2"
+        ],
+        "bookId": "animation"
+      },
+      "spell": {
+        "id": "spell:animation:8",
+        "name": "High Intelligence",
+        "bookId": "animation",
+        "page": "8",
+        "section": "IV",
+        "sp": 4,
+        "action": "Ritual",
+        "actionText": "Ritual · 8 hours",
+        "ritualTime": "8 hours",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One prepared object beside you; 150 coins of reagents consumed",
+        "duration": "7 days",
+        "effect": "Awaken a mind with Knowledge +3, one language you know and a chosen personality. It hears within 3 squares and remembers its week's experiences. Within 6 squares, you communicate telepathically and may use its score for Knowledge rolls, including casting, under the fixed-value item rules. Your own attributes determine DP, class qualifications and maximum SP. This replaces your prior intelligent item; physical activity uses separate animation and commands."
+      }
+    }
+  },
+  "effects": []
+}

@@ -1,3 +1,4 @@
+import {tracksConsumable} from "../services/consumables.mjs";
 import {
   isHealingPotionItem,
   isPotionAbility,
@@ -113,7 +114,7 @@ export class PotionPreparation extends foundry.applications.api.HandlebarsApplic
       bottles: bottles.map((item) => ({
         uuid: item.uuid,
         name: item.name,
-        supply:
+        supply: !tracksConsumable(item) ? "supply tracking disabled" :
           item.system.inventoryDie > 0
             ? `supply d${item.system.inventoryDie}`
             : "supply out",
@@ -279,7 +280,7 @@ export class PotionPreparation extends foundry.applications.api.HandlebarsApplic
     );
     this.setText(
       "supply",
-      preview.inventoryDie
+      preview.trackingSupply === false ? "Supply tracking is disabled. Healing still applies; the owned bottle’s pool is unchanged." : preview.inventoryDie
         ? `After successful healing, roll only d${preview.inventoryDie}. A result of 1 lowers supply; the final d4 use still works.`
         : "This bottle's supply is out.",
     );

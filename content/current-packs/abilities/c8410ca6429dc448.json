@@ -1,0 +1,65 @@
+{
+  "_key": "!items!c8410ca6429dc448",
+  "_id": "c8410ca6429dc448",
+  "name": "Protection from Poison",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One willing creature within 3 squares</dd></div><div><dt>Duration</dt><dd>1 hour</dd></div></dl><p>Grant poison resistance 2 and immediately reduce Poisoned by 2. Apply the highest matching resistance.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:decay:4",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:decay:4",
+        "level": 1,
+        "cost": 2,
+        "action": "Main Action",
+        "sp": 2,
+        "range": "One willing creature within 3 squares",
+        "duration": "1 hour",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Grant poison resistance 2 and immediately reduce Poisoned by 2. Apply the highest matching resistance.",
+        "improves": null,
+        "requires": [
+          "decay:0"
+        ],
+        "bookId": "decay"
+      },
+      "spell": {
+        "id": "spell:decay:4",
+        "name": "Protection from Poison",
+        "bookId": "decay",
+        "page": "4",
+        "section": "II",
+        "sp": 2,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One willing creature within 3 squares",
+        "duration": "1 hour",
+        "effect": "Grant poison resistance 2 and immediately reduce Poisoned by 2. Apply the highest matching resistance."
+      }
+    }
+  },
+  "effects": []
+}

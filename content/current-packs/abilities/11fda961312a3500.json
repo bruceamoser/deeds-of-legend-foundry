@@ -1,0 +1,66 @@
+{
+  "_key": "!items!11fda961312a3500",
+  "_id": "11fda961312a3500",
+  "name": "Clairvoyance",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 minute</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One visible point within 12 squares</dd></div><div><dt>Duration</dt><dd>1 minute</dd></div></dl><p>Place an invisible stationary sensor. Choose sight or hearing when casting; spend a Main Action to use that sense from the sensor until your next turn starts. Your own corresponding sense is occupied during that interval.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:farseeing:2",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:farseeing:2",
+        "level": 1,
+        "cost": 1,
+        "action": "Ritual · 1 minute",
+        "sp": 1,
+        "range": "One visible point within 12 squares",
+        "duration": "1 minute",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Place an invisible stationary sensor. Choose sight or hearing when casting; spend a Main Action to use that sense from the sensor until your next turn starts. Your own corresponding sense is occupied during that interval.",
+        "improves": null,
+        "requires": [
+          "divination"
+        ],
+        "bookId": "farseeing"
+      },
+      "spell": {
+        "id": "spell:farseeing:2",
+        "name": "Clairvoyance",
+        "bookId": "farseeing",
+        "page": "2",
+        "section": "I",
+        "sp": 1,
+        "action": "Ritual",
+        "actionText": "Ritual · 1 minute",
+        "ritualTime": "1 minute",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One visible point within 12 squares",
+        "duration": "1 minute",
+        "effect": "Place an invisible stationary sensor. Choose sight or hearing when casting; spend a Main Action to use that sense from the sensor until your next turn starts. Your own corresponding sense is occupied during that interval."
+      }
+    }
+  },
+  "effects": []
+}

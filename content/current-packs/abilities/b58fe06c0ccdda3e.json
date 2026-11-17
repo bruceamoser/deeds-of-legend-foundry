@@ -1,0 +1,65 @@
+{
+  "_key": "!items!b58fe06c0ccdda3e",
+  "_id": "b58fe06c0ccdda3e",
+  "name": "Mislead",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>Self and an illusory double within 6 squares</dd></div><div><dt>Duration</dt><dd>1 minute</dd></div></dl><p>Become Invisible while creating a visible, speaking double of yourself. A Maneuver may move the double 3 squares and choose whether you see and hear from your own position or the double’s until your next turn. Without directing it, the double stays still and repeats its last simple performance; your senses remain at your own body. Attacking ends your invisibility after resolution but leaves the double until expiry. Keep one Mislead casting active.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:perception:a1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:perception:a1",
+        "level": 3,
+        "cost": 4,
+        "action": "Main Action",
+        "sp": 5,
+        "range": "Self and an illusory double within 6 squares",
+        "duration": "1 minute",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Become Invisible while creating a visible, speaking double of yourself. A Maneuver may move the double 3 squares and choose whether you see and hear from your own position or the double’s until your next turn. Without directing it, the double stays still and repeats its last simple performance; your senses remain at your own body. Attacking ends your invisibility after resolution but leaves the double until expiry. Keep one Mislead casting active.",
+        "improves": null,
+        "requires": [
+          "perception:3"
+        ],
+        "bookId": "perception"
+      },
+      "spell": {
+        "id": "spell:perception:a1",
+        "name": "Mislead",
+        "bookId": "perception",
+        "page": "A1",
+        "section": "V",
+        "sp": 5,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Self and an illusory double within 6 squares",
+        "duration": "1 minute",
+        "effect": "Become Invisible while creating a visible, speaking double of yourself. A Maneuver may move the double 3 squares and choose whether you see and hear from your own position or the double’s until your next turn. Without directing it, the double stays still and repeats its last simple performance; your senses remain at your own body. Attacking ends your invisibility after resolution but leaves the double until expiry. Keep one Mislead casting active."
+      }
+    }
+  },
+  "effects": []
+}

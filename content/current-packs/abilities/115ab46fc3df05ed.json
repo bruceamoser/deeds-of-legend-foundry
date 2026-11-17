@@ -1,0 +1,65 @@
+{
+  "_key": "!items!115ab46fc3df05ed",
+  "_id": "115ab46fc3df05ed",
+  "name": "Dispel Magic",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div><div><dt>Range</dt><dd>One visible ongoing spell within 6 squares</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Add 2/3/4 cancellation progress against the chosen effect, target 2 plus its printed SP cost. At completion, end that effect. Partial progress remains while that casting lasts.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:unraveling:4",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:unraveling:4",
+        "level": 1,
+        "cost": 2,
+        "action": "Main Action",
+        "sp": 2,
+        "range": "One visible ongoing spell within 6 squares",
+        "duration": "Instant",
+        "attribute": "Knowledge",
+        "defenseAttribute": null,
+        "effect": "Add 2/3/4 cancellation progress against the chosen effect, target 2 plus its printed SP cost. At completion, end that effect. Partial progress remains while that casting lasts.",
+        "improves": null,
+        "requires": [
+          "unraveling:0"
+        ],
+        "bookId": "unraveling"
+      },
+      "spell": {
+        "id": "spell:unraveling:4",
+        "name": "Dispel Magic",
+        "bookId": "unraveling",
+        "page": "4",
+        "section": "II",
+        "sp": 2,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "Knowledge",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One visible ongoing spell within 6 squares",
+        "duration": "Instant",
+        "effect": "Add 2/3/4 cancellation progress against the chosen effect, target 2 plus its printed SP cost. At completion, end that effect. Partial progress remains while that casting lasts."
+      }
+    }
+  },
+  "effects": []
+}

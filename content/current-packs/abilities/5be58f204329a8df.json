@@ -1,0 +1,66 @@
+{
+  "_key": "!items!5be58f204329a8df",
+  "_id": "5be58f204329a8df",
+  "name": "Past Store",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 minute</dd></div><div><dt>SP</dt><dd>4</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One held crystal or polished stone</dd></div><div><dt>Duration</dt><dd>Until replayed or 7 days pass</dd></div></dl><p>Store up to one minute of what you personally see and hear during the ritual. A later Main Action holding the stone plays the memory as a small shared image and sound. The stone holds one recording; you may keep three prepared stones.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:echoes:8",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:echoes:8",
+        "level": 3,
+        "cost": 3,
+        "action": "Ritual · 1 minute",
+        "sp": 4,
+        "range": "One held crystal or polished stone",
+        "duration": "Until replayed or 7 days pass",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Store up to one minute of what you personally see and hear during the ritual. A later Main Action holding the stone plays the memory as a small shared image and sound. The stone holds one recording; you may keep three prepared stones.",
+        "improves": null,
+        "requires": [
+          "echoes:2"
+        ],
+        "bookId": "echoes"
+      },
+      "spell": {
+        "id": "spell:echoes:8",
+        "name": "Past Store",
+        "bookId": "echoes",
+        "page": "8",
+        "section": "IV",
+        "sp": 4,
+        "action": "Ritual",
+        "actionText": "Ritual · 1 minute",
+        "ritualTime": "1 minute",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One held crystal or polished stone",
+        "duration": "Until replayed or 7 days pass",
+        "effect": "Store up to one minute of what you personally see and hear during the ritual. A later Main Action holding the stone plays the memory as a small shared image and sound. The stone holds one recording; you may keep three prepared stones."
+      }
+    }
+  },
+  "effects": []
+}

@@ -1,0 +1,113 @@
+{
+  "_key": "!items!c18ab42437a1f52b",
+  "_id": "c18ab42437a1f52b",
+  "name": "The Shared Cup",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Two willing creatures within 5 squares, one donor and one recipient. You can be either.</dd></div><div><dt>Magic</dt><dd>Spell</dd></div><div><dt>SP</dt><dd>0</dd></div><div><dt>Duration</dt><dd>Immediate.</dd></div><div><dt>Equipment / acquisition</dt><dd>A free hand for casting.</dd></div></dl><p>Move up to 6 HP from the donor to the recipient. The donor must remain above 0 HP. The recipient cannot exceed maximum HP. Move the same amount out of the donor’s HP and into the recipient’s HP, ignoring Life resistance. If the recipient rises above 0 HP, clear both death roll tallies and end Dying and HP-caused unconsciousness.</p><p>This is a spell costing 0 SP, usable once on your turn. The donor must stay above 0 HP. Transfer only existing HP into missing HP, ignoring Life resistance on this transfer; the amount removed equals the amount restored.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-signature-shepherd-restore-composure",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "ability-signature-shepherd-restore-composure",
+        "level": 7,
+        "cost": 0,
+        "action": "Main Action",
+        "sp": 0,
+        "range": "Two willing creatures within 5 squares, one donor and one recipient. You can be either.",
+        "duration": "Immediate.",
+        "attribute": "None (no roll)",
+        "defenseAttribute": null,
+        "effect": "**Action:** Main Action · **Attribute:** None (no roll)\n\n**Target / range / shape:** Two willing creatures within 5 squares, one donor and one recipient. You can be either.\n\nMove up to 6 HP from the donor to the recipient. The donor must remain above 0 HP. The recipient cannot exceed maximum HP. Move the same amount out of the donor’s HP and into the recipient’s HP, ignoring Life resistance. If the recipient rises above 0 HP, clear both death roll tallies and end Dying and HP-caused unconsciousness.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP, usable once on your turn. The donor must stay above 0 HP. Transfer only existing HP into missing HP, ignoring Life resistance on this transfer; the amount removed equals the amount restored.",
+        "improves": null,
+        "requires": [],
+        "bookId": null,
+        "magic": "Spell"
+      },
+      "spell": {
+        "id": "ability-signature-shepherd-restore-composure",
+        "name": "The Shared Cup",
+        "level": 7,
+        "dp": null,
+        "action": "Main Action",
+        "attribute": "None (no roll)",
+        "target": "Two willing creatures within 5 squares, one donor and one recipient. You can be either.",
+        "duration": "Immediate.",
+        "equipment": "A free hand for casting.",
+        "limits": "One signature choice at each of levels 1, 3 and 7.",
+        "effect": "**Action:** Main Action · **Attribute:** None (no roll)\n\n**Target / range / shape:** Two willing creatures within 5 squares, one donor and one recipient. You can be either.\n\nMove up to 6 HP from the donor to the recipient. The donor must remain above 0 HP. The recipient cannot exceed maximum HP. Move the same amount out of the donor’s HP and into the recipient’s HP, ignoring Life resistance. If the recipient rises above 0 HP, clear both death roll tallies and end Dying and HP-caused unconsciousness.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP, usable once on your turn. The donor must stay above 0 HP. Transfer only existing HP into missing HP, ignoring Life resistance on this transfer; the amount removed equals the amount restored.",
+        "reference": {
+          "flavor": [
+            "Your steady presence gathers scattered courage."
+          ],
+          "rules": {
+            "details": [
+              {
+                "label": "Action",
+                "value": "Main Action"
+              },
+              {
+                "label": "Attribute",
+                "value": "None (no roll)"
+              },
+              {
+                "label": "Target / range / shape",
+                "value": "Two willing creatures within 5 squares, one donor and one recipient. You can be either."
+              },
+              {
+                "label": "Magic",
+                "value": "Spell"
+              },
+              {
+                "label": "SP",
+                "value": "0"
+              },
+              {
+                "label": "Duration",
+                "value": "Immediate."
+              },
+              {
+                "label": "Equipment / acquisition",
+                "value": "A free hand for casting."
+              }
+            ],
+            "body": [
+              {
+                "text": "Move up to 6 HP from the donor to the recipient. The donor must remain above 0 HP. The recipient cannot exceed maximum HP. Move the same amount out of the donor’s HP and into the recipient’s HP, ignoring Life resistance. If the recipient rises above 0 HP, clear both death roll tallies and end Dying and HP-caused unconsciousness."
+              },
+              {
+                "text": "This is a spell costing 0 SP, usable once on your turn. The donor must stay above 0 HP. Transfer only existing HP into missing HP, ignoring Life resistance on this transfer; the amount removed equals the amount restored."
+              }
+            ],
+            "notes": []
+          }
+        },
+        "referenceMarkdown": "**Action:** Main Action · **Attribute:** None (no roll)\n\n**Target / range / shape:** Two willing creatures within 5 squares, one donor and one recipient. You can be either.\n\nMove up to 6 HP from the donor to the recipient. The donor must remain above 0 HP. The recipient cannot exceed maximum HP. Move the same amount out of the donor’s HP and into the recipient’s HP, ignoring Life resistance. If the recipient rises above 0 HP, clear both death roll tallies and end Dying and HP-caused unconsciousness.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP, usable once on your turn. The donor must stay above 0 HP. Transfer only existing HP into missing HP, ignoring Life resistance on this transfer; the amount removed equals the amount restored.",
+        "classId": "class-shepherd",
+        "lineId": "shepherd:steady-voice",
+        "signatureComponent": true,
+        "kind": "ability",
+        "sp": 0,
+        "magic": "Spell",
+        "rulesMarkdown": "**Action:** Main Action · **Attribute:** None (no roll)\n\n**Target / range / shape:** Two willing creatures within 5 squares, one donor and one recipient. You can be either.\n\nMove up to 6 HP from the donor to the recipient. The donor must remain above 0 HP. The recipient cannot exceed maximum HP. Move the same amount out of the donor’s HP and into the recipient’s HP, ignoring Life resistance. If the recipient rises above 0 HP, clear both death roll tallies and end Dying and HP-caused unconsciousness.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP, usable once on your turn. The donor must stay above 0 HP. Transfer only existing HP into missing HP, ignoring Life resistance on this transfer; the amount removed equals the amount restored."
+      }
+    }
+  },
+  "effects": []
+}

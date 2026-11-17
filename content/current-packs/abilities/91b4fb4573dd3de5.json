@@ -1,0 +1,46 @@
+{
+  "_key": "!items!91b4fb4573dd3de5",
+  "_id": "91b4fb4573dd3de5",
+  "name": "Fade Behind",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>Agility</dd></div><div><dt>Target / range / shape</dt><dd>Self.</dd></div><div><dt>Duration</dt><dd>Immediate; Hidden uses its normal duration.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Frequency</dt><dd>Once on your turn.</dd></div></dl><p>Disengage. Then attempt to Hide with 1 Boon, even if you are currently observed, provided you have cover or obscurement. You still make the ordinary Hide attempt. If you succeed, you are Hidden until you attack, are revealed, or the concealment ends.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "attribute",
+      "attribute": "agility",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-signature-shadow-fade-behind",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "ability",
+        "nodeId": "ability-signature-shadow-fade-behind",
+        "level": 1,
+        "cost": 0,
+        "action": "Maneuver",
+        "sp": null,
+        "range": "Self.",
+        "duration": "Immediate; Hidden uses its normal duration.",
+        "attribute": "Agility",
+        "defenseAttribute": null,
+        "effect": "**Action:** Maneuver · **Attribute:** Agility\n\n**Target / range / shape:** Self.\n\nDisengage. Then attempt to Hide with 1 Boon, even if you are currently observed, provided you have cover or obscurement. You still make the ordinary Hide attempt. If you succeed, you are Hidden until you attack, are revealed, or the concealment ends.\n\n**Duration:** Immediate; Hidden uses its normal duration.\n\n**Equipment / acquisition:** None.\n\n**Frequency:** Once on your turn.",
+        "improves": null,
+        "requires": [],
+        "bookId": null,
+        "magic": null
+      }
+    }
+  },
+  "effects": []
+}

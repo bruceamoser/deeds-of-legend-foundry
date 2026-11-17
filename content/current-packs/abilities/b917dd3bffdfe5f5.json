@@ -1,0 +1,47 @@
+{
+  "_key": "!items!b917dd3bffdfe5f5",
+  "_id": "b917dd3bffdfe5f5",
+  "name": "Bring Everyone Home",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div></dl><p>Main Action · Knowledge, wearing trained armor and holding a shield, with medical supplies. Once per scene, move up to 8 squares without movement reactions. Along the route treat up to three different willing or helpless creatures within reach: roll once; each with an available first-aid attempt restores 5/8/11 HP and spends that attempt. Carry one creature no larger than you along any part of the route without added encumbrance or using your shield hand; place it adjacent at the end. A spent allowance still permits rescue, not healing. Supplies must cover each treated patient.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "armor:harness:7",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "mastery",
+        "nodeId": "armor:harness:7",
+        "level": 7,
+        "cost": 5,
+        "action": "Main Action",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": "Knowledge",
+        "defenseAttribute": null,
+        "effect": "Main Action · Knowledge, wearing trained armor and holding a shield, with medical supplies. Once per scene, move up to 8 squares without movement reactions. Along the route treat up to three different willing or helpless creatures within reach: roll once; each with an available first-aid attempt restores 5/8/11 HP and spends that attempt. Carry one creature no larger than you along any part of the route without added encumbrance or using your shield hand; place it adjacent at the end. A spent allowance still permits rescue, not healing. Supplies must cover each treated patient.",
+        "improves": null,
+        "requires": [
+          "armor:harness:6"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

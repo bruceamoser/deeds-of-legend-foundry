@@ -1,0 +1,65 @@
+{
+  "_key": "!items!b472078ce697de0e",
+  "_id": "b472078ce697de0e",
+  "name": "Guidance",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One willing creature within 3 squares</dd></div><div><dt>Duration</dt><dd>Until its next roll or your next turn ends</dd></div></dl><p>Offer a useful flash of intuition. Give 1 Boon to the recipient&#39;s next non-attack task roll. A creature can hold one Guidance benefit at a time.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:portents:2",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:portents:2",
+        "level": 1,
+        "cost": 1,
+        "action": "Maneuver",
+        "sp": 1,
+        "range": "One willing creature within 3 squares",
+        "duration": "Until its next roll or your next turn ends",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Offer a useful flash of intuition. Give 1 Boon to the recipient's next non-attack task roll. A creature can hold one Guidance benefit at a time.",
+        "improves": null,
+        "requires": [
+          "divination"
+        ],
+        "bookId": "portents"
+      },
+      "spell": {
+        "id": "spell:portents:2",
+        "name": "Guidance",
+        "bookId": "portents",
+        "page": "2",
+        "section": "I",
+        "sp": 1,
+        "action": "Maneuver",
+        "actionText": "Maneuver",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One willing creature within 3 squares",
+        "duration": "Until its next roll or your next turn ends",
+        "effect": "Offer a useful flash of intuition. Give 1 Boon to the recipient's next non-attack task roll. A creature can hold one Guidance benefit at a time."
+      }
+    }
+  },
+  "effects": []
+}

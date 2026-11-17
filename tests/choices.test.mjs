@@ -116,7 +116,7 @@ test("catalog references preserve exact acquisition details and outcomes", () =>
   assert(!/offensive healing|this spell/i.test(JSON.stringify(potion)));
 });
 test("reference templates use escaping Handlebars expressions", async () => {
-  for (const template of ["creation", "advancement"]) {
+  for (const template of ["attribute-roll", "recovery"]) {
     const text = await readFile(
       new URL(`../static/templates/${template}.hbs`, import.meta.url),
       "utf8",

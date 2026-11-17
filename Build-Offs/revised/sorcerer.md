@@ -1,6 +1,6 @@
 # Ilyra Cinderblood: sorcerer after the rewrite
 
-Pinned authored source `87f5141bd6e0da74a10c07b3239e975c7656430a`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../sorcerer.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
+Pinned authored source `f71eac4c46fce6906d6dfbd1638ee98b10a6c538`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../sorcerer.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
 
 ## What the rewrite changes
 
@@ -186,20 +186,6 @@ Use this shaping once on your turn. It changes the origin of an existing spell a
 
 </details>
 
-<details><summary>Choose the Edge: complete signature component</summary>
-
-**Action:** Reaction · **Attribute:** None (use each spell’s casting attribute)
-
-**Target / range / shape:** Your own single-target, instantaneous spell that requires a roll, before its roll.
-
-Once per scene, choose two distinct legal targets. Resolve the spell separately against each, paying its SP cost once. This shapes the original casting rather than casting a second spell. Take 2 Banes on defense rolls until the start of your next turn. Use the spell’s ordinary range, action, casting requirements and effects for both resolutions.
-
-**Duration:** Spell resolves immediately; defense penalty ends at the start of your next turn.
-
-**Equipment / acquisition:** None.
-
-</details>
-
 <details><summary>Create a Window: complete signature component</summary>
 
 **Action:** Reaction · **Attribute:** None (no roll)
@@ -215,6 +201,20 @@ The two squares become connected windows until the end of the ally’s turn. The
 This is a spell costing 0 SP. Cast at the start of the willing ally’s turn before it acts. The windows grant a passage or attack route, not an extra attack.
 
 **Frequency:** Once per round.
+
+</details>
+
+<details><summary>Choose the Edge: complete signature component</summary>
+
+**Action:** Reaction · **Attribute:** None (use each spell’s casting attribute)
+
+**Target / range / shape:** Your own single-target, instantaneous spell that requires a roll, before its roll.
+
+Once per scene, choose two distinct legal targets. Resolve the spell separately against each, paying its SP cost once. This shapes the original casting rather than casting a second spell. Take 2 Banes on defense rolls until the start of your next turn. Use the spell’s ordinary range, action, casting requirements and effects for both resolutions.
+
+**Duration:** Spell resolves immediately; defense penalty ends at the start of your next turn.
+
+**Equipment / acquisition:** None.
 
 </details>
 

@@ -1,0 +1,65 @@
+{
+  "_key": "!items!e10f367488cd453d",
+  "_id": "e10f367488cd453d",
+  "name": "Origins",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>SP</dt><dd>0</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One unattended object held in your hands</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Sense its principal ordinary material and whether it was grown, shaped, mined or assembled. This gives a useful starting point for further investigation.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:echoes:1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:echoes:1",
+        "level": 1,
+        "cost": 1,
+        "action": "Maneuver",
+        "sp": 0,
+        "range": "One unattended object held in your hands",
+        "duration": "Instant",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Sense its principal ordinary material and whether it was grown, shaped, mined or assembled. This gives a useful starting point for further investigation.",
+        "improves": null,
+        "requires": [
+          "divination"
+        ],
+        "bookId": "echoes"
+      },
+      "spell": {
+        "id": "spell:echoes:1",
+        "name": "Origins",
+        "bookId": "echoes",
+        "page": "1",
+        "section": "I",
+        "sp": 0,
+        "action": "Maneuver",
+        "actionText": "Maneuver",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One unattended object held in your hands",
+        "duration": "Instant",
+        "effect": "Sense its principal ordinary material and whether it was grown, shaped, mined or assembled. This gives a useful starting point for further investigation."
+      }
+    }
+  },
+  "effects": []
+}

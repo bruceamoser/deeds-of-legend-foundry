@@ -1,0 +1,66 @@
+{
+  "_key": "!items!7ff0f15b99a3d6c1",
+  "_id": "7ff0f15b99a3d6c1",
+  "name": "Magic Mouth",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 minute</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One adjacent unattended object</dd></div><div><dt>Duration</dt><dd>24 hours or until triggered</dd></div></dl><p>Record up to twenty-five spoken words and one visible or audible trigger within 3 squares of the object. The first matching event makes the object speak the message once, then ends the spell.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:imbuement:5",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:imbuement:5",
+        "level": 1,
+        "cost": 2,
+        "action": "Ritual · 1 minute",
+        "sp": 2,
+        "range": "One adjacent unattended object",
+        "duration": "24 hours or until triggered",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Record up to twenty-five spoken words and one visible or audible trigger within 3 squares of the object. The first matching event makes the object speak the message once, then ends the spell.",
+        "improves": null,
+        "requires": [
+          "imbuement:1"
+        ],
+        "bookId": "imbuement"
+      },
+      "spell": {
+        "id": "spell:imbuement:5",
+        "name": "Magic Mouth",
+        "bookId": "imbuement",
+        "page": "5",
+        "section": "III",
+        "sp": 2,
+        "action": "Ritual",
+        "actionText": "Ritual · 1 minute",
+        "ritualTime": "1 minute",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One adjacent unattended object",
+        "duration": "24 hours or until triggered",
+        "effect": "Record up to twenty-five spoken words and one visible or audible trigger within 3 squares of the object. The first matching event makes the object speak the message once, then ends the spell."
+      }
+    }
+  },
+  "effects": []
+}

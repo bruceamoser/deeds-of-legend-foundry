@@ -1,0 +1,66 @@
+{
+  "_key": "!items!9ac147c82f8e28e9",
+  "_id": "9ac147c82f8e28e9",
+  "name": "Lifekeeping",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Reaction · when a visible living creature within 3 squares gains its third failure mark</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>That creature</dd></div><div><dt>Duration</dt><dd>Until the end of your next turn</dd></div></dl><p>Hold its departing spirit. The hold delays death until it expires or the creature rolls another Weak on a death roll. Stabilizing it or restoring its HP during the hold saves it. Damage at 0 HP still triggers death rolls. Each creature can benefit once between safe overnight rests.</p>",
+    "activity": {
+      "action": "reaction",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:spirits:5",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:spirits:5",
+        "level": 1,
+        "cost": 2,
+        "action": "Reaction · when a visible living creature within 3 squares gains its third failure mark",
+        "sp": 2,
+        "range": "That creature",
+        "duration": "Until the end of your next turn",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Hold its departing spirit. The hold delays death until it expires or the creature rolls another Weak on a death roll. Stabilizing it or restoring its HP during the hold saves it. Damage at 0 HP still triggers death rolls. Each creature can benefit once between safe overnight rests.",
+        "improves": null,
+        "requires": [
+          "spirits:1"
+        ],
+        "bookId": "spirits"
+      },
+      "spell": {
+        "id": "spell:spirits:5",
+        "name": "Lifekeeping",
+        "bookId": "spirits",
+        "page": "5",
+        "section": "III",
+        "sp": 2,
+        "action": "Reaction",
+        "actionText": "Reaction · when a visible living creature within 3 squares gains its third failure mark",
+        "trigger": "when a visible living creature within 3 squares gains its third failure mark",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "That creature",
+        "duration": "Until the end of your next turn",
+        "effect": "Hold its departing spirit. The hold delays death until it expires or the creature rolls another Weak on a death roll. Stabilizing it or restoring its HP during the hold saves it. Damage at 0 HP still triggers death rolls. Each creature can benefit once between safe overnight rests."
+      }
+    }
+  },
+  "effects": []
+}

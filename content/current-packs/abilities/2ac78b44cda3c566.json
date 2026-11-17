@@ -1,0 +1,65 @@
+{
+  "_key": "!items!2ac78b44cda3c566",
+  "_id": "2ac78b44cda3c566",
+  "name": "Fire Shield",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>4</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>Self</dd></div><div><dt>Duration</dt><dd>1 minute</dd></div></dl><p>Wreathe yourself in protective heat. Gain cold resistance 2. A creature that damages you with an adjacent melee attack takes 2 fire damage after its attack resolves, once per attacker per round.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:flame:8",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:flame:8",
+        "level": 3,
+        "cost": 3,
+        "action": "Main Action",
+        "sp": 4,
+        "range": "Self",
+        "duration": "1 minute",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Wreathe yourself in protective heat. Gain cold resistance 2. A creature that damages you with an adjacent melee attack takes 2 fire damage after its attack resolves, once per attacker per round.",
+        "improves": null,
+        "requires": [
+          "flame:2"
+        ],
+        "bookId": "flame"
+      },
+      "spell": {
+        "id": "spell:flame:8",
+        "name": "Fire Shield",
+        "bookId": "flame",
+        "page": "8",
+        "section": "IV",
+        "sp": 4,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Self",
+        "duration": "1 minute",
+        "effect": "Wreathe yourself in protective heat. Gain cold resistance 2. A creature that damages you with an adjacent melee attack takes 2 fire damage after its attack resolves, once per attacker per round."
+      }
+    }
+  },
+  "effects": []
+}

@@ -1,0 +1,66 @@
+{
+  "_key": "!items!2867dd62d3a034e7",
+  "_id": "2867dd62d3a034e7",
+  "name": "Speak with Dead",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 10 minutes</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>One adjacent corpse with a recognizable head</dd></div><div><dt>Duration</dt><dd>Up to three questions</dd></div></dl><p>Call an echo of its remembered experience. Weak permits one question, Standard two, Strong three. The DA answers from what the person knew in life, in brief sensory recollections. A corpse can provide this echo once between safe overnight rests.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "reason",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:spirits:3",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:spirits:3",
+        "level": 1,
+        "cost": 2,
+        "action": "Ritual · 10 minutes",
+        "sp": 1,
+        "range": "One adjacent corpse with a recognizable head",
+        "duration": "Up to three questions",
+        "attribute": "Reason",
+        "defenseAttribute": null,
+        "effect": "Call an echo of its remembered experience. Weak permits one question, Standard two, Strong three. The DA answers from what the person knew in life, in brief sensory recollections. A corpse can provide this echo once between safe overnight rests.",
+        "improves": null,
+        "requires": [
+          "spirits:0"
+        ],
+        "bookId": "spirits"
+      },
+      "spell": {
+        "id": "spell:spirits:3",
+        "name": "Speak with Dead",
+        "bookId": "spirits",
+        "page": "3",
+        "section": "II",
+        "sp": 1,
+        "action": "Ritual",
+        "actionText": "Ritual · 10 minutes",
+        "ritualTime": "10 minutes",
+        "attribute": "Reason",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One adjacent corpse with a recognizable head",
+        "duration": "Up to three questions",
+        "effect": "Call an echo of its remembered experience. Weak permits one question, Standard two, Strong three. The DA answers from what the person knew in life, in brief sensory recollections. A corpse can provide this echo once between safe overnight rests."
+      }
+    }
+  },
+  "effects": []
+}

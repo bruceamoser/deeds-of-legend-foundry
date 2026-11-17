@@ -1,0 +1,65 @@
+{
+  "_key": "!items!5f85299d8ede30f3",
+  "_id": "5f85299d8ede30f3",
+  "name": "Wall of Fire",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>3</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div><div><dt>Defense</dt><dd>Agility</dd></div><div><dt>Range</dt><dd>A line of six connected unoccupied squares within 8 squares</dd></div><div><dt>Duration</dt><dd>1 minute</dd></div></dl><p>Raise a wall of flame 2 squares high. Roll when cast to set its fire damage at 3/5/7. A creature takes that damage the first time each round it enters the wall or ends its turn there. Treat each creature once per round across all squares of this wall. Keep one Wall of Fire active; casting another ends the first.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:flame:6",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:flame:6",
+        "level": 1,
+        "cost": 2,
+        "action": "Main Action",
+        "sp": 3,
+        "range": "A line of six connected unoccupied squares within 8 squares",
+        "duration": "1 minute",
+        "attribute": "Knowledge",
+        "defenseAttribute": "Agility",
+        "effect": "Raise a wall of flame 2 squares high. Roll when cast to set its fire damage at 3/5/7. A creature takes that damage the first time each round it enters the wall or ends its turn there. Treat each creature once per round across all squares of this wall. Keep one Wall of Fire active; casting another ends the first.",
+        "improves": null,
+        "requires": [
+          "flame:1"
+        ],
+        "bookId": "flame"
+      },
+      "spell": {
+        "id": "spell:flame:6",
+        "name": "Wall of Fire",
+        "bookId": "flame",
+        "page": "6",
+        "section": "III",
+        "sp": 3,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "Knowledge",
+        "defense": "Agility",
+        "defenseAttribute": "Agility",
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "A line of six connected unoccupied squares within 8 squares",
+        "duration": "1 minute",
+        "effect": "Raise a wall of flame 2 squares high. Roll when cast to set its fire damage at 3/5/7. A creature takes that damage the first time each round it enters the wall or ends its turn there. Treat each creature once per round across all squares of this wall. Keep one Wall of Fire active; casting another ends the first."
+      }
+    }
+  },
+  "effects": []
+}

@@ -1,0 +1,47 @@
+{
+  "_key": "!items!cea5e9d17dbb4bd0",
+  "_id": "cea5e9d17dbb4bd0",
+  "name": "Silent Entry",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Guile</dd></div></dl><p>Main Action · Guile for a simple fastening, or 1 minute for an intricate mechanism, with lock and repair tools. Add 3/5/7 progress toward opening one reachable nonmagical door, lock or fastening without visible damage. At completion you can close it to appear undisturbed to casual inspection. Separate alarms and traps remain separate tasks.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "guile",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "subterfuge:locks:7",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "mastery",
+        "nodeId": "subterfuge:locks:7",
+        "level": 7,
+        "cost": 5,
+        "action": "Main Action",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": "Guile",
+        "defenseAttribute": null,
+        "effect": "Main Action · Guile for a simple fastening, or 1 minute for an intricate mechanism, with lock and repair tools. Add 3/5/7 progress toward opening one reachable nonmagical door, lock or fastening without visible damage. At completion you can close it to appear undisturbed to casual inspection. Separate alarms and traps remain separate tasks.",
+        "improves": null,
+        "requires": [
+          "subterfuge:locks:6"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

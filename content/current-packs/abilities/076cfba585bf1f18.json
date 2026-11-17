@@ -1,0 +1,65 @@
+{
+  "_key": "!items!076cfba585bf1f18",
+  "_id": "076cfba585bf1f18",
+  "name": "Animate Objects — Greater",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div><div><dt>Range</dt><dd>Up to six unattended objects, combined Bulk at most 6, within 3 squares</dd></div><div><dt>Duration</dt><dd>1 minute, with commands</dd></div></dl><p>Animate one group occupying a 2-by-2-square space, with shared 18 HP, Speed 4 and your attributes for defenses. Give one immediate Main command. A Main command can attack up to two adjacent targets for 3/5/7 physical damage each, rolling once, or perform one larger ordinary task. Normal commands and six-square tether apply.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "3 physical damage",
+      "standard": "5 physical damage",
+      "strong": "7 physical damage"
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:animation:a3",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:animation:a3",
+        "level": 3,
+        "cost": 4,
+        "action": "Main Action",
+        "sp": 5,
+        "range": "Up to six unattended objects, combined Bulk at most 6, within 3 squares",
+        "duration": "1 minute, with commands",
+        "attribute": "Knowledge",
+        "defenseAttribute": null,
+        "effect": "Animate one group occupying a 2-by-2-square space, with shared 18 HP, Speed 4 and your attributes for defenses. Give one immediate Main command. A Main command can attack up to two adjacent targets for 3/5/7 physical damage each, rolling once, or perform one larger ordinary task. Normal commands and six-square tether apply.",
+        "improves": null,
+        "requires": [
+          "animation:4"
+        ],
+        "bookId": "animation"
+      },
+      "spell": {
+        "id": "spell:animation:a3",
+        "name": "Animate Objects — Greater",
+        "bookId": "animation",
+        "page": "A2",
+        "section": "VI",
+        "sp": 5,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "Knowledge",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Up to six unattended objects, combined Bulk at most 6, within 3 squares",
+        "duration": "1 minute, with commands",
+        "effect": "Animate one group occupying a 2-by-2-square space, with shared 18 HP, Speed 4 and your attributes for defenses. Give one immediate Main command. A Main command can attack up to two adjacent targets for 3/5/7 physical damage each, rolling once, or perform one larger ordinary task. Normal commands and six-square tether apply."
+      }
+    }
+  },
+  "effects": []
+}

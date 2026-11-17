@@ -1,0 +1,47 @@
+{
+  "_key": "!items!1e519dfce09a03a0",
+  "_id": "1e519dfce09a03a0",
+  "name": "Ironbound Advance III",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Ironbound Advance reduces attack damage by 2 instead of 1.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "armor:advance:6",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "armor:advance:6",
+        "level": 3,
+        "cost": 4,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Ironbound Advance reduces attack damage by 2 instead of 1.",
+        "improves": "armor:advance:4",
+        "requires": [
+          "armor:advance:5"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

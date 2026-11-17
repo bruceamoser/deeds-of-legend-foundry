@@ -1,0 +1,47 @@
+{
+  "_key": "!items!84308fee7e129791",
+  "_id": "84308fee7e129791",
+  "name": "Lead the Herd I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div></dl><p>Maneuver · Reason. Direct up to six calm nonmagical animals already cooperating with you toward a visible safe route; add 1/2/3 progress to the DA’s handling objective. Establishing initial cooperation takes 10 minutes per attempt instead. Completion gets them moving with you; danger or mistreatment ends cooperation.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "attribute",
+      "attribute": "reason",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "wilderness:animal-handling:4",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "technique",
+        "nodeId": "wilderness:animal-handling:4",
+        "level": 3,
+        "cost": 3,
+        "action": "Maneuver",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": "Reason",
+        "defenseAttribute": null,
+        "effect": "Maneuver · Reason. Direct up to six calm nonmagical animals already cooperating with you toward a visible safe route; add 1/2/3 progress to the DA’s handling objective. Establishing initial cooperation takes 10 minutes per attempt instead. Completion gets them moving with you; danger or mistreatment ends cooperation.",
+        "improves": null,
+        "requires": [
+          "wilderness:animal-handling:3"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

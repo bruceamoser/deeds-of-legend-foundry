@@ -1,0 +1,320 @@
+{
+  "_key": "!actors!32a773d0aa760965",
+  "_id": "32a773d0aa760965",
+  "name": "Masked Duelist",
+  "type": "creature",
+  "img": "systems/heroes-of-legend/assets/creatures/db8b1ac1f8c05e402a5a420f23d5f35316514a2c013965861e56482b760753c1.webp",
+  "prototypeToken": {
+    "width": 1,
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/db8b1ac1f8c05e402a5a420f23d5f35316514a2c013965861e56482b760753c1.webp"
+    }
+  },
+  "system": {
+    "schemaVersion": 1,
+    "attributes": {
+      "brawn": {
+        "base": 1
+      },
+      "fortitude": {
+        "base": 1
+      },
+      "agility": {
+        "base": 2
+      },
+      "guile": {
+        "base": 2
+      },
+      "knowledge": {
+        "base": 1
+      },
+      "reason": {
+        "base": 1
+      }
+    },
+    "attributesSource": "Brawn +1; Fortitude +1; Agility +2; Guile +2; Knowledge +1; Reason +1",
+    "health": {
+      "value": 28,
+      "baseMax": 28,
+      "sourceText": "28"
+    },
+    "cv": 27,
+    "speed": 7,
+    "speedSource": "7",
+    "alternateSpeeds": [],
+    "size": 1,
+    "sizeLabel": "medium",
+    "sizeSource": "1 (medium)",
+    "footprint": {
+      "width": 1,
+      "height": 1
+    },
+    "armor": 0,
+    "armorMarker": "",
+    "armorSource": "0",
+    "stability": 0,
+    "threat": {
+      "boons": 0,
+      "banes": 1,
+      "sourceText": "1 Bane"
+    },
+    "evasion": {
+      "boons": 0,
+      "banes": 2,
+      "sourceText": "2 Banes"
+    },
+    "weaknesses": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "resistances": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "immunities": [],
+    "basicMelee": {
+      "weak": 5,
+      "standard": 3,
+      "strong": 2,
+      "defenseAttribute": "agility",
+      "orientation": "player-defense"
+    },
+    "actions": {
+      "orientation": "player-defense",
+      "entries": [
+        {
+          "id": "main-0",
+          "category": "main",
+          "name": "Basic Melee",
+          "abilityId": "",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "5",
+            "standard": "3",
+            "strong": "2"
+          },
+          "effect": "5/3/2",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "main-1",
+          "category": "main",
+          "name": "Turning blade",
+          "abilityId": "",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "8 + Push 2",
+            "standard": "6 + Push 1",
+            "strong": "4"
+          },
+          "effect": "8 + Push 2 / 6 + Push 1 / 4",
+          "referenceMarkdown": "### Turning blade\n\n*The blow lands with enough force to send its victim stumbling backward.*\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Push 2. **Standard defense:** Push 1."
+        },
+        {
+          "id": "maneuver-0",
+          "category": "maneuver",
+          "name": "Stalking Step",
+          "abilityId": "monster-stalking-step",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Move 2 to cover or concealment; no opportunity from one chosen enemy.",
+          "referenceMarkdown": "### Stalking Step\n\n*It folds into the broken light, leaving only a leaf moving where it stood.*\n\nMove up to 2 squares without provoking from one visible enemy chosen before moving, ending in a square with cover or concealment from that enemy. Pay normal terrain costs and provoke normally from other enemies. Does not grant Hidden; a separate Hide action still needs concealment and a roll when uncertain."
+        },
+        {
+          "id": "maneuver-1",
+          "category": "maneuver",
+          "name": "Defend",
+          "abilityId": "",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "+1 Bane",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "reaction-0",
+          "category": "reaction",
+          "name": "Turn the Blade",
+          "abilityId": "monster-turn-the-blade",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Before an adjacent melee attack: +1 Bane to that attack; held weapon required.",
+          "referenceMarkdown": "### Turn the Blade\n\n*A small turn of the wrist catches the blow on a waiting edge and sends it sliding past.*\n\nBefore one adjacent enemy makes a melee attack against this creature, impose 1 Bane on that attack roll. Requires a held melee weapon. Against an NPC attack, grant 1 Boon to the single defense roll instead. Applies to this attack only; it does not grant a counterattack."
+        },
+        {
+          "id": "reaction-1",
+          "category": "reaction",
+          "name": "Opportunity Attack",
+          "abilityId": "",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Basic Melee",
+          "referenceMarkdown": ""
+        }
+      ],
+      "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates one complete outcome. All attacks use the printed Threat unless stated otherwise.",
+      "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Turning blade | Agility | 8 + Push 2 / 6 + Push 1 / 4 |",
+      "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Stalking Step | Move 2 to cover or concealment; no opportunity from one chosen enemy. |\n| Defend | +1 Bane |",
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Turn the Blade | Before an adjacent melee attack: +1 Bane to that attack; held weapon required. |\n| Opportunity Attack | Basic Melee |"
+    },
+    "details": {
+      "flavorMarkdown": "*An accomplished swordsman in light dueling clothes and a distinctive mask, carrying a finely balanced ordinary blade. Reputation, precision and control of distance define the threat.*",
+      "specialtyMarkdown": "### Turning blade\n\n*The blow lands with enough force to send its victim stumbling backward.*\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Push 2. **Standard defense:** Push 1.\n\n### Turn the Blade\n\n*A small turn of the wrist catches the blow on a waiting edge and sends it sliding past.*\n\nBefore one adjacent enemy makes a melee attack against this creature, impose 1 Bane on that attack roll. Requires a held melee weapon. Against an NPC attack, grant 1 Boon to the single defense roll instead. Applies to this attack only; it does not grant a counterattack.\n\n### Stalking Step\n\n*It folds into the broken light, leaving only a leaf moving where it stood.*\n\nMove up to 2 squares without provoking from one visible enemy chosen before moving, ending in a square with cover or concealment from that enemy. Pay normal terrain costs and provoke normally from other enemies. Does not grant Hidden; a separate Hide action still needs concealment and a roll when uncertain.",
+      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Ordinary sight and hearing.\n\n**Signs:** A challenge is delivered with a precise account of an old insult.\n\n**Purpose:** Win publicly and leave a reputation intact.\n\n**Tactics and retreat:** Drive one opponent away from support; retreat rather than accept an ugly crowd fight.\n\n**Counterplay and conversation:** Refuse the chosen ground or expose the sponsor behind the mask.\n\n**Habitat:** City; court · **Communication:** Common and court language\n\n**Loot:** Fine but ordinary melee weapon and 40 coins.\n\n**Summoning:** Ineligible.",
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-masked-duelist\n\n\n**Category:** Mortal · **Role:** Elite striker · **CV:** 27\n\n### Creature-roll reference\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Turning blade | Agility | 1 Boon | 4 physical damage. | 6 physical damage. Push 1. | 8 physical damage. Push 2. |\n\nThe incoming attack names the defense attribute; use the six values above. Same targeting, costs and limits apply in either perspective. No opposed second roll.\n\n\n### CV worksheet\n\n**Difficulty rationale:** An agile or elusive body warrants attack Banes. Its dangerous attack imposes defense Banes.\n\n**Reference damage:** 4/6/8\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.4\n\n**Action review (#1279):** U 1.25 → 1.4: Maneuver allowance +0.05, Reaction allowance +0.1. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.\n\n**Regeneration per turn:** 0\n\nReference I=3.988, O=5.596. CV uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/encounters.md); action choices, Stability and control are not simulated. Recalibration remains required.\n\n**Ability sources:** [driving blow](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/driving-blow.md), [Stalking Step](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/stalking-step.md), [Turn the Blade](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/turn-the-blade.md).\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/roster.md) · [Agreed Stability](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/rules/stability.md)"
+    },
+    "biography": ""
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-masked-duelist",
+        "asset": "assets/creatures/db8b1ac1f8c05e402a5a420f23d5f35316514a2c013965861e56482b760753c1.webp",
+        "sha256": "d8ac36862b74eed1588f63cdce7f156be987aa5976478625adf23b907a31dd67",
+        "sourceSha256": "db8b1ac1f8c05e402a5a420f23d5f35316514a2c013965861e56482b760753c1",
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
+      "catalogId": "creature-masked-duelist",
+      "source": {
+        "path": "design/bestiary/creatures/masked-duelist.md",
+        "sha256": "d7dcd5225261e45145da5606930247c362814c12e4d54fea1159da1e9887e5b4"
+      },
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Printed profile · specialty automation pending",
+      "specialtyAutomation": "pending",
+      "classification": {
+        "category": "Mortal",
+        "role": "Elite striker",
+        "cv": 27
+      },
+      "family": "Mortal",
+      "abilitySources": [
+        {
+          "label": "driving blow",
+          "id": "monster-driving-blow",
+          "path": "design/monster-abilities/driving-blow.md",
+          "sha256": "38b3406cbcb2f57fdc1bbf57f09857b7ef8a9fd7b35e311dc812476677e6b276"
+        },
+        {
+          "label": "Stalking Step",
+          "id": "monster-stalking-step",
+          "path": "design/monster-abilities/stalking-step.md",
+          "sha256": "6796ed679f378e16688ea33179f69b864c6788ebe4b2d3ea605c9b9ce29fad97"
+        },
+        {
+          "label": "Turn the Blade",
+          "id": "monster-turn-the-blade",
+          "path": "design/monster-abilities/turn-the-blade.md",
+          "sha256": "219eb8418560dfe6343195b90e0631522ba87816e410d710634e5b2c3b6d97a5"
+        }
+      ],
+      "monsterAbilityTemplates": [
+        {
+          "id": "monster-driving-blow",
+          "path": "design/monster-abilities/driving-blow.md",
+          "sha256": "38b3406cbcb2f57fdc1bbf57f09857b7ef8a9fd7b35e311dc812476677e6b276",
+          "name": "Driving Blow",
+          "action": "Main Action",
+          "flavorMarkdown": "*The blow lands with enough force to send its victim stumbling backward.*",
+          "rulesMarkdown": "Use the printed attack. Standard pushes the target 1 square; Strong pushes it 2. Apply Stability before moving. This is a rider, not a separate attack or Force action.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Driving Blow\n\n*The blow lands with enough force to send its victim stumbling backward.*\n\n## Rules\n\n**ID:** monster-driving-blow\n\n\n**Action:** Main Action\n\nUse the printed attack. Standard pushes the target 1 square; Strong pushes it 2. Apply Stability before moving. This is a rider, not a separate attack or Force action.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/driving-blow.md",
+            "sha256": "38b3406cbcb2f57fdc1bbf57f09857b7ef8a9fd7b35e311dc812476677e6b276"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-stalking-step",
+          "path": "design/monster-abilities/stalking-step.md",
+          "sha256": "6796ed679f378e16688ea33179f69b864c6788ebe4b2d3ea605c9b9ce29fad97",
+          "name": "Stalking Step",
+          "action": "Maneuver",
+          "flavorMarkdown": "*It folds into the broken light, leaving only a leaf moving where it stood.*",
+          "rulesMarkdown": "Move up to 2 squares without provoking from one visible enemy chosen before moving, ending in a square with cover or concealment from that enemy. Pay normal terrain costs and provoke normally from other enemies. Does not grant Hidden; a separate Hide action still needs concealment and a roll when uncertain.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Stalking Step\n\n*It folds into the broken light, leaving only a leaf moving where it stood.*\n\n## Rules\n\n**ID:** monster-stalking-step\n\n\n**Action:** Maneuver\n\nMove up to 2 squares without provoking from one visible enemy chosen before moving, ending in a square with cover or concealment from that enemy. Pay normal terrain costs and provoke normally from other enemies. Does not grant Hidden; a separate Hide action still needs concealment and a roll when uncertain.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/stalking-step.md",
+            "sha256": "6796ed679f378e16688ea33179f69b864c6788ebe4b2d3ea605c9b9ce29fad97"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-turn-the-blade",
+          "path": "design/monster-abilities/turn-the-blade.md",
+          "sha256": "219eb8418560dfe6343195b90e0631522ba87816e410d710634e5b2c3b6d97a5",
+          "name": "Turn the Blade",
+          "action": "Reaction",
+          "flavorMarkdown": "*A small turn of the wrist catches the blow on a waiting edge and sends it sliding past.*",
+          "rulesMarkdown": "Before one adjacent enemy makes a melee attack against this creature, impose 1 Bane on that attack roll. Requires a held melee weapon. Against an NPC attack, grant 1 Boon to the single defense roll instead. Applies to this attack only; it does not grant a counterattack.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Turn the Blade\n\n*A small turn of the wrist catches the blow on a waiting edge and sends it sliding past.*\n\n## Rules\n\n**ID:** monster-turn-the-blade\n\n**Action:** Reaction\n\nBefore one adjacent enemy makes a melee attack against this creature, impose 1 Bane on that attack roll. Requires a held melee weapon. Against an NPC attack, grant 1 Boon to the single defense roll instead. Applies to this attack only; it does not grant a counterattack.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/turn-the-blade.md",
+            "sha256": "219eb8418560dfe6343195b90e0631522ba87816e410d710634e5b2c3b6d97a5"
+          },
+          "automation": "pending"
+        }
+      ],
+      "summoning": {
+        "eligible": false,
+        "summonId": null,
+        "path": null,
+        "eligibility": null,
+        "sourceText": "Ineligible."
+      }
+    }
+  }
+}

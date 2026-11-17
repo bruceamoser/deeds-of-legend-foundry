@@ -1,7 +1,8 @@
+import {openEncounterPanel} from "../applications/encounter.mjs";
 import { requestCombat } from "../services/combat.mjs";
 export class HOLCombat extends foundry.documents.Combat {
   async startCombat() {
-    await requestCombat(this, "start");
+    await openEncounterPanel(this);
     return this;
   }
   async nextTurn() {
@@ -29,9 +30,7 @@ export class HOLCombat extends foundry.documents.Combat {
     return this.previousTurn();
   }
   async rollInitiative() {
-    ui.notifications.info(
-      "Choose a participant in the encounter.",
-    );
+    await openEncounterPanel(this);
     return this;
   }
   async rollAll() {

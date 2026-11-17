@@ -1,0 +1,65 @@
+{
+  "_key": "!items!9f7a32efda2fc06b",
+  "_id": "9f7a32efda2fc06b",
+  "name": "Animal Shapes",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>Up to three willing creatures within 6 squares</dd></div><div><dt>Duration</dt><dd>1 minute</dd></div></dl><p>Transform each recipient using Polymorph&#39;s animal-form procedure. Choose a form and movement mode separately for each. The fixed duration covers the group without Sustain. Each recipient may return to its original body with a Maneuver.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:transformation:a1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:transformation:a1",
+        "level": 3,
+        "cost": 4,
+        "action": "Main Action",
+        "sp": 5,
+        "range": "Up to three willing creatures within 6 squares",
+        "duration": "1 minute",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Transform each recipient using Polymorph's animal-form procedure. Choose a form and movement mode separately for each. The fixed duration covers the group without Sustain. Each recipient may return to its original body with a Maneuver.",
+        "improves": null,
+        "requires": [
+          "transformation:3"
+        ],
+        "bookId": "transformation"
+      },
+      "spell": {
+        "id": "spell:transformation:a1",
+        "name": "Animal Shapes",
+        "bookId": "transformation",
+        "page": "A1",
+        "section": "V",
+        "sp": 5,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Up to three willing creatures within 6 squares",
+        "duration": "1 minute",
+        "effect": "Transform each recipient using Polymorph's animal-form procedure. Choose a form and movement mode separately for each. The fixed duration covers the group without Sustain. Each recipient may return to its original body with a Maneuver."
+      }
+    }
+  },
+  "effects": []
+}

@@ -1,229 +1,50 @@
-import { createActionMessage, shouldProcessRequest } from "./authority.mjs";
-import { ensureAuthorityReady } from "./authority.mjs";
-import { assertNoPendingTurn } from "./turn-lock.mjs";
-import { damageBasis } from "./damage.mjs";
-import { healingPlan } from "../rules/damage.mjs";
-import { isSummon } from "../rules/summon-profile.mjs";
-import { normalizeRecovery, recoveryMaximum, payDebt, nextDawn } from "../rules/recovery.mjs";
-import { ancestryTraitIds } from "../rules/ancestry.mjs";
-import { applyDebtReroll } from "./debt-reroll.mjs";
-import {
-  survivalState,
-  validateSurvival,
-  receiveHealing,
-  safeBreath,
-  stabilize,
-  enterLastWords,
-} from "../rules/survival.mjs";
-import {
-  enqueueCharacterOperation,
-  isCreationAuthority,
-  writeAuthorityDocument,
-} from "./authority.mjs";
-const ID = "heroes-of-legend";
-export function recoveryPreview(actor, basis, draft) {
-  if (!["heal", "breath", "stabilize", "grit", "correct", "setHp", "debt", "dawn"].includes(draft.kind))
-    throw new Error("Unknown recovery operation.");
-  const accounting = actor.type === "character" ? normalizeRecovery(basis.recovery ?? actor.system?.recovery) : undefined;
-  let state = null,
-    after = basis.hp;
-  if (["debt", "dawn"].includes(draft.kind)) {
-    if (actor.type !== "character") throw new Error("Only a hero can record ancestry recovery.");
-    const payment = draft.kind === "debt"
-      ? payDebt({ hp: basis.hp, maxHp: basis.maxHp, recovery: accounting,
-          traitIds: ancestryTraitIds(actor.getFlag(ID, "development")?.creation ?? {traitIds: actor.getFlag(ID, "development")?.ancestryTraitIds}) })
-      : nextDawn({ hp: basis.hp, recovery: accounting });
-    const previous = basis.survival ?? survivalState({hp:basis.hp,maxHp:basis.maxHp,gritAvailable:basis.gritAvailable});
-    if (draft.kind === "debt" && ["lastWords", "dead"].includes(previous.status))
-      throw new Error("The Debt Comes Due cannot reverse Last Words or death.");
-    state = { ...previous, ...(draft.kind === "debt" ? {hp:payment.hp} : {}), recovery: payment.recovery };
-    validateSurvival(state);
-    return { after: payment.hp, state, recovery: payment.recovery };
-  }
-  if (draft.kind === "setHp") {
-    if (!Number.isSafeInteger(draft.hp) || draft.hp < 0 || draft.hp > basis.maxHp) throw new Error("HP must be a whole number within the actor’s maximum.");
-    after = draft.hp;
-    if (actor.type === "character") {
-      const previous = basis.survival ?? survivalState({hp:basis.hp,maxHp:basis.maxHp,gritAvailable:basis.gritAvailable});
-      if (after > 0) state = {...previous,hp:after,maxHp:basis.maxHp,gritAvailable:basis.gritAvailable,status:"active",marks:0,due:null,choice:null};
-      else if (basis.hp === 0) state = {...previous,hp:0,maxHp:basis.maxHp,gritAvailable:basis.gritAvailable};
-      else state = {...previous,hp:0,maxHp:basis.maxHp,gritAvailable:basis.gritAvailable,status:"dying",marks:0,due:null,choice:null};
-      if (after > 0) {delete state.lastWordsAt;delete state.lastWordsEnds;}
-      validateSurvival(state);
-    }
-  } else if (draft.kind === "correct") {
-    if (
-      !Number.isSafeInteger(draft.hp) ||
-      draft.hp < 0 ||
-      draft.hp > basis.maxHp
-    )
-      throw new Error("Corrected HP must be within the actor’s maximum.");
-    after = draft.hp;
-    if (actor.type === "character") {
-      const ownTurn = basis.survival?.ownTurn ?? 0;
-      state = survivalState({
-        hp: after,
-        maxHp: basis.maxHp,
-        wounds: draft.wounds,
-        marks:
-          draft.status === "lastWords" ? Math.min(2, draft.marks) : draft.marks,
-        status: draft.status === "lastWords" ? "dying" : draft.status,
-        gritAvailable: basis.gritAvailable,
-        ownTurn,
-      });
-      if (draft.status === "lastWords")
-        state =
-          basis.survival?.status === "lastWords"
-            ? {
-                ...basis.survival,
-                hp: 0,
-                wounds: draft.wounds,
-                marks: draft.marks,
-                maxHp: basis.maxHp,
-                gritAvailable: basis.gritAvailable,
-              }
-            : enterLastWords(state);
-      if (draft.status === "lastWords") state.marks = draft.marks;
-      validateSurvival(state);
-    }
-  } else {
-    if (actor.type === "character") {
-      state = basis.survival
-        ? {
-            ...basis.survival,
-            hp: basis.hp,
-            ...(basis.hp > 0 ? {status: "active", marks: 0, due: null, choice: null} : basis.survival.status === "active" ? {status: "dying", marks: 0, due: null, choice: null} : {}),
-            maxHp: basis.maxHp,
-            gritAvailable: basis.gritAvailable,
-          }
-        : survivalState({
-            hp: basis.hp,
-            maxHp: basis.maxHp,
-            gritAvailable: basis.gritAvailable,
-          });
-      validateSurvival(state);
-    } else if (basis.hp === 0)
-      throw new Error(
-        "Ordinary recovery cannot revive a defeated creature. Use Correct a mistake to restore an incorrectly recorded state.",
-      );
-    if (draft.kind === "grit") {
-      if (!state || actor.type !== "character") throw new Error("Only a character can spend Grit.");
-      if (basis.gritAvailable < 1) throw new Error("No Grit remains.");
-      if (["lastWords", "dead"].includes(state.status)) throw new Error("Ordinary Grit cannot reverse Last Words or death.");
-      if (Object.values(actor.getFlag(ID, "pendingWounds") ?? {}).some(wound => wound.status !== "resolved")) throw new Error("Resolve the pending wound before spending Grit.");
-      state = { ...state, status: "active", hp: Math.max(basis.hp, recoveryMaximum(basis.maxHp, accounting)), marks: 0, due: null, choice: null, gritAvailable: basis.gritAvailable - 1 };
-      validateSurvival(state);
-      after = state.hp;
-    } else if (draft.kind === "heal") {
-      const plan = healingPlan({
-        amount: draft.amount,
-        current: basis.hp,
-        max: basis.maxHp,
-        unavailableHp: accounting?.unavailableHp ?? 0,
-        lifeResistances: [
-          ...(basis.passiveDefenses?.resistances ?? [])
-            .filter((source) => source.type === "life")
-            .map((source) => source.value),
-          draft.lifeResistance,
-        ],
-        recipientKind: isSummon(actor) ? "summon" : actor.type,
-      });
-      if (!plan.allowed)
-        throw new Error("This target cannot receive ordinary healing.");
-      after = plan.after;
-      if (state) state = receiveHealing({ ...state, ...(basis.recovery !== undefined || state.recovery !== undefined ? {recovery: accounting} : {}) }, plan.restored);
-    } else if (draft.kind === "breath") {
-      if (state) state = safeBreath({ ...state, ...(basis.recovery !== undefined || state.recovery !== undefined ? {recovery: accounting} : {}) });
-      after = state?.hp ?? basis.maxHp;
-    } else {
-      if (!state)
-        throw new Error("Stabilization requires a character survival track.");
-      state = stabilize(state);
-      after = state.hp;
-    }
-  }
-  if (state && (basis.recovery !== undefined || state.recovery !== undefined)) state.recovery = accounting;
-  return { after, state };
+import {assertCurrentGameplayActor} from '../rules/current-character.mjs';
+import {nativeRecoveryState} from '../rules/native-health.mjs';
+import {healingPlan} from '../rules/damage.mjs';
+import {ancestryTraitIds} from '../rules/ancestry.mjs';
+import {isSummon} from '../rules/summon-profile.mjs';
+import {damageBasis} from './damage.mjs';
+import {applyDebtReroll} from './debt-reroll.mjs';
+import {createActionMessage,shouldProcessRequest,ensureAuthorityReady,enqueueCharacterOperation,writeAuthorityDocument} from './authority.mjs';
+const ID='heroes-of-legend';
+/** Current heroes use only Forge recovery; creatures retain simple HP. */
+export function recoveryPreview(actor,basis,draft) {
+ assertCurrentGameplayActor(actor);
+ if(draft.kind==='breath')throw new Error('Use a safe overnight rest; a safe breath does not restore HP.');
+ if(!['heal','grit','stabilize','correct','setHp','debt','dawn'].includes(draft.kind))throw new Error('Unknown recovery operation.');
+ if(actor.type==='character')return nativeRecoveryState(basis,draft,{traitIds:ancestryTraitIds(actor.getFlag(ID,'nativeWorkshop').portable.draft)});
+ if(actor.type!=='creature')throw new Error('Choose a current character or creature.');
+ if(['correct','setHp'].includes(draft.kind)) {
+  if(!Number.isSafeInteger(draft.hp)||draft.hp<0||draft.hp>basis.maxHp)throw new Error('HP must be a whole number within the actor’s maximum.');
+  return {after:draft.hp};
+ }
+ if(draft.kind!=='heal')throw new Error('Only a current character has death rolls, Grit and stabilization.');
+ if(basis.hp===0)throw new Error('Ordinary healing cannot revive a defeated creature. Correct HP only if it was recorded incorrectly.');
+ const healing=healingPlan({amount:draft.amount,current:basis.hp,max:basis.maxHp,recipientKind:isSummon(actor)?'summon':'creature',lifeResistances:[...(basis.passiveDefenses?.resistances??[]).filter(source=>source.type==='life').map(source=>source.value),draft.lifeResistance??0]});
+ if(!healing.allowed)throw new Error('This creature cannot receive ordinary healing.');
+ return {after:healing.after};
 }
-export async function requestRecovery(actor, basis, draft) {
-  await ensureAuthorityReady();
-  return createActionMessage({
-    content: "Recovery adjustment requested.",
-    whisper: game.users.filter((u) => u.isGM || u.id === game.user.id).map((u) => u.id),
-    flags: {
-      [ID]: { recoveryRequest: { actorUuid: actor.uuid, basis, draft } },
-    },
-  });
+export async function requestRecovery(actor,basis,draft) {
+ assertCurrentGameplayActor(actor);
+ if(!actor.testUserPermission(game.user,'OWNER'))throw new Error('Only this actor’s owner can record recovery.');
+ await ensureAuthorityReady({shared:true,coordinated:true});
+ return createActionMessage({content:'Recovery requested.',whisper:game.users.filter(user=>user.isGM||user.id===game.user.id).map(user=>user.id),flags:{[ID]:{recoveryRequest:{actorUuid:actor.uuid,basis,draft}}}},{shared:true,coordinated:true});
 }
-export function resolveRecoveryRequest(id) {
-  return enqueueCharacterOperation(() => apply(id), { requestId: id });
-}
+export function resolveRecoveryRequest(id){return enqueueCharacterOperation(()=>apply(id),{requestId:id});}
 async function apply(id) {
-  const message = game.messages.get(id),
-    request = message?.getFlag(ID, "recoveryRequest");
-  const actor =
-    typeof request?.actorUuid === "string"
-      ? await fromUuid(request.actorUuid)
-      : null;
-  if (!message?.author || !actor?.testUserPermission(message.author, "OWNER"))
-    throw new Error("Only this character’s owner can record recovery or corrections.");
-  const basis = damageBasis(actor),
-    signature = JSON.stringify(request),
-    receipt = actor.getFlag(ID, "operationReceipts")?.[id];
-  if (request.draft?.rollMessageId || request.draft?.kind === "debt-result") {
-    assertNoPendingTurn(actor);
-    return applyDebtReroll(actor, message, request, basis, signature);
-  }
-  if (receipt?.applied) {
-    if (receipt.request !== signature || receipt.authorId !== message.author.id)
-      throw new Error("The completed recovery request changed.");
-    return { status: "complete", replay: true };
-  }
-  assertNoPendingTurn(actor);
-  if (JSON.stringify(basis) !== JSON.stringify(request.basis))
-    throw new Error(
-      "HP, survival or defenses changed. Review recovery again.",
-    );
-  const plan = recoveryPreview(actor, basis, request.draft);
-  const changes = {
-    "system.health.value": plan.after,
-    [`flags.${ID}.damageRevision`]: basis.revision + 1,
-    [`flags.${ID}.recoveryEvents.${id}`]: {
-      kind: request.draft.kind,
-      reason: typeof request.draft.reason === "string" ? request.draft.reason : "",
-      authorId: message.author.id,
-      before: basis,
-      after: plan,
-    },
-    [`flags.${ID}.operationReceipts.${id}`]: {
-      applied: true,
-      authorId: message.author.id,
-      request: signature,
-    },
-  };
-  if (request.draft.kind === "grit") changes["system.grit.spent"] = actor.system.grit.spent + 1;
-  if (plan.recovery) changes["system.recovery"] = plan.recovery;
-  if (plan.state) { changes[`flags.${ID}.survival`] = plan.state; changes[`flags.${ID}.deathMarks`] = plan.state.marks; }
-  else changes[`flags.${ID}.creatureDefeated`] = plan.after === 0;
-  actor.validate({
-    changes: foundry.utils.expandObject(changes),
-    strict: true,
-    fallback: false,
-  });
-  await writeAuthorityDocument(actor, changes);
-  await message.update({
-    content: `Recovery recorded: HP ${basis.hp} → ${plan.after}. ${request.draft.kind === "debt" ? "The Debt Comes Due: reroll the original attribute roll manually with the same attribute and Boons/Banes; use the new result, including retained natural dice. The paid HP remains unavailable until next dawn." : request.draft.kind === "dawn" ? "Next dawn: HP is available for ordinary recovery again; no HP was restored." : request.draft.kind === "grit" ? "One Grit spent; death marks cleared." : "Spent Grit remains."} Wound records remain.`,
-  });
-  return { status: "complete", replay: false };
+ const message=game.messages.get(id),request=message?.getFlag(ID,'recoveryRequest'),actor=await fromUuid(request?.actorUuid??'');
+ if(!message?.author||!actor?.testUserPermission(message.author,'OWNER'))throw new Error('Only this actor’s owner can record recovery.');
+ assertCurrentGameplayActor(actor);
+ const basis=damageBasis(actor),signature=JSON.stringify(request),prior=actor.getFlag(ID,'operationReceipts')?.[id];
+ if(request.draft?.rollMessageId||request.draft?.kind==='debt-result')return applyDebtReroll(actor,message,request,basis,signature);
+ if(prior?.applied){if(prior.request!==signature||prior.authorId!==message.author.id)throw new Error('The completed recovery request changed.');return {status:'complete',replay:true};}
+ if(JSON.stringify(basis)!==JSON.stringify(request.basis))throw new Error('HP or defenses changed. Review recovery again.');
+ const plan=recoveryPreview(actor,basis,request.draft),changes={'system.health.value':plan.after,[`flags.${ID}.damageRevision`]:basis.revision+1,[`flags.${ID}.recoveryEvents.${id}`]:{kind:request.draft.kind,authorId:message.author.id,before:basis,after:plan},[`flags.${ID}.operationReceipts.${id}`]:{applied:true,authorId:message.author.id,request:signature}};
+ if(plan.forgeVitals)changes[`flags.${ID}.forgeVitals`]=plan.forgeVitals;
+ if(plan.gritSpent!==undefined)changes['system.grit.spent']=plan.gritSpent;
+ if(plan.recovery)changes['system.recovery']=plan.recovery;
+ if(actor.type==='creature')changes[`flags.${ID}.creatureDefeated`]=plan.after===0;
+ actor.validate({changes:foundry.utils.expandObject(changes),strict:true,fallback:false});await writeAuthorityDocument(actor,changes);
+ await message.update({content:`Recovery recorded: HP ${basis.hp} → ${plan.after}.`});return {status:'complete',replay:false};
 }
-export function registerRecoveryRequests() {
-  Hooks.on("createChatMessage", (message) => {
-    if (message.getFlag(ID, "recoveryRequest") && shouldProcessRequest(message))
-      resolveRecoveryRequest(message.id).catch(async (error) => {
-        ui.notifications.error(error.message);
-        await message.update({
-          content: `Recovery needs attention: ${foundry.utils.escapeHTML(error.message)}`,
-        });
-      });
-  });
-}
+export function registerRecoveryRequests(){Hooks.on('createChatMessage',message=>{if(message.getFlag(ID,'recoveryRequest')&&shouldProcessRequest(message))resolveRecoveryRequest(message.id).catch(error=>ui.notifications.error(error.message));});}

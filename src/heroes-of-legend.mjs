@@ -1,13 +1,15 @@
+import "./services/explicit-damage.mjs";
+import { registerAuthority } from "./services/authority.mjs";
+import { registerConsumableSettings } from "./services/consumables.mjs";
+import { registerTorches } from "./services/torches.mjs";
+import {registerNativeWorkshopRequests} from "./services/native-workshop-coordinator.mjs";
 import {registerSummonLifecycleRequests} from "./services/summon-lifecycle.mjs";
 import {registerNativeMovement} from "./services/native-movement.mjs";
 import { registerHOLTheme } from "./applications/theme.mjs";
 import { registerItemIcons } from "./services/item-icons.mjs";
 import { registerResupplyRequests } from "./services/resupply.mjs";
 import { registerCraftingRequests } from "./services/crafting.mjs";
-import { registerWoundTreatmentRequests } from "./services/wound-treatment.mjs";
 import { registerRulesLibrary } from "./applications/journals.mjs";
-import { registerSurvivalRequests } from "./services/survival.mjs";
-import { registerWoundRequests } from "./services/wounds.mjs";
 import { registerRecoveryRequests } from "./services/recovery.mjs";
 import { registerDamageRequests } from "./services/damage.mjs";
 import { registerEquipmentRequests } from "./services/equipment.mjs";
@@ -26,7 +28,6 @@ import {
 import { renderAttackCard } from "./dialogs/defender-choice.mjs";
 import { CreatureData } from "./models/creature.mjs";
 import { CreatureSheet } from "./sheets/creature.mjs";
-import { registerAbilityRequests } from "./services/abilities.mjs";
 import { HOLActor } from "./documents/actor.mjs";
 import {
   registerHOLStatuses,
@@ -35,22 +36,23 @@ import {
 import { HOLCombat } from "./documents/combat.mjs";
 import { registerCombatRequests } from "./services/combat.mjs";
 import { renderHOLCombatTracker } from "./applications/combat-tracker.mjs";
-import { registerAdvancement } from "./services/advancement.mjs";
-import { registerCreationAuthority } from "./services/creation.mjs";
 import { registerLanguageSettings } from "./applications/languages.mjs";
 import { EquipmentData } from "./models/equipment.mjs";
 import { EquipmentSheet } from "./sheets/equipment.mjs";
 import { registerTimingPrototype } from "./prototypes/timing.mjs";
-import { registerAuthorityPrototype } from "./prototypes/authority.mjs";
 import { renderRollSummary } from "./services/roll.mjs";
 import { CharacterData } from "./models/character.mjs";
 import { AbilityData } from "./models/ability.mjs";
-import { CharacterSheet } from "./sheets/character.mjs";
+import { WorkshopCharacterSheet, bindNativeWorkshopChat } from "./sheets/workshop-character.mjs";
 import { AbilitySheet } from "./sheets/ability.mjs";
 /** Native V14 package entry point. No legacy compatibility layer. */
 export const SYSTEM_ID = "heroes-of-legend";
 
 Hooks.once("init", () => {
+  CONFIG.time.roundTime = 6;
+  registerAuthority();
+  registerConsumableSettings();
+  registerTorches();
   CONFIG.Actor.documentClass = HOLActor;
   registerHOLStatuses();
   registerNativeMovement();
@@ -63,18 +65,13 @@ Hooks.once("init", () => {
   registerPotionRequests();
   registerItemShortcuts();
   registerRecoveryRequests();
-  registerWoundRequests();
-  registerWoundTreatmentRequests();
-  registerSurvivalRequests();
+  registerNativeWorkshopRequests();
   CONFIG.Combat.documentClass = HOLCombat;
   registerCombatRequests();
   registerSummonLifecycleRequests();
-  registerAuthorityPrototype();
-  registerCreationAuthority();
   registerLanguageSettings();
   registerRulesLibrary();
   registerHOLTheme();
-  registerAdvancement();
   // Explicit actions do not require an automation management panel.
   registerTimingPrototype();
   CONFIG.Actor.dataModels.character = CharacterData;
@@ -86,9 +83,8 @@ Hooks.once("init", () => {
     types: ["creature"],
     makeDefault: true,
   });
-  sheets.registerSheet(Actor, SYSTEM_ID, CharacterSheet, {
-    types: ["character"],
-    makeDefault: true,
+  sheets.registerSheet(Actor, SYSTEM_ID, WorkshopCharacterSheet, {
+    types: ["character"], makeDefault: true, label: "Character Workshop",
   });
   sheets.registerSheet(Item, SYSTEM_ID, AbilitySheet, {
     types: ["ability"],
@@ -119,11 +115,4 @@ Hooks.on("renderChatMessageHTML", renderAttackCard);
 Hooks.on("renderChatMessageHTML", renderPlayerBasicMeleeCard);
 
 
-Hooks.once("ready",()=>{void (async()=>{
-  const {linkCharacterTokens}=await import("./services/character-token-links.mjs");
-  await linkCharacterTokens();
-  if(game.user.isGM&&game.users.activeGM?.isSelf){
-    const {repairRecoveredWoundEffects}=await import("./services/wound-treatment.mjs");
-    for(const actor of game.actors)await repairRecoveredWoundEffects(actor);
-  }
-})().catch(error=>{console.error("heroes-of-legend | Character recovery",error);ui.notifications.error("Character recovery could not finish. Existing token data is preserved; see the console for details.");});});
+Hooks.on("renderChatMessageHTML", bindNativeWorkshopChat);

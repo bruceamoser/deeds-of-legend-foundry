@@ -1,0 +1,66 @@
+{
+  "_key": "!items!6320ba304b53c54e",
+  "_id": "6320ba304b53c54e",
+  "name": "Locate Creature",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 10 minutes</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One creature you personally know within 100 squares</dd></div><div><dt>Duration</dt><dd>10 minutes</dd></div></dl><p>Sense its direction and whether it is moving closer or farther away. You need a personal possession it used within the last month. The reading follows the creature&#39;s current body.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:farseeing:4",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:farseeing:4",
+        "level": 1,
+        "cost": 2,
+        "action": "Ritual · 10 minutes",
+        "sp": 2,
+        "range": "One creature you personally know within 100 squares",
+        "duration": "10 minutes",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Sense its direction and whether it is moving closer or farther away. You need a personal possession it used within the last month. The reading follows the creature's current body.",
+        "improves": null,
+        "requires": [
+          "farseeing:0"
+        ],
+        "bookId": "farseeing"
+      },
+      "spell": {
+        "id": "spell:farseeing:4",
+        "name": "Locate Creature",
+        "bookId": "farseeing",
+        "page": "4",
+        "section": "II",
+        "sp": 2,
+        "action": "Ritual",
+        "actionText": "Ritual · 10 minutes",
+        "ritualTime": "10 minutes",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One creature you personally know within 100 squares",
+        "duration": "10 minutes",
+        "effect": "Sense its direction and whether it is moving closer or farther away. You need a personal possession it used within the last month. The reading follows the creature's current body."
+      }
+    }
+  },
+  "effects": []
+}

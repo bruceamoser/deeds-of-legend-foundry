@@ -1,0 +1,47 @@
+{
+  "_key": "!items!9cdcee140cd08568",
+  "_id": "9cdcee140cd08568",
+  "name": "Running Vault III",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Running Vault ignores movement reactions during the jump.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "athletics:leaping:3",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "athletics:leaping:3",
+        "level": 1,
+        "cost": 2,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Running Vault ignores movement reactions during the jump.",
+        "improves": "athletics:leaping:1",
+        "requires": [
+          "athletics:leaping:2"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

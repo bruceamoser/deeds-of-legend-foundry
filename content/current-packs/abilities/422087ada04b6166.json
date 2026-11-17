@@ -1,0 +1,47 @@
+{
+  "_key": "!items!422087ada04b6166",
+  "_id": "422087ada04b6166",
+  "name": "Steel across the Gap",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Agility</dd></div></dl><p>Main Action · Agility. Jump up to 4 squares to a visible legal landing without movement reactions. At any point during the jump, throw one held weapon at up to two visible enemies within 6 squares of you and 2 squares of each other. Roll once; each takes 3/5/7 physical damage. The weapon lands beside the second target, or beside the only target if there is one.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "agility",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "marksmanship:thrown-weapons:7",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "mastery",
+        "nodeId": "marksmanship:thrown-weapons:7",
+        "level": 7,
+        "cost": 5,
+        "action": "Main Action",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": "Agility",
+        "defenseAttribute": null,
+        "effect": "Main Action · Agility. Jump up to 4 squares to a visible legal landing without movement reactions. At any point during the jump, throw one held weapon at up to two visible enemies within 6 squares of you and 2 squares of each other. Roll once; each takes 3/5/7 physical damage. The weapon lands beside the second target, or beside the only target if there is one.",
+        "improves": null,
+        "requires": [
+          "marksmanship:thrown-weapons:6"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

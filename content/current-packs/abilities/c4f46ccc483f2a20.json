@@ -1,0 +1,65 @@
+{
+  "_key": "!items!c4f46ccc483f2a20",
+  "_id": "c4f46ccc483f2a20",
+  "name": "Detect Evil and Good",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>Visible creatures or objects within 6 squares</dd></div><div><dt>Duration</dt><dd>Until your next turn ends</dd></div></dl><p>Perceive the presence of summoned forms, undead and active spirit bindings. Learn which visible targets bear those properties. Their motives are discovered through interaction.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:detection:3",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:detection:3",
+        "level": 1,
+        "cost": 2,
+        "action": "Main Action",
+        "sp": 1,
+        "range": "Visible creatures or objects within 6 squares",
+        "duration": "Until your next turn ends",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Perceive the presence of summoned forms, undead and active spirit bindings. Learn which visible targets bear those properties. Their motives are discovered through interaction.",
+        "improves": null,
+        "requires": [
+          "detection:0"
+        ],
+        "bookId": "detection"
+      },
+      "spell": {
+        "id": "spell:detection:3",
+        "name": "Detect Evil and Good",
+        "bookId": "detection",
+        "page": "3",
+        "section": "II",
+        "sp": 1,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Visible creatures or objects within 6 squares",
+        "duration": "Until your next turn ends",
+        "effect": "Perceive the presence of summoned forms, undead and active spirit bindings. Learn which visible targets bear those properties. Their motives are discovered through interaction."
+      }
+    }
+  },
+  "effects": []
+}

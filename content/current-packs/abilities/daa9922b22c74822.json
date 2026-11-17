@@ -1,0 +1,65 @@
+{
+  "_key": "!items!daa9922b22c74822",
+  "_id": "daa9922b22c74822",
+  "name": "Water Walk",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>Up to three willing creatures within 3 squares</dd></div><div><dt>Duration</dt><dd>10 minutes</dd></div></dl><p>Let the recipients walk on calm or flowing liquid as though on firm ground, using normal movement. Waves and hazardous liquids retain their ordinary movement and damage effects. A recipient may end its own benefit with a Maneuver.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:water:5",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:water:5",
+        "level": 1,
+        "cost": 2,
+        "action": "Main Action",
+        "sp": 2,
+        "range": "Up to three willing creatures within 3 squares",
+        "duration": "10 minutes",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Let the recipients walk on calm or flowing liquid as though on firm ground, using normal movement. Waves and hazardous liquids retain their ordinary movement and damage effects. A recipient may end its own benefit with a Maneuver.",
+        "improves": null,
+        "requires": [
+          "water:1"
+        ],
+        "bookId": "water"
+      },
+      "spell": {
+        "id": "spell:water:5",
+        "name": "Water Walk",
+        "bookId": "water",
+        "page": "5",
+        "section": "III",
+        "sp": 2,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Up to three willing creatures within 3 squares",
+        "duration": "10 minutes",
+        "effect": "Let the recipients walk on calm or flowing liquid as though on firm ground, using normal movement. Waves and hazardous liquids retain their ordinary movement and damage effects. A recipient may end its own benefit with a Maneuver."
+      }
+    }
+  },
+  "effects": []
+}

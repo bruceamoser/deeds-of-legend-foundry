@@ -1,0 +1,47 @@
+{
+  "_key": "!items!23265dfda4e47d85",
+  "_id": "23265dfda4e47d85",
+  "name": "A Line for Everyone III",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>A Line for Everyone can serve up to ten creatures. With secure anchors at both ends that you can physically reach, it can form a supported crossing over open space; it needs enough rope and supports for the load.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "athletics:climbing:6",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "athletics:climbing:6",
+        "level": 3,
+        "cost": 4,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "A Line for Everyone can serve up to ten creatures. With secure anchors at both ends that you can physically reach, it can form a supported crossing over open space; it needs enough rope and supports for the load.",
+        "improves": "athletics:climbing:4",
+        "requires": [
+          "athletics:climbing:5"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

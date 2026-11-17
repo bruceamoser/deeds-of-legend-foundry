@@ -1,4 +1,3 @@
-import {abilityItemSource} from "../rules/item-construction.mjs";
 import {abilityRollConfiguration,abilityCatalogRecord} from "../rules/ability-roll.mjs";
 import {attackEquipmentSnapshot} from "./attack-equipment.mjs";
 import {rollReferenceApplies,reactionTrigger} from "../rules/ability-roll-relevance.mjs";
@@ -67,18 +66,20 @@ export async function postAbilityReference(item,{weaponItemId=null}={}) {
   if (!liveAbility(item) || !item.testUserPermission(game.user, "OWNER"))
     throw new Error("Only an owned ability can be posted to chat.");
   const escape = foundry.utils.escapeHTML;
-  const {loadCatalogs}=await import("./catalog.mjs");
-  const catalogs = await loadCatalogs();
+  const {loadWorkshopCatalogs}=await import("./catalog.mjs");
+  const workshop = Boolean(item.getFlag(ID,"spell") || item.getFlag(ID,"grantKind") === "nativeWorkshop" || item.getFlag(ID,"workshopRecord"));
+  const catalogs = await loadWorkshopCatalogs();
   const record = abilityCatalogRecord(item, catalogs.choices);
-  const current = record ? abilityItemSource(record, {sourceCommit: catalogs.commit}) : null;
-  const description = current?.system.description ?? item.system.description ?? "";
+  const learned = new Set(item.actor.getFlag(ID, "forgeLearned") ?? []);
+  const improvements = workshop ? (catalogs.forge?.nodes ?? []).filter(node=>learned.has(node.id) && node.improves === item.getFlag(ID,"catalogId")) : [];
+  const description = (item.system.description ?? "") + improvements.map(node=>`<h4>${escape(node.name)}</h4><p>${escape(node.effect)}</p>`).join("");
   const parsed = new DOMParser().parseFromString(description, "text/html");
   const trigger=reactionTrigger(record);
-  const equipment=attackEquipmentSnapshot(item.actor,abilityRollConfiguration(item,record),weaponItemId);
+  const equipment=workshop ? null : attackEquipmentSnapshot(item.actor,abilityRollConfiguration(item,record),weaponItemId);
   const operative = parsed.querySelector(".hol-reference-rules")?.innerHTML ?? parsed.body.innerHTML;
   const reference = { itemUuid: item.uuid, name: item.name, ...(equipment?{equipment}:{}),
-    source: structuredClone(current?.flags[ID].source ?? item.getFlag(ID, "source") ?? null),
-    sourceCommit: current ? catalogs.commit : item.getFlag(ID, "sourceCommit") ?? null,
+    source: structuredClone(item.getFlag(ID, "source") ?? null),
+    sourceCommit: item.getFlag(ID, "sourceCommit") ?? null,
     trigger, damageText: new DOMParser().parseFromString(operative, "text/html").body.textContent };
   const content = `<section class="hol-reference-card hol-chat-card"><header class="hol-chat-header"><h3>${escape(equipment?.name??item.name)}</h3></header>${equipment?`<div class="hol-chat-bar">${escape(item.name)}</div>`:""}${trigger?`<p class="hol-chat-trigger"><strong>Trigger:</strong> ${escape(trigger)}</p>`:""}<div class="hol-chat-effect">${safeReferenceHTML(operative)}</div><footer class="hol-chat-footer"><a class="content-link" data-link data-type="Item" data-uuid="${escape(item.uuid)}">Full ability details</a></footer></section>`;
   return ChatMessage.create(ChatMessage.applyMode({

@@ -1,0 +1,351 @@
+{
+  "_key": "!actors!c2d84c64634110d2",
+  "_id": "c2d84c64634110d2",
+  "name": "Zombie Brute",
+  "type": "creature",
+  "img": "systems/heroes-of-legend/assets/creatures/f57d228a0557b51168ee4d7ef830c48f1786f4e1d5ff948d0f32446cee5611ff.webp",
+  "prototypeToken": {
+    "width": 2,
+    "height": 2,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/f57d228a0557b51168ee4d7ef830c48f1786f4e1d5ff948d0f32446cee5611ff.webp"
+    }
+  },
+  "system": {
+    "schemaVersion": 1,
+    "attributes": {
+      "brawn": {
+        "base": 2
+      },
+      "fortitude": {
+        "base": 2
+      },
+      "agility": {
+        "base": 0
+      },
+      "guile": {
+        "base": -1
+      },
+      "knowledge": {
+        "base": -1
+      },
+      "reason": {
+        "base": 0
+      }
+    },
+    "attributesSource": "Brawn +2; Fortitude +2; Agility +0; Guile -1; Knowledge -1; Reason +0",
+    "health": {
+      "value": 28,
+      "baseMax": 28,
+      "sourceText": "28"
+    },
+    "cv": 24,
+    "speed": 4,
+    "speedSource": "4",
+    "alternateSpeeds": [],
+    "size": 2,
+    "sizeLabel": "2x2 squares",
+    "sizeSource": "2 (2x2 squares)",
+    "footprint": {
+      "width": 2,
+      "height": 2
+    },
+    "armor": 1,
+    "armorMarker": "",
+    "armorSource": "1",
+    "stability": 1,
+    "threat": {
+      "boons": 0,
+      "banes": 1,
+      "sourceText": "1 Bane"
+    },
+    "evasion": {
+      "boons": 1,
+      "banes": 0,
+      "sourceText": "1 Boon"
+    },
+    "weaknesses": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "resistances": {
+      "numeric": [
+        {
+          "type": "Physical",
+          "value": 1
+        }
+      ],
+      "special": [],
+      "sourceText": "Physical (1)"
+    },
+    "immunities": [
+      "Bleeding",
+      "Poisoned",
+      "Asleep"
+    ],
+    "basicMelee": {
+      "weak": 5,
+      "standard": 3,
+      "strong": 2,
+      "defenseAttribute": "agility",
+      "orientation": "player-defense"
+    },
+    "actions": {
+      "orientation": "player-defense",
+      "entries": [
+        {
+          "id": "main-0",
+          "category": "main",
+          "name": "Basic Melee",
+          "abilityId": "",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "5",
+            "standard": "3",
+            "strong": "2"
+          },
+          "effect": "5/3/2",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "main-1",
+          "category": "main",
+          "name": "Deadweight slam",
+          "abilityId": "",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "8 + Prone",
+            "standard": "5",
+            "strong": "3"
+          },
+          "effect": "8 + Prone / 5 / 3",
+          "referenceMarkdown": "### Deadweight slam\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Prone."
+        },
+        {
+          "id": "maneuver-0",
+          "category": "maneuver",
+          "name": "Shoulder Through",
+          "abilityId": "",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Push one adjacent target 1; Stability applies.",
+          "referenceMarkdown": "### Shoulder Through\n\n*It lowers its weight and makes the space in front of it suddenly too small.*\n\nPush one adjacent creature 1 square. Apply Stability and normal collision rules. Once per turn; no separate damage."
+        },
+        {
+          "id": "maneuver-1",
+          "category": "maneuver",
+          "name": "Defend",
+          "abilityId": "",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "+1 Bane",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "reaction-0",
+          "category": "reaction",
+          "name": "Clinging Recoil",
+          "abilityId": "monster-clinging-recoil",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "After adjacent attack deals HP damage: attacker gains Slowed 2.",
+          "referenceMarkdown": "### Clinging Recoil\n\n*A ruined hand closes on cloth and flesh even as the blow tears through the corpse.*\n\nAfter an adjacent attacker’s attack resolves and deals HP damage to this creature, apply Slowed 2 to that attacker. This creature must survive and remain capable. No trigger from a free attack or another retaliatory effect. This grants no grapple, extra damage or equipment destruction."
+        },
+        {
+          "id": "reaction-1",
+          "category": "reaction",
+          "name": "Opportunity Attack",
+          "abilityId": "",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Basic Melee",
+          "referenceMarkdown": ""
+        }
+      ],
+      "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates a complete outcome. All attacks use printed Threat unless stated otherwise.",
+      "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Deadweight slam | Agility | 8 + Prone / 5 / 3 |",
+      "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Shoulder Through | Push one adjacent target 1; Stability applies. |\n| Defend | +1 Bane |",
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Clinging Recoil | After adjacent attack deals HP damage: attacker gains Slowed 2. |\n| Opportunity Attack | Basic Melee |"
+    },
+    "details": {
+      "flavorMarkdown": "*A huge laborer's corpse still drags the quarry chains wound around its shoulders. Its movements are slow until something stands in its path.*",
+      "specialtyMarkdown": "### Deadweight slam\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** physical.\n\n**Weak defense:** Prone.\n\n### Shoulder Through\n\n*It lowers its weight and makes the space in front of it suddenly too small.*\n\nPush one adjacent creature 1 square. Apply Stability and normal collision rules. Once per turn; no separate damage.\n\n### Clinging Recoil\n\n*A ruined hand closes on cloth and flesh even as the blow tears through the corpse.*\n\nAfter an adjacent attacker’s attack resolves and deals HP damage to this creature, apply Slowed 2 to that attacker. This creature must survive and remain capable. No trigger from a free attack or another retaliatory effect. This grants no grapple, extra damage or equipment destruction.",
+      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until its next turn. Combines with Evasion through normal Boon/Bane rules; repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature; spend its Reaction before the provoking action resolves. That action continues if capable.\n\n**Lifeless Body — Passive:** Does not breathe or eat; only its listed immunities apply.\n\n**Heavy Frame — Passive:** Stability 1; an explicit trait, not a bonus calculated from Size.\n\n**Healing:** Healing-harmed: ordinary healing resolves as Life damage instead; no beneficial riders.\n\n**Against offensive healing:** Its controller uses Fortitude defense when player-controlled; a player attacking it rolls only their attack.\n\n**Senses:** Dark sight 6 squares; ordinary hearing.\n\n**Tactics and retreat:** Knock down the nearest obstruction and shoulder it aside. Corners and scattered obstacles expose its slow pursuit.\n\n**Encounter and conversation:** It repeats its last hauling route and can be diverted by restoring the missing work bell.\n\n**Habitat:** Crypt; burial ground; ruined settlement · **Communication:** Common\n\n**Loot:** Choose possessions or a clue in its lair that fits the adventure. If a body part is useful or valuable, state its use and value before awarding it.\n\n**Summoning:** Undead 3 — [player reference](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/summons/zombie-brute.md).",
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-zombie-brute\n\n\n**Category:** Undead · **Role:** Knockdown fighter · **CV:** 24\n\n### CV worksheet\n\n**Reference damage:** 3/5/8\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.4\n\n**Action review (#1279):** U 1.3 → 1.4: Maneuver allowance +0, Reaction allowance +0.1. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.\n\n**Regeneration per turn:** 0\n\nReference I=4.596, O=4.951. Uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/encounters.md). Utility is provisional and does not simulate control, positioning or summon choices.\n\n**Ability sources:** [barrel through](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/barrel-through.md), [Clinging Recoil](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/clinging-recoil.md), [knockdown strike](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/knockdown-strike.md), [lifeless body](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/lifeless-body.md).\n\n**Coverage reference:** [Pathfinder family survey](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/family-survey.md); original HOL prose and mechanics.\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/roster.md) · [Stability](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/rules/stability.md)"
+    },
+    "biography": ""
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-zombie-brute",
+        "asset": "assets/creatures/f57d228a0557b51168ee4d7ef830c48f1786f4e1d5ff948d0f32446cee5611ff.webp",
+        "sha256": "280e02fca932deb8a4a7100c029a9d32ad4fd363fb0f6ef02778a9aac177746b",
+        "sourceSha256": "f57d228a0557b51168ee4d7ef830c48f1786f4e1d5ff948d0f32446cee5611ff",
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
+      "catalogId": "creature-zombie-brute",
+      "source": {
+        "path": "design/bestiary/creatures/zombie-brute.md",
+        "sha256": "ba195dfee72382ce8096b95f528a4b276e2d8db652e0409182ff1f3210e5d791"
+      },
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Printed profile · specialty automation pending",
+      "specialtyAutomation": "pending",
+      "classification": {
+        "category": "Undead",
+        "role": "Knockdown fighter",
+        "cv": 24
+      },
+      "family": "Zombies",
+      "abilitySources": [
+        {
+          "label": "barrel through",
+          "id": "monster-barrel-through",
+          "path": "design/monster-abilities/barrel-through.md",
+          "sha256": "2817154accc7d427340cfcaa6c07447067dad0bf329628f615774d8d1086ce59"
+        },
+        {
+          "label": "Clinging Recoil",
+          "id": "monster-clinging-recoil",
+          "path": "design/monster-abilities/clinging-recoil.md",
+          "sha256": "57afa37d2ce3e0d92be90bc698dde273499d9e7474fd303e627b9ec7405edf1f"
+        },
+        {
+          "label": "knockdown strike",
+          "id": "monster-knockdown-strike",
+          "path": "design/monster-abilities/knockdown-strike.md",
+          "sha256": "14ed0e2bc7179f15ebab748a8ae9c27b9cf38f7e013790e84cf0a85b839a1961"
+        },
+        {
+          "label": "lifeless body",
+          "id": "monster-lifeless-body",
+          "path": "design/monster-abilities/lifeless-body.md",
+          "sha256": "248c16c6e641d2042cd94a05e7e8bfce03b5177f4f57cda241b46d9b16de4d81"
+        }
+      ],
+      "monsterAbilityTemplates": [
+        {
+          "id": "monster-barrel-through",
+          "path": "design/monster-abilities/barrel-through.md",
+          "sha256": "2817154accc7d427340cfcaa6c07447067dad0bf329628f615774d8d1086ce59",
+          "name": "Shoulder Through",
+          "action": "Maneuver",
+          "flavorMarkdown": "*It lowers its weight and makes the space in front of it suddenly too small.*",
+          "rulesMarkdown": "Push one adjacent creature 1 square. Apply Stability and normal collision rules. Once per turn; no separate damage.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Shoulder Through\n\n*It lowers its weight and makes the space in front of it suddenly too small.*\n\n## Rules\n\n**ID:** monster-barrel-through\n\n\n**Action:** Maneuver\n\nPush one adjacent creature 1 square. Apply Stability and normal collision rules. Once per turn; no separate damage.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/barrel-through.md",
+            "sha256": "2817154accc7d427340cfcaa6c07447067dad0bf329628f615774d8d1086ce59"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-clinging-recoil",
+          "path": "design/monster-abilities/clinging-recoil.md",
+          "sha256": "57afa37d2ce3e0d92be90bc698dde273499d9e7474fd303e627b9ec7405edf1f",
+          "name": "Clinging Recoil",
+          "action": "Reaction",
+          "flavorMarkdown": "*Something catches the striking limb: a clutching hand, a string of slime or a fold of adhesive flesh that drags at the next hurried step.*",
+          "rulesMarkdown": "After an adjacent attacker’s attack resolves and deals HP damage to this creature, apply Slowed 2 to that attacker. This creature must survive and remain capable. No trigger from a free attack or another retaliatory effect. This grants no grapple, extra damage or equipment destruction.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Clinging Recoil\n\n*Something catches the striking limb: a clutching hand, a string of slime or a fold of adhesive flesh that drags at the next hurried step.*\n\n## Rules\n\n**ID:** monster-clinging-recoil\n\n**Action:** Reaction\n\nAfter an adjacent attacker’s attack resolves and deals HP damage to this creature, apply Slowed 2 to that attacker. This creature must survive and remain capable. No trigger from a free attack or another retaliatory effect. This grants no grapple, extra damage or equipment destruction.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/clinging-recoil.md",
+            "sha256": "57afa37d2ce3e0d92be90bc698dde273499d9e7474fd303e627b9ec7405edf1f"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-knockdown-strike",
+          "path": "design/monster-abilities/knockdown-strike.md",
+          "sha256": "14ed0e2bc7179f15ebab748a8ae9c27b9cf38f7e013790e84cf0a85b839a1961",
+          "name": "Knockdown Strike",
+          "action": "Main Action",
+          "flavorMarkdown": "*The target’s footing gives way beneath the force of the blow.*",
+          "rulesMarkdown": "Apply Prone only at the printed outcomes. Stability does not prevent Prone. Standing costs 2 squares of movement; no extra attack modifier is added.\n\nActual damage, targeting and defense attribute are printed on the creature card.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Knockdown Strike\n\n*The target’s footing gives way beneath the force of the blow.*\n\n## Rules\n\n**ID:** monster-knockdown-strike\n\n\n**Action:** Main Action\n\nApply Prone only at the printed outcomes. Stability does not prevent Prone. Standing costs 2 squares of movement; no extra attack modifier is added.\n\nActual damage, targeting and defense attribute are printed on the creature card.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/knockdown-strike.md",
+            "sha256": "14ed0e2bc7179f15ebab748a8ae9c27b9cf38f7e013790e84cf0a85b839a1961"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-lifeless-body",
+          "path": "design/monster-abilities/lifeless-body.md",
+          "sha256": "248c16c6e641d2042cd94a05e7e8bfce03b5177f4f57cda241b46d9b16de4d81",
+          "name": "Lifeless Body",
+          "action": "Passive",
+          "flavorMarkdown": "*Nothing breathes beneath the torn coat; nothing living looks through the visor.*",
+          "rulesMarkdown": "The card must list its exact condition immunities; this trait grants no additional unlisted ones. It does not breathe or need food. Undead entries marked healing-harmed take a healing result as Life damage; constructs marked repair-only do not regain HP from ordinary healing. Neither rule prevents physical attacks from dealing their normal minimum damage.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Lifeless Body\n\n*Nothing breathes beneath the torn coat; nothing living looks through the visor.*\n\n## Rules\n\n**ID:** monster-lifeless-body\n\n\n**Action:** Passive\n\nThe card must list its exact condition immunities; this trait grants no additional unlisted ones. It does not breathe or need food. Undead entries marked healing-harmed take a healing result as Life damage; constructs marked repair-only do not regain HP from ordinary healing. Neither rule prevents physical attacks from dealing their normal minimum damage.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/lifeless-body.md",
+            "sha256": "248c16c6e641d2042cd94a05e7e8bfce03b5177f4f57cda241b46d9b16de4d81"
+          },
+          "automation": "pending"
+        }
+      ],
+      "summoning": {
+        "eligible": true,
+        "summonId": "summon-zombie-brute",
+        "path": "design/bestiary/summons/zombie-brute.md",
+        "eligibility": "Undead 3",
+        "sourceText": "Undead 3 — [player reference](../summons/zombie-brute.md)."
+      }
+    }
+  }
+}

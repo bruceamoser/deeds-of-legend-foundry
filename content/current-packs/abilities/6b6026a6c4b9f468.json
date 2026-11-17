@@ -1,0 +1,47 @@
+{
+  "_key": "!items!6b6026a6c4b9f468",
+  "_id": "6b6026a6c4b9f468",
+  "name": "Mind Palace",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Passive. Increase maximum SP by another 4; this path now grants +20 maximum SP. Once between safe overnight rests, when you begin a ritual you have learned, reduce its total printed SP cost by 2, minimum 0. For a ritual with daily payments, reduce only its first payment. Declare before beginning; interruption still spends that benefit. Work time, materials and other requirements remain.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spellcraft:mind-capacity:7",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "training",
+        "nodeId": "spellcraft:mind-capacity:7",
+        "level": 7,
+        "cost": 5,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Passive. Increase maximum SP by another 4; this path now grants +20 maximum SP. Once between safe overnight rests, when you begin a ritual you have learned, reduce its total printed SP cost by 2, minimum 0. For a ritual with daily payments, reduce only its first payment. Declare before beginning; interruption still spends that benefit. Work time, materials and other requirements remain.",
+        "improves": null,
+        "requires": [
+          "spellcraft:mind-capacity:6"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

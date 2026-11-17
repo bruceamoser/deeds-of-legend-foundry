@@ -1,3 +1,7 @@
+import { CONSUMABLE_TYPES } from '../rules/consumables.mjs';
+import { tracksConsumable } from '../services/consumables.mjs';
+import { torchItemActions, requestTorchToggle } from "../services/torches.mjs";
+import {ITEM_EFFECT_ATTRIBUTES,ITEM_EFFECT_MODES,readAttributeEffectRows} from "../rules/effective-attributes.mjs";
 import { equipmentEditableDescription } from "./equipment-description.mjs";
 import { equipmentReferenceHtml } from "../rules/item-construction.mjs";
 import { itemCardContext, formatItemCard } from "./item-card-view.mjs";
@@ -8,7 +12,7 @@ import { cardContext, bindCardState, toggleCardEdit } from "./card-state.mjs";
 import { EquipmentPanel } from "../applications/equipment.mjs";
 import { consumeOwnedSupply, depleteOwnedSupply } from "../services/inventory.mjs";
 import { openPotionPreparation } from "../applications/potions.mjs";
-import { loadCatalogs } from "../services/catalog.mjs";
+import { loadWorkshopCatalogs } from "../services/catalog.mjs";
 import { updateOwnedDocument } from "../services/documents.mjs";
 import { isHealingPotionItem } from "../services/potions.mjs";
 export class EquipmentSheet extends foundry.applications.api.HandlebarsApplicationMixin(
@@ -17,6 +21,7 @@ export class EquipmentSheet extends foundry.applications.api.HandlebarsApplicati
   static DEFAULT_OPTIONS = {
     actions: {
       cardEdit: toggleCardEdit,
+      torch: EquipmentSheet.torch,
       resupply: EquipmentSheet.resupply,
       hands: EquipmentSheet.hands,
       supply: EquipmentSheet.supply,
@@ -33,7 +38,7 @@ export class EquipmentSheet extends foundry.applications.api.HandlebarsApplicati
   };
   async _prepareContext(options) {
     if(options?.editing && this.isEditable)this._cardEditing=true;
-    const catalogs = await loadCatalogs(),
+    const catalogs = await loadWorkshopCatalogs(),
       description = this.item.system.description,
       pending = this.item.actor?.getFlag(
         "heroes-of-legend",
@@ -71,6 +76,10 @@ export class EquipmentSheet extends foundry.applications.api.HandlebarsApplicati
       ...cardContext(this, this.item),
       editableDescription: equipmentEditableDescription(description),
       supplyDieOptions: [0,4,6,8,10,12,20].map(value=>({value,label:value ? `d${value}` : "Depleted",selected:value===this.item.system.inventoryDie})),
+      attributeEffectRows: ITEM_EFFECT_ATTRIBUTES.map(attribute=>{const effect=(this.item.system.attributeEffects??[]).find(effect=>effect.attribute===attribute);return {attribute,label:attribute[0].toUpperCase()+attribute.slice(1),value:effect?.value??0,cursed:effect?.cursed??false,modes:[{value:"none",label:"None",selected:!effect},...ITEM_EFFECT_MODES.map(mode=>({value:mode,label:{modifier:"Modifier",set:"Set exact value","curse-override":"Curse override"}[mode],selected:effect?.mode===mode}))]};}),
+      attributeEffectSummary:(this.item.system.attributeEffects??[]).map(effect=>({label:effect.attribute[0].toUpperCase()+effect.attribute.slice(1),value:`${effect.mode === "modifier" ? "" : effect.mode === "set" ? "Set " : "Curse sets "}${effect.value>=0?"+":""}${effect.value}${effect.cursed?" · cursed":""}`})),
+      consumableTypeOptions: Object.entries({auto:"From item type",none:"Not a consumable",...CONSUMABLE_TYPES}).map(([value,label])=>({value,label,selected:value===(this.item.system.consumableType??"auto")})),
+      supplyTracking: tracksConsumable(this.item),
       item: this.item,
       cardMark: itemDisplayIcon(this.item.toObject(), catalogs),
       system: this.item.system,
@@ -82,6 +91,7 @@ export class EquipmentSheet extends foundry.applications.api.HandlebarsApplicati
           )
         : "",
       owned: Boolean(this.item.actor),
+      torchAction: this.item.actor ? torchItemActions(this.item.actor, {id:this.item.id})[0] : null,
       canCheckSupply: Boolean(
         this.item.actor &&
           hasSupply &&
@@ -99,6 +109,10 @@ export class EquipmentSheet extends foundry.applications.api.HandlebarsApplicati
           (this.item.actor.isOwner || game.user.isGM),
       ),
     };
+  }
+  static async torch() {
+    try { await requestTorchToggle(this.item.actor, this.item.id); }
+    catch(error) { ui.notifications.error(error.message); }
   }
   static async resupply() {
     try { await requestResupply(this.item.actor, this.item); }
@@ -151,6 +165,8 @@ export class EquipmentSheet extends foundry.applications.api.HandlebarsApplicati
   async _processSubmitData(event, form, data, options) {
     const image = form.querySelector('img[data-edit="img"]');
     if (image) data.img = image.getAttribute("src");
+    const rows=[...form.querySelectorAll("[data-attribute-effect]")];
+    if (rows.length) data["system.attributeEffects"]=readAttributeEffectRows(rows);
     const updated = await updateOwnedDocument(this.item, data, options);
     this._cardEditing = false;
     await this.render({force:true});

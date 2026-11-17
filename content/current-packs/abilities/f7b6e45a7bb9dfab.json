@@ -1,0 +1,47 @@
+{
+  "_key": "!items!f7b6e45a7bb9dfab",
+  "_id": "f7b6e45a7bb9dfab",
+  "name": "Catch Them Falling II",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Before Catch Them Falling, move 1 square along a safe surface without movement reactions to reach the falling creature.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "athletics:balance:5",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "athletics:balance:5",
+        "level": 3,
+        "cost": 4,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Before Catch Them Falling, move 1 square along a safe surface without movement reactions to reach the falling creature.",
+        "improves": "athletics:balance:4",
+        "requires": [
+          "athletics:balance:4"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

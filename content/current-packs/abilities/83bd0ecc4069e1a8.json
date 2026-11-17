@@ -1,0 +1,65 @@
+{
+  "_key": "!items!83bd0ecc4069e1a8",
+  "_id": "83bd0ecc4069e1a8",
+  "name": "Arcane Eye",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One sensor initially within 3 squares; remains within 12 squares</dd></div><div><dt>Duration</dt><dd>1 minute</dd></div></dl><p>Create a tiny visible glimmering eye. A Maneuver moves it up to 4 squares through open passages; otherwise it stays in place. Spend a Main Action to see from it until your next turn begins. The sensor has 1 HP and uses your Agility for player-rolled defenses.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:farseeing:5",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:farseeing:5",
+        "level": 1,
+        "cost": 2,
+        "action": "Main Action",
+        "sp": 2,
+        "range": "One sensor initially within 3 squares; remains within 12 squares",
+        "duration": "1 minute",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Create a tiny visible glimmering eye. A Maneuver moves it up to 4 squares through open passages; otherwise it stays in place. Spend a Main Action to see from it until your next turn begins. The sensor has 1 HP and uses your Agility for player-rolled defenses.",
+        "improves": null,
+        "requires": [
+          "farseeing:1"
+        ],
+        "bookId": "farseeing"
+      },
+      "spell": {
+        "id": "spell:farseeing:5",
+        "name": "Arcane Eye",
+        "bookId": "farseeing",
+        "page": "5",
+        "section": "III",
+        "sp": 2,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One sensor initially within 3 squares; remains within 12 squares",
+        "duration": "1 minute",
+        "effect": "Create a tiny visible glimmering eye. A Maneuver moves it up to 4 squares through open passages; otherwise it stays in place. Spend a Main Action to see from it until your next turn begins. The sensor has 1 HP and uses your Agility for player-rolled defenses."
+      }
+    }
+  },
+  "effects": []
+}

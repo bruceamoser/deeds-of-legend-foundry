@@ -1,0 +1,47 @@
+{
+  "_key": "!items!3eea0e8f646106a0",
+  "_id": "3eea0e8f646106a0",
+  "name": "Prepare the Remedy I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Timed work</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div></dl><p>1 hour · Knowledge, with ingredients appropriate to a diagnosed toxin. Prepare one dose by adding 1/2/3 progress to the DA’s preparation objective. Administer the completed dose as a Main Action to reduce that toxin’s Poisoned by 2. Consume it on use. Other disease effects require their stated remedy.</p>",
+    "activity": {
+      "action": "other",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "medicine:diagnosis:4",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "technique",
+        "nodeId": "medicine:diagnosis:4",
+        "level": 3,
+        "cost": 3,
+        "action": "Timed work",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": "Knowledge",
+        "defenseAttribute": null,
+        "effect": "1 hour · Knowledge, with ingredients appropriate to a diagnosed toxin. Prepare one dose by adding 1/2/3 progress to the DA’s preparation objective. Administer the completed dose as a Main Action to reduce that toxin’s Poisoned by 2. Consume it on use. Other disease effects require their stated remedy.",
+        "improves": null,
+        "requires": [
+          "medicine:diagnosis:3"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

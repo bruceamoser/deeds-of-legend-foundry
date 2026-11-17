@@ -1,0 +1,47 @@
+{
+  "_key": "!items!e8e4b0b238b24889",
+  "_id": "e8e4b0b238b24889",
+  "name": "Sure Ascent I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div></dl><p>Main Action. Climb up to 2 squares along a surface with usable holds, paying no movement. If danger requires a roll, use Brawn or Agility as appropriate with 1 Boon; a Weak result advances at least 1 square where passage is physically possible, with the DA’s stated complication. You also gain that Boon on ordinary climbing rolls.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "athletics:climbing:1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "technique",
+        "nodeId": "athletics:climbing:1",
+        "level": 1,
+        "cost": 1,
+        "action": "Main Action",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Main Action. Climb up to 2 squares along a surface with usable holds, paying no movement. If danger requires a roll, use Brawn or Agility as appropriate with 1 Boon; a Weak result advances at least 1 square where passage is physically possible, with the DA’s stated complication. You also gain that Boon on ordinary climbing rolls.",
+        "improves": null,
+        "requires": [
+          "athletics"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

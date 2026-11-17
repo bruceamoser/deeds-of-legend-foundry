@@ -1,0 +1,65 @@
+{
+  "_key": "!items!c5e035cd89be5dff",
+  "_id": "c5e035cd89be5dff",
+  "name": "Cone of Cold",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div><div><dt>Range</dt><dd>Every creature in a 4-square cone from you</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Release a roaring blast of winter. Deal 4/6/9 cold damage and apply Freezing 1 to each creature in the cone.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "4 cold damage",
+      "standard": "6 cold damage",
+      "strong": "9 cold damage"
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:water:a1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:water:a1",
+        "level": 3,
+        "cost": 4,
+        "action": "Main Action",
+        "sp": 5,
+        "range": "Every creature in a 4-square cone from you",
+        "duration": "Instant",
+        "attribute": "Knowledge",
+        "defenseAttribute": null,
+        "effect": "Release a roaring blast of winter. Deal 4/6/9 cold damage and apply Freezing 1 to each creature in the cone.",
+        "improves": null,
+        "requires": [
+          "water:3"
+        ],
+        "bookId": "water"
+      },
+      "spell": {
+        "id": "spell:water:a1",
+        "name": "Cone of Cold",
+        "bookId": "water",
+        "page": "A1",
+        "section": "V",
+        "sp": 5,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "Knowledge",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Every creature in a 4-square cone from you",
+        "duration": "Instant",
+        "effect": "Release a roaring blast of winter. Deal 4/6/9 cold damage and apply Freezing 1 to each creature in the cone."
+      }
+    }
+  },
+  "effects": []
+}

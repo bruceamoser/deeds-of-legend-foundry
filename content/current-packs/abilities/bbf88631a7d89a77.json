@@ -1,0 +1,47 @@
+{
+  "_key": "!items!bbf88631a7d89a77",
+  "_id": "bbf88631a7d89a77",
+  "name": "A Camp without a Trace I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Timed work</dd></div><div><dt>Attribute</dt><dd>Guile</dd></div></dl><p>30 minutes · Guile. Conceal a completed camp and its approach; add 1/2/3 progress to the DA’s concealment objective. Completion hides casual signs; direct search remains possible. You can also search water-bearing terrain for 1 hour, rolling Reason for 1/2/3 progress toward finding a concealed spring; completion reveals its location and visible hazards, not purification.</p>",
+    "activity": {
+      "action": "other",
+      "rollMode": "attribute",
+      "attribute": "guile",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "wilderness:provisioning:4",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "technique",
+        "nodeId": "wilderness:provisioning:4",
+        "level": 3,
+        "cost": 3,
+        "action": "Timed work",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": "Guile",
+        "defenseAttribute": null,
+        "effect": "30 minutes · Guile. Conceal a completed camp and its approach; add 1/2/3 progress to the DA’s concealment objective. Completion hides casual signs; direct search remains possible. You can also search water-bearing terrain for 1 hour, rolling Reason for 1/2/3 progress toward finding a concealed spring; completion reveals its location and visible hazards, not purification.",
+        "improves": null,
+        "requires": [
+          "wilderness:provisioning:3"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

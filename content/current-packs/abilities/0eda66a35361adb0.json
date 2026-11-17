@@ -1,0 +1,46 @@
+{
+  "_key": "!items!0eda66a35361adb0",
+  "_id": "0eda66a35361adb0",
+  "name": "One with the Dark",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Self.</dd></div><div><dt>Duration</dt><dd>Until you attack, are revealed, or enter bright light.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Frequency</dt><dd>Once per scene.</dd></div></dl><p>Once per scene, while you are in dim light or darkness, become Hidden until you attack, are revealed, or enter bright light. While Hidden this way, you always roll with 3 Boons to stay hidden or remain concealed. You can move normally; the DA judges whether the concealment and your route are plausible.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-signature-shadow-unseen-passage",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "ability",
+        "nodeId": "ability-signature-shadow-unseen-passage",
+        "level": 7,
+        "cost": 0,
+        "action": "Main Action",
+        "sp": null,
+        "range": "Self.",
+        "duration": "Until you attack, are revealed, or enter bright light.",
+        "attribute": "None (no roll)",
+        "defenseAttribute": null,
+        "effect": "**Action:** Main Action · **Attribute:** None (no roll)\n\n**Target / range / shape:** Self.\n\nOnce per scene, while you are in dim light or darkness, become Hidden until you attack, are revealed, or enter bright light. While Hidden this way, you always roll with 3 Boons to stay hidden or remain concealed. You can move normally; the DA judges whether the concealment and your route are plausible.\n\n**Duration:** Until you attack, are revealed, or enter bright light.\n\n**Equipment / acquisition:** None.\n\n**Frequency:** Once per scene.",
+        "improves": null,
+        "requires": [],
+        "bookId": null,
+        "magic": null
+      }
+    }
+  },
+  "effects": []
+}

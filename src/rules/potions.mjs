@@ -5,7 +5,6 @@
 import { continueAction, declareAction } from "./actions.mjs";
 import { healingPlan } from "./damage.mjs";
 import { handLayout } from "./hands.mjs";
-import { receiveHealing, validateSurvival } from "./survival.mjs";
 import { inventoryCheck } from "./inventory.mjs";
 
 const SOURCE_COMMIT = "24e545e6d860e8c1b03a21356fd22cae1c039785";
@@ -68,6 +67,13 @@ export const HEALING_POTION_IDS = Object.freeze(Object.keys(definitions));
 export function healingPotionAdapter(catalogId, catalog) {
   const definition = definitions[catalogId];
   if (!definition) throw new Error(`Unknown healing potion: ${catalogId}`);
+  if(catalog?.forge===true){
+    const equipment=catalog.equipment?.find(record=>record.id===catalogId);
+    const action=catalog.currentActions?.find(record=>record.id===ACTION.catalogId);
+    if(!equipment||equipment.inventoryDie!==definition.supplyDie||equipment.healing!==definition.healing||!action)
+      throw new Error(`Current healing potion data changed: ${catalogId}`);
+    return structuredClone({...definition,source:equipment.source,action:{...ACTION,source:action.source??{id:action.id}}});
+  }
   if (catalog?.sourceCommit !== SOURCE_COMMIT)
     throw new Error("Healing potion catalog source commit drifted.");
   const equipment = catalog.equipment?.find(
@@ -135,11 +141,14 @@ const assertOperationUnused = (turn, operationId, label) => {
     );
 };
 
-function usableSurvival(state, label) {
-  validateSurvival(state);
-  if (["lastWords", "dead"].includes(state.status))
-    throw new Error(`${label} cannot use or receive an ordinary potion.`);
+function usableSurvival(state,label) {
+  if(!state||!Number.isSafeInteger(state.hp)||!Number.isSafeInteger(state.maxHp)||state.hp<0||state.maxHp<1||state.hp>state.maxHp)throw new Error(`${label} needs valid HP.`);
+  if(state.dead || state.failedDeathRolls===3)throw new Error(`${label} cannot use or receive an ordinary potion.`);
   return state;
+}
+function receiveHealing(state,restored) {
+  const hp=Math.min(state.maxHp,state.hp+restored);
+  return {...state,hp,...(hp>0?{dying:false,failedDeathRolls:0,successfulDeathRolls:0,gritTrigger:null,immediateDeathRolls:[]}:{} )};
 }
 
 /**
@@ -156,6 +165,7 @@ export function planHealingPotion({
   potionId,
   catalog,
   inventoryDie,
+  trackSupply = true,
   giver,
   recipient,
   relation,
@@ -167,7 +177,8 @@ export function planHealingPotion({
   advisoryGeometry = false,
 }) {
   const potion = healingPotionAdapter(potionId, catalog);
-  if (inventoryDie !== potion.supplyDie)
+  if (typeof trackSupply !== "boolean") throw new Error("Identify potion supply tracking.");
+  if (trackSupply && inventoryDie !== potion.supplyDie)
     throw new Error(`This potion must have inventory d${potion.supplyDie}.`);
   if (!["self", "other"].includes(relation))
     throw new Error("Potion target relation must be self or other.");
@@ -204,7 +215,7 @@ export function planHealingPotion({
       amount: potion.healing,
       current: recipient.survival.hp,
       max: recipient.survival.maxHp,
-      unavailableHp: recipient.survival.recovery?.unavailableHp ?? 0,
+      unavailableHp: recipient.unavailableHp ?? recipient.survival.recovery?.unavailableHp ?? 0,
       lifeResistances: recipient.lifeResistances ?? [],
       recipientKind,
     });

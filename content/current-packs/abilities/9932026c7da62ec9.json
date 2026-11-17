@@ -1,0 +1,46 @@
+{
+  "_key": "!items!9932026c7da62ec9",
+  "_id": "9932026c7da62ec9",
+  "name": "Reckless Charge",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>Brawn</dd></div><div><dt>Target / range / shape</dt><dd>Self, then one enemy within melee reach.</dd></div><div><dt>Duration</dt><dd>Movement and attack immediate; defense penalty until your next turn.</dd></div><div><dt>Equipment / acquisition</dt><dd>A ready melee weapon.</dd></div></dl><p>Once per scene, move up to 2 squares toward a visible enemy, following ordinary opportunity attack rules. Make one Basic Melee attack with your melee weapon against a creature you can reach. Take 1 Bane to defenses until the start of your next turn. This attack is part of the Maneuver and leaves your Main Action available.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "attribute",
+      "attribute": "brawn",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-signature-blade-cut-and-turn",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "ability",
+        "nodeId": "ability-signature-blade-cut-and-turn",
+        "level": 1,
+        "cost": 0,
+        "action": "Maneuver",
+        "sp": null,
+        "range": "Self, then one enemy within melee reach.",
+        "duration": "Movement and attack immediate; defense penalty until your next turn.",
+        "attribute": "Brawn",
+        "defenseAttribute": null,
+        "effect": "**Action:** Maneuver · **Attribute:** Brawn\n\n**Target / range / shape:** Self, then one enemy within melee reach.\n\nOnce per scene, move up to 2 squares toward a visible enemy, following ordinary opportunity attack rules. Make one Basic Melee attack with your melee weapon against a creature you can reach. Take 1 Bane to defenses until the start of your next turn. This attack is part of the Maneuver and leaves your Main Action available.\n\n**Duration:** Movement and attack immediate; defense penalty until your next turn.\n\n**Equipment / acquisition:** A ready melee weapon.",
+        "improves": null,
+        "requires": [],
+        "bookId": null,
+        "magic": null
+      }
+    }
+  },
+  "effects": []
+}

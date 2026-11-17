@@ -1,3 +1,4 @@
+import {assertCurrentGameplayActor} from "../src/rules/current-character.mjs";
 import { choiceSourceMatches } from "../src/rules/choice-source.mjs";
 import { inventoryCheck } from "../src/rules/inventory.mjs";
 import test from "node:test";
@@ -10,10 +11,10 @@ import { equipmentItemSource } from "../src/rules/item-construction.mjs";
 const source = await readFile(new URL("../src/services/crafting.mjs", import.meta.url), "utf8");
 const inventory = JSON.parse(await readFile(new URL("../static/data/inventory.json", import.meta.url)));
 const choices = JSON.parse(await readFile(new URL("../static/data/choices.json", import.meta.url)));
-async function fixture({ owner = true, authority = true, material = false, recipeId = "recipe-twisted-cord" } = {}) {
-  const recipe = inventory.recipes.find(r => r.id === recipeId);
-  const flags = { development: { recipes: [recipe.id] }, operationReceipts: {} };
-  let items = [{ _id: "ability", type: "ability", flags: { "heroes-of-legend": { catalogId: recipe.permissions[0], source: choices.records.find(record => record.id === recipe.permissions[0]).source } } }];
+async function fixture({ owner = true, authority = true, material = false, tracked = true, recipeId = "recipe-twisted-cord" } = {}) {
+  const recipe = {...inventory.recipes.find(r => r.id === recipeId),permissions:["craft:workshop:1"]};
+  const flags = {nativeWorkshop:{portable:{format:"heroes-of-legend-character",schemaVersion:7,draft:{}}},forgeLearned:["craft:workshop:1"], development: { recipes: [recipe.id] }, operationReceipts: {} };
+  let items = [{ _id: "ability", type: "ability", flags: { "heroes-of-legend": { catalogId: recipe.permissions[0], source:null } } }];
   if(material) items.push({_id:"materials",type:"equipment",system:{catalogId:"item-material-bundle",quantity:1,inventoryDie:6,carried:true}});
   const actor = { uuid: "Actor.hero", type: "character", system: { attributes: { knowledge: { effective: 1 },reason:{effective:2} } },
     get items() { return items.map(i => ({ ...i, id: i._id, getFlag: (_id, key) => i.flags?.["heroes-of-legend"]?.[key] })); },
@@ -29,13 +30,16 @@ async function fixture({ owner = true, authority = true, material = false, recip
     } }, utils: { randomID: () => "newproduct123456", escapeHTML: s => s } },
     game: { user: { id: "owner" }, settings: { get: () => "authority" }, messages, users: [{ id: "owner" }] },
     ChatMessage: { create: async data => { const message = { id: `request${messages.size}`, author: { id: "owner" }, ...data, getFlag: (_id, key) => data.flags["heroes-of-legend"][key], update: async changes => Object.assign(message, changes) }; messages.set(message.id, message); return message; } } });
+  const currentCatalogs={forge:{rulesRevision:299},choices:[{id:"craft:workshop:1",name:"Trail Workshop I"}],inventory,commit:choices.sourceCommit};
   const mocks = {
+    "../rules/current-character.mjs":{assertCurrentGameplayActor},
+    "./consumables.mjs": {tracksConsumable:()=>tracked},
     "../rules/choice-source.mjs": { choiceSourceMatches },
     "../rules/roll.mjs": { classifyRoll },
     "../rules/inventory.mjs": {inventoryCheck},
-    "./catalog.mjs": { loadCatalogs: async () => ({ choices: choices.records, inventory, commit: choices.sourceCommit }) },
+    "./catalog.mjs": { loadWorkshopCatalogs:async()=>currentCatalogs, loadCatalogs: async () => ({ choices: choices.records, inventory, commit: choices.sourceCommit }) },
     "./authority.mjs": {ensureAuthorityReady:async()=>{}, createActionMessage: data => context.ChatMessage.create(data), shouldProcessRequest: () => true, isCreationAuthority: () => authority, enqueueCharacterOperation: async fn => fn(), writeAuthorityDocument: async (_actor, changes) => { writes++; if (faults.write === writes) throw new Error("write failed"); if (changes.items) items = structuredClone(changes.items); for (const [key,value] of Object.entries(changes)) { if (key.startsWith("flags.heroes-of-legend.operationReceipts.")) flags.operationReceipts[key.split(".").at(-1)] = structuredClone(value); else if (key.startsWith("flags.heroes-of-legend.")) flags[key.slice("flags.heroes-of-legend.".length)] = structuredClone(value); } } },
-    "./creation.mjs": { validateCreationChanges: () => {} },
+    "./document-validation.mjs": { validateEmbeddedActorChanges: () => {} },
     "../rules/item-construction.mjs": { equipmentItemSource },
     "../rules/workshop-crafting.mjs": { startWorkshopCraft, workshopCraft, noRollBrew },
     "./roll-preparation.mjs": { rollBasis: (_actor,attribute) => {lastAttribute=attribute;return{};}, prepareRoll: () => ({ net: 0, attribute: 1 }) },
@@ -46,7 +50,7 @@ async function fixture({ owner = true, authority = true, material = false, recip
   const module = new SourceTextModule(source, { context });
   await module.link(name => { const values = mocks[name]; return new SyntheticModule(Object.keys(values), function() { for (const [key,value] of Object.entries(values)) this.setExport(key,value); }, { context }); });
   await module.evaluate();
-  return { actor, flags, service: module.namespace, recipe, get writes() { return writes; }, get rolls() { return rolls; }, get supplyRolls(){return supplyRolls;},get lastAttribute(){return lastAttribute;}, messages, faults };
+  return { actor, flags, service: module.namespace, recipe, get writes() { return writes; }, get rolls() { return rolls; }, get supplyRolls(){return supplyRolls;},get lastAttribute(){return lastAttribute;}, messages, faults,setTracking:value=>{tracked=value;} };
 }
 test("native crafting atomically starts, progresses, grants one product and deduplicates replay", async () => {
   const f = await fixture();
@@ -61,12 +65,10 @@ test("native crafting atomically starts, progresses, grants one product and dedu
   await f.service.resolveCraftingRequest(final.id);
   assert.equal(f.writes, 7); assert.equal(f.rolls, 2);
 });
-test("crafting permission requires the reviewed owned card source, not an unverified catalog flag", async () => {
-  const f = await fixture();
-  const forged = { ...f.actor, items: [{type:"ability",getFlag:(_id,key)=>key==="catalogId"?f.recipe.permissions[0]:{path:"changed",sha256:"changed"}}] };
-  const catalogs = {choices:choices.records,inventory};
-  assert.equal(f.service.nativeCraftingRecipes(f.actor,catalogs)[0].abilities.length,1);
-  assert.equal(f.service.nativeCraftingRecipes(forged,catalogs)[0].abilities.length,0);
+test("current crafting permission follows committed Forge learning instead of retired card sources",async()=>{
+ const f=await fixture(),catalogs={forge:{rulesRevision:299},choices:[{id:"craft:workshop:1",name:"Trail Workshop I"}],inventory};
+ assert.equal(f.service.nativeCraftingRecipes(f.actor,catalogs)[0].abilities.length,1);
+ f.flags.forgeLearned=[];assert.equal(f.service.nativeCraftingRecipes(f.actor,catalogs)[0].abilities.length,0);
 });
 test("native crafting refuses unauthorized, stale and missing-ability requests before rolling", async () => {
   const denied = await fixture({ owner: false });
@@ -153,33 +155,53 @@ test("ambiguous material checks require original-face recovery and never reroll 
  await f.service.resolveCraftingRequest(attempt.id);assert.equal(f.supplyRolls,1);
 });
 
-test("native healing and tonic brewing grant d4 without evaluating attribute dice and replay once", async () => {
-  for (const recipeId of ["recipe-lesser-healing-bottle", "recipe-clearing-tonic"]) {
-    const f = await fixture({ recipeId });
-    const start = await f.service.requestCrafting(f.actor, {kind:"start",recipeId});
-    await f.service.resolveCraftingRequest(start.id);
-    const message = await f.service.requestCrafting(f.actor, {kind:"attempt",recipeId,abilityId:f.recipe.permissions[0],adjustment:0});
-    await f.service.resolveCraftingRequest(message.id);
-    assert.equal(f.rolls, 0);
-    assert.equal(f.actor.items.find(i=>i.type==="equipment").system.inventoryDie,4);
-    assert.equal(f.flags.craftingState[recipeId].completed,1);
-    await f.service.resolveCraftingRequest(message.id);
-    assert.equal(f.actor.items.filter(i=>i.type==="equipment").length,1);
-    assert.equal(f.rolls,0);
-  }
+test("disabled crafting-material tracking preserves an owned exhausted stack and replays without a supply roll",async()=>{
+ const f=await fixture({material:true,tracked:false});
+ const start=await f.service.requestCrafting(f.actor,{recipeId:f.recipe.id,kind:"start"});await f.service.resolveCraftingRequest(start.id);
+ // A positively owned stack remains usable with its supply pool exhausted.
+ const material=f.actor.items.find(item=>item.id==="materials");material.system.inventoryDie=0;
+ const attempt=await f.service.requestCrafting(f.actor,{recipeId:f.recipe.id,kind:"attempt",abilityId:f.recipe.permissions[0],adjustment:0,materialSupplyId:"materials"});
+ await f.service.resolveCraftingRequest(attempt.id);await f.service.resolveCraftingRequest(attempt.id);
+ assert.equal(f.supplyRolls,0);assert.equal(f.rolls,1);assert.equal(f.actor.items.find(item=>item.id==="materials").system.inventoryDie,0);
+ assert.equal(f.flags.operationReceipts[attempt.id].material.tracked,false);assert.match(attempt.content,/tracking off/);
+});
+test("disabled material tracking still rejects uncarried or zero-quantity stacks before any roll",async()=>{
+ for(const edit of [{quantity:0},{carried:false}]){
+  const f=await fixture({material:true,tracked:false});
+  const start=await f.service.requestCrafting(f.actor,{recipeId:f.recipe.id,kind:"start"});await f.service.resolveCraftingRequest(start.id);
+  Object.assign(f.actor.items.find(item=>item.id==="materials").system,edit);
+  const attempt=await f.service.requestCrafting(f.actor,{recipeId:f.recipe.id,kind:"attempt",abilityId:f.recipe.permissions[0],adjustment:0,materialSupplyId:"materials"});
+  await assert.rejects(f.service.resolveCraftingRequest(attempt.id),/active carried material supply/);assert.equal(f.rolls,0);assert.equal(f.supplyRolls,0);
+ }
 });
 
-test("no-roll brewing preserves an ambiguous material check for DA recovery without reroll", async () => {
- const f=await fixture({material:true,recipeId:"recipe-lesser-healing-bottle"});
+
+test("an untracked material plan remains untracked when a failed commit resumes after tracking is enabled",async()=>{
+ const f=await fixture({material:true,tracked:false});
  const start=await f.service.requestCrafting(f.actor,{recipeId:f.recipe.id,kind:"start"});await f.service.resolveCraftingRequest(start.id);
  const attempt=await f.service.requestCrafting(f.actor,{recipeId:f.recipe.id,kind:"attempt",abilityId:f.recipe.permissions[0],adjustment:0,materialSupplyId:"materials"});
- f.faults.supplyRoll=true;
- await assert.rejects(f.service.resolveCraftingRequest(attempt.id),/supply result lost/);
- await assert.rejects(f.service.resolveCraftingRequest(attempt.id),/will not reroll/);
- assert.equal(f.rolls,0);assert.equal(f.supplyRolls,1);
- const recover=await f.service.requestCrafting(f.actor,{kind:"recoverMaterial",materialFace:1});recover.author.isGM=true;
- await f.service.resolveCraftingRequest(recover.id);
- assert.equal(f.actor.items.find(item=>item.id==="materials").system.inventoryDie,4);
- assert.equal(f.actor.items.find(item=>item.system?.catalogId==="item-lesser-healing-bottle").system.inventoryDie,4);
- assert.equal(f.rolls,0);assert.equal(f.supplyRolls,1);
+ f.faults.write=5;
+ await assert.rejects(f.service.resolveCraftingRequest(attempt.id),/write failed/);
+ assert.equal(f.flags.pendingCrafting.material.phase,"untracked");f.setTracking(true);
+ await f.service.resolveCraftingRequest(attempt.id);
+ assert.equal(f.supplyRolls,0);assert.equal(f.rolls,1);assert.equal(f.actor.items.find(item=>item.id==="materials").system.inventoryDie,6);
+});
+
+
+test("current native crafting recognizes committed Forge Workshop knowledge without retired grants",async()=>{
+ const f=await fixture();
+ f.flags.forgeLearned=["craft:workshop:1"];
+ const catalogs={forge:{rulesRevision:299},choices:[{id:"craft:workshop:1",name:"Trail Workshop I",kind:"ability"}],inventory};
+ const recipes=f.service.nativeCraftingRecipes(f.actor,catalogs);
+ assert.equal(recipes.length,1);assert.equal(recipes[0].abilities[0].id,"craft:workshop:1");assert.equal(recipes[0].noRoll,false);
+ f.flags.forgeLearned=[];assert.equal(f.service.nativeCraftingRecipes(f.actor,catalogs)[0].abilities.length,0);
+});
+
+
+test("an older Actor cannot request or execute crafting and no documents or dice change",async()=>{
+ const f=await fixture();delete f.flags.nativeWorkshop;
+ await assert.rejects(f.service.requestCrafting(f.actor,{kind:"start",recipeId:f.recipe.id}),/invalid for current play/);
+ const message={id:"old-craft",author:{id:"owner"},getFlag:()=>({actorUuid:f.actor.uuid,kind:"start",recipeId:f.recipe.id,basis:{}})};f.messages.set(message.id,message);
+ await assert.rejects(f.service.resolveCraftingRequest(message.id),/invalid for current play/);
+ assert.equal(f.writes,0);assert.equal(f.rolls,0);assert.equal(f.supplyRolls,0);
 });

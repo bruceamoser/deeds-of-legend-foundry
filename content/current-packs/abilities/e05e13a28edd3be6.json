@@ -1,0 +1,47 @@
+{
+  "_key": "!items!e05e13a28edd3be6",
+  "_id": "e05e13a28edd3be6",
+  "name": "A Treaty in Common Words",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Timed work</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div></dl><p>30 minutes · Reason. With willing representatives of up to three sides and a working language, interpreter or shared reference text, formulate one concrete agreement. Roll once; add 3/5/7 progress to each side’s acceptance objective. On completion the DA states that side’s commitments and known reservations plainly. A shared reference permits simple terms; complex terms need adequate translation. No side accepts impossible terms, and the agreement is not magical enforcement.</p>",
+    "activity": {
+      "action": "other",
+      "rollMode": "attribute",
+      "attribute": "reason",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "influence:negotiation:7",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "mastery",
+        "nodeId": "influence:negotiation:7",
+        "level": 7,
+        "cost": 5,
+        "action": "Timed work",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": "Reason",
+        "defenseAttribute": null,
+        "effect": "30 minutes · Reason. With willing representatives of up to three sides and a working language, interpreter or shared reference text, formulate one concrete agreement. Roll once; add 3/5/7 progress to each side’s acceptance objective. On completion the DA states that side’s commitments and known reservations plainly. A shared reference permits simple terms; complex terms need adequate translation. No side accepts impossible terms, and the agreement is not magical enforcement.",
+        "improves": null,
+        "requires": [
+          "influence:negotiation:6"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

@@ -1,8 +1,7 @@
 import { abilityCatalogRecord } from "../rules/ability-roll.mjs";
-import { abilityItemSource } from "../rules/item-construction.mjs";
 import { itemCardContext, formatItemCard } from "./item-card-view.mjs";
 import { itemDisplayIcon } from "../rules/item-icons.mjs";
-import { loadCatalogs } from "../services/catalog.mjs";
+import { loadWorkshopCatalogs } from "../services/catalog.mjs";
 import { cardContext, bindCardState, toggleCardEdit } from "./card-state.mjs";
 import { postAbilityReference } from "../services/reference-play.mjs";
 import {
@@ -11,6 +10,7 @@ import {
 } from "../services/abilities.mjs";
 import { openPotionPreparation } from "../applications/potions.mjs";
 import { isPotionAbility } from "../services/potions.mjs";
+import { isForgeModifier } from "../rules/forge-casting.mjs";
 import { ATTRIBUTES } from "../rules/character.mjs";
 import { updateOwnedDocument } from "../services/documents.mjs";
 export class AbilitySheet extends foundry.applications.api.HandlebarsApplicationMixin(
@@ -39,12 +39,15 @@ export class AbilitySheet extends foundry.applications.api.HandlebarsApplication
     try {
       definition = itemAbilityDefinition(this.item);
     } catch {}
-    const iconCatalogs = await loadCatalogs();
+    const spell = this.item.getFlag("heroes-of-legend", "spell");
+    const workshopRecord = this.item.getFlag("heroes-of-legend", "workshopRecord");
+    const current = Boolean(spell || this.item.getFlag("heroes-of-legend", "grantKind") === "nativeWorkshop" || this.item.getFlag("heroes-of-legend", "workshopRecord"));
+    const iconCatalogs = await loadWorkshopCatalogs();
     const record = abilityCatalogRecord(this.item, iconCatalogs.choices);
-    const system = record
-      ? abilityItemSource(record, { sourceCommit: iconCatalogs.commit }).system
-      : this.item.system;
+    const system = this.item.system;
     const description = system.description;
+    const learned = new Set(this.item.actor?.getFlag("heroes-of-legend", "forgeLearned") ?? []);
+    const learnedImprovements = current ? (iconCatalogs.forge?.nodes ?? []).filter(node => learned.has(node.id) && node.improves === this.item.getFlag("heroes-of-legend", "catalogId")) : [];
     const labels = (keys) =>
       Object.fromEntries(
         keys.map((key) => [key, game.i18n.localize(`HOL.Choices.${key}`)]),
@@ -54,12 +57,18 @@ export class AbilitySheet extends foundry.applications.api.HandlebarsApplication
       ...cardContext(this, this.item),
       ...itemCardContext(this.item, iconCatalogs),
       definition,
+      spell,
+      currentWorkshop: current,
+      ...(workshopRecord ? {cardLevel:workshopRecord.level??1,cardCost:workshopRecord.cost??"—"} : {}),
+      cardKind: spell ? "Spell" : "Ability",
+      spellTiming: spell?.action ?? "",
+      learnedImprovements,
       manualOutcomes: !description.includes("hol-reference-outcomes") ? ["weak","standard","strong"].filter(tier=>system.outcomes?.[tier]).map(tier=>({label:game.i18n.localize(`HOL.${tier[0].toUpperCase()+tier.slice(1)}`),text:system.outcomes[tier]})) : [],
       cardMark: itemDisplayIcon(this.item.toObject(), iconCatalogs),
       canPost: Boolean(this.item.actor && this.item.isOwner),
       catalogAbility: Boolean(record),
       potionAbility: isPotionAbility(this.item),
-      canUse: Boolean(this.item.actor?.isOwner && system.activity.action !== "passive"),
+      canUse: Boolean(this.item.actor?.isOwner && (system.activity.action !== "passive" || (isForgeModifier(workshopRecord) && Number.isSafeInteger(workshopRecord?.sp))) && !["section", "improvement"].includes(workshopRecord?.kind)),
       pendingAutomation:
         !definition &&
         this.item.getFlag("heroes-of-legend", "automation") === "pending",
@@ -78,7 +87,7 @@ export class AbilitySheet extends foundry.applications.api.HandlebarsApplication
           game.i18n.localize(`HOL.Attributes.${key}`),
         ]),
       ),
-      actions: labels(["main", "maneuver", "reaction", "passive", "movement", "other"]),
+      actions: {...labels(["main", "maneuver", "reaction", "passive", "movement", "other"]),ritual:"Ritual"},
       rollModes: labels(["attribute", "none", "delegated"]),
     };
   }
@@ -92,6 +101,12 @@ export class AbilitySheet extends foundry.applications.api.HandlebarsApplication
   static async useAbility() {
     try {
       if (isPotionAbility(this.item)) return openPotionPreparation(this.item);
+      if (this.item.actor?.getFlag("heroes-of-legend", "nativeWorkshop")?.portable && (this.item.getFlag("heroes-of-legend", "grantKind") === "nativeWorkshop" || this.item.getFlag("heroes-of-legend", "workshopRecord") || this.item.getFlag("heroes-of-legend", "spell"))) {
+        const sheet = this.item.actor.sheet;
+        await sheet.render({force:true});
+        if (!sheet.useWorkshopAbility) throw new Error("Open the current character sheet to use this ability.");
+        return sheet.useWorkshopAbility(this.item.getFlag("heroes-of-legend", "catalogId"));
+      }
       await activateOwnedAbility(this.item);
     } catch (e) {
       ui.notifications.error(e.message);

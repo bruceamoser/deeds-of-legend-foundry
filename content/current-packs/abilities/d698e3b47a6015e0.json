@@ -1,0 +1,47 @@
+{
+  "_key": "!items!d698e3b47a6015e0",
+  "_id": "d698e3b47a6015e0",
+  "name": "Measured Cut I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Brawn</dd></div></dl><p>Main Action · Brawn. Attack one adjacent creature for 2/3/5 physical damage. On Strong, you may move 1 square after the attack.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "brawn",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "2 physical damage",
+      "standard": "3 physical damage",
+      "strong": "5 physical damage"
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "arms:bladework:1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "technique",
+        "nodeId": "arms:bladework:1",
+        "level": 1,
+        "cost": 1,
+        "action": "Main Action",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": "Brawn",
+        "defenseAttribute": null,
+        "effect": "Main Action · Brawn. Attack one adjacent creature for 2/3/5 physical damage. On Strong, you may move 1 square after the attack.",
+        "improves": null,
+        "requires": [
+          "arms"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

@@ -1,0 +1,65 @@
+{
+  "_key": "!items!ce99da5f42c3c04f",
+  "_id": "ce99da5f42c3c04f",
+  "name": "Invisibility",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>Self or one willing creature within 3 squares</dd></div><div><dt>Duration</dt><dd>1 minute</dd></div></dl><p>Make the recipient and its carried gear Invisible. Attacking or casting another spell ends this casting&#39;s invisibility after that action resolves. Other senses can still locate the recipient.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:perception:5",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:perception:5",
+        "level": 1,
+        "cost": 2,
+        "action": "Main Action",
+        "sp": 2,
+        "range": "Self or one willing creature within 3 squares",
+        "duration": "1 minute",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Make the recipient and its carried gear Invisible. Attacking or casting another spell ends this casting's invisibility after that action resolves. Other senses can still locate the recipient.",
+        "improves": null,
+        "requires": [
+          "perception:1"
+        ],
+        "bookId": "perception"
+      },
+      "spell": {
+        "id": "spell:perception:5",
+        "name": "Invisibility",
+        "bookId": "perception",
+        "page": "5",
+        "section": "III",
+        "sp": 2,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Self or one willing creature within 3 squares",
+        "duration": "1 minute",
+        "effect": "Make the recipient and its carried gear Invisible. Attacking or casting another spell ends this casting's invisibility after that action resolves. Other senses can still locate the recipient."
+      }
+    }
+  },
+  "effects": []
+}

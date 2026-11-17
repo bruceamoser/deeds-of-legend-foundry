@@ -1,0 +1,66 @@
+{
+  "_key": "!items!d6c83d88a97874b6",
+  "_id": "d6c83d88a97874b6",
+  "name": "Unlocking Ways",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 minute</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div><div><dt>Range</dt><dd>One adjacent mundane lock</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Guide its mechanism with invisible tools. Add 1/2/3 progress toward the lock&#39;s DA-set opening objective. The spell supplies delicate manipulation; an explicit magical seal uses its named remedy.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:shaping:4",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:shaping:4",
+        "level": 1,
+        "cost": 2,
+        "action": "Ritual · 1 minute",
+        "sp": 2,
+        "range": "One adjacent mundane lock",
+        "duration": "Instant",
+        "attribute": "Knowledge",
+        "defenseAttribute": null,
+        "effect": "Guide its mechanism with invisible tools. Add 1/2/3 progress toward the lock's DA-set opening objective. The spell supplies delicate manipulation; an explicit magical seal uses its named remedy.",
+        "improves": null,
+        "requires": [
+          "shaping:0"
+        ],
+        "bookId": "shaping"
+      },
+      "spell": {
+        "id": "spell:shaping:4",
+        "name": "Unlocking Ways",
+        "bookId": "shaping",
+        "page": "4",
+        "section": "II",
+        "sp": 2,
+        "action": "Ritual",
+        "actionText": "Ritual · 1 minute",
+        "ritualTime": "1 minute",
+        "attribute": "Knowledge",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One adjacent mundane lock",
+        "duration": "Instant",
+        "effect": "Guide its mechanism with invisible tools. Add 1/2/3 progress toward the lock's DA-set opening objective. The spell supplies delicate manipulation; an explicit magical seal uses its named remedy."
+      }
+    }
+  },
+  "effects": []
+}

@@ -1,0 +1,281 @@
+{
+  "_key": "!actors!ed5f7eb692ae2c03",
+  "_id": "ed5f7eb692ae2c03",
+  "name": "Faceless Envoy",
+  "type": "creature",
+  "img": "systems/heroes-of-legend/assets/creatures/8f6bbb98290b189c0de80cac5719a0944d9f1d04360adba27e2a222c82649423.webp",
+  "prototypeToken": {
+    "width": 1,
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/8f6bbb98290b189c0de80cac5719a0944d9f1d04360adba27e2a222c82649423.webp"
+    }
+  },
+  "system": {
+    "schemaVersion": 1,
+    "attributes": {
+      "brawn": {
+        "base": 0
+      },
+      "fortitude": {
+        "base": 1
+      },
+      "agility": {
+        "base": 1
+      },
+      "guile": {
+        "base": 1
+      },
+      "knowledge": {
+        "base": 2
+      },
+      "reason": {
+        "base": 2
+      }
+    },
+    "attributesSource": "Brawn +0; Fortitude +1; Agility +1; Guile +1; Knowledge +2; Reason +2",
+    "health": {
+      "value": 24,
+      "baseMax": 24,
+      "sourceText": "24"
+    },
+    "cv": 22,
+    "speed": 6,
+    "speedSource": "6",
+    "alternateSpeeds": [],
+    "size": 1,
+    "sizeLabel": "medium",
+    "sizeSource": "1 (medium)",
+    "footprint": {
+      "width": 1,
+      "height": 1
+    },
+    "armor": 0,
+    "armorMarker": "",
+    "armorSource": "0",
+    "stability": 0,
+    "threat": {
+      "boons": 0,
+      "banes": 1,
+      "sourceText": "1 Bane"
+    },
+    "evasion": {
+      "boons": 0,
+      "banes": 1,
+      "sourceText": "1 Bane"
+    },
+    "weaknesses": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "resistances": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "immunities": [],
+    "basicMelee": {
+      "weak": 5,
+      "standard": 3,
+      "strong": 2,
+      "defenseAttribute": "agility",
+      "orientation": "player-defense"
+    },
+    "actions": {
+      "orientation": "player-defense",
+      "entries": [
+        {
+          "id": "main-0",
+          "category": "main",
+          "name": "Basic Melee",
+          "abilityId": "",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "5",
+            "standard": "3",
+            "strong": "2"
+          },
+          "effect": "5/3/2",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "main-1",
+          "category": "main",
+          "name": "Unmaking touch",
+          "abilityId": "",
+          "attributeKey": "fortitude",
+          "defenseSource": "Fortitude",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "7 + Blinded 2",
+            "standard": "5 + Blinded 1",
+            "strong": "3"
+          },
+          "effect": "7 + Blinded 2 / 5 + Blinded 1 / 3",
+          "referenceMarkdown": "### Unmaking touch\n\n**Target:** One adjacent creature. **Player defense:** Fortitude. **Damage type:** mental.\n\n**Weak defense:** Blinded 2. **Standard defense:** Blinded 1."
+        },
+        {
+          "id": "maneuver-0",
+          "category": "maneuver",
+          "name": "Wear a Borrowed Face",
+          "abilityId": "",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Copy observed appearance/voice; own statistics; see details.",
+          "referenceMarkdown": "### Wear a Borrowed Face\n\n*Its features soften and settle into a face it has studied.*\n\nCopy the appearance and voice of one observed person of the same Size until dismissed or reduced to 0 HP. Keep its own statistics and equipment; gain no memories, languages or powers. Suspicious examination uses a player Reason roll when consequences warrant one."
+        },
+        {
+          "id": "maneuver-1",
+          "category": "maneuver",
+          "name": "Defend",
+          "abilityId": "",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "+1 Bane",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "reaction-0",
+          "category": "reaction",
+          "name": "Opportunity Attack",
+          "abilityId": "",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Basic Melee",
+          "referenceMarkdown": ""
+        }
+      ],
+      "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates a complete outcome. All attacks use printed Threat unless stated otherwise.",
+      "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Unmaking touch | Fortitude | 7 + Blinded 2 / 5 + Blinded 1 / 3 |",
+      "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Wear a Borrowed Face | Copy observed appearance/voice; own statistics; see details. |\n| Defend | +1 Bane |",
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Opportunity Attack | Basic Melee |"
+    },
+    "details": {
+      "flavorMarkdown": "*A smooth-faced visitor keeps its hands covered and pauses a heartbeat too long before returning a greeting.*",
+      "specialtyMarkdown": "### Unmaking touch\n\n**Target:** One adjacent creature. **Player defense:** Fortitude. **Damage type:** mental.\n\n**Weak defense:** Blinded 2. **Standard defense:** Blinded 1.\n\n### Wear a Borrowed Face\n\n*Its features soften and settle into a face it has studied.*\n\nCopy the appearance and voice of one observed person of the same Size until dismissed or reduced to 0 HP. Keep its own statistics and equipment; gain no memories, languages or powers. Suspicious examination uses a player Reason roll when consequences warrant one.",
+      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until its next turn. Combines with Evasion through normal Boon/Bane rules; repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature; spend its Reaction before the provoking action resolves. That action continues if capable.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Dark sight 6 squares; ordinary hearing.\n\n**Tactics and retreat:** Keep a convincing appearance until challenged, then blind a close threat and retreat. Its disguise never changes its combat statistics.\n\n**Encounter and conversation:** It is carrying a genuine peace offer, but its borrowed identity could ruin the negotiations if exposed carelessly.\n\n**Habitat:** Cavern; forgotten laboratory; buried ruin · **Communication:** Common\n\n**Loot:** Choose possessions or a clue in its lair that fits the adventure. If a body part is useful or valuable, state its use and value before awarding it.\n\n**Summoning:** Ineligible.",
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-faceless-envoy\n\n\n**Category:** Aberration · **Role:** Sight disruptor · **CV:** 22\n\n### Creature-roll reference\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Unmaking touch | Reason | 1 Boon | 3 mental damage. | 5 mental damage. Blinded 1. | 7 mental damage. Blinded 2. |\n\nUse the attributes above for defenses named by incoming attacks. Same targeting, limits and costs apply; no opposed second roll.\n\n### CV worksheet\n\n**Reference damage:** 3/5/7\n\n**Reference type:** mental\n\n**Expected targets:** 1\n\n**Utility factor:** 1.3\n\n**Regeneration per turn:** 0\n\nReference I=4.404, O=5.596. Uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/encounters.md). Utility is provisional and does not simulate control, positioning or summon choices.\n\n**Ability sources:** [assumed face](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/assumed-face.md), [dazzling strike](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/dazzling-strike.md).\n\n**Coverage reference:** [Pathfinder family survey](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/family-survey.md); original HOL prose and mechanics.\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/roster.md) · [Stability](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/rules/stability.md)"
+    },
+    "biography": ""
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-faceless-envoy",
+        "asset": "assets/creatures/8f6bbb98290b189c0de80cac5719a0944d9f1d04360adba27e2a222c82649423.webp",
+        "sha256": "d10a470ece228434f91cb70df06e07709b239759f33036b9dd4cdf45fb8e42b7",
+        "sourceSha256": "8f6bbb98290b189c0de80cac5719a0944d9f1d04360adba27e2a222c82649423",
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
+      "catalogId": "creature-faceless-envoy",
+      "source": {
+        "path": "design/bestiary/creatures/faceless-envoy.md",
+        "sha256": "f36f1792cf262a08cab4cdec52b37f0a33e9f012ff8f0c128c80e2f589f8fb25"
+      },
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Printed profile · specialty automation pending",
+      "specialtyAutomation": "pending",
+      "classification": {
+        "category": "Aberration",
+        "role": "Sight disruptor",
+        "cv": 22
+      },
+      "family": "Mind and cavern horrors",
+      "abilitySources": [
+        {
+          "label": "assumed face",
+          "id": "monster-assumed-face",
+          "path": "design/monster-abilities/assumed-face.md",
+          "sha256": "1acf5ba5c145474e25d5fe9340b6a39a9f004ad46e56fcd2e72ca9cd9d609aae"
+        },
+        {
+          "label": "dazzling strike",
+          "id": "monster-dazzling-strike",
+          "path": "design/monster-abilities/dazzling-strike.md",
+          "sha256": "8e56d772f0e831427a59fa79dfe0c7cff4ee54f1a00b69850a0b2cdac947ff50"
+        }
+      ],
+      "monsterAbilityTemplates": [
+        {
+          "id": "monster-assumed-face",
+          "path": "design/monster-abilities/assumed-face.md",
+          "sha256": "1acf5ba5c145474e25d5fe9340b6a39a9f004ad46e56fcd2e72ca9cd9d609aae",
+          "name": "Wear a Borrowed Face",
+          "action": "Maneuver",
+          "flavorMarkdown": "*Its features soften and settle into a face it has studied.*",
+          "rulesMarkdown": "Copy the appearance and voice of one observed person of the same Size until dismissed or reduced to 0 HP. Keep its own statistics and equipment; gain no memories, languages or powers. Suspicious examination uses a player Reason roll when consequences warrant one.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Wear a Borrowed Face\n\n*Its features soften and settle into a face it has studied.*\n\n## Rules\n\n**ID:** monster-assumed-face\n\n\n**Action:** Maneuver\n\nCopy the appearance and voice of one observed person of the same Size until dismissed or reduced to 0 HP. Keep its own statistics and equipment; gain no memories, languages or powers. Suspicious examination uses a player Reason roll when consequences warrant one.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/assumed-face.md",
+            "sha256": "1acf5ba5c145474e25d5fe9340b6a39a9f004ad46e56fcd2e72ca9cd9d609aae"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-dazzling-strike",
+          "path": "design/monster-abilities/dazzling-strike.md",
+          "sha256": "8e56d772f0e831427a59fa79dfe0c7cff4ee54f1a00b69850a0b2cdac947ff50",
+          "name": "Dazzling Strike",
+          "action": "Main Action",
+          "flavorMarkdown": "*Light or a sudden wash of sensation overwhelms the target’s sight.*",
+          "rulesMarkdown": "The printed attack applies Blinded for the listed duration. Use normal decay; no permanent blindness is implied.\n\nActual damage, targeting and defense attribute are printed on the creature card.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Dazzling Strike\n\n*Light or a sudden wash of sensation overwhelms the target’s sight.*\n\n## Rules\n\n**ID:** monster-dazzling-strike\n\n\n**Action:** Main Action\n\nThe printed attack applies Blinded for the listed duration. Use normal decay; no permanent blindness is implied.\n\nActual damage, targeting and defense attribute are printed on the creature card.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/dazzling-strike.md",
+            "sha256": "8e56d772f0e831427a59fa79dfe0c7cff4ee54f1a00b69850a0b2cdac947ff50"
+          },
+          "automation": "pending"
+        }
+      ],
+      "summoning": {
+        "eligible": false,
+        "summonId": null,
+        "path": null,
+        "eligibility": null,
+        "sourceText": "Ineligible."
+      }
+    }
+  }
+}

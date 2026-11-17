@@ -1,0 +1,66 @@
+{
+  "_key": "!items!eab8e74bed8287ce",
+  "_id": "eab8e74bed8287ce",
+  "name": "Stone Shape — Craft",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 10 minutes</dd></div><div><dt>SP</dt><dd>3</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One adjacent unattended stone mass up to one square in each dimension</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Shape a simple brace, slab, stair or other solid construction component, preserving its volume. Fine mechanisms and final fitting use ordinary tools. Living stone creatures follow creature-targeting spells.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:shaping:6",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:shaping:6",
+        "level": 1,
+        "cost": 2,
+        "action": "Ritual · 10 minutes",
+        "sp": 3,
+        "range": "One adjacent unattended stone mass up to one square in each dimension",
+        "duration": "Instant",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Shape a simple brace, slab, stair or other solid construction component, preserving its volume. Fine mechanisms and final fitting use ordinary tools. Living stone creatures follow creature-targeting spells.",
+        "improves": null,
+        "requires": [
+          "shaping:1"
+        ],
+        "bookId": "shaping"
+      },
+      "spell": {
+        "id": "spell:shaping:6",
+        "name": "Stone Shape — Craft",
+        "bookId": "shaping",
+        "page": "6",
+        "section": "III",
+        "sp": 3,
+        "action": "Ritual",
+        "actionText": "Ritual · 10 minutes",
+        "ritualTime": "10 minutes",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One adjacent unattended stone mass up to one square in each dimension",
+        "duration": "Instant",
+        "effect": "Shape a simple brace, slab, stair or other solid construction component, preserving its volume. Fine mechanisms and final fitting use ordinary tools. Living stone creatures follow creature-targeting spells."
+      }
+    }
+  },
+  "effects": []
+}

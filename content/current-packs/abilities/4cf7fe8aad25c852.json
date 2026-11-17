@@ -1,0 +1,66 @@
+{
+  "_key": "!items!4cf7fe8aad25c852",
+  "_id": "4cf7fe8aad25c852",
+  "name": "Mighty Fortress",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 3 days, 8 hours each day</dd></div><div><dt>SP</dt><dd>10</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One prepared 12-by-12-square site; soil, water, stone and 600 coins of materials consumed</dd></div><div><dt>Duration</dt><dd>Permanent structure; wards renewed for 24 hours</dd></div></dl><p>On a sound prepared site, raise a one-story living keep with six rooms, a courtyard, a gate and walls 3 squares high. Pay 10 SP on each workday. Walls block movement and sight; each 1-square section has 20 HP and physical resistance 3, and takes at least 1 damage per attack. Designate up to twelve residents. Paying 4 SP at dawn renews the wards for 24 hours: residents inside gain 1 Boon to defenses, and you sense any breached wall’s location while inside. Without renewal the ordinary structure remains. It needs food, water and repairs. You may ward one citadel at a time.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell-mastery:guards-and-wards-living-citadel",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell-mastery:guards-and-wards-living-citadel",
+        "level": 7,
+        "cost": 5,
+        "action": "Ritual · 3 days, 8 hours each day",
+        "sp": 10,
+        "range": "One prepared 12-by-12-square site; soil, water, stone and 600 coins of materials consumed",
+        "duration": "Permanent structure; wards renewed for 24 hours",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "On a sound prepared site, raise a one-story living keep with six rooms, a courtyard, a gate and walls 3 squares high. Pay 10 SP on each workday. Walls block movement and sight; each 1-square section has 20 HP and physical resistance 3, and takes at least 1 damage per attack. Designate up to twelve residents. Paying 4 SP at dawn renews the wards for 24 hours: residents inside gain 1 Boon to defenses, and you sense any breached wall’s location while inside. Without renewal the ordinary structure remains. It needs food, water and repairs. You may ward one citadel at a time.",
+        "improves": null,
+        "requires": [
+          "sanctuary:5"
+        ],
+        "bookId": "sanctuary"
+      },
+      "spell": {
+        "id": "spell-mastery:guards-and-wards-living-citadel",
+        "name": "Mighty Fortress",
+        "bookId": "sanctuary",
+        "page": "A3",
+        "section": "VII",
+        "sp": 10,
+        "action": "Ritual",
+        "actionText": "Ritual · 3 days, 8 hours each day",
+        "ritualTime": "3 days, 8 hours each day",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One prepared 12-by-12-square site; soil, water, stone and 600 coins of materials consumed",
+        "duration": "Permanent structure; wards renewed for 24 hours",
+        "effect": "On a sound prepared site, raise a one-story living keep with six rooms, a courtyard, a gate and walls 3 squares high. Pay 10 SP on each workday. Walls block movement and sight; each 1-square section has 20 HP and physical resistance 3, and takes at least 1 damage per attack. Designate up to twelve residents. Paying 4 SP at dawn renews the wards for 24 hours: residents inside gain 1 Boon to defenses, and you sense any breached wall’s location while inside. Without renewal the ordinary structure remains. It needs food, water and repairs. You may ward one citadel at a time."
+      }
+    }
+  },
+  "effects": []
+}

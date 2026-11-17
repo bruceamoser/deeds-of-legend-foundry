@@ -1,0 +1,351 @@
+{
+  "_key": "!actors!c09c9a841ffb41dc",
+  "_id": "c09c9a841ffb41dc",
+  "name": "Wight",
+  "type": "creature",
+  "img": "systems/heroes-of-legend/assets/creatures/f59326b199c898666fd41881bc7f23e20b43a92fe66f7b21db260a6a1d06bd7b.webp",
+  "prototypeToken": {
+    "width": 1,
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/f59326b199c898666fd41881bc7f23e20b43a92fe66f7b21db260a6a1d06bd7b.webp"
+    }
+  },
+  "system": {
+    "schemaVersion": 1,
+    "attributes": {
+      "brawn": {
+        "base": 2
+      },
+      "fortitude": {
+        "base": 1
+      },
+      "agility": {
+        "base": 1
+      },
+      "guile": {
+        "base": 0
+      },
+      "knowledge": {
+        "base": 0
+      },
+      "reason": {
+        "base": 1
+      }
+    },
+    "attributesSource": "Brawn +2; Fortitude +1; Agility +1; Guile +0; Knowledge +0; Reason +1",
+    "health": {
+      "value": 24,
+      "baseMax": 24,
+      "sourceText": "24"
+    },
+    "cv": 29,
+    "speed": 6,
+    "speedSource": "6",
+    "alternateSpeeds": [],
+    "size": 1,
+    "sizeLabel": "medium",
+    "sizeSource": "1 (medium)",
+    "footprint": {
+      "width": 1,
+      "height": 1
+    },
+    "armor": 2,
+    "armorMarker": "",
+    "armorSource": "2",
+    "stability": 0,
+    "threat": {
+      "boons": 0,
+      "banes": 1,
+      "sourceText": "1 Bane"
+    },
+    "evasion": {
+      "boons": 0,
+      "banes": 0,
+      "sourceText": "None"
+    },
+    "weaknesses": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "resistances": {
+      "numeric": [
+        {
+          "type": "Physical",
+          "value": 2
+        }
+      ],
+      "special": [],
+      "sourceText": "Physical (2)"
+    },
+    "immunities": [
+      "Bleeding",
+      "Poisoned",
+      "Asleep"
+    ],
+    "basicMelee": {
+      "weak": 5,
+      "standard": 3,
+      "strong": 2,
+      "defenseAttribute": "agility",
+      "orientation": "player-defense"
+    },
+    "actions": {
+      "orientation": "player-defense",
+      "entries": [
+        {
+          "id": "main-0",
+          "category": "main",
+          "name": "Basic Melee",
+          "abilityId": "",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "5",
+            "standard": "3",
+            "strong": "2"
+          },
+          "effect": "5/3/2",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "main-1",
+          "category": "main",
+          "name": "Oath-draining blade",
+          "abilityId": "",
+          "attributeKey": "fortitude",
+          "defenseSource": "Fortitude",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "7 + Slowed 2",
+            "standard": "5 + Slowed 1",
+            "strong": "3"
+          },
+          "effect": "7 + Slowed 2 / 5 + Slowed 1 / 3",
+          "referenceMarkdown": "### Oath-draining blade\n\n**Target:** One adjacent creature. **Player defense:** Fortitude. **Damage type:** Life.\n\n**Weak defense:** Slowed 2. **Standard defense:** Slowed 1."
+        },
+        {
+          "id": "maneuver-0",
+          "category": "maneuver",
+          "name": "Rattle of the Grave",
+          "abilityId": "",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "One hearing target within 2: Frightened 1.",
+          "referenceMarkdown": "### Rattle of the Grave\n\n*A dry sound rises from the corpse, like someone knocking from inside a coffin.*\n\nOne creature within 2 squares that can hear it gains Frightened 1 of this creature. Once per turn; no damage."
+        },
+        {
+          "id": "maneuver-1",
+          "category": "maneuver",
+          "name": "Defend",
+          "abilityId": "",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "+1 Bane",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "reaction-0",
+          "category": "reaction",
+          "name": "Turn the Blade",
+          "abilityId": "monster-turn-the-blade",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Before an adjacent melee attack: +1 Bane to that attack; held weapon required.",
+          "referenceMarkdown": "### Turn the Blade\n\n*A small turn of the wrist catches the blow on a waiting edge and sends it sliding past.*\n\nBefore one adjacent enemy makes a melee attack against this creature, impose 1 Bane on that attack roll. Requires a held melee weapon. Against an NPC attack, grant 1 Boon to the single defense roll instead. Applies to this attack only; it does not grant a counterattack."
+        },
+        {
+          "id": "reaction-1",
+          "category": "reaction",
+          "name": "Opportunity Attack",
+          "abilityId": "",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Basic Melee",
+          "referenceMarkdown": ""
+        }
+      ],
+      "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates a complete outcome. All attacks use printed Threat unless stated otherwise.",
+      "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 5/3/2 |\n| Oath-draining blade | Fortitude | 7 + Slowed 2 / 5 + Slowed 1 / 3 |",
+      "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Rattle of the Grave | One hearing target within 2: Frightened 1. |\n| Defend | +1 Bane |",
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Turn the Blade | Before an adjacent melee attack: +1 Bane to that attack; held weapon required. |\n| Opportunity Attack | Basic Melee |"
+    },
+    "details": {
+      "flavorMarkdown": "*An armored corpse watches with the offended dignity of a lord whose court has forgotten to die.*",
+      "specialtyMarkdown": "### Oath-draining blade\n\n**Target:** One adjacent creature. **Player defense:** Fortitude. **Damage type:** Life.\n\n**Weak defense:** Slowed 2. **Standard defense:** Slowed 1.\n\n### Rattle of the Grave\n\n*A dry sound rises from the corpse, like someone knocking from inside a coffin.*\n\nOne creature within 2 squares that can hear it gains Frightened 1 of this creature. Once per turn; no damage.\n\n### Turn the Blade\n\n*A small turn of the wrist catches the blow on a waiting edge and sends it sliding past.*\n\nBefore one adjacent enemy makes a melee attack against this creature, impose 1 Bane on that attack roll. Requires a held melee weapon. Against an NPC attack, grant 1 Boon to the single defense roll instead. Applies to this attack only; it does not grant a counterattack.",
+      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until its next turn. Combines with Evasion through normal Boon/Bane rules; repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature; spend its Reaction before the provoking action resolves. That action continues if capable.\n\n**Lifeless Body — Passive:** Does not breathe or eat; only its listed immunities apply.\n\n**Healing:** Healing-harmed: ordinary healing resolves as Life damage instead; no beneficial riders.\n\n**Against offensive healing:** Its controller uses Fortitude defense when player-controlled; a player attacking it rolls only their attack.\n\n**Senses:** Dark sight 6 squares; ordinary hearing.\n\n**Tactics and retreat:** Separate the oath-breaker from companions, then use fear to make the approach costly. It values its old post more than pursuit.\n\n**Encounter and conversation:** It demands a toll once lawful but now ruinous; the original charter can expose its limits.\n\n**Habitat:** Crypt; burial ground; ruined settlement · **Communication:** Common; understands old oaths\n\n**Loot:** Choose possessions or a clue in its lair that fits the adventure. If a body part is useful or valuable, state its use and value before awarding it.\n\n**Summoning:** Undead 7 — [player reference](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/summons/wight.md).",
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-wight\n\n\n**Category:** Undead · **Role:** Pursuit controller · **CV:** 29\n\n### CV worksheet\n\n**Reference damage:** 3/5/7\n\n**Reference type:** Life\n\n**Expected targets:** 1\n\n**Utility factor:** 1.4\n\n**Action review (#1279):** U 1.3 → 1.4: Maneuver allowance +0, Reaction allowance +0.1. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.\n\n**Regeneration per turn:** 0\n\nReference I=3.000, O=5.596. Uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/encounters.md). Utility is provisional and does not simulate control, positioning or summon choices.\n\n**Ability sources:** [hampering strike](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/hampering-strike.md), [lifeless body](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/lifeless-body.md), [rattle bones](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/rattle-bones.md), [Turn the Blade](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/turn-the-blade.md).\n\n**Coverage reference:** [Pathfinder family survey](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/family-survey.md); original HOL prose and mechanics.\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/roster.md) · [Stability](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/rules/stability.md)"
+    },
+    "biography": ""
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-wight",
+        "asset": "assets/creatures/f59326b199c898666fd41881bc7f23e20b43a92fe66f7b21db260a6a1d06bd7b.webp",
+        "sha256": "30b23196d33d5e46b5000a391c22fa43ae38794f299a4d1c2643ab89e70e8469",
+        "sourceSha256": "f59326b199c898666fd41881bc7f23e20b43a92fe66f7b21db260a6a1d06bd7b",
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "alpha": true,
+        "provenance": "approved Player Book creature illustration"
+      },
+      "catalogId": "creature-wight",
+      "source": {
+        "path": "design/bestiary/creatures/wight.md",
+        "sha256": "cfba7627bb138e30982ae6381dd1fee7a16f494064cea481f26d67e68d8035d4"
+      },
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Printed profile · specialty automation pending",
+      "specialtyAutomation": "pending",
+      "classification": {
+        "category": "Undead",
+        "role": "Pursuit controller",
+        "cv": 29
+      },
+      "family": "Undead knights, revenants and liches",
+      "abilitySources": [
+        {
+          "label": "hampering strike",
+          "id": "monster-hampering-strike",
+          "path": "design/monster-abilities/hampering-strike.md",
+          "sha256": "4196362506de3d774fa824a94e64fe2c20e7d3def9a2ff84f31463d43542265b"
+        },
+        {
+          "label": "lifeless body",
+          "id": "monster-lifeless-body",
+          "path": "design/monster-abilities/lifeless-body.md",
+          "sha256": "248c16c6e641d2042cd94a05e7e8bfce03b5177f4f57cda241b46d9b16de4d81"
+        },
+        {
+          "label": "rattle bones",
+          "id": "monster-rattle-bones",
+          "path": "design/monster-abilities/rattle-bones.md",
+          "sha256": "0b0a2c882fac8f589c017b416dcff90ca9ec871c730e3130bed0c55ae64d0398"
+        },
+        {
+          "label": "Turn the Blade",
+          "id": "monster-turn-the-blade",
+          "path": "design/monster-abilities/turn-the-blade.md",
+          "sha256": "219eb8418560dfe6343195b90e0631522ba87816e410d710634e5b2c3b6d97a5"
+        }
+      ],
+      "monsterAbilityTemplates": [
+        {
+          "id": "monster-hampering-strike",
+          "path": "design/monster-abilities/hampering-strike.md",
+          "sha256": "4196362506de3d774fa824a94e64fe2c20e7d3def9a2ff84f31463d43542265b",
+          "name": "Hampering Strike",
+          "action": "Main Action",
+          "flavorMarkdown": "*A precise impact makes the next few steps painfully awkward.*",
+          "rulesMarkdown": "The printed attack applies Slowed at the listed outcomes. It does not reduce an attribute or permanently damage equipment.\n\nActual damage, targeting and defense attribute are printed on the creature card.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Hampering Strike\n\n*A precise impact makes the next few steps painfully awkward.*\n\n## Rules\n\n**ID:** monster-hampering-strike\n\n\n**Action:** Main Action\n\nThe printed attack applies Slowed at the listed outcomes. It does not reduce an attribute or permanently damage equipment.\n\nActual damage, targeting and defense attribute are printed on the creature card.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/hampering-strike.md",
+            "sha256": "4196362506de3d774fa824a94e64fe2c20e7d3def9a2ff84f31463d43542265b"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-lifeless-body",
+          "path": "design/monster-abilities/lifeless-body.md",
+          "sha256": "248c16c6e641d2042cd94a05e7e8bfce03b5177f4f57cda241b46d9b16de4d81",
+          "name": "Lifeless Body",
+          "action": "Passive",
+          "flavorMarkdown": "*Nothing breathes beneath the torn coat; nothing living looks through the visor.*",
+          "rulesMarkdown": "The card must list its exact condition immunities; this trait grants no additional unlisted ones. It does not breathe or need food. Undead entries marked healing-harmed take a healing result as Life damage; constructs marked repair-only do not regain HP from ordinary healing. Neither rule prevents physical attacks from dealing their normal minimum damage.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Lifeless Body\n\n*Nothing breathes beneath the torn coat; nothing living looks through the visor.*\n\n## Rules\n\n**ID:** monster-lifeless-body\n\n\n**Action:** Passive\n\nThe card must list its exact condition immunities; this trait grants no additional unlisted ones. It does not breathe or need food. Undead entries marked healing-harmed take a healing result as Life damage; constructs marked repair-only do not regain HP from ordinary healing. Neither rule prevents physical attacks from dealing their normal minimum damage.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/lifeless-body.md",
+            "sha256": "248c16c6e641d2042cd94a05e7e8bfce03b5177f4f57cda241b46d9b16de4d81"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-rattle-bones",
+          "path": "design/monster-abilities/rattle-bones.md",
+          "sha256": "0b0a2c882fac8f589c017b416dcff90ca9ec871c730e3130bed0c55ae64d0398",
+          "name": "Rattle of the Grave",
+          "action": "Maneuver",
+          "flavorMarkdown": "*A dry sound rises from the corpse, like someone knocking from inside a coffin.*",
+          "rulesMarkdown": "One creature within 2 squares that can hear it gains Frightened 1 of this creature. Once per turn; no damage.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Rattle of the Grave\n\n*A dry sound rises from the corpse, like someone knocking from inside a coffin.*\n\n## Rules\n\n**ID:** monster-rattle-bones\n\n\n**Action:** Maneuver\n\nOne creature within 2 squares that can hear it gains Frightened 1 of this creature. Once per turn; no damage.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/rattle-bones.md",
+            "sha256": "0b0a2c882fac8f589c017b416dcff90ca9ec871c730e3130bed0c55ae64d0398"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-turn-the-blade",
+          "path": "design/monster-abilities/turn-the-blade.md",
+          "sha256": "219eb8418560dfe6343195b90e0631522ba87816e410d710634e5b2c3b6d97a5",
+          "name": "Turn the Blade",
+          "action": "Reaction",
+          "flavorMarkdown": "*A small turn of the wrist catches the blow on a waiting edge and sends it sliding past.*",
+          "rulesMarkdown": "Before one adjacent enemy makes a melee attack against this creature, impose 1 Bane on that attack roll. Requires a held melee weapon. Against an NPC attack, grant 1 Boon to the single defense roll instead. Applies to this attack only; it does not grant a counterattack.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Turn the Blade\n\n*A small turn of the wrist catches the blow on a waiting edge and sends it sliding past.*\n\n## Rules\n\n**ID:** monster-turn-the-blade\n\n**Action:** Reaction\n\nBefore one adjacent enemy makes a melee attack against this creature, impose 1 Bane on that attack roll. Requires a held melee weapon. Against an NPC attack, grant 1 Boon to the single defense roll instead. Applies to this attack only; it does not grant a counterattack.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/turn-the-blade.md",
+            "sha256": "219eb8418560dfe6343195b90e0631522ba87816e410d710634e5b2c3b6d97a5"
+          },
+          "automation": "pending"
+        }
+      ],
+      "summoning": {
+        "eligible": true,
+        "summonId": "summon-wight",
+        "path": "design/bestiary/summons/wight.md",
+        "eligibility": "Undead 7",
+        "sourceText": "Undead 7 — [player reference](../summons/wight.md)."
+      }
+    }
+  }
+}

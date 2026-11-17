@@ -1,0 +1,46 @@
+{
+  "_key": "!items!ec3cadc9599c8163",
+  "_id": "ec3cadc9599c8163",
+  "name": "Follow My Signal",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Up to two allies within 3 squares that can see or hear your Aid signal.</dd></div><div><dt>Duration</dt><dd>Each Boon expires when used or the start of your next turn.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Frequency</dt><dd>One two-recipient Aid on your turn.</dd></div></dl><p>When you use Aid, you may assist two allies instead of one. Name the task for each and explain how your signal helps. Each gains Aid’s normal 1 Boon to its next matching roll before the start of your next turn. Outside combat, Aid still replaces your own contribution to a group roll.</p><p>Your signal may be speech, signs or music the recipients can perceive.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-signature-leader-follow-my-signal",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "ability",
+        "nodeId": "ability-signature-leader-follow-my-signal",
+        "level": 1,
+        "cost": 0,
+        "action": "Passive",
+        "sp": null,
+        "range": "Up to two allies within 3 squares that can see or hear your Aid signal.",
+        "duration": "Each Boon expires when used or the start of your next turn.",
+        "attribute": "None (no roll)",
+        "defenseAttribute": null,
+        "effect": "**Action:** Passive · **Attribute:** None (no roll)\n\n**Target / range / shape:** Up to two allies within 3 squares that can see or hear your Aid signal.\n\nWhen you use Aid, you may assist two allies instead of one. Name the task for each and explain how your signal helps. Each gains Aid’s normal 1 Boon to its next matching roll before the start of your next turn. Outside combat, Aid still replaces your own contribution to a group roll.\n\n**Duration:** Each Boon expires when used or the start of your next turn.\n\n**Equipment / acquisition:** None.\n\nYour signal may be speech, signs or music the recipients can perceive.\n\n**Frequency:** One two-recipient Aid on your turn.",
+        "improves": null,
+        "requires": [],
+        "bookId": null,
+        "magic": null
+      }
+    }
+  },
+  "effects": []
+}

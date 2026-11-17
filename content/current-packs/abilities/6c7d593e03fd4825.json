@@ -1,0 +1,47 @@
+{
+  "_key": "!items!6c7d593e03fd4825",
+  "_id": "6c7d593e03fd4825",
+  "name": "Vanish into Cover I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>Agility</dd></div></dl><p>Maneuver · Agility. Move up to 2 squares into cover, then add 1/2/3 progress toward evading pursuers. Become Hidden when the DA’s objective completes and concealment is plausible.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "attribute",
+      "attribute": "agility",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "subterfuge:stealth:4",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "technique",
+        "nodeId": "subterfuge:stealth:4",
+        "level": 3,
+        "cost": 3,
+        "action": "Maneuver",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": "Agility",
+        "defenseAttribute": null,
+        "effect": "Maneuver · Agility. Move up to 2 squares into cover, then add 1/2/3 progress toward evading pursuers. Become Hidden when the DA’s objective completes and concealment is plausible.",
+        "improves": null,
+        "requires": [
+          "subterfuge:stealth:3"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

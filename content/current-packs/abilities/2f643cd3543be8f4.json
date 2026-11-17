@@ -1,0 +1,65 @@
+{
+  "_key": "!items!2f643cd3543be8f4",
+  "_id": "2f643cd3543be8f4",
+  "name": "Unseen Servant — Workshop",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One open square within 3 squares</dd></div><div><dt>Duration</dt><dd>10 minutes, with commands</dd></div></dl><p>Create a Clay Helper energy form from Summoned Companions. Give its immediate Main command. Use its printed abilities, normal commands and six-square tether for workshop chores; provide real tools and materials.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:animation:2",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:animation:2",
+        "level": 1,
+        "cost": 1,
+        "action": "Main Action",
+        "sp": 1,
+        "range": "One open square within 3 squares",
+        "duration": "10 minutes, with commands",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Create a Clay Helper energy form from Summoned Companions. Give its immediate Main command. Use its printed abilities, normal commands and six-square tether for workshop chores; provide real tools and materials.",
+        "improves": null,
+        "requires": [
+          "force"
+        ],
+        "bookId": "animation"
+      },
+      "spell": {
+        "id": "spell:animation:2",
+        "name": "Unseen Servant — Workshop",
+        "bookId": "animation",
+        "page": "2",
+        "section": "I",
+        "sp": 1,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One open square within 3 squares",
+        "duration": "10 minutes, with commands",
+        "effect": "Create a Clay Helper energy form from Summoned Companions. Give its immediate Main command. Use its printed abilities, normal commands and six-square tether for workshop chores; provide real tools and materials."
+      }
+    }
+  },
+  "effects": []
+}

@@ -1,0 +1,65 @@
+{
+  "_key": "!items!566ce549902b0924",
+  "_id": "566ce549902b0924",
+  "name": "Speak with Plants",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One ordinary plant within 1 square</dd></div><div><dt>Duration</dt><dd>10 minutes</dd></div></dl><p>Converse through impressions of light, weather, touch and nearby movement experienced during the past day. Ask up to three questions. The DA answers from what this plant could sense.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:growth:4",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:growth:4",
+        "level": 1,
+        "cost": 2,
+        "action": "Main Action",
+        "sp": 2,
+        "range": "One ordinary plant within 1 square",
+        "duration": "10 minutes",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Converse through impressions of light, weather, touch and nearby movement experienced during the past day. Ask up to three questions. The DA answers from what this plant could sense.",
+        "improves": null,
+        "requires": [
+          "growth:0"
+        ],
+        "bookId": "growth"
+      },
+      "spell": {
+        "id": "spell:growth:4",
+        "name": "Speak with Plants",
+        "bookId": "growth",
+        "page": "4",
+        "section": "II",
+        "sp": 2,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One ordinary plant within 1 square",
+        "duration": "10 minutes",
+        "effect": "Converse through impressions of light, weather, touch and nearby movement experienced during the past day. Ask up to three questions. The DA answers from what this plant could sense."
+      }
+    }
+  },
+  "effects": []
+}

@@ -51,3 +51,20 @@ test("inline ability rules use the complete approved structured reference and es
  const unsafe=abilityRuleReferenceHTML({name:"<script>",reference:{flavor:["<img onerror=bad>"],rules:{details:[],body:[],notes:[]}}});
  assert.ok(!unsafe.includes("<script>"));assert.ok(unsafe.includes("&lt;img"));
 });
+
+
+test("current source-less Forge records cannot crash or accidentally match an unrelated spell Item",()=>{
+ const catalogs={choices:[{id:"arms:cut:1",kind:"ability"},{id:"guard:block:1",kind:"ability"}],inventory:{equipment:[]}};
+ const spell={type:"ability",id:"native-spell",system:{},getFlag:(_scope,key)=>key==="catalogId"?"spell-force-mage-hand":undefined};
+ const card=itemCardContext(spell,catalogs);
+ assert.equal(card.cardRecord,undefined);assert.equal(card.cardSourcePath,undefined);
+ spell.getFlag=(_scope,key)=>key==="catalogId"?"guard:block:1":undefined;
+ assert.equal(itemCardContext(spell,catalogs).cardRecord.id,"guard:block:1");
+});
+
+
+test("current armor card names current Forge training instead of a retired ability",()=>{
+ const armor=inventory.equipment.find(record=>record.id==="item-ordinary-heavy-armor");
+ const view=itemCardContext(item("equipment",armor,{catalogId:armor.id}),{inventory,choices:[],forge:{nodes:[{id:"armor:harness:4",name:"Heavy Armor"}]}});
+ assert.deepEqual(view.cardProperties.find(row=>row.name==="Training"),{name:"Training",value:"Heavy Armor"});
+});

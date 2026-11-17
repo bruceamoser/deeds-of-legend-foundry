@@ -1,0 +1,47 @@
+{
+  "_key": "!items!44e914f31e7a164f",
+  "_id": "44e914f31e7a164f",
+  "name": "Catch Them Falling I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Reaction</dd></div></dl><p>Reaction. Catch one adjacent falling creature no larger than you. With secure footing and a free hand, bring it into a free adjacent square. Otherwise, if a reachable hold supports both of you, you both hang there. Without a suitable hold this intervention is unavailable. No roll.</p>",
+    "activity": {
+      "action": "reaction",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "athletics:balance:4",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "technique",
+        "nodeId": "athletics:balance:4",
+        "level": 3,
+        "cost": 3,
+        "action": "Reaction",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Reaction. Catch one adjacent falling creature no larger than you. With secure footing and a free hand, bring it into a free adjacent square. Otherwise, if a reachable hold supports both of you, you both hang there. Without a suitable hold this intervention is unavailable. No roll.",
+        "improves": null,
+        "requires": [
+          "athletics:balance:3"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

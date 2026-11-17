@@ -1,0 +1,46 @@
+{
+  "_key": "!items!46e5e485a155721f",
+  "_id": "46e5e485a155721f",
+  "name": "Rampage",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Brawn</dd></div><div><dt>Target / range / shape</dt><dd>Self; a straight line up to your Speed.</dd></div><div><dt>Duration</dt><dd>Immediate.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Frequency</dt><dd>Once per scene.</dd></div></dl><p>This ability consumes your Main Action and your movement for the turn. Move up to your Speed in a straight line. Each enemy within 1 square of your path takes 2 physical damage and is pushed 1 square directly away from the path. Then make a Brawn roll against one enemy adjacent to you at the end of the movement. Weak: 3 physical damage. Standard: 4 physical damage, and it is Prone. Strong: 6 physical damage, and it is Prone. If you cannot move at least 2 squares in a straight line, you cannot use this ability. You cannot move again after the charge.</p><p>A creature takes the path damage at most once per use. The endpoint attack is a separate damage event.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "brawn",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-signature-unbalanced-crush-the-barrier",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "ability",
+        "nodeId": "ability-signature-unbalanced-crush-the-barrier",
+        "level": 3,
+        "cost": 0,
+        "action": "Main Action",
+        "sp": null,
+        "range": "Self; a straight line up to your Speed.",
+        "duration": "Immediate.",
+        "attribute": "Brawn",
+        "defenseAttribute": null,
+        "effect": "**Action:** Main Action · **Attribute:** Brawn\n\n**Target / range / shape:** Self; a straight line up to your Speed.\n\nThis ability consumes your Main Action and your movement for the turn. Move up to your Speed in a straight line. Each enemy within 1 square of your path takes 2 physical damage and is pushed 1 square directly away from the path. Then make a Brawn roll against one enemy adjacent to you at the end of the movement. Weak: 3 physical damage. Standard: 4 physical damage, and it is Prone. Strong: 6 physical damage, and it is Prone. If you cannot move at least 2 squares in a straight line, you cannot use this ability. You cannot move again after the charge.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** None.\n\nA creature takes the path damage at most once per use. The endpoint attack is a separate damage event.\n\n**Frequency:** Once per scene.",
+        "improves": null,
+        "requires": [],
+        "bookId": null,
+        "magic": null
+      }
+    }
+  },
+  "effects": []
+}

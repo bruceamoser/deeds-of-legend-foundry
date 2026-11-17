@@ -1,0 +1,47 @@
+{
+  "_key": "!items!e196e9266aa2415c",
+  "_id": "e196e9266aa2415c",
+  "name": "Flowing Hands III",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Flowing Hands also applies Dazed 1 and pushes each target 2 squares directly away on Strong; resolve collisions normally.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "arms:unarmed:6",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "arms:unarmed:6",
+        "level": 3,
+        "cost": 4,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Flowing Hands also applies Dazed 1 and pushes each target 2 squares directly away on Strong; resolve collisions normally.",
+        "improves": "arms:unarmed:4",
+        "requires": [
+          "arms:unarmed:5"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

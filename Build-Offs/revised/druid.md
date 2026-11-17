@@ -1,6 +1,6 @@
 # Thalen Reedwalker: druid after the rewrite
 
-Pinned authored source `87f5141bd6e0da74a10c07b3239e975c7656430a`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../druid.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
+Pinned authored source `f71eac4c46fce6906d6dfbd1638ee98b10a6c538`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../druid.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
 
 ## What the rewrite changes
 
@@ -16,7 +16,7 @@ Only one transformation per scene and retained personal HP give different attrit
 | SP | 7 | 11 | 19 |
 | DP spent / total | 8 / 10 | 21 / 23 | 60 / 61 |
 | Unspent DP | 2 | 2 | 1 |
-| Learned action choices (Main / Maneuver / Reaction) | 2 / 1 / 0 | 2 / 1 / 0 | 2 / 3 / 0 |
+| Learned action choices (Main / Maneuver / Reaction) | 2 / 1 / 0 | 3 / 1 / 0 | 4 / 3 / 0 |
 | Known book spells (free / paid) | 10 (4 / 6) | 18 (4 / 14) | 29 (4 / 25) |
 | Shared reserve: casts at 2 SP | 3 | 5 | 9 |
 | Shared reserve: casts at 5 SP | 1 | 2 | 3 |
@@ -115,15 +115,19 @@ Once per scene, assume the appearance of a familiar Small or Medium ground beast
 
 <details><summary>Shape of the Wild: complete signature component</summary>
 
-**Action:** Passive · **Attribute:** None
+**Action:** Main Action · **Attribute:** None
 
-**Target / range / shape:** When casting Borrowed Shape.
+**Target / range / shape:** Self.
 
-Choose one adaptation when transforming: swim at your Speed and breathe water; climb at your Speed; or remain a ground beast and gain 1 Boon to tracking rolls that rely on scent. The adaptation lasts for that transformation. Changing it requires another casting and follows Borrowed Shape’s once-per-scene limit.
+Once per scene, assume the appearance of a familiar Small or Medium ground beast for 10 minutes. Keep your HP, attributes, conditions, resources and Speed. Your equipment melds and provides no effects or resistance. Your form has physical resistance 1 and a natural attack: Main Action, Brawn, adjacent target, 2/3/5 physical damage on Weak/Standard/Strong. You speak only animal calls and cannot cast spells or use equipment. Return to your own shape with a Maneuver or automatically at 0 HP. Changing form never restores HP.
 
-**Duration:** The transformation.
+Choose one adaptation when transforming: swim at your Speed and breathe water; climb at your Speed; or remain a ground beast and gain 1 Boon to tracking rolls that rely on scent. It lasts for this transformation. Changing it requires another casting and follows this signature’s once-per-scene limit.
 
-**Equipment / acquisition:** None.
+**Duration:** Fixed 10 minutes; no Sustain.
+
+**Equipment / acquisition:** A free hand to cast before transforming.
+
+This is a spell costing 1 SP. If you also know Borrowed Shape, both signatures share the same once-per-scene transformation use.
 
 </details>
 
@@ -185,31 +189,39 @@ Once per scene, assume the appearance of a familiar Small or Medium ground beast
 
 </details>
 
-<details><summary>Great Shape: complete signature component</summary>
+<details><summary>Shape of the Wild: complete signature component</summary>
 
-**Action:** Passive · **Attribute:** None
+**Action:** Main Action · **Attribute:** None
 
-**Target / range / shape:** When casting Borrowed Shape.
+**Target / range / shape:** Self.
 
-You may choose a Large ground beast: its natural attack deals 3/4/6 physical damage and pushes 1 directly away on Strong. Alternatively choose a Small flying beast: gain fly Speed equal to your Speed and use the ordinary natural attack’s 2/3/5 damage. Keep your own HP and physical resistance 1. Choose a legal space large enough for the form. Returning to your own form while airborne leaves you subject to falling normally.
+Once per scene, assume the appearance of a familiar Small or Medium ground beast for 10 minutes. Keep your HP, attributes, conditions, resources and Speed. Your equipment melds and provides no effects or resistance. Your form has physical resistance 1 and a natural attack: Main Action, Brawn, adjacent target, 2/3/5 physical damage on Weak/Standard/Strong. You speak only animal calls and cannot cast spells or use equipment. Return to your own shape with a Maneuver or automatically at 0 HP. Changing form never restores HP.
 
-**Duration:** The transformation.
+Choose one adaptation when transforming: swim at your Speed and breathe water; climb at your Speed; or remain a ground beast and gain 1 Boon to tracking rolls that rely on scent. It lasts for this transformation. Changing it requires another casting and follows this signature’s once-per-scene limit.
 
-**Equipment / acquisition:** None.
+**Duration:** Fixed 10 minutes; no Sustain.
+
+**Equipment / acquisition:** A free hand to cast before transforming.
+
+This is a spell costing 1 SP. If you also know Borrowed Shape, both signatures share the same once-per-scene transformation use.
 
 </details>
 
-<details><summary>Shape of the Wild: complete signature component</summary>
+<details><summary>Great Shape: complete signature component</summary>
 
-**Action:** Passive · **Attribute:** None
+**Action:** Main Action · **Attribute:** None
 
-**Target / range / shape:** When casting Borrowed Shape.
+**Target / range / shape:** Self.
 
-Choose one adaptation when transforming: swim at your Speed and breathe water; climb at your Speed; or remain a ground beast and gain 1 Boon to tracking rolls that rely on scent. The adaptation lasts for that transformation. Changing it requires another casting and follows Borrowed Shape’s once-per-scene limit.
+Once per scene, transform for 10 minutes into a familiar Small, Medium or Large ground beast, or a Small flying beast. Choose a legal space large enough for the form. Keep your HP, attributes, conditions, resources and Speed, and gain physical resistance 1. Your equipment melds and provides no effects or resistance. You speak only animal calls and cannot cast spells or use equipment. Return to your own shape with a Maneuver or automatically at 0 HP. Changing form never restores HP.
 
-**Duration:** The transformation.
+A Small or Medium ground beast has a natural Main Action attack using Brawn against an adjacent target for 2/3/5 physical damage. A Large ground beast has a natural Main Action attack using Brawn against an adjacent target for 3/4/6 physical damage; Strong also pushes the target 1 square directly away. A Small flying beast gains fly Speed equal to your Speed and a natural Main Action attack using Brawn against an adjacent target for 2/3/5 physical damage. Returning to your own form while airborne leaves you subject to falling normally.
 
-**Equipment / acquisition:** None.
+**Duration:** Fixed 10 minutes; no Sustain.
+
+**Equipment / acquisition:** A free hand to cast before transforming.
+
+This is a spell costing 1 SP. If you also know Borrowed Shape or Shape of the Wild, all share the same once-per-scene transformation use. Shape of the Wild’s adaptation is available only if you also know that signature.
 
 </details>
 

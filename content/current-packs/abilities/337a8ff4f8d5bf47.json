@@ -1,0 +1,65 @@
+{
+  "_key": "!items!337a8ff4f8d5bf47",
+  "_id": "337a8ff4f8d5bf47",
+  "name": "Suggestion",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>Guile</dd></div><div><dt>Defense</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>One creature within 6 squares that understands your words</dd></div><div><dt>Duration</dt><dd>One social objective, up to 10 minutes</dd></div></dl><p>Frame a specific, feasible course of action that appeals to the target. Add 2/3/4 progress toward the DA&#39;s stated persuasion objective. Each further casting needs a new relevant reason or changed circumstance, following social progress rules.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "guile",
+      "defenseAttribute": "reason"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:emotion:5",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:emotion:5",
+        "level": 1,
+        "cost": 2,
+        "action": "Main Action",
+        "sp": 2,
+        "range": "One creature within 6 squares that understands your words",
+        "duration": "One social objective, up to 10 minutes",
+        "attribute": "Guile",
+        "defenseAttribute": "Reason",
+        "effect": "Frame a specific, feasible course of action that appeals to the target. Add 2/3/4 progress toward the DA's stated persuasion objective. Each further casting needs a new relevant reason or changed circumstance, following social progress rules.",
+        "improves": null,
+        "requires": [
+          "emotion:1"
+        ],
+        "bookId": "emotion"
+      },
+      "spell": {
+        "id": "spell:emotion:5",
+        "name": "Suggestion",
+        "bookId": "emotion",
+        "page": "5",
+        "section": "III",
+        "sp": 2,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "Guile",
+        "defense": "Reason",
+        "defenseAttribute": "Reason",
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One creature within 6 squares that understands your words",
+        "duration": "One social objective, up to 10 minutes",
+        "effect": "Frame a specific, feasible course of action that appeals to the target. Add 2/3/4 progress toward the DA's stated persuasion objective. Each further casting needs a new relevant reason or changed circumstance, following social progress rules."
+      }
+    }
+  },
+  "effects": []
+}

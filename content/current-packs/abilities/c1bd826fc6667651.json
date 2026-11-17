@@ -1,0 +1,66 @@
+{
+  "_key": "!items!c1bd826fc6667651",
+  "_id": "c1bd826fc6667651",
+  "name": "Alarm",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 minute</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One doorway or 2-square-radius area beside you</dd></div><div><dt>Duration</dt><dd>8 hours</dd></div></dl><p>Name up to six guests. When another creature crosses the boundary, a chime sounds within 6 squares or you receive a mental warning while within 100 squares; choose when casting. The first warning ends the spell.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:seals:2",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:seals:2",
+        "level": 1,
+        "cost": 1,
+        "action": "Ritual · 1 minute",
+        "sp": 1,
+        "range": "One doorway or 2-square-radius area beside you",
+        "duration": "8 hours",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Name up to six guests. When another creature crosses the boundary, a chime sounds within 6 squares or you receive a mental warning while within 100 squares; choose when casting. The first warning ends the spell.",
+        "improves": null,
+        "requires": [
+          "wards"
+        ],
+        "bookId": "seals"
+      },
+      "spell": {
+        "id": "spell:seals:2",
+        "name": "Alarm",
+        "bookId": "seals",
+        "page": "2",
+        "section": "I",
+        "sp": 1,
+        "action": "Ritual",
+        "actionText": "Ritual · 1 minute",
+        "ritualTime": "1 minute",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One doorway or 2-square-radius area beside you",
+        "duration": "8 hours",
+        "effect": "Name up to six guests. When another creature crosses the boundary, a chime sounds within 6 squares or you receive a mental warning while within 100 squares; choose when casting. The first warning ends the spell."
+      }
+    }
+  },
+  "effects": []
+}

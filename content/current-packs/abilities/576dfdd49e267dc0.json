@@ -1,0 +1,47 @@
+{
+  "_key": "!items!576dfdd49e267dc0",
+  "_id": "576dfdd49e267dc0",
+  "name": "Switch the Prize II",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Switch the Prize gains 1 Boon when the replacement has been prepared to closely resemble the original.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "subterfuge:sleight:5",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "subterfuge:sleight:5",
+        "level": 3,
+        "cost": 4,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Switch the Prize gains 1 Boon when the replacement has been prepared to closely resemble the original.",
+        "improves": "subterfuge:sleight:4",
+        "requires": [
+          "subterfuge:sleight:4"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

@@ -1,0 +1,45 @@
+{
+  "_key": "!items!250f496337d96b9a",
+  "_id": "250f496337d96b9a",
+  "name": "Convert an Action",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Action conversion</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Range</dt><dd>Self</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>**Action:** Action conversion · **Attribute:** None — no roll</p><p>**Target / range / shape:** Self</p><p>Spend Main Action to gain a Maneuver; spend a Maneuver to gain another movement allowance. One-way conversion only. Converting both gives a full sprint.</p><p>**Duration:** Instant</p><p>**Equipment / acquisition:** None.</p>",
+    "activity": {
+      "action": "other",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-convert-an-action",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "ability",
+        "nodeId": "ability-convert-an-action",
+        "level": 0,
+        "cost": 0,
+        "action": "Action conversion",
+        "sp": null,
+        "range": "Self",
+        "duration": "Instant",
+        "attribute": "None — no roll",
+        "defenseAttribute": null,
+        "effect": "**Action:** Action conversion · **Attribute:** None — no roll\n\n**Target / range / shape:** Self\n\nSpend Main Action to gain a Maneuver; spend a Maneuver to gain another movement allowance. One-way conversion only. Converting both gives a full sprint.\n\n**Duration:** Instant\n\n**Equipment / acquisition:** None.",
+        "improves": null,
+        "requires": [],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

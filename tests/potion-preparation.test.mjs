@@ -25,7 +25,7 @@ test("native target hooks refresh potion UI, clear old consent and reject stale 
   } };
   let targetHook, removedHook, defer = null, submitted = null;
   const user = { id: "owner", isGM: false, targets: new Set() };
-  const services = {
+  const services = {tracksConsumable:()=>true,
     isHealingPotionItem: () => true, isPotionAbility: () => true,
     potionCombatContext: () => {},
     requestPotionUse: async (request) => { submitted = request; return { status: "request" }; },

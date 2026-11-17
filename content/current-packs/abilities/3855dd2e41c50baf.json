@@ -1,0 +1,66 @@
+{
+  "_key": "!items!3855dd2e41c50baf",
+  "_id": "3855dd2e41c50baf",
+  "name": "Fabricate",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 hour</dd></div><div><dt>SP</dt><dd>3</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div><div><dt>Range</dt><dd>Prepared ordinary materials and tools beside you</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Work the materials toward one mundane item or component of Bulk 6 or less whose construction you understand. Each completed ritual adds 3/5/7 progress toward its ordinary crafting objective, using the normal recipe and material quantities. The item is ready when that objective is complete. Finish fine details with the required tools.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:shaping:7",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:shaping:7",
+        "level": 3,
+        "cost": 3,
+        "action": "Ritual · 1 hour",
+        "sp": 3,
+        "range": "Prepared ordinary materials and tools beside you",
+        "duration": "Instant",
+        "attribute": "Knowledge",
+        "defenseAttribute": null,
+        "effect": "Work the materials toward one mundane item or component of Bulk 6 or less whose construction you understand. Each completed ritual adds 3/5/7 progress toward its ordinary crafting objective, using the normal recipe and material quantities. The item is ready when that objective is complete. Finish fine details with the required tools.",
+        "improves": null,
+        "requires": [
+          "shaping:2"
+        ],
+        "bookId": "shaping"
+      },
+      "spell": {
+        "id": "spell:shaping:7",
+        "name": "Fabricate",
+        "bookId": "shaping",
+        "page": "7",
+        "section": "IV",
+        "sp": 3,
+        "action": "Ritual",
+        "actionText": "Ritual · 1 hour",
+        "ritualTime": "1 hour",
+        "attribute": "Knowledge",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Prepared ordinary materials and tools beside you",
+        "duration": "Instant",
+        "effect": "Work the materials toward one mundane item or component of Bulk 6 or less whose construction you understand. Each completed ritual adds 3/5/7 progress toward its ordinary crafting objective, using the normal recipe and material quantities. The item is ready when that objective is complete. Finish fine details with the required tools."
+      }
+    }
+  },
+  "effects": []
+}

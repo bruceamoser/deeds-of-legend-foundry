@@ -142,3 +142,16 @@ Current immutable book pin: **24e545e6d860e8c1b03a21356fd22cae1c039785**
 (book PR #1304). The 427 abilities, including 90 signatures, and 50 ancestry
 traits use the approved player-facing descriptions. The Rules sections and
 choice identities are identical to the previous pin.
+
+
+## November 17 — native current-rules port (#325)
+
+Native current characters and references now use the approved Workshop catalog
+and book commit **f71eac4c46fce6906d6dfbd1638ee98b10a6c538**.
+`content/native-journals-source-lock.json` pins the two current reference books;
+`content/current-packs` supplies current ability/spell and creature packs. The
+older `content/source-lock.json` and historical catalogs remain inputs to legacy
+fixtures and unchanged equipment/summon provenance, not an alternate playable
+character edition. Existing world documents are preserved; recreation is explicit.
+The [port ledger](native-workshop-port-325.md) distinguishes tested native behavior
+from remaining acceptance work. Monster budget tuning remains deferred to playtesting.

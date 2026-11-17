@@ -74,3 +74,5 @@
 #app .main-layout {display:grid;}
 #app .main-layout .action-groups {display:block;order:0;min-width:0;}
 #app .main-layout .play-summary {order:1;min-width:0;}
+
+.inventory-table .item-name-input {width:200px;max-width:100%;min-width:0;height:28px;font-size:12px;}

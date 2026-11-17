@@ -1,0 +1,65 @@
+{
+  "_key": "!items!c2bb80429efff9ae",
+  "_id": "c2bb80429efff9ae",
+  "name": "See Invisibility",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>Self</dd></div><div><dt>Duration</dt><dd>1 minute</dd></div></dl><p>See Invisible creatures and objects within 6 squares as translucent outlines. This satisfies visual targeting at that distance; solid cover still blocks sight.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:detection:5",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:detection:5",
+        "level": 1,
+        "cost": 2,
+        "action": "Main Action",
+        "sp": 2,
+        "range": "Self",
+        "duration": "1 minute",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "See Invisible creatures and objects within 6 squares as translucent outlines. This satisfies visual targeting at that distance; solid cover still blocks sight.",
+        "improves": null,
+        "requires": [
+          "detection:1"
+        ],
+        "bookId": "detection"
+      },
+      "spell": {
+        "id": "spell:detection:5",
+        "name": "See Invisibility",
+        "bookId": "detection",
+        "page": "5",
+        "section": "III",
+        "sp": 2,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Self",
+        "duration": "1 minute",
+        "effect": "See Invisible creatures and objects within 6 squares as translucent outlines. This satisfies visual targeting at that distance; solid cover still blocks sight."
+      }
+    }
+  },
+  "effects": []
+}

@@ -234,6 +234,7 @@ export function conditionEndPlan(
     turnId,
     resistances = [],
     weaknesses = [],
+    immunities = [],
     durationPolicies = {},
     decayPriority = {},
   } = {},
@@ -256,13 +257,13 @@ export function conditionEndPlan(
         rating,
         bypassResistance: bypass,
         damage: bypass
-          ? {
-              total: rating,
-            }
+          ? damageEvent({components: [{type, amount: rating}], immunities, isAttack: false})
           : damageEvent({
               components: [{ type, amount: rating }],
               resistances,
               weaknesses,
+              immunities,
+              isAttack: false,
             }),
       });
     }

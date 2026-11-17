@@ -1,0 +1,65 @@
+{
+  "_key": "!items!20e38d22d09be96c",
+  "_id": "20e38d22d09be96c",
+  "name": "Foresight",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One willing creature within 3 squares</dd></div><div><dt>Duration</dt><dd>10 minutes</dd></div></dl><p>Give the recipient 1 Boon to defenses. Once during the duration, after a defense roll, it may reroll the whole roll and keep either result. Recasting replaces the previous benefit on that creature.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:portents:a1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:portents:a1",
+        "level": 3,
+        "cost": 4,
+        "action": "Main Action",
+        "sp": 5,
+        "range": "One willing creature within 3 squares",
+        "duration": "10 minutes",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Give the recipient 1 Boon to defenses. Once during the duration, after a defense roll, it may reroll the whole roll and keep either result. Recasting replaces the previous benefit on that creature.",
+        "improves": null,
+        "requires": [
+          "portents:3"
+        ],
+        "bookId": "portents"
+      },
+      "spell": {
+        "id": "spell:portents:a1",
+        "name": "Foresight",
+        "bookId": "portents",
+        "page": "A1",
+        "section": "V",
+        "sp": 5,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One willing creature within 3 squares",
+        "duration": "10 minutes",
+        "effect": "Give the recipient 1 Boon to defenses. Once during the duration, after a defense roll, it may reroll the whole roll and keep either result. Recasting replaces the previous benefit on that creature."
+      }
+    }
+  },
+  "effects": []
+}

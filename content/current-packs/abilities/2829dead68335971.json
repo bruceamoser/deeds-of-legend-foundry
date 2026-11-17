@@ -1,0 +1,66 @@
+{
+  "_key": "!items!2829dead68335971",
+  "_id": "2829dead68335971",
+  "name": "Thought Steal",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 hour</dd></div><div><dt>SP</dt><dd>6</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One willing adjacent creature</dd></div><div><dt>Duration</dt><dd>24 hours</dd></div></dl><p>Borrow the subject&#39;s remembered experience of one named place, undertaking or field of study. Agree on that topic before casting. You can recall facts and sensory memories the subject actually knows about it as though you had witnessed them, gaining 1 Boon to Knowledge rolls using that borrowed experience. Record the shared topic and one ordinary language the subject knows, which you can speak and read for the duration. The subject retains its memories. Learned abilities and SP remain with their owner; memories preserve the subject&#39;s errors and gaps.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:thought:a3",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:thought:a3",
+        "level": 7,
+        "cost": 5,
+        "action": "Ritual · 1 hour",
+        "sp": 6,
+        "range": "One willing adjacent creature",
+        "duration": "24 hours",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Borrow the subject's remembered experience of one named place, undertaking or field of study. Agree on that topic before casting. You can recall facts and sensory memories the subject actually knows about it as though you had witnessed them, gaining 1 Boon to Knowledge rolls using that borrowed experience. Record the shared topic and one ordinary language the subject knows, which you can speak and read for the duration. The subject retains its memories. Learned abilities and SP remain with their owner; memories preserve the subject's errors and gaps.",
+        "improves": null,
+        "requires": [
+          "thought:5"
+        ],
+        "bookId": "thought"
+      },
+      "spell": {
+        "id": "spell:thought:a3",
+        "name": "Thought Steal",
+        "bookId": "thought",
+        "page": "A3",
+        "section": "VII",
+        "sp": 6,
+        "action": "Ritual",
+        "actionText": "Ritual · 1 hour",
+        "ritualTime": "1 hour",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One willing adjacent creature",
+        "duration": "24 hours",
+        "effect": "Borrow the subject's remembered experience of one named place, undertaking or field of study. Agree on that topic before casting. You can recall facts and sensory memories the subject actually knows about it as though you had witnessed them, gaining 1 Boon to Knowledge rolls using that borrowed experience. Record the shared topic and one ordinary language the subject knows, which you can speak and read for the duration. The subject retains its memories. Learned abilities and SP remain with their owner; memories preserve the subject's errors and gaps."
+      }
+    }
+  },
+  "effects": []
+}

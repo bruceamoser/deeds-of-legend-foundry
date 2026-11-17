@@ -1,0 +1,66 @@
+{
+  "_key": "!items!435902b86c9a4cff",
+  "_id": "435902b86c9a4cff",
+  "name": "Contingency",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 hour</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>Self and one known Main Action spell costing at most 2 SP</dd></div><div><dt>Duration</dt><dd>24 hours or until triggered</dd></div></dl><p>Pay the chosen spell&#39;s SP in addition to this ritual. Name a visible or bodily trigger and legal self-directed effect. When triggered while conscious, spend your Reaction to release that spell on yourself. You may keep one Contingency; casting another replaces the earlier preparation.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:imbuement:a1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:imbuement:a1",
+        "level": 3,
+        "cost": 4,
+        "action": "Ritual · 1 hour",
+        "sp": 5,
+        "range": "Self and one known Main Action spell costing at most 2 SP",
+        "duration": "24 hours or until triggered",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Pay the chosen spell's SP in addition to this ritual. Name a visible or bodily trigger and legal self-directed effect. When triggered while conscious, spend your Reaction to release that spell on yourself. You may keep one Contingency; casting another replaces the earlier preparation.",
+        "improves": null,
+        "requires": [
+          "imbuement:3"
+        ],
+        "bookId": "imbuement"
+      },
+      "spell": {
+        "id": "spell:imbuement:a1",
+        "name": "Contingency",
+        "bookId": "imbuement",
+        "page": "A1",
+        "section": "V",
+        "sp": 5,
+        "action": "Ritual",
+        "actionText": "Ritual · 1 hour",
+        "ritualTime": "1 hour",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Self and one known Main Action spell costing at most 2 SP",
+        "duration": "24 hours or until triggered",
+        "effect": "Pay the chosen spell's SP in addition to this ritual. Name a visible or bodily trigger and legal self-directed effect. When triggered while conscious, spend your Reaction to release that spell on yourself. You may keep one Contingency; casting another replaces the earlier preparation."
+      }
+    }
+  },
+  "effects": []
+}

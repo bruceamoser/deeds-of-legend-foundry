@@ -1,0 +1,65 @@
+{
+  "_key": "!items!275c09cf4e5d8299",
+  "_id": "275c09cf4e5d8299",
+  "name": "Unseen Servant",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One open square within 3 squares</dd></div><div><dt>Duration</dt><dd>10 minutes, with commands</dd></div></dl><p>Call a Clay Helper energy form from Summoned Companions. Its appearance is a faint translucent outline. Use its printed profile, immediate Main command, six-square tether and continuing commands for chores and movement.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:calling:3",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:calling:3",
+        "level": 1,
+        "cost": 2,
+        "action": "Main Action",
+        "sp": 1,
+        "range": "One open square within 3 squares",
+        "duration": "10 minutes, with commands",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Call a Clay Helper energy form from Summoned Companions. Its appearance is a faint translucent outline. Use its printed profile, immediate Main command, six-square tether and continuing commands for chores and movement.",
+        "improves": null,
+        "requires": [
+          "calling:0"
+        ],
+        "bookId": "calling"
+      },
+      "spell": {
+        "id": "spell:calling:3",
+        "name": "Unseen Servant",
+        "bookId": "calling",
+        "page": "3",
+        "section": "II",
+        "sp": 1,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One open square within 3 squares",
+        "duration": "10 minutes, with commands",
+        "effect": "Call a Clay Helper energy form from Summoned Companions. Its appearance is a faint translucent outline. Use its printed profile, immediate Main command, six-square tether and continuing commands for chores and movement."
+      }
+    }
+  },
+  "effects": []
+}

@@ -1,0 +1,110 @@
+{
+  "_key": "!items!5a19fb0cf514740a",
+  "_id": "5a19fb0cf514740a",
+  "name": "Borrowed Life",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Target / range / shape</dt><dd>Self.</dd></div><div><dt>Magic</dt><dd>Spell</dd></div><div><dt>SP</dt><dd>0</dd></div><div><dt>Duration</dt><dd>Until scene end.</dd></div><div><dt>Equipment / acquisition</dt><dd>A free hand.</dd></div></dl><p>Once between safe overnight rests, invite a spirit’s expertise for the scene. Choose one named tool practice or one specific noncombat objective approach, such as interpreting old boundary stones. Gain 3 Boons to rolls using that expertise. The spirit lends mannerisms and speech while you remain in control. Use your own equipment and learned capabilities; the expertise is not weapon training or a spell repertoire.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-signature-odd-strange-but-effective",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "ability-signature-odd-strange-but-effective",
+        "level": 7,
+        "cost": 0,
+        "action": "Main Action",
+        "sp": 0,
+        "range": "Self.",
+        "duration": "Until scene end.",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "**Action:** Main Action · **Attribute:** None\n\n**Target / range / shape:** Self.\n\n**Magic:** Spell · **SP:** 0\n\nOnce between safe overnight rests, invite a spirit’s expertise for the scene. Choose one named tool practice or one specific noncombat objective approach, such as interpreting old boundary stones. Gain 3 Boons to rolls using that expertise. The spirit lends mannerisms and speech while you remain in control. Use your own equipment and learned capabilities; the expertise is not weapon training or a spell repertoire.\n\n**Duration:** Until scene end.\n\n**Equipment / acquisition:** A free hand.",
+        "improves": null,
+        "requires": [],
+        "bookId": null,
+        "magic": "Spell"
+      },
+      "spell": {
+        "id": "ability-signature-odd-strange-but-effective",
+        "name": "Borrowed Life",
+        "level": 7,
+        "dp": null,
+        "action": "Main Action",
+        "attribute": "None",
+        "target": "Self.",
+        "duration": "Until scene end.",
+        "equipment": "A free hand.",
+        "limits": "One signature choice at each of levels 1, 3 and 7.",
+        "effect": "**Action:** Main Action · **Attribute:** None\n\n**Target / range / shape:** Self.\n\n**Magic:** Spell · **SP:** 0\n\nOnce between safe overnight rests, invite a spirit’s expertise for the scene. Choose one named tool practice or one specific noncombat objective approach, such as interpreting old boundary stones. Gain 3 Boons to rolls using that expertise. The spirit lends mannerisms and speech while you remain in control. Use your own equipment and learned capabilities; the expertise is not weapon training or a spell repertoire.\n\n**Duration:** Until scene end.\n\n**Equipment / acquisition:** A free hand.",
+        "reference": {
+          "flavor": [
+            "The spirits lend you words, perspective and remembered lives."
+          ],
+          "rules": {
+            "details": [
+              {
+                "label": "Action",
+                "value": "Main Action"
+              },
+              {
+                "label": "Attribute",
+                "value": "None"
+              },
+              {
+                "label": "Target / range / shape",
+                "value": "Self."
+              },
+              {
+                "label": "Magic",
+                "value": "Spell"
+              },
+              {
+                "label": "SP",
+                "value": "0"
+              },
+              {
+                "label": "Duration",
+                "value": "Until scene end."
+              },
+              {
+                "label": "Equipment / acquisition",
+                "value": "A free hand."
+              }
+            ],
+            "body": [
+              {
+                "text": "Once between safe overnight rests, invite a spirit’s expertise for the scene. Choose one named tool practice or one specific noncombat objective approach, such as interpreting old boundary stones. Gain 3 Boons to rolls using that expertise. The spirit lends mannerisms and speech while you remain in control. Use your own equipment and learned capabilities; the expertise is not weapon training or a spell repertoire."
+              }
+            ],
+            "notes": []
+          }
+        },
+        "referenceMarkdown": "**Action:** Main Action · **Attribute:** None\n\n**Target / range / shape:** Self.\n\n**Magic:** Spell · **SP:** 0\n\nOnce between safe overnight rests, invite a spirit’s expertise for the scene. Choose one named tool practice or one specific noncombat objective approach, such as interpreting old boundary stones. Gain 3 Boons to rolls using that expertise. The spirit lends mannerisms and speech while you remain in control. Use your own equipment and learned capabilities; the expertise is not weapon training or a spell repertoire.\n\n**Duration:** Until scene end.\n\n**Equipment / acquisition:** A free hand.",
+        "classId": "class-odd",
+        "lineId": "odd:borrowed-tongue",
+        "signatureComponent": true,
+        "kind": "ability",
+        "sp": 0,
+        "magic": "Spell",
+        "rulesMarkdown": "**Action:** Main Action · **Attribute:** None\n\n**Target / range / shape:** Self.\n\n**Magic:** Spell · **SP:** 0\n\nOnce between safe overnight rests, invite a spirit’s expertise for the scene. Choose one named tool practice or one specific noncombat objective approach, such as interpreting old boundary stones. Gain 3 Boons to rolls using that expertise. The spirit lends mannerisms and speech while you remain in control. Use your own equipment and learned capabilities; the expertise is not weapon training or a spell repertoire.\n\n**Duration:** Until scene end.\n\n**Equipment / acquisition:** A free hand."
+      }
+    }
+  },
+  "effects": []
+}

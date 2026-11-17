@@ -1,0 +1,65 @@
+{
+  "_key": "!items!b546b3b749c06e00",
+  "_id": "b546b3b749c06e00",
+  "name": "Entangle",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Defense</dt><dd>Agility</dd></div><div><dt>Range</dt><dd>Every grounded creature in a 2-square-radius area within 6 squares</dd></div><div><dt>Duration</dt><dd>Sustained, up to 1 minute</dd></div><div><dt>Hold attribute</dt><dd>Reason</dd></div><div><dt>Escape attribute</dt><dd>Agility</dd></div></dl><p>Roots grasp through soil. Apply Slowed 1/2/3 to creatures in the area when cast. The area is difficult terrain while sustained. Each upkeep renews Slowed 1 on those originally caught who remain in the area. A conscious caught creature may spend a Main Action to escape; success removes this casting’s Slowed and protects it from being caught again by the same casting. Leaving the area or ending Sustain also removes this casting’s Slowed. Difficult terrain remains while the roots persist.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "reason",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:growth:2",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:growth:2",
+        "level": 1,
+        "cost": 1,
+        "action": "Main Action",
+        "sp": 1,
+        "range": "Every grounded creature in a 2-square-radius area within 6 squares",
+        "duration": "Sustained, up to 1 minute",
+        "attribute": "Reason",
+        "defenseAttribute": "Agility",
+        "effect": "Roots grasp through soil. Apply Slowed 1/2/3 to creatures in the area when cast. The area is difficult terrain while sustained. Each upkeep renews Slowed 1 on those originally caught who remain in the area. A conscious caught creature may spend a Main Action to escape; success removes this casting’s Slowed and protects it from being caught again by the same casting. Leaving the area or ending Sustain also removes this casting’s Slowed. Difficult terrain remains while the roots persist.",
+        "improves": null,
+        "requires": [
+          "life"
+        ],
+        "bookId": "growth"
+      },
+      "spell": {
+        "id": "spell:growth:2",
+        "name": "Entangle",
+        "bookId": "growth",
+        "page": "2",
+        "section": "I",
+        "sp": 1,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "Reason",
+        "defense": "Agility",
+        "defenseAttribute": "Agility",
+        "holdAttribute": "Reason",
+        "escapeAttribute": "Agility",
+        "target": "Every grounded creature in a 2-square-radius area within 6 squares",
+        "duration": "Sustained, up to 1 minute",
+        "effect": "Roots grasp through soil. Apply Slowed 1/2/3 to creatures in the area when cast. The area is difficult terrain while sustained. Each upkeep renews Slowed 1 on those originally caught who remain in the area. A conscious caught creature may spend a Main Action to escape; success removes this casting’s Slowed and protects it from being caught again by the same casting. Leaving the area or ending Sustain also removes this casting’s Slowed. Difficult terrain remains while the roots persist."
+      }
+    }
+  },
+  "effects": []
+}

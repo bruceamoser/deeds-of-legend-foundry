@@ -1,0 +1,66 @@
+{
+  "_key": "!items!5dbf706c9856107d",
+  "_id": "5dbf706c9856107d",
+  "name": "Scrying",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 10 minutes</dd></div><div><dt>SP</dt><dd>3</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>One consenting creature you personally know on the same plane</dd></div><div><dt>Duration</dt><dd>1 minute</dd></div></dl><p>Receive an image and sound of the space within 3 squares of the subject. Weak gives one brief glimpse, Standard up to thirty seconds, Strong the full minute. The subject senses your presence and may end the connection.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "reason",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:farseeing:6",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:farseeing:6",
+        "level": 1,
+        "cost": 2,
+        "action": "Ritual · 10 minutes",
+        "sp": 3,
+        "range": "One consenting creature you personally know on the same plane",
+        "duration": "1 minute",
+        "attribute": "Reason",
+        "defenseAttribute": null,
+        "effect": "Receive an image and sound of the space within 3 squares of the subject. Weak gives one brief glimpse, Standard up to thirty seconds, Strong the full minute. The subject senses your presence and may end the connection.",
+        "improves": null,
+        "requires": [
+          "farseeing:1"
+        ],
+        "bookId": "farseeing"
+      },
+      "spell": {
+        "id": "spell:farseeing:6",
+        "name": "Scrying",
+        "bookId": "farseeing",
+        "page": "6",
+        "section": "III",
+        "sp": 3,
+        "action": "Ritual",
+        "actionText": "Ritual · 10 minutes",
+        "ritualTime": "10 minutes",
+        "attribute": "Reason",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One consenting creature you personally know on the same plane",
+        "duration": "1 minute",
+        "effect": "Receive an image and sound of the space within 3 squares of the subject. Weak gives one brief glimpse, Standard up to thirty seconds, Strong the full minute. The subject senses your presence and may end the connection."
+      }
+    }
+  },
+  "effects": []
+}

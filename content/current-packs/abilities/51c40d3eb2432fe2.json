@@ -1,0 +1,47 @@
+{
+  "_key": "!items!51c40d3eb2432fe2",
+  "_id": "51c40d3eb2432fe2",
+  "name": "The Perfect Substitution",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>Guile</dd></div></dl><p>Maneuver · Guile during an ongoing conversation. Engage a listener who understands you while exchanging an accessible palm-sized object within reach for a similar object you carry. Roll once; add 2/4/6 progress to separately established deception and unnoticed-exchange objectives. The exchange occurs only when its own objective completes. Once per exchange, with a new plausible statement or distraction; repeating it unchanged gives no progress. Held weapons, armor and secured containers remain excluded.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "attribute",
+      "attribute": "guile",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "subterfuge:sleight:7",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "mastery",
+        "nodeId": "subterfuge:sleight:7",
+        "level": 7,
+        "cost": 5,
+        "action": "Maneuver",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": "Guile",
+        "defenseAttribute": null,
+        "effect": "Maneuver · Guile during an ongoing conversation. Engage a listener who understands you while exchanging an accessible palm-sized object within reach for a similar object you carry. Roll once; add 2/4/6 progress to separately established deception and unnoticed-exchange objectives. The exchange occurs only when its own objective completes. Once per exchange, with a new plausible statement or distraction; repeating it unchanged gives no progress. Held weapons, armor and secured containers remain excluded.",
+        "improves": null,
+        "requires": [
+          "subterfuge:sleight:6"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

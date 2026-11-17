@@ -1,0 +1,66 @@
+{
+  "_key": "!items!b3c6cef305362edb",
+  "_id": "b3c6cef305362edb",
+  "name": "Move Earth",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 hour</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>A 10-by-10-square patch of soil within 12 squares</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Grade, trench or mound earth by up to 2 squares of depth or height. Shift it within the chosen patch, preserving volume. Move exposed loose soil around foundations rather than carrying buildings or creatures with it.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:earth:a1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:earth:a1",
+        "level": 3,
+        "cost": 4,
+        "action": "Ritual · 1 hour",
+        "sp": 5,
+        "range": "A 10-by-10-square patch of soil within 12 squares",
+        "duration": "Instant",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Grade, trench or mound earth by up to 2 squares of depth or height. Shift it within the chosen patch, preserving volume. Move exposed loose soil around foundations rather than carrying buildings or creatures with it.",
+        "improves": null,
+        "requires": [
+          "earth:3"
+        ],
+        "bookId": "earth"
+      },
+      "spell": {
+        "id": "spell:earth:a1",
+        "name": "Move Earth",
+        "bookId": "earth",
+        "page": "A1",
+        "section": "V",
+        "sp": 5,
+        "action": "Ritual",
+        "actionText": "Ritual · 1 hour",
+        "ritualTime": "1 hour",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "A 10-by-10-square patch of soil within 12 squares",
+        "duration": "Instant",
+        "effect": "Grade, trench or mound earth by up to 2 squares of depth or height. Shift it within the chosen patch, preserving volume. Move exposed loose soil around foundations rather than carrying buildings or creatures with it."
+      }
+    }
+  },
+  "effects": []
+}

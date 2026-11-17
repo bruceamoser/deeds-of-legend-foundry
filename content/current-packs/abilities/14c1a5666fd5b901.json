@@ -1,0 +1,46 @@
+{
+  "_key": "!items!14c1a5666fd5b901",
+  "_id": "14c1a5666fd5b901",
+  "name": "Grab and Hurl",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Brawn</dd></div><div><dt>Target / range / shape</dt><dd>One adjacent creature your size or smaller.</dd></div><div><dt>Duration</dt><dd>Immediate; Grappled and Prone use their normal rules.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div></dl><p>Make a Brawn roll against the target. Weak: it has Grappled 1. Standard: throw it up to 2 squares in a direction you choose; it lands Prone. Strong: throw it up to 3 squares in a direction you choose; it lands Prone and takes 2 physical damage. Resolve collisions normally. The throw ends any grapple from this ability.</p><p>Requires a free hand and a target your Size or smaller. A control-only Weak result deals no damage; it does not acquire an attack damage minimum.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "brawn",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-signature-unbalanced-laugh-at-the-fall",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "ability",
+        "nodeId": "ability-signature-unbalanced-laugh-at-the-fall",
+        "level": 1,
+        "cost": 0,
+        "action": "Main Action",
+        "sp": null,
+        "range": "One adjacent creature your size or smaller.",
+        "duration": "Immediate; Grappled and Prone use their normal rules.",
+        "attribute": "Brawn",
+        "defenseAttribute": null,
+        "effect": "**Action:** Main Action · **Attribute:** Brawn\n\n**Target / range / shape:** One adjacent creature your size or smaller.\n\nMake a Brawn roll against the target. Weak: it has Grappled 1. Standard: throw it up to 2 squares in a direction you choose; it lands Prone. Strong: throw it up to 3 squares in a direction you choose; it lands Prone and takes 2 physical damage. Resolve collisions normally. The throw ends any grapple from this ability.\n\n**Duration:** Immediate; Grappled and Prone use their normal rules.\n\n**Equipment / acquisition:** None.\n\nRequires a free hand and a target your Size or smaller. A control-only Weak result deals no damage; it does not acquire an attack damage minimum.",
+        "improves": null,
+        "requires": [],
+        "bookId": null,
+        "magic": null
+      }
+    }
+  },
+  "effects": []
+}

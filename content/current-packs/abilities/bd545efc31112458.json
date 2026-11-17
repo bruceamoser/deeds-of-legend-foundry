@@ -1,0 +1,47 @@
+{
+  "_key": "!items!bd545efc31112458",
+  "_id": "bd545efc31112458",
+  "name": "Plausible Rejoinder II",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Plausible Rejoinder adds 1/3/4 progress.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "influence:rejoinder:2",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "influence:rejoinder:2",
+        "level": 1,
+        "cost": 2,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Plausible Rejoinder adds 1/3/4 progress.",
+        "improves": "influence:rejoinder:1",
+        "requires": [
+          "influence:rejoinder:1"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

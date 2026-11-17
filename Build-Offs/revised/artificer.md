@@ -1,6 +1,6 @@
 # Nim Coppercoil: artificer after the rewrite
 
-Pinned authored source `87f5141bd6e0da74a10c07b3239e975c7656430a`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../artificer.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
+Pinned authored source `f71eac4c46fce6906d6dfbd1638ee98b10a6c538`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../artificer.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
 
 ## What the rewrite changes
 
@@ -117,15 +117,21 @@ Pay 1 SP and bind one item with a property chosen when bound: a lamp gives contr
 
 <details><summary>Twofold Making: complete signature component</summary>
 
-**Action:** Passive · **Attribute:** None
+**Action:** Ritual — 1 hour · **Attribute:** None
 
-**Target / range / shape:** Your bound items.
+**Target / range / shape:** One ordinary item you own within reach.
 
-You may maintain two bound items on different ordinary objects. You may also choose this property for a weapon: once per scene, before a weapon attack, its bearer converts that attack’s physical damage to fire or cold. Choose the type before rolling. The damage amount and other effects are unchanged; this adds no second damage component. The converted attack is magical. All binding, casting and cancellation rules of Make It Last apply.
+**Magic:** Bound-item spell · **SP:** 1
 
-**Duration:** While the bindings remain.
+Pay 1 SP and bind the item with one property chosen when bound: a lamp gives controllable ordinary torchlight; a tool returns to its bearer’s empty hand with a Maneuver from within 3 squares along a clear path; or a shield lets its bearer spend a Reaction once per scene to reduce one attack’s damage by 1 after rolling defense, respecting the attack’s minimum damage. A weapon may instead have this property: once per scene, before a weapon attack, its bearer converts that attack’s physical damage to fire or cold. Choose the type before rolling. Its damage amount and other effects are unchanged; this adds no second damage component. The converted attack is magical.
 
-**Equipment / acquisition:** None.
+You may maintain two bound items on different ordinary objects. A binding lasts until you end or replace it, even if the item is lent or lost. Cancellation target 3 ends its magic but leaves the ordinary item and occupied binding; restore its magic with a new ritual and SP. Lending, replacing or re-binding an item does not refresh its limited use.
+
+**Duration:** Indefinite; no Sustain.
+
+**Equipment / acquisition:** Suitable tools and the actual ordinary item.
+
+If you also know Make It Last, both signatures use this same two-item binding limit; their capacities do not add.
 
 </details>
 
@@ -193,31 +199,43 @@ Pay 1 SP and bind one item with a property chosen when bound: a lamp gives contr
 
 </details>
 
-<details><summary>Masterwork Bond: complete signature component</summary>
+<details><summary>Twofold Making: complete signature component</summary>
 
-**Action:** Passive · **Attribute:** None
+**Action:** Ritual — 1 hour · **Attribute:** None
 
-**Target / range / shape:** Your bound items.
+**Target / range / shape:** One ordinary item you own within reach.
 
-You may maintain three bound items. One may carry this masterwork property instead of another property: once between your safe overnight rests, its wearer can spend a Reaction before one defense roll to gain 2 Boons. Track that use against your bond; lending, replacing or re-binding the item does not refresh it. The other available properties are Make It Last’s lamp, returning tool and protective shield.
+**Magic:** Bound-item spell · **SP:** 1
 
-**Duration:** While the bindings remain.
+Pay 1 SP and bind the item with one property chosen when bound: a lamp gives controllable ordinary torchlight; a tool returns to its bearer’s empty hand with a Maneuver from within 3 squares along a clear path; or a shield lets its bearer spend a Reaction once per scene to reduce one attack’s damage by 1 after rolling defense, respecting the attack’s minimum damage. A weapon may instead have this property: once per scene, before a weapon attack, its bearer converts that attack’s physical damage to fire or cold. Choose the type before rolling. Its damage amount and other effects are unchanged; this adds no second damage component. The converted attack is magical.
 
-**Equipment / acquisition:** None.
+You may maintain two bound items on different ordinary objects. A binding lasts until you end or replace it, even if the item is lent or lost. Cancellation target 3 ends its magic but leaves the ordinary item and occupied binding; restore its magic with a new ritual and SP. Lending, replacing or re-binding an item does not refresh its limited use.
+
+**Duration:** Indefinite; no Sustain.
+
+**Equipment / acquisition:** Suitable tools and the actual ordinary item.
+
+If you also know Make It Last, both signatures use this same two-item binding limit; their capacities do not add.
 
 </details>
 
-<details><summary>Twofold Making: complete signature component</summary>
+<details><summary>Masterwork Bond: complete signature component</summary>
 
-**Action:** Passive · **Attribute:** None
+**Action:** Ritual — 1 hour · **Attribute:** None
 
-**Target / range / shape:** Your bound items.
+**Target / range / shape:** One ordinary item you own within reach.
 
-You may maintain two bound items on different ordinary objects. You may also choose this property for a weapon: once per scene, before a weapon attack, its bearer converts that attack’s physical damage to fire or cold. Choose the type before rolling. The damage amount and other effects are unchanged; this adds no second damage component. The converted attack is magical. All binding, casting and cancellation rules of Make It Last apply.
+**Magic:** Bound-item spell · **SP:** 1
 
-**Duration:** While the bindings remain.
+Pay 1 SP and bind the item with one property chosen when bound: a lamp gives controllable ordinary torchlight; a tool returns to its bearer’s empty hand with a Maneuver from within 3 squares along a clear path; or a shield lets its bearer spend a Reaction once per scene to reduce one attack’s damage by 1 after rolling defense, respecting the attack’s minimum damage. You may maintain three bound items on different ordinary objects.
 
-**Equipment / acquisition:** None.
+One of those items may instead carry this masterwork property: once between your safe overnight rests, its wearer can spend a Reaction before one defense roll to gain 2 Boons. Track that use against your bond. A binding lasts until you end or replace it, even if the item is lent or lost. Cancellation target 3 ends its magic but leaves the ordinary item and occupied binding; restore its magic with a new ritual and SP. Lending, replacing or re-binding an item does not refresh its limited use.
+
+**Duration:** Indefinite; no Sustain.
+
+**Equipment / acquisition:** Suitable tools and the actual ordinary item.
+
+If you also know Make It Last or Twofold Making, all your bindings share this three-item limit. Twofold Making’s weapon property is available only if you also know that signature.
 
 </details>
 

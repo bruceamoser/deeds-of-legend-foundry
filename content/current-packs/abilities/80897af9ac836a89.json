@@ -1,0 +1,47 @@
+{
+  "_key": "!items!80897af9ac836a89",
+  "_id": "80897af9ac836a89",
+  "name": "Common Ground III",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Common Ground can address three willing negotiating sides with separate objectives.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "influence:negotiation:6",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "influence:negotiation:6",
+        "level": 3,
+        "cost": 4,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Common Ground can address three willing negotiating sides with separate objectives.",
+        "improves": "influence:negotiation:4",
+        "requires": [
+          "influence:negotiation:5"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

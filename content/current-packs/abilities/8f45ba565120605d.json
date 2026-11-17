@@ -1,0 +1,47 @@
+{
+  "_key": "!items!8f45ba565120605d",
+  "_id": "8f45ba565120605d",
+  "name": "Rooted against the Charge",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div></dl><p>Maneuver. Brace a passage up to 3 squares wide while on solid footing. Until your next turn starts, you and up to three willing adjacent allies cannot be forcibly moved or knocked Prone while you remain stationary and they remain adjacent. Each protected creature reduces collision damage by 3 after resistance; this non-attack damage may reach 0. This does not prevent other damage or let creatures pass through blocked squares.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "armor:bracing:7",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "mastery",
+        "nodeId": "armor:bracing:7",
+        "level": 7,
+        "cost": 5,
+        "action": "Maneuver",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Maneuver. Brace a passage up to 3 squares wide while on solid footing. Until your next turn starts, you and up to three willing adjacent allies cannot be forcibly moved or knocked Prone while you remain stationary and they remain adjacent. Each protected creature reduces collision damage by 3 after resistance; this non-attack damage may reach 0. This does not prevent other damage or let creatures pass through blocked squares.",
+        "improves": null,
+        "requires": [
+          "armor:bracing:6"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

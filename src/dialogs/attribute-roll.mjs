@@ -1,5 +1,4 @@
 import {DAMAGE_TYPE_LABELS} from "../rules/damage.mjs";
-import {defaultWoundApplicability} from "../rules/wound-contributions.mjs";
 import { bindNetChoices } from "./net-control.mjs";
 import {
   referencePickerOptions,
@@ -42,32 +41,23 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
     this.draft = {
       ...situationalRollDraft(),
       adjustmentOverride: false,
+      cover: "none",
       referenceItemIds: [],
-      defenseSubstitutionItemUuid: "",
       perception: {},
-      woundApplicability: {},
     };
     this.notice = "";
     this.activating = false;
     this.targetHook = user => { if (user.id === game.user.id && this.rendered && this.mode === "attack") void this.render(); };
     Hooks.on("targetToken", this.targetHook);
-    this.woundHookHandlers = [
-      "createActiveEffect",
-      "updateActiveEffect",
-      "deleteActiveEffect",
-    ].map((event) => [event, (effect) => this.woundEffectChanged(effect)]);
-    for (const [event, handler] of this.woundHookHandlers)
-      Hooks.on(event, handler);
+
   }
   static DEFAULT_OPTIONS = {
     classes: ["heroes-of-legend", "hol-roll-dialog"],
     window: { title: "Prepare roll", resizable: true },
     position: { width: 470, height: "auto" },
     actions: {
-      grit: SharedRollDialog.grit,
       roll: SharedRollDialog.roll,
       useAbility: SharedRollDialog.useAbility,
-      deathMark: SharedRollDialog.deathMark,
     },
   };
   static PARTS = {
@@ -84,37 +74,16 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       this.attackMessageId,
       this.defenderTokenUuid,
     );
-    if (
-      this.basis &&
-      JSON.stringify(this.basis.woundModifiers) !==
-        JSON.stringify(basis.woundModifiers)
-    ) {
-      this.notice =
-        "Wound modifiers updated.";
-      this.draft.woundApplicability = {};
-    }
     this.basis = basis;
-    if (
-      this.draft.defenseSubstitutionItemUuid &&
-      !basis.defenseSubstitutions?.some(
-        (option) => option.itemUuid === this.draft.defenseSubstitutionItemUuid,
-      )
-    ) {
-      this.notice =
-        "The selected defense card changed. Review the ordinary defense attribute or choose another card.";
-      this.draft.defenseSubstitutionItemUuid = "";
-    }
     const fears = [
       ...new Set(
         this.basis.contributions
-          .filter((c) => this.mode !== "death" && c.key === "frightened")
+          .filter((c) => c.key === "frightened")
           .map((c) => c.source),
       ),
     ];
     this.fears = fears;
     for (const source of fears) this.draft.perception[source] ??= "no";
-    for (const modifier of basis.woundModifiers)
-      this.draft.woundApplicability[modifier.effectId] ??= defaultWoundApplicability(modifier,{mode:this.mode,attributeKey:this.attributeKey,ability:this.draft.abilityConfiguration});
     this.syncAdjustment();
     this.abilityOptions =
       this.mode === "defense"
@@ -123,15 +92,9 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
             defenderTokenUuid: this.defenderTokenUuid,
           }).options
         : [];
-    this.pendingResponse = Boolean(this.basis.survival?.pending);
+    this.pendingResponse = false;
     return {
-      partyPiece:
-        ["attribute", "attack", "defense"].includes(this.basis.mode) &&
-        (basis.defenseSubstitutions?.find(option => option.itemUuid === this.draft.defenseSubstitutionItemUuid)?.attributeKey ?? this.attributeKey) === "guile"
-          ? this.basis.partyPiece
-          : null,
-      lookOverHere: this.mode === "defense" && Boolean(this.basis.incoming),
-      references: this.mode === "death" ? [] : referencePickerOptions(this.actor, this.draft, {
+      references: referencePickerOptions(this.actor, this.draft, {
         mode: this.mode,
         attributeKey:this.attributeKey,initiatingItemId:this.draft.abilityItemId,
         defenderTokenUuid: this.defenderTokenUuid,
@@ -142,31 +105,20 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       })),
       damageTypeOptions: (this.draft.abilityConfiguration?.damageTypes ?? []).map(type => ({value:type,label:DAMAGE_TYPE_LABELS[type],selected:type === this.draft.damageType})),
       name: this.actor.name,
-      failed: this.actor.getFlag(ID,"deathMarks") ?? this.actor.getFlag(ID,"survival")?.marks ?? 0,
-      deathMarks: [1,2,3].map(value=>({value,filled:value <= (this.actor.getFlag(ID,"deathMarks") ?? this.actor.getFlag(ID,"survival")?.marks ?? 0)})),
       weaponOptions: this.draft.abilityConfiguration?.weaponKind && !this.draft.abilityConfiguration.ranged
         ? (await import("../services/attack-equipment.mjs")).attackEquipmentOptions(this.actor,this.draft.abilityConfiguration,this.draft.weaponItemId) : [],
       rangedWeaponOptions: this.draft.abilityConfiguration?.ranged
         ? (await import("../services/ranged-ammunition.mjs")).rangedWeaponOptions(this.actor,this.draft.rangedWeaponItemId) : [],
-      death: this.mode === "death",
-      gritAvailable: this.basis.survival?.gritAvailable,
-      canGrit:
-        this.mode === "death" &&
-        this.basis.survival?.gritAvailable > 0 &&
-        !this.pendingResponse,
       incoming: this.basis.incoming,
       pendingResponse: this.pendingResponse,
       attributeName: game.i18n.localize(`HOL.Attributes.${this.attributeKey}`),
       attribute: this.basis.attribute,
-      defenseSubstitutions:
-        this.basis.defenseSubstitutions?.map((option) => ({
-          ...option,
-          attributeName: game.i18n.localize(
-            `HOL.Attributes.${option.attributeKey}`,
-          ),
-          selected: this.draft.defenseSubstitutionItemUuid === option.itemUuid,
-        })) ?? [],
       defense: this.mode === "defense",
+      coverOptions: ["attack", "defense"].includes(this.mode) ? [
+        {value:"none", label:"No cover"},
+        {value:"partial", label:`Partial cover · 1 ${this.mode === "attack" ? "Bane" : "Boon"}`},
+        {value:"heavy", label:`Heavy cover · 3 ${this.mode === "attack" ? "Banes" : "Boons"}`},
+      ].map(option=>({...option,selected:option.value===this.draft.cover})) : [],
       notice: this.notice,
       targetNotice: this.mode === "attack" && this.basis.targetTokenUuid ? `Target: ${fromUuidSync(this.basis.targetTokenUuid)?.name ?? "selected target"}` : "",
       draft: this.draft,
@@ -181,29 +133,10 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
         yes: this.draft.perception[source] === "yes",
         no: this.draft.perception[source] === "no",
       })),
-      wounds: this.mode === "death" ? [] : this.basis.woundModifiers.map((modifier, index) => ({
-        ...modifier,
-        index,
-        applies: this.draft.woundApplicability[modifier.effectId] === "applies",
-        doesNotApply:
-          this.draft.woundApplicability[modifier.effectId] === "does-not-apply",
-      })),
     };
-  }
-  woundEffectChanged(effect) {
-    if (
-      !this.rendered ||
-      effect?.parent?.uuid !== this.actor.uuid ||
-      effect.getFlag?.(ID, "woundModifier") === undefined
-    )
-      return;
-    void this.render();
   }
   async _onClose(options) {
     Hooks.off("targetToken", this.targetHook);
-    for (const [event, handler] of this.woundHookHandlers)
-      Hooks.off(event, handler);
-    this.woundHookHandlers = [];
     return super._onClose(options);
   }
   readDraft() {
@@ -214,23 +147,15 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
     this.draft = {
       ...this.draft,
       damageType: value("damageType") ?? this.draft.damageType,
+      cover: value("cover") ?? this.draft.cover,
       adjustment: Number(value("adjustment") ?? 0),
-      partyPiece: checked("partyPiece"),
-      lookOverHere: checked("lookOverHere"),
       referenceItemIds: readReferenceSelection(this.element),
       weaponItemId: value("weaponItemId") ?? this.draft.weaponItemId,
       rangedWeaponItemId: value("rangedWeaponItemId") ?? this.draft.rangedWeaponItemId,
-      defenseSubstitutionItemUuid: value("defenseSubstitutionItemUuid") ?? "",
       perception: Object.fromEntries(
         this.fears.map((source, index) => [
           source,
           checked(`fear-${index}`) ? "yes" : "no",
-        ]),
-      ),
-      woundApplicability: Object.fromEntries(
-        this.basis.woundModifiers.map((modifier, index) => [
-          modifier.effectId,
-          checked(`wound-${index}`) ? "applies" : "does-not-apply",
         ]),
       ),
     };
@@ -293,14 +218,11 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       slider.value = this.draft.adjustment;
       slider.setAttribute("aria-valuetext", adjustmentLabel);
       const plan = prepareRoll(this.basis, this.draft);
-      const chosen = this.basis.defenseSubstitutions?.find(
-        (option) => option.itemUuid === plan.defenseSubstitutionItemUuid,
-      );
       const selector = this.element.querySelector('[name="attributeKey"]');
       if (selector) selector.value = plan.resolvedAttributeKey;
       const stat = this.element.querySelector("[data-roll-attribute]");
       if (stat)
-        stat.textContent = `${game.i18n.localize(`HOL.Attributes.${plan.resolvedAttributeKey}`)}: ${chosen?.attribute ?? this.basis.attribute}`;
+        stat.textContent = `${game.i18n.localize(`HOL.Attributes.${plan.resolvedAttributeKey}`)}: ${this.basis.attribute}`;
       for (const source of plan.sources) {
         const li = document.createElement("li");
         li.textContent = `${source.label}: ${source.amount} ${source.kind === "boon" ? "Boon(s)" : "Bane(s)"}${source.automatic ? " · automatic" : ""}`;
@@ -334,10 +256,10 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       .addEventListener("input", (event) => {
         if (event.target.name === "adjustment")
           this.draft.adjustmentOverride = true;
+        if (event.target.name === "cover") this.draft.adjustmentOverride = false;
         if (event.target.name === "attributeKey" && this.mode === "attribute") {
           this.readDraft();
           this.attributeKey = event.target.value;
-          this.draft.woundApplicability={};
           this.draft.adjustmentOverride=false;
           void this.render();
           return;
@@ -361,26 +283,6 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       },
     );
     this.preview();
-  }
-  static async deathMark(event,target) {
-    try {
-      if (!this.actor.testUserPermission(game.user,"OWNER")) throw new Error("Only the character owner can change death marks.");
-      const selected=Number(target.dataset.marks), previous=this.actor.getFlag(ID,"deathMarks") ?? this.actor.getFlag(ID,"survival")?.marks ?? 0;
-      const marks=selected === previous ? Math.max(0,selected-1) : selected;
-      const {updateOwnedDocument}=await import("../services/documents.mjs");
-      await updateOwnedDocument(this.actor,{[`flags.${ID}.deathMarks`]:marks});
-      await this.render();
-    } catch(error) {ui.notifications.error(error.message);}
-  }
-  static async grit() {
-    try {
-      const {requestRecovery} = await import("../services/recovery.mjs");
-      const {damageBasis} = await import("../services/damage.mjs");
-      await requestRecovery(this.actor, damageBasis(this.actor), {kind:"grit"});
-      await this.close();
-    } catch (e) {
-      ui.notifications.error(e.message);
-    }
   }
   static async roll() {
     if (this.rolling) return;

@@ -1,0 +1,47 @@
+{
+  "_key": "!items!9871e78c33d0aa3c",
+  "_id": "9871e78c33d0aa3c",
+  "name": "Blade Ward II",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Blade Ward reduces damage by 3 instead of 2.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "arms:dueling:2",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "arms:dueling:2",
+        "level": 1,
+        "cost": 2,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Blade Ward reduces damage by 3 instead of 2.",
+        "improves": "arms:dueling:1",
+        "requires": [
+          "arms:dueling:1"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

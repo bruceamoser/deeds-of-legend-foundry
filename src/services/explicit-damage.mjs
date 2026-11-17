@@ -1,3 +1,4 @@
+import {coordinateNativeGameplay,registerNativeGameplayHandler} from './native-workshop-coordinator.mjs';
 import { CONDITION_KINDS } from "../rules/conditions.mjs";
 import { damageBasis, damagePreview } from "./damage.mjs";
 import { updateOwnedDocument } from "./documents.mjs";
@@ -5,13 +6,18 @@ const ID = "heroes-of-legend";
 const queues = new Map();
 const escape = value => foundry.utils.escapeHTML(String(value ?? ""));
 
-/** One explicit button press, one owned document update. No encounter or GM needed. */
-export function applyOwnedDamage(actor, components, {
+/** One durable request uses the same GM queue as Workshop resource saves. */
+export function applyOwnedDamage(actor,components,options={}) {
+ const operationId=options.operationId??foundry.utils.randomID();
+ return coordinateNativeGameplay(actor,{kind:'damage',operationId,payload:{components,options:{...options,operationId}}});
+}
+registerNativeGameplayHandler('damage',(actor,payload,context)=>executeOwnedDamage(actor,payload.components,payload.options,context));
+function executeOwnedDamage(actor, components, {
   operationId = foundry.utils.randomID(), sourceMessageId = null, label = "Damage",
-  resistances = [], weaknesses = [], bypassResistance = false, conditions = [],
-} = {}) {
+  resistances = [], weaknesses = [], bypassResistance = false, conditions = [], isAttack = true,
+} = {}, context) {
   if (!actor || actor.pack || !["character", "creature"].includes(actor.type) ||
-      !actor.testUserPermission(game.user, "OWNER"))
+      !actor.testUserPermission(context.author, "OWNER"))
     return Promise.reject(new Error("Select a character or creature you own to apply damage."));
   if (!Array.isArray(conditions) || conditions.some(condition => !Object.hasOwn(CONDITION_KINDS,condition.key) ||
       !Number.isSafeInteger(condition.rating) || condition.rating < 1 ||
@@ -22,34 +28,34 @@ export function applyOwnedDamage(actor, components, {
   const attackMessage = game.messages?.get(sourceMessage?.getFlag(ID,"roll")?.attackMessageId);
   const conditionSource = attackMessage?.getFlag(ID,"attackCard")?.actorUuid
     ?? (sourceMessage?.speaker?.actor ? `Actor.${sourceMessage.speaker.actor}` : label);
-  const source = JSON.stringify({ components, sourceMessageId, resistances, weaknesses, bypassResistance, conditions });
+  const source = JSON.stringify({ components, sourceMessageId, resistances, weaknesses, bypassResistance, conditions, isAttack });
   const settleConditions = async record => {
     if (!conditions.length) return record;
     const applied=[], errors=[];
-    const {applyOwnedCondition}=await import("./conditions.mjs");
     for (const [index,condition] of conditions.entries()) {
       try {
-        await applyOwnedCondition(actor,condition.key,condition.rating,{source:conditionSource,...condition,operationId:`${operationId}-${index}`,postChat:false});
+        await context.executeNested('condition',{key:condition.key,rating:condition.rating,options:{source:conditionSource,...condition,operationId:`${operationId}-${index}`,postChat:false}});
         applied.push(condition);
       } catch(error) { errors.push(`${condition.key} ${condition.rating}: ${error.message}`); }
     }
     return {...record,conditions:applied,...(errors.length ? {conditionError:errors.join("; ")} : {})};
   };
   const run = async () => {
-    if (!actor.testUserPermission(game.user, "OWNER")) throw new Error("You no longer own this damage target.");
+    if (!actor.testUserPermission(context.author, "OWNER")) throw new Error("You no longer own this damage target.");
     const previous = actor.getFlag(ID, "explicitDamage")?.[operationId];
     if (previous) {
       if (previous.source !== source) throw new Error("This damage action has different values. Start a new action.");
       return settleConditions({ ...previous, replay: true });
     }
     const basis = damageBasis(actor);
-    const plan = components.length ? damagePreview(actor, basis, { components, resistances, weaknesses }, { bypassResistance })
+    const plan = components.length ? damagePreview(actor, basis, { components, resistances, weaknesses }, { bypassResistance, isAttack, eventId:operationId })
       : {after:basis.hp,event:{total:0,components:[]}};
-    const record = { operationId, sourceMessageId, source, label, authorId: game.user.id,
-      before: basis.hp, after: plan.after, total: plan.event.total, event: plan.event, conditions };
-    await updateOwnedDocument(actor, { "system.health.value": plan.after,
+    const record = { operationId, sourceMessageId, source, label, authorId: context.author.id,
+      before: basis.hp, after: plan.after, total: plan.event.total, event: plan.event, deathRollRequired:Boolean(plan.deathRollRequired), conditions };
+    await context.write({ "system.health.value": plan.after,
+      ...(plan.forgeVitals ? {[`flags.${ID}.forgeVitals`]:plan.forgeVitals} : {}),
       [`flags.${ID}.damageRevision`]: basis.revision + 1,
-      [`flags.${ID}.explicitDamage.${operationId}`]: record });
+      [`flags.${ID}.explicitDamage.${operationId}`]: record },record);
     return settleConditions(record);
   };
   const task = (queues.get(actor.uuid) ?? Promise.resolve()).catch(() => {}).then(() =>
@@ -79,7 +85,7 @@ export async function applySelectedDamage(components, { sourceMessageId = null, 
     } catch (error) { skipped.push(`${actor.name}: ${error.message}`); }
   }
   if (applied.length) {
-    const content = `<article class="hol-damage-chat"><p class="hol-damage-label"><strong>${escape(label)}</strong> <span>· applied</span></p><table aria-label="Applied damage"><thead><tr><th scope="col">Target</th><th scope="col">Damage</th><th scope="col">HP</th></tr></thead><tbody>${applied.map(result => `<tr><th scope="row">${escape(result.name)}</th><td>${result.total}<small>${resistanceSummary(result.event)}</small></td><td>${result.before} → ${result.after}${result.conditions?.length ? `<small>${result.conditions.map(condition=>`${escape(condition.key)} ${condition.rating}`).join(" · ")}</small>` : ""}</td></tr>`).join("")}</tbody></table></article>`;
+    const content = `<article class="hol-damage-chat"><p class="hol-damage-label"><strong>${escape(label)}</strong> <span>· applied</span></p><table aria-label="Applied damage"><thead><tr><th scope="col">Target</th><th scope="col">Damage</th><th scope="col">HP</th></tr></thead><tbody>${applied.map(result => `<tr><th scope="row">${escape(result.name)}</th><td>${result.total}<small>${resistanceSummary(result.event)}</small></td><td>${result.before} → ${result.after}${result.deathRollRequired ? "<small>Immediate Fortitude death roll required</small>" : ""}${result.conditions?.length ? `<small>${result.conditions.map(condition=>`${escape(condition.key)} ${condition.rating}`).join(" · ")}</small>` : ""}</td></tr>`).join("")}</tbody></table></article>`;
     try { await ChatMessage.create({ content, flags: { [ID]: { explicitDamageResult: { operationId, sourceMessageId, applied } } } }); }
     catch { ui.notifications.warn("Damage was applied, but the chat summary could not be posted. Check HP before clicking again."); }
   }
@@ -89,5 +95,8 @@ export async function applySelectedDamage(components, { sourceMessageId = null, 
 
 function resistanceSummary(event) {
   const applied=(event.breakdown??[]).filter(component=>component.resistance>0);
-  return applied.length?applied.map(component=>`${escape(component.type)} resistance ${component.resistance}`).join(" · ")+(event.minimumApplied?" · minimum 1 damage":""):"No resistance applied";
+  const parts=applied.map(component=>`${escape(component.type)} resistance ${component.resistance}`);
+  for(const component of event.immuneComponents??[])parts.push(`${escape(component.type)} immunity`);
+  if(event.minimumApplied)parts.push("minimum 1 attack damage");
+  return parts.join(" · ")||"No resistance applied";
 }

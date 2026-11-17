@@ -1,0 +1,65 @@
+{
+  "_key": "!items!75b3b79da5ea0fd5",
+  "_id": "75b3b79da5ea0fd5",
+  "name": "Vampiric Touch",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Defense</dt><dd>Fortitude</dd></div><div><dt>Range</dt><dd>One adjacent living creature</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Take strength through a withering touch. Deal 2/4/6 life damage. Restore your HP by the damage actually dealt, up to 2/4/6, after applying your own Life resistance and maximum HP.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "reason",
+      "defenseAttribute": "fortitude"
+    },
+    "outcomes": {
+      "weak": "2 life damage",
+      "standard": "4 life damage",
+      "strong": "6 life damage"
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:decay:5",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:decay:5",
+        "level": 1,
+        "cost": 2,
+        "action": "Main Action",
+        "sp": 2,
+        "range": "One adjacent living creature",
+        "duration": "Instant",
+        "attribute": "Reason",
+        "defenseAttribute": "Fortitude",
+        "effect": "Take strength through a withering touch. Deal 2/4/6 life damage. Restore your HP by the damage actually dealt, up to 2/4/6, after applying your own Life resistance and maximum HP.",
+        "improves": null,
+        "requires": [
+          "decay:1"
+        ],
+        "bookId": "decay"
+      },
+      "spell": {
+        "id": "spell:decay:5",
+        "name": "Vampiric Touch",
+        "bookId": "decay",
+        "page": "5",
+        "section": "III",
+        "sp": 2,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "Reason",
+        "defense": "Fortitude",
+        "defenseAttribute": "Fortitude",
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One adjacent living creature",
+        "duration": "Instant",
+        "effect": "Take strength through a withering touch. Deal 2/4/6 life damage. Restore your HP by the damage actually dealt, up to 2/4/6, after applying your own Life resistance and maximum HP."
+      }
+    }
+  },
+  "effects": []
+}

@@ -1,0 +1,66 @@
+{
+  "_key": "!items!602840160a3c4136",
+  "_id": "602840160a3c4136",
+  "name": "Symbol",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 10 minutes</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Defense</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>One fixed visible inscription; targets within 2 squares</dd></div><div><dt>Duration</dt><dd>8 hours or until triggered</dd></div></dl><p>Choose a visible trigger and either dread or bewilderment. On its first occurrence, up to three creatures you specify by position gain Frightened 2/3/4 or Dazed 1/1/2, set by your ritual roll. Dread names the inscription as source. The inscription then fades.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "reason",
+      "defenseAttribute": "reason"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:seals:a1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:seals:a1",
+        "level": 3,
+        "cost": 4,
+        "action": "Ritual · 10 minutes",
+        "sp": 5,
+        "range": "One fixed visible inscription; targets within 2 squares",
+        "duration": "8 hours or until triggered",
+        "attribute": "Reason",
+        "defenseAttribute": "Reason",
+        "effect": "Choose a visible trigger and either dread or bewilderment. On its first occurrence, up to three creatures you specify by position gain Frightened 2/3/4 or Dazed 1/1/2, set by your ritual roll. Dread names the inscription as source. The inscription then fades.",
+        "improves": null,
+        "requires": [
+          "seals:3"
+        ],
+        "bookId": "seals"
+      },
+      "spell": {
+        "id": "spell:seals:a1",
+        "name": "Symbol",
+        "bookId": "seals",
+        "page": "A1",
+        "section": "V",
+        "sp": 5,
+        "action": "Ritual",
+        "actionText": "Ritual · 10 minutes",
+        "ritualTime": "10 minutes",
+        "attribute": "Reason",
+        "defense": "Reason",
+        "defenseAttribute": "Reason",
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One fixed visible inscription; targets within 2 squares",
+        "duration": "8 hours or until triggered",
+        "effect": "Choose a visible trigger and either dread or bewilderment. On its first occurrence, up to three creatures you specify by position gain Frightened 2/3/4 or Dazed 1/1/2, set by your ritual roll. Dread names the inscription as source. The inscription then fades."
+      }
+    }
+  },
+  "effects": []
+}

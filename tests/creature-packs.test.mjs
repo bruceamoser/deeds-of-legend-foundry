@@ -411,7 +411,7 @@ test("the sheet template has one root, one ApplicationV2 part and a read-only en
   );
   assert(!reference.includes("<input"));
   assert(!reference.includes("<textarea"));
-  assert(sheet.includes("class CreatureSheet extends CharacterSheet"));
+  assert(sheet.includes("class CreatureSheet extends CreatureSheetBase"));
   assert.equal((sheet.match(/static PARTS\s*=\s*\{/g) ?? []).length, 1);
   assert(sheet.includes("creatureReferenceHtml(system)"));
   assert(sheet.includes("TextEditor.implementation.enrichHTML"));

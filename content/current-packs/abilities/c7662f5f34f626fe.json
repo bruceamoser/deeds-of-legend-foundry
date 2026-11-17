@@ -1,0 +1,47 @@
+{
+  "_key": "!items!c7662f5f34f626fe",
+  "_id": "c7662f5f34f626fe",
+  "name": "Survey the Ground I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div></dl><p>Maneuver · Reason. Study one visible approach within 6 squares; add 1/2/3 progress toward identifying its usable footing and visible hazards. Surveying a whole site takes 10 minutes per attempt instead. Concealed threats require evidence to discover.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "attribute",
+      "attribute": "reason",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "scholarship:planning:1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "technique",
+        "nodeId": "scholarship:planning:1",
+        "level": 1,
+        "cost": 1,
+        "action": "Maneuver",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": "Reason",
+        "defenseAttribute": null,
+        "effect": "Maneuver · Reason. Study one visible approach within 6 squares; add 1/2/3 progress toward identifying its usable footing and visible hazards. Surveying a whole site takes 10 minutes per attempt instead. Concealed threats require evidence to discover.",
+        "improves": null,
+        "requires": [
+          "scholarship"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

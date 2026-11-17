@@ -1,0 +1,66 @@
+{
+  "_key": "!items!c24996069c8e3a19",
+  "_id": "c24996069c8e3a19",
+  "name": "Earthen Transmutations",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 10 minutes</dd></div><div><dt>SP</dt><dd>4</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One adjacent unattended square of earth or stone, up to 1 square deep</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Turn loose earth into ordinary stone or ordinary stone into compacted earth. Preserve the material&#39;s volume. The DA identifies unsupported structures before casting; changing their support uses the normal collapse procedure.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:shaping:8",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:shaping:8",
+        "level": 3,
+        "cost": 3,
+        "action": "Ritual · 10 minutes",
+        "sp": 4,
+        "range": "One adjacent unattended square of earth or stone, up to 1 square deep",
+        "duration": "Instant",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Turn loose earth into ordinary stone or ordinary stone into compacted earth. Preserve the material's volume. The DA identifies unsupported structures before casting; changing their support uses the normal collapse procedure.",
+        "improves": null,
+        "requires": [
+          "shaping:2"
+        ],
+        "bookId": "shaping"
+      },
+      "spell": {
+        "id": "spell:shaping:8",
+        "name": "Earthen Transmutations",
+        "bookId": "shaping",
+        "page": "8",
+        "section": "IV",
+        "sp": 4,
+        "action": "Ritual",
+        "actionText": "Ritual · 10 minutes",
+        "ritualTime": "10 minutes",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One adjacent unattended square of earth or stone, up to 1 square deep",
+        "duration": "Instant",
+        "effect": "Turn loose earth into ordinary stone or ordinary stone into compacted earth. Preserve the material's volume. The DA identifies unsupported structures before casting; changing their support uses the normal collapse procedure."
+      }
+    }
+  },
+  "effects": []
+}

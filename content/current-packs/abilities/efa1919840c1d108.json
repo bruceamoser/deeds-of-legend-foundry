@@ -1,0 +1,46 @@
+{
+  "_key": "!items!efa1919840c1d108",
+  "_id": "efa1919840c1d108",
+  "name": "Steady Aim",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Self; one visible creature.</dd></div><div><dt>Duration</dt><dd>Until you move.</dd></div><div><dt>Equipment / acquisition</dt><dd>A ranged weapon and ammunition.</dd></div></dl><p>Aim at one visible creature. Until you move, you gain 1 Boon to all attacks you make against that creature and ignore partial cover from it.</p><p>The benefit ends when you aim at another target or the scene ends. You must still perceive your target to attack it.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-signature-warden-keep-the-quarry-close",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "ability",
+        "nodeId": "ability-signature-warden-keep-the-quarry-close",
+        "level": 1,
+        "cost": 0,
+        "action": "Maneuver",
+        "sp": null,
+        "range": "Self; one visible creature.",
+        "duration": "Until you move.",
+        "attribute": "None (no roll)",
+        "defenseAttribute": null,
+        "effect": "**Action:** Maneuver · **Attribute:** None (no roll)\n\n**Target / range / shape:** Self; one visible creature.\n\nAim at one visible creature. Until you move, you gain 1 Boon to all attacks you make against that creature and ignore partial cover from it.\n\n**Duration:** Until you move.\n\n**Equipment / acquisition:** A ranged weapon and ammunition.\n\nThe benefit ends when you aim at another target or the scene ends. You must still perceive your target to attack it.",
+        "improves": null,
+        "requires": [],
+        "bookId": null,
+        "magic": null
+      }
+    }
+  },
+  "effects": []
+}

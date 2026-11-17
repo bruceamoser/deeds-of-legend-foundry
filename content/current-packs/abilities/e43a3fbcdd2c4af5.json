@@ -1,0 +1,65 @@
+{
+  "_key": "!items!e43a3fbcdd2c4af5",
+  "_id": "e43a3fbcdd2c4af5",
+  "name": "Ray of Sickness",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Defense</dt><dd>Fortitude</dd></div><div><dt>Range</dt><dd>One living creature within 6 squares</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Strike with a sickly ray for 2/3/5 poison damage. On Strong also apply Poisoned 1.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "reason",
+      "defenseAttribute": "fortitude"
+    },
+    "outcomes": {
+      "weak": "2 poison damage",
+      "standard": "3 poison damage",
+      "strong": "5 poison damage"
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:decay:2",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:decay:2",
+        "level": 1,
+        "cost": 1,
+        "action": "Main Action",
+        "sp": 1,
+        "range": "One living creature within 6 squares",
+        "duration": "Instant",
+        "attribute": "Reason",
+        "defenseAttribute": "Fortitude",
+        "effect": "Strike with a sickly ray for 2/3/5 poison damage. On Strong also apply Poisoned 1.",
+        "improves": null,
+        "requires": [
+          "life"
+        ],
+        "bookId": "decay"
+      },
+      "spell": {
+        "id": "spell:decay:2",
+        "name": "Ray of Sickness",
+        "bookId": "decay",
+        "page": "2",
+        "section": "I",
+        "sp": 1,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "Reason",
+        "defense": "Fortitude",
+        "defenseAttribute": "Fortitude",
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One living creature within 6 squares",
+        "duration": "Instant",
+        "effect": "Strike with a sickly ray for 2/3/5 poison damage. On Strong also apply Poisoned 1."
+      }
+    }
+  },
+  "effects": []
+}

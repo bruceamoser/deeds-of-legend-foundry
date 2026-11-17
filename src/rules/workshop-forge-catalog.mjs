@@ -1,3 +1,4 @@
+import { forgeSignatureRecord } from "./forge-signatures.mjs";
 import { DEFAULT_LANGUAGES } from "./languages.mjs";
 import { forgeInventory } from "./forge-character.mjs";
 
@@ -52,7 +53,7 @@ export function workshopCatalogs(choices, inventory, wounds, forge, references =
     choices: [
       ...ancestry, ...origins, ...classes, ...nodes,
       ...forge.basicActions.map((record) => ({ ...record, kind: "ability", universal: true })),
-      ...forge.signatures.map((record) => ({ ...record, kind: "ability" })),
+      ...forge.signatures.map((record) => ({ ...forgeSignatureRecord(forge,record), kind: "ability" })),
       ...legacyChoices.filter((record) => record.kind === "trait").map((record) => {
         const current = references.records?.[record.id];
         if (!current || current.source.sha256 === record.source.sha256) return record;

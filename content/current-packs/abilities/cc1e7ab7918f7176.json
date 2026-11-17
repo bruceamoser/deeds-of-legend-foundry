@@ -1,0 +1,66 @@
+{
+  "_key": "!items!cc1e7ab7918f7176",
+  "_id": "cc1e7ab7918f7176",
+  "name": "Low Intelligence",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 8 hours</dd></div><div><dt>SP</dt><dd>3</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One prepared object beside you; 50 coins of reagents consumed</dd></div><div><dt>Duration</dt><dd>7 days</dd></div></dl><p>Awaken a mind with Knowledge +1 and memory of three short instructions. Within 6 squares, you communicate telepathically and may use its score for Knowledge rolls, including casting, under the fixed-value item rules. Your own attributes determine DP, class qualifications and maximum SP. Keep one intelligent item of any grade. Movement and work use separate animation and commands.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:animation:6",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:animation:6",
+        "level": 1,
+        "cost": 2,
+        "action": "Ritual · 8 hours",
+        "sp": 3,
+        "range": "One prepared object beside you; 50 coins of reagents consumed",
+        "duration": "7 days",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Awaken a mind with Knowledge +1 and memory of three short instructions. Within 6 squares, you communicate telepathically and may use its score for Knowledge rolls, including casting, under the fixed-value item rules. Your own attributes determine DP, class qualifications and maximum SP. Keep one intelligent item of any grade. Movement and work use separate animation and commands.",
+        "improves": null,
+        "requires": [
+          "animation:1"
+        ],
+        "bookId": "animation"
+      },
+      "spell": {
+        "id": "spell:animation:6",
+        "name": "Low Intelligence",
+        "bookId": "animation",
+        "page": "6",
+        "section": "III",
+        "sp": 3,
+        "action": "Ritual",
+        "actionText": "Ritual · 8 hours",
+        "ritualTime": "8 hours",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One prepared object beside you; 50 coins of reagents consumed",
+        "duration": "7 days",
+        "effect": "Awaken a mind with Knowledge +1 and memory of three short instructions. Within 6 squares, you communicate telepathically and may use its score for Knowledge rolls, including casting, under the fixed-value item rules. Your own attributes determine DP, class qualifications and maximum SP. Keep one intelligent item of any grade. Movement and work use separate animation and commands."
+      }
+    }
+  },
+  "effects": []
+}

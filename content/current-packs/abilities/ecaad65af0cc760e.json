@@ -1,0 +1,65 @@
+{
+  "_key": "!items!ecaad65af0cc760e",
+  "_id": "ecaad65af0cc760e",
+  "name": "Delayed Blast Fireball",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div><div><dt>Defense</dt><dd>Agility</dd></div><div><dt>Range</dt><dd>One visible point within 10 squares; 2-square-radius burst</dd></div><div><dt>Duration</dt><dd>Sustained, up to 3 rounds</dd></div></dl><p>Place a glowing bead at the point. On casting, or after a later upkeep, you may detonate it. Roll on detonation for 4/6/9 fire damage, adding 1 damage per completed upkeep, maximum +2. Ending sustain or touching the bead detonates it immediately. Every creature in the burst is affected once.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "4 fire damage",
+      "standard": "6 fire damage",
+      "strong": "9 fire damage"
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:flame:a2",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:flame:a2",
+        "level": 3,
+        "cost": 4,
+        "action": "Main Action",
+        "sp": 5,
+        "range": "One visible point within 10 squares; 2-square-radius burst",
+        "duration": "Sustained, up to 3 rounds",
+        "attribute": "Knowledge",
+        "defenseAttribute": "Agility",
+        "effect": "Place a glowing bead at the point. On casting, or after a later upkeep, you may detonate it. Roll on detonation for 4/6/9 fire damage, adding 1 damage per completed upkeep, maximum +2. Ending sustain or touching the bead detonates it immediately. Every creature in the burst is affected once.",
+        "improves": null,
+        "requires": [
+          "flame:4"
+        ],
+        "bookId": "flame"
+      },
+      "spell": {
+        "id": "spell:flame:a2",
+        "name": "Delayed Blast Fireball",
+        "bookId": "flame",
+        "page": "A2",
+        "section": "VI",
+        "sp": 5,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "Knowledge",
+        "defense": "Agility",
+        "defenseAttribute": "Agility",
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One visible point within 10 squares; 2-square-radius burst",
+        "duration": "Sustained, up to 3 rounds",
+        "effect": "Place a glowing bead at the point. On casting, or after a later upkeep, you may detonate it. Roll on detonation for 4/6/9 fire damage, adding 1 damage per completed upkeep, maximum +2. Ending sustain or touching the bead detonates it immediately. Every creature in the burst is affected once."
+      }
+    }
+  },
+  "effects": []
+}

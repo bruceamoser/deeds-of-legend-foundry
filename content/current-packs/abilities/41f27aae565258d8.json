@@ -1,0 +1,46 @@
+{
+  "_key": "!items!41f27aae565258d8",
+  "_id": "41f27aae565258d8",
+  "name": "Oathstrike",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive modifier to a melee weapon attack</dd></div><div><dt>Attribute</dt><dd>Use that attack’s attribute</dd></div><div><dt>Target / range / shape</dt><dd>An enemy that damaged one of your allies since the end of your last turn.</dd></div><div><dt>Magic</dt><dd>Magical weapon modifier</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Duration</dt><dd>The attack.</dd></div><div><dt>Equipment / acquisition</dt><dd>The actual melee weapon required by the attack.</dd></div></dl><p>Once on your turn, declare Oathstrike and pay 1 SP before a melee weapon attack against that enemy. Add 1/2/3 radiant damage to the attack on Weak/Standard/Strong. Resolve each damage component’s resistance, then apply the minimum once to the whole attack. This magical weapon modifier is not a separate spell casting and does not require a free hand beyond the weapon’s requirements.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-signature-protector-oathstrike",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "ability",
+        "nodeId": "ability-signature-protector-oathstrike",
+        "level": 1,
+        "cost": 0,
+        "action": "Passive modifier to a melee weapon attack",
+        "sp": 1,
+        "range": "An enemy that damaged one of your allies since the end of your last turn.",
+        "duration": "The attack.",
+        "attribute": "Use that attack’s attribute",
+        "defenseAttribute": null,
+        "effect": "**Action:** Passive modifier to a melee weapon attack · **Attribute:** Use that attack’s attribute\n\n**Target / range / shape:** An enemy that damaged one of your allies since the end of your last turn.\n\n**Magic:** Magical weapon modifier · **SP:** 1\n\nOnce on your turn, declare Oathstrike and pay 1 SP before a melee weapon attack against that enemy. Add 1/2/3 radiant damage to the attack on Weak/Standard/Strong. Resolve each damage component’s resistance, then apply the minimum once to the whole attack. This magical weapon modifier is not a separate spell casting and does not require a free hand beyond the weapon’s requirements.\n\n**Duration:** The attack.\n\n**Equipment / acquisition:** The actual melee weapon required by the attack.",
+        "improves": null,
+        "requires": [],
+        "bookId": null,
+        "magic": "Magical weapon modifier"
+      }
+    }
+  },
+  "effects": []
+}

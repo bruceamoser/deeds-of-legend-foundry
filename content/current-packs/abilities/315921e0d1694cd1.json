@@ -1,0 +1,47 @@
+{
+  "_key": "!items!315921e0d1694cd1",
+  "_id": "315921e0d1694cd1",
+  "name": "Strong Swimmer III",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>You may tow one willing or helpless creature no larger than you without additional swimming movement cost.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "athletics:swimming:3",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "athletics:swimming:3",
+        "level": 1,
+        "cost": 2,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "You may tow one willing or helpless creature no larger than you without additional swimming movement cost.",
+        "improves": "athletics:swimming:1",
+        "requires": [
+          "athletics:swimming:2"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

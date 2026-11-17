@@ -1,0 +1,65 @@
+{
+  "_key": "!items!f00b0884c8f6568f",
+  "_id": "f00b0884c8f6568f",
+  "name": "Finger of Death",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Defense</dt><dd>Fortitude</dd></div><div><dt>Range</dt><dd>One living creature within 8 squares</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>A black pulse strikes for 6/9/12 life damage. If the target reaches 0 HP, resolve its ordinary dying rules; the spell&#39;s damage is one event.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "reason",
+      "defenseAttribute": "fortitude"
+    },
+    "outcomes": {
+      "weak": "6 life damage",
+      "standard": "9 life damage",
+      "strong": "12 life damage"
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:decay:a2",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:decay:a2",
+        "level": 3,
+        "cost": 4,
+        "action": "Main Action",
+        "sp": 5,
+        "range": "One living creature within 8 squares",
+        "duration": "Instant",
+        "attribute": "Reason",
+        "defenseAttribute": "Fortitude",
+        "effect": "A black pulse strikes for 6/9/12 life damage. If the target reaches 0 HP, resolve its ordinary dying rules; the spell's damage is one event.",
+        "improves": null,
+        "requires": [
+          "decay:4"
+        ],
+        "bookId": "decay"
+      },
+      "spell": {
+        "id": "spell:decay:a2",
+        "name": "Finger of Death",
+        "bookId": "decay",
+        "page": "A2",
+        "section": "VI",
+        "sp": 5,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "Reason",
+        "defense": "Fortitude",
+        "defenseAttribute": "Fortitude",
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One living creature within 8 squares",
+        "duration": "Instant",
+        "effect": "A black pulse strikes for 6/9/12 life damage. If the target reaches 0 HP, resolve its ordinary dying rules; the spell's damage is one event."
+      }
+    }
+  },
+  "effects": []
+}

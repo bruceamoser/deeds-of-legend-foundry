@@ -1,0 +1,46 @@
+{
+  "_key": "!items!d61878212c00a87b",
+  "_id": "d61878212c00a87b",
+  "name": "Open the Way",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Target / range / shape</dt><dd>A lock, trap or barrier you work on with ordinary actions or a learned technique.</dd></div><div><dt>Duration</dt><dd>The attempt.</dd></div><div><dt>Equipment / acquisition</dt><dd>Suitable tools for the task.</dd></div></dl><p>When your roll makes progress on a lock, trap or barrier, you may make that work quiet and leave no obvious trace of your tools on Standard or Strong. On Weak, make the normal progress with the ordinary noise and marks. Observers watching you can still see your work. Use the underlying action’s time, tools, progress and other effects.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-signature-shadow-open-the-way",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "ability",
+        "nodeId": "ability-signature-shadow-open-the-way",
+        "level": 3,
+        "cost": 0,
+        "action": "Passive",
+        "sp": null,
+        "range": "A lock, trap or barrier you work on with ordinary actions or a learned technique.",
+        "duration": "The attempt.",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "**Action:** Passive · **Attribute:** None\n\n**Target / range / shape:** A lock, trap or barrier you work on with ordinary actions or a learned technique.\n\nWhen your roll makes progress on a lock, trap or barrier, you may make that work quiet and leave no obvious trace of your tools on Standard or Strong. On Weak, make the normal progress with the ordinary noise and marks. Observers watching you can still see your work. Use the underlying action’s time, tools, progress and other effects.\n\n**Duration:** The attempt.\n\n**Equipment / acquisition:** Suitable tools for the task.",
+        "improves": null,
+        "requires": [],
+        "bookId": null,
+        "magic": null
+      }
+    }
+  },
+  "effects": []
+}

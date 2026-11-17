@@ -1,0 +1,47 @@
+{
+  "_key": "!items!a71cb9f5df971058",
+  "_id": "a71cb9f5df971058",
+  "name": "Switch the Prize I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>Guile</dd></div></dl><p>Maneuver · Guile. Exchange a reachable palm-sized object with a similar object you carry. Use Light Fingers’ requirements and add 1/3/4 progress toward this single unnoticed-exchange objective. The exchange occurs on completion.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "attribute",
+      "attribute": "guile",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "subterfuge:sleight:4",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "technique",
+        "nodeId": "subterfuge:sleight:4",
+        "level": 3,
+        "cost": 3,
+        "action": "Maneuver",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": "Guile",
+        "defenseAttribute": null,
+        "effect": "Maneuver · Guile. Exchange a reachable palm-sized object with a similar object you carry. Use Light Fingers’ requirements and add 1/3/4 progress toward this single unnoticed-exchange objective. The exchange occurs on completion.",
+        "improves": null,
+        "requires": [
+          "subterfuge:sleight:3"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

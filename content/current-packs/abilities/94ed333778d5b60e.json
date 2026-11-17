@@ -1,0 +1,66 @@
+{
+  "_key": "!items!94ed333778d5b60e",
+  "_id": "94ed333778d5b60e",
+  "name": "Remove Curse",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 10 minutes</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div><div><dt>Range</dt><dd>One adjacent cursed creature or object</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Add 2/3/4 cancellation progress toward one curse&#39;s target, normally 2 plus the source spell&#39;s SP cost. Accumulate progress across attempts against that same curse. A source that explicitly names Remove Curse as an immediate remedy ends automatically instead.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:unraveling:3",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:unraveling:3",
+        "level": 1,
+        "cost": 2,
+        "action": "Ritual · 10 minutes",
+        "sp": 1,
+        "range": "One adjacent cursed creature or object",
+        "duration": "Instant",
+        "attribute": "Knowledge",
+        "defenseAttribute": null,
+        "effect": "Add 2/3/4 cancellation progress toward one curse's target, normally 2 plus the source spell's SP cost. Accumulate progress across attempts against that same curse. A source that explicitly names Remove Curse as an immediate remedy ends automatically instead.",
+        "improves": null,
+        "requires": [
+          "unraveling:0"
+        ],
+        "bookId": "unraveling"
+      },
+      "spell": {
+        "id": "spell:unraveling:3",
+        "name": "Remove Curse",
+        "bookId": "unraveling",
+        "page": "3",
+        "section": "II",
+        "sp": 1,
+        "action": "Ritual",
+        "actionText": "Ritual · 10 minutes",
+        "ritualTime": "10 minutes",
+        "attribute": "Knowledge",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One adjacent cursed creature or object",
+        "duration": "Instant",
+        "effect": "Add 2/3/4 cancellation progress toward one curse's target, normally 2 plus the source spell's SP cost. Accumulate progress across attempts against that same curse. A source that explicitly names Remove Curse as an immediate remedy ends automatically instead."
+      }
+    }
+  },
+  "effects": []
+}

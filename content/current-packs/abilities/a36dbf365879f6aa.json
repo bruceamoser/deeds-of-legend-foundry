@@ -1,0 +1,47 @@
+{
+  "_key": "!items!a36dbf365879f6aa",
+  "_id": "a36dbf365879f6aa",
+  "name": "Shield Canopy I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div></dl><p>Maneuver. Until your next turn starts, you and up to three willing adjacent allies reduce ranged attack damage by 2 after resistance while they remain adjacent. Reusing this technique replaces its previous effect. No roll.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "guard:shelter:4",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "technique",
+        "nodeId": "guard:shelter:4",
+        "level": 3,
+        "cost": 3,
+        "action": "Maneuver",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Maneuver. Until your next turn starts, you and up to three willing adjacent allies reduce ranged attack damage by 2 after resistance while they remain adjacent. Reusing this technique replaces its previous effect. No roll.",
+        "improves": null,
+        "requires": [
+          "guard:shelter:3"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

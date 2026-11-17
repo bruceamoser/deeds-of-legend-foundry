@@ -35,30 +35,8 @@ test('reaction cards preserve authored trigger before effect and expose it in ro
  record.reference.rules.details[0].value='Maneuver';assert.equal(reactionTrigger(record),'');
 });
 
-test('physical wound starts applied to physical rolls and affects real prepared dice; contextual choice can override',()=>{
- const modifier={id:'wound-roll-shoulder',effectId:'shoulder',woundEventId:'injury',woundId:'wound-physical-223',injury:'Arm: strained shoulder',kind:'rollModifier',context:'physical',polarity:'bane',amount:1,label:'Strained shoulder',printedContext:'physical activities',sourceIds:['shoulder']};
- const basis={mode:'attribute',attributeKey:'brawn',attribute:1,contributions:[],woundModifiers:[modifier],benefits:[]};
- const choice=defaultWoundApplicability(modifier,basis);assert.equal(choice,'applies');
- const plan=prepareRoll(basis,{woundApplicability:{shoulder:choice}});assert.equal(plan.banes,1);assert.equal(plan.count,4);assert.match(plan.formula,/kl3/);
- const waived=prepareRoll(basis,{woundApplicability:{shoulder:'does-not-apply'}});assert.equal(waived.count,3);
- assert.equal(defaultWoundApplicability(modifier,{mode:'attribute',attributeKey:'reason'}),'does-not-apply');
- assert.equal(describeWoundEffect(modifier),'1 Bane · physical activities');
- assert.equal(describeWoundEffect({...modifier,amount:2}),'2 Banes · physical activities');
-});
-
-test('ability disclosures start closed and wound modifiers are immediately visible',async()=>{
+test('current roll dialog has closed ability disclosures and no retired wound controls',async()=>{
  const template=await readFile(new URL('../static/templates/attribute-roll.hbs',import.meta.url),'utf8');
  assert.doesNotMatch(template,/<details open class="hol-roll-abilities/);
- assert.match(template,/<details open class="hol-context-options hol-wound-adjustments">/);
-});
-
-test('wound details show full injury, concrete modifier and remedy from the saved entry',async()=>{
- const catalog=JSON.parse(await readFile(new URL('../static/data/wounds.json',import.meta.url),'utf8'));
- const wound={id:'wound-physical-223',injury:'Arm: strained shoulder',key:'223',effects:catalog.records.find(record=>record.id==='wound-physical-223').effects};
- globalThis.fetch=async()=>({ok:true,json:async()=>catalog});globalThis.game={user:{}};
- let shown;globalThis.foundry={utils:{escapeHTML:value=>String(value)},applications:{api:{DialogV2:{prompt:async options=>{shown=options;}}}}};
- const {openWoundDetails}=await import('../src/applications/wound-details.mjs');
- const actor={testUserPermission:()=>true,getFlag:(_id,key)=>key==='wounds'?{injury:wound}:{}};
- await openWoundDetails(actor,'injury');assert.equal(shown.window.title,'Arm: strained shoulder');assert.match(shown.content,/1 Bane · physical activities/);assert.match(shown.content,/Soft Tissue/);assert.match(shown.content,/RV 2/);assert.doesNotMatch(shown.content,/rollModifier/);
- await assert.rejects(openWoundDetails({...actor,testUserPermission:()=>false},'injury'),/cannot inspect/);
+ assert.doesNotMatch(template,/wound|deathMark/i);
 });

@@ -1,0 +1,46 @@
+{
+  "_key": "!items!370e376165e24f2b",
+  "_id": "370e376165e24f2b",
+  "name": "Lead by Example",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Guile</dd></div><div><dt>Target / range / shape</dt><dd>One creature within reach of your melee weapon.</dd></div><div><dt>Duration</dt><dd>Attack and steps immediate; Boons until used or your next turn.</dd></div><div><dt>Equipment / acquisition</dt><dd>A ready melee weapon.</dd></div><div><dt>Frequency</dt><dd>Once on your turn.</dd></div></dl><p>Attack with Guile: deal 2/4/6 physical damage on Weak/Standard/Strong. On Standard or Strong, each ally within 5 squares that can see or hear you may step 1 square without provoking. On Strong, those allies also gain 1 Boon to their next attack against the target before the start of your next turn.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "guile",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "2 physical damage",
+      "standard": "4 physical damage",
+      "strong": "6 physical damage"
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-signature-leader-orderly-withdrawal",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "ability",
+        "nodeId": "ability-signature-leader-orderly-withdrawal",
+        "level": 3,
+        "cost": 0,
+        "action": "Main Action",
+        "sp": null,
+        "range": "One creature within reach of your melee weapon.",
+        "duration": "Attack and steps immediate; Boons until used or your next turn.",
+        "attribute": "Guile",
+        "defenseAttribute": null,
+        "effect": "**Action:** Main Action · **Attribute:** Guile\n\n**Target / range / shape:** One creature within reach of your melee weapon.\n\nAttack with Guile: deal 2/4/6 physical damage on Weak/Standard/Strong. On Standard or Strong, each ally within 5 squares that can see or hear you may step 1 square without provoking. On Strong, those allies also gain 1 Boon to their next attack against the target before the start of your next turn.\n\n**Duration:** Attack and steps immediate; Boons until used or your next turn.\n\n**Equipment / acquisition:** A ready melee weapon.\n\n**Frequency:** Once on your turn.",
+        "improves": null,
+        "requires": [],
+        "bookId": null,
+        "magic": null
+      }
+    }
+  },
+  "effects": []
+}

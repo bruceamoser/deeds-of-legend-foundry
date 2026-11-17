@@ -1,0 +1,47 @@
+{
+  "_key": "!items!d443c1339e889a93",
+  "_id": "d443c1339e889a93",
+  "name": "Save the Work III",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Save the Work also grants the worker 2 Boons on its permitted roll against injury from that event, before that roll.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "craft:safeguards:6",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "craft:safeguards:6",
+        "level": 3,
+        "cost": 4,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Save the Work also grants the worker 2 Boons on its permitted roll against injury from that event, before that roll.",
+        "improves": "craft:safeguards:4",
+        "requires": [
+          "craft:safeguards:5"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

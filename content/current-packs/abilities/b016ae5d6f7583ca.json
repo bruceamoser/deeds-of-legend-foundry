@@ -1,0 +1,47 @@
+{
+  "_key": "!items!b016ae5d6f7583ca",
+  "_id": "b016ae5d6f7583ca",
+  "name": "Watchful Shot III",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Watchful Shot deals 1/2/4 physical damage and can trigger when any visible enemy within range finishes voluntary movement, whether adjacent to an ally or not.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "1 physical damage",
+      "standard": "2 physical damage",
+      "strong": "4 physical damage"
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "marksmanship:readiness:3",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "marksmanship:readiness:3",
+        "level": 1,
+        "cost": 2,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Watchful Shot deals 1/2/4 physical damage and can trigger when any visible enemy within range finishes voluntary movement, whether adjacent to an ally or not.",
+        "improves": "marksmanship:readiness:1",
+        "requires": [
+          "marksmanship:readiness:2"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

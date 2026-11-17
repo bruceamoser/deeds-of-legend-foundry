@@ -1,38 +1,29 @@
-/** Explicit actions run on the clicking client. Only shared writes use a GM relay. */
+/** Managed gameplay requests explicitly share one designated GM socket and queue. */
 const ID = "heroes-of-legend";
 let queue = Promise.resolve(), activeWork = null;
 const setting = key => game.settings.get(ID, key);
 
-// Retained exports/settings allow older worlds and macros to load. Their saved
-// leases/checkpoints no longer gate play and are never automatically replayed.
-export function authorityBrowserId() { return game.socket?.id ?? game.user.id; }
-export function assertAutomationCapabilities() {}
-export function interruptedOperations() { return {}; }
 export function registerAuthority() {
-  for (const [key, type, value] of [
-    ["creationAuthorityClient", String, ""], ["authorityMeta", Object, {}],
-    ["authorityWork", Object, {}], ["authorityLease", Object, {}],
-    ["interruptedOperations", Object, {}], ["actionRelay", Object, {}],
-  ]) game.settings.register(ID, key, { scope: "world", config: false, type, default: value });
-  Hooks.once("ready", bindCreationAuthority);
-  Hooks.on("userConnected", () => bindCreationAuthority());
-  game.socket?.on?.("connect", () => bindCreationAuthority());
+  game.settings.register(ID, "actionRelay", {scope:"world",config:false,type:Object,default:{}});
+  Hooks.once("ready", bindActionRelay);
+  Hooks.on("userConnected", () => bindActionRelay());
+  game.socket?.on?.("connect", () => bindActionRelay());
 }
-export async function bindCreationAuthority() {
+export async function bindActionRelay() {
   if (!game.user.isGM || !game.users.activeGM?.isSelf) return;
   await game.settings.set(ID, "actionRelay", { userId: game.user.id, clientId: game.socket.id });
 }
-export async function ensureAuthorityReady({ shared = false } = {}) {
-  if (!shared || game.user.isGM) return;
+export async function ensureAuthorityReady({ shared = false, coordinated = false } = {}) {
+  if (!shared || (game.user.isGM && !coordinated)) return;
   if (!game.users.activeGM) throw new Error("A GM must be connected to update the shared encounter or another character.");
   const relay = setting("actionRelay");
   if (relay?.userId !== game.users.activeGM.id || !relay.clientId)
     throw new Error("The GM is still connecting. Retry this shared action in a moment.");
 }
 /** Explicitly mark where a request executes; other clients never process owner actions. */
-export async function createActionMessage(data, { shared = false } = {}) {
-  await ensureAuthorityReady({ shared });
-  const relayed = shared && !game.user.isGM;
+export async function createActionMessage(data, { shared = false, coordinated = false } = {}) {
+  await ensureAuthorityReady({ shared, coordinated });
+  const relayed = shared && (!game.user.isGM || coordinated);
   const executor = relayed ? setting("actionRelay") : {userId:game.user.id,clientId:game.socket.id};
   const flags = { ...data.flags, [ID]: { ...data.flags?.[ID],
     actionExecution: { userId: game.user.id, clientId: game.socket.id, shared: relayed,
@@ -53,11 +44,15 @@ export function isCreationAuthority() {
   return Boolean(activeWork || (game.user.isGM && game.users.activeGM?.isSelf));
 }
 export const writeCharacterActor = (...args) => writeAuthorityDocument(...args);
-export async function writeAuthorityDocument(document, changes) {
+export async function writeAuthorityDocument(document, changes, options = {}) {
   if (!activeWork) throw new Error("No action is being applied.");
+  const unresolved=Object.values(document.getFlag?.(ID,'nativeWorkshopOperations')??{}).find(saved=>saved.kind==='gameplay'&&saved.status==='applying');
+  const action=activeWork.requestId?game.messages.get(activeWork.requestId)?.getFlag(ID,'nativeWorkshopRequest'):null;
+  if(unresolved&&unresolved.id!==activeWork.requestId&&!(action?.kind==='gameplay'&&action.payload?.operationId===unresolved.operationId))
+    throw new Error('A managed gameplay action needs reconciliation before another resource change.');
   if (!game.user.isGM && !document.testUserPermission(game.user, "OWNER"))
     throw new Error("You do not have permission to change this document.");
-  return document.update(changes);
+  return document.update(changes, options);
 }
 export function enqueueCharacterOperation(operation, { requestId = null, targetUuid = null } = {}) {
   const job = queue.then(async () => {

@@ -1,0 +1,298 @@
+{
+  "_key": "!actors!152b108c134d5c85",
+  "_id": "152b108c134d5c85",
+  "name": "Goblin Scrapper",
+  "type": "creature",
+  "img": "systems/heroes-of-legend/assets/creatures/3f4fe745b94e9c46f405f87c2ab6c9949cfe5227701f2a596897dd7b03bb1dc4.webp",
+  "prototypeToken": {
+    "width": 1,
+    "height": 1,
+    "texture": {
+      "src": "systems/heroes-of-legend/assets/creatures/3f4fe745b94e9c46f405f87c2ab6c9949cfe5227701f2a596897dd7b03bb1dc4.webp"
+    }
+  },
+  "system": {
+    "schemaVersion": 1,
+    "attributes": {
+      "brawn": {
+        "base": 0
+      },
+      "fortitude": {
+        "base": 0
+      },
+      "agility": {
+        "base": 2
+      },
+      "guile": {
+        "base": 1
+      },
+      "knowledge": {
+        "base": 0
+      },
+      "reason": {
+        "base": 0
+      }
+    },
+    "attributesSource": "Brawn +0; Fortitude +0; Agility +2; Guile +1; Knowledge +0; Reason +0",
+    "health": {
+      "value": 8,
+      "baseMax": 8,
+      "sourceText": "8"
+    },
+    "cv": 8,
+    "speed": 7,
+    "speedSource": "7",
+    "alternateSpeeds": [],
+    "size": 1,
+    "sizeLabel": "medium",
+    "sizeSource": "1 (medium)",
+    "footprint": {
+      "width": 1,
+      "height": 1
+    },
+    "armor": 0,
+    "armorMarker": "",
+    "armorSource": "0",
+    "stability": 0,
+    "threat": {
+      "boons": 0,
+      "banes": 0,
+      "sourceText": "None"
+    },
+    "evasion": {
+      "boons": 0,
+      "banes": 1,
+      "sourceText": "1 Bane"
+    },
+    "weaknesses": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "resistances": {
+      "numeric": [],
+      "special": [],
+      "sourceText": "None"
+    },
+    "immunities": [],
+    "basicMelee": {
+      "weak": 4,
+      "standard": 2,
+      "strong": 1,
+      "defenseAttribute": "agility",
+      "orientation": "player-defense"
+    },
+    "actions": {
+      "orientation": "player-defense",
+      "entries": [
+        {
+          "id": "main-0",
+          "category": "main",
+          "name": "Basic Melee",
+          "abilityId": "",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "4",
+            "standard": "2",
+            "strong": "1"
+          },
+          "effect": "4/2/1",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "main-1",
+          "category": "main",
+          "name": "Scrap knife",
+          "abilityId": "",
+          "attributeKey": "agility",
+          "defenseSource": "Agility",
+          "harmfulOnly": false,
+          "hasOutcomes": true,
+          "outcomes": {
+            "weak": "5",
+            "standard": "3",
+            "strong": "2"
+          },
+          "effect": "5/3/2",
+          "referenceMarkdown": "### Scrap knife\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** physical."
+        },
+        {
+          "id": "maneuver-0",
+          "category": "maneuver",
+          "name": "Roll Away",
+          "abilityId": "monster-roll-away",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Move up to 2 squares in a straight line without provoking opportunity attacks.",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "maneuver-1",
+          "category": "maneuver",
+          "name": "Defend",
+          "abilityId": "",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "+1 Bane",
+          "referenceMarkdown": ""
+        },
+        {
+          "id": "reaction-0",
+          "category": "reaction",
+          "name": "Slip the Rush",
+          "abilityId": "monster-slip-the-rush",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "After an enemy voluntarily closes: move 1; no opportunity from that enemy.",
+          "referenceMarkdown": "### Slip the Rush\n\n*As the pursuer lunges into reach, it ducks sideways through the space the rush left open.*\n\nAfter a visible enemy ends voluntary movement adjacent to this creature, move up to 1 square without provoking from that enemy. Other opportunity attacks and normal terrain costs apply. This movement grants no attack; it cannot trigger from forced movement or movement granted by a free attack."
+        },
+        {
+          "id": "reaction-1",
+          "category": "reaction",
+          "name": "Opportunity Attack",
+          "abilityId": "",
+          "attributeKey": "",
+          "defenseSource": "",
+          "harmfulOnly": false,
+          "hasOutcomes": false,
+          "outcomes": {
+            "weak": "",
+            "standard": "",
+            "strong": ""
+          },
+          "effect": "Basic Melee",
+          "referenceMarkdown": ""
+        }
+      ],
+      "introductionMarkdown": "Damage and effects are **Weak / Standard / Strong player defense**. Each slash separates one complete outcome. All attacks use the printed Threat unless stated otherwise.",
+      "mainMarkdown": "| Main Actions | Defense | Damage |\n|---|---|---|\n| Basic Melee | Agility | 4/2/1 |\n| Scrap knife | Agility | 5/3/2 |",
+      "maneuverMarkdown": "| Maneuvers | Effect |\n|---|---|\n| Roll Away | Move up to 2 squares in a straight line without provoking opportunity attacks. |\n| Defend | +1 Bane |",
+      "reactionMarkdown": "| Reactions | Effect |\n|---|---|\n| Slip the Rush | After an enemy voluntarily closes: move 1; no opportunity from that enemy. |\n| Opportunity Attack | Basic Melee |"
+    },
+    "details": {
+      "flavorMarkdown": "*A small, wiry goblin salvager with keen eyes, patched work clothes and pockets full of useful scraps. Quick hands and knowledge of the ruins compensate for modest reach.*",
+      "specialtyMarkdown": "### Scrap knife\n\n**Target:** One adjacent creature. **Player defense:** Agility. **Damage type:** physical.\n\n### Slip the Rush\n\n*As the pursuer lunges into reach, it ducks sideways through the space the rush left open.*\n\nAfter a visible enemy ends voluntary movement adjacent to this creature, move up to 1 square without provoking from that enemy. Other opportunity attacks and normal terrain costs apply. This movement grants no attack; it cannot trigger from forced movement or movement granted by a free attack.",
+      "generalMarkdown": "### General details\n\n**Basic Melee:** One adjacent creature; physical damage; Agility defense. Uses the printed Threat. No specialty riders.\n\n**Defend:** Player attacks suffer 1 additional Bane until the start of its next turn. Combines with Evasion through normal Boon/Bane rules. Repeated Defend does not stack.\n\n**Opportunity Attack:** Basic Melee against the provoking creature. Spends its Reaction before the provoking action resolves. That action continues if the creature remains capable.\n\n**Roll Away:** Normal terrain costs and occupied-square restrictions apply.\n\n**Healing:** Living: ordinary HP healing applies.\n\n**Senses:** Ordinary sight and hearing.\n\n**Signs:** Bright scraps are tied to trip-free routes through the rubble.\n\n**Purpose:** Protect a salvage claim and avoid being cheated.\n\n**Tactics and retreat:** Roll Away between cover and a distracted opponent; bargain when cornered.\n\n**Counterplay and conversation:** Recognize the salvage claim or trade a useful tool.\n\n**Habitat:** Ruin; roadside · **Communication:** Common and Goblin\n\n**Loot:** Melee weapon, tool scraps and 3 coins.\n\n**Summoning:** Ineligible.",
+      "designNotesMarkdown": "## Design notes — not needed during play\n\n**ID:** creature-goblin-scrapper\n\n\n**Category:** Mortal · **Role:** Scavenger · **CV:** 8\n\n### Creature-roll reference\n\n| Attack | Attribute | Attack modifier | Weak attack | Standard attack | Strong attack |\n|---|---|---|---|---|---|\n| Scrap knife | Agility | None | 2 physical damage. | 3 physical damage. | 5 physical damage. |\n\nThe incoming attack names the defense attribute; use the six values above. Same targeting, costs and limits apply in either perspective. No opposed second roll.\n\n\n### CV worksheet\n\n**Difficulty rationale:** An agile or elusive body warrants attack Banes. Ordinary attack difficulty; riders and positioning carry the threat.\n\n**Reference damage:** 2/3/5\n\n**Reference type:** physical\n\n**Expected targets:** 1\n\n**Utility factor:** 1.2\n\n**Action review (#1279):** U 1.1 → 1.2: Maneuver allowance +0, Reaction allowance +0.1. These are provisional judgments for the changed capabilities, counting the largest increment in each category rather than adding every alternative. Reactions compete for one budget; no measured balance claim.\n\n**Regeneration per turn:** 0\n\nReference I=4.404, O=2.162. CV uses the [seed worksheet](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/encounters.md); action choices, Stability and control are not simulated. Recalibration remains required.\n\n**Ability sources:** [roll away](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/roll-away.md), [Slip the Rush](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/monster-abilities/slip-the-rush.md).\n\n[Roster](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/bestiary/roster.md) · [Agreed Stability](https://github.com/bruceamoser/heroes-of-legend/blob/f71eac4c46fce6906d6dfbd1638ee98b10a6c538/design/rules/stability.md)"
+    },
+    "biography": ""
+  },
+  "items": [],
+  "effects": [],
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "portrait": {
+        "creatureId": "creature-goblin-scrapper",
+        "asset": "assets/creatures/3f4fe745b94e9c46f405f87c2ab6c9949cfe5227701f2a596897dd7b03bb1dc4.webp",
+        "sha256": "b3513a3c0800167f931f8c05af96a252d9c69506463888df88aeca03c3c6ccae",
+        "sourceSha256": "3f4fe745b94e9c46f405f87c2ab6c9949cfe5227701f2a596897dd7b03bb1dc4",
+        "width": 768,
+        "height": 768,
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "alpha": true,
+        "provenance": "built-in image_gen"
+      },
+      "catalogId": "creature-goblin-scrapper",
+      "source": {
+        "path": "design/bestiary/creatures/goblin-scrapper.md",
+        "sha256": "47ef4163c610f70b6d9f809123f0bdecc43e065c3d183c936c3b49457fbee1fa"
+      },
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "catalogAutomation": "pending",
+      "automation": "pending",
+      "automationLabel": "Printed profile · specialty automation pending",
+      "specialtyAutomation": "pending",
+      "classification": {
+        "category": "Mortal",
+        "role": "Scavenger",
+        "cv": 8
+      },
+      "family": "Goblins",
+      "abilitySources": [
+        {
+          "label": "roll away",
+          "id": "monster-roll-away",
+          "path": "design/monster-abilities/roll-away.md",
+          "sha256": "c1c376f3d81ef98533ffbb89a02ca22f7970bbb2200f7b28f5217cb8950cd917"
+        },
+        {
+          "label": "Slip the Rush",
+          "id": "monster-slip-the-rush",
+          "path": "design/monster-abilities/slip-the-rush.md",
+          "sha256": "dc616a139a0db7f2e7dfd3c695c3ae301518d3b065c57c34b01c19f7a97f5a5e"
+        }
+      ],
+      "monsterAbilityTemplates": [
+        {
+          "id": "monster-roll-away",
+          "path": "design/monster-abilities/roll-away.md",
+          "sha256": "c1c376f3d81ef98533ffbb89a02ca22f7970bbb2200f7b28f5217cb8950cd917",
+          "name": "Roll Away",
+          "action": "Maneuver",
+          "flavorMarkdown": "*The goblin drops a shoulder, tumbles across the rubble and springs up beyond the answering blade.*",
+          "rulesMarkdown": "Move up to 2 squares in a straight line without provoking opportunity attacks. Pay normal terrain costs from the 2-square allowance. Normal occupied-square restrictions apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Roll Away\n\n*The goblin drops a shoulder, tumbles across the rubble and springs up beyond the answering blade.*\n\n## Rules\n\n**ID:** monster-roll-away\n\n\n**Action:** Maneuver\n\nMove up to 2 squares in a straight line without provoking opportunity attacks. Pay normal terrain costs from the 2-square allowance. Normal occupied-square restrictions apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/roll-away.md",
+            "sha256": "c1c376f3d81ef98533ffbb89a02ca22f7970bbb2200f7b28f5217cb8950cd917"
+          },
+          "automation": "pending"
+        },
+        {
+          "id": "monster-slip-the-rush",
+          "path": "design/monster-abilities/slip-the-rush.md",
+          "sha256": "dc616a139a0db7f2e7dfd3c695c3ae301518d3b065c57c34b01c19f7a97f5a5e",
+          "name": "Slip the Rush",
+          "action": "Reaction",
+          "flavorMarkdown": "*As the pursuer lunges into reach, it ducks sideways through the space the rush left open.*",
+          "rulesMarkdown": "After a visible enemy ends voluntary movement adjacent to this creature, move up to 1 square without provoking from that enemy. Other opportunity attacks and normal terrain costs apply. This movement grants no attack; it cannot trigger from forced movement or movement granted by a free attack.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
+          "referenceMarkdown": "# Slip the Rush\n\n*As the pursuer lunges into reach, it ducks sideways through the space the rush left open.*\n\n## Rules\n\n**ID:** monster-slip-the-rush\n\n**Action:** Reaction\n\nAfter a visible enemy ends voluntary movement adjacent to this creature, move up to 1 square without provoking from that enemy. Other opportunity attacks and normal terrain costs apply. This movement grants no attack; it cannot trigger from forced movement or movement granted by a free attack.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
+          "source": {
+            "commit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+            "path": "design/monster-abilities/slip-the-rush.md",
+            "sha256": "dc616a139a0db7f2e7dfd3c695c3ae301518d3b065c57c34b01c19f7a97f5a5e"
+          },
+          "automation": "pending"
+        }
+      ],
+      "summoning": {
+        "eligible": false,
+        "summonId": null,
+        "path": null,
+        "eligibility": null,
+        "sourceText": "Ineligible."
+      }
+    }
+  }
+}

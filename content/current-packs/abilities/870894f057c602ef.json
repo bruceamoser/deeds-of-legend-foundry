@@ -1,0 +1,66 @@
+{
+  "_key": "!items!870894f057c602ef",
+  "_id": "870894f057c602ef",
+  "name": "Power Lore",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 10 minutes</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>One adjacent magical object</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Learn 1/2/3 historical facts about how its enchantment was made or previously used. Facts concern its actual history, not current activation instructions unless the remembered event demonstrates them.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "reason",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:echoes:3",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:echoes:3",
+        "level": 1,
+        "cost": 2,
+        "action": "Ritual · 10 minutes",
+        "sp": 1,
+        "range": "One adjacent magical object",
+        "duration": "Instant",
+        "attribute": "Reason",
+        "defenseAttribute": null,
+        "effect": "Learn 1/2/3 historical facts about how its enchantment was made or previously used. Facts concern its actual history, not current activation instructions unless the remembered event demonstrates them.",
+        "improves": null,
+        "requires": [
+          "echoes:0"
+        ],
+        "bookId": "echoes"
+      },
+      "spell": {
+        "id": "spell:echoes:3",
+        "name": "Power Lore",
+        "bookId": "echoes",
+        "page": "3",
+        "section": "II",
+        "sp": 1,
+        "action": "Ritual",
+        "actionText": "Ritual · 10 minutes",
+        "ritualTime": "10 minutes",
+        "attribute": "Reason",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One adjacent magical object",
+        "duration": "Instant",
+        "effect": "Learn 1/2/3 historical facts about how its enchantment was made or previously used. Facts concern its actual history, not current activation instructions unless the remembered event demonstrates them."
+      }
+    }
+  },
+  "effects": []
+}

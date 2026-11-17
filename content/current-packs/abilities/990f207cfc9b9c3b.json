@@ -1,0 +1,47 @@
+{
+  "_key": "!items!990f207cfc9b9c3b",
+  "_id": "990f207cfc9b9c3b",
+  "name": "Prepared Retreat III",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>You can also name a weakness established by observation or reliable evidence as a Maneuver: tell up to three allies within 6 squares; each gains 1 Boon on its next attack against that creature before your next turn ends. Once per creature per scene. This grants no extra attacks or targets.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "scholarship:planning:6",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "scholarship:planning:6",
+        "level": 3,
+        "cost": 4,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "You can also name a weakness established by observation or reliable evidence as a Maneuver: tell up to three allies within 6 squares; each gains 1 Boon on its next attack against that creature before your next turn ends. Once per creature per scene. This grants no extra attacks or targets.",
+        "improves": "scholarship:planning:4",
+        "requires": [
+          "scholarship:planning:5"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

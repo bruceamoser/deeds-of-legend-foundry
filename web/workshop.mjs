@@ -1,9 +1,10 @@
+import {signatureProse} from "./rules/forge-signatures.mjs";
 import {
   activeForgeSustain, beginForgeSustain, convertForgeManeuver, endForgeSustain,
   maintainForgeSustain, nextForgeTurn, sustainLimit,
 } from "./rules/forge-sustain.mjs";
 import { renderForge, bindForgeInteractions } from "./forge-view.mjs";
-import { signatureSpellCost, isForgeRitual, forgeCastOptions, forgeCastPayment } from "./rules/forge-casting.mjs";
+import { signatureSpellCost, isForgeRitual, isForgeModifier, forgeCastOptions, forgeCastPayment } from "./rules/forge-casting.mjs";
 import { forgeEligibility } from "./rules/forge.mjs";
 import { workshopCatalogs } from "./rules/workshop-forge-catalog.mjs";
 import { forgeArmorRequirement } from "./rules/forge-character.mjs";
@@ -23,6 +24,7 @@ import {
   workshopConditionDamage,
   workshopFavorites,
 } from "./rules/workshop-resources.mjs";
+import { consumableType } from "./rules/consumables.mjs";
 import { HEALING_POTION_IDS } from "./rules/potions.mjs";
 import {
   advanceForgeVitals, forgeBeginFirstAid, forgeCanSpendGrit, forgeDamage,
@@ -61,6 +63,25 @@ import {
   WORKSHOP_PLAYTEST_VERSION, portableVersion,
 } from "./rules/portable-character.mjs";
 
+export async function mountWorkshopController(root, options = {}) {
+const host = options.host;
+const ownerDocument = root.ownerDocument ?? root;
+const lifetime = new AbortController();
+let pendingSave = Promise.resolve();
+let hostSaved = false;
+let disposed=false;
+const pendingActions=new Set();
+const document = {
+ querySelector: selector => root.querySelector(selector),
+ querySelectorAll: selector => root.querySelectorAll(selector),
+ getElementById: id => root.querySelector(`[id="${CSS.escape(id)}"]`),
+ createElement: tag => ownerDocument.createElement(tag),
+ get activeElement() { return root.activeElement ?? ownerDocument.activeElement; },
+ addEventListener: (type, listener, settings) => root.addEventListener(type, listener,
+ typeof settings === "boolean" ? {capture: settings, signal:lifetime.signal} : {...settings, signal:lifetime.signal}),
+};
+const memory = new Map();
+const localStorage = host ? {getItem:key => memory.get(key) ?? null, setItem:(key,value)=>memory.set(key,value)} : globalThis.localStorage;
 const $ = (selector) => document.querySelector(selector);
 const esc = (value) =>
   String(value ?? "").replace(
@@ -128,6 +149,7 @@ let storageAvailable = true;
 const app = $("#app");
 const syncForge = bindForgeInteractions(app, { onZoom: zoom => { forgeZoom = zoom; } });
 function notice(text) {
+  if(disposed) return;
   $("#notice").textContent = text;
   const dialog = $("#reference");
   if (dialog?.open) {
@@ -141,7 +163,7 @@ function notice(text) {
     message.textContent = text;
   }
   clearTimeout(noticeTimer);
-  noticeTimer = setTimeout(() => ($("#notice").textContent = ""), 7000);
+  noticeTimer = setTimeout(() => {if($("#notice")) $("#notice").textContent = "";}, 7000);
 }
 function get(id) {
   return (
@@ -152,6 +174,27 @@ function get(id) {
     catalogs.inventory.recipes.find((r) => r.id === id)
   );
 }
+function tracksSupply(item) {
+  if(!Number.isInteger(item?.inventoryDie) && !Number.isInteger(get(item?.catalogId)?.inventoryDie)) return true;
+  const native=host?.tracksItem?.(item);
+  return typeof native==='boolean' ? native : host?.tracking?.[consumableType(item)]!==false;
+}
+function itemName(item) {
+  return item ? draft.play?.inventory?.overrides?.[item.instanceId]?.name ?? item.name ?? name(item.catalogId) : '';
+}
+function rollItemNames(id) {
+  const catalogId=['ability-basic-melee','ability-basic-throw','ability-opportunity-attack'].includes(id) ? 'item-ordinary-melee-weapon' : id==='ability-basic-ranged' ? 'item-ordinary-ranged-weapon' : id==='ability-shield-block' ? 'item-ordinary-shield' : null;
+  return catalogId ? preview.inventory.items.filter(item=>item.catalogId===catalogId && item.carried && item.quantity>0).map(itemName) : [];
+}
+function nativeItemsPanel(kind) {
+  const items=(host?.nativeItems?.() ?? []).filter(item=>kind==='ability' ? item.type==='ability' : item.type!=='ability' && (!item.knownCatalog || item.type!=='equipment'));
+  if(!items.length) return '';
+  return `<section class="box owned-item-cards" aria-label="${kind==='ability' ? 'Other ability cards' : 'Other owned items'}"><h3>${kind==='ability' ? 'Other abilities' : 'Other owned items'}</h3>${kind==='ability' ? '<p class="file-hint">Owned ability cards; these do not change your learned Workshop choices.</p>' : ''}<div class="owned-item-list">${items.map(item=>`<div class="stat-row owned-item-card" data-native-item="${esc(item.id)}"><span>${button(esc(item.name),'native-open-item',`data-id="${esc(item.id)}" aria-label="Open ${esc(item.name)}"`,'table-link')}${item.type==='equipment' ? `<small class="item-source">${item.quantity ?? 0} × ${item.bulk ?? 0} Bulk · ${item.carried===false ? 'Stored' : 'Carried'}${item.held ? ' · Held' : ''}${item.worn ? ' · Worn' : ''}</small>` : ''}</span>${button('Open card','native-open-item',`data-id="${esc(item.id)}" aria-label="Open card ${esc(item.name)}"`,'small quiet')}</div>`).join('')}</div></section>`;
+}
+function nativeItemActions(item) {
+  return (host?.itemActions?.(item) ?? []).map(spec=>button(esc(spec.label),'native-item',`data-command="${esc(spec.action)}" data-instance="${esc(item.instanceId)}" ${spec.disabled || options.readOnly || host?.readOnly ? 'disabled' : ''} title="${esc(spec.title ?? spec.label)}"`,'small quiet')).join('');
+}
+let renamingItem;
 function name(id) {
   return get(id)?.name ?? catalogs.legacyChoices.find((r) => r.id === id)?.name ?? id ?? "Not chosen";
 }
@@ -212,6 +255,14 @@ function errors() {
   );
 }
 function persist() {
+  if (options.readOnly || host?.readOnly) return;
+  if (host) {
+    const state = {character:JSON.parse(writePortableCharacter(draft,catalogs)),mode,tab,step,creationFlow:CREATION_FLOW,isExample,saveId,signatureTier,editingLevel};
+    const basis=structuredClone(host.captureSaveBase?.() ?? {});
+    pendingSave = pendingSave.catch(()=>{}).then(()=>host.onChange?.(state,basis)).then(value=>{hostSaved=true;const status=$("[data-native-save-status]");if(status)status.textContent="Draft saved to your character · Revisit any step";return value;});
+    pendingSave.catch(error=>notice(error.message));
+    return;
+  }
   try {
     localStorage.setItem(
       storageKey,
@@ -285,6 +336,7 @@ const effectiveTraits = () => ancestrySelection(draft, catalogs.choices).traitId
 function header() {
   const vitals = liveVitals();
   const showResources = mode === "sheet";
+  if (host && mode === "builder") return "";
   if (mode === "builder") return `<div class="toolbar creator-toolbar">${button("New", "new", 'aria-label="New hero"', "quiet")}${button("Save", "save", 'aria-label="Save character"', "quiet")}${button("Load", "library", 'aria-label="Load character"', "quiet")}${button("Import", "import", 'aria-label="Import JSON"', "quiet")}${button("Export", "export", 'aria-label="Export JSON"', "quiet")}</div>`;
   return `<div class="workshop-header"><div class="toolbar"><div class="toolbar-group">${button(edit ? "✓ Done" : "✎ Edit", "edit", `aria-pressed="${edit}"`, edit ? "selected" : "quiet")}</div><div class="toolbar-group">${button("New", "new", 'aria-label="New hero"', "quiet")}${button("Save", "save", 'aria-label="Save character"', "quiet")}${button("Load", "library", 'aria-label="Load character"', "quiet")}${button("Import", "import", 'aria-label="Import JSON"', "quiet")}${button("Export", "export", 'aria-label="Export JSON"', "quiet")}</div></div>
   <header class="hero-header"><div class="identity-line"><img class="hero-mark" src="assets/crest.webp" alt=""><div><div class="name-line">${edit && mode === "sheet" ? field("Character name", "name", draft.name, "text", 'maxlength="200"') : `<h1>${esc(draft.name || "New hero")}</h1>`}${button(skullIcon + (vitals.dying ? `<span>${vitals.failed} / ${vitals.successfulDeathRolls}</span>` : ""), "death-roll", `aria-label="Death roll" title="Fortitude death roll · ${vitals.failed} failures · ${vitals.successfulDeathRolls} successes" ${vitals.dying && vitals.failed < 3 ? "" : "disabled"}`, "icon-button death-button")}</div><p>${esc(join([get(draft.ancestryId)?.name, get(draft.culture?.id)?.name, get(draft.background?.id)?.name, get(draft.classId)?.name, `Level ${preview.development.level}`]))}</p></div></div><div class="vitals"><div class="vital"><small>HP</small><strong class="hp-value">${showResources ? `<input aria-label="Current HP" data-field="play.hp" type="number" min="0" max="${Math.max(vitals.hp, vitals.recoveryMax)}" step="1" value="${vitals.hp}"><span>/ ${vitals.max || "—"}</span>` : `<span>${vitals.max || "—"}</span>`}</strong></div><div class="vital"><small>SP</small><strong class="hp-value">${showResources ? `<input aria-label="Current SP" data-field="play.sp" type="number" min="0" max="${vitals.limits.maxSp}" step="1" value="${vitals.sp}"><span>/ ${vitals.limits.maxSp || "—"}</span>` : `<span>${vitals.limits.maxSp || "—"}</span>`}</strong></div><div class="vital"><small>${button("Grit", "use-grit", 'aria-label="Use Grit"', "vital-link")}</small><strong>${vitals.grit}</strong></div><div class="vital"><small>Speed</small><strong data-speed>${vitals.speed}${vitals.speed < vitals.maxSpeed ? ` / ${vitals.maxSpeed}` : ""}</strong></div><div class="vital"><small>${button("Recovery", "hero-recovery", 'aria-label="Recovery"', "vital-link")}</small><strong>${vitals.dead ? "Dead" : vitals.dying ? "Dying" : vitals.hp === 0 && vitals.max ? "Stable" : ""}</strong></div><div class="vital"><small>Armor DR</small><strong>${preview.resistances.physical ?? 0}</strong></div></div></header>
@@ -292,8 +344,9 @@ function header() {
     const label = title(key);
     const value = preview.attributes[key] ?? 0;
     const bonus = value === 0 ? "+0" : signed(value);
+    const adjustment=host?.getAttributeBase ? value-host.getAttributeBase(key) : 0;
     return `<div class="attribute">${button(
-      `<small>${label}</small>${bonus}`,
+      `<small>${label}</small>${bonus}${adjustment ? `<em class="attribute-effect">${signed(adjustment)} equipment</em>` : ""}`,
       "open-roll",
       `data-attribute-key="${key}" aria-label="Roll ${label}"`,
       "compact-roll",
@@ -335,10 +388,10 @@ function disciplineTable() {
 }
 function sheetContent() {
   if (tab === "Main") return mainPanel();
-  if (tab === "Abilities") return abilitiesLibrary();
+  if (tab === "Abilities") return abilitiesLibrary()+nativeItemsPanel("ability");
   if (tab === "Spellbooks") return spellbooks();
   if (tab === "Inventory")
-    return `${heading("", "Inventory", "", button("Add item", "add-item", "", "small"))}${inventoryStats()}${inventoryTable(true)}`;
+    return `${heading("", "Inventory", "", button("Add item", "add-item", "", "small"))}${inventoryStats()}${inventoryTable(true)}${nativeItemsPanel("equipment")}`;
   if (tab === "Crafting")
     return `${heading("", "Crafting", "")}${recipeRows()}`;
   if (tab === "Character")
@@ -412,7 +465,8 @@ function castOptions(record) {
 function minimumCastCost(record) {
   return Math.min(...castOptions(record).map(option => option.cost));
 }
-function payCast(record, option) {
+async function payCast(record, option, willRoll = false) {
+  await host?.beforeUse?.({kind:"cast",id:record.id,willRoll});
   return forgeCastPayment(playDraft(), liveVitals().limits, preview.state, record, option);
 }
 
@@ -435,8 +489,17 @@ function sustainPanel() {
 
 // The sheet records casting and resources; Foundry/the table owns action timing.
 
-function castFromSheet(id, optionId = null) {
+async function useModifier(id) {
+  const record=get(id),cost=castCost(record);
+  if(!isForgeModifier(record) || !preview.state.abilities.includes(id) || !Number.isInteger(cost)) throw new Error('Learn this modifier before using it.');
+  await host?.beforeUse?.({kind:'modifier',id,willRoll:false});
+  const paid=forgeCastPayment(playDraft(),liveVitals().limits,preview.state,record);
+  draft.play=paid;persist();render();notice(`Modifier recorded: ${record.name} · ${cost} SP spent. Apply its printed effects to the qualifying weapon attack.`);
+}
+
+async function castFromSheet(id, optionId = null) {
   const record = get(id);
+  if(isForgeModifier(record)) return useModifier(id);
   const cost = castCost(record);
   const learned = record?.page
     ? preview.state.learning.spells.some((spell) => spell.id === id)
@@ -459,7 +522,8 @@ function castFromSheet(id, optionId = null) {
   const automatic = !attribute || /(?:^|[.!] )No (?:casting )?roll\./i.test(record.effect);
   $("#reference").close();
   if (isRitual(record)) {
-    draft.play = payCast(record, optionId);
+    const paid=await payCast(record, optionId);
+    draft.play = paid;
     persist();
     render();
     popup(record.name, `${record.page ? spellProfile(record) : markdown(record.effect)}<p>${payment.cost} SP spent. Finish the printed casting time before resolving the effect.</p>${automatic && !sustainLimit(record) ? "" : `<div class="dialog-actions">${button(automatic ? "Complete Ritual" : "Roll when the Ritual ends", "finish-ritual", `data-id="${esc(id)}"`, "primary")}</div>`}`);
@@ -469,7 +533,8 @@ function castFromSheet(id, optionId = null) {
     openSheetRoll({ key: attribute, id, cast: true, payment: optionId });
     return;
   }
-  draft.play = beginForgeSustain(payCast(record, optionId), record);
+  const paid=await payCast(record, optionId);
+  draft.play = beginForgeSustain(paid, record);
   persist();
   render();
   notice(`Casting recorded: ${record.name}${payment.cost ? ` · ${payment.cost} SP spent` : ""}.`);
@@ -490,6 +555,7 @@ function signatureProgress() {
     .join("")}</tbody></table></div>`;
 }
 function brief(record) {
+  if(record.signatureComponent) return signatureProse(record);
   const body = record.reference?.rules.body ?? [];
   const outcome = body.find((b) => b.outcomes)?.outcomes;
   if (outcome) return outcome.map((o) => `${o.label}: ${o.text}`).join(" · ");
@@ -510,7 +576,7 @@ function favorite(kind, id) {
   return button(
     active ? "★" : "☆",
     "favorite",
-    `data-kind="${kind}" data-id="${esc(id)}" aria-label="${active ? "Unfavorite" : "Favorite"} ${esc(kind === "abilities" ? name(id) : name(preview.inventory.items.find((i) => i.instanceId === id)?.catalogId))}" aria-pressed="${active}"`,
+    `data-kind="${kind}" data-id="${esc(id)}" aria-label="${active ? "Unfavorite" : "Favorite"} ${esc(kind === "abilities" ? name(id) : itemName(preview.inventory.items.find((i) => i.instanceId === id)))}" aria-pressed="${active}"`,
     "star-button",
   );
 }
@@ -525,10 +591,12 @@ function collapsible(
   return `<details class="${style} play-section" data-collapse="${key}" ${(draft.play?.collapsed?.[key] ?? !initiallyOpen) ? "" : "open"}><summary><h3>${esc(label)}</h3>${extra}</summary>${body}</details>`;
 }
 function itemUseButton(item) {
+  const native=(host?.itemActions?.(item) ?? []).find(spec=>spec.action==='torch-toggle');
+  if(native) return button(esc(native.label),'native-item',`data-command="torch-toggle" data-instance="${esc(item.instanceId)}" aria-label="${esc(native.label)}" ${native.disabled || options.readOnly || host?.readOnly ? 'disabled' : ''} title="${esc(native.title ?? native.label)}"`,'small quiet');
   return button(
     diceIcon,
     "use-supply-dialog",
-    `data-instance="${esc(item.instanceId)}" aria-label="Use ${esc(name(item.catalogId))}" title="Use ${esc(name(item.catalogId))}"`,
+    `data-instance="${esc(item.instanceId)}" aria-label="Use ${esc(itemName(item))}" title="Use ${esc(itemName(item))}"`,
     "icon-button",
   );
 }
@@ -536,7 +604,7 @@ function resupplyButton(item) {
   return button(
     "↥",
     "resupply-dialog",
-    `data-instance="${esc(item.instanceId)}" aria-label="Resupply ${esc(name(item.catalogId))}" title="Resupply"`,
+    `data-instance="${esc(item.instanceId)}" aria-label="Resupply ${esc(itemName(item))}" title="Resupply"`,
     "icon-button",
   );
 }
@@ -549,7 +617,7 @@ function supplyRows() {
       )
       .map(
         (i) =>
-          `<div class="stat-row"><span>${esc(name(i.catalogId))}</span><strong>${i.inventoryDie ? `d${i.inventoryDie}` : "Empty"}${i.inventoryDie && i.quantity ? itemUseButton(i) : ""}${resupplyButton(i)}</strong></div>`,
+          `<div class="stat-row"><span>${esc(itemName(i))}</span><strong>${!tracksSupply(i) ? "Untracked" : i.inventoryDie ? `d${i.inventoryDie}` : "Empty"}${(i.inventoryDie || !tracksSupply(i)) && i.quantity ? itemUseButton(i) : ""}${resupplyButton(i)}</strong></div>`,
       )
       .join("") || "<small>No supplies carried.</small>"
   );
@@ -560,7 +628,7 @@ function actionLabel(record) {
 }
 function attributeLabel(key) { return `${title(key).slice(0,2)} ${(preview.attributes[key] ?? 0) >= 0 ? "+" : ""}${preview.attributes[key] ?? 0}`; }
 function inlineRules(record) {
-  let body = record.page ? spellProfile(record) : record.reference ?
+  let body = record.signatureComponent ? markdown(record.effect) : record.page ? spellProfile(record) : record.reference ?
     `<dl>${record.reference.rules.details.map(d=>`<dt>${esc(d.label)}</dt><dd>${esc(d.value)}</dd>`).join("")}</dl>${record.reference.rules.body.map(block=>ruleBlockMarkup(block,{outcomeLayout:"stacked"})).join("")}${(record.reference.rules.notes??[]).map(n=>`<p><strong>${esc(n.label)}</strong> ${esc(n.text)}</p>`).join("")}` : markdown(record.effect ?? record.referenceMarkdown ?? references.records[record.id]?.markdown ?? "");
   const instrument = preview.state.instruments?.find(entry=>entry.abilityId === record.id)?.instrument;
   if (instrument) body = `<p><strong>Your instrument:</strong> ${esc(instrument)}</p>` + body;
@@ -569,12 +637,13 @@ function inlineRules(record) {
 }
 function actionUse(entry) {
   const r=entry.record, key=attributeFor(r), cost=castCost(r);
-  if(entry.inventoryInstance) return entry.inventoryInstance.quantity > 0 && entry.inventoryInstance.inventoryDie > 0 ? itemUseButton(entry.inventoryInstance) : button("Empty","use-supply-dialog","disabled","compact-roll");
+  if(entry.inventoryInstance) return entry.inventoryInstance.quantity > 0 && (entry.inventoryInstance.inventoryDie > 0 || !tracksSupply(entry.inventoryInstance)) ? itemUseButton(entry.inventoryInstance) : button("Empty","use-supply-dialog","disabled","compact-roll");
   if(r.id === "ability-use-a-healing-potion") return button("Use","potion-dialog",'aria-label="Use a healing potion"',"compact-roll");
   if(r.id === "ability-sustain-spell") return button("Sustain","sustain-spell",currentSustain().active ? "" : "disabled", "compact-roll");
+  if(Number.isInteger(cost) && isForgeModifier(r)) return button(`Use · ${cost} SP`,'use-modifier',`data-id="${esc(r.id)}" aria-label="Use ${esc(r.name)}" ${liveVitals().sp<cost ? 'disabled' : ''}`,'compact-roll');
   if(Number.isInteger(cost)) return button(key?attributeLabel(key):isRitual(r)?"Ritual":"Cast","cast-spell",`data-id="${esc(r.id)}" aria-label="Cast ${esc(r.name)}" ${liveVitals().sp < minimumCastCost(r) || sustainUnavailable() ? "disabled" : ""}`,"compact-roll");
   if(key) return button(attributeLabel(key),"open-roll",`data-id="${esc(r.id)}" aria-label="Roll ${esc(r.name)}"`,"compact-roll");
-  return button("Use","inline-action",`data-id="${esc(r.id)}" aria-label="Use ${esc(r.name)}"`,"compact-roll");
+  return button("Use","inline-action",`data-use-ability="true" data-id="${esc(r.id)}" aria-label="Use ${esc(r.name)}"`,"compact-roll");
 }
 function compactEffect(record) {
   const upgrades = preview.state.learning.improvements.get(record.id) ?? [];
@@ -588,7 +657,7 @@ function actionTable(entries, customize = false) {
   const timing = tab !== "Main";
   return `<div class="table-wrap"><table class="action-table compact-actions"><colgroup><col style="width:${timing ? 34 : 40}%">${timing ? '<col style="width:15%">' : ""}<col style="width:76px"><col><col style="width:28px"></colgroup><thead><tr><th>Ability / spell</th>${timing?"<th>Timing</th>":""}<th>Roll / use</th><th>Outcome / target</th><th><span class="sr-only">Details</span></th></tr></thead><tbody>${entries.filter(e=>e.visible||customize).map(e=>{
     const r=e.record, open=expandedActions.has(r.id), full=compactEffect(r);
-    return `<tr data-action-row="${esc(r.id)}"><td><div class="action-name">${e.sourceItems?.length ? e.sourceItems.map(item=>favorite("items",item.instanceId)).join("") : favorite("abilities",r.id)}${button(esc(e.inventoryInstance ? name(e.inventoryInstance.catalogId) : actionLabel(r)),"inline-action",`data-id="${esc(r.id)}" aria-expanded="${open}"`,"table-link")}</div></td>${timing?`<td class="timing-cell">${esc(r.actionText ?? actionTiming(r).join(" / "))}</td>`:""}<td class="roll-cell">${actionUse(e)}</td><td class="effect-cell"><span class="brief" title="${esc(full)}">${esc(full)}</span></td><td class="expand-cell">${button(open?"⌄":"›","inline-action",`data-id="${esc(r.id)}" aria-label="${open?"Collapse":"Expand"} ${esc(r.name)}" aria-expanded="${open}"`,"expand-action")}</td></tr>${open?`<tr class="inline-action-detail" data-detail-id="${esc(r.id)}"><td colspan="${timing?5:4}">${e.sourceItems?.length ? `<p><strong>Equipment:</strong> ${esc(e.sourceItems.map(item=>name(item.catalogId)).join(", "))}</p>` : ""}${inlineRules(r)}</td></tr>`:""}`;
+    return `<tr data-action-row="${esc(r.id)}"><td><div class="action-name">${e.sourceItems?.length ? e.sourceItems.map(item=>favorite("items",item.instanceId)).join("") : favorite("abilities",r.id)}${button(esc(e.inventoryInstance ? itemName(e.inventoryInstance) : actionLabel(r)),"inline-action",`data-id="${esc(r.id)}" aria-expanded="${open}"`,"table-link")}${e.sourceItems?.length && !e.inventoryInstance ? `<small class="item-source">${esc(e.sourceItems.map(itemName).join(", "))}</small>` : ""}</div></td>${timing?`<td class="timing-cell">${esc(r.actionText ?? actionTiming(r).join(" / "))}</td>`:""}<td class="roll-cell">${actionUse(e)}</td><td class="effect-cell"><span class="brief" title="${esc(full)}">${esc(full)}</span></td><td class="expand-cell">${button(open?"⌄":"›","inline-action",`data-id="${esc(r.id)}" aria-label="${open?"Collapse":"Expand"} ${esc(r.name)}" aria-expanded="${open}"`,"expand-action")}</td></tr>${open?`<tr class="inline-action-detail" data-detail-id="${esc(r.id)}"><td colspan="${timing?5:4}">${e.sourceItems?.length ? `<p><strong>Equipment:</strong> ${esc(e.sourceItems.map(item=>itemName(item)).join(", "))}</p>` : ""}${inlineRules(r)}</td></tr>`:""}`;
   }).join("")}</tbody></table></div>`;
 }
 function favoriteEntries() {
@@ -609,7 +678,7 @@ function passiveTable(entries) {
       .filter((e) => e.visible || edit)
       .map(
         (e) =>
-          `<tr><td><div class="section-controls">${button(esc(e.record.name), "reference", `data-id="${esc(e.record.id)}"`, "table-link")}${edit && e.basic ? `<input type="checkbox" data-basic="${e.record.id}" aria-label="Show ${esc(e.record.name)}" ${e.visible ? "checked" : ""}>` : ""}</div><span class="brief" title="${esc(brief(e.record))}">${esc(brief(e.record))}</span></td></tr>`,
+          `<tr><td><div class="section-controls">${button(esc(e.record.name), "reference", `data-id="${esc(e.record.id)}"`, "table-link")}${isForgeModifier(e.record) ? actionUse(e) : ""}${edit && e.basic ? `<input type="checkbox" data-basic="${e.record.id}" aria-label="Show ${esc(e.record.name)}" ${e.visible ? "checked" : ""}>` : ""}</div><span class="brief" title="${esc(brief(e.record))}">${esc(brief(e.record))}</span></td></tr>`,
       )
       .join("") || "<tr><td><small>None</small></td></tr>"
   }</tbody></table>`;
@@ -741,7 +810,7 @@ function inventoryTable(controls = false) {
       ? button(
           "×",
           "remove-equipment",
-          `data-instance="${esc(item.instanceId)}" aria-label="Remove purchased ${esc(name(item.catalogId))}"`,
+          `data-instance="${esc(item.instanceId)}" aria-label="Remove purchased ${esc(itemName(item))}"`,
           "quiet small",
         )
       : "";
@@ -753,7 +822,7 @@ function inventoryTable(controls = false) {
         : item.source === "play"
           ? "Added"
           : name(item.source);
-  return `<div class="table-wrap"><table class="inventory-table"><thead><tr><th>Item</th><th>Qty</th><th>Bulk</th><th>Supply</th>${controls ? "<th>Held</th><th>Worn</th><th>Carried</th><th></th>" : '<th>Source</th><th aria-label="Remove purchase"></th>'}</tr></thead><tbody>${items.map((item) => `<tr data-instance="${esc(item.instanceId)}" class="${item.carried ? "" : "stored-item"}"><td>${controls ? favorite("items", item.instanceId) : ""}${button(esc(name(item.catalogId)), "reference", `data-id="${esc(item.catalogId)}"`, "table-link")}${controls ? `<small class="item-source">${esc(source(item))}</small>` : ""}</td><td>${controls ? `<input type="number" class="quantity-input" data-quantity="${esc(item.instanceId)}" aria-label="Quantity ${esc(name(item.catalogId))}" min="0" max="10000" step="1" value="${item.quantity}">` : item.quantity}</td><td>${item.bulk}</td><td>${item.inventoryDie ? `d${item.inventoryDie}` : item.inventoryDie === 0 ? "Empty" : "—"}${controls && item.inventoryDie && item.quantity ? itemUseButton(item) : ""}${controls && item.inventoryDie !== null && item.inventoryDie !== undefined ? button("↥", "resupply-dialog", `data-instance="${esc(item.instanceId)}" aria-label="Resupply ${esc(name(item.catalogId))}" title="Resupply"`, "icon-button") : ""}</td>${controls ? ["held", "worn", "carried"].map((prop) => `<td><input type="checkbox" data-loadout="${esc(item.instanceId)}" data-prop="${prop}" aria-label="${prop === "held" ? "Hold" : prop === "worn" ? "Wear" : "Carry"} ${esc(name(item.catalogId))}" ${item[prop] ? "checked" : ""}></td>`).join("") + `<td>${button("×", "delete-item", `data-instance="${esc(item.instanceId)}" aria-label="Delete ${esc(name(item.catalogId))}"`, "quiet small")}</td>` : `<td>${esc(source(item))}</td><td>${purchaseRemoval(item)}</td>`}</tr>`).join("")}</tbody></table></div>`;
+  return `<div class="table-wrap"><table class="inventory-table"><thead><tr><th>Item</th><th>Qty</th><th>Bulk</th><th>Supply</th>${controls ? "<th>Held</th><th>Worn</th><th>Carried</th><th></th>" : '<th>Source</th><th aria-label="Remove purchase"></th>'}</tr></thead><tbody>${items.map((item) => `<tr data-instance="${esc(item.instanceId)}" class="${item.carried ? "" : "stored-item"}"><td>${controls ? favorite("items", item.instanceId) : ""}${controls && renamingItem===item.instanceId ? `<input class="item-name-input" data-item-name="${esc(item.instanceId)}" aria-label="Item name" maxlength="200" value="${esc(itemName(item))}">` : button(esc(itemName(item)), "reference", `data-id="${esc(item.catalogId)}"`, "table-link")}${controls ? button("✎","rename-item",`data-instance="${esc(item.instanceId)}" aria-label="Rename ${esc(itemName(item))}" title="Rename item"`,"small quiet") + nativeItemActions(item) : ""}${controls ? `<small class="item-source">${esc(source(item))}</small>` : ""}</td><td>${controls ? `<input type="number" class="quantity-input" data-quantity="${esc(item.instanceId)}" aria-label="Quantity ${esc(itemName(item))}" min="0" max="10000" step="1" value="${item.quantity}">` : item.quantity}</td><td>${item.bulk}</td><td>${!tracksSupply(item) ? "Untracked" : item.inventoryDie ? `d${item.inventoryDie}` : item.inventoryDie === 0 ? "Empty" : "—"}${controls && (item.inventoryDie || !tracksSupply(item)) && item.quantity && !(host?.itemActions?.(item) ?? []).some(spec=>spec.action==='torch-toggle') ? itemUseButton(item) : ""}${controls && item.inventoryDie !== null && item.inventoryDie !== undefined ? button("↥", "resupply-dialog", `data-instance="${esc(item.instanceId)}" aria-label="Resupply ${esc(itemName(item))}" title="Resupply"`, "icon-button") : ""}</td>${controls ? ["held", "worn", "carried"].map((prop) => `<td><input type="checkbox" data-loadout="${esc(item.instanceId)}" data-prop="${prop}" aria-label="${prop === "held" ? "Hold" : prop === "worn" ? "Wear" : "Carry"} ${esc(itemName(item))}" ${item[prop] ? "checked" : ""}></td>`).join("") + `<td>${host?.canDeleteItem?.(item)===false ? "" : button("×", "delete-item", `data-instance="${esc(item.instanceId)}" aria-label="Delete ${esc(itemName(item))}"`, "quiet small")}</td>` : `<td>${esc(source(item))}</td><td>${purchaseRemoval(item)}</td>`}</tr>`).join("")}</tbody></table></div>`;
 }
 function advancementTable() {
   return `<div class="table-wrap"><table><thead><tr><th>Level</th><th>Entry</th><th>DP</th></tr></thead><tbody>${preview.advancementLedger.map((e) => `<tr><td>${e.level}</td><td>${esc(e.kind === "award" ? "Level award" : name(e.id))}</td><td>${signed(e.delta)}</td></tr>`).join("")}</tbody></table></div>`;
@@ -792,7 +861,7 @@ function startingSpExplanation() {
   </details>`;
 }
 function builder() {
-  return `<div class="wizard creation-wizard"><nav class="creation-steps" aria-label="Creation steps">${steps.map((label, i) => button(`<span>${i + 1}.</span> ${label}`, "step", `aria-label="${i + 1} ${label}" ${step === i ? 'aria-current="step"' : ""} data-step="${i}"`)).join("")}</nav><div class="wizard-body">${creationSummary()}${requiredChoicesBanner()}${step === EQUIPMENT_STEP ? contextStrip() : ""}<section id="panel" class="panel" aria-labelledby="panel-title">${builderContent()}</section><footer class="wizard-footer">${button(step ? `← ${steps[step - 1]}` : "View sheet", step ? "back" : "sheet")}<small>${storageAvailable ? "Draft saved in this browser · Revisit any step" : "Export JSON to keep your draft"}</small>${step < REVIEW_STEP ? button(`Continue to ${steps[step + 1].toLowerCase()} →`, "next", "", "primary") : button("View character sheet", "sheet", "", "primary")}</footer></div></div>`;
+  return `<div class="wizard creation-wizard"><nav class="creation-steps" aria-label="Creation steps">${steps.map((label, i) => button(`<span>${i + 1}.</span> ${label}`, "step", `aria-label="${i + 1} ${label}" ${step === i ? 'aria-current="step"' : ""} data-step="${i}"`)).join("")}</nav><div class="wizard-body">${creationSummary()}${requiredChoicesBanner()}${step === EQUIPMENT_STEP ? contextStrip() : ""}<section id="panel" class="panel" aria-labelledby="panel-title">${builderContent()}</section><footer class="wizard-footer">${button(step ? `← ${steps[step - 1]}` : "View sheet", step ? "back" : "sheet")}<small ${host ? 'data-native-save-status' : ""}>${host ? hostSaved ? "Draft saved to your character · Revisit any step" : "Draft changes save to your character" : storageAvailable ? "Draft saved in this browser · Revisit any step" : "Export JSON to keep your draft"}</small>${step < REVIEW_STEP ? button(`Continue to ${steps[step + 1].toLowerCase()} →`, "next", "", "primary") : button("View character sheet", "sheet", "", "primary")}</footer></div></div>`;
 }
 function builderContent() {
   if (step === 0)
@@ -923,7 +992,7 @@ function creationSignature(id) {
     `creation-signature-row${selected ? " selected" : ""}`,
   ) + (selected ? `<section class="creation-inline creation-signature-detail" aria-label="${esc(record.name)} rules">
     <h4>${esc(join([record.name, timing, use]))}</h4>
-    ${rules.body.map((block) => ruleBlockMarkup(block, { outcomeLayout: "stacked" })).join("")}
+    ${record.signatureComponent ? markdown(signatureProse(record)) : rules.body.map((block) => ruleBlockMarkup(block, { outcomeLayout: "stacked" })).join("")}
     ${button("Full rules ›", "reference", `data-id="${esc(id)}"`, "table-link")}
   </section>` : "");
 }
@@ -1423,6 +1492,16 @@ function normalizeShoppingIds() {
     }
   });
 }
+async function nativeDice(count,sides,context) {
+  const faces = host?.onRoll ? await host.onRoll({count,sides,...context,state:JSON.parse(writePortableCharacter(draft,catalogs))})
+    : Array.from({length:count},()=>randomDie(sides));
+  if(!Array.isArray(faces) || faces.length!==count || faces.some(face=>!Number.isInteger(face)||face<1||face>sides))
+    throw new Error("The dice provider returned invalid faces.");
+  for(const selector of ['#recipe-roll-result','#supply-roll-result']) {
+    const result=$(selector);if(result) result.hidden=Boolean(host?.hideRollResults);
+  }
+  return faces;
+}
 function randomDie(sides) {
   const a = new Uint32Array(1),
     limit = Math.floor(4294967296 / sides) * sides;
@@ -1478,7 +1557,7 @@ function resupplyDialog(instance) {
   const item = preview.inventory.items.find((i) => i.instanceId === instance);
   if (!item) throw new Error("This supply is no longer in inventory.");
   popup(
-    `Resupply ${name(item.catalogId)}`,
+    `Resupply ${itemName(item)}`,
     `<p>Current supply: ${item.inventoryDie ? `d${item.inventoryDie}` : "Empty"}. Each step restores one die size, up to its original d${get(item.catalogId).inventoryDie}.</p><label>Resupply steps<select id="resupply-steps" aria-label="Resupply steps">${[1, 2, 3, 4, 5, 6].map((n) => option(n, `${n} step${n === 1 ? "" : "s"}`, n === 1)).join("")}</select></label><div class="dialog-actions">${button("Resupply", "confirm-resupply", `data-instance="${esc(instance)}"`, "primary")}</div>`,
   );
 }
@@ -1488,31 +1567,32 @@ function supplyDialog(instance) {
     (i) =>
       i.carried &&
       i.quantity > 0 &&
-      i.inventoryDie > 0 &&
+      (i.inventoryDie > 0 || !tracksSupply(i)) &&
       HEALING_POTION_IDS.includes(i.catalogId),
   );
   const item = instance
     ? preview.inventory.items.find((i) => i.instanceId === instance)
     : null;
-  if (instance && (!item || item.inventoryDie < 1 || item.quantity < 1))
+  if (instance && (!item || (tracksSupply(item) && item.inventoryDie < 1) || item.quantity < 1))
     throw new Error("This supply is exhausted.");
   supplyInstance = instance ?? null;
   popup(
-    item ? name(item.catalogId) : "Use a healing potion",
-    `${item ? `<p>Use this supply, then check d${item.inventoryDie}. A 1 steps it down; the final use still works.</p>` : potions.length ? `<label>Potion<select id="potion-instance" aria-label="Healing potion">${potions.map((i) => option(i.instanceId, `${name(i.catalogId)} · d${i.inventoryDie}`, false)).join("")}</select></label><p>Healing is fixed by the bottle; roll its supply die after use.</p>` : "<p>No carried healing potion with supply remaining.</p>"}<div id="supply-roll-result" role="status" aria-live="polite"></div><div class="dialog-actions">${button("Use & roll supply", "confirm-supply", item || potions.length ? "" : "disabled", "primary")}</div>`,
+    item ? itemName(item) : "Use a healing potion",
+    `${item ? !tracksSupply(item) ? `<p>Supply tracking is off. Use this owned supply without rolling or depletion.</p>` : `<p>Use this supply, then check d${item.inventoryDie}. A 1 steps it down; the final use still works.</p>` : potions.length ? `<label>Potion<select id="potion-instance" aria-label="Healing potion">${potions.map((i) => option(i.instanceId, `${itemName(i)} · d${i.inventoryDie}`, false)).join("")}</select></label><p>${potions.length && !tracksSupply(potions[0]) ? "Supply tracking is off. Healing is fixed by the bottle; no supply roll or depletion." : "Healing is fixed by the bottle; roll its supply die after use."}</p>` : "<p>No carried healing potion with supply remaining.</p>"}<div id="supply-roll-result" role="status" aria-live="polite"></div><div class="dialog-actions">${button((item ?? potions[0]) && !tracksSupply(item ?? potions[0]) ? "Use supply" : "Use & roll supply", "confirm-supply", item || potions.length ? "" : "disabled", "primary")}</div>`,
   );
 }
-function useSupply() {
+async function useSupply() {
   const id = supplyInstance ?? $("#potion-instance")?.value;
   const item = preview.inventory.items.find((i) => i.instanceId === id);
-  if (!item || !item.carried || !item.inventoryDie || !item.quantity)
+  if (!item || !item.carried || (tracksSupply(item) && !item.inventoryDie) || !item.quantity)
     throw new Error("This supply is exhausted or no longer carried.");
   const vitals = liveVitals();
   if (HEALING_POTION_IDS.includes(item.catalogId) && (vitals.dead || vitals.failed === 3 || vitals.immediateDeathRoll))
     throw new Error("Resolve the death roll before healing.");
-  const face = randomDie(item.inventoryDie);
+  const tracking=tracksSupply(item);
+  const face = tracking ? (await nativeDice(1,item.inventoryDie,{kind:"supply",item}))[0] : 2;
   const result = workshopSupplyUse({
-    item,
+    item:tracking ? item : {...item,inventoryDie:item.inventoryDie || get(item.catalogId).inventoryDie || 4},
     face,
     hp: liveVitals().hp,
     maxHp: liveVitals().max,
@@ -1522,15 +1602,16 @@ function useSupply() {
   });
   const inv = playDraft().inventory;
   inv.overrides ??= {};
-  inv.overrides[id] = { ...inv.overrides[id], inventoryDie: result.after };
+  if(tracking) inv.overrides[id] = { ...inv.overrides[id], inventoryDie: result.after };
   if (result.potion) {
     Object.assign(playDraft(), forgeHeal(playDraft(), vitals.limits, result.healed));
   }
   persist();
   render();
-  $("#supply-roll-result").innerHTML =
-    `<p>${esc(name(item.catalogId))}: d${result.before} → <strong>${face}</strong> · ${result.after ? `d${result.after}` : "Exhausted"}</p>${result.potion ? `<p>Restored ${result.healed} HP · ${result.hp} / ${liveVitals().max}. The final dose still heals.</p>` : "<p>Supply check recorded after use.</p>"}`;
-  if (result.exhausted)
+  $("#supply-roll-result").hidden=Boolean(tracking && host?.hideRollResults);
+  $("#supply-roll-result").innerHTML = tracking ?
+    `<p>${esc(itemName(item))}: d${result.before} → <strong>${face}</strong> · ${result.after ? `d${result.after}` : "Exhausted"}</p>${result.potion ? `<p>Restored ${result.healed} HP · ${result.hp} / ${liveVitals().max}. The final dose still heals.</p>` : "<p>Supply check recorded after use.</p>"}` : `<p>Supply tracking is off. ${esc(itemName(item))} used without rolling or depletion.</p>${result.potion ? `<p>Restored ${result.healed} HP.</p>` : ""}`;
+  if (tracking && result.exhausted)
     $("#reference [data-action=confirm-supply]").disabled = true;
 }
 let activeRoll = null;
@@ -1545,6 +1626,7 @@ function openSheetRoll({ key, id, death = false, defense = false, cast = false, 
   activeRoll = { death, id, defense, cast, finishRitual, payment };
   const paymentCost = castOptions(record).find(option => option.id === payment)?.cost;
   const v = liveVitals();
+  const conditions = [...preview.play.conditions];
   if (death && (!v.dying || v.failed === 3)) throw new Error("Death rolls are for a Dying hero.");
   popup(
     death
@@ -1555,6 +1637,7 @@ function openSheetRoll({ key, id, death = false, defense = false, cast = false, 
     `
     ${death ? `<section class="death-panel"><div id="death-mark-display">${deathMarks(v)}</div><div class="death-outcomes"><span><b>Weak</b> +1 failure</span><span><b>Standard</b> No change</span><span><b>Strong</b> +1 success</span></div><p class="inline-help">${v.immediateDeathRoll ? "Resolve the roll for the damage just taken." : "Roll at the start of your Dying turn."} Three successes stabilize you at 0 HP.</p>${!v.immediateDeathRoll && forgeCanSpendGrit(v, v.limits, "turn-start") ? button("Spend Grit instead", "confirm-grit", 'data-trigger="turn-start"') : ""}</section>` : ""}
     ${defense ? '<p class="inline-help">Choose the defense attribute named by the attack. Strong defense takes Weak attack effects; Weak defense takes Strong attack effects.</p>' : ""}
+    ${!death ? [...new Set(conditions.filter(condition=>condition.key==='frightened').map(condition=>condition.source).filter(Boolean))].map(source=>`<label class="inline-toggle"><input type="checkbox" data-perceived-fear="${esc(source)}"> Perceiving ${esc(source)}</label>`).join('') : ''}
     ${rollSetup({ attributes: Object.fromEntries((death ? ["fortitude"] : ATTRIBUTES).map((k) => [k, preview.attributes[k]])), selected: attribute, attributeId: "sheet-roll-attribute", value: preview.attributes[attribute], netId: "recipe-net", labelId: "roll-net-value" })}
     ${
       death
@@ -1575,15 +1658,16 @@ function openSheetRoll({ key, id, death = false, defense = false, cast = false, 
     getAttributeValue: () => preview.attributes[$("#sheet-roll-attribute").value],
   });
   if (cast || finishRitual) $("#sheet-roll-attribute").disabled = true;
-  const conditions = [...preview.play.conditions];
+  const equipmentNames=rollItemNames(id);if(equipmentNames.length) $("#reference-title").textContent += ` · ${equipmentNames.join(", ")}`;
   if (defense && v.max > 0 && v.hp === 0 && !v.dead) {
     // Stable heroes at 0 HP retain the same defense Banes as unconscious heroes.
     conditions.push({ id: "hp-defense", key: "unconscious", rating: 1, persistence: "binary", source: "0 HP" });
   }
-  const automatic = [...conditionRollSources(conditions, {
+  const sourcesFor=perceivedSources=>[...conditionRollSources(conditions, {
     mode: death ? "death" : defense ? "defense" : "attribute",
-    perceivedSources: [],
+    perceivedSources,
   }), ...(defense && catalogs.forge?.rulesRevision !== 299 ? passiveAncestryDefenseSources(effectiveTraits()) : [])];
+  const automatic=sourcesFor([]);
   if (death && effectiveTraits().includes("trait-human-weathered")) {
     automatic.push({ kind: "boon", amount: 1 });
     $("#recipe-roll-result").innerHTML = "<p>Never Quite Finished gives 1 Boon to this Fortitude roll.</p>";
@@ -1600,19 +1684,28 @@ function openSheetRoll({ key, id, death = false, defense = false, cast = false, 
   );
   $("#recipe-net").value = String(net);
   $("#recipe-net").dispatchEvent(new Event("input", { bubbles: true }));
+  let automaticNet=net;
+  for(const input of root.querySelectorAll('[data-perceived-fear]'))input.addEventListener('change',()=>{
+    const perceived=[...root.querySelectorAll('[data-perceived-fear]:checked')].map(input=>input.dataset.perceivedFear);
+    const next=Math.max(-3,Math.min(3,sourcesFor(perceived).reduce((sum,source)=>sum+(source.kind==='boon'?source.amount:-source.amount),0)));
+    const slider=$('#recipe-net'),manual=Number(slider.value)-automaticNet;automaticNet=next;
+    slider.value=String(Math.max(-3,Math.min(3,next+manual)));slider.dispatchEvent(new Event('input',{bubbles:true}));
+  });
+
 }
-function rollSheetDice() {
+async function rollSheetDice() {
   const key = $("#sheet-roll-attribute").value;
   if ((activeRoll.cast || activeRoll.finishRitual) && liveVitals().hp <= 0)
     throw new Error("Regain HP before resolving this working.");
   if (activeRoll.cast) {
     const record = get(activeRoll.id);
     if (sustainUnavailable()) throw new Error("Regain consciousness before casting.");
-    draft.play = beginForgeSustain(payCast(record, activeRoll.payment), record);
+    const paid=await payCast(record, activeRoll.payment, true);
+    draft.play = beginForgeSustain(paid, record);
     persist();
     render();
   }
-  const result = displayDice(preview.attributes[key], undefined, activeRoll.death);
+  const result = await displayDice(preview.attributes[key], undefined, activeRoll.death);
   if (activeRoll.finishRitual && sustainLimit(get(activeRoll.id))) {
     if (sustainUnavailable()) throw new Error("Regain consciousness before completing the Ritual.");
     draft.play = beginForgeSustain(playDraft(), get(activeRoll.id));
@@ -1669,16 +1762,17 @@ function appendDebtReroll() {
   const v = liveVitals();
   $("#recipe-roll-result").insertAdjacentHTML("beforeend", `<div class="dialog-actions">${button("The Debt Comes Due · pay 1 HP & reroll", "debt-reroll", v.hp > 1 && !v.recovery.debtUsed ? "" : "disabled")}</div>`);
 }
-function debtReroll() {
+async function debtReroll() {
   if (!activeRoll?.last || activeRoll.death)
     throw new Error("Complete a sheet attribute roll before using The Debt Comes Due.");
   const original = activeRoll.last;
+  await host?.beforeUse?.({kind:"debt",willRoll:true});
   const payment = payDebt({ hp: liveVitals().hp, maxHp: liveVitals().max,
     recovery: draft.play?.recovery, traitIds: effectiveTraits() });
   Object.assign(playDraft(), payment);
   persist();
   render();
-  const result = displayDice(original.attribute, original.net);
+  const result = await displayDice(original.attribute, original.net);
   $("#recipe-roll-result").insertAdjacentHTML("beforeend", `<p>The Debt Comes Due: paid 1 HP; use this new result. The paid HP remains unavailable until next dawn.</p>${original.selected.length ? `<p>${original.selected.map(esc).join(" · ")}</p>` : ""}${original.defense ? `<p>${title(result.tier)} defense · read the ${result.tier === "weak" ? "Strong" : result.tier === "strong" ? "Weak" : "Standard"} attack effects.</p>` : ""}`);
   appendDebtReroll();
 }
@@ -1699,7 +1793,7 @@ function recipeRoll(id, recipeId) {
   );
   popup(
     `Craft ${recipe.name}`,
-    `<p><strong>${esc(ability.name)}</strong> · ${title(attribute)} ${signed(preview.attributes[attribute])} · ${recipe.attemptMinutes} min per attempt</p>${recipe.maximumDie ? `<label>Supply<select id="craft-supply">${supplies.map((i) => `<option value="${esc(i.instanceId)}">${esc(name(i.catalogId))} · ${i.inventoryDie ? "d" + i.inventoryDie : "Empty"}</option>`).join("")}<option value="">New supply</option></select></label>` : `<p id="craft-progress">${craftingStatus(recipe)}</p>`}<p>${noRollBrew(id, recipe) ? "Brew to d4 without a roll" : `Weak 1 · Standard ${(preview.state.learned.includes("craft:supplies:3") || preview.state.learned.includes("craft:workshop:3")) ? "3 · Strong 4" : "2 · Strong 3"} ${recipe.maximumDie ? "supply steps" : "progress"}`}. Tools, materials and time follow the recipe.</p>${netControl({ id: "recipe-net", labelId: "roll-net-value" })}<div id="recipe-roll-result" role="status" aria-live="polite"></div><div class="dialog-actions">${button(noRollBrew(id, recipe) ? "Brew" : "Roll", "roll-recipe", `data-id="${esc(id)}" data-recipe-id="${esc(recipeId)}"`, "primary")}</div><details><summary>Recipe rules</summary>${markdown(references.records[recipeId]?.markdown ?? "")}</details>`,
+    `<p><strong>${esc(ability.name)}</strong> · ${title(attribute)} ${signed(preview.attributes[attribute])} · ${recipe.attemptMinutes} min per attempt</p>${recipe.maximumDie ? `<label>Supply<select id="craft-supply">${supplies.map((i) => `<option value="${esc(i.instanceId)}">${esc(itemName(i))} · ${i.inventoryDie ? "d" + i.inventoryDie : "Empty"}</option>`).join("")}<option value="">New supply</option></select></label>` : `<p id="craft-progress">${craftingStatus(recipe)}</p>`}<p>${noRollBrew(id, recipe) ? "Brew to d4 without a roll" : `Weak 1 · Standard ${(preview.state.learned.includes("craft:supplies:3") || preview.state.learned.includes("craft:workshop:3")) ? "3 · Strong 4" : "2 · Strong 3"} ${recipe.maximumDie ? "supply steps" : "progress"}`}. Tools, materials and time follow the recipe.</p>${netControl({ id: "recipe-net", labelId: "roll-net-value" })}<div id="recipe-roll-result" role="status" aria-live="polite"></div><div class="dialog-actions">${button(noRollBrew(id, recipe) ? "Brew" : "Roll", "roll-recipe", `data-id="${esc(id)}" data-recipe-id="${esc(recipeId)}"`, "primary")}</div><details><summary>Recipe rules</summary>${markdown(references.records[recipeId]?.markdown ?? "")}</details>`,
   );
   if (recipe.maximumDie)
     $("#craft-supply").value = draft.play.crafting[recipeId].supplyId ?? "";
@@ -1707,9 +1801,9 @@ function recipeRoll(id, recipeId) {
     getAttributeValue: () => preview.attributes[attributeFor(ability)],
   });
 }
-function rollRecipeDice(id, recipeId) {
+async function rollRecipeDice(id, recipeId) {
   if (!draft.play?.crafting?.[recipeId]?.active) return;
-  const rolled = noRollBrew(id, get(recipeId)) ? {} : displayDice(preview.attributes[attributeFor(get(id))]);
+  const rolled = noRollBrew(id, get(recipeId)) ? {} : await displayDice(preview.attributes[attributeFor(get(id))]);
   const result = workshopCraft({
     play: playDraft(),
     recipe: get(recipeId),
@@ -1744,21 +1838,23 @@ function rollRecipeDice(id, recipeId) {
         .filter((i) => i.catalogId === get(recipeId).product && i.quantity > 0)
         .map(
           (i) =>
-            `<option value="${esc(i.instanceId)}">${esc(name(i.catalogId))} · ${i.inventoryDie ? "d" + i.inventoryDie : "Empty"}</option>`,
+            `<option value="${esc(i.instanceId)}">${esc(itemName(i))} · ${i.inventoryDie ? "d" + i.inventoryDie : "Empty"}</option>`,
         )
         .join("") + '<option value="">New supply</option>';
     select.value = state.supplyId;
   }
 }
 
-function displayDice(attribute, originalNet, deathRoll = false) {
+async function displayDice(attribute, originalNet, deathRoll = false) {
+  const attributeKey=$("#sheet-roll-attribute")?.value;
+  if(attributeKey && host?.getAttributes) attribute=host.getAttributes(preview.attributes)[attributeKey];
   const net = originalNet ?? Number($("#recipe-net").value);
   const plan = rollPlan({
     attribute,
     boons: Math.max(0, net),
     banes: Math.max(0, -net),
   });
-  const faces = Array.from({ length: plan.count }, () => randomDie(6));
+  const faces = await nativeDice(plan.count,6,{kind:deathRoll ? "death" : "attribute",attributeKey:$("#sheet-roll-attribute")?.value,attribute,net,activeRoll:$("#sheet-roll-attribute") ? activeRoll : {id:$("[data-action=roll-recipe]")?.dataset.id},equipmentNames:rollItemNames(activeRoll?.id),abilityIds:[...document.querySelectorAll("[data-roll-ability]:checked")].map(node=>node.dataset.rollAbility),plan});
   const retained = [...faces]
     .sort((a, b) => (net < 0 ? a - b : b - a))
     .slice(0, 3);
@@ -1781,7 +1877,11 @@ document.addEventListener("input", (event) => {
 
 function render({ focusHeading = false } = {}) {
   pendingRender = false;
-  preview = workshopCharacter(draft, catalogs);
+  let attributeError;
+  preview = workshopCharacter(draft, catalogs, undefined, mode==='sheet' && host ? {
+    projectInventory:host.projectInventory,
+    projectAttributes:host.getAttributes ? attributes=>{try{return host.getAttributes(attributes);}catch(error){attributeError=error.message;return attributes;}} : undefined,
+  } : {});
   if (mode === "sheet" && !draft.play?.favorites) {
     playDraft().favorites = { abilities: [...new Set([...preview.state.abilities.filter(id=>!get(id)?.page && !actionTiming(get(id)).includes("Passive")).slice(0,4), "ability-basic-unarmed", "ability-defend", ...preview.state.learning.spells.slice(0,2).map(r=>r.id)])], items: [] };
     persist();
@@ -1797,8 +1897,8 @@ function render({ focusHeading = false } = {}) {
   const scroll = $("#panel")?.scrollTop ?? 0;
   const pan = $(".forge-map-scroll");
   const panOffset = pan ? [pan.scrollLeft, pan.scrollTop] : null;
-  app.innerHTML =
-    header() +
+  const markup =
+    (attributeError ? `<p role="alert" class="choice-alert">${esc(attributeError)}</p>` : "") + header() +
     (mode === "builder"
       ? builder()
       : mode === "advancement"
@@ -1806,6 +1906,34 @@ function render({ focusHeading = false } = {}) {
         : mode === "signature"
           ? signatureBuilder()
           : sheet());
+  app.innerHTML=host ? markup.replace(/((?:src|href)=["'])assets\//g,(_,prefix)=>prefix+new URL('assets/',options.dataBaseUrl ?? import.meta.url).href) : markup;
+  if (options.readOnly || host?.readOnly) app.querySelectorAll('input,textarea,[data-field],button[data-action="edit"]').forEach(node=>node.disabled=true);
+  if (host) {
+    app.querySelectorAll('.toolbar-group').forEach((group,index)=>{if(index>0)group.remove();});
+    const portrait = app.querySelector('.hero-mark');
+    if (portrait) {
+      if(host.portraitUrl ?? host.portrait) portrait.src=host.portraitUrl ?? host.portrait;
+      portrait.dataset.action='native-portrait'; portrait.tabIndex=0;
+      portrait.setAttribute('role','button'); portrait.alt='Edit character portrait';
+    }
+    if (mode==='advancement' || mode==='signature') {
+      const done=app.querySelector('.wizard-footer .primary');
+      if(done){done.dataset.action='native-commit';done.textContent='Save development';}
+    }
+    if(mode==='builder' && !host.committed) app.querySelectorAll('[data-action="sheet"]').forEach(control=>{
+      control.dataset.action=step===REVIEW_STEP ? 'native-commit' : 'review';
+      control.textContent=step===REVIEW_STEP ? 'Complete creation' : 'Review & create';
+      if(step===REVIEW_STEP) control.disabled=!preview.valid;
+    });
+    if(mode==='builder' && step===REVIEW_STEP) {
+      const button=app.querySelector('[data-action="ready-export"]');
+      if(button) {
+        button.dataset.action='native-commit'; button.textContent=host.commitLabel ?? 'Create hero';
+        const section=button.closest('section'); section.querySelector('h3').textContent='Complete your hero';
+        section.querySelectorAll('.file-hint,[data-action="export"]').forEach(node=>node.remove());
+      }
+    }
+  }
   app.removeAttribute("aria-busy");
   if (pickerKind) renderPicker();
   syncForge();
@@ -1989,6 +2117,7 @@ function showReference(id) {
   if (!r) throw new Error("This reference is not in the current catalog.");
   let body;
   if (r.page) body = spellProfile(r);
+  else if (r.signatureComponent) body=markdown(r.effect);
   else if (r.reference) {
     const { flavor, rules } = r.reference;
     body =
@@ -2012,7 +2141,7 @@ function showReference(id) {
   const cost = castCost(r);
   const known = r.page ? preview.state.learning.spells.some((entry) => entry.id === id) : preview.state.abilities.includes(id);
   if (Number.isInteger(cost) && known)
-    body += `<div class="dialog-actions">${button(isRitual(r) ? "Begin Ritual" : "Cast", "cast-spell", `data-id="${esc(id)}" ${preview.limits && !sustainUnavailable() && liveVitals().sp >= minimumCastCost(r) ? "" : "disabled"}`, "primary")}</div>`;
+    body += `<div class="dialog-actions">${button(isForgeModifier(r) ? "Use modifier" : isRitual(r) ? "Begin Ritual" : "Cast", isForgeModifier(r) ? "use-modifier" : "cast-spell", `data-id="${esc(id)}" ${preview.limits && (isForgeModifier(r) || !sustainUnavailable()) && liveVitals().sp >= minimumCastCost(r) ? "" : "disabled"}`, "primary")}</div>`;
   const instrument = preview.state.instruments?.find(
     (entry) => entry.abilityId === id,
   )?.instrument;
@@ -2029,6 +2158,21 @@ function showReference(id) {
 }
 async function action(target) {
   const a = target.dataset.action;
+  if(a==='rename-item' && !(options.readOnly || host?.readOnly)) {
+    renamingItem=target.dataset.instance;render();const input=$('input[data-item-name]');input?.focus();input?.select();return;
+  }
+
+  if ((options.readOnly || host?.readOnly) && !['tab','reference','close-reference','close-picker','inline-action','forge-view','forge-select','forge-list-discipline','forge-discipline','forge-chooser','forge-candidate','library-scope','native-open-item'].includes(a) && !(a==='native-item' && target.dataset.command==='open-card')) return;
+
+  if (host && a === "native-commit") {
+    if (!preview.valid) throw new Error("Complete the remaining character choices first.");
+    await pendingSave;
+    return host.onCommit?.(JSON.parse(writePortableCharacter(draft,catalogs)));
+  }
+  if (host?.onAction && await host.onAction({action:a,id:target.dataset.id,editing:edit,mode,dataset:{...target.dataset},
+    state:JSON.parse(writePortableCharacter(draft,catalogs)),preview,record:get(target.dataset.id),
+    activeRoll: typeof activeRoll === 'undefined' ? undefined : activeRoll,
+    values:Object.fromEntries([...root.querySelectorAll('#reference input,#reference select')].map(node=>[node.id || node.dataset.rollAbility, node.type==='checkbox' ? node.checked : node.value]))})) return;
   if(a === "inline-action") { const id=target.dataset.id; expandedActions.has(id)?expandedActions.delete(id):expandedActions.add(id); render(); return; }
   if(a === "edit-favorites") return editFavorites();
   if(a === "library-scope") { libraryScope=target.dataset.scope; render(); return; }
@@ -2208,6 +2352,7 @@ async function action(target) {
     });
   if (a === "death-roll") return openSheetRoll({ death: true });
   if (a === "roll-sheet") return rollSheetDice();
+  if (a === "use-modifier") return useModifier(target.dataset.id);
   if (a === "cast-spell") return castFromSheet(target.dataset.id, target.dataset.payment);
   if (a === "finish-ritual") {
     if (sustainUnavailable()) throw new Error("Regain consciousness before completing the Ritual.");
@@ -2257,6 +2402,8 @@ async function action(target) {
     $("#reference").close();
   }
   if (a === "delete-item") {
+    const item=preview.inventory.items.find(item=>item.instanceId===target.dataset.instance);
+    if(host?.canDeleteItem?.(item)===false) throw new Error("Open this item’s card to delete it.");
     const inv = playDraft().inventory,
       id = target.dataset.instance;
     const added = inv.added.some((i) => i.instanceId === id);
@@ -2558,9 +2705,14 @@ async function action(target) {
   if (a === "tab")
     document.getElementById(`tab-${tab}`)?.focus({ preventScroll: true });
 }
+function runAction(target) {
+  const task=action(target);pendingActions.add(task);
+  task.finally(()=>pendingActions.delete(task)).catch(()=>{});
+  return task;
+}
 document.addEventListener("click", (event) => {
   const t = event.target.closest("[data-action]");
-  if (t && !t.disabled) action(t).catch((e) => notice(e.message));
+  if (t && !t.disabled) runAction(t).catch((e) => notice(e.message));
 });
 document.addEventListener("pointerdown", () => {
   pointerDown = true;
@@ -2607,6 +2759,14 @@ app.addEventListener(
 );
 document.addEventListener("change", (event) => {
   const t = event.target;
+  if(t.dataset.itemName) {
+    if(options.readOnly || host?.readOnly) return;
+    const value=t.value.trim();
+    if(!value || value.length>200) {notice('Use an item name from 1 to 200 characters.');return;}
+    const inventory=playDraft().inventory;inventory.overrides ??= {};
+    inventory.overrides[t.dataset.itemName]={...inventory.overrides[t.dataset.itemName],name:value};
+    renamingItem=undefined;persist();render();return;
+  }
   if (t.dataset.quantity) {
     const quantity = Number(t.value);
     if (!Number.isSafeInteger(quantity) || quantity < 0 || quantity > 10000) {
@@ -2682,6 +2842,12 @@ document.addEventListener("input", (event) => {
   }
 });
 app.addEventListener("keydown", (event) => {
+  if(event.target.dataset.itemName && ['Enter','Escape'].includes(event.key)) {
+    event.preventDefault();event.stopPropagation();
+    if(event.key==='Enter') event.target.dispatchEvent(new Event('change',{bubbles:true}));
+    else {renamingItem=undefined;render();}return;
+  }
+  if(event.target.dataset.action==='native-portrait' && ['Enter',' '].includes(event.key)) {event.preventDefault();runAction(event.target).catch(error=>notice(error.message));return;}
   if (
     event.target.getAttribute("role") !== "tab" ||
     ![
@@ -2768,7 +2934,8 @@ $("#import-file").addEventListener("change", async (event) => {
 });
 try {
   const load = async (name) => {
-    const r = await fetch(`data/${name}.json`);
+    if (options.data?.[name]) return structuredClone(options.data[name]);
+    const r = await fetch(new URL(`data/${name}.json`,options.dataBaseUrl ?? import.meta.url));
     if (!r.ok) throw new Error(`Could not load ${name}.`);
     return r.json();
   };
@@ -2835,6 +3002,13 @@ try {
       "The saved draft could not be opened. It has not been overwritten; export a new draft only when you are ready.",
     );
   }
+  if (options.initialState) {
+    const saved = options.initialState;
+    draft = readPortableCharacter(saved.character ?? saved,catalogs).draft;
+    mode = saved.mode ?? mode; tab = saved.tab ?? tab; step = saved.step ?? step;
+    isExample = false;
+  }
+  if (options.initialMode) mode = options.initialMode;
   normalizeShoppingIds();
   render();
 } catch (e) {
@@ -2856,3 +3030,31 @@ document.addEventListener("change", (event) => {
 function filterFavoriteChoices(value) { for(const row of document.querySelectorAll(".favorite-choice")) row.hidden=!row.dataset.search.includes(value.toLowerCase()); }
 document.addEventListener("input",event=>{ if(event.target.id==="favorite-search") filterFavoriteChoices(event.target.value); });
 document.addEventListener("change",event=>{ if(event.target.id==="spell-discipline") {spellDiscipline=event.target.value; render();} if(event.target.id==="spell-timing") {spellTiming=event.target.value; render();} });
+
+return {
+ getState:()=>({character:JSON.parse(writePortableCharacter(draft,catalogs)),mode,tab,step,editing:edit}),
+ setState(state) {
+   draft=readPortableCharacter(state.character ?? state,catalogs).draft;
+   if(state.mode) {mode=state.mode;if(mode==='sheet') edit=Boolean(state.editing);}
+   if(state.tab) tab=state.tab;
+   if(Number.isInteger(state.step)) step=state.step;
+   render();
+ },
+ async useAbility(id) {
+   if(options.readOnly || host?.readOnly) throw new Error('Only the character owner can use abilities.');
+   const record=[...knownCards(),...catalogs.choices.filter(record=>record.universal),...preview.state.learning.spells].find(record=>record.id===id);
+   if(!record) throw new Error('This character has not learned that ability or spell.');
+   mode='sheet';tab='Abilities';render();
+   if(actionTiming(record).includes('Passive') && !isForgeModifier(record)) return showReference(id);
+   const holder=ownerDocument.createElement('div');holder.innerHTML=actionUse({record,visible:true});
+   const control=holder.querySelector('button');
+   if(!control || control.disabled) throw new Error('This ability is unavailable with the character’s current resources or equipment.');
+   return runAction(control);
+ },
+ openRoll:settings=>openSheetRoll(settings),
+ settle:async()=>{await Promise.all([...pendingActions]);await pendingSave;},
+ flush:()=>pendingSave,
+ dispose() {disposed=true;lifetime.abort();clearTimeout(noticeTimer);syncForge.dispose?.();root.querySelectorAll('dialog[open]').forEach(dialog=>dialog.close());app.replaceChildren();},
+};
+}
+if(globalThis.document?.querySelector('script[type="module"][src="workshop.mjs"]')) await mountWorkshopController(globalThis.document);

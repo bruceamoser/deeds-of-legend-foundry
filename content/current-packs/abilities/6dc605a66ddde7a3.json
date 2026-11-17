@@ -1,0 +1,66 @@
+{
+  "_key": "!items!6dc605a66ddde7a3",
+  "_id": "6dc605a66ddde7a3",
+  "name": "Sending",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 minute</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One creature you personally know on the same plane</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Send up to twenty-five words through a mental thread. The recipient knows who sent it and may answer with twenty-five words. A creature that chooses silence still receives the message.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:thought:5",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:thought:5",
+        "level": 1,
+        "cost": 2,
+        "action": "Ritual · 1 minute",
+        "sp": 2,
+        "range": "One creature you personally know on the same plane",
+        "duration": "Instant",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Send up to twenty-five words through a mental thread. The recipient knows who sent it and may answer with twenty-five words. A creature that chooses silence still receives the message.",
+        "improves": null,
+        "requires": [
+          "thought:1"
+        ],
+        "bookId": "thought"
+      },
+      "spell": {
+        "id": "spell:thought:5",
+        "name": "Sending",
+        "bookId": "thought",
+        "page": "5",
+        "section": "III",
+        "sp": 2,
+        "action": "Ritual",
+        "actionText": "Ritual · 1 minute",
+        "ritualTime": "1 minute",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One creature you personally know on the same plane",
+        "duration": "Instant",
+        "effect": "Send up to twenty-five words through a mental thread. The recipient knows who sent it and may answer with twenty-five words. A creature that chooses silence still receives the message."
+      }
+    }
+  },
+  "effects": []
+}

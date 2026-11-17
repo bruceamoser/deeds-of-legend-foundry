@@ -1,0 +1,46 @@
+{
+  "_key": "!items!8917717d9a59b634",
+  "_id": "8917717d9a59b634",
+  "name": "Fast Talk",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>Guile</dd></div><div><dt>Target / range / shape</dt><dd>One creature within 5 squares that can hear and understand you.</dd></div><div><dt>Duration</dt><dd>Immediate progress; the negotiation persists.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div></dl><p>State the social goal you are pursuing and what you want the target to do. Make a Guile roll. The result adds progress toward that goal: Weak: 2 progress. Standard: 3 progress. Strong: 5 progress. The DA sets the progress target before the roll. When the total reaches it, the target agrees within its wants and limits. This does not compel self-harm, betrayal, or a change to its loyalties.</p><p>Repeated attempts toward the same objective require a new meaningful contribution; use the DA’s objective and progress rules.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "attribute",
+      "attribute": "guile",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-signature-shadow-turn-their-eye",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "ability",
+        "nodeId": "ability-signature-shadow-turn-their-eye",
+        "level": 1,
+        "cost": 0,
+        "action": "Maneuver",
+        "sp": null,
+        "range": "One creature within 5 squares that can hear and understand you.",
+        "duration": "Immediate progress; the negotiation persists.",
+        "attribute": "Guile",
+        "defenseAttribute": null,
+        "effect": "**Action:** Maneuver · **Attribute:** Guile\n\n**Target / range / shape:** One creature within 5 squares that can hear and understand you.\n\nState the social goal you are pursuing and what you want the target to do. Make a Guile roll. The result adds progress toward that goal: Weak: 2 progress. Standard: 3 progress. Strong: 5 progress. The DA sets the progress target before the roll. When the total reaches it, the target agrees within its wants and limits. This does not compel self-harm, betrayal, or a change to its loyalties.\n\n**Duration:** Immediate progress; the negotiation persists.\n\n**Equipment / acquisition:** None.\n\nRepeated attempts toward the same objective require a new meaningful contribution; use the DA’s objective and progress rules.",
+        "improves": null,
+        "requires": [],
+        "bookId": null,
+        "magic": null
+      }
+    }
+  },
+  "effects": []
+}

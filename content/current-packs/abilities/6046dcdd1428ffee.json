@@ -1,0 +1,65 @@
+{
+  "_key": "!items!6046dcdd1428ffee",
+  "_id": "6046dcdd1428ffee",
+  "name": "Storm of Vengeance",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>7</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Defense</dt><dd>Agility</dd></div><div><dt>Range</dt><dd>A 3-square-radius storm centered within 12 squares, with one safe square within 2 of its center</dd></div><div><dt>Duration</dt><dd>3 rounds</dd></div></dl><p>Choose a visible point and one safe square within 2 squares of it. A storm fills a 3-square radius around that point. Roll when cast; creatures in the storm outside the safe square take 3/5/7 lightning damage. On each of your next two turns, a Main Action lets you roll again to strike with the storm for the same damage and push each affected creature 1 square away from its center. Stability and normal collision rules apply. Without that action the storm remains visible but deals no further damage that turn. The safe square remains exempt. Keep one Storm of Vengeance active; casting another ends the first.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "reason",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell-mastery:storm-of-vengeance",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell-mastery:storm-of-vengeance",
+        "level": 7,
+        "cost": 5,
+        "action": "Main Action",
+        "sp": 7,
+        "range": "A 3-square-radius storm centered within 12 squares, with one safe square within 2 of its center",
+        "duration": "3 rounds",
+        "attribute": "Reason",
+        "defenseAttribute": "Agility",
+        "effect": "Choose a visible point and one safe square within 2 squares of it. A storm fills a 3-square radius around that point. Roll when cast; creatures in the storm outside the safe square take 3/5/7 lightning damage. On each of your next two turns, a Main Action lets you roll again to strike with the storm for the same damage and push each affected creature 1 square away from its center. Stability and normal collision rules apply. Without that action the storm remains visible but deals no further damage that turn. The safe square remains exempt. Keep one Storm of Vengeance active; casting another ends the first.",
+        "improves": null,
+        "requires": [
+          "air:5"
+        ],
+        "bookId": "air"
+      },
+      "spell": {
+        "id": "spell-mastery:storm-of-vengeance",
+        "name": "Storm of Vengeance",
+        "bookId": "air",
+        "page": "A3",
+        "section": "VII",
+        "sp": 7,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "Reason",
+        "defense": "Agility",
+        "defenseAttribute": "Agility",
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "A 3-square-radius storm centered within 12 squares, with one safe square within 2 of its center",
+        "duration": "3 rounds",
+        "effect": "Choose a visible point and one safe square within 2 squares of it. A storm fills a 3-square radius around that point. Roll when cast; creatures in the storm outside the safe square take 3/5/7 lightning damage. On each of your next two turns, a Main Action lets you roll again to strike with the storm for the same damage and push each affected creature 1 square away from its center. Stability and normal collision rules apply. Without that action the storm remains visible but deals no further damage that turn. The safe square remains exempt. Keep one Storm of Vengeance active; casting another ends the first."
+      }
+    }
+  },
+  "effects": []
+}

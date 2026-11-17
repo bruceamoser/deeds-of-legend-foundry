@@ -1,0 +1,65 @@
+{
+  "_key": "!items!cd3e0aeb14ded04b",
+  "_id": "cd3e0aeb14ded04b",
+  "name": "Disintegrate",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div><div><dt>Defense</dt><dd>Agility</dd></div><div><dt>Range</dt><dd>One creature or unattended object within 8 squares</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>A narrow beam deals 6/9/12 force damage. An unattended nonmagical object of Bulk 3 or less is reduced to dust if this damage destroys it. Living targets follow normal HP and dying rules.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "6 force damage",
+      "standard": "9 force damage",
+      "strong": "12 force damage"
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:telekinesis:a2",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:telekinesis:a2",
+        "level": 3,
+        "cost": 4,
+        "action": "Main Action",
+        "sp": 5,
+        "range": "One creature or unattended object within 8 squares",
+        "duration": "Instant",
+        "attribute": "Knowledge",
+        "defenseAttribute": "Agility",
+        "effect": "A narrow beam deals 6/9/12 force damage. An unattended nonmagical object of Bulk 3 or less is reduced to dust if this damage destroys it. Living targets follow normal HP and dying rules.",
+        "improves": null,
+        "requires": [
+          "telekinesis:4"
+        ],
+        "bookId": "telekinesis"
+      },
+      "spell": {
+        "id": "spell:telekinesis:a2",
+        "name": "Disintegrate",
+        "bookId": "telekinesis",
+        "page": "A2",
+        "section": "VI",
+        "sp": 5,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "Knowledge",
+        "defense": "Agility",
+        "defenseAttribute": "Agility",
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One creature or unattended object within 8 squares",
+        "duration": "Instant",
+        "effect": "A narrow beam deals 6/9/12 force damage. An unattended nonmagical object of Bulk 3 or less is reduced to dust if this damage destroys it. Living targets follow normal HP and dying rules."
+      }
+    }
+  },
+  "effects": []
+}

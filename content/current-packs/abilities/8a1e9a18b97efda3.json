@@ -1,0 +1,65 @@
+{
+  "_key": "!items!8a1e9a18b97efda3",
+  "_id": "8a1e9a18b97efda3",
+  "name": "Animate Objects",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div><div><dt>Range</dt><dd>Up to three unattended objects, combined Bulk at most 3, within 3 squares</dd></div><div><dt>Duration</dt><dd>1 minute, with commands</dd></div></dl><p>Animate them as one group with shared 10 HP, Speed 4, and your attributes for defenses. They occupy one square together. Give one immediate Main command to attack one adjacent target for 3/5/7 physical damage or perform a simple task. Use normal commands and the six-square tether thereafter.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "3 physical damage",
+      "standard": "5 physical damage",
+      "strong": "7 physical damage"
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:animation:5",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:animation:5",
+        "level": 1,
+        "cost": 2,
+        "action": "Main Action",
+        "sp": 2,
+        "range": "Up to three unattended objects, combined Bulk at most 3, within 3 squares",
+        "duration": "1 minute, with commands",
+        "attribute": "Knowledge",
+        "defenseAttribute": null,
+        "effect": "Animate them as one group with shared 10 HP, Speed 4, and your attributes for defenses. They occupy one square together. Give one immediate Main command to attack one adjacent target for 3/5/7 physical damage or perform a simple task. Use normal commands and the six-square tether thereafter.",
+        "improves": null,
+        "requires": [
+          "animation:1"
+        ],
+        "bookId": "animation"
+      },
+      "spell": {
+        "id": "spell:animation:5",
+        "name": "Animate Objects",
+        "bookId": "animation",
+        "page": "5",
+        "section": "III",
+        "sp": 2,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "Knowledge",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Up to three unattended objects, combined Bulk at most 3, within 3 squares",
+        "duration": "1 minute, with commands",
+        "effect": "Animate them as one group with shared 10 HP, Speed 4, and your attributes for defenses. They occupy one square together. Give one immediate Main command to attack one adjacent target for 3/5/7 physical damage or perform a simple task. Use normal commands and the six-square tether thereafter."
+      }
+    }
+  },
+  "effects": []
+}

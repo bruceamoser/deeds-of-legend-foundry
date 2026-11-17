@@ -1,0 +1,65 @@
+{
+  "_key": "!items!9a50187bf493e89a",
+  "_id": "9a50187bf493e89a",
+  "name": "Message",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>SP</dt><dd>0</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One creature you can see within 6 squares</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Whisper a message of up to ten words into the recipient&#39;s hearing. It may answer with up to ten words as part of the exchange. The message travels through ordinary ambient noise.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:thought:1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:thought:1",
+        "level": 1,
+        "cost": 1,
+        "action": "Maneuver",
+        "sp": 0,
+        "range": "One creature you can see within 6 squares",
+        "duration": "Instant",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Whisper a message of up to ten words into the recipient's hearing. It may answer with up to ten words as part of the exchange. The message travels through ordinary ambient noise.",
+        "improves": null,
+        "requires": [
+          "mentalism"
+        ],
+        "bookId": "thought"
+      },
+      "spell": {
+        "id": "spell:thought:1",
+        "name": "Message",
+        "bookId": "thought",
+        "page": "1",
+        "section": "I",
+        "sp": 0,
+        "action": "Maneuver",
+        "actionText": "Maneuver",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One creature you can see within 6 squares",
+        "duration": "Instant",
+        "effect": "Whisper a message of up to ten words into the recipient's hearing. It may answer with up to ten words as part of the exchange. The message travels through ordinary ambient noise."
+      }
+    }
+  },
+  "effects": []
+}

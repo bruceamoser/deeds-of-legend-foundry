@@ -1,0 +1,66 @@
+{
+  "_key": "!items!5fe0e844e8b80427",
+  "_id": "5fe0e844e8b80427",
+  "name": "Landing",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Reaction · when you fall</dd></div><div><dt>SP</dt><dd>0</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>Self</dd></div><div><dt>Duration</dt><dd>Until you land this turn</dd></div></dl><p>Reduce your effective falling distance by 3 squares and land upright if the landing supports you. Resolve any remaining distance normally.</p>",
+    "activity": {
+      "action": "reaction",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:passage:1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:passage:1",
+        "level": 1,
+        "cost": 1,
+        "action": "Reaction · when you fall",
+        "sp": 0,
+        "range": "Self",
+        "duration": "Until you land this turn",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Reduce your effective falling distance by 3 squares and land upright if the landing supports you. Resolve any remaining distance normally.",
+        "improves": null,
+        "requires": [
+          "invocation"
+        ],
+        "bookId": "passage"
+      },
+      "spell": {
+        "id": "spell:passage:1",
+        "name": "Landing",
+        "bookId": "passage",
+        "page": "1",
+        "section": "I",
+        "sp": 0,
+        "action": "Reaction",
+        "actionText": "Reaction · when you fall",
+        "trigger": "when you fall",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Self",
+        "duration": "Until you land this turn",
+        "effect": "Reduce your effective falling distance by 3 squares and land upright if the landing supports you. Resolve any remaining distance normally."
+      }
+    }
+  },
+  "effects": []
+}

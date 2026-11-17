@@ -1,0 +1,66 @@
+{
+  "_key": "!items!b32dde97cc1c0cd5",
+  "_id": "b32dde97cc1c0cd5",
+  "name": "Magic Mouth — Warning",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 minute</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One fixed object within reach</dd></div><div><dt>Duration</dt><dd>24 hours or until triggered</dd></div></dl><p>Record a warning of up to twenty-five words and a visible or audible trigger within 6 squares. The first matching event speaks the warning loudly enough to hear within 12 squares, then ends the spell.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:seals:5",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:seals:5",
+        "level": 1,
+        "cost": 2,
+        "action": "Ritual · 1 minute",
+        "sp": 2,
+        "range": "One fixed object within reach",
+        "duration": "24 hours or until triggered",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Record a warning of up to twenty-five words and a visible or audible trigger within 6 squares. The first matching event speaks the warning loudly enough to hear within 12 squares, then ends the spell.",
+        "improves": null,
+        "requires": [
+          "seals:1"
+        ],
+        "bookId": "seals"
+      },
+      "spell": {
+        "id": "spell:seals:5",
+        "name": "Magic Mouth — Warning",
+        "bookId": "seals",
+        "page": "5",
+        "section": "III",
+        "sp": 2,
+        "action": "Ritual",
+        "actionText": "Ritual · 1 minute",
+        "ritualTime": "1 minute",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One fixed object within reach",
+        "duration": "24 hours or until triggered",
+        "effect": "Record a warning of up to twenty-five words and a visible or audible trigger within 6 squares. The first matching event speaks the warning loudly enough to hear within 12 squares, then ends the spell."
+      }
+    }
+  },
+  "effects": []
+}

@@ -1,0 +1,65 @@
+{
+  "_key": "!items!3a8fc0d14c0ac050",
+  "_id": "3a8fc0d14c0ac050",
+  "name": "Flesh to Stone",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div><div><dt>Defense</dt><dd>Fortitude</dd></div><div><dt>Range</dt><dd>One creature within 6 squares</dd></div><div><dt>Duration</dt><dd>Until the end of your next turn; conditions then decay normally</dd></div></dl><p>Stone creeps across the target. Apply Slowed 2/3/4. On Strong also apply Paralyzed 1. A second Strong casting while this spell&#39;s Slowed remains makes the target Petrified for 1 minute. Remove Curse, Greater Restoration or the caster&#39;s Maneuver ends that petrification.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "fortitude"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:earth:a2",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:earth:a2",
+        "level": 3,
+        "cost": 4,
+        "action": "Main Action",
+        "sp": 5,
+        "range": "One creature within 6 squares",
+        "duration": "Until the end of your next turn; conditions then decay normally",
+        "attribute": "Knowledge",
+        "defenseAttribute": "Fortitude",
+        "effect": "Stone creeps across the target. Apply Slowed 2/3/4. On Strong also apply Paralyzed 1. A second Strong casting while this spell's Slowed remains makes the target Petrified for 1 minute. Remove Curse, Greater Restoration or the caster's Maneuver ends that petrification.",
+        "improves": null,
+        "requires": [
+          "earth:4"
+        ],
+        "bookId": "earth"
+      },
+      "spell": {
+        "id": "spell:earth:a2",
+        "name": "Flesh to Stone",
+        "bookId": "earth",
+        "page": "A2",
+        "section": "VI",
+        "sp": 5,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "Knowledge",
+        "defense": "Fortitude",
+        "defenseAttribute": "Fortitude",
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One creature within 6 squares",
+        "duration": "Until the end of your next turn; conditions then decay normally",
+        "effect": "Stone creeps across the target. Apply Slowed 2/3/4. On Strong also apply Paralyzed 1. A second Strong casting while this spell's Slowed remains makes the target Petrified for 1 minute. Remove Curse, Greater Restoration or the caster's Maneuver ends that petrification."
+      }
+    }
+  },
+  "effects": []
+}

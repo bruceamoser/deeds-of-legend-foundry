@@ -1,0 +1,47 @@
+{
+  "_key": "!items!6a13e383552e2529",
+  "_id": "6a13e383552e2529",
+  "name": "Hurl I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Agility</dd></div></dl><p>Main Action · Agility. Throw one held weapon at a creature within 4 squares for 2/3/5 physical damage.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "agility",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "2 physical damage",
+      "standard": "3 physical damage",
+      "strong": "5 physical damage"
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "marksmanship:thrown-weapons:1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "technique",
+        "nodeId": "marksmanship:thrown-weapons:1",
+        "level": 1,
+        "cost": 1,
+        "action": "Main Action",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": "Agility",
+        "defenseAttribute": null,
+        "effect": "Main Action · Agility. Throw one held weapon at a creature within 4 squares for 2/3/5 physical damage.",
+        "improves": null,
+        "requires": [
+          "marksmanship"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

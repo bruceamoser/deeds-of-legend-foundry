@@ -1,0 +1,47 @@
+{
+  "_key": "!items!60bb888d5a523add",
+  "_id": "60bb888d5a523add",
+  "name": "Name the Decisive Weakness",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div></dl><p>Maneuver. Once per creature per scene, expose one vulnerability in a visible enemy’s anatomy, construction or tactics that you established through evidence. Up to four allies within 6 squares who perceive your explanation gain 2 Boons on their next attack against it before your next turn ends; each such attack ignores 1 point of one matching resistance. Immunity remains. This replaces the preceding step’s weaker weakness benefit for that creature; it creates no vulnerability unsupported by the evidence.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "scholarship:planning:7",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "mastery",
+        "nodeId": "scholarship:planning:7",
+        "level": 7,
+        "cost": 5,
+        "action": "Maneuver",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Maneuver. Once per creature per scene, expose one vulnerability in a visible enemy’s anatomy, construction or tactics that you established through evidence. Up to four allies within 6 squares who perceive your explanation gain 2 Boons on their next attack against it before your next turn ends; each such attack ignores 1 point of one matching resistance. Immunity remains. This replaces the preceding step’s weaker weakness benefit for that creature; it creates no vulnerability unsupported by the evidence.",
+        "improves": null,
+        "requires": [
+          "scholarship:planning:6"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

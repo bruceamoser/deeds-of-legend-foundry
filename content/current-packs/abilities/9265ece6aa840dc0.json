@@ -1,0 +1,47 @@
+{
+  "_key": "!items!9265ece6aa840dc0",
+  "_id": "9265ece6aa840dc0",
+  "name": "A Roof before Nightfall I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Timed work</dd></div></dl><p>1 hour, with tools and sound materials on stable ground. Build a weatherproof shelter for six people without a roll. It resists ordinary weather, not attacks or extreme hazards. You can also improvise a simple hook, wedge, lever or similar tool from suitable salvage: 10 minutes and Knowledge for 1/2/3 progress toward target 3. It lasts one task and cannot be a weapon, armor, consumable ingredient or valuable.</p>",
+    "activity": {
+      "action": "other",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "craft:workshop:4",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "technique",
+        "nodeId": "craft:workshop:4",
+        "level": 3,
+        "cost": 3,
+        "action": "Timed work",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "1 hour, with tools and sound materials on stable ground. Build a weatherproof shelter for six people without a roll. It resists ordinary weather, not attacks or extreme hazards. You can also improvise a simple hook, wedge, lever or similar tool from suitable salvage: 10 minutes and Knowledge for 1/2/3 progress toward target 3. It lasts one task and cannot be a weapon, armor, consumable ingredient or valuable.",
+        "improves": null,
+        "requires": [
+          "craft:workshop:3"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

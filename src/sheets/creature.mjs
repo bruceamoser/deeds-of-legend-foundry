@@ -1,3 +1,5 @@
+import { canonicalDamageType, DAMAGE_TYPE_LABELS } from "../rules/damage.mjs";
+import { CONDITION_KINDS } from "../rules/conditions.mjs";
 import {requestSummonCommand} from "../services/summon-lifecycle.mjs";
 import {summonState} from "../rules/summon-profile.mjs";
 import {creatureSheetProfile} from "../rules/creature-sheet-profile.mjs";
@@ -12,7 +14,7 @@ import {
   declareNpcMelee,
   declareCreatureAction,
 } from "../services/npc-attacks.mjs";
-import { CharacterSheet } from "./character.mjs";
+import { CreatureSheetBase } from "./creature-base.mjs";
 import { hpInputValue } from "./hp-input.mjs";
 import { numericCreatureAction } from "../rules/numeric-creature-actions.mjs";
 import {
@@ -35,7 +37,7 @@ function sourceLink(source, commit) {
     : "";
 }
 
-export class CreatureSheet extends CharacterSheet {
+export class CreatureSheet extends CreatureSheetBase {
   get title() {
     return isSummon(this.actor) ? `${game.i18n.localize("TYPES.Actor.creature")}: ${this.actor.name}` : super.title;
   }
@@ -47,7 +49,7 @@ export class CreatureSheet extends CharacterSheet {
       viewCreatureAction: CreatureSheet.viewCreatureAction,
       updateProfile: CreatureSheet.updateProfile,
       viewPortrait,
-      editImage: CharacterSheet.editPortrait,
+      editImage: CreatureSheetBase.editPortrait,
       cardEdit: toggleCardEdit,
       npcMode: CreatureSheet.npcMode,
       chooseNpcProfile: CreatureSheet.chooseNpcProfile,
@@ -117,7 +119,10 @@ export class CreatureSheet extends CharacterSheet {
       combatLinked: !this.actor.getFlag("heroes-of-legend", "npc")?.enabled || this.actor.getFlag("heroes-of-legend", "npc")?.profileLinked !== false,
       resistanceLabel: mitigationLabel(system.resistances),
       weaknessLabel: mitigationLabel(system.weaknesses),
-      immunityLabel: system.immunities.join("; ") || "None",
+      immunityLabel: (system.immunities ?? []).join("; ") || "None",
+      damageImmunityLabel: (system.damageImmunities ?? []).join("; ") || "None",
+      damageImmunityText: (system.damageImmunities ?? []).join(", "),
+      conditionImmunityText: (system.immunities ?? []).join(", "),
       gm: game.user.isGM,
       canUpdateProfile: !summon && profileUpdateAvailable(this.actor),
       actionGroups: [
@@ -175,6 +180,28 @@ export class CreatureSheet extends CharacterSheet {
         } catch(error) { ui.notifications.error(error.message); await this.render(); }
       });
     }
+  }
+  async _processSubmitData(event, form, data, options) {
+    const next = {...data};
+    // DocumentSheetV2 filters non-schema form fields before this hook. Read
+    // these named editor controls from the real form before converting them.
+    for(const key of ["damageImmunityText","conditionImmunityText"]) {
+      const input=form.querySelector(`[name="${key}"]`);
+      if(input)next[key]=input.value;
+    }
+    if (Object.hasOwn(next, "damageImmunityText")) {
+      const types = [...new Set(String(next.damageImmunityText).split(",").map(value=>value.trim()).filter(Boolean).map(canonicalDamageType))];
+      if (types.some(type=>!Object.hasOwn(DAMAGE_TYPE_LABELS,type))) throw new Error("Choose named damage types for damage immunity.");
+      next["system.damageImmunities"] = types;
+      delete next.damageImmunityText;
+    }
+    if (Object.hasOwn(next, "conditionImmunityText")) {
+      const conditions = [...new Set(String(next.conditionImmunityText).split(",").map(value=>value.trim().toLowerCase()).filter(Boolean))];
+      if (conditions.some(key=>!Object.hasOwn(CONDITION_KINDS,key))) throw new Error("Use condition names, separated by commas, for condition immunity.");
+      next["system.immunities"] = conditions;
+      delete next.conditionImmunityText;
+    }
+    return super._processSubmitData(event, form, next, options);
   }
   static async npcMode() {
     try {

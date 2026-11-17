@@ -1,0 +1,47 @@
+{
+  "_key": "!items!3a508af88e8dbba3",
+  "_id": "3a508af88e8dbba3",
+  "name": "A Way to Yield",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div></dl><p>Main Action · Reason. Once per scene, offer a credible, immediately available path out of a losing conflict to up to six enemies who understand you: surrender under stated protection, withdraw through an open route, or release captives for safe passage. Roll once; add 3/5/7 progress to their shared objective if their motives align, otherwise one chosen enemy’s objective. On completion they accept the established concession while you honor its terms. This grants no automatic ceasefire before completion and no control over independent allies.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "reason",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "influence:pressure:7",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "mastery",
+        "nodeId": "influence:pressure:7",
+        "level": 7,
+        "cost": 5,
+        "action": "Main Action",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": "Reason",
+        "defenseAttribute": null,
+        "effect": "Main Action · Reason. Once per scene, offer a credible, immediately available path out of a losing conflict to up to six enemies who understand you: surrender under stated protection, withdraw through an open route, or release captives for safe passage. Roll once; add 3/5/7 progress to their shared objective if their motives align, otherwise one chosen enemy’s objective. On completion they accept the established concession while you honor its terms. This grants no automatic ceasefire before completion and no control over independent allies.",
+        "improves": null,
+        "requires": [
+          "influence:pressure:6"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

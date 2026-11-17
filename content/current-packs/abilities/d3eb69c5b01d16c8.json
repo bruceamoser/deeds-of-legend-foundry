@@ -1,0 +1,65 @@
+{
+  "_key": "!items!d3eb69c5b01d16c8",
+  "_id": "d3eb69c5b01d16c8",
+  "name": "Banishment",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Defense</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>One creature within 6 squares</dd></div><div><dt>Duration</dt><dd>Until your next turn ends</dd></div></dl><p>Deal 3/5/7 radiant damage to a summoned energy form; at 0 HP it disperses. An independent creature instead takes Frightened 1/2/3, with an image of its home as source. On Strong, a willing extraplanar creature may return to its home plane rather than take that fear.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "reason",
+      "defenseAttribute": "reason"
+    },
+    "outcomes": {
+      "weak": "3 radiant damage",
+      "standard": "5 radiant damage",
+      "strong": "7 radiant damage"
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:binding:5",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:binding:5",
+        "level": 1,
+        "cost": 2,
+        "action": "Main Action",
+        "sp": 2,
+        "range": "One creature within 6 squares",
+        "duration": "Until your next turn ends",
+        "attribute": "Reason",
+        "defenseAttribute": "Reason",
+        "effect": "Deal 3/5/7 radiant damage to a summoned energy form; at 0 HP it disperses. An independent creature instead takes Frightened 1/2/3, with an image of its home as source. On Strong, a willing extraplanar creature may return to its home plane rather than take that fear.",
+        "improves": null,
+        "requires": [
+          "binding:1"
+        ],
+        "bookId": "binding"
+      },
+      "spell": {
+        "id": "spell:binding:5",
+        "name": "Banishment",
+        "bookId": "binding",
+        "page": "5",
+        "section": "III",
+        "sp": 2,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "Reason",
+        "defense": "Reason",
+        "defenseAttribute": "Reason",
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One creature within 6 squares",
+        "duration": "Until your next turn ends",
+        "effect": "Deal 3/5/7 radiant damage to a summoned energy form; at 0 HP it disperses. An independent creature instead takes Frightened 1/2/3, with an image of its home as source. On Strong, a willing extraplanar creature may return to its home plane rather than take that fear."
+      }
+    }
+  },
+  "effects": []
+}

@@ -1,0 +1,46 @@
+{
+  "_key": "!items!216d0e6d76bb7e08",
+  "_id": "216d0e6d76bb7e08",
+  "name": "Press the Opening",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Target / range / shape</dt><dd>One willing ally within 4 squares that can perceive your signal.</dd></div><div><dt>Duration</dt><dd>Immediate.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div></dl><p>Once per scene, the ally makes one Basic Melee or Basic Ranged attack with its actual weapon and ordinary range. The attack uses the ally’s roll and is part of your Maneuver. A Strong melee attack may also push its target 1 square directly away from the ally. A granted attack cannot grant another attack.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-signature-leader-press-the-opening",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "ability",
+        "nodeId": "ability-signature-leader-press-the-opening",
+        "level": 3,
+        "cost": 0,
+        "action": "Maneuver",
+        "sp": null,
+        "range": "One willing ally within 4 squares that can perceive your signal.",
+        "duration": "Immediate.",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "**Action:** Maneuver · **Attribute:** None\n\n**Target / range / shape:** One willing ally within 4 squares that can perceive your signal.\n\nOnce per scene, the ally makes one Basic Melee or Basic Ranged attack with its actual weapon and ordinary range. The attack uses the ally’s roll and is part of your Maneuver. A Strong melee attack may also push its target 1 square directly away from the ally. A granted attack cannot grant another attack.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** None.",
+        "improves": null,
+        "requires": [],
+        "bookId": null,
+        "magic": null
+      }
+    }
+  },
+  "effects": []
+}

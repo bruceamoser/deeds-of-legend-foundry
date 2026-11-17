@@ -1,0 +1,46 @@
+{
+  "_key": "!items!7d26d1ffcf4fd0f1",
+  "_id": "7d26d1ffcf4fd0f1",
+  "name": "Through Bramble",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Agility</dd></div><div><dt>Target / range / shape</dt><dd>One or two creatures within melee reach.</dd></div><div><dt>Duration</dt><dd>Attacks and step immediate; defense Boon until the start of your next turn.</dd></div><div><dt>Equipment / acquisition</dt><dd>Two light melee weapons, one in each hand.</dd></div></dl><p>Make one attack with each of two light melee weapons, one in each hand. Each attack uses your normal attack procedure and deals 1/2/3 physical damage on Weak/Standard/Strong. You can target the same creature with both attacks or one creature with each. After the attacks, gain 1 Boon to defense until the start of your next turn.</p><p>Once on your turn, after resolving both attacks, you may step 1 square to a legal empty square without spending movement or provoking opportunity attacks. Use ordinary terrain and movement restrictions for that step.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "agility",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "1 physical damage",
+      "standard": "2 physical damage",
+      "strong": "3 physical damage"
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-signature-warden-through-bramble",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "ability",
+        "nodeId": "ability-signature-warden-through-bramble",
+        "level": 3,
+        "cost": 0,
+        "action": "Main Action",
+        "sp": null,
+        "range": "One or two creatures within melee reach.",
+        "duration": "Attacks and step immediate; defense Boon until the start of your next turn.",
+        "attribute": "Agility",
+        "defenseAttribute": null,
+        "effect": "**Action:** Main Action · **Attribute:** Agility\n\n**Target / range / shape:** One or two creatures within melee reach.\n\nMake one attack with each of two light melee weapons, one in each hand. Each attack uses your normal attack procedure and deals 1/2/3 physical damage on Weak/Standard/Strong. You can target the same creature with both attacks or one creature with each. After the attacks, gain 1 Boon to defense until the start of your next turn.\n\nOnce on your turn, after resolving both attacks, you may step 1 square to a legal empty square without spending movement or provoking opportunity attacks. Use ordinary terrain and movement restrictions for that step.\n\n**Duration:** Attacks and step immediate; defense Boon until the start of your next turn.\n\n**Equipment / acquisition:** Two light melee weapons, one in each hand.",
+        "improves": null,
+        "requires": [],
+        "bookId": null,
+        "magic": null
+      }
+    }
+  },
+  "effects": []
+}

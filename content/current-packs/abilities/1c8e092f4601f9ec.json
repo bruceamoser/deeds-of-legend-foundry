@@ -1,0 +1,47 @@
+{
+  "_key": "!items!1c8e092f4601f9ec",
+  "_id": "1c8e092f4601f9ec",
+  "name": "Light Armor I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Passive. You are trained to wear light armor; the suit supplies physical resistance 1. Ignore 1 Bulk from worn armor when calculating encumbrance, minimum 0 armor Bulk. This does not change its inventory size.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "armor:harness:1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "technique",
+        "nodeId": "armor:harness:1",
+        "level": 1,
+        "cost": 1,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Passive. You are trained to wear light armor; the suit supplies physical resistance 1. Ignore 1 Bulk from worn armor when calculating encumbrance, minimum 0 armor Bulk. This does not change its inventory size.",
+        "improves": null,
+        "requires": [
+          "armor"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

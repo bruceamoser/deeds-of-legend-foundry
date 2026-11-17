@@ -1,6 +1,6 @@
 # Eryn Mossarrow: ranger after the rewrite
 
-Pinned authored source `87f5141bd6e0da74a10c07b3239e975c7656430a`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../ranger.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
+Pinned authored source `f71eac4c46fce6906d6dfbd1638ee98b10a6c538`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../ranger.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
 
 ## What the rewrite changes
 
@@ -187,6 +187,20 @@ The benefit ends when you aim at another target or the scene ends. You must stil
 
 </details>
 
+<details><summary>Volley: complete signature component</summary>
+
+**Action:** Main Action · **Attribute:** Agility
+
+**Target / range / shape:** A 2 × 2 area within 10 squares.
+
+Requires a ranged weapon and ammunition. Make one Agility roll and apply it to each creature in the area. Weak: 1 physical damage. Standard: 2 physical damage. Strong: 3 physical damage. Roll once using the worst applicable Boon or Bane among the targets. Each target applies resistance separately. A creature can be affected once per use.
+
+**Duration:** Immediate.
+
+**Equipment / acquisition:** A ranged weapon and ammunition.
+
+</details>
+
 <details><summary>Mark the Quarry: complete signature component</summary>
 
 **Action:** Main Action · **Attribute:** Agility
@@ -202,20 +216,6 @@ Requires a ranged weapon and ammunition. Make a Basic Ranged attack as part of t
 This ordinary mark is a physical luminous substance. An attack always applies it unless the target cannot be reached; damage immunity does not prevent marking. Cleaning it off takes 1 minute. Completely covering the mark suspends its visual benefits until exposed.
 
 **Frequency:** Once between safe overnight rests.
-
-</details>
-
-<details><summary>Volley: complete signature component</summary>
-
-**Action:** Main Action · **Attribute:** Agility
-
-**Target / range / shape:** A 2 × 2 area within 10 squares.
-
-Requires a ranged weapon and ammunition. Make one Agility roll and apply it to each creature in the area. Weak: 1 physical damage. Standard: 2 physical damage. Strong: 3 physical damage. Roll once using the worst applicable Boon or Bane among the targets. Each target applies resistance separately. A creature can be affected once per use.
-
-**Duration:** Immediate.
-
-**Equipment / acquisition:** A ranged weapon and ammunition.
 
 </details>
 

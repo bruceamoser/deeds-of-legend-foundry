@@ -1,0 +1,66 @@
+{
+  "_key": "!items!0b802d4d3c733772",
+  "_id": "0b802d4d3c733772",
+  "name": "Gate — Passage",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 10 minutes</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One portal within 3 squares linking a known planar anchor</dd></div><div><dt>Duration</dt><dd>1 minute</dd></div></dl><p>Consume 100 coins of tuned incense to open a two-way doorway 2 squares wide. Any creature that can reach it may cross while open. The far end must be at an anchor you personally visited and currently have permission to open. You can close it with a Maneuver.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:passage:a2",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:passage:a2",
+        "level": 3,
+        "cost": 4,
+        "action": "Ritual · 10 minutes",
+        "sp": 5,
+        "range": "One portal within 3 squares linking a known planar anchor",
+        "duration": "1 minute",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Consume 100 coins of tuned incense to open a two-way doorway 2 squares wide. Any creature that can reach it may cross while open. The far end must be at an anchor you personally visited and currently have permission to open. You can close it with a Maneuver.",
+        "improves": null,
+        "requires": [
+          "passage:4"
+        ],
+        "bookId": "passage"
+      },
+      "spell": {
+        "id": "spell:passage:a2",
+        "name": "Gate — Passage",
+        "bookId": "passage",
+        "page": "A2",
+        "section": "VI",
+        "sp": 5,
+        "action": "Ritual",
+        "actionText": "Ritual · 10 minutes",
+        "ritualTime": "10 minutes",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One portal within 3 squares linking a known planar anchor",
+        "duration": "1 minute",
+        "effect": "Consume 100 coins of tuned incense to open a two-way doorway 2 squares wide. Any creature that can reach it may cross while open. The far end must be at an anchor you personally visited and currently have permission to open. You can close it with a Maneuver."
+      }
+    }
+  },
+  "effects": []
+}

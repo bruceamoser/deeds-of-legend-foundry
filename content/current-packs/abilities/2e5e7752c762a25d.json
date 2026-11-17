@@ -1,0 +1,65 @@
+{
+  "_key": "!items!2e5e7752c762a25d",
+  "_id": "2e5e7752c762a25d",
+  "name": "Ray of Enfeeblement",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Defense</dt><dd>Fortitude</dd></div><div><dt>Range</dt><dd>One creature within 6 squares</dd></div><div><dt>Duration</dt><dd>Instant; conditions decay normally</dd></div></dl><p>Draw vigor from the target&#39;s muscles. Apply Slowed 1/2/3; on Strong also apply Dazed 1.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "reason",
+      "defenseAttribute": "fortitude"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:decay:3",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:decay:3",
+        "level": 1,
+        "cost": 2,
+        "action": "Main Action",
+        "sp": 1,
+        "range": "One creature within 6 squares",
+        "duration": "Instant; conditions decay normally",
+        "attribute": "Reason",
+        "defenseAttribute": "Fortitude",
+        "effect": "Draw vigor from the target's muscles. Apply Slowed 1/2/3; on Strong also apply Dazed 1.",
+        "improves": null,
+        "requires": [
+          "decay:0"
+        ],
+        "bookId": "decay"
+      },
+      "spell": {
+        "id": "spell:decay:3",
+        "name": "Ray of Enfeeblement",
+        "bookId": "decay",
+        "page": "3",
+        "section": "II",
+        "sp": 1,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "Reason",
+        "defense": "Fortitude",
+        "defenseAttribute": "Fortitude",
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One creature within 6 squares",
+        "duration": "Instant; conditions decay normally",
+        "effect": "Draw vigor from the target's muscles. Apply Slowed 1/2/3; on Strong also apply Dazed 1."
+      }
+    }
+  },
+  "effects": []
+}

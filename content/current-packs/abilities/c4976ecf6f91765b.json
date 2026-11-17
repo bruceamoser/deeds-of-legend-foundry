@@ -1,0 +1,47 @@
+{
+  "_key": "!items!c4976ecf6f91765b",
+  "_id": "c4976ecf6f91765b",
+  "name": "Strong Swimmer I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Passive. Gain 1 Boon on Brawn rolls to swim through rough water. You still need breathable air and a current that permits passage.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "athletics:swimming:1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "technique",
+        "nodeId": "athletics:swimming:1",
+        "level": 1,
+        "cost": 1,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Passive. Gain 1 Boon on Brawn rolls to swim through rough water. You still need breathable air and a current that permits passage.",
+        "improves": null,
+        "requires": [
+          "athletics"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

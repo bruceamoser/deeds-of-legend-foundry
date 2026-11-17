@@ -1,0 +1,65 @@
+{
+  "_key": "!items!30f969621f43a08b",
+  "_id": "30f969621f43a08b",
+  "name": "Prestidigitation",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>SP</dt><dd>0</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One unattended object or 1-square space within 3 squares</dd></div><div><dt>Duration</dt><dd>1 minute</dd></div></dl><p>Clean or soil a hand-sized surface, change a small object&#39;s harmless scent or color, or create a tiny visual spark. Choose one effect when casting; its physical scale remains hand-sized.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:animation:1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:animation:1",
+        "level": 1,
+        "cost": 1,
+        "action": "Maneuver",
+        "sp": 0,
+        "range": "One unattended object or 1-square space within 3 squares",
+        "duration": "1 minute",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Clean or soil a hand-sized surface, change a small object's harmless scent or color, or create a tiny visual spark. Choose one effect when casting; its physical scale remains hand-sized.",
+        "improves": null,
+        "requires": [
+          "force"
+        ],
+        "bookId": "animation"
+      },
+      "spell": {
+        "id": "spell:animation:1",
+        "name": "Prestidigitation",
+        "bookId": "animation",
+        "page": "1",
+        "section": "I",
+        "sp": 0,
+        "action": "Maneuver",
+        "actionText": "Maneuver",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One unattended object or 1-square space within 3 squares",
+        "duration": "1 minute",
+        "effect": "Clean or soil a hand-sized surface, change a small object's harmless scent or color, or create a tiny visual spark. Choose one effect when casting; its physical scale remains hand-sized."
+      }
+    }
+  },
+  "effects": []
+}

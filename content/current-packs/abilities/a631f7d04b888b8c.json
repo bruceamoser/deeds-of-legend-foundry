@@ -1,0 +1,47 @@
+{
+  "_key": "!items!a631f7d04b888b8c",
+  "_id": "a631f7d04b888b8c",
+  "name": "Rescue Step III",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Rescue Step may escort two willing allies together, each starting and finishing adjacent to you; alternatively carry one helpless ally as before.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "guard:watchfulness:6",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "guard:watchfulness:6",
+        "level": 3,
+        "cost": 4,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Rescue Step may escort two willing allies together, each starting and finishing adjacent to you; alternatively carry one helpless ally as before.",
+        "improves": "guard:watchfulness:4",
+        "requires": [
+          "guard:watchfulness:5"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

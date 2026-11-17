@@ -1,3 +1,7 @@
+import {assertCurrentGameplayActor} from "../rules/current-character.mjs";
+import {consumableType} from "../rules/consumables.mjs";
+import {tracksConsumable} from "./consumables.mjs";
+import {hasNativeForgeState,nativeRecoveryState} from "../rules/native-health.mjs";
 import { choiceSourceMatches } from "../rules/choice-source.mjs";
 import { createActionMessage, shouldProcessRequest } from "./authority.mjs";
 import { ensureAuthorityReady } from "./authority.mjs";
@@ -7,7 +11,6 @@ import {
   planHealingPotion,
 } from "../rules/potions.mjs";
 import { healingPlan } from "../rules/damage.mjs";
-import { normalizeRecovery } from "../rules/recovery.mjs";
 import { handLayout } from "../rules/hands.mjs";
 import { inventoryCheck } from "../rules/inventory.mjs";
 import {
@@ -20,10 +23,6 @@ import {
   validatePotionEncounterReceipts,
   verifyPotionSupplyItems,
 } from "../rules/potion-operation.mjs";
-import {
-  survivalState,
-  validateSurvival,
-} from "../rules/survival.mjs";
 import {
   enqueueCharacterOperation,
   isCreationAuthority,
@@ -109,9 +108,10 @@ function recognizedPotionSource(sourceItem) {
   throw new Error("Choose the reviewed Use a Healing Potion action or bottle.");
 }
 
-function ownedPotionActionMatches(actual, current) {
-  return choiceSourceMatches(actual, current) &&
-    potionSourceMatches({ ...actual, sha256: current.sha256 }, current);
+function ownedPotionActionMatches(item,current,catalog) {
+  if(catalog.forge===true)return Boolean(current&&item.getFlag(ID,'grantKind')==='nativeWorkshop'&&item.getFlag(ID,'workshopRecord')?.nodeId===POTION_ABILITY_ID&&item.getFlag(ID,'catalogId')===POTION_ABILITY_ID);
+  const actual=item.getFlag(ID,'source')??null;
+  return choiceSourceMatches(actual,current)&&potionSourceMatches({...actual,sha256:current.sha256},current);
 }
 
 function recognizedPotionItem(item, catalog) {
@@ -126,35 +126,14 @@ function recognizedPotionItem(item, catalog) {
   return potion;
 }
 
-function canonicalSurvival(actor, basis) {
-  if (actor.type !== "character") {
-    if (basis.hp === 0)
-      throw new Error("A defeated creature needs an explicit DA exception.");
-    return survivalState({
-      hp: basis.hp,
-      maxHp: basis.maxHp,
-      gritAvailable: 0,
-      ownTurn: 0,
-    });
+function canonicalSurvival(actor,basis) {
+  assertCurrentGameplayActor(actor);
+  if(actor.type==='character') {
+    if(basis.forgeVitals?.dead)throw new Error('A dead hero cannot receive ordinary potion healing.');
+    return {hp:basis.hp,maxHp:basis.maxHp,...clone(basis.forgeVitals??{})};
   }
-  const state = basis.survival
-    ? {
-        ...basis.survival,
-        hp: basis.hp,
-        ...(basis.hp > 0 ? {status: "active", marks: 0, due: null, choice: null} : basis.survival.status === "active" ? {status: "dying", marks: 0, due: null, choice: null} : {}),
-        maxHp: basis.maxHp,
-        gritAvailable: basis.gritAvailable,
-      }
-    : survivalState({
-        hp: basis.hp,
-        maxHp: basis.maxHp,
-        gritAvailable: basis.gritAvailable,
-        ownTurn: 0,
-      });
-  if (basis.recovery !== undefined || state.recovery !== undefined)
-    state.recovery = normalizeRecovery(basis.recovery ?? actor.system.recovery);
-  validateSurvival(state);
-  return state;
+  if(basis.hp===0)throw new Error('A defeated creature cannot receive ordinary potion healing.');
+  return {hp:basis.hp,maxHp:basis.maxHp,dead:false};
 }
 
 function actorPotionBasis(actor) {
@@ -175,6 +154,7 @@ function actorPotionBasis(actor) {
     gritAvailable: damage.gritAvailable,
     survival,
     recovery: damage.recovery,
+    ...(hasNativeForgeState(actor)?{forgeVitals:clone(damage.forgeVitals),sp:damage.sp,maxSp:damage.maxSp,gritSpent:damage.gritSpent,gritGranted:damage.gritGranted}:{}),
     revision: damage.revision,
     equipmentRevision: damage.equipmentRevision,
     inventoryRevision: actor.getFlag(ID, "inventoryRevision") ?? 0,
@@ -355,6 +335,7 @@ function plannerInputs({
       kind: recipientBasis.actorType,
       turn: clone(recipientTurn),
       survival: clone(recipientBasis.survival),
+      unavailableHp:recipientBasis.recovery?.unavailableHp??0,
       lifeResistances: clone(recipientBasis.lifeResistances),
       conditions: clone(recipientBasis.conditions),
     },
@@ -418,14 +399,14 @@ export async function previewPotionUse({
     if (!bottle || bottle.actor?.uuid !== actor.uuid)
       throw new Error("Choose a healing bottle owned by this character.");
     const potion = recognizedPotionItem(bottle, catalog),
-      action = catalog.acquisitions.find(
+      action = (catalog.forge ? catalog.currentActions : catalog.acquisitions).find(
         (record) => record.id === POTION_ABILITY_ID,
       );
     if (
       sourceItem.type === "ability" &&
       !ownedPotionActionMatches(
-        sourceItem.getFlag(ID, "source") ?? null,
-        action?.source ?? {},
+        sourceItem,
+        catalog.forge ? action : action?.source ?? {},catalog,
       )
     )
       throw new Error("The Use a Healing Potion action source changed.");
@@ -437,11 +418,12 @@ export async function previewPotionUse({
       reactionRequired =
         Boolean(combat) && relation === "other" && recipientBasis.hp > 0,
       previewPlan =
-        bottle.system.inventoryDie === potion.supplyDie
+        (bottle.system.inventoryDie === potion.supplyDie || !tracksConsumable(bottle))
           ? planHealingPotion({
               potionId: bottle.system.catalogId,
               catalog,
               inventoryDie: bottle.system.inventoryDie,
+              trackSupply:tracksConsumable(bottle),
               ...plannerInputs({
                 encounter: Boolean(combat),
                 ownTurn: !combat || encounter.current === participantId,
@@ -472,6 +454,7 @@ export async function previewPotionUse({
       bottleName: bottle.name,
       bottleCatalogId: bottle.system.catalogId,
       inventoryDie: bottle.system.inventoryDie,
+      trackingSupply:tracksConsumable(bottle),
       baseHealing: potion.healing,
       healing,
       reactionRequired,
@@ -737,14 +720,14 @@ export async function acceptPotionProposal(
 
 function operationSourceSnapshots(sourceItem, bottle, catalog) {
   const potion = recognizedPotionItem(bottle, catalog),
-    action = catalog.acquisitions.find(
+    action = (catalog.forge ? catalog.currentActions : catalog.acquisitions).find(
       (record) => record.id === POTION_ABILITY_ID,
     );
   if (
     sourceItem.type === "ability" &&
     !ownedPotionActionMatches(
-      sourceItem.getFlag(ID, "source") ?? null,
-      action?.source ?? {},
+      sourceItem,
+      catalog.forge ? action : action?.source ?? {},catalog,
     )
   )
     throw new Error("The Use a Healing Potion action source changed.");
@@ -956,7 +939,7 @@ async function createOperation(message, request) {
   }
   assertNoPendingTurn(giver);
   if (recipient.uuid !== giver.uuid) assertNoPendingTurn(recipient);
-  if (giver.getFlag(ID, "pendingInventory"))
+  if (tracksConsumable(bottle) && giver.getFlag(ID, "pendingInventory"))
     throw new Error(
       "Finish the giver's pending supply check before using this potion.",
     );
@@ -1013,6 +996,7 @@ async function createOperation(message, request) {
       potionId: bottle.system.catalogId,
       catalog,
       inventoryDie: bottle.system.inventoryDie,
+      trackSupply:tracksConsumable(bottle),
       ...plannerInputs({
         encounter: !request.outsideCombat,
         ownTurn: request.outsideCombat || state.current === giverCombatant.id,
@@ -1268,7 +1252,6 @@ async function applyRecipientHealing(operation) {
   assertWorldActor(recipient, "Potion recipient");
   assertBasisCurrent(recipient, operation.recipient.basis, "Potion recipient");
   const survival = clone(operation.plan.recipientSurvival);
-  if (recipient.type === "character") validateSurvival(survival);
   const existing = clone(
       recipient.getFlag(ID, "potionReceipts")?.[
         operation.requestId
@@ -1304,8 +1287,11 @@ async function applyRecipientHealing(operation) {
   // Child healing receipts already live under potionReceipts.
   if (operation.outsideCombat && recipient.uuid === operation.giver.actorUuid)
     delete changes[`flags.${ID}.operationReceipts.${operation.requestId}`];
-  if (recipient.type === "character")
-    changes[`flags.${ID}.survival`] = survival;
+  if(hasNativeForgeState(recipient)) {
+    const native=nativeRecoveryState({...operation.recipient.basis,passiveDefenses:{resistances:[]}}, {kind:"heal",amount:operation.plan.healing.restored,lifeResistance:0});
+    if(native.after!==survival.hp)throw new Error("The current potion healing plan changed. Review the recipient again.");
+    changes[`flags.${ID}.forgeVitals`]=native.forgeVitals;
+  }
   recipient.validate({
     changes: foundry.utils.expandObject(changes),
     strict: true,
@@ -1318,8 +1304,9 @@ async function applyRecipientHealing(operation) {
   validateRecipientReceipt(clone(saved), operation);
   if (
     recipient.system.health.value !== survival.hp ||
-    (recipient.type === "character" &&
-      !same(recipient.getFlag(ID, "survival"), survival))
+    (hasNativeForgeState(recipient)
+      ? !same(recipient.getFlag(ID,"forgeVitals"),changes[`flags.${ID}.forgeVitals`])
+      : false)
   )
     throw new Error(
       "Potion healing needs reconciliation; do not apply it again.",
@@ -1419,9 +1406,19 @@ function supplyItemSnapshot(basis) {
   });
 }
 
+async function waiveDisabledPotionSupply(giver,operation,previous=null) {
+  const current=currentBottleBasis(giver,operation),item=giver.items.get(operation.source.bottleItem.itemId);
+  if(!item||item.system.quantity<1)throw new Error('The owned healing bottle is no longer available.');
+  const waiver={trackingDisabled:true,category:consumableType(item)??'none'},child={...(previous??{}),schemaVersion:1,operationId:operation.supplyOperationId,parentId:operation.requestId,actorUuid:giver.uuid,authorId:operation.authorId,phase:'waived',basis:current,target:supplyItemSnapshot(current),waiver};
+  const receipt={applied:true,kind:'potion-supply',parentId:operation.requestId,operationId:operation.supplyOperationId,actorUuid:giver.uuid,authorId:operation.authorId,request:operation.requestSignature,waiver};
+  await writeAuthorityDocument(giver,{[`flags.${ID}.potionSupplyOperations.${operation.supplyOperationId}`]:child,[`flags.${ID}.potionReceipts.${operation.requestId}`]:{...(giver.getFlag(ID,'potionReceipts')?.[operation.requestId]??{}),supply:receipt},[`flags.${ID}.operationReceipts.${operation.supplyOperationId}`]:{applied:true,kind:'potion-supply',status:'waived',parentId:operation.requestId}});
+  return {giver,receipt};
+}
+
 async function reserveAndRollSupply(combat, operation) {
   const giver = await fromUuid(operation.giver.actorUuid);
   assertWorldActor(giver, "Potion giver");
+  if(!tracksConsumable(giver.items.get(operation.source.bottleItem.itemId)))return waiveDisabledPotionSupply(giver,operation);
   if (giver.getFlag(ID, "pendingInventory"))
     throw new Error(
       "Finish the giver's separate pending supply check before continuing this potion.",
@@ -1547,8 +1544,9 @@ function validateNativeSupplyRoll(record) {
 }
 
 async function settleSupply(combat, operation, child) {
-  const validated = validateNativeSupplyRoll(child),
-    giver = await fromUuid(operation.giver.actorUuid);
+  const giver = await fromUuid(operation.giver.actorUuid);
+  if(!tracksConsumable(giver.items.get(operation.source.bottleItem.itemId)))return waiveDisabledPotionSupply(giver,operation,child);
+  const validated = validateNativeSupplyRoll(child);
   assertWorldActor(giver, "Potion giver");
   let current;
   try {
@@ -1789,7 +1787,8 @@ async function presentPotionResult(combat, operation, message) {
           ? "recipient at 0 HP pays no Reaction"
           : "self use requires no recipient Reaction";
     content = `${escaped(latest.bottleBasis.item.name)}: ${escaped(latest.giver.basis.actorName)} restored ${healing.restored} HP to ${escaped(latest.recipient.basis.actorName)} after Life resistance ${healing.resistance}; HP ${latest.recipient.basis.hp} → ${recipientReceipt?.after?.hp ?? latest.plan.recipientSurvival.hp}. ${latest.outsideCombat ? "Maneuver used; reset actions to correct a mistake" : `Giver Maneuver tracked; ${reaction}`}. Supply d${supply?.before ?? latest.plan.inventory.die} → ${supply ? (supply.after ? `d${supply.after}` : "out") : "reconciled"}; the check occurred after healing.`;
-    if (supplyOperation?.nativeRoll) {
+    if(supplyReceipt?.waiver?.trackingDisabled)content=content.replace(/Supply d[^;]+; the check occurred after healing\./,"Supply tracking disabled; the owned bottle’s pool is unchanged.");
+    if (supplyOperation?.nativeRoll && !supplyReceipt?.waiver?.trackingDisabled) {
       const roll = rollFromJson(supplyOperation.nativeRoll);
       if (roll) rolls = [roll];
     } else if (supplyReceipt?.recovery)
@@ -2323,10 +2322,7 @@ export function registerPotionRequests() {
   });
 }
 
-/** Only potion uses touching unowned or shared documents require the GM relay. */
+/** All potion resource writes share the designated GM’s Actor queue. */
 async function createPotionActionMessage(data) {
-  const request = data.flags[ID].potionRequest;
-  const documents = await Promise.all([request.giverActorUuid, request.recipientActorUuid].filter(Boolean).map(uuid => fromUuid(uuid)));
-  const shared = Boolean((!request.outsideCombat && request.combatUuid) || documents.some(document => !document?.testUserPermission(game.user, "OWNER")));
-  return createActionMessage(data, { shared });
+ return createActionMessage(data,{shared:true,coordinated:true});
 }

@@ -1,0 +1,65 @@
+{
+  "_key": "!items!ce291d0a43eb8b21",
+  "_id": "ce291d0a43eb8b21",
+  "name": "Summon Animal",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One open square within 3 squares</dd></div><div><dt>Duration</dt><dd>1 minute, with commands</dd></div></dl><p>Summon one Animal profile rated 1 from Summoned Companions. Give its immediate Main command, then use the normal command, six-square tether and disappearance rules.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:calling:4",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:calling:4",
+        "level": 1,
+        "cost": 2,
+        "action": "Main Action",
+        "sp": 2,
+        "range": "One open square within 3 squares",
+        "duration": "1 minute, with commands",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Summon one Animal profile rated 1 from Summoned Companions. Give its immediate Main command, then use the normal command, six-square tether and disappearance rules.",
+        "improves": null,
+        "requires": [
+          "calling:0"
+        ],
+        "bookId": "calling"
+      },
+      "spell": {
+        "id": "spell:calling:4",
+        "name": "Summon Animal",
+        "bookId": "calling",
+        "page": "4",
+        "section": "II",
+        "sp": 2,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One open square within 3 squares",
+        "duration": "1 minute, with commands",
+        "effect": "Summon one Animal profile rated 1 from Summoned Companions. Give its immediate Main command, then use the normal command, six-square tether and disappearance rules."
+      }
+    }
+  },
+  "effects": []
+}

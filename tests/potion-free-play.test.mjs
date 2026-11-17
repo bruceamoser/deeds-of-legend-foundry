@@ -16,7 +16,7 @@ async function fixture() {
   const users = [gm, owner, recipientOwner]; users.get = (id) => users.find((user) => user.id === id);
   function actor(id, ownerId) {
     const result = { id, uuid: `Actor.${id}`, name: id, documentName: 'Actor', type: 'character',
-      system: { health: { value: 2 } }, flags: {}, items: [],
+      system: { health: { value: 2 } }, flags: {nativeWorkshop:{portable:{format:'heroes-of-legend-character',schemaVersion:7,draft:{}}}}, items: [],
       getFlag(_id, key) { return this.flags[key]; }, validate() {},
       testUserPermission(user) { return user.id === ownerId; },
       toObject() { return { items: this.items.map((item) => item.toObject()) }; },
@@ -55,6 +55,7 @@ async function fixture() {
   const url = new URL('../src/services/potions.mjs', import.meta.url);
   const module = new SourceTextModule(await readFile(url, 'utf8'), { context });
   const overrides = {
+    "./consumables.mjs":{tracksConsumable:()=>game.settings.get(ID,"trackConsumable-potions")!==false},
     './authority.mjs': {ensureAuthorityReady:async()=>{}, createActionMessage: data => context.ChatMessage.create(data), shouldProcessRequest: () => true, isCreationAuthority: () => true,
       enqueueCharacterOperation: async (run) => { if (game.user !== gm) throw new Error('coordinator required'); return run(); },
       writeAuthorityDocument: async (document, changes) => {
@@ -68,7 +69,7 @@ async function fixture() {
       } },
     './catalog.mjs': { loadCatalogs: async () => ({ inventory: catalog }) },
     './damage.mjs': { damageBasis: (actor) => ({ hp: actor.system.health.value, maxHp: 20, gritAvailable: 0,
-      revision: actor.flags.damageRevision ?? 0, equipmentRevision: 0, passiveDefenses: {}, survival: actor.flags.survival }) },
+      revision: actor.flags.damageRevision ?? 0, equipmentRevision: 0, passiveDefenses: {}, survival: actor.flags.survival,forgeVitals:actor.flags.forgeVitals,recovery:actor.system.recovery,sp:0,maxSp:6,gritSpent:0,gritGranted:1 }) },
     './inventory.mjs': { validateEmbeddedItems() {}, inventoryBasis: (actor, item) => ({ actorUuid: actor.uuid,
       item: { itemId: item.id, itemUuid: item.uuid, name: item.name, catalogId: item.system.catalogId,
         inventoryDie: item.system.inventoryDie, quantity: item.system.quantity, source: record.source } }) },
@@ -218,4 +219,19 @@ test('malformed outsideCombat modes are refused before reserving or mutating doc
     assert.equal(f.giver.flags.pendingPotion, undefined);
     assert.equal(f.rolls(), 0);
   }
+});
+
+test('current native potion healing clears Dying atomically, respects stacked unavailable HP and replays without a legacy survival write',async()=>{
+ const f=await fixture();f.giver.system.health.value=0;f.giver.system.recovery={unavailableHp:15,debtUsed:true};f.giver.flags.forgeVitals={dying:true,failedDeathRolls:2,successfulDeathRolls:1,immediateDeathRolls:['earlier'],scars:['Old scar']};
+ const request=await f.service.requestPotionUse({sourceItemUuid:f.bottle.uuid});f.game.user=f.gm;await f.service.resolvePotionRequest(request.message.id);
+ assert.equal(f.giver.system.health.value,5);assert.equal(f.giver.flags.forgeVitals.dying,false);assert.equal(f.giver.flags.forgeVitals.failedDeathRolls,0);assert.deepEqual(f.giver.flags.forgeVitals.scars,['Old scar']);assert.deepEqual(f.giver.flags.forgeVitals.immediateDeathRolls,[]);assert.equal(f.giver.flags.survival,undefined);
+ const writes=f.writes.length;await f.service.resolvePotionRequest(request.message.id);assert.equal(f.writes.length,writes);assert.equal(f.rolls(),1);
+ const healing=f.writes.find(write=>write.changes['system.health.value']!==undefined);assert(healing.changes[`flags.${ID}.forgeVitals`]);assert(healing.changes[`flags.${ID}.potionReceipts.${request.message.id}`]);
+});
+
+test('disabled potion tracking preserves an exhausted owned pool, applies healing, and never rolls supply on replay',async()=>{
+ const f=await fixture();f.game.settings.get=(_id,key)=>key==='trackConsumable-potions'?false:'coordinator';f.bottle.system.inventoryDie=0;
+ const preview=await f.service.previewPotionUse({sourceItemUuid:f.bottle.uuid});assert.equal(preview.canDeclare,true);assert.equal(preview.trackingSupply,false);const request=await f.service.requestPotionUse({sourceItemUuid:f.bottle.uuid});f.game.user=f.gm;await f.service.resolvePotionRequest(request.message.id);
+ assert.equal(f.giver.system.health.value,8);assert.equal(f.bottle.system.inventoryDie,0);assert.equal(f.bottle.system.quantity,1);assert.equal(f.rolls(),0);assert.equal(f.giver.flags.potionReceipts[request.message.id].supply.waiver.trackingDisabled,true);
+ const writes=f.writes.length;await f.service.resolvePotionRequest(request.message.id);assert.equal(f.writes.length,writes);assert.equal(f.rolls(),0);
 });

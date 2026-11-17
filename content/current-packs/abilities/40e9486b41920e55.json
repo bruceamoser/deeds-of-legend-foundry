@@ -1,0 +1,47 @@
+{
+  "_key": "!items!40e9486b41920e55",
+  "_id": "40e9486b41920e55",
+  "name": "Carry Them to Shore I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Brawn</dd></div></dl><p>Main Action · Brawn. Swim up to 2/3/4 squares, towing one willing or helpless adjacent creature no larger than you. The current must permit passage; the passenger moves with you.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "brawn",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "athletics:swimming:4",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "technique",
+        "nodeId": "athletics:swimming:4",
+        "level": 3,
+        "cost": 3,
+        "action": "Main Action",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": "Brawn",
+        "defenseAttribute": null,
+        "effect": "Main Action · Brawn. Swim up to 2/3/4 squares, towing one willing or helpless adjacent creature no larger than you. The current must permit passage; the passenger moves with you.",
+        "improves": null,
+        "requires": [
+          "athletics:swimming:3"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

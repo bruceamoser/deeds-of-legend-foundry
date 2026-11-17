@@ -1,0 +1,65 @@
+{
+  "_key": "!items!e3c05e7dda39611c",
+  "_id": "e3c05e7dda39611c",
+  "name": "Spirit Guardians",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Defense</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>Up to three creatures within 2 squares of you</dd></div><div><dt>Duration</dt><dd>1 minute</dd></div></dl><p>Spirits wheel around you. When cast, deal 2/3/5 radiant damage to the chosen creatures. On a later turn, spend a Main Action and roll again to strike up to three creatures currently within 2 squares. The spirits persist between those attacks without Sustain; they deal damage only when you use the stated Main Action. Keep one Spirit Guardians casting active.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "reason",
+      "defenseAttribute": "reason"
+    },
+    "outcomes": {
+      "weak": "2 radiant damage",
+      "standard": "3 radiant damage",
+      "strong": "5 radiant damage"
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:spirits:4",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:spirits:4",
+        "level": 1,
+        "cost": 2,
+        "action": "Main Action",
+        "sp": 2,
+        "range": "Up to three creatures within 2 squares of you",
+        "duration": "1 minute",
+        "attribute": "Reason",
+        "defenseAttribute": "Reason",
+        "effect": "Spirits wheel around you. When cast, deal 2/3/5 radiant damage to the chosen creatures. On a later turn, spend a Main Action and roll again to strike up to three creatures currently within 2 squares. The spirits persist between those attacks without Sustain; they deal damage only when you use the stated Main Action. Keep one Spirit Guardians casting active.",
+        "improves": null,
+        "requires": [
+          "spirits:0"
+        ],
+        "bookId": "spirits"
+      },
+      "spell": {
+        "id": "spell:spirits:4",
+        "name": "Spirit Guardians",
+        "bookId": "spirits",
+        "page": "4",
+        "section": "II",
+        "sp": 2,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "Reason",
+        "defense": "Reason",
+        "defenseAttribute": "Reason",
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Up to three creatures within 2 squares of you",
+        "duration": "1 minute",
+        "effect": "Spirits wheel around you. When cast, deal 2/3/5 radiant damage to the chosen creatures. On a later turn, spend a Main Action and roll again to strike up to three creatures currently within 2 squares. The spirits persist between those attacks without Sustain; they deal damage only when you use the stated Main Action. Keep one Spirit Guardians casting active."
+      }
+    }
+  },
+  "effects": []
+}

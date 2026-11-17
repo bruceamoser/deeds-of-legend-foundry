@@ -1,0 +1,65 @@
+{
+  "_key": "!items!7c13cfeed5f74c41",
+  "_id": "7c13cfeed5f74c41",
+  "name": "Sacred Flame",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>0</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div><div><dt>Defense</dt><dd>Agility</dd></div><div><dt>Range</dt><dd>One creature within 8 squares</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Call a descending spark of sacred light. Deal 2/3/5 radiant damage.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "2 radiant damage",
+      "standard": "3 radiant damage",
+      "strong": "5 radiant damage"
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:protection:1",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:protection:1",
+        "level": 1,
+        "cost": 1,
+        "action": "Main Action",
+        "sp": 0,
+        "range": "One creature within 8 squares",
+        "duration": "Instant",
+        "attribute": "Knowledge",
+        "defenseAttribute": "Agility",
+        "effect": "Call a descending spark of sacred light. Deal 2/3/5 radiant damage.",
+        "improves": null,
+        "requires": [
+          "wards"
+        ],
+        "bookId": "protection"
+      },
+      "spell": {
+        "id": "spell:protection:1",
+        "name": "Sacred Flame",
+        "bookId": "protection",
+        "page": "1",
+        "section": "I",
+        "sp": 0,
+        "action": "Main Action",
+        "actionText": "Main Action",
+        "attribute": "Knowledge",
+        "defense": "Agility",
+        "defenseAttribute": "Agility",
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One creature within 8 squares",
+        "duration": "Instant",
+        "effect": "Call a descending spark of sacred light. Deal 2/3/5 radiant damage."
+      }
+    }
+  },
+  "effects": []
+}

@@ -1,0 +1,45 @@
+{
+  "_key": "!items!8cd0aac96e34338f",
+  "_id": "8cd0aac96e34338f",
+  "name": "Shield Block",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Reaction</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Range</dt><dd>Self, before the roll for an attack your shield can block</dd></div><div><dt>Duration</dt><dd>Until the start of your next turn</dd></div></dl><p>**Action:** Reaction · **Attribute:** None — no roll</p><p>**Target / range / shape:** Self, before the roll for an attack your shield can block</p><p>When an attack targets you, the DA decides whether your held shield can block it. Spend your Reaction before the roll. Until the start of your next turn, while holding the shield, gain 1 Boon on defenses against attacks it can block. When the attacker rolls instead, apply 1 Bane to that roll. Combine this benefit with Defend and other modifiers normally.</p><p>**Duration:** Until the start of your next turn</p><p>**Equipment / acquisition:** A held shield.</p>",
+    "activity": {
+      "action": "reaction",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "ability-shield-block",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "ability",
+        "nodeId": "ability-shield-block",
+        "level": 0,
+        "cost": 0,
+        "action": "Reaction",
+        "sp": null,
+        "range": "Self, before the roll for an attack your shield can block",
+        "duration": "Until the start of your next turn",
+        "attribute": "None — no roll",
+        "defenseAttribute": null,
+        "effect": "**Action:** Reaction · **Attribute:** None — no roll\n\n**Target / range / shape:** Self, before the roll for an attack your shield can block\n\nWhen an attack targets you, the DA decides whether your held shield can block it. Spend your Reaction before the roll. Until the start of your next turn, while holding the shield, gain 1 Boon on defenses against attacks it can block. When the attacker rolls instead, apply 1 Bane to that roll. Combine this benefit with Defend and other modifiers normally.\n\n**Duration:** Until the start of your next turn\n\n**Equipment / acquisition:** A held shield.",
+        "improves": null,
+        "requires": [],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

@@ -1,0 +1,66 @@
+{
+  "_key": "!items!e367b11e2b51c740",
+  "_id": "e367b11e2b51c740",
+  "name": "Purify Food and Drink",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 10 minutes</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>Up to six meals and 10 liters of drinking water within 1 square</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Remove ordinary spoilage, poison and disease from the chosen food and drink. The purified provisions remain subject to later contamination.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:water:3",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:water:3",
+        "level": 1,
+        "cost": 2,
+        "action": "Ritual · 10 minutes",
+        "sp": 1,
+        "range": "Up to six meals and 10 liters of drinking water within 1 square",
+        "duration": "Instant",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Remove ordinary spoilage, poison and disease from the chosen food and drink. The purified provisions remain subject to later contamination.",
+        "improves": null,
+        "requires": [
+          "water:0"
+        ],
+        "bookId": "water"
+      },
+      "spell": {
+        "id": "spell:water:3",
+        "name": "Purify Food and Drink",
+        "bookId": "water",
+        "page": "3",
+        "section": "II",
+        "sp": 1,
+        "action": "Ritual",
+        "actionText": "Ritual · 10 minutes",
+        "ritualTime": "10 minutes",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Up to six meals and 10 liters of drinking water within 1 square",
+        "duration": "Instant",
+        "effect": "Remove ordinary spoilage, poison and disease from the chosen food and drink. The purified provisions remain subject to later contamination."
+      }
+    }
+  },
+  "effects": []
+}

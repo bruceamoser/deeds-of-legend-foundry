@@ -1,0 +1,65 @@
+{
+  "_key": "!items!8e1a668681e3d44b",
+  "_id": "8e1a668681e3d44b",
+  "name": "Healing Word",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>One living creature within 4 squares that can hear you</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Speak a brief word of renewal. Restore 1/2/3 HP, applying Life resistance and maximum HP.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "attribute",
+      "attribute": "reason",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:restoration:3",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:restoration:3",
+        "level": 1,
+        "cost": 2,
+        "action": "Maneuver",
+        "sp": 1,
+        "range": "One living creature within 4 squares that can hear you",
+        "duration": "Instant",
+        "attribute": "Reason",
+        "defenseAttribute": null,
+        "effect": "Speak a brief word of renewal. Restore 1/2/3 HP, applying Life resistance and maximum HP.",
+        "improves": null,
+        "requires": [
+          "restoration:0"
+        ],
+        "bookId": "restoration"
+      },
+      "spell": {
+        "id": "spell:restoration:3",
+        "name": "Healing Word",
+        "bookId": "restoration",
+        "page": "3",
+        "section": "II",
+        "sp": 1,
+        "action": "Maneuver",
+        "actionText": "Maneuver",
+        "attribute": "Reason",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "One living creature within 4 squares that can hear you",
+        "duration": "Instant",
+        "effect": "Speak a brief word of renewal. Restore 1/2/3 HP, applying Life resistance and maximum HP."
+      }
+    }
+  },
+  "effects": []
+}

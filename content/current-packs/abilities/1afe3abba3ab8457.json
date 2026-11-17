@@ -1,0 +1,66 @@
+{
+  "_key": "!items!1afe3abba3ab8457",
+  "_id": "1afe3abba3ab8457",
+  "name": "Astral Projection",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 hour</dd></div><div><dt>SP</dt><dd>6</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>Self and up to three willing creatures beside you</dd></div><div><dt>Duration</dt><dd>8 hours</dd></div></dl><p>Send visible spirit projections into the nearby spirit realm while your bodies sleep. Projections travel together up to 10 kilometers from the bodies, speak with spirits and observe corresponding places. Magical barriers that block spirit travel still apply. They return when the spell ends, a participant chooses to return with a Maneuver, or a body is disturbed. Projections use observation and speech; physical acts and further casting take place after returning to the bodies.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:dreams:a3",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:dreams:a3",
+        "level": 7,
+        "cost": 5,
+        "action": "Ritual · 1 hour",
+        "sp": 6,
+        "range": "Self and up to three willing creatures beside you",
+        "duration": "8 hours",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Send visible spirit projections into the nearby spirit realm while your bodies sleep. Projections travel together up to 10 kilometers from the bodies, speak with spirits and observe corresponding places. Magical barriers that block spirit travel still apply. They return when the spell ends, a participant chooses to return with a Maneuver, or a body is disturbed. Projections use observation and speech; physical acts and further casting take place after returning to the bodies.",
+        "improves": null,
+        "requires": [
+          "dreams:5"
+        ],
+        "bookId": "dreams"
+      },
+      "spell": {
+        "id": "spell:dreams:a3",
+        "name": "Astral Projection",
+        "bookId": "dreams",
+        "page": "A3",
+        "section": "VII",
+        "sp": 6,
+        "action": "Ritual",
+        "actionText": "Ritual · 1 hour",
+        "ritualTime": "1 hour",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Self and up to three willing creatures beside you",
+        "duration": "8 hours",
+        "effect": "Send visible spirit projections into the nearby spirit realm while your bodies sleep. Projections travel together up to 10 kilometers from the bodies, speak with spirits and observe corresponding places. Magical barriers that block spirit travel still apply. They return when the spell ends, a participant chooses to return with a Maneuver, or a body is disturbed. Projections use observation and speech; physical acts and further casting take place after returning to the bodies."
+      }
+    }
+  },
+  "effects": []
+}

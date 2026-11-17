@@ -1,0 +1,47 @@
+{
+  "_key": "!items!7ba3cc6dd52005ae",
+  "_id": "7ba3cc6dd52005ae",
+  "name": "Screen the Retreat III",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>After Screen the Retreat, you and one willing adjacent ally may each move 1 square without movement reactions from creatures whose sight of you is blocked by the smoke.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "craft:mixtures:6",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "craft:mixtures:6",
+        "level": 3,
+        "cost": 4,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "After Screen the Retreat, you and one willing adjacent ally may each move 1 square without movement reactions from creatures whose sight of you is blocked by the smoke.",
+        "improves": "craft:mixtures:4",
+        "requires": [
+          "craft:mixtures:5"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

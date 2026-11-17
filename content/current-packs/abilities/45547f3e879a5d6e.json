@@ -1,0 +1,47 @@
+{
+  "_key": "!items!45547f3e879a5d6e",
+  "_id": "45547f3e879a5d6e",
+  "name": "Ready the Remedy II",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>After Ready the Remedy administers a prepared dose, also reduce the patient’s temporary Bleeding by 1 with suitable bandaging.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "medicine:nursing:5",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "medicine:nursing:5",
+        "level": 3,
+        "cost": 4,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "After Ready the Remedy administers a prepared dose, also reduce the patient’s temporary Bleeding by 1 with suitable bandaging.",
+        "improves": "medicine:nursing:4",
+        "requires": [
+          "medicine:nursing:4"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

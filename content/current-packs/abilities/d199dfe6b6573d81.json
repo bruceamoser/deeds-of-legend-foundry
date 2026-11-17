@@ -1,0 +1,66 @@
+{
+  "_key": "!items!d199dfe6b6573d81",
+  "_id": "d199dfe6b6573d81",
+  "name": "Watch II",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 10 minutes</dd></div><div><dt>SP</dt><dd>4</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>Two fixed points within 12 squares</dd></div><div><dt>Duration</dt><dd>1 hour</dd></div></dl><p>Mark two observation points. While within 12 squares of either, you may spend a Main Action to see and hear from one until your next turn begins. Switching points takes another Main Action. Each viewpoint follows normal line of sight and hearing.</p>",
+    "activity": {
+      "action": "ritual",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "spell:farseeing:8",
+      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "spell",
+        "nodeId": "spell:farseeing:8",
+        "level": 3,
+        "cost": 3,
+        "action": "Ritual · 10 minutes",
+        "sp": 4,
+        "range": "Two fixed points within 12 squares",
+        "duration": "1 hour",
+        "attribute": "None",
+        "defenseAttribute": null,
+        "effect": "Mark two observation points. While within 12 squares of either, you may spend a Main Action to see and hear from one until your next turn begins. Switching points takes another Main Action. Each viewpoint follows normal line of sight and hearing.",
+        "improves": null,
+        "requires": [
+          "farseeing:2"
+        ],
+        "bookId": "farseeing"
+      },
+      "spell": {
+        "id": "spell:farseeing:8",
+        "name": "Watch II",
+        "bookId": "farseeing",
+        "page": "8",
+        "section": "IV",
+        "sp": 4,
+        "action": "Ritual",
+        "actionText": "Ritual · 10 minutes",
+        "ritualTime": "10 minutes",
+        "attribute": "None",
+        "defense": null,
+        "defenseAttribute": null,
+        "holdAttribute": null,
+        "escapeAttribute": null,
+        "target": "Two fixed points within 12 squares",
+        "duration": "1 hour",
+        "effect": "Mark two observation points. While within 12 squares of either, you may spend a Main Action to see and hear from one until your next turn begins. Switching points takes another Main Action. Each viewpoint follows normal line of sight and hearing."
+      }
+    }
+  },
+  "effects": []
+}
