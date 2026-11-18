@@ -683,11 +683,18 @@
 /* Immediate choices and their complete branch share a single compact row. */
 .forge-list-toolbar {display:flex;justify-content:flex-end;margin-bottom:6px;}
 .forge-learning-group {margin-bottom:10px;}
-.forge-learning-group>h3 {display:flex;align-items:center;gap:6px;margin:0 0 5px;padding:4px 6px;background:var(--forge-open);border:1px solid var(--line);font-size:14px;}
-.forge-learning-group>h3 small {margin-left:auto;font:normal 11px/1.3 system-ui,sans-serif;color:var(--muted);}
+.forge-learning-group-head {display:flex;flex-wrap:wrap;align-items:center;gap:4px 6px;margin:0 0 5px;padding:4px 6px;background:var(--forge-open);border:1px solid var(--line);}
+.forge-learning-group-head h3 {display:flex;align-items:center;gap:6px;margin:0;font-size:14px;}
+.forge-learning-group-head small {margin-left:auto;font:normal 11px/1.3 system-ui,sans-serif;color:var(--muted);}
+.forge-learned-step {display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:0 6px;padding-inline-end:6px;background:var(--forge-open);border-top:1px solid var(--line);}
+.workshop-forge .forge-learned-toggle {display:flex;justify-content:space-between;align-items:center;gap:4px;min-width:0;min-height:27px;padding:3px 8px;border:0;border-radius:0;background:transparent;text-align:left;font-size:12px;overflow-wrap:anywhere;}
+.forge-learned-toggle small {font-size:11px;color:var(--muted);}
+.workshop-forge .forge-unlearn {min-height:25px;padding:2px 6px;font-size:11px;}
+.forge-learned-step .forge-step-details {margin-inline-end:-6px;}
 .forge-next-heading {display:flex;align-items:center;gap:5px;padding-right:6px;background:var(--forge-row);}
 .forge-next-heading>h4 {flex:1;min-width:0;}
 .workshop-forge .forge-next-heading .forge-path-toggle {grid-template-columns:minmax(0,1fr) 12px;padding:6px 8px;font-size:12px;line-height:1.35;}
+.forge-path-complete {display:block;padding:6px 8px;font-size:12px;line-height:1.35;}
 .workshop-forge .forge-next-learn {flex:none;min-height:27px;border-radius:0;padding:3px 7px;font-size:12px;}
 .forge-next-status {max-width:36%;font-size:11px;color:var(--muted);}
 .forge-next-mechanics {padding:0 8px 6px;background:var(--forge-row);}

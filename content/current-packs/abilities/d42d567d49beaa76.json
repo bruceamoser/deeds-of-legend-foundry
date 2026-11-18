@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Reaction</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>One willing ally on their turn, before they take any action; choose two visible, unoccupied squares within 6 squares of you.</dd></div><div><dt>Magic</dt><dd>Spell</dd></div><div><dt>SP</dt><dd>0</dd></div><div><dt>Duration</dt><dd>Until the end of the ally’s turn.</dd></div><div><dt>Equipment / acquisition</dt><dd>A free hand for casting.</dd></div><div><dt>Frequency</dt><dd>Once per round.</dd></div></dl><p>The two squares become connected windows until the end of the ally’s turn. The ally can use the windows once at any point during their turn, either to move through one and out the other, spending 1 square of movement, or to make one attack through one window, measuring range and cover from the other. The ally must be able to see the window they use. The windows vanish at the end of the ally’s turn. This movement does not provoke opportunity attacks.</p><p>This is a spell costing 0 SP. Cast at the start of the willing ally’s turn before it acts. The windows grant a passage or attack route, not an extra attack.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Reaction</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>One willing ally during their turn, before their chosen step or attack resolves. Choose two visible, unoccupied squares within 6 squares of you.</dd></div><div><dt>Magic</dt><dd>Spell</dd></div><div><dt>SP</dt><dd>0</dd></div><div><dt>Duration</dt><dd>Until the end of the ally’s turn.</dd></div><div><dt>Equipment / acquisition</dt><dd>A free hand for casting.</dd></div><div><dt>Frequency</dt><dd>Once per round.</dd></div></dl><p>The two squares become connected windows until the end of the ally’s turn. The ally can use the windows once at any point during their turn, either to move through one and out the other, spending 1 square of movement, or to make one attack through one window, measuring range and cover from the other. The ally must be able to see the window they use. The windows vanish at the end of the ally’s turn. This movement does not provoke opportunity attacks.</p><p>This is a spell costing 0 SP. The windows give the ally a route for its own movement or attack.</p>",
     "activity": {
       "action": "reaction",
       "rollMode": "none",
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "ability-signature-arcanist-leave-a-window",
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",
@@ -30,11 +30,11 @@
         "cost": 0,
         "action": "Reaction",
         "sp": 0,
-        "range": "One willing ally on their turn, before they take any action; choose two visible, unoccupied squares within 6 squares of you.",
+        "range": "One willing ally during their turn, before their chosen step or attack resolves. Choose two visible, unoccupied squares within 6 squares of you.",
         "duration": "Until the end of the ally’s turn.",
         "attribute": "None (no roll)",
         "defenseAttribute": null,
-        "effect": "**Action:** Reaction · **Attribute:** None (no roll)\n\n**Target / range / shape:** One willing ally on their turn, before they take any action; choose two visible, unoccupied squares within 6 squares of you.\n\nThe two squares become connected windows until the end of the ally’s turn. The ally can use the windows once at any point during their turn, either to move through one and out the other, spending 1 square of movement, or to make one attack through one window, measuring range and cover from the other. The ally must be able to see the window they use. The windows vanish at the end of the ally’s turn. This movement does not provoke opportunity attacks.\n\n**Duration:** Until the end of the ally’s turn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP. Cast at the start of the willing ally’s turn before it acts. The windows grant a passage or attack route, not an extra attack.\n\n**Frequency:** Once per round.",
+        "effect": "**Action:** Reaction · **Attribute:** None (no roll)\n\n**Target / range / shape:** One willing ally during their turn, before their chosen step or attack resolves. Choose two visible, unoccupied squares within 6 squares of you.\n\nThe two squares become connected windows until the end of the ally’s turn. The ally can use the windows once at any point during their turn, either to move through one and out the other, spending 1 square of movement, or to make one attack through one window, measuring range and cover from the other. The ally must be able to see the window they use. The windows vanish at the end of the ally’s turn. This movement does not provoke opportunity attacks.\n\n**Duration:** Until the end of the ally’s turn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP. The windows give the ally a route for its own movement or attack.\n\n**Frequency:** Once per round.",
         "improves": null,
         "requires": [],
         "bookId": null,
@@ -47,11 +47,11 @@
         "dp": null,
         "action": "Reaction",
         "attribute": "None (no roll)",
-        "target": "One willing ally on their turn, before they take any action; choose two visible, unoccupied squares within 6 squares of you.",
+        "target": "One willing ally during their turn, before their chosen step or attack resolves. Choose two visible, unoccupied squares within 6 squares of you.",
         "duration": "Until the end of the ally’s turn.",
         "equipment": "A free hand for casting.",
         "limits": "One signature choice at each of levels 1, 3 and 7.",
-        "effect": "**Action:** Reaction · **Attribute:** None (no roll)\n\n**Target / range / shape:** One willing ally on their turn, before they take any action; choose two visible, unoccupied squares within 6 squares of you.\n\nThe two squares become connected windows until the end of the ally’s turn. The ally can use the windows once at any point during their turn, either to move through one and out the other, spending 1 square of movement, or to make one attack through one window, measuring range and cover from the other. The ally must be able to see the window they use. The windows vanish at the end of the ally’s turn. This movement does not provoke opportunity attacks.\n\n**Duration:** Until the end of the ally’s turn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP. Cast at the start of the willing ally’s turn before it acts. The windows grant a passage or attack route, not an extra attack.\n\n**Frequency:** Once per round.",
+        "effect": "**Action:** Reaction · **Attribute:** None (no roll)\n\n**Target / range / shape:** One willing ally during their turn, before their chosen step or attack resolves. Choose two visible, unoccupied squares within 6 squares of you.\n\nThe two squares become connected windows until the end of the ally’s turn. The ally can use the windows once at any point during their turn, either to move through one and out the other, spending 1 square of movement, or to make one attack through one window, measuring range and cover from the other. The ally must be able to see the window they use. The windows vanish at the end of the ally’s turn. This movement does not provoke opportunity attacks.\n\n**Duration:** Until the end of the ally’s turn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP. The windows give the ally a route for its own movement or attack.\n\n**Frequency:** Once per round.",
         "reference": {
           "flavor": [
             "Your spells arrive from an angle no one expected."
@@ -68,7 +68,7 @@
               },
               {
                 "label": "Target / range / shape",
-                "value": "One willing ally on their turn, before they take any action; choose two visible, unoccupied squares within 6 squares of you."
+                "value": "One willing ally during their turn, before their chosen step or attack resolves. Choose two visible, unoccupied squares within 6 squares of you."
               },
               {
                 "label": "Magic",
@@ -96,20 +96,20 @@
                 "text": "The two squares become connected windows until the end of the ally’s turn. The ally can use the windows once at any point during their turn, either to move through one and out the other, spending 1 square of movement, or to make one attack through one window, measuring range and cover from the other. The ally must be able to see the window they use. The windows vanish at the end of the ally’s turn. This movement does not provoke opportunity attacks."
               },
               {
-                "text": "This is a spell costing 0 SP. Cast at the start of the willing ally’s turn before it acts. The windows grant a passage or attack route, not an extra attack."
+                "text": "This is a spell costing 0 SP. The windows give the ally a route for its own movement or attack."
               }
             ],
             "notes": []
           }
         },
-        "referenceMarkdown": "**Action:** Reaction · **Attribute:** None (no roll)\n\n**Target / range / shape:** One willing ally on their turn, before they take any action; choose two visible, unoccupied squares within 6 squares of you.\n\nThe two squares become connected windows until the end of the ally’s turn. The ally can use the windows once at any point during their turn, either to move through one and out the other, spending 1 square of movement, or to make one attack through one window, measuring range and cover from the other. The ally must be able to see the window they use. The windows vanish at the end of the ally’s turn. This movement does not provoke opportunity attacks.\n\n**Duration:** Until the end of the ally’s turn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP. Cast at the start of the willing ally’s turn before it acts. The windows grant a passage or attack route, not an extra attack.\n\n**Frequency:** Once per round.",
+        "referenceMarkdown": "**Action:** Reaction · **Attribute:** None (no roll)\n\n**Target / range / shape:** One willing ally during their turn, before their chosen step or attack resolves. Choose two visible, unoccupied squares within 6 squares of you.\n\nThe two squares become connected windows until the end of the ally’s turn. The ally can use the windows once at any point during their turn, either to move through one and out the other, spending 1 square of movement, or to make one attack through one window, measuring range and cover from the other. The ally must be able to see the window they use. The windows vanish at the end of the ally’s turn. This movement does not provoke opportunity attacks.\n\n**Duration:** Until the end of the ally’s turn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP. The windows give the ally a route for its own movement or attack.\n\n**Frequency:** Once per round.",
         "classId": "class-arcanist",
         "lineId": "arcanist:bent-trajectory",
         "signatureComponent": true,
         "kind": "ability",
         "sp": 0,
         "magic": "Spell",
-        "rulesMarkdown": "**Action:** Reaction · **Attribute:** None (no roll)\n\n**Target / range / shape:** One willing ally on their turn, before they take any action; choose two visible, unoccupied squares within 6 squares of you.\n\nThe two squares become connected windows until the end of the ally’s turn. The ally can use the windows once at any point during their turn, either to move through one and out the other, spending 1 square of movement, or to make one attack through one window, measuring range and cover from the other. The ally must be able to see the window they use. The windows vanish at the end of the ally’s turn. This movement does not provoke opportunity attacks.\n\n**Duration:** Until the end of the ally’s turn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP. Cast at the start of the willing ally’s turn before it acts. The windows grant a passage or attack route, not an extra attack.\n\n**Frequency:** Once per round."
+        "rulesMarkdown": "**Action:** Reaction · **Attribute:** None (no roll)\n\n**Target / range / shape:** One willing ally during their turn, before their chosen step or attack resolves. Choose two visible, unoccupied squares within 6 squares of you.\n\nThe two squares become connected windows until the end of the ally’s turn. The ally can use the windows once at any point during their turn, either to move through one and out the other, spending 1 square of movement, or to make one attack through one window, measuring range and cover from the other. The ally must be able to see the window they use. The windows vanish at the end of the ally’s turn. This movement does not provoke opportunity attacks.\n\n**Duration:** Until the end of the ally’s turn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP. The windows give the ally a route for its own movement or attack.\n\n**Frequency:** Once per round."
       }
     }
   },

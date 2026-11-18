@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 minute</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>Self and up to three adjacent willing creatures; a known destination within 100 squares</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Travel to a place you personally visited within the last day. Arrive in open supported squares at that location. If occupied or obstructed, arrive at the nearest safe space within 3 squares; if none exists, the ritual leaves you at your origin.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 minute</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>Self and up to three adjacent willing creatures; a known destination within 100 squares</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Travel to a place you have personally visited. Arrive in open supported squares at that location. If occupied or obstructed, arrive at the nearest safe space within 3 squares; if none exists, the ritual leaves you at your origin.</p>",
     "activity": {
       "action": "ritual",
       "rollMode": "attribute",
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:passage:5",
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",
@@ -34,7 +34,7 @@
         "duration": "Instant",
         "attribute": "None",
         "defenseAttribute": null,
-        "effect": "Travel to a place you personally visited within the last day. Arrive in open supported squares at that location. If occupied or obstructed, arrive at the nearest safe space within 3 squares; if none exists, the ritual leaves you at your origin.",
+        "effect": "Travel to a place you have personally visited. Arrive in open supported squares at that location. If occupied or obstructed, arrive at the nearest safe space within 3 squares; if none exists, the ritual leaves you at your origin.",
         "improves": null,
         "requires": [
           "passage:1"
@@ -58,7 +58,7 @@
         "escapeAttribute": null,
         "target": "Self and up to three adjacent willing creatures; a known destination within 100 squares",
         "duration": "Instant",
-        "effect": "Travel to a place you personally visited within the last day. Arrive in open supported squares at that location. If occupied or obstructed, arrive at the nearest safe space within 3 squares; if none exists, the ritual leaves you at your origin."
+        "effect": "Travel to a place you have personally visited. Arrive in open supported squares at that location. If occupied or obstructed, arrive at the nearest safe space within 3 squares; if none exists, the ritual leaves you at your origin."
       }
     }
   },

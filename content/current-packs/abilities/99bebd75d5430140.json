@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div></dl><p>Maneuver. Give one willing ally within 3 squares a cue for a declared attack or defense that you can plausibly help. It gains 1 Boon on its next matching roll before your next turn starts. No roll.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div></dl><p>Maneuver. Give one willing ally within 3 squares a cue and choose attack or defense. The ally gains 1 Boon on its next roll of that type before your next turn starts. No roll.</p>",
     "activity": {
       "action": "maneuver",
       "rollMode": "none",
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "tactics:coordination:1",
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "technique",
@@ -34,7 +34,7 @@
         "duration": null,
         "attribute": null,
         "defenseAttribute": null,
-        "effect": "Maneuver. Give one willing ally within 3 squares a cue for a declared attack or defense that you can plausibly help. It gains 1 Boon on its next matching roll before your next turn starts. No roll.",
+        "effect": "Maneuver. Give one willing ally within 3 squares a cue and choose attack or defense. The ally gains 1 Boon on its next roll of that type before your next turn starts. No roll.",
         "improves": null,
         "requires": [
           "tactics"

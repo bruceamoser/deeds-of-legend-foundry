@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div></dl><p>Maneuver. Choose one visible creature. Before your turn ends, your next Main Action melee weapon attack against it also pushes it 1 square directly away from your attack position on Strong. This modifies one attack, not each target of a sweep. Reusing this technique replaces its unused effect.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div></dl><p>Maneuver. Choose one visible creature. Before your turn ends, your next Main Action melee weapon attack against it pushes that creature directly away from your attack position, 1 square on Standard or 2 squares on Strong. Resolve collisions normally. Apply the push only to the chosen creature on that attack. Reusing this technique replaces its unused effect.</p>",
     "activity": {
       "action": "maneuver",
       "rollMode": "none",
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "arms:impact:1",
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "technique",
@@ -34,7 +34,7 @@
         "duration": null,
         "attribute": null,
         "defenseAttribute": null,
-        "effect": "Maneuver. Choose one visible creature. Before your turn ends, your next Main Action melee weapon attack against it also pushes it 1 square directly away from your attack position on Strong. This modifies one attack, not each target of a sweep. Reusing this technique replaces its unused effect.",
+        "effect": "Maneuver. Choose one visible creature. Before your turn ends, your next Main Action melee weapon attack against it pushes that creature directly away from your attack position, 1 square on Standard or 2 squares on Strong. Resolve collisions normally. Apply the push only to the chosen creature on that attack. Reusing this technique replaces its unused effect.",
         "improves": null,
         "requires": [
           "arms"

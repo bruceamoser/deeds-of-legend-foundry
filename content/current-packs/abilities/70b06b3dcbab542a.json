@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>When Take the Blow intercepts a melee attack immediately following the attacker’s voluntary movement, give your defense 1 Boon. After it resolves, the attacker’s remaining voluntary movement this turn becomes 0; forced movement still applies.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>When you use Take the Blow, gain 1 Boon on your defense. After the intercepted attack resolves, the attacker’s remaining voluntary movement this turn becomes 0. Forced movement still applies.</p>",
     "activity": {
       "action": "passive",
       "rollMode": "none",
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "guard:interception:6",
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "improvement",
@@ -34,7 +34,7 @@
         "duration": null,
         "attribute": null,
         "defenseAttribute": null,
-        "effect": "When Take the Blow intercepts a melee attack immediately following the attacker’s voluntary movement, give your defense 1 Boon. After it resolves, the attacker’s remaining voluntary movement this turn becomes 0; forced movement still applies.",
+        "effect": "When you use Take the Blow, gain 1 Boon on your defense. After the intercepted attack resolves, the attacker’s remaining voluntary movement this turn becomes 0. Forced movement still applies.",
         "improves": "guard:interception:4",
         "requires": [
           "guard:interception:5"

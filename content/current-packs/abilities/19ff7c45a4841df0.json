@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "subterfuge:locks:5",
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "improvement",

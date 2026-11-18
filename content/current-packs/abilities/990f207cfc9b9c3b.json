@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>You can also name a weakness established by observation or reliable evidence as a Maneuver: tell up to three allies within 6 squares; each gains 1 Boon on its next attack against that creature before your next turn ends. Once per creature per scene. This grants no extra attacks or targets.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>You can also spend a Maneuver to point out an opening against a visible enemy to up to three allies within 6 squares. Each ally who perceives your cue gains 1 Boon on its next attack against that enemy before your next turn ends. Once per creature per scene. This grants no extra attacks or targets.</p>",
     "activity": {
       "action": "passive",
       "rollMode": "none",
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "scholarship:planning:6",
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "improvement",
@@ -34,7 +34,7 @@
         "duration": null,
         "attribute": null,
         "defenseAttribute": null,
-        "effect": "You can also name a weakness established by observation or reliable evidence as a Maneuver: tell up to three allies within 6 squares; each gains 1 Boon on its next attack against that creature before your next turn ends. Once per creature per scene. This grants no extra attacks or targets.",
+        "effect": "You can also spend a Maneuver to point out an opening against a visible enemy to up to three allies within 6 squares. Each ally who perceives your cue gains 1 Boon on its next attack against that enemy before your next turn ends. Once per creature per scene. This grants no extra attacks or targets.",
         "improves": "scholarship:planning:4",
         "requires": [
           "scholarship:planning:5"

@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Reaction</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div></dl><p>Reaction · Knowledge. When a listener within 6 squares is about to act on a factual error contradicted by evidence you can present, state the correction before the action. Add 1/2/3 progress to the DA’s objective for accepting that correction. On completion the listener understands the error; its decisions remain its own. Once per claim per conversation; the listener must perceive and understand the evidence.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Reaction</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div></dl><p>Reaction · Knowledge. When a listener within 6 squares is about to act on a factual error, explain what it has missed before it acts. Add 1/2/3 progress to the DA’s objective for accepting your correction. On completion the listener understands the error and decides how to act. Once per claim per conversation. The listener must be able to understand you.</p>",
     "activity": {
       "action": "reaction",
       "rollMode": "attribute",
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "scholarship:disputation:4",
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "technique",
@@ -34,7 +34,7 @@
         "duration": null,
         "attribute": "Knowledge",
         "defenseAttribute": null,
-        "effect": "Reaction · Knowledge. When a listener within 6 squares is about to act on a factual error contradicted by evidence you can present, state the correction before the action. Add 1/2/3 progress to the DA’s objective for accepting that correction. On completion the listener understands the error; its decisions remain its own. Once per claim per conversation; the listener must perceive and understand the evidence.",
+        "effect": "Reaction · Knowledge. When a listener within 6 squares is about to act on a factual error, explain what it has missed before it acts. Add 1/2/3 progress to the DA’s objective for accepting your correction. On completion the listener understands the error and decides how to act. Once per claim per conversation. The listener must be able to understand you.",
         "improves": null,
         "requires": [
           "scholarship:disputation:3"

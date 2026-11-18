@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Counterexample may aid two listeners assessing the same claim, before their rolls. Reaction: after you have seen a creature make the same attack earlier in this scene, warn one ally within 6 squares before its defense against that repeated attack; if it understands you, grant 1 defense Boon. Once per attacker per scene.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Counterexample may aid two listeners assessing the same claim, before their rolls. Reaction: before an ally within 6 squares rolls defense against an attack you can perceive, point out the danger. If the ally understands you, give that defense 1 Boon. Once per attacker per scene.</p>",
     "activity": {
       "action": "passive",
       "rollMode": "none",
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "scholarship:disputation:3",
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "improvement",
@@ -34,7 +34,7 @@
         "duration": null,
         "attribute": null,
         "defenseAttribute": null,
-        "effect": "Counterexample may aid two listeners assessing the same claim, before their rolls. Reaction: after you have seen a creature make the same attack earlier in this scene, warn one ally within 6 squares before its defense against that repeated attack; if it understands you, grant 1 defense Boon. Once per attacker per scene.",
+        "effect": "Counterexample may aid two listeners assessing the same claim, before their rolls. Reaction: before an ally within 6 squares rolls defense against an attack you can perceive, point out the danger. If the ally understands you, give that defense 1 Boon. Once per attacker per scene.",
         "improves": "scholarship:disputation:1",
         "requires": [
           "scholarship:disputation:2"

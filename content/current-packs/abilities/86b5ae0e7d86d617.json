@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>One minute</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Self and up to three allies who can hear and understand you.</dd></div><div><dt>Duration</dt><dd>The plan and its stated limits remain known; each Boon expires when used or at the end of the scene.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Frequency</dt><dd>Once per scene.</dd></div><div><dt>Time</dt><dd>One minute.</dd></div></dl><p>Spend one minute forming a plan from the evidence and observations available. State the plan. The DA confirms what is true, what remains uncertain, and one contradiction or risk. You and each chosen ally gain 2 Boons to your next roll that directly follows the plan.</p><p>You can maintain one plan at a time. A new plan replaces its unused Boons; new relevant evidence is required to plan again for the same objective this scene.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>One minute</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Self and up to three allies who can hear and understand you.</dd></div><div><dt>Duration</dt><dd>The plan and its stated limits remain known; each Boon expires when used or at the end of the scene.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Frequency</dt><dd>Once per scene.</dd></div><div><dt>Time</dt><dd>One minute.</dd></div></dl><p>Spend one minute forming a plan from the evidence and observations available. State the plan. The DA confirms what is true, what remains uncertain, and one contradiction or risk. You and each chosen ally gain 2 Boons to your next roll that directly follows the plan.</p><p>Keep one plan at a time. A new plan replaces the previous plan and its unused Boons.</p>",
     "activity": {
       "action": "other",
       "rollMode": "none",
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "ability-signature-intellect-test-the-hypothesis",
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "ability",
@@ -34,7 +34,7 @@
         "duration": "The plan and its stated limits remain known; each Boon expires when used or at the end of the scene.",
         "attribute": "None (no roll)",
         "defenseAttribute": null,
-        "effect": "**Action:** One minute · **Attribute:** None (no roll)\n\n**Time:** One minute.\n\n**Target / range / shape:** Self and up to three allies who can hear and understand you.\n\nSpend one minute forming a plan from the evidence and observations available. State the plan. The DA confirms what is true, what remains uncertain, and one contradiction or risk. You and each chosen ally gain 2 Boons to your next roll that directly follows the plan.\n\n**Duration:** The plan and its stated limits remain known; each Boon expires when used or at the end of the scene.\n\n**Equipment / acquisition:** None.\n\nYou can maintain one plan at a time. A new plan replaces its unused Boons; new relevant evidence is required to plan again for the same objective this scene.\n\n**Frequency:** Once per scene.",
+        "effect": "**Action:** One minute · **Attribute:** None (no roll)\n\n**Time:** One minute.\n\n**Target / range / shape:** Self and up to three allies who can hear and understand you.\n\nSpend one minute forming a plan from the evidence and observations available. State the plan. The DA confirms what is true, what remains uncertain, and one contradiction or risk. You and each chosen ally gain 2 Boons to your next roll that directly follows the plan.\n\n**Duration:** The plan and its stated limits remain known; each Boon expires when used or at the end of the scene.\n\n**Equipment / acquisition:** None.\n\nKeep one plan at a time. A new plan replaces the previous plan and its unused Boons.\n\n**Frequency:** Once per scene.",
         "improves": null,
         "requires": [],
         "bookId": null,

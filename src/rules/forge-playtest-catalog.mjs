@@ -1,3 +1,5 @@
+import { FORGE_STARTING_DP } from "./forge-character.mjs";
+
 // These choices apply to the browser playtest. The pinned book catalog is the source
 // for every entry without an override and remains available to existing consumers.
 const classOptions = {
@@ -327,7 +329,7 @@ function playtestDevelopment(markdown) {
         "## Create a hero at level 1",
         "Assign Brawn, Fortitude, Agility, Guile, Knowledge and Reason from −2 through +2, totaling +3. Choose an ancestry and two traits, then choose culture and background.",
         "Choose one starting discipline from each of your culture, background and class. Choose three different disciplines. Meet the class’s attribute minimums and choose one level-1 signature.",
-        "Start with **8 + Guile + Knowledge + Reason DP** and any explicit ancestry benefits. Include negative attributes. Spend from this one pool to learn available steps or study another discipline for its class price (1, 2 or 3 DP). Keep any unspent DP for later learning.",
+        `Start with **${FORGE_STARTING_DP} + Guile + Knowledge + Reason DP** and any explicit ancestry benefits. Include negative attributes. Spend from this one pool to learn available steps or study another discipline for its class price (1, 2 or 3 DP). Keep any unspent DP for later learning.`,
         "",
       ].join("\n\n"),
     )

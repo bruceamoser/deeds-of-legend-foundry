@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div><div><dt>Equipment</dt><dd>Wield a suitable one-handed melee weapon.</dd></div></dl><p>You may use Answering Steel after a Standard or Strong defense.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div><div><dt>Equipment</dt><dd>Wield a suitable one-handed melee weapon.</dd></div></dl><p>After a Strong Answering Steel counterattack, you may move 1 square without triggering movement reactions.</p>",
     "activity": {
       "action": "passive",
       "rollMode": "none",
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "fencing:blade-contact:6",
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "improvement",
@@ -34,7 +34,7 @@
         "duration": null,
         "attribute": null,
         "defenseAttribute": null,
-        "effect": "You may use Answering Steel after a Standard or Strong defense.",
+        "effect": "After a Strong Answering Steel counterattack, you may move 1 square without triggering movement reactions.",
         "improves": "fencing:blade-contact:4",
         "requires": [
           "fencing:blade-contact:5"

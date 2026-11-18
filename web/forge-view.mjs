@@ -224,8 +224,20 @@ function stepDetails(model, node) {
     ${improves ? `<p class="forge-improves">Improves ${escape(improves.name)}.</p>` : ""}
     ${learned ? "" : reasonsList(model.eligibility(node.id))}
     ${spellSection(model, node)}
-    ${learned && refundable(model, node.id) ? control("forge-refund", node.id, "Undo learning", "", "small") : ""}
   </section>`;
+}
+
+function learnedStep(model, node) {
+  const expanded = model.selection === node.id;
+  const cost = model.eligibility(node.id).cost;
+  return `<li class="forge-learned-step">
+    ${control("forge-step", node.id,
+      `<span>${escape(node.name)} <small>${cost ?? "—"} DP spent</small></span><span aria-hidden="true">${expanded ? "⌄" : "›"}</span>`,
+      `aria-expanded="${expanded}" ${expanded ? 'aria-controls="forge-selection"' : ""}`, "forge-learned-toggle")}
+    ${refundable(model, node.id) ? control("forge-refund", node.id, "Unlearn",
+      `aria-label="Unlearn ${escape(node.name)}" title="Unlearn this step and its dependent choices"`, "small forge-unlearn") : ""}
+    ${expanded ? stepDetails(model, node) : ""}
+  </li>`;
 }
 
 function stepRow(model, node, selectedId) {
@@ -248,20 +260,22 @@ function pathCard(model, path) {
   const open = model.openPaths.has(path.id);
   const next = nodes.find((node) => !model.learned.has(node.id));
   const availability = next && model.eligibility(next.id);
-  if (!model.showAll && !open && !availability?.eligible) return "";
   const learned = nodes.filter((node) => model.learned.has(node.id));
+  if (!model.showAll && !open && !availability?.eligible && !learned.length) return "";
   const book = model.books.get(path.bookId);
   const heading = next ? `${path.name} — ${next.name} — ${availability.cost ?? "—"} DP` : `${path.name} — Complete`;
+  const title = `<span>${escape(heading)} <small class="forge-branch-count">${learned.length}/${nodes.length} learned</small></span>`;
   return `<section class="forge-path forge-learning-branch${open ? " is-open" : ""}" data-path="${escape(path.id)}">
     <div class="forge-next-heading">
-      <h4>${control("forge-path", path.id, `<span>${escape(heading)} <small class="forge-branch-count">${learned.length}/${nodes.length} learned</small></span><span aria-hidden="true">${open ? "⌄" : "›"}</span>`,
-        `aria-expanded="${open}" aria-controls="branch-${escape(path.id)}"`, "forge-path-toggle")}</h4>
-      ${availability?.eligible ? control("forge-learn", next.id, "Learn now", `aria-label="Learn ${escape(next.name)} for ${availability.cost ?? "—"} DP"`, "primary forge-next-learn") : `<span class="forge-next-status">${next ? escape(stepStatus(model, next)) : `${learned.length} learned`}</span>`}
+      <h4>${next ? control("forge-path", path.id, `${title}<span aria-hidden="true">${open ? "⌄" : "›"}</span>`,
+        `aria-expanded="${open}" aria-controls="branch-${escape(path.id)}"`, "forge-path-toggle") : `<span class="forge-path-complete">${title}</span>`}</h4>
+      ${availability?.eligible ? control("forge-learn", next.id, "Learn now", `aria-label="Learn ${escape(next.name)} for ${availability.cost ?? "—"} DP"`, "primary forge-next-learn") : next ? `<span class="forge-next-status">${escape(stepStatus(model, next))}</span>` : ""}
     </div>
-    ${next ? `<div class="forge-next-mechanics">${book ? `<p class="forge-book-name">${escape(book.name)}</p>` : ""}${next.effect ? `<p class="forge-step-effect">${ruleInline(next.effect)}</p>` : ""}${spellSection(model, next)}</div>` : ""}
-    <div id="branch-${escape(path.id)}" ${open ? "" : "hidden"}>
-      ${open ? `<ol>${nodes.map((node) => stepRow(model, node, model.selection)).join("")}</ol>` : ""}
-    </div>
+    ${next && (availability.eligible || open || model.showAll) ? `<div class="forge-next-mechanics">${book ? `<p class="forge-book-name">${escape(book.name)}</p>` : ""}${next.effect ? `<p class="forge-step-effect">${ruleInline(next.effect)}</p>` : ""}${spellSection(model, next)}</div>` : ""}
+    ${learned.length ? `<ol class="forge-learned-steps" aria-label="${escape(path.name)} learned choices">${learned.map((node) => learnedStep(model, node)).join("")}</ol>` : ""}
+    ${next ? `<div id="branch-${escape(path.id)}" ${open ? "" : "hidden"}>
+      ${open ? `<ol>${nodes.filter((node) => !model.learned.has(node.id)).map((node) => stepRow(model, node, model.selection)).join("")}</ol>` : ""}
+    </div>` : ""}
   </section>`;
 }
 
@@ -270,8 +284,18 @@ function columnView(model) {
   const disciplines = model.filter === "all" ? model.studied : model.studied.filter(entry => entry.id === model.discipline?.id);
   const groups = disciplines.map(discipline => {
     const paths = discipline.paths.map(path => pathCard(model, path)).join("");
-    if (!paths) return "";
-    return `<section class="forge-learning-group" data-discipline="${escape(discipline.id)}"><h3>${disciplineToken(discipline.id)} ${escape(discipline.name)} <small>${disciplineCount(model, discipline)}</small></h3><div class="forge-paths">${paths}</div></section>`;
+    const source = model.sources[discipline.id]?.label;
+    const paid = !source && refundable(model, discipline.id);
+    if (!paths && !paid) return "";
+    const cost = model.eligibility(discipline.id).cost;
+    return `<section class="forge-learning-group" data-discipline="${escape(discipline.id)}">
+      <header class="forge-learning-group-head">
+        <h3>${disciplineToken(discipline.id)} ${escape(discipline.name)}</h3>
+        <small>${source ? `${escape(source)} · ` : paid ? `${cost ?? "—"} DP spent · ` : ""}${disciplineCount(model, discipline)}</small>
+        ${paid ? control("forge-refund", discipline.id, "Unlearn",
+          `aria-label="Unlearn ${escape(discipline.name)}" title="Unlearn this discipline and its dependent choices"`, "small forge-unlearn") : ""}
+      </header><div class="forge-paths">${paths}</div>
+    </section>`;
   }).join("");
   return `<div class="forge-list-toolbar">${control("forge-show-all", "toggle", "Show all branches", `aria-pressed="${model.showAll}"`, "small")}</div>${groups || '<p class="forge-empty">No choices available to purchase now. Show all branches to plan your next steps.</p>'}`;
 }
@@ -362,7 +386,7 @@ function forgeModel(graph, state, options) {
     graph, nodes, learned, view, selected, studied, discipline, atlasDiscipline,
     selection: options.selected,
     path: options.path,
-    filter: options.discipline ?? "all",
+    filter: view === "columns" ? requested?.id ?? "all" : options.discipline ?? "all",
     openPaths: new Set(options.openPaths ?? (options.path ? [options.path] : [])),
     showAll: options.showAll ?? false,
     chooser: options.chooser,

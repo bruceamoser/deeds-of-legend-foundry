@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { parseAbilityReference, parseAncestryReference } from "./choices.mjs";
 import {forgeSignatureRecord} from "../../src/rules/forge-signatures.mjs";
 import { SMALL_TALENT_IDS } from "../../src/rules/forge-rewrite.mjs";
+import { FORGE_STARTING_DP } from "../../src/rules/forge-character.mjs";
 
 const branchCosts = [1, 2, 2, 3, 4, 4, 5];
 const branchLevels = [1, 1, 1, 3, 3, 3, 7];
@@ -235,7 +236,7 @@ export function parseForge(read, list, sourceCommit) {
     spells = [],
     books = [];
   const development = read("design/development.md");
-  assert.ok(/8.*Guile.*Knowledge.*Reason/s.test(development), "Current creation DP rules missing");
+  assert.ok(development.includes(`**${FORGE_STARTING_DP} + Guile + Knowledge + Reason**`), "Current creation DP rules missing");
   const signatureSource = JSON.parse(read("design/signature-development.json"));
   const signatureDevelopment = normalizeSignatureDevelopment(signatureSource);
   assert.deepEqual(signatureDevelopment.choiceLevels, [1, 3, 7]);

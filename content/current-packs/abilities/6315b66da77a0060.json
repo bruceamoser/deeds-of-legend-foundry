@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div></dl><p>Maneuver · Reason. Give a familiar, cooperative nonmagical animal group of up to twelve one understandable direction: follow, wait, scatter to safety or approach a named visible place. Add 3/5/7 progress to the DA’s objective for overcoming present fear or confusion; ordinary cooperation with a safe instruction needs no roll. Completion gets the group carrying out that direction. This grants no attacks or additional combat turns; serious danger or mistreatment ends cooperation.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div></dl><p>Maneuver · Reason. Give up to twelve nonmagical animals that can perceive you one understandable direction: follow, wait, scatter to safety or approach a named visible place. For a group that needs coaxing, add 3/5/7 progress to the DA’s handling objective. A group already cooperating follows a safe instruction without a roll. Completion gets the group carrying out that direction. This grants no attacks or additional combat turns; serious danger or mistreatment ends cooperation.</p>",
     "activity": {
       "action": "maneuver",
       "rollMode": "attribute",
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "wilderness:animal-handling:7",
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "mastery",
@@ -34,7 +34,7 @@
         "duration": null,
         "attribute": "Reason",
         "defenseAttribute": null,
-        "effect": "Maneuver · Reason. Give a familiar, cooperative nonmagical animal group of up to twelve one understandable direction: follow, wait, scatter to safety or approach a named visible place. Add 3/5/7 progress to the DA’s objective for overcoming present fear or confusion; ordinary cooperation with a safe instruction needs no roll. Completion gets the group carrying out that direction. This grants no attacks or additional combat turns; serious danger or mistreatment ends cooperation.",
+        "effect": "Maneuver · Reason. Give up to twelve nonmagical animals that can perceive you one understandable direction: follow, wait, scatter to safety or approach a named visible place. For a group that needs coaxing, add 3/5/7 progress to the DA’s handling objective. A group already cooperating follows a safe instruction without a roll. Completion gets the group carrying out that direction. This grants no attacks or additional combat turns; serious danger or mistreatment ends cooperation.",
         "improves": null,
         "requires": [
           "wilderness:animal-handling:6"

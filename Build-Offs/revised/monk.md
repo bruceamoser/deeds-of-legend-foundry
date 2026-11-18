@@ -1,6 +1,6 @@
 # Sera Quietstep: monk after the rewrite
 
-Pinned authored source `e79dcd1e341169c380e3657fb73cd2968ac446d7`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../monk.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
+Pinned authored source `56f2ec94077407c56f60caa29345a5e3dca4c28b`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../monk.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
 
 ## What the rewrite changes
 
@@ -14,8 +14,8 @@ The character is not a Focus-point monk. Measured Guard still needs the readied 
 |---|---|---|---|
 | HP | 16 | 24 | 40 |
 | SP | 3 | 7 | 15 |
-| DP spent / total | 7 / 7 | 20 / 20 | 51 / 58 |
-| Unspent DP | 0 | 0 | 7 |
+| DP spent / total | 7 / 9 | 22 / 22 | 51 / 60 |
+| Unspent DP | 2 | 0 | 9 |
 | Learned action choices (Main / Maneuver / Reaction) | 1 / 1 / 2 | 2 / 1 / 3 | 3 / 2 / 5 |
 | Known book spells (free / paid) | 0 (0 / 0) | 0 (0 / 0) | 0 (0 / 0) |
 | Shared reserve: casts at 2 SP | 1 | 3 | 7 |
@@ -32,11 +32,11 @@ Equipment: Ordinary Melee Weapon (held); Travel Pack; Food Bundle; Water Flask; 
 
 The D&D baseline has **17 HP** and **AC 15 unarmored (10 + DEX 3 + WIS 2)** at level 2; HoL uses resistance and player defenses, so these are not equivalent durability measures. Learned action counts exclude universal actions and count signature passive modifications separately; spell choices are listed separately. A learned improvement changes an existing action, not another action button. Actual available actions still depend on equipment, targets and conditions.
 
-Creation remains **8 + Guile + Knowledge + Reason**, including negative scores, plus explicit ancestry benefits. Later awards are **4 + new level**. The completed `arms:unarmed` path costs **1+2+2+3+4+4+5 = 21 DP**; discipline entry, if purchased, is separate. These are sample choices, not an optimizer or evidence of playtest balance.
+Starting DP is **10 + Guile + Knowledge + Reason**, including negative scores, plus explicit ancestry benefits. Later awards are **4 + new level**. The completed `arms:unarmed` path costs **1+2+2+3+4+4+5 = 21 DP**; discipline entry, if purchased, is separate. These are sample choices, not an optimizer or evidence of playtest balance.
 
 ## Level 1
 
-[Import this ready character](builds/monk-level-1.hol.json). 0 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
+[Import this ready character](builds/monk-level-1.hol.json). 2 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
 
 | Learned purchase | DP paid | Character level |
 |---|---:|---:|
@@ -67,7 +67,7 @@ You must wield a melee weapon to use this guard and counterattack. A granted cou
 **Useful actions and improvements:**
 
 - **Empty-Hand Strike I:** Main Action · Brawn or Agility, chosen before rolling. Strike one adjacent creature unarmed for 2/3/5 physical damage. Choose an available hand, foot or other natural contact; restraint that prevents that contact prevents the strike. Empty-Hand Strike deals 3/4/6 physical damage. Empty-Hand Strike also applies Slowed 1 on Strong. Before rolling against a living creature with positive HP, you may declare the strike nonlethal: if its damage would reduce the target to 0 HP, leave it at 1 HP, Prone and Unconscious for 1 minute or until it next takes damage.
-- **Catch Your Balance I:** Reaction. When you would fall Prone, remain standing instead. You must be conscious and able to move. No roll.
+- **Catch Your Balance I:** Reaction. When you would fall Prone and can move, remain standing instead. No roll.
 - **Running Vault I:** Maneuver. After moving at least 2 squares this turn, jump up to 2 squares horizontally to a visible unoccupied landing. Spend no additional movement. Movement reactions apply.
 
 **Known book spells:** None.
@@ -89,6 +89,7 @@ You must wield a melee weapon to use this guard and counterattack. A granted cou
 | Flowing Hands II (`arms:unarmed:5`) | 4 | 3 |
 | Flowing Hands III (`arms:unarmed:6`) | 4 | 3 |
 | Catch Your Balance II (`athletics:balance:2`) | 2 | 3 |
+| Catch Your Balance III (`athletics:balance:3`) | 2 | 3 |
 
 **Signature choices:** level 1: Measured Guard; level 3: Return Stroke.
 
@@ -125,7 +126,7 @@ Declare this guard before defending and gain 1 Boon to the defense. Resolve the 
 **Useful actions and improvements:**
 
 - **Empty-Hand Strike I:** Main Action · Brawn or Agility, chosen before rolling. Strike one adjacent creature unarmed for 2/3/5 physical damage. Choose an available hand, foot or other natural contact; restraint that prevents that contact prevents the strike. Empty-Hand Strike deals 3/4/6 physical damage. Empty-Hand Strike also applies Slowed 1 on Strong. Before rolling against a living creature with positive HP, you may declare the strike nonlethal: if its damage would reduce the target to 0 HP, leave it at 1 HP, Prone and Unconscious for 1 minute or until it next takes damage.
-- **Catch Your Balance I:** Reaction. When you would fall Prone, remain standing instead. You must be conscious and able to move. No roll. Catch Your Balance can also catch a secure ledge within reach when you begin to fall, leaving you hanging instead. You need a free hand.
+- **Catch Your Balance I:** Reaction. When you would fall Prone and can move, remain standing instead. No roll. Catch Your Balance can also catch a secure ledge within reach when you begin to fall, leaving you hanging instead. You need a free hand. After Catch Your Balance, you may move 1 square to a safe unoccupied surface within reach without movement reactions.
 - **Running Vault I:** Maneuver. After moving at least 2 squares this turn, jump up to 2 squares horizontally to a visible unoccupied landing. Spend no additional movement. Movement reactions apply.
 - **Flowing Hands I:** Main Action · Brawn or Agility. Move up to 2 squares without movement reactions and strike up to two different creatures adjacent at any point of the route. Roll once; each takes 1/2/4 physical damage. You may make each strike nonlethal using Empty-Hand Strike’s declaration before rolling. Flowing Hands deals 2/3/5 physical damage to each target. Flowing Hands also applies Dazed 1 and pushes each target 2 squares directly away on Strong; resolve collisions normally.
 
@@ -135,7 +136,7 @@ Declare this guard before defending and gain 1 Boon to the defense. Resolve the 
 
 ## Level 7
 
-[Import this ready character](builds/monk-level-7.hol.json). 7 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
+[Import this ready character](builds/monk-level-7.hol.json). 9 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
 
 | Learned purchase | DP paid | Character level |
 |---|---:|---:|
@@ -148,8 +149,8 @@ Declare this guard before defending and gain 1 Boon to the defense. Resolve the 
 | Flowing Hands II (`arms:unarmed:5`) | 4 | 3 |
 | Flowing Hands III (`arms:unarmed:6`) | 4 | 3 |
 | Catch Your Balance II (`athletics:balance:2`) | 2 | 3 |
+| Catch Your Balance III (`athletics:balance:3`) | 2 | 3 |
 | Empty-Hand Tempest (`arms:unarmed:7`) | 5 | 7 |
-| Catch Your Balance III (`athletics:balance:3`) | 2 | 7 |
 | Catch Them Falling I (`athletics:balance:4`) | 3 | 7 |
 | Catch Them Falling II (`athletics:balance:5`) | 4 | 7 |
 | Catch Them Falling III (`athletics:balance:6`) | 4 | 7 |
@@ -208,11 +209,11 @@ Each round you have one additional Reaction usable for an opportunity attack. Yo
 **Useful actions and improvements:**
 
 - **Empty-Hand Strike I:** Main Action · Brawn or Agility, chosen before rolling. Strike one adjacent creature unarmed for 2/3/5 physical damage. Choose an available hand, foot or other natural contact; restraint that prevents that contact prevents the strike. Empty-Hand Strike deals 3/4/6 physical damage. Empty-Hand Strike also applies Slowed 1 on Strong. Before rolling against a living creature with positive HP, you may declare the strike nonlethal: if its damage would reduce the target to 0 HP, leave it at 1 HP, Prone and Unconscious for 1 minute or until it next takes damage.
-- **Catch Your Balance I:** Reaction. When you would fall Prone, remain standing instead. You must be conscious and able to move. No roll. Catch Your Balance can also catch a secure ledge within reach when you begin to fall, leaving you hanging instead. You need a free hand. After Catch Your Balance, you may move 1 square to a safe unoccupied surface within reach without movement reactions.
+- **Catch Your Balance I:** Reaction. When you would fall Prone and can move, remain standing instead. No roll. Catch Your Balance can also catch a secure ledge within reach when you begin to fall, leaving you hanging instead. You need a free hand. After Catch Your Balance, you may move 1 square to a safe unoccupied surface within reach without movement reactions.
 - **Running Vault I:** Maneuver. After moving at least 2 squares this turn, jump up to 2 squares horizontally to a visible unoccupied landing. Spend no additional movement. Movement reactions apply. Running Vault reaches up to 3 squares. Running Vault ignores movement reactions during the jump.
 - **Flowing Hands I:** Main Action · Brawn or Agility. Move up to 2 squares without movement reactions and strike up to two different creatures adjacent at any point of the route. Roll once; each takes 1/2/4 physical damage. You may make each strike nonlethal using Empty-Hand Strike’s declaration before rolling. Flowing Hands deals 2/3/5 physical damage to each target. Flowing Hands also applies Dazed 1 and pushes each target 2 squares directly away on Strong; resolve collisions normally.
 - **Empty-Hand Tempest:** Main Action · Brawn or Agility. Move up to 4 squares without movement reactions and strike up to three different adjacent creatures along that route. Roll once; each takes 3/5/7 physical damage, and on Strong becomes Prone. You may declare these strikes nonlethal before rolling. Once per scene, after the strikes, move up to 2 further squares without movement reactions.
-- **Catch Them Falling I:** Reaction. Catch one adjacent falling creature no larger than you. With secure footing and a free hand, bring it into a free adjacent square. Otherwise, if a reachable hold supports both of you, you both hang there. Without a suitable hold this intervention is unavailable. No roll. Before Catch Them Falling, move 1 square along a safe surface without movement reactions to reach the falling creature. Catch Them Falling can catch a creature one Size larger than you when your footing and anchor support both creatures.
+- **Catch Them Falling I:** Reaction. Use a free hand to catch one adjacent falling creature no larger than you. From secure footing, bring it into a free adjacent square. You can instead hang together from a reachable hold that supports you both. No roll. Before Catch Them Falling, move 1 square along a safe surface without movement reactions to reach the falling creature. Catch Them Falling can catch a creature one Size larger than you when your footing and anchor support both creatures.
 - **Defy the Fall:** Reaction. When a rope-linked group begins to fall, secure its rope to an anchor within reach or hold it yourself. Arrest the falls of up to four connected creatures whose combined weight the rope and anchor can bear; if holding it yourself, the load cannot exceed twice your normal carrying capacity. They hang from the rope and take no damage from this arrested fall. Spend a Main Action on each following turn to hold it yourself; releasing or losing the support resumes the fall. No roll.
 - **Follow My Leap I:** Maneuver. Use Running Vault and guide one willing adjacent ally through the same jump immediately after you. It lands adjacent to your destination; both landings must be legal.
 - **Quiet Passage I:** Passive. Gain 1 Boon on Agility rolls to move quietly while concealed. Concealment needs cover or a plausible distraction.
@@ -223,7 +224,7 @@ Each round you have one additional Reaction usable for an opportunity attack. Yo
 
 ## Deferred choices
 
-- Level 3: Catch Your Balance III — Costs 2 DP. You have 0 DP.
+Every planned choice was affordable when scheduled.
 
 ## Playtest questions
 

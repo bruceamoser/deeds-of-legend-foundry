@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Timed work</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div></dl><p>10 minutes · Reason. Present a case supported by investigated evidence, including a physical exhibit you can demonstrate, to up to four decision-makers who understand you. Roll once; add 3/5/7 progress to each relevant acceptance objective. On completion a listener acknowledges the supported facts and grants the attainable concession established with the DA. Unsupported claims and inaccessible facts remain unproven.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Timed work</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div></dl><p>10 minutes · Reason. Present your findings and their supporting evidence to up to four decision-makers who understand you. Use testimony, records, exhibits or an explanation of what you found. Roll once; add 3/5/7 progress to each relevant acceptance objective. On completion a listener acknowledges the supported facts and grants the attainable concession established with the DA. Unsupported claims and inaccessible facts remain unproven.</p>",
     "activity": {
       "action": "other",
       "rollMode": "attribute",
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "scholarship:investigation:7",
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "mastery",
@@ -34,7 +34,7 @@
         "duration": null,
         "attribute": "Reason",
         "defenseAttribute": null,
-        "effect": "10 minutes · Reason. Present a case supported by investigated evidence, including a physical exhibit you can demonstrate, to up to four decision-makers who understand you. Roll once; add 3/5/7 progress to each relevant acceptance objective. On completion a listener acknowledges the supported facts and grants the attainable concession established with the DA. Unsupported claims and inaccessible facts remain unproven.",
+        "effect": "10 minutes · Reason. Present your findings and their supporting evidence to up to four decision-makers who understand you. Use testimony, records, exhibits or an explanation of what you found. Roll once; add 3/5/7 progress to each relevant acceptance objective. On completion a listener acknowledges the supported facts and grants the attainable concession established with the DA. Unsupported claims and inaccessible facts remain unproven.",
         "improves": null,
         "requires": [
           "scholarship:investigation:6"

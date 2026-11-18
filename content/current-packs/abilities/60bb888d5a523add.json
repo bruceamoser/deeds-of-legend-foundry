@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div></dl><p>Maneuver. Once per creature per scene, expose one vulnerability in a visible enemy’s anatomy, construction or tactics that you established through evidence. Up to four allies within 6 squares who perceive your explanation gain 2 Boons on their next attack against it before your next turn ends; each such attack ignores 1 point of one matching resistance. Immunity remains. This replaces the preceding step’s weaker weakness benefit for that creature; it creates no vulnerability unsupported by the evidence.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div></dl><p>Maneuver. Once per creature per scene, describe an opening in a visible enemy’s stance, construction or tactics. Up to four allies within 6 squares who perceive your explanation gain 2 Boons on their next attack against it before your next turn ends; each such attack ignores 1 point of one matching resistance. Immunity remains. Use this benefit in place of Prepared Retreat’s attack Boon for that creature.</p>",
     "activity": {
       "action": "maneuver",
       "rollMode": "none",
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "scholarship:planning:7",
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "mastery",
@@ -34,7 +34,7 @@
         "duration": null,
         "attribute": null,
         "defenseAttribute": null,
-        "effect": "Maneuver. Once per creature per scene, expose one vulnerability in a visible enemy’s anatomy, construction or tactics that you established through evidence. Up to four allies within 6 squares who perceive your explanation gain 2 Boons on their next attack against it before your next turn ends; each such attack ignores 1 point of one matching resistance. Immunity remains. This replaces the preceding step’s weaker weakness benefit for that creature; it creates no vulnerability unsupported by the evidence.",
+        "effect": "Maneuver. Once per creature per scene, describe an opening in a visible enemy’s stance, construction or tactics. Up to four allies within 6 squares who perceive your explanation gain 2 Boons on their next attack against it before your next turn ends; each such attack ignores 1 point of one matching resistance. Immunity remains. Use this benefit in place of Prepared Retreat’s attack Boon for that creature.",
         "improves": null,
         "requires": [
           "scholarship:planning:6"

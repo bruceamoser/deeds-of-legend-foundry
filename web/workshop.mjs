@@ -19,7 +19,7 @@ import { signatureSpellCost, isForgeRitual, isForgeModifier, forgeCastOptions, f
 import { forgeEligibility, refundForgePurchases } from "./rules/forge.mjs";
 import { currentResourceInput } from "./rules/resource-input.mjs";
 import { workshopCatalogs } from "./rules/workshop-forge-catalog.mjs";
-import { forgeArmorRequirement } from "./rules/forge-character.mjs";
+import { FORGE_STARTING_DP, forgeArmorRequirement } from "./rules/forge-character.mjs";
 import { ruleBlockMarkup, ruleInline } from "./rules-view.mjs";
 import {
   workshopCraft,
@@ -941,7 +941,7 @@ function builder() {
 }
 function builderContent() {
   if (step === 0)
-    return `${heading("Step 1 of 7", "Identity & attributes", "Start with a name and six attributes. You can revisit every choice.")}<div class="field-grid">${field("Character name", "name", draft.name, "text", 'maxlength="200"')}</div><h3 class="section-title" style="margin-top:14px">Your attributes</h3><p class="inline-help">Assign −2 to +2 to each attribute, totaling +3. Your starting DP is 8 + Guile + Knowledge + Reason, plus any ancestry benefit that grants DP. Unspent DP carries forward.</p><div class="field-grid" style="margin-top:10px">${ATTRIBUTES.map((key) => field(title(key), `attributes.${key}`, draft.attributes[key], "number", 'min="-2" max="2" step="1"')).join("")}</div><div class="callout" style="margin-top:10px">Assigned total: <strong data-creation-attribute-total>${signed(Object.values(draft.attributes).reduce((a, b) => a + b, 0))} / +3</strong></div>`;
+    return `${heading("Step 1 of 7", "Identity & attributes", "Start with a name and six attributes. You can revisit every choice.")}<div class="field-grid">${field("Character name", "name", draft.name, "text", 'maxlength="200"')}</div><h3 class="section-title" style="margin-top:14px">Your attributes</h3><p class="inline-help">Assign −2 to +2 to each attribute, totaling +3. Your starting DP is ${FORGE_STARTING_DP} + Guile + Knowledge + Reason, plus any ancestry benefit that grants DP. Unspent DP carries forward.</p><div class="field-grid" style="margin-top:10px">${ATTRIBUTES.map((key) => field(title(key), `attributes.${key}`, draft.attributes[key], "number", 'min="-2" max="2" step="1"')).join("")}</div><div class="callout" style="margin-top:10px">Assigned total: <strong data-creation-attribute-total>${signed(Object.values(draft.attributes).reduce((a, b) => a + b, 0))} / +3</strong></div>`;
   if (step === 1) {
     const ancestry = get(draft.ancestryId),
       options = campaignLanguageOptions(catalogs.languages, draft.languages);

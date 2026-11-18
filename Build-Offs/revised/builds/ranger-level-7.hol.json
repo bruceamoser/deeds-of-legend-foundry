@@ -1,7 +1,7 @@
 {
   "format": "heroes-of-legend-character",
   "schemaVersion": 7,
-  "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+  "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
   "draft": {
     "name": "Eryn Mossarrow",
     "attributes": {
@@ -163,6 +163,9 @@
             },
             {
               "id": "marksmanship:precision:6"
+            },
+            {
+              "id": "wilderness:tracking:2"
             }
           ],
           "acquisitions": {},
@@ -189,9 +192,6 @@
           "purchases": [
             {
               "id": "marksmanship:precision:7"
-            },
-            {
-              "id": "wilderness:tracking:2"
             },
             {
               "id": "wilderness:tracking:3"

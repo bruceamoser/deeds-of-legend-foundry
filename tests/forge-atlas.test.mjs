@@ -60,6 +60,30 @@ test("available-next list advances after learning and expands all seven steps fo
   assert.doesNotMatch(html,/Path 1 — Technique 1-2/);
 });
 
+test("the default list shows bought steps, completed paths, and bought disciplines with no DP", () => {
+  const graph = fixture();
+  const complete = graph.disciplines[0].paths[0].steps;
+  const learned = ["arms", ...complete, "arms:path-1:1"];
+  const state = { learned, level: 7, dp: 0 };
+  const html = renderForge(graph, state, { canRefund: id => learned.includes(id) });
+  assert.match(html, /Path 0 — Complete/);
+  assert.match(html, /Technique 0-7 <small>5 DP spent<\/small>/);
+  assert.match(html, /aria-label="Unlearn Technique 0-7"/);
+  assert.match(html, /Path 1 — Technique 1-2 — 2 DP/);
+  assert.match(html, /aria-label="Unlearn Technique 1-1"/);
+  assert.match(html, /aria-label="Unlearn Arms"/);
+  assert.doesNotMatch(html, /data-action="forge-learn"/);
+  assert.doesNotMatch(html, /data-path="arms:path-2"/);
+
+  const granted = renderForge(graph, state, {
+    canRefund: id => id !== "arms",
+    sources: { arms: { label: "Class" } },
+  });
+  assert.match(granted, /Class · 8 learned/);
+  assert.doesNotMatch(granted, /aria-label="Unlearn Arms"/);
+  assert.match(granted, /aria-label="Unlearn Technique 1-1"/);
+});
+
 const currentGraph = JSON.parse(await readFile(new URL("../static/data/forge.json", import.meta.url), "utf8"));
 test("every real spellbook has the same seven-node geometry and sequential path as a martial branch", () => {
   const before=JSON.stringify(currentGraph);

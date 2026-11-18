@@ -25,7 +25,7 @@ test("level-one DP supports physical, battle-caster, and broad generalist builds
   physical.purchases[1] = purchases("flame:0", "flame:1", "air:0", "air:1");
   let state = hero(physical);
   assert.deepEqual(state.errors, []);
-  assert.deepEqual(state.development, { level: 1, current: 0, spent: 6, total: 6, expired: 0 });
+  assert.deepEqual(state.development, { level: 1, current: 2, spent: 6, total: 8, expired: 0 });
   assert.equal(state.limits.maxSp, 3);
   assert.equal(state.state.learning.spells.length, 8);
   assert.ok(state.state.learning.spells.some((spell) => spell.action === "Maneuver" && spell.sp === 0));
@@ -36,7 +36,7 @@ test("level-one DP supports physical, battle-caster, and broad generalist builds
   caster.purchases[1] = purchases("flame:0", "flame:1", "air:0", "air:1", "water:0", "spellcraft:soul-capacity:1", "spellcraft:mind-capacity:1", "spellcraft:recovery:1");
   state = hero(caster);
   assert.deepEqual(state.errors, []);
-  assert.equal(state.development.total, 10);
+  assert.equal(state.development.total, 12);
   assert.equal(state.limits.maxSp, 11);
   assert.equal(state.state.learning.spells.length, 10);
   assert.ok(state.state.learning.spells.some((spell) => spell.action === "Main Action" && spell.sp === 0));
@@ -48,7 +48,7 @@ test("level-one DP supports physical, battle-caster, and broad generalist builds
   broad.acquisitions = {"craft:workshop:1": {recipes:["recipe-bound-torches","recipe-travel-food"]}, "craft:workshop:2":{recipes:["recipe-twisted-cord","recipe-wooden-brace"]}};
   state = hero(broad);
   assert.deepEqual(state.errors, []);
-  assert.equal(state.development.total, 13);
+  assert.equal(state.development.total, 15);
   assert.ok(state.state.learning.abilities.length >= 5);
   assert.equal(state.state.recipes.length, 4);
   assert.ok(state.state.learning.spells.some((spell) => spell.action === "Ritual"));
@@ -101,7 +101,7 @@ test("a mixed martial and magical build reaches its own level-seven masteries wi
   draft.purchases[1] = [];
   draft.progression = { level: 7, levels: {} };
   let state = hero(draft).state;
-  assert.equal(state.dp, 62);
+  assert.equal(state.dp, 64);
   const { nodes } = forgeIndex(forge);
   const learnPath = key => {
     if (state.learned.includes(key)) return;
@@ -119,7 +119,7 @@ test("a mixed martial and magical build reaches its own level-seven masteries wi
   assert.equal(forgeEligibility(forge,{...state,level:6},mastery).eligible,false);
   assert.equal(forgeEligibility(forge,{...state,learned:state.learned.filter(id=>id!=="air:5")},mastery).eligible,false);
   learnPath(mastery);
-  assert.equal(state.dp,17); // 62 - Arms entry3 - martial path21 - spellbook21.
+  assert.equal(state.dp,19); // 64 - Arms entry3 - martial path21 - spellbook21.
   assert.ok(!forge.nodes.some(node=>node.kind==="combined"));
 });
 
@@ -158,10 +158,10 @@ test("class-priced discipline purchases replay, refund, and export at their paid
   assert.equal(readPortableCharacter(JSON.parse(exported), catalogs).preview.development.current, bought.development.current);
   draft.purchases[1] = [];
   assert.equal(hero(draft).development.current, before.development.current);
-  draft.purchases[1] = purchases("arms", "armor", "guard", "wilderness");
+  draft.purchases[1] = purchases("arms", "armor", "guard", "wilderness", "fencing");
   const overBudget = hero(draft);
   assert.ok(overBudget.errors.some(error => error.code === "purchase"));
-  assert.equal(draft.purchases[1].length, 4, "unaffordable stored choices remain repairable");
+  assert.equal(draft.purchases[1].length, 5, "unaffordable stored choices remain repairable");
 });
 
 test("schema-7 imports return DP for retired Small Talents and keep active purchases", () => {

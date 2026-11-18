@@ -1,6 +1,6 @@
 # Eryn Mossarrow: ranger after the rewrite
 
-Pinned authored source `e79dcd1e341169c380e3657fb73cd2968ac446d7`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../ranger.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
+Pinned authored source `56f2ec94077407c56f60caa29345a5e3dca4c28b`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../ranger.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
 
 ## What the rewrite changes
 
@@ -14,8 +14,8 @@ This hunter line chooses archery over the animal-companion line. It does not get
 |---|---|---|---|
 | HP | 15 | 23 | 39 |
 | SP | 5 | 9 | 17 |
-| DP spent / total | 8 / 8 | 21 / 21 | 57 / 59 |
-| Unspent DP | 0 | 0 | 2 |
+| DP spent / total | 8 / 10 | 23 / 23 | 57 / 61 |
+| Unspent DP | 2 | 0 | 4 |
 | Learned action choices (Main / Maneuver / Reaction) | 2 / 1 / 1 | 4 / 1 / 1 | 8 / 1 / 1 |
 | Known book spells (free / paid) | 4 (2 / 2) | 4 (2 / 2) | 12 (2 / 10) |
 | Shared reserve: casts at 2 SP | 2 | 4 | 8 |
@@ -32,11 +32,11 @@ Equipment: Ordinary Ranged Weapon (held); Ammunition Bundle; Travel Pack; Food B
 
 The D&D baseline has **20 HP** and **AC 15 (Studded Leather 12 + DEX 3)** at level 2; HoL uses resistance and player defenses, so these are not equivalent durability measures. Learned action counts exclude universal actions and count signature passive modifications separately; spell choices are listed separately. A learned improvement changes an existing action, not another action button. Actual available actions still depend on equipment, targets and conditions.
 
-Creation remains **8 + Guile + Knowledge + Reason**, including negative scores, plus explicit ancestry benefits. Later awards are **4 + new level**. The completed `marksmanship:precision` path costs **1+2+2+3+4+4+5 = 21 DP**; discipline entry, if purchased, is separate. These are sample choices, not an optimizer or evidence of playtest balance.
+Starting DP is **10 + Guile + Knowledge + Reason**, including negative scores, plus explicit ancestry benefits. Later awards are **4 + new level**. The completed `marksmanship:precision` path costs **1+2+2+3+4+4+5 = 21 DP**; discipline entry, if purchased, is separate. These are sample choices, not an optimizer or evidence of playtest balance.
 
 ## Level 1
 
-[Import this ready character](builds/ranger-level-1.hol.json). 0 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
+[Import this ready character](builds/ranger-level-1.hol.json). 2 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
 
 | Learned purchase | DP paid | Character level |
 |---|---:|---:|
@@ -69,7 +69,7 @@ The benefit ends when you aim at another target or the scene ends. You must stil
 **Useful actions and improvements:**
 
 - **Measured Shot I:** Main Action · Agility. Attack one creature within 8 squares for 2/3/5 physical damage. Measured Shot deals 3/4/6 physical damage.
-- **Watchful Shot I:** Reaction · Agility. When a visible enemy within 6 squares finishes voluntary movement adjacent to an ally, attack it for 1/2/3 physical damage. Resolve after the movement; you need a ready weapon.
+- **Watchful Shot I:** Reaction · Agility. When a visible enemy within 6 squares finishes voluntary movement, attack it for 1/2/3 physical damage after that movement.
 - **Read the Trail I:** Main Action · Reason. Read tracks or signs immediately before you; add 1/2/3 progress toward identifying direction, approximate numbers and freshness. Following a trail to the next landmark takes 10 minutes per attempt instead. The DA defines each objective from accessible evidence.
 - **Wild Harvest I:** 1 hour · Knowledge. Search an accessible area with plausible resources; gather 1/2/3 person-days of food, or that much drinkable water if a source exists. The DA defines the area before rolling. You can also spend 1 hour with available materials to shelter two people from ordinary rain and wind, without a roll.
 
@@ -94,6 +94,7 @@ The benefit ends when you aim at another target or the scene ends. You must stil
 | Split the Flight I (`marksmanship:precision:4`) | 3 | 3 |
 | Split the Flight II (`marksmanship:precision:5`) | 4 | 3 |
 | Split the Flight III (`marksmanship:precision:6`) | 4 | 3 |
+| Read the Trail II (`wilderness:tracking:2`) | 2 | 3 |
 
 **Signature choices:** level 1: Steady Aim; level 3: Volley.
 
@@ -130,8 +131,8 @@ Requires a ranged weapon and ammunition. Make one Agility roll and apply it to e
 **Useful actions and improvements:**
 
 - **Measured Shot I:** Main Action · Agility. Attack one creature within 8 squares for 2/3/5 physical damage. Measured Shot deals 3/4/6 physical damage. Measured Shot has range 12 squares.
-- **Watchful Shot I:** Reaction · Agility. When a visible enemy within 6 squares finishes voluntary movement adjacent to an ally, attack it for 1/2/3 physical damage. Resolve after the movement; you need a ready weapon.
-- **Read the Trail I:** Main Action · Reason. Read tracks or signs immediately before you; add 1/2/3 progress toward identifying direction, approximate numbers and freshness. Following a trail to the next landmark takes 10 minutes per attempt instead. The DA defines each objective from accessible evidence.
+- **Watchful Shot I:** Reaction · Agility. When a visible enemy within 6 squares finishes voluntary movement, attack it for 1/2/3 physical damage after that movement.
+- **Read the Trail I:** Main Action · Reason. Read tracks or signs immediately before you; add 1/2/3 progress toward identifying direction, approximate numbers and freshness. Following a trail to the next landmark takes 10 minutes per attempt instead. The DA defines each objective from accessible evidence. Read the Trail adds 1/3/4 progress.
 - **Wild Harvest I:** 1 hour · Knowledge. Search an accessible area with plausible resources; gather 1/2/3 person-days of food, or that much drinkable water if a source exists. The DA defines the area before rolling. You can also spend 1 hour with available materials to shelter two people from ordinary rain and wind, without a roll.
 - **Split the Flight I:** Main Action · Agility. Attack up to three creatures within 8 squares. Roll once; each takes 1/2/4 physical damage. Each is struck once. Split the Flight has range 12 squares. Split the Flight deals 2/3/5 physical damage. You may also spend a Main Action observing one visible creature within 12 squares to mark a vulnerable part of its anatomy or construction for this scene; no roll. The DA identifies a plausible exposed part, or states that none is visible.
 
@@ -141,7 +142,7 @@ Requires a ranged weapon and ammunition. Make one Agility roll and apply it to e
 
 ## Level 7
 
-[Import this ready character](builds/ranger-level-7.hol.json). 2 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
+[Import this ready character](builds/ranger-level-7.hol.json). 4 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
 
 | Learned purchase | DP paid | Character level |
 |---|---:|---:|
@@ -156,8 +157,8 @@ Requires a ranged weapon and ammunition. Make one Agility roll and apply it to e
 | Split the Flight I (`marksmanship:precision:4`) | 3 | 3 |
 | Split the Flight II (`marksmanship:precision:5`) | 4 | 3 |
 | Split the Flight III (`marksmanship:precision:6`) | 4 | 3 |
+| Read the Trail II (`wilderness:tracking:2`) | 2 | 3 |
 | Anatomist’s Volley (`marksmanship:precision:7`) | 5 | 7 |
-| Read the Trail II (`wilderness:tracking:2`) | 2 | 7 |
 | Read the Trail III (`wilderness:tracking:3`) | 2 | 7 |
 | Cut Them Off I (`wilderness:tracking:4`) | 3 | 7 |
 | Cut Them Off II (`wilderness:tracking:5`) | 4 | 7 |
@@ -222,13 +223,13 @@ This ordinary mark is a physical luminous substance. An attack always applies it
 **Useful actions and improvements:**
 
 - **Measured Shot I:** Main Action · Agility. Attack one creature within 8 squares for 2/3/5 physical damage. Measured Shot deals 3/4/6 physical damage. Measured Shot has range 12 squares.
-- **Watchful Shot I:** Reaction · Agility. When a visible enemy within 6 squares finishes voluntary movement adjacent to an ally, attack it for 1/2/3 physical damage. Resolve after the movement; you need a ready weapon. Watchful Shot has range 8 squares.
+- **Watchful Shot I:** Reaction · Agility. When a visible enemy within 6 squares finishes voluntary movement, attack it for 1/2/3 physical damage after that movement. Watchful Shot has range 8 squares.
 - **Read the Trail I:** Main Action · Reason. Read tracks or signs immediately before you; add 1/2/3 progress toward identifying direction, approximate numbers and freshness. Following a trail to the next landmark takes 10 minutes per attempt instead. The DA defines each objective from accessible evidence. Read the Trail adds 1/3/4 progress. Read the Trail takes 5 minutes per attempt when following a trail.
 - **Wild Harvest I:** 1 hour · Knowledge. Search an accessible area with plausible resources; gather 1/2/3 person-days of food, or that much drinkable water if a source exists. The DA defines the area before rolling. You can also spend 1 hour with available materials to shelter two people from ordinary rain and wind, without a roll.
 - **Split the Flight I:** Main Action · Agility. Attack up to three creatures within 8 squares. Roll once; each takes 1/2/4 physical damage. Each is struck once. Split the Flight has range 12 squares. Split the Flight deals 2/3/5 physical damage. You may also spend a Main Action observing one visible creature within 12 squares to mark a vulnerable part of its anatomy or construction for this scene; no roll. The DA identifies a plausible exposed part, or states that none is visible.
-- **Anatomist’s Volley:** Main Action · Agility. Attack up to three enemies within 12 squares whose vulnerable anatomy or construction you have observed through Split the Flight’s study or established evidence. Roll once; each takes 3/5/8 physical damage, ignoring up to 2 physical resistance. Immunity and other reductions still apply. Study does not create a vulnerability where none exists.
-- **Cut Them Off I:** Main Action · Reason to interpret a visible junction on a trail you followed, or 10 minutes to scout a wider interception route. Add 1/2/3 progress toward finding a physically feasible interception. Completion reveals the route and travel time, not a guarantee of arriving first. Cut Them Off adds 1/3/4 progress. After completing Cut Them Off, you and up to four companions gain 1 Boon on travel rolls to traverse that identified route until its next landmark. Changed or blocked terrain requires a new route.
-- **Unerring Pursuit:** Main Action · Reason at a visible junction, or 10 minutes to scout the surrounding area. From a trail you followed, add 3/5/7 progress toward predicting the quarry’s next reachable landmark from its tracks and known terrain. Completion identifies the best-supported destination and gaps in the evidence. You and up to six companions gain 2 Boons on pursuit and traversal rolls along that route until reaching it. This does not locate a quarry that left no readable evidence.
+- **Anatomist’s Volley:** Main Action · Agility. Attack up to three enemies within 12 squares. Roll once. Each takes 3/5/8 physical damage. For a target whose vulnerable part you know from Split the Flight’s study or evidence, apply that hit ignoring up to 2 physical resistance. Apply immunity and other reductions normally.
+- **Cut Them Off I:** Main Action · Reason to interpret a visible junction on a readable trail, or 10 minutes to scout a wider interception route. Add 1/2/3 progress toward finding a physically feasible interception. Completion reveals the route and travel time, not a guarantee of arriving first. Cut Them Off adds 1/3/4 progress. After completing Cut Them Off, you and up to four companions gain 1 Boon on travel rolls to traverse that identified route until its next landmark. Changed or blocked terrain requires a new route.
+- **Unerring Pursuit:** Main Action · Reason at a visible junction, or 10 minutes to scout the surrounding area. From a trail you can read, add 3/5/7 progress toward predicting the quarry’s next reachable landmark from its tracks and known terrain. Completion identifies the best-supported destination and gaps in the evidence. You and up to six companions gain 2 Boons on pursuit and traversal rolls along that route until reaching it. This does not locate a quarry that left no readable evidence.
 
 **Known book spells:** Ray of Frost (Main Action; SP 0); Create or Destroy Water (Ritual; SP 1); Enchanted Rope (Maneuver; SP 0); Loosen Earth (Ritual; SP 1); Purify Food and Drink (Ritual; SP 1); Water Breathing (Main Action; SP 2); Water Walk (Main Action; SP 2); Control Water (Main Action; SP 3); Ice Storm (Main Action; SP 3); Wall of Ice (Main Action; SP 4); Earthwall (Main Action; SP 1); Cracks Call (Main Action; SP 2).
 
@@ -236,7 +237,7 @@ This ordinary mark is a physical luminous substance. An attack always applies it
 
 ## Deferred choices
 
-- Level 3: Read the Trail II — Costs 2 DP. You have 0 DP.
+- Level 3: Read the Trail III — Costs 2 DP. You have 0 DP.
 
 ## Playtest questions
 
