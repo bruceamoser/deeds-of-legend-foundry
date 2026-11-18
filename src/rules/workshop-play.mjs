@@ -4,6 +4,7 @@ import { WOUND_TABLES } from "./damage.mjs";
 import { woundRoll } from "./wounds.mjs";
 import { normalizeForgeRecovery } from "./forge-recovery.mjs";
 import { normalizeRecovery } from "./recovery.mjs";
+import { LEARNED_GEAR_PREFIX } from "./training-equipment.mjs";
 import {
   CONDITION_KINDS,
   conditionSummary,
@@ -290,7 +291,7 @@ export function normalizeWorkshopPlay(
             !instance(id) ||
             !object(v) ||
             Object.keys(v).some(
-              (k) => !["quantity", "inventoryDie", "name"].includes(k),
+              (k) => !["quantity", "inventoryDie", "name", "waterUnits"].includes(k),
             )
           )
             fail();
@@ -312,12 +313,25 @@ export function normalizeWorkshopPlay(
             if (![0, 4, 6, 8, 10, 12, 20].includes(v.inventoryDie)) fail();
             next.inventoryDie = v.inventoryDie;
           }
+          if (v.waterUnits !== undefined) {
+            if (!Number.isSafeInteger(v.waterUnits) || v.waterUnits < 0 || v.waterUnits > 10000) fail();
+            next.waterUnits = v.waterUnits;
+          }
           return [id, next];
         }),
       );
     }
     const seen = new Set();
     result.inventory.removed = [...new Set(inv.removed)];
+    if (inv.ammunition !== undefined) {
+      if (!object(inv.ammunition) || Object.keys(inv.ammunition).length > 500 ||
+          !Object.entries(inv.ammunition).every(([weapon, ammo]) => instance(weapon) && instance(ammo))) fail();
+      result.inventory.ammunition = { ...inv.ammunition };
+    }
+    if (inv.sold !== undefined) {
+      if (!list(inv.sold, 4) || !inv.sold.every(id => instance(id) && /^shop-starter-/.test(id) && result.inventory.removed.includes(id))) fail();
+      result.inventory.sold = [...new Set(inv.sold)];
+    }
     result.inventory.added = inv.added.map((item) => {
       if (
         !object(item) ||
@@ -433,7 +447,7 @@ export function workshopPlay(draft, inventoryItems, languages, catalogs) {
         quantity: item.quantity,
         hands: def.handChoices[0] ?? 0,
         inventoryDie: def.inventoryDie,
-        source: "play",
+        source: item.instanceId.startsWith(LEARNED_GEAR_PREFIX) ? "training" : "play",
       };
     }),
   ]
@@ -441,6 +455,7 @@ export function workshopPlay(draft, inventoryItems, languages, catalogs) {
     .map((item) => ({
       ...item,
       ...play.inventory.overrides?.[item.instanceId],
+      ...(play.inventory.ammunition?.[item.instanceId] ? { ammunitionInstanceId: play.inventory.ammunition[item.instanceId] } : {}),
     }));
   const known = new Map(
     languages.map((lang) => [lang.id, structuredClone(lang)]),

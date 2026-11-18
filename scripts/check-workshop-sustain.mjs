@@ -72,7 +72,7 @@ try {
   await mkdir(artifacts, { recursive: true });
   await openSpellbook();
   await expect(sp).toHaveValue("17");
-  await expect(sp).toHaveAttribute("max", "17");
+  await expect(sp).toHaveAttribute("aria-valuemax", "17");
   const ritualRow = page.locator('[data-action-row="spell:farseeing:2"]');
   await ritualRow.getByRole("button", { name: "Expand Clairvoyance", exact: true }).click();
   await expect(page.locator('[data-detail-id="spell:farseeing:2"]')).toContainText("Ritual · 1 minute");

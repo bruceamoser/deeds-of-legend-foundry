@@ -1,7 +1,8 @@
 import {assertSummonPresent} from "../rules/summon-profile.mjs";
 import { ensureAuthorityReady } from "./authority.mjs";
 import { assertNoPendingActorPotion } from "./turn-lock.mjs";
-import { renderMarkdown } from "../sheets/creature-reference.mjs";
+import { renderMarkdown } from "../rules/authored-markdown.mjs";
+import { printedCreatureDamageType } from "../rules/creature-actions.mjs";
 import { numericCreatureAction } from "../rules/numeric-creature-actions.mjs";
 import { declareAction, continueAction } from "../rules/actions.mjs";
 import { actionConditions } from "./turn-budget.mjs";
@@ -54,7 +55,7 @@ export async function declareCreatureAction(actor, actionId) {
   const reference = {
     ...(encounters.length === 1 ? { combatId: encounters[0].id } : {}),
     resolution: numeric ? "numeric" : "reference",
-    damageType: /\*\*Damage type:\*\*\s*(physical|fire|cold|lightning|mental|radiant|life)/i.exec(action.referenceMarkdown ?? "")?.[1]?.toLowerCase() ?? null,
+    damageType: printedCreatureDamageType(action.referenceMarkdown),
     ...(numeric ? { damage: numeric.damage, damageType: numeric.damageType,
       numericSource: {catalogId, sourceCommit, action: structuredClone(action)} } : {}),
     actorUuid: actor.uuid,

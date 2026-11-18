@@ -53,7 +53,8 @@ try {
     .getByRole("heading", { name: "Borin Bridgekeeper", exact: true })
     .waitFor();
   const hp = page.getByRole("spinbutton", { name: "Current HP", exact: true });
-  const max = Number(await hp.getAttribute("max"));
+  const max = Number(await hp.getAttribute("aria-valuemax"));
+  assert(max > 0);
   assert.equal(Number(await hp.inputValue()), max);
   await hp.fill("3");
   await hp.press("Tab");

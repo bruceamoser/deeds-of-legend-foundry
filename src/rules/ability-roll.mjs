@@ -1,7 +1,12 @@
 import {DAMAGE_TYPES} from "./damage.mjs";
 import {printedDamageChoices} from "./attack-outcomes.mjs";
+import {workshopRollAttributes} from "./workshop-ability.mjs";
+import {basicAttackDamageProfile,nativeWeaponTrainingIds} from "./weapon-training.mjs";
 import {reactionTrigger} from "./ability-roll-relevance.mjs";
 /** Printed roll metadata is independent of whether an effect has an automation adapter. */
+const TIERS = ['weak', 'standard', 'strong'];
+const PHYSICAL_PROFILE = /\b(?:for|takes|deals) (\d+)\/(\d+)\/(\d+) physical damage\b/i;
+
 const ATTRIBUTES = new Set(['brawn', 'fortitude', 'agility', 'guile', 'knowledge', 'reason']);
 /** Resolve imported identity without guessing from a mutable display name. */
 export function abilityCatalogRecord(item, records) {
@@ -35,23 +40,59 @@ export function printedAbilityRoll(record) {
     .map(outcome => [outcome.label.toLowerCase(),outcome.text]));
   return {attribute, outcomes: {...outcomes, ...(record?.reference?.rollOutcomes ?? {})}};
 }
-export function abilityRollConfiguration(item, record) {
+/** Use explicit attack profiles from the current authored Forge paths. */
+function forgeWeaponAttack(record, forge, learned) {
+  if (!record?.pathId || record.improves || !workshopRollAttributes(record).length) return null;
+  const path = record.pathId;
+  const family = record.weaponRequirement ? "melee"
+    : /^arms:(bladework|dueling)$/.test(path) ? "melee"
+    : path === "arms:unarmed" ? "unarmed"
+    : path === "guard:shieldwork" ? (record.id.endsWith(":7") ? "melee" : "shield")
+    : /^marksmanship:(precision|readiness)$/.test(path) ? "ranged"
+    : path === "marksmanship:thrown-weapons" ? "thrown" : null;
+  const effect = record.effect ?? "";
+  // Table rulings that change resistance or replace the damage profile need
+  // their printed options resolved before damage can be applied.
+  if (!family || /ignoring up to \d+ physical resistance|instead strike/i.test(effect)) return null;
+  const match = PHYSICAL_PROFILE.exec(effect);
+  if (!match) return null;
+  const improvements = (forge?.nodes ?? []).filter(node => node.improves === record.id && learned.includes(node.id));
+  const profile = improvements.map(node => PHYSICAL_PROFILE.exec(node.effect)).filter(Boolean).at(-1) ?? match;
+  const conditions = [effect, ...improvements.map(node => node.effect)]
+    .flatMap(text => [...text.matchAll(/\b(?:On (Strong|Standard or Strong),?[^.]*?\b(?:apply|gains?|becomes)|(?:also )?(?:applies|adds)) +([A-Za-z]+) (\d+)\b(?: on (Strong|Standard or Strong))?/gi)])
+    .filter(([,initial, , ,trailing]) => initial || trailing);
+  const outcomes = Object.fromEntries(TIERS.map((tier, index) => {
+    const applies = conditions.filter(([,initial, , ,trailing]) => (initial ?? trailing).toLowerCase().includes(tier));
+    return [tier, [`${profile[index + 1]} physical damage`, ...applies.map(([, , condition, rating]) => `${condition} ${rating}`)].join("; ")];
+  }));
+  return {family, outcomes, effect:[effect, ...improvements.map(node=>node.effect)].join(" ")};
+}
+
+export function abilityRollConfiguration(item, record, forge) {
   const printed = printedAbilityRoll(record);
+  const learned = nativeWeaponTrainingIds(item.actor);
+  const technique = forgeWeaponAttack(record, forge, learned);
+  const basic = item.actor?.type === "character" && basicAttackDamageProfile(learned, record?.id);
+  const attributes = workshopRollAttributes(record);
   const configured = item.system?.activity;
   const attribute = record
-    ? printed.attribute
+    ? (technique || record.id === "ability-opportunity-attack" ? attributes[0] : printed.attribute)
     : configured?.rollMode === 'attribute' && ATTRIBUTES.has(configured.attribute)
       ? configured.attribute : null;
-  const outcomes = record ? printed.outcomes : item.system?.outcomes;
+  const outcomes = technique?.outcomes ?? (basic
+    ? Object.fromEntries(TIERS.map((tier, index) => [tier, `${basic[index]} physical damage`]))
+    : record ? printed.outcomes : item.system?.outcomes);
   const rules=record?.reference?.rules;
   const tags=[...(rules?.details ?? []).filter(detail=>detail.label === "Type").map(detail=>detail.value),
     ...(rules?.notes ?? []).filter(note=>note.label === "Tags").map(note=>note.text)];
-  const attack=tags.some(value=>String(value).split("/").some(tag=>tag.trim() === "Attack"));
-  const ranged = attack && (/ranged weapon/i.test(JSON.stringify(record?.reference?.rules ?? {})) || record?.id === "ability-basic-ranged");
+  const attack=Boolean(technique)||record?.id === "ability-opportunity-attack" ||tags.some(value=>String(value).split("/").some(tag=>tag.trim() === "Attack"));
+  const ranged = technique?.family === "ranged" || attack && (/ranged weapon/i.test(JSON.stringify(record?.reference?.rules ?? {})) || record?.id === "ability-basic-ranged");
   const equipment=rules?.details?.find(detail=>detail.label === "Equipment / acquisition")?.value ?? "";
-  const weaponKind=attack ? ranged ? "ranged" : /melee weapon/i.test(equipment) ? "melee" : record?.id === "ability-basic-throw" ? "thrown" : null : null;
-  return {damageTypes:printedDamageChoices(record),itemUuid:item.uuid, name:item.name, attribute, attack, ranged, weaponKind, trigger:reactionTrigger(record),
-    effect:(record?.reference?.rules?.body ?? []).flatMap(block=>block.text ? [block.text] : block.items ?? []).join(" ") || String(item.system?.description ?? "").replace(/<[^>]*>/g," ").replace(/\s+/g," ").trim(),
+  const weaponKind=technique ? technique.family : record?.id === "ability-opportunity-attack" ? "opportunity" : attack ? ranged ? "ranged" : /melee weapon/i.test(equipment) ? "melee" : record?.id === "ability-basic-throw" ? "thrown" : record?.id === "ability-basic-unarmed" ? "unarmed" : null : null;
+  const action = rules?.details?.find(detail=>detail.label==="Action")?.value ?? "";
+  const category = /^Reaction\b/i.test(action) ? "reaction" : /^Maneuver\b/i.test(action) ? "maneuver" : /^Main Action\b/i.test(action) ? "main" : null;
+  return {attributes,category,weaponRequirement:record?.weaponRequirement ?? null,forgeWeaponAttack:Boolean(technique),damageTypes:printedDamageChoices(record),itemUuid:item.uuid, name:item.name, attribute, attack, ranged, weaponKind, trigger:reactionTrigger(record),
+    effect:technique?.effect ?? ((record?.reference?.rules?.body ?? []).flatMap(block=>block.text ? [block.text] : block.items ?? []).join(" ") || String(item.system?.description ?? "").replace(/<[^>]*>/g," ").replace(/\s+/g," ").trim()),
     outcomes:Object.fromEntries(['weak','standard','strong'].map(tier => [tier,outcomes?.[tier] ?? '']))};
 }
 export function assertAbilityConfiguration(current, opened) {

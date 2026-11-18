@@ -240,7 +240,8 @@ export function declareAction(
     override,
   },
 ) {
-  identity(sourceId);
+  if (typeof sourceId !== "string" || !/^[A-Za-z0-9_-]+(?::[A-Za-z0-9_-]+)*$/.test(sourceId) || sourceId.length > 160 || ["__proto__", "constructor", "prototype"].includes(sourceId))
+    throw new Error("Invalid action source.");
   bool(ownTurn, "Own turn");
   bool(freeAttack, "Free attack");
   bool(triggeredByFreeAttack, "Free attack trigger");

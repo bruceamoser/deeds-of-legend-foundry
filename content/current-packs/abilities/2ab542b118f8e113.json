@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Brawn</dd></div><div><dt>Range</dt><dd>One adjacent creature</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>**Action:** Main Action · **Attribute:** Brawn</p><p>**Target / range / shape:** One adjacent creature</p><p>Choose your target and make the attack.</p><p>- **Weak:** 2 physical damage.<br>- **Standard:** 3 physical damage.<br>- **Strong:** 5 physical damage.</p><p>**Duration:** Instant</p><p>**Equipment / acquisition:** Requires a melee weapon, Bulk 1; this reference grants none.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Brawn</dd></div><div><dt>Range</dt><dd>One adjacent creature</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p><strong>Action:</strong> Main Action · <strong>Attribute:</strong> Brawn</p><p><strong>Target / range / shape:</strong> One adjacent creature</p><p>Choose your target and make the attack. Use the printed outcomes if you have learned a technique that uses melee weapons. Without that training, deal 1/1/2 physical damage.</p><ul><li><strong>Weak:</strong> 2 physical damage.</li><li><strong>Standard:</strong> 3 physical damage.</li><li><strong>Strong:</strong> 5 physical damage.</li></ul><p><strong>Duration:</strong> Instant</p><p><strong>Equipment / acquisition:</strong> Requires a melee weapon, Bulk 1; this reference grants none.</p>",
     "activity": {
       "action": "main",
       "rollMode": "attribute",
@@ -13,15 +13,15 @@
       "defenseAttribute": "agility"
     },
     "outcomes": {
-      "weak": "",
-      "standard": "",
-      "strong": ""
+      "weak": "1 physical damage",
+      "standard": "1 physical damage",
+      "strong": "2 physical damage"
     }
   },
   "flags": {
     "heroes-of-legend": {
       "catalogId": "ability-basic-melee",
-      "sourceCommit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "ability",
@@ -34,7 +34,7 @@
         "duration": "Instant",
         "attribute": "Brawn",
         "defenseAttribute": null,
-        "effect": "**Action:** Main Action · **Attribute:** Brawn\n\n**Target / range / shape:** One adjacent creature\n\nChoose your target and make the attack.\n\n- **Weak:** 2 physical damage.\n- **Standard:** 3 physical damage.\n- **Strong:** 5 physical damage.\n\n**Duration:** Instant\n\n**Equipment / acquisition:** Requires a melee weapon, Bulk 1; this reference grants none.",
+        "effect": "**Action:** Main Action · **Attribute:** Brawn\n\n**Target / range / shape:** One adjacent creature\n\nChoose your target and make the attack. Use the printed outcomes if you have learned a technique that uses melee weapons. Without that training, deal 1/1/2 physical damage.\n\n- **Weak:** 2 physical damage.\n- **Standard:** 3 physical damage.\n- **Strong:** 5 physical damage.\n\n**Duration:** Instant\n\n**Equipment / acquisition:** Requires a melee weapon, Bulk 1; this reference grants none.",
         "improves": null,
         "requires": [],
         "bookId": null

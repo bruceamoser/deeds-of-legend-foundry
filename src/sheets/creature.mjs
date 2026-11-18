@@ -24,8 +24,8 @@ import {
 import {
   creatureReferenceHtml,
   creatureModifierLabel,
-  renderMarkdown,
 } from "./creature-reference.mjs";
+import { renderMarkdown } from "../rules/authored-markdown.mjs";
 
 function sourceLink(source, commit) {
   const path = source?.path

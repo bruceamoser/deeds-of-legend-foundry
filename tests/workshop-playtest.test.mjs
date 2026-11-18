@@ -62,7 +62,7 @@ test("level-one DP supports physical, battle-caster, and broad generalist builds
   }
 });
 
-test("armor uses the highest trained worn suit; heavy training stays behind Armor II and level three", () => {
+test("worn armor gives resistance while training removes its Agility penalty", () => {
   const draft = example("borin-bridgekeeper");
   draft.purchases[1] = purchases("armor:harness:1", "armor:harness:2");
   const suits = ["medium", "heavy"].map((armor) => ({
@@ -71,9 +71,17 @@ test("armor uses the highest trained worn suit; heavy training stays behind Armo
   draft.play = { inventory: { added: suits, removed: [] } };
   draft.loadout["inventory-medium"] = { worn: true, carried: true };
   draft.loadout["inventory-heavy"] = { worn: true, carried: true };
-  assert.equal(hero(draft).resistances.physical, 1);
+  assert.equal(hero(draft).resistances.physical, 3);
+  assert.equal(hero(draft).attributes.agility, draft.attributes.agility - 3);
+  draft.loadout["inventory-heavy"].worn = false;
+  assert.equal(hero(draft).resistances.physical, 2);
+  assert.equal(hero(draft).attributes.agility, draft.attributes.agility - 2);
   draft.purchases[1].push(...purchases("armor:harness:3"));
   assert.equal(hero(draft).resistances.physical, 2);
+  assert.equal(hero(draft).attributes.agility, draft.attributes.agility);
+  draft.loadout["inventory-heavy"].worn = true;
+  assert.equal(hero(draft).resistances.physical, 3);
+  assert.equal(hero(draft).attributes.agility, draft.attributes.agility - 3);
   const training = forgeEligibility(forge, hero(draft).state, "armor:harness:4");
   assert.deepEqual(training.reasons, ["Available at level 3."]);
   draft.progression = { level: 3, levels: {
@@ -83,6 +91,7 @@ test("armor uses the highest trained worn suit; heavy training stays behind Armo
   } };
   assert.deepEqual(hero(draft).errors, []);
   assert.equal(hero(draft).resistances.physical, 3);
+  assert.equal(hero(draft).attributes.agility, draft.attributes.agility);
   draft.loadout["inventory-heavy"].worn = false;
   assert.equal(hero(draft).resistances.physical, 2);
 });

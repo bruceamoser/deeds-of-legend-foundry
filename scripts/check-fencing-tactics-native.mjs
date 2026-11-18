@@ -48,30 +48,27 @@ try {
     await actor.sheet.render({force:true});
   }, {id,fixture});
   const sheet = page.locator(".hol-workshop-character");
-  const dialog = sheet.locator("#reference");
-  const attribute = dialog.locator("#sheet-roll-attribute");
+  const dialog = page.locator(".hol-roll-dialog");
+  const attribute = dialog.locator('select[name="attributeKey"]');
   const technique = name => sheet.getByRole("button",{name:"Roll "+name,exact:true});
 
   async function roll(name, allowed, selected, printed, effect) {
-    const messages = page.locator(".chat-message").filter({hasText:name});
-    const previousMessages = await messages.count();
     await technique(name).click();
     await expect(dialog).toBeVisible();
     assert.deepEqual(await attribute.locator("option").evaluateAll(opts => opts.map(opt=>opt.value)), allowed);
-    await attribute.selectOption(selected);
-    await dialog.getByRole("button",{name:"Roll",exact:true}).click();
-    const signed = printed.split(" ").at(-1);
-    await expect(dialog.locator("#recipe-roll-result p").first()).toHaveText(new RegExp(` ${signed.replace("+","[+]")}$`));
-    await expect(dialog.locator("#recipe-roll-result")).toContainText(name);
-    await page.evaluate(async id=>await game.actors.get(id).sheet.controller.settle(),id);
-    await expect(messages).toHaveCount(previousMessages+1);
-    const post = messages.last();
-    await expect(post.locator(".hol-chat-bar")).toContainText(printed);
-    if (effect) await expect(post.locator(".hol-chat-effect")).toContainText(effect);
+    if (allowed.length > 1) await attribute.selectOption(selected);
+    else await expect(attribute).toHaveValue(selected);
     await dialog.screenshot({path:output+"/"+name.toLowerCase().replaceAll(" ","-")+".png"});
-    await page.keyboard.press("Escape");
+    await dialog.locator('[data-action="roll"]').click();
     await expect(dialog).not.toBeVisible();
-    checks.push(name+" rolled "+printed+" in the shared sheet and Foundry chat.");
+    const rollMessage = await page.waitForFunction(({id,name}) => game.messages.find(message => {
+      const roll = message.getFlag("heroes-of-legend","roll");
+      return roll?.actorUuid === `Actor.${id}` && roll.ability?.name === name;
+    })?.id, {id,name});
+    const post = page.locator(`.chat-message[data-message-id="${await rollMessage.jsonValue()}"]`).first();
+    await expect(post.locator(".hol-chat-bar")).toContainText(printed);
+    if (effect) await expect(post.locator(".hol-chat-details")).toContainText(effect);
+    checks.push(name+" rolled "+printed+" in Foundry chat and closed the roll dialog.");
   }
 
   await roll("Measured Cut I", ["brawn","agility"], "agility", "Agility +2");
@@ -91,15 +88,22 @@ try {
   await expect(sheet.getByRole("button",{name:/Wield a suitable one-handed melee weapon to use Direct Thrust/})).toBeDisabled();
   await expect(sheet.getByRole("button",{name:/Wield a melee weapon to use Exploit the Opening/})).toBeDisabled();
   checks.push("Stowing the sword disables both weapon-dependent techniques.");
-  const itemUseError = await page.evaluate(async id => {
+  const rollCount = () => page.evaluate(id => game.messages.filter(message =>
+    message.getFlag("heroes-of-legend","roll")?.actorUuid === `Actor.${id}`).length, id);
+  const previousRolls = await rollCount();
+  await page.evaluate(async id => {
     const actor = game.actors.get(id);
     const item = actor.items.find(item=>item.getFlag("heroes-of-legend","catalogId")==="fencing:pointwork:1");
     const {activateOwnedAbility} = await import("/systems/heroes-of-legend/services/abilities.mjs");
-    try {await activateOwnedAbility(item); return null;}
-    catch (error) {return error.message;}
+    await activateOwnedAbility(item);
   }, id);
-  assert.match(itemUseError, /Wield a suitable one-handed melee weapon/);
-  checks.push("Native owned ability activation also checks the held weapon.");
+  await expect(dialog).toBeVisible();
+  await expect(dialog.locator('select[name="weaponItemId"]')).toHaveCount(0);
+  await dialog.locator('[data-action="roll"]').click();
+  await expect(page.getByText("Choose a suitable weapon or item before rolling this attack.",{exact:true}).first()).toBeVisible();
+  assert.equal(await rollCount(),previousRolls);
+  await page.keyboard.press("Escape");
+  checks.push("Activating the owned ability directly cannot roll without the required held weapon.");
   assert.deepEqual(errors,[]);
   console.info(checks.join("\n"));
   await writeFile(output+"/evidence.json",JSON.stringify({checks,errors},null,2));
@@ -107,6 +111,8 @@ try {
   if (id) await page.evaluate(async id=>{
     const actor = game.actors.get(id);
     await actor?.sheet.close();
+    const messages = game.messages.filter(message => message.getFlag("heroes-of-legend","roll")?.actorUuid === actor?.uuid);
+    if (messages.length) await ChatMessage.deleteDocuments(messages.map(message => message.id));
     await actor?.delete();
   },id);
   await browser.close();

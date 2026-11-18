@@ -31,6 +31,7 @@ export class EquipmentData extends foundry.abstract.TypeDataModel {
       bulk: integer(1, 0),
       hands: integer(0, 0, 2),
       inventoryDie: integer(0, 0, 20),
+      waterUnits: new NumberField({ required: false, nullable: true, integer: true, initial: null, min: 0, max: 10000 }),
       carried: new BooleanField({ initial: true }),
       held: new BooleanField({ initial: false }),
       worn: new BooleanField({ initial: false }),

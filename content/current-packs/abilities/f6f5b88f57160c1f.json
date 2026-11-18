@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "ability-signature-warden-know-what-you-hunt",
-      "sourceCommit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "ability",

@@ -71,7 +71,8 @@ try {
   await page.goto(`http://127.0.0.1:${server.address().port}${prefix}`);
   const hp = page.getByRole("spinbutton", { name: "Current HP", exact: true });
   await hp.waitFor();
-  const max = Number(await hp.getAttribute("max"));
+  const max = Number(await hp.getAttribute("aria-valuemax"));
+  assert(max > 0);
   const sp = page.getByRole("spinbutton", { name: "Current SP", exact: true });
   await sp.fill("2");
   await sp.press("Tab");

@@ -20,10 +20,9 @@ import {
 } from "../rules/encounter.mjs";
 const ID = "heroes-of-legend";
 export function combatSide(combatant) {
-  return (
-    combatant.getFlag(ID, "side") ??
-    (combatant.actor?.hasPlayerOwner ? "players" : "opposition")
-  );
+  const override = combatant.getFlag(ID, "side");
+  if (["players", "opposition"].includes(override)) return override;
+  return combatant.actor?.type === "character" ? "players" : "opposition";
 }
 export async function requestCombat(combat, kind, payload = {}) {
   if (!combat) throw new Error("Choose an encounter before requesting an action.");

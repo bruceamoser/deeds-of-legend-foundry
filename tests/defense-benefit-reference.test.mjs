@@ -12,6 +12,7 @@ test('current Defend persists its removable benefit through managed authority an
  async function synthetic(exports){const dependency=new SyntheticModule(Object.keys(exports),function(){for(const [key,value]of Object.entries(exports))this.setExport(key,value)},{context});await dependency.link(()=>{});await dependency.evaluate();return dependency;}
  const source=await readFile(new URL('../src/services/abilities.mjs',import.meta.url),'utf8');
  const imports=new Map();for(const [,names,path]of source.matchAll(/import\s*\{([^}]+)\}\s*from\s*["']([^"']+)["']/g))imports.set(path,{...imports.get(path),...Object.fromEntries(names.split(',').map(s=>s.trim()).filter(Boolean).map(name=>[name,()=>{}]))});
+ imports.set('../rules/ability-roll.mjs',{abilityCatalogRecord:()=>({}),abilityRollConfiguration:()=>({category:'main'})});
  imports.set('./catalog.mjs',{loadWorkshopCatalogs:async()=>({choices:[{id:'cast-main',action:'Main Action'},{id:'ritual',action:'1 minute'},{id:'ability-sustain-spell',action:'Maneuver'}],forge:{spells:[]}})});
  imports.set('../rules/actions.mjs',{declareAction});imports.set('./authority.mjs',{writeAuthorityDocument:async(document,changes)=>document.update(changes)});
  imports.set('./native-workshop-coordinator.mjs',{registerNativeGameplayHandler:(kind,handler)=>handlers.set(kind,handler),coordinateNativeGameplay:async(_actor,{kind,payload,operationId})=>handlers.get(kind)(actor,payload,{author:user,operationId,write:async changes=>{for(const[path,value]of Object.entries(changes)){if(path==='effects')actor.effects=structuredClone(value);else{const key=path.split('.').slice(2);let target=flags;for(const part of key.slice(0,-1))target=target[part]??={};target[key.at(-1)]=structuredClone(value);}}}})});
@@ -30,8 +31,8 @@ test('current Defend persists its removable benefit through managed authority an
  await module.namespace.prepareNativeBasicAttack(actor,'melee','attack1');assert.equal(state.budgets.hero.remaining.main,0);
  flags.nativeWorkshopPendingRoll=undefined;await module.namespace.prepareNativeBasicAttack(actor,'melee','attack2');assert.equal(state.budgets.hero.remaining.main,0);
  const cast=id=>({...item,id,getFlag:(_,key)=>({catalogId:id,workshopRecord:{nodeId:id},grantKind:'nativeWorkshop'})[key]});actor.items.push(cast('cast-main'),cast('ritual'),cast('ability-sustain-spell'));
- state={...state,budgets:{hero:startTurn({turnId:'turn3',speed:6})}};flags.nativeWorkshopPendingRoll={id:'cast1',status:'prepared',authorId:user.id};
- await module.namespace.prepareNativeActionCost(actor,'cast-main','cast1','cast');assert.equal(state.budgets.hero.remaining.main,0);assert.equal(state.budgets.hero.remaining.maneuver,1);
+ state={...state,budgets:{hero:startTurn({turnId:'turn3',speed:6})}};flags.nativeWorkshopPendingRoll=undefined;
+ await module.namespace.prepareNativeActionCost(actor,'cast-main','cast1','cast');assert.equal(state.budgets.hero.remaining.main,0);assert.equal(state.budgets.hero.remaining.maneuver,1);assert.equal(flags.nativeWorkshopPendingRoll.id,'cast1');
  await module.namespace.prepareNativeActionCost(actor,'cast-main','cast1','cast');assert.equal(state.budgets.hero.remaining.main,0);
  flags.nativeWorkshopPendingRoll=undefined;await module.namespace.prepareNativeActionCost(actor,'ability-sustain-spell','sustain1','sustain');assert.equal(state.budgets.hero.remaining.maneuver,0);
  const beforeRitual=JSON.stringify(state);flags.nativeWorkshopPendingRoll={id:'ritual1',status:'prepared',authorId:user.id};await module.namespace.prepareNativeActionCost(actor,'ritual','ritual1','cast');assert.equal(JSON.stringify(state),beforeRitual);

@@ -1,6 +1,7 @@
 import { creationIdentity, DEFAULT_LANGUAGES } from "./identity.mjs";
 import { inventoryTotals, instrumentOwnershipErrors } from "./acquisition.mjs";
-export function newCreationDraft() {
+import { addTrainingEquipment, startingProvisions } from "./training-equipment.mjs";
+export function newCreationDraft({ paidProvisions = false } = {}) {
   return {
     name: "",
     attributes: {
@@ -16,7 +17,7 @@ export function newCreationDraft() {
     purchases: { 0: [], 1: [] },
     classDisciplines: [],
     acquisitions: {},
-    shopping: [],
+    shopping: paidProvisions ? startingProvisions() : [],
   };
 }
 export function creationPreview(
@@ -86,7 +87,8 @@ export function creationPreview(
       source: "coins",
     });
   }
-  errors.push(...instrumentOwnershipErrors(result.state, items));
+  if (graph?.rulesRevision === 299) addTrainingEquipment(items, result.state, inventory, draft);
+  else errors.push(...instrumentOwnershipErrors(result.state, items));
   const get = (id) => choices.find((c) => c.id === id);
   const coins =
     40 +

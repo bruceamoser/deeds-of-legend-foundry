@@ -79,3 +79,12 @@ export function printedDamageChoices(record) {
   ).exec(body);
   return match ? [...new Set(match.slice(1).map(canonicalDamageType))] : [];
 }
+
+/** A straight printed per-target spell damage profile. Split pools, conditional
+ * damage and choices stay in the spell text for the table to resolve. */
+export function spellAttackOutcomes(record) {
+  if (!record?.effect) return null;
+  const match = /(?:^|\.\s+)Deal (\d+)\/(\d+)\/(\d+) ([a-z]+) damage(?:\.| to (?:each|every) creature[^.!?]*\.)/i.exec(record.effect);
+  if (!match || !DAMAGE_TYPES.includes(match[4].toLowerCase())) return null;
+  return Object.fromEntries(["weak","standard","strong"].map((tier,index)=>[tier,`${match[index+1]} ${match[4].toLowerCase()} damage`]));
+}

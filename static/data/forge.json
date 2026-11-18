@@ -5075,7 +5075,7 @@
       }
     }
   },
-  "sourceCommit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+  "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
   "disciplines": [
     {
       "id": "arms",
@@ -22699,14 +22699,14 @@
       "kind": "background",
       "pairs": [
         {
-          "disciplineId": "arms"
+          "disciplineId": "fencing"
         },
         {
           "disciplineId": "armor"
         }
       ],
       "coinContribution": 7,
-      "referenceMarkdown": "# Duelist’s Second\n\n*You checked straps, carried spare blades and stood ready when a formal duel became a messy fight. You learned both the invitation to a clean exchange and the value of armor when it fails.*\n\n*Which duel should never have happened?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Arms, Armor.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Duelist’s Second\n\n*You checked straps, carried spare blades and stood ready when a formal duel became a messy fight. You learned both the invitation to a clean exchange and the value of armor when it fails.*\n\n*Which duel should never have happened?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Fencing, Armor.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "origin-background-grave-attendant",
@@ -23017,11 +23017,11 @@
           "disciplineId": "influence"
         },
         {
-          "disciplineId": "guard"
+          "disciplineId": "tactics"
         }
       ],
       "coinContribution": 7,
-      "referenceMarkdown": "# War Drummer\n\n*You know how to make frightened feet move together.*\n\n*Whose pace do you still hear beneath the beat?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Influence, Guard.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# War Drummer\n\n*You know how to make frightened feet move together.*\n\n*Whose pace do you still hear beneath the beat?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Influence, Tactics.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "origin-background-ward-scribe",
@@ -23032,11 +23032,11 @@
           "disciplineId": "guard"
         },
         {
-          "disciplineId": "armor"
+          "disciplineId": "tactics"
         }
       ],
       "coinContribution": 10,
-      "referenceMarkdown": "# Ward Scribe\n\n*Your marks appeared over doors, cradles and caravan wheels. Sometimes they held.*\n\n*Which mark will you never draw carelessly?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Guard, Armor.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +10 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Ward Scribe\n\n*Your marks appeared over doors, cradles and caravan wheels. Sometimes they held.*\n\n*Which mark will you never draw carelessly?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Guard, Tactics.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +10 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "origin-background-weather-apprentice",
@@ -23062,11 +23062,11 @@
           "disciplineId": "guard"
         },
         {
-          "disciplineId": "marksmanship"
+          "disciplineId": "tactics"
         }
       ],
       "coinContribution": 7,
-      "referenceMarkdown": "# Border Marches\n\n*Your neighbors know the difference between vigilance and fear, though keeping that distinction takes work.*\n\n*Who taught you to welcome a traveler and watch the road at once?*\n\n## Rules\n\n**Type:** Culture.\n\n**Discipline choices:** Guard, Marksmanship.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Border Marches\n\n*Your neighbors know the difference between vigilance and fear, though keeping that distinction takes work.*\n\n*Who taught you to welcome a traveler and watch the road at once?*\n\n## Rules\n\n**Type:** Culture.\n\n**Discipline choices:** Guard, Tactics.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "origin-culture-cairn-communities",
@@ -23242,11 +23242,11 @@
           "disciplineId": "influence"
         },
         {
-          "disciplineId": "scholarship"
+          "disciplineId": "fencing"
         }
       ],
       "coinContribution": 10,
-      "referenceMarkdown": "# Oasis Cities\n\n*Water is hospitality, memory and responsibility. Every caravan brings another version of the world.*\n\n*Whose well did your family help keep?*\n\n## Rules\n\n**Type:** Culture.\n\n**Discipline choices:** Influence, Scholarship.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +10 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Oasis Cities\n\n*Water is hospitality, memory and responsibility. Every caravan brings another version of the world.*\n\n*Whose well did your family help keep?*\n\n## Rules\n\n**Type:** Culture.\n\n**Discipline choices:** Influence, Fencing.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +10 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "origin-culture-reed-villages",
@@ -23302,11 +23302,11 @@
           "disciplineId": "arms"
         },
         {
-          "disciplineId": "subterfuge"
+          "disciplineId": "fencing"
         }
       ],
       "coinContribution": 7,
-      "referenceMarkdown": "# Traveling Companies\n\n*You learned to hold an audience with a flashing blade, a sweeping bow and the well-timed distraction that lets a companion make their entrance.*\n\n*What song announced your arrival?*\n\n## Rules\n\n**Type:** Culture.\n\n**Discipline choices:** Arms, Subterfuge.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Traveling Companies\n\n*You learned to hold an audience with a flashing blade, a sweeping bow and the well-timed distraction that lets a companion make their entrance.*\n\n*What song announced your arrival?*\n\n## Rules\n\n**Type:** Culture.\n\n**Discipline choices:** Arms, Fencing.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "origin-culture-walled-communities",
@@ -23317,11 +23317,11 @@
           "disciplineId": "armor"
         },
         {
-          "disciplineId": "guard"
+          "disciplineId": "tactics"
         }
       ],
       "coinContribution": 10,
-      "referenceMarkdown": "# Walled Communities\n\n*Your home knows the comfort of a gate and the danger of believing it solves everything.*\n\n*Who always greeted you from the wall?*\n\n## Rules\n\n**Type:** Culture.\n\n**Discipline choices:** Armor, Guard.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +10 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Walled Communities\n\n*Your home knows the comfort of a gate and the danger of believing it solves everything.*\n\n*Who always greeted you from the wall?*\n\n## Rules\n\n**Type:** Culture.\n\n**Discipline choices:** Armor, Tactics.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +10 coins. See [starting coins](../starting-coins.md).\n"
     }
   ],
   "classes": [
@@ -23389,7 +23389,7 @@
       "name": "Blade",
       "disciplineIds": [
         "arms",
-        "marksmanship",
+        "fencing",
         "athletics",
         "subterfuge"
       ],
@@ -23441,7 +23441,7 @@
         "spellcraft": 3
       },
       "coinContribution": 4,
-      "referenceMarkdown": "# Blade\n\n*You make the hard choices in the space between one stroke and the next.*\n\nWhen a duel spills out of the inn, everyone watches the swords. You notice the wet cobbles, the hitch in one fighter’s step, and the loose shutter that will block the archer’s view in a heartbeat. There is your opening.\n\nA Blade is the company’s practiced weapon fighter. You shine when timing and position decide who can press the attack. One Blade rushes across open ground with Reckless Charge. Another waits behind Measured Guard. A third learns Cleave and goes looking for the moment two opponents stand too close. A bow and a patient eye can define a Blade just as readily as a rapier.\n\nPerhaps you love sparring with someone who makes you change your habits, or hate the swagger of people who draw steel for an audience. Who put a weapon in your hand, and what did they teach you about when to leave it sheathed?\n\n## Rules\n\n**Attributes:** Minimum 0 in Agility, Brawn. **HP contribution:** +2 at level 1 and per level thereafter.\n\n**Starting SP contribution:** Twice your positive Reason at creation: 2 × max(0, Reason).\n\n**Starting disciplines:** Choose one of Arms, Marksmanship, Athletics, Subterfuge. Your culture and background each contribute one other starting discipline. Choose three distinct disciplines across these selections.\n\n**Learning costs:** **1 DP:** Arms, Marksmanship, Fencing. **2 DP:** Athletics, Subterfuge, Tactics. **3 DP:** Armor, Guard, Wilderness, Medicine, Craft, Scholarship, Influence, Elements, Life, Mentalism, Divination, Invocation, Force, Wards, Spellcraft.\n\nPay the listed price to begin studying another discipline. Then follow the costs and requirements of the path or spellbook you choose.\n\n## Signature development\n\nChoose one signature at each of levels 1, 3 and 7 without spending DP. Choose from your class’s options for that level. Each signature is an ability you can use in its own right. Some offer an additional benefit when you also know another named signature; that benefit appears in the ability’s rules.\n\nYou may switch signatures under the ordinary retraining rules. Choose a replacement from your class’s options for the same milestone, then apply any interactions between the signatures you know.\n\n\n## Level 1 choices\n\n- [Reckless Charge](../cards/signature-blade-cut-and-turn.md)\n- [Measured Guard](../cards/signature-blade-measured-guard.md)\n- [Cleave](../cards/signature-blade-pressure-point.md)\n\n## Level 3 choices\n\n- [Press On](../cards/signature-blade-press-on.md)\n- [Return Stroke](../cards/signature-blade-return-stroke.md)\n- [Not So Fast](../cards/signature-blade-fell-the-balance.md)\n\n## Level 7 choices\n\n- [Relentless Pursuit](../cards/signature-blade-relentless-pursuit.md)\n- [Twitch Reflexes](../cards/signature-blade-sweeping-entry.md)\n- [Dance Through Steel](../cards/signature-blade-dance-through-steel.md)\n\n**Starting coin contribution:** +4 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Blade\n\n*You make the hard choices in the space between one stroke and the next.*\n\nWhen a duel spills out of the inn, everyone watches the swords. You notice the wet cobbles, the hitch in one fighter’s step, and the loose shutter that will block the archer’s view in a heartbeat. There is your opening.\n\nA Blade is the company’s practiced weapon fighter. You shine when timing and position decide who can press the attack. One Blade rushes across open ground with Reckless Charge. Another waits behind Measured Guard. A third learns Cleave and goes looking for the moment two opponents stand too close. A bow and a patient eye can define a Blade just as readily as a rapier.\n\nPerhaps you love sparring with someone who makes you change your habits, or hate the swagger of people who draw steel for an audience. Who put a weapon in your hand, and what did they teach you about when to leave it sheathed?\n\n## Rules\n\n**Attributes:** Minimum 0 in Agility, Brawn. **HP contribution:** +2 at level 1 and per level thereafter.\n\n**Starting SP contribution:** Twice your positive Reason at creation: 2 × max(0, Reason).\n\n**Starting disciplines:** Choose one of Arms, Fencing, Athletics, Subterfuge. Your culture and background each contribute one other starting discipline. Choose three distinct disciplines across these selections.\n\n**Learning costs:** **1 DP:** Arms, Marksmanship, Fencing. **2 DP:** Athletics, Subterfuge, Tactics. **3 DP:** Armor, Guard, Wilderness, Medicine, Craft, Scholarship, Influence, Elements, Life, Mentalism, Divination, Invocation, Force, Wards, Spellcraft.\n\nPay the listed price to begin studying another discipline. Then follow the costs and requirements of the path or spellbook you choose.\n\n## Signature development\n\nChoose one signature at each of levels 1, 3 and 7 without spending DP. Choose from your class’s options for that level. Each signature is an ability you can use in its own right. Some offer an additional benefit when you also know another named signature; that benefit appears in the ability’s rules.\n\nYou may switch signatures under the ordinary retraining rules. Choose a replacement from your class’s options for the same milestone, then apply any interactions between the signatures you know.\n\n\n## Level 1 choices\n\n- [Reckless Charge](../cards/signature-blade-cut-and-turn.md)\n- [Measured Guard](../cards/signature-blade-measured-guard.md)\n- [Cleave](../cards/signature-blade-pressure-point.md)\n\n## Level 3 choices\n\n- [Press On](../cards/signature-blade-press-on.md)\n- [Return Stroke](../cards/signature-blade-return-stroke.md)\n- [Not So Fast](../cards/signature-blade-fell-the-balance.md)\n\n## Level 7 choices\n\n- [Relentless Pursuit](../cards/signature-blade-relentless-pursuit.md)\n- [Twitch Reflexes](../cards/signature-blade-sweeping-entry.md)\n- [Dance Through Steel](../cards/signature-blade-dance-through-steel.md)\n\n**Starting coin contribution:** +4 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "class-intellect",
@@ -23449,7 +23449,7 @@
       "disciplineIds": [
         "scholarship",
         "craft",
-        "mentalism",
+        "tactics",
         "divination"
       ],
       "signatures": {
@@ -23500,7 +23500,7 @@
         "fencing": 3
       },
       "coinContribution": 8,
-      "referenceMarkdown": "# Intellect\n\n*You see a pattern where others see only trouble, and trust your understanding enough to act.*\n\nThe ferry mechanism has seized. The boatman wants an axe. You ask him to pull the lever again while you watch the pin nobody has greased in twenty years.\n\nAn Intellect gives the company something it can act on. The same habit serves you in a ruin, at a workbench, or across from an opponent who always guards the same side. Spot the Leverage suits the investigator who looks for the detail that changes the plan. Make It Last can turn a plain lamp, tool, or shield into something the company will miss when it’s gone. An Intellect who chooses Angle of Attack brings the same patient eye to a fight.\n\nYou might like a workbench with room for somebody else’s tools, or dislike an answer that comes too easily. What did you once insist was impossible? Who had the pleasure of showing you how it worked?\n\n## Rules\n\n**Attributes:** Minimum 0 in Knowledge, Reason. **HP contribution:** +1 at level 1 and per level thereafter.\n\n**Starting SP contribution:** Twice your positive Knowledge at creation: 2 × max(0, Knowledge).\n\n**Starting disciplines:** Choose one of Scholarship, Craft, Mentalism, Divination. Your culture and background each contribute one other starting discipline. Choose three distinct disciplines across these selections.\n\n**Learning costs:** **1 DP:** Craft, Scholarship. **2 DP:** Medicine, Mentalism, Divination, Force, Spellcraft, Tactics. **3 DP:** Arms, Armor, Guard, Marksmanship, Athletics, Subterfuge, Wilderness, Influence, Elements, Life, Invocation, Wards, Fencing.\n\nPay the listed price to begin studying another discipline. Then follow the costs and requirements of the path or spellbook you choose.\n\n## Signature development\n\nChoose one signature at each of levels 1, 3 and 7 without spending DP. Choose from your class’s options for that level. Each signature is an ability you can use in its own right. Some offer an additional benefit when you also know another named signature; that benefit appears in the ability’s rules.\n\nYou may switch signatures under the ordinary retraining rules. Choose a replacement from your class’s options for the same milestone, then apply any interactions between the signatures you know.\n\n\n## Level 1 choices\n\n- [Spot the Leverage](../cards/signature-intellect-spot-the-leverage.md)\n- [Make It Last](../cards/signature-intellect-make-it-last.md)\n- [Angle of Attack](../cards/signature-intellect-prepared-explanation.md)\n\n## Level 3 choices\n\n- [Diagnose the Failure](../cards/signature-intellect-diagnose-the-failure.md)\n- [Twofold Making](../cards/signature-intellect-twofold-making.md)\n- [Predict the Motion](../cards/signature-intellect-predict-the-motion.md)\n\n## Level 7 choices\n\n- [Test the Hypothesis](../cards/signature-intellect-test-the-hypothesis.md)\n- [Masterwork Bond](../cards/signature-intellect-masterwork-bond.md)\n- [Shatter the Guard](../cards/signature-intellect-expose-the-mechanism.md)\n\n**Starting coin contribution:** +8 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Intellect\n\n*You see a pattern where others see only trouble, and trust your understanding enough to act.*\n\nThe ferry mechanism has seized. The boatman wants an axe. You ask him to pull the lever again while you watch the pin nobody has greased in twenty years.\n\nAn Intellect gives the company something it can act on. The same habit serves you in a ruin, at a workbench, or across from an opponent who always guards the same side. Spot the Leverage suits the investigator who looks for the detail that changes the plan. Make It Last can turn a plain lamp, tool, or shield into something the company will miss when it’s gone. An Intellect who chooses Angle of Attack brings the same patient eye to a fight.\n\nYou might like a workbench with room for somebody else’s tools, or dislike an answer that comes too easily. What did you once insist was impossible? Who had the pleasure of showing you how it worked?\n\n## Rules\n\n**Attributes:** Minimum 0 in Knowledge, Reason. **HP contribution:** +1 at level 1 and per level thereafter.\n\n**Starting SP contribution:** Twice your positive Knowledge at creation: 2 × max(0, Knowledge).\n\n**Starting disciplines:** Choose one of Scholarship, Craft, Tactics, Divination. Your culture and background each contribute one other starting discipline. Choose three distinct disciplines across these selections.\n\n**Learning costs:** **1 DP:** Craft, Scholarship. **2 DP:** Medicine, Mentalism, Divination, Force, Spellcraft, Tactics. **3 DP:** Arms, Armor, Guard, Marksmanship, Athletics, Subterfuge, Wilderness, Influence, Elements, Life, Invocation, Wards, Fencing.\n\nPay the listed price to begin studying another discipline. Then follow the costs and requirements of the path or spellbook you choose.\n\n## Signature development\n\nChoose one signature at each of levels 1, 3 and 7 without spending DP. Choose from your class’s options for that level. Each signature is an ability you can use in its own right. Some offer an additional benefit when you also know another named signature; that benefit appears in the ability’s rules.\n\nYou may switch signatures under the ordinary retraining rules. Choose a replacement from your class’s options for the same milestone, then apply any interactions between the signatures you know.\n\n\n## Level 1 choices\n\n- [Spot the Leverage](../cards/signature-intellect-spot-the-leverage.md)\n- [Make It Last](../cards/signature-intellect-make-it-last.md)\n- [Angle of Attack](../cards/signature-intellect-prepared-explanation.md)\n\n## Level 3 choices\n\n- [Diagnose the Failure](../cards/signature-intellect-diagnose-the-failure.md)\n- [Twofold Making](../cards/signature-intellect-twofold-making.md)\n- [Predict the Motion](../cards/signature-intellect-predict-the-motion.md)\n\n## Level 7 choices\n\n- [Test the Hypothesis](../cards/signature-intellect-test-the-hypothesis.md)\n- [Masterwork Bond](../cards/signature-intellect-masterwork-bond.md)\n- [Shatter the Guard](../cards/signature-intellect-expose-the-mechanism.md)\n\n**Starting coin contribution:** +8 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "class-leader",
@@ -23509,7 +23509,7 @@
         "influence",
         "guard",
         "arms",
-        "scholarship"
+        "tactics"
       ],
       "signatures": {
         "1": [
@@ -23559,7 +23559,7 @@
         "spellcraft": 3
       },
       "coinContribution": 6,
-      "referenceMarkdown": "# Leader\n\n*You turn to your companions and give them a reason to move together.*\n\nTwo people reach for the same rope while nobody watches the stairs. You catch one person’s eye and point to the landing. A friend takes up the slack. By the time the threat appears, everyone has room to do their part.\n\nA Leader makes the company’s separate efforts count together. A good signal can get everyone through a dangerous crossing or bring two companions into a fight at just the right moment. Follow My Signal can help two companions with a word, a gesture, or a scrap of song. Lead the Way suits someone willing to go through first. Stand Together is for the person others look to when they are close to breaking.\n\nYou might enjoy watching someone you trained take charge. Perhaps you dislike plans made without asking who will carry them out. What earns your trust? Whose judgment will you follow when your own plan falls apart?\n\n## Rules\n\n**Attributes:** Minimum 0 in Guile, Fortitude. **HP contribution:** +2 at level 1 and per level thereafter.\n\n**Starting SP contribution:** Twice your positive Guile at creation: 2 × max(0, Guile).\n\n**Starting disciplines:** Choose one of Influence, Guard, Arms, Scholarship. Your culture and background each contribute one other starting discipline. Choose three distinct disciplines across these selections.\n\n**Learning costs:** **1 DP:** Guard, Influence, Tactics. **2 DP:** Arms, Scholarship, Mentalism, Wards, Fencing. **3 DP:** Armor, Marksmanship, Athletics, Subterfuge, Wilderness, Medicine, Craft, Elements, Life, Divination, Invocation, Force, Spellcraft.\n\nPay the listed price to begin studying another discipline. Then follow the costs and requirements of the path or spellbook you choose.\n\n## Signature development\n\nChoose one signature at each of levels 1, 3 and 7 without spending DP. Choose from your class’s options for that level. Each signature is an ability you can use in its own right. Some offer an additional benefit when you also know another named signature; that benefit appears in the ability’s rules.\n\nYou may switch signatures under the ordinary retraining rules. Choose a replacement from your class’s options for the same milestone, then apply any interactions between the signatures you know.\n\n\n## Level 1 choices\n\n- [Follow My Signal](../cards/signature-leader-follow-my-signal.md)\n- [Lead the Way](../cards/signature-leader-lead-the-step.md)\n- [Stand Together](../cards/signature-leader-stand-together.md)\n\n## Level 3 choices\n\n- [Press the Opening](../cards/signature-leader-press-the-opening.md)\n- [Lead by Example](../cards/signature-leader-orderly-withdrawal.md)\n- [Blow the Horn](../cards/signature-leader-hold-your-nerve.md)\n\n## Level 7 choices\n\n- [Coordinated Rush](../cards/signature-leader-coordinated-rush.md)\n- [Watch the Rear](../cards/signature-leader-watch-the-rear.md)\n- [Refuse the Rout](../cards/signature-leader-refuse-the-rout.md)\n\n**Starting coin contribution:** +6 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Leader\n\n*You turn to your companions and give them a reason to move together.*\n\nTwo people reach for the same rope while nobody watches the stairs. You catch one person’s eye and point to the landing. A friend takes up the slack. By the time the threat appears, everyone has room to do their part.\n\nA Leader makes the company’s separate efforts count together. A good signal can get everyone through a dangerous crossing or bring two companions into a fight at just the right moment. Follow My Signal can help two companions with a word, a gesture, or a scrap of song. Lead the Way suits someone willing to go through first. Stand Together is for the person others look to when they are close to breaking.\n\nYou might enjoy watching someone you trained take charge. Perhaps you dislike plans made without asking who will carry them out. What earns your trust? Whose judgment will you follow when your own plan falls apart?\n\n## Rules\n\n**Attributes:** Minimum 0 in Guile, Fortitude. **HP contribution:** +2 at level 1 and per level thereafter.\n\n**Starting SP contribution:** Twice your positive Guile at creation: 2 × max(0, Guile).\n\n**Starting disciplines:** Choose one of Influence, Guard, Arms, Tactics. Your culture and background each contribute one other starting discipline. Choose three distinct disciplines across these selections.\n\n**Learning costs:** **1 DP:** Guard, Influence, Tactics. **2 DP:** Arms, Scholarship, Mentalism, Wards, Fencing. **3 DP:** Armor, Marksmanship, Athletics, Subterfuge, Wilderness, Medicine, Craft, Elements, Life, Divination, Invocation, Force, Spellcraft.\n\nPay the listed price to begin studying another discipline. Then follow the costs and requirements of the path or spellbook you choose.\n\n## Signature development\n\nChoose one signature at each of levels 1, 3 and 7 without spending DP. Choose from your class’s options for that level. Each signature is an ability you can use in its own right. Some offer an additional benefit when you also know another named signature; that benefit appears in the ability’s rules.\n\nYou may switch signatures under the ordinary retraining rules. Choose a replacement from your class’s options for the same milestone, then apply any interactions between the signatures you know.\n\n\n## Level 1 choices\n\n- [Follow My Signal](../cards/signature-leader-follow-my-signal.md)\n- [Lead the Way](../cards/signature-leader-lead-the-step.md)\n- [Stand Together](../cards/signature-leader-stand-together.md)\n\n## Level 3 choices\n\n- [Press the Opening](../cards/signature-leader-press-the-opening.md)\n- [Lead by Example](../cards/signature-leader-orderly-withdrawal.md)\n- [Blow the Horn](../cards/signature-leader-hold-your-nerve.md)\n\n## Level 7 choices\n\n- [Coordinated Rush](../cards/signature-leader-coordinated-rush.md)\n- [Watch the Rear](../cards/signature-leader-watch-the-rear.md)\n- [Refuse the Rout](../cards/signature-leader-refuse-the-rout.md)\n\n**Starting coin contribution:** +6 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "class-odd",
@@ -23682,7 +23682,7 @@
       "disciplineIds": [
         "subterfuge",
         "marksmanship",
-        "mentalism",
+        "fencing",
         "athletics"
       ],
       "signatures": {
@@ -23733,7 +23733,7 @@
         "tactics": 3
       },
       "coinContribution": 3,
-      "referenceMarkdown": "# Shadow\n\n*You learn the unguarded routes through a world that rarely looks in the right direction.*\n\nThe steward keeps the keys on a silver chain. Everyone else is watching the dancers. You are watching the steward’s face each time someone mentions the west gallery.\n\nA Shadow finds opportunities that close as soon as everyone notices them. You shine when the company needs a way in, an opening in a fight, or a conversation that buys somebody else time to act. Fade Behind puts you on the side of the room no one is watching. Blade in the Back rewards the moment an enemy’s attention is elsewhere. Fast Talk gives you something to do when you are the person everyone has turned to look at.\n\nYou might love a crowded festival or the privacy of a roof above an empty street. Perhaps you cannot stand a person who confuses discretion with disloyalty. Who knows your real name, and what did they do to earn it?\n\n## Rules\n\n**Attributes:** Minimum 0 in Agility, Guile. **HP contribution:** +2 at level 1 and per level thereafter.\n\n**Starting SP contribution:** Twice your positive Guile at creation: 2 × max(0, Guile).\n\n**Starting disciplines:** Choose one of Subterfuge, Marksmanship, Mentalism, Athletics. Your culture and background each contribute one other starting discipline. Choose three distinct disciplines across these selections.\n\n**Learning costs:** **1 DP:** Marksmanship, Subterfuge. **2 DP:** Athletics, Mentalism, Divination, Fencing. **3 DP:** Arms, Armor, Guard, Wilderness, Medicine, Craft, Scholarship, Influence, Elements, Life, Invocation, Force, Wards, Spellcraft, Tactics.\n\nPay the listed price to begin studying another discipline. Then follow the costs and requirements of the path or spellbook you choose.\n\n## Signature development\n\nChoose one signature at each of levels 1, 3 and 7 without spending DP. Choose from your class’s options for that level. Each signature is an ability you can use in its own right. Some offer an additional benefit when you also know another named signature; that benefit appears in the ability’s rules.\n\nYou may switch signatures under the ordinary retraining rules. Choose a replacement from your class’s options for the same milestone, then apply any interactions between the signatures you know.\n\n\n## Level 1 choices\n\n- [Blade in the Back](../cards/signature-shadow-soft-landing.md)\n- [Fade Behind](../cards/signature-shadow-fade-behind.md)\n- [Fast Talk](../cards/signature-shadow-turn-their-eye.md)\n\n## Level 3 choices\n\n- [Hamstring](../cards/signature-shadow-strike-and-vanish.md)\n- [Open the Way](../cards/signature-shadow-open-the-way.md)\n- [Read the Room](../cards/signature-shadow-pass-the-guard.md)\n\n## Level 7 choices\n\n- [The Half-Second](../cards/signature-shadow-exploit-confusion.md)\n- [One with the Dark](../cards/signature-shadow-unseen-passage.md)\n- [The Cutting Word](../cards/signature-shadow-leave-no-pursuit.md)\n\n**Starting coin contribution:** +3 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Shadow\n\n*You learn the unguarded routes through a world that rarely looks in the right direction.*\n\nThe steward keeps the keys on a silver chain. Everyone else is watching the dancers. You are watching the steward’s face each time someone mentions the west gallery.\n\nA Shadow finds opportunities that close as soon as everyone notices them. You shine when the company needs a way in, an opening in a fight, or a conversation that buys somebody else time to act. Fade Behind puts you on the side of the room no one is watching. Blade in the Back rewards the moment an enemy’s attention is elsewhere. Fast Talk gives you something to do when you are the person everyone has turned to look at.\n\nYou might love a crowded festival or the privacy of a roof above an empty street. Perhaps you cannot stand a person who confuses discretion with disloyalty. Who knows your real name, and what did they do to earn it?\n\n## Rules\n\n**Attributes:** Minimum 0 in Agility, Guile. **HP contribution:** +2 at level 1 and per level thereafter.\n\n**Starting SP contribution:** Twice your positive Guile at creation: 2 × max(0, Guile).\n\n**Starting disciplines:** Choose one of Subterfuge, Marksmanship, Fencing, Athletics. Your culture and background each contribute one other starting discipline. Choose three distinct disciplines across these selections.\n\n**Learning costs:** **1 DP:** Marksmanship, Subterfuge. **2 DP:** Athletics, Mentalism, Divination, Fencing. **3 DP:** Arms, Armor, Guard, Wilderness, Medicine, Craft, Scholarship, Influence, Elements, Life, Invocation, Force, Wards, Spellcraft, Tactics.\n\nPay the listed price to begin studying another discipline. Then follow the costs and requirements of the path or spellbook you choose.\n\n## Signature development\n\nChoose one signature at each of levels 1, 3 and 7 without spending DP. Choose from your class’s options for that level. Each signature is an ability you can use in its own right. Some offer an additional benefit when you also know another named signature; that benefit appears in the ability’s rules.\n\nYou may switch signatures under the ordinary retraining rules. Choose a replacement from your class’s options for the same milestone, then apply any interactions between the signatures you know.\n\n\n## Level 1 choices\n\n- [Blade in the Back](../cards/signature-shadow-soft-landing.md)\n- [Fade Behind](../cards/signature-shadow-fade-behind.md)\n- [Fast Talk](../cards/signature-shadow-turn-their-eye.md)\n\n## Level 3 choices\n\n- [Hamstring](../cards/signature-shadow-strike-and-vanish.md)\n- [Open the Way](../cards/signature-shadow-open-the-way.md)\n- [Read the Room](../cards/signature-shadow-pass-the-guard.md)\n\n## Level 7 choices\n\n- [The Half-Second](../cards/signature-shadow-exploit-confusion.md)\n- [One with the Dark](../cards/signature-shadow-unseen-passage.md)\n- [The Cutting Word](../cards/signature-shadow-leave-no-pursuit.md)\n\n**Starting coin contribution:** +3 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "class-shepherd",
@@ -29942,7 +29942,7 @@
       "duration": "Instant",
       "equipment": "Requires a melee weapon, Bulk 1; this reference grants none.",
       "limits": "Repeatable; pay the action and any stated costs each use.",
-      "effect": "**Action:** Main Action · **Attribute:** Brawn\n\n**Target / range / shape:** One adjacent creature\n\nChoose your target and make the attack.\n\n- **Weak:** 2 physical damage.\n- **Standard:** 3 physical damage.\n- **Strong:** 5 physical damage.\n\n**Duration:** Instant\n\n**Equipment / acquisition:** Requires a melee weapon, Bulk 1; this reference grants none.",
+      "effect": "**Action:** Main Action · **Attribute:** Brawn\n\n**Target / range / shape:** One adjacent creature\n\nChoose your target and make the attack. Use the printed outcomes if you have learned a technique that uses melee weapons. Without that training, deal 1/1/2 physical damage.\n\n- **Weak:** 2 physical damage.\n- **Standard:** 3 physical damage.\n- **Strong:** 5 physical damage.\n\n**Duration:** Instant\n\n**Equipment / acquisition:** Requires a melee weapon, Bulk 1; this reference grants none.",
       "reference": {
         "flavor": [
           "Strike an adjacent creature with your melee weapon. Roll Brawn for 2/3/5 physical damage."
@@ -29980,7 +29980,7 @@
           ],
           "body": [
             {
-              "text": "Choose your target and make the attack."
+              "text": "Choose your target and make the attack. Use the printed outcomes if you have learned a technique that uses melee weapons. Without that training, deal 1/1/2 physical damage."
             },
             {
               "outcomes": [
@@ -30002,7 +30002,7 @@
           "notes": []
         }
       },
-      "referenceMarkdown": "# Basic Melee\n\n*Strike an adjacent creature with your melee weapon. Roll Brawn for 2/3/5 physical damage.*\n\n## Rules\n\n**Action:** Main Action · **Attribute:** Brawn\n\n**Target / range / shape:** One adjacent creature\n\nChoose your target and make the attack.\n\n- **Weak:** 2 physical damage.\n- **Standard:** 3 physical damage.\n- **Strong:** 5 physical damage.\n\n**Duration:** Instant\n\n**Equipment / acquisition:** Requires a melee weapon, Bulk 1; this reference grants none.\n\n---\n\n**Tier / minimum level:** Universal · **DP:** Not purchased · **Requirements to learn:** None\n\n**Type:** Attack\n\n**Limits:** Repeatable; pay the action and any stated costs each use.\n\n**ID:** basic-melee\n\n[Card conventions](../card-conventions.md) · [Catalog](../catalog.md)\n"
+      "referenceMarkdown": "# Basic Melee\n\n*Strike an adjacent creature with your melee weapon. Roll Brawn for 2/3/5 physical damage.*\n\n## Rules\n\n**Action:** Main Action · **Attribute:** Brawn\n\n**Target / range / shape:** One adjacent creature\n\nChoose your target and make the attack. Use the printed outcomes if you have learned a technique that uses melee weapons. Without that training, deal 1/1/2 physical damage.\n\n- **Weak:** 2 physical damage.\n- **Standard:** 3 physical damage.\n- **Strong:** 5 physical damage.\n\n**Duration:** Instant\n\n**Equipment / acquisition:** Requires a melee weapon, Bulk 1; this reference grants none.\n\n---\n\n**Tier / minimum level:** Universal · **DP:** Not purchased · **Requirements to learn:** None\n\n**Type:** Attack\n\n**Limits:** Repeatable; pay the action and any stated costs each use.\n\n**ID:** basic-melee\n\n[Card conventions](../card-conventions.md) · [Catalog](../catalog.md)\n"
     },
     {
       "id": "ability-use-a-healing-potion",
@@ -30072,7 +30072,7 @@
       "duration": "Instant",
       "equipment": "No equipment required or granted.",
       "limits": "Repeatable; pay the action and any stated costs each use.",
-      "effect": "**Action:** Main Action · **Attribute:** Brawn\n\n**Target / range / shape:** One adjacent creature\n\nChoose your target and make the attack.\n\n- **Weak:** 1 physical damage.\n- **Standard:** 2 physical damage.\n- **Strong:** 4 physical damage.\n\n**Duration:** Instant\n\n**Equipment / acquisition:** No equipment required or granted.",
+      "effect": "**Action:** Main Action · **Attribute:** Brawn\n\n**Target / range / shape:** One adjacent creature\n\nChoose your target and make the attack. Use the printed outcomes if you have learned a technique that uses unarmed attacks. Without that training, deal 1/1/2 physical damage.\n\n- **Weak:** 1 physical damage.\n- **Standard:** 2 physical damage.\n- **Strong:** 4 physical damage.\n\n**Duration:** Instant\n\n**Equipment / acquisition:** No equipment required or granted.",
       "reference": {
         "flavor": [
           "Strike an adjacent creature with your bare hands or a kick. Roll Brawn for 1/2/4 physical damage."
@@ -30110,7 +30110,7 @@
           ],
           "body": [
             {
-              "text": "Choose your target and make the attack."
+              "text": "Choose your target and make the attack. Use the printed outcomes if you have learned a technique that uses unarmed attacks. Without that training, deal 1/1/2 physical damage."
             },
             {
               "outcomes": [
@@ -30132,7 +30132,7 @@
           "notes": []
         }
       },
-      "referenceMarkdown": "# Basic Unarmed\n\n*Strike an adjacent creature with your bare hands or a kick. Roll Brawn for 1/2/4 physical damage.*\n\n## Rules\n\n**Action:** Main Action · **Attribute:** Brawn\n\n**Target / range / shape:** One adjacent creature\n\nChoose your target and make the attack.\n\n- **Weak:** 1 physical damage.\n- **Standard:** 2 physical damage.\n- **Strong:** 4 physical damage.\n\n**Duration:** Instant\n\n**Equipment / acquisition:** No equipment required or granted.\n\n---\n\n**Tier / minimum level:** Universal · **DP:** Not purchased · **Requirements to learn:** None\n\n**Type:** Attack\n\n**Limits:** Repeatable; pay the action and any stated costs each use.\n\n**ID:** basic-unarmed\n\n[Card conventions](../card-conventions.md) · [Catalog](../catalog.md)\n"
+      "referenceMarkdown": "# Basic Unarmed\n\n*Strike an adjacent creature with your bare hands or a kick. Roll Brawn for 1/2/4 physical damage.*\n\n## Rules\n\n**Action:** Main Action · **Attribute:** Brawn\n\n**Target / range / shape:** One adjacent creature\n\nChoose your target and make the attack. Use the printed outcomes if you have learned a technique that uses unarmed attacks. Without that training, deal 1/1/2 physical damage.\n\n- **Weak:** 1 physical damage.\n- **Standard:** 2 physical damage.\n- **Strong:** 4 physical damage.\n\n**Duration:** Instant\n\n**Equipment / acquisition:** No equipment required or granted.\n\n---\n\n**Tier / minimum level:** Universal · **DP:** Not purchased · **Requirements to learn:** None\n\n**Type:** Attack\n\n**Limits:** Repeatable; pay the action and any stated costs each use.\n\n**ID:** basic-unarmed\n\n[Card conventions](../card-conventions.md) · [Catalog](../catalog.md)\n"
     },
     {
       "id": "ability-reduce-a-condition",
@@ -30566,7 +30566,7 @@
       "duration": "Instant",
       "equipment": "Requires a suitable carried object; grants none. The thrown object lands in the target square.",
       "limits": "Repeatable; pay the action and any stated costs each use.",
-      "effect": "**Action:** Main Action · **Attribute:** Brawn\n\n**Target / range / shape:** One visible creature within 3 squares\n\nChoose your target and make the attack.\n\n- **Weak:** 2 physical damage.\n- **Standard:** 3 physical damage.\n- **Strong:** 5 physical damage.\n\n**Duration:** Instant\n\n**Equipment / acquisition:** Requires a suitable carried object; grants none. The thrown object lands in the target square.",
+      "effect": "**Action:** Main Action · **Attribute:** Brawn\n\n**Target / range / shape:** One visible creature within 3 squares\n\nChoose your target and make the attack. Use the printed outcomes if you have learned a technique that uses thrown weapons. Without that training, deal 1/1/2 physical damage.\n\n- **Weak:** 2 physical damage.\n- **Standard:** 3 physical damage.\n- **Strong:** 5 physical damage.\n\n**Duration:** Instant\n\n**Equipment / acquisition:** Requires a suitable carried object; grants none. The thrown object lands in the target square.",
       "reference": {
         "flavor": [
           "Throw a suitable carried object at a visible creature within 3 squares. Roll Brawn for 2/3/5 physical damage."
@@ -30604,7 +30604,7 @@
           ],
           "body": [
             {
-              "text": "Choose your target and make the attack."
+              "text": "Choose your target and make the attack. Use the printed outcomes if you have learned a technique that uses thrown weapons. Without that training, deal 1/1/2 physical damage."
             },
             {
               "outcomes": [
@@ -30626,7 +30626,7 @@
           "notes": []
         }
       },
-      "referenceMarkdown": "# Basic Throw\n\n*Throw a suitable carried object at a visible creature within 3 squares. Roll Brawn for 2/3/5 physical damage.*\n\n## Rules\n\n**Action:** Main Action · **Attribute:** Brawn\n\n**Target / range / shape:** One visible creature within 3 squares\n\nChoose your target and make the attack.\n\n- **Weak:** 2 physical damage.\n- **Standard:** 3 physical damage.\n- **Strong:** 5 physical damage.\n\n**Duration:** Instant\n\n**Equipment / acquisition:** Requires a suitable carried object; grants none. The thrown object lands in the target square.\n\n---\n\n**Tier / minimum level:** Universal · **DP:** Not purchased · **Requirements to learn:** None\n\n**Type:** Attack\n\n**Limits:** Repeatable; pay the action and any stated costs each use.\n\n**ID:** basic-throw\n\n[Card conventions](../card-conventions.md) · [Catalog](../catalog.md)\n"
+      "referenceMarkdown": "# Basic Throw\n\n*Throw a suitable carried object at a visible creature within 3 squares. Roll Brawn for 2/3/5 physical damage.*\n\n## Rules\n\n**Action:** Main Action · **Attribute:** Brawn\n\n**Target / range / shape:** One visible creature within 3 squares\n\nChoose your target and make the attack. Use the printed outcomes if you have learned a technique that uses thrown weapons. Without that training, deal 1/1/2 physical damage.\n\n- **Weak:** 2 physical damage.\n- **Standard:** 3 physical damage.\n- **Strong:** 5 physical damage.\n\n**Duration:** Instant\n\n**Equipment / acquisition:** Requires a suitable carried object; grants none. The thrown object lands in the target square.\n\n---\n\n**Tier / minimum level:** Universal · **DP:** Not purchased · **Requirements to learn:** None\n\n**Type:** Attack\n\n**Limits:** Repeatable; pay the action and any stated costs each use.\n\n**ID:** basic-throw\n\n[Card conventions](../card-conventions.md) · [Catalog](../catalog.md)\n"
     },
     {
       "id": "ability-stabilize",
@@ -30933,7 +30933,7 @@
       "duration": "Instant",
       "equipment": "Requires a ranged weapon, Bulk 1, and ammunition, Bulk 1; grants neither. Check ammunition after use.",
       "limits": "Repeatable; pay the action and any stated costs each use.",
-      "effect": "**Action:** Main Action · **Attribute:** Agility\n\n**Target / range / shape:** One visible creature within 8 squares\n\nChoose your target and make the attack.\n\n- **Weak:** 2 physical damage.\n- **Standard:** 3 physical damage.\n- **Strong:** 5 physical damage.\n\n**Duration:** Instant\n\n**Equipment / acquisition:** Requires a ranged weapon, Bulk 1, and ammunition, Bulk 1; grants neither. Check ammunition after use.",
+      "effect": "**Action:** Main Action · **Attribute:** Agility\n\n**Target / range / shape:** One visible creature within 8 squares\n\nChoose your target and make the attack. Use the printed outcomes if you have learned a technique that uses ranged weapons. Without that training, deal 1/1/2 physical damage.\n\n- **Weak:** 2 physical damage.\n- **Standard:** 3 physical damage.\n- **Strong:** 5 physical damage.\n\n**Duration:** Instant\n\n**Equipment / acquisition:** Requires a ranged weapon, Bulk 1, and ammunition, Bulk 1; grants neither. Check ammunition after use.",
       "reference": {
         "flavor": [
           "Shoot a visible creature within 8 squares. Roll Agility for 2/3/5 physical damage."
@@ -30971,7 +30971,7 @@
           ],
           "body": [
             {
-              "text": "Choose your target and make the attack."
+              "text": "Choose your target and make the attack. Use the printed outcomes if you have learned a technique that uses ranged weapons. Without that training, deal 1/1/2 physical damage."
             },
             {
               "outcomes": [
@@ -30993,7 +30993,7 @@
           "notes": []
         }
       },
-      "referenceMarkdown": "# Basic Ranged\n\n*Shoot a visible creature within 8 squares. Roll Agility for 2/3/5 physical damage.*\n\n## Rules\n\n**Action:** Main Action · **Attribute:** Agility\n\n**Target / range / shape:** One visible creature within 8 squares\n\nChoose your target and make the attack.\n\n- **Weak:** 2 physical damage.\n- **Standard:** 3 physical damage.\n- **Strong:** 5 physical damage.\n\n**Duration:** Instant\n\n**Equipment / acquisition:** Requires a ranged weapon, Bulk 1, and ammunition, Bulk 1; grants neither. Check ammunition after use.\n\n---\n\n**Tier / minimum level:** Universal · **DP:** Not purchased · **Requirements to learn:** None\n\n**Type:** Attack\n\n**Limits:** Repeatable; pay the action and any stated costs each use.\n\n**ID:** basic-ranged\n\n[Card conventions](../card-conventions.md) · [Catalog](../catalog.md)\n"
+      "referenceMarkdown": "# Basic Ranged\n\n*Shoot a visible creature within 8 squares. Roll Agility for 2/3/5 physical damage.*\n\n## Rules\n\n**Action:** Main Action · **Attribute:** Agility\n\n**Target / range / shape:** One visible creature within 8 squares\n\nChoose your target and make the attack. Use the printed outcomes if you have learned a technique that uses ranged weapons. Without that training, deal 1/1/2 physical damage.\n\n- **Weak:** 2 physical damage.\n- **Standard:** 3 physical damage.\n- **Strong:** 5 physical damage.\n\n**Duration:** Instant\n\n**Equipment / acquisition:** Requires a ranged weapon, Bulk 1, and ammunition, Bulk 1; grants neither. Check ammunition after use.\n\n---\n\n**Tier / minimum level:** Universal · **DP:** Not purchased · **Requirements to learn:** None\n\n**Type:** Attack\n\n**Limits:** Repeatable; pay the action and any stated costs each use.\n\n**ID:** basic-ranged\n\n[Card conventions](../card-conventions.md) · [Catalog](../catalog.md)\n"
     }
   ],
   "redirects": {

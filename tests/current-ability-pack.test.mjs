@@ -30,3 +30,11 @@ test("current ability pack compiles and extracts as valid native Items",async t=
  assert.equal(extracted.length,documents.length);
  assert.deepEqual(extracted.find(item=>item._id===example._id),example);
 });
+
+test("current native ability and spell descriptions format authored Markdown", () => {
+ for (const { name, system } of documents) {
+  assert.doesNotMatch(system.description, /\*\*[^*]+\*\*|\[[^\]]+\]\(\.?\.?\/|<p>\s*[-*] /, name);
+ }
+ assert.match(byId.get("ability-basic-melee").system.description, /<ul>/);
+ assert.match(byId.get("ability-command-a-summon").system.description, /See the summoning rules for the tether/);
+});

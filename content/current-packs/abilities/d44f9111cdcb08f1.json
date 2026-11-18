@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Range</dt><dd>Self or one adjacent willing living creature</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>**Action:** Maneuver · **Attribute:** None — no roll</p><p>**Target / range / shape:** Self or one adjacent willing living creature</p><p>Use a free hand to drink or administer the potion. For this action, an unconscious or restrained recipient counts as willing. Another recipient spends a Reaction if conscious and above 0 HP. Apply Life resistance to the bottle&#39;s printed healing, with a minimum of 1 HP when HP is missing and a maximum of the HP missing. Check the bottle&#39;s inventory die after use.</p><p>**Duration:** Instant</p><p>**Equipment / acquisition:** A healing potion and a free hand.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Range</dt><dd>Self or one adjacent willing living creature</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p><strong>Action:</strong> Maneuver · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> Self or one adjacent willing living creature</p><p>Use a free hand to drink or administer the potion. For this action, an unconscious or restrained recipient counts as willing. Another recipient spends a Reaction if conscious and above 0 HP. Apply Life resistance to the bottle&#39;s printed healing, with a minimum of 1 HP when HP is missing and a maximum of the HP missing. Check the bottle&#39;s inventory die after use.</p><p><strong>Duration:</strong> Instant</p><p><strong>Equipment / acquisition:</strong> A healing potion and a free hand.</p>",
     "activity": {
       "action": "maneuver",
       "rollMode": "attribute",
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "ability-use-a-healing-potion",
-      "sourceCommit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "ability",

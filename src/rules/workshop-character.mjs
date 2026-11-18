@@ -7,6 +7,8 @@ import { awardMilestones } from "./development.mjs";
 import { advancementPreview } from "./advancement.mjs";
 import { passiveDefenseSources } from "./passive-defenses.mjs";
 import { currentAncestryId, ancestryBenefits, ancestrySelection } from "./ancestry.mjs";
+import { nativeForgeArmorSources, untrainedArmorPenalty } from "./native-armor.mjs";
+import { addTrainingEquipment, STARTING_PROVISIONS } from "./training-equipment.mjs";
 
 export const emptyLevelDraft = () => ({
   purchases: [],
@@ -70,6 +72,8 @@ export function workshopCharacter(draft, catalogs, languages, { projectInventory
       ...result.ledger,
     );
   }
+  if (catalogs.forge?.rulesRevision === 299)
+    addTrainingEquipment(state.items, state, catalogs.inventory, draft);
   const play = workshopPlay(
     draft,
     state.items,
@@ -105,6 +109,8 @@ export function workshopCharacter(draft, catalogs, languages, { projectInventory
   if (catalogs.forge && items.some((item) => item.worn && item.catalogId === "item-cincture-of-might"))
     attributes.brawn += 1;
   if (projectAttributes) attributes = projectAttributes(attributes);
+  if (catalogs.forge?.rulesRevision === 299)
+    attributes.agility -= untrainedArmorPenalty(state.learned, burdenItems);
   const stowedBulk = burdenItems.filter(item => item.carried && !item.worn && !item.held).reduce((sum, item) => sum + item.bulk, 0);
   const ancestry = forgeAncestryBenefits(effectiveTraitIds, catalogs.forge, { stowedBulk });
   const armorBulkRelief = catalogs.forge?.rulesRevision === 299 && state.learned.includes("armor:harness:1")
@@ -119,7 +125,9 @@ export function workshopCharacter(draft, catalogs, languages, { projectInventory
     })),
     equipment: items.filter((item) => !catalogs.forge || !forgeArmorRequirement(item.catalogId, playtest)).map((i) => ({ ...i, source: i.definition.source })),
   });
-  if (catalogs.forge) {
+  if (catalogs.forge?.rulesRevision === 299) {
+    passive.resistances.push(...nativeForgeArmorSources(burdenItems));
+  } else if (catalogs.forge) {
     for (const item of items.filter((entry) => entry.worn)) {
       const required = forgeArmorRequirement(item.catalogId, playtest);
       if (required && state.learned.includes(required))
@@ -158,6 +166,11 @@ export function workshopCharacter(draft, catalogs, languages, { projectInventory
       !e.signatureTier ||
       (state.pendingSignatures ?? []).includes(e.signatureTier),
   );
+  const soldCoins = (draft.play?.inventory?.sold ?? []).reduce((total, instanceId) => {
+    const purchase = draft.shopping?.find(item => item.instanceId === instanceId && item.quantity === 1);
+    const definition = catalogs.inventory.equipment.find(item => item.id === purchase?.id);
+    return total + (STARTING_PROVISIONS.includes(definition?.id) ? Math.floor(definition.price / 2) : 0);
+  }, 0);
   return {
     ...creation,
     creation,
@@ -170,7 +183,7 @@ export function workshopCharacter(draft, catalogs, languages, { projectInventory
     levels,
     advancementLedger,
     development: { level: target, current: state.dp, spent, total, expired },
-    inventory: { ...creation.inventory, items, bulk, capacity, encumbrance },
+    inventory: { ...creation.inventory, remainingCoins: creation.inventory.remainingCoins + soldCoins, items, bulk, capacity, encumbrance },
     resistances,
     passiveSources: passive.resistances,
     summary: creation.summary
@@ -180,7 +193,7 @@ export function workshopCharacter(draft, catalogs, languages, { projectInventory
           maximumHp: limits?.maxHp ?? creation.summary.maximumHp + maximumHpDelta,
           ...(limits ? { maximumSp: limits.maxSp } : {}),
           gritGranted: state.gritGranted,
-          speed: Math.max(0, creation.summary.unencumberedSpeed - encumbrance +
+          speed: Math.max(0, creation.summary.unencumberedSpeed + attributes.agility - draft.attributes.agility - encumbrance +
             Number(catalogs.forge?.rulesRevision === 299 && state.learned.includes("armor:harness:3") && items.some(item => item.worn && state.learned.includes(forgeArmorRequirement(item.catalogId, true))))),
         }
       : null,

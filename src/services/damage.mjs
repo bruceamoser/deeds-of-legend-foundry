@@ -33,9 +33,7 @@ export function damageBasis(actor) {
   assertCurrentGameplayActor(actor);
   if (!["character", "creature"].includes(actor?.type) || actor.pack)
     throw new Error("Choose a world character or creature.");
-  const resolved = {resistances: actor.type === "character" ? nativeForgeArmorSources(
-    (actor.getFlag(ID,"forgeLearned") ?? []).map(catalogId=>({catalogId})),
-    passiveCatalogRecords(actor,"equipment")) : [], weaknesses:[]};
+  const resolved = {resistances: actor.type === "character" ? nativeForgeArmorSources(passiveCatalogRecords(actor,"equipment")) : [], weaknesses:[]};
   const passiveDefenses = structuredClone({
     immunities: (actor.system.damageImmunities ?? []).map(canonicalDamageType),
     resistances: [...resolved.resistances, ...(actor.system.resistances?.numeric ?? []).map(source => ({ ...source, type: canonicalDamageType(source.type), label: "Printed resistance" }))],

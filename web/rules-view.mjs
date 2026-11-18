@@ -51,7 +51,7 @@ export function ruleMarkup(markdown, resolve) {
 }
 /** A rule block can contain prose, outcomes and options together. */
 export function ruleBlockMarkup(block, { outcomeLayout = "table" } = {}) {
-  return (typeof block.text === "string" ? `<p>${ruleInline(block.text)}</p>` : "") +
+  return (typeof block.text === "string" ? ruleMarkup(block.text) : "") +
     (Array.isArray(block.outcomes) ? outcomeLayout === "stacked"
       ? block.outcomes.map(outcome => `<div class="outcome"><strong>${esc(outcome.label)}</strong>${ruleInline(outcome.text)}</div>`).join("")
       : `<table class="outcome-table">${block.outcomes.map(outcome => `<tr><th>${esc(outcome.label)}</th><td>${ruleInline(outcome.text)}</td></tr>`).join("")}</table>` : "") +

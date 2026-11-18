@@ -6,15 +6,18 @@ import {HEALING_POTION_IDS} from '../rules/potions.mjs';
 import {torchItemActions,requestTorchToggle} from '../services/torches.mjs';
 import { projectNativeWorkshopInventory } from '../rules/native-inventory-projection.mjs';
 import { nativeItemForWorkshopInstance } from '../rules/native-item-identity.mjs';
+import { setRangedWeaponAmmunition } from '../services/ranged-ammunition.mjs';
 import { consumableTracking,tracksConsumable } from '../services/consumables.mjs';
-import { editPortrait } from './portrait.mjs';
+import { viewPortrait } from './portrait.mjs';
+import { updateOwnedDocument } from '../services/documents.mjs';
 import { loadWorkshopCatalogs } from '../services/catalog.mjs';
 import { newCreationDraft } from '../rules/creation.mjs';
 import { rollCard, resourceCard } from '../rules/chat-cards.mjs';
-import { equipmentAttributeValue } from '../rules/effective-attributes.mjs';
+import { equipmentAttributeValue,effectiveActorAttributeValue } from '../rules/effective-attributes.mjs';
 import { validateWorkshopAbilityUse } from '../rules/workshop-ability.mjs';
 import { inventoryCheck } from '../rules/inventory.mjs';
 import { classifyRoll } from '../rules/roll.mjs';
+import { resolvedAttackEffects,spellAttackOutcomes } from '../rules/attack-outcomes.mjs';
 import { writePortableCharacter } from '../rules/portable-character.mjs';
 import { loadNativeWorkshopState } from '../services/native-workshop-state.mjs';
 import {saveNativeWorkshopState,saveNativeWorkshopDraft,saveNativeWorkshopIdentity,commitNativeWorkshopCharacter,claimNativeWorkshopOperation,updateNativeWorkshopOperation,completeNativeWorkshopOperation,reconcileNativeWorkshopOperation} from '../services/native-workshop-coordinator.mjs';
@@ -105,8 +108,14 @@ export class WorkshopCharacterSheet extends HandlebarsApplicationMixin(foundry.a
         beforeUse:request=>this.beginRollOperation(request.kind,request.willRoll,request.id),
         captureSaveBase:()=>({basePlay:structuredClone(this.basePlay ?? {}),baseLoadout:structuredClone(this.baseLoadout ?? {})}),
         onChange:(saved,basis)=>this.saveState(saved,basis),
-        onCommit:portable=>this.commitState(portable),
+        onCommit:(portable,view)=>this.commitState(portable,view),
         onAction:async event=>{
+          if (event.action === 'assign-ammunition') {
+            this.assertOwner();await this.controller.flush();
+            await setRangedWeaponAmmunition(this.actor, event.dataset.instance, event.dataset.ammunition);
+            await this.render({force:true});
+            return true;
+          }
           if(event.action==='sustain-spell') {
             this.assertOwner();await this.controller.flush();
             await prepareNativeActionCost(this.actor,'ability-sustain-spell',foundry.utils.randomID(),'sustain');
@@ -116,11 +125,18 @@ export class WorkshopCharacterSheet extends HandlebarsApplicationMixin(foundry.a
             this.assertOwner();await this.controller.flush();
             await new SharedRollDialog(this.actor,'agility',{mode:'defense'}).render({force:true});return true;
           }
-          if(event.action==='open-roll'&&['ability-basic-melee','ability-basic-ranged','ability-basic-unarmed'].includes(event.id)) {
-            this.assertOwner();await this.controller.flush();
+          if(event.action==='open-roll'&&!event.id&&event.dataset.attributeKey){
+            this.assertOwner();
+            await this.controller.flush();
+            return new SharedRollDialog(this.actor,event.dataset.attributeKey).render({force:true});
+          }
+          if(event.action==='open-roll'&&event.id) {
+            this.assertOwner();
             const item=this.actor.items.find(item=>item.type==='ability'&&item.getFlag(ID,'catalogId')===event.id&&item.getFlag(ID,'grantKind')==='nativeWorkshop');
-            if(!item)throw new Error('That current owned basic attack is unavailable.');
-            await activateOwnedAbility(item);return true;
+            if(item) {
+              await this.controller.flush();
+              if(await activateOwnedAbility(item,{weaponAttackOnly:true}))return true;
+            }
           }
           if(event.action==='inline-action' && event.dataset.useAbility==='true' && ['ability-defend','ability-shield-block'].includes(event.id)) {
             this.assertOwner();await this.controller.flush();
@@ -155,7 +171,9 @@ export class WorkshopCharacterSheet extends HandlebarsApplicationMixin(foundry.a
           }
           if(event.action==='edit' && event.editing) {await this.controller.flush();await this.saveIdentity(event.state);return true;}
           if(event.action!=='native-portrait') return false;
-          await editPortrait.call(this);return true;
+          if(this.host.readOnly) viewPortrait.call(this);
+          else await this.editWorkshopPortrait(event.target);
+          return true;
         },
         onRoll:request=>this.rollDice(request),
       };
@@ -220,16 +238,36 @@ export class WorkshopCharacterSheet extends HandlebarsApplicationMixin(foundry.a
       this.revision=next.revision;this.controller.setState({...next,mode:'sheet'});
     } finally {this.finishWrite();}
   }
-  async commitState(portable) {
+  async commitState(portable,{tab='Main'}={}) {
     this.assertOwner();this.writing++;
     try {
-      const next=await commitNativeWorkshopCharacter(this.actor,portable,{expectedRevision:this.revision});
+      const next=await commitNativeWorkshopCharacter(this.actor,portable,{expectedRevision:this.revision,tab});
       this.revision=next.revision;
       this.nativeItems=next.nativeItems ?? this.nativeItems ?? [];
       if(this.host) this.host.committed=true;
-      this.controller.setState({...next,mode:'sheet',tab:'Main',step:0});
+      this.basePlay=structuredClone(next.character.draft.play ?? {});
+      this.baseLoadout=structuredClone(next.character.draft.loadout ?? {});
+      this.controller.setState({...next,mode:'sheet',tab,step:0,editingLevel:null});
       ui.notifications.info('Hero saved to the native Actor.');
     } finally {this.finishWrite();}
+  }
+  async editWorkshopPortrait(image) {
+    this.assertOwner();
+    this.portraitObserver?.disconnect();
+    const observer=new MutationObserver(()=>{
+      observer.disconnect();
+      const img=image.getAttribute('src');
+      if(img && img!==this.actor.img) updateOwnedDocument(this.actor,{img}).catch(error=>ui.notifications.error(error.message));
+    });
+    this.portraitObserver=observer;
+    observer.observe(image,{attributes:true,attributeFilter:['src']});
+    try {
+      // The shadow DOM retargets clicks before Foundry can see the IMG.
+      await this.options.actions.editImage.call(this,null,image);
+    } catch(error) {
+      observer.disconnect();
+      throw error;
+    }
   }
   _getHeaderControls() {
     return [...super._getHeaderControls(),{action:'reconcileRoll',label:'Reconcile pending Workshop roll',icon:'fa-solid fa-rotate'}];
@@ -250,9 +288,9 @@ export class WorkshopCharacterSheet extends HandlebarsApplicationMixin(foundry.a
     try {
       await this.controller?.flush();
       const operation={id:foundry.utils.randomID(),status:'prepared',kind,startedAt:Date.now()};
-      await claimNativeWorkshopOperation(this.actor,operation);
-      this.preparedRollId=operation.id;
       if(kind==='cast'&&id)await prepareNativeActionCost(this.actor,id,operation.id,'cast');
+      else await claimNativeWorkshopOperation(this.actor,operation);
+      this.preparedRollId=operation.id;
       if(!willRoll) this.pendingRollSave=operation.id;
       return operation;
     } finally {this.operationStarting=false;}
@@ -268,7 +306,7 @@ export class WorkshopCharacterSheet extends HandlebarsApplicationMixin(foundry.a
     const record=catalogs?.choices.find(record=>record.id===abilityId) ?? catalogs?.forge.spells.find(record=>record.id===abilityId);
     if (record?.weaponRequirement || record?.attributeChoices)
       validateWorkshopAbilityUse(record, [...this.actor.items].filter(item=>item.type==='equipment').map(item=>item.system), request.attributeKey);
-    const attribute=request.attributeKey ? equipmentAttributeValue(this.actor.system.attributes[request.attributeKey].base,this.actor.items,request.attributeKey) : (request.attribute ?? 0);
+    const attribute=request.attributeKey ? effectiveActorAttributeValue(this.actor.system.attributes[request.attributeKey].base,this.actor,request.attributeKey) : (request.attribute ?? 0);
     if(request.attributeKey && attribute!==request.attribute) throw new Error('Equipment changed this attribute. Reopen the roll to use its current effective value.');
     const pendingDeathRoll=kind==='death' ? this.actor.getFlag(ID,'forgeVitals')?.immediateDeathRolls?.[0] : undefined;
     if(!Number.isInteger(count)||count<1||count>6||![4,6,8,10,12,20].includes(sides)) throw new Error('Invalid Workshop dice request.');
@@ -283,19 +321,30 @@ export class WorkshopCharacterSheet extends HandlebarsApplicationMixin(foundry.a
     const roll=await new foundry.dice.Roll(`${count}d${sides}${keep}${modifier}`).evaluate({allowInteractive:messageMode!=='blind'});
     const faces=roll.dice[0].results.filter(result=>!result.rerolled).map(result=>result.result);
     await updateNativeWorkshopOperation(this.actor,{...operation,status:'evaluated',faces,formula:roll.formula});
-    let content;
+    let content, rollSnapshot;
     if(kind==='supply') {
       const check=inventoryCheck({die:sides,retained:faces[0]});
       content=resourceCard({actor:this.actor.name,title:'Supply check',kind:'supply',die:{face:faces[0],before:sides,after:check.after},status:'Rolled',detail:'A 1 steps the supply down; the final use still works.'});
     } else {
-      const retainedIndices=faces.map((face,index)=>({face,index})).sort((a,b)=>(net<0 ? a.face-b.face : b.face-a.face)||a.index-b.index).slice(0,3).map(die=>die.index);
-      const result=classifyRoll(retainedIndices.map(index=>faces[index]),attribute);
+      const dice=roll.dice[0].results.filter(die=>!die.rerolled)
+        .map((die,index)=>({index,face:die.result,kept:die.active!==false}));
+      const retainedIndices=dice.filter(die=>die.kept).map(die=>die.index);
+      const retained=retainedIndices.map(index=>faces[index]);
+      const result=classifyRoll(retained,attribute);
       if(kind==='death') {result.tier=result.total<=8 ? 'weak' : result.total<=14 ? 'standard' : 'strong';result.natural='none';}
-      content=rollCard({actor:this.actor.name,portrait:this.actor.img,mode:request.activeRoll?.defense ? 'defense' : 'attribute',
-        attribute:request.attributeKey ?? (kind==='death' ? 'fortitude' : ''),title:kind==='death' ? 'Fortitude death roll' : `${record?.name ?? 'Attribute check'}${request.equipmentNames?.length ? ' · '+request.equipmentNames.join(', ') : ''}`,
-        effect:record?.signatureComponent ? signatureProse(record).replace(/\*\*/g,'').replace(/\[([^\]]+)\]\([^)]*\)/g,'$1') : record?.effect ?? '',abilities:(request.abilityIds ?? []).map(id=>catalogs?.choices.find(record=>record.id===id)?.name ?? id),roll:{faces,retainedIndices,result,plan:{attribute,net,count,formula:roll.formula}}});
+      const outcomes=spellAttackOutcomes(request.activeRoll?.cast||request.activeRoll?.finishRitual?record:null);
+      if(outcomes) {
+        rollSnapshot={mode:'attack',actorUuid:this.actor.uuid,ability:{name:record.name,effect:record.effect,outcomes},
+          resolvedEffects:resolvedAttackEffects(outcomes[result.tier]),attributeKey:request.attributeKey,
+          attribute,net,count,boons:Math.max(0,net),banes:Math.max(0,-net),dice,retained,...result};
+      } else {
+        content=rollCard({actor:this.actor.name,portrait:this.actor.img,allowReroll:false,mode:request.activeRoll?.defense ? 'defense' : 'attribute',
+          attribute:request.attributeKey ?? (kind==='death' ? 'fortitude' : ''),title:kind==='death' ? 'Fortitude death roll' : `${record?.name ?? 'Attribute check'}${request.equipmentNames?.length ? ' · '+request.equipmentNames.join(', ') : ''}`,
+          effect:record?.signatureComponent ? signatureProse(record) : record?.effect ?? '',abilities:(request.abilityIds ?? []).map(id=>catalogs?.choices.find(record=>record.id===id)?.name ?? id),roll:{faces,retainedIndices,result,plan:{attribute,net,count,formula:roll.formula}}});
+      }
     }
-    await roll.toMessage({speaker:ChatMessage.getSpeaker({actor:this.actor}),content,flags:{[ID]:{nativeWorkshopRoll:{kind,settings:{...request.activeRoll,key:request.attributeKey},actorUuid:this.actor.uuid}}}},{messageMode});
+    const flags=rollSnapshot?{roll:rollSnapshot}:{nativeWorkshopRoll:{kind,actorUuid:this.actor.uuid}};
+    await roll.toMessage({speaker:ChatMessage.getSpeaker({actor:this.actor}),...(content?{content}:{}),flags:{[ID]:flags}},{messageMode});
     if(kind==='death') this.resolvedImmediateDeathRoll=pendingDeathRoll;
     if(kind==='death' || kind==='supply') this.pendingRollSave=operationId;
     else {await completeNativeWorkshopOperation(this.actor,operationId);if(this.preparedRollId===operationId)this.preparedRollId=undefined;}
@@ -303,15 +352,22 @@ export class WorkshopCharacterSheet extends HandlebarsApplicationMixin(foundry.a
   }
   async close(options={}) {
     if(this.controller?.settle) await this.controller.settle();else await this.controller?.flush();
-    ++this.mountGeneration;this.controller?.dispose();this.controller=null;
     return super.close(options);
+  }
+  async _preClose(options) {
+    await super._preClose(options);
+    // Foundry serializes this hook after queued Actor renders. A render before
+    // teardown can still use the current controller and its live frame.
+    this.portraitObserver?.disconnect();
+    ++this.mountGeneration;this.controller?.dispose();this.controller=null;
+    this.refreshAfterWrite=false;
   }
   static async startWorkshop() {
     try {
       this.assertOwner();
       const actor=this.actor;
       if(actor.getFlag(ID,'creationReceipt') || actor.items.size || actor.items.length) throw new Error('Recreate an older hero as a separate Actor.');
-      const draft=newCreationDraft();draft.name=actor.name;
+      const draft=newCreationDraft({ paidProvisions: true });draft.name=actor.name;
       const catalogs=await loadWorkshopCatalogs();
       await saveNativeWorkshopDraft(actor,JSON.parse(writePortableCharacter(draft,catalogs)));
       await this.render({force:true});
@@ -326,19 +382,10 @@ export class WorkshopCharacterSheet extends HandlebarsApplicationMixin(foundry.a
   }
 }
 
-/** Shared chat controls open this same native Workshop roll surface. */
+/** The compact Workshop card already shows the evaluated result. */
 export function bindNativeWorkshopChat(message,element) {
   const saved=message.getFlag(ID,'nativeWorkshopRoll');
   if(!saved || !message.isContentVisible) return;
   // The shared compact card already contains the full visual dice result.
   element.querySelectorAll('.dice-roll').forEach(node=>node.hidden=true);
-  for(const button of element.querySelectorAll('[data-chat-reroll]')) button.addEventListener('click',async()=>{
-    try {
-      const actor=await fromUuid(saved.actorUuid);
-      if(!actor?.testUserPermission(game.user,'OWNER')) throw new Error('Only the character owner can roll again.');
-      await actor.sheet.render({force:true});
-      if(!actor.sheet.controller) throw new Error('Open this character in the Character Workshop sheet to roll again.');
-      actor.sheet.controller.openRoll(saved.settings);
-    } catch(error){ui.notifications.error(error.message);}
-  });
 }

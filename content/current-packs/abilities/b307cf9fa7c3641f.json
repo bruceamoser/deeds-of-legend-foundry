@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Range</dt><dd>One adjacent Dying player character</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>**Action:** Maneuver · **Attribute:** None — no roll</p><p>**Target / range / shape:** One adjacent Dying player character</p><p>Stabilize the adjacent Dying hero at 0 HP and clear both death roll tallies. The hero regains consciousness from HP loss and can speak and perceive their surroundings. They remain prone with three defense Banes and regain their actions and voluntary movement when they regain HP. If they take damage at 0 HP, they begin Dying again and make an immediate death roll.</p><p>**Duration:** Instant</p><p>**Equipment / acquisition:** None.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Range</dt><dd>One adjacent Dying player character</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p><strong>Action:</strong> Maneuver · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> One adjacent Dying player character</p><p>Stabilize the adjacent Dying hero at 0 HP and clear both death roll tallies. The hero regains consciousness from HP loss and can speak and perceive their surroundings. They remain prone with three defense Banes and regain their actions and voluntary movement when they regain HP. If they take damage at 0 HP, they begin Dying again and make an immediate death roll.</p><p><strong>Duration:</strong> Instant</p><p><strong>Equipment / acquisition:</strong> None.</p>",
     "activity": {
       "action": "maneuver",
       "rollMode": "attribute",
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "ability-stabilize",
-      "sourceCommit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "ability",

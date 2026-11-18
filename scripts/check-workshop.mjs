@@ -166,7 +166,7 @@ try {
   const armorRow = page
     .locator(".inventory-table tr")
     .filter({ hasText: "Ordinary Light Armor" });
-  assert.match(await armorRow.innerText(), /Purchased/);
+  assert.match(await armorRow.innerText(), /Training equipment/);
   assert.match(await page.locator(".inventory-table").innerText(), /d8/);
   assert(await page.getByLabel("Wear Ordinary Light Armor", { exact: true }).isChecked());
   assert.equal(
@@ -189,7 +189,7 @@ try {
   await page
     .getByLabel("Carry Ordinary Light Armor", { exact: true })
     .uncheck();
-  assert.match(await page.locator(".inventory-stats").innerText(), /7 \/ 13/);
+  assert.match(await page.locator(".inventory-stats").innerText(), /8 \/ 13/);
   await page.getByLabel("Carry Ordinary Light Armor", { exact: true }).check();
   await page.getByRole("tab", { name: "Main", exact: true }).click();
   await page.getByRole("tab", { name: "Abilities", exact: true }).click();
@@ -279,14 +279,18 @@ try {
 
   await page.getByRole("button", { name: "6 Equipment", exact: true }).click();
   const beforePurchase = await page.locator(".context-strip .inventory-stats").innerText();
+  const shieldRows = page.locator(".inventory-table tbody tr").filter({ hasText: "Ordinary Shield" });
+  assert.equal(await shieldRows.count(), 1);
+  assert.match(await shieldRows.innerText(), /Training equipment/);
   await picker("equipment");
   await page.getByLabel("Search equipment", { exact: true }).fill("Ordinary Shield");
   await page.locator('[data-action="equipment"][data-id="item-ordinary-shield"]').click();
   await closePicker();
-  const shieldRows = page.locator(".inventory-table tbody tr").filter({ hasText: "Ordinary Shield" });
-  assert.equal(await shieldRows.count(), 2);
-  await shieldRows.last().getByRole("button", { name: "Remove purchased Ordinary Shield", exact: true }).click();
   assert.equal(await shieldRows.count(), 1);
+  assert.match(await shieldRows.innerText(), /Purchased/);
+  await shieldRows.getByRole("button", { name: "Remove purchased Ordinary Shield", exact: true }).click();
+  assert.equal(await shieldRows.count(), 1);
+  assert.match(await shieldRows.innerText(), /Training equipment/);
   assert.equal(await page.locator(".context-strip .inventory-stats").innerText(), beforePurchase);
   await page.screenshot({ path: `${output}/desktop-equipment.png` });
   await page.getByRole("button", { name: "7 Review", exact: true }).click();

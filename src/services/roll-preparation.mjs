@@ -1,5 +1,5 @@
 import {assertCurrentGameplayActor} from "../rules/current-character.mjs";
-import {equipmentAttributeValue} from "../rules/effective-attributes.mjs";
+import {effectiveActorAttributeValue} from "../rules/effective-attributes.mjs";
 import {coverRollSources} from "../rules/situational-adjustment.mjs";
 import {assertSummonPresent} from "../rules/summon-profile.mjs";
 import { validReferenceAttack } from "../rules/creature-actions.mjs";
@@ -169,7 +169,7 @@ export function rollBasis(
       : {}),
     attributeKey,
     mode,
-    attribute: actor.type === "character" ? equipmentAttributeValue(actor.system.attributes[attributeKey].base,actor.items??[],attributeKey) : actor.system.attributes[attributeKey].effective,
+    attribute: actor.type === "character" ? effectiveActorAttributeValue(actor.system.attributes[attributeKey].base,actor,attributeKey) : actor.system.attributes[attributeKey].effective,
     contributions,
     benefits: mode==='defense' ? defenseBenefits(actor,{incomingAttack:Boolean(incoming)}) : [],
   };

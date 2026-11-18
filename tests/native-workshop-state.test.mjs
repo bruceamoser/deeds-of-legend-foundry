@@ -8,6 +8,8 @@ import { applyForgePlaytest } from "../src/rules/forge-playtest-catalog.mjs";
 import { readPortableCharacter } from "../src/rules/portable-character.mjs";
 import { nativeWorkshopLearnedItems, nativeWorkshopEquipmentItems, loadNativeWorkshopState, saveNativeWorkshopState, commitNativeWorkshopCharacter, saveNativeWorkshopIdentity, mergeNativeWorkshopPlay } from "../src/services/native-workshop-state.mjs";
 import { currentNativeCharacterChanges } from "../src/rules/native-character-state.mjs";
+import { refundForgePurchases } from "../src/rules/forge.mjs";
+import { LEARNED_GEAR_PREFIX } from "../src/rules/training-equipment.mjs";
 const read = async path => JSON.parse(await readFile(new URL(path, import.meta.url), "utf8"));
 const [choices,inventory,wounds,forge,references] = await Promise.all(["choices","inventory","wounds","forge","forge-references"].map(name => read(`../static/data/${name}.json`)));
 const current = applyForgePlaytest(forge,references);
@@ -83,22 +85,52 @@ test("explicit commit, isolated draft, stale save and resource-authoritative rel
     async createEmbeddedDocuments(type,sources) { for(const [index,source] of sources.entries()) this.items.push({...source,id:source._id ?? `item-${this.items.length}-${index}`,getFlag:(namespace,key)=>source.flags?.[namespace]?.[key]}); },
     async updateEmbeddedDocuments(type,sources){for(const source of sources){const item=this.items.find(item=>item.id===source._id); for(const [key,value] of Object.entries(source)){if(key.startsWith("system."))item.system[key.slice(7)]=value;else if(key!=="_id") item[key]=structuredClone(value);}}},async deleteEmbeddedDocuments(type,ids){this.items=this.items.filter(item=>!ids.includes(item.id));},
   };
-  const draftSave = await saveNativeWorkshopState(actor,{character:portable,mode:"creation"},{expectedRevision:0});
+  const construction=structuredClone(portable);
+  const waterId="shop-starter-water-flask";
+  const waterPurchase=construction.draft.shopping.find(item=>item.id==="item-water-flask");
+  const originalWaterId=waterPurchase.instanceId;
+  if (originalWaterId !== waterId) {
+    waterPurchase.instanceId=waterId;
+    construction.draft.loadout[waterId]=construction.draft.loadout[originalWaterId];
+    delete construction.draft.loadout[originalWaterId];
+  }
+  const draftSave = await saveNativeWorkshopState(actor,{character:construction,mode:"creation"},{expectedRevision:0});
   assert.equal(draftSave.revision,1);
   assert.equal(actor.items.length,0);
-  await commitNativeWorkshopCharacter(actor,portable,{expectedRevision:1});
+  await commitNativeWorkshopCharacter(actor,construction,{expectedRevision:1});
   assert.ok(actor.items.length);
   actor.system.health.value=2; actor.system.sp.value=1; actor.system.grit.spent=1;
   const customized=actor.items.find(item=>item.type==="ability");
   customized.name="Custom ability";customized.img="custom.png";customized.system.description="<p>Custom rules</p>";
   actor.items.push({id:"arbitrary",type:"equipment",getFlag:()=>undefined});
+  // The character already owns this grant, even if the technique that
+  // supplied it is absent from the edited progression.
+  const learnedGearId=`${LEARNED_GEAR_PREFIX}ordinary-light-armor`;
+  const [trainingGear]=nativeWorkshopEquipmentItems({inventory:{items:[{catalogId:"item-ordinary-light-armor",instanceId:learnedGearId,quantity:1}]}},catalogs);
+  await actor.createEmbeddedDocuments("Item",[{...trainingGear,_id:"training-gear",name:"Inherited brigandine"}]);
   const before = await loadNativeWorkshopState(actor);
   assert.equal(before.character.draft.play.hp,2);
   assert.equal(before.character.draft.play.sp,1);
   await assert.rejects(saveNativeWorkshopState(actor,before,{expectedRevision:1}),/changed/);
-  await saveNativeWorkshopState(actor,{...before,mode:"advancement"},{expectedRevision:2});
+  const editing=structuredClone(before);
+  const spellbooks=readPortableCharacter(editing.character,catalogs).preview.state.learning.spells;
+  const removed=refundForgePurchases(catalogs.forge,editing.character.draft,"telekinesis:0");
+  const spellIds=spellbooks.filter(spell=>removed.some(entry=>catalogs.forge.nodes.find(node=>node.id===entry.id)?.spellIds?.includes(spell.id))).map(spell=>spell.id);
+  assert.ok(spellIds.length);
+  await saveNativeWorkshopState(actor,{...editing,mode:"advancement",editingLevel:1},{expectedRevision:2});
   assert.equal(actor.system.health.value,2);
-  await commitNativeWorkshopCharacter(actor,portable,{expectedRevision:3});
+  assert(actor.items.some(item=>spellIds.includes(item.getFlag("heroes-of-legend","catalogId"))), "draft changes leave live Items intact");
+  const reopened=await loadNativeWorkshopState(actor);
+  assert.equal(reopened.mode,"advancement");
+  assert.equal(reopened.editingLevel,1);
+  assert(!reopened.character.draft.purchases[1].some(entry=>entry.id==="telekinesis:0"));
+  const committed=await commitNativeWorkshopCharacter(actor,reopened.character,{expectedRevision:3,tab:"Development"});
+  assert.equal(committed.mode,"sheet");
+  assert.equal(committed.tab,"Development");
+  assert.equal(flags.nativeWorkshopDraft,null);
+  assert(!actor.items.some(item=>spellIds.includes(item.getFlag("heroes-of-legend","catalogId"))));
+  assert.equal(actor.items.find(item=>item.id==="training-gear")?.name,"Inherited brigandine");
+  assert(committed.character.draft.play.inventory.added.some(item=>item.instanceId===learnedGearId));
   assert.equal(actor.system.health.value,2);
   assert.equal(actor.system.sp.value,1);
   assert.ok(actor.items.some(item=>item.id==="arbitrary"));
@@ -238,7 +270,7 @@ test("explicit commit, isolated draft, stale save and resource-authoritative rel
   await saveNativeWorkshopState(actor,lootState,{expectedRevision:12,basePlay:lootBase,baseLoadout:lootLoadout});
   assert.equal(loot.system.quantity,4);assert.equal(loot.system.carried,false);assert.equal(loot.name,"Named Loot");assert.equal(loot.system.description,"<p>User-authored loot</p>");assert.equal(loot.img,"loot.png");assert.equal(loot.getFlag("heroes-of-legend","grantKind"),"crafting");
   const beforeCommitCount=actor.items.length;
-  await commitNativeWorkshopCharacter(actor,portable,{expectedRevision:13});
+  await commitNativeWorkshopCharacter(actor,committed.character,{expectedRevision:13});
   assert.equal(actor.items.length,beforeCommitCount);assert.equal(actor.items.filter(item=>item.id==="external-loot").length,1);assert.equal(loot.system.quantity,4);assert.equal(loot.getFlag("heroes-of-legend","grantKind"),"crafting");
   assert.ok(actor.items.some(item=>item.id==="unknown-custom"));assert.ok(actor.items.some(item=>item.id==="custom-ability"));
   actor.items=actor.items.filter(item=>item.id!=="external-loot");
@@ -301,6 +333,32 @@ test("explicit commit, isolated draft, stale save and resource-authoritative rel
     first.system.hands=2;state=await loadNativeWorkshopState(actor);
     await saveNativeWorkshopState(actor,state,{expectedRevision:flags.nativeWorkshop.revision,basePlay:structuredClone(state.character.draft.play),baseLoadout:structuredClone(state.character.draft.loadout)});
     assert.equal(first.system.hands,2);assert.equal(lighting.system.hands,1);
+  });
+  await t.test("a returned starting flask credits the purse and preserves other gear", async()=>{
+    const flask=actor.items.find(item=>nativeWorkshopInventoryId(item)===waterId);
+    assert.ok(flask);
+    const prepare=async()=>{
+      const state=await loadNativeWorkshopState(actor);
+      return {state, basePlay:structuredClone(state.character.draft.play),baseLoadout:structuredClone(state.character.draft.loadout)};
+    };
+    for (const waterUnits of [0,1]) {
+      const {state,basePlay,baseLoadout}=await prepare();
+      state.character.draft.play.inventory.overrides[waterId].waterUnits=waterUnits;
+      await saveNativeWorkshopState(actor,state,{expectedRevision:state.revision,basePlay,baseLoadout});
+      assert.equal(flask.system.waterUnits,waterUnits);
+    }
+    const {state,basePlay,baseLoadout}=await prepare();
+    flags.development.coins-=3; // A later native market purchase was paid from the live purse.
+    const coins=flags.development.coins;
+    const retained=actor.items.filter(item=>item!==flask).map(item=>item.id);
+    state.character.draft.play.inventory.removed.push(waterId);
+    state.character.draft.play.inventory.sold=[waterId];
+    delete state.character.draft.loadout[waterId];
+    const sold=await saveNativeWorkshopState(actor,state,{expectedRevision:state.revision,basePlay,baseLoadout});
+    assert.equal(flags.development.coins,coins+1);
+    assert.ok(!actor.items.some(item=>item.id===flask.id));
+    assert.ok(retained.every(id=>actor.items.some(item=>item.id===id)));
+    assert.deepEqual(sold.character.draft.play.inventory.sold,[waterId]);
   });
 });
 

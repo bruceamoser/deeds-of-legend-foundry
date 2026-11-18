@@ -1364,6 +1364,19 @@ dialog header button {
   font-size: 0.64rem;
   line-height: 1.2;
 }
+.sheet-inventory .item-ammunition {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 3px 6px;
+  margin-top: 3px;
+  font-size: 0.72rem;
+}
+.sheet-inventory .item-ammunition select {
+  width: min(100%, 170px);
+  min-height: 24px;
+  padding: 2px 4px;
+}
 .sheet-inventory .inventory-table td:last-child button {
   min-height: 24px;
   padding: 0 5px;
@@ -1372,9 +1385,14 @@ dialog header button {
   table-layout: fixed;
 }
 .sheet-inventory .inventory-table th:nth-child(2),
-.sheet-inventory .inventory-table th:nth-child(3),
-.sheet-inventory .inventory-table th:nth-child(4) {
+.sheet-inventory .inventory-table th:nth-child(3) {
   width: 48px;
+}
+.sheet-inventory .inventory-table th:nth-child(4) {
+  width: 94px;
+}
+.sheet-inventory .inventory-table td:nth-child(4) {
+  white-space: normal;
 }
 .sheet-inventory .inventory-table th:nth-child(5),
 .sheet-inventory .inventory-table th:nth-child(6) {
@@ -1384,7 +1402,7 @@ dialog header button {
   width: 62px;
 }
 .sheet-inventory .inventory-table th:last-child {
-  width: 26px;
+  width: 57px;
 }
 .known-disciplines h3 {
   margin: 0 0 4px;

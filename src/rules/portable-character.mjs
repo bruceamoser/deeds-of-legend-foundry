@@ -251,6 +251,22 @@ function migrateWorkshopPlaytest(draft, forge) {
   }) };
 }
 
+// Before these options changed, portable heroes stored an origin's slot rather
+// than the selected discipline. A changed slot should ask for a new choice.
+const previousOriginSources = new Set([
+  "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+  "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+]);
+const previousOriginSlots = {
+  "origin-culture-traveling-companies": [1, "subterfuge"],
+  "origin-culture-oasis-cities": [1, "scholarship"],
+  "origin-culture-border-marches": [1, "marksmanship"],
+  "origin-culture-walled-communities": [1, "guard"],
+  "origin-background-duelist-s-second": [0, "arms"],
+  "origin-background-ward-scribe": [1, "armor"],
+  "origin-background-war-drummer": [1, "guard"],
+};
+
 /** Import choices, never trusted derived statistics, executable content or Actor IDs. */
 export function readPortableCharacter(input, catalogs, languages) {
   if (
@@ -273,6 +289,15 @@ export function readPortableCharacter(input, catalogs, languages) {
     );
   const schemaVersion = portableVersion(catalogs);
   const d = currentCreationDraft(value.draft, value.sourceCommit);
+  if (catalogs.forge && value.schemaVersion === SPELLBOOK_PROGRESSION_VERSION && previousOriginSources.has(value.sourceCommit)) {
+    for (const kind of ["culture", "background"]) {
+      const choice = d?.[kind];
+      const prior = previousOriginSlots[choice?.id];
+      if (!prior || choice.pair !== prior[0]) continue;
+      const current = catalogs.forge.origins.find(origin => origin.id === choice.id);
+      if (current) choice.pair = current.pairs.findIndex(pair => pair.disciplineId === prior[1]);
+    }
+  }
   if (catalogs.forge && value.schemaVersion < FORGE_PORTABLE_VERSION)
     migrateForgeChoices(d, catalogs);
   if ((catalogs.forge?.playtest || catalogs.forge?.rulesRevision === 299) && value.schemaVersion < WORKSHOP_PLAYTEST_VERSION)

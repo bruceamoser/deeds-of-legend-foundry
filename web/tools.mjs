@@ -270,7 +270,7 @@ function recovery() {
         <h2>Restore HP and SP</h2>
         <div class="tool-actions">
           ${btn("Healing", "healing", canAct ? "" : "disabled", "primary")}
-          ${btn("Safe overnight rest", "rest", canAct && !health.dying ? "" : "disabled")}
+          ${btn("Night’s Rest", "rest", canAct && !health.dying ? "" : "disabled")}
         </div>
         <p>Eight safe hours restore HP and SP and renew first aid, once in 24 hours.</p>
         ${ruleButton("rule-recovery")}
@@ -523,10 +523,10 @@ document.addEventListener("click", (e) => {
       health = next;
     }
     if (a === "rest") return popup(
-      "Safe overnight rest",
+      "Night’s Rest",
       `<p>Rest somewhere safe with food, water and adequate shelter. Record the end of eight uninterrupted hours, including six hours of sleep or equivalent rest. Count elapsed hours from the start of the example.</p>
-      <label>Hour rest finished <input id="rest-hour" type="number" min="${(health.lastRestHour ?? -16) + 24}" value="${(health.lastRestHour ?? -16) + 24}"></label>
-      <div class="tool-actions">${btn("Complete safe rest", "complete-rest", "", "primary")}</div>`,
+      <label>Campaign hour when rest ended <input id="rest-hour" type="number" min="${(health.lastRestHour ?? -16) + 24}" value="${(health.lastRestHour ?? -16) + 24}"></label>
+      <div class="tool-actions">${btn("Complete Night’s Rest", "complete-rest", "", "primary")}</div>`,
     );
     if (a === "complete-rest") {
       health = forgeRest(health, recoveryLimits, {
