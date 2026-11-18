@@ -3,7 +3,15 @@ import {
   activeForgeSustain, beginForgeSustain, convertForgeManeuver, endForgeSustain,
   maintainForgeSustain, nextForgeTurn, sustainLimit,
 } from "./rules/forge-sustain.mjs";
-import { renderForge, bindForgeInteractions, selectAtlasNode } from "./forge-view.mjs";
+import { renderForge, bindForgeInteractions, selectAtlasNode, disciplineTokenPath } from "./forge-view.mjs";
+import {
+  workshopRollAttributes,
+  restrictedWorkshopRollAttributes,
+  heldWorkshopWeapons,
+  validateWorkshopAbilityUse,
+  workshopWeaponLabel,
+  workshopWeaponMatches,
+} from "./rules/workshop-ability.mjs";
 import { signatureSpellCost, isForgeRitual, isForgeModifier, forgeCastOptions, forgeCastPayment } from "./rules/forge-casting.mjs";
 import { forgeEligibility } from "./rules/forge.mjs";
 import { workshopCatalogs } from "./rules/workshop-forge-catalog.mjs";
@@ -183,6 +191,8 @@ function itemName(item) {
   return item ? draft.play?.inventory?.overrides?.[item.instanceId]?.name ?? item.name ?? name(item.catalogId) : '';
 }
 function rollItemNames(id) {
+  const requirement = get(id)?.weaponRequirement;
+  if (requirement) return heldWorkshopWeapons(preview.inventory.items, requirement).map(itemName);
   const catalogId=['ability-basic-melee','ability-basic-throw','ability-opportunity-attack'].includes(id) ? 'item-ordinary-melee-weapon' : id==='ability-basic-ranged' ? 'item-ordinary-ranged-weapon' : id==='ability-shield-block' ? 'item-ordinary-shield' : null;
   return catalogId ? preview.inventory.items.filter(item=>item.catalogId===catalogId && item.carried && item.quantity>0).map(itemName) : [];
 }
@@ -240,8 +250,7 @@ function symbol(id) {
   const key = id?.replace("discipline-", "");
   const discipline = catalogs.forge.disciplines.find((entry) => entry.id === key);
   if (!discipline) return "";
-  const svg = ["elements", "force", "wards", "divination", "invocation", "mentalism", "spellcraft"].includes(key);
-  return `<img class="sigil" src="assets/${key}.${svg ? "svg" : "webp"}" alt="">`;
+  return `<img class="sigil" src="${disciplineTokenPath(key)}" alt="">`;
 }
 function equipmentEligibility(id) {
   const requiredAbilityId = forgeArmorRequirement(id, catalogs.forge.playtest) ?? (id === "item-smoke-supply" ? "craft:mixtures:1" : null);
@@ -562,14 +571,10 @@ function brief(record) {
   return body.find((b) => b.text)?.text ?? record.reference?.flavor?.[0] ?? "";
 }
 function attributeFor(record) {
-  if (record?.page || record?.signatureComponent) return ATTRIBUTES.find((key) => record.attribute?.toLowerCase().startsWith(key));
   // The universal opportunity is one Basic Melee, using that action's printed roll.
   if (record?.id === "ability-opportunity-attack")
     return attributeFor(get("ability-basic-melee"));
-  const text =
-    record?.reference?.rules.details.find((d) => d.label === "Attribute")
-      ?.value ?? "";
-  return ATTRIBUTES.find((key) => text.toLowerCase().startsWith(key)) ?? null;
+  return workshopRollAttributes(record)[0] ?? null;
 }
 function favorite(kind, id) {
   const active = draft.play?.favorites?.[kind]?.includes(id) ?? false;
@@ -630,6 +635,8 @@ function attributeLabel(key) { return `${title(key).slice(0,2)} ${(preview.attri
 function inlineRules(record) {
   let body = record.signatureComponent ? markdown(record.effect) : record.page ? spellProfile(record) : record.reference ?
     `<dl>${record.reference.rules.details.map(d=>`<dt>${esc(d.label)}</dt><dd>${ruleInline(d.value)}</dd>`).join("")}</dl>${record.reference.rules.body.map(block=>ruleBlockMarkup(block,{outcomeLayout:"stacked"})).join("")}${(record.reference.rules.notes??[]).map(n=>`<p><strong>${esc(n.label)}</strong> ${ruleInline(n.text)}</p>`).join("")}` : markdown(record.effect ?? record.referenceMarkdown ?? references.records[record.id]?.markdown ?? "");
+  if (record.weaponRequirement)
+    body = `<p><strong>Equipment:</strong> Wield a ${workshopWeaponLabel(record.weaponRequirement)}.</p>` + body;
   const instrument = preview.state.instruments?.find(entry=>entry.abilityId === record.id)?.instrument;
   if (instrument) body = `<p><strong>Your instrument:</strong> ${esc(instrument)}</p>` + body;
   if(record.id === "ability-message-by-heart" && preview.state.abilities.includes(record.id)) body = `<label>Memorized message<textarea id="memorized-message" aria-label="Memorized message" maxlength="5000">${esc(draft.play?.memorizedMessage ?? "")}</textarea></label><p>Up to 50 words. Rehearse a replacement for one minute.</p>${button("Save message", "save-message", "", "small")}` + body;
@@ -637,12 +644,23 @@ function inlineRules(record) {
 }
 function actionUse(entry) {
   const r=entry.record, key=attributeFor(r), cost=castCost(r);
+  if (r.weaponRequirement && !heldWorkshopWeapons(preview.inventory.items, r.weaponRequirement).length) {
+    const requirement = `Wield a ${workshopWeaponLabel(r.weaponRequirement)} to use ${r.name}`;
+    return button(r.weaponRequirement === "one-handed-melee" ? "Hold 1H blade" : "Hold weapon",
+      "inline-action", `disabled aria-label="${esc(requirement)}" title="${esc(requirement)}"`, "compact-roll");
+  }
   if(entry.inventoryInstance) return entry.inventoryInstance.quantity > 0 && (entry.inventoryInstance.inventoryDie > 0 || !tracksSupply(entry.inventoryInstance)) ? itemUseButton(entry.inventoryInstance) : button("Empty","use-supply-dialog","disabled","compact-roll");
   if(r.id === "ability-use-a-healing-potion") return button("Use","potion-dialog",'aria-label="Use a healing potion"',"compact-roll");
   if(r.id === "ability-sustain-spell") return button("Sustain","sustain-spell",currentSustain().active ? "" : "disabled", "compact-roll");
   if(Number.isInteger(cost) && isForgeModifier(r)) return button(`Use · ${cost} SP`,'use-modifier',`data-id="${esc(r.id)}" aria-label="Use ${esc(r.name)}" ${liveVitals().sp<cost ? 'disabled' : ''}`,'compact-roll');
   if(Number.isInteger(cost)) return button(key?attributeLabel(key):isRitual(r)?"Ritual":"Cast","cast-spell",`data-id="${esc(r.id)}" aria-label="Cast ${esc(r.name)}" ${liveVitals().sp < minimumCastCost(r) || sustainUnavailable() ? "disabled" : ""}`,"compact-roll");
-  if(key) return button(attributeLabel(key),"open-roll",`data-id="${esc(r.id)}" aria-label="Roll ${esc(r.name)}"`,"compact-roll");
+  if (key) {
+    const keys = workshopRollAttributes(r);
+    const choice = keys.length > 1;
+    const label = choice ? keys.map(attributeLabel).join(" / ") : attributeLabel(key);
+    return button(label, "open-roll", `data-id="${esc(r.id)}" aria-label="Roll ${esc(r.name)}"`,
+      choice ? "compact-roll roll-attribute-choice" : "compact-roll");
+  }
   return button("Use","inline-action",`data-use-ability="true" data-id="${esc(r.id)}" aria-label="Use ${esc(r.name)}"`,"compact-roll");
 }
 function compactEffect(record) {
@@ -1192,7 +1210,12 @@ function acquisitions(onlyMissing = false, onlyId = null) {
     .join("");
 }
 function equipment() {
-  return `${heading("", "Equipment", "", button("Buy inventory items", "open-picker", 'data-kind="equipment"', "primary small"))}${inventoryTable()}`;
+  const requirements = preview.creation.state.abilities.map(id => get(id)?.weaponRequirement);
+  const requirement = requirements.includes("one-handed-melee") ? "one-handed-melee" :
+    requirements.includes("melee") ? "melee" : null;
+  const needsWeapon = requirement && !preview.creation.inventory.items.some(item => workshopWeaponMatches(item, requirement));
+  const guidance = needsWeapon ? `<p class="inline-help">Your learned techniques use a ${workshopWeaponLabel(requirement)}. Buy an Ordinary Melee Weapon${requirement === "one-handed-melee" ? " with Hands set to 1" : ""}.</p>` : "";
+  return `${heading("", "Equipment", "", button("Buy inventory items", "open-picker", 'data-kind="equipment"', "primary small"))}${guidance}${inventoryTable()}`;
 }
 function equipmentMarket() {
   return `${searchRow("equipment")}<div class="table-wrap"><table class="market-table"><thead><tr><th>Item</th><th>Coins</th><th>Bulk</th><th>Supply</th><th>Qty</th><th>Hands</th><th></th></tr></thead><tbody>${catalogs.inventory.equipment
@@ -1628,6 +1651,9 @@ function openSheetRoll({ key, id, death = false, defense = false, cast = false, 
     attribute = death ? "fortitude" : (key ?? attributeFor(record));
   if (!ATTRIBUTES.includes(attribute))
     throw new Error("Choose an attribute for this roll.");
+  validateWorkshopAbilityUse(record, preview.inventory.items, attribute);
+  const restricted = restrictedWorkshopRollAttributes(record);
+  const availableAttributes = death ? ["fortitude"] : restricted.length ? restricted : ATTRIBUTES;
   activeRoll = { death, id, defense, cast, finishRitual, payment };
   const paymentCost = castOptions(record).find(option => option.id === payment)?.cost;
   const v = liveVitals();
@@ -1643,7 +1669,7 @@ function openSheetRoll({ key, id, death = false, defense = false, cast = false, 
     ${death ? `<section class="death-panel"><div id="death-mark-display">${deathMarks(v)}</div><div class="death-outcomes"><span><b>Weak</b> +1 failure</span><span><b>Standard</b> No change</span><span><b>Strong</b> +1 success</span></div><p class="inline-help">${v.immediateDeathRoll ? "Resolve the roll for the damage just taken." : "Roll at the start of your Dying turn."} Three successes stabilize you at 0 HP.</p>${!v.immediateDeathRoll && forgeCanSpendGrit(v, v.limits, "turn-start") ? button("Spend Grit instead", "confirm-grit", 'data-trigger="turn-start"') : ""}</section>` : ""}
     ${defense ? '<p class="inline-help">Choose the defense attribute named by the attack. Strong defense takes Weak attack effects; Weak defense takes Strong attack effects.</p>' : ""}
     ${!death ? [...new Set(conditions.filter(condition=>condition.key==='frightened').map(condition=>condition.source).filter(Boolean))].map(source=>`<label class="inline-toggle"><input type="checkbox" data-perceived-fear="${esc(source)}"> Perceiving ${esc(source)}</label>`).join('') : ''}
-    ${rollSetup({ attributes: Object.fromEntries((death ? ["fortitude"] : ATTRIBUTES).map((k) => [k, preview.attributes[k]])), selected: attribute, attributeId: "sheet-roll-attribute", value: preview.attributes[attribute], netId: "recipe-net", labelId: "roll-net-value" })}
+    ${rollSetup({ attributes: Object.fromEntries(availableAttributes.map((k) => [k, preview.attributes[k]])), selected: attribute, attributeId: "sheet-roll-attribute", value: preview.attributes[attribute], netId: "recipe-net", labelId: "roll-net-value" })}
     ${
       death
         ? ""
@@ -1657,7 +1683,7 @@ function openSheetRoll({ key, id, death = false, defense = false, cast = false, 
               "",
             )}</div><small>Choose applicable abilities; adjust the attribute and net Boons/Banes above.</small></details>`
     }
-    <div id="recipe-roll-result" role="status" aria-live="polite"></div><div class="dialog-actions">${button(cast ? `Cast and roll${paymentCost ? ` · ${paymentCost} SP` : ""}` : "Roll", "roll-sheet", "", "primary")}</div>${record ? `<details ${cast || finishRitual ? "open" : ""}><summary>Rules</summary>${record.page ? spellProfile(record) : markdown(record.effect ?? references.records[id]?.markdown ?? "")}${learnedImprovements(id)}</details>` : ""}`,
+    <div id="recipe-roll-result" role="status" aria-live="polite"></div><div class="dialog-actions">${button(cast ? `Cast and roll${paymentCost ? ` · ${paymentCost} SP` : ""}` : "Roll", "roll-sheet", "", "primary")}</div>${record ? `<details ${cast || finishRitual ? "open" : ""}><summary>Rules</summary>${inlineRules(record)}</details>` : ""}`,
   );
   bindRollSetup($("#reference .reference-body"), {
     getAttributeValue: () => preview.attributes[$("#sheet-roll-attribute").value],
@@ -1700,6 +1726,7 @@ function openSheetRoll({ key, id, death = false, defense = false, cast = false, 
 }
 async function rollSheetDice() {
   const key = $("#sheet-roll-attribute").value;
+  validateWorkshopAbilityUse(get(activeRoll.id), preview.inventory.items, key);
   if ((activeRoll.cast || activeRoll.finishRitual) && liveVitals().hp <= 0)
     throw new Error("Regain HP before resolving this working.");
   if (activeRoll.cast) {
@@ -1733,6 +1760,7 @@ async function rollSheetDice() {
     );
   if (!activeRoll.death) {
     activeRoll.last = {
+      attributeKey: key,
       attribute: preview.attributes[key], net: Number($("#recipe-net").value),
       selected, defense: activeRoll.defense,
     };
@@ -1771,6 +1799,9 @@ async function debtReroll() {
   if (!activeRoll?.last || activeRoll.death)
     throw new Error("Complete a sheet attribute roll before using The Debt Comes Due.");
   const original = activeRoll.last;
+  validateWorkshopAbilityUse(get(activeRoll.id), preview.inventory.items, original.attributeKey);
+  $("#sheet-roll-attribute").value = original.attributeKey;
+  $("#sheet-roll-attribute").dispatchEvent(new Event("change", { bubbles: true }));
   await host?.beforeUse?.({kind:"debt",willRoll:true});
   const payment = payDebt({ hp: liveVitals().hp, maxHp: liveVitals().max,
     recovery: draft.play?.recovery, traitIds: effectiveTraits() });
@@ -2194,7 +2225,13 @@ async function action(target) {
     state:JSON.parse(writePortableCharacter(draft,catalogs)),preview,record:get(target.dataset.id),
     activeRoll: typeof activeRoll === 'undefined' ? undefined : activeRoll,
     values:Object.fromEntries([...root.querySelectorAll('#reference input,#reference select')].map(node=>[node.id || node.dataset.rollAbility, node.type==='checkbox' ? node.checked : node.value]))})) return;
-  if(a === "inline-action") { const id=target.dataset.id; expandedActions.has(id)?expandedActions.delete(id):expandedActions.add(id); render(); return; }
+  if(a === "inline-action") {
+    const id = target.dataset.id;
+    if (target.dataset.useAbility === "true") validateWorkshopAbilityUse(get(id), preview.inventory.items);
+    expandedActions.has(id) ? expandedActions.delete(id) : expandedActions.add(id);
+    render();
+    return;
+  }
   if(a === "edit-favorites") return editFavorites();
   if(a === "library-scope") { libraryScope=target.dataset.scope; render(); return; }
 
@@ -3066,6 +3103,7 @@ return {
    const record=[...knownCards(),...catalogs.choices.filter(record=>record.universal),...preview.state.learning.spells].find(record=>record.id===id);
    if(!record) throw new Error('This character has not learned that ability or spell.');
    mode='sheet';tab='Abilities';render();
+   validateWorkshopAbilityUse(record, preview.inventory.items);
    if(actionTiming(record).includes('Passive') && !isForgeModifier(record)) return showReference(id);
    const holder=ownerDocument.createElement('div');holder.innerHTML=actionUse({record,visible:true});
    const control=holder.querySelector('button');

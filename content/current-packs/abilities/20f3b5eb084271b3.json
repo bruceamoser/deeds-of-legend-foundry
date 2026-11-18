@@ -1,0 +1,48 @@
+{
+  "_key": "!items!20f3b5eb084271b3",
+  "_id": "20f3b5eb084271b3",
+  "name": "Bind the Blade I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Agility</dd></div><div><dt>Equipment</dt><dd>Wield a suitable one-handed melee weapon.</dd></div></dl><p>Main Action · Agility. Attack an adjacent enemy wielding a melee weapon for 1/2/3 physical damage. On Strong, that weapon’s next attack takes 1 Bane if made before your next turn starts.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "agility",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "1 physical damage",
+      "standard": "2 physical damage",
+      "strong": "3 physical damage"
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "fencing:blade-tricks:1",
+      "sourceCommit": "d6a241b85446be95d6391603880e7788b3c92715",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "technique",
+        "nodeId": "fencing:blade-tricks:1",
+        "level": 1,
+        "cost": 1,
+        "action": "Main Action",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": "Agility",
+        "defenseAttribute": null,
+        "effect": "Main Action · Agility. Attack an adjacent enemy wielding a melee weapon for 1/2/3 physical damage. On Strong, that weapon’s next attack takes 1 Bane if made before your next turn starts.",
+        "improves": null,
+        "requires": [
+          "fencing"
+        ],
+        "bookId": null,
+        "weaponRequirement": "one-handed-melee"
+      }
+    }
+  },
+  "effects": []
+}

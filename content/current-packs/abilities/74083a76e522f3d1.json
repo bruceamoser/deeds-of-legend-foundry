@@ -1,0 +1,48 @@
+{
+  "_key": "!items!74083a76e522f3d1",
+  "_id": "74083a76e522f3d1",
+  "name": "Spring the Trap",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div><div><dt>Equipment</dt><dd>Wield a melee weapon.</dd></div></dl><p>Main Action · Knowledge. Once per scene, attack a visible adjacent enemy for 4/6/8 physical damage. On Standard or Strong, up to three willing allies within 4 squares may each move 2 squares, avoiding movement reactions from the target. Each gains 1 Boon on its next attack against that target before your next turn starts. On Strong, the target also gains Dazed 1.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "4 physical damage",
+      "standard": "6 physical damage",
+      "strong": "8 physical damage"
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "tactics:openings:7",
+      "sourceCommit": "d6a241b85446be95d6391603880e7788b3c92715",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "mastery",
+        "nodeId": "tactics:openings:7",
+        "level": 7,
+        "cost": 5,
+        "action": "Main Action",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": "Knowledge",
+        "defenseAttribute": null,
+        "effect": "Main Action · Knowledge. Once per scene, attack a visible adjacent enemy for 4/6/8 physical damage. On Standard or Strong, up to three willing allies within 4 squares may each move 2 squares, avoiding movement reactions from the target. Each gains 1 Boon on its next attack against that target before your next turn starts. On Strong, the target also gains Dazed 1.",
+        "improves": null,
+        "requires": [
+          "tactics:openings:6"
+        ],
+        "bookId": null,
+        "weaponRequirement": "melee"
+      }
+    }
+  },
+  "effects": []
+}

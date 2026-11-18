@@ -14,7 +14,7 @@ const { party } = read("forge-party");
 test("each level-seven mastery requires only its own path or spellbook endpoint", () => {
   assert.equal(graph.nodes.some(node => node.kind === "combined"), false);
   const masteries = graph.nodes.filter(({ kind, level }) => ["mastery", "section", "training"].includes(kind) && level === 7);
-  assert.equal(masteries.length, 76);
+  assert.equal(masteries.length, 84);
   for (const node of masteries) {
     const state = { level: 7, dp: node.dp, learned: node.requires };
     assert.equal(node.requires.length, 1, node.name);
@@ -29,6 +29,29 @@ test("each level-seven mastery requires only its own path or spellbook endpoint"
     assert(!learnForgeEntry(graph, result.state, node.id).eligible);
     assert(!state.learned.includes(node.id));
   }
+});
+
+test("Fencing and Tactics retain their imported starting choices, class prices and weapon requirements", () => {
+  const expected = [
+    { id: "fencing", classId: "class-blade", origin: "origin-background-salle-student", other: "athletics", cost: "one-handed-melee", roll: "Agility", attack: "fencing:pointwork:1" },
+    { id: "tactics", classId: "class-leader", origin: "origin-background-company-runner", other: "guard", cost: "melee", roll: "Knowledge", attack: "tactics:openings:1" },
+  ];
+  for (const { id, classId, origin, other, cost, roll, attack } of expected) {
+    const discipline = graph.disciplines.find(d => d.id === id);
+    assert.equal(discipline.paths.length, 4);
+    assert.deepEqual(graph.origins.find(entry => entry.id === origin).pairs.map(pair => pair.disciplineId), [id, other]);
+    assert.equal(forgeEligibility(graph, { classId, level: 1, dp: 1, learned: [] }, id).cost, 1);
+    assert.equal(forgeEligibility(graph, { classId: "class-arcanist", level: 1, dp: 1, learned: [] }, id).eligible, false);
+    const item = catalogs.choices.find(choice => choice.id === attack);
+    assert.equal(item.weaponRequirement, cost);
+    assert.equal(item.reference.rules.details.find(field => field.label === "Attribute").value, roll);
+  }
+  const flexNodes = graph.nodes.filter(node => node.attributeChoices);
+  assert.deepEqual(flexNodes.map(node => node.id), [
+    "arms:bladework:1", "arms:dueling:4", "arms:unarmed:1", "arms:unarmed:4", "arms:unarmed:7",
+  ]);
+  for (const node of flexNodes) assert.deepEqual(node.attributeChoices, ["brawn", "agility"]);
+  assert.equal(graph.nodes.find(node => node.id === "tactics:coordination:1").weaponRequirement, undefined);
 });
 
 test("Forge keeps technique improvements on the same attack and teaches one spell per advanced purchase", () => {

@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Reaction</dd></div><div><dt>Attribute</dt><dd>Brawn</dd></div></dl><p>Reaction · Brawn. After a melee attack against you resolves, attack its source if adjacent for 2/3/5 physical damage. You must survive and be able to act.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Reaction</dd></div><div><dt>Attribute</dt><dd>Brawn or Agility</dd></div></dl><p>Reaction · Brawn or Agility, chosen before rolling. After a melee attack against you resolves, attack its source if adjacent for 2/3/5 physical damage. You must survive and be able to act.</p>",
     "activity": {
       "action": "reaction",
       "rollMode": "attribute",
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "arms:dueling:4",
-      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "sourceCommit": "d6a241b85446be95d6391603880e7788b3c92715",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "technique",
@@ -32,14 +32,18 @@
         "sp": null,
         "range": null,
         "duration": null,
-        "attribute": "Brawn",
+        "attribute": "Brawn or Agility",
         "defenseAttribute": null,
-        "effect": "Reaction · Brawn. After a melee attack against you resolves, attack its source if adjacent for 2/3/5 physical damage. You must survive and be able to act.",
+        "effect": "Reaction · Brawn or Agility, chosen before rolling. After a melee attack against you resolves, attack its source if adjacent for 2/3/5 physical damage. You must survive and be able to act.",
         "improves": null,
         "requires": [
           "arms:dueling:3"
         ],
-        "bookId": null
+        "bookId": null,
+        "attributeChoices": [
+          "brawn",
+          "agility"
+        ]
       }
     }
   },

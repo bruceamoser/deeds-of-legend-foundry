@@ -1,0 +1,48 @@
+{
+  "_key": "!items!2ab2a57f0f62f641",
+  "_id": "2ab2a57f0f62f641",
+  "name": "Broken Tempo II",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div><div><dt>Equipment</dt><dd>Wield a suitable one-handed melee weapon.</dd></div></dl><p>Broken Tempo deals 3/5/7 physical damage.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "3 physical damage",
+      "standard": "5 physical damage",
+      "strong": "7 physical damage"
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "fencing:pointwork:5",
+      "sourceCommit": "d6a241b85446be95d6391603880e7788b3c92715",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "fencing:pointwork:5",
+        "level": 3,
+        "cost": 4,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Broken Tempo deals 3/5/7 physical damage.",
+        "improves": "fencing:pointwork:4",
+        "requires": [
+          "fencing:pointwork:4"
+        ],
+        "bookId": null,
+        "weaponRequirement": "one-handed-melee"
+      }
+    }
+  },
+  "effects": []
+}

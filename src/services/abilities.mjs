@@ -29,6 +29,11 @@ export async function activateOwnedAbility(item,{rangedWeaponItemId=null,weaponI
  const definition=itemAbilityDefinition(item);
  if(['defend-v1','shield-block-v1'].includes(definition?.handler))return activateDefenseBenefit(item);
  const catalogs=await loadWorkshopCatalogs(),record=abilityCatalogRecord(item,catalogs.choices),configuration=abilityRollConfiguration(item,record);
+ if (item.actor.getFlag(ID,'nativeWorkshop')?.portable && (record?.attributeChoices || record?.weaponRequirement)) {
+  const sheet = item.actor.sheet;
+  if (!sheet.useWorkshopAbility) throw new Error('Open the current character sheet to use this ability.');
+  return sheet.useWorkshopAbility(record.id);
+ }
  if(configuration.attribute){
   if(configuration.ranged)(await import('./ranged-ammunition.mjs')).rangedAmmunition(item.actor,rangedWeaponItemId);
   const {SharedRollDialog}=await import('../dialogs/attribute-roll.mjs');const dialog=new SharedRollDialog(item.actor,configuration.attribute,{mode:configuration.attack?'attack':'attribute'});

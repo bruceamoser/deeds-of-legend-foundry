@@ -65,6 +65,9 @@ test("every real spellbook has the same seven-node geometry and sequential path 
   const before=JSON.stringify(currentGraph);
   const {positions,edges}=atlasLayout(currentGraph);
   const arms=currentGraph.disciplines.find(d=>d.id==="arms");
+  assert.equal(currentGraph.disciplines.length,21);
+  const roots = currentGraph.disciplines.map(({id}) => positions.get(id));
+  assert.equal(new Set(roots.map(({x,y})=>`${x},${y}`)).size,roots.length);
   const offset=(id,root)=>({x:(positions.get(id).x-positions.get(root).x)||0,y:(positions.get(id).y-positions.get(root).y)||0});
   let books=0;
   for(const discipline of currentGraph.disciplines) for(const [index,path] of discipline.paths.entries()) {

@@ -1,0 +1,47 @@
+{
+  "_key": "!items!ebe86dda80a22ba7",
+  "_id": "ebe86dda80a22ba7",
+  "name": "Call the Warning II",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Call the Warning reaches up to 5 squares.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "tactics:contingencies:2",
+      "sourceCommit": "d6a241b85446be95d6391603880e7788b3c92715",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "tactics:contingencies:2",
+        "level": 1,
+        "cost": 2,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Call the Warning reaches up to 5 squares.",
+        "improves": "tactics:contingencies:1",
+        "requires": [
+          "tactics:contingencies:1"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Brawn</dd></div></dl><p>Main Action · Brawn. Attack one adjacent creature for 2/3/5 physical damage. On Strong, you may move 1 square after the attack.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Brawn or Agility</dd></div></dl><p>Main Action · Brawn or Agility, chosen before rolling. Attack one adjacent creature for 2/3/5 physical damage. On Strong, you may move 1 square after the attack.</p>",
     "activity": {
       "action": "main",
       "rollMode": "attribute",
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "arms:bladework:1",
-      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "sourceCommit": "d6a241b85446be95d6391603880e7788b3c92715",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "technique",
@@ -32,14 +32,18 @@
         "sp": null,
         "range": null,
         "duration": null,
-        "attribute": "Brawn",
+        "attribute": "Brawn or Agility",
         "defenseAttribute": null,
-        "effect": "Main Action · Brawn. Attack one adjacent creature for 2/3/5 physical damage. On Strong, you may move 1 square after the attack.",
+        "effect": "Main Action · Brawn or Agility, chosen before rolling. Attack one adjacent creature for 2/3/5 physical damage. On Strong, you may move 1 square after the attack.",
         "improves": null,
         "requires": [
           "arms"
         ],
-        "bookId": null
+        "bookId": null,
+        "attributeChoices": [
+          "brawn",
+          "agility"
+        ]
       }
     }
   },

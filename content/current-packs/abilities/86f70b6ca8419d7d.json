@@ -1,0 +1,48 @@
+{
+  "_key": "!items!86f70b6ca8419d7d",
+  "_id": "86f70b6ca8419d7d",
+  "name": "Exploit the Opening III",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Movement</dd></div><div><dt>Equipment</dt><dd>Wield a melee weapon.</dd></div></dl><p>Movement granted by Exploit the Opening avoids reactions from the target of your attack.</p>",
+    "activity": {
+      "action": "movement",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "tactics:openings:3",
+      "sourceCommit": "d6a241b85446be95d6391603880e7788b3c92715",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "tactics:openings:3",
+        "level": 1,
+        "cost": 2,
+        "action": "Movement",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Movement granted by Exploit the Opening avoids reactions from the target of your attack.",
+        "improves": "tactics:openings:1",
+        "requires": [
+          "tactics:openings:2"
+        ],
+        "bookId": null,
+        "weaponRequirement": "melee"
+      }
+    }
+  },
+  "effects": []
+}

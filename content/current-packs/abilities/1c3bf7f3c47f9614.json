@@ -1,0 +1,47 @@
+{
+  "_key": "!items!1c3bf7f3c47f9614",
+  "_id": "1c3bf7f3c47f9614",
+  "name": "Three Moves Ahead",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div></dl><p>Maneuver · Knowledge. Once per scene, choose up to two visible enemies. Move up to 2/3/4 squares without triggering movement reactions from them. Until your next turn starts, gain 2 Boons on your next attack against a chosen enemy and 1 Boon on your next defense against a chosen enemy. These are two distinct rolls. Taking this stance replaces any unused Boons from your other Tactics techniques.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "tactics:foresight:7",
+      "sourceCommit": "d6a241b85446be95d6391603880e7788b3c92715",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "mastery",
+        "nodeId": "tactics:foresight:7",
+        "level": 7,
+        "cost": 5,
+        "action": "Maneuver",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": "Knowledge",
+        "defenseAttribute": null,
+        "effect": "Maneuver · Knowledge. Once per scene, choose up to two visible enemies. Move up to 2/3/4 squares without triggering movement reactions from them. Until your next turn starts, gain 2 Boons on your next attack against a chosen enemy and 1 Boon on your next defense against a chosen enemy. These are two distinct rolls. Taking this stance replaces any unused Boons from your other Tactics techniques.",
+        "improves": null,
+        "requires": [
+          "tactics:foresight:6"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

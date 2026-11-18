@@ -1,0 +1,48 @@
+{
+  "_key": "!items!3325fa0bc6bd78fb",
+  "_id": "3325fa0bc6bd78fb",
+  "name": "Outside Measure I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Equipment</dt><dd>Wield a suitable one-handed melee weapon.</dd></div></dl><p>Maneuver. Move up to 3 squares without triggering movement reactions. If you end adjacent to any enemy you were not adjacent to when you began this Maneuver, choose one of them. Gain 1 Boon on your next melee weapon attack against it this turn. No roll.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "fencing:footwork:4",
+      "sourceCommit": "d6a241b85446be95d6391603880e7788b3c92715",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "technique",
+        "nodeId": "fencing:footwork:4",
+        "level": 3,
+        "cost": 3,
+        "action": "Maneuver",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Maneuver. Move up to 3 squares without triggering movement reactions. If you end adjacent to any enemy you were not adjacent to when you began this Maneuver, choose one of them. Gain 1 Boon on your next melee weapon attack against it this turn. No roll.",
+        "improves": null,
+        "requires": [
+          "fencing:footwork:3"
+        ],
+        "bookId": null,
+        "weaponRequirement": "one-handed-melee"
+      }
+    }
+  },
+  "effects": []
+}

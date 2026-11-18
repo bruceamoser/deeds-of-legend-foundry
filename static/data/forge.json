@@ -5075,7 +5075,7 @@
       }
     }
   },
-  "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+  "sourceCommit": "d6a241b85446be95d6391603880e7788b3c92715",
   "disciplines": [
     {
       "id": "arms",
@@ -5139,6 +5139,132 @@
         }
       ],
       "theme": "Distance, timing and the practiced turn of a weapon."
+    },
+    {
+      "id": "fencing",
+      "name": "Fencing",
+      "paths": [
+        {
+          "id": "fencing:pointwork",
+          "name": "Pointwork",
+          "steps": [
+            "fencing:pointwork:1",
+            "fencing:pointwork:2",
+            "fencing:pointwork:3",
+            "fencing:pointwork:4",
+            "fencing:pointwork:5",
+            "fencing:pointwork:6",
+            "fencing:pointwork:7"
+          ],
+          "direction": "north"
+        },
+        {
+          "id": "fencing:footwork",
+          "name": "Footwork",
+          "steps": [
+            "fencing:footwork:1",
+            "fencing:footwork:2",
+            "fencing:footwork:3",
+            "fencing:footwork:4",
+            "fencing:footwork:5",
+            "fencing:footwork:6",
+            "fencing:footwork:7"
+          ],
+          "direction": "west"
+        },
+        {
+          "id": "fencing:blade-contact",
+          "name": "Blade Contact",
+          "steps": [
+            "fencing:blade-contact:1",
+            "fencing:blade-contact:2",
+            "fencing:blade-contact:3",
+            "fencing:blade-contact:4",
+            "fencing:blade-contact:5",
+            "fencing:blade-contact:6",
+            "fencing:blade-contact:7"
+          ],
+          "direction": "east"
+        },
+        {
+          "id": "fencing:blade-tricks",
+          "name": "Blade Tricks",
+          "steps": [
+            "fencing:blade-tricks:1",
+            "fencing:blade-tricks:2",
+            "fencing:blade-tricks:3",
+            "fencing:blade-tricks:4",
+            "fencing:blade-tricks:5",
+            "fencing:blade-tricks:6",
+            "fencing:blade-tricks:7"
+          ],
+          "direction": "south"
+        }
+      ],
+      "theme": "Find the distance where a deliberate step matters more than a heavy swing."
+    },
+    {
+      "id": "tactics",
+      "name": "Tactics",
+      "paths": [
+        {
+          "id": "tactics:openings",
+          "name": "Openings",
+          "steps": [
+            "tactics:openings:1",
+            "tactics:openings:2",
+            "tactics:openings:3",
+            "tactics:openings:4",
+            "tactics:openings:5",
+            "tactics:openings:6",
+            "tactics:openings:7"
+          ],
+          "direction": "north"
+        },
+        {
+          "id": "tactics:coordination",
+          "name": "Coordination",
+          "steps": [
+            "tactics:coordination:1",
+            "tactics:coordination:2",
+            "tactics:coordination:3",
+            "tactics:coordination:4",
+            "tactics:coordination:5",
+            "tactics:coordination:6",
+            "tactics:coordination:7"
+          ],
+          "direction": "west"
+        },
+        {
+          "id": "tactics:contingencies",
+          "name": "Contingencies",
+          "steps": [
+            "tactics:contingencies:1",
+            "tactics:contingencies:2",
+            "tactics:contingencies:3",
+            "tactics:contingencies:4",
+            "tactics:contingencies:5",
+            "tactics:contingencies:6",
+            "tactics:contingencies:7"
+          ],
+          "direction": "east"
+        },
+        {
+          "id": "tactics:foresight",
+          "name": "Foresight",
+          "steps": [
+            "tactics:foresight:1",
+            "tactics:foresight:2",
+            "tactics:foresight:3",
+            "tactics:foresight:4",
+            "tactics:foresight:5",
+            "tactics:foresight:6",
+            "tactics:foresight:7"
+          ],
+          "direction": "south"
+        }
+      ],
+      "theme": "Read the fight, make a plan and put someone in position to use it."
     },
     {
       "id": "armor",
@@ -6290,14 +6416,18 @@
       "name": "Measured Cut I",
       "dp": 1,
       "level": 1,
-      "effect": "Main Action · Brawn. Attack one adjacent creature for 2/3/5 physical damage. On Strong, you may move 1 square after the attack.",
+      "effect": "Main Action · Brawn or Agility, chosen before rolling. Attack one adjacent creature for 2/3/5 physical damage. On Strong, you may move 1 square after the attack.",
       "kind": "technique",
       "disciplineId": "arms",
       "pathId": "arms:bladework",
       "requires": [
         "arms"
       ],
-      "shape": "circle"
+      "shape": "circle",
+      "attributeChoices": [
+        "brawn",
+        "agility"
+      ]
     },
     {
       "id": "arms:bladework:2",
@@ -6538,14 +6668,18 @@
       "name": "Riposte I",
       "dp": 3,
       "level": 3,
-      "effect": "Reaction · Brawn. After a melee attack against you resolves, attack its source if adjacent for 2/3/5 physical damage. You must survive and be able to act.",
+      "effect": "Reaction · Brawn or Agility, chosen before rolling. After a melee attack against you resolves, attack its source if adjacent for 2/3/5 physical damage. You must survive and be able to act.",
       "kind": "technique",
       "disciplineId": "arms",
       "pathId": "arms:dueling",
       "requires": [
         "arms:dueling:3"
       ],
-      "shape": "triangle"
+      "shape": "triangle",
+      "attributeChoices": [
+        "brawn",
+        "agility"
+      ]
     },
     {
       "id": "arms:dueling:5",
@@ -6582,7 +6716,7 @@
       "name": "Duelist’s Boundary",
       "dp": 5,
       "level": 7,
-      "effect": "Reaction · Brawn. When a visible adjacent enemy begins an attack against you or an ally, before its roll, strike it for 3/5/8 physical damage. On Standard or Strong it also gains Dazed 1. If it remains able to attack, resolve its attack normally; reduce its damage by 3 after resistance, respecting the attack minimum. This spends your ordinary Reaction and grants no further retaliation.",
+      "effect": "Reaction · Agility. When a visible adjacent enemy begins an attack against you or an ally, before its roll, strike it for 3/5/8 physical damage. On Standard or Strong it also gains Dazed 1. If it remains able to attack, resolve its attack normally; reduce its damage by 3 after resistance, respecting the attack minimum. This spends your ordinary Reaction and grants no further retaliation.",
       "kind": "mastery",
       "disciplineId": "arms",
       "pathId": "arms:dueling",
@@ -6603,7 +6737,11 @@
       "requires": [
         "arms"
       ],
-      "shape": "circle"
+      "shape": "circle",
+      "attributeChoices": [
+        "brawn",
+        "agility"
+      ]
     },
     {
       "id": "arms:unarmed:2",
@@ -6647,7 +6785,11 @@
       "requires": [
         "arms:unarmed:3"
       ],
-      "shape": "triangle"
+      "shape": "triangle",
+      "attributeChoices": [
+        "brawn",
+        "agility"
+      ]
     },
     {
       "id": "arms:unarmed:5",
@@ -6690,6 +6832,879 @@
       "pathId": "arms:unarmed",
       "requires": [
         "arms:unarmed:6"
+      ],
+      "shape": "diamond",
+      "attributeChoices": [
+        "brawn",
+        "agility"
+      ]
+    },
+    {
+      "id": "fencing",
+      "name": "Fencing",
+      "kind": "discipline",
+      "dp": 1,
+      "level": 1,
+      "requires": [],
+      "effect": "Find the distance where a deliberate step matters more than a heavy swing."
+    },
+    {
+      "id": "fencing:pointwork:1",
+      "name": "Direct Thrust I",
+      "dp": 1,
+      "level": 1,
+      "effect": "Main Action · Agility. Attack one adjacent creature for 1/3/5 physical damage. On Standard or Strong, you may move 1 square after the attack.",
+      "kind": "technique",
+      "disciplineId": "fencing",
+      "pathId": "fencing:pointwork",
+      "requires": [
+        "fencing"
+      ],
+      "shape": "circle",
+      "weaponRequirement": "one-handed-melee"
+    },
+    {
+      "id": "fencing:pointwork:2",
+      "name": "Direct Thrust II",
+      "dp": 2,
+      "level": 1,
+      "effect": "Direct Thrust deals 2/4/6 physical damage.",
+      "kind": "improvement",
+      "disciplineId": "fencing",
+      "pathId": "fencing:pointwork",
+      "requires": [
+        "fencing:pointwork:1"
+      ],
+      "shape": "circle",
+      "improves": "fencing:pointwork:1",
+      "weaponRequirement": "one-handed-melee"
+    },
+    {
+      "id": "fencing:pointwork:3",
+      "name": "Direct Thrust III",
+      "dp": 2,
+      "level": 1,
+      "effect": "The movement from Direct Thrust avoids movement reactions.",
+      "kind": "improvement",
+      "disciplineId": "fencing",
+      "pathId": "fencing:pointwork",
+      "requires": [
+        "fencing:pointwork:2"
+      ],
+      "shape": "circle",
+      "improves": "fencing:pointwork:1",
+      "weaponRequirement": "one-handed-melee"
+    },
+    {
+      "id": "fencing:pointwork:4",
+      "name": "Broken Tempo I",
+      "dp": 3,
+      "level": 3,
+      "effect": "Main Action · Agility. Move up to 2 squares, then attack one adjacent creature for 2/4/6 physical damage. Neither this approach nor a 1-square step you may take immediately after the attack triggers movement reactions.",
+      "kind": "technique",
+      "disciplineId": "fencing",
+      "pathId": "fencing:pointwork",
+      "requires": [
+        "fencing:pointwork:3"
+      ],
+      "shape": "triangle",
+      "weaponRequirement": "one-handed-melee"
+    },
+    {
+      "id": "fencing:pointwork:5",
+      "name": "Broken Tempo II",
+      "dp": 4,
+      "level": 3,
+      "effect": "Broken Tempo deals 3/5/7 physical damage.",
+      "kind": "improvement",
+      "disciplineId": "fencing",
+      "pathId": "fencing:pointwork",
+      "requires": [
+        "fencing:pointwork:4"
+      ],
+      "shape": "triangle",
+      "improves": "fencing:pointwork:4",
+      "weaponRequirement": "one-handed-melee"
+    },
+    {
+      "id": "fencing:pointwork:6",
+      "name": "Broken Tempo III",
+      "dp": 4,
+      "level": 3,
+      "effect": "On Strong, Broken Tempo also applies Dazed 1 to the target.",
+      "kind": "improvement",
+      "disciplineId": "fencing",
+      "pathId": "fencing:pointwork",
+      "requires": [
+        "fencing:pointwork:5"
+      ],
+      "shape": "triangle",
+      "improves": "fencing:pointwork:4",
+      "weaponRequirement": "one-handed-melee"
+    },
+    {
+      "id": "fencing:pointwork:7",
+      "name": "The Unseen Line",
+      "dp": 5,
+      "level": 7,
+      "effect": "Main Action · Agility. Move up to 4 squares and attack one enemy adjacent at any point along your route for 4/6/9 physical damage. On Strong, apply Dazed 1 and Bleeding 1. You may continue the route after the attack. This movement avoids movement reactions.",
+      "kind": "mastery",
+      "disciplineId": "fencing",
+      "pathId": "fencing:pointwork",
+      "requires": [
+        "fencing:pointwork:6"
+      ],
+      "shape": "diamond",
+      "weaponRequirement": "one-handed-melee"
+    },
+    {
+      "id": "fencing:footwork:1",
+      "name": "Passing Step I",
+      "dp": 1,
+      "level": 1,
+      "effect": "Maneuver. Move 1 square without triggering movement reactions. No roll.",
+      "kind": "technique",
+      "disciplineId": "fencing",
+      "pathId": "fencing:footwork",
+      "requires": [
+        "fencing"
+      ],
+      "shape": "circle",
+      "weaponRequirement": "one-handed-melee"
+    },
+    {
+      "id": "fencing:footwork:2",
+      "name": "Passing Step II",
+      "dp": 2,
+      "level": 1,
+      "effect": "Passing Step lets you move up to 2 squares instead of 1.",
+      "kind": "improvement",
+      "disciplineId": "fencing",
+      "pathId": "fencing:footwork",
+      "requires": [
+        "fencing:footwork:1"
+      ],
+      "shape": "circle",
+      "improves": "fencing:footwork:1",
+      "weaponRequirement": "one-handed-melee"
+    },
+    {
+      "id": "fencing:footwork:3",
+      "name": "Passing Step III",
+      "dp": 2,
+      "level": 1,
+      "effect": "One square of Passing Step may cross a square occupied by a willing ally. You must end in a legal unoccupied square.",
+      "kind": "improvement",
+      "disciplineId": "fencing",
+      "pathId": "fencing:footwork",
+      "requires": [
+        "fencing:footwork:2"
+      ],
+      "shape": "circle",
+      "improves": "fencing:footwork:1",
+      "weaponRequirement": "one-handed-melee"
+    },
+    {
+      "id": "fencing:footwork:4",
+      "name": "Outside Measure I",
+      "dp": 3,
+      "level": 3,
+      "effect": "Maneuver. Move up to 3 squares without triggering movement reactions. If you end adjacent to any enemy you were not adjacent to when you began this Maneuver, choose one of them. Gain 1 Boon on your next melee weapon attack against it this turn. No roll.",
+      "kind": "technique",
+      "disciplineId": "fencing",
+      "pathId": "fencing:footwork",
+      "requires": [
+        "fencing:footwork:3"
+      ],
+      "shape": "triangle",
+      "weaponRequirement": "one-handed-melee"
+    },
+    {
+      "id": "fencing:footwork:5",
+      "name": "Outside Measure II",
+      "dp": 4,
+      "level": 3,
+      "effect": "One square of Outside Measure may cross a square occupied by a willing ally. You must end in a legal unoccupied square.",
+      "kind": "improvement",
+      "disciplineId": "fencing",
+      "pathId": "fencing:footwork",
+      "requires": [
+        "fencing:footwork:4"
+      ],
+      "shape": "triangle",
+      "improves": "fencing:footwork:4",
+      "weaponRequirement": "one-handed-melee"
+    },
+    {
+      "id": "fencing:footwork:6",
+      "name": "Outside Measure III",
+      "dp": 4,
+      "level": 3,
+      "effect": "Outside Measure lets you move up to 4 squares.",
+      "kind": "improvement",
+      "disciplineId": "fencing",
+      "pathId": "fencing:footwork",
+      "requires": [
+        "fencing:footwork:5"
+      ],
+      "shape": "triangle",
+      "improves": "fencing:footwork:4",
+      "weaponRequirement": "one-handed-melee"
+    },
+    {
+      "id": "fencing:footwork:7",
+      "name": "Needle Through the Press",
+      "dp": 5,
+      "level": 7,
+      "effect": "Maneuver. Once per scene, move up to 5 squares without triggering movement reactions, ignoring extra movement cost from difficult terrain. You may pass through occupied squares and must end in a legal unoccupied square. Choose one enemy you passed adjacent to. Gain 2 Boons on your next melee weapon attack against that enemy this turn. This replaces any unused Boons from Outside Measure. No roll.",
+      "kind": "mastery",
+      "disciplineId": "fencing",
+      "pathId": "fencing:footwork",
+      "requires": [
+        "fencing:footwork:6"
+      ],
+      "shape": "diamond",
+      "weaponRequirement": "one-handed-melee"
+    },
+    {
+      "id": "fencing:blade-contact:1",
+      "name": "Deflecting Parry I",
+      "dp": 1,
+      "level": 1,
+      "effect": "Reaction. Before you roll defense against an adjacent enemy’s melee weapon attack, add 1 Boon to that defense. No separate roll.",
+      "kind": "technique",
+      "disciplineId": "fencing",
+      "pathId": "fencing:blade-contact",
+      "requires": [
+        "fencing"
+      ],
+      "shape": "circle",
+      "weaponRequirement": "one-handed-melee"
+    },
+    {
+      "id": "fencing:blade-contact:2",
+      "name": "Deflecting Parry II",
+      "dp": 2,
+      "level": 1,
+      "effect": "On a Strong defense, Deflecting Parry lets you move 1 square after the attack without triggering movement reactions.",
+      "kind": "improvement",
+      "disciplineId": "fencing",
+      "pathId": "fencing:blade-contact",
+      "requires": [
+        "fencing:blade-contact:1"
+      ],
+      "shape": "circle",
+      "improves": "fencing:blade-contact:1",
+      "weaponRequirement": "one-handed-melee"
+    },
+    {
+      "id": "fencing:blade-contact:3",
+      "name": "Deflecting Parry III",
+      "dp": 2,
+      "level": 1,
+      "effect": "Deflecting Parry works against melee attacks from adjacent enemies using weapons, natural attacks or unarmed strikes.",
+      "kind": "improvement",
+      "disciplineId": "fencing",
+      "pathId": "fencing:blade-contact",
+      "requires": [
+        "fencing:blade-contact:2"
+      ],
+      "shape": "circle",
+      "improves": "fencing:blade-contact:1",
+      "weaponRequirement": "one-handed-melee"
+    },
+    {
+      "id": "fencing:blade-contact:4",
+      "name": "Answering Steel I",
+      "dp": 3,
+      "level": 3,
+      "effect": "Reaction · Agility. When an adjacent enemy finishes a melee attack against you and your defense was Strong, strike it for 2/3/5 physical damage. You must be able to act and the enemy must still be adjacent.",
+      "kind": "technique",
+      "disciplineId": "fencing",
+      "pathId": "fencing:blade-contact",
+      "requires": [
+        "fencing:blade-contact:3"
+      ],
+      "shape": "triangle",
+      "weaponRequirement": "one-handed-melee"
+    },
+    {
+      "id": "fencing:blade-contact:5",
+      "name": "Answering Steel II",
+      "dp": 4,
+      "level": 3,
+      "effect": "Answering Steel deals 3/4/6 physical damage.",
+      "kind": "improvement",
+      "disciplineId": "fencing",
+      "pathId": "fencing:blade-contact",
+      "requires": [
+        "fencing:blade-contact:4"
+      ],
+      "shape": "triangle",
+      "improves": "fencing:blade-contact:4",
+      "weaponRequirement": "one-handed-melee"
+    },
+    {
+      "id": "fencing:blade-contact:6",
+      "name": "Answering Steel III",
+      "dp": 4,
+      "level": 3,
+      "effect": "You may use Answering Steel after a Standard or Strong defense.",
+      "kind": "improvement",
+      "disciplineId": "fencing",
+      "pathId": "fencing:blade-contact",
+      "requires": [
+        "fencing:blade-contact:5"
+      ],
+      "shape": "triangle",
+      "improves": "fencing:blade-contact:4",
+      "weaponRequirement": "one-handed-melee"
+    },
+    {
+      "id": "fencing:blade-contact:7",
+      "name": "Counter in Tempo",
+      "dp": 5,
+      "level": 7,
+      "effect": "Reaction · Agility. When an adjacent enemy finishes a melee attack against you or an adjacent ally and the defense was Standard or Strong, attack it for 3/5/8 physical damage. On Strong it gains Dazed 1. After your counter, you may move up to 2 squares without triggering movement reactions. You must be able to act and the enemy must still be adjacent.",
+      "kind": "mastery",
+      "disciplineId": "fencing",
+      "pathId": "fencing:blade-contact",
+      "requires": [
+        "fencing:blade-contact:6"
+      ],
+      "shape": "diamond",
+      "weaponRequirement": "one-handed-melee"
+    },
+    {
+      "id": "fencing:blade-tricks:1",
+      "name": "Bind the Blade I",
+      "dp": 1,
+      "level": 1,
+      "effect": "Main Action · Agility. Attack an adjacent enemy wielding a melee weapon for 1/2/3 physical damage. On Strong, that weapon’s next attack takes 1 Bane if made before your next turn starts.",
+      "kind": "technique",
+      "disciplineId": "fencing",
+      "pathId": "fencing:blade-tricks",
+      "requires": [
+        "fencing"
+      ],
+      "shape": "circle",
+      "weaponRequirement": "one-handed-melee"
+    },
+    {
+      "id": "fencing:blade-tricks:2",
+      "name": "Bind the Blade II",
+      "dp": 2,
+      "level": 1,
+      "effect": "Bind the Blade imposes its Bane on Standard or Strong.",
+      "kind": "improvement",
+      "disciplineId": "fencing",
+      "pathId": "fencing:blade-tricks",
+      "requires": [
+        "fencing:blade-tricks:1"
+      ],
+      "shape": "circle",
+      "improves": "fencing:blade-tricks:1",
+      "weaponRequirement": "one-handed-melee"
+    },
+    {
+      "id": "fencing:blade-tricks:3",
+      "name": "Bind the Blade III",
+      "dp": 2,
+      "level": 1,
+      "effect": "Bind the Blade deals 1/3/4 physical damage.",
+      "kind": "improvement",
+      "disciplineId": "fencing",
+      "pathId": "fencing:blade-tricks",
+      "requires": [
+        "fencing:blade-tricks:2"
+      ],
+      "shape": "circle",
+      "improves": "fencing:blade-tricks:1",
+      "weaponRequirement": "one-handed-melee"
+    },
+    {
+      "id": "fencing:blade-tricks:4",
+      "name": "Strip the Grip I",
+      "dp": 3,
+      "level": 3,
+      "effect": "Main Action · Agility. Attack an adjacent enemy holding a weapon for 1/3/4 physical damage. On Strong it drops one held weapon of your choice in its square if it can release the weapon. If it cannot release the weapon, its next attack with it takes 1 Bane before your next turn starts.",
+      "kind": "technique",
+      "disciplineId": "fencing",
+      "pathId": "fencing:blade-tricks",
+      "requires": [
+        "fencing:blade-tricks:3"
+      ],
+      "shape": "triangle",
+      "weaponRequirement": "one-handed-melee"
+    },
+    {
+      "id": "fencing:blade-tricks:5",
+      "name": "Strip the Grip II",
+      "dp": 4,
+      "level": 3,
+      "effect": "On Standard, choose one of the target’s held weapons. Its next attack with that weapon takes 1 Bane if made before your next turn starts.",
+      "kind": "improvement",
+      "disciplineId": "fencing",
+      "pathId": "fencing:blade-tricks",
+      "requires": [
+        "fencing:blade-tricks:4"
+      ],
+      "shape": "triangle",
+      "improves": "fencing:blade-tricks:4",
+      "weaponRequirement": "one-handed-melee"
+    },
+    {
+      "id": "fencing:blade-tricks:6",
+      "name": "Strip the Grip III",
+      "dp": 4,
+      "level": 3,
+      "effect": "On Strong, you may move the dropped weapon into an unoccupied square adjacent to the target instead.",
+      "kind": "improvement",
+      "disciplineId": "fencing",
+      "pathId": "fencing:blade-tricks",
+      "requires": [
+        "fencing:blade-tricks:5"
+      ],
+      "shape": "triangle",
+      "improves": "fencing:blade-tricks:4",
+      "weaponRequirement": "one-handed-melee"
+    },
+    {
+      "id": "fencing:blade-tricks:7",
+      "name": "Surrender the Steel",
+      "dp": 5,
+      "level": 7,
+      "effect": "Main Action · Agility. Once per scene, attack an adjacent enemy holding a weapon for 2/4/6 physical damage. On Standard or Strong it drops one held weapon of your choice if it can release it. Move the dropped weapon up to 2 squares along a clear route to an unoccupied square. On Strong, you may instead guide it up to 2 squares along a clear route into your free hand. On Standard or Strong, if the target cannot release the weapon, it takes 2 Banes on its next attack with that weapon before your next turn starts.",
+      "kind": "mastery",
+      "disciplineId": "fencing",
+      "pathId": "fencing:blade-tricks",
+      "requires": [
+        "fencing:blade-tricks:6"
+      ],
+      "shape": "diamond",
+      "weaponRequirement": "one-handed-melee"
+    },
+    {
+      "id": "tactics",
+      "name": "Tactics",
+      "kind": "discipline",
+      "dp": 1,
+      "level": 1,
+      "requires": [],
+      "effect": "Read the fight, make a plan and put someone in position to use it."
+    },
+    {
+      "id": "tactics:openings:1",
+      "name": "Exploit the Opening I",
+      "dp": 1,
+      "level": 1,
+      "effect": "Main Action · Knowledge. Attack one visible adjacent enemy for 1/3/4 physical damage. On Strong, one willing ally adjacent to that enemy may move 1 square after the attack, following the usual movement reactions.",
+      "kind": "technique",
+      "disciplineId": "tactics",
+      "pathId": "tactics:openings",
+      "requires": [
+        "tactics"
+      ],
+      "shape": "circle",
+      "weaponRequirement": "melee"
+    },
+    {
+      "id": "tactics:openings:2",
+      "name": "Exploit the Opening II",
+      "dp": 2,
+      "level": 1,
+      "effect": "Exploit the Opening deals 2/4/5 physical damage.",
+      "kind": "improvement",
+      "disciplineId": "tactics",
+      "pathId": "tactics:openings",
+      "requires": [
+        "tactics:openings:1"
+      ],
+      "shape": "circle",
+      "improves": "tactics:openings:1",
+      "weaponRequirement": "melee"
+    },
+    {
+      "id": "tactics:openings:3",
+      "name": "Exploit the Opening III",
+      "dp": 2,
+      "level": 1,
+      "effect": "Movement granted by Exploit the Opening avoids reactions from the target of your attack.",
+      "kind": "improvement",
+      "disciplineId": "tactics",
+      "pathId": "tactics:openings",
+      "requires": [
+        "tactics:openings:2"
+      ],
+      "shape": "circle",
+      "improves": "tactics:openings:1",
+      "weaponRequirement": "melee"
+    },
+    {
+      "id": "tactics:openings:4",
+      "name": "Divide Their Attention I",
+      "dp": 3,
+      "level": 3,
+      "effect": "Main Action · Knowledge. Attack one visible adjacent enemy for 2/4/6 physical damage. On Standard or Strong, choose one willing ally within 3 squares. It gains 1 Boon on its next attack against that enemy before your next turn starts.",
+      "kind": "technique",
+      "disciplineId": "tactics",
+      "pathId": "tactics:openings",
+      "requires": [
+        "tactics:openings:3"
+      ],
+      "shape": "triangle",
+      "weaponRequirement": "melee"
+    },
+    {
+      "id": "tactics:openings:5",
+      "name": "Divide Their Attention II",
+      "dp": 4,
+      "level": 3,
+      "effect": "Divide Their Attention deals 3/5/7 physical damage.",
+      "kind": "improvement",
+      "disciplineId": "tactics",
+      "pathId": "tactics:openings",
+      "requires": [
+        "tactics:openings:4"
+      ],
+      "shape": "triangle",
+      "improves": "tactics:openings:4",
+      "weaponRequirement": "melee"
+    },
+    {
+      "id": "tactics:openings:6",
+      "name": "Divide Their Attention III",
+      "dp": 4,
+      "level": 3,
+      "effect": "On Strong, Divide Their Attention may grant its Boon to two willing allies within range.",
+      "kind": "improvement",
+      "disciplineId": "tactics",
+      "pathId": "tactics:openings",
+      "requires": [
+        "tactics:openings:5"
+      ],
+      "shape": "triangle",
+      "improves": "tactics:openings:4",
+      "weaponRequirement": "melee"
+    },
+    {
+      "id": "tactics:openings:7",
+      "name": "Spring the Trap",
+      "dp": 5,
+      "level": 7,
+      "effect": "Main Action · Knowledge. Once per scene, attack a visible adjacent enemy for 4/6/8 physical damage. On Standard or Strong, up to three willing allies within 4 squares may each move 2 squares, avoiding movement reactions from the target. Each gains 1 Boon on its next attack against that target before your next turn starts. On Strong, the target also gains Dazed 1.",
+      "kind": "mastery",
+      "disciplineId": "tactics",
+      "pathId": "tactics:openings",
+      "requires": [
+        "tactics:openings:6"
+      ],
+      "shape": "diamond",
+      "weaponRequirement": "melee"
+    },
+    {
+      "id": "tactics:coordination:1",
+      "name": "Clear the Way I",
+      "dp": 1,
+      "level": 1,
+      "effect": "Maneuver. Give one willing ally within 3 squares a cue for a declared attack or defense that you can plausibly help. It gains 1 Boon on its next matching roll before your next turn starts. No roll.",
+      "kind": "technique",
+      "disciplineId": "tactics",
+      "pathId": "tactics:coordination",
+      "requires": [
+        "tactics"
+      ],
+      "shape": "circle"
+    },
+    {
+      "id": "tactics:coordination:2",
+      "name": "Clear the Way II",
+      "dp": 2,
+      "level": 1,
+      "effect": "Clear the Way reaches up to 5 squares.",
+      "kind": "improvement",
+      "disciplineId": "tactics",
+      "pathId": "tactics:coordination",
+      "requires": [
+        "tactics:coordination:1"
+      ],
+      "shape": "circle",
+      "improves": "tactics:coordination:1"
+    },
+    {
+      "id": "tactics:coordination:3",
+      "name": "Clear the Way III",
+      "dp": 2,
+      "level": 1,
+      "effect": "Clear the Way can instead help a declared noncombat task you can plausibly assist. The Boon applies to the next matching roll during the exchange or work interval. Outside combat, contribute this aid or your own roll to the objective during that interval.",
+      "kind": "improvement",
+      "disciplineId": "tactics",
+      "pathId": "tactics:coordination",
+      "requires": [
+        "tactics:coordination:2"
+      ],
+      "shape": "circle",
+      "improves": "tactics:coordination:1"
+    },
+    {
+      "id": "tactics:coordination:4",
+      "name": "Set the Formation I",
+      "dp": 3,
+      "level": 3,
+      "effect": "Maneuver · Knowledge. Choose a visible enemy and up to two willing allies within 4 squares. On any result, one chosen ally may move 1 square without triggering movement reactions from that enemy. On Standard or Strong, each chosen ally gains 1 Boon on its next attack against that enemy before your next turn starts.",
+      "kind": "technique",
+      "disciplineId": "tactics",
+      "pathId": "tactics:coordination",
+      "requires": [
+        "tactics:coordination:3"
+      ],
+      "shape": "triangle"
+    },
+    {
+      "id": "tactics:coordination:5",
+      "name": "Set the Formation II",
+      "dp": 4,
+      "level": 3,
+      "effect": "Set the Formation allows every chosen ally to move the square.",
+      "kind": "improvement",
+      "disciplineId": "tactics",
+      "pathId": "tactics:coordination",
+      "requires": [
+        "tactics:coordination:4"
+      ],
+      "shape": "triangle",
+      "improves": "tactics:coordination:4"
+    },
+    {
+      "id": "tactics:coordination:6",
+      "name": "Set the Formation III",
+      "dp": 4,
+      "level": 3,
+      "effect": "Set the Formation can choose up to three willing allies within range.",
+      "kind": "improvement",
+      "disciplineId": "tactics",
+      "pathId": "tactics:coordination",
+      "requires": [
+        "tactics:coordination:5"
+      ],
+      "shape": "triangle",
+      "improves": "tactics:coordination:4"
+    },
+    {
+      "id": "tactics:coordination:7",
+      "name": "The Perfect Moment",
+      "dp": 5,
+      "level": 7,
+      "effect": "Maneuver · Knowledge. Once per scene, choose a visible enemy and up to three willing allies within 6 squares. Each ally may move 1/2/3 squares without triggering movement reactions from that enemy. Each gains 1 Boon on its next attack against that enemy before your next turn starts, or 2 Boons on Strong.",
+      "kind": "mastery",
+      "disciplineId": "tactics",
+      "pathId": "tactics:coordination",
+      "requires": [
+        "tactics:coordination:6"
+      ],
+      "shape": "diamond"
+    },
+    {
+      "id": "tactics:contingencies:1",
+      "name": "Call the Warning I",
+      "dp": 1,
+      "level": 1,
+      "effect": "Reaction. Before a willing ally within 3 squares rolls defense against an attack from an enemy you can see, give it 1 Boon on that defense if it can follow your cue. No separate roll.",
+      "kind": "technique",
+      "disciplineId": "tactics",
+      "pathId": "tactics:contingencies",
+      "requires": [
+        "tactics"
+      ],
+      "shape": "circle"
+    },
+    {
+      "id": "tactics:contingencies:2",
+      "name": "Call the Warning II",
+      "dp": 2,
+      "level": 1,
+      "effect": "Call the Warning reaches up to 5 squares.",
+      "kind": "improvement",
+      "disciplineId": "tactics",
+      "pathId": "tactics:contingencies",
+      "requires": [
+        "tactics:contingencies:1"
+      ],
+      "shape": "circle",
+      "improves": "tactics:contingencies:1"
+    },
+    {
+      "id": "tactics:contingencies:3",
+      "name": "Call the Warning III",
+      "dp": 2,
+      "level": 1,
+      "effect": "After a Strong defense aided by Call the Warning, the ally may move 1 square without triggering movement reactions from that attacker.",
+      "kind": "improvement",
+      "disciplineId": "tactics",
+      "pathId": "tactics:contingencies",
+      "requires": [
+        "tactics:contingencies:2"
+      ],
+      "shape": "circle",
+      "improves": "tactics:contingencies:1"
+    },
+    {
+      "id": "tactics:contingencies:4",
+      "name": "On My Signal I",
+      "dp": 3,
+      "level": 3,
+      "effect": "Reaction. When a visible enemy within 4 squares ends voluntary movement, cue one willing ally within 4 squares. It may move up to 2 squares without triggering movement reactions from that enemy. No roll.",
+      "kind": "technique",
+      "disciplineId": "tactics",
+      "pathId": "tactics:contingencies",
+      "requires": [
+        "tactics:contingencies:3"
+      ],
+      "shape": "triangle"
+    },
+    {
+      "id": "tactics:contingencies:5",
+      "name": "On My Signal II",
+      "dp": 4,
+      "level": 3,
+      "effect": "On My Signal can cue two willing allies within range.",
+      "kind": "improvement",
+      "disciplineId": "tactics",
+      "pathId": "tactics:contingencies",
+      "requires": [
+        "tactics:contingencies:4"
+      ],
+      "shape": "triangle",
+      "improves": "tactics:contingencies:4"
+    },
+    {
+      "id": "tactics:contingencies:6",
+      "name": "On My Signal III",
+      "dp": 4,
+      "level": 3,
+      "effect": "Each ally moving with On My Signal may move up to 3 squares.",
+      "kind": "improvement",
+      "disciplineId": "tactics",
+      "pathId": "tactics:contingencies",
+      "requires": [
+        "tactics:contingencies:5"
+      ],
+      "shape": "triangle",
+      "improves": "tactics:contingencies:4"
+    },
+    {
+      "id": "tactics:contingencies:7",
+      "name": "Roads Out",
+      "dp": 5,
+      "level": 7,
+      "effect": "Reaction. Once per scene, when a visible enemy within 6 squares ends voluntary movement, choose up to three willing allies within 6 squares. You and each chosen ally may move up to 3 squares without triggering movement reactions. Each chosen ally gains 1 Boon on its next defense against that enemy before your next turn starts. No roll.",
+      "kind": "mastery",
+      "disciplineId": "tactics",
+      "pathId": "tactics:contingencies",
+      "requires": [
+        "tactics:contingencies:6"
+      ],
+      "shape": "diamond"
+    },
+    {
+      "id": "tactics:foresight:1",
+      "name": "Read the Pattern I",
+      "dp": 1,
+      "level": 1,
+      "effect": "Maneuver. Observe one visible enemy. Until your next turn starts, gain 1 Boon on the next attack you make against it or the next defense you roll against it, whichever comes first. No roll.",
+      "kind": "technique",
+      "disciplineId": "tactics",
+      "pathId": "tactics:foresight",
+      "requires": [
+        "tactics"
+      ],
+      "shape": "circle"
+    },
+    {
+      "id": "tactics:foresight:2",
+      "name": "Read the Pattern II",
+      "dp": 2,
+      "level": 1,
+      "effect": "When you use Read the Pattern, you may first move 1 square. Follow the usual movement reactions.",
+      "kind": "improvement",
+      "disciplineId": "tactics",
+      "pathId": "tactics:foresight",
+      "requires": [
+        "tactics:foresight:1"
+      ],
+      "shape": "circle",
+      "improves": "tactics:foresight:1"
+    },
+    {
+      "id": "tactics:foresight:3",
+      "name": "Read the Pattern III",
+      "dp": 2,
+      "level": 1,
+      "effect": "You may choose whether to keep the Boon for an attack roll or a defense roll against the chosen enemy when you use Read the Pattern.",
+      "kind": "improvement",
+      "disciplineId": "tactics",
+      "pathId": "tactics:foresight",
+      "requires": [
+        "tactics:foresight:2"
+      ],
+      "shape": "circle",
+      "improves": "tactics:foresight:1"
+    },
+    {
+      "id": "tactics:foresight:4",
+      "name": "Rehearse the Exchange I",
+      "dp": 3,
+      "level": 3,
+      "effect": "Maneuver · Knowledge. Study one visible enemy. Move up to 1 square, then gain 1 Boon on your next attack or next defense roll against it before your next turn starts. Choose which when you use this technique. On Strong, you may move up to 2 squares instead. Follow the usual movement reactions.",
+      "kind": "technique",
+      "disciplineId": "tactics",
+      "pathId": "tactics:foresight",
+      "requires": [
+        "tactics:foresight:3"
+      ],
+      "shape": "triangle"
+    },
+    {
+      "id": "tactics:foresight:5",
+      "name": "Rehearse the Exchange II",
+      "dp": 4,
+      "level": 3,
+      "effect": "Rehearse the Exchange gives 2 Boons instead of 1 on Strong.",
+      "kind": "improvement",
+      "disciplineId": "tactics",
+      "pathId": "tactics:foresight",
+      "requires": [
+        "tactics:foresight:4"
+      ],
+      "shape": "triangle",
+      "improves": "tactics:foresight:4"
+    },
+    {
+      "id": "tactics:foresight:6",
+      "name": "Rehearse the Exchange III",
+      "dp": 4,
+      "level": 3,
+      "effect": "Movement from Rehearse the Exchange avoids movement reactions from the chosen enemy.",
+      "kind": "improvement",
+      "disciplineId": "tactics",
+      "pathId": "tactics:foresight",
+      "requires": [
+        "tactics:foresight:5"
+      ],
+      "shape": "triangle",
+      "improves": "tactics:foresight:4"
+    },
+    {
+      "id": "tactics:foresight:7",
+      "name": "Three Moves Ahead",
+      "dp": 5,
+      "level": 7,
+      "effect": "Maneuver · Knowledge. Once per scene, choose up to two visible enemies. Move up to 2/3/4 squares without triggering movement reactions from them. Until your next turn starts, gain 2 Boons on your next attack against a chosen enemy and 1 Boon on your next defense against a chosen enemy. These are two distinct rolls. Taking this stance replaces any unused Boons from your other Tactics techniques.",
+      "kind": "mastery",
+      "disciplineId": "tactics",
+      "pathId": "tactics:foresight",
+      "requires": [
+        "tactics:foresight:6"
       ],
       "shape": "diamond"
     },
@@ -21615,6 +22630,21 @@
       "referenceMarkdown": "# Burglar\n\n*Every fine house has a service door and every service door has a story.*\n\n*Which room did you leave untouched?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Subterfuge, Athletics.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
+      "id": "origin-background-company-runner",
+      "name": "Company Runner",
+      "kind": "background",
+      "pairs": [
+        {
+          "disciplineId": "tactics"
+        },
+        {
+          "disciplineId": "guard"
+        }
+      ],
+      "coinContribution": 7,
+      "referenceMarkdown": "# Company Runner\n\n*You learned to tell a retreat from a rout while carrying messages between groups who could barely see each other.*\n\n*Which message did you deliver by a route no one else would take?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Tactics, Guard.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n"
+    },
+    {
       "id": "origin-background-confidence-artist",
       "name": "Confidence Artist",
       "kind": "background",
@@ -21868,6 +22898,21 @@
       ],
       "coinContribution": 5,
       "referenceMarkdown": "# Reluctant Knife\n\n*Someone once paid you to make a problem disappear. You still decide what that made you.*\n\n*Which name did you cross off without taking the job?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Subterfuge, Arms.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +5 coins. See [starting coins](../starting-coins.md).\n"
+    },
+    {
+      "id": "origin-background-salle-student",
+      "name": "Salle Student",
+      "kind": "background",
+      "pairs": [
+        {
+          "disciplineId": "fencing"
+        },
+        {
+          "disciplineId": "athletics"
+        }
+      ],
+      "coinContribution": 7,
+      "referenceMarkdown": "# Salle Student\n\n*You learned to read a blade beneath the clatter of a crowded practice hall. After lessons, your instructor made you drill on the stairs until your feet were as steady as your hand.*\n\n*What did you lose the first time you drew a blade outside the hall?*\n\n## Rules\n\n**Type:** Background.\n\n**Discipline choices:** Fencing, Athletics.\n\nBegin studying one of these disciplines. Choose a different discipline from each of your culture, background and class; together they give you three starting fields of study. Spend your starting DP on the abilities or spellbook sections you want to learn.\n\n**Starting coin contribution:** +7 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "origin-background-shore-gatherer",
@@ -22328,10 +23373,12 @@
         "craft": 3,
         "influence": 3,
         "life": 3,
-        "mentalism": 3
+        "mentalism": 3,
+        "fencing": 3,
+        "tactics": 3
       },
       "coinContribution": 6,
-      "referenceMarkdown": "# Arcanist\n\n*You study the impossible until your hands can give it a shape the world must briefly accept.*\n\nA thread of ash climbs the stair against the draft. You hold up a hand and the company stops. Someone has worked magic here. The ash is going to show you where they stood.\n\nAn Arcanist asks what a spell can do in this particular room, with these people in it. An elemental working might change the ground under a fight. A careful ritual might be the answer to a door the company would rather leave intact. Bent Trajectory lets an attack come from an unexpected angle. Study the Pattern suits a reader of workings, and Deliberate Spark is for the caster who sees an advantage in moving friends and foes a little farther apart.\n\nYou might savor a clean diagram or love the apprentice who asks the awkward question. What magical shortcut do you refuse to take? What impossible thing would make you put your notes down and try it anyway?\n\n## Rules\n\n**Attributes:** Minimum 0 in Agility, Knowledge. **HP contribution:** +1 at level 1 and per level thereafter.\n\n**Starting SP contribution:** Twice your positive Knowledge at creation: 2 × max(0, Knowledge).\n\n**Starting disciplines:** Choose one of Elements, Force, Invocation, Spellcraft. Your culture and background each contribute one other starting discipline. Choose three distinct disciplines across these selections.\n\n**Learning costs:** **1 DP:** Elements, Force, Spellcraft. **2 DP:** Scholarship, Divination, Invocation, Wards. **3 DP:** Arms, Armor, Guard, Marksmanship, Athletics, Subterfuge, Wilderness, Medicine, Craft, Influence, Life, Mentalism.\n\nPay the listed price to begin studying another discipline. Then follow the costs and requirements of the path or spellbook you choose.\n\n## Signature development\n\nChoose one signature at each of levels 1, 3 and 7 without spending DP. Choose from your class’s options for that level. Each signature is an ability you can use in its own right. Some offer an additional benefit when you also know another named signature; that benefit appears in the ability’s rules.\n\nYou may switch signatures under the ordinary retraining rules. Choose a replacement from your class’s options for the same milestone, then apply any interactions between the signatures you know.\n\n\n## Level 1 choices\n\n- [Bent Trajectory](../cards/signature-arcanist-bent-trajectory.md)\n- [Study the Pattern](../cards/signature-arcanist-study-the-pattern.md)\n- [Deliberate Spark](../cards/signature-arcanist-deliberate-spark.md)\n\n## Level 3 choices\n\n- [Create a Window](../cards/signature-arcanist-leave-a-window.md)\n- [Reading the Weave](../cards/signature-arcanist-reading-the-weave.md)\n- [Arcane Deflection](../cards/signature-arcanist-arcane-deflection.md)\n\n## Level 7 choices\n\n- [Choose the Edge](../cards/signature-arcanist-choose-the-edge.md)\n- [Open the Circle](../cards/signature-arcanist-open-the-circle.md)\n- [Folded Aegis](../cards/signature-arcanist-fold-the-distance.md)\n\n**Starting coin contribution:** +6 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Arcanist\n\n*You study the impossible until your hands can give it a shape the world must briefly accept.*\n\nA thread of ash climbs the stair against the draft. You hold up a hand and the company stops. Someone has worked magic here. The ash is going to show you where they stood.\n\nAn Arcanist asks what a spell can do in this particular room, with these people in it. An elemental working might change the ground under a fight. A careful ritual might be the answer to a door the company would rather leave intact. Bent Trajectory lets an attack come from an unexpected angle. Study the Pattern suits a reader of workings, and Deliberate Spark is for the caster who sees an advantage in moving friends and foes a little farther apart.\n\nYou might savor a clean diagram or love the apprentice who asks the awkward question. What magical shortcut do you refuse to take? What impossible thing would make you put your notes down and try it anyway?\n\n## Rules\n\n**Attributes:** Minimum 0 in Agility, Knowledge. **HP contribution:** +1 at level 1 and per level thereafter.\n\n**Starting SP contribution:** Twice your positive Knowledge at creation: 2 × max(0, Knowledge).\n\n**Starting disciplines:** Choose one of Elements, Force, Invocation, Spellcraft. Your culture and background each contribute one other starting discipline. Choose three distinct disciplines across these selections.\n\n**Learning costs:** **1 DP:** Elements, Force, Spellcraft. **2 DP:** Scholarship, Divination, Invocation, Wards. **3 DP:** Arms, Armor, Guard, Marksmanship, Athletics, Subterfuge, Wilderness, Medicine, Craft, Influence, Life, Mentalism, Fencing, Tactics.\n\nPay the listed price to begin studying another discipline. Then follow the costs and requirements of the path or spellbook you choose.\n\n## Signature development\n\nChoose one signature at each of levels 1, 3 and 7 without spending DP. Choose from your class’s options for that level. Each signature is an ability you can use in its own right. Some offer an additional benefit when you also know another named signature; that benefit appears in the ability’s rules.\n\nYou may switch signatures under the ordinary retraining rules. Choose a replacement from your class’s options for the same milestone, then apply any interactions between the signatures you know.\n\n\n## Level 1 choices\n\n- [Bent Trajectory](../cards/signature-arcanist-bent-trajectory.md)\n- [Study the Pattern](../cards/signature-arcanist-study-the-pattern.md)\n- [Deliberate Spark](../cards/signature-arcanist-deliberate-spark.md)\n\n## Level 3 choices\n\n- [Create a Window](../cards/signature-arcanist-leave-a-window.md)\n- [Reading the Weave](../cards/signature-arcanist-reading-the-weave.md)\n- [Arcane Deflection](../cards/signature-arcanist-arcane-deflection.md)\n\n## Level 7 choices\n\n- [Choose the Edge](../cards/signature-arcanist-choose-the-edge.md)\n- [Open the Circle](../cards/signature-arcanist-open-the-circle.md)\n- [Folded Aegis](../cards/signature-arcanist-fold-the-distance.md)\n\n**Starting coin contribution:** +6 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "class-blade",
@@ -22369,8 +23416,10 @@
       "disciplineCosts": {
         "arms": 1,
         "marksmanship": 1,
+        "fencing": 1,
         "athletics": 2,
         "subterfuge": 2,
+        "tactics": 2,
         "armor": 3,
         "guard": 3,
         "wilderness": 3,
@@ -22388,7 +23437,7 @@
         "spellcraft": 3
       },
       "coinContribution": 4,
-      "referenceMarkdown": "# Blade\n\n*You make the hard choices in the space between one stroke and the next.*\n\nWhen a duel spills out of the inn, everyone watches the swords. You notice the wet cobbles, the hitch in one fighter’s step, and the loose shutter that will block the archer’s view in a heartbeat. There is your opening.\n\nA Blade is the company’s practiced weapon fighter. You shine when timing and position decide who can press the attack. One Blade rushes across open ground with Reckless Charge. Another waits behind Measured Guard. A third learns Cleave and goes looking for the moment two opponents stand too close. A bow and a patient eye can define a Blade just as readily as a rapier.\n\nPerhaps you love sparring with someone who makes you change your habits, or hate the swagger of people who draw steel for an audience. Who put a weapon in your hand, and what did they teach you about when to leave it sheathed?\n\n## Rules\n\n**Attributes:** Minimum 0 in Agility, Brawn. **HP contribution:** +2 at level 1 and per level thereafter.\n\n**Starting SP contribution:** Twice your positive Reason at creation: 2 × max(0, Reason).\n\n**Starting disciplines:** Choose one of Arms, Marksmanship, Athletics, Subterfuge. Your culture and background each contribute one other starting discipline. Choose three distinct disciplines across these selections.\n\n**Learning costs:** **1 DP:** Arms, Marksmanship. **2 DP:** Athletics, Subterfuge. **3 DP:** Armor, Guard, Wilderness, Medicine, Craft, Scholarship, Influence, Elements, Life, Mentalism, Divination, Invocation, Force, Wards, Spellcraft.\n\nPay the listed price to begin studying another discipline. Then follow the costs and requirements of the path or spellbook you choose.\n\n## Signature development\n\nChoose one signature at each of levels 1, 3 and 7 without spending DP. Choose from your class’s options for that level. Each signature is an ability you can use in its own right. Some offer an additional benefit when you also know another named signature; that benefit appears in the ability’s rules.\n\nYou may switch signatures under the ordinary retraining rules. Choose a replacement from your class’s options for the same milestone, then apply any interactions between the signatures you know.\n\n\n## Level 1 choices\n\n- [Reckless Charge](../cards/signature-blade-cut-and-turn.md)\n- [Measured Guard](../cards/signature-blade-measured-guard.md)\n- [Cleave](../cards/signature-blade-pressure-point.md)\n\n## Level 3 choices\n\n- [Press On](../cards/signature-blade-press-on.md)\n- [Return Stroke](../cards/signature-blade-return-stroke.md)\n- [Not So Fast](../cards/signature-blade-fell-the-balance.md)\n\n## Level 7 choices\n\n- [Relentless Pursuit](../cards/signature-blade-relentless-pursuit.md)\n- [Twitch Reflexes](../cards/signature-blade-sweeping-entry.md)\n- [Dance Through Steel](../cards/signature-blade-dance-through-steel.md)\n\n**Starting coin contribution:** +4 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Blade\n\n*You make the hard choices in the space between one stroke and the next.*\n\nWhen a duel spills out of the inn, everyone watches the swords. You notice the wet cobbles, the hitch in one fighter’s step, and the loose shutter that will block the archer’s view in a heartbeat. There is your opening.\n\nA Blade is the company’s practiced weapon fighter. You shine when timing and position decide who can press the attack. One Blade rushes across open ground with Reckless Charge. Another waits behind Measured Guard. A third learns Cleave and goes looking for the moment two opponents stand too close. A bow and a patient eye can define a Blade just as readily as a rapier.\n\nPerhaps you love sparring with someone who makes you change your habits, or hate the swagger of people who draw steel for an audience. Who put a weapon in your hand, and what did they teach you about when to leave it sheathed?\n\n## Rules\n\n**Attributes:** Minimum 0 in Agility, Brawn. **HP contribution:** +2 at level 1 and per level thereafter.\n\n**Starting SP contribution:** Twice your positive Reason at creation: 2 × max(0, Reason).\n\n**Starting disciplines:** Choose one of Arms, Marksmanship, Athletics, Subterfuge. Your culture and background each contribute one other starting discipline. Choose three distinct disciplines across these selections.\n\n**Learning costs:** **1 DP:** Arms, Marksmanship, Fencing. **2 DP:** Athletics, Subterfuge, Tactics. **3 DP:** Armor, Guard, Wilderness, Medicine, Craft, Scholarship, Influence, Elements, Life, Mentalism, Divination, Invocation, Force, Wards, Spellcraft.\n\nPay the listed price to begin studying another discipline. Then follow the costs and requirements of the path or spellbook you choose.\n\n## Signature development\n\nChoose one signature at each of levels 1, 3 and 7 without spending DP. Choose from your class’s options for that level. Each signature is an ability you can use in its own right. Some offer an additional benefit when you also know another named signature; that benefit appears in the ability’s rules.\n\nYou may switch signatures under the ordinary retraining rules. Choose a replacement from your class’s options for the same milestone, then apply any interactions between the signatures you know.\n\n\n## Level 1 choices\n\n- [Reckless Charge](../cards/signature-blade-cut-and-turn.md)\n- [Measured Guard](../cards/signature-blade-measured-guard.md)\n- [Cleave](../cards/signature-blade-pressure-point.md)\n\n## Level 3 choices\n\n- [Press On](../cards/signature-blade-press-on.md)\n- [Return Stroke](../cards/signature-blade-return-stroke.md)\n- [Not So Fast](../cards/signature-blade-fell-the-balance.md)\n\n## Level 7 choices\n\n- [Relentless Pursuit](../cards/signature-blade-relentless-pursuit.md)\n- [Twitch Reflexes](../cards/signature-blade-sweeping-entry.md)\n- [Dance Through Steel](../cards/signature-blade-dance-through-steel.md)\n\n**Starting coin contribution:** +4 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "class-intellect",
@@ -22431,6 +23480,7 @@
         "divination": 2,
         "force": 2,
         "spellcraft": 2,
+        "tactics": 2,
         "arms": 3,
         "armor": 3,
         "guard": 3,
@@ -22442,10 +23492,11 @@
         "elements": 3,
         "life": 3,
         "invocation": 3,
-        "wards": 3
+        "wards": 3,
+        "fencing": 3
       },
       "coinContribution": 8,
-      "referenceMarkdown": "# Intellect\n\n*You see a pattern where others see only trouble, and trust your understanding enough to act.*\n\nThe ferry mechanism has seized. The boatman wants an axe. You ask him to pull the lever again while you watch the pin nobody has greased in twenty years.\n\nAn Intellect gives the company something it can act on. The same habit serves you in a ruin, at a workbench, or across from an opponent who always guards the same side. Spot the Leverage suits the investigator who looks for the detail that changes the plan. Make It Last can turn a plain lamp, tool, or shield into something the company will miss when it’s gone. An Intellect who chooses Angle of Attack brings the same patient eye to a fight.\n\nYou might like a workbench with room for somebody else’s tools, or dislike an answer that comes too easily. What did you once insist was impossible? Who had the pleasure of showing you how it worked?\n\n## Rules\n\n**Attributes:** Minimum 0 in Knowledge, Reason. **HP contribution:** +1 at level 1 and per level thereafter.\n\n**Starting SP contribution:** Twice your positive Knowledge at creation: 2 × max(0, Knowledge).\n\n**Starting disciplines:** Choose one of Scholarship, Craft, Mentalism, Divination. Your culture and background each contribute one other starting discipline. Choose three distinct disciplines across these selections.\n\n**Learning costs:** **1 DP:** Craft, Scholarship. **2 DP:** Medicine, Mentalism, Divination, Force, Spellcraft. **3 DP:** Arms, Armor, Guard, Marksmanship, Athletics, Subterfuge, Wilderness, Influence, Elements, Life, Invocation, Wards.\n\nPay the listed price to begin studying another discipline. Then follow the costs and requirements of the path or spellbook you choose.\n\n## Signature development\n\nChoose one signature at each of levels 1, 3 and 7 without spending DP. Choose from your class’s options for that level. Each signature is an ability you can use in its own right. Some offer an additional benefit when you also know another named signature; that benefit appears in the ability’s rules.\n\nYou may switch signatures under the ordinary retraining rules. Choose a replacement from your class’s options for the same milestone, then apply any interactions between the signatures you know.\n\n\n## Level 1 choices\n\n- [Spot the Leverage](../cards/signature-intellect-spot-the-leverage.md)\n- [Make It Last](../cards/signature-intellect-make-it-last.md)\n- [Angle of Attack](../cards/signature-intellect-prepared-explanation.md)\n\n## Level 3 choices\n\n- [Diagnose the Failure](../cards/signature-intellect-diagnose-the-failure.md)\n- [Twofold Making](../cards/signature-intellect-twofold-making.md)\n- [Predict the Motion](../cards/signature-intellect-predict-the-motion.md)\n\n## Level 7 choices\n\n- [Test the Hypothesis](../cards/signature-intellect-test-the-hypothesis.md)\n- [Masterwork Bond](../cards/signature-intellect-masterwork-bond.md)\n- [Shatter the Guard](../cards/signature-intellect-expose-the-mechanism.md)\n\n**Starting coin contribution:** +8 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Intellect\n\n*You see a pattern where others see only trouble, and trust your understanding enough to act.*\n\nThe ferry mechanism has seized. The boatman wants an axe. You ask him to pull the lever again while you watch the pin nobody has greased in twenty years.\n\nAn Intellect gives the company something it can act on. The same habit serves you in a ruin, at a workbench, or across from an opponent who always guards the same side. Spot the Leverage suits the investigator who looks for the detail that changes the plan. Make It Last can turn a plain lamp, tool, or shield into something the company will miss when it’s gone. An Intellect who chooses Angle of Attack brings the same patient eye to a fight.\n\nYou might like a workbench with room for somebody else’s tools, or dislike an answer that comes too easily. What did you once insist was impossible? Who had the pleasure of showing you how it worked?\n\n## Rules\n\n**Attributes:** Minimum 0 in Knowledge, Reason. **HP contribution:** +1 at level 1 and per level thereafter.\n\n**Starting SP contribution:** Twice your positive Knowledge at creation: 2 × max(0, Knowledge).\n\n**Starting disciplines:** Choose one of Scholarship, Craft, Mentalism, Divination. Your culture and background each contribute one other starting discipline. Choose three distinct disciplines across these selections.\n\n**Learning costs:** **1 DP:** Craft, Scholarship. **2 DP:** Medicine, Mentalism, Divination, Force, Spellcraft, Tactics. **3 DP:** Arms, Armor, Guard, Marksmanship, Athletics, Subterfuge, Wilderness, Influence, Elements, Life, Invocation, Wards, Fencing.\n\nPay the listed price to begin studying another discipline. Then follow the costs and requirements of the path or spellbook you choose.\n\n## Signature development\n\nChoose one signature at each of levels 1, 3 and 7 without spending DP. Choose from your class’s options for that level. Each signature is an ability you can use in its own right. Some offer an additional benefit when you also know another named signature; that benefit appears in the ability’s rules.\n\nYou may switch signatures under the ordinary retraining rules. Choose a replacement from your class’s options for the same milestone, then apply any interactions between the signatures you know.\n\n\n## Level 1 choices\n\n- [Spot the Leverage](../cards/signature-intellect-spot-the-leverage.md)\n- [Make It Last](../cards/signature-intellect-make-it-last.md)\n- [Angle of Attack](../cards/signature-intellect-prepared-explanation.md)\n\n## Level 3 choices\n\n- [Diagnose the Failure](../cards/signature-intellect-diagnose-the-failure.md)\n- [Twofold Making](../cards/signature-intellect-twofold-making.md)\n- [Predict the Motion](../cards/signature-intellect-predict-the-motion.md)\n\n## Level 7 choices\n\n- [Test the Hypothesis](../cards/signature-intellect-test-the-hypothesis.md)\n- [Masterwork Bond](../cards/signature-intellect-masterwork-bond.md)\n- [Shatter the Guard](../cards/signature-intellect-expose-the-mechanism.md)\n\n**Starting coin contribution:** +8 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "class-leader",
@@ -22483,10 +23534,12 @@
       "disciplineCosts": {
         "guard": 1,
         "influence": 1,
+        "tactics": 1,
         "arms": 2,
         "scholarship": 2,
         "mentalism": 2,
         "wards": 2,
+        "fencing": 2,
         "armor": 3,
         "marksmanship": 3,
         "athletics": 3,
@@ -22502,7 +23555,7 @@
         "spellcraft": 3
       },
       "coinContribution": 6,
-      "referenceMarkdown": "# Leader\n\n*You turn to your companions and give them a reason to move together.*\n\nTwo people reach for the same rope while nobody watches the stairs. You catch one person’s eye and point to the landing. A friend takes up the slack. By the time the threat appears, everyone has room to do their part.\n\nA Leader makes the company’s separate efforts count together. A good signal can get everyone through a dangerous crossing or bring two companions into a fight at just the right moment. Follow My Signal can help two companions with a word, a gesture, or a scrap of song. Lead the Way suits someone willing to go through first. Stand Together is for the person others look to when they are close to breaking.\n\nYou might enjoy watching someone you trained take charge. Perhaps you dislike plans made without asking who will carry them out. What earns your trust? Whose judgment will you follow when your own plan falls apart?\n\n## Rules\n\n**Attributes:** Minimum 0 in Guile, Fortitude. **HP contribution:** +2 at level 1 and per level thereafter.\n\n**Starting SP contribution:** Twice your positive Guile at creation: 2 × max(0, Guile).\n\n**Starting disciplines:** Choose one of Influence, Guard, Arms, Scholarship. Your culture and background each contribute one other starting discipline. Choose three distinct disciplines across these selections.\n\n**Learning costs:** **1 DP:** Guard, Influence. **2 DP:** Arms, Scholarship, Mentalism, Wards. **3 DP:** Armor, Marksmanship, Athletics, Subterfuge, Wilderness, Medicine, Craft, Elements, Life, Divination, Invocation, Force, Spellcraft.\n\nPay the listed price to begin studying another discipline. Then follow the costs and requirements of the path or spellbook you choose.\n\n## Signature development\n\nChoose one signature at each of levels 1, 3 and 7 without spending DP. Choose from your class’s options for that level. Each signature is an ability you can use in its own right. Some offer an additional benefit when you also know another named signature; that benefit appears in the ability’s rules.\n\nYou may switch signatures under the ordinary retraining rules. Choose a replacement from your class’s options for the same milestone, then apply any interactions between the signatures you know.\n\n\n## Level 1 choices\n\n- [Follow My Signal](../cards/signature-leader-follow-my-signal.md)\n- [Lead the Way](../cards/signature-leader-lead-the-step.md)\n- [Stand Together](../cards/signature-leader-stand-together.md)\n\n## Level 3 choices\n\n- [Press the Opening](../cards/signature-leader-press-the-opening.md)\n- [Lead by Example](../cards/signature-leader-orderly-withdrawal.md)\n- [Blow the Horn](../cards/signature-leader-hold-your-nerve.md)\n\n## Level 7 choices\n\n- [Coordinated Rush](../cards/signature-leader-coordinated-rush.md)\n- [Watch the Rear](../cards/signature-leader-watch-the-rear.md)\n- [Refuse the Rout](../cards/signature-leader-refuse-the-rout.md)\n\n**Starting coin contribution:** +6 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Leader\n\n*You turn to your companions and give them a reason to move together.*\n\nTwo people reach for the same rope while nobody watches the stairs. You catch one person’s eye and point to the landing. A friend takes up the slack. By the time the threat appears, everyone has room to do their part.\n\nA Leader makes the company’s separate efforts count together. A good signal can get everyone through a dangerous crossing or bring two companions into a fight at just the right moment. Follow My Signal can help two companions with a word, a gesture, or a scrap of song. Lead the Way suits someone willing to go through first. Stand Together is for the person others look to when they are close to breaking.\n\nYou might enjoy watching someone you trained take charge. Perhaps you dislike plans made without asking who will carry them out. What earns your trust? Whose judgment will you follow when your own plan falls apart?\n\n## Rules\n\n**Attributes:** Minimum 0 in Guile, Fortitude. **HP contribution:** +2 at level 1 and per level thereafter.\n\n**Starting SP contribution:** Twice your positive Guile at creation: 2 × max(0, Guile).\n\n**Starting disciplines:** Choose one of Influence, Guard, Arms, Scholarship. Your culture and background each contribute one other starting discipline. Choose three distinct disciplines across these selections.\n\n**Learning costs:** **1 DP:** Guard, Influence, Tactics. **2 DP:** Arms, Scholarship, Mentalism, Wards, Fencing. **3 DP:** Armor, Marksmanship, Athletics, Subterfuge, Wilderness, Medicine, Craft, Elements, Life, Divination, Invocation, Force, Spellcraft.\n\nPay the listed price to begin studying another discipline. Then follow the costs and requirements of the path or spellbook you choose.\n\n## Signature development\n\nChoose one signature at each of levels 1, 3 and 7 without spending DP. Choose from your class’s options for that level. Each signature is an ability you can use in its own right. Some offer an additional benefit when you also know another named signature; that benefit appears in the ability’s rules.\n\nYou may switch signatures under the ordinary retraining rules. Choose a replacement from your class’s options for the same milestone, then apply any interactions between the signatures you know.\n\n\n## Level 1 choices\n\n- [Follow My Signal](../cards/signature-leader-follow-my-signal.md)\n- [Lead the Way](../cards/signature-leader-lead-the-step.md)\n- [Stand Together](../cards/signature-leader-stand-together.md)\n\n## Level 3 choices\n\n- [Press the Opening](../cards/signature-leader-press-the-opening.md)\n- [Lead by Example](../cards/signature-leader-orderly-withdrawal.md)\n- [Blow the Horn](../cards/signature-leader-hold-your-nerve.md)\n\n## Level 7 choices\n\n- [Coordinated Rush](../cards/signature-leader-coordinated-rush.md)\n- [Watch the Rear](../cards/signature-leader-watch-the-rear.md)\n- [Refuse the Rout](../cards/signature-leader-refuse-the-rout.md)\n\n**Starting coin contribution:** +6 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "class-odd",
@@ -22553,10 +23606,12 @@
         "invocation": 2,
         "force": 2,
         "wards": 2,
-        "spellcraft": 2
+        "spellcraft": 2,
+        "fencing": 2,
+        "tactics": 2
       },
       "coinContribution": 0,
-      "referenceMarkdown": "# Odd\n\n*You have never fit the expected answer, and have learned to make that useful.*\n\nA stranger at the ferry calls out in a language nobody in the company knows. You recognize the voice of the spirit at your shoulder. There is just enough time to decide whether to invite it in.\n\nAn Odd brings possibilities the company might never think to ask for. When the company reaches for a crowbar, you may be the one who asks whether the door has a name. Borrowed Tongue can turn a stranger’s warning into a conversation. Use Their Voice draws an enemy’s eye away from a companion. The Bargain suits an Odd whose power comes with a relationship worth playing out at the table.\n\nYou might collect the names of forgotten things, prefer a door with a story to one with a lock, or be the most practical person in a room full of omens. What makes the uncanny feel ordinary to you? What bargain would you walk away from, even if nobody understood why?\n\n## Rules\n\n**Attributes:** No attribute minimums. **HP contribution:** +2 at level 1 and per level thereafter.\n\n**Starting SP contribution:** Twice your positive Guile at creation: 2 × max(0, Guile).\n\n**Starting disciplines:** Choose one of Athletics, Subterfuge, Influence, Spellcraft. Your culture and background each contribute one other starting discipline. Choose three distinct disciplines across these selections.\n\n**Learning costs:** **2 DP:** Arms, Armor, Guard, Marksmanship, Athletics, Subterfuge, Wilderness, Medicine, Craft, Scholarship, Influence, Elements, Life, Mentalism, Divination, Invocation, Force, Wards, Spellcraft.\n\nPay the listed price to begin studying another discipline. Then follow the costs and requirements of the path or spellbook you choose.\n\n## Signature development\n\nChoose one signature at each of levels 1, 3 and 7 without spending DP. Choose from your class’s options for that level. Each signature is an ability you can use in its own right. Some offer an additional benefit when you also know another named signature; that benefit appears in the ability’s rules.\n\nYou may switch signatures under the ordinary retraining rules. Choose a replacement from your class’s options for the same milestone, then apply any interactions between the signatures you know.\n\n\n## Level 1 choices\n\n- [The Bargain](../cards/signature-odd-the-bargain.md)\n- [Borrowed Tongue](../cards/signature-odd-sideways-thinking.md)\n- [Use Their Voice](../cards/signature-odd-useful-interruption.md)\n\n## Level 3 choices\n\n- [Pact’s Claim](../cards/signature-odd-pacts-claim.md)\n- [Out of Body](../cards/signature-odd-wrong-place-for-that.md)\n- [A Door Where There Wasn’t](../cards/signature-odd-change-the-question.md)\n\n## Level 7 choices\n\n- [The Price Deferred](../cards/signature-odd-the-price-deferred.md)\n- [Borrowed Life](../cards/signature-odd-strange-but-effective.md)\n- [The Unseen Procession](../cards/signature-odd-an-unexpected-exit.md)\n\n**Starting coin contribution:** +0 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Odd\n\n*You have never fit the expected answer, and have learned to make that useful.*\n\nA stranger at the ferry calls out in a language nobody in the company knows. You recognize the voice of the spirit at your shoulder. There is just enough time to decide whether to invite it in.\n\nAn Odd brings possibilities the company might never think to ask for. When the company reaches for a crowbar, you may be the one who asks whether the door has a name. Borrowed Tongue can turn a stranger’s warning into a conversation. Use Their Voice draws an enemy’s eye away from a companion. The Bargain suits an Odd whose power comes with a relationship worth playing out at the table.\n\nYou might collect the names of forgotten things, prefer a door with a story to one with a lock, or be the most practical person in a room full of omens. What makes the uncanny feel ordinary to you? What bargain would you walk away from, even if nobody understood why?\n\n## Rules\n\n**Attributes:** No attribute minimums. **HP contribution:** +2 at level 1 and per level thereafter.\n\n**Starting SP contribution:** Twice your positive Guile at creation: 2 × max(0, Guile).\n\n**Starting disciplines:** Choose one of Athletics, Subterfuge, Influence, Spellcraft. Your culture and background each contribute one other starting discipline. Choose three distinct disciplines across these selections.\n\n**Learning costs:** **2 DP:** Arms, Armor, Guard, Marksmanship, Athletics, Subterfuge, Wilderness, Medicine, Craft, Scholarship, Influence, Elements, Life, Mentalism, Divination, Invocation, Force, Wards, Spellcraft, Fencing, Tactics.\n\nPay the listed price to begin studying another discipline. Then follow the costs and requirements of the path or spellbook you choose.\n\n## Signature development\n\nChoose one signature at each of levels 1, 3 and 7 without spending DP. Choose from your class’s options for that level. Each signature is an ability you can use in its own right. Some offer an additional benefit when you also know another named signature; that benefit appears in the ability’s rules.\n\nYou may switch signatures under the ordinary retraining rules. Choose a replacement from your class’s options for the same milestone, then apply any interactions between the signatures you know.\n\n\n## Level 1 choices\n\n- [The Bargain](../cards/signature-odd-the-bargain.md)\n- [Borrowed Tongue](../cards/signature-odd-sideways-thinking.md)\n- [Use Their Voice](../cards/signature-odd-useful-interruption.md)\n\n## Level 3 choices\n\n- [Pact’s Claim](../cards/signature-odd-pacts-claim.md)\n- [Out of Body](../cards/signature-odd-wrong-place-for-that.md)\n- [A Door Where There Wasn’t](../cards/signature-odd-change-the-question.md)\n\n## Level 7 choices\n\n- [The Price Deferred](../cards/signature-odd-the-price-deferred.md)\n- [Borrowed Life](../cards/signature-odd-strange-but-effective.md)\n- [The Unseen Procession](../cards/signature-odd-an-unexpected-exit.md)\n\n**Starting coin contribution:** +0 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "class-protector",
@@ -22597,6 +23652,8 @@
         "arms": 2,
         "medicine": 2,
         "wards": 2,
+        "fencing": 2,
+        "tactics": 2,
         "marksmanship": 3,
         "athletics": 3,
         "subterfuge": 3,
@@ -22613,7 +23670,7 @@
         "spellcraft": 3
       },
       "coinContribution": 5,
-      "referenceMarkdown": "# Protector\n\n*You see who needs shelter and step into the space between them and harm.*\n\nThe door shakes in its frame. Behind you, the apothecary is trying to get two frightened children out a window. You brace the latch with your shoulder and ask, very calmly, how much longer they need.\n\nA Protector makes a company brave enough to take risks. You read a room for the person in danger and a battlefield for the ground you can actually hold. Step Between suits the guardian who stays within reach of their companions. Healing Hands carries that care past the moment of injury. An oathkeeper might choose Oathstrike and make an enemy answer for hurting someone they swore to defend.\n\nYou might take pleasure in a good watch roster, a repaired strap, or the moment someone trusts you enough to rest. What would make you lower your shield? Who taught you that asking for help can be part of keeping people safe?\n\n## Rules\n\n**Attributes:** Minimum 0 in Fortitude, Reason. **HP contribution:** +3 at level 1 and per level thereafter.\n\n**Starting SP contribution:** Twice your positive Reason at creation: 2 × max(0, Reason).\n\n**Starting disciplines:** Choose one of Armor, Guard, Arms, Medicine. Your culture and background each contribute one other starting discipline. Choose three distinct disciplines across these selections.\n\n**Learning costs:** **1 DP:** Armor, Guard. **2 DP:** Arms, Medicine, Wards. **3 DP:** Marksmanship, Athletics, Subterfuge, Wilderness, Craft, Scholarship, Influence, Elements, Life, Mentalism, Divination, Invocation, Force, Spellcraft.\n\nPay the listed price to begin studying another discipline. Then follow the costs and requirements of the path or spellbook you choose.\n\n## Signature development\n\nChoose one signature at each of levels 1, 3 and 7 without spending DP. Choose from your class’s options for that level. Each signature is an ability you can use in its own right. Some offer an additional benefit when you also know another named signature; that benefit appears in the ability’s rules.\n\nYou may switch signatures under the ordinary retraining rules. Choose a replacement from your class’s options for the same milestone, then apply any interactions between the signatures you know.\n\n\n## Level 1 choices\n\n- [Step Between](../cards/signature-protector-between-them.md)\n- [Healing Hands](../cards/signature-protector-healing-hands.md)\n- [Oathstrike](../cards/signature-protector-oathstrike.md)\n\n## Level 3 choices\n\n- [Over My Body](../cards/signature-protector-shelter-the-fallen.md)\n- [Restoring Hands](../cards/signature-protector-restoring-hands.md)\n- [Rebuking Light](../cards/signature-protector-rebuking-light.md)\n\n## Level 7 choices\n\n- [Take the Wound](../cards/signature-protector-defiant-rescue.md)\n- [Sheltering Hands](../cards/signature-protector-sheltering-hands.md)\n- [Radiant Threshold](../cards/signature-protector-drive-back-the-circle.md)\n\n**Starting coin contribution:** +5 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Protector\n\n*You see who needs shelter and step into the space between them and harm.*\n\nThe door shakes in its frame. Behind you, the apothecary is trying to get two frightened children out a window. You brace the latch with your shoulder and ask, very calmly, how much longer they need.\n\nA Protector makes a company brave enough to take risks. You read a room for the person in danger and a battlefield for the ground you can actually hold. Step Between suits the guardian who stays within reach of their companions. Healing Hands carries that care past the moment of injury. An oathkeeper might choose Oathstrike and make an enemy answer for hurting someone they swore to defend.\n\nYou might take pleasure in a good watch roster, a repaired strap, or the moment someone trusts you enough to rest. What would make you lower your shield? Who taught you that asking for help can be part of keeping people safe?\n\n## Rules\n\n**Attributes:** Minimum 0 in Fortitude, Reason. **HP contribution:** +3 at level 1 and per level thereafter.\n\n**Starting SP contribution:** Twice your positive Reason at creation: 2 × max(0, Reason).\n\n**Starting disciplines:** Choose one of Armor, Guard, Arms, Medicine. Your culture and background each contribute one other starting discipline. Choose three distinct disciplines across these selections.\n\n**Learning costs:** **1 DP:** Armor, Guard. **2 DP:** Arms, Medicine, Wards, Fencing, Tactics. **3 DP:** Marksmanship, Athletics, Subterfuge, Wilderness, Craft, Scholarship, Influence, Elements, Life, Mentalism, Divination, Invocation, Force, Spellcraft.\n\nPay the listed price to begin studying another discipline. Then follow the costs and requirements of the path or spellbook you choose.\n\n## Signature development\n\nChoose one signature at each of levels 1, 3 and 7 without spending DP. Choose from your class’s options for that level. Each signature is an ability you can use in its own right. Some offer an additional benefit when you also know another named signature; that benefit appears in the ability’s rules.\n\nYou may switch signatures under the ordinary retraining rules. Choose a replacement from your class’s options for the same milestone, then apply any interactions between the signatures you know.\n\n\n## Level 1 choices\n\n- [Step Between](../cards/signature-protector-between-them.md)\n- [Healing Hands](../cards/signature-protector-healing-hands.md)\n- [Oathstrike](../cards/signature-protector-oathstrike.md)\n\n## Level 3 choices\n\n- [Over My Body](../cards/signature-protector-shelter-the-fallen.md)\n- [Restoring Hands](../cards/signature-protector-restoring-hands.md)\n- [Rebuking Light](../cards/signature-protector-rebuking-light.md)\n\n## Level 7 choices\n\n- [Take the Wound](../cards/signature-protector-defiant-rescue.md)\n- [Sheltering Hands](../cards/signature-protector-sheltering-hands.md)\n- [Radiant Threshold](../cards/signature-protector-drive-back-the-circle.md)\n\n**Starting coin contribution:** +5 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "class-shadow",
@@ -22654,6 +23711,7 @@
         "athletics": 2,
         "mentalism": 2,
         "divination": 2,
+        "fencing": 2,
         "arms": 3,
         "armor": 3,
         "guard": 3,
@@ -22667,10 +23725,11 @@
         "invocation": 3,
         "force": 3,
         "wards": 3,
-        "spellcraft": 3
+        "spellcraft": 3,
+        "tactics": 3
       },
       "coinContribution": 3,
-      "referenceMarkdown": "# Shadow\n\n*You learn the unguarded routes through a world that rarely looks in the right direction.*\n\nThe steward keeps the keys on a silver chain. Everyone else is watching the dancers. You are watching the steward’s face each time someone mentions the west gallery.\n\nA Shadow finds opportunities that close as soon as everyone notices them. You shine when the company needs a way in, an opening in a fight, or a conversation that buys somebody else time to act. Fade Behind puts you on the side of the room no one is watching. Blade in the Back rewards the moment an enemy’s attention is elsewhere. Fast Talk gives you something to do when you are the person everyone has turned to look at.\n\nYou might love a crowded festival or the privacy of a roof above an empty street. Perhaps you cannot stand a person who confuses discretion with disloyalty. Who knows your real name, and what did they do to earn it?\n\n## Rules\n\n**Attributes:** Minimum 0 in Agility, Guile. **HP contribution:** +2 at level 1 and per level thereafter.\n\n**Starting SP contribution:** Twice your positive Guile at creation: 2 × max(0, Guile).\n\n**Starting disciplines:** Choose one of Subterfuge, Marksmanship, Mentalism, Athletics. Your culture and background each contribute one other starting discipline. Choose three distinct disciplines across these selections.\n\n**Learning costs:** **1 DP:** Marksmanship, Subterfuge. **2 DP:** Athletics, Mentalism, Divination. **3 DP:** Arms, Armor, Guard, Wilderness, Medicine, Craft, Scholarship, Influence, Elements, Life, Invocation, Force, Wards, Spellcraft.\n\nPay the listed price to begin studying another discipline. Then follow the costs and requirements of the path or spellbook you choose.\n\n## Signature development\n\nChoose one signature at each of levels 1, 3 and 7 without spending DP. Choose from your class’s options for that level. Each signature is an ability you can use in its own right. Some offer an additional benefit when you also know another named signature; that benefit appears in the ability’s rules.\n\nYou may switch signatures under the ordinary retraining rules. Choose a replacement from your class’s options for the same milestone, then apply any interactions between the signatures you know.\n\n\n## Level 1 choices\n\n- [Blade in the Back](../cards/signature-shadow-soft-landing.md)\n- [Fade Behind](../cards/signature-shadow-fade-behind.md)\n- [Fast Talk](../cards/signature-shadow-turn-their-eye.md)\n\n## Level 3 choices\n\n- [Hamstring](../cards/signature-shadow-strike-and-vanish.md)\n- [Open the Way](../cards/signature-shadow-open-the-way.md)\n- [Read the Room](../cards/signature-shadow-pass-the-guard.md)\n\n## Level 7 choices\n\n- [The Half-Second](../cards/signature-shadow-exploit-confusion.md)\n- [One with the Dark](../cards/signature-shadow-unseen-passage.md)\n- [The Cutting Word](../cards/signature-shadow-leave-no-pursuit.md)\n\n**Starting coin contribution:** +3 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Shadow\n\n*You learn the unguarded routes through a world that rarely looks in the right direction.*\n\nThe steward keeps the keys on a silver chain. Everyone else is watching the dancers. You are watching the steward’s face each time someone mentions the west gallery.\n\nA Shadow finds opportunities that close as soon as everyone notices them. You shine when the company needs a way in, an opening in a fight, or a conversation that buys somebody else time to act. Fade Behind puts you on the side of the room no one is watching. Blade in the Back rewards the moment an enemy’s attention is elsewhere. Fast Talk gives you something to do when you are the person everyone has turned to look at.\n\nYou might love a crowded festival or the privacy of a roof above an empty street. Perhaps you cannot stand a person who confuses discretion with disloyalty. Who knows your real name, and what did they do to earn it?\n\n## Rules\n\n**Attributes:** Minimum 0 in Agility, Guile. **HP contribution:** +2 at level 1 and per level thereafter.\n\n**Starting SP contribution:** Twice your positive Guile at creation: 2 × max(0, Guile).\n\n**Starting disciplines:** Choose one of Subterfuge, Marksmanship, Mentalism, Athletics. Your culture and background each contribute one other starting discipline. Choose three distinct disciplines across these selections.\n\n**Learning costs:** **1 DP:** Marksmanship, Subterfuge. **2 DP:** Athletics, Mentalism, Divination, Fencing. **3 DP:** Arms, Armor, Guard, Wilderness, Medicine, Craft, Scholarship, Influence, Elements, Life, Invocation, Force, Wards, Spellcraft, Tactics.\n\nPay the listed price to begin studying another discipline. Then follow the costs and requirements of the path or spellbook you choose.\n\n## Signature development\n\nChoose one signature at each of levels 1, 3 and 7 without spending DP. Choose from your class’s options for that level. Each signature is an ability you can use in its own right. Some offer an additional benefit when you also know another named signature; that benefit appears in the ability’s rules.\n\nYou may switch signatures under the ordinary retraining rules. Choose a replacement from your class’s options for the same milestone, then apply any interactions between the signatures you know.\n\n\n## Level 1 choices\n\n- [Blade in the Back](../cards/signature-shadow-soft-landing.md)\n- [Fade Behind](../cards/signature-shadow-fade-behind.md)\n- [Fast Talk](../cards/signature-shadow-turn-their-eye.md)\n\n## Level 3 choices\n\n- [Hamstring](../cards/signature-shadow-strike-and-vanish.md)\n- [Open the Way](../cards/signature-shadow-open-the-way.md)\n- [Read the Room](../cards/signature-shadow-pass-the-guard.md)\n\n## Level 7 choices\n\n- [The Half-Second](../cards/signature-shadow-exploit-confusion.md)\n- [One with the Dark](../cards/signature-shadow-unseen-passage.md)\n- [The Cutting Word](../cards/signature-shadow-leave-no-pursuit.md)\n\n**Starting coin contribution:** +3 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "class-shepherd",
@@ -22724,10 +23783,12 @@
         "elements": 3,
         "mentalism": 3,
         "divination": 3,
-        "force": 3
+        "force": 3,
+        "fencing": 3,
+        "tactics": 3
       },
       "coinContribution": 3,
-      "referenceMarkdown": "# Shepherd\n\n*You listen for the wavering voice and help it find its way back to the others.*\n\nAt the end of a bad crossing, one traveler insists they can keep walking. You notice their hands won’t close around the cup. You find somewhere dry to sit and give them time to tell you what happened.\n\nA Shepherd keeps people on their feet and helps them through trouble they cannot face alone. A punishing journey or a fight that leaves someone frightened and hurt gives you plenty to do. Mend makes care an immediate part of danger. Steady Voice suits a Shepherd who can reach a frightened companion through the noise. With Borrowed Shape, you might understand how different a familiar path feels on four feet.\n\nYou might love the quiet after a fever breaks, or resent the idea that the slowest traveler should be left behind. Your care may come from faith, a trade, a promise, or long practice. Who cared for you when you could give them nothing in return?\n\n## Rules\n\n**Attributes:** Minimum 0 in Reason, Guile. **HP contribution:** +2 at level 1 and per level thereafter.\n\n**Starting SP contribution:** Twice your positive Reason at creation: 2 × max(0, Reason).\n\n**Starting disciplines:** Choose one of Life, Wards, Medicine, Wilderness. Your culture and background each contribute one other starting discipline. Choose three distinct disciplines across these selections.\n\n**Learning costs:** **1 DP:** Life, Wards. **2 DP:** Wilderness, Medicine, Invocation, Spellcraft. **3 DP:** Arms, Armor, Guard, Marksmanship, Athletics, Subterfuge, Craft, Scholarship, Influence, Elements, Mentalism, Divination, Force.\n\nPay the listed price to begin studying another discipline. Then follow the costs and requirements of the path or spellbook you choose.\n\n## Signature development\n\nChoose one signature at each of levels 1, 3 and 7 without spending DP. Choose from your class’s options for that level. Each signature is an ability you can use in its own right. Some offer an additional benefit when you also know another named signature; that benefit appears in the ability’s rules.\n\nYou may switch signatures under the ordinary retraining rules. Choose a replacement from your class’s options for the same milestone, then apply any interactions between the signatures you know.\n\n\n## Level 1 choices\n\n- [Mend](../cards/signature-shepherd-gentle-return.md)\n- [Steady Voice](../cards/signature-shepherd-ease-the-burden.md)\n- [Borrowed Shape](../cards/signature-shepherd-borrowed-shape.md)\n\n## Level 3 choices\n\n- [Triage](../cards/signature-shepherd-careful-transfer.md)\n- [The Fold](../cards/signature-shepherd-bring-them-near.md)\n- [Shape of the Wild](../cards/signature-shepherd-shape-of-the-wild.md)\n\n## Level 7 choices\n\n- [The Shepherd's Call](../cards/signature-shepherd-a-hand-in-darkness.md)\n- [The Shared Cup](../cards/signature-shepherd-restore-composure.md)\n- [Great Shape](../cards/signature-shepherd-great-shape.md)\n\n**Starting coin contribution:** +3 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Shepherd\n\n*You listen for the wavering voice and help it find its way back to the others.*\n\nAt the end of a bad crossing, one traveler insists they can keep walking. You notice their hands won’t close around the cup. You find somewhere dry to sit and give them time to tell you what happened.\n\nA Shepherd keeps people on their feet and helps them through trouble they cannot face alone. A punishing journey or a fight that leaves someone frightened and hurt gives you plenty to do. Mend makes care an immediate part of danger. Steady Voice suits a Shepherd who can reach a frightened companion through the noise. With Borrowed Shape, you might understand how different a familiar path feels on four feet.\n\nYou might love the quiet after a fever breaks, or resent the idea that the slowest traveler should be left behind. Your care may come from faith, a trade, a promise, or long practice. Who cared for you when you could give them nothing in return?\n\n## Rules\n\n**Attributes:** Minimum 0 in Reason, Guile. **HP contribution:** +2 at level 1 and per level thereafter.\n\n**Starting SP contribution:** Twice your positive Reason at creation: 2 × max(0, Reason).\n\n**Starting disciplines:** Choose one of Life, Wards, Medicine, Wilderness. Your culture and background each contribute one other starting discipline. Choose three distinct disciplines across these selections.\n\n**Learning costs:** **1 DP:** Life, Wards. **2 DP:** Wilderness, Medicine, Invocation, Spellcraft. **3 DP:** Arms, Armor, Guard, Marksmanship, Athletics, Subterfuge, Craft, Scholarship, Influence, Elements, Mentalism, Divination, Force, Fencing, Tactics.\n\nPay the listed price to begin studying another discipline. Then follow the costs and requirements of the path or spellbook you choose.\n\n## Signature development\n\nChoose one signature at each of levels 1, 3 and 7 without spending DP. Choose from your class’s options for that level. Each signature is an ability you can use in its own right. Some offer an additional benefit when you also know another named signature; that benefit appears in the ability’s rules.\n\nYou may switch signatures under the ordinary retraining rules. Choose a replacement from your class’s options for the same milestone, then apply any interactions between the signatures you know.\n\n\n## Level 1 choices\n\n- [Mend](../cards/signature-shepherd-gentle-return.md)\n- [Steady Voice](../cards/signature-shepherd-ease-the-burden.md)\n- [Borrowed Shape](../cards/signature-shepherd-borrowed-shape.md)\n\n## Level 3 choices\n\n- [Triage](../cards/signature-shepherd-careful-transfer.md)\n- [The Fold](../cards/signature-shepherd-bring-them-near.md)\n- [Shape of the Wild](../cards/signature-shepherd-shape-of-the-wild.md)\n\n## Level 7 choices\n\n- [The Shepherd's Call](../cards/signature-shepherd-a-hand-in-darkness.md)\n- [The Shared Cup](../cards/signature-shepherd-restore-composure.md)\n- [Great Shape](../cards/signature-shepherd-great-shape.md)\n\n**Starting coin contribution:** +3 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "class-unbalanced",
@@ -22781,10 +23842,12 @@
         "invocation": 3,
         "force": 3,
         "wards": 3,
-        "spellcraft": 3
+        "spellcraft": 3,
+        "fencing": 3,
+        "tactics": 3
       },
       "coinContribution": 0,
-      "referenceMarkdown": "# Unbalanced\n\n*You meet the obstacle with everything you are, and let it discover whether that is enough.*\n\nThe barricade has started to give. You hear the beam crack and know there is time for exactly one decision. The others can follow through if you make a gap wide enough.\n\nAn Unbalanced brings force to the point where it will matter most. In a crowded fight you can break up the knot around a companion. At a contested passage you can give the company a way through before the chance passes. Go Berserk calls up the fury to stay in a fight. Charge suits the runner who sees a lane through the confusion. Grab and Hurl lets you turn a struggle over footing into an abrupt change of position.\n\nThe force you bring can come from anger, joy, or a lifetime of knowing what your body can do. You might enjoy a fair contest and hate seeing strength used to humiliate someone. Who can talk you down when the fight is over?\n\n## Rules\n\n**Attributes:** Minimum 0 in Brawn, Fortitude. **HP contribution:** +3 at level 1 and per level thereafter.\n\n**Starting SP contribution:** Twice your positive Knowledge at creation: 2 × max(0, Knowledge).\n\n**Starting disciplines:** Choose one of Arms, Athletics, Armor, Elements. Your culture and background each contribute one other starting discipline. Choose three distinct disciplines across these selections.\n\n**Learning costs:** **1 DP:** Arms, Athletics. **2 DP:** Armor, Elements. **3 DP:** Guard, Marksmanship, Subterfuge, Wilderness, Medicine, Craft, Scholarship, Influence, Life, Mentalism, Divination, Invocation, Force, Wards, Spellcraft.\n\nPay the listed price to begin studying another discipline. Then follow the costs and requirements of the path or spellbook you choose.\n\n## Signature development\n\nChoose one signature at each of levels 1, 3 and 7 without spending DP. Choose from your class’s options for that level. Each signature is an ability you can use in its own right. Some offer an additional benefit when you also know another named signature; that benefit appears in the ability’s rules.\n\nYou may switch signatures under the ordinary retraining rules. Choose a replacement from your class’s options for the same milestone, then apply any interactions between the signatures you know.\n\n\n## Level 1 choices\n\n- [Go Berserk](../cards/signature-unbalanced-wild-approach.md)\n- [Charge](../cards/signature-unbalanced-shoulder-through.md)\n- [Grab and Hurl](../cards/signature-unbalanced-laugh-at-the-fall.md)\n\n## Level 3 choices\n\n- [Pain Feeds the Fire](../cards/signature-unbalanced-raging-recoil.md)\n- [Rampage](../cards/signature-unbalanced-crush-the-barrier.md)\n- [Over the Top](../cards/signature-unbalanced-fling-the-captive.md)\n\n## Level 7 choices\n\n- [Deathless Rage](../cards/signature-unbalanced-break-their-grip.md)\n- [Earthbreaker](../cards/signature-unbalanced-scatter-the-line.md)\n- [The Cannonball](../cards/signature-unbalanced-crash-down.md)\n\n**Starting coin contribution:** +0 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Unbalanced\n\n*You meet the obstacle with everything you are, and let it discover whether that is enough.*\n\nThe barricade has started to give. You hear the beam crack and know there is time for exactly one decision. The others can follow through if you make a gap wide enough.\n\nAn Unbalanced brings force to the point where it will matter most. In a crowded fight you can break up the knot around a companion. At a contested passage you can give the company a way through before the chance passes. Go Berserk calls up the fury to stay in a fight. Charge suits the runner who sees a lane through the confusion. Grab and Hurl lets you turn a struggle over footing into an abrupt change of position.\n\nThe force you bring can come from anger, joy, or a lifetime of knowing what your body can do. You might enjoy a fair contest and hate seeing strength used to humiliate someone. Who can talk you down when the fight is over?\n\n## Rules\n\n**Attributes:** Minimum 0 in Brawn, Fortitude. **HP contribution:** +3 at level 1 and per level thereafter.\n\n**Starting SP contribution:** Twice your positive Knowledge at creation: 2 × max(0, Knowledge).\n\n**Starting disciplines:** Choose one of Arms, Athletics, Armor, Elements. Your culture and background each contribute one other starting discipline. Choose three distinct disciplines across these selections.\n\n**Learning costs:** **1 DP:** Arms, Athletics. **2 DP:** Armor, Elements. **3 DP:** Guard, Marksmanship, Subterfuge, Wilderness, Medicine, Craft, Scholarship, Influence, Life, Mentalism, Divination, Invocation, Force, Wards, Spellcraft, Fencing, Tactics.\n\nPay the listed price to begin studying another discipline. Then follow the costs and requirements of the path or spellbook you choose.\n\n## Signature development\n\nChoose one signature at each of levels 1, 3 and 7 without spending DP. Choose from your class’s options for that level. Each signature is an ability you can use in its own right. Some offer an additional benefit when you also know another named signature; that benefit appears in the ability’s rules.\n\nYou may switch signatures under the ordinary retraining rules. Choose a replacement from your class’s options for the same milestone, then apply any interactions between the signatures you know.\n\n\n## Level 1 choices\n\n- [Go Berserk](../cards/signature-unbalanced-wild-approach.md)\n- [Charge](../cards/signature-unbalanced-shoulder-through.md)\n- [Grab and Hurl](../cards/signature-unbalanced-laugh-at-the-fall.md)\n\n## Level 3 choices\n\n- [Pain Feeds the Fire](../cards/signature-unbalanced-raging-recoil.md)\n- [Rampage](../cards/signature-unbalanced-crush-the-barrier.md)\n- [Over the Top](../cards/signature-unbalanced-fling-the-captive.md)\n\n## Level 7 choices\n\n- [Deathless Rage](../cards/signature-unbalanced-break-their-grip.md)\n- [Earthbreaker](../cards/signature-unbalanced-scatter-the-line.md)\n- [The Cannonball](../cards/signature-unbalanced-crash-down.md)\n\n**Starting coin contribution:** +0 coins. See [starting coins](../starting-coins.md).\n"
     },
     {
       "id": "class-warden",
@@ -22826,6 +23889,8 @@
         "athletics": 2,
         "life": 2,
         "divination": 2,
+        "fencing": 2,
+        "tactics": 2,
         "armor": 3,
         "guard": 3,
         "subterfuge": 3,
@@ -22841,7 +23906,7 @@
         "spellcraft": 3
       },
       "coinContribution": 2,
-      "referenceMarkdown": "# Warden\n\n*You read the broken fern, the distant cry and the turn of a fleeing creature. When the road ends, your companions look to you.*\n\nThe deer have crossed the stream and circled back along the bank. The people you are following went straight across. You take the company upstream to a shallower crossing and ask them to keep their eyes on the opposite shore.\n\nA Warden reads the land and makes it useful to the people traveling with them. In a pursuit, the ground tells you where to hurry and where to wait. On an expedition, the same eye can find the trail that gets everyone to shelter before dark. Steady Aim suits the hunter who waits for a clear shot. Beast Speech makes the creatures you meet part of the expedition’s story. Twin Strike gives a Warden with two blades a reason to close the distance.\n\nYou might love a familiar stretch of river in flood or resent a traveler who leaves trouble for whoever comes next. What place do you know well enough to miss when it changes?\n\n## Rules\n\n**Attributes:** Minimum 0 in Fortitude, Knowledge. **HP contribution:** +2 at level 1 and per level thereafter.\n\n**Starting SP contribution:** Twice your positive Knowledge at creation: 2 × max(0, Knowledge).\n\n**Starting disciplines:** Choose one of Wilderness, Marksmanship, Arms, Athletics. Your culture and background each contribute one other starting discipline. Choose three distinct disciplines across these selections.\n\n**Learning costs:** **1 DP:** Marksmanship, Wilderness. **2 DP:** Arms, Athletics, Life, Divination. **3 DP:** Armor, Guard, Subterfuge, Medicine, Craft, Scholarship, Influence, Elements, Mentalism, Invocation, Force, Wards, Spellcraft.\n\nPay the listed price to begin studying another discipline. Then follow the costs and requirements of the path or spellbook you choose.\n\n## Signature development\n\nChoose one signature at each of levels 1, 3 and 7 without spending DP. Choose from your class’s options for that level. Each signature is an ability you can use in its own right. Some offer an additional benefit when you also know another named signature; that benefit appears in the ability’s rules.\n\nYou may switch signatures under the ordinary retraining rules. Choose a replacement from your class’s options for the same milestone, then apply any interactions between the signatures you know.\n\n\n## Level 1 choices\n\n- [Steady Aim](../cards/signature-warden-keep-the-quarry-close.md)\n- [Beast Speech](../cards/signature-warden-read-the-passing.md)\n- [Twin Strike](../cards/signature-warden-follow-my-footsteps.md)\n\n## Level 3 choices\n\n- [Volley](../cards/signature-warden-stay-on-the-scent.md)\n- [Wild Partnership](../cards/signature-warden-wild-partnership.md)\n- [Through Bramble](../cards/signature-warden-through-bramble.md)\n\n## Level 7 choices\n\n- [Mark the Quarry](../cards/signature-warden-turn-the-hunt.md)\n- [Call the Wild](../cards/signature-warden-bring-them-through.md)\n- [Death from the Blind Spot](../cards/signature-warden-know-what-you-hunt.md)\n\n**Starting coin contribution:** +2 coins. See [starting coins](../starting-coins.md).\n"
+      "referenceMarkdown": "# Warden\n\n*You read the broken fern, the distant cry and the turn of a fleeing creature. When the road ends, your companions look to you.*\n\nThe deer have crossed the stream and circled back along the bank. The people you are following went straight across. You take the company upstream to a shallower crossing and ask them to keep their eyes on the opposite shore.\n\nA Warden reads the land and makes it useful to the people traveling with them. In a pursuit, the ground tells you where to hurry and where to wait. On an expedition, the same eye can find the trail that gets everyone to shelter before dark. Steady Aim suits the hunter who waits for a clear shot. Beast Speech makes the creatures you meet part of the expedition’s story. Twin Strike gives a Warden with two blades a reason to close the distance.\n\nYou might love a familiar stretch of river in flood or resent a traveler who leaves trouble for whoever comes next. What place do you know well enough to miss when it changes?\n\n## Rules\n\n**Attributes:** Minimum 0 in Fortitude, Knowledge. **HP contribution:** +2 at level 1 and per level thereafter.\n\n**Starting SP contribution:** Twice your positive Knowledge at creation: 2 × max(0, Knowledge).\n\n**Starting disciplines:** Choose one of Wilderness, Marksmanship, Arms, Athletics. Your culture and background each contribute one other starting discipline. Choose three distinct disciplines across these selections.\n\n**Learning costs:** **1 DP:** Marksmanship, Wilderness. **2 DP:** Arms, Athletics, Life, Divination, Fencing, Tactics. **3 DP:** Armor, Guard, Subterfuge, Medicine, Craft, Scholarship, Influence, Elements, Mentalism, Invocation, Force, Wards, Spellcraft.\n\nPay the listed price to begin studying another discipline. Then follow the costs and requirements of the path or spellbook you choose.\n\n## Signature development\n\nChoose one signature at each of levels 1, 3 and 7 without spending DP. Choose from your class’s options for that level. Each signature is an ability you can use in its own right. Some offer an additional benefit when you also know another named signature; that benefit appears in the ability’s rules.\n\nYou may switch signatures under the ordinary retraining rules. Choose a replacement from your class’s options for the same milestone, then apply any interactions between the signatures you know.\n\n\n## Level 1 choices\n\n- [Steady Aim](../cards/signature-warden-keep-the-quarry-close.md)\n- [Beast Speech](../cards/signature-warden-read-the-passing.md)\n- [Twin Strike](../cards/signature-warden-follow-my-footsteps.md)\n\n## Level 3 choices\n\n- [Volley](../cards/signature-warden-stay-on-the-scent.md)\n- [Wild Partnership](../cards/signature-warden-wild-partnership.md)\n- [Through Bramble](../cards/signature-warden-through-bramble.md)\n\n## Level 7 choices\n\n- [Mark the Quarry](../cards/signature-warden-turn-the-hunt.md)\n- [Call the Wild](../cards/signature-warden-bring-them-through.md)\n- [Death from the Blind Spot](../cards/signature-warden-know-what-you-hunt.md)\n\n**Starting coin contribution:** +2 coins. See [starting coins](../starting-coins.md).\n"
     }
   ],
   "signatures": [

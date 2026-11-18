@@ -1,0 +1,47 @@
+{
+  "_key": "!items!db0e5470d702c79c",
+  "_id": "db0e5470d702c79c",
+  "name": "Clear the Way III",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Clear the Way can instead help a declared noncombat task you can plausibly assist. The Boon applies to the next matching roll during the exchange or work interval. Outside combat, contribute this aid or your own roll to the objective during that interval.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "tactics:coordination:3",
+      "sourceCommit": "d6a241b85446be95d6391603880e7788b3c92715",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "tactics:coordination:3",
+        "level": 1,
+        "cost": 2,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Clear the Way can instead help a declared noncombat task you can plausibly assist. The Boon applies to the next matching roll during the exchange or work interval. Outside combat, contribute this aid or your own roll to the objective during that interval.",
+        "improves": "tactics:coordination:1",
+        "requires": [
+          "tactics:coordination:2"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

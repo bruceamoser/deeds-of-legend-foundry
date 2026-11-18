@@ -1,14 +1,14 @@
 {
   "rulesRevision": 299,
   "spellbookProgressionRevision": 310,
-  "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+  "sourceCommit": "d6a241b85446be95d6391603880e7788b3c92715",
   "workingTree": false,
   "builds": [
     {
       "id": "barbarian",
       "name": "Harka Stormshoulder",
       "level": 1,
-      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "sourceCommit": "d6a241b85446be95d6391603880e7788b3c92715",
       "workingTree": false,
       "draft": {
         "name": "Harka Stormshoulder",
@@ -231,14 +231,18 @@
           "name": "Measured Cut I",
           "dp": 1,
           "level": 1,
-          "effect": "Main Action · Brawn. Attack one adjacent creature for 2/3/5 physical damage. On Strong, you may move 1 square after the attack.",
+          "effect": "Main Action · Brawn or Agility, chosen before rolling. Attack one adjacent creature for 2/3/5 physical damage. On Strong, you may move 1 square after the attack.",
           "kind": "technique",
           "disciplineId": "arms",
           "pathId": "arms:bladework",
           "requires": [
             "arms"
           ],
-          "shape": "circle"
+          "shape": "circle",
+          "attributeChoices": [
+            "brawn",
+            "agility"
+          ]
         },
         {
           "id": "arms:impact:1",
@@ -327,7 +331,7 @@
       "id": "barbarian",
       "name": "Harka Stormshoulder",
       "level": 3,
-      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "sourceCommit": "d6a241b85446be95d6391603880e7788b3c92715",
       "workingTree": false,
       "draft": {
         "name": "Harka Stormshoulder",
@@ -625,14 +629,18 @@
           "name": "Measured Cut I",
           "dp": 1,
           "level": 1,
-          "effect": "Main Action · Brawn. Attack one adjacent creature for 2/3/5 physical damage. On Strong, you may move 1 square after the attack.",
+          "effect": "Main Action · Brawn or Agility, chosen before rolling. Attack one adjacent creature for 2/3/5 physical damage. On Strong, you may move 1 square after the attack.",
           "kind": "technique",
           "disciplineId": "arms",
           "pathId": "arms:bladework",
           "requires": [
             "arms"
           ],
-          "shape": "circle"
+          "shape": "circle",
+          "attributeChoices": [
+            "brawn",
+            "agility"
+          ]
         },
         {
           "id": "arms:impact:1",
@@ -739,7 +747,7 @@
       "id": "barbarian",
       "name": "Harka Stormshoulder",
       "level": 7,
-      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "sourceCommit": "d6a241b85446be95d6391603880e7788b3c92715",
       "workingTree": false,
       "draft": {
         "name": "Harka Stormshoulder",
@@ -1177,14 +1185,18 @@
           "name": "Measured Cut I",
           "dp": 1,
           "level": 1,
-          "effect": "Main Action · Brawn. Attack one adjacent creature for 2/3/5 physical damage. On Strong, you may move 1 square after the attack.",
+          "effect": "Main Action · Brawn or Agility, chosen before rolling. Attack one adjacent creature for 2/3/5 physical damage. On Strong, you may move 1 square after the attack.",
           "kind": "technique",
           "disciplineId": "arms",
           "pathId": "arms:bladework",
           "requires": [
             "arms"
           ],
-          "shape": "circle"
+          "shape": "circle",
+          "attributeChoices": [
+            "brawn",
+            "agility"
+          ]
         },
         {
           "id": "arms:impact:1",
@@ -1348,7 +1360,7 @@
       "id": "bard",
       "name": "Lysa Silverstring",
       "level": 1,
-      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "sourceCommit": "d6a241b85446be95d6391603880e7788b3c92715",
       "workingTree": false,
       "draft": {
         "name": "Lysa Silverstring",
@@ -1746,7 +1758,7 @@
       "id": "bard",
       "name": "Lysa Silverstring",
       "level": 3,
-      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "sourceCommit": "d6a241b85446be95d6391603880e7788b3c92715",
       "workingTree": false,
       "draft": {
         "name": "Lysa Silverstring",
@@ -2271,7 +2283,7 @@
       "id": "bard",
       "name": "Lysa Silverstring",
       "level": 7,
-      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "sourceCommit": "d6a241b85446be95d6391603880e7788b3c92715",
       "workingTree": false,
       "draft": {
         "name": "Lysa Silverstring",
@@ -3180,7 +3192,7 @@
       "id": "cleric",
       "name": "Brunna Hearthward",
       "level": 1,
-      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "sourceCommit": "d6a241b85446be95d6391603880e7788b3c92715",
       "workingTree": false,
       "draft": {
         "name": "Brunna Hearthward",
@@ -3538,7 +3550,7 @@
       "id": "cleric",
       "name": "Brunna Hearthward",
       "level": 3,
-      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "sourceCommit": "d6a241b85446be95d6391603880e7788b3c92715",
       "workingTree": false,
       "draft": {
         "name": "Brunna Hearthward",
@@ -4070,7 +4082,7 @@
       "id": "cleric",
       "name": "Brunna Hearthward",
       "level": 7,
-      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "sourceCommit": "d6a241b85446be95d6391603880e7788b3c92715",
       "workingTree": false,
       "draft": {
         "name": "Brunna Hearthward",
@@ -4906,7 +4918,7 @@
       "id": "druid",
       "name": "Thalen Reedwalker",
       "level": 1,
-      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "sourceCommit": "d6a241b85446be95d6391603880e7788b3c92715",
       "workingTree": false,
       "draft": {
         "name": "Thalen Reedwalker",
@@ -5310,7 +5322,7 @@
       "id": "druid",
       "name": "Thalen Reedwalker",
       "level": 3,
-      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "sourceCommit": "d6a241b85446be95d6391603880e7788b3c92715",
       "workingTree": false,
       "draft": {
         "name": "Thalen Reedwalker",
@@ -5885,7 +5897,7 @@
       "id": "druid",
       "name": "Thalen Reedwalker",
       "level": 7,
-      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "sourceCommit": "d6a241b85446be95d6391603880e7788b3c92715",
       "workingTree": false,
       "draft": {
         "name": "Thalen Reedwalker",
@@ -6754,7 +6766,7 @@
       "id": "fighter",
       "name": "Corin Ashguard",
       "level": 1,
-      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "sourceCommit": "d6a241b85446be95d6391603880e7788b3c92715",
       "workingTree": false,
       "draft": {
         "name": "Corin Ashguard",
@@ -6987,14 +6999,18 @@
           "name": "Measured Cut I",
           "dp": 1,
           "level": 1,
-          "effect": "Main Action · Brawn. Attack one adjacent creature for 2/3/5 physical damage. On Strong, you may move 1 square after the attack.",
+          "effect": "Main Action · Brawn or Agility, chosen before rolling. Attack one adjacent creature for 2/3/5 physical damage. On Strong, you may move 1 square after the attack.",
           "kind": "technique",
           "disciplineId": "arms",
           "pathId": "arms:bladework",
           "requires": [
             "arms"
           ],
-          "shape": "circle"
+          "shape": "circle",
+          "attributeChoices": [
+            "brawn",
+            "agility"
+          ]
         },
         {
           "id": "armor:harness:1",
@@ -7097,7 +7113,7 @@
       "id": "fighter",
       "name": "Corin Ashguard",
       "level": 3,
-      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "sourceCommit": "d6a241b85446be95d6391603880e7788b3c92715",
       "workingTree": false,
       "draft": {
         "name": "Corin Ashguard",
@@ -7405,14 +7421,18 @@
           "name": "Measured Cut I",
           "dp": 1,
           "level": 1,
-          "effect": "Main Action · Brawn. Attack one adjacent creature for 2/3/5 physical damage. On Strong, you may move 1 square after the attack.",
+          "effect": "Main Action · Brawn or Agility, chosen before rolling. Attack one adjacent creature for 2/3/5 physical damage. On Strong, you may move 1 square after the attack.",
           "kind": "technique",
           "disciplineId": "arms",
           "pathId": "arms:bladework",
           "requires": [
             "arms"
           ],
-          "shape": "circle"
+          "shape": "circle",
+          "attributeChoices": [
+            "brawn",
+            "agility"
+          ]
         },
         {
           "id": "armor:harness:1",
@@ -7539,7 +7559,7 @@
       "id": "fighter",
       "name": "Corin Ashguard",
       "level": 7,
-      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "sourceCommit": "d6a241b85446be95d6391603880e7788b3c92715",
       "workingTree": false,
       "draft": {
         "name": "Corin Ashguard",
@@ -8007,14 +8027,18 @@
           "name": "Measured Cut I",
           "dp": 1,
           "level": 1,
-          "effect": "Main Action · Brawn. Attack one adjacent creature for 2/3/5 physical damage. On Strong, you may move 1 square after the attack.",
+          "effect": "Main Action · Brawn or Agility, chosen before rolling. Attack one adjacent creature for 2/3/5 physical damage. On Strong, you may move 1 square after the attack.",
           "kind": "technique",
           "disciplineId": "arms",
           "pathId": "arms:bladework",
           "requires": [
             "arms"
           ],
-          "shape": "circle"
+          "shape": "circle",
+          "attributeChoices": [
+            "brawn",
+            "agility"
+          ]
         },
         {
           "id": "armor:harness:1",
@@ -8198,7 +8222,7 @@
       "id": "monk",
       "name": "Sera Quietstep",
       "level": 1,
-      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "sourceCommit": "d6a241b85446be95d6391603880e7788b3c92715",
       "workingTree": false,
       "draft": {
         "name": "Sera Quietstep",
@@ -8417,7 +8441,11 @@
           "requires": [
             "arms"
           ],
-          "shape": "circle"
+          "shape": "circle",
+          "attributeChoices": [
+            "brawn",
+            "agility"
+          ]
         },
         {
           "id": "athletics:balance:1",
@@ -8493,7 +8521,7 @@
       "id": "monk",
       "name": "Sera Quietstep",
       "level": 3,
-      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "sourceCommit": "d6a241b85446be95d6391603880e7788b3c92715",
       "workingTree": false,
       "draft": {
         "name": "Sera Quietstep",
@@ -8787,7 +8815,11 @@
           "requires": [
             "arms"
           ],
-          "shape": "circle"
+          "shape": "circle",
+          "attributeChoices": [
+            "brawn",
+            "agility"
+          ]
         },
         {
           "id": "athletics:balance:1",
@@ -8829,7 +8861,11 @@
           "requires": [
             "arms:unarmed:3"
           ],
-          "shape": "triangle"
+          "shape": "triangle",
+          "attributeChoices": [
+            "brawn",
+            "agility"
+          ]
         }
       ],
       "spellIds": [],
@@ -8886,7 +8922,7 @@
       "id": "monk",
       "name": "Sera Quietstep",
       "level": 7,
-      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "sourceCommit": "d6a241b85446be95d6391603880e7788b3c92715",
       "workingTree": false,
       "draft": {
         "name": "Sera Quietstep",
@@ -9320,7 +9356,11 @@
           "requires": [
             "arms"
           ],
-          "shape": "circle"
+          "shape": "circle",
+          "attributeChoices": [
+            "brawn",
+            "agility"
+          ]
         },
         {
           "id": "athletics:balance:1",
@@ -9362,7 +9402,11 @@
           "requires": [
             "arms:unarmed:3"
           ],
-          "shape": "triangle"
+          "shape": "triangle",
+          "attributeChoices": [
+            "brawn",
+            "agility"
+          ]
         },
         {
           "id": "arms:unarmed:7",
@@ -9376,7 +9420,11 @@
           "requires": [
             "arms:unarmed:6"
           ],
-          "shape": "diamond"
+          "shape": "diamond",
+          "attributeChoices": [
+            "brawn",
+            "agility"
+          ]
         },
         {
           "id": "athletics:balance:4",
@@ -9490,7 +9538,7 @@
       "id": "paladin",
       "name": "Aldren Vowkeeper",
       "level": 1,
-      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "sourceCommit": "d6a241b85446be95d6391603880e7788b3c92715",
       "workingTree": false,
       "draft": {
         "name": "Aldren Vowkeeper",
@@ -9739,14 +9787,18 @@
           "name": "Measured Cut I",
           "dp": 1,
           "level": 1,
-          "effect": "Main Action · Brawn. Attack one adjacent creature for 2/3/5 physical damage. On Strong, you may move 1 square after the attack.",
+          "effect": "Main Action · Brawn or Agility, chosen before rolling. Attack one adjacent creature for 2/3/5 physical damage. On Strong, you may move 1 square after the attack.",
           "kind": "technique",
           "disciplineId": "arms",
           "pathId": "arms:bladework",
           "requires": [
             "arms"
           ],
-          "shape": "circle"
+          "shape": "circle",
+          "attributeChoices": [
+            "brawn",
+            "agility"
+          ]
         },
         {
           "id": "arms:dueling:1",
@@ -9841,7 +9893,7 @@
       "id": "paladin",
       "name": "Aldren Vowkeeper",
       "level": 3,
-      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "sourceCommit": "d6a241b85446be95d6391603880e7788b3c92715",
       "workingTree": false,
       "draft": {
         "name": "Aldren Vowkeeper",
@@ -10167,14 +10219,18 @@
           "name": "Measured Cut I",
           "dp": 1,
           "level": 1,
-          "effect": "Main Action · Brawn. Attack one adjacent creature for 2/3/5 physical damage. On Strong, you may move 1 square after the attack.",
+          "effect": "Main Action · Brawn or Agility, chosen before rolling. Attack one adjacent creature for 2/3/5 physical damage. On Strong, you may move 1 square after the attack.",
           "kind": "technique",
           "disciplineId": "arms",
           "pathId": "arms:bladework",
           "requires": [
             "arms"
           ],
-          "shape": "circle"
+          "shape": "circle",
+          "attributeChoices": [
+            "brawn",
+            "agility"
+          ]
         },
         {
           "id": "arms:dueling:1",
@@ -10293,7 +10349,7 @@
       "id": "paladin",
       "name": "Aldren Vowkeeper",
       "level": 7,
-      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "sourceCommit": "d6a241b85446be95d6391603880e7788b3c92715",
       "workingTree": false,
       "draft": {
         "name": "Aldren Vowkeeper",
@@ -10781,14 +10837,18 @@
           "name": "Measured Cut I",
           "dp": 1,
           "level": 1,
-          "effect": "Main Action · Brawn. Attack one adjacent creature for 2/3/5 physical damage. On Strong, you may move 1 square after the attack.",
+          "effect": "Main Action · Brawn or Agility, chosen before rolling. Attack one adjacent creature for 2/3/5 physical damage. On Strong, you may move 1 square after the attack.",
           "kind": "technique",
           "disciplineId": "arms",
           "pathId": "arms:bladework",
           "requires": [
             "arms"
           ],
-          "shape": "circle"
+          "shape": "circle",
+          "attributeChoices": [
+            "brawn",
+            "agility"
+          ]
         },
         {
           "id": "arms:dueling:1",
@@ -11026,7 +11086,7 @@
       "id": "ranger",
       "name": "Eryn Mossarrow",
       "level": 1,
-      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "sourceCommit": "d6a241b85446be95d6391603880e7788b3c92715",
       "workingTree": false,
       "draft": {
         "name": "Eryn Mossarrow",
@@ -11403,7 +11463,7 @@
       "id": "ranger",
       "name": "Eryn Mossarrow",
       "level": 3,
-      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "sourceCommit": "d6a241b85446be95d6391603880e7788b3c92715",
       "workingTree": false,
       "draft": {
         "name": "Eryn Mossarrow",
@@ -11879,7 +11939,7 @@
       "id": "ranger",
       "name": "Eryn Mossarrow",
       "level": 7,
-      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "sourceCommit": "d6a241b85446be95d6391603880e7788b3c92715",
       "workingTree": false,
       "draft": {
         "name": "Eryn Mossarrow",
@@ -12630,7 +12690,7 @@
       "id": "rogue",
       "name": "Pip Nightjar",
       "level": 1,
-      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "sourceCommit": "d6a241b85446be95d6391603880e7788b3c92715",
       "workingTree": false,
       "draft": {
         "name": "Pip Nightjar",
@@ -12973,7 +13033,7 @@
       "id": "rogue",
       "name": "Pip Nightjar",
       "level": 3,
-      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "sourceCommit": "d6a241b85446be95d6391603880e7788b3c92715",
       "workingTree": false,
       "draft": {
         "name": "Pip Nightjar",
@@ -13414,7 +13474,7 @@
       "id": "rogue",
       "name": "Pip Nightjar",
       "level": 7,
-      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "sourceCommit": "d6a241b85446be95d6391603880e7788b3c92715",
       "workingTree": false,
       "draft": {
         "name": "Pip Nightjar",
@@ -14062,7 +14122,7 @@
       "id": "sorcerer",
       "name": "Ilyra Cinderblood",
       "level": 1,
-      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "sourceCommit": "d6a241b85446be95d6391603880e7788b3c92715",
       "workingTree": false,
       "draft": {
         "name": "Ilyra Cinderblood",
@@ -14435,7 +14495,7 @@
       "id": "sorcerer",
       "name": "Ilyra Cinderblood",
       "level": 3,
-      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "sourceCommit": "d6a241b85446be95d6391603880e7788b3c92715",
       "workingTree": false,
       "draft": {
         "name": "Ilyra Cinderblood",
@@ -14951,7 +15011,7 @@
       "id": "sorcerer",
       "name": "Ilyra Cinderblood",
       "level": 7,
-      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "sourceCommit": "d6a241b85446be95d6391603880e7788b3c92715",
       "workingTree": false,
       "draft": {
         "name": "Ilyra Cinderblood",
@@ -15743,7 +15803,7 @@
       "id": "warlock",
       "name": "Vesper Ashpact",
       "level": 1,
-      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "sourceCommit": "d6a241b85446be95d6391603880e7788b3c92715",
       "workingTree": false,
       "draft": {
         "name": "Vesper Ashpact",
@@ -16090,7 +16150,7 @@
       "id": "warlock",
       "name": "Vesper Ashpact",
       "level": 3,
-      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "sourceCommit": "d6a241b85446be95d6391603880e7788b3c92715",
       "workingTree": false,
       "draft": {
         "name": "Vesper Ashpact",
@@ -16563,7 +16623,7 @@
       "id": "warlock",
       "name": "Vesper Ashpact",
       "level": 7,
-      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "sourceCommit": "d6a241b85446be95d6391603880e7788b3c92715",
       "workingTree": false,
       "draft": {
         "name": "Vesper Ashpact",
@@ -17381,7 +17441,7 @@
       "id": "wizard",
       "name": "Vaelis Quillstar",
       "level": 1,
-      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "sourceCommit": "d6a241b85446be95d6391603880e7788b3c92715",
       "workingTree": false,
       "draft": {
         "name": "Vaelis Quillstar",
@@ -17819,7 +17879,7 @@
       "id": "wizard",
       "name": "Vaelis Quillstar",
       "level": 3,
-      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "sourceCommit": "d6a241b85446be95d6391603880e7788b3c92715",
       "workingTree": false,
       "draft": {
         "name": "Vaelis Quillstar",
@@ -18389,7 +18449,7 @@
       "id": "wizard",
       "name": "Vaelis Quillstar",
       "level": 7,
-      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "sourceCommit": "d6a241b85446be95d6391603880e7788b3c92715",
       "workingTree": false,
       "draft": {
         "name": "Vaelis Quillstar",
@@ -19288,7 +19348,7 @@
       "id": "artificer",
       "name": "Nim Coppercoil",
       "level": 1,
-      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "sourceCommit": "d6a241b85446be95d6391603880e7788b3c92715",
       "workingTree": false,
       "draft": {
         "name": "Nim Coppercoil",
@@ -19698,7 +19758,7 @@
       "id": "artificer",
       "name": "Nim Coppercoil",
       "level": 3,
-      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "sourceCommit": "d6a241b85446be95d6391603880e7788b3c92715",
       "workingTree": false,
       "draft": {
         "name": "Nim Coppercoil",
@@ -20242,7 +20302,7 @@
       "id": "artificer",
       "name": "Nim Coppercoil",
       "level": 7,
-      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "sourceCommit": "d6a241b85446be95d6391603880e7788b3c92715",
       "workingTree": false,
       "draft": {
         "name": "Nim Coppercoil",

@@ -1,0 +1,47 @@
+{
+  "_key": "!items!99bebd75d5430140",
+  "_id": "99bebd75d5430140",
+  "name": "Clear the Way I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div></dl><p>Maneuver. Give one willing ally within 3 squares a cue for a declared attack or defense that you can plausibly help. It gains 1 Boon on its next matching roll before your next turn starts. No roll.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "tactics:coordination:1",
+      "sourceCommit": "d6a241b85446be95d6391603880e7788b3c92715",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "technique",
+        "nodeId": "tactics:coordination:1",
+        "level": 1,
+        "cost": 1,
+        "action": "Maneuver",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Maneuver. Give one willing ally within 3 squares a cue for a declared attack or defense that you can plausibly help. It gains 1 Boon on its next matching roll before your next turn starts. No roll.",
+        "improves": null,
+        "requires": [
+          "tactics"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

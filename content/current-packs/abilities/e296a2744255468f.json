@@ -1,0 +1,47 @@
+{
+  "_key": "!items!e296a2744255468f",
+  "_id": "e296a2744255468f",
+  "name": "Roads Out",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Reaction</dd></div></dl><p>Reaction. Once per scene, when a visible enemy within 6 squares ends voluntary movement, choose up to three willing allies within 6 squares. You and each chosen ally may move up to 3 squares without triggering movement reactions. Each chosen ally gains 1 Boon on its next defense against that enemy before your next turn starts. No roll.</p>",
+    "activity": {
+      "action": "reaction",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "tactics:contingencies:7",
+      "sourceCommit": "d6a241b85446be95d6391603880e7788b3c92715",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "mastery",
+        "nodeId": "tactics:contingencies:7",
+        "level": 7,
+        "cost": 5,
+        "action": "Reaction",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Reaction. Once per scene, when a visible enemy within 6 squares ends voluntary movement, choose up to three willing allies within 6 squares. You and each chosen ally may move up to 3 squares without triggering movement reactions. Each chosen ally gains 1 Boon on its next defense against that enemy before your next turn starts. No roll.",
+        "improves": null,
+        "requires": [
+          "tactics:contingencies:6"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

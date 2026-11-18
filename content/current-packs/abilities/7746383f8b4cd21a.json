@@ -1,0 +1,47 @@
+{
+  "_key": "!items!7746383f8b4cd21a",
+  "_id": "7746383f8b4cd21a",
+  "name": "Clear the Way II",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Clear the Way reaches up to 5 squares.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "tactics:coordination:2",
+      "sourceCommit": "d6a241b85446be95d6391603880e7788b3c92715",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "tactics:coordination:2",
+        "level": 1,
+        "cost": 2,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Clear the Way reaches up to 5 squares.",
+        "improves": "tactics:coordination:1",
+        "requires": [
+          "tactics:coordination:1"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

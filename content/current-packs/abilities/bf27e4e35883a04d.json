@@ -1,0 +1,47 @@
+{
+  "_key": "!items!bf27e4e35883a04d",
+  "_id": "bf27e4e35883a04d",
+  "name": "The Perfect Moment",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div></dl><p>Maneuver · Knowledge. Once per scene, choose a visible enemy and up to three willing allies within 6 squares. Each ally may move 1/2/3 squares without triggering movement reactions from that enemy. Each gains 1 Boon on its next attack against that enemy before your next turn starts, or 2 Boons on Strong.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "tactics:coordination:7",
+      "sourceCommit": "d6a241b85446be95d6391603880e7788b3c92715",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "mastery",
+        "nodeId": "tactics:coordination:7",
+        "level": 7,
+        "cost": 5,
+        "action": "Maneuver",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": "Knowledge",
+        "defenseAttribute": null,
+        "effect": "Maneuver · Knowledge. Once per scene, choose a visible enemy and up to three willing allies within 6 squares. Each ally may move 1/2/3 squares without triggering movement reactions from that enemy. Each gains 1 Boon on its next attack against that enemy before your next turn starts, or 2 Boons on Strong.",
+        "improves": null,
+        "requires": [
+          "tactics:coordination:6"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

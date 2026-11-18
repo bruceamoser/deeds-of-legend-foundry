@@ -1,0 +1,48 @@
+{
+  "_key": "!items!886c549d29794bb2",
+  "_id": "886c549d29794bb2",
+  "name": "Strip the Grip II",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div><div><dt>Equipment</dt><dd>Wield a suitable one-handed melee weapon.</dd></div></dl><p>On Standard, choose one of the target’s held weapons. Its next attack with that weapon takes 1 Bane if made before your next turn starts.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "fencing:blade-tricks:5",
+      "sourceCommit": "d6a241b85446be95d6391603880e7788b3c92715",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "fencing:blade-tricks:5",
+        "level": 3,
+        "cost": 4,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "On Standard, choose one of the target’s held weapons. Its next attack with that weapon takes 1 Bane if made before your next turn starts.",
+        "improves": "fencing:blade-tricks:4",
+        "requires": [
+          "fencing:blade-tricks:4"
+        ],
+        "bookId": null,
+        "weaponRequirement": "one-handed-melee"
+      }
+    }
+  },
+  "effects": []
+}

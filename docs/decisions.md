@@ -385,3 +385,14 @@ Only current Workshop normalization is supported.
 ## Independent signature choices — #330
 
 Bruce clarified that signatures are individual choices at levels 1, 3 and 7, with no required order or automatically granted earlier abilities. Brief optional interactions with another separately learned signature are welcome. Full earlier ability text must not be copied inside later cards. Book PR #1355 corrected all ninety choices and the shared teaching; the reviewed source is `f71eac4c46fce6906d6dfbd1638ee98b10a6c538`. The engine, native Items and reference packs use each selected signature’s own complete rules and retain all selections. Seventeen higher-level procedures needed standalone activation/effect details; optional synergies remain prose conditions, never grants. Native and Workshop follow-through is tracked in #330.
+
+## November 17 — Fencing, Tactics and Arms attributes (#333)
+
+Playtest feedback called for Agility swordplay, Knowledge-based attacks and
+support, and broader attribute choices within Arms. Fencing develops mobile
+one-handed attacks, footwork, parries and weapon control. Tactics gives
+Knowledge-based melee attacks and techniques for preparing a roll, helping an
+ally or coordinating movement. Use the highest Tactics or Aid boon grant on a
+roll. Measured Cut and Riposte give a choice of Brawn or Agility before rolling.
+Duelist’s Boundary uses Agility. The two new starting backgrounds are Salle
+Student and Company Runner. Book PR #1357 supplies the reviewed text.

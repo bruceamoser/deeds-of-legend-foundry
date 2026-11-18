@@ -1,0 +1,47 @@
+{
+  "_key": "!items!ed2249411c1b7145",
+  "_id": "ed2249411c1b7145",
+  "name": "Set the Formation I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div></dl><p>Maneuver · Knowledge. Choose a visible enemy and up to two willing allies within 4 squares. On any result, one chosen ally may move 1 square without triggering movement reactions from that enemy. On Standard or Strong, each chosen ally gains 1 Boon on its next attack against that enemy before your next turn starts.</p>",
+    "activity": {
+      "action": "maneuver",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "tactics:coordination:4",
+      "sourceCommit": "d6a241b85446be95d6391603880e7788b3c92715",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "technique",
+        "nodeId": "tactics:coordination:4",
+        "level": 3,
+        "cost": 3,
+        "action": "Maneuver",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": "Knowledge",
+        "defenseAttribute": null,
+        "effect": "Maneuver · Knowledge. Choose a visible enemy and up to two willing allies within 4 squares. On any result, one chosen ally may move 1 square without triggering movement reactions from that enemy. On Standard or Strong, each chosen ally gains 1 Boon on its next attack against that enemy before your next turn starts.",
+        "improves": null,
+        "requires": [
+          "tactics:coordination:3"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

@@ -1,0 +1,47 @@
+{
+  "_key": "!items!49333835665c8529",
+  "_id": "49333835665c8529",
+  "name": "Rehearse the Exchange III",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Movement</dd></div></dl><p>Movement from Rehearse the Exchange avoids movement reactions from the chosen enemy.</p>",
+    "activity": {
+      "action": "movement",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "tactics:foresight:6",
+      "sourceCommit": "d6a241b85446be95d6391603880e7788b3c92715",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "tactics:foresight:6",
+        "level": 3,
+        "cost": 4,
+        "action": "Movement",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Movement from Rehearse the Exchange avoids movement reactions from the chosen enemy.",
+        "improves": "tactics:foresight:4",
+        "requires": [
+          "tactics:foresight:5"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

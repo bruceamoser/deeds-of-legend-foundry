@@ -12,6 +12,7 @@ import { loadWorkshopCatalogs } from '../services/catalog.mjs';
 import { newCreationDraft } from '../rules/creation.mjs';
 import { rollCard, resourceCard } from '../rules/chat-cards.mjs';
 import { equipmentAttributeValue } from '../rules/effective-attributes.mjs';
+import { validateWorkshopAbilityUse } from '../rules/workshop-ability.mjs';
 import { inventoryCheck } from '../rules/inventory.mjs';
 import { classifyRoll } from '../rules/roll.mjs';
 import { writePortableCharacter } from '../rules/portable-character.mjs';
@@ -262,6 +263,11 @@ export class WorkshopCharacterSheet extends HandlebarsApplicationMixin(foundry.a
     if(pending && (pending.id!==this.preparedRollId || pending.status!=='prepared')) throw new Error('A Workshop roll awaits reconciliation. Use Reconcile pending Workshop roll in the window menu before rolling again.');
     await this.controller?.flush();
     const {count,sides,net=0,kind}=request;
+    const abilityId=request.activeRoll?.id;
+    const catalogs=abilityId || request.abilityIds?.length ? await loadWorkshopCatalogs() : null;
+    const record=catalogs?.choices.find(record=>record.id===abilityId) ?? catalogs?.forge.spells.find(record=>record.id===abilityId);
+    if (record?.weaponRequirement || record?.attributeChoices)
+      validateWorkshopAbilityUse(record, [...this.actor.items].filter(item=>item.type==='equipment').map(item=>item.system), request.attributeKey);
     const attribute=request.attributeKey ? equipmentAttributeValue(this.actor.system.attributes[request.attributeKey].base,this.actor.items,request.attributeKey) : (request.attribute ?? 0);
     if(request.attributeKey && attribute!==request.attribute) throw new Error('Equipment changed this attribute. Reopen the roll to use its current effective value.');
     const pendingDeathRoll=kind==='death' ? this.actor.getFlag(ID,'forgeVitals')?.immediateDeathRolls?.[0] : undefined;
@@ -285,9 +291,6 @@ export class WorkshopCharacterSheet extends HandlebarsApplicationMixin(foundry.a
       const retainedIndices=faces.map((face,index)=>({face,index})).sort((a,b)=>(net<0 ? a.face-b.face : b.face-a.face)||a.index-b.index).slice(0,3).map(die=>die.index);
       const result=classifyRoll(retainedIndices.map(index=>faces[index]),attribute);
       if(kind==='death') {result.tier=result.total<=8 ? 'weak' : result.total<=14 ? 'standard' : 'strong';result.natural='none';}
-      const abilityId=request.activeRoll?.id;
-      const catalogs=abilityId || request.abilityIds?.length ? await loadWorkshopCatalogs() : null;
-      const record=catalogs?.choices.find(record=>record.id===abilityId) ?? catalogs?.forge.spells.find(record=>record.id===abilityId);
       content=rollCard({actor:this.actor.name,portrait:this.actor.img,mode:request.activeRoll?.defense ? 'defense' : 'attribute',
         attribute:request.attributeKey ?? (kind==='death' ? 'fortitude' : ''),title:kind==='death' ? 'Fortitude death roll' : `${record?.name ?? 'Attribute check'}${request.equipmentNames?.length ? ' · '+request.equipmentNames.join(', ') : ''}`,
         effect:record?.signatureComponent ? signatureProse(record).replace(/\*\*/g,'').replace(/\[([^\]]+)\]\([^)]*\)/g,'$1') : record?.effect ?? '',abilities:(request.abilityIds ?? []).map(id=>catalogs?.choices.find(record=>record.id===id)?.name ?? id),roll:{faces,retainedIndices,result,plan:{attribute,net,count,formula:roll.formula}}});

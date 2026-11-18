@@ -1,0 +1,47 @@
+{
+  "_key": "!items!f41910e825045311",
+  "_id": "f41910e825045311",
+  "name": "Call the Warning I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Reaction</dd></div></dl><p>Reaction. Before a willing ally within 3 squares rolls defense against an attack from an enemy you can see, give it 1 Boon on that defense if it can follow your cue. No separate roll.</p>",
+    "activity": {
+      "action": "reaction",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "tactics:contingencies:1",
+      "sourceCommit": "d6a241b85446be95d6391603880e7788b3c92715",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "technique",
+        "nodeId": "tactics:contingencies:1",
+        "level": 1,
+        "cost": 1,
+        "action": "Reaction",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Reaction. Before a willing ally within 3 squares rolls defense against an attack from an enemy you can see, give it 1 Boon on that defense if it can follow your cue. No separate roll.",
+        "improves": null,
+        "requires": [
+          "tactics"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

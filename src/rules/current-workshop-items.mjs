@@ -1,6 +1,7 @@
 import {signatureSpellCost,isForgeSpell} from "./forge-casting.mjs";
 import {forgeSignatureRecord} from "./forge-signatures.mjs";
 import { escapeItemHtml } from "./item-construction.mjs";
+import { workshopWeaponLabel } from "./workshop-ability.mjs";
 const ID="heroes-of-legend";
 const attr=(value,fallback)=>["brawn","fortitude","agility","guile","knowledge","reason"].includes(value?.toLowerCase())?value.toLowerCase():fallback;
 const inline=text=>escapeItemHtml(String(text??'')).replace(/\[([^\]]+)\]\([^)]*\)/g,'$1').replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>').replace(/\*([^*]+)\*/g,'<em>$1</em>');
@@ -22,10 +23,12 @@ export function currentWorkshopItemSource(record,catalogs,{spell=false}={}) {
   const attribute=record.attribute??detail.find(entry=>entry.label==="Attribute")?.value??effect.match(/^(?:Main Action|Maneuver|Reaction) · (Brawn|Fortitude|Agility|Guile|Knowledge|Reason)/i)?.[1];
   const ownSp=record.signatureComponent ? signatureSpellCost({effect}) : record.sp;
   const isSpell=spell || Boolean(record.signatureComponent && isForgeSpell(record));
-  const attributeKey=attr(attribute,null);
+  const attributeKey=record.attributeChoices?.[0] ?? attr(attribute,null);
   const action=/ritual/i.test(printedAction)?"ritual":/Main Action/i.test(printedAction)?"main":/Maneuver/i.test(printedAction)?"maneuver":/Reaction/i.test(printedAction)?"reaction":/Movement/i.test(printedAction)?"movement":/Passive/i.test(printedAction)?"passive":"other";
   const metadata={kind:isSpell?"spell":node?.kind??record.kind,nodeId:record.id,level:node?.level??record.minLevel??record.level??1,cost:node?.dp??record.dp??0,action:printedAction,sp:record.signatureComponent?(Number.isSafeInteger(ownSp)?ownSp:null):record.sp??null,range:record.target??record.range??null,duration:record.duration??null,attribute:attribute??null,defenseAttribute:record.defenseAttribute??null,effect,improves:node?.improves??null,requires:node?.requires??[],bookId:record.bookId??null,...(record.signatureComponent?{magic:record.magic??null}:{})};
-  const fields={Action:printedAction,...(isSpell || (record.signatureComponent && Number.isSafeInteger(ownSp))?{SP:String(ownSp??0)}:{}),Attribute:attribute,Defense:record.defenseAttribute,Range:metadata.range,Duration:metadata.duration,...(record.holdAttribute?{"Hold attribute":record.holdAttribute}:{}),...(record.escapeAttribute?{"Escape attribute":record.escapeAttribute}:{})};
+  if (record.attributeChoices) metadata.attributeChoices = record.attributeChoices;
+  if (record.weaponRequirement) metadata.weaponRequirement = record.weaponRequirement;
+  const fields={Action:printedAction,...(isSpell || (record.signatureComponent && Number.isSafeInteger(ownSp))?{SP:String(ownSp??0)}:{}),Attribute:attribute,Defense:record.defenseAttribute,Range:metadata.range,Duration:metadata.duration,...(record.weaponRequirement?{Equipment:`Wield a ${workshopWeaponLabel(record.weaponRequirement)}.`}:{}),...(record.holdAttribute?{"Hold attribute":record.holdAttribute}:{}),...(record.escapeAttribute?{"Escape attribute":record.escapeAttribute}:{})};
   const html=record.signatureComponent ? signatureReferenceHTML(record,ownSp) : `<dl class="hol-reference-details">${Object.entries(fields).filter(([,value])=>value).map(([key,value])=>`<div><dt>${escapeItemHtml(key)}</dt><dd>${escapeItemHtml(String(value))}</dd></div>`).join("")}</dl>${effect.split(/\n\s*\n/).map(text=>`<p>${escapeItemHtml(text).replaceAll("\n","<br>")}</p>`).join("")}`;
   const damage=effect.match(/(?:deal(?:s)?|for) (\d+)\/(\d+)\/(\d+) ([a-z-]+) damage/i);
   return {name:record.name,type:"ability",system:{schemaVersion:1,description:html,activity:{action,rollMode:action==="passive"||(record.signatureComponent?!attributeKey:!attribute)?"none":"attribute",attribute:attributeKey??"knowledge",defenseAttribute:attr(record.defenseAttribute,"agility")},outcomes:{weak:damage?`${damage[1]} ${damage[4]} damage`:"",standard:damage?`${damage[2]} ${damage[4]} damage`:"",strong:damage?`${damage[3]} ${damage[4]} damage`:""}},flags:{[ID]:{catalogId:record.id,sourceCommit:catalogs.commit,grantKind:"nativeWorkshop",workshopRecord:metadata,...(isSpell?{spell:structuredClone(record)}:{})}}};

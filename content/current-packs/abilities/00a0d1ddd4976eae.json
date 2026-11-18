@@ -1,0 +1,48 @@
+{
+  "_key": "!items!00a0d1ddd4976eae",
+  "_id": "00a0d1ddd4976eae",
+  "name": "Surrender the Steel",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Agility</dd></div><div><dt>Equipment</dt><dd>Wield a suitable one-handed melee weapon.</dd></div></dl><p>Main Action · Agility. Once per scene, attack an adjacent enemy holding a weapon for 2/4/6 physical damage. On Standard or Strong it drops one held weapon of your choice if it can release it. Move the dropped weapon up to 2 squares along a clear route to an unoccupied square. On Strong, you may instead guide it up to 2 squares along a clear route into your free hand. On Standard or Strong, if the target cannot release the weapon, it takes 2 Banes on its next attack with that weapon before your next turn starts.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "agility",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "2 physical damage",
+      "standard": "4 physical damage",
+      "strong": "6 physical damage"
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "fencing:blade-tricks:7",
+      "sourceCommit": "d6a241b85446be95d6391603880e7788b3c92715",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "mastery",
+        "nodeId": "fencing:blade-tricks:7",
+        "level": 7,
+        "cost": 5,
+        "action": "Main Action",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": "Agility",
+        "defenseAttribute": null,
+        "effect": "Main Action · Agility. Once per scene, attack an adjacent enemy holding a weapon for 2/4/6 physical damage. On Standard or Strong it drops one held weapon of your choice if it can release it. Move the dropped weapon up to 2 squares along a clear route to an unoccupied square. On Strong, you may instead guide it up to 2 squares along a clear route into your free hand. On Standard or Strong, if the target cannot release the weapon, it takes 2 Banes on its next attack with that weapon before your next turn starts.",
+        "improves": null,
+        "requires": [
+          "fencing:blade-tricks:6"
+        ],
+        "bookId": null,
+        "weaponRequirement": "one-handed-melee"
+      }
+    }
+  },
+  "effects": []
+}

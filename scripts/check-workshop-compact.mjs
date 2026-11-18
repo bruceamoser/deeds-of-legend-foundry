@@ -406,9 +406,50 @@ try {
     await atlas.getByRole("button", { name: "Close atlas", exact: true }).click();
     await expect(atlas).toHaveCount(0);
 
+    const fighter = JSON.parse(await readFile("Build-Offs/revised/builds/fighter-level-1.hol.json", "utf8"));
+    const fighterDraft = fighter.draft;
+    fighterDraft.attributes = { brawn: 0, fortitude: 1, agility: 1, guile: 0, knowledge: 1, reason: 0 };
+    fighterDraft.background = { id: "origin-background-company-runner", pair: 0 };
+    fighterDraft.purchases[1] = [
+      "fencing", "fencing:pointwork:1", "fencing:footwork:1", "arms:bladework:1",
+      "tactics:openings:1", "tactics:coordination:1",
+    ].map(id => ({ id }));
+    const blade = fighterDraft.shopping.find(item => item.id === "item-ordinary-melee-weapon");
+    const loadFighter = async (mode) => {
+      await page.evaluate(({ fighter, mode }) => localStorage.setItem("hol.workshop.v1", JSON.stringify({
+        character: fighter, mode, tab: "Abilities", isExample: false,
+      })), { fighter, mode });
+      await page.reload();
+    };
+    await loadFighter("sheet");
+    const measuredCut = byLabel("Roll Measured Cut I");
+    await expect(measuredCut).toHaveText("Br +0 / Ag +1");
+    await measuredCut.click();
+    const rollAttribute = byLabel("Roll attribute");
+    await expect(rollAttribute.locator("option")).toHaveText(["Brawn", "Agility"]);
+    await rollAttribute.selectOption("agility");
+    await dialog.getByRole("button", { name: "Roll", exact: true }).click();
+    await expect(dialog.locator("#recipe-roll-result")).toContainText("+1");
+    await page.keyboard.press("Escape");
+    for (const [ability, attribute] of [["Direct Thrust I", "Agility"], ["Exploit the Opening I", "Knowledge"]]) {
+      await byLabel(`Roll ${ability}`).click();
+      await expect(rollAttribute.locator("option")).toHaveText([attribute]);
+      await page.keyboard.press("Escape");
+    }
+    blade.hands = 2;
+    // Free the second hand so the two-handed weapon is actually wielded.
+    delete fighterDraft.loadout["shop-buildoff-fighter-2"];
+    await loadFighter("sheet");
+    await expect(byLabel("Wield a suitable one-handed melee weapon to use Direct Thrust I")).toBeDisabled();
+    await expect(byLabel("Use Clear the Way I")).toBeEnabled();
+    await expect(byLabel("Roll Exploit the Opening I")).toBeEnabled();
+    await loadFighter("builder");
+    await stage(5);
+    await expect(panel).toContainText("Buy an Ordinary Melee Weapon with Hands set to 1");
+
     assert.deepEqual(failures, []);
     await rm(resolve(output, "failure.png"), { force: true });
-    console.info(`PASS compact Workshop at ${viewportWidth} px: favorites, inline rules, signed rolls, spell filters and upkeep, creator choices, seven-step Learning, atlas shapes/zoom/pan and level gates across reload.`);
+    console.info(`PASS compact Workshop at ${viewportWidth} px: favorites, inline rules, signed and flexible rolls, spell filters and upkeep, creator and Fencing equipment guidance, Tactics rolls, seven-step Learning, atlas shapes/zoom/pan and level gates across reload.`);
   } catch (error) {
     await capture("failure");
     console.error("Browser errors:", failures);

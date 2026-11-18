@@ -56,6 +56,8 @@ export const DEFAULT_EQUIPMENT_ICON = "icons/commodities/metal/ingot-worn-iron.w
 /** Select a reviewed discipline mark or a Foundry core fantasy illustration; never infer mechanics. */
 export function catalogItemIcon(record, type = record?.kind === "ability" ? "ability" : "equipment") {
   if (type === "ability") {
+    if (["fencing", "tactics"].includes(record?.disciplineId))
+      return `systems/heroes-of-legend/workshop/assets/${record.disciplineId}.svg`;
     const discipline = record?.requirements?.find(r => r.kind === "discipline")?.id?.replace(/^discipline-/, "");
     if (MARKS.has(discipline)) return `${ROOT}marks/${discipline}.webp`;
     const id = String(record?.id ?? "").replace(/^ability-/, "");
