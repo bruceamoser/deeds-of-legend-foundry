@@ -16,7 +16,7 @@ const catalogs = workshopCatalogs(...await Promise.all(
 ));
 const { draft } = await read("Build-Offs/revised/builds/fighter-level-7.hol.json");
 draft.name = "Runtime Fencing and Tactics";
-draft.attributes = {brawn:0,fortitude:0,agility:2,guile:0,knowledge:1,reason:0};
+draft.attributes = {brawn:1,fortitude:0,agility:2,guile:0,knowledge:1,reason:-1};
 draft.background = {id:"origin-background-company-runner",pair:0};
 const techniques = ["fencing:pointwork:1","tactics:openings:1","tactics:coordination:1","arms:bladework:1"];
 draft.purchases[1] = ["fencing", "armor:harness:1", ...techniques].map(id => ({id}));
@@ -74,7 +74,7 @@ try {
   }
 
   await roll("Measured Cut I", ["brawn","agility"], "agility", "Agility +2");
-  await roll("Duelist’s Boundary", ["brawn","agility"], "brawn", "Brawn +0");
+  await roll("Duelist’s Boundary", ["brawn","agility"], "brawn", "Brawn +1");
   await roll("Direct Thrust I", ["agility"], "agility", "Agility +2");
   await roll("Exploit the Opening I", ["knowledge"], "knowledge", "Knowledge +1");
   await sheet.getByRole("button",{name:"Use Clear the Way I",exact:true}).click();
