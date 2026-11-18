@@ -66,7 +66,7 @@ try{
    check(!native.innerText.includes('**'),`Native raw markdown ${entry.name}`);
    for(const paragraph of paragraphs)check(plain(native.innerText).includes(plain(paragraph)),`Native missing prose ${entry.name}`);
    for(const field of record.reference.rules.details)check(plain(native.innerText).toLowerCase().includes(plain(field.value).toLowerCase()),`Native missing ${field.label}: ${entry.name}`);
-   check(native.querySelectorAll('p').length>=paragraphs.length,`Native flattened paragraphs ${entry.name}`);nativeCount++;
+   check(native.querySelectorAll(':scope > :is(p, ul, ol, table)').length>=paragraphs.length,`Native flattened paragraphs or lists ${entry.name}`);nativeCount++;
    if(entry.level===1){
     controller.setState({character:portable,mode:'builder',step:3});
     const selected=root.querySelector('.creation-signature-detail');check(selected,`Creator missing selected own rules ${entry.name}`);

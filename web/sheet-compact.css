@@ -3,6 +3,7 @@
 #app .hero-header :is(p,small) { color:var(--muted); }
 #app .hero-header h1 { font-size:20px; }
 #app .hero-mark { width:32px;height:32px; }
+#app .hero-mark[data-action="native-portrait"] { display:block;width:64px;height:64px;flex:none;object-fit:contain; }
 #app .vitals {display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px;}
 #app .vital {border:1px solid var(--line);padding:4px 7px;min-width:0;display:flex;align-items:center;gap:8px;background:#fffcf5;}
 #app .vital strong {font-size:15px;}

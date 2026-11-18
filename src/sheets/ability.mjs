@@ -13,6 +13,7 @@ import { isPotionAbility } from "../services/potions.mjs";
 import { isForgeModifier } from "../rules/forge-casting.mjs";
 import { ATTRIBUTES } from "../rules/character.mjs";
 import { updateOwnedDocument } from "../services/documents.mjs";
+import { formatStoredRuleProse } from "../rules/authored-markdown.mjs";
 export class AbilitySheet extends foundry.applications.api.HandlebarsApplicationMixin(
   foundry.applications.sheets.ItemSheetV2,
 ) {
@@ -45,7 +46,7 @@ export class AbilitySheet extends foundry.applications.api.HandlebarsApplication
     const iconCatalogs = await loadWorkshopCatalogs();
     const record = abilityCatalogRecord(this.item, iconCatalogs.choices);
     const system = this.item.system;
-    const description = system.description;
+    const description = current ? formatStoredRuleProse(system.description) : system.description;
     const learned = new Set(this.item.actor?.getFlag("heroes-of-legend", "forgeLearned") ?? []);
     const learnedImprovements = current ? (iconCatalogs.forge?.nodes ?? []).filter(node => learned.has(node.id) && node.improves === this.item.getFlag("heroes-of-legend", "catalogId")) : [];
     const labels = (keys) =>

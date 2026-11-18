@@ -142,7 +142,7 @@ try {
   await page.getByRole("button", {name:"7 Review",exact:true}).click();
   await page.getByRole("button", {name:"View character sheet",exact:true}).click();
   await page.getByRole("tab", {name:"Main",exact:true}).click();
-  assert.match(await page.locator('[data-collapse="movement-carrying"]').innerText(), /8 \/ 16/);
+  assert.match(await page.locator('[data-collapse="movement-carrying"]').innerText(), /9 \/ 16/);
   await page.locator('[data-collapse="ancestry-traits"] > summary').click();
   assert(await page.locator('.trait-table [data-id="trait-tallfolk-broad-back"]').isVisible());
   const mixedDownload = page.waitForEvent("download");
@@ -155,7 +155,7 @@ try {
   assert.equal(mixed.draft.languages.ancestry,"giant");
   await page.reload();
   await page.getByRole("tab", {name:"Main",exact:true}).waitFor();
-  assert.match(await page.locator('[data-collapse="movement-carrying"]').innerText(), /8 \/ 16/);
+  assert.match(await page.locator('[data-collapse="movement-carrying"]').innerText(), /9 \/ 16/);
   await page.getByRole("button", {name:/Edit/}).first().click();
   await page.getByRole("tab", {name:"Development",exact:true}).click();
   await page.getByRole("button", {name:"Edit creation",exact:true}).click();
@@ -167,7 +167,7 @@ try {
   await page.getByRole("button", {name:"7 Review",exact:true}).click();
   await page.getByRole("button", {name:"View character sheet",exact:true}).click();
   await page.getByRole("tab", {name:"Main",exact:true}).click();
-  assert.match(await page.locator('[data-collapse="movement-carrying"]').innerText(), /8 \/ 13/);
+  assert.match(await page.locator('[data-collapse="movement-carrying"]').innerText(), /9 \/ 13/);
   await page.getByRole("button", {name:"Roll defense",exact:true}).click();
   assert.equal(await page.locator("#recipe-net").inputValue(),"0", "Small Target requires actual cover; borrowing does not grant an unconditional defense Boon");
   await page.keyboard.press("Escape");
@@ -275,7 +275,7 @@ try {
   assert.equal(Number(await page.getByLabel("Current HP", {exact:true}).inputValue()), Math.ceil(maximum / 2), "dawn unlocks HP without healing");
   assert.deepEqual((await stored()).character.draft.play.recovery, {unavailableHp:0,debtUsed:true}, "dawn releases HP without refreshing the trait");
   await page.locator("#reference").getByRole("button", {name:"Recovery",exact:true}).click();
-  await page.getByRole("button", {name:"Complete safe rest",exact:true}).click();
+  await page.getByRole("button", {name:"Complete Night’s Rest",exact:true}).click();
   assert.equal(Number(await page.getByLabel("Current HP", {exact:true}).inputValue()), maximum);
   assert.equal((await stored()).character.draft.play.recovery.debtUsed, false, "safe overnight rest refreshes the trait");
   await page.keyboard.press("Escape");

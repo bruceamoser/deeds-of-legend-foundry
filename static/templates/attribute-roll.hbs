@@ -1,5 +1,5 @@
 <section class="hol-roll-shell">
-  <header class="hol-banner"><p class="hol-kicker">{{#if defense}}Defense{{else}}Attribute check{{/if}}</p><span class="hol-roll-context">{{name}}{{#if defense}} · Defense{{/if}}</span><h1>{{#if defense}}Defend{{#if incoming}} · {{incoming.title}}{{/if}}{{else}}Attribute check{{/if}}</h1></header>{{#if targetNotice}}<p class="hol-note">{{targetNotice}}</p>{{/if}}
+  <header class="hol-banner"><p class="hol-kicker">{{#if defense}}Defense{{else}}{{#if attack}}Attack{{else}}Check{{/if}}{{/if}}</p><span class="hol-roll-context">{{name}}{{#if defense}} · Defense{{/if}}</span><h1>{{#if defense}}Defend{{#if incoming}} · {{incoming.title}}{{/if}}{{else}}{{rollTitle}}{{/if}}</h1>{{#if attack}}<small data-attack-item>{{attackItem}}</small>{{/if}}</header>{{#if targetNotice}}<p class="hol-note">{{targetNotice}}</p>{{/if}}
   <div class="hol-body">
   {{#if notice}}<p class="hol-note" role="alert">{{notice}}</p>{{/if}}
   {{#if weaponOptions}}<label>Attack item<select name="weaponItemId">{{#each weaponOptions}}<option value="{{id}}" {{#if selected}}selected{{/if}}>{{name}}</option>{{/each}}</select></label>{{/if}}
@@ -20,6 +20,7 @@
 
   <details class="hol-context-options"><summary>Roll details</summary><ul class="hol-roll-sources"></ul><p class="hol-roll-totals" aria-live="polite"></p></details>
 
+  {{#if rules}}<details class="hol-context-options"><summary>Rules</summary><p>{{rules}}</p></details>{{/if}}
   </div><footer class="hol-roll-footer">
   <span data-roll-error role="alert"></span>
   <button type="button" data-action="roll" class="hol-primary">{{localize "HOL.Roll"}}</button>

@@ -1,6 +1,7 @@
 import {abilityRollConfiguration,abilityCatalogRecord} from "../rules/ability-roll.mjs";
 import {attackEquipmentSnapshot} from "./attack-equipment.mjs";
 import {rollReferenceApplies,reactionTrigger} from "../rules/ability-roll-relevance.mjs";
+import {formatStoredRuleProse,renderMarkdown} from "../rules/authored-markdown.mjs";
 const ID = "heroes-of-legend";
 
 function liveAbility(item) {
@@ -72,7 +73,8 @@ export async function postAbilityReference(item,{weaponItemId=null}={}) {
   const record = abilityCatalogRecord(item, catalogs.choices);
   const learned = new Set(item.actor.getFlag(ID, "forgeLearned") ?? []);
   const improvements = workshop ? (catalogs.forge?.nodes ?? []).filter(node=>learned.has(node.id) && node.improves === item.getFlag(ID,"catalogId")) : [];
-  const description = (item.system.description ?? "") + improvements.map(node=>`<h4>${escape(node.name)}</h4><p>${escape(node.effect)}</p>`).join("");
+  const stored = item.system.description ?? "";
+  const description = (workshop ? formatStoredRuleProse(stored) : stored) + improvements.map(node=>`<h4>${escape(node.name)}</h4>${renderMarkdown(node.effect)}`).join("");
   const parsed = new DOMParser().parseFromString(description, "text/html");
   const trigger=reactionTrigger(record);
   const equipment=workshop ? null : attackEquipmentSnapshot(item.actor,abilityRollConfiguration(item,record),weaponItemId);

@@ -37,6 +37,38 @@ export function learnForgeEntry(catalog, state, id) {
     : { ...result, state };
 }
 
+/** Refund an entry and its prerequisite descendants wherever they were learned. */
+export function refundForgePurchases(catalog, draft, id) {
+  const groups = [
+    ...Object.entries(draft.purchases ?? {}).map(([level, purchases]) => ({ level, purchases, acquisitions: draft.acquisitions })),
+    ...Object.entries(draft.progression?.levels ?? {}).map(([level, data]) => ({ level, ...data })),
+  ];
+  if (!groups.some(({ purchases }) => purchases?.some(entry => entry.id === id))) return [];
+
+  const removed = new Set([id]);
+  for (let size = 0; size < removed.size;) {
+    size = removed.size;
+    for (const node of catalog.nodes) {
+      if (node.requires.some(parent => removed.has(parent))) removed.add(node.id);
+    }
+  }
+
+  const refunds = [];
+  for (const { level, purchases, acquisitions } of groups) {
+    if (!purchases?.length) continue;
+    const retained = [];
+    for (const entry of purchases) {
+      if (!removed.has(entry.id)) retained.push(entry);
+      else {
+        refunds.push({ id: entry.id, level: Number(level) });
+        if (acquisitions) delete acquisitions[entry.id];
+      }
+    }
+    purchases.splice(0, purchases.length, ...retained);
+  }
+  return refunds;
+}
+
 export function forgeLearning(catalog, learned) {
   const { nodes, spells } = forgeIndex(catalog);
   const entries = learned.map((id) => nodes.get(id)).filter(Boolean);

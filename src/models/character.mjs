@@ -1,4 +1,4 @@
-import {equipmentAttributeValue} from "../rules/effective-attributes.mjs";
+import {effectiveActorAttributeValue} from "../rules/effective-attributes.mjs";
 import {
   ATTRIBUTES,
   characterSummary,
@@ -61,7 +61,7 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
     this.grit.available = summary.gritAvailable;
     this.attributeEffectErrors = [];
     for (const key of ATTRIBUTES) {
-      try {this.attributes[key].effective = equipmentAttributeValue(this.attributes[key].base,this.parent?.items??[],key);}
+      try {this.attributes[key].effective = effectiveActorAttributeValue(this.attributes[key].base,this.parent,key);}
       catch(error) {this.attributes[key].effective = null;this.attributeEffectErrors.push(error.message);}
     }
   }

@@ -41,7 +41,7 @@ export function forgeInventory(inventory, graph) {
     acquisitions: [
       ...inventory.acquisitions.filter((entry) => current.has(entry.id)).map((entry) => ({
         ...entry,
-        items: /grants one ordinary melee weapon/i.test(current.get(entry.id).equipment ?? "") ? ["item-ordinary-melee-weapon"] : [],
+        items: graph.rulesRevision !== 299 && /grants one ordinary melee weapon/i.test(current.get(entry.id).equipment ?? "") ? ["item-ordinary-melee-weapon"] : [],
         recipes: [],
         weaponChoice: null,
         recipeChoices: 0,

@@ -10,7 +10,7 @@ export function renderHOLCombatTracker(app,element){
  const section=document.createElement("section");section.className="hol-encounter";
  const button=(parent,label,action)=>{const b=document.createElement("button");b.type="button";b.textContent=label;b.addEventListener("click",async()=>{b.disabled=true;try{await action();}catch(error){ui.notifications.error(error.message);}finally{if(b.isConnected)b.disabled=false;}});parent.append(b);};
  button(section,"Open encounter",()=>openEncounterPanel(combat));
- const saved=combat.getFlag(ID,"encounter"),state=saved?reconcileTurnRoster(saved,combat.combatants.map(c=>({id:c.id,side:c.getFlag(ID,"side")??(c.actor?.hasPlayerOwner?"players":"opposition")}))):null,current=combat.combatants.get(state?.current);
+ const saved=combat.getFlag(ID,"encounter"),state=saved?reconcileTurnRoster(saved,combat.combatants.map(c=>({id:c.id,side:combatSide(c)}))):null,current=combat.combatants.get(state?.current);
  if(!state){button(section,"Opening roll",()=>requestCombat(combat,"start"));if(game.user.isGM)button(section,"Ambush",()=>resolveAmbush(combat));}
  const eligible=state?.startingSide?new Set(availableParticipants(state).map(p=>p.id)):null;
  const round=document.createElement("small");round.textContent=`Round ${state?.round??1}${state?.startingSide?` · ${state.nextSide==="players"?"Players":"Opposition"} choose next`:""}`;section.append(round);

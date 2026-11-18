@@ -4,12 +4,14 @@ import {assertSummonPresent} from "../rules/summon-profile.mjs";
 import {summonAttackConfiguration} from "../rules/creature-sheet-profile.mjs";
 import {resolvedAttackEffects} from "../rules/attack-outcomes.mjs";
 import {DAMAGE_TYPE_LABELS} from "../rules/damage.mjs";
+import {basicAttackDamageProfile,nativeWeaponTrainingIds} from "../rules/weapon-training.mjs";
 import {attackEquipmentSnapshot} from "./attack-equipment.mjs";
-import { abilityCatalogRecord, abilityRollConfiguration, assertAbilityConfiguration, outcomeDamage } from "../rules/ability-roll.mjs";
+import { abilityCatalogRecord, abilityRollConfiguration, assertAbilityConfiguration } from "../rules/ability-roll.mjs";
 import { loadCatalogs } from "./catalog.mjs";
 import { selectedReferences } from "./reference-play.mjs";
 import { incomingOutcome } from "../rules/creature-actions.mjs";
 import { rollBasis, prepareRoll } from "./roll-preparation.mjs";
+import { renderMarkdown } from "../rules/authored-markdown.mjs";
 import { classifyRoll } from "../rules/roll.mjs";
 
 export async function rollAttribute(actor, attributeKey, draft = {}) {
@@ -31,27 +33,26 @@ export async function rollPrepared(actor, basis, draft) {
   );
   if (JSON.stringify(current) !== JSON.stringify(basis))
     throw new Error("Roll sources changed. Review the dialog before rolling.");
+  const ability = await validatedRollAbility(actor,draft);
+  const equipment = selectedAttackEquipment(actor,ability,draft,current.attributeKey);
+  const prepared = prepareRoll(current,draft);
+  const references = rollReferences(actor,current,draft,game.user.id);
   let ammunition;
-  let abilityConfiguration=draft.abilityConfiguration;
-  if(draft.abilityItemId){
-    const item=actor.items.get(draft.abilityItemId), catalogs=await loadCatalogs();
-    abilityConfiguration=abilityRollConfiguration(item,abilityCatalogRecord(item,catalogs.choices));
-  }
-  if (abilityConfiguration?.ranged) {
+  if (ability?.ranged) {
     const {rangedAmmunition} = await import("./ranged-ammunition.mjs");
     ammunition = rangedAmmunition(actor,draft.rangedWeaponItemId);
   }
   let nativeAttackOperationId;
-  if(actor.type==='character'&&['ability-basic-melee','ability-basic-ranged','ability-basic-unarmed'].includes(actor.items.get(draft.abilityItemId)?.getFlag('heroes-of-legend','catalogId'))){
-    draft.nativeAttackOperationId??=foundry.utils.randomID();nativeAttackOperationId=draft.nativeAttackOperationId;
-    await (await import('./abilities.mjs')).prepareNativeBasicAttack(actor,draft.abilityItemId,nativeAttackOperationId,current.actorTokenUuid);
-    const operation=actor.getFlag('heroes-of-legend','nativeWorkshopPendingRoll');
-    await updateNativeWorkshopOperation(actor,{...operation,status:'evaluating'});
+  if (actor.type === "character" && ability?.attack && ability.weaponKind && draft.abilityItemId) {
+    draft.nativeAttackOperationId ??= foundry.utils.randomID();
+    nativeAttackOperationId = draft.nativeAttackOperationId;
+    await (await import("./abilities.mjs")).prepareNativeBasicAttack(actor,draft.abilityItemId,nativeAttackOperationId,current.actorTokenUuid);
+    const operation = actor.getFlag("heroes-of-legend","nativeWorkshopPendingRoll");
+    await updateNativeWorkshopOperation(actor,{...operation,status:"evaluating"});
   }
-  const prepared = prepareRoll(current, draft);
   const mode = game.settings.get("core", "messageMode");
-  const { roll, snapshot } = await evaluatePreparedRoll(actor, basis, draft, {
-    allowInteractive: mode !== "blind",
+  const {roll,snapshot} = await evaluateRoll(actor,current,draft,{
+    ability,equipment,references,plan:prepared,rollerId:game.user.id,allowInteractive:mode!=="blind",
   });
   if(nativeAttackOperationId){
     const operation=actor.getFlag('heroes-of-legend','nativeWorkshopPendingRoll');
@@ -76,33 +77,44 @@ export async function rollPrepared(actor, basis, draft) {
   if(nativeAttackOperationId){await completeNativeWorkshopOperation(actor,nativeAttackOperationId);delete draft.nativeAttackOperationId;}
   return message;
 }
-export async function evaluatePreparedRoll(
-  actor,
-  basis,
-  draft,
-  { rollerId = game.user.id, allowInteractive = false } = {},
-) {
+async function validatedRollAbility(actor,draft) {
   assertSummonPresent(actor);
   let ability = draft.summonAttackId ? summonAttackConfiguration(actor,draft.summonAttackId) : undefined;
-  if (ability) assertAbilityConfiguration(ability,draft.abilityConfiguration);
   if (draft.abilityItemId) {
     const item = actor.items.get(draft.abilityItemId);
     if (item?.type !== "ability" || !actor.testUserPermission(game.user, "OWNER"))
       throw new Error("This ability is no longer available to roll.");
     const catalogs = await loadCatalogs();
-    ability = abilityRollConfiguration(item, abilityCatalogRecord(item,catalogs.choices));
-    assertAbilityConfiguration(ability, draft.abilityConfiguration);
+    ability = abilityRollConfiguration(item,abilityCatalogRecord(item,catalogs.choices),catalogs.forge);
   }
+  if (ability) assertAbilityConfiguration(ability,draft.abilityConfiguration);
+  return ability;
+}
+
+function selectedAttackEquipment(actor,ability,draft,attributeKey) {
+  if (ability?.attack && ability.attributes?.length && !ability.attributes.includes(attributeKey))
+    throw new Error("Choose an attribute listed for this attack.");
   if (ability?.damageTypes?.length && !ability.damageTypes.includes(draft.damageType))
     throw new Error("Choose the printed damage type in the roll dialog.");
-  const equipment=ability?attackEquipmentSnapshot(actor,ability,ability.ranged?draft.rangedWeaponItemId:draft.weaponItemId):null;
-  const references = selectedReferences(actor, draft, {
-    mode: basis.mode,
-    attributeKey:basis.attributeKey,initiatingItemId:draft.abilityItemId,
-    defenderTokenUuid: basis.defenderTokenUuid,
-    user: game.users?.get(rollerId) ?? game.user,
+  return ability ? attackEquipmentSnapshot(actor,ability,ability.ranged?draft.rangedWeaponItemId:draft.weaponItemId) : null;
+}
+
+function rollReferences(actor,basis,draft,rollerId) {
+  return selectedReferences(actor,draft,{
+    mode:basis.mode,attributeKey:basis.attributeKey,initiatingItemId:draft.abilityItemId,
+    defenderTokenUuid:basis.defenderTokenUuid,user:game.users?.get(rollerId) ?? game.user,
   });
-  const plan = prepareRoll(basis, draft);
+}
+
+export async function evaluatePreparedRoll(actor,basis,draft,{rollerId=game.user.id,allowInteractive=false}={}) {
+  const ability = await validatedRollAbility(actor,draft);
+  const equipment = selectedAttackEquipment(actor,ability,draft,basis.attributeKey);
+  const references = rollReferences(actor,basis,draft,rollerId);
+  const plan = prepareRoll(basis,draft);
+  return evaluateRoll(actor,basis,draft,{ability,equipment,references,plan,rollerId,allowInteractive});
+}
+
+async function evaluateRoll(actor,basis,draft,{ability,equipment,references,plan,rollerId,allowInteractive}) {
   const roll = await new foundry.dice.Roll(plan.formula).evaluate({
     allowInteractive,
   });
@@ -110,6 +122,11 @@ export async function evaluatePreparedRoll(
     .filter((result) => result.active)
     .map((result) => result.result);
   const result = classifyRoll(retained, plan.attribute);
+  if (ability?.weaponKind === "opportunity") {
+    const id = equipment?.itemUuid ? "ability-basic-melee" : "ability-basic-unarmed";
+    const profile = basicAttackDamageProfile(nativeWeaponTrainingIds(actor),id);
+    ability = {...ability,outcomes:Object.fromEntries(["weak","standard","strong"].map((tier,index)=>[tier,`${profile[index]} physical damage`]))};
+  }
   const snapshot = {
     schemaVersion: 2,
     ...(ability ? {ability, damageType:draft.damageType ?? null, resolvedEffects:resolvedAttackEffects(ability.outcomes[result.tier],{damageType:draft.damageType})} : {}),
@@ -201,9 +218,9 @@ export function renderRollSummary(message, element) {
   resolution.append(verdict);
   if(result.ability?.trigger){const trigger=document.createElement("p");trigger.className="hol-chat-trigger";const label=document.createElement("strong");label.textContent="Trigger: ";trigger.append(label,document.createTextNode(result.ability.trigger));summary.append(trigger);}
   if (result.ability?.outcomes?.[result.tier] || result.ability?.effect) {
-    const outcome = document.createElement("p");
+    const outcome = document.createElement("div");
     outcome.className = "hol-chat-effect hol-chat-ability-outcome";
-    outcome.textContent = result.ability.outcomes[result.tier] || result.ability.effect;
+    outcome.innerHTML = renderMarkdown(result.ability.outcomes[result.tier] || result.ability.effect);
     summary.append(outcome);
   }
   if (result.natural !== "none") {
@@ -222,7 +239,7 @@ export function renderRollSummary(message, element) {
   detail.className = "hol-chat-details";
   detail.append(detailLabel, audit);
   const damageText = result.ability?.outcomes?.[result.tier] ?? result.attackOutcome?.text ?? "";
-  const effects = result.resolvedEffects ?? (result.attackOutcome?.components ? {components:result.attackOutcome.components,conditions:result.attackOutcome.conditions ?? []}
+  const effects = result.resolvedEffects ?? (result.attackOutcome?.components ? result.attackOutcome
     : Number.isSafeInteger(result.attackOutcome?.damage)
       ? {components:[{type:result.attackOutcome.type,amount:result.attackOutcome.damage}],conditions:[]}
       : resolvedAttackEffects(damageText,{damageType:result.damageType}));
@@ -234,6 +251,12 @@ export function renderRollSummary(message, element) {
   if (effects && result.ability) {
     const printed = summary.querySelector(".hol-chat-ability-outcome");
     if (printed) detail.append(printed);
+    if (result.ability.effect) {
+      const full = document.createElement("div");
+      full.className = "hol-chat-effect";
+      full.innerHTML = renderMarkdown(result.ability.effect);
+      detail.append(full);
+    }
   }
   if (effects?.manual) {
     const reminder = document.createElement("p");
@@ -323,32 +346,6 @@ export function renderRollSummary(message, element) {
       footer.append(debt);
     }
   }
-  if (result.mode === "defense" && result.attackMessageId || actor?.isOwner && ["attribute", "attack"].includes(result.mode)) {
-    const again = document.createElement("button"); again.type = "button"; again.textContent = "Roll again";
-    again.addEventListener("click", async () => {
-      try {
-        if (result.mode === "defense") {
-          const {chooseDefender} = await import("../dialogs/defender-choice.mjs");
-          await chooseDefender(result.attackMessageId);
-        } else {
-          if (result.ability?.summonActionId) {
-            const {promptSummonAttack} = await import("./summon-attack.mjs");
-            await promptSummonAttack(actor,result.ability.summonActionId);
-            return;
-          }
-          const ability = result.ability?.itemUuid ? await fromUuid(result.ability.itemUuid) : null;
-          if (ability?.actor?.uuid === actor.uuid) {
-            const {activateOwnedAbility} = await import("./abilities.mjs");
-            await activateOwnedAbility(ability);
-          } else {
-            const {promptAttributeRoll} = await import("../dialogs/attribute-roll.mjs");
-            await promptAttributeRoll(actor, result.resolvedAttributeKey ?? result.attributeKey);
-          }
-        }
-      } catch (error) { ui.notifications.error(error.message); }
-    });
-    footer.append(again);
-  }
   summary.append(footer);
   const content = element.querySelector(".message-content");
   if (!content) return;
@@ -363,14 +360,4 @@ export function renderRollSummary(message, element) {
   }
   summary.append(detail);
   content.append(summary);
-}
-
-export function showAbilityOutcome(message) {
-  const result=message.getFlag("heroes-of-legend","roll"), ability=result?.ability;
-  if(!ability || /\bdamage\b/i.test(ability.outcomes?.[result.tier] || ability.effect || ""))return;
-  const escape=foundry.utils.escapeHTML;
-  const attribute=game.i18n.localize(`HOL.Attributes.${result.resolvedAttributeKey ?? result.attributeKey}`);
-  const modifier=result.attribute>=0?`+${result.attribute}`:String(result.attribute);
-  const content=`<section class="hol-ability-outcome"><div class="hol-outcome-total"><strong>${escape(String(result.total))} · ${escape(game.i18n.localize(`HOL.Tiers.${result.tier}`))}</strong><span>${escape(attribute)} ${escape(modifier)} · ${(result.retained??[]).join(" · ")}</span></div>${ability.trigger?`<p class="hol-chat-trigger"><strong>Trigger:</strong> ${escape(ability.trigger)}</p>`:""}<p>${escape(ability.outcomes?.[result.tier] || ability.effect || "")}</p><a class="content-link" data-link data-type="Item" data-uuid="${escape(ability.itemUuid)}">Full ability details</a></section>`;
-  void foundry.applications.api.DialogV2.prompt({classes:["heroes-of-legend","hol-native-dialog"],window:{title:ability.name},content,ok:{label:"Close"}}).catch(error=>ui.notifications.error(error.message));
 }

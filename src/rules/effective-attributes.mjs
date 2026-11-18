@@ -1,3 +1,5 @@
+import { untrainedArmorPenalty } from "./native-armor.mjs";
+
 /** Item modifiers affect play, never creation DP or acquisition eligibility.
  * Sources are explicit equipped effects; set-value curse overrides must name the
  * replacement value, rather than implicitly adding a penalty to an exact set. */
@@ -53,6 +55,14 @@ export function equipmentAttributeValue(base, items, attribute) {
   const sources=equipmentAttributeSources(items,attribute);
   try {return effectiveAttribute(base,sources);}
   catch(error) {throw new Error(`${attribute[0].toUpperCase()+attribute.slice(1)}: ${error.message} Check ${sources.map(source=>source.name).join(', ')} in Equipment.`);}
+}
+/** Native rolls and derived displays use the same situational armor penalty. */
+export function effectiveActorAttributeValue(base, actor, attribute) {
+  const items = [...(actor?.items ?? [])];
+  const value = equipmentAttributeValue(base, items, attribute);
+  return attribute === 'agility'
+    ? value - untrainedArmorPenalty(actor?.getFlag?.('heroes-of-legend', 'forgeLearned'), items.filter(item => item.type === 'equipment'))
+    : value;
 }
 /** Reject conflicting arrangements before a document write, without recalculating base stats. */
 export function validateEquipmentAttributeArrangement(items) {

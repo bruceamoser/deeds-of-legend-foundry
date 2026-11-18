@@ -184,8 +184,8 @@ try {
   await page.evaluate(() => (crypto.getRandomValues = globalThis.toolDice));
   assert.match(await page.locator(".tool-stats").innerText(), /12 \/ 20/);
   assert.equal(await page.getByRole("button", { name: "Give first aid", exact: true }).isDisabled(), true);
-  await page.getByRole("button", { name: "Safe overnight rest", exact: true }).click();
-  await page.getByRole("button", { name: "Complete safe rest", exact: true }).click();
+  await page.getByRole("button", { name: "Night’s Rest", exact: true }).click();
+  await page.getByRole("button", { name: "Complete Night’s Rest", exact: true }).click();
   assert.match(await page.locator(".tool-stats").innerText(), /20 \/ 20/);
   assert.match(await page.locator(".tool-stats").innerText(), /SP 4 \/ 4/);
   assert.match(await page.locator(".tool-stats").innerText(), /Grit 0/);

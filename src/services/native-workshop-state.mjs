@@ -9,6 +9,9 @@ import { getCampaignLanguageConfiguration } from "./languages.mjs";
 import { readPortableCharacter, writePortableCharacter } from "../rules/portable-character.mjs";
 import { currentNativeCharacterChanges } from "../rules/native-character-state.mjs";
 import { abilityItemSource, equipmentItemSource, escapeItemHtml } from "../rules/item-construction.mjs";
+import { ORDINARY_RANGED_WEAPON, WATER_FLASK } from "../rules/equipment-identity.mjs";
+import { selectedRangedAmmunition } from "./ranged-ammunition.mjs";
+import { LEARNED_GEAR_PREFIX, provisionSalePrice } from "../rules/training-equipment.mjs";
 
 const ID = "heroes-of-legend";
 const attribute = (value, fallback) => ["brawn", "fortitude", "agility", "guile", "knowledge", "reason"].includes(value?.toLowerCase()) ? value.toLowerCase() : fallback;
@@ -56,6 +59,7 @@ function overlay(actor, portable, catalogs) {
   result.draft.loadout ??= {};
   const inventory = result.draft.play.inventory ??= { added: [], removed: [] };
   inventory.overrides ??= {};
+  inventory.ammunition = {};
   inventory.added=inventory.added.filter(item=>!item.instanceId.startsWith(NATIVE_INVENTORY_PREFIX));
   for(const instanceId of Object.keys(inventory.overrides))if(instanceId.startsWith(NATIVE_INVENTORY_PREFIX))delete inventory.overrides[instanceId];
   const instances = new Set();
@@ -71,6 +75,12 @@ function overlay(actor, portable, catalogs) {
       inventory.removed=inventory.removed.filter(id=>id!==instanceId);
     }
     inventory.overrides[instanceId] = { quantity: item.system.quantity, ...(item.name && item.name !== definition?.name ? {name:item.name} : {}), ...((definition?.inventoryDie || item.system.inventoryDie > 0) ? {inventoryDie:item.system.inventoryDie} : {}) };
+    if (item.system.catalogId === WATER_FLASK && Number.isSafeInteger(item.system.waterUnits))
+      inventory.overrides[instanceId].waterUnits = item.system.waterUnits;
+    if (item.system.catalogId === ORDINARY_RANGED_WEAPON) {
+      const ammo = selectedRangedAmmunition(actor, item);
+      if (ammo) inventory.ammunition[instanceId] = nativeWorkshopInventoryId(ammo);
+    }
     result.draft.loadout[instanceId] = { carried: item.system.carried, held: item.system.held, worn: item.system.worn };
   }
   for (const instanceId of flag(actor)?.inventoryInstances ?? []) if (!instances.has(instanceId) && !inventory.removed.includes(instanceId)) inventory.removed.push(instanceId);
@@ -114,6 +124,12 @@ export function saveNativeWorkshopState(actor, savedState, { expectedRevision, r
     candidate.draft.basicActions = structuredClone(portable.draft?.basicActions ?? saved.portable.draft.basicActions ?? {});
     const state = await normalize(candidate, true);
     revision(actor, expectedRevision);
+    const sold = (state.draft.play?.inventory?.sold ?? []).filter(id => !live.draft.play.inventory.sold?.includes(id));
+    if (sold.length) {
+      const previous = await normalize(live, true);
+      for (const id of sold) if (!provisionSalePrice(previous.preview.inventory.items.find(item => item.instanceId === id)))
+        throw new Error("Only a complete starting provision can be sold for the printed market price.");
+    }
     const inputPlay=structuredClone(portable.draft?.play ?? {});
     const basisPlay=structuredClone(basePlay ?? live.draft.play);
     const changedKeys=new Set([...new Set([...Object.keys(basisPlay),...Object.keys(inputPlay)])].filter(key=>!equalState(inputPlay[key],basisPlay[key])));
@@ -132,6 +148,7 @@ export function saveNativeWorkshopState(actor, savedState, { expectedRevision, r
       if(changedKeys.has("gritSpent"))changes["system.grit.spent"]=Math.min(state.preview.limits.gritGranted,vitals.gritSpent);
       if(changedKeys.has("recovery"))changes["system.recovery"]=normalizeForgeRecovery(finalPlay.recovery);
       if(changedKeys.has("conditions"))changes.effects=nativeConditionSources(actor,finalPlay.conditions??[]);
+      if (sold.length) changes[`flags.${ID}.development.coins`] = state.preview.inventory.remainingCoins;
       for(const[key,value]of Object.entries(deathState(vitals)))if(changedKeys.has(key))changes[`flags.${ID}.forgeVitals.${key}`]=value;
       if(resolvedImmediateDeathRoll)changes[`flags.${ID}.forgeVitals.immediateDeathRolls`]=(actor.getFlag(ID,"forgeVitals")?.immediateDeathRolls??[]).filter(id=>id!==resolvedImmediateDeathRoll);
       return changes;
@@ -161,7 +178,7 @@ export function nativeWorkshopLearnedItems(preview,catalogs) {
   return currentWorkshopLearnedItems(preview,catalogs);
 }
 /** Explicit construction commit only; arbitrary native Items, effects and portrait survive. */
-export function commitNativeWorkshopCharacter(actor, portable, { expectedRevision = 0, operationReceipt } = {}) {
+export function commitNativeWorkshopCharacter(actor, portable, { expectedRevision = 0, operationReceipt, tab } = {}) {
   owner(actor);
   return serialize(actor, async () => {
     await recoverNativeWorkshopTransaction(actor);
@@ -174,12 +191,22 @@ export function commitNativeWorkshopCharacter(actor, portable, { expectedRevisio
     const previousLevel=existing?.portable ? (await normalize(existing.portable,true)).preview.state.level : 0;
     if(existing?.portable && state.preview.state.level < previousLevel) throw new Error("A committed character cannot lose levels. Recreate the hero explicitly for a level correction.");
     const desired = nativeWorkshopLearnedItems(state.preview, state.catalogs);
-    const equipmentState = existing?.portable ? await normalize(overlay(actor,state.portable,state.catalogs),true) : state;
+    const carried = existing?.portable ? overlay(actor,state.portable,state.catalogs) : null;
+    if (carried) {
+      const inventory = carried.draft.play.inventory;
+      for (const item of actor.items) {
+        if (item.type !== "equipment") continue;
+        const instanceId = nativeWorkshopInventoryId(item);
+        if (!instanceId?.startsWith(LEARNED_GEAR_PREFIX) || inventory.added.some(entry => entry.instanceId === instanceId)) continue;
+        inventory.added.push({ id: item.system.catalogId, instanceId, quantity: Math.max(1,item.system.quantity) });
+      }
+    }
+    const equipmentState = carried ? await normalize(carried,true) : state;
     desired.push(...nativeWorkshopEquipmentItems(equipmentState.preview,state.catalogs));
     await applyWorkshopTransaction(actor, desired, () => {
       owner(actor);revision(actor,expectedRevision);
       const changes=currentNativeCharacterChanges(state.draft,state.preview,{preserveResources:existing?.portable?actor.system:undefined,previousLevel,level:state.preview.state.level,hpPerLevel:state.catalogs.choices.find(record=>record.id===state.draft.ancestryId).hp+state.catalogs.choices.find(record=>record.id===state.draft.classId).hp});
-      const portable=existing?.portable?overlay(actor,state.portable,state.catalogs):structuredClone(state.portable);
+      const portable=carried?overlay(actor,equipmentState.portable,state.catalogs):structuredClone(state.portable);
       portable.draft.play??={};
       Object.assign(portable.draft.play,{hp:changes["system.health.value"],sp:changes["system.sp.value"],gritSpent:changes["system.grit.spent"]});
       delete portable.draft.play.immediateDeathRolls;
@@ -193,7 +220,8 @@ export function commitNativeWorkshopCharacter(actor, portable, { expectedRevisio
       return {...changes,...operationChanges(operationReceipt),
         [`flags.${ID}.forgeLearned`]:state.preview.state.learned,
         "prototypeToken.name":state.draft.name.trim(),"prototypeToken.actorLink":true,
-        [`flags.${ID}.nativeWorkshop`]:{revision:next,portable,inventoryInstances:equipmentState.preview.inventory.items.map(item=>item.instanceId)},
+        [`flags.${ID}.nativeWorkshop`]:{revision:next,portable,inventoryInstances:equipmentState.preview.inventory.items.map(item=>item.instanceId),view:{mode:"sheet",tab:tab==="Development"?"Development":"Main",step:0,editingLevel:null}},
+        [`flags.${ID}.nativeWorkshopDraft`]:null,
         [`flags.${ID}.creationReceipt`]:{status:"complete",revision:next,sourceCommit:state.catalogs.commit,currentWorkshop:true},
         [`flags.${ID}.development`]:{...state.preview.state,creation:state.draft,languages:state.preview.play.languages,sourceCommit:state.catalogs.commit,coins:state.preview.inventory.remainingCoins},
       };
@@ -209,6 +237,8 @@ export function nativeWorkshopEquipmentItems(preview,catalogs) {
   return preview.inventory.items.map(item=>({...equipmentItemSource(catalogs.inventory.equipment.find(record=>record.id===item.catalogId), {
     sourceCommit:catalogs.commit,grantKind:"nativeWorkshop",acquisitionInstance:item.instanceId,
     quantity:item.quantity,hands:item.hands??0,inventoryDie:item.inventoryDie??0,
+    waterUnits:item.catalogId === WATER_FLASK ? item.waterUnits : undefined,
+    ammunitionInstanceId:item.ammunitionInstanceId,
     worn:item.worn??false,held:item.held??false,carried:item.carried??true,
   }), ...(item.name ? {name:item.name} : {})}));
 }
@@ -252,7 +282,7 @@ async function applyWorkshopTransaction(actor,desired,changes,nextRevision,{cata
       if(source.type==="equipment") {
         const patch={_id:match.id};
         if(source.name!==match.name)patch.name=source.name;
-        for(const key of ["quantity","inventoryDie","carried","held","worn"])if(!equalState(source.system[key],match.system[key]))patch[`system.${key}`]=source.system[key];
+        for(const key of ["quantity","inventoryDie","carried","held","worn","waterUnits"])if(source.system[key]!==undefined&&!equalState(source.system[key],match.system[key]))patch[`system.${key}`]=source.system[key];
         const hands=nativeEquipmentHands({...source,system:{...source.system,hands:match.system.hands}},catalogs.inventory.equipment.find(record=>record.id===match.system.catalogId));
         if(hands!==match.system.hands)patch["system.hands"]=hands;
         if(Object.keys(patch).length>1)updates.push(patch);

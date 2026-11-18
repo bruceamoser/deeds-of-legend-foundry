@@ -20,3 +20,24 @@ test('weapon cards snapshot renamed selected equipment, with held equipment as d
  assert.equal(melee.name,'ability-basic-melee');assert.throws(()=>attackEquipmentSnapshot(actor,melee,'bow'),/no longer available/);
  assert.equal(attackEquipmentSnapshot(actor,{attack:true}),null);
 });
+
+test('Measured Cut uses the learned damage tier and leaves its conditional step in the source',async()=>{
+ const {workshopCatalogs}=await import('../src/rules/workshop-forge-catalog.mjs');
+ const forge=JSON.parse(await readFile(new URL('../static/data/forge.json',import.meta.url)));
+ const choices=JSON.parse(await readFile(new URL('../static/data/choices.json',import.meta.url)));
+ const records=workshopCatalogs(choices,{equipment:[],acquisitions:[],recipes:[]},{},forge).choices;
+ const actor={type:"character",getFlag:(_,key)=>key==="forgeLearned" ? ['arms:bladework:1','arms:bladework:2','arms:bladework:3'] : undefined};
+ const item={uuid:"Actor.hero.Item.measured",name:"Measured Cut I",system:{},actor};
+ const configuration=abilityRollConfiguration(item,records.find(record=>record.id==="arms:bladework:1"),forge);
+ assert.deepEqual(configuration.attributes,["brawn","agility"]);
+ assert.equal(configuration.category,"main");
+ assert.equal(configuration.weaponKind,"melee");
+ assert.deepEqual(configuration.outcomes,{weak:"3 physical damage",standard:"4 physical damage",strong:"6 physical damage; Bleeding 1"});
+ assert.match(configuration.effect,/may move 1 square after the attack/);
+ const opportunity=abilityRollConfiguration(item,records.find(record=>record.id==="ability-opportunity-attack"),forge);
+ assert.equal(opportunity.weaponKind,"opportunity");
+ assert.equal(opportunity.category,"reaction");
+ assert.deepEqual(attackEquipmentOptions({items:[equipment("bow","Longbow","ranged",true)]},opportunity),[{id:"__unarmed__",name:"Unarmed",selected:true}]);
+ const twoHanded=equipment("bow","Longbow","ranged",true);twoHanded.system.hands=2;
+ assert.deepEqual(attackEquipmentOptions({items:[twoHanded]},opportunity),[]);
+});

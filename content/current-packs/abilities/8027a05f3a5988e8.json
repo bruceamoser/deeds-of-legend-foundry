@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Movement</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Range</dt><dd>Self</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>**Action:** Movement · **Attribute:** None — no roll</p><p>**Target / range / shape:** Self</p><p>Spend up to Speed in movement squares, split around your actions. Each normal square costs 1 movement and each difficult square costs 2. While Prone, crawl for 2 per normal square or 3 per difficult square. Straight and diagonal steps cost the same. You may cross an occupied square if its occupant is Prone. Pay the higher of 2 movement or your usual cost to enter it, and finish in a free square. Crawling out of melee reach can provoke an opportunity attack.</p><p>**Duration:** Instant</p><p>**Equipment / acquisition:** None.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Movement</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Range</dt><dd>Self</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p><strong>Action:</strong> Movement · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> Self</p><p>Spend up to Speed in movement squares, split around your actions. Each normal square costs 1 movement and each difficult square costs 2. While Prone, crawl for 2 per normal square or 3 per difficult square. Straight and diagonal steps cost the same. You may cross an occupied square if its occupant is Prone. Pay the higher of 2 movement or your usual cost to enter it, and finish in a free square. Crawling out of melee reach can provoke an opportunity attack.</p><p><strong>Duration:</strong> Instant</p><p><strong>Equipment / acquisition:</strong> None.</p>",
     "activity": {
       "action": "movement",
       "rollMode": "attribute",
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "ability-move",
-      "sourceCommit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "ability",

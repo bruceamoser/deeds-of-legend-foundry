@@ -48,8 +48,8 @@ try {
     await actor.sheet.render({force:true});
   }, {id,fixture});
   const sheet = page.locator(".hol-workshop-character");
-  const dialog = sheet.locator("#reference");
-  const attribute = dialog.locator("#sheet-roll-attribute");
+  const dialog = page.locator(".hol-roll-dialog");
+  const attribute = dialog.locator('select[name="attributeKey"]');
   const technique = name => sheet.getByRole("button",{name:"Roll "+name,exact:true});
 
   async function roll(name, allowed, selected, printed, effect) {
@@ -59,19 +59,14 @@ try {
     await expect(dialog).toBeVisible();
     assert.deepEqual(await attribute.locator("option").evaluateAll(opts => opts.map(opt=>opt.value)), allowed);
     await attribute.selectOption(selected);
-    await dialog.getByRole("button",{name:"Roll",exact:true}).click();
-    const signed = printed.split(" ").at(-1);
-    await expect(dialog.locator("#recipe-roll-result p").first()).toHaveText(new RegExp(` ${signed.replace("+","[+]")}$`));
-    await expect(dialog.locator("#recipe-roll-result")).toContainText(name);
-    await page.evaluate(async id=>await game.actors.get(id).sheet.controller.settle(),id);
+    await dialog.screenshot({path:output+"/"+name.toLowerCase().replaceAll(" ","-")+".png"});
+    await dialog.locator('[data-action="roll"]').click();
+    await expect(dialog).not.toBeVisible();
     await expect(messages).toHaveCount(previousMessages+1);
     const post = messages.last();
     await expect(post.locator(".hol-chat-bar")).toContainText(printed);
-    if (effect) await expect(post.locator(".hol-chat-effect")).toContainText(effect);
-    await dialog.screenshot({path:output+"/"+name.toLowerCase().replaceAll(" ","-")+".png"});
-    await page.keyboard.press("Escape");
-    await expect(dialog).not.toBeVisible();
-    checks.push(name+" rolled "+printed+" in the shared sheet and Foundry chat.");
+    if (effect) await expect(post.locator(".hol-chat-details")).toContainText(effect);
+    checks.push(name+" rolled "+printed+" in Foundry chat and closed the roll dialog.");
   }
 
   await roll("Measured Cut I", ["brawn","agility"], "agility", "Agility +2");

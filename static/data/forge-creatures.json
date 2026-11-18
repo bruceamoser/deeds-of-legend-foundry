@@ -1,5 +1,5 @@
 {
-  "sourceCommit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+  "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
   "baseCommit": "24e545e6d860e8c1b03a21356fd22cae1c039785",
   "creatures": [
     {
@@ -15,7 +15,7 @@
         "cv": 22
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/air-elemental.md",
         "sha256": "eb8e6799ce335ab5a903f13b037a9369c827e902598e94000cb54b4b1ab40302"
       },
@@ -334,7 +334,7 @@
         "cv": 18
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/ancestor-guardian.md",
         "sha256": "b3d7fe4c10fb3208ddab0849e4d7f93e0e9a4de9baacd702f472a1b4fbc4350b"
       },
@@ -690,7 +690,7 @@
         "cv": 18
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/animated-armor.md",
         "sha256": "696a272c1a7c5187ed0fcd33e8753b40268a91296c82deacbd70f41518547503"
       },
@@ -1031,7 +1031,7 @@
         "cv": 22
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/animated-statue.md",
         "sha256": "3e28ee18ed7900fa095c428fe8c3cd17a2bf6b96b4a40ea9dcca1221b8fec38b"
       },
@@ -1387,7 +1387,7 @@
         "cv": 33
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/ash-demon.md",
         "sha256": "fa3a5dbdb48815edc2d26e35a3b262c3b8691b450fa10fc1efcb92187f54fb87"
       },
@@ -1727,7 +1727,7 @@
         "cv": 53
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/banshee.md",
         "sha256": "a0ab1e8e42f72cc6eb385e90a2acabc053b846053fea3441df3ed64638b554b0"
       },
@@ -2088,7 +2088,7 @@
         "cv": 25
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/barrow-guard.md",
         "sha256": "f07f27e0e3d009b5034be565de4b6870be6fcacecad1aa505942f00a5d6448b6"
       },
@@ -2464,7 +2464,7 @@
         "cv": 13
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/battle-chaplain.md",
         "sha256": "5e93c12fd6921d673f823611f750be88f843086e6c0a4d3439136f016417546f"
       },
@@ -2792,7 +2792,7 @@
         "cv": 84
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/black-dragon.md",
         "sha256": "846399c71380f31ffa41edfc18bb00526d55cb4a519022bc4471bc6df2f55d9f"
       },
@@ -3209,7 +3209,7 @@
         "cv": 25
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/black-pudding.md",
         "sha256": "b3cd0246f82881792e93255717039f8acc38be399ff626f3317753139f1a494a"
       },
@@ -3557,7 +3557,7 @@
         "cv": 18
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/blood-bat-swarm.md",
         "sha256": "42e3bac51f7b39afcb50d4d07cbb9337fdef6c92e6fe0e0551e676e1122973c0"
       },
@@ -3896,7 +3896,7 @@
         "cv": 96
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/blue-dragon.md",
         "sha256": "04ca730ecd8bf422d9ca557d45f9e70ddec7d4dea258eab396119c4663fc5cf4"
       },
@@ -4313,7 +4313,7 @@
         "cv": 90
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/bronze-dragon.md",
         "sha256": "a7390672650789f4446a767b13352305dd16d0b4478f9a640447aa3bea2643eb"
       },
@@ -4730,7 +4730,7 @@
         "cv": 29
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/cavern-lurker.md",
         "sha256": "9cc674692b6729e0cc8391b69a5d9efc48779b337f1ada7b44401ae1c7e77747"
       },
@@ -5076,7 +5076,7 @@
         "cv": 61
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/chimera.md",
         "sha256": "ee16eda100bce3448622c3881a8764fe9b849f61b9bd04904cd0b03ade05f41b"
       },
@@ -5484,7 +5484,7 @@
         "cv": 37
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/chorus-maw.md",
         "sha256": "58c58909d0ab7a917e907fcbf3d6ac21fb33a5ec9466c6517c65bf8356d46380"
       },
@@ -5799,7 +5799,7 @@
         "cv": 36
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/clay-golem.md",
         "sha256": "9d331c28b021afcdf98afe3c2ef635adfc5c65f57b1abe5b4317edd7f1bfe1a5"
       },
@@ -6158,7 +6158,7 @@
         "cv": 36
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/cloud-giant.md",
         "sha256": "5f6a8a6bff4ad8218c856bcee406351477adc2aae04496244d0e54d256c95583"
       },
@@ -6534,7 +6534,7 @@
         "cv": 13
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/cockatrice.md",
         "sha256": "c51bbee90d3e0041ec5fd364bda7277915b8c660b3dd2c29b0704b8e94ad632e"
       },
@@ -6844,7 +6844,7 @@
         "cv": 18
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/crypt-ghoul.md",
         "sha256": "52b129b7e466b6f66814d58d2b965b3c73a0dbf49c9ca29f0b6a61b6cabd1733"
       },
@@ -7258,7 +7258,7 @@
         "cv": 34
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/cyclops.md",
         "sha256": "2ef6068cfb7054f29c362e91ea6f5fd4a621b6c238203f49ab869398cb3e52ee"
       },
@@ -7640,7 +7640,7 @@
         "cv": 34
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/dawn-emissary.md",
         "sha256": "2a5dc68d074ec4012a1fde2dd3b3433e499a5dfca87130223cd4a2a66d5d700b"
       },
@@ -7999,7 +7999,7 @@
         "cv": 60
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/death-knight.md",
         "sha256": "4299ab75d7fa3ff3f46340a47ab03bed863f6ed8b087b7af91972d05699e3ff2"
       },
@@ -8355,7 +8355,7 @@
         "cv": 20
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/dire-wolf.md",
         "sha256": "f6f87ccb727f0526da79980ebde0badf99d2c38f879d0db207b4fdff27664d48"
       },
@@ -8676,7 +8676,7 @@
         "cv": 17
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/dryad.md",
         "sha256": "89556c5b16394ee8bfd5eb6f5e0eacd9837e983fe1f0c67ee07c28f2633d9a7f"
       },
@@ -8986,7 +8986,7 @@
         "cv": 37
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/earth-elemental.md",
         "sha256": "13f72447cc937fc690c720424d4e6c9b3d43675f3b76bef9f298358d88d8038a"
       },
@@ -9334,7 +9334,7 @@
         "cv": 53
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/ettin.md",
         "sha256": "98fa9b0d7e093e04a7ab07d1fac62d641e801bfb7b43d4ffba9a9dd4bf229827"
       },
@@ -9726,7 +9726,7 @@
         "cv": 22
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/faceless-envoy.md",
         "sha256": "f36f1792cf262a08cab4cdec52b37f0a33e9f012ff8f0c128c80e2f589f8fb25"
       },
@@ -10031,7 +10031,7 @@
         "cv": 56
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/fire-giant.md",
         "sha256": "6231a430272fc92e38e8442710c45ab49fc58570c561ad3c4f6a05ab8a95fe08"
       },
@@ -10422,7 +10422,7 @@
         "cv": 30
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/flesh-golem.md",
         "sha256": "684f414ab64aa659499a66f461f3032917b3ce6fa67af5149207e5a64cd5af60"
       },
@@ -10776,7 +10776,7 @@
         "cv": 44
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/frost-giant.md",
         "sha256": "53211d3998e79e24507c46d366bb83c7da5c4a59dbe0fdab4ddde4c3f4847df4"
       },
@@ -11167,7 +11167,7 @@
         "cv": 27
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/gargoyle.md",
         "sha256": "35166b947513f9f027837751b706635d4556ed272dffa9468709f450ef1d7cf0"
       },
@@ -11551,7 +11551,7 @@
         "cv": 47
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/gate-archon.md",
         "sha256": "5e58fcd736d2d12e177fbdb50c00b56cd9632ca405b1110dd3beac999df387b9"
       },
@@ -11896,7 +11896,7 @@
         "cv": 21
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/gelatinous-cube.md",
         "sha256": "d27dfe598e946b5a47a60ca257f881e5f0bc4c43a093f47c8361b923dbf9562d"
       },
@@ -12239,7 +12239,7 @@
         "cv": 25
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/ghast.md",
         "sha256": "f2d72f529677ce043636a5544c5a591e5c6a49f134abe8e15babd52edec1e9f4"
       },
@@ -12563,7 +12563,7 @@
         "cv": 23
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/giant-boar.md",
         "sha256": "05493bd68c2a250383520769c5a5fbaedded82be9f4939d47f55f4549bf869b2"
       },
@@ -12907,7 +12907,7 @@
         "cv": 26
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/giant-constrictor.md",
         "sha256": "d993d439b52faea104c9b506cb1457b4fa0b508fe2bab0116b8c9e4174ed2894"
       },
@@ -13256,7 +13256,7 @@
         "cv": 18
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/giant-eagle.md",
         "sha256": "8fdbe3afbac0adfbcbec42b2ada7c63980932369d39fe550cb49cebaf0ea5f85"
       },
@@ -13592,7 +13592,7 @@
         "cv": 23
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/giant-flytrap.md",
         "sha256": "aa400c3f9277e27936796976b8f381bfa1b6cef88abb52de9843bde75b29dcf9"
       },
@@ -13931,7 +13931,7 @@
         "cv": 22
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/giant-octopus.md",
         "sha256": "feec5871d49a655c4c932254615fb82e648f1ba6eac10067bc8851fd83afc423"
       },
@@ -14254,7 +14254,7 @@
         "cv": 5
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/giant-rat.md",
         "sha256": "1ca939a67b4dce41948017dd6e6d5cbaeb4a3bb9f7e1bc8198565aada49595c7"
       },
@@ -14564,7 +14564,7 @@
         "cv": 22
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/giant-scorpion.md",
         "sha256": "3799984ca4cfaf9ec1ac550b91ea5d16e13d40d449b1cbc5a857a2a17d1af8a1"
       },
@@ -14943,7 +14943,7 @@
         "cv": 14
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/gnoll-tracker.md",
         "sha256": "cc9635aacd8809982f47eb5af34e58edfbdd02a9b5726efa4c681eb813b7147e"
       },
@@ -15269,7 +15269,7 @@
         "cv": 114
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/gold-dragon.md",
         "sha256": "258bf51362d83e42e8dc92be1fbca36e8fcf3fb7ae6c838c4014b03be7dbc3ca"
       },
@@ -15686,7 +15686,7 @@
         "cv": 88
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/green-dragon.md",
         "sha256": "81fc99e92a6f86e797661d0326cb36cf3aef74beedb6ee935809dabc69d8078c"
       },
@@ -16099,7 +16099,7 @@
         "cv": 22
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/green-hag.md",
         "sha256": "5d305ad66c3f3c6357a451e7c90479c02b4e8c12718e626e639e097e9cef8f0b"
       },
@@ -16425,7 +16425,7 @@
         "cv": 21
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/harpy.md",
         "sha256": "df824b15816bd29966e7e1f98d1b202a6433ea98e83012f6b55035b8f9885928"
       },
@@ -16761,7 +16761,7 @@
         "cv": 24
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/hell-hound.md",
         "sha256": "c85f18646c235aa54cd1b63a9bd05c189e10634ed97841e0f7edc408a2ec3140"
       },
@@ -17096,7 +17096,7 @@
         "cv": 31
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/hill-giant.md",
         "sha256": "f36a6e82a25da0ff908dcdf3cbc69682c4d4fb681172724678109bdf6447db5d"
       },
@@ -17488,7 +17488,7 @@
         "cv": 22
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/hobgoblin-shieldguard.md",
         "sha256": "ce82de48e148be576d7b86b0be0cb9945a7802c0bbb684362a5b95c965873820"
       },
@@ -17824,7 +17824,7 @@
         "cv": 46
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/horned-devil.md",
         "sha256": "58b4b55b04d8ed44f354094149fc3d62ca2188afbce220ee061b60227f51f0a4"
       },
@@ -18170,7 +18170,7 @@
         "cv": 59
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/hydra.md",
         "sha256": "7fab534fdd8d1d06f89fc86c022dbed278ada9ea7cdd303ce7f3bc8bec02021e"
       },
@@ -18583,7 +18583,7 @@
         "cv": 16
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/lantern-angel.md",
         "sha256": "fa569e6f2d4bf37a4751fdaf984fa35df22788e21e5708fc7e3e4acdd64e8792"
       },
@@ -18940,7 +18940,7 @@
         "cv": 30
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/manticore.md",
         "sha256": "656a8b6986c70d964cc0a4d4097e1cf849c285c5f7f46a381536b200fcaa86e1"
       },
@@ -19345,7 +19345,7 @@
         "cv": 27
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/minotaur.md",
         "sha256": "29c7e3d5ba5888e04db8e98945b268727aafa997182fb1081ada16478b5d6ea0"
       },
@@ -19686,7 +19686,7 @@
         "cv": 28
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/moon-hart.md",
         "sha256": "7560602018377a1c2f8a056691a520b255d17b1173327b7fb5501e1f4392a44e"
       },
@@ -20059,7 +20059,7 @@
         "cv": 31
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/mummy.md",
         "sha256": "238c2e9256a14e63af48e6dced897e4de17721529e99e3fd3cb58ccd30495623"
       },
@@ -20484,7 +20484,7 @@
         "cv": 44
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/mummy-king.md",
         "sha256": "5925ff4bb2adebc89376e9636c2e1235c8fed2c70e01830d295628f6e12eb821"
       },
@@ -20861,7 +20861,7 @@
         "cv": 34
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/night-hag.md",
         "sha256": "3d00dc075f842a70f9943d412bed805abd01889eeecbb88df040d9bdc8f55aed"
       },
@@ -21192,7 +21192,7 @@
         "cv": 31
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/nightmare.md",
         "sha256": "eae1faab3190284a36f4ed57388225881eaa57d26bea45b3197b3305697db05f"
       },
@@ -21516,7 +21516,7 @@
         "cv": 16
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/ochre-jelly.md",
         "sha256": "322e2d12739c328278d0a638c1725704dbc24bf1d486014eb4ea383e05d00629"
       },
@@ -21856,7 +21856,7 @@
         "cv": 27
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/ogre-glutton.md",
         "sha256": "e5c41b6c70c3f92c7fbc8731cdde38e0edb89d6e5b22ed307aabebc09e117e69"
       },
@@ -22222,7 +22222,7 @@
         "cv": 27
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/ogre-hookhand.md",
         "sha256": "f12595bc57009f62f5d44d8557ea18b54aea24731f24f644a26b1c9db13d698f"
       },
@@ -22614,7 +22614,7 @@
         "cv": 39
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/ogre-taskmaster.md",
         "sha256": "55d65aa6efe20f3475b32a52195737d20c70afe6e8bdce6f9b8ea40004463875"
       },
@@ -22996,7 +22996,7 @@
         "cv": 27
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/owlbear.md",
         "sha256": "0a9e9e08a7fe313e6b025f83338415fbc1c6ae8de725d77de2c2dcaf00d66af9"
       },
@@ -23399,7 +23399,7 @@
         "cv": 34
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/pact-broker.md",
         "sha256": "692e7b54da22a9de2077caa4e9d8b47bdeade43529fba20c7a70d27487491305"
       },
@@ -23730,7 +23730,7 @@
         "cv": 23
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/pegasus.md",
         "sha256": "885ec4269be241ba0442834ef3090c81c2b8d593e950ffd3deda102dc1939946"
       },
@@ -24074,7 +24074,7 @@
         "cv": 12
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/plague-zombie.md",
         "sha256": "6f7b22e341f5de834a13072bd472ce9a201adcf0ec5ef2e316ba0beba1c10747"
       },
@@ -24420,7 +24420,7 @@
         "cv": 18
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/poltergeist.md",
         "sha256": "e3f44158df5ff5b94d4b92aec09478ad5956766ecccd3e4513d51b8c687c39fb"
       },
@@ -24760,7 +24760,7 @@
         "cv": 104
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/red-dragon.md",
         "sha256": "edb5e0a2930fea792ae7c3da956370283ca04ba6572455a53820b48a0f2c16e4"
       },
@@ -25259,7 +25259,7 @@
         "cv": 22
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/redcap.md",
         "sha256": "1712e1b09bd77e84952c933c584f9b885ea9bcdd75ce691c9a15b3601c6c8ce4"
       },
@@ -25590,7 +25590,7 @@
         "cv": 17
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/reef-hunter.md",
         "sha256": "c55226ab1fb570cf8e1a0b6abdac9d655cd7d9b3c8da029ffc83e494123618a5"
       },
@@ -25918,7 +25918,7 @@
         "cv": 59
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/rime-dragon.md",
         "sha256": "b09c3f7407ff4cd2bea2848403b4a78310ca90cd3e271bc05e1f10833ab9c91d"
       },
@@ -26406,7 +26406,7 @@
         "cv": 47
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/roc.md",
         "sha256": "98d9c01f096a13618e9d1255e68c443aaa7a3053f1b075dd60b943d053c83e42"
       },
@@ -26755,7 +26755,7 @@
         "cv": 16
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/rust-eater.md",
         "sha256": "dd95037cadb1795b6d5aade4baaefcccd67032a70520e5c3e2eb30da9eac694d"
       },
@@ -27086,7 +27086,7 @@
         "cv": 16
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/satyr.md",
         "sha256": "fa066e30cd13af829814a02b8733b5689c4d2edd979b84c6cd70ee441f0f32e4"
       },
@@ -27391,7 +27391,7 @@
         "cv": 23
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/sea-hag.md",
         "sha256": "bcfb2ec7b73b39b7b055d9e2da454620db652a25f29ec5e2d167de6fc6d415b7"
       },
@@ -27722,7 +27722,7 @@
         "cv": 19
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/shadow.md",
         "sha256": "a3a3d948810a532ada3f99d6eb070815c3ce2de575bc7be4be68b23729342183"
       },
@@ -28087,7 +28087,7 @@
         "cv": 37
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/shambling-mound.md",
         "sha256": "c74b4670c991f7ca9f8009a29e4e9ea6d96dcb624a26a246c6f4de305584147c"
       },
@@ -28436,7 +28436,7 @@
         "cv": 17
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/shield-soldier.md",
         "sha256": "d732c6772dbf3caf34199dadc5b7b3f9ebd5b9c74c7ea64f842464a8d9857d29"
       },
@@ -28761,7 +28761,7 @@
         "cv": 25
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/skeleton-champion.md",
         "sha256": "bfd90f3ad59ef0169630a8776da81693c5299a14e4dc61b0f0b572df810c13e5"
       },
@@ -29155,7 +29155,7 @@
         "cv": 30
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/skeleton-giant.md",
         "sha256": "3a0f1e6432973b016727ea361b123a016cb9cda90a221380c9a7997e699653d9"
       },
@@ -29519,7 +29519,7 @@
         "cv": 16
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/skeleton-horse.md",
         "sha256": "f535fbc3cbbdc32deeeb9b8155c13278fb718d6e088cfef9040c910f9d3e421b"
       },
@@ -29883,7 +29883,7 @@
         "cv": 40
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/sphinx.md",
         "sha256": "7deaac866ecaeed388959367790d3decfb72584503e64c423129ee9702ab001c"
       },
@@ -30227,7 +30227,7 @@
         "cv": 13
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/spore-shepherd.md",
         "sha256": "ac7a4a1bce57ad93c1e97eb2ad12ec5f11b65a97e1e810e52b577403f37f4416"
       },
@@ -30546,7 +30546,7 @@
         "cv": 45
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/stone-golem.md",
         "sha256": "f8101ba89fcd2e3611058bad751b764d90325dda9fdff1021b82947b32776e42"
       },
@@ -30884,7 +30884,7 @@
         "cv": 58
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/storm-giant.md",
         "sha256": "96a0801b77bb40b4f62e44261aa33dea0b15dcaac60faf67931b70baf141044c"
       },
@@ -31280,7 +31280,7 @@
         "cv": 26
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/succubus.md",
         "sha256": "c1b6b0e719dcdb87b5624ab2f7a36a26d22b6e07efa7c071a4299dad08c17314"
       },
@@ -31590,7 +31590,7 @@
         "cv": 46
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/sword-angel.md",
         "sha256": "91fea3c42f9f5f9bac9afcd7432ecb38067a922fbd3791ec2ccb8986958ab1db"
       },
@@ -31940,7 +31940,7 @@
         "cv": 20
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/thought-leech.md",
         "sha256": "0a25887721463019f05812409dececaf1d476638d398d40d95af35b5484a97dc"
       },
@@ -32250,7 +32250,7 @@
         "cv": 25
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/unicorn.md",
         "sha256": "e729edba3f0a4f765ecc8b6572c2632d9adf9379d0b190b57de015c3c7ec5161"
       },
@@ -32586,7 +32586,7 @@
         "cv": 24
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/vampire-spawn.md",
         "sha256": "be15ba9274ca3f14716ac2ef70500c62cb2b6ce2b4f03157e683a47f0ee34fdf"
       },
@@ -32951,7 +32951,7 @@
         "cv": 29
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/veteran-captain.md",
         "sha256": "6a004907963ad9daf8357e8ea889d425b0c23dc18e0cf46436c80ed5e5f161e4"
       },
@@ -33285,7 +33285,7 @@
         "cv": 19
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/walking-thorn.md",
         "sha256": "4e349aa9c4bf8cff98e8016de77d800dd7ba3f09411d82336534679e173cb929"
       },
@@ -33616,7 +33616,7 @@
         "cv": 14
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/warhorse.md",
         "sha256": "73f2d5153b03a3a543004e3b79cdccafccd241ca64a653b2120e3f9df4befdcd"
       },
@@ -33934,7 +33934,7 @@
         "cv": 22
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/water-elemental.md",
         "sha256": "9b1f7643f94da9bd6b830a9b726ac85459ff282df10935180eeb5bc54d1ab458"
       },
@@ -34261,7 +34261,7 @@
         "cv": 26
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/werewolf.md",
         "sha256": "8e20812728392159454d92485b8bf8c3d643312ae3fe3cfa6b2c4207db2259ce"
       },
@@ -34592,7 +34592,7 @@
         "cv": 29
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/wight.md",
         "sha256": "cfba7627bb138e30982ae6381dd1fee7a16f494064cea481f26d67e68d8035d4"
       },
@@ -34943,7 +34943,7 @@
         "cv": 46
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/winter-wolf.md",
         "sha256": "031d5dfb085125719a026be73a7d9c0804051ecb2c4e0a64c6d69f7bedcb0985"
       },
@@ -35300,7 +35300,7 @@
         "cv": 39
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/wraith.md",
         "sha256": "817479fc87264b0d19d626c79fc4b683ba1ea3ff295ee7db6400994bea58842d"
       },
@@ -35670,7 +35670,7 @@
         "cv": 31
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/wyvern.md",
         "sha256": "2a4cd2ed5ac78dfe98adfd5d1ef047d9a726fd314cee8487931cbfb0179ea6ef"
       },
@@ -36078,7 +36078,7 @@
         "cv": 24
       },
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/bestiary/creatures/zombie-brute.md",
         "sha256": "ba195dfee72382ce8096b95f528a4b276e2d8db652e0409182ff1f3210e5d791"
       },
@@ -36431,7 +36431,7 @@
       "rulesMarkdown": "Choose one visible adjacent living ally and keep a free hand. Resolve opportunity attacks for casting, then pay the creature’s printed SP cost from its reserve. A summoned healer uses its controller’s reserve. Roll the creature’s healing attribute and apply its printed HP outcomes and the recipient’s Life resistance. For an NPC healer, the DA chooses the target and a player makes the roll. You can instead direct the spell at a creature whose profile says healing harms it. Keep the range, free hand and SP cost, and use the healing values as Life damage. A player defending against this attack rolls Fortitude and reads the creature’s defense outcomes.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
       "referenceMarkdown": "# Battle Mending\n\n*Light travels from the healer’s shaking hands into another body, leaving the healer visibly diminished.*\n\n## Rules\n\n**ID:** monster-battle-mending\n\n\n**Action:** Main Action; spell\n\nChoose one visible adjacent living ally and keep a free hand. Resolve opportunity attacks for casting, then pay the creature’s printed SP cost from its reserve. A summoned healer uses its controller’s reserve. Roll the creature’s healing attribute and apply its printed HP outcomes and the recipient’s Life resistance. For an NPC healer, the DA chooses the target and a player makes the roll. You can instead direct the spell at a creature whose profile says healing harms it. Keep the range, free hand and SP cost, and use the healing values as Life damage. A player defending against this attack rolls Fortitude and reads the creature’s defense outcomes.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/monster-abilities/battle-mending.md",
         "sha256": "a5d1342884e7ee071555af086d867c6eeef0aa16e9cf22502b7e6ede66b68612"
       },
@@ -36447,7 +36447,7 @@
       "rulesMarkdown": "One creature within 3 squares that can hear it gains Frightened 1, with this creature as the source. Once per turn. No roll and no damage; ordinary decay and immunity apply. Choose the target when you roar.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
       "referenceMarkdown": "# Breaking Roar\n\n*The roar shakes the rafters; even the confident hesitate for half a breath.*\n\n## Rules\n\n**ID:** monster-breaking-roar\n\n\n**Action:** Maneuver\n\nOne creature within 3 squares that can hear it gains Frightened 1, with this creature as the source. Once per turn. No roll and no damage; ordinary decay and immunity apply. Choose the target when you roar.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/monster-abilities/breaking-roar.md",
         "sha256": "b3ff11934b495d354b375961be37df2c89949c55cc9c5a4859ad8216ef88a6be"
       },
@@ -36463,7 +36463,7 @@
       "rulesMarkdown": "Before a visible enemy attacks a willing ally adjacent to this creature, hinder the attack if this creature can see the attacker. Apply 1 Bane if the attacker rolls or grant the ally 1 Boon if the ally rolls defense. This creature must also be adjacent to the attacker, or hold a shield the DA judges can obstruct the attack. No movement, target substitution or damage transfer. For a single player area attack, use the normal worst-target modifiers; do not roll again.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
       "referenceMarkdown": "# Cover a Companion\n\n*The guardian steps into the line of danger, making the attacker work around its raised guard.*\n\n## Rules\n\n**ID:** monster-cover-a-companion\n\n**Action:** Reaction\n\nBefore a visible enemy attacks a willing ally adjacent to this creature, hinder the attack if this creature can see the attacker. Apply 1 Bane if the attacker rolls or grant the ally 1 Boon if the ally rolls defense. This creature must also be adjacent to the attacker, or hold a shield the DA judges can obstruct the attack. No movement, target substitution or damage transfer. For a single player area attack, use the normal worst-target modifiers; do not roll again.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/monster-abilities/cover-a-companion.md",
         "sha256": "e17ed34ebb5bbdbe57f0c5a7b3bac27ca380f5e9ddcffbaee978ffc24bea77d2"
       },
@@ -36479,7 +36479,7 @@
       "rulesMarkdown": "At the printed outcomes, restore at most 1 or 2 HP to the attacker, never more than the HP actually lost by a living target to this attack after resistance. Life resistance on the recipient reduces this recovery, minimum 1 only if a positive amount is transferred. No recovery from a target that loses 0 HP or is not living. This transfer grants no treatment.\n\nActual damage, targeting and defense attribute are printed on the creature card.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
       "referenceMarkdown": "# Life-taking Bite\n\n*Stolen warmth returns color to the predator’s face.*\n\n## Rules\n\n**ID:** monster-life-taking-bite\n\n\n**Action:** Main Action\n\nAt the printed outcomes, restore at most 1 or 2 HP to the attacker, never more than the HP actually lost by a living target to this attack after resistance. Life resistance on the recipient reduces this recovery, minimum 1 only if a positive amount is transferred. No recovery from a target that loses 0 HP or is not living. This transfer grants no treatment.\n\nActual damage, targeting and defense attribute are printed on the creature card.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/monster-abilities/life-taking-bite.md",
         "sha256": "e957053a1be781230ff88828290a5a6c7fb0f05fcefa84c977c1485612f9bf62"
       },
@@ -36495,7 +36495,7 @@
       "rulesMarkdown": "Place a veil in up to 3 connected visible squares within 3 squares until its next turn. It provides partial cover when an attack crosses the veil. Use the usual cover rules. It does not grant Hidden, block movement or cause damage.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
       "referenceMarkdown": "# Draw a Veil\n\n*Mist gathers in a thin curtain that blurs the line of approach.*\n\n## Rules\n\n**ID:** monster-mist-veil\n\n\n**Action:** Maneuver\n\nPlace a veil in up to 3 connected visible squares within 3 squares until its next turn. It provides partial cover when an attack crosses the veil. Use the usual cover rules. It does not grant Hidden, block movement or cause damage.\n\nOnly creatures whose entries list this ability possess it. Printed limits apply.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/monster-abilities/mist-veil.md",
         "sha256": "3500389cd2fae4ce3319c4fc29529e5a5048a8a4bc374648a30f82eb7e12cf73"
       },
@@ -36511,7 +36511,7 @@
       "rulesMarkdown": "Use the printed attack. Standard also applies Bleeding 1; Strong applies Bleeding 2. Bleeding resolves and decays at the target’s turn end. At 0 HP follow the ordinary Dying and immediate death-roll rules.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
       "referenceMarkdown": "# Rending Blow\n\n*The claws snag and drag; blood follows the withdrawing talons.*\n\n## Rules\n\n**ID:** monster-rending-blow\n\n\n**Action:** Main Action\n\nUse the printed attack. Standard also applies Bleeding 1; Strong applies Bleeding 2. Bleeding resolves and decays at the target’s turn end. At 0 HP follow the ordinary Dying and immediate death-roll rules.\n\n**Limits:** Only creatures whose entries list this ability possess it. Printed\nentry values and restrictions apply; no ability grants unlisted actions.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/monster-abilities/rending-blow.md",
         "sha256": "5686040087bb64c4d0a85c4faadb2d7a5ce8bd958937f732f62fd292a096f192"
       },
@@ -36527,7 +36527,7 @@
       "rulesMarkdown": "Fill up to 3 connected empty squares within 3 squares with spores until the start of this creature's next turn. The spores provide partial cover when an attack crosses them. Use the usual cover rules. The spores do not grant Hidden or cause a condition or damage. Reusing this ability replaces its previous cloud.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)",
       "referenceMarkdown": "# Spore Curtain\n\n*A slow shake of its crown releases a drifting veil of pale spores that hangs between the trunks.*\n\n## Rules\n\n**ID:** monster-spore-curtain\n\n**Action:** Maneuver\n\nFill up to 3 connected empty squares within 3 squares with spores until the start of this creature's next turn. The spores provide partial cover when an attack crosses them. Use the usual cover rules. The spores do not grant Hidden or cause a condition or damage. Reusing this ability replaces its previous cloud.\n\n[Creature procedure](../bestiary/procedure.md) · [Monster ability index](README.md)\n",
       "source": {
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
         "path": "design/monster-abilities/spore-curtain.md",
         "sha256": "093fc8db9fbf9c7aff6a9c9277464edd613be209ef9d42cd1732229051430495"
       },
@@ -36546,7 +36546,7 @@
       "source": {
         "path": "design/bestiary/summons/moon-hart.md",
         "sha256": "769cc3dfbcb4dc2f92b84e4c00fc672f682940d388d95d759d9e5d7725c866d9",
-        "commit": "6ed861864bd6398f4d40e18d12bc2c5378373a47"
+        "commit": "e79dcd1e341169c380e3657fb73cd2968ac446d7"
       }
     }
   ]

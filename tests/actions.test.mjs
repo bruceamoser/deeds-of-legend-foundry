@@ -274,3 +274,12 @@ test("malformed states and overflow cannot manufacture actions or inventory", ()
   huge.movementAllowances = 2;
   assert.throws(() => movementRemaining(huge), /integer/);
 });
+
+test("Forge catalog IDs can identify actions without permitting them as receipt keys", () => {
+  const input={operationId:"cast",sourceId:"spell:flame:3",category:"main"};
+  const spent=declareAction(turn(),input);
+  assert.equal(spent.remaining.main,0);
+  assert.match(spent.operations.cast.signature,/spell:flame:3/);
+  assert.throws(()=>declareAction(turn(),{...input,operationId:"spell:flame:3"}),/Invalid operation identity/);
+  assert.throws(()=>declareAction(turn(),{...input,sourceId:"spell.flame.3"}),/Invalid action source/);
+});

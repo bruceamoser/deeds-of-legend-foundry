@@ -1,6 +1,8 @@
 import {assertSummonPresent} from "../src/rules/summon-profile.mjs";
 import {summonAttackConfiguration} from "../src/rules/creature-sheet-profile.mjs";
-import {resolvedAttackEffects} from "../src/rules/attack-outcomes.mjs";
+import {incomingOutcome} from '../src/rules/creature-actions.mjs';
+import {classifyRoll} from '../src/rules/roll.mjs';
+import {resolvedAttackEffects,spellAttackOutcomes} from "../src/rules/attack-outcomes.mjs";
 import {DAMAGE_TYPE_LABELS} from "../src/rules/damage.mjs";
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -33,12 +35,14 @@ test('an incoming defense rolls immediately without coordinator, encounter or ac
     "../rules/attack-outcomes.mjs":{resolvedAttackEffects},
     "../rules/damage.mjs":{DAMAGE_TYPE_LABELS},
     './consumables.mjs':{tracksConsumable:()=>true},
+    '../rules/weapon-training.mjs':{basicAttackDamageProfile:()=>{},nativeWeaponTrainingIds:()=>[]},
     './attack-equipment.mjs':{attackEquipmentSnapshot:()=>{throw Error('Defense has no attack equipment');}},
     '../rules/ability-roll.mjs':{abilityCatalogRecord:()=>{},abilityRollConfiguration:()=>{},assertAbilityConfiguration:()=>{},outcomeDamage},
     './catalog.mjs':{loadCatalogs:()=>{}},
     './reference-play.mjs':{selectedReferences:()=>[]},
     '../rules/creature-actions.mjs':{incomingOutcome:()=>({damage:3,type:'physical',applied:false})},
     './roll-preparation.mjs':{rollBasis:()=>basis,prepareRoll:()=>({formula:'3d6 + 1',attribute:1})},
+    '../rules/authored-markdown.mjs':{renderMarkdown:text=>text},
     '../rules/roll.mjs':{classifyRoll:()=>({tier:'standard',total:11})},
   };
   const mod=new vm.SourceTextModule(await readFile(new URL('../src/services/roll.mjs',import.meta.url),'utf8'),{context});
@@ -66,4 +70,24 @@ test('attack target Evasion is optional and death rolls need no encounter surviv
   game.user.targets.add({document:{...target,uuid:'Scene.s.Token.other'}});
   assert.equal(rollBasis(actor,'brawn','attack').targetTokenUuid,null);
   assert.throws(()=>rollBasis(actor,'fortitude','death'),/Workshop Fortitude/);
+});
+
+test('defense total fourteen is Standard and mixed Oath blade damage stays actionable',()=>{
+  const incoming={resolution:"reference",attributeKey:"agility",effect:"Oath blade",
+    referenceMarkdown:"",outcomes:{weak:"7 + Push 2",standard:"5 + Push 1",strong:"3"}};
+  const standard=classifyRoll([5,3,4],2),strong=classifyRoll([5,4,4],2);
+  assert.equal(standard.total,14);
+  assert.equal(standard.tier,"standard");
+  assert.equal(strong.tier,"strong");
+  assert.deepEqual(incomingOutcome(incoming,standard.tier),{
+    resolution:"effects",text:"5 + Push 1",components:[{type:"physical",amount:5}],conditions:[],manual:"Push 1",applied:false,
+  });
+  assert.deepEqual(incomingOutcome(incoming,strong.tier).components,[{type:"physical",amount:3}]);
+});
+
+test('spell damage buttons use direct per-target damage without dividing a total or applying utility effects',()=>{
+  assert.deepEqual(spellAttackOutcomes({effect:"A bead of fire bursts. Deal 3/5/8 fire damage to every creature in the burst, including allies."}),
+    {weak:"3 fire damage",standard:"5 fire damage",strong:"8 fire damage"});
+  assert.equal(spellAttackOutcomes({effect:"Roll once for a shared total of 3/5/7 force damage; divide it before resistance."}),null);
+  assert.equal(spellAttackOutcomes({effect:"Restore 2/4/6 HP."}),null);
 });

@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Agility</dd></div><div><dt>Target / range / shape</dt><dd>Up to three distinct adjacent enemies.</dd></div><div><dt>Duration</dt><dd>Damage and movement resolve immediately.</dd></div><div><dt>Equipment / acquisition</dt><dd>Requires a melee weapon; grants one ordinary melee weapon, Bulk 1, if absent.</dd></div></dl><p>Choose up to three distinct adjacent enemies and roll Agility once using the least favorable net Boons/Banes among them.</p><p>- <strong>Weak:</strong> Deal 4 physical damage to each.<br>- <strong>Standard:</strong> Deal 4 physical damage to each, then you may move up to 1 square without provoking.<br>- <strong>Strong:</strong> Deal 6 physical damage to each, then you may move up to 2 squares without provoking.</p><p>This is one signature attack against all chosen targets. Choose all targets before rolling.</p><p>Use this attack once per scene.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Agility</dd></div><div><dt>Target / range / shape</dt><dd>Up to three distinct adjacent enemies.</dd></div><div><dt>Duration</dt><dd>Damage and movement resolve immediately.</dd></div><div><dt>Equipment / acquisition</dt><dd>Requires a melee weapon; grants one ordinary melee weapon, Bulk 1, if absent.</dd></div></dl><p>Choose up to three distinct adjacent enemies and roll Agility once using the least favorable net Boons/Banes among them.</p><ul><li><strong>Weak:</strong> Deal 4 physical damage to each.</li><li><strong>Standard:</strong> Deal 4 physical damage to each, then you may move up to 1 square without provoking.</li><li><strong>Strong:</strong> Deal 6 physical damage to each, then you may move up to 2 squares without provoking.</li></ul><p>This is one signature attack against all chosen targets. Choose all targets before rolling.</p><p>Use this attack once per scene.</p>",
     "activity": {
       "action": "main",
       "rollMode": "attribute",
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "ability-signature-blade-dance-through-steel",
-      "sourceCommit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "ability",

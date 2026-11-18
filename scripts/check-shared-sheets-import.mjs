@@ -280,10 +280,11 @@ try {
             .at(-1).id,
       );
       await page.evaluate(() => {ui.sidebar.expand();ui.sidebar.changeTab("chat","primary");});
-      await page
+      assert.equal(await page
         .locator(`#chat [data-message-id="${messageId}"]`)
         .getByRole("button", { name: "Roll again", exact: true })
-        .click();
+        .count(), 0);
+      await sheet.locator("[data-action=npcMelee]").click();
       await page.locator(".hol-roll-dialog").waitFor();
       await page.evaluate(async () => {for(const app of foundry.applications.instances.values())if(app.constructor.name === "SharedRollDialog")await app.close();});
       await sheet.locator("[data-action=cardEdit]").click();
@@ -296,7 +297,7 @@ try {
     }
   }
   evidence.checks.push(
-    "Basilisk, normal Skeleton Sentry, summoned Skeleton Sentry and NPC use the same CreatureSheet with compact stats, attributes, HP, action tables and no tabs. Summon HP/edit/attack/Roll again work.",
+    "Basilisk, normal Skeleton Sentry, summoned Skeleton Sentry and NPC use the same CreatureSheet with compact stats, attributes, HP, action tables and no tabs. The summon sheet can edit HP and make a fresh attack without repeating the old chat roll.",
   );
   await closeSheets();
   await page.evaluate(async (f) => {

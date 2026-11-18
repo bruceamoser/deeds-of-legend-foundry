@@ -402,3 +402,31 @@ avoids movement reactions. Direct Thrust III extends that movement to two
 squares on Strong. Measured Cut I deals 2/3/5 and offers its step on Strong.
 Fencing's other mobile attacks and counters also give up damage for safer
 movement and positioning.
+
+## November 18 — November playtest corrections (#336–#339)
+
+Fencing and Tactics enter through selected cultures, backgrounds and classes.
+Culture and background each still offer two choices. Each class offers four
+and retains its existing discipline prices. If a previously selected origin
+option is retired, choose a current option before completing development.
+
+Starting provisions cost 37 coins at list price: food, a full Water Flask,
+lighting and a Lesser Healing Bottle. Return unwanted provisions at creation
+for the purchase price. Ordinary sale and restocking rules apply in play.
+A Water Flask holds one person-day and uses a count rather than an inventory
+die. A learned requirement supplies compatible ordinary gear once. Several
+techniques can share that gear. Previously granted equipment remains owned if
+the hero later forgets the technique.
+
+The Basic Melee, Ranged, Throw and Unarmed attacks use 1/1/2 physical damage
+when the attacker lacks training in that family. An ordinary worn suit grants
+its resistance. Subtract its rating from effective Agility when the wearer
+lacks its training. Recalculate Speed from effective Agility. Choose a carried
+ammunition supply for each ranged weapon; firing checks that supply when
+ammunition tracking is enabled.
+
+A Brief Rest supports First Aid and learned recovery at their printed times.
+A Night’s Rest retains the eight-hour safe recovery procedure. Neither
+refreshes Grit. A retained total of 14 is Standard; Strong begins at 15.
+Actors of type character default to Players and creatures default to
+Creatures; the DA can move either to the other side during encounter setup.

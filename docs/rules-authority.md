@@ -165,3 +165,9 @@ entry prices. The Fencing playtest trades lower damage for safe movement and
 position.
 The catalog carries the printed selectable roll attributes and held weapon
 requirements for the new techniques.
+
+## November 18 — Playtest training, gear and rests (#336–#339)
+
+Book PR #1367, merged as **e79dcd1e341169c380e3657fb73cd2968ac446d7**, supplies
+the current creation, equipment and recovery rules. The Forge catalog, worked
+examples, ability and creature packs, and bundled journals use that revision.

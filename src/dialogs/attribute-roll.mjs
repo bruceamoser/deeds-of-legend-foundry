@@ -93,22 +93,29 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
           }).options
         : [];
     this.pendingResponse = false;
+    const configuration = this.draft.abilityConfiguration;
+    const weapons = configuration?.weaponKind
+      ? (await import("../services/attack-equipment.mjs")).attackEquipmentOptions(this.actor,configuration,configuration.ranged?this.draft.rangedWeaponItemId:this.draft.weaponItemId)
+      : [];
+    const attackItem = weapons.find(option=>option.selected)?.name;
     return {
+      rollTitle: configuration?.name ?? "Attribute check",
+      rules: configuration?.effect,
+      attack: this.mode === "attack",
+      attackItem,
       references: referencePickerOptions(this.actor, this.draft, {
         mode: this.mode,
         attributeKey:this.attributeKey,initiatingItemId:this.draft.abilityItemId,
         defenderTokenUuid: this.defenderTokenUuid,
       }).filter(reference=>reference.id===this.draft.abilityItemId || !this.abilityOptions.some(option=>option.itemId===reference.id)),
-      attributeEditable: this.mode === "attribute",
-      attributeOptions: Object.keys(this.actor.system.attributes ?? {}).map((key) => ({
+      attributeEditable: configuration ? configuration.attributes?.length > 1 : this.mode === "attribute",
+      attributeOptions: (configuration?.attributes?.length ? configuration.attributes : Object.keys(this.actor.system.attributes ?? {})).map((key) => ({
         key, name: game.i18n.localize(`HOL.Attributes.${key}`), selected: key === this.attributeKey,
       })),
       damageTypeOptions: (this.draft.abilityConfiguration?.damageTypes ?? []).map(type => ({value:type,label:DAMAGE_TYPE_LABELS[type],selected:type === this.draft.damageType})),
       name: this.actor.name,
-      weaponOptions: this.draft.abilityConfiguration?.weaponKind && !this.draft.abilityConfiguration.ranged
-        ? (await import("../services/attack-equipment.mjs")).attackEquipmentOptions(this.actor,this.draft.abilityConfiguration,this.draft.weaponItemId) : [],
-      rangedWeaponOptions: this.draft.abilityConfiguration?.ranged
-        ? (await import("../services/ranged-ammunition.mjs")).rangedWeaponOptions(this.actor,this.draft.rangedWeaponItemId) : [],
+      weaponOptions: configuration?.ranged || configuration?.weaponKind === "unarmed" ? [] : weapons,
+      rangedWeaponOptions: configuration?.ranged ? weapons : [],
       incoming: this.basis.incoming,
       pendingResponse: this.pendingResponse,
       attributeName: game.i18n.localize(`HOL.Attributes.${this.attributeKey}`),
@@ -242,7 +249,7 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       net.style.setProperty("--net-start", `${Math.min(50, ((n + 3) / 6) * 100)}%`);
       net.style.setProperty("--net-size", `${Math.abs(n) / 6 * 100}%`);
       detail.textContent = `${plan.boons} Boons · ${plan.banes} Banes · ${plan.canceled} canceled pairs · net extras ${plan.net} (maximum 3)`;
-      button.disabled = this.activating || this.pendingResponse;
+      button.disabled = this.rolling || this.activating || this.pendingResponse;
     } catch (e) {
       output.textContent = e.message;
       detail.textContent = "";
@@ -257,7 +264,9 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
         if (event.target.name === "adjustment")
           this.draft.adjustmentOverride = true;
         if (event.target.name === "cover") this.draft.adjustmentOverride = false;
-        if (event.target.name === "attributeKey" && this.mode === "attribute") {
+        if (["weaponItemId","rangedWeaponItemId"].includes(event.target.name))
+          this.element.querySelector("[data-attack-item]").textContent = event.target.selectedOptions[0]?.textContent ?? "";
+        if (event.target.name === "attributeKey") {
           this.readDraft();
           this.attributeKey = event.target.value;
           this.draft.adjustmentOverride=false;
@@ -307,10 +316,8 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       }
       this.rolling = true;
       this.element.querySelector('[data-action="roll"]').disabled = true;
-      const message = await rollPrepared(this.actor, this.basis, this.draft);
+      await rollPrepared(this.actor, this.basis, this.draft);
       await this.close();
-      const {showAbilityOutcome}=await import("../services/roll.mjs");
-      showAbilityOutcome(message);
     } catch (e) {
       ui.notifications.error(e.message);
     } finally {

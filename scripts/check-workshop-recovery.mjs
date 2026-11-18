@@ -89,12 +89,12 @@ try {
   await page.getByRole("dialog").getByRole("button", { name: "Record treatment", exact: true }).click();
   assert.equal(await hp.inputValue(), "6");
   assert.equal(await page.getByRole("dialog").getByRole("button", { name: "Begin first aid", exact: true }).isDisabled(), true);
-  await page.getByRole("dialog").getByRole("button", { name: "Complete safe rest", exact: true }).click();
+  await page.getByRole("dialog").getByRole("button", { name: "Complete Night’s Rest", exact: true }).click();
   assert.equal(await hp.inputValue(), "20");
   assert.equal(await sp.inputValue(), "4");
   assert.equal(await page.getByRole("dialog").getByRole("button", { name: "Begin first aid", exact: true }).isDisabled(), false);
-  await page.getByLabel("Hour rest finished", { exact: true }).fill("31");
-  await page.getByRole("dialog").getByRole("button", { name: "Complete safe rest", exact: true }).click();
+  await page.getByLabel("Campaign hour when rest ended", { exact: true }).fill("31");
+  await page.getByRole("dialog").getByRole("button", { name: "Complete Night’s Rest", exact: true }).click();
   assert.match(await page.locator("#notice").innerText(), /at least 24 hours/);
   await page.getByRole("dialog").getByRole("button", { name: "Record scar", exact: true }).click();
   const scar = "A nick through the right eyebrow.";

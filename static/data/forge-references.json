@@ -1,5 +1,5 @@
 {
-  "sourceCommit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+  "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
   "rulesRevision": 299,
   "records": {
     "item-ammunition-bundle": {
@@ -80,10 +80,10 @@
       }
     },
     "item-food-bundle": {
-      "markdown": "# Food Bundle\n\n*You unwrap a little comfort from home and share the smell of a proper meal.*\n\n## Rules\n\n- **ID:** item-food-bundle\n- **Bulk:** 1\n- **Requirements / supply:** Inventory d8\n- **Acquisition:** Explicit ability grant, coins, or DA treasure; no automatic extra starting kit.\n\nOne supply check per person-day consumed. No exhaustion subsystem is implied.\n\nNo DP price. Purchase does not grant training or an ability.\n\n[Equipment index](../equipment.md)\n\n**Market price:** 9 coins. Proposal; see [market rules](../market.md).\n",
+      "markdown": "# Food Bundle\n\n*You unwrap a little comfort from home and share the smell of a proper meal.*\n\n## Rules\n\n- **ID:** item-food-bundle\n- **Bulk:** 1\n- **Requirements / supply:** Inventory d8\n- **Acquisition:** Included among your paid starting provisions. Also available with coins, through a printed ability grant, or as treasure.\n\nOne supply check per person-day consumed. No exhaustion subsystem is implied.\n\nNo DP price. Purchase does not grant training or an ability.\n\n[Equipment index](../equipment.md)\n\n**Market price:** 9 coins. Proposal; see [market rules](../market.md).\n",
       "source": {
         "path": "design/equipment/food-bundle.md",
-        "sha256": "df20fdfeae70df214cf1076a27ae0a4a6036b550ad50d82202a57f3151dfec40"
+        "sha256": "2a4f33076941ca8131977c9631bf35d206e0729f86191d91532a3d710a23eb4d"
       }
     },
     "item-glass-of-fine-detail": {
@@ -108,10 +108,10 @@
       }
     },
     "item-lesser-healing-bottle": {
-      "markdown": "# Lesser Healing Bottle\n\n*You take a bitter mouthful and wait for the familiar warmth to follow.*\n\n## Rules\n\n- **ID:** item-lesser-healing-bottle\n- **Bulk:** 1\n- **Requirements / supply:** Inventory d4\n- **Acquisition:** Explicit ability grant, coins, or DA treasure; no automatic extra starting kit.\n\nUse [Use a Healing Potion](../cards/use-a-healing-potion.md): restore 6 HP before Life resistance, capped by missing HP. Use the action’s requirements for a free hand, a willing recipient, and any Reaction. Check the bottle’s inventory die after use; the final use still works.\n\nNo DP price. Purchase does not grant training or an ability.\n\n[Equipment index](../equipment.md)\n\n**Market price:** 20 coins. Proposal; see [market rules](../market.md).\n",
+      "markdown": "# Lesser Healing Bottle\n\n*You take a bitter mouthful and wait for the familiar warmth to follow.*\n\n## Rules\n\n- **ID:** item-lesser-healing-bottle\n- **Bulk:** 1\n- **Requirements / supply:** Inventory d4\n- **Acquisition:** Included among your paid starting provisions. Also available with coins, through a printed ability grant, or as treasure.\n\nUse [Use a Healing Potion](../cards/use-a-healing-potion.md): restore 6 HP before Life resistance, capped by missing HP. Use the action’s requirements for a free hand, a willing recipient, and any Reaction. Check the bottle’s inventory die after use; the final use still works.\n\nNo DP price. Purchase does not grant training or an ability.\n\n[Equipment index](../equipment.md)\n\n**Market price:** 20 coins. Proposal; see [market rules](../market.md).\n",
       "source": {
         "path": "design/equipment/lesser-healing-bottle.md",
-        "sha256": "bfea1e9e7cefd43edb4aebbb4e8f673a9516d58539c0c3c3a78d78025700dba0"
+        "sha256": "353fbba306dbd03dd560d1b66d18278cfc9f72e68ae662d15f537dcd19d8c178"
       }
     },
     "item-lever-and-wedges": {
@@ -122,10 +122,10 @@
       }
     },
     "item-lighting-bundle": {
-      "markdown": "# Lighting Bundle\n\n*You shelter the first small flame until it takes hold and pushes back the dark.*\n\n## Rules\n\n- **ID:** item-lighting-bundle\n- **Bulk:** 1\n- **Requirements / supply:** Inventory d6\n- **Acquisition:** Explicit ability grant, coins, or DA treasure; no automatic extra starting kit.\n\nLight radius: the bearer’s square and all squares within 3 squares. Lighting or extinguishing costs a Maneuver and requires a free hand; carrying a lit torch occupies that hand. One check per hour of use. Ordinary light reveals what could be seen, not Hidden targets automatically.\n\nNo DP price. Purchase does not grant training or an ability.\n\n[Equipment index](../equipment.md)\n\n**Market price:** 5 coins. Proposal; see [market rules](../market.md).\n",
+      "markdown": "# Lighting Bundle\n\n*You shelter the first small flame until it takes hold and pushes back the dark.*\n\n## Rules\n\n- **ID:** item-lighting-bundle\n- **Bulk:** 1\n- **Requirements / supply:** Inventory d6\n- **Acquisition:** Included among your paid starting provisions. Also available with coins, through a printed ability grant, or as treasure.\n\nLight radius: the bearer’s square and all squares within 3 squares. Lighting or extinguishing costs a Maneuver and requires a free hand; carrying a lit torch occupies that hand. One check per hour of use. Ordinary light reveals what could be seen, not Hidden targets automatically.\n\nNo DP price. Purchase does not grant training or an ability.\n\n[Equipment index](../equipment.md)\n\n**Market price:** 5 coins. Proposal; see [market rules](../market.md).\n",
       "source": {
         "path": "design/equipment/lighting-bundle.md",
-        "sha256": "f852194a730246192d11f4bd2c7bc24f2f8f1dddf3d969ba7ac3b536b07e08d8"
+        "sha256": "53708b9c931803f9be0840dda5a67631e5eb244804e4f40a543a1883c381419b"
       }
     },
     "item-local-map": {
@@ -164,24 +164,24 @@
       }
     },
     "item-ordinary-heavy-armor": {
-      "markdown": "# Ordinary Heavy Armor\n\n*You settle into its reassuring weight, each fastening bearing the marks of your care.*\n\n## Rules\n\n- **ID:** item-ordinary-heavy-armor\n- **Bulk:** 1\n- **Requirements / supply:** Learn [Heavy Armor I](../disciplines/armor.md#harness) to benefit while wearing this suit.\n- **Physical resistance when worn:** 3\n- **Acquisition:** Explicit ability grant, coins, or DA treasure; no automatic extra starting kit.\n\nChoose the suit’s appearance. Its physical resistance is 3 while worn with the matching training; use the highest applicable resistance.\n\nBuy the suit with coins and learn its training with DP.\n\n[Equipment index](../equipment.md)\n\n**Market price:** 90 coins. See [market rules](../market.md).\n",
+      "markdown": "# Ordinary Heavy Armor\n\n*You settle into its reassuring weight, each fastening bearing the marks of your care.*\n\n## Rules\n\n- **ID:** item-ordinary-heavy-armor\n- **Bulk:** 1\n- **Requirements / supply:** Learn [Heavy Armor I](../disciplines/armor.md#harness) to wear this suit at your full Agility.\n- **Physical resistance when worn:** 3\n- **Acquisition:** Training, coins or DA treasure.\n\nChoose the suit’s appearance. It grants physical resistance 3 while worn. Without the matching learned training, subtract 3 from effective Agility. Use the highest armor resistance and the largest applicable untrained armor penalty.\n\nReceive an ordinary suit when you learn a technique that requires this armor category. You can also buy a suit with coins.\n\n[Equipment index](../equipment.md)\n\n**Market price:** 90 coins. See [market rules](../market.md).\n",
       "source": {
         "path": "design/equipment/ordinary-heavy-armor.md",
-        "sha256": "18af80ec40f5a47c04cff048dbd4abad682366facd0ef26ea356850c65059391"
+        "sha256": "01a7b66d62c1a5f69f98608af1d83c7309683cc238dfd2eda6c733800860461d"
       }
     },
     "item-ordinary-light-armor": {
-      "markdown": "# Ordinary Light Armor\n\n*You pull the light armor close and fasten its straps; the fitted layers guard your body without swallowing your outline.*\n\n## Rules\n\n- **ID:** item-ordinary-light-armor\n- **Bulk:** 1\n- **Requirements / supply:** Learn [Light Armor I](../disciplines/armor.md#harness) to benefit while wearing this suit.\n- **Physical resistance when worn:** 1\n- **Acquisition:** Explicit ability grant, coins, or DA treasure; no automatic extra starting kit.\n\nChoose the suit’s appearance. Its physical resistance is 1 while worn with the matching training; use the highest applicable resistance.\n\nBuy the suit with coins and learn its training with DP.\n\n[Equipment index](../equipment.md)\n\n**Market price:** 10 coins; see [market rules](../market.md).\n",
+      "markdown": "# Ordinary Light Armor\n\n*You pull the light armor close and fasten its straps; the fitted layers guard your body without swallowing your outline.*\n\n## Rules\n\n- **ID:** item-ordinary-light-armor\n- **Bulk:** 1\n- **Requirements / supply:** Learn [Light Armor I](../disciplines/armor.md#harness) to wear this suit at your full Agility.\n- **Physical resistance when worn:** 1\n- **Acquisition:** Training, coins or DA treasure.\n\nChoose the suit’s appearance. It grants physical resistance 1 while worn. Without the matching learned training, subtract 1 from effective Agility. Use the highest armor resistance and the largest applicable untrained armor penalty.\n\nReceive an ordinary suit when you learn a technique that requires this armor category. You can also buy a suit with coins.\n\n[Equipment index](../equipment.md)\n\n**Market price:** 10 coins; see [market rules](../market.md).\n",
       "source": {
         "path": "design/equipment/ordinary-light-armor.md",
-        "sha256": "f544ce840a90d03b442f27554a5273bf27b9dfa7d7a592bf8352462987ef51b5"
+        "sha256": "78e4963f8ce17a454c4bc6526419166a71b253c771329b0b8c13bc1342efbae8"
       }
     },
     "item-ordinary-medium-armor": {
-      "markdown": "# Ordinary Medium Armor\n\n*You brush a hand over the familiar surface and check the fit before setting out.*\n\n## Rules\n\n- **ID:** item-ordinary-medium-armor\n- **Bulk:** 1\n- **Requirements / supply:** Learn [Light Armor III](../disciplines/armor.md#harness) to benefit while wearing this suit.\n- **Physical resistance when worn:** 2\n- **Acquisition:** Explicit ability grant, coins, or DA treasure; no automatic extra starting kit.\n\nChoose the suit’s appearance. Its physical resistance is 2 while worn with the matching training; use the highest applicable resistance.\n\nBuy the suit with coins and learn its training with DP.\n\n[Equipment index](../equipment.md)\n\n**Market price:** 40 coins. See [market rules](../market.md).\n",
+      "markdown": "# Ordinary Medium Armor\n\n*You brush a hand over the familiar surface and check the fit before setting out.*\n\n## Rules\n\n- **ID:** item-ordinary-medium-armor\n- **Bulk:** 1\n- **Requirements / supply:** Learn [Light Armor III](../disciplines/armor.md#harness) to wear this suit at your full Agility.\n- **Physical resistance when worn:** 2\n- **Acquisition:** Training, coins or DA treasure.\n\nChoose the suit’s appearance. It grants physical resistance 2 while worn. Without the matching learned training, subtract 2 from effective Agility. Use the highest armor resistance and the largest applicable untrained armor penalty.\n\nReceive an ordinary suit when you learn a technique that requires this armor category. You can also buy a suit with coins.\n\n[Equipment index](../equipment.md)\n\n**Market price:** 40 coins. See [market rules](../market.md).\n",
       "source": {
         "path": "design/equipment/ordinary-medium-armor.md",
-        "sha256": "ef67bdfc0e072abe0bc5756fb15bb8e7194a1c4e90110e9a59fa3ebf78742199"
+        "sha256": "342d7fc677662f54b517451d0e11f2940bfe089e3f4a89f43081628d05309654"
       }
     },
     "item-ordinary-melee-weapon": {
@@ -290,10 +290,10 @@
       }
     },
     "item-water-flask": {
-      "markdown": "# Water Flask\n\n*You test the stopper, listening to the water shift inside.*\n\n## Rules\n\n**ID:** item-water-flask\n\n**Market price:** 3 coins. **Bulk:** 1.\n\nIncludes a filled reusable container and one person-day of drinking water. Count days when water matters; refill freely from an accessible safe source. No inventory die for water . Empty container remains Bulk 1; no exhaustion or dehydration subsystem is added.\n\nBuying equipment grants no DP advancement, training or ability. Use normal item-handling actions unless an applicable card says otherwise.\n\n[Market rules](../market.md) · [Equipment index](../equipment.md)\n",
+      "markdown": "# Water Flask\n\n*You test the stopper, listening to the water shift inside.*\n\n## Rules\n\n**ID:** item-water-flask\n\n**Market price:** 3 coins. **Bulk:** 1.\n\nIncludes a filled reusable container and one person-day of drinking water. Mark the water spent after one person-day of drinking. Refill the flask freely from an accessible safe source. Use the day count in place of a supply die. The empty flask still has Bulk 1.\n\nBuying equipment grants no DP advancement, training or ability. Use normal item-handling actions unless an applicable card says otherwise.\n\n[Market rules](../market.md) · [Equipment index](../equipment.md)\n",
       "source": {
         "path": "design/equipment/water-flask.md",
-        "sha256": "8cf8c47a61c315ba014e7f081afbd4853848c60602c57142cacb287581f4def4"
+        "sha256": "bc9ccbb0e8c6d48d1e0b4c07d191e90090015332207d1b10ae3215e38e9d7867"
       }
     },
     "item-weather-clothes": {
@@ -1793,7 +1793,7 @@
       "name": "Food Bundle",
       "source": {
         "path": "design/equipment/food-bundle.md",
-        "sha256": "df20fdfeae70df214cf1076a27ae0a4a6036b550ad50d82202a57f3151dfec40"
+        "sha256": "2a4f33076941ca8131977c9631bf35d206e0729f86191d91532a3d710a23eb4d"
       },
       "bulk": 1,
       "price": 9,
@@ -1850,7 +1850,7 @@
       "name": "Lesser Healing Bottle",
       "source": {
         "path": "design/equipment/lesser-healing-bottle.md",
-        "sha256": "bfea1e9e7cefd43edb4aebbb4e8f673a9516d58539c0c3c3a78d78025700dba0"
+        "sha256": "353fbba306dbd03dd560d1b66d18278cfc9f72e68ae662d15f537dcd19d8c178"
       },
       "bulk": 1,
       "price": 20,
@@ -1879,7 +1879,7 @@
       "name": "Lighting Bundle",
       "source": {
         "path": "design/equipment/lighting-bundle.md",
-        "sha256": "f852194a730246192d11f4bd2c7bc24f2f8f1dddf3d969ba7ac3b536b07e08d8"
+        "sha256": "53708b9c931803f9be0840dda5a67631e5eb244804e4f40a543a1883c381419b"
       },
       "bulk": 1,
       "price": 5,
@@ -1963,7 +1963,7 @@
       "name": "Ordinary Heavy Armor",
       "source": {
         "path": "design/equipment/ordinary-heavy-armor.md",
-        "sha256": "18af80ec40f5a47c04cff048dbd4abad682366facd0ef26ea356850c65059391"
+        "sha256": "01a7b66d62c1a5f69f98608af1d83c7309683cc238dfd2eda6c733800860461d"
       },
       "bulk": 1,
       "price": 90,
@@ -1978,7 +1978,7 @@
       "name": "Ordinary Light Armor",
       "source": {
         "path": "design/equipment/ordinary-light-armor.md",
-        "sha256": "f544ce840a90d03b442f27554a5273bf27b9dfa7d7a592bf8352462987ef51b5"
+        "sha256": "78e4963f8ce17a454c4bc6526419166a71b253c771329b0b8c13bc1342efbae8"
       },
       "bulk": 1,
       "price": 10,
@@ -1993,7 +1993,7 @@
       "name": "Ordinary Medium Armor",
       "source": {
         "path": "design/equipment/ordinary-medium-armor.md",
-        "sha256": "ef67bdfc0e072abe0bc5756fb15bb8e7194a1c4e90110e9a59fa3ebf78742199"
+        "sha256": "342d7fc677662f54b517451d0e11f2940bfe089e3f4a89f43081628d05309654"
       },
       "bulk": 1,
       "price": 40,
@@ -2226,7 +2226,7 @@
       "name": "Water Flask",
       "source": {
         "path": "design/equipment/water-flask.md",
-        "sha256": "8cf8c47a61c315ba014e7f081afbd4853848c60602c57142cacb287581f4def4"
+        "sha256": "bc9ccbb0e8c6d48d1e0b4c07d191e90090015332207d1b10ae3215e38e9d7867"
       },
       "bulk": 1,
       "price": 3,

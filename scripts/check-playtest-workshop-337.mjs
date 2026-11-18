@@ -1,0 +1,210 @@
+import assert from "node:assert/strict";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { resolve } from "node:path";
+import { chromium, expect } from "@playwright/test";
+import { selectTestUser } from "./helpers/login.mjs";
+
+const url = process.env.HOL_TEST_URL;
+if (url !== "http://localhost:30025" || process.env.HOL_TEST_ALLOW_WRITES !== "1" ||
+    process.env.HOL_TEST_ISOLATED_WORLD !== "1" || process.env.HOL_NATIVE_RUNTIME_LEASE !== "workshop")
+  throw new Error("Requires the workshop lease and isolated http://localhost:30025 Foundry world.");
+
+const output = resolve("test-results/playtest-workshop-337");
+await mkdir(output, { recursive: true });
+const portable = JSON.parse(await readFile("Build-Offs/revised/builds/cleric-level-1.hol.json", "utf8"));
+portable.draft.shopping = portable.draft.shopping.filter(item => item.id !== "item-ordinary-light-armor");
+const chosenPortrait = "icons/svg/book.svg";
+const removedItems = ["armor:harness:1", "spell:restoration:1", "spell:restoration:2"];
+const evidence = { checks: [], errors: [] };
+const browser = await chromium.launch();
+let gm, owner, fixture;
+
+async function join(name) {
+  const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
+  await page.addInitScript(() => localStorage.setItem("core.noCanvas", "true"));
+  page.setDefaultTimeout(15000);
+  page.on("pageerror", error => evidence.errors.push(`${name}: ${error.message}`));
+  await page.goto(`${url}/join`);
+  await selectTestUser(page, name);
+  await page.locator('button[name="join"]').click();
+  await page.waitForFunction(() => globalThis.game?.ready, null, { timeout: 60000 });
+  await page.evaluate(() => foundry.nue.Tour.activeTour?.exit());
+  return page;
+}
+
+function actorState(page, id) {
+  return page.evaluate(id => {
+    const systemId = "heroes-of-legend";
+    const actor = game.actors.get(id);
+    const saved = actor.getFlag(systemId, "nativeWorkshop");
+    const draft = actor.getFlag(systemId, "nativeWorkshopDraft");
+    return {
+      resource: { hp: actor.system.health.value, sp: actor.system.sp.value },
+      maxSp: actor.system.sp.max,
+      img: actor.img,
+      mode: saved.view.mode,
+      purchased: saved.portable.draft.purchases[1].map(entry => entry.id),
+      pending: draft?.draft.purchases[1].map(entry => entry.id) ?? null,
+      abilities: actor.items.filter(item => item.type === "ability").map(item => item.getFlag(systemId, "catalogId")),
+      gear: actor.items.filter(item => item.type === "equipment").map(item => ({
+        id: item.id, name: item.name, quantity: item.system.quantity, held: item.system.held,
+      })).sort((a, b) => a.id.localeCompare(b.id)),
+    };
+  }, id);
+}
+
+async function openHero(page, id) {
+  await page.evaluate(async id => {
+    const sheet = game.actors.get(id).sheet;
+    await sheet.render({ force: true });
+    await sheet.mountReady;
+  }, id);
+}
+
+function passed(check) {
+  evidence.checks.push(check);
+  console.info(check);
+}
+
+try {
+  gm = await join(process.env.HOL_TEST_USER ?? "Gamemaster");
+  evidence.runtime = await gm.evaluate(() => ({ world: game.world.id, build: game.release.build, system: game.system.version }));
+  assert.equal(evidence.runtime.world, process.env.HOL_TEST_WORLD ?? "hol-native-325");
+  assert.equal(evidence.runtime.build, 370);
+  fixture = await gm.evaluate(async portable => {
+    const systemId = "heroes-of-legend";
+    const state = globalThis.__playtestWorkshop337 = {};
+    const user = await User.create({ name: `Workshop337 owner ${foundry.utils.randomID(5)}`, role: CONST.USER_ROLES.TRUSTED });
+    state.user = user.id;
+    state.name = user.name;
+    portable.draft.name = "Playtest337 cleric";
+    const actor = await Actor.create({
+      name: portable.draft.name, type: "character", img: "icons/svg/angel.svg",
+      ownership: { [user.id]: CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER },
+    });
+    state.actor = actor.id;
+    await actor.importFromJSON(JSON.stringify(portable));
+    await user.update({ character: actor.id });
+    await actor.update({ img: "icons/svg/angel.svg", "system.health.value": 8, "system.sp.value": 3 });
+    const grant = actor.items.find(item => item.getFlag(systemId, "acquisitionInstance") === "inventory-learned-ordinary-light-armor");
+    if (!grant) throw new Error("The cleric fixture must start with its study-granted light armor.");
+    await grant.update({ name: "Playtest337 named armor", "system.quantity": 2 });
+    const [custom] = await actor.createEmbeddedDocuments("Item", [{
+      name: "Playtest337 unrelated gear", type: "equipment", system: { quantity: 3, carried: true },
+    }]);
+    state.grant = grant.id;
+    state.custom = custom.id;
+    return state;
+  }, portable);
+
+  owner = await join(fixture.name);
+  assert.deepEqual(await owner.evaluate(id => ({
+    isGM: game.user.isGM,
+    owner: game.actors.get(id).testUserPermission(game.user, "OWNER"),
+    canBrowse: game.user.can("FILES_BROWSE"),
+  }), fixture.actor), { isGM: false, owner: true, canBrowse: true });
+  await openHero(owner, fixture.actor);
+  const sheet = owner.locator(".hol-workshop-character");
+  const portrait = sheet.getByRole("button", { name: "Edit character portrait" });
+  await expect(portrait).toBeVisible();
+  assert.ok((await portrait.boundingBox()).height >= 60);
+  const beforePortrait = await actorState(gm, fixture.actor);
+  await portrait.click();
+  const picker = owner.locator('form.application').filter({ has: owner.locator('input[name="file"]') });
+  await expect(picker).toBeVisible();
+  await picker.getByRole("heading", { name: "Image Browser" }).click();
+  await picker.locator(`[data-file][data-path$="${chosenPortrait}"]`).click();
+  const selectedPortrait = await picker.locator('input[name="file"]').inputValue();
+  assert.ok(selectedPortrait.endsWith(chosenPortrait));
+  await picker.locator('button[type="submit"]').click();
+  await expect(picker).toBeHidden();
+  await expect.poll(async () => (await actorState(gm, fixture.actor)).img).toBe(selectedPortrait);
+  await expect(portrait).toHaveAttribute("src", selectedPortrait);
+  const afterPortrait = await actorState(gm, fixture.actor);
+  assert.deepEqual(afterPortrait, { ...beforePortrait, img: selectedPortrait });
+  await sheet.screenshot({ path: resolve(output, "portrait.png") });
+  passed("A non-GM owner selected a new Actor image in Foundry’s FilePicker. The portrait and only the portrait changed.");
+
+  const hp = sheet.getByRole("spinbutton", { name: "Current HP" });
+  const sp = sheet.getByRole("spinbutton", { name: "Current SP" });
+  async function changeResource(input, value, key, expected, keyPress = "Enter") {
+    await input.fill(value);
+    await expect(input).toHaveValue(value);
+    await input.press(keyPress);
+    await expect.poll(async () => (await actorState(gm, fixture.actor)).resource[key]).toBe(expected);
+    await owner.evaluate(id => game.actors.get(id).sheet.controller.settle(), fixture.actor);
+    await expect(input).toHaveValue(String(expected));
+  }
+  await changeResource(hp, "-2", "hp", 6);
+  await changeResource(hp, "+1", "hp", 7);
+  await changeResource(hp, "5", "hp", 5, "Tab");
+  await changeResource(sp, "+99", "sp", beforePortrait.maxSp);
+  await changeResource(sp, "-1", "sp", beforePortrait.maxSp - 1);
+  passed("Signed HP and SP edits updated the Actor, clamped at the resource limit, and left unsigned values absolute.");
+
+  const beforeLearning = await actorState(gm, fixture.actor);
+  const targetPurchases = beforeLearning.purchased.filter(id => !["armor", "armor:harness:1", "restoration:0"].includes(id));
+  assert(removedItems.every(id => beforeLearning.abilities.includes(id)));
+  assert(beforeLearning.gear.some(item => item.id === fixture.grant));
+  assert(beforeLearning.gear.some(item => item.id === fixture.custom));
+  await sheet.getByRole("tab", { name: "Development" }).click();
+  await sheet.getByRole("button", { name: "Spend DP", exact: true }).click();
+  await expect(sheet.getByRole("heading", { name: "Level 1 learning" })).toBeVisible();
+  await sheet.getByText("Learning at this level", { exact: true }).click();
+  await sheet.getByRole("button", { name: "Remove Armor", exact: true }).click();
+  await expect(sheet.locator('[data-build-id="armor:harness:1"]')).toHaveCount(0);
+  const learningSummary = sheet.getByText("Learning at this level", { exact: true });
+  if (!await learningSummary.evaluate(summary => summary.parentElement.open)) await learningSummary.click();
+  await sheet.getByRole("button", { name: "Remove Restoration I", exact: true }).click();
+
+  await expect.poll(async () => (await actorState(gm, fixture.actor)).pending).toEqual(targetPurchases);
+  const draft = await actorState(gm, fixture.actor);
+  assert(draft.pending);
+  assert(removedItems.every(id => draft.abilities.includes(id)));
+  await owner.evaluate(id => game.actors.get(id).sheet.close(), fixture.actor);
+  await openHero(owner, fixture.actor);
+  await expect(sheet.getByRole("heading", { name: "Level 1 learning" })).toBeVisible();
+  await sheet.getByRole("button", { name: "Save development", exact: true }).click();
+  await expect(sheet.getByRole("tab", { name: "Development" })).toHaveAttribute("aria-selected", "true");
+  const saved = await actorState(gm, fixture.actor);
+  assert.equal(saved.pending, null);
+  assert.equal(saved.mode, "sheet");
+  assert.deepEqual(saved.purchased, targetPurchases);
+  assert.deepEqual(saved.abilities.sort(), beforeLearning.abilities.filter(id => !removedItems.includes(id)).sort());
+  assert.deepEqual(saved.gear, beforeLearning.gear);
+  assert.deepEqual(saved.resource, beforeLearning.resource);
+  passed("Level-one development drafts reopen. Saving forgets the dependent ability and two spells, while preserving owned gear and spent resources.");
+
+  await owner.reload();
+  await owner.waitForFunction(() => globalThis.game?.ready, null, { timeout: 60000 });
+  await openHero(owner, fixture.actor);
+  await expect(sheet.getByRole("tab", { name: "Development" })).toHaveAttribute("aria-selected", "true");
+  const reopened = await actorState(owner, fixture.actor);
+  reopened.abilities.sort();
+  assert.deepEqual(reopened, saved);
+  passed("Reloading Foundry and reopening the same Actor retained the learning changes, gear, portrait, and current HP/SP.");
+  assert.deepEqual(evidence.errors, []);
+} catch (error) {
+  evidence.failure = error.stack;
+  await owner?.screenshot({ path: resolve(output, "failure.png") }).catch(() => {});
+  throw error;
+} finally {
+  await owner?.close();
+  try {
+    await gm?.evaluate(async () => {
+      const state = globalThis.__playtestWorkshop337;
+      if (!state) return;
+      const actor = game.actors.get(state.actor);
+      const receipts = state.actor ? game.messages.filter(message =>
+        message.getFlag("heroes-of-legend", "nativeWorkshopRequest")?.actorUuid === `Actor.${state.actor}`).map(message => message.id) : [];
+      if (receipts.length) await ChatMessage.deleteDocuments(receipts);
+      await actor?.delete();
+      await game.users.get(state.user)?.delete();
+    });
+  } catch (error) {
+    evidence.cleanupFailure = error.stack;
+    process.exitCode = 1;
+  }
+  await writeFile(resolve(output, "evidence.json"), JSON.stringify(evidence, null, 2) + "\n");
+  await browser.close();
+}

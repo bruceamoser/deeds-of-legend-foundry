@@ -5,7 +5,7 @@ import { dirname, posix } from "node:path";
 import { fileURLToPath } from "node:url";
 import { stableFoundryId } from "./content/item-packs.mjs";
 import { chapterContentsHTML } from "./content/journal-sections.mjs";
-import { renderMarkdown } from "../src/sheets/creature-reference.mjs";
+import { renderMarkdown } from "../src/rules/authored-markdown.mjs";
 
 const root = new URL("../", import.meta.url);
 const lock = JSON.parse(await readFile(new URL("content/native-journals-source-lock.json", root)));

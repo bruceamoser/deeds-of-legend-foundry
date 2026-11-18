@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Brawn</dd></div><div><dt>Range</dt><dd>An adjacent obstacle, grapple, or creature</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>**Action:** Main Action · **Attribute:** Brawn</p><p>**Target / range / shape:** An adjacent obstacle, grapple, or creature</p><p>Before rolling, choose to reduce an obstacle’s remaining strength, reduce your own Grappled rating, or push a creature. The DA establishes any obstacle target. At Grappled 3 or higher, escape requires release by a grappler or an outside intervention that breaks the hold.</p><p>- **Weak:** Add 1 progress, reduce Grappled by 1, or push 1 square.<br>- **Standard:** Add 2 progress, reduce Grappled by 2, or push 2 squares.<br>- **Strong:** Add 3 progress, reduce Grappled by 3, or push 3 squares.</p><p>**Stability:** apply it only to the push option, not obstacle progress or Grappled reduction.</p><p>**Duration:** Instant</p><p>**Equipment / acquisition:** None.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Brawn</dd></div><div><dt>Range</dt><dd>An adjacent obstacle, grapple, or creature</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p><strong>Action:</strong> Main Action · <strong>Attribute:</strong> Brawn</p><p><strong>Target / range / shape:</strong> An adjacent obstacle, grapple, or creature</p><p>Before rolling, choose to reduce an obstacle’s remaining strength, reduce your own Grappled rating, or push a creature. The DA establishes any obstacle target. At Grappled 3 or higher, escape requires release by a grappler or an outside intervention that breaks the hold.</p><ul><li><strong>Weak:</strong> Add 1 progress, reduce Grappled by 1, or push 1 square.</li><li><strong>Standard:</strong> Add 2 progress, reduce Grappled by 2, or push 2 squares.</li><li><strong>Strong:</strong> Add 3 progress, reduce Grappled by 3, or push 3 squares.</li></ul><p><strong>Stability:</strong> apply it only to the push option, not obstacle progress or Grappled reduction.</p><p><strong>Duration:</strong> Instant</p><p><strong>Equipment / acquisition:</strong> None.</p>",
     "activity": {
       "action": "main",
       "rollMode": "attribute",
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "ability-force",
-      "sourceCommit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "ability",

@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { test } from "node:test";
-import { forgeEligibility, forgeLearning, learnForgeEntry } from "../src/rules/forge.mjs";
+import { forgeEligibility, forgeLearning, learnForgeEntry, refundForgePurchases } from "../src/rules/forge.mjs";
 import { workshopCatalogs } from "../src/rules/workshop-forge-catalog.mjs";
 import { workshopCharacter } from "../src/rules/workshop-character.mjs";
 import { readPortableCharacter, writePortableCharacter } from "../src/rules/portable-character.mjs";
@@ -59,6 +59,32 @@ test("Fencing and Tactics retain their imported starting choices, class prices a
   assert.equal(graph.nodes.find(node => node.id === "tactics:coordination:1").weaponRequirement, undefined);
 });
 
+test("Fencing and Tactics are starting options across classes, cultures, and backgrounds", () => {
+  for (const id of ["fencing", "tactics"]) {
+    assert.equal(graph.classes.filter(record => record.disciplineIds.includes(id)).length, 2);
+    assert.equal(graph.origins.filter(record => record.id.startsWith("origin-culture-") &&
+      record.pairs.some(pair => pair.disciplineId === id)).length, 2);
+    assert(graph.origins.filter(record => record.id.startsWith("origin-background-") &&
+      record.pairs.some(pair => pair.disciplineId === id)).length >= 2);
+  }
+  assert(graph.classes.every(record => record.disciplineIds.length === 4));
+  assert(graph.origins.every(record => record.pairs.length === 2));
+});
+
+test("a removed origin option does not give an imported hero an unchosen discipline", () => {
+  const draft = structuredClone(party[0].draft);
+  draft.culture = { id: "origin-culture-walled-communities", pair: 1 };
+  const file = JSON.parse(writePortableCharacter(draft, catalogs));
+  const current = readPortableCharacter(file, catalogs);
+  assert.equal(current.draft.culture.pair, 1);
+  assert(current.preview.state.learned.includes("tactics"));
+  file.sourceCommit = "6ed861864bd6398f4d40e18d12bc2c5378373a47";
+  const prior = readPortableCharacter(file, catalogs);
+  assert.equal(prior.draft.culture.pair, -1);
+  assert.equal(prior.preview.valid, false);
+  assert(!prior.preview.state.learned.includes("tactics"));
+});
+
 test("Direct Thrust trades damage for a safe step on Standard or Strong", () => {
   const effect = id => graph.nodes.find(node => node.id === id).effect;
   assert.match(effect("fencing:pointwork:1"), /1\/2\/4 physical damage\. On Standard or Strong, you may move 1 square after the attack without triggering movement reactions\./);
@@ -92,10 +118,33 @@ test("Forge keeps technique improvements on the same attack and teaches one spel
   assert.deepEqual(learning.abilities.map(({ id }) => id), ["arms:impact:1"]);
 });
 
+test("refunding a purchased discipline clears all its purchases and choices across levels", () => {
+  const draft = {
+    purchases: { 0: [], 1: [{ id: "elements" }, { id: "air:0" }, { id: "air:1" }, { id: "arms:impact:1" }] },
+    acquisitions: { "air:0": { languageId: "unused" }, "arms:impact:1": { weaponChoice: "unrelated" } },
+    progression: {
+      levels: {
+        2: { purchases: [{ id: "air:2" }], acquisitions: {} },
+        3: { purchases: [{ id: "air:3" }, { id: "air:4" }, { id: "arms:impact:2" }], acquisitions: { "air:4": { languageId: "unused" } } },
+      },
+    },
+  };
+  const refunded = refundForgePurchases(graph, draft, "elements");
+  assert.deepEqual(refunded.map(({id,level}) => [id,level]), [
+    ["elements",1],["air:0",1],["air:1",1],["air:2",2],["air:3",3],["air:4",3],
+  ]);
+  assert.deepEqual(draft.purchases[1], [{ id: "arms:impact:1" }]);
+  assert.deepEqual(draft.progression.levels[2].purchases, []);
+  assert.deepEqual(draft.progression.levels[3].purchases, [{ id: "arms:impact:2" }]);
+  assert.deepEqual(draft.acquisitions, { "arms:impact:1": { weaponChoice: "unrelated" } });
+  assert.deepEqual(draft.progression.levels[3].acquisitions, {});
+  assert.deepEqual(refundForgePurchases(graph, draft, "elements"), []);
+});
+
 test("canonical example heroes match current book numbers and survive a portable round trip", () => {
   const printed = [
-    [20, 4, 8, 8], [15, 3, 0, 7], [15, 7, 5, 7],
-    [13, 7, 9, 8], [13, 7, 7, 7], [13, 13, 15, 7],
+    [20, 4, 20, 9], [15, 3, 2, 9], [15, 7, 5, 7],
+    [13, 7, 4, 9], [13, 7, 19, 8], [13, 13, 15, 7],
   ];
   for (const [{ draft, id }, expected] of party.map((entry, index) => [entry, printed[index]])) {
     const preview = workshopCharacter(draft, catalogs);

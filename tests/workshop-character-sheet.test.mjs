@@ -4,6 +4,7 @@ import vm from 'node:vm';
 import {readFile} from 'node:fs/promises';
 import {rollCard,resourceCard} from '../src/rules/chat-cards.mjs';
 import {inventoryCheck} from '../src/rules/inventory.mjs';
+import {spellAttackOutcomes,resolvedAttackEffects} from '../src/rules/attack-outcomes.mjs';
 import {classifyRoll} from '../src/rules/roll.mjs';
 const source=(await readFile(new URL('../src/sheets/workshop-character.mjs',import.meta.url),'utf8')).replace(/^import .*\n/gm,'').replaceAll('export ','')+'\nglobalThis.Sheet=WorkshopCharacterSheet;';
 function fixture(overrides={}) {
@@ -12,16 +13,17 @@ function fixture(overrides={}) {
     constructor(){this.isEditable=true;const flags={};this.actor={testUserPermission:()=>true,items:[],getFlag:(namespace,key)=>flags[key],update:async changes=>{for(const [path,value]of Object.entries(changes)){const key=path.split('.').at(-1);if(key.startsWith('-='))delete flags[key.slice(2)];else flags[key]=value;}}};}
     async _prepareContext(){return {};}
     _replaceHTML(){calls.push('replace');}
-    async close(){calls.push('close');}
+    async _preClose(){}
+    async close(options){await this.beforeClose?.();await this._preClose(options);calls.push('close');}
   }
   class Roll {
-    constructor(formula){this.formula=formula;calls.push(formula);this.dice=[{results:[2,4,5,6].map(result=>({result}))}];}
+    constructor(formula){this.formula=formula;calls.push(formula);this.dice=[{results:[2,4,5,6].map((result,index)=>({result,active:formula.includes('kl3')?index<3:index>0}))}];}
     async evaluate(options){calls.push(options);return this;}
     async toMessage(data,options){calls.push({data,options});}
   }
   const context={foundry:{utils:{randomID:()=>"operation-test"},applications:{api:{HandlebarsApplicationMixin:cls=>cls},sheets:{ActorSheetV2:Base}},dice:{Roll}},
     game:{user:{id:'owner'},settings:{get:()=> 'blind'}},ChatMessage:{getSpeaker:()=>({actor:'hero'})},
-    queueMicrotask,structuredClone,CharacterSheet:Base,classifyRoll,rollCard,resourceCard,inventoryCheck,ui:{notifications:{info(){},error(){}}},
+    queueMicrotask,structuredClone,CharacterSheet:Base,classifyRoll,spellAttackOutcomes,resolvedAttackEffects,rollCard,resourceCard,inventoryCheck,ui:{notifications:{info(){},error(){}}},
     claimNativeWorkshopOperation:async(actor,operation)=>{await actor.update({"flags.heroes-of-legend.nativeWorkshopPendingRoll":operation});return operation;},
     updateNativeWorkshopOperation:async(actor,operation)=>{await actor.update({"flags.heroes-of-legend.nativeWorkshopPendingRoll":operation});return operation;},
     completeNativeWorkshopOperation:async(actor,id)=>actor.update({"flags.heroes-of-legend.-=nativeWorkshopPendingRoll":null}),
@@ -53,11 +55,43 @@ test('native acknowledged saves advance revision; explicit commit returns sheet'
   let state;sheet.controller={setState:value=>{state=value;}};
   await sheet.commitState({});assert.equal(sheet.revision,5);assert.equal(state.mode,'sheet');assert.equal(state.tab,'Main');
 });
+test('the shadow Workshop portrait uses inherited Actor editImage and saves only img',async()=>{
+  let observer,selected,changes;
+  class MutationObserver {
+    constructor(callback){observer=this;this.callback=callback;}
+    observe(image,options){this.image=image;this.options=options;}
+    disconnect(){this.disconnected=true;}
+  }
+  const {sheet}=fixture({MutationObserver,updateOwnedDocument:async(actor,update)=>{changes=update;}});
+  sheet.actor.img='old.webp';
+  const image={getAttribute:name=>name==='src'?selected:null,dataset:{edit:'img'}};
+  sheet.options={actions:{editImage(_event,target){
+    assert.equal(this,sheet);assert.equal(target,image);
+    selected='chosen.webp';observer.callback();
+  }}};
+  await sheet.editWorkshopPortrait(image);
+  assert.deepEqual(Object.keys(changes),['img']);assert.equal(changes.img,'chosen.webp');
+  assert.equal(observer.disconnected,true);
+});
 test('native frame preserves controller on document rerender and flushes before disposal',async()=>{
   const {sheet,calls}=fixture();sheet.element={querySelector:()=>({})};
   sheet.controller={flush:async()=>{calls.push('flush');},dispose:()=>{calls.push('dispose');}};
   sheet._replaceHTML({},null,{});assert.equal(calls.length,0);
   await sheet.close();assert.deepEqual(calls,['flush','dispose','close']);
+});
+test('a native render queued by an acknowledged draft save keeps its controller until teardown',async()=>{
+  const {sheet,calls}=fixture();
+  const controller={settle:async()=>{calls.push('save');},dispose:()=>{calls.push('dispose');}};
+  sheet.controller=controller;
+  sheet.element={querySelector:()=>({})};
+  sheet.beforeClose=()=>{
+    assert.equal(sheet.controller,controller);
+    sheet._replaceHTML({},null,{});
+    calls.push('render');
+  };
+  await sheet.close();
+  assert.equal(sheet.controller,null);
+  assert.deepEqual(calls,['save','render','dispose','close']);
 });
 test('older actors receive an invalid-current-rules entry without modifying documents',async()=>{
   const {sheet}=fixture();sheet.actor.items=[{id:'existing'}];
@@ -141,4 +175,11 @@ test('new hero entry creates a blank Actor without copying invalid character dat
   await context.Sheet.recreateWorkshop.call(sheet);
   assert.equal(created.name,'New hero');assert.equal(created.type,'character');
   assert.deepEqual(Object.keys(created).sort(),['name','type']);
+});
+
+test('cast budget rejection leaves no Workshop roll receipt', async()=>{
+  const {sheet}=fixture({prepareNativeActionCost:async()=>{throw new Error('Spend a Main Action on your turn.');}});
+  await assert.rejects(sheet.beginRollOperation('cast',true,'spell:flame:3'),/Spend a Main Action/);
+  assert.equal(sheet.actor.getFlag('heroes-of-legend','nativeWorkshopPendingRoll'),undefined);
+  assert.equal(sheet.preparedRollId,undefined);
 });

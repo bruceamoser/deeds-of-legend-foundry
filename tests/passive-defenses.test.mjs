@@ -513,12 +513,12 @@ test("a native custom ability without catalog flags does not disable damage or r
   );
 });
 
-test("current native armor snapshots change when worn equipment changes and ignore retired training Items",()=>{
+test("current native armor snapshots follow worn equipment regardless of training",()=>{
  const flags={nativeWorkshop:{portable:{format:'heroes-of-legend-character',schemaVersion:7,draft:{}}},forgeLearned:['armor:harness:3']};
  const armor={id:'armor',type:'equipment',system:{catalogId:'item-ordinary-medium-armor',worn:true,carried:true,quantity:1},getFlag:()=>null};
  const actor={type:'character',uuid:'Actor.armor',items:[armor],system:{health:{value:8,max:12}},getFlag:(_,key)=>flags[key]};
  const before=damageBasis(actor);assert.equal(before.passiveDefenses.resistances[0].value,2);assert.deepEqual(JSON.parse(JSON.stringify(before)),before);
  armor.system.worn=false;assert.deepEqual(damageBasis(actor).passiveDefenses.resistances,[]);
  armor.system.worn=true;flags.forgeLearned=[];actor.items.push({id:'old',type:'ability',getFlag:()=> 'ability-wear-medium-armor'});
- assert.deepEqual(damageBasis(actor).passiveDefenses.resistances,[]);
+ assert.equal(damageBasis(actor).passiveDefenses.resistances[0].value,2);
 });

@@ -224,7 +224,7 @@ try {
     await byLabel("Culture discipline").selectOption("0");
     await byLabel("Background").selectOption("origin-background-household-guard");
     await byLabel("Background discipline").selectOption("0");
-    await expect(byLabel("Culture").locator("option:checked")).toHaveText("Walled Communities — Armor / Guard");
+    await expect(byLabel("Culture").locator("option:checked")).toHaveText("Walled Communities — Armor / Tactics");
     await expect(byLabel("Background").locator("option:checked")).toHaveText(/^Household Guard — /);
     for (const benefits of await page.locator(".creation-benefits").all()) {
       await expect(benefits).toContainText("starting coins");
@@ -408,7 +408,8 @@ try {
 
     const fighter = JSON.parse(await readFile("Build-Offs/revised/builds/fighter-level-1.hol.json", "utf8"));
     const fighterDraft = fighter.draft;
-    fighterDraft.attributes = { brawn: 0, fortitude: 1, agility: 1, guile: 0, knowledge: 1, reason: 0 };
+    // The worn light armor retains DR 1 and reduces this untrained hero's Agility to +1.
+    fighterDraft.attributes = { brawn: 0, fortitude: 0, agility: 2, guile: 0, knowledge: 1, reason: 0 };
     fighterDraft.background = { id: "origin-background-company-runner", pair: 0 };
     fighterDraft.purchases[1] = [
       "fencing", "fencing:pointwork:1", "fencing:footwork:1", "arms:bladework:1",
@@ -445,7 +446,36 @@ try {
     await expect(byLabel("Roll Exploit the Opening I")).toBeEnabled();
     await loadFighter("builder");
     await stage(5);
-    await expect(panel).toContainText("Buy an Ordinary Melee Weapon with Hands set to 1");
+    await expect(panel).toContainText("Your learned techniques supply their ordinary gear.");
+    await expect(panel.getByRole("row").filter({ hasText: "Training equipment" }).filter({ hasText: "Ordinary Melee Weapon" })).toHaveCount(1);
+
+    fighterDraft.shopping.push(
+      { id: "item-ordinary-ranged-weapon", quantity: 1, hands: 2, instanceId: "shop-test-bow" },
+      { id: "item-ammunition-bundle", quantity: 1, instanceId: "shop-test-ammunition" },
+      { id: "item-water-flask", quantity: 1, instanceId: "shop-starter-water-flask" },
+    );
+    fighterDraft.coinOverride = true;
+    await loadFighter("sheet");
+    await tab("Inventory");
+    await expect(panel.locator(".inventory-stats")).toContainText("Armor DR 1");
+    await byLabel("Ammunition for Ordinary Ranged Weapon").selectOption("shop-test-ammunition");
+    const water = panel.locator('tr[data-instance="shop-starter-water-flask"]');
+    await expect(water).toContainText("1 person-day");
+    await water.getByRole("button", { name: "Drink", exact: true }).click();
+    await expect(water).toContainText("Empty");
+    await page.reload();
+    await expect(water).toContainText("Empty");
+    await expect(byLabel("Ammunition for Ordinary Ranged Weapon")).toHaveValue("shop-test-ammunition");
+    page.once("dialog", popup => popup.accept());
+    await water.getByRole("button", { name: "Refill", exact: true }).click();
+    await expect(water).toContainText("1 person-day");
+    await noOverflow("Inventory");
+    await tab("Abilities");
+    await filter("Basic actions").click();
+    await byLabel("Roll Basic Ranged").click();
+    await dialog.getByRole("button", { name: "Roll", exact: true }).click();
+    await expect(dialog.locator("#recipe-roll-result")).toContainText("Ammunition Bundle d8 rolled");
+    await page.keyboard.press("Escape");
 
     assert.deepEqual(failures, []);
     await rm(resolve(output, "failure.png"), { force: true });

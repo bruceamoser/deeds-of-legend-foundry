@@ -297,3 +297,7 @@
 .hol-chat-header {
   position: static;
 }
+
+.hol-chat-card .hol-chat-effect p {margin:0;}
+.hol-chat-card .hol-chat-effect p + p {margin-top:.3em;}
+.hol-chat-card .hol-chat-effect ul {margin:.25em 0;padding-inline-start:1.25em;}

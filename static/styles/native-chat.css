@@ -279,3 +279,7 @@ body.hol-theme #sidebar .message-content .hol-chat-card .hol-reference-rules :is
 .hol-chat-card .hol-chat-applied-status {
   font-size: 14px;
 }
+
+.message-content .hol-chat-card .hol-chat-effect p {margin:0;}
+.message-content .hol-chat-card .hol-chat-effect p + p {margin-top:.3em;}
+.message-content .hol-chat-card .hol-chat-effect ul {margin:.25em 0;padding-inline-start:1.25em;}
