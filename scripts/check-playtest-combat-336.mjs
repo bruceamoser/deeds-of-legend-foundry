@@ -28,7 +28,15 @@ async function join(name) {
   await selectTestUser(page,name);
   await page.locator("button[name=join]").click();
   await page.waitForFunction(()=>globalThis.game?.ready,null,{timeout:60000});
-  await page.evaluate(()=>foundry.nue.Tour.activeTour?.exit());
+  await page.evaluate(()=>{
+    foundry.nue.Tour.activeTour?.exit();
+    globalThis.__playtest336Notifications=[];
+    const original=ui.notifications.error.bind(ui.notifications);
+    ui.notifications.error=(message,...args)=>{
+      __playtest336Notifications.push(String(message));
+      return original(message,...args);
+    };
+  });
   return page;
 }
 async function revealChat(page,id) {
@@ -226,8 +234,11 @@ try {
     await defenseDialog.waitFor();
     await defenseDialog.locator('[name="adjustment"]').fill("0");
     const dodge=Number(await defenseDialog.locator("[data-roll-value]").innerText());
-    const face=total-dodge-8;
-    await fixedDice(roller,[4,4,face,4,4,face],async()=>{
+    const diceTotal=total-dodge;
+    const low=Math.floor(diceTotal/3);
+    const faces=[low,low,diceTotal-2*low];
+    assert(faces.every(face=>face>=1&&face<=6));
+    await fixedDice(roller,[...faces,...faces],async()=>{
       await defenseDialog.locator('[data-action="roll"]').click();
       await defenseDialog.waitFor({state:"detached"});
     });
@@ -303,6 +314,8 @@ try {
   assert.deepEqual(evidence.errors,[]);
 } catch(error) {
   evidence.failure=error.stack;
+  evidence.notifications=await Promise.allSettled([gm,player].filter(Boolean).map(page=>page.evaluate(()=>__playtest336Notifications)));
+  console.error(JSON.stringify(evidence.notifications));
   await Promise.allSettled([gm?.screenshot({path:resolve(rolls,"gm-failure.png")}),player?.screenshot({path:resolve(rolls,"player-failure.png")})]);
   throw error;
 } finally {
