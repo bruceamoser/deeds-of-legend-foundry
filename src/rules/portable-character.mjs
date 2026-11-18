@@ -3,6 +3,7 @@ import { normalizeWorkshopPlay } from "./workshop-play.mjs";
 import { ATTRIBUTES } from "./character.mjs";
 import { workshopCharacter } from "./workshop-character.mjs";
 import { currentAncestryId } from "./ancestry.mjs";
+import { removeDisconnectedForgePurchases } from "./forge.mjs";
 
 export const PORTABLE_FORMAT = "heroes-of-legend-character";
 export const PORTABLE_VERSION = 3;
@@ -269,6 +270,10 @@ const previousOriginSlots = {
 
 /** Import choices, never trusted derived statistics, executable content or Actor IDs. */
 export function readPortableCharacter(input, catalogs, languages) {
+  return parsePortableCharacter(input, catalogs, languages);
+}
+
+function parsePortableCharacter(input, catalogs, languages, levelOnly = false) {
   if (
     typeof input === "string" &&
     new TextEncoder().encode(input).length > MAX_CHARACTER_BYTES
@@ -438,6 +443,10 @@ export function readPortableCharacter(input, catalogs, languages) {
     if (typeof d.coinOverride !== "boolean") fail();
     draft.coinOverride = d.coinOverride;
   }
+  if (d.startingProvisionsChosen !== undefined) {
+    if (typeof d.startingProvisionsChosen !== "boolean") fail();
+    draft.startingProvisionsChosen = d.startingProvisionsChosen;
+  }
   for (const key of ["loadout", "basicActions"]) {
     if (d[key] === undefined) continue;
     if (!object(d[key]) || Object.keys(d[key]).length > 500) fail();
@@ -477,7 +486,7 @@ export function readPortableCharacter(input, catalogs, languages) {
       )
         fail();
       // Reuse the same bounded purchase/acquisition parser for every level.
-      const nested = readPortableCharacter(
+      const nested = parsePortableCharacter(
         {
           format: PORTABLE_FORMAT,
           schemaVersion,
@@ -491,6 +500,7 @@ export function readPortableCharacter(input, catalogs, languages) {
         },
         catalogs,
         languages,
+        true,
       ).draft;
       const signatures = {};
       if (entry.signatures !== undefined && !object(entry.signatures)) fail();
@@ -522,6 +532,11 @@ export function readPortableCharacter(input, catalogs, languages) {
     if (!strings(d.learningReview, 500)) fail();
     draft.learningReview = [...d.learningReview];
   }
+  // Revisit a level only after its earlier prerequisites have been parsed.
+  if (levelOnly) return { draft };
+  const refunded = removeDisconnectedForgePurchases(catalogs.forge, draft);
+  if (refunded.length)
+    draft.learningReview = [...new Set([...(draft.learningReview ?? []), ...refunded.map(({ id }) => id)])].slice(-500);
   const preview = workshopCharacter(draft, catalogs, languages);
   return { draft, preview };
 }

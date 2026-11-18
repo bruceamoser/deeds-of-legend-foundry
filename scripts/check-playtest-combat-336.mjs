@@ -28,7 +28,15 @@ async function join(name) {
   await selectTestUser(page,name);
   await page.locator("button[name=join]").click();
   await page.waitForFunction(()=>globalThis.game?.ready,null,{timeout:60000});
-  await page.evaluate(()=>foundry.nue.Tour.activeTour?.exit());
+  await page.evaluate(()=>{
+    foundry.nue.Tour.activeTour?.exit();
+    globalThis.__playtest336Notifications=[];
+    const original=ui.notifications.error.bind(ui.notifications);
+    ui.notifications.error=(message,...args)=>{
+      __playtest336Notifications.push(String(message));
+      return original(message,...args);
+    };
+  });
   return page;
 }
 async function revealChat(page,id) {
@@ -201,45 +209,54 @@ try {
   assert.equal(await cutChat.getByRole("button",{name:"Roll again",exact:true}).count(),0);
   await cutChat.getByRole("button",{name:"Apply Damage",exact:true}).click();
   await gm.waitForFunction(({f,hp})=>game.actors.get(f.adder).system.health.value<hp,{f:fixture,hp:adderBefore});
+  await gm.waitForFunction(id=>game.actors.get(id).effects.some(effect=>effect.getFlag("heroes-of-legend","condition")?.key==="bleeding"),fixture.adder);
   const condition=await gm.evaluate(id=>game.actors.get(id).effects.find(effect=>effect.getFlag("heroes-of-legend","condition")?.key==="bleeding")?.getFlag("heroes-of-legend","condition"),fixture.adder);
   assert.equal(condition?.rating,1);
   await gm.evaluate(({f,hp})=>game.actors.get(f.adder).update({"system.health.value":hp}),{f:fixture,hp:adderBefore});
   await closeSheet(player,fixture.fighter);
   pass("Learned weapon name, damage and Bleeding; exact native dice and dialog closure");
 
-  for(const [total,tier,amount] of [[14,"standard",5],[15,"strong",3]]) {
+  for(const {roller,defender,token,total,tier,amount} of [
+    {roller:gm,defender:fixture.adder,token:fixture.tokens.adder,total:14,tier:"standard",amount:5},
+    {roller:gm,defender:fixture.adder,token:fixture.tokens.adder,total:15,tier:"strong",amount:3},
+    {roller:player,defender:fixture.fighter,token:fixture.tokens.fighter,total:15,tier:"strong",amount:3},
+  ]) {
+    const beforeDefense=await getHp(gm,defender);
     const oath=await gm.evaluate(async f=>{
       const {declareCreatureAction}=await import("/systems/heroes-of-legend/services/npc-attacks.mjs");
       const actor=game.actors.get(f.guard);
       return (await declareCreatureAction(actor,actor.system.actions.entries.find(action=>action.name==="Oath blade").id)).id;
     },fixture);
-    await gm.evaluate(f=>canvas.tokens.get(f.tokens.adder).control({releaseOthers:true}),fixture);
-    const oathChat=await revealChat(gm,oath);
+    await roller.evaluate(id=>canvas.tokens.get(id).control({releaseOthers:true}),token);
+    const oathChat=await revealChat(roller,oath);
     await oathChat.getByRole("button",{name:"Defend",exact:true}).click();
-    const defenseDialog=gm.locator(".hol-roll-dialog");
+    const defenseDialog=roller.locator(".hol-roll-dialog");
     await defenseDialog.waitFor();
     await defenseDialog.locator('[name="adjustment"]').fill("0");
     const dodge=Number(await defenseDialog.locator("[data-roll-value]").innerText());
-    const face=total-dodge-8;
-    await fixedDice(gm,[4,4,face,4,4,face],async()=>{
+    const diceTotal=total-dodge;
+    const low=Math.floor(diceTotal/3);
+    const faces=[low,low,diceTotal-2*low];
+    assert(faces.every(face=>face>=1&&face<=6));
+    await fixedDice(roller,[...faces,...faces],async()=>{
       await defenseDialog.locator('[data-action="roll"]').click();
       await defenseDialog.waitFor({state:"detached"});
     });
-    const defense=await gm.evaluate(oath=>game.messages.find(message=>message.getFlag("heroes-of-legend","roll")?.attackMessageId===oath)?.id,oath);
+    const defense=await roller.evaluate(oath=>game.messages.find(message=>message.getFlag("heroes-of-legend","roll")?.attackMessageId===oath)?.id,oath);
     assert(defense);
-    const defenseResult=await snapshot(gm,defense);
+    const defenseResult=await snapshot(roller,defense);
     assert.equal(defenseResult.total,total);assert.equal(defenseResult.tier,tier);
     assert.deepEqual(defenseResult.attackOutcome.components,[{type:"physical",amount}]);
-    const defenseChat=await revealChat(gm,defense);
+    const defenseChat=await revealChat(roller,defense);
     if(tier==="standard")assert.match(await defenseChat.innerText(),/Push 1/);
     else assert.doesNotMatch(await defenseChat.innerText(),/Push 1/);
     assert.equal(await defenseChat.getByRole("button",{name:"Roll again",exact:true}).count(),0);
     await defenseChat.getByRole("button",{name:"Apply Damage",exact:true}).click();
     await gm.waitForFunction(id=>game.messages.some(message=>message.getFlag("heroes-of-legend","explicitDamageResult")?.sourceMessageId===id),defense);
-    assert((await getHp(gm,fixture.adder))<adderBefore);
-    await gm.evaluate(({f,hp})=>game.actors.get(f.adder).update({"system.health.value":hp}),{f:fixture,hp:adderBefore});
+    assert((await getHp(gm,defender))<beforeDefense);
+    await gm.evaluate(({defender,hp})=>game.actors.get(defender).update({"system.health.value":hp}),{defender,hp:beforeDefense});
   }
-  pass("DA-controlled NPC defense at 14 Standard and 15 Strong; correct Push and damage");
+  pass("DA and player defenses use the correct 14 Standard and 15 Strong cutoffs, Push and damage");
 
   await turn("finish");
   await gm.waitForFunction(f=>!game.combats.get(f.combat).getFlag("heroes-of-legend","encounter")?.current,fixture);
@@ -249,6 +266,9 @@ try {
   await gm.waitForFunction(f=>!game.combats.get(f.combat).getFlag("heroes-of-legend","encounter")?.current,fixture);
   await turn("choose",{id:fixture.participants.sorcerer});
   await gm.waitForFunction(f=>game.combats.get(f.combat).getFlag("heroes-of-legend","encounter")?.current===f.participants.sorcerer,fixture);
+  await gm.evaluate(f=>game.actors.get(f.sorcerer).update({
+    "flags.heroes-of-legend.nativeWorkshopPendingRoll":{id:"legacy-cast",status:"prepared",kind:"cast",authorId:Object.keys(game.actors.get(f.sorcerer).ownership).find(id=>id!=="default")},
+  }),fixture);
   await openSheet(player,fixture.sorcerer);
   const before=await player.evaluate(id=>game.actors.get(id).system.sp.value,fixture.sorcerer);
   await player.locator('.hol-workshop-character [data-action="cast-spell"][data-id="spell:flame:3"]').click();
@@ -262,9 +282,10 @@ try {
   const after=await player.evaluate(f=>{
     const actor=game.actors.get(f.sorcerer),encounter=game.combats.get(f.combat).getFlag("heroes-of-legend","encounter");
     return {sp:actor.system.sp.value,pending:Boolean(actor.getFlag("heroes-of-legend","nativeWorkshopPendingRoll")),
+      phases:Object.values(actor.getFlag("heroes-of-legend","nativeWorkshopRolls") ?? {}).map(roll=>roll.status).sort(),
       main:encounter.budgets[f.participants.sorcerer].remaining.main};
   },fixture);
-  assert.deepEqual(after,{sp:before-1,pending:false,main:0});
+  assert.deepEqual(after,{sp:before-1,pending:false,phases:["complete","interrupted"],main:0});
   await closeSheet(player,fixture.sorcerer);
   pass("First paid spell cast spends one SP and Main Action without a stranded receipt");
 
@@ -293,6 +314,8 @@ try {
   assert.deepEqual(evidence.errors,[]);
 } catch(error) {
   evidence.failure=error.stack;
+  evidence.notifications=await Promise.allSettled([gm,player].filter(Boolean).map(page=>page.evaluate(()=>__playtest336Notifications)));
+  console.error(JSON.stringify(evidence.notifications));
   await Promise.allSettled([gm?.screenshot({path:resolve(rolls,"gm-failure.png")}),player?.screenshot({path:resolve(rolls,"player-failure.png")})]);
   throw error;
 } finally {

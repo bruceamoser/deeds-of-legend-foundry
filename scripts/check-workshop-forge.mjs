@@ -277,6 +277,26 @@ try {
   const kept = [...refunded.purchases[1], ...Object.values(refunded.progression.levels).flatMap(level => level.purchases)];
   assert(kept.some(({ id }) => id === "arms:bladework:7"));
   assert(!kept.some(({ id }) => id === "elements" || id.startsWith("air:")));
+
+  await action("sheet-development").filter({ hasText: "Back to development" }).click();
+  const beforeOriginEdit = Number(await page.locator('[data-dp="current"]').innerText());
+  await action("review").click();
+  await stage(2).click();
+  await page.getByLabel("Background", { exact: true }).selectOption("origin-background-bargain-keeper");
+  assert((await data()).character.draft.purchases[1].some(({ id }) => id === "arms:bladework:1"));
+  await page.getByLabel("Background discipline", { exact: true }).selectOption("0");
+  await stage(4).click();
+  await expect(action("forge-filter", "arms")).toHaveCount(0);
+  const afterOriginEdit = (await data()).character.draft;
+  assert(![...afterOriginEdit.purchases[1], ...Object.values(afterOriginEdit.progression.levels).flatMap(level => level.purchases)].some(({ id }) => id.startsWith("arms:bladework:")));
+  await stage(6).click();
+  await expect(heading("Character plan ready")).toBeVisible();
+  await page.reload();
+  await heading("Character plan ready").waitFor();
+  await action("sheet").filter({ hasText: "View character sheet" }).click();
+  await openDevelopment();
+  await expect(page.locator('[data-dp="current"]')).toHaveText(String(beforeOriginEdit + 21));
+
   // Auxiliary published pages share this catalog and must survive revised techniques.
   await page.setViewportSize({width:1100,height:800});
   await page.goto(new URL("roll.html", base).href);
@@ -291,7 +311,7 @@ try {
     assert((await page.locator("body").innerText()).trim().length>30, `${file} renders content`);
   }
   assert.deepEqual(failures, []);
-  console.log("PASS Workshop Forge: single creation pool, distinct origin/class access, learning gates, spellbook and martial mastery, list unlearn across levels, save/reload/import, and narrow layout.");
+  console.log("PASS Workshop Forge: single creation pool, distinct origin/class access, learning gates, spellbook and martial mastery, list unlearn and granted-discipline refunds across levels, save/reload/import, and narrow layout.");
 } catch (error) {
   console.error("Browser errors:", failures);
   throw error;

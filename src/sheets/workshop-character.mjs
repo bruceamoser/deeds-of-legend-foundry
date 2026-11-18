@@ -20,7 +20,7 @@ import { classifyRoll } from '../rules/roll.mjs';
 import { resolvedAttackEffects,spellAttackOutcomes } from '../rules/attack-outcomes.mjs';
 import { writePortableCharacter } from '../rules/portable-character.mjs';
 import { loadNativeWorkshopState } from '../services/native-workshop-state.mjs';
-import {saveNativeWorkshopState,saveNativeWorkshopDraft,saveNativeWorkshopIdentity,commitNativeWorkshopCharacter,claimNativeWorkshopOperation,updateNativeWorkshopOperation,completeNativeWorkshopOperation,reconcileNativeWorkshopOperation} from '../services/native-workshop-coordinator.mjs';
+import {saveNativeWorkshopState,saveNativeWorkshopDraft,saveNativeWorkshopIdentity,commitNativeWorkshopCharacter,claimNativeWorkshopOperation,updateNativeWorkshopOperation,completeNativeWorkshopOperation,interruptNativeWorkshopOperation,nativeWorkshopRoll} from '../services/native-workshop-coordinator.mjs';
 const ID='heroes-of-legend';
 const {HandlebarsApplicationMixin}=foundry.applications.api;
 
@@ -29,7 +29,7 @@ export class WorkshopCharacterSheet extends HandlebarsApplicationMixin(foundry.a
   static DEFAULT_OPTIONS={
     classes:[ID,'hol-workshop-character'],position:{width:780,height:780},
     window:{resizable:true},form:{submitOnChange:false,closeOnSubmit:false},
-    actions:{startWorkshop:WorkshopCharacterSheet.startWorkshop,recreateWorkshop:WorkshopCharacterSheet.recreateWorkshop,reconcileRoll:WorkshopCharacterSheet.reconcileRoll},
+    actions:{startWorkshop:WorkshopCharacterSheet.startWorkshop,recreateWorkshop:WorkshopCharacterSheet.recreateWorkshop},
   };
   static PARTS={main:{template:'systems/heroes-of-legend/templates/workshop-character.hbs'}};
   controller=null;
@@ -200,7 +200,7 @@ export class WorkshopCharacterSheet extends HandlebarsApplicationMixin(foundry.a
     this.assertOwner();this.writing++;
     try {
       const resolvedImmediateDeathRoll=this.resolvedImmediateDeathRoll;
-      let next=await saveNativeWorkshopState(this.actor,saved,{expectedRevision:this.revision,resolvedImmediateDeathRoll,rollOperationId:this.preparedRollId,basePlay:basis.basePlay ?? this.basePlay,baseLoadout:basis.baseLoadout ?? this.baseLoadout});
+      let next=await saveNativeWorkshopState(this.actor,saved,{expectedRevision:this.revision,resolvedImmediateDeathRoll,basePlay:basis.basePlay ?? this.basePlay,baseLoadout:basis.baseLoadout ?? this.baseLoadout});
       if(resolvedImmediateDeathRoll) this.resolvedImmediateDeathRoll=undefined;
       this.revision=next.revision;
       this.nativeItems=next.nativeItems ?? this.nativeItems ?? [];
@@ -210,17 +210,19 @@ export class WorkshopCharacterSheet extends HandlebarsApplicationMixin(foundry.a
         const before=this.actor.getFlag(ID,'nativeWorkshop')?.portable?.draft;
         const draft=saved.character?.draft;
         if(before && draft && (before.name!==draft.name || (before.profile?.story ?? '')!==(draft.profile?.story ?? ''))) {
-          next=await saveNativeWorkshopIdentity(this.actor,saved.character,{expectedRevision:this.revision,rollOperationId:this.preparedRollId});
+          next=await saveNativeWorkshopIdentity(this.actor,saved.character,{expectedRevision:this.revision});
           this.revision=next.revision;
         }
       }
       if(this.pendingRollSave) {
         const id=this.pendingRollSave;
-        await completeNativeWorkshopOperation(this.actor,id);
-        if(this.preparedRollId===id)this.preparedRollId=undefined;
-        this.pendingRollSave=undefined;
+        this.forgetRoll(id);
+        await completeNativeWorkshopOperation(this.actor,id).catch(error=>console.warn('Workshop roll receipt:',error));
       }
       return next;
+    } catch(error) {
+      await this.interruptRoll();
+      throw error;
     } finally {this.finishWrite();}
   }
   async useWorkshopAbility(id) {
@@ -269,25 +271,22 @@ export class WorkshopCharacterSheet extends HandlebarsApplicationMixin(foundry.a
       throw error;
     }
   }
-  _getHeaderControls() {
-    return [...super._getHeaderControls(),{action:'reconcileRoll',label:'Reconcile pending Workshop roll',icon:'fa-solid fa-rotate'}];
+  forgetRoll(id) {
+    if(this.preparedRollId===id)this.preparedRollId=undefined;
+    if(this.pendingRollSave===id)this.pendingRollSave=undefined;
   }
-  static async reconcileRoll() {
-    try {
-      this.assertOwner();
-      const pending=this.actor.getFlag(ID,'nativeWorkshopPendingRoll');
-      if(!pending) return ui.notifications.info('No unresolved Workshop roll.');
-      const confirmed=await foundry.applications.api.DialogV2.confirm({window:{title:'Reconcile pending Workshop roll'},content:'<p>An earlier roll did not finish its acknowledged save. New rolls are blocked to prevent duplicate costs or dice. Inspect the chat and character, and correct any unapplied resources or death marks before clearing this marker. Clearing it does not roll again or refund costs.</p>'});
-      if(confirmed) {await reconcileNativeWorkshopOperation(this.actor,pending.id);if(this.preparedRollId===pending.id)this.preparedRollId=undefined;if(this.pendingRollSave===pending.id)this.pendingRollSave=undefined;}
-    } catch(error){ui.notifications.error(error.message);}
+  async interruptRoll(id=this.preparedRollId) {
+    if(!id)return;
+    this.forgetRoll(id);
+    await interruptNativeWorkshopOperation(this.actor,id).catch(error=>console.warn('Workshop roll receipt:',error));
   }
   async beginRollOperation(kind,willRoll=true,id) {
     this.assertOwner();
-    if(this.operationStarting || this.actor.getFlag(ID,'nativeWorkshopPendingRoll')) throw new Error('A Workshop use awaits reconciliation. Use Reconcile pending Workshop roll in the window menu before trying again.');
+    if(this.operationStarting || this.preparedRollId) throw new Error('This window is still processing a roll.');
     this.operationStarting=true;
+    const operation={id:foundry.utils.randomID(),status:'prepared',kind};
     try {
       await this.controller?.flush();
-      const operation={id:foundry.utils.randomID(),status:'prepared',kind,startedAt:Date.now()};
       if(kind==='cast'&&id)await prepareNativeActionCost(this.actor,id,operation.id,'cast');
       else await claimNativeWorkshopOperation(this.actor,operation);
       this.preparedRollId=operation.id;
@@ -297,8 +296,14 @@ export class WorkshopCharacterSheet extends HandlebarsApplicationMixin(foundry.a
   }
   async rollDice(request) {
     this.assertOwner();
-    const pending=this.actor.getFlag(ID,'nativeWorkshopPendingRoll');
-    if(pending && (pending.id!==this.preparedRollId || pending.status!=='prepared')) throw new Error('A Workshop roll awaits reconciliation. Use Reconcile pending Workshop roll in the window menu before rolling again.');
+    try {
+      return await this.evaluateWorkshopDice(request);
+    } catch (error) {
+      await this.interruptRoll();
+      throw error;
+    }
+  }
+  async evaluateWorkshopDice(request) {
     await this.controller?.flush();
     const {count,sides,net=0,kind}=request;
     const abilityId=request.activeRoll?.id;
@@ -314,7 +319,7 @@ export class WorkshopCharacterSheet extends HandlebarsApplicationMixin(foundry.a
     const modifier=kind==='supply' ? '' : attribute>=0 ? `+${attribute}` : String(attribute);
     const messageMode=game.settings.get('core','messageMode');
     if(this.host) this.host.hideRollResults=messageMode==='blind' && !game.user.isGM;
-    const prepared=pending ?? await this.beginRollOperation(kind);
+    const prepared=(this.preparedRollId && nativeWorkshopRoll(this.actor,this.preparedRollId)) || await this.beginRollOperation(kind);
     const operationId=prepared.id;
     const operation={...prepared,status:'evaluating',kind,settings:{...request.activeRoll,key:request.attributeKey}};
     await updateNativeWorkshopOperation(this.actor,operation);
@@ -347,7 +352,10 @@ export class WorkshopCharacterSheet extends HandlebarsApplicationMixin(foundry.a
     await roll.toMessage({speaker:ChatMessage.getSpeaker({actor:this.actor}),...(content?{content}:{}),flags:{[ID]:flags}},{messageMode});
     if(kind==='death') this.resolvedImmediateDeathRoll=pendingDeathRoll;
     if(kind==='death' || kind==='supply') this.pendingRollSave=operationId;
-    else {await completeNativeWorkshopOperation(this.actor,operationId);if(this.preparedRollId===operationId)this.preparedRollId=undefined;}
+    else {
+      this.forgetRoll(operationId);
+      await completeNativeWorkshopOperation(this.actor,operationId).catch(error=>console.warn('Workshop roll receipt:',error));
+    }
     return faces;
   }
   async close(options={}) {

@@ -189,6 +189,11 @@ try {
     await expect(summary.locator(".creation-vitals")).not.toContainText(/\d+ (?:HP|SP)/);
     await expect(page.locator(".hero-header")).toHaveCount(0);
     await expect(page.getByRole("spinbutton", { name: "Current HP" })).toHaveCount(0);
+    await stage(5);
+    for (const item of ["food-bundle", "water-flask", "lighting-bundle", "lesser-healing-bottle"])
+      await expect(panel.locator(`tr[data-instance="shop-starter-${item}"]`)).toBeVisible();
+    await expect(panel.getByRole("button", { name: /Add starting provisions/ })).toHaveCount(0);
+    await stage(0);
     const heroName = byLabel("Character name");
     await heroName.fill(hero);
     await heroName.blur();
@@ -463,7 +468,7 @@ try {
     await expect(byLabel("Roll Exploit the Opening I")).toBeEnabled();
     await loadFighter("builder");
     await stage(5);
-    await expect(panel).toContainText("Your learned techniques supply their ordinary gear.");
+    await expect(panel).toContainText("Learned techniques supply their ordinary gear.");
     await expect(panel.getByRole("row").filter({ hasText: "Training equipment" }).filter({ hasText: "Ordinary Melee Weapon" })).toHaveCount(1);
 
     fighterDraft.shopping.push(
@@ -493,6 +498,33 @@ try {
     await dialog.getByRole("button", { name: "Roll", exact: true }).click();
     await expect(dialog.locator("#recipe-roll-result")).toContainText("Ammunition Bundle d8 rolled");
     await page.keyboard.press("Escape");
+
+    const historical = JSON.parse(await readFile("Build-Offs/revised/builds/rogue-level-1.hol.json", "utf8"));
+    const learnedSword = "inventory-learned-ordinary-melee-weapon";
+    Object.assign(historical.draft, {
+      background: { id: "origin-background-bargain-keeper", pair: 0 },
+      classDisciplines: ["fencing"],
+      purchases: { 0: [], 1: ["fencing:pointwork:1", "fencing:blade-contact:1", "subterfuge:locks:1"].map(id => ({ id })) },
+      shopping: [], loadout: {},
+      play: { inventory: { added: [{ id: "item-ordinary-melee-weapon", instanceId: learnedSword, quantity: 1 }], removed: [] } },
+    });
+    await page.evaluate(character => localStorage.setItem("hol.workshop.v1", JSON.stringify({ character, mode: "builder", step: 5 })), historical);
+    await page.reload();
+    await stage(5);
+    await expect(panel.locator(`tr[data-instance="${learnedSword}"]`)).toContainText("Training equipment");
+    await expect(panel.getByText("Ordinary Melee Weapon", { exact: true })).toHaveCount(1);
+    await expect(panel.getByText("Lock Tools", { exact: true })).toBeVisible();
+    const oldCoins = Number(await page.locator(".context-strip .inventory-stats strong").first().textContent());
+    await panel.getByRole("button", { name: "Add starting provisions · 37 coins", exact: true }).click();
+    await expect(page.locator(".context-strip .inventory-stats strong").first()).toHaveText(String(oldCoins - 37));
+    await stage(6);
+    await page.getByRole("button", { name: "View character sheet", exact: true }).click();
+    await tab("Inventory");
+    await expect(panel.getByRole("button", { name: "Sell Water Flask for 1 coin", exact: true })).toBeVisible();
+    page.once("dialog", popup => popup.accept());
+    await panel.getByRole("button", { name: "Sell Water Flask for 1 coin", exact: true }).click();
+    await expect(panel.locator('tr[data-instance="shop-starter-water-flask"]')).toHaveCount(0);
+    await expect(panel.locator(".inventory-stats strong").first()).toHaveText(String(oldCoins - 36));
 
     assert.deepEqual(failures, []);
     await rm(resolve(output, "failure.png"), { force: true });

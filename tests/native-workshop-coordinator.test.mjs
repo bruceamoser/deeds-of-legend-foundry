@@ -23,12 +23,33 @@ test('one actual GM authority queue rejects a stale simultaneous second client s
  const results=await Promise.allSettled([f.api.resolveNativeWorkshopRequest('first'),f.api.resolveNativeWorkshopRequest('second')]);assert.equal(results[0].status,'fulfilled');assert.equal(results[1].status,'rejected');assert.match(results[1].reason.message,/changed in another window/);assert.equal(f.actor.system.sp.value,7);assert.equal(f.calls,1);assert.equal(f.flags.nativeWorkshop.revision,1);
  await f.api.resolveNativeWorkshopRequest('first');assert.equal(f.calls,1);
 });
-test('competing roll claims serialize before dice/payment; the recorded owner controls phase updates',async()=>{
- const f=await fixture();f.message('claim1','claim-roll',{operation:{id:'roll1',status:'prepared',kind:'spell'}},f.owner);f.message('claim2','claim-roll',{operation:{id:'roll2',status:'prepared',kind:'spell'}},f.other);
- const result=await Promise.allSettled([f.api.resolveNativeWorkshopRequest('claim1'),f.api.resolveNativeWorkshopRequest('claim2')]);assert.equal(result[0].status,'fulfilled');assert.equal(result[1].status,'rejected');assert.match(result[1].reason.message,/already awaits reconciliation/);assert.equal(f.flags.nativeWorkshopPendingRoll.id,'roll1');assert.equal(f.actor.system.sp.value,10);
- f.message('foreign','roll-phase',{operation:{id:'roll1',status:'evaluating'}},f.other);await assert.rejects(f.api.resolveNativeWorkshopRequest('foreign'),/owner who started/);
- f.message('phase','roll-phase',{operation:{id:'roll1',status:'evaluating'}},f.owner);await f.api.resolveNativeWorkshopRequest('phase');assert.equal(f.flags.nativeWorkshopPendingRoll.status,'evaluating');
- f.message('finish','complete-roll',{id:'roll1'},f.owner);await f.api.resolveNativeWorkshopRequest('finish');assert.equal(f.flags.nativeWorkshopPendingRoll,undefined);
+test('an interrupted roll keeps its dice and cannot stop another roll or a character save',async()=>{
+ const f=await fixture();
+ f.flags.nativeWorkshopPendingRoll={id:'old',status:'evaluated',kind:'cast',faces:[4,5,6],authorId:f.owner.id};
+ f.message('save','save',{saved:{character:{draft:{play:{sp:7}}}}},f.owner);
+ await f.api.resolveNativeWorkshopRequest('save');
+ assert.equal(f.actor.system.sp.value,7);
+ assert.equal(f.flags.nativeWorkshopPendingRoll,undefined);
+ assert.deepEqual(f.flags.nativeWorkshopRolls.old,{id:'old',status:'interrupted',interruptedPhase:'evaluated',kind:'cast',faces:[4,5,6],authorId:f.owner.id});
+ f.message('claim1','claim-roll',{operation:{id:'roll1',status:'prepared',kind:'cast'}},f.owner);
+ f.message('claim2','claim-roll',{operation:{id:'roll2',status:'prepared',kind:'spell'}},f.other);
+ await Promise.all([f.api.resolveNativeWorkshopRequest('claim1'),f.api.resolveNativeWorkshopRequest('claim2')]);
+ f.message('foreign','roll-phase',{operation:{id:'roll1',status:'evaluating'}},f.other);
+ await assert.rejects(f.api.resolveNativeWorkshopRequest('foreign'),/owner who started/);
+ f.message('phase','roll-phase',{operation:{id:'roll1',status:'evaluating'}},f.owner);
+ await f.api.resolveNativeWorkshopRequest('phase');
+ f.message('evaluation','roll-phase',{operation:{id:'roll1',status:'evaluated',faces:[1,2,3]}},f.owner);
+ await f.api.resolveNativeWorkshopRequest('evaluation');
+ f.message('interrupt','interrupt-roll',{id:'roll1'},f.owner);
+ await f.api.resolveNativeWorkshopRequest('interrupt');
+ f.message('replay','claim-roll',{operation:{id:'roll1',status:'prepared',kind:'cast'}},f.owner);
+ await assert.rejects(f.api.resolveNativeWorkshopRequest('replay'),/already been started/);
+ assert.deepEqual(f.flags.nativeWorkshopRolls.roll1.faces,[1,2,3]);
+ assert.equal(f.flags.nativeWorkshopRolls.roll1.status,'interrupted');
+ assert.equal(f.flags.nativeWorkshopRolls.roll2.status,'prepared');
+ f.message('finish','complete-roll',{id:'roll2'},f.other);
+ await f.api.resolveNativeWorkshopRequest('finish');
+ assert.equal(f.flags.nativeWorkshopRolls.roll2.status,'complete');
 });
 test('observer, changed completed request and wrong executor cannot mutate the actor',async()=>{
  const f=await fixture();f.message('observer','claim-roll',{operation:{id:'roll1',status:'prepared'}},f.observer);await assert.rejects(f.api.resolveNativeWorkshopRequest('observer'),/Only the owner/);assert.equal(f.writes,0);
@@ -46,6 +67,20 @@ test('requester returns acknowledged actor state after lost private-chat acknowl
 });
 test('timed out requester retains its unresolved identity and refuses automatic resubmission',async()=>{
  const f=await fixture();f.enableRequests({process:false});let now=0;f.context.Date=class extends Date{static now(){return now+=30001;}};
- await assert.rejects(f.api.saveNativeWorkshopState(f.actor,{character:{draft:{play:{sp:7}}}},{expectedRevision:0}),/acknowledgement is delayed/);assert.equal(f.messages.size,1);
- await assert.rejects(f.api.saveNativeWorkshopState(f.actor,{character:{draft:{play:{sp:7}}}},{expectedRevision:0}),/still awaiting acknowledgement/);assert.equal(f.messages.size,1);assert.equal(f.calls,0);
+ await assert.rejects(f.api.saveNativeWorkshopState(f.actor,{character:{draft:{play:{sp:7}}}},{expectedRevision:0}),/did not confirm this Workshop action/);assert.equal(f.messages.size,1);
+ await assert.rejects(f.api.saveNativeWorkshopState(f.actor,{character:{draft:{play:{sp:7}}}},{expectedRevision:0}),/has not confirmed the previous change/);assert.equal(f.messages.size,1);assert.equal(f.calls,0);
+});
+
+test('an unacknowledged roll phase cannot block a fresh character save',async()=>{
+ const f=await fixture();
+ f.enableRequests({process:false});
+ let now=0;
+ f.context.Date=class extends Date{static now(){return now+=30001;}};
+ await assert.rejects(f.api.claimNativeWorkshopOperation(f.actor,{id:'lost-claim',status:'prepared',kind:'cast'}),/did not confirm/);
+ f.context.Date=Date;
+ f.enableRequests();
+ const result=await f.api.saveNativeWorkshopState(f.actor,{character:{draft:{play:{sp:7}}}},{expectedRevision:0});
+ assert.equal(result.revision,1);
+ assert.equal(f.calls,1);
+ assert.equal(f.messages.size,2);
 });

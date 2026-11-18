@@ -14,13 +14,27 @@ export const STARTING_PROVISIONS = Object.freeze([
   "item-food-bundle", "item-water-flask", "item-lighting-bundle", "item-lesser-healing-bottle",
 ]);
 
+const provisionInstanceId = id => `shop-starter-${id.slice(5)}`;
+
 export function startingProvisions() {
-  return STARTING_PROVISIONS.map(id => ({ id, quantity: 1, instanceId: `shop-starter-${id.slice(5)}` }));
+  return STARTING_PROVISIONS.map(id => ({ id, quantity: 1, instanceId: provisionInstanceId(id) }));
+}
+
+/** Offer a one-time repair for older heroes who never received the paid kit. */
+export function missingStartingProvisions(draft, items) {
+  if (draft.startingProvisionsChosen) return [];
+  const priorInstances = new Set([
+    ...(draft.shopping ?? []).map(item => item.instanceId),
+    ...(draft.play?.inventory?.removed ?? []),
+  ]);
+  if (STARTING_PROVISIONS.some(id => priorInstances.has(provisionInstanceId(id)))) return [];
+  return startingProvisions().filter(provision => !items.some(item =>
+    item.catalogId === provision.id && item.quantity > 0));
 }
 
 export function provisionSalePrice(item) {
   if (!item?.definition || !STARTING_PROVISIONS.includes(item.catalogId) ||
-      item.instanceId !== `shop-starter-${item.catalogId.slice(5)}` ||
+      item.instanceId !== provisionInstanceId(item.catalogId) ||
       item.quantity !== 1 || (item.inventoryDie ?? null) !== item.definition.inventoryDie ||
       (item.waterUnits ?? 1) !== 1) return 0;
   return Math.floor(item.definition.price / 2);

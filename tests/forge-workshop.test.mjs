@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { test } from "node:test";
-import { forgeEligibility, forgeLearning, learnForgeEntry, refundForgePurchases } from "../src/rules/forge.mjs";
+import { forgeEligibility, forgeLearning, learnForgeEntry, refundForgePurchases, removeDisconnectedForgePurchases } from "../src/rules/forge.mjs";
 import { workshopCatalogs } from "../src/rules/workshop-forge-catalog.mjs";
 import { workshopCharacter } from "../src/rules/workshop-character.mjs";
 import { readPortableCharacter, writePortableCharacter } from "../src/rules/portable-character.mjs";
@@ -139,6 +139,46 @@ test("refunding a purchased discipline clears all its purchases and choices acro
   assert.deepEqual(draft.acquisitions, { "arms:impact:1": { weaponChoice: "unrelated" } });
   assert.deepEqual(draft.progression.levels[3].acquisitions, {});
   assert.deepEqual(refundForgePurchases(graph, draft, "elements"), []);
+});
+
+test("replacing granted disciplines removes stranded techniques and spell sections from a saved draft", () => {
+  const draft = structuredClone(party[0].draft);
+  draft.classId = "class-blade";
+  draft.signatureId = "ability-signature-blade-cut-and-turn";
+  draft.classDisciplines = ["arms"];
+  draft.culture = { id: "origin-culture-free-harbors", pair: 1 };
+  draft.background = { id: "origin-background-bargain-keeper", pair: 1 };
+  draft.purchases = { 0: [], 1: ["arms:bladework:1", "arms:bladework:2", "emotion:0",
+    "perception:0", "subterfuge:locks:1", "armor", "armor:harness:1"].map(id => ({ id })) };
+  draft.progression = {
+    level: 2,
+    levels: { 2: { purchases: [{ id: "arms:bladework:3" }, { id: "emotion:1" }], acquisitions: { "emotion:1": {} }, signatures: {} } },
+  };
+  const saved = JSON.parse(writePortableCharacter(draft, catalogs, { ready: true }));
+  const prior = readPortableCharacter(saved, catalogs).preview;
+  saved.draft.classDisciplines = ["fencing"];
+  saved.draft.background.pair = 0;
+  const { draft: repaired, preview } = readPortableCharacter(saved, catalogs);
+  assert.ok(preview.valid, JSON.stringify(preview.errors));
+  assert.deepEqual(repaired.purchases[1].map(({ id }) => id), ["subterfuge:locks:1", "armor", "armor:harness:1"]);
+  assert.deepEqual(repaired.progression.levels[2].purchases, []);
+  assert.deepEqual(repaired.progression.levels[2].acquisitions, {});
+  assert.equal(preview.state.dp, prior.state.dp + 9);
+  assert.deepEqual(preview.state.learning.spells, []);
+  assert.ok(!preview.state.abilities.includes("arms:bladework:1"));
+  assert.deepEqual(readPortableCharacter(writePortableCharacter(repaired, catalogs), catalogs).draft, repaired);
+});
+
+test("an incomplete origin edit preserves learning while a new grant refunds a paid root only", () => {
+  const draft = structuredClone(party[0].draft);
+  draft.classDisciplines = ["guard"];
+  draft.culture = { id: "origin-culture-highland-holds", pair: -1 };
+  draft.purchases = { 0: [], 1: ["elements", "air:0", "armor:harness:1"].map(id => ({ id })) };
+  assert.deepEqual(removeDisconnectedForgePurchases(graph, draft), []);
+  assert.equal(draft.purchases[1].length, 3);
+  draft.culture.pair = 0;
+  assert.deepEqual(removeDisconnectedForgePurchases(graph, draft), [{ id: "elements", level: 1 }, { id: "armor:harness:1", level: 1 }]);
+  assert.deepEqual(draft.purchases[1], [{ id: "air:0" }]);
 });
 
 test("canonical example heroes match current book numbers and survive a portable round trip", () => {

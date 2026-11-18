@@ -1,4 +1,4 @@
-import {updateNativeWorkshopOperation,completeNativeWorkshopOperation} from './native-workshop-coordinator.mjs';
+import {updateNativeWorkshopOperation,completeNativeWorkshopOperation,interruptNativeWorkshopOperation,nativeWorkshopRoll} from './native-workshop-coordinator.mjs';
 import {tracksConsumable} from "./consumables.mjs";
 import {assertSummonPresent} from "../rules/summon-profile.mjs";
 import {summonAttackConfiguration} from "../rules/creature-sheet-profile.mjs";
@@ -43,39 +43,46 @@ export async function rollPrepared(actor, basis, draft) {
     ammunition = rangedAmmunition(actor,draft.rangedWeaponItemId);
   }
   let nativeAttackOperationId;
-  if (actor.type === "character" && ability?.attack && ability.weaponKind && draft.abilityItemId) {
-    draft.nativeAttackOperationId ??= foundry.utils.randomID();
-    nativeAttackOperationId = draft.nativeAttackOperationId;
-    await (await import("./abilities.mjs")).prepareNativeBasicAttack(actor,draft.abilityItemId,nativeAttackOperationId,current.actorTokenUuid);
-    const operation = actor.getFlag("heroes-of-legend","nativeWorkshopPendingRoll");
-    await updateNativeWorkshopOperation(actor,{...operation,status:"evaluating"});
+  try {
+    if (actor.type === "character" && ability?.attack && ability.weaponKind && draft.abilityItemId) {
+      draft.nativeAttackOperationId ??= foundry.utils.randomID();
+      nativeAttackOperationId = draft.nativeAttackOperationId;
+      await (await import("./abilities.mjs")).prepareNativeBasicAttack(actor,draft.abilityItemId,nativeAttackOperationId,current.actorTokenUuid);
+      const operation = nativeWorkshopRoll(actor,nativeAttackOperationId);
+      await updateNativeWorkshopOperation(actor,{...operation,status:"evaluating"});
+    }
+    const mode = game.settings.get("core", "messageMode");
+    const {roll,snapshot} = await evaluateRoll(actor,current,draft,{
+      ability,equipment,references,plan:prepared,rollerId:game.user.id,allowInteractive:mode!=="blind",
+    });
+    if(nativeAttackOperationId){
+      const operation=nativeWorkshopRoll(actor,nativeAttackOperationId);
+      await updateNativeWorkshopOperation(actor,{...operation,status:'evaluated',faces:roll.dice[0].results.filter(result=>!result.rerolled).map(result=>result.result),formula:roll.formula});
+    }
+    const message = await roll.toMessage(
+      {
+        speaker: ChatMessage.getSpeaker({ actor }),
+        flavor: game.i18n.localize(
+          `HOL.Attributes.${prepared.resolvedAttributeKey ?? basis.attributeKey}`,
+        ),
+        flags: { "heroes-of-legend": { roll: snapshot } },
+      },
+      { messageMode: mode },
+    );
+    if (ammunition && tracksConsumable(ammunition.ammo)) {
+      try {
+        const {consumeOwnedSupply} = await import("./inventory.mjs");
+        await consumeOwnedSupply(actor,ammunition.ammo,{operationId:message.id,label:ammunition.ammo.name});
+      } catch(error) { ui.notifications.error(`Attack rolled; ammunition check failed: ${error.message}`); }
+    }
+    if(nativeAttackOperationId)await completeNativeWorkshopOperation(actor,nativeAttackOperationId).catch(error=>console.warn('Workshop attack receipt:',error));
+    return message;
+  } catch (error) {
+    if (nativeAttackOperationId) await interruptNativeWorkshopOperation(actor,nativeAttackOperationId).catch(recoveryError=>console.warn('Workshop attack receipt:',recoveryError));
+    throw error;
+  } finally {
+    if(nativeAttackOperationId) delete draft.nativeAttackOperationId;
   }
-  const mode = game.settings.get("core", "messageMode");
-  const {roll,snapshot} = await evaluateRoll(actor,current,draft,{
-    ability,equipment,references,plan:prepared,rollerId:game.user.id,allowInteractive:mode!=="blind",
-  });
-  if(nativeAttackOperationId){
-    const operation=actor.getFlag('heroes-of-legend','nativeWorkshopPendingRoll');
-    await updateNativeWorkshopOperation(actor,{...operation,status:'evaluated',faces:roll.dice[0].results.filter(result=>!result.rerolled).map(result=>result.result),formula:roll.formula});
-  }
-  const message = await roll.toMessage(
-    {
-      speaker: ChatMessage.getSpeaker({ actor }),
-      flavor: game.i18n.localize(
-        `HOL.Attributes.${prepared.resolvedAttributeKey ?? basis.attributeKey}`,
-      ),
-      flags: { "heroes-of-legend": { roll: snapshot } },
-    },
-    { messageMode: mode },
-  );
-  if (ammunition && tracksConsumable(ammunition.ammo)) {
-    try {
-      const {consumeOwnedSupply} = await import("./inventory.mjs");
-      await consumeOwnedSupply(actor,ammunition.ammo,{operationId:message.id,label:ammunition.ammo.name});
-    } catch(error) { ui.notifications.error(`Attack rolled; ammunition check failed: ${error.message}`); }
-  }
-  if(nativeAttackOperationId){await completeNativeWorkshopOperation(actor,nativeAttackOperationId);delete draft.nativeAttackOperationId;}
-  return message;
 }
 async function validatedRollAbility(actor,draft) {
   assertSummonPresent(actor);
