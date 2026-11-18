@@ -1,0 +1,48 @@
+{
+  "_key": "!items!2aae9cc4472a928c",
+  "_id": "2aae9cc4472a928c",
+  "name": "Passing Step III",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div><div><dt>Equipment</dt><dd>Wield a suitable one-handed melee weapon.</dd></div></dl><p>One square of Passing Step may cross a square occupied by a willing ally. You must end in a legal unoccupied square.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "fencing:footwork:3",
+      "sourceCommit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "fencing:footwork:3",
+        "level": 1,
+        "cost": 2,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "One square of Passing Step may cross a square occupied by a willing ally. You must end in a legal unoccupied square.",
+        "improves": "fencing:footwork:1",
+        "requires": [
+          "fencing:footwork:2"
+        ],
+        "bookId": null,
+        "weaponRequirement": "one-handed-melee"
+      }
+    }
+  },
+  "effects": []
+}

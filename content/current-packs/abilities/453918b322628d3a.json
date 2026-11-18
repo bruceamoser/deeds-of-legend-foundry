@@ -1,0 +1,47 @@
+{
+  "_key": "!items!453918b322628d3a",
+  "_id": "453918b322628d3a",
+  "name": "On My Signal III",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Each ally moving with On My Signal may move up to 3 squares.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "tactics:contingencies:6",
+      "sourceCommit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "tactics:contingencies:6",
+        "level": 3,
+        "cost": 4,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Each ally moving with On My Signal may move up to 3 squares.",
+        "improves": "tactics:contingencies:4",
+        "requires": [
+          "tactics:contingencies:5"
+        ],
+        "bookId": null
+      }
+    }
+  },
+  "effects": []
+}

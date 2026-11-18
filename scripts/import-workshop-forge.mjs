@@ -158,7 +158,7 @@ for (const [path, data] of Object.entries(filesToWrite)) {
   if (process.argv.includes("--check")) assert.equal(await readFile(target, "utf8"), text, path);
   else await writeFile(target, text);
 }
-const tokens = ["divination", "elements", "force", "invocation", "mentalism", "spellcraft", "wards"];
+const tokens = ["divination", "elements", "fencing", "force", "invocation", "mentalism", "spellcraft", "tactics", "wards"];
 for (const id of tokens) {
   const token = authored(`design/player-book/art/tokens/${id}.svg`).markdown;
   const target = new URL(`web/assets/${id}.svg`, root);

@@ -1,0 +1,48 @@
+{
+  "_key": "!items!3df2dea0d5814584",
+  "_id": "3df2dea0d5814584",
+  "name": "Exploit the Opening I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div><div><dt>Equipment</dt><dd>Wield a melee weapon.</dd></div></dl><p>Main Action · Knowledge. Attack one visible adjacent enemy for 1/3/4 physical damage. On Strong, one willing ally adjacent to that enemy may move 1 square after the attack, following the usual movement reactions.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "1 physical damage",
+      "standard": "3 physical damage",
+      "strong": "4 physical damage"
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "tactics:openings:1",
+      "sourceCommit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "technique",
+        "nodeId": "tactics:openings:1",
+        "level": 1,
+        "cost": 1,
+        "action": "Main Action",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": "Knowledge",
+        "defenseAttribute": null,
+        "effect": "Main Action · Knowledge. Attack one visible adjacent enemy for 1/3/4 physical damage. On Strong, one willing ally adjacent to that enemy may move 1 square after the attack, following the usual movement reactions.",
+        "improves": null,
+        "requires": [
+          "tactics"
+        ],
+        "bookId": null,
+        "weaponRequirement": "melee"
+      }
+    }
+  },
+  "effects": []
+}

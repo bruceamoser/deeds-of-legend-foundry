@@ -1,6 +1,6 @@
 # Aldren Vowkeeper: paladin after the rewrite
 
-Pinned authored source `f71eac4c46fce6906d6dfbd1638ee98b10a6c538`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../paladin.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
+Pinned authored source `6ed861864bd6398f4d40e18d12bc2c5378373a47`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../paladin.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
 
 ## What the rewrite changes
 
@@ -68,7 +68,7 @@ Once on your turn, declare Oathstrike and pay 1 SP before a melee weapon attack 
 **Useful actions and improvements:**
 
 - **Light Armor I:** Passive. You are trained to wear light armor; the suit supplies physical resistance 1. Ignore 1 Bulk from worn armor when calculating encumbrance, minimum 0 armor Bulk. This does not change its inventory size.
-- **Measured Cut I:** Main Action · Brawn. Attack one adjacent creature for 2/3/5 physical damage. On Strong, you may move 1 square after the attack. Measured Cut deals 3/4/6 physical damage.
+- **Measured Cut I:** Main Action · Brawn or Agility, chosen before rolling. Attack one adjacent creature for 2/3/5 physical damage. On Strong, you may move 1 square after the attack. Measured Cut deals 3/4/6 physical damage.
 - **Blade Ward I:** Reaction. After resolving your defense against a melee attack, before taking its damage, reduce that attack’s damage by 2 after resistance, respecting the attack minimum. No roll.
 - **Driving Opening I:** Maneuver. Choose one visible creature. Before your turn ends, your next Main Action melee weapon attack against it also pushes it 1 square directly away from your attack position on Strong. This modifies one attack, not each target of a sweep. Reusing this technique replaces its unused effect.
 
@@ -130,7 +130,7 @@ This magical weapon modifier is not a separate spell casting and requires no fre
 **Useful actions and improvements:**
 
 - **Light Armor I:** Passive. You are trained to wear light armor; the suit supplies physical resistance 1. Ignore 1 Bulk from worn armor when calculating encumbrance, minimum 0 armor Bulk. This does not change its inventory size.
-- **Measured Cut I:** Main Action · Brawn. Attack one adjacent creature for 2/3/5 physical damage. On Strong, you may move 1 square after the attack. Measured Cut deals 3/4/6 physical damage. Measured Cut also applies Bleeding 1 on Strong.
+- **Measured Cut I:** Main Action · Brawn or Agility, chosen before rolling. Attack one adjacent creature for 2/3/5 physical damage. On Strong, you may move 1 square after the attack. Measured Cut deals 3/4/6 physical damage. Measured Cut also applies Bleeding 1 on Strong.
 - **Blade Ward I:** Reaction. After resolving your defense against a melee attack, before taking its damage, reduce that attack’s damage by 2 after resistance, respecting the attack minimum. No roll.
 - **Driving Opening I:** Maneuver. Choose one visible creature. Before your turn ends, your next Main Action melee weapon attack against it also pushes it 1 square directly away from your attack position on Strong. This modifies one attack, not each target of a sweep. Reusing this technique replaces its unused effect.
 - **Sweeping Blade I:** Main Action · Brawn. Attack up to three adjacent enemies. Roll once; each takes 1/2/4 physical damage. Each creature is struck once. Sweeping Blade deals 2/3/5 physical damage to each target. Sweeping Blade also pushes each target 1 square directly away on Strong. Resolve collisions normally.
@@ -221,7 +221,7 @@ This is a spell costing 2 SP, usable once per scene. You may have one threshold 
 **Useful actions and improvements:**
 
 - **Light Armor I:** Passive. You are trained to wear light armor; the suit supplies physical resistance 1. Ignore 1 Bulk from worn armor when calculating encumbrance, minimum 0 armor Bulk. This does not change its inventory size. While wearing armor you are trained to use, gain 1 Boon on rolls to resist forced movement. This is not additional resistance or Stability. You are also trained to wear medium armor; the suit supplies physical resistance 2. Your Speed increases by 1 while wearing armor you are trained to use.
-- **Measured Cut I:** Main Action · Brawn. Attack one adjacent creature for 2/3/5 physical damage. On Strong, you may move 1 square after the attack. Measured Cut deals 3/4/6 physical damage. Measured Cut also applies Bleeding 1 on Strong.
+- **Measured Cut I:** Main Action · Brawn or Agility, chosen before rolling. Attack one adjacent creature for 2/3/5 physical damage. On Strong, you may move 1 square after the attack. Measured Cut deals 3/4/6 physical damage. Measured Cut also applies Bleeding 1 on Strong.
 - **Blade Ward I:** Reaction. After resolving your defense against a melee attack, before taking its damage, reduce that attack’s damage by 2 after resistance, respecting the attack minimum. No roll.
 - **Driving Opening I:** Maneuver. Choose one visible creature. Before your turn ends, your next Main Action melee weapon attack against it also pushes it 1 square directly away from your attack position on Strong. This modifies one attack, not each target of a sweep. Reusing this technique replaces its unused effect.
 - **Sweeping Blade I:** Main Action · Brawn. Attack up to three adjacent enemies. Roll once; each takes 1/2/4 physical damage. Each creature is struck once. Sweeping Blade deals 2/3/5 physical damage to each target. Sweeping Blade also pushes each target 1 square directly away on Strong. Resolve collisions normally.

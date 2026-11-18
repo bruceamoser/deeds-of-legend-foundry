@@ -1,0 +1,48 @@
+{
+  "_key": "!items!aec6e757b2907b5b",
+  "_id": "aec6e757b2907b5b",
+  "name": "Direct Thrust III",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div><div><dt>Equipment</dt><dd>Wield a suitable one-handed melee weapon.</dd></div></dl><p>On Strong, Direct Thrust lets you move up to 2 squares.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "",
+      "standard": "",
+      "strong": ""
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "fencing:pointwork:3",
+      "sourceCommit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "fencing:pointwork:3",
+        "level": 1,
+        "cost": 2,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "On Strong, Direct Thrust lets you move up to 2 squares.",
+        "improves": "fencing:pointwork:1",
+        "requires": [
+          "fencing:pointwork:2"
+        ],
+        "bookId": null,
+        "weaponRequirement": "one-handed-melee"
+      }
+    }
+  },
+  "effects": []
+}

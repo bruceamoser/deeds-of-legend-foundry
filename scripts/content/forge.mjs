@@ -5,6 +5,8 @@ import { SMALL_TALENT_IDS } from "../../src/rules/forge-rewrite.mjs";
 
 const branchCosts = [1, 2, 2, 3, 4, 4, 5];
 const branchLevels = [1, 1, 1, 3, 3, 3, 7];
+const attributeName = "Brawn|Fortitude|Agility|Guile|Knowledge|Reason";
+const flexibleRoll = new RegExp(`^(?:Main Action|Maneuver|Reaction) · ((?:${attributeName})(?: or (?:${attributeName}))+)[,.]`);
 const sections = ["I", "II", "III", "IV", "V", "VI", "VII"];
 const pages = ["1", "2", "3", "4", "5", "6", "7", "8", "A1", "A2", "A3"];
 const pageSections = [0, 0, 1, 1, 2, 2, 3, 3, 4, 5, 6];
@@ -60,6 +62,10 @@ function readSteps(text, disciplineId, path, training) {
       shape: i === 6 ? "diamond" : i >= 3 ? "triangle" : "circle",
     };
     if (improvement) node.improves = `${path.id}:${i < 3 ? 1 : 4}`;
+    const attributes = step.effect.match(flexibleRoll)?.[1];
+    if (attributes) node.attributeChoices = attributes.toLowerCase().split(" or ");
+    if (disciplineId === "fencing") node.weaponRequirement = "one-handed-melee";
+    if (path.id === "tactics:openings") node.weaponRequirement = "melee";
     if (training) {
       const capacity = step.effect.match(/Increase maximum SP by (?:another )?(\d+)/i);
       if (capacity) node.spCapacity = Number(capacity[1]);
@@ -523,7 +529,7 @@ export function parseForge(read, list, sourceCommit) {
       ancestries.length,
       basicActions.length,
     ],
-    [19, 29, 319, 29, 10, 90, 50, 10, 19],
+    [21, 29, 319, 29, 10, 90, 52, 10, 19],
     "Forge catalog coverage",
   );
   return {

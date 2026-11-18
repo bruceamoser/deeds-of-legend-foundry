@@ -1,0 +1,48 @@
+{
+  "_key": "!items!8dacc8a1d71aca69",
+  "_id": "8dacc8a1d71aca69",
+  "name": "Divide Their Attention I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div><div><dt>Equipment</dt><dd>Wield a melee weapon.</dd></div></dl><p>Main Action · Knowledge. Attack one visible adjacent enemy for 2/4/6 physical damage. On Standard or Strong, choose one willing ally within 3 squares. It gains 1 Boon on its next attack against that enemy before your next turn starts.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "2 physical damage",
+      "standard": "4 physical damage",
+      "strong": "6 physical damage"
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "tactics:openings:4",
+      "sourceCommit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "technique",
+        "nodeId": "tactics:openings:4",
+        "level": 3,
+        "cost": 3,
+        "action": "Main Action",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": "Knowledge",
+        "defenseAttribute": null,
+        "effect": "Main Action · Knowledge. Attack one visible adjacent enemy for 2/4/6 physical damage. On Standard or Strong, choose one willing ally within 3 squares. It gains 1 Boon on its next attack against that enemy before your next turn starts.",
+        "improves": null,
+        "requires": [
+          "tactics:openings:3"
+        ],
+        "bookId": null,
+        "weaponRequirement": "melee"
+      }
+    }
+  },
+  "effects": []
+}

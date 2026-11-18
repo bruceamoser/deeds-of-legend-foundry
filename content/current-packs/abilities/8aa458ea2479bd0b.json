@@ -1,0 +1,48 @@
+{
+  "_key": "!items!8aa458ea2479bd0b",
+  "_id": "8aa458ea2479bd0b",
+  "name": "The Unseen Line",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Agility</dd></div><div><dt>Equipment</dt><dd>Wield a suitable one-handed melee weapon.</dd></div></dl><p>Main Action · Agility. Move up to 4 squares and attack one enemy adjacent at any point along your route for 2/4/7 physical damage. On Strong, apply Dazed 1 and Bleeding 1. You may continue the route after the attack. This movement avoids movement reactions.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "agility",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "2 physical damage",
+      "standard": "4 physical damage",
+      "strong": "7 physical damage"
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "fencing:pointwork:7",
+      "sourceCommit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "mastery",
+        "nodeId": "fencing:pointwork:7",
+        "level": 7,
+        "cost": 5,
+        "action": "Main Action",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": "Agility",
+        "defenseAttribute": null,
+        "effect": "Main Action · Agility. Move up to 4 squares and attack one enemy adjacent at any point along your route for 2/4/7 physical damage. On Strong, apply Dazed 1 and Bleeding 1. You may continue the route after the attack. This movement avoids movement reactions.",
+        "improves": null,
+        "requires": [
+          "fencing:pointwork:6"
+        ],
+        "bookId": null,
+        "weaponRequirement": "one-handed-melee"
+      }
+    }
+  },
+  "effects": []
+}

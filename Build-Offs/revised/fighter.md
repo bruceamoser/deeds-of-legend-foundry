@@ -1,6 +1,6 @@
 # Corin Ashguard: fighter after the rewrite
 
-Pinned authored source `f71eac4c46fce6906d6dfbd1638ee98b10a6c538`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../fighter.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
+Pinned authored source `6ed861864bd6398f4d40e18d12bc2c5378373a47`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../fighter.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
 
 ## What the rewrite changes
 
@@ -67,7 +67,7 @@ You must wield a melee weapon to use this guard and counterattack. A granted cou
 
 **Useful actions and improvements:**
 
-- **Measured Cut I:** Main Action · Brawn. Attack one adjacent creature for 2/3/5 physical damage. On Strong, you may move 1 square after the attack. Measured Cut deals 3/4/6 physical damage.
+- **Measured Cut I:** Main Action · Brawn or Agility, chosen before rolling. Attack one adjacent creature for 2/3/5 physical damage. On Strong, you may move 1 square after the attack. Measured Cut deals 3/4/6 physical damage.
 - **Light Armor I:** Passive. You are trained to wear light armor; the suit supplies physical resistance 1. Ignore 1 Bulk from worn armor when calculating encumbrance, minimum 0 armor Bulk. This does not change its inventory size.
 - **Interpose I:** Reaction. After an adjacent ally rolls defense, before applying physical damage from that attack, reduce that damage by 1 after resistance. You must be able to reach the ally. No roll.
 - **Sheltering Guard I:** Maneuver. Choose one willing adjacent ally. Until your next turn starts it gains 1 Boon on ranged defenses while adjacent. Reusing this technique replaces its previous effect. No roll.
@@ -128,7 +128,7 @@ Declare this guard before defending and gain 1 Boon to the defense. Resolve the 
 
 **Useful actions and improvements:**
 
-- **Measured Cut I:** Main Action · Brawn. Attack one adjacent creature for 2/3/5 physical damage. On Strong, you may move 1 square after the attack. Measured Cut deals 3/4/6 physical damage. Measured Cut also applies Bleeding 1 on Strong.
+- **Measured Cut I:** Main Action · Brawn or Agility, chosen before rolling. Attack one adjacent creature for 2/3/5 physical damage. On Strong, you may move 1 square after the attack. Measured Cut deals 3/4/6 physical damage. Measured Cut also applies Bleeding 1 on Strong.
 - **Light Armor I:** Passive. You are trained to wear light armor; the suit supplies physical resistance 1. Ignore 1 Bulk from worn armor when calculating encumbrance, minimum 0 armor Bulk. This does not change its inventory size.
 - **Interpose I:** Reaction. After an adjacent ally rolls defense, before applying physical damage from that attack, reduce that damage by 1 after resistance. You must be able to reach the ally. No roll.
 - **Sheltering Guard I:** Maneuver. Choose one willing adjacent ally. Until your next turn starts it gains 1 Boon on ranged defenses while adjacent. Reusing this technique replaces its previous effect. No roll.
@@ -216,7 +216,7 @@ Each round you have one additional Reaction usable for an opportunity attack. Yo
 
 **Useful actions and improvements:**
 
-- **Measured Cut I:** Main Action · Brawn. Attack one adjacent creature for 2/3/5 physical damage. On Strong, you may move 1 square after the attack. Measured Cut deals 3/4/6 physical damage. Measured Cut also applies Bleeding 1 on Strong.
+- **Measured Cut I:** Main Action · Brawn or Agility, chosen before rolling. Attack one adjacent creature for 2/3/5 physical damage. On Strong, you may move 1 square after the attack. Measured Cut deals 3/4/6 physical damage. Measured Cut also applies Bleeding 1 on Strong.
 - **Light Armor I:** Passive. You are trained to wear light armor; the suit supplies physical resistance 1. Ignore 1 Bulk from worn armor when calculating encumbrance, minimum 0 armor Bulk. This does not change its inventory size. While wearing armor you are trained to use, gain 1 Boon on rolls to resist forced movement. This is not additional resistance or Stability. You are also trained to wear medium armor; the suit supplies physical resistance 2. Your Speed increases by 1 while wearing armor you are trained to use.
 - **Interpose I:** Reaction. After an adjacent ally rolls defense, before applying physical damage from that attack, reduce that damage by 1 after resistance. You must be able to reach the ally. No roll. Interpose reduces physical damage by 2. Before Interpose you may move 1 square to reach the ally without movement reactions.
 - **Sheltering Guard I:** Maneuver. Choose one willing adjacent ally. Until your next turn starts it gains 1 Boon on ranged defenses while adjacent. Reusing this technique replaces its previous effect. No roll. Sheltering Guard can protect two adjacent allies. Sheltering Guard also gives each protected ally Stability 1 while adjacent.

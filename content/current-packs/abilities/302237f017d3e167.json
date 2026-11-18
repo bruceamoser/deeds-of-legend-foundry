@@ -1,0 +1,48 @@
+{
+  "_key": "!items!302237f017d3e167",
+  "_id": "302237f017d3e167",
+  "name": "Strip the Grip I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Agility</dd></div><div><dt>Equipment</dt><dd>Wield a suitable one-handed melee weapon.</dd></div></dl><p>Main Action · Agility. Attack an adjacent enemy holding a weapon for 1/3/4 physical damage. On Strong it drops one held weapon of your choice in its square if it can release the weapon. If it cannot release the weapon, its next attack with it takes 1 Bane before your next turn starts.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "agility",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "1 physical damage",
+      "standard": "3 physical damage",
+      "strong": "4 physical damage"
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "fencing:blade-tricks:4",
+      "sourceCommit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "technique",
+        "nodeId": "fencing:blade-tricks:4",
+        "level": 3,
+        "cost": 3,
+        "action": "Main Action",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": "Agility",
+        "defenseAttribute": null,
+        "effect": "Main Action · Agility. Attack an adjacent enemy holding a weapon for 1/3/4 physical damage. On Strong it drops one held weapon of your choice in its square if it can release the weapon. If it cannot release the weapon, its next attack with it takes 1 Bane before your next turn starts.",
+        "improves": null,
+        "requires": [
+          "fencing:blade-tricks:3"
+        ],
+        "bookId": null,
+        "weaponRequirement": "one-handed-melee"
+      }
+    }
+  },
+  "effects": []
+}

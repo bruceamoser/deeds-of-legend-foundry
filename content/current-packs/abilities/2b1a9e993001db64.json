@@ -1,0 +1,48 @@
+{
+  "_key": "!items!2b1a9e993001db64",
+  "_id": "2b1a9e993001db64",
+  "name": "Exploit the Opening II",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div><div><dt>Equipment</dt><dd>Wield a melee weapon.</dd></div></dl><p>Exploit the Opening deals 2/4/5 physical damage.</p>",
+    "activity": {
+      "action": "passive",
+      "rollMode": "none",
+      "attribute": "knowledge",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "2 physical damage",
+      "standard": "4 physical damage",
+      "strong": "5 physical damage"
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "tactics:openings:2",
+      "sourceCommit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "improvement",
+        "nodeId": "tactics:openings:2",
+        "level": 1,
+        "cost": 2,
+        "action": "Passive",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": null,
+        "defenseAttribute": null,
+        "effect": "Exploit the Opening deals 2/4/5 physical damage.",
+        "improves": "tactics:openings:1",
+        "requires": [
+          "tactics:openings:1"
+        ],
+        "bookId": null,
+        "weaponRequirement": "melee"
+      }
+    }
+  },
+  "effects": []
+}

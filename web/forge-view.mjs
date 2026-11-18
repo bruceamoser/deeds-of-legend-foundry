@@ -24,12 +24,15 @@ export function atlasLayout(graph) {
   const positions = new Map();
   const edges = [];
   const center = { x: 0, y: 0 };
+  const innerCount = 6;
+  const outerCount = Math.max(12, graph.disciplines.length - innerCount - 1);
+  const outerRadius = Math.max(1020, 440 / (2 * Math.sin(Math.PI / outerCount)));
   const directions = [-Math.PI / 2, Math.PI, 0, Math.PI / 2]; // Main, Maneuver, Reaction, wildcard.
   graph.disciplines.forEach((discipline, index) => {
-    const origin = index < 12
-      ? point(center, -Math.PI / 2 + index * TAU / 12, 1020)
-      : index < 18
-        ? point(center, -Math.PI / 2 + (index - 12 + 0.5) * TAU / 6, 520)
+    const origin = index < outerCount
+      ? point(center, -Math.PI / 2 + index * TAU / outerCount, outerRadius)
+      : index < outerCount + innerCount
+        ? point(center, -Math.PI / 2 + (index - outerCount + 0.5) * TAU / innerCount, 520)
         : center;
     positions.set(discipline.id, origin);
     discipline.paths.forEach((path, index) => {
@@ -73,9 +76,13 @@ function control(action, id, label, attributes = "", className = "") {
   return `<button type="button" data-action="${action}" data-id="${escape(id)}" class="${className}" ${attributes}>${label}</button>`;
 }
 
-function disciplineToken(id) {
+export function disciplineTokenPath(id) {
   const extension = WEBP_TOKENS.has(id) ? "webp" : "svg";
-  return `<img class="forge-token" src="assets/${encodeURIComponent(id)}.${extension}" alt="" draggable="false">`;
+  return `assets/${encodeURIComponent(id)}.${extension}`;
+}
+
+function disciplineToken(id) {
+  return `<img class="forge-token" src="${disciplineTokenPath(id)}" alt="" draggable="false">`;
 }
 
 function nodeStatus(model, id) {

@@ -38,6 +38,7 @@
 #app .compact-actions .star-button {min-width:20px;min-height:24px;padding:0;font-size:14px;flex:none;}
 #app .compact-actions .brief {display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;font-size:11px;line-height:1.4;}
 #app .compact-actions .compact-roll {font-family:inherit;font-size:11px;padding:3px 5px;min-height:25px;min-width:58px;background:#ece8dc;border-radius:1px;white-space:nowrap;}
+#app .compact-actions .roll-attribute-choice {white-space:normal;}
 #app .compact-actions .expand-action {padding:0;min-width:22px;min-height:25px;font-size:17px;border:0;background:transparent;}
 #app .compact-actions .inline-action-detail td {background:#eee8d8;border-left:3px solid var(--gold);padding:8px 12px;font-size:12px;}
 #app .inline-action-detail :is(p,dl,section) {margin:0 0 7px;}

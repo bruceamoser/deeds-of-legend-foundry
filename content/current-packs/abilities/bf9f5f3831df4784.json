@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "subterfuge:sleight:3",
-      "sourceCommit": "f71eac4c46fce6906d6dfbd1638ee98b10a6c538",
+      "sourceCommit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "improvement",

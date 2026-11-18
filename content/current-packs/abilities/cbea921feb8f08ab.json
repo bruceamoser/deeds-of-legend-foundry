@@ -1,0 +1,48 @@
+{
+  "_key": "!items!cbea921feb8f08ab",
+  "_id": "cbea921feb8f08ab",
+  "name": "Broken Tempo I",
+  "type": "ability",
+  "system": {
+    "schemaVersion": 1,
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Agility</dd></div><div><dt>Equipment</dt><dd>Wield a suitable one-handed melee weapon.</dd></div></dl><p>Main Action · Agility. Move up to 2 squares, then attack one adjacent creature for 2/3/5 physical damage. Neither this approach nor a 1-square step you may take immediately after the attack triggers movement reactions.</p>",
+    "activity": {
+      "action": "main",
+      "rollMode": "attribute",
+      "attribute": "agility",
+      "defenseAttribute": "agility"
+    },
+    "outcomes": {
+      "weak": "2 physical damage",
+      "standard": "3 physical damage",
+      "strong": "5 physical damage"
+    }
+  },
+  "flags": {
+    "heroes-of-legend": {
+      "catalogId": "fencing:pointwork:4",
+      "sourceCommit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
+      "grantKind": "nativeWorkshop",
+      "workshopRecord": {
+        "kind": "technique",
+        "nodeId": "fencing:pointwork:4",
+        "level": 3,
+        "cost": 3,
+        "action": "Main Action",
+        "sp": null,
+        "range": null,
+        "duration": null,
+        "attribute": "Agility",
+        "defenseAttribute": null,
+        "effect": "Main Action · Agility. Move up to 2 squares, then attack one adjacent creature for 2/3/5 physical damage. Neither this approach nor a 1-square step you may take immediately after the attack triggers movement reactions.",
+        "improves": null,
+        "requires": [
+          "fencing:pointwork:3"
+        ],
+        "bookId": null,
+        "weaponRequirement": "one-handed-melee"
+      }
+    }
+  },
+  "effects": []
+}

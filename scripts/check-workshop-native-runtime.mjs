@@ -35,7 +35,8 @@ try{
    });
  });
  await page.evaluate(async id=>{await game.actors.get(id).sheet.controller.settle();},id);
- await name.selectText();
+ await name.click();
+ await page.keyboard.press('Control+a');
  await page.keyboard.press('s');await page.keyboard.press('Space');await page.keyboard.press('s');
  await expect(name).toHaveValue('s s');
  assert.deepEqual(await page.evaluate(() => workshopLeakedKeys),[]);
@@ -110,7 +111,9 @@ try{
  await captureNative('native-main-900x780.png');
  await page.evaluate(id=>game.actors.get(id).sheet.setPosition({width:480,height:600}),id);
  const surface = app.locator('.workshop-surface');
- assert(await surface.evaluate(node => {node.scrollLeft = node.scrollWidth;return node.scrollLeft>0;}));
+ await app.locator('#panel').hover();
+ await page.mouse.wheel(320,0);
+ await expect.poll(()=>surface.evaluate(node=>node.scrollLeft)).toBeGreaterThan(0);
  await surface.evaluate(node => {node.scrollLeft=0;});
  await page.evaluate(id=>game.actors.get(id).sheet.setPosition({width:780,height:780}),id);
  checks.push('A narrow native window scrolls horizontally to reach the full sheet.');

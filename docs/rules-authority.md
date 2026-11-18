@@ -155,3 +155,13 @@ fixtures and unchanged equipment/summon provenance, not an alternate playable
 character edition. Existing world documents are preserved; recreation is explicit.
 The [port ledger](native-workshop-port-325.md) distinguishes tested native behavior
 from remaining acceptance work. Monster budget tuning remains deferred to playtesting.
+
+## November 17 — Fencing, Tactics and Arms attributes (#333)
+
+The current Forge catalog and native books use book commit
+**6ed861864bd6398f4d40e18d12bc2c5378373a47** (book PRs #1357, #1359, #1361 and #1363).
+They add both disciplines, their starting backgrounds, and all ten classes'
+entry prices. The Fencing playtest trades lower damage for safe movement and
+position.
+The catalog carries the printed selectable roll attributes and held weapon
+requirements for the new techniques.

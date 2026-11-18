@@ -1,6 +1,6 @@
 # Harka Stormshoulder: barbarian after the rewrite
 
-Pinned authored source `f71eac4c46fce6906d6dfbd1638ee98b10a6c538`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../barbarian.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
+Pinned authored source `6ed861864bd6398f4d40e18d12bc2c5378373a47`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../barbarian.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
 
 ## What the rewrite changes
 
@@ -66,7 +66,7 @@ Enter a rage until the end of the scene. While raging, you gain 1 Boon to attack
 
 **Useful actions and improvements:**
 
-- **Measured Cut I:** Main Action · Brawn. Attack one adjacent creature for 2/3/5 physical damage. On Strong, you may move 1 square after the attack. Measured Cut deals 3/4/6 physical damage.
+- **Measured Cut I:** Main Action · Brawn or Agility, chosen before rolling. Attack one adjacent creature for 2/3/5 physical damage. On Strong, you may move 1 square after the attack. Measured Cut deals 3/4/6 physical damage.
 - **Driving Opening I:** Maneuver. Choose one visible creature. Before your turn ends, your next Main Action melee weapon attack against it also pushes it 1 square directly away from your attack position on Strong. This modifies one attack, not each target of a sweep. Reusing this technique replaces its unused effect.
 - **Running Vault I:** Maneuver. After moving at least 2 squares this turn, jump up to 2 squares horizontally to a visible unoccupied landing. Spend no additional movement. Movement reactions apply.
 - **Catch Your Balance I:** Reaction. When you would fall Prone, remain standing instead. You must be conscious and able to move. No roll.
@@ -129,7 +129,7 @@ Use once per scene. If you also know Go Berserk, both signatures share that rage
 
 **Useful actions and improvements:**
 
-- **Measured Cut I:** Main Action · Brawn. Attack one adjacent creature for 2/3/5 physical damage. On Strong, you may move 1 square after the attack. Measured Cut deals 3/4/6 physical damage. Measured Cut also applies Bleeding 1 on Strong.
+- **Measured Cut I:** Main Action · Brawn or Agility, chosen before rolling. Attack one adjacent creature for 2/3/5 physical damage. On Strong, you may move 1 square after the attack. Measured Cut deals 3/4/6 physical damage. Measured Cut also applies Bleeding 1 on Strong.
 - **Driving Opening I:** Maneuver. Choose one visible creature. Before your turn ends, your next Main Action melee weapon attack against it also pushes it 1 square directly away from your attack position on Strong. This modifies one attack, not each target of a sweep. Reusing this technique replaces its unused effect.
 - **Running Vault I:** Maneuver. After moving at least 2 squares this turn, jump up to 2 squares horizontally to a visible unoccupied landing. Spend no additional movement. Movement reactions apply.
 - **Catch Your Balance I:** Reaction. When you would fall Prone, remain standing instead. You must be conscious and able to move. No roll.
@@ -221,7 +221,7 @@ Use this rage once per scene. If you also know Go Berserk or Pain Feeds the Fire
 
 **Useful actions and improvements:**
 
-- **Measured Cut I:** Main Action · Brawn. Attack one adjacent creature for 2/3/5 physical damage. On Strong, you may move 1 square after the attack. Measured Cut deals 3/4/6 physical damage. Measured Cut also applies Bleeding 1 on Strong.
+- **Measured Cut I:** Main Action · Brawn or Agility, chosen before rolling. Attack one adjacent creature for 2/3/5 physical damage. On Strong, you may move 1 square after the attack. Measured Cut deals 3/4/6 physical damage. Measured Cut also applies Bleeding 1 on Strong.
 - **Driving Opening I:** Maneuver. Choose one visible creature. Before your turn ends, your next Main Action melee weapon attack against it also pushes it 1 square directly away from your attack position on Strong. This modifies one attack, not each target of a sweep. Reusing this technique replaces its unused effect. Driving Opening pushes 2 squares on Strong. Driving Opening also applies Slowed 2 on Strong to that target. Before rolling the modified attack against a living creature with positive HP, you may declare it nonlethal: if its damage would reduce the target to 0 HP, leave it at 1 HP and make it Unconscious for 1 minute or until it next takes damage. It falls Prone.
 - **Running Vault I:** Maneuver. After moving at least 2 squares this turn, jump up to 2 squares horizontally to a visible unoccupied landing. Spend no additional movement. Movement reactions apply. Running Vault reaches up to 3 squares. Running Vault ignores movement reactions during the jump.
 - **Catch Your Balance I:** Reaction. When you would fall Prone, remain standing instead. You must be conscious and able to move. No roll.
