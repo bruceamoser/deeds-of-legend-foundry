@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div><div><dt>Equipment</dt><dd>Wield a suitable one-handed melee weapon.</dd></div></dl><p>The movement from Direct Thrust avoids movement reactions.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div><div><dt>Equipment</dt><dd>Wield a suitable one-handed melee weapon.</dd></div></dl><p>On Strong, Direct Thrust lets you move up to 2 squares.</p>",
     "activity": {
       "action": "passive",
       "rollMode": "none",
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "fencing:pointwork:3",
-      "sourceCommit": "1c26a4aabec0b6652111ec7169cad8e239d3b29c",
+      "sourceCommit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "improvement",
@@ -34,7 +34,7 @@
         "duration": null,
         "attribute": null,
         "defenseAttribute": null,
-        "effect": "The movement from Direct Thrust avoids movement reactions.",
+        "effect": "On Strong, Direct Thrust lets you move up to 2 squares.",
         "improves": "fencing:pointwork:1",
         "requires": [
           "fencing:pointwork:2"

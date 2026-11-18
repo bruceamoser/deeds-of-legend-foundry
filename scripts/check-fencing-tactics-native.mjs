@@ -76,7 +76,8 @@ try {
 
   await roll("Measured Cut I", ["brawn","agility"], "agility", "Agility +2");
   await roll("Duelist’s Boundary", ["brawn","agility"], "brawn", "Brawn +1");
-  await roll("Direct Thrust I", ["agility"], "agility", "Agility +2", "1/2/4 physical damage");
+  await roll("Direct Thrust I", ["agility"], "agility", "Agility +2",
+    "1/2/4 physical damage. On Standard or Strong, you may move 1 square after the attack without triggering movement reactions.");
   await roll("Exploit the Opening I", ["knowledge"], "knowledge", "Knowledge +1");
   await sheet.getByRole("button",{name:"Use Clear the Way I",exact:true}).click();
   await expect(sheet.locator(".inline-action-detail")).toContainText("1 Boon");

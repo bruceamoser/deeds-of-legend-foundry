@@ -159,7 +159,7 @@ from remaining acceptance work. Monster budget tuning remains deferred to playte
 ## November 17 — Fencing, Tactics and Arms attributes (#333)
 
 The current Forge catalog and native books use book commit
-**1c26a4aabec0b6652111ec7169cad8e239d3b29c** (book PRs #1357, #1359 and #1361).
+**6ed861864bd6398f4d40e18d12bc2c5378373a47** (book PRs #1357, #1359, #1361 and #1363).
 They add both disciplines, their starting backgrounds, and all ten classes'
 entry prices. The Fencing playtest trades lower damage for safe movement and
 position.

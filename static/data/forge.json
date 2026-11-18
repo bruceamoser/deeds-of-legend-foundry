@@ -5075,7 +5075,7 @@
       }
     }
   },
-  "sourceCommit": "1c26a4aabec0b6652111ec7169cad8e239d3b29c",
+  "sourceCommit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
   "disciplines": [
     {
       "id": "arms",
@@ -6857,7 +6857,7 @@
       "name": "Direct Thrust I",
       "dp": 1,
       "level": 1,
-      "effect": "Main Action · Agility. Attack one adjacent creature for 1/2/4 physical damage. On Standard or Strong, you may move 1 square after the attack.",
+      "effect": "Main Action · Agility. Attack one adjacent creature for 1/2/4 physical damage. On Standard or Strong, you may move 1 square after the attack without triggering movement reactions.",
       "kind": "technique",
       "disciplineId": "fencing",
       "pathId": "fencing:pointwork",
@@ -6888,7 +6888,7 @@
       "name": "Direct Thrust III",
       "dp": 2,
       "level": 1,
-      "effect": "The movement from Direct Thrust avoids movement reactions.",
+      "effect": "On Strong, Direct Thrust lets you move up to 2 squares.",
       "kind": "improvement",
       "disciplineId": "fencing",
       "pathId": "fencing:pointwork",

@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:calling:2",
-      "sourceCommit": "1c26a4aabec0b6652111ec7169cad8e239d3b29c",
+      "sourceCommit": "6ed861864bd6398f4d40e18d12bc2c5378373a47",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",
