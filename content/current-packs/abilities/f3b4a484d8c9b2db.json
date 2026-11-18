@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div></dl><p>Maneuver. Until your next turn starts, gain Stability 1. You must stand on a supporting surface. No roll.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div></dl><p>Maneuver. While on solid footing, brace yourself to gain Stability 1 until your next turn starts. No roll.</p>",
     "activity": {
       "action": "maneuver",
       "rollMode": "none",
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "armor:bracing:1",
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "technique",
@@ -34,7 +34,7 @@
         "duration": null,
         "attribute": null,
         "defenseAttribute": null,
-        "effect": "Maneuver. Until your next turn starts, gain Stability 1. You must stand on a supporting surface. No roll.",
+        "effect": "Maneuver. While on solid footing, brace yourself to gain Stability 1 until your next turn starts. No roll.",
         "improves": null,
         "requires": [
           "armor"

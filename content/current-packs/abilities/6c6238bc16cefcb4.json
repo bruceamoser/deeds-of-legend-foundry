@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Brawn</dd></div></dl><p>Main Action · Brawn. Attack one adjacent creature with your shield for 1/2/3 physical damage. On Strong push it 1 square directly away.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Brawn</dd></div></dl><p>Main Action · Brawn. Attack one adjacent creature with your shield for 1/2/3 physical damage. On Standard or Strong, push it 1 square directly away. Resolve collisions normally.</p>",
     "activity": {
       "action": "main",
       "rollMode": "attribute",
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "guard:shieldwork:1",
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "technique",
@@ -34,7 +34,7 @@
         "duration": null,
         "attribute": "Brawn",
         "defenseAttribute": null,
-        "effect": "Main Action · Brawn. Attack one adjacent creature with your shield for 1/2/3 physical damage. On Strong push it 1 square directly away.",
+        "effect": "Main Action · Brawn. Attack one adjacent creature with your shield for 1/2/3 physical damage. On Standard or Strong, push it 1 square directly away. Resolve collisions normally.",
         "improves": null,
         "requires": [
           "guard"

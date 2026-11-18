@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Once per objective, new evidence directly addressing the listener’s stated concern adds 1 extra progress to Make the Case.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Once per objective, add 1 extra progress to Make the Case when you answer a listener’s concern with a new fact, concrete offer or demonstration.</p>",
     "activity": {
       "action": "passive",
       "rollMode": "none",
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "influence:negotiation:3",
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "improvement",
@@ -34,7 +34,7 @@
         "duration": null,
         "attribute": null,
         "defenseAttribute": null,
-        "effect": "Once per objective, new evidence directly addressing the listener’s stated concern adds 1 extra progress to Make the Case.",
+        "effect": "Once per objective, add 1 extra progress to Make the Case when you answer a listener’s concern with a new fact, concrete offer or demonstration.",
         "improves": "influence:negotiation:1",
         "requires": [
           "influence:negotiation:2"

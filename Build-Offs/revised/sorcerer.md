@@ -1,6 +1,6 @@
 # Ilyra Cinderblood: sorcerer after the rewrite
 
-Pinned authored source `e79dcd1e341169c380e3657fb73cd2968ac446d7`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../sorcerer.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
+Pinned authored source `56f2ec94077407c56f60caa29345a5e3dca4c28b`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../sorcerer.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
 
 ## What the rewrite changes
 
@@ -14,13 +14,13 @@ The charismatic ability array still gives less SP than a Knowledge-focused arcan
 |---|---|---|---|
 | HP | 14 | 20 | 32 |
 | SP | 10 | 20 | 38 |
-| DP spent / total | 10 / 10 | 22 / 23 | 60 / 61 |
-| Unspent DP | 0 | 1 | 1 |
+| DP spent / total | 10 / 12 | 22 / 25 | 62 / 63 |
+| Unspent DP | 2 | 3 | 1 |
 | Learned action choices (Main / Maneuver / Reaction) | 0 / 0 / 0 | 0 / 0 / 1 | 0 / 0 / 2 |
 | Known book spells (free / paid) | 10 (4 / 6) | 16 (4 / 12) | 29 (4 / 25) |
 | Shared reserve: casts at 2 SP | 5 | 10 | 19 |
 | Shared reserve: casts at 5 SP | 2 | 4 | 7 |
-| Extra SP from one recovery rest | 1 | 1 | 1 |
+| Extra SP from one recovery rest | 1 | 1 | 2 |
 
 ## Character choices
 
@@ -32,11 +32,11 @@ Equipment: Ordinary Melee Weapon (held); Travel Pack; Food Bundle; Water Flask; 
 
 The D&D baseline has **12 HP** and **AC 12 normally; 15 with Mage Armor (costs one level-1 slot)** at level 2; HoL uses resistance and player defenses, so these are not equivalent durability measures. Learned action counts exclude universal actions and count signature passive modifications separately; spell choices are listed separately. A learned improvement changes an existing action, not another action button. Actual available actions still depend on equipment, targets and conditions.
 
-Creation remains **8 + Guile + Knowledge + Reason**, including negative scores, plus explicit ancestry benefits. Later awards are **4 + new level**. The completed `spellcraft:soul-capacity` path costs **1+2+2+3+4+4+5 = 21 DP**; discipline entry, if purchased, is separate. These are sample choices, not an optimizer or evidence of playtest balance.
+Starting DP is **10 + Guile + Knowledge + Reason**, including negative scores, plus explicit ancestry benefits. Later awards are **4 + new level**. The completed `spellcraft:soul-capacity` path costs **1+2+2+3+4+4+5 = 21 DP**; discipline entry, if purchased, is separate. These are sample choices, not an optimizer or evidence of playtest balance.
 
 ## Level 1
 
-[Import this ready character](builds/sorcerer-level-1.hol.json). 0 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
+[Import this ready character](builds/sorcerer-level-1.hol.json). 2 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
 
 | Learned purchase | DP paid | Character level |
 |---|---:|---:|
@@ -76,7 +76,7 @@ Use this shaping once on your turn. It changes the origin of an existing spell a
 
 ## Level 3
 
-[Import this ready character](builds/sorcerer-level-3.hol.json). 1 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
+[Import this ready character](builds/sorcerer-level-3.hol.json). 3 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
 
 | Learned purchase | DP paid | Character level |
 |---|---:|---:|
@@ -116,7 +116,7 @@ Use this shaping once on your turn. It changes the origin of an existing spell a
 
 **Action:** Reaction · **Attribute:** None (no roll)
 
-**Target / range / shape:** One willing ally on their turn, before they take any action; choose two visible, unoccupied squares within 6 squares of you.
+**Target / range / shape:** One willing ally during their turn, before their chosen step or attack resolves. Choose two visible, unoccupied squares within 6 squares of you.
 
 The two squares become connected windows until the end of the ally’s turn. The ally can use the windows once at any point during their turn, either to move through one and out the other, spending 1 square of movement, or to make one attack through one window, measuring range and cover from the other. The ally must be able to see the window they use. The windows vanish at the end of the ally’s turn. This movement does not provoke opportunity attacks.
 
@@ -124,7 +124,7 @@ The two squares become connected windows until the end of the ally’s turn. The
 
 **Equipment / acquisition:** A free hand for casting.
 
-This is a spell costing 0 SP. Cast at the start of the willing ally’s turn before it acts. The windows grant a passage or attack route, not an extra attack.
+This is a spell costing 0 SP. The windows give the ally a route for its own movement or attack.
 
 **Frequency:** Once per round.
 
@@ -167,6 +167,7 @@ This is a spell costing 0 SP. Cast at the start of the willing ally’s turn bef
 | Emotion II (`emotion:1`) | 2 | 7 |
 | Emotion III (`emotion:2`) | 2 | 7 |
 | Heartstrings (`emotion:3`) | 3 | 7 |
+| Recovery II (`spellcraft:recovery:2`) | 2 | 7 |
 
 **Signature choices:** level 1: Bent Trajectory; level 3: Create a Window; level 7: Choose the Edge.
 
@@ -190,7 +191,7 @@ Use this shaping once on your turn. It changes the origin of an existing spell a
 
 **Action:** Reaction · **Attribute:** None (no roll)
 
-**Target / range / shape:** One willing ally on their turn, before they take any action; choose two visible, unoccupied squares within 6 squares of you.
+**Target / range / shape:** One willing ally during their turn, before their chosen step or attack resolves. Choose two visible, unoccupied squares within 6 squares of you.
 
 The two squares become connected windows until the end of the ally’s turn. The ally can use the windows once at any point during their turn, either to move through one and out the other, spending 1 square of movement, or to make one attack through one window, measuring range and cover from the other. The ally must be able to see the window they use. The windows vanish at the end of the ally’s turn. This movement does not provoke opportunity attacks.
 
@@ -198,7 +199,7 @@ The two squares become connected windows until the end of the ally’s turn. The
 
 **Equipment / acquisition:** A free hand for casting.
 
-This is a spell costing 0 SP. Cast at the start of the willing ally’s turn before it acts. The windows grant a passage or attack route, not an extra attack.
+This is a spell costing 0 SP. The windows give the ally a route for its own movement or attack.
 
 **Frequency:** Once per round.
 
@@ -223,11 +224,11 @@ Once per scene, choose two distinct legal targets. Resolve the spell separately 
 
 **Known book spells:** Fire Bolt (Main Action; SP 0); Boil Liquid (Ritual; SP 1); Burning Hands (Main Action; SP 1); Heat Metal (Main Action; SP 2); Elementalism — Air (Maneuver; SP 0); Feather Fall (Reaction; SP 1); Vicious Mockery (Main Action; SP 0); Heroism (Main Action; SP 1); Ray of Frost (Main Action; SP 0); Create or Destroy Water (Ritual; SP 1); Scorching Ray (Main Action; SP 2); Wall of Fire (Main Action; SP 3); Fireball (Main Action; SP 3); Fire Shield (Main Action; SP 4); Fog Cloud (Main Action; SP 1); Gust of Wind (Main Action; SP 2); Fire Storm (Main Action; SP 5); Delayed Blast Fireball (Main Action; SP 5); Meteor Swarm (Main Action; SP 6); Levitate (Main Action; SP 2); Lightning Bolt (Main Action; SP 3); Fly (Main Action; SP 3); Wind Wall (Main Action; SP 4); Charm Person (Main Action; SP 1); Calm Emotions (Main Action; SP 2); Suggestion (Main Action; SP 2); Fear (Main Action; SP 3); Charm Monster (Main Action; SP 3); Confusion (Main Action; SP 4).
 
-**Spell output:** Alternative uses of the same reserve, not simultaneous allocations. Assumes SP is spent before recovery; time, spell-specific limits, components and maintained actions still apply. Signature spells and conditional discounts are described separately. At costs 1/2/3/5 SP, the full reserve funds 38/19/12/7 casts respectively; with the learned once-per-rest recovery it funds 39/19/13/7. Zero-SP spells remain limited by actions and circumstances.
+**Spell output:** Alternative uses of the same reserve, not simultaneous allocations. Assumes SP is spent before recovery; time, spell-specific limits, components and maintained actions still apply. Signature spells and conditional discounts are described separately. At costs 1/2/3/5 SP, the full reserve funds 38/19/12/7 casts respectively; with the learned once-per-rest recovery it funds 40/20/13/8. Zero-SP spells remain limited by actions and circumstances.
 
 ## Deferred choices
 
-- Level 7: Recovery II — Costs 2 DP. You have 1 DP.
+- Level 7: Recovery III — Costs 2 DP. You have 1 DP.
 
 ## Playtest questions
 

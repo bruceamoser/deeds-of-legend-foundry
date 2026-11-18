@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 10 minutes</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One creature you personally know within 100 squares</dd></div><div><dt>Duration</dt><dd>10 minutes</dd></div></dl><p>Sense its direction and whether it is moving closer or farther away. You need a personal possession it used within the last month. The reading follows the creature&#39;s current body.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 10 minutes</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One creature within 100 squares that you know or whose personal possession you hold</dd></div><div><dt>Duration</dt><dd>10 minutes</dd></div></dl><p>Sense its direction and whether it is moving closer or farther away. Name the creature you know or focus on an item it has used as a personal possession. The reading follows its current body.</p>",
     "activity": {
       "action": "ritual",
       "rollMode": "attribute",
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:farseeing:4",
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",
@@ -30,11 +30,11 @@
         "cost": 2,
         "action": "Ritual · 10 minutes",
         "sp": 2,
-        "range": "One creature you personally know within 100 squares",
+        "range": "One creature within 100 squares that you know or whose personal possession you hold",
         "duration": "10 minutes",
         "attribute": "None",
         "defenseAttribute": null,
-        "effect": "Sense its direction and whether it is moving closer or farther away. You need a personal possession it used within the last month. The reading follows the creature's current body.",
+        "effect": "Sense its direction and whether it is moving closer or farther away. Name the creature you know or focus on an item it has used as a personal possession. The reading follows its current body.",
         "improves": null,
         "requires": [
           "farseeing:0"
@@ -56,9 +56,9 @@
         "defenseAttribute": null,
         "holdAttribute": null,
         "escapeAttribute": null,
-        "target": "One creature you personally know within 100 squares",
+        "target": "One creature within 100 squares that you know or whose personal possession you hold",
         "duration": "10 minutes",
-        "effect": "Sense its direction and whether it is moving closer or farther away. You need a personal possession it used within the last month. The reading follows the creature's current body."
+        "effect": "Sense its direction and whether it is moving closer or farther away. Name the creature you know or focus on an item it has used as a personal possession. The reading follows its current body."
       }
     }
   },

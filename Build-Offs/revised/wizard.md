@@ -1,6 +1,6 @@
 # Vaelis Quillstar: wizard after the rewrite
 
-Pinned authored source `e79dcd1e341169c380e3657fb73cd2968ac446d7`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../wizard.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
+Pinned authored source `56f2ec94077407c56f60caa29345a5e3dca4c28b`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../wizard.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
 
 ## What the rewrite changes
 
@@ -14,10 +14,10 @@ Fixed book sections differ from learning or copying arbitrary individual 5e spel
 |---|---|---|---|
 | HP | 13 | 19 | 31 |
 | SP | 10 | 22 | 40 |
-| DP spent / total | 11 / 11 | 23 / 24 | 61 / 62 |
-| Unspent DP | 0 | 1 | 1 |
+| DP spent / total | 11 / 13 | 25 / 26 | 61 / 64 |
+| Unspent DP | 2 | 1 | 3 |
 | Learned action choices (Main / Maneuver / Reaction) | 1 / 1 / 0 | 1 / 2 / 0 | 1 / 3 / 0 |
-| Known book spells (free / paid) | 12 (5 / 7) | 16 (5 / 11) | 32 (5 / 27) |
+| Known book spells (free / paid) | 12 (5 / 7) | 18 (5 / 13) | 32 (5 / 27) |
 | Shared reserve: casts at 2 SP | 5 | 11 | 20 |
 | Shared reserve: casts at 5 SP | 2 | 4 | 8 |
 | Extra SP from one recovery rest | 1 | 1 | 4 |
@@ -32,11 +32,11 @@ Equipment: Ordinary Melee Weapon (held); Writing Kit; Travel Pack; Food Bundle; 
 
 The D&D baseline has **14 HP** and **AC 12 normally; 15 with Mage Armor (costs one level-1 slot)** at level 2; HoL uses resistance and player defenses, so these are not equivalent durability measures. Learned action counts exclude universal actions and count signature passive modifications separately; spell choices are listed separately. A learned improvement changes an existing action, not another action button. Actual available actions still depend on equipment, targets and conditions.
 
-Creation remains **8 + Guile + Knowledge + Reason**, including negative scores, plus explicit ancestry benefits. Later awards are **4 + new level**. The completed `spellcraft:soul-capacity` path costs **1+2+2+3+4+4+5 = 21 DP**; discipline entry, if purchased, is separate. These are sample choices, not an optimizer or evidence of playtest balance.
+Starting DP is **10 + Guile + Knowledge + Reason**, including negative scores, plus explicit ancestry benefits. Later awards are **4 + new level**. The completed `spellcraft:soul-capacity` path costs **1+2+2+3+4+4+5 = 21 DP**; discipline entry, if purchased, is separate. These are sample choices, not an optimizer or evidence of playtest balance.
 
 ## Level 1
 
-[Import this ready character](builds/wizard-level-1.hol.json). 0 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
+[Import this ready character](builds/wizard-level-1.hol.json). 2 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
 
 | Learned purchase | DP paid | Character level |
 |---|---:|---:|
@@ -98,6 +98,7 @@ Study the effect once per scene. Roll Reason and learn 1/2/3 facts on Weak/Stand
 | Soul Capacity II (`spellcraft:soul-capacity:2`) | 2 | 3 |
 | Soul Capacity III (`spellcraft:soul-capacity:3`) | 2 | 3 |
 | Deep Reserves I (`spellcraft:soul-capacity:4`) | 3 | 3 |
+| Shaping II (`shaping:1`) | 2 | 3 |
 
 **Signature choices:** level 1: Study the Pattern; level 3: Reading the Weave.
 
@@ -139,13 +140,13 @@ This is a spell costing 0 SP.
 
 - **Read the Evidence I:** Main Action · Reason. Examine one accessible clue within reach; add 1/2/3 progress toward a concrete question about it. Searching a scene instead takes 10 minutes per attempt. You may also recall a relevant fact about a subject or reliable description: 1 minute, Knowledge, 1/2/3 progress toward a question set before rolling.
 
-**Known book spells:** Arcane Bolt (Main Action; SP 0); Mage Hand (Maneuver; SP 1); Magic Missile (Main Action; SP 1); Staying (Main Action; SP 2); Mending (Ritual; SP 0); Grease (Main Action; SP 1); Prestidigitation (Maneuver; SP 0); Unseen Servant — Workshop (Main Action; SP 1); Light (Maneuver; SP 0); Magic Weapon (Main Action; SP 1); Detect Magic (Maneuver; SP 0); Detect Poison and Disease (Ritual; SP 1); Levitate — Objects (Main Action; SP 2); Shatter (Main Action; SP 3); Telekinesis (Main Action; SP 3); Resilient Sphere (Main Action; SP 4).
+**Known book spells:** Arcane Bolt (Main Action; SP 0); Mage Hand (Maneuver; SP 1); Magic Missile (Main Action; SP 1); Staying (Main Action; SP 2); Mending (Ritual; SP 0); Grease (Main Action; SP 1); Prestidigitation (Maneuver; SP 0); Unseen Servant — Workshop (Main Action; SP 1); Light (Maneuver; SP 0); Magic Weapon (Main Action; SP 1); Detect Magic (Maneuver; SP 0); Detect Poison and Disease (Ritual; SP 1); Levitate — Objects (Main Action; SP 2); Shatter (Main Action; SP 3); Telekinesis (Main Action; SP 3); Resilient Sphere (Main Action; SP 4); Enlarge/Reduce — Objects (Main Action; SP 1); Unlocking Ways (Ritual; SP 2).
 
 **Spell output:** Alternative uses of the same reserve, not simultaneous allocations. Assumes SP is spent before recovery; time, spell-specific limits, components and maintained actions still apply. Signature spells and conditional discounts are described separately. At costs 1/2/3/5 SP, the full reserve funds 22/11/7/4 casts respectively; with the learned once-per-rest recovery it funds 23/11/7/4. Zero-SP spells remain limited by actions and circumstances.
 
 ## Level 7
 
-[Import this ready character](builds/wizard-level-7.hol.json). 1 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
+[Import this ready character](builds/wizard-level-7.hol.json). 3 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
 
 | Learned purchase | DP paid | Character level |
 |---|---:|---:|
@@ -164,10 +165,10 @@ This is a spell costing 0 SP.
 | Soul Capacity II (`spellcraft:soul-capacity:2`) | 2 | 3 |
 | Soul Capacity III (`spellcraft:soul-capacity:3`) | 2 | 3 |
 | Deep Reserves I (`spellcraft:soul-capacity:4`) | 3 | 3 |
+| Shaping II (`shaping:1`) | 2 | 3 |
 | Deep Reserves II (`spellcraft:soul-capacity:5`) | 4 | 7 |
 | Deep Reserves III (`spellcraft:soul-capacity:6`) | 4 | 7 |
 | Soul Wellspring (`spellcraft:soul-capacity:7`) | 5 | 7 |
-| Shaping II (`shaping:1`) | 2 | 7 |
 | Shaping III (`shaping:2`) | 2 | 7 |
 | Masterwork Forms (`shaping:3`) | 3 | 7 |
 | Detection II (`detection:1`) | 2 | 7 |
@@ -243,7 +244,7 @@ This is a spell costing 0 SP. If you also know Study the Pattern or Reading the 
 
 ## Deferred choices
 
-- Level 3: Shaping II — Costs 2 DP. You have 1 DP.
+Every planned choice was affordable when scheduled.
 
 ## Playtest questions
 

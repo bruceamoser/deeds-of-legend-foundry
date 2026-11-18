@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Timed work</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div></dl><p>1 day · Reason. Through an on-site demonstration of a feasible civic project, broker one agreement among up to four willing factions you can communicate with. Build a visible model or working example with real materials. Roll once; add 4/7/10 progress to each faction’s separate agreement objective. Completion secures the commitments established by the DA, such as access, labor or a ceasefire. New terms need a new objective; this creates neither resources nor control over a settlement.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Timed work</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div></dl><p>1 day · Reason. Present a feasible civic project to representatives of up to four willing factions you can communicate with. Show how it would work with a plan, model or demonstration. Roll once; add 4/7/10 progress to each faction’s separate agreement objective. Completion secures the commitments established by the DA, such as access, labor or a ceasefire. New terms need a new objective; this creates neither resources nor control over a settlement.</p>",
     "activity": {
       "action": "other",
       "rollMode": "attribute",
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "craft:workshop:7",
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "mastery",
@@ -34,7 +34,7 @@
         "duration": null,
         "attribute": "Reason",
         "defenseAttribute": null,
-        "effect": "1 day · Reason. Through an on-site demonstration of a feasible civic project, broker one agreement among up to four willing factions you can communicate with. Build a visible model or working example with real materials. Roll once; add 4/7/10 progress to each faction’s separate agreement objective. Completion secures the commitments established by the DA, such as access, labor or a ceasefire. New terms need a new objective; this creates neither resources nor control over a settlement.",
+        "effect": "1 day · Reason. Present a feasible civic project to representatives of up to four willing factions you can communicate with. Show how it would work with a plan, model or demonstration. Roll once; add 4/7/10 progress to each faction’s separate agreement objective. Completion secures the commitments established by the DA, such as access, labor or a ceasefire. New terms need a new objective; this creates neither resources nor control over a settlement.",
         "improves": null,
         "requires": [
           "craft:workshop:6"

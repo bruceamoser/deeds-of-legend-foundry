@@ -45,7 +45,7 @@ const action = (name, id) => page.locator(
 );
 const stage = (index) => page.locator(`[data-action="step"][data-step="${index}"]`);
 const heading = (name) => page.getByRole("heading", { name, exact: true });
-const balance = (dp) => expect(page.locator(".forge-balance strong")).toHaveText(`${dp} of 10`);
+const balance = (dp) => expect(page.locator(".forge-balance strong")).toHaveText(`${dp} of 12`);
 const findDiscipline = (id) => action("forge-filter", id).click();
 const select = async (id) => {
   const atlas = page.getByRole("dialog", { name: "Discipline atlas", exact: true });
@@ -54,12 +54,14 @@ const select = async (id) => {
     await node.scrollIntoViewIfNeeded();
     await node.click();
   } else {
-    const showAll = action("forge-show-all", "toggle");
-    if (await showAll.getAttribute("aria-pressed") === "false") await showAll.click();
-    const pathId = id.startsWith("air:") ? "elements:air" : id.split(":").slice(0, 2).join(":");
-    const path = action("forge-path", pathId);
-    if (await path.getAttribute("aria-expanded") === "false") await path.click();
     const row = action("forge-step", id);
+    if (!(await row.count())) {
+      const showAll = action("forge-show-all", "toggle");
+      if (await showAll.getAttribute("aria-pressed") === "false") await showAll.click();
+      const pathId = id.startsWith("air:") ? "elements:air" : id.split(":").slice(0, 2).join(":");
+      const path = action("forge-path", pathId);
+      if (await path.getAttribute("aria-expanded") === "false") await path.click();
+    }
     if (await row.getAttribute("aria-expanded") === "false") await row.click();
   }
   await expect(page.locator("#forge-selection:visible")).toBeVisible();
@@ -112,7 +114,7 @@ try {
 
   await stage(4).click();
   await expect(page.locator(".forge-controls")).toBeVisible();
-  await balance(10);
+  await balance(12);
   await expect(action("forge-view", "columns")).toHaveAttribute("aria-pressed", "true");
   assert.equal(await page.locator(".forge-studied .forge-discipline").count(), 3);
   await findDiscipline("arms");
@@ -122,7 +124,7 @@ try {
   await select("arms:bladework:4");
   await expect(action("forge-learn", "arms:bladework:4")).toHaveCount(0);
   await expect(page.locator("#forge-selection:visible")).toContainText("Available at level 3");
-  await balance(5);
+  await balance(7);
 
   await action("forge-chooser", "open").click();
   await action("forge-candidate", "elements").click();
@@ -132,8 +134,8 @@ try {
   await expect(action("forge-filter", "elements")).toBeVisible();
   await learn("air:0");
   await select("air:1");
-  await expect(page.locator("#forge-selection:visible")).toContainText("Costs 2 DP. You have 1 DP.");
-  await balance(1);
+  await expect(action("forge-learn", "air:1")).toBeEnabled();
+  await balance(3);
   await stage(6).click();
   assert.match(await page.locator("#panel").innerText(), /Creation complete/);
   const spExplanation = page.locator("details").filter({
@@ -151,9 +153,9 @@ try {
 
   await action("sheet").filter({ hasText: "View character sheet" }).click();
   await openDevelopment();
-  await expect(page.locator('[data-dp="current"]')).toHaveText("1");
+  await expect(page.locator('[data-dp="current"]')).toHaveText("3");
   await action("level-up").click();
-  await expect(page.locator('[data-dp="current"]')).toHaveText("7");
+  await expect(page.locator('[data-dp="current"]')).toHaveText("9");
   for (let level = 3; level <= 7; level++) await action("level-up").click();
   for (const tier of [3, 7]) {
     await page.locator(`[data-action="choose-signature"][data-tier="${tier}"]`).click();
@@ -253,6 +255,9 @@ try {
   await action("advance").click();
   await action("forge-view", "columns").click();
   await findDiscipline("elements");
+  const learnedAir = page.locator('[data-path="elements:air"] .forge-learned-step');
+  await expect(learnedAir).toHaveCount(7);
+  await expect(learnedAir.filter({ has: action("forge-step", "air:6") })).toContainText("5 DP spent");
   await select("air:6");
   await expect(selected.locator(".forge-meta")).toContainText("Learned");
   assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
@@ -261,6 +266,17 @@ try {
       return rect.right > innerWidth + 2 && rect.width ? [[element.tagName, element.className, rect.right]] : [];
     }).slice(0, 25))),
   );
+  // Remove one paid discipline, including steps bought at different levels.
+  await action("forge-refund", "elements").click();
+  await expect(action("forge-filter", "elements")).toHaveCount(0);
+  await expect(action("forge-filter", "all")).toHaveAttribute("aria-pressed", "true");
+  await expect(action("forge-step", "arms:bladework:7")).toBeVisible();
+  await page.reload();
+  await heading(actorName).waitFor();
+  const refunded = (await data()).character.draft;
+  const kept = [...refunded.purchases[1], ...Object.values(refunded.progression.levels).flatMap(level => level.purchases)];
+  assert(kept.some(({ id }) => id === "arms:bladework:7"));
+  assert(!kept.some(({ id }) => id === "elements" || id.startsWith("air:")));
   // Auxiliary published pages share this catalog and must survive revised techniques.
   await page.setViewportSize({width:1100,height:800});
   await page.goto(new URL("roll.html", base).href);
@@ -275,7 +291,7 @@ try {
     assert((await page.locator("body").innerText()).trim().length>30, `${file} renders content`);
   }
   assert.deepEqual(failures, []);
-  console.log("PASS Workshop Forge: single creation pool and distinct origin/class access, level gates, seven-step spellbook and martial mastery, save/reload/import, and narrow layout.");
+  console.log("PASS Workshop Forge: single creation pool, distinct origin/class access, learning gates, spellbook and martial mastery, list unlearn across levels, save/reload/import, and narrow layout.");
 } catch (error) {
   console.error("Browser errors:", failures);
   throw error;

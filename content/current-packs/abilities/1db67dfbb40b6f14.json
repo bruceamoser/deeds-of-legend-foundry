@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Reaction</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div></dl><p>Reaction · Knowledge. When a false claim or misidentified visible danger is about to cause a group within 6 squares to flee, attack or abandon a task, present evidence contradicting it before that choice resolves. Roll once; add 3/5/7 progress to up to four listeners’ separate correction objectives. A listener whose objective completes also reduces Frightened arising from that mistaken belief by 2. Once per distinct claim per scene; true danger, magical compulsion and player decisions are unaffected.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Reaction</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div></dl><p>Reaction · Knowledge. When a group within 6 squares is about to act on an alarming claim or misunderstanding, offer a credible correction it can understand before it acts. Roll once; add 3/5/7 progress to up to four listeners’ separate correction objectives. A listener whose objective completes also reduces Frightened arising from that mistaken belief by 2. Once per distinct claim per scene; true danger, magical compulsion and player decisions are unaffected.</p>",
     "activity": {
       "action": "reaction",
       "rollMode": "attribute",
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "scholarship:disputation:7",
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "mastery",
@@ -34,7 +34,7 @@
         "duration": null,
         "attribute": "Knowledge",
         "defenseAttribute": null,
-        "effect": "Reaction · Knowledge. When a false claim or misidentified visible danger is about to cause a group within 6 squares to flee, attack or abandon a task, present evidence contradicting it before that choice resolves. Roll once; add 3/5/7 progress to up to four listeners’ separate correction objectives. A listener whose objective completes also reduces Frightened arising from that mistaken belief by 2. Once per distinct claim per scene; true danger, magical compulsion and player decisions are unaffected.",
+        "effect": "Reaction · Knowledge. When a group within 6 squares is about to act on an alarming claim or misunderstanding, offer a credible correction it can understand before it acts. Roll once; add 3/5/7 progress to up to four listeners’ separate correction objectives. A listener whose objective completes also reduces Frightened arising from that mistaken belief by 2. Once per distinct claim per scene; true danger, magical compulsion and player decisions are unaffected.",
         "improves": null,
         "requires": [
           "scholarship:disputation:6"

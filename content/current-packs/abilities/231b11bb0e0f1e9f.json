@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Agility</dd></div></dl><p>Main Action · Agility. Attack up to three enemies within 12 squares whose vulnerable anatomy or construction you have observed through Split the Flight’s study or established evidence. Roll once; each takes 3/5/8 physical damage, ignoring up to 2 physical resistance. Immunity and other reductions still apply. Study does not create a vulnerability where none exists.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Agility</dd></div></dl><p>Main Action · Agility. Attack up to three enemies within 12 squares. Roll once. Each takes 3/5/8 physical damage. For a target whose vulnerable part you know from Split the Flight’s study or evidence, apply that hit ignoring up to 2 physical resistance. Apply immunity and other reductions normally.</p>",
     "activity": {
       "action": "main",
       "rollMode": "attribute",
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "marksmanship:precision:7",
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "mastery",
@@ -34,7 +34,7 @@
         "duration": null,
         "attribute": "Agility",
         "defenseAttribute": null,
-        "effect": "Main Action · Agility. Attack up to three enemies within 12 squares whose vulnerable anatomy or construction you have observed through Split the Flight’s study or established evidence. Roll once; each takes 3/5/8 physical damage, ignoring up to 2 physical resistance. Immunity and other reductions still apply. Study does not create a vulnerability where none exists.",
+        "effect": "Main Action · Agility. Attack up to three enemies within 12 squares. Roll once. Each takes 3/5/8 physical damage. For a target whose vulnerable part you know from Split the Flight’s study or evidence, apply that hit ignoring up to 2 physical resistance. Apply immunity and other reductions normally.",
         "improves": null,
         "requires": [
           "marksmanship:precision:6"

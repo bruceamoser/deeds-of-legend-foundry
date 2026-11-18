@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive modifier to a melee weapon attack</dd></div><div><dt>Attribute</dt><dd>Use that attack’s attribute</dd></div><div><dt>Target / range / shape</dt><dd>An enemy that damaged one of your allies since the end of your last turn.</dd></div><div><dt>Magic</dt><dd>Magical weapon modifier</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Duration</dt><dd>The attack and immediate push; Dazed uses normal decay.</dd></div><div><dt>Equipment / acquisition</dt><dd>The actual melee weapon required by the attack.</dd></div></dl><p>Once on your turn, declare this modifier and pay 1 SP before a melee weapon attack against that enemy. Add 1/2/3 radiant damage to the attack on Weak/Standard/Strong. On Standard or Strong, also push the target 1 square directly away from you. On Strong, also apply Dazed 1. Resolve each damage component’s resistance, then apply the minimum once to the whole attack. Resolve Stability, collisions and condition immunity normally.</p><p>This magical weapon modifier is not a separate spell casting and requires no free hand beyond the weapon’s requirements.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive modifier to a melee weapon attack</dd></div><div><dt>Attribute</dt><dd>Use that attack’s attribute</dd></div><div><dt>Target / range / shape</dt><dd>An enemy that damaged one of your allies this scene.</dd></div><div><dt>Magic</dt><dd>Magical weapon modifier</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Duration</dt><dd>The attack and immediate push; Dazed uses normal decay.</dd></div><div><dt>Equipment / acquisition</dt><dd>The actual melee weapon required by the attack.</dd></div></dl><p>Once on your turn, declare this modifier and pay 1 SP before a melee weapon attack against that enemy. Add 1/2/3 radiant damage to the attack on Weak/Standard/Strong. On Standard or Strong, also push the target 1 square directly away from you. On Strong, also apply Dazed 1. Resolve each damage component’s resistance, then apply the minimum once to the whole attack. Resolve Stability, collisions and condition immunity normally.</p><p>This magical weapon modifier is not a separate spell casting and requires no free hand beyond the weapon’s requirements.</p>",
     "activity": {
       "action": "passive",
       "rollMode": "none",
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "ability-signature-protector-rebuking-light",
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "ability",
@@ -30,11 +30,11 @@
         "cost": 0,
         "action": "Passive modifier to a melee weapon attack",
         "sp": 1,
-        "range": "An enemy that damaged one of your allies since the end of your last turn.",
+        "range": "An enemy that damaged one of your allies this scene.",
         "duration": "The attack and immediate push; Dazed uses normal decay.",
         "attribute": "Use that attack’s attribute",
         "defenseAttribute": null,
-        "effect": "**Action:** Passive modifier to a melee weapon attack · **Attribute:** Use that attack’s attribute\n\n**Target / range / shape:** An enemy that damaged one of your allies since the end of your last turn.\n\nOnce on your turn, declare this modifier and pay 1 SP before a melee weapon attack against that enemy. Add 1/2/3 radiant damage to the attack on Weak/Standard/Strong. On Standard or Strong, also push the target 1 square directly away from you. On Strong, also apply Dazed 1. Resolve each damage component’s resistance, then apply the minimum once to the whole attack. Resolve Stability, collisions and condition immunity normally.\n\n**Duration:** The attack and immediate push; Dazed uses normal decay.\n\n**Equipment / acquisition:** The actual melee weapon required by the attack.\n\nThis magical weapon modifier is not a separate spell casting and requires no free hand beyond the weapon’s requirements.",
+        "effect": "**Action:** Passive modifier to a melee weapon attack · **Attribute:** Use that attack’s attribute\n\n**Target / range / shape:** An enemy that damaged one of your allies this scene.\n\nOnce on your turn, declare this modifier and pay 1 SP before a melee weapon attack against that enemy. Add 1/2/3 radiant damage to the attack on Weak/Standard/Strong. On Standard or Strong, also push the target 1 square directly away from you. On Strong, also apply Dazed 1. Resolve each damage component’s resistance, then apply the minimum once to the whole attack. Resolve Stability, collisions and condition immunity normally.\n\n**Duration:** The attack and immediate push; Dazed uses normal decay.\n\n**Equipment / acquisition:** The actual melee weapon required by the attack.\n\nThis magical weapon modifier is not a separate spell casting and requires no free hand beyond the weapon’s requirements.",
         "improves": null,
         "requires": [],
         "bookId": null,

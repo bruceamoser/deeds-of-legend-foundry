@@ -1,6 +1,6 @@
 # Corin Ashguard: fighter after the rewrite
 
-Pinned authored source `e79dcd1e341169c380e3657fb73cd2968ac446d7`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../fighter.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
+Pinned authored source `56f2ec94077407c56f60caa29345a5e3dca4c28b`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../fighter.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
 
 ## What the rewrite changes
 
@@ -14,8 +14,8 @@ No Second Wind pool or exact Action Surge is selected. Heavy-armor training is r
 |---|---|---|---|
 | HP | 16 | 24 | 40 |
 | SP | 3 | 7 | 15 |
-| DP spent / total | 7 / 8 | 20 / 21 | 56 / 59 |
-| Unspent DP | 1 | 1 | 3 |
+| DP spent / total | 7 / 10 | 22 / 23 | 56 / 61 |
+| Unspent DP | 3 | 1 | 5 |
 | Learned action choices (Main / Maneuver / Reaction) | 1 / 1 / 3 | 2 / 1 / 4 | 3 / 1 / 6 |
 | Known book spells (free / paid) | 0 (0 / 0) | 0 (0 / 0) | 0 (0 / 0) |
 | Shared reserve: casts at 2 SP | 1 | 3 | 7 |
@@ -32,11 +32,11 @@ Equipment: Ordinary Melee Weapon (held); Ordinary Light Armor (worn); Ordinary S
 
 The D&D baseline has **20 HP** and **AC 19 with Flail and Shield (Chain Mail 16 + Shield 2 + Defense 1); 17 while wielding Greatsword** at level 2; HoL uses resistance and player defenses, so these are not equivalent durability measures. Learned action counts exclude universal actions and count signature passive modifications separately; spell choices are listed separately. A learned improvement changes an existing action, not another action button. Actual available actions still depend on equipment, targets and conditions.
 
-Creation remains **8 + Guile + Knowledge + Reason**, including negative scores, plus explicit ancestry benefits. Later awards are **4 + new level**. The completed `arms:bladework` path costs **1+2+2+3+4+4+5 = 21 DP**; discipline entry, if purchased, is separate. These are sample choices, not an optimizer or evidence of playtest balance.
+Starting DP is **10 + Guile + Knowledge + Reason**, including negative scores, plus explicit ancestry benefits. Later awards are **4 + new level**. The completed `arms:bladework` path costs **1+2+2+3+4+4+5 = 21 DP**; discipline entry, if purchased, is separate. These are sample choices, not an optimizer or evidence of playtest balance.
 
 ## Level 1
 
-[Import this ready character](builds/fighter-level-1.hol.json). 1 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
+[Import this ready character](builds/fighter-level-1.hol.json). 3 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
 
 | Learned purchase | DP paid | Character level |
 |---|---:|---:|
@@ -93,6 +93,7 @@ You must wield a melee weapon to use this guard and counterattack. A granted cou
 | Sweeping Blade I (`arms:bladework:4`) | 3 | 3 |
 | Sweeping Blade II (`arms:bladework:5`) | 4 | 3 |
 | Sweeping Blade III (`arms:bladework:6`) | 4 | 3 |
+| Light Armor II (`armor:harness:2`) | 2 | 3 |
 
 **Signature choices:** level 1: Measured Guard; level 3: Return Stroke.
 
@@ -129,7 +130,7 @@ Declare this guard before defending and gain 1 Boon to the defense. Resolve the 
 **Useful actions and improvements:**
 
 - **Measured Cut I:** Main Action · Brawn or Agility, chosen before rolling. Attack one adjacent creature for 2/3/5 physical damage. On Strong, you may move 1 square after the attack. Measured Cut deals 3/4/6 physical damage. Measured Cut also applies Bleeding 1 on Strong.
-- **Light Armor I:** Passive. You are trained to wear light armor; the suit supplies physical resistance 1. Ignore 1 Bulk from worn armor when calculating encumbrance, minimum 0 armor Bulk. This does not change its inventory size.
+- **Light Armor I:** Passive. You are trained to wear light armor; the suit supplies physical resistance 1. Ignore 1 Bulk from worn armor when calculating encumbrance, minimum 0 armor Bulk. This does not change its inventory size. While wearing armor you are trained to use, gain 1 Boon on rolls to resist forced movement. This is not additional resistance or Stability.
 - **Interpose I:** Reaction. After an adjacent ally rolls defense, before applying physical damage from that attack, reduce that damage by 1 after resistance. You must be able to reach the ally. No roll.
 - **Sheltering Guard I:** Maneuver. Choose one willing adjacent ally. Until your next turn starts it gains 1 Boon on ranged defenses while adjacent. Reusing this technique replaces its previous effect. No roll.
 - **Blade Ward I:** Reaction. After resolving your defense against a melee attack, before taking its damage, reduce that attack’s damage by 2 after resistance, respecting the attack minimum. No roll.
@@ -141,7 +142,7 @@ Declare this guard before defending and gain 1 Boon to the defense. Resolve the 
 
 ## Level 7
 
-[Import this ready character](builds/fighter-level-7.hol.json). 3 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
+[Import this ready character](builds/fighter-level-7.hol.json). 5 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
 
 | Learned purchase | DP paid | Character level |
 |---|---:|---:|
@@ -155,6 +156,7 @@ Declare this guard before defending and gain 1 Boon to the defense. Resolve the 
 | Sweeping Blade I (`arms:bladework:4`) | 3 | 3 |
 | Sweeping Blade II (`arms:bladework:5`) | 4 | 3 |
 | Sweeping Blade III (`arms:bladework:6`) | 4 | 3 |
+| Light Armor II (`armor:harness:2`) | 2 | 3 |
 | Iron Tempest (`arms:bladework:7`) | 5 | 7 |
 | Interpose II (`guard:interception:2`) | 2 | 7 |
 | Interpose III (`guard:interception:3`) | 2 | 7 |
@@ -162,7 +164,6 @@ Declare this guard before defending and gain 1 Boon to the defense. Resolve the 
 | Take the Blow II (`guard:interception:5`) | 4 | 7 |
 | Take the Blow III (`guard:interception:6`) | 4 | 7 |
 | The Last Safe Step (`guard:interception:7`) | 5 | 7 |
-| Light Armor II (`armor:harness:2`) | 2 | 7 |
 | Light Armor III (`armor:harness:3`) | 2 | 7 |
 | Heavy Armor I (`armor:harness:4`) | 3 | 7 |
 | Sheltering Guard II (`guard:shelter:2`) | 2 | 7 |
@@ -223,7 +224,7 @@ Each round you have one additional Reaction usable for an opportunity attack. Yo
 - **Blade Ward I:** Reaction. After resolving your defense against a melee attack, before taking its damage, reduce that attack’s damage by 2 after resistance, respecting the attack minimum. No roll.
 - **Sweeping Blade I:** Main Action · Brawn. Attack up to three adjacent enemies. Roll once; each takes 1/2/4 physical damage. Each creature is struck once. Sweeping Blade deals 2/3/5 physical damage to each target. Sweeping Blade also pushes each target 1 square directly away on Strong. Resolve collisions normally.
 - **Iron Tempest:** Main Action · Brawn. Move up to 3 squares, ignoring extra movement cost from difficult terrain, and attack up to three enemies adjacent at any point along that route. Roll once; each takes 3/5/8 physical damage. Each creature is struck once. Once per scene, you may instead strike four enemies for 4/7/10; after this sweep gain Stability 3 until your next turn starts.
-- **Take the Blow I:** Reaction. Before an adjacent ally rolls defense against a single-target attack, become its target if the attacker can legally target you. Roll your defense and receive all effects; the ally receives none. Before Take the Blow you may move up to 2 squares without movement reactions to reach an ally within 2 squares. Become a legal target before substituting. When Take the Blow intercepts a melee attack immediately following the attacker’s voluntary movement, give your defense 1 Boon. After it resolves, the attacker’s remaining voluntary movement this turn becomes 0; forced movement still applies.
+- **Take the Blow I:** Reaction. Before an adjacent ally rolls defense against a single-target attack, become its target if the attacker can legally target you. Roll your defense and receive all effects; the ally receives none. Before Take the Blow you may move up to 2 squares without movement reactions to reach an ally within 2 squares. Become a legal target before substituting. When you use Take the Blow, gain 1 Boon on your defense. After the intercepted attack resolves, the attacker’s remaining voluntary movement this turn becomes 0. Forced movement still applies.
 - **The Last Safe Step:** Reaction. When an ally within 4 squares is about to take damage from an attack or fall, move up to 4 squares to reach it. If you reach it, move together up to 2 more squares and reduce that damage by 4 after resistance. Neither creature triggers movement reactions during this rescue. An attack still resolves against its original target; a fall ends only if the destination supports both creatures. Fall damage can reach 0. No roll beyond the original defense.
 - **Heavy Armor I:** Passive. You are also trained to wear heavy armor; the suit supplies physical resistance 3. Maneuver: lift one willing or helpless adjacent creature no larger than you. For this turn, carrying it adds no encumbrance and occupies no weapon hand. Put it down in a legal adjacent square when your turn ends.
 
@@ -233,7 +234,7 @@ Each round you have one additional Reaction usable for an opportunity attack. Yo
 
 ## Deferred choices
 
-- Level 3: Light Armor II — Costs 2 DP. You have 1 DP.
+- Level 3: Light Armor III — Costs 2 DP. You have 1 DP.
 
 ## Playtest questions
 

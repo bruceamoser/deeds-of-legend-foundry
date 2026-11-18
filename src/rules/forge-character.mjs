@@ -5,6 +5,8 @@ import { acquireAbility } from "./acquisition.mjs";
 import { classEligibility } from "./development.mjs";
 import { forgeIndex, forgeLearning, learnForgeEntry } from "./forge.mjs";
 
+export const FORGE_STARTING_DP = 10;
+
 const trailRecipeIds = new Set(["recipe-bound-torches", "recipe-fletched-ammunition", "recipe-travel-food", "recipe-twisted-cord", "recipe-wooden-brace"]);
 const recipeSteps = new Set(["craft:supplies:1", "craft:supplies:2", "craft:workshop:1", "craft:workshop:2"]);
 
@@ -88,7 +90,7 @@ export function forgeCreationLedger(draft, choices, { graph, inventoryCatalog, l
   if (!validRange || ATTRIBUTES.reduce((sum, key) => sum + attrs[key], 0) !== 3)
     errors.push({ code: "attributes", text: "Assign six attributes from −2 to +2 totaling +3." });
   const ancestryTraitIds = ancestrySelection(draft, choices).traitIds;
-  const basePool = validRange ? (playtest ? 8 : 10) + attrs.knowledge + attrs.reason + attrs.guile : 0;
+  const basePool = validRange ? FORGE_STARTING_DP + attrs.knowledge + attrs.reason + attrs.guile : 0;
   const bonus = ancestryBenefits(ancestryTraitIds).additionalDpPerLevel;
   let state = {
     level: playtest ? 1 : 0, stage: playtest ? 1 : 0, dp: basePool + bonus, learned: [], signatureChoices: {},

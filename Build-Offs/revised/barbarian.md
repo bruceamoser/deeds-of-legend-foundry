@@ -1,6 +1,6 @@
 # Harka Stormshoulder: barbarian after the rewrite
 
-Pinned authored source `e79dcd1e341169c380e3657fb73cd2968ac446d7`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../barbarian.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
+Pinned authored source `56f2ec94077407c56f60caa29345a5e3dca4c28b`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../barbarian.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
 
 ## What the rewrite changes
 
@@ -14,8 +14,8 @@ This is a dangerous berserker rather than a copy of daily Rage uses. Rage and li
 |---|---|---|---|
 | HP | 18 | 30 | 54 |
 | SP | 2 | 6 | 14 |
-| DP spent / total | 6 / 7 | 19 / 20 | 51 / 58 |
-| Unspent DP | 1 | 1 | 7 |
+| DP spent / total | 6 / 9 | 19 / 22 | 51 / 60 |
+| Unspent DP | 3 | 3 | 9 |
 | Learned action choices (Main / Maneuver / Reaction) | 1 / 3 / 1 | 2 / 4 / 1 | 3 / 8 / 1 |
 | Known book spells (free / paid) | 0 (0 / 0) | 0 (0 / 0) | 0 (0 / 0) |
 | Shared reserve: casts at 2 SP | 1 | 3 | 7 |
@@ -32,11 +32,11 @@ Equipment: Ordinary Melee Weapon (held); Travel Pack; Food Bundle; Water Flask; 
 
 The D&D baseline has **23 HP** and **AC 14 unarmored (10 + DEX 2 + CON 2)** at level 2; HoL uses resistance and player defenses, so these are not equivalent durability measures. Learned action counts exclude universal actions and count signature passive modifications separately; spell choices are listed separately. A learned improvement changes an existing action, not another action button. Actual available actions still depend on equipment, targets and conditions.
 
-Creation remains **8 + Guile + Knowledge + Reason**, including negative scores, plus explicit ancestry benefits. Later awards are **4 + new level**. The completed `arms:bladework` path costs **1+2+2+3+4+4+5 = 21 DP**; discipline entry, if purchased, is separate. These are sample choices, not an optimizer or evidence of playtest balance.
+Starting DP is **10 + Guile + Knowledge + Reason**, including negative scores, plus explicit ancestry benefits. Later awards are **4 + new level**. The completed `arms:bladework` path costs **1+2+2+3+4+4+5 = 21 DP**; discipline entry, if purchased, is separate. These are sample choices, not an optimizer or evidence of playtest balance.
 
 ## Level 1
 
-[Import this ready character](builds/barbarian-level-1.hol.json). 1 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
+[Import this ready character](builds/barbarian-level-1.hol.json). 3 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
 
 | Learned purchase | DP paid | Character level |
 |---|---:|---:|
@@ -67,9 +67,9 @@ Enter a rage until the end of the scene. While raging, you gain 1 Boon to attack
 **Useful actions and improvements:**
 
 - **Measured Cut I:** Main Action · Brawn or Agility, chosen before rolling. Attack one adjacent creature for 2/3/5 physical damage. On Strong, you may move 1 square after the attack. Measured Cut deals 3/4/6 physical damage.
-- **Driving Opening I:** Maneuver. Choose one visible creature. Before your turn ends, your next Main Action melee weapon attack against it also pushes it 1 square directly away from your attack position on Strong. This modifies one attack, not each target of a sweep. Reusing this technique replaces its unused effect.
+- **Driving Opening I:** Maneuver. Choose one visible creature. Before your turn ends, your next Main Action melee weapon attack against it pushes that creature directly away from your attack position, 1 square on Standard or 2 squares on Strong. Resolve collisions normally. Apply the push only to the chosen creature on that attack. Reusing this technique replaces its unused effect.
 - **Running Vault I:** Maneuver. After moving at least 2 squares this turn, jump up to 2 squares horizontally to a visible unoccupied landing. Spend no additional movement. Movement reactions apply.
-- **Catch Your Balance I:** Reaction. When you would fall Prone, remain standing instead. You must be conscious and able to move. No roll.
+- **Catch Your Balance I:** Reaction. When you would fall Prone and can move, remain standing instead. No roll.
 
 **Known book spells:** None.
 
@@ -77,7 +77,7 @@ Enter a rage until the end of the scene. While raging, you gain 1 Boon to attack
 
 ## Level 3
 
-[Import this ready character](builds/barbarian-level-3.hol.json). 1 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
+[Import this ready character](builds/barbarian-level-3.hol.json). 3 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
 
 | Learned purchase | DP paid | Character level |
 |---|---:|---:|
@@ -130,9 +130,9 @@ Use once per scene. If you also know Go Berserk, both signatures share that rage
 **Useful actions and improvements:**
 
 - **Measured Cut I:** Main Action · Brawn or Agility, chosen before rolling. Attack one adjacent creature for 2/3/5 physical damage. On Strong, you may move 1 square after the attack. Measured Cut deals 3/4/6 physical damage. Measured Cut also applies Bleeding 1 on Strong.
-- **Driving Opening I:** Maneuver. Choose one visible creature. Before your turn ends, your next Main Action melee weapon attack against it also pushes it 1 square directly away from your attack position on Strong. This modifies one attack, not each target of a sweep. Reusing this technique replaces its unused effect.
+- **Driving Opening I:** Maneuver. Choose one visible creature. Before your turn ends, your next Main Action melee weapon attack against it pushes that creature directly away from your attack position, 1 square on Standard or 2 squares on Strong. Resolve collisions normally. Apply the push only to the chosen creature on that attack. Reusing this technique replaces its unused effect.
 - **Running Vault I:** Maneuver. After moving at least 2 squares this turn, jump up to 2 squares horizontally to a visible unoccupied landing. Spend no additional movement. Movement reactions apply.
-- **Catch Your Balance I:** Reaction. When you would fall Prone, remain standing instead. You must be conscious and able to move. No roll.
+- **Catch Your Balance I:** Reaction. When you would fall Prone and can move, remain standing instead. No roll.
 - **Sweeping Blade I:** Main Action · Brawn. Attack up to three adjacent enemies. Roll once; each takes 1/2/4 physical damage. Each creature is struck once. Sweeping Blade deals 2/3/5 physical damage to each target. Sweeping Blade also pushes each target 1 square directly away on Strong. Resolve collisions normally.
 
 **Known book spells:** None.
@@ -141,7 +141,7 @@ Use once per scene. If you also know Go Berserk, both signatures share that rage
 
 ## Level 7
 
-[Import this ready character](builds/barbarian-level-7.hol.json). 7 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
+[Import this ready character](builds/barbarian-level-7.hol.json). 9 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
 
 | Learned purchase | DP paid | Character level |
 |---|---:|---:|
@@ -222,9 +222,9 @@ Use this rage once per scene. If you also know Go Berserk or Pain Feeds the Fire
 **Useful actions and improvements:**
 
 - **Measured Cut I:** Main Action · Brawn or Agility, chosen before rolling. Attack one adjacent creature for 2/3/5 physical damage. On Strong, you may move 1 square after the attack. Measured Cut deals 3/4/6 physical damage. Measured Cut also applies Bleeding 1 on Strong.
-- **Driving Opening I:** Maneuver. Choose one visible creature. Before your turn ends, your next Main Action melee weapon attack against it also pushes it 1 square directly away from your attack position on Strong. This modifies one attack, not each target of a sweep. Reusing this technique replaces its unused effect. Driving Opening pushes 2 squares on Strong. Driving Opening also applies Slowed 2 on Strong to that target. Before rolling the modified attack against a living creature with positive HP, you may declare it nonlethal: if its damage would reduce the target to 0 HP, leave it at 1 HP and make it Unconscious for 1 minute or until it next takes damage. It falls Prone.
+- **Driving Opening I:** Maneuver. Choose one visible creature. Before your turn ends, your next Main Action melee weapon attack against it pushes that creature directly away from your attack position, 1 square on Standard or 2 squares on Strong. Resolve collisions normally. Apply the push only to the chosen creature on that attack. Reusing this technique replaces its unused effect. Driving Opening pushes 2 squares on Standard as well as Strong. Driving Opening also applies Slowed 2 on Strong to that target. Before rolling the modified attack against a living creature with positive HP, you may declare it nonlethal: if its damage would reduce the target to 0 HP, leave it at 1 HP and make it Unconscious for 1 minute or until it next takes damage. It falls Prone.
 - **Running Vault I:** Maneuver. After moving at least 2 squares this turn, jump up to 2 squares horizontally to a visible unoccupied landing. Spend no additional movement. Movement reactions apply. Running Vault reaches up to 3 squares. Running Vault ignores movement reactions during the jump.
-- **Catch Your Balance I:** Reaction. When you would fall Prone, remain standing instead. You must be conscious and able to move. No roll.
+- **Catch Your Balance I:** Reaction. When you would fall Prone and can move, remain standing instead. No roll.
 - **Sweeping Blade I:** Main Action · Brawn. Attack up to three adjacent enemies. Roll once; each takes 1/2/4 physical damage. Each creature is struck once. Sweeping Blade deals 2/3/5 physical damage to each target. Sweeping Blade also pushes each target 1 square directly away on Strong. Resolve collisions normally.
 - **Iron Tempest:** Main Action · Brawn. Move up to 3 squares, ignoring extra movement cost from difficult terrain, and attack up to three enemies adjacent at any point along that route. Roll once; each takes 3/5/8 physical damage. Each creature is struck once. Once per scene, you may instead strike four enemies for 4/7/10; after this sweep gain Stability 3 until your next turn starts.
 - **Follow My Leap I:** Maneuver. Use Running Vault and guide one willing adjacent ally through the same jump immediately after you. It lands adjacent to your destination; both landings must be legal. Follow My Leap reaches up to 4 squares horizontally. Follow My Leap can guide two willing adjacent allies through the jump, each to a different legal square adjacent to your destination.

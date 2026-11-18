@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>SP</dt><dd>0</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One willing held or unattended object within 3 squares</dd></div><div><dt>Duration</dt><dd>1 hour</dd></div></dl><p>Make it shed bright light to 6 squares and dim light for another 3. Choose the color. You may keep one Light casting at a time and end it with a Maneuver.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>SP</dt><dd>0</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One unattended object or object held by a willing creature within 3 squares</dd></div><div><dt>Duration</dt><dd>1 hour</dd></div></dl><p>Make it shed bright light to 6 squares and dim light for another 3. Choose the color. You may keep one Light casting at a time and end it with a Maneuver.</p>",
     "activity": {
       "action": "maneuver",
       "rollMode": "attribute",
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:imbuement:1",
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",
@@ -30,7 +30,7 @@
         "cost": 1,
         "action": "Maneuver",
         "sp": 0,
-        "range": "One willing held or unattended object within 3 squares",
+        "range": "One unattended object or object held by a willing creature within 3 squares",
         "duration": "1 hour",
         "attribute": "None",
         "defenseAttribute": null,
@@ -55,7 +55,7 @@
         "defenseAttribute": null,
         "holdAttribute": null,
         "escapeAttribute": null,
-        "target": "One willing held or unattended object within 3 squares",
+        "target": "One unattended object or object held by a willing creature within 3 squares",
         "duration": "1 hour",
         "effect": "Make it shed bright light to 6 squares and dim light for another 3. Choose the color. You may keep one Light casting at a time and end it with a Maneuver."
       }

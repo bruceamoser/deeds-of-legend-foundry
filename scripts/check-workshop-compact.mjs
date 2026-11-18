@@ -245,7 +245,7 @@ try {
     await action("signature", "ability-signature-protector-between-them").click();
     await expect(identity).toContainText("Protector");
     await expect(summary.locator(".creation-vitals")).toContainText(/\d+ HP · \d+ SP/);
-    await expect(remaining).toHaveText("10 DP remaining");
+    await expect(remaining).toHaveText("12 DP remaining");
     await noOverflow("Class");
     await capture("creator-class");
 
@@ -260,7 +260,8 @@ try {
       if ((await control.getAttribute("aria-expanded")) !== "true") await control.click();
       await expect(control).toHaveAttribute("aria-expanded", "true");
     };
-    const learnedStep = (id) => panel.locator(".forge-step-row.is-learned").filter({ has: action("forge-step", id) });
+    const learnedStep = (id) => panel.locator(".forge-learned-step").filter({ has: action("forge-step", id) });
+    const unlearn = (id) => action("forge-refund", id, panel);
     const branch = (id) => panel.locator(`[data-path="${id}"]`);
     const showAll = action("forge-show-all", "toggle", panel);
     // Three starting disciplines expose just their twelve affordable next choices.
@@ -285,7 +286,7 @@ try {
     await expect(learnedStep("arms:bladework:1")).toBeVisible();
     await expect(path("armor:harness")).toHaveAttribute("aria-expanded", "true");
     await expect(path("arms:bladework")).toContainText("Measured Cut II — 2 DP");
-    await expect(remaining).toHaveText("9 DP remaining");
+    await expect(remaining).toHaveText("11 DP remaining");
     await stepControl("arms:bladework:2").click();
     await expect(panel.locator("#forge-selection")).toContainText("Improves Measured Cut I");
     await expect(dialog).toHaveCount(0);
@@ -296,13 +297,22 @@ try {
     await expect(path("arms:bladework")).toContainText("Sweeping Blade I — 3 DP");
     await expect(stepControl("arms:bladework:4")).toHaveAccessibleName(/Level 3/);
     await expect(buy("arms:bladework:4")).toHaveCount(0);
-    await expect(remaining).toHaveText("5 DP remaining");
+    await expect(remaining).toHaveText("7 DP remaining");
     await path("arms:bladework").click();
-    await expect(branch("arms:bladework")).toHaveCount(0);
+    await expect(learnedStep("arms:bladework:3")).toContainText("2 DP spent");
+    await expect(unlearn("arms:bladework:2")).toBeVisible();
+    await expect(stepControl("arms:bladework:4")).toHaveCount(0);
     await showAll.click();
     await expect(branch("arms:bladework")).toBeVisible();
     await showAll.click();
-    await expect(branch("arms:bladework")).toHaveCount(0);
+    await expect(learnedStep("arms:bladework:3")).toBeVisible();
+    await unlearn("arms:bladework:2").click();
+    await expect(learnedStep("arms:bladework:2")).toHaveCount(0);
+    await expect(learnedStep("arms:bladework:3")).toHaveCount(0);
+    await expect(buy("arms:bladework:2")).toBeEnabled();
+    await buy("arms:bladework:2").click();
+    await buy("arms:bladework:3").click();
+    await expect(learnedStep("arms:bladework:3")).toBeVisible();
 
     await action("forge-chooser", "open", sidebar).click();
     const chooser = page.getByRole("dialog", { name: "Add discipline", exact: true });
@@ -324,21 +334,28 @@ try {
     await buy("elements", chooser).click();
     await expect(chooser).toHaveCount(0);
     await expect(study("elements")).toBeVisible();
-    await expect(remaining).toHaveText("2 DP remaining");
+    await expect(unlearn("elements")).toBeVisible();
+    await expect(unlearn("arms")).toHaveCount(0);
+    await expect(remaining).toHaveText("4 DP remaining");
     await expect(branch("elements:air")).toBeVisible();
     await buy("air:0").click();
-    // With only 1 DP, the next 2-DP spell section is hidden until planning is enabled.
-    await expect(branch("elements:air")).toHaveCount(0);
-    await showAll.click();
+    await expect(learnedStep("air:0")).toContainText("1 DP spent");
+    await expect(unlearn("air:0")).toBeVisible();
+    await buy("air:1").click();
+    await expect(unlearn("air:1")).toBeVisible();
+    await expect(stepControl("air:2")).toHaveCount(0);
+    await branch("elements:air").scrollIntoViewIfNeeded();
+    await noOverflow("Learning with purchased choices");
+    await capture("learning-learned");
     await openPath("elements:air");
-    await expect(stepControl("air:1")).toHaveAccessibleName(/Need 1 more DP/);
-    await expect(buy("air:1")).toHaveCount(0);
+    await expect(stepControl("air:2")).toHaveAccessibleName(/Need 1 more DP/);
+    await expect(buy("air:2")).toHaveCount(0);
     await expect(learnedStep("air:0")).toBeVisible();
+    await expect(learnedStep("air:1")).toBeVisible();
     await expect(remaining).toHaveText("1 DP remaining");
     await page.reload();
     await expect(identity).toContainText(hero);
     await expect(remaining).toHaveText("1 DP remaining");
-    await showAll.click();
     await openPath("elements:air");
     await expect(learnedStep("air:0")).toBeVisible();
     await openPath("arms:bladework");

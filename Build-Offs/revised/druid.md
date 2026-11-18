@@ -1,6 +1,6 @@
 # Thalen Reedwalker: druid after the rewrite
 
-Pinned authored source `e79dcd1e341169c380e3657fb73cd2968ac446d7`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../druid.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
+Pinned authored source `56f2ec94077407c56f60caa29345a5e3dca4c28b`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../druid.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
 
 ## What the rewrite changes
 
@@ -13,13 +13,13 @@ Only one transformation per scene and retained personal HP give different attrit
 | Measure | HoL 1 | HoL 3 | HoL 7 |
 |---|---|---|---|
 | HP | 14 | 22 | 38 |
-| SP | 7 | 11 | 19 |
-| DP spent / total | 8 / 10 | 21 / 23 | 60 / 61 |
-| Unspent DP | 2 | 2 | 1 |
+| SP | 7 | 11 | 21 |
+| DP spent / total | 8 / 12 | 21 / 25 | 63 / 63 |
+| Unspent DP | 4 | 4 | 0 |
 | Learned action choices (Main / Maneuver / Reaction) | 2 / 1 / 0 | 3 / 1 / 0 | 4 / 3 / 0 |
 | Known book spells (free / paid) | 10 (4 / 6) | 18 (4 / 14) | 29 (4 / 25) |
-| Shared reserve: casts at 2 SP | 3 | 5 | 9 |
-| Shared reserve: casts at 5 SP | 1 | 2 | 3 |
+| Shared reserve: casts at 2 SP | 3 | 5 | 10 |
+| Shared reserve: casts at 5 SP | 1 | 2 | 4 |
 | Extra SP from one recovery rest | 0 | 0 | 0 |
 
 ## Character choices
@@ -32,11 +32,11 @@ Equipment: Ordinary Melee Weapon (held); Travel Pack; Food Bundle; Water Flask; 
 
 The D&D baseline has **17 HP** and **AC 15 (Leather 11 + DEX 2 + Shield 2)** at level 2; HoL uses resistance and player defenses, so these are not equivalent durability measures. Learned action counts exclude universal actions and count signature passive modifications separately; spell choices are listed separately. A learned improvement changes an existing action, not another action button. Actual available actions still depend on equipment, targets and conditions.
 
-Creation remains **8 + Guile + Knowledge + Reason**, including negative scores, plus explicit ancestry benefits. Later awards are **4 + new level**. The completed `wilderness:animal-handling` path costs **1+2+2+3+4+4+5 = 21 DP**; discipline entry, if purchased, is separate. These are sample choices, not an optimizer or evidence of playtest balance.
+Starting DP is **10 + Guile + Knowledge + Reason**, including negative scores, plus explicit ancestry benefits. Later awards are **4 + new level**. The completed `wilderness:animal-handling` path costs **1+2+2+3+4+4+5 = 21 DP**; discipline entry, if purchased, is separate. These are sample choices, not an optimizer or evidence of playtest balance.
 
 ## Level 1
 
-[Import this ready character](builds/druid-level-1.hol.json). 2 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
+[Import this ready character](builds/druid-level-1.hol.json). 4 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
 
 | Learned purchase | DP paid | Character level |
 |---|---:|---:|
@@ -68,7 +68,7 @@ Once per scene, assume the appearance of a familiar Small or Medium ground beast
 
 **Useful actions and improvements:**
 
-- **Gentle Hand I:** Maneuver · Reason. Reassure one nonmagical animal within 2 squares that can perceive you and is already receptive to your presence; add 1/2/3 progress toward calming its immediate fear. An unfamiliar agitated animal takes 1 minute per attempt instead. Immediate danger or an implausible approach prevents progress.
+- **Gentle Hand I:** Maneuver · Reason. Reassure one nonmagical animal within 2 squares that can perceive you and add 1/2/3 progress toward calming its fear. Spend a Maneuver with a receptive animal or 1 minute per attempt with a wary or agitated one. Find an approach it can respond to in the circumstances.
 - **Read the Trail I:** Main Action · Reason. Read tracks or signs immediately before you; add 1/2/3 progress toward identifying direction, approximate numbers and freshness. Following a trail to the next landmark takes 10 minutes per attempt instead. The DA defines each objective from accessible evidence.
 
 **Known book spells:** Druidcraft (Maneuver; SP 0); Entangle (Main Action; SP 1); Goodberry (Ritual; SP 1); Speak with Plants (Main Action; SP 2); Hues (Maneuver; SP 0); Jump (Maneuver; SP 1); Ray of Frost (Main Action; SP 0); Create or Destroy Water (Ritual; SP 1); Enchanted Rope (Maneuver; SP 0); Loosen Earth (Ritual; SP 1).
@@ -77,7 +77,7 @@ Once per scene, assume the appearance of a familiar Small or Medium ground beast
 
 ## Level 3
 
-[Import this ready character](builds/druid-level-3.hol.json). 2 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
+[Import this ready character](builds/druid-level-3.hol.json). 4 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
 
 | Learned purchase | DP paid | Character level |
 |---|---:|---:|
@@ -133,7 +133,7 @@ This is a spell costing 1 SP. If you also know Borrowed Shape, both signatures s
 
 **Useful actions and improvements:**
 
-- **Gentle Hand I:** Maneuver · Reason. Reassure one nonmagical animal within 2 squares that can perceive you and is already receptive to your presence; add 1/2/3 progress toward calming its immediate fear. An unfamiliar agitated animal takes 1 minute per attempt instead. Immediate danger or an implausible approach prevents progress. Gentle Hand adds 1/3/4 progress. Gentle Hand may address three animals sharing the same cause of agitation as one objective.
+- **Gentle Hand I:** Maneuver · Reason. Reassure one nonmagical animal within 2 squares that can perceive you and add 1/2/3 progress toward calming its fear. Spend a Maneuver with a receptive animal or 1 minute per attempt with a wary or agitated one. Find an approach it can respond to in the circumstances. Gentle Hand adds 1/3/4 progress. Gentle Hand may address three animals sharing the same cause of agitation as one objective.
 - **Read the Trail I:** Main Action · Reason. Read tracks or signs immediately before you; add 1/2/3 progress toward identifying direction, approximate numbers and freshness. Following a trail to the next landmark takes 10 minutes per attempt instead. The DA defines each objective from accessible evidence.
 
 **Known book spells:** Druidcraft (Maneuver; SP 0); Entangle (Main Action; SP 1); Goodberry (Ritual; SP 1); Speak with Plants (Main Action; SP 2); Hues (Maneuver; SP 0); Jump (Maneuver; SP 1); Ray of Frost (Main Action; SP 0); Create or Destroy Water (Ritual; SP 1); Enchanted Rope (Maneuver; SP 0); Loosen Earth (Ritual; SP 1); Spike Growth (Main Action; SP 2); Plant Growth (Main Action; SP 3); Tree Skin (Main Action; SP 3); Tree Stride (Main Action; SP 4); Longstrider (Main Action; SP 1); Alter Self (Main Action; SP 2); Enlarge/Reduce — Living (Main Action; SP 2); Darkvision (Main Action; SP 3).
@@ -142,7 +142,7 @@ This is a spell costing 1 SP. If you also know Borrowed Shape, both signatures s
 
 ## Level 7
 
-[Import this ready character](builds/druid-level-7.hol.json). 1 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
+[Import this ready character](builds/druid-level-7.hol.json). 0 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
 
 | Learned purchase | DP paid | Character level |
 |---|---:|---:|
@@ -170,6 +170,8 @@ This is a spell costing 1 SP. If you also know Borrowed Shape, both signatures s
 | Water II (`water:1`) | 2 | 7 |
 | Water III (`water:2`) | 2 | 7 |
 | Winter’s Dominion (`water:3`) | 3 | 7 |
+| Spellcraft (`spellcraft`) | 2 | 7 |
+| Soul Capacity I (`spellcraft:soul-capacity:1`) | 1 | 7 |
 
 **Signature choices:** level 1: Borrowed Shape; level 3: Shape of the Wild; level 7: Great Shape.
 
@@ -227,19 +229,18 @@ This is a spell costing 1 SP. If you also know Borrowed Shape or Shape of the Wi
 
 **Useful actions and improvements:**
 
-- **Gentle Hand I:** Maneuver · Reason. Reassure one nonmagical animal within 2 squares that can perceive you and is already receptive to your presence; add 1/2/3 progress toward calming its immediate fear. An unfamiliar agitated animal takes 1 minute per attempt instead. Immediate danger or an implausible approach prevents progress. Gentle Hand adds 1/3/4 progress. Gentle Hand may address three animals sharing the same cause of agitation as one objective.
+- **Gentle Hand I:** Maneuver · Reason. Reassure one nonmagical animal within 2 squares that can perceive you and add 1/2/3 progress toward calming its fear. Spend a Maneuver with a receptive animal or 1 minute per attempt with a wary or agitated one. Find an approach it can respond to in the circumstances. Gentle Hand adds 1/3/4 progress. Gentle Hand may address three animals sharing the same cause of agitation as one objective.
 - **Read the Trail I:** Main Action · Reason. Read tracks or signs immediately before you; add 1/2/3 progress toward identifying direction, approximate numbers and freshness. Following a trail to the next landmark takes 10 minutes per attempt instead. The DA defines each objective from accessible evidence.
 - **Lead the Herd I:** Maneuver · Reason. Direct up to six calm nonmagical animals already cooperating with you toward a visible safe route; add 1/2/3 progress to the DA’s handling objective. Establishing initial cooperation takes 10 minutes per attempt instead. Completion gets them moving with you; danger or mistreatment ends cooperation. Lead the Herd adds 1/3/4 progress. Lead the Herd can guide twelve calm animals, and you gain 1 Boon on handling rolls to keep that herd together in ordinary travel.
-- **Wild Accord:** Maneuver · Reason. Give a familiar, cooperative nonmagical animal group of up to twelve one understandable direction: follow, wait, scatter to safety or approach a named visible place. Add 3/5/7 progress to the DA’s objective for overcoming present fear or confusion; ordinary cooperation with a safe instruction needs no roll. Completion gets the group carrying out that direction. This grants no attacks or additional combat turns; serious danger or mistreatment ends cooperation.
+- **Wild Accord:** Maneuver · Reason. Give up to twelve nonmagical animals that can perceive you one understandable direction: follow, wait, scatter to safety or approach a named visible place. For a group that needs coaxing, add 3/5/7 progress to the DA’s handling objective. A group already cooperating follows a safe instruction without a roll. Completion gets the group carrying out that direction. This grants no attacks or additional combat turns; serious danger or mistreatment ends cooperation.
 
 **Known book spells:** Druidcraft (Maneuver; SP 0); Entangle (Main Action; SP 1); Goodberry (Ritual; SP 1); Speak with Plants (Main Action; SP 2); Hues (Maneuver; SP 0); Jump (Maneuver; SP 1); Ray of Frost (Main Action; SP 0); Create or Destroy Water (Ritual; SP 1); Enchanted Rope (Maneuver; SP 0); Loosen Earth (Ritual; SP 1); Spike Growth (Main Action; SP 2); Plant Growth (Main Action; SP 3); Tree Skin (Main Action; SP 3); Tree Stride (Main Action; SP 4); Longstrider (Main Action; SP 1); Alter Self (Main Action; SP 2); Enlarge/Reduce — Living (Main Action; SP 2); Darkvision (Main Action; SP 3); Awaken (Ritual; SP 5); Wall of Thorns (Main Action; SP 5); Transport via Plants (Ritual; SP 6); Polymorph (Main Action; SP 3); Freedom of Movement (Main Action; SP 4); Purify Food and Drink (Ritual; SP 1); Water Breathing (Main Action; SP 2); Water Walk (Main Action; SP 2); Control Water (Main Action; SP 3); Ice Storm (Main Action; SP 3); Wall of Ice (Main Action; SP 4).
 
-**Spell output:** Alternative uses of the same reserve, not simultaneous allocations. Assumes SP is spent before recovery; time, spell-specific limits, components and maintained actions still apply. Signature spells and conditional discounts are described separately. At costs 1/2/3/5 SP, the full reserve funds 19/9/6/3 casts respectively; with the learned once-per-rest recovery it funds 19/9/6/3. Zero-SP spells remain limited by actions and circumstances.
+**Spell output:** Alternative uses of the same reserve, not simultaneous allocations. Assumes SP is spent before recovery; time, spell-specific limits, components and maintained actions still apply. Signature spells and conditional discounts are described separately. At costs 1/2/3/5 SP, the full reserve funds 21/10/7/4 casts respectively; with the learned once-per-rest recovery it funds 21/10/7/4. Zero-SP spells remain limited by actions and circumstances.
 
 ## Deferred choices
 
-- Level 7: Spellcraft — Costs 2 DP. You have 1 DP.
-- Level 7: Spellcraft — Costs 2 DP. You have 1 DP.
+- Level 7: Soul Capacity II — Costs 2 DP. You have 0 DP.
 
 ## Playtest questions
 

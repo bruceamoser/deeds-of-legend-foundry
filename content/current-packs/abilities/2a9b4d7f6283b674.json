@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div></dl><p>Main Action · Reason at a visible junction, or 10 minutes to scout the surrounding area. From a trail you followed, add 3/5/7 progress toward predicting the quarry’s next reachable landmark from its tracks and known terrain. Completion identifies the best-supported destination and gaps in the evidence. You and up to six companions gain 2 Boons on pursuit and traversal rolls along that route until reaching it. This does not locate a quarry that left no readable evidence.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div></dl><p>Main Action · Reason at a visible junction, or 10 minutes to scout the surrounding area. From a trail you can read, add 3/5/7 progress toward predicting the quarry’s next reachable landmark from its tracks and known terrain. Completion identifies the best-supported destination and gaps in the evidence. You and up to six companions gain 2 Boons on pursuit and traversal rolls along that route until reaching it. This does not locate a quarry that left no readable evidence.</p>",
     "activity": {
       "action": "main",
       "rollMode": "attribute",
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "wilderness:tracking:7",
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "mastery",
@@ -34,7 +34,7 @@
         "duration": null,
         "attribute": "Reason",
         "defenseAttribute": null,
-        "effect": "Main Action · Reason at a visible junction, or 10 minutes to scout the surrounding area. From a trail you followed, add 3/5/7 progress toward predicting the quarry’s next reachable landmark from its tracks and known terrain. Completion identifies the best-supported destination and gaps in the evidence. You and up to six companions gain 2 Boons on pursuit and traversal rolls along that route until reaching it. This does not locate a quarry that left no readable evidence.",
+        "effect": "Main Action · Reason at a visible junction, or 10 minutes to scout the surrounding area. From a trail you can read, add 3/5/7 progress toward predicting the quarry’s next reachable landmark from its tracks and known terrain. Completion identifies the best-supported destination and gaps in the evidence. You and up to six companions gain 2 Boons on pursuit and traversal rolls along that route until reaching it. This does not locate a quarry that left no readable evidence.",
         "improves": null,
         "requires": [
           "wilderness:tracking:6"

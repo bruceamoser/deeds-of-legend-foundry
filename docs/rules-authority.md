@@ -171,3 +171,10 @@ requirements for the new techniques.
 Book PR #1367, merged as **e79dcd1e341169c380e3657fb73cd2968ac446d7**, supplies
 the current creation, equipment and recovery rules. The Forge catalog, worked
 examples, ability and creature packs, and bundled journals use that revision.
+
+## November 18 — Starting DP and ability triggers (#342–#343)
+
+Book PR #1369 merged as **56f2ec94077407c56f60caa29345a5e3dca4c28b**.
+The current Forge, ability and creature packs, examples and bundled books
+are pinned to that revision. It supplies 10 base DP at level 1 and the
+revised player ability procedures in Starter Kit v17.4.0.

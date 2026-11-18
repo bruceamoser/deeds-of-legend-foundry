@@ -1,5 +1,5 @@
 import {DAMAGE_TYPES} from "./damage.mjs";
-import {printedDamageChoices} from "./attack-outcomes.mjs";
+import {fixedTieredAttackRiders,printedDamageChoices} from "./attack-outcomes.mjs";
 import {workshopRollAttributes} from "./workshop-ability.mjs";
 import {basicAttackDamageProfile,nativeWeaponTrainingIds} from "./weapon-training.mjs";
 import {reactionTrigger} from "./ability-roll-relevance.mjs";
@@ -53,19 +53,17 @@ function forgeWeaponAttack(record, forge, learned) {
   const effect = record.effect ?? "";
   // Table rulings that change resistance or replace the damage profile need
   // their printed options resolved before damage can be applied.
-  if (!family || /ignoring up to \d+ physical resistance|instead strike/i.test(effect)) return null;
+  if (!family || /(?:ignores?|ignoring|bypasses?) (?:up to )?\d+ physical resistance|instead strike/i.test(effect)) return null;
   const match = PHYSICAL_PROFILE.exec(effect);
   if (!match) return null;
   const improvements = (forge?.nodes ?? []).filter(node => node.improves === record.id && learned.includes(node.id));
   const profile = improvements.map(node => PHYSICAL_PROFILE.exec(node.effect)).filter(Boolean).at(-1) ?? match;
-  const conditions = [effect, ...improvements.map(node => node.effect)]
-    .flatMap(text => [...text.matchAll(/\b(?:On (Strong|Standard or Strong),?[^.]*?\b(?:apply|gains?|becomes)|(?:also )?(?:applies|adds)) +([A-Za-z]+) (\d+)\b(?: on (Strong|Standard or Strong))?/gi)])
-    .filter(([,initial, , ,trailing]) => initial || trailing);
+  const effects = [effect, ...improvements.map(node=>node.effect)];
   const outcomes = Object.fromEntries(TIERS.map((tier, index) => {
-    const applies = conditions.filter(([,initial, , ,trailing]) => (initial ?? trailing).toLowerCase().includes(tier));
-    return [tier, [`${profile[index + 1]} physical damage`, ...applies.map(([, , condition, rating]) => `${condition} ${rating}`)].join("; ")];
+    const riders = fixedTieredAttackRiders(effects, tier);
+    return [tier, [`${profile[index + 1]} physical damage`, ...riders].join("; ")];
   }));
-  return {family, outcomes, effect:[effect, ...improvements.map(node=>node.effect)].join(" ")};
+  return {family, outcomes, effect:effects.join(" ")};
 }
 
 export function abilityRollConfiguration(item, record, forge) {

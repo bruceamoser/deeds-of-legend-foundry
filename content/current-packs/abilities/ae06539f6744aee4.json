@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div><div><dt>Equipment</dt><dd>Wield a suitable one-handed melee weapon.</dd></div></dl><p>On Strong, you may move the dropped weapon into an unoccupied square adjacent to the target instead.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div><div><dt>Equipment</dt><dd>Wield a suitable one-handed melee weapon.</dd></div></dl><p>You may move the weapon Strip the Grip dislodges into a legal unoccupied square adjacent to the target instead.</p>",
     "activity": {
       "action": "passive",
       "rollMode": "none",
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "fencing:blade-tricks:6",
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "improvement",
@@ -34,7 +34,7 @@
         "duration": null,
         "attribute": null,
         "defenseAttribute": null,
-        "effect": "On Strong, you may move the dropped weapon into an unoccupied square adjacent to the target instead.",
+        "effect": "You may move the weapon Strip the Grip dislodges into a legal unoccupied square adjacent to the target instead.",
         "improves": "fencing:blade-tricks:4",
         "requires": [
           "fencing:blade-tricks:5"

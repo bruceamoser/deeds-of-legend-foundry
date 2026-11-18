@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div></dl><p>Maneuver · Reason. Reassure one nonmagical animal within 2 squares that can perceive you and is already receptive to your presence; add 1/2/3 progress toward calming its immediate fear. An unfamiliar agitated animal takes 1 minute per attempt instead. Immediate danger or an implausible approach prevents progress.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div></dl><p>Maneuver · Reason. Reassure one nonmagical animal within 2 squares that can perceive you and add 1/2/3 progress toward calming its fear. Spend a Maneuver with a receptive animal or 1 minute per attempt with a wary or agitated one. Find an approach it can respond to in the circumstances.</p>",
     "activity": {
       "action": "maneuver",
       "rollMode": "attribute",
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "wilderness:animal-handling:1",
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "technique",
@@ -34,7 +34,7 @@
         "duration": null,
         "attribute": "Reason",
         "defenseAttribute": null,
-        "effect": "Maneuver · Reason. Reassure one nonmagical animal within 2 squares that can perceive you and is already receptive to your presence; add 1/2/3 progress toward calming its immediate fear. An unfamiliar agitated animal takes 1 minute per attempt instead. Immediate danger or an implausible approach prevents progress.",
+        "effect": "Maneuver · Reason. Reassure one nonmagical animal within 2 squares that can perceive you and add 1/2/3 progress toward calming its fear. Spend a Maneuver with a receptive animal or 1 minute per attempt with a wary or agitated one. Find an approach it can respond to in the circumstances.",
         "improves": null,
         "requires": [
           "wilderness"

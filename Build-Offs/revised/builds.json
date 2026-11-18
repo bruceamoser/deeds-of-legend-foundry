@@ -1,14 +1,14 @@
 {
   "rulesRevision": 299,
   "spellbookProgressionRevision": 310,
-  "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+  "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
   "workingTree": false,
   "builds": [
     {
       "id": "barbarian",
       "name": "Harka Stormshoulder",
       "level": 1,
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "workingTree": false,
       "draft": {
         "name": "Harka Stormshoulder",
@@ -162,9 +162,9 @@
       },
       "development": {
         "level": 1,
-        "current": 1,
+        "current": 3,
         "spent": 6,
-        "total": 7,
+        "total": 9,
         "expired": 0
       },
       "purchases": [
@@ -249,7 +249,7 @@
           "name": "Driving Opening I",
           "dp": 1,
           "level": 1,
-          "effect": "Maneuver. Choose one visible creature. Before your turn ends, your next Main Action melee weapon attack against it also pushes it 1 square directly away from your attack position on Strong. This modifies one attack, not each target of a sweep. Reusing this technique replaces its unused effect.",
+          "effect": "Maneuver. Choose one visible creature. Before your turn ends, your next Main Action melee weapon attack against it pushes that creature directly away from your attack position, 1 square on Standard or 2 squares on Strong. Resolve collisions normally. Apply the push only to the chosen creature on that attack. Reusing this technique replaces its unused effect.",
           "kind": "technique",
           "disciplineId": "arms",
           "pathId": "arms:impact",
@@ -277,7 +277,7 @@
           "name": "Catch Your Balance I",
           "dp": 1,
           "level": 1,
-          "effect": "Reaction. When you would fall Prone, remain standing instead. You must be conscious and able to move. No roll.",
+          "effect": "Reaction. When you would fall Prone and can move, remain standing instead. No roll.",
           "kind": "technique",
           "disciplineId": "athletics",
           "pathId": "athletics:balance",
@@ -331,7 +331,7 @@
       "id": "barbarian",
       "name": "Harka Stormshoulder",
       "level": 3,
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "workingTree": false,
       "draft": {
         "name": "Harka Stormshoulder",
@@ -515,9 +515,9 @@
       },
       "development": {
         "level": 3,
-        "current": 1,
+        "current": 3,
         "spent": 19,
-        "total": 20,
+        "total": 22,
         "expired": 0
       },
       "purchases": [
@@ -647,7 +647,7 @@
           "name": "Driving Opening I",
           "dp": 1,
           "level": 1,
-          "effect": "Maneuver. Choose one visible creature. Before your turn ends, your next Main Action melee weapon attack against it also pushes it 1 square directly away from your attack position on Strong. This modifies one attack, not each target of a sweep. Reusing this technique replaces its unused effect.",
+          "effect": "Maneuver. Choose one visible creature. Before your turn ends, your next Main Action melee weapon attack against it pushes that creature directly away from your attack position, 1 square on Standard or 2 squares on Strong. Resolve collisions normally. Apply the push only to the chosen creature on that attack. Reusing this technique replaces its unused effect.",
           "kind": "technique",
           "disciplineId": "arms",
           "pathId": "arms:impact",
@@ -675,7 +675,7 @@
           "name": "Catch Your Balance I",
           "dp": 1,
           "level": 1,
-          "effect": "Reaction. When you would fall Prone, remain standing instead. You must be conscious and able to move. No roll.",
+          "effect": "Reaction. When you would fall Prone and can move, remain standing instead. No roll.",
           "kind": "technique",
           "disciplineId": "athletics",
           "pathId": "athletics:balance",
@@ -747,7 +747,7 @@
       "id": "barbarian",
       "name": "Harka Stormshoulder",
       "level": 7,
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "workingTree": false,
       "draft": {
         "name": "Harka Stormshoulder",
@@ -984,9 +984,9 @@
       },
       "development": {
         "level": 7,
-        "current": 7,
+        "current": 9,
         "spent": 51,
-        "total": 58,
+        "total": 60,
         "expired": 0
       },
       "purchases": [
@@ -1203,7 +1203,7 @@
           "name": "Driving Opening I",
           "dp": 1,
           "level": 1,
-          "effect": "Maneuver. Choose one visible creature. Before your turn ends, your next Main Action melee weapon attack against it also pushes it 1 square directly away from your attack position on Strong. This modifies one attack, not each target of a sweep. Reusing this technique replaces its unused effect.",
+          "effect": "Maneuver. Choose one visible creature. Before your turn ends, your next Main Action melee weapon attack against it pushes that creature directly away from your attack position, 1 square on Standard or 2 squares on Strong. Resolve collisions normally. Apply the push only to the chosen creature on that attack. Reusing this technique replaces its unused effect.",
           "kind": "technique",
           "disciplineId": "arms",
           "pathId": "arms:impact",
@@ -1231,7 +1231,7 @@
           "name": "Catch Your Balance I",
           "dp": 1,
           "level": 1,
-          "effect": "Reaction. When you would fall Prone, remain standing instead. You must be conscious and able to move. No roll.",
+          "effect": "Reaction. When you would fall Prone and can move, remain standing instead. No roll.",
           "kind": "technique",
           "disciplineId": "athletics",
           "pathId": "athletics:balance",
@@ -1360,7 +1360,7 @@
       "id": "bard",
       "name": "Lysa Silverstring",
       "level": 1,
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "workingTree": false,
       "draft": {
         "name": "Lysa Silverstring",
@@ -1512,9 +1512,9 @@
       },
       "development": {
         "level": 1,
-        "current": 2,
+        "current": 4,
         "spent": 10,
-        "total": 12,
+        "total": 14,
         "expired": 0
       },
       "purchases": [
@@ -1758,7 +1758,7 @@
       "id": "bard",
       "name": "Lysa Silverstring",
       "level": 3,
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "workingTree": false,
       "draft": {
         "name": "Lysa Silverstring",
@@ -1943,9 +1943,9 @@
       },
       "development": {
         "level": 3,
-        "current": 0,
+        "current": 2,
         "spent": 25,
-        "total": 25,
+        "total": 27,
         "expired": 0
       },
       "purchases": [
@@ -2275,7 +2275,7 @@
         {
           "level": 3,
           "id": "emotion:3",
-          "reason": "Costs 3 DP. You have 0 DP."
+          "reason": "Costs 3 DP. You have 2 DP."
         }
       ]
     },
@@ -2283,7 +2283,7 @@
       "id": "bard",
       "name": "Lysa Silverstring",
       "level": 7,
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "workingTree": false,
       "draft": {
         "name": "Lysa Silverstring",
@@ -2503,6 +2503,9 @@
                 },
                 {
                   "id": "thought:1"
+                },
+                {
+                  "id": "thought:2"
                 }
               ],
               "signatures": {
@@ -2531,8 +2534,8 @@
       "development": {
         "level": 7,
         "current": 0,
-        "spent": 63,
-        "total": 63,
+        "spent": 65,
+        "total": 65,
         "expired": 0
       },
       "purchases": [
@@ -2717,6 +2720,13 @@
           "paidDp": 2,
           "level": 7,
           "requiredLevel": 1
+        },
+        {
+          "id": "thought:2",
+          "name": "Thought III",
+          "paidDp": 2,
+          "level": 7,
+          "requiredLevel": 1
         }
       ],
       "signatureChoices": {
@@ -2877,7 +2887,9 @@
         "spell:perception:7",
         "spell:perception:8",
         "spell:thought:3",
-        "spell:thought:4"
+        "spell:thought:4",
+        "spell:thought:5",
+        "spell:thought:6"
       ],
       "spells": [
         {
@@ -2974,7 +2986,7 @@
           "action": "Main Action",
           "sp": 1,
           "duration": "Instant; conditions decay normally",
-          "effect": "Send drowsiness over the target. Apply Slowed 1/2/3; on Strong also apply Asleep 1. Damage or ordinary waking procedures end Asleep."
+          "effect": "Send drowsiness over the target. Apply Slowed 1/2/3. On Standard or Strong, also apply Asleep 1. Damage or ordinary waking procedures end Asleep."
         },
         {
           "id": "spell:dreams:3",
@@ -3127,6 +3139,22 @@
           "sp": 2,
           "duration": "1 hour",
           "effect": "The recipient can understand and speak the ordinary languages of creatures addressing it. Its voice remains its own. Reading and writing use languages it already knows."
+        },
+        {
+          "id": "spell:thought:5",
+          "name": "Sending",
+          "action": "Ritual",
+          "sp": 2,
+          "duration": "Instant",
+          "effect": "Send up to twenty-five words through a mental thread. The recipient knows who sent it and may answer with twenty-five words. A creature that chooses silence still receives the message."
+        },
+        {
+          "id": "spell:thought:6",
+          "name": "Telepathic Bond",
+          "action": "Ritual",
+          "sp": 3,
+          "duration": "1 hour",
+          "effect": "Create a shared mental conversation reaching 1 kilometer. Participants exchange words and simple images by intent while conscious. Each participant may leave the link at any time."
         }
       ],
       "actionCounts": {
@@ -3137,9 +3165,9 @@
         "Other": 1
       },
       "spellCounts": {
-        "total": 31,
+        "total": 33,
         "free": 4,
-        "paid": 27
+        "paid": 29
       },
       "castingBudget": {
         "maxSp": 19,
@@ -3174,12 +3202,7 @@
         {
           "level": 3,
           "id": "emotion:3",
-          "reason": "Costs 3 DP. You have 0 DP."
-        },
-        {
-          "level": 7,
-          "id": "thought:2",
-          "reason": "Costs 2 DP. You have 0 DP."
+          "reason": "Costs 3 DP. You have 2 DP."
         },
         {
           "level": 7,
@@ -3192,7 +3215,7 @@
       "id": "cleric",
       "name": "Brunna Hearthward",
       "level": 1,
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "workingTree": false,
       "draft": {
         "name": "Brunna Hearthward",
@@ -3349,9 +3372,9 @@
       },
       "development": {
         "level": 1,
-        "current": 2,
+        "current": 4,
         "spent": 8,
-        "total": 10,
+        "total": 12,
         "expired": 0
       },
       "purchases": [
@@ -3550,7 +3573,7 @@
       "id": "cleric",
       "name": "Brunna Hearthward",
       "level": 3,
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "workingTree": false,
       "draft": {
         "name": "Brunna Hearthward",
@@ -3716,6 +3739,9 @@
                 },
                 {
                   "id": "medicine:first-aid:4"
+                },
+                {
+                  "id": "protection:1"
                 }
               ],
               "signatures": {
@@ -3744,8 +3770,8 @@
       "development": {
         "level": 3,
         "current": 1,
-        "spent": 22,
-        "total": 23,
+        "spent": 24,
+        "total": 25,
         "expired": 0
       },
       "purchases": [
@@ -3832,6 +3858,13 @@
           "paidDp": 3,
           "level": 3,
           "requiredLevel": 3
+        },
+        {
+          "id": "protection:1",
+          "name": "Protection II",
+          "paidDp": 2,
+          "level": 3,
+          "requiredLevel": 1
         }
       ],
       "signatureChoices": {
@@ -3932,7 +3965,9 @@
         "spell:restoration:5",
         "spell:restoration:6",
         "spell:restoration:7",
-        "spell:restoration:8"
+        "spell:restoration:8",
+        "spell:protection:3",
+        "spell:protection:4"
       ],
       "spells": [
         {
@@ -4030,6 +4065,22 @@
           "sp": 4,
           "duration": "Instant",
           "effect": "Weave wounds closed across a small company. Roll once; each restores 4/6/8 HP after Life resistance."
+        },
+        {
+          "id": "spell:protection:3",
+          "name": "Mage Armor",
+          "action": "Main Action",
+          "sp": 1,
+          "duration": "8 hours",
+          "effect": "Clothe yourself in a protective magical outline. Gain physical resistance 1, using the highest matching resistance. The armor persists for eight hours without Sustain."
+        },
+        {
+          "id": "spell:protection:4",
+          "name": "Bladeturn",
+          "action": "Reaction",
+          "sp": 2,
+          "duration": "The triggering attack",
+          "effect": "Turn the edge aside. Reduce its physical damage by 2 after resistance, keeping the attack's minimum 1 damage."
         }
       ],
       "actionCounts": {
@@ -4040,9 +4091,9 @@
         "Other": 0
       },
       "spellCounts": {
-        "total": 12,
+        "total": 14,
         "free": 4,
-        "paid": 8
+        "paid": 10
       },
       "castingBudget": {
         "maxSp": 10,
@@ -4070,19 +4121,13 @@
       ],
       "resolved": "Repeatable Mend, explicit shared first-aid recovery, defensive prayers and developed treatment make a complete support identity.",
       "remaining": "There is no separate Channel Divinity pool or Turn Undead feature in these selections. Burning SP on healing competes directly with other paid spells.",
-      "deferred": [
-        {
-          "level": 3,
-          "id": "protection:1",
-          "reason": "Costs 2 DP. You have 1 DP."
-        }
-      ]
+      "deferred": []
     },
     {
       "id": "cleric",
       "name": "Brunna Hearthward",
       "level": 7,
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "workingTree": false,
       "draft": {
         "name": "Brunna Hearthward",
@@ -4248,6 +4293,9 @@
                 },
                 {
                   "id": "medicine:first-aid:4"
+                },
+                {
+                  "id": "protection:1"
                 }
               ],
               "signatures": {
@@ -4291,9 +4339,6 @@
                   "id": "restoration:6"
                 },
                 {
-                  "id": "protection:1"
-                },
-                {
                   "id": "protection:2"
                 },
                 {
@@ -4306,7 +4351,7 @@
                   "id": "sanctuary:2"
                 },
                 {
-                  "id": "spellcraft"
+                  "id": "sanctuary:3"
                 }
               ],
               "signatures": {
@@ -4334,9 +4379,9 @@
       },
       "development": {
         "level": 7,
-        "current": 0,
-        "spent": 61,
-        "total": 61,
+        "current": 1,
+        "spent": 62,
+        "total": 63,
         "expired": 0
       },
       "purchases": [
@@ -4425,6 +4470,13 @@
           "requiredLevel": 3
         },
         {
+          "id": "protection:1",
+          "name": "Protection II",
+          "paidDp": 2,
+          "level": 3,
+          "requiredLevel": 1
+        },
+        {
           "id": "medicine:first-aid:5",
           "name": "Emergency Treatment II",
           "paidDp": 4,
@@ -4467,13 +4519,6 @@
           "requiredLevel": 7
         },
         {
-          "id": "protection:1",
-          "name": "Protection II",
-          "paidDp": 2,
-          "level": 7,
-          "requiredLevel": 1
-        },
-        {
           "id": "protection:2",
           "name": "Protection III",
           "paidDp": 2,
@@ -4502,11 +4547,11 @@
           "requiredLevel": 1
         },
         {
-          "id": "spellcraft",
-          "name": "Spellcraft",
-          "paidDp": 2,
+          "id": "sanctuary:3",
+          "name": "Haven",
+          "paidDp": 3,
           "level": 7,
-          "requiredLevel": 1
+          "requiredLevel": 3
         }
       ],
       "signatureChoices": {
@@ -4639,11 +4684,11 @@
         "spell:restoration:6",
         "spell:restoration:7",
         "spell:restoration:8",
+        "spell:protection:3",
+        "spell:protection:4",
         "spell:restoration:a1",
         "spell:restoration:a2",
         "spell-mastery:true-resurrection",
-        "spell:protection:3",
-        "spell:protection:4",
         "spell:protection:5",
         "spell:protection:6",
         "spell:protection:7",
@@ -4651,7 +4696,9 @@
         "spell:sanctuary:3",
         "spell:sanctuary:4",
         "spell:sanctuary:5",
-        "spell:sanctuary:6"
+        "spell:sanctuary:6",
+        "spell:sanctuary:7",
+        "spell:sanctuary:8"
       ],
       "spells": [
         {
@@ -4751,6 +4798,22 @@
           "effect": "Weave wounds closed across a small company. Roll once; each restores 4/6/8 HP after Life resistance."
         },
         {
+          "id": "spell:protection:3",
+          "name": "Mage Armor",
+          "action": "Main Action",
+          "sp": 1,
+          "duration": "8 hours",
+          "effect": "Clothe yourself in a protective magical outline. Gain physical resistance 1, using the highest matching resistance. The armor persists for eight hours without Sustain."
+        },
+        {
+          "id": "spell:protection:4",
+          "name": "Bladeturn",
+          "action": "Reaction",
+          "sp": 2,
+          "duration": "The triggering attack",
+          "effect": "Turn the edge aside. Reduce its physical damage by 2 after resistance, keeping the attack's minimum 1 damage."
+        },
+        {
           "id": "spell:restoration:a1",
           "name": "Heal",
           "action": "Main Action",
@@ -4773,22 +4836,6 @@
           "sp": 8,
           "duration": "Instant",
           "effect": "Restore a life ended before its natural span. Prepare the remains with unique funerary materials whose availability the DA establishes before the ritual. The spirit must freely agree. At completion, consume the materials and return the person to life at 1 HP in a restored body, clearing both death roll tallies. Descriptive scars remain; spent SP and Grit remain spent. Each person has one lifetime return to life, shared with Lifegiving. The ritual creates one restored body, replacing the prepared remains."
-        },
-        {
-          "id": "spell:protection:3",
-          "name": "Mage Armor",
-          "action": "Main Action",
-          "sp": 1,
-          "duration": "8 hours",
-          "effect": "Clothe yourself in a protective magical outline. Gain physical resistance 1, using the highest matching resistance. The armor persists for eight hours without Sustain."
-        },
-        {
-          "id": "spell:protection:4",
-          "name": "Bladeturn",
-          "action": "Reaction",
-          "sp": 2,
-          "duration": "The triggering attack",
-          "effect": "Turn the edge aside. Reduce its physical damage by 2 after resistance, keeping the attack's minimum 1 damage."
         },
         {
           "id": "spell:protection:5",
@@ -4853,6 +4900,22 @@
           "sp": 3,
           "duration": "24 hours",
           "effect": "Consecrate the site. Willing occupants gain 1 Boon to defenses against undead and spirits while inside. Ordinary remains there resist decay for the duration. Choose the site's visible symbol when casting."
+        },
+        {
+          "id": "spell:sanctuary:7",
+          "name": "Guards and Wards",
+          "action": "Ritual",
+          "sp": 3,
+          "duration": "8 hours",
+          "effect": "Ward the rooms with soft warning bells. Name up to six guests. When another creature opens an exterior door or window, you hear its location while within 100 squares. It receives Slowed 1 on first entry, once per creature. Doors remain physically operable and warnings persist even after that slowing ends."
+        },
+        {
+          "id": "spell:sanctuary:8",
+          "name": "Antilife Shell",
+          "action": "Main Action",
+          "sp": 4,
+          "duration": "1 minute",
+          "effect": "A barrier of repelling force surrounds you. A living creature crossing its boundary spends 2 extra movement and becomes Slowed 1, once per round. The ring moves with you; moving it over a creature applies the same effect rather than pushing it automatically."
         }
       ],
       "actionCounts": {
@@ -4863,9 +4926,9 @@
         "Other": 1
       },
       "spellCounts": {
-        "total": 25,
+        "total": 27,
         "free": 4,
-        "paid": 21
+        "paid": 23
       },
       "castingBudget": {
         "maxSp": 18,
@@ -4898,19 +4961,14 @@
       "remaining": "There is no separate Channel Divinity pool or Turn Undead feature in these selections. Burning SP on healing competes directly with other paid spells.",
       "deferred": [
         {
-          "level": 3,
-          "id": "protection:1",
+          "level": 7,
+          "id": "spellcraft",
           "reason": "Costs 2 DP. You have 1 DP."
         },
         {
           "level": 7,
-          "id": "sanctuary:3",
-          "reason": "Costs 3 DP. You have 2 DP."
-        },
-        {
-          "level": 7,
-          "id": "spellcraft:soul-capacity:1",
-          "reason": "Costs 1 DP. You have 0 DP."
+          "id": "spellcraft",
+          "reason": "Costs 2 DP. You have 1 DP."
         }
       ]
     },
@@ -4918,7 +4976,7 @@
       "id": "druid",
       "name": "Thalen Reedwalker",
       "level": 1,
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "workingTree": false,
       "draft": {
         "name": "Thalen Reedwalker",
@@ -5078,9 +5136,9 @@
       },
       "development": {
         "level": 1,
-        "current": 2,
+        "current": 4,
         "spent": 8,
-        "total": 10,
+        "total": 12,
         "expired": 0
       },
       "purchases": [
@@ -5163,7 +5221,7 @@
           "name": "Gentle Hand I",
           "dp": 1,
           "level": 1,
-          "effect": "Maneuver · Reason. Reassure one nonmagical animal within 2 squares that can perceive you and is already receptive to your presence; add 1/2/3 progress toward calming its immediate fear. An unfamiliar agitated animal takes 1 minute per attempt instead. Immediate danger or an implausible approach prevents progress.",
+          "effect": "Maneuver · Reason. Reassure one nonmagical animal within 2 squares that can perceive you and add 1/2/3 progress toward calming its fear. Spend a Maneuver with a receptive animal or 1 minute per attempt with a wary or agitated one. Find an approach it can respond to in the circumstances.",
           "kind": "technique",
           "disciplineId": "wilderness",
           "pathId": "wilderness:animal-handling",
@@ -5322,7 +5380,7 @@
       "id": "druid",
       "name": "Thalen Reedwalker",
       "level": 3,
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "workingTree": false,
       "draft": {
         "name": "Thalen Reedwalker",
@@ -5518,9 +5576,9 @@
       },
       "development": {
         "level": 3,
-        "current": 2,
+        "current": 4,
         "spent": 21,
-        "total": 23,
+        "total": 25,
         "expired": 0
       },
       "purchases": [
@@ -5664,7 +5722,7 @@
           "name": "Gentle Hand I",
           "dp": 1,
           "level": 1,
-          "effect": "Maneuver · Reason. Reassure one nonmagical animal within 2 squares that can perceive you and is already receptive to your presence; add 1/2/3 progress toward calming its immediate fear. An unfamiliar agitated animal takes 1 minute per attempt instead. Immediate danger or an implausible approach prevents progress.",
+          "effect": "Maneuver · Reason. Reassure one nonmagical animal within 2 squares that can perceive you and add 1/2/3 progress toward calming its fear. Spend a Maneuver with a receptive animal or 1 minute per attempt with a wary or agitated one. Find an approach it can respond to in the circumstances.",
           "kind": "technique",
           "disciplineId": "wilderness",
           "pathId": "wilderness:animal-handling",
@@ -5897,7 +5955,7 @@
       "id": "druid",
       "name": "Thalen Reedwalker",
       "level": 7,
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "workingTree": false,
       "draft": {
         "name": "Thalen Reedwalker",
@@ -6122,6 +6180,12 @@
                 },
                 {
                   "id": "water:3"
+                },
+                {
+                  "id": "spellcraft"
+                },
+                {
+                  "id": "spellcraft:soul-capacity:1"
                 }
               ],
               "signatures": {
@@ -6142,16 +6206,16 @@
       },
       "resources": {
         "maxHp": 38,
-        "maxSp": 19,
+        "maxSp": 21,
         "gritGranted": 3,
         "speed": 8,
         "remainingCoins": 14
       },
       "development": {
         "level": 7,
-        "current": 1,
-        "spent": 60,
-        "total": 61,
+        "current": 0,
+        "spent": 63,
+        "total": 63,
         "expired": 0
       },
       "purchases": [
@@ -6322,6 +6386,20 @@
           "paidDp": 3,
           "level": 7,
           "requiredLevel": 3
+        },
+        {
+          "id": "spellcraft",
+          "name": "Spellcraft",
+          "paidDp": 2,
+          "level": 7,
+          "requiredLevel": 1
+        },
+        {
+          "id": "spellcraft:soul-capacity:1",
+          "name": "Soul Capacity I",
+          "paidDp": 1,
+          "level": 7,
+          "requiredLevel": 1
         }
       ],
       "signatureChoices": {
@@ -6391,7 +6469,7 @@
           "name": "Gentle Hand I",
           "dp": 1,
           "level": 1,
-          "effect": "Maneuver · Reason. Reassure one nonmagical animal within 2 squares that can perceive you and is already receptive to your presence; add 1/2/3 progress toward calming its immediate fear. An unfamiliar agitated animal takes 1 minute per attempt instead. Immediate danger or an implausible approach prevents progress.",
+          "effect": "Maneuver · Reason. Reassure one nonmagical animal within 2 squares that can perceive you and add 1/2/3 progress toward calming its fear. Spend a Maneuver with a receptive animal or 1 minute per attempt with a wary or agitated one. Find an approach it can respond to in the circumstances.",
           "kind": "technique",
           "disciplineId": "wilderness",
           "pathId": "wilderness:animal-handling",
@@ -6433,7 +6511,7 @@
           "name": "Wild Accord",
           "dp": 5,
           "level": 7,
-          "effect": "Maneuver · Reason. Give a familiar, cooperative nonmagical animal group of up to twelve one understandable direction: follow, wait, scatter to safety or approach a named visible place. Add 3/5/7 progress to the DA’s objective for overcoming present fear or confusion; ordinary cooperation with a safe instruction needs no roll. Completion gets the group carrying out that direction. This grants no attacks or additional combat turns; serious danger or mistreatment ends cooperation.",
+          "effect": "Maneuver · Reason. Give up to twelve nonmagical animals that can perceive you one understandable direction: follow, wait, scatter to safety or approach a named visible place. For a group that needs coaxing, add 3/5/7 progress to the DA’s handling objective. A group already cooperating follows a safe instruction without a roll. Completion gets the group carrying out that direction. This grants no attacks or additional combat turns; serious danger or mistreatment ends cooperation.",
           "kind": "mastery",
           "disciplineId": "wilderness",
           "pathId": "wilderness:animal-handling",
@@ -6721,19 +6799,19 @@
         "paid": 25
       },
       "castingBudget": {
-        "maxSp": 19,
+        "maxSp": 21,
         "oncePerRestRecovery": 0,
         "castsAtCost": {
-          "1": 19,
-          "2": 9,
-          "3": 6,
-          "5": 3
+          "1": 21,
+          "2": 10,
+          "3": 7,
+          "5": 4
         },
         "castsAfterRecovery": {
-          "1": 19,
-          "2": 9,
-          "3": 6,
-          "5": 3
+          "1": 21,
+          "2": 10,
+          "3": 7,
+          "5": 4
         },
         "note": "Alternative uses of the same reserve, not simultaneous allocations. Assumes SP is spent before recovery; time, spell-specific limits, components and maintained actions still apply. Signature spells and conditional discounts are described separately."
       },
@@ -6752,13 +6830,8 @@
       "deferred": [
         {
           "level": 7,
-          "id": "spellcraft",
-          "reason": "Costs 2 DP. You have 1 DP."
-        },
-        {
-          "level": 7,
-          "id": "spellcraft",
-          "reason": "Costs 2 DP. You have 1 DP."
+          "id": "spellcraft:soul-capacity:2",
+          "reason": "Costs 2 DP. You have 0 DP."
         }
       ]
     },
@@ -6766,7 +6839,7 @@
       "id": "fighter",
       "name": "Corin Ashguard",
       "level": 1,
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "workingTree": false,
       "draft": {
         "name": "Corin Ashguard",
@@ -6923,9 +6996,9 @@
       },
       "development": {
         "level": 1,
-        "current": 1,
+        "current": 3,
         "spent": 7,
-        "total": 8,
+        "total": 10,
         "expired": 0
       },
       "purchases": [
@@ -7113,7 +7186,7 @@
       "id": "fighter",
       "name": "Corin Ashguard",
       "level": 3,
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "workingTree": false,
       "draft": {
         "name": "Corin Ashguard",
@@ -7273,6 +7346,9 @@
                 },
                 {
                   "id": "arms:bladework:6"
+                },
+                {
+                  "id": "armor:harness:2"
                 }
               ],
               "signatures": {
@@ -7301,8 +7377,8 @@
       "development": {
         "level": 3,
         "current": 1,
-        "spent": 20,
-        "total": 21,
+        "spent": 22,
+        "total": 23,
         "expired": 0
       },
       "purchases": [
@@ -7375,6 +7451,13 @@
           "paidDp": 4,
           "level": 3,
           "requiredLevel": 3
+        },
+        {
+          "id": "armor:harness:2",
+          "name": "Light Armor II",
+          "paidDp": 2,
+          "level": 3,
+          "requiredLevel": 1
         }
       ],
       "signatureChoices": {
@@ -7550,7 +7633,7 @@
       "deferred": [
         {
           "level": 3,
-          "id": "armor:harness:2",
+          "id": "armor:harness:3",
           "reason": "Costs 2 DP. You have 1 DP."
         }
       ]
@@ -7559,7 +7642,7 @@
       "id": "fighter",
       "name": "Corin Ashguard",
       "level": 7,
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "workingTree": false,
       "draft": {
         "name": "Corin Ashguard",
@@ -7719,6 +7802,9 @@
                 },
                 {
                   "id": "arms:bladework:6"
+                },
+                {
+                  "id": "armor:harness:2"
                 }
               ],
               "signatures": {
@@ -7765,9 +7851,6 @@
                   "id": "guard:interception:7"
                 },
                 {
-                  "id": "armor:harness:2"
-                },
-                {
                   "id": "armor:harness:3"
                 },
                 {
@@ -7805,9 +7888,9 @@
       },
       "development": {
         "level": 7,
-        "current": 3,
+        "current": 5,
         "spent": 56,
-        "total": 59,
+        "total": 61,
         "expired": 0
       },
       "purchases": [
@@ -7882,6 +7965,13 @@
           "requiredLevel": 3
         },
         {
+          "id": "armor:harness:2",
+          "name": "Light Armor II",
+          "paidDp": 2,
+          "level": 3,
+          "requiredLevel": 1
+        },
+        {
           "id": "arms:bladework:7",
           "name": "Iron Tempest",
           "paidDp": 5,
@@ -7929,13 +8019,6 @@
           "paidDp": 5,
           "level": 7,
           "requiredLevel": 7
-        },
-        {
-          "id": "armor:harness:2",
-          "name": "Light Armor II",
-          "paidDp": 2,
-          "level": 7,
-          "requiredLevel": 1
         },
         {
           "id": "armor:harness:3",
@@ -8213,7 +8296,7 @@
       "deferred": [
         {
           "level": 3,
-          "id": "armor:harness:2",
+          "id": "armor:harness:3",
           "reason": "Costs 2 DP. You have 1 DP."
         }
       ]
@@ -8222,7 +8305,7 @@
       "id": "monk",
       "name": "Sera Quietstep",
       "level": 1,
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "workingTree": false,
       "draft": {
         "name": "Sera Quietstep",
@@ -8365,9 +8448,9 @@
       },
       "development": {
         "level": 1,
-        "current": 0,
+        "current": 2,
         "spent": 7,
-        "total": 7,
+        "total": 9,
         "expired": 0
       },
       "purchases": [
@@ -8452,7 +8535,7 @@
           "name": "Catch Your Balance I",
           "dp": 1,
           "level": 1,
-          "effect": "Reaction. When you would fall Prone, remain standing instead. You must be conscious and able to move. No roll.",
+          "effect": "Reaction. When you would fall Prone and can move, remain standing instead. No roll.",
           "kind": "technique",
           "disciplineId": "athletics",
           "pathId": "athletics:balance",
@@ -8521,7 +8604,7 @@
       "id": "monk",
       "name": "Sera Quietstep",
       "level": 3,
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "workingTree": false,
       "draft": {
         "name": "Sera Quietstep",
@@ -8667,6 +8750,9 @@
                 },
                 {
                   "id": "athletics:balance:2"
+                },
+                {
+                  "id": "athletics:balance:3"
                 }
               ],
               "signatures": {
@@ -8695,8 +8781,8 @@
       "development": {
         "level": 3,
         "current": 0,
-        "spent": 20,
-        "total": 20,
+        "spent": 22,
+        "total": 22,
         "expired": 0
       },
       "purchases": [
@@ -8759,6 +8845,13 @@
         {
           "id": "athletics:balance:2",
           "name": "Catch Your Balance II",
+          "paidDp": 2,
+          "level": 3,
+          "requiredLevel": 1
+        },
+        {
+          "id": "athletics:balance:3",
+          "name": "Catch Your Balance III",
           "paidDp": 2,
           "level": 3,
           "requiredLevel": 1
@@ -8826,7 +8919,7 @@
           "name": "Catch Your Balance I",
           "dp": 1,
           "level": 1,
-          "effect": "Reaction. When you would fall Prone, remain standing instead. You must be conscious and able to move. No roll.",
+          "effect": "Reaction. When you would fall Prone and can move, remain standing instead. No roll.",
           "kind": "technique",
           "disciplineId": "athletics",
           "pathId": "athletics:balance",
@@ -8910,19 +9003,13 @@
       ],
       "resolved": "A complete shared unarmed branch now supplies real unarmed attacks and their own development. The staff is used only for the selected weapon-required guard, not to pretend weapon attacks are punches.",
       "remaining": "The character is not a Focus-point monk. Measured Guard still needs the readied staff; with empty hands, use the learned Athletics response or basic defense instead.",
-      "deferred": [
-        {
-          "level": 3,
-          "id": "athletics:balance:3",
-          "reason": "Costs 2 DP. You have 0 DP."
-        }
-      ]
+      "deferred": []
     },
     {
       "id": "monk",
       "name": "Sera Quietstep",
       "level": 7,
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "workingTree": false,
       "draft": {
         "name": "Sera Quietstep",
@@ -9068,6 +9155,9 @@
                 },
                 {
                   "id": "athletics:balance:2"
+                },
+                {
+                  "id": "athletics:balance:3"
                 }
               ],
               "signatures": {
@@ -9094,9 +9184,6 @@
               "purchases": [
                 {
                   "id": "arms:unarmed:7"
-                },
-                {
-                  "id": "athletics:balance:3"
                 },
                 {
                   "id": "athletics:balance:4"
@@ -9148,9 +9235,9 @@
       },
       "development": {
         "level": 7,
-        "current": 7,
+        "current": 9,
         "spent": 51,
-        "total": 58,
+        "total": 60,
         "expired": 0
       },
       "purchases": [
@@ -9218,18 +9305,18 @@
           "requiredLevel": 1
         },
         {
+          "id": "athletics:balance:3",
+          "name": "Catch Your Balance III",
+          "paidDp": 2,
+          "level": 3,
+          "requiredLevel": 1
+        },
+        {
           "id": "arms:unarmed:7",
           "name": "Empty-Hand Tempest",
           "paidDp": 5,
           "level": 7,
           "requiredLevel": 7
-        },
-        {
-          "id": "athletics:balance:3",
-          "name": "Catch Your Balance III",
-          "paidDp": 2,
-          "level": 7,
-          "requiredLevel": 1
         },
         {
           "id": "athletics:balance:4",
@@ -9367,7 +9454,7 @@
           "name": "Catch Your Balance I",
           "dp": 1,
           "level": 1,
-          "effect": "Reaction. When you would fall Prone, remain standing instead. You must be conscious and able to move. No roll.",
+          "effect": "Reaction. When you would fall Prone and can move, remain standing instead. No roll.",
           "kind": "technique",
           "disciplineId": "athletics",
           "pathId": "athletics:balance",
@@ -9431,7 +9518,7 @@
           "name": "Catch Them Falling I",
           "dp": 3,
           "level": 3,
-          "effect": "Reaction. Catch one adjacent falling creature no larger than you. With secure footing and a free hand, bring it into a free adjacent square. Otherwise, if a reachable hold supports both of you, you both hang there. Without a suitable hold this intervention is unavailable. No roll.",
+          "effect": "Reaction. Use a free hand to catch one adjacent falling creature no larger than you. From secure footing, bring it into a free adjacent square. You can instead hang together from a reachable hold that supports you both. No roll.",
           "kind": "technique",
           "disciplineId": "athletics",
           "pathId": "athletics:balance",
@@ -9526,19 +9613,13 @@
       ],
       "resolved": "A complete shared unarmed branch now supplies real unarmed attacks and their own development. The staff is used only for the selected weapon-required guard, not to pretend weapon attacks are punches.",
       "remaining": "The character is not a Focus-point monk. Measured Guard still needs the readied staff; with empty hands, use the learned Athletics response or basic defense instead.",
-      "deferred": [
-        {
-          "level": 3,
-          "id": "athletics:balance:3",
-          "reason": "Costs 2 DP. You have 0 DP."
-        }
-      ]
+      "deferred": []
     },
     {
       "id": "paladin",
       "name": "Aldren Vowkeeper",
       "level": 1,
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "workingTree": false,
       "draft": {
         "name": "Aldren Vowkeeper",
@@ -9695,9 +9776,9 @@
       },
       "development": {
         "level": 1,
-        "current": 1,
+        "current": 3,
         "spent": 7,
-        "total": 8,
+        "total": 10,
         "expired": 0
       },
       "purchases": [
@@ -9758,13 +9839,13 @@
           "kind": "ability",
           "action": "Passive modifier to a melee weapon attack",
           "attribute": "Use that attack’s attribute",
-          "target": "An enemy that damaged one of your allies since the end of your last turn.",
+          "target": "An enemy that damaged one of your allies this scene.",
           "duration": "The attack.",
           "equipment": "The actual melee weapon required by the attack.",
           "sp": 1,
           "magic": "Magical weapon modifier",
-          "effect": "**Action:** Passive modifier to a melee weapon attack · **Attribute:** Use that attack’s attribute\n\n**Target / range / shape:** An enemy that damaged one of your allies since the end of your last turn.\n\n**Magic:** Magical weapon modifier · **SP:** 1\n\nOnce on your turn, declare Oathstrike and pay 1 SP before a melee weapon attack against that enemy. Add 1/2/3 radiant damage to the attack on Weak/Standard/Strong. Resolve each damage component’s resistance, then apply the minimum once to the whole attack. This magical weapon modifier is not a separate spell casting and does not require a free hand beyond the weapon’s requirements.\n\n**Duration:** The attack.\n\n**Equipment / acquisition:** The actual melee weapon required by the attack.",
-          "rulesMarkdown": "**Action:** Passive modifier to a melee weapon attack · **Attribute:** Use that attack’s attribute\n\n**Target / range / shape:** An enemy that damaged one of your allies since the end of your last turn.\n\n**Magic:** Magical weapon modifier · **SP:** 1\n\nOnce on your turn, declare Oathstrike and pay 1 SP before a melee weapon attack against that enemy. Add 1/2/3 radiant damage to the attack on Weak/Standard/Strong. Resolve each damage component’s resistance, then apply the minimum once to the whole attack. This magical weapon modifier is not a separate spell casting and does not require a free hand beyond the weapon’s requirements.\n\n**Duration:** The attack.\n\n**Equipment / acquisition:** The actual melee weapon required by the attack."
+          "effect": "**Action:** Passive modifier to a melee weapon attack · **Attribute:** Use that attack’s attribute\n\n**Target / range / shape:** An enemy that damaged one of your allies this scene.\n\n**Magic:** Magical weapon modifier · **SP:** 1\n\nOnce on your turn, declare Oathstrike and pay 1 SP before a melee weapon attack against that enemy. Add 1/2/3 radiant damage to the attack on Weak/Standard/Strong. Resolve each damage component’s resistance, then apply the minimum once to the whole attack. This magical weapon modifier is not a separate spell casting and does not require a free hand beyond the weapon’s requirements.\n\n**Duration:** The attack.\n\n**Equipment / acquisition:** The actual melee weapon required by the attack.",
+          "rulesMarkdown": "**Action:** Passive modifier to a melee weapon attack · **Attribute:** Use that attack’s attribute\n\n**Target / range / shape:** An enemy that damaged one of your allies this scene.\n\n**Magic:** Magical weapon modifier · **SP:** 1\n\nOnce on your turn, declare Oathstrike and pay 1 SP before a melee weapon attack against that enemy. Add 1/2/3 radiant damage to the attack on Weak/Standard/Strong. Resolve each damage component’s resistance, then apply the minimum once to the whole attack. This magical weapon modifier is not a separate spell casting and does not require a free hand beyond the weapon’s requirements.\n\n**Duration:** The attack.\n\n**Equipment / acquisition:** The actual melee weapon required by the attack."
         }
       ],
       "abilities": [
@@ -9819,7 +9900,7 @@
           "name": "Driving Opening I",
           "dp": 1,
           "level": 1,
-          "effect": "Maneuver. Choose one visible creature. Before your turn ends, your next Main Action melee weapon attack against it also pushes it 1 square directly away from your attack position on Strong. This modifies one attack, not each target of a sweep. Reusing this technique replaces its unused effect.",
+          "effect": "Maneuver. Choose one visible creature. Before your turn ends, your next Main Action melee weapon attack against it pushes that creature directly away from your attack position, 1 square on Standard or 2 squares on Strong. Resolve collisions normally. Apply the push only to the chosen creature on that attack. Reusing this technique replaces its unused effect.",
           "kind": "technique",
           "disciplineId": "arms",
           "pathId": "arms:impact",
@@ -9886,14 +9967,14 @@
         "arms:bladework:2"
       ],
       "resolved": "Oathstrike supplies a declared, SP-paid radiant rider on the real learned weapon attack. Its later control and threshold create an avenging guardian rather than a generic weapon buff.",
-      "remaining": "The rider needs an enemy that harmed an ally. Healing here comes from the restoration book; choosing the healing signature instead would trade away early Oathstrike.",
+      "remaining": "The rider needs an enemy that harmed an ally this scene. Healing here comes from the restoration book; choosing the healing signature instead would trade away early Oathstrike.",
       "deferred": []
     },
     {
       "id": "paladin",
       "name": "Aldren Vowkeeper",
       "level": 3,
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "workingTree": false,
       "draft": {
         "name": "Aldren Vowkeeper",
@@ -10053,6 +10134,9 @@
                 },
                 {
                   "id": "arms:bladework:6"
+                },
+                {
+                  "id": "armor:harness:2"
                 }
               ],
               "signatures": {
@@ -10081,8 +10165,8 @@
       "development": {
         "level": 3,
         "current": 1,
-        "spent": 20,
-        "total": 21,
+        "spent": 22,
+        "total": 23,
         "expired": 0
       },
       "purchases": [
@@ -10155,6 +10239,13 @@
           "paidDp": 4,
           "level": 3,
           "requiredLevel": 3
+        },
+        {
+          "id": "armor:harness:2",
+          "name": "Light Armor II",
+          "paidDp": 2,
+          "level": 3,
+          "requiredLevel": 1
         }
       ],
       "signatureChoices": {
@@ -10172,13 +10263,13 @@
           "kind": "ability",
           "action": "Passive modifier to a melee weapon attack",
           "attribute": "Use that attack’s attribute",
-          "target": "An enemy that damaged one of your allies since the end of your last turn.",
+          "target": "An enemy that damaged one of your allies this scene.",
           "duration": "The attack.",
           "equipment": "The actual melee weapon required by the attack.",
           "sp": 1,
           "magic": "Magical weapon modifier",
-          "effect": "**Action:** Passive modifier to a melee weapon attack · **Attribute:** Use that attack’s attribute\n\n**Target / range / shape:** An enemy that damaged one of your allies since the end of your last turn.\n\n**Magic:** Magical weapon modifier · **SP:** 1\n\nOnce on your turn, declare Oathstrike and pay 1 SP before a melee weapon attack against that enemy. Add 1/2/3 radiant damage to the attack on Weak/Standard/Strong. Resolve each damage component’s resistance, then apply the minimum once to the whole attack. This magical weapon modifier is not a separate spell casting and does not require a free hand beyond the weapon’s requirements.\n\n**Duration:** The attack.\n\n**Equipment / acquisition:** The actual melee weapon required by the attack.",
-          "rulesMarkdown": "**Action:** Passive modifier to a melee weapon attack · **Attribute:** Use that attack’s attribute\n\n**Target / range / shape:** An enemy that damaged one of your allies since the end of your last turn.\n\n**Magic:** Magical weapon modifier · **SP:** 1\n\nOnce on your turn, declare Oathstrike and pay 1 SP before a melee weapon attack against that enemy. Add 1/2/3 radiant damage to the attack on Weak/Standard/Strong. Resolve each damage component’s resistance, then apply the minimum once to the whole attack. This magical weapon modifier is not a separate spell casting and does not require a free hand beyond the weapon’s requirements.\n\n**Duration:** The attack.\n\n**Equipment / acquisition:** The actual melee weapon required by the attack."
+          "effect": "**Action:** Passive modifier to a melee weapon attack · **Attribute:** Use that attack’s attribute\n\n**Target / range / shape:** An enemy that damaged one of your allies this scene.\n\n**Magic:** Magical weapon modifier · **SP:** 1\n\nOnce on your turn, declare Oathstrike and pay 1 SP before a melee weapon attack against that enemy. Add 1/2/3 radiant damage to the attack on Weak/Standard/Strong. Resolve each damage component’s resistance, then apply the minimum once to the whole attack. This magical weapon modifier is not a separate spell casting and does not require a free hand beyond the weapon’s requirements.\n\n**Duration:** The attack.\n\n**Equipment / acquisition:** The actual melee weapon required by the attack.",
+          "rulesMarkdown": "**Action:** Passive modifier to a melee weapon attack · **Attribute:** Use that attack’s attribute\n\n**Target / range / shape:** An enemy that damaged one of your allies this scene.\n\n**Magic:** Magical weapon modifier · **SP:** 1\n\nOnce on your turn, declare Oathstrike and pay 1 SP before a melee weapon attack against that enemy. Add 1/2/3 radiant damage to the attack on Weak/Standard/Strong. Resolve each damage component’s resistance, then apply the minimum once to the whole attack. This magical weapon modifier is not a separate spell casting and does not require a free hand beyond the weapon’s requirements.\n\n**Duration:** The attack.\n\n**Equipment / acquisition:** The actual melee weapon required by the attack."
         },
         {
           "id": "ability-signature-protector-rebuking-light",
@@ -10190,13 +10281,13 @@
           "kind": "ability",
           "action": "Passive modifier to a melee weapon attack",
           "attribute": "Use that attack’s attribute",
-          "target": "An enemy that damaged one of your allies since the end of your last turn.",
+          "target": "An enemy that damaged one of your allies this scene.",
           "duration": "The attack and immediate push; Dazed uses normal decay.",
           "equipment": "The actual melee weapon required by the attack.",
           "sp": 1,
           "magic": "Magical weapon modifier",
-          "effect": "**Action:** Passive modifier to a melee weapon attack · **Attribute:** Use that attack’s attribute\n\n**Target / range / shape:** An enemy that damaged one of your allies since the end of your last turn.\n\nOnce on your turn, declare this modifier and pay 1 SP before a melee weapon attack against that enemy. Add 1/2/3 radiant damage to the attack on Weak/Standard/Strong. On Standard or Strong, also push the target 1 square directly away from you. On Strong, also apply Dazed 1. Resolve each damage component’s resistance, then apply the minimum once to the whole attack. Resolve Stability, collisions and condition immunity normally.\n\n**Duration:** The attack and immediate push; Dazed uses normal decay.\n\n**Equipment / acquisition:** The actual melee weapon required by the attack.\n\nThis magical weapon modifier is not a separate spell casting and requires no free hand beyond the weapon’s requirements.",
-          "rulesMarkdown": "**Action:** Passive modifier to a melee weapon attack · **Attribute:** Use that attack’s attribute\n\n**Target / range / shape:** An enemy that damaged one of your allies since the end of your last turn.\n\nOnce on your turn, declare this modifier and pay 1 SP before a melee weapon attack against that enemy. Add 1/2/3 radiant damage to the attack on Weak/Standard/Strong. On Standard or Strong, also push the target 1 square directly away from you. On Strong, also apply Dazed 1. Resolve each damage component’s resistance, then apply the minimum once to the whole attack. Resolve Stability, collisions and condition immunity normally.\n\n**Duration:** The attack and immediate push; Dazed uses normal decay.\n\n**Equipment / acquisition:** The actual melee weapon required by the attack.\n\nThis magical weapon modifier is not a separate spell casting and requires no free hand beyond the weapon’s requirements."
+          "effect": "**Action:** Passive modifier to a melee weapon attack · **Attribute:** Use that attack’s attribute\n\n**Target / range / shape:** An enemy that damaged one of your allies this scene.\n\nOnce on your turn, declare this modifier and pay 1 SP before a melee weapon attack against that enemy. Add 1/2/3 radiant damage to the attack on Weak/Standard/Strong. On Standard or Strong, also push the target 1 square directly away from you. On Strong, also apply Dazed 1. Resolve each damage component’s resistance, then apply the minimum once to the whole attack. Resolve Stability, collisions and condition immunity normally.\n\n**Duration:** The attack and immediate push; Dazed uses normal decay.\n\n**Equipment / acquisition:** The actual melee weapon required by the attack.\n\nThis magical weapon modifier is not a separate spell casting and requires no free hand beyond the weapon’s requirements.",
+          "rulesMarkdown": "**Action:** Passive modifier to a melee weapon attack · **Attribute:** Use that attack’s attribute\n\n**Target / range / shape:** An enemy that damaged one of your allies this scene.\n\nOnce on your turn, declare this modifier and pay 1 SP before a melee weapon attack against that enemy. Add 1/2/3 radiant damage to the attack on Weak/Standard/Strong. On Standard or Strong, also push the target 1 square directly away from you. On Strong, also apply Dazed 1. Resolve each damage component’s resistance, then apply the minimum once to the whole attack. Resolve Stability, collisions and condition immunity normally.\n\n**Duration:** The attack and immediate push; Dazed uses normal decay.\n\n**Equipment / acquisition:** The actual melee weapon required by the attack.\n\nThis magical weapon modifier is not a separate spell casting and requires no free hand beyond the weapon’s requirements."
         }
       ],
       "abilities": [
@@ -10251,7 +10342,7 @@
           "name": "Driving Opening I",
           "dp": 1,
           "level": 1,
-          "effect": "Maneuver. Choose one visible creature. Before your turn ends, your next Main Action melee weapon attack against it also pushes it 1 square directly away from your attack position on Strong. This modifies one attack, not each target of a sweep. Reusing this technique replaces its unused effect.",
+          "effect": "Maneuver. Choose one visible creature. Before your turn ends, your next Main Action melee weapon attack against it pushes that creature directly away from your attack position, 1 square on Standard or 2 squares on Strong. Resolve collisions normally. Apply the push only to the chosen creature on that attack. Reusing this technique replaces its unused effect.",
           "kind": "technique",
           "disciplineId": "arms",
           "pathId": "arms:impact",
@@ -10336,11 +10427,11 @@
         "arms:bladework:6"
       ],
       "resolved": "Oathstrike supplies a declared, SP-paid radiant rider on the real learned weapon attack. Its later control and threshold create an avenging guardian rather than a generic weapon buff.",
-      "remaining": "The rider needs an enemy that harmed an ally. Healing here comes from the restoration book; choosing the healing signature instead would trade away early Oathstrike.",
+      "remaining": "The rider needs an enemy that harmed an ally this scene. Healing here comes from the restoration book; choosing the healing signature instead would trade away early Oathstrike.",
       "deferred": [
         {
           "level": 3,
-          "id": "armor:harness:2",
+          "id": "armor:harness:3",
           "reason": "Costs 2 DP. You have 1 DP."
         }
       ]
@@ -10349,7 +10440,7 @@
       "id": "paladin",
       "name": "Aldren Vowkeeper",
       "level": 7,
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "workingTree": false,
       "draft": {
         "name": "Aldren Vowkeeper",
@@ -10509,6 +10600,9 @@
                 },
                 {
                   "id": "arms:bladework:6"
+                },
+                {
+                  "id": "armor:harness:2"
                 }
               ],
               "signatures": {
@@ -10535,9 +10629,6 @@
               "purchases": [
                 {
                   "id": "arms:bladework:7"
-                },
-                {
-                  "id": "armor:harness:2"
                 },
                 {
                   "id": "armor:harness:3"
@@ -10595,9 +10686,9 @@
       },
       "development": {
         "level": 7,
-        "current": 7,
+        "current": 9,
         "spent": 52,
-        "total": 59,
+        "total": 61,
         "expired": 0
       },
       "purchases": [
@@ -10672,18 +10763,18 @@
           "requiredLevel": 3
         },
         {
+          "id": "armor:harness:2",
+          "name": "Light Armor II",
+          "paidDp": 2,
+          "level": 3,
+          "requiredLevel": 1
+        },
+        {
           "id": "arms:bladework:7",
           "name": "Iron Tempest",
           "paidDp": 5,
           "level": 7,
           "requiredLevel": 7
-        },
-        {
-          "id": "armor:harness:2",
-          "name": "Light Armor II",
-          "paidDp": 2,
-          "level": 7,
-          "requiredLevel": 1
         },
         {
           "id": "armor:harness:3",
@@ -10772,13 +10863,13 @@
           "kind": "ability",
           "action": "Passive modifier to a melee weapon attack",
           "attribute": "Use that attack’s attribute",
-          "target": "An enemy that damaged one of your allies since the end of your last turn.",
+          "target": "An enemy that damaged one of your allies this scene.",
           "duration": "The attack.",
           "equipment": "The actual melee weapon required by the attack.",
           "sp": 1,
           "magic": "Magical weapon modifier",
-          "effect": "**Action:** Passive modifier to a melee weapon attack · **Attribute:** Use that attack’s attribute\n\n**Target / range / shape:** An enemy that damaged one of your allies since the end of your last turn.\n\n**Magic:** Magical weapon modifier · **SP:** 1\n\nOnce on your turn, declare Oathstrike and pay 1 SP before a melee weapon attack against that enemy. Add 1/2/3 radiant damage to the attack on Weak/Standard/Strong. Resolve each damage component’s resistance, then apply the minimum once to the whole attack. This magical weapon modifier is not a separate spell casting and does not require a free hand beyond the weapon’s requirements.\n\n**Duration:** The attack.\n\n**Equipment / acquisition:** The actual melee weapon required by the attack.",
-          "rulesMarkdown": "**Action:** Passive modifier to a melee weapon attack · **Attribute:** Use that attack’s attribute\n\n**Target / range / shape:** An enemy that damaged one of your allies since the end of your last turn.\n\n**Magic:** Magical weapon modifier · **SP:** 1\n\nOnce on your turn, declare Oathstrike and pay 1 SP before a melee weapon attack against that enemy. Add 1/2/3 radiant damage to the attack on Weak/Standard/Strong. Resolve each damage component’s resistance, then apply the minimum once to the whole attack. This magical weapon modifier is not a separate spell casting and does not require a free hand beyond the weapon’s requirements.\n\n**Duration:** The attack.\n\n**Equipment / acquisition:** The actual melee weapon required by the attack."
+          "effect": "**Action:** Passive modifier to a melee weapon attack · **Attribute:** Use that attack’s attribute\n\n**Target / range / shape:** An enemy that damaged one of your allies this scene.\n\n**Magic:** Magical weapon modifier · **SP:** 1\n\nOnce on your turn, declare Oathstrike and pay 1 SP before a melee weapon attack against that enemy. Add 1/2/3 radiant damage to the attack on Weak/Standard/Strong. Resolve each damage component’s resistance, then apply the minimum once to the whole attack. This magical weapon modifier is not a separate spell casting and does not require a free hand beyond the weapon’s requirements.\n\n**Duration:** The attack.\n\n**Equipment / acquisition:** The actual melee weapon required by the attack.",
+          "rulesMarkdown": "**Action:** Passive modifier to a melee weapon attack · **Attribute:** Use that attack’s attribute\n\n**Target / range / shape:** An enemy that damaged one of your allies this scene.\n\n**Magic:** Magical weapon modifier · **SP:** 1\n\nOnce on your turn, declare Oathstrike and pay 1 SP before a melee weapon attack against that enemy. Add 1/2/3 radiant damage to the attack on Weak/Standard/Strong. Resolve each damage component’s resistance, then apply the minimum once to the whole attack. This magical weapon modifier is not a separate spell casting and does not require a free hand beyond the weapon’s requirements.\n\n**Duration:** The attack.\n\n**Equipment / acquisition:** The actual melee weapon required by the attack."
         },
         {
           "id": "ability-signature-protector-rebuking-light",
@@ -10790,13 +10881,13 @@
           "kind": "ability",
           "action": "Passive modifier to a melee weapon attack",
           "attribute": "Use that attack’s attribute",
-          "target": "An enemy that damaged one of your allies since the end of your last turn.",
+          "target": "An enemy that damaged one of your allies this scene.",
           "duration": "The attack and immediate push; Dazed uses normal decay.",
           "equipment": "The actual melee weapon required by the attack.",
           "sp": 1,
           "magic": "Magical weapon modifier",
-          "effect": "**Action:** Passive modifier to a melee weapon attack · **Attribute:** Use that attack’s attribute\n\n**Target / range / shape:** An enemy that damaged one of your allies since the end of your last turn.\n\nOnce on your turn, declare this modifier and pay 1 SP before a melee weapon attack against that enemy. Add 1/2/3 radiant damage to the attack on Weak/Standard/Strong. On Standard or Strong, also push the target 1 square directly away from you. On Strong, also apply Dazed 1. Resolve each damage component’s resistance, then apply the minimum once to the whole attack. Resolve Stability, collisions and condition immunity normally.\n\n**Duration:** The attack and immediate push; Dazed uses normal decay.\n\n**Equipment / acquisition:** The actual melee weapon required by the attack.\n\nThis magical weapon modifier is not a separate spell casting and requires no free hand beyond the weapon’s requirements.",
-          "rulesMarkdown": "**Action:** Passive modifier to a melee weapon attack · **Attribute:** Use that attack’s attribute\n\n**Target / range / shape:** An enemy that damaged one of your allies since the end of your last turn.\n\nOnce on your turn, declare this modifier and pay 1 SP before a melee weapon attack against that enemy. Add 1/2/3 radiant damage to the attack on Weak/Standard/Strong. On Standard or Strong, also push the target 1 square directly away from you. On Strong, also apply Dazed 1. Resolve each damage component’s resistance, then apply the minimum once to the whole attack. Resolve Stability, collisions and condition immunity normally.\n\n**Duration:** The attack and immediate push; Dazed uses normal decay.\n\n**Equipment / acquisition:** The actual melee weapon required by the attack.\n\nThis magical weapon modifier is not a separate spell casting and requires no free hand beyond the weapon’s requirements."
+          "effect": "**Action:** Passive modifier to a melee weapon attack · **Attribute:** Use that attack’s attribute\n\n**Target / range / shape:** An enemy that damaged one of your allies this scene.\n\nOnce on your turn, declare this modifier and pay 1 SP before a melee weapon attack against that enemy. Add 1/2/3 radiant damage to the attack on Weak/Standard/Strong. On Standard or Strong, also push the target 1 square directly away from you. On Strong, also apply Dazed 1. Resolve each damage component’s resistance, then apply the minimum once to the whole attack. Resolve Stability, collisions and condition immunity normally.\n\n**Duration:** The attack and immediate push; Dazed uses normal decay.\n\n**Equipment / acquisition:** The actual melee weapon required by the attack.\n\nThis magical weapon modifier is not a separate spell casting and requires no free hand beyond the weapon’s requirements.",
+          "rulesMarkdown": "**Action:** Passive modifier to a melee weapon attack · **Attribute:** Use that attack’s attribute\n\n**Target / range / shape:** An enemy that damaged one of your allies this scene.\n\nOnce on your turn, declare this modifier and pay 1 SP before a melee weapon attack against that enemy. Add 1/2/3 radiant damage to the attack on Weak/Standard/Strong. On Standard or Strong, also push the target 1 square directly away from you. On Strong, also apply Dazed 1. Resolve each damage component’s resistance, then apply the minimum once to the whole attack. Resolve Stability, collisions and condition immunity normally.\n\n**Duration:** The attack and immediate push; Dazed uses normal decay.\n\n**Equipment / acquisition:** The actual melee weapon required by the attack.\n\nThis magical weapon modifier is not a separate spell casting and requires no free hand beyond the weapon’s requirements."
         },
         {
           "id": "ability-signature-protector-drive-back-the-circle",
@@ -10869,7 +10960,7 @@
           "name": "Driving Opening I",
           "dp": 1,
           "level": 1,
-          "effect": "Maneuver. Choose one visible creature. Before your turn ends, your next Main Action melee weapon attack against it also pushes it 1 square directly away from your attack position on Strong. This modifies one attack, not each target of a sweep. Reusing this technique replaces its unused effect.",
+          "effect": "Maneuver. Choose one visible creature. Before your turn ends, your next Main Action melee weapon attack against it pushes that creature directly away from your attack position, 1 square on Standard or 2 squares on Strong. Resolve collisions normally. Apply the push only to the chosen creature on that attack. Reusing this technique replaces its unused effect.",
           "kind": "technique",
           "disciplineId": "arms",
           "pathId": "arms:impact",
@@ -11073,11 +11164,11 @@
         "arms:bladework:7"
       ],
       "resolved": "Oathstrike supplies a declared, SP-paid radiant rider on the real learned weapon attack. Its later control and threshold create an avenging guardian rather than a generic weapon buff.",
-      "remaining": "The rider needs an enemy that harmed an ally. Healing here comes from the restoration book; choosing the healing signature instead would trade away early Oathstrike.",
+      "remaining": "The rider needs an enemy that harmed an ally this scene. Healing here comes from the restoration book; choosing the healing signature instead would trade away early Oathstrike.",
       "deferred": [
         {
           "level": 3,
-          "id": "armor:harness:2",
+          "id": "armor:harness:3",
           "reason": "Costs 2 DP. You have 1 DP."
         }
       ]
@@ -11086,7 +11177,7 @@
       "id": "ranger",
       "name": "Eryn Mossarrow",
       "level": 1,
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "workingTree": false,
       "draft": {
         "name": "Eryn Mossarrow",
@@ -11246,9 +11337,9 @@
       },
       "development": {
         "level": 1,
-        "current": 0,
+        "current": 2,
         "spent": 8,
-        "total": 8,
+        "total": 10,
         "expired": 0
       },
       "purchases": [
@@ -11343,7 +11434,7 @@
           "name": "Watchful Shot I",
           "dp": 1,
           "level": 1,
-          "effect": "Reaction · Agility. When a visible enemy within 6 squares finishes voluntary movement adjacent to an ally, attack it for 1/2/3 physical damage. Resolve after the movement; you need a ready weapon.",
+          "effect": "Reaction · Agility. When a visible enemy within 6 squares finishes voluntary movement, attack it for 1/2/3 physical damage after that movement.",
           "kind": "technique",
           "disciplineId": "marksmanship",
           "pathId": "marksmanship:readiness",
@@ -11463,7 +11554,7 @@
       "id": "ranger",
       "name": "Eryn Mossarrow",
       "level": 3,
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "workingTree": false,
       "draft": {
         "name": "Eryn Mossarrow",
@@ -11626,6 +11717,9 @@
                 },
                 {
                   "id": "marksmanship:precision:6"
+                },
+                {
+                  "id": "wilderness:tracking:2"
                 }
               ],
               "signatures": {
@@ -11654,8 +11748,8 @@
       "development": {
         "level": 3,
         "current": 0,
-        "spent": 21,
-        "total": 21,
+        "spent": 23,
+        "total": 23,
         "expired": 0
       },
       "purchases": [
@@ -11735,6 +11829,13 @@
           "paidDp": 4,
           "level": 3,
           "requiredLevel": 3
+        },
+        {
+          "id": "wilderness:tracking:2",
+          "name": "Read the Trail II",
+          "paidDp": 2,
+          "level": 3,
+          "requiredLevel": 1
         }
       ],
       "signatureChoices": {
@@ -11795,7 +11896,7 @@
           "name": "Watchful Shot I",
           "dp": 1,
           "level": 1,
-          "effect": "Reaction · Agility. When a visible enemy within 6 squares finishes voluntary movement adjacent to an ally, attack it for 1/2/3 physical damage. Resolve after the movement; you need a ready weapon.",
+          "effect": "Reaction · Agility. When a visible enemy within 6 squares finishes voluntary movement, attack it for 1/2/3 physical damage after that movement.",
           "kind": "technique",
           "disciplineId": "marksmanship",
           "pathId": "marksmanship:readiness",
@@ -11930,7 +12031,7 @@
       "deferred": [
         {
           "level": 3,
-          "id": "wilderness:tracking:2",
+          "id": "wilderness:tracking:3",
           "reason": "Costs 2 DP. You have 0 DP."
         }
       ]
@@ -11939,7 +12040,7 @@
       "id": "ranger",
       "name": "Eryn Mossarrow",
       "level": 7,
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "workingTree": false,
       "draft": {
         "name": "Eryn Mossarrow",
@@ -12102,6 +12203,9 @@
                 },
                 {
                   "id": "marksmanship:precision:6"
+                },
+                {
+                  "id": "wilderness:tracking:2"
                 }
               ],
               "signatures": {
@@ -12128,9 +12232,6 @@
               "purchases": [
                 {
                   "id": "marksmanship:precision:7"
-                },
-                {
-                  "id": "wilderness:tracking:2"
                 },
                 {
                   "id": "wilderness:tracking:3"
@@ -12188,9 +12289,9 @@
       },
       "development": {
         "level": 7,
-        "current": 2,
+        "current": 4,
         "spent": 57,
-        "total": 59,
+        "total": 61,
         "expired": 0
       },
       "purchases": [
@@ -12272,18 +12373,18 @@
           "requiredLevel": 3
         },
         {
+          "id": "wilderness:tracking:2",
+          "name": "Read the Trail II",
+          "paidDp": 2,
+          "level": 3,
+          "requiredLevel": 1
+        },
+        {
           "id": "marksmanship:precision:7",
           "name": "Anatomist’s Volley",
           "paidDp": 5,
           "level": 7,
           "requiredLevel": 7
-        },
-        {
-          "id": "wilderness:tracking:2",
-          "name": "Read the Trail II",
-          "paidDp": 2,
-          "level": 7,
-          "requiredLevel": 1
         },
         {
           "id": "wilderness:tracking:3",
@@ -12431,7 +12532,7 @@
           "name": "Watchful Shot I",
           "dp": 1,
           "level": 1,
-          "effect": "Reaction · Agility. When a visible enemy within 6 squares finishes voluntary movement adjacent to an ally, attack it for 1/2/3 physical damage. Resolve after the movement; you need a ready weapon.",
+          "effect": "Reaction · Agility. When a visible enemy within 6 squares finishes voluntary movement, attack it for 1/2/3 physical damage after that movement.",
           "kind": "technique",
           "disciplineId": "marksmanship",
           "pathId": "marksmanship:readiness",
@@ -12487,7 +12588,7 @@
           "name": "Anatomist’s Volley",
           "dp": 5,
           "level": 7,
-          "effect": "Main Action · Agility. Attack up to three enemies within 12 squares whose vulnerable anatomy or construction you have observed through Split the Flight’s study or established evidence. Roll once; each takes 3/5/8 physical damage, ignoring up to 2 physical resistance. Immunity and other reductions still apply. Study does not create a vulnerability where none exists.",
+          "effect": "Main Action · Agility. Attack up to three enemies within 12 squares. Roll once. Each takes 3/5/8 physical damage. For a target whose vulnerable part you know from Split the Flight’s study or evidence, apply that hit ignoring up to 2 physical resistance. Apply immunity and other reductions normally.",
           "kind": "mastery",
           "disciplineId": "marksmanship",
           "pathId": "marksmanship:precision",
@@ -12501,7 +12602,7 @@
           "name": "Cut Them Off I",
           "dp": 3,
           "level": 3,
-          "effect": "Main Action · Reason to interpret a visible junction on a trail you followed, or 10 minutes to scout a wider interception route. Add 1/2/3 progress toward finding a physically feasible interception. Completion reveals the route and travel time, not a guarantee of arriving first.",
+          "effect": "Main Action · Reason to interpret a visible junction on a readable trail, or 10 minutes to scout a wider interception route. Add 1/2/3 progress toward finding a physically feasible interception. Completion reveals the route and travel time, not a guarantee of arriving first.",
           "kind": "technique",
           "disciplineId": "wilderness",
           "pathId": "wilderness:tracking",
@@ -12515,7 +12616,7 @@
           "name": "Unerring Pursuit",
           "dp": 5,
           "level": 7,
-          "effect": "Main Action · Reason at a visible junction, or 10 minutes to scout the surrounding area. From a trail you followed, add 3/5/7 progress toward predicting the quarry’s next reachable landmark from its tracks and known terrain. Completion identifies the best-supported destination and gaps in the evidence. You and up to six companions gain 2 Boons on pursuit and traversal rolls along that route until reaching it. This does not locate a quarry that left no readable evidence.",
+          "effect": "Main Action · Reason at a visible junction, or 10 minutes to scout the surrounding area. From a trail you can read, add 3/5/7 progress toward predicting the quarry’s next reachable landmark from its tracks and known terrain. Completion identifies the best-supported destination and gaps in the evidence. You and up to six companions gain 2 Boons on pursuit and traversal rolls along that route until reaching it. This does not locate a quarry that left no readable evidence.",
           "kind": "mastery",
           "disciplineId": "wilderness",
           "pathId": "wilderness:tracking",
@@ -12681,7 +12782,7 @@
       "deferred": [
         {
           "level": 3,
-          "id": "wilderness:tracking:2",
+          "id": "wilderness:tracking:3",
           "reason": "Costs 2 DP. You have 0 DP."
         }
       ]
@@ -12690,7 +12791,7 @@
       "id": "rogue",
       "name": "Pip Nightjar",
       "level": 1,
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "workingTree": false,
       "draft": {
         "name": "Pip Nightjar",
@@ -12839,9 +12940,9 @@
       },
       "development": {
         "level": 1,
-        "current": 0,
+        "current": 2,
         "spent": 9,
-        "total": 9,
+        "total": 11,
         "expired": 0
       },
       "purchases": [
@@ -12950,7 +13051,7 @@
           "name": "Catch the Click I",
           "dp": 1,
           "level": 1,
-          "effect": "Reaction. When you see a reachable nonmagical mechanism begin to trigger, warn one creature within 3 squares that can perceive you before its defense or avoidance roll; that roll gains 1 Boon. Once per triggering event. You can also inspect a suspected reachable trap for 1 minute, rolling Reason for 1/2/3 progress to identify its trigger and danger.",
+          "effect": "Reaction. When you see a nonmagical trap begin to trigger, warn one creature within 3 squares that can perceive you before its defense or avoidance roll; that roll gains 1 Boon. Once per triggering event. You can also inspect a suspected reachable trap for 1 minute, rolling Reason for 1/2/3 progress to identify its trigger and danger.",
           "kind": "technique",
           "disciplineId": "subterfuge",
           "pathId": "subterfuge:traps",
@@ -13033,7 +13134,7 @@
       "id": "rogue",
       "name": "Pip Nightjar",
       "level": 3,
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "workingTree": false,
       "draft": {
         "name": "Pip Nightjar",
@@ -13185,6 +13286,9 @@
                 },
                 {
                   "id": "subterfuge:locks:2"
+                },
+                {
+                  "id": "subterfuge:locks:3"
                 }
               ],
               "signatures": {
@@ -13213,8 +13317,8 @@
       "development": {
         "level": 3,
         "current": 0,
-        "spent": 22,
-        "total": 22,
+        "spent": 24,
+        "total": 24,
         "expired": 0
       },
       "purchases": [
@@ -13294,6 +13398,13 @@
           "paidDp": 2,
           "level": 3,
           "requiredLevel": 1
+        },
+        {
+          "id": "subterfuge:locks:3",
+          "name": "Patient Hand III",
+          "paidDp": 2,
+          "level": 3,
+          "requiredLevel": 1
         }
       ],
       "signatureChoices": {
@@ -13368,7 +13479,7 @@
           "name": "Catch the Click I",
           "dp": 1,
           "level": 1,
-          "effect": "Reaction. When you see a reachable nonmagical mechanism begin to trigger, warn one creature within 3 squares that can perceive you before its defense or avoidance roll; that roll gains 1 Boon. Once per triggering event. You can also inspect a suspected reachable trap for 1 minute, rolling Reason for 1/2/3 progress to identify its trigger and danger.",
+          "effect": "Reaction. When you see a nonmagical trap begin to trigger, warn one creature within 3 squares that can perceive you before its defense or avoidance roll; that roll gains 1 Boon. Once per triggering event. You can also inspect a suspected reachable trap for 1 minute, rolling Reason for 1/2/3 progress to identify its trigger and danger.",
           "kind": "technique",
           "disciplineId": "subterfuge",
           "pathId": "subterfuge:traps",
@@ -13462,19 +13573,13 @@
       ],
       "resolved": "Opportunistic attack gains an additive slowing effect and a later interruption; infiltration develops separately rather than inflating the damage action list.",
       "remaining": "Blade in the Back is its own attack rather than bonus Sneak Attack dice. The build still pays for mundane intrusion and mobility instead of receiving all skills automatically.",
-      "deferred": [
-        {
-          "level": 3,
-          "id": "subterfuge:locks:3",
-          "reason": "Costs 2 DP. You have 0 DP."
-        }
-      ]
+      "deferred": []
     },
     {
       "id": "rogue",
       "name": "Pip Nightjar",
       "level": 7,
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "workingTree": false,
       "draft": {
         "name": "Pip Nightjar",
@@ -13626,6 +13731,9 @@
                 },
                 {
                   "id": "subterfuge:locks:2"
+                },
+                {
+                  "id": "subterfuge:locks:3"
                 }
               ],
               "signatures": {
@@ -13652,9 +13760,6 @@
               "purchases": [
                 {
                   "id": "subterfuge:stealth:7"
-                },
-                {
-                  "id": "subterfuge:locks:3"
                 },
                 {
                   "id": "subterfuge:locks:4"
@@ -13709,9 +13814,9 @@
       },
       "development": {
         "level": 7,
-        "current": 4,
+        "current": 6,
         "spent": 56,
-        "total": 60,
+        "total": 62,
         "expired": 0
       },
       "purchases": [
@@ -13793,18 +13898,18 @@
           "requiredLevel": 1
         },
         {
+          "id": "subterfuge:locks:3",
+          "name": "Patient Hand III",
+          "paidDp": 2,
+          "level": 3,
+          "requiredLevel": 1
+        },
+        {
           "id": "subterfuge:stealth:7",
           "name": "The Hidden Road",
           "paidDp": 5,
           "level": 7,
           "requiredLevel": 7
-        },
-        {
-          "id": "subterfuge:locks:3",
-          "name": "Patient Hand III",
-          "paidDp": 2,
-          "level": 7,
-          "requiredLevel": 1
         },
         {
           "id": "subterfuge:locks:4",
@@ -13959,7 +14064,7 @@
           "name": "Catch the Click I",
           "dp": 1,
           "level": 1,
-          "effect": "Reaction. When you see a reachable nonmagical mechanism begin to trigger, warn one creature within 3 squares that can perceive you before its defense or avoidance roll; that roll gains 1 Boon. Once per triggering event. You can also inspect a suspected reachable trap for 1 minute, rolling Reason for 1/2/3 progress to identify its trigger and danger.",
+          "effect": "Reaction. When you see a nonmagical trap begin to trigger, warn one creature within 3 squares that can perceive you before its defense or avoidance roll; that roll gains 1 Boon. Once per triggering event. You can also inspect a suspected reachable trap for 1 minute, rolling Reason for 1/2/3 progress to identify its trigger and danger.",
           "kind": "technique",
           "disciplineId": "subterfuge",
           "pathId": "subterfuge:traps",
@@ -14029,7 +14134,7 @@
           "name": "Open under Pressure I",
           "dp": 3,
           "level": 3,
-          "effect": "Main Action · Guile, with lock tools. Work on a nonmagical lock already examined through at least one Patient Hand attempt; add 1/2/3 progress. You may repeat this faster action until that lock opens, provided its workings remain accessible.",
+          "effect": "Main Action · Guile, with lock tools. Work on a reachable nonmagical lock with accessible workings. Add 1/2/3 progress toward opening it.",
           "kind": "technique",
           "disciplineId": "subterfuge",
           "pathId": "subterfuge:locks",
@@ -14110,19 +14215,13 @@
       ],
       "resolved": "Opportunistic attack gains an additive slowing effect and a later interruption; infiltration develops separately rather than inflating the damage action list.",
       "remaining": "Blade in the Back is its own attack rather than bonus Sneak Attack dice. The build still pays for mundane intrusion and mobility instead of receiving all skills automatically.",
-      "deferred": [
-        {
-          "level": 3,
-          "id": "subterfuge:locks:3",
-          "reason": "Costs 2 DP. You have 0 DP."
-        }
-      ]
+      "deferred": []
     },
     {
       "id": "sorcerer",
       "name": "Ilyra Cinderblood",
       "level": 1,
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "workingTree": false,
       "draft": {
         "name": "Ilyra Cinderblood",
@@ -14274,9 +14373,9 @@
       },
       "development": {
         "level": 1,
-        "current": 0,
+        "current": 2,
         "spent": 10,
-        "total": 10,
+        "total": 12,
         "expired": 0
       },
       "purchases": [
@@ -14495,7 +14594,7 @@
       "id": "sorcerer",
       "name": "Ilyra Cinderblood",
       "level": 3,
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "workingTree": false,
       "draft": {
         "name": "Ilyra Cinderblood",
@@ -14680,9 +14779,9 @@
       },
       "development": {
         "level": 3,
-        "current": 1,
+        "current": 3,
         "spent": 22,
-        "total": 23,
+        "total": 25,
         "expired": 0
       },
       "purchases": [
@@ -14809,13 +14908,13 @@
           "kind": "ability",
           "action": "Reaction",
           "attribute": "None (no roll)",
-          "target": "One willing ally on their turn, before they take any action; choose two visible, unoccupied squares within 6 squares of you.",
+          "target": "One willing ally during their turn, before their chosen step or attack resolves. Choose two visible, unoccupied squares within 6 squares of you.",
           "duration": "Until the end of the ally’s turn.",
           "equipment": "A free hand for casting.",
           "sp": 0,
           "magic": "Spell",
-          "effect": "**Action:** Reaction · **Attribute:** None (no roll)\n\n**Target / range / shape:** One willing ally on their turn, before they take any action; choose two visible, unoccupied squares within 6 squares of you.\n\nThe two squares become connected windows until the end of the ally’s turn. The ally can use the windows once at any point during their turn, either to move through one and out the other, spending 1 square of movement, or to make one attack through one window, measuring range and cover from the other. The ally must be able to see the window they use. The windows vanish at the end of the ally’s turn. This movement does not provoke opportunity attacks.\n\n**Duration:** Until the end of the ally’s turn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP. Cast at the start of the willing ally’s turn before it acts. The windows grant a passage or attack route, not an extra attack.\n\n**Frequency:** Once per round.",
-          "rulesMarkdown": "**Action:** Reaction · **Attribute:** None (no roll)\n\n**Target / range / shape:** One willing ally on their turn, before they take any action; choose two visible, unoccupied squares within 6 squares of you.\n\nThe two squares become connected windows until the end of the ally’s turn. The ally can use the windows once at any point during their turn, either to move through one and out the other, spending 1 square of movement, or to make one attack through one window, measuring range and cover from the other. The ally must be able to see the window they use. The windows vanish at the end of the ally’s turn. This movement does not provoke opportunity attacks.\n\n**Duration:** Until the end of the ally’s turn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP. Cast at the start of the willing ally’s turn before it acts. The windows grant a passage or attack route, not an extra attack.\n\n**Frequency:** Once per round."
+          "effect": "**Action:** Reaction · **Attribute:** None (no roll)\n\n**Target / range / shape:** One willing ally during their turn, before their chosen step or attack resolves. Choose two visible, unoccupied squares within 6 squares of you.\n\nThe two squares become connected windows until the end of the ally’s turn. The ally can use the windows once at any point during their turn, either to move through one and out the other, spending 1 square of movement, or to make one attack through one window, measuring range and cover from the other. The ally must be able to see the window they use. The windows vanish at the end of the ally’s turn. This movement does not provoke opportunity attacks.\n\n**Duration:** Until the end of the ally’s turn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP. The windows give the ally a route for its own movement or attack.\n\n**Frequency:** Once per round.",
+          "rulesMarkdown": "**Action:** Reaction · **Attribute:** None (no roll)\n\n**Target / range / shape:** One willing ally during their turn, before their chosen step or attack resolves. Choose two visible, unoccupied squares within 6 squares of you.\n\nThe two squares become connected windows until the end of the ally’s turn. The ally can use the windows once at any point during their turn, either to move through one and out the other, spending 1 square of movement, or to make one attack through one window, measuring range and cover from the other. The ally must be able to see the window they use. The windows vanish at the end of the ally’s turn. This movement does not provoke opportunity attacks.\n\n**Duration:** Until the end of the ally’s turn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP. The windows give the ally a route for its own movement or attack.\n\n**Frequency:** Once per round."
         }
       ],
       "abilities": [],
@@ -15011,7 +15110,7 @@
       "id": "sorcerer",
       "name": "Ilyra Cinderblood",
       "level": 7,
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "workingTree": false,
       "draft": {
         "name": "Ilyra Cinderblood",
@@ -15225,6 +15324,9 @@
                 },
                 {
                   "id": "emotion:3"
+                },
+                {
+                  "id": "spellcraft:recovery:2"
                 }
               ],
               "signatures": {
@@ -15253,8 +15355,8 @@
       "development": {
         "level": 7,
         "current": 1,
-        "spent": 60,
-        "total": 61,
+        "spent": 62,
+        "total": 63,
         "expired": 0
       },
       "purchases": [
@@ -15425,6 +15527,13 @@
           "paidDp": 3,
           "level": 7,
           "requiredLevel": 3
+        },
+        {
+          "id": "spellcraft:recovery:2",
+          "name": "Recovery II",
+          "paidDp": 2,
+          "level": 7,
+          "requiredLevel": 1
         }
       ],
       "signatureChoices": {
@@ -15459,13 +15568,13 @@
           "kind": "ability",
           "action": "Reaction",
           "attribute": "None (no roll)",
-          "target": "One willing ally on their turn, before they take any action; choose two visible, unoccupied squares within 6 squares of you.",
+          "target": "One willing ally during their turn, before their chosen step or attack resolves. Choose two visible, unoccupied squares within 6 squares of you.",
           "duration": "Until the end of the ally’s turn.",
           "equipment": "A free hand for casting.",
           "sp": 0,
           "magic": "Spell",
-          "effect": "**Action:** Reaction · **Attribute:** None (no roll)\n\n**Target / range / shape:** One willing ally on their turn, before they take any action; choose two visible, unoccupied squares within 6 squares of you.\n\nThe two squares become connected windows until the end of the ally’s turn. The ally can use the windows once at any point during their turn, either to move through one and out the other, spending 1 square of movement, or to make one attack through one window, measuring range and cover from the other. The ally must be able to see the window they use. The windows vanish at the end of the ally’s turn. This movement does not provoke opportunity attacks.\n\n**Duration:** Until the end of the ally’s turn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP. Cast at the start of the willing ally’s turn before it acts. The windows grant a passage or attack route, not an extra attack.\n\n**Frequency:** Once per round.",
-          "rulesMarkdown": "**Action:** Reaction · **Attribute:** None (no roll)\n\n**Target / range / shape:** One willing ally on their turn, before they take any action; choose two visible, unoccupied squares within 6 squares of you.\n\nThe two squares become connected windows until the end of the ally’s turn. The ally can use the windows once at any point during their turn, either to move through one and out the other, spending 1 square of movement, or to make one attack through one window, measuring range and cover from the other. The ally must be able to see the window they use. The windows vanish at the end of the ally’s turn. This movement does not provoke opportunity attacks.\n\n**Duration:** Until the end of the ally’s turn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP. Cast at the start of the willing ally’s turn before it acts. The windows grant a passage or attack route, not an extra attack.\n\n**Frequency:** Once per round."
+          "effect": "**Action:** Reaction · **Attribute:** None (no roll)\n\n**Target / range / shape:** One willing ally during their turn, before their chosen step or attack resolves. Choose two visible, unoccupied squares within 6 squares of you.\n\nThe two squares become connected windows until the end of the ally’s turn. The ally can use the windows once at any point during their turn, either to move through one and out the other, spending 1 square of movement, or to make one attack through one window, measuring range and cover from the other. The ally must be able to see the window they use. The windows vanish at the end of the ally’s turn. This movement does not provoke opportunity attacks.\n\n**Duration:** Until the end of the ally’s turn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP. The windows give the ally a route for its own movement or attack.\n\n**Frequency:** Once per round.",
+          "rulesMarkdown": "**Action:** Reaction · **Attribute:** None (no roll)\n\n**Target / range / shape:** One willing ally during their turn, before their chosen step or attack resolves. Choose two visible, unoccupied squares within 6 squares of you.\n\nThe two squares become connected windows until the end of the ally’s turn. The ally can use the windows once at any point during their turn, either to move through one and out the other, spending 1 square of movement, or to make one attack through one window, measuring range and cover from the other. The ally must be able to see the window they use. The windows vanish at the end of the ally’s turn. This movement does not provoke opportunity attacks.\n\n**Duration:** Until the end of the ally’s turn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP. The windows give the ally a route for its own movement or attack.\n\n**Frequency:** Once per round."
         },
         {
           "id": "ability-signature-arcanist-choose-the-edge",
@@ -15764,7 +15873,7 @@
       },
       "castingBudget": {
         "maxSp": 38,
-        "oncePerRestRecovery": 1,
+        "oncePerRestRecovery": 2,
         "castsAtCost": {
           "1": 38,
           "2": 19,
@@ -15772,10 +15881,10 @@
           "5": 7
         },
         "castsAfterRecovery": {
-          "1": 39,
-          "2": 19,
+          "1": 40,
+          "2": 20,
           "3": 13,
-          "5": 7
+          "5": 8
         },
         "note": "Alternative uses of the same reserve, not simultaneous allocations. Assumes SP is spent before recovery; time, spell-specific limits, components and maintained actions still apply. Signature spells and conditional discounts are described separately."
       },
@@ -15794,7 +15903,7 @@
       "deferred": [
         {
           "level": 7,
-          "id": "spellcraft:recovery:2",
+          "id": "spellcraft:recovery:3",
           "reason": "Costs 2 DP. You have 1 DP."
         }
       ]
@@ -15803,7 +15912,7 @@
       "id": "warlock",
       "name": "Vesper Ashpact",
       "level": 1,
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "workingTree": false,
       "draft": {
         "name": "Vesper Ashpact",
@@ -15952,9 +16061,9 @@
       },
       "development": {
         "level": 1,
-        "current": 1,
+        "current": 3,
         "spent": 8,
-        "total": 9,
+        "total": 11,
         "expired": 0
       },
       "purchases": [
@@ -16150,7 +16259,7 @@
       "id": "warlock",
       "name": "Vesper Ashpact",
       "level": 3,
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "workingTree": false,
       "draft": {
         "name": "Vesper Ashpact",
@@ -16332,9 +16441,9 @@
       },
       "development": {
         "level": 3,
-        "current": 1,
+        "current": 3,
         "spent": 21,
-        "total": 22,
+        "total": 24,
         "expired": 0
       },
       "purchases": [
@@ -16551,7 +16660,7 @@
           "action": "Main Action",
           "sp": 1,
           "duration": "Sustained, up to 1 minute",
-          "effect": "Bands of pale light grip its limbs. Apply Slowed 1/2/3; on Strong also apply Paralyzed 1. Each upkeep renews this casting’s original ratings rather than adding to them. A conscious target may spend a Main Action to attempt escape using the printed hold and escape attributes, even while these bands restrict its actions. Escape ends this casting’s conditions on that target; ending Sustain removes them."
+          "effect": "Bands of pale light grip its limbs. Apply Slowed 1/2/3. On Standard or Strong, also apply Paralyzed 1. Each upkeep renews this casting’s original ratings rather than adding to them. A conscious target may spend a Main Action to attempt escape using the printed hold and escape attributes, even while these bands restrict its actions. Escape ends this casting’s conditions on that target; ending Sustain removes them."
         },
         {
           "id": "spell:binding:4",
@@ -16567,7 +16676,7 @@
           "action": "Main Action",
           "sp": 2,
           "duration": "Until your next turn ends",
-          "effect": "Deal 3/5/7 radiant damage to a summoned energy form; at 0 HP it disperses. An independent creature instead takes Frightened 1/2/3, with an image of its home as source. On Strong, a willing extraplanar creature may return to its home plane rather than take that fear."
+          "effect": "Deal 3/5/7 radiant damage to a summoned energy form; at 0 HP it disperses. An independent creature instead takes Frightened 1/2/3, with an image of its home as source. On Standard or Strong, a willing extraplanar creature may return to its home plane in place of that fear."
         },
         {
           "id": "spell:binding:6",
@@ -16623,7 +16732,7 @@
       "id": "warlock",
       "name": "Vesper Ashpact",
       "level": 7,
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "workingTree": false,
       "draft": {
         "name": "Vesper Ashpact",
@@ -16870,9 +16979,9 @@
       },
       "development": {
         "level": 7,
-        "current": 2,
+        "current": 4,
         "spent": 58,
-        "total": 60,
+        "total": 62,
         "expired": 0
       },
       "purchases": [
@@ -17223,7 +17332,7 @@
           "action": "Main Action",
           "sp": 1,
           "duration": "Sustained, up to 1 minute",
-          "effect": "Bands of pale light grip its limbs. Apply Slowed 1/2/3; on Strong also apply Paralyzed 1. Each upkeep renews this casting’s original ratings rather than adding to them. A conscious target may spend a Main Action to attempt escape using the printed hold and escape attributes, even while these bands restrict its actions. Escape ends this casting’s conditions on that target; ending Sustain removes them."
+          "effect": "Bands of pale light grip its limbs. Apply Slowed 1/2/3. On Standard or Strong, also apply Paralyzed 1. Each upkeep renews this casting’s original ratings rather than adding to them. A conscious target may spend a Main Action to attempt escape using the printed hold and escape attributes, even while these bands restrict its actions. Escape ends this casting’s conditions on that target; ending Sustain removes them."
         },
         {
           "id": "spell:binding:4",
@@ -17239,7 +17348,7 @@
           "action": "Main Action",
           "sp": 2,
           "duration": "Until your next turn ends",
-          "effect": "Deal 3/5/7 radiant damage to a summoned energy form; at 0 HP it disperses. An independent creature instead takes Frightened 1/2/3, with an image of its home as source. On Strong, a willing extraplanar creature may return to its home plane rather than take that fear."
+          "effect": "Deal 3/5/7 radiant damage to a summoned energy form; at 0 HP it disperses. An independent creature instead takes Frightened 1/2/3, with an image of its home as source. On Standard or Strong, a willing extraplanar creature may return to its home plane in place of that fear."
         },
         {
           "id": "spell:binding:6",
@@ -17441,7 +17550,7 @@
       "id": "wizard",
       "name": "Vaelis Quillstar",
       "level": 1,
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "workingTree": false,
       "draft": {
         "name": "Vaelis Quillstar",
@@ -17610,9 +17719,9 @@
       },
       "development": {
         "level": 1,
-        "current": 0,
+        "current": 2,
         "spent": 11,
-        "total": 11,
+        "total": 13,
         "expired": 0
       },
       "purchases": [
@@ -17879,7 +17988,7 @@
       "id": "wizard",
       "name": "Vaelis Quillstar",
       "level": 3,
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "workingTree": false,
       "draft": {
         "name": "Vaelis Quillstar",
@@ -18054,6 +18163,9 @@
                 },
                 {
                   "id": "spellcraft:soul-capacity:4"
+                },
+                {
+                  "id": "shaping:1"
                 }
               ],
               "signatures": {
@@ -18082,8 +18194,8 @@
       "development": {
         "level": 3,
         "current": 1,
-        "spent": 23,
-        "total": 24,
+        "spent": 25,
+        "total": 26,
         "expired": 0
       },
       "purchases": [
@@ -18191,6 +18303,13 @@
           "paidDp": 3,
           "level": 3,
           "requiredLevel": 3
+        },
+        {
+          "id": "shaping:1",
+          "name": "Shaping II",
+          "paidDp": 2,
+          "level": 3,
+          "requiredLevel": 1
         }
       ],
       "signatureChoices": {
@@ -18267,7 +18386,9 @@
         "spell:telekinesis:5",
         "spell:telekinesis:6",
         "spell:telekinesis:7",
-        "spell:telekinesis:8"
+        "spell:telekinesis:8",
+        "spell:shaping:3",
+        "spell:shaping:4"
       ],
       "spells": [
         {
@@ -18397,6 +18518,22 @@
           "sp": 4,
           "duration": "1 minute",
           "effect": "Enclose it in a translucent sphere with 12 HP and resistance 2 to all damage. Attacks from outside strike the sphere; the recipient may roll it 1 square using its movement. Actions affecting the outside require leaving with a Maneuver. Destruction ends the sphere after that damage event."
+        },
+        {
+          "id": "spell:shaping:3",
+          "name": "Enlarge/Reduce — Objects",
+          "action": "Main Action",
+          "sp": 1,
+          "duration": "10 minutes",
+          "effect": "Double or halve its dimensions and Bulk, rounding Bulk up with a minimum of 1. Its material and function remain ordinary. It returns to original size at expiry; allow enough space for either size when casting."
+        },
+        {
+          "id": "spell:shaping:4",
+          "name": "Unlocking Ways",
+          "action": "Ritual",
+          "sp": 2,
+          "duration": "Instant",
+          "effect": "Guide its mechanism with invisible tools. Add 1/2/3 progress toward the lock's DA-set opening objective. The spell supplies delicate manipulation; an explicit magical seal uses its named remedy."
         }
       ],
       "actionCounts": {
@@ -18407,9 +18544,9 @@
         "Other": 0
       },
       "spellCounts": {
-        "total": 16,
+        "total": 18,
         "free": 5,
-        "paid": 11
+        "paid": 13
       },
       "castingBudget": {
         "maxSp": 22,
@@ -18437,19 +18574,13 @@
       ],
       "resolved": "Study the Pattern now gives usable, bounded information; its later cancellation insight and ward accompany growing books and reserve capacity.",
       "remaining": "Fixed book sections differ from learning or copying arbitrary individual 5e spells. Cancellation insight still needs an actual cancellation ability; this selection is not a universal Counterspell license.",
-      "deferred": [
-        {
-          "level": 3,
-          "id": "shaping:1",
-          "reason": "Costs 2 DP. You have 1 DP."
-        }
-      ]
+      "deferred": []
     },
     {
       "id": "wizard",
       "name": "Vaelis Quillstar",
       "level": 7,
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "workingTree": false,
       "draft": {
         "name": "Vaelis Quillstar",
@@ -18624,6 +18755,9 @@
                 },
                 {
                   "id": "spellcraft:soul-capacity:4"
+                },
+                {
+                  "id": "shaping:1"
                 }
               ],
               "signatures": {
@@ -18656,9 +18790,6 @@
                 },
                 {
                   "id": "spellcraft:soul-capacity:7"
-                },
-                {
-                  "id": "shaping:1"
                 },
                 {
                   "id": "shaping:2"
@@ -18716,9 +18847,9 @@
       },
       "development": {
         "level": 7,
-        "current": 1,
+        "current": 3,
         "spent": 61,
-        "total": 62,
+        "total": 64,
         "expired": 0
       },
       "purchases": [
@@ -18828,6 +18959,13 @@
           "requiredLevel": 3
         },
         {
+          "id": "shaping:1",
+          "name": "Shaping II",
+          "paidDp": 2,
+          "level": 3,
+          "requiredLevel": 1
+        },
+        {
           "id": "spellcraft:soul-capacity:5",
           "name": "Deep Reserves II",
           "paidDp": 4,
@@ -18847,13 +18985,6 @@
           "paidDp": 5,
           "level": 7,
           "requiredLevel": 7
-        },
-        {
-          "id": "shaping:1",
-          "name": "Shaping II",
-          "paidDp": 2,
-          "level": 7,
-          "requiredLevel": 1
         },
         {
           "id": "shaping:2",
@@ -19336,19 +19467,13 @@
       ],
       "resolved": "Study the Pattern now gives usable, bounded information; its later cancellation insight and ward accompany growing books and reserve capacity.",
       "remaining": "Fixed book sections differ from learning or copying arbitrary individual 5e spells. Cancellation insight still needs an actual cancellation ability; this selection is not a universal Counterspell license.",
-      "deferred": [
-        {
-          "level": 3,
-          "id": "shaping:1",
-          "reason": "Costs 2 DP. You have 1 DP."
-        }
-      ]
+      "deferred": []
     },
     {
       "id": "artificer",
       "name": "Nim Coppercoil",
       "level": 1,
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "workingTree": false,
       "draft": {
         "name": "Nim Coppercoil",
@@ -19511,9 +19636,9 @@
       },
       "development": {
         "level": 1,
-        "current": 1,
+        "current": 3,
         "spent": 9,
-        "total": 10,
+        "total": 12,
         "expired": 0
       },
       "purchases": [
@@ -19631,7 +19756,7 @@
           "name": "Catch the Failure I",
           "dp": 1,
           "level": 1,
-          "effect": "Reaction. When a visible component begins to fail during a nonmagical task you are attending within reach, use tools in hand to arrest it before the consequence resolves. Give the worker 1 Boon on the associated roll to prevent injury or material loss, if such a roll is possible. Once per distinct failure event; this does not improve the task’s progress roll or reverse damage already applied.",
+          "effect": "Reaction. When a visible component within reach begins to fail during a nonmagical task, use tools in hand to arrest it before the consequence resolves. Give the worker 1 Boon on the associated roll to prevent injury or material loss, if such a roll is possible. Once per distinct failure event; this does not improve the task’s progress roll or reverse damage already applied.",
           "kind": "technique",
           "disciplineId": "craft",
           "pathId": "craft:safeguards",
@@ -19758,7 +19883,7 @@
       "id": "artificer",
       "name": "Nim Coppercoil",
       "level": 3,
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "workingTree": false,
       "draft": {
         "name": "Nim Coppercoil",
@@ -19926,7 +20051,7 @@
                   "id": "craft:repairs:5"
                 },
                 {
-                  "id": "imbuement:1"
+                  "id": "craft:repairs:6"
                 }
               ],
               "signatures": {
@@ -19955,8 +20080,8 @@
       "development": {
         "level": 3,
         "current": 1,
-        "spent": 22,
-        "total": 23,
+        "spent": 24,
+        "total": 25,
         "expired": 0
       },
       "purchases": [
@@ -20045,11 +20170,11 @@
           "requiredLevel": 3
         },
         {
-          "id": "imbuement:1",
-          "name": "Imbuement II",
-          "paidDp": 2,
+          "id": "craft:repairs:6",
+          "name": "Field Repair III",
+          "paidDp": 4,
           "level": 3,
-          "requiredLevel": 1
+          "requiredLevel": 3
         }
       ],
       "signatureChoices": {
@@ -20128,7 +20253,7 @@
           "name": "Catch the Failure I",
           "dp": 1,
           "level": 1,
-          "effect": "Reaction. When a visible component begins to fail during a nonmagical task you are attending within reach, use tools in hand to arrest it before the consequence resolves. Give the worker 1 Boon on the associated roll to prevent injury or material loss, if such a roll is possible. Once per distinct failure event; this does not improve the task’s progress roll or reverse damage already applied.",
+          "effect": "Reaction. When a visible component within reach begins to fail during a nonmagical task, use tools in hand to arrest it before the consequence resolves. Give the worker 1 Boon on the associated roll to prevent injury or material loss, if such a roll is possible. Once per distinct failure event; this does not improve the task’s progress roll or reverse damage already applied.",
           "kind": "technique",
           "disciplineId": "craft",
           "pathId": "craft:safeguards",
@@ -20142,7 +20267,7 @@
           "name": "Field Repair I",
           "dp": 3,
           "level": 3,
-          "effect": "Main Action · Knowledge, with tools and materials. Repair an item already examined through at least one Mend and Fit work attempt; add 1/2/3 progress. Repeat this faster action until the repair completes. Completion restores its ordinary function; HP restoration for an object with HP is set as part of the repair objective before work.",
+          "effect": "Main Action · Knowledge, with tools and materials. Work on a damaged nonmagical item within reach whose essential structure remains. Add 1/2/3 progress toward repairing it. Completion restores its ordinary function; HP restoration for an object with HP is set as part of the repair objective before work.",
           "kind": "technique",
           "disciplineId": "craft",
           "pathId": "craft:repairs",
@@ -20160,9 +20285,7 @@
         "spell:imbuement:1",
         "spell:imbuement:2",
         "spell:detection:1",
-        "spell:detection:2",
-        "spell:imbuement:3",
-        "spell:imbuement:4"
+        "spell:detection:2"
       ],
       "spells": [
         {
@@ -20228,22 +20351,6 @@
           "sp": 1,
           "duration": "Instant",
           "effect": "Determine whether ordinary poison or disease is present and identify its broad type: ingested, inhaled, contact or bodily infection. The reading helps select suitable treatment."
-        },
-        {
-          "id": "spell:imbuement:3",
-          "name": "Elemental Weapon",
-          "action": "Main Action",
-          "sp": 1,
-          "duration": "1 minute",
-          "effect": "Choose fire, cold or lightning. Its attacks deal that type in place of their normal damage type and add 1 damage before resistance. Use the highest magical weapon damage increase; each attack remains one damage event per target."
-        },
-        {
-          "id": "spell:imbuement:4",
-          "name": "Rune Mastery",
-          "action": "Ritual",
-          "sp": 2,
-          "duration": "24 hours or until released",
-          "effect": "Pay the stored spell's SP in addition to this ritual. Inscribe its power into the stone. A bearer uses a Main Action to release it, choosing legal targets from their position and using the stored spell’s printed attribute and your value for it. The stone holds one use; you may keep one prepared Rune Mastery stone at a time."
         }
       ],
       "actionCounts": {
@@ -20254,9 +20361,9 @@
         "Other": 3
       },
       "spellCounts": {
-        "total": 10,
+        "total": 8,
         "free": 4,
-        "paid": 6
+        "paid": 4
       },
       "castingBudget": {
         "maxSp": 13,
@@ -20281,19 +20388,15 @@
         "craft:repairs:2",
         "craft:repairs:3",
         "craft:repairs:4",
-        "craft:repairs:5"
+        "craft:repairs:5",
+        "craft:repairs:6"
       ],
       "resolved": "Make It Last now creates a persistent bound item, then two and three with reviewed properties. This directly addresses the previous inability to represent enduring magical inventions.",
       "remaining": "The small curated properties are not the full 5e replication catalog. Each binding needs its actual ordinary item and tools; these drafts supply tools, while a chosen lamp/shield would need a separate purchased item.",
       "deferred": [
         {
           "level": 3,
-          "id": "craft:repairs:6",
-          "reason": "Costs 4 DP. You have 3 DP."
-        },
-        {
-          "level": 3,
-          "id": "imbuement:2",
+          "id": "imbuement:1",
           "reason": "Costs 2 DP. You have 1 DP."
         }
       ]
@@ -20302,7 +20405,7 @@
       "id": "artificer",
       "name": "Nim Coppercoil",
       "level": 7,
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "workingTree": false,
       "draft": {
         "name": "Nim Coppercoil",
@@ -20470,7 +20573,7 @@
                   "id": "craft:repairs:5"
                 },
                 {
-                  "id": "imbuement:1"
+                  "id": "craft:repairs:6"
                 }
               ],
               "signatures": {
@@ -20496,10 +20599,10 @@
             "7": {
               "purchases": [
                 {
-                  "id": "craft:repairs:6"
+                  "id": "craft:repairs:7"
                 },
                 {
-                  "id": "craft:repairs:7"
+                  "id": "imbuement:1"
                 },
                 {
                   "id": "imbuement:2"
@@ -20539,6 +20642,9 @@
                 },
                 {
                   "id": "detection:1"
+                },
+                {
+                  "id": "detection:2"
                 }
               ],
               "signatures": {
@@ -20580,8 +20686,8 @@
       "development": {
         "level": 7,
         "current": 1,
-        "spent": 60,
-        "total": 61,
+        "spent": 62,
+        "total": 63,
         "expired": 0
       },
       "purchases": [
@@ -20670,17 +20776,10 @@
           "requiredLevel": 3
         },
         {
-          "id": "imbuement:1",
-          "name": "Imbuement II",
-          "paidDp": 2,
-          "level": 3,
-          "requiredLevel": 1
-        },
-        {
           "id": "craft:repairs:6",
           "name": "Field Repair III",
           "paidDp": 4,
-          "level": 7,
+          "level": 3,
           "requiredLevel": 3
         },
         {
@@ -20689,6 +20788,13 @@
           "paidDp": 5,
           "level": 7,
           "requiredLevel": 7
+        },
+        {
+          "id": "imbuement:1",
+          "name": "Imbuement II",
+          "paidDp": 2,
+          "level": 7,
+          "requiredLevel": 1
         },
         {
           "id": "imbuement:2",
@@ -20777,6 +20883,13 @@
         {
           "id": "detection:1",
           "name": "Detection II",
+          "paidDp": 2,
+          "level": 7,
+          "requiredLevel": 1
+        },
+        {
+          "id": "detection:2",
+          "name": "Detection III",
           "paidDp": 2,
           "level": 7,
           "requiredLevel": 1
@@ -20877,7 +20990,7 @@
           "name": "Catch the Failure I",
           "dp": 1,
           "level": 1,
-          "effect": "Reaction. When a visible component begins to fail during a nonmagical task you are attending within reach, use tools in hand to arrest it before the consequence resolves. Give the worker 1 Boon on the associated roll to prevent injury or material loss, if such a roll is possible. Once per distinct failure event; this does not improve the task’s progress roll or reverse damage already applied.",
+          "effect": "Reaction. When a visible component within reach begins to fail during a nonmagical task, use tools in hand to arrest it before the consequence resolves. Give the worker 1 Boon on the associated roll to prevent injury or material loss, if such a roll is possible. Once per distinct failure event; this does not improve the task’s progress roll or reverse damage already applied.",
           "kind": "technique",
           "disciplineId": "craft",
           "pathId": "craft:safeguards",
@@ -20891,7 +21004,7 @@
           "name": "Field Repair I",
           "dp": 3,
           "level": 3,
-          "effect": "Main Action · Knowledge, with tools and materials. Repair an item already examined through at least one Mend and Fit work attempt; add 1/2/3 progress. Repeat this faster action until the repair completes. Completion restores its ordinary function; HP restoration for an object with HP is set as part of the repair objective before work.",
+          "effect": "Main Action · Knowledge, with tools and materials. Work on a damaged nonmagical item within reach whose essential structure remains. Add 1/2/3 progress toward repairing it. Completion restores its ordinary function; HP restoration for an object with HP is set as part of the repair objective before work.",
           "kind": "technique",
           "disciplineId": "craft",
           "pathId": "craft:repairs",
@@ -20971,7 +21084,9 @@
         "spell:telekinesis:7",
         "spell:telekinesis:8",
         "spell:detection:3",
-        "spell:detection:4"
+        "spell:detection:4",
+        "spell:detection:5",
+        "spell:detection:6"
       ],
       "spells": [
         {
@@ -21197,6 +21312,22 @@
           "sp": 2,
           "duration": "Instant",
           "effect": "Sense intentionally prepared mechanisms or magical triggers that could harm an entrant. Add 1/2/3 progress toward a search objective set by the DA. At completion identify each detected trigger's location and how it is activated; disarming uses its own procedure."
+        },
+        {
+          "id": "spell:detection:5",
+          "name": "See Invisibility",
+          "action": "Main Action",
+          "sp": 2,
+          "duration": "1 minute",
+          "effect": "See Invisible creatures and objects within 6 squares as translucent outlines. This satisfies visual targeting at that distance; solid cover still blocks sight."
+        },
+        {
+          "id": "spell:detection:6",
+          "name": "Identify",
+          "action": "Ritual",
+          "sp": 3,
+          "duration": "Instant",
+          "effect": "Learn 1/2/3 facts about its active magical properties, chosen from activation, charges or costs, duration, and an explicit drawback. The DA gives accurate facts available from the item's current enchantment."
         }
       ],
       "actionCounts": {
@@ -21207,9 +21338,9 @@
         "Other": 5
       },
       "spellCounts": {
-        "total": 28,
+        "total": 30,
         "free": 4,
-        "paid": 24
+        "paid": 26
       },
       "castingBudget": {
         "maxSp": 21,
@@ -21243,17 +21374,7 @@
       "deferred": [
         {
           "level": 3,
-          "id": "craft:repairs:6",
-          "reason": "Costs 4 DP. You have 3 DP."
-        },
-        {
-          "level": 3,
-          "id": "imbuement:2",
-          "reason": "Costs 2 DP. You have 1 DP."
-        },
-        {
-          "level": 7,
-          "id": "detection:2",
+          "id": "imbuement:1",
           "reason": "Costs 2 DP. You have 1 DP."
         }
       ]

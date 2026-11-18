@@ -35,7 +35,7 @@ for(const b of manifest.builds){
   if(n.kind==='section' && n.section==='VII'){assert.equal(p.level,7);assert.equal(n.dp,5);assert.equal(n.spellIds.length,1);assert.equal(n.requires.length,1);assert.equal(n.requires[0],`${n.bookId}:5`);masteryCases++;}
  }
  const bonus=draft.traitIds.includes('trait-human-far-walker')?1:0;
- let total=8+draft.attributes.guile+draft.attributes.knowledge+draft.attributes.reason+bonus;
+ let total=10+draft.attributes.guile+draft.attributes.knowledge+draft.attributes.reason+bonus;
  for(let level=2;level<=b.level;level++)total+=4+level+bonus;
  assert.equal(b.development.total,total);assert.equal(spent,b.development.spent);assert.equal(total-spent,b.development.current);
  const capacity=[...learned].reduce((sum,id)=>sum+(nodes.get(id)?.spCapacity??0),0);

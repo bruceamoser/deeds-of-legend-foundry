@@ -24,7 +24,7 @@
         "classId": "class-arcanist",
         "level": 3,
         "lineId": "arcanist:bent-trajectory",
-        "rulesMarkdown": "**Action:** Reaction · **Attribute:** None (no roll)\n\n**Target / range / shape:** One willing ally on their turn, before they take any action; choose two visible, unoccupied squares within 6 squares of you.\n\nThe two squares become connected windows until the end of the ally’s turn. The ally can use the windows once at any point during their turn, either to move through one and out the other, spending 1 square of movement, or to make one attack through one window, measuring range and cover from the other. The ally must be able to see the window they use. The windows vanish at the end of the ally’s turn. This movement does not provoke opportunity attacks.\n\n**Duration:** Until the end of the ally’s turn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP. Cast at the start of the willing ally’s turn before it acts. The windows grant a passage or attack route, not an extra attack.\n\n**Frequency:** Once per round."
+        "rulesMarkdown": "**Action:** Reaction · **Attribute:** None (no roll)\n\n**Target / range / shape:** One willing ally during their turn, before their chosen step or attack resolves. Choose two visible, unoccupied squares within 6 squares of you.\n\nThe two squares become connected windows until the end of the ally’s turn. The ally can use the windows once at any point during their turn, either to move through one and out the other, spending 1 square of movement, or to make one attack through one window, measuring range and cover from the other. The ally must be able to see the window they use. The windows vanish at the end of the ally’s turn. This movement does not provoke opportunity attacks.\n\n**Duration:** Until the end of the ally’s turn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP. The windows give the ally a route for its own movement or attack.\n\n**Frequency:** Once per round."
       },
       {
         "id": "ability-signature-arcanist-choose-the-edge",
@@ -176,7 +176,7 @@
         "classId": "class-intellect",
         "level": 7,
         "lineId": "intellect:spot-the-leverage",
-        "rulesMarkdown": "**Action:** One minute · **Attribute:** None (no roll)\n\n**Time:** One minute.\n\n**Target / range / shape:** Self and up to three allies who can hear and understand you.\n\nSpend one minute forming a plan from the evidence and observations available. State the plan. The DA confirms what is true, what remains uncertain, and one contradiction or risk. You and each chosen ally gain 2 Boons to your next roll that directly follows the plan.\n\n**Duration:** The plan and its stated limits remain known; each Boon expires when used or at the end of the scene.\n\n**Equipment / acquisition:** None.\n\nYou can maintain one plan at a time. A new plan replaces its unused Boons; new relevant evidence is required to plan again for the same objective this scene.\n\n**Frequency:** Once per scene."
+        "rulesMarkdown": "**Action:** One minute · **Attribute:** None (no roll)\n\n**Time:** One minute.\n\n**Target / range / shape:** Self and up to three allies who can hear and understand you.\n\nSpend one minute forming a plan from the evidence and observations available. State the plan. The DA confirms what is true, what remains uncertain, and one contradiction or risk. You and each chosen ally gain 2 Boons to your next roll that directly follows the plan.\n\n**Duration:** The plan and its stated limits remain known; each Boon expires when used or at the end of the scene.\n\n**Equipment / acquisition:** None.\n\nKeep one plan at a time. A new plan replaces the previous plan and its unused Boons.\n\n**Frequency:** Once per scene."
       },
       {
         "id": "ability-signature-intellect-make-it-last",
@@ -424,7 +424,7 @@
         "classId": "class-protector",
         "level": 1,
         "lineId": "protector:oathstrike",
-        "rulesMarkdown": "**Action:** Passive modifier to a melee weapon attack · **Attribute:** Use that attack’s attribute\n\n**Target / range / shape:** An enemy that damaged one of your allies since the end of your last turn.\n\n**Magic:** Magical weapon modifier · **SP:** 1\n\nOnce on your turn, declare Oathstrike and pay 1 SP before a melee weapon attack against that enemy. Add 1/2/3 radiant damage to the attack on Weak/Standard/Strong. Resolve each damage component’s resistance, then apply the minimum once to the whole attack. This magical weapon modifier is not a separate spell casting and does not require a free hand beyond the weapon’s requirements.\n\n**Duration:** The attack.\n\n**Equipment / acquisition:** The actual melee weapon required by the attack."
+        "rulesMarkdown": "**Action:** Passive modifier to a melee weapon attack · **Attribute:** Use that attack’s attribute\n\n**Target / range / shape:** An enemy that damaged one of your allies this scene.\n\n**Magic:** Magical weapon modifier · **SP:** 1\n\nOnce on your turn, declare Oathstrike and pay 1 SP before a melee weapon attack against that enemy. Add 1/2/3 radiant damage to the attack on Weak/Standard/Strong. Resolve each damage component’s resistance, then apply the minimum once to the whole attack. This magical weapon modifier is not a separate spell casting and does not require a free hand beyond the weapon’s requirements.\n\n**Duration:** The attack.\n\n**Equipment / acquisition:** The actual melee weapon required by the attack."
       },
       {
         "id": "ability-signature-protector-rebuking-light",
@@ -432,7 +432,7 @@
         "classId": "class-protector",
         "level": 3,
         "lineId": "protector:oathstrike",
-        "rulesMarkdown": "**Action:** Passive modifier to a melee weapon attack · **Attribute:** Use that attack’s attribute\n\n**Target / range / shape:** An enemy that damaged one of your allies since the end of your last turn.\n\nOnce on your turn, declare this modifier and pay 1 SP before a melee weapon attack against that enemy. Add 1/2/3 radiant damage to the attack on Weak/Standard/Strong. On Standard or Strong, also push the target 1 square directly away from you. On Strong, also apply Dazed 1. Resolve each damage component’s resistance, then apply the minimum once to the whole attack. Resolve Stability, collisions and condition immunity normally.\n\n**Duration:** The attack and immediate push; Dazed uses normal decay.\n\n**Equipment / acquisition:** The actual melee weapon required by the attack.\n\nThis magical weapon modifier is not a separate spell casting and requires no free hand beyond the weapon’s requirements."
+        "rulesMarkdown": "**Action:** Passive modifier to a melee weapon attack · **Attribute:** Use that attack’s attribute\n\n**Target / range / shape:** An enemy that damaged one of your allies this scene.\n\nOnce on your turn, declare this modifier and pay 1 SP before a melee weapon attack against that enemy. Add 1/2/3 radiant damage to the attack on Weak/Standard/Strong. On Standard or Strong, also push the target 1 square directly away from you. On Strong, also apply Dazed 1. Resolve each damage component’s resistance, then apply the minimum once to the whole attack. Resolve Stability, collisions and condition immunity normally.\n\n**Duration:** The attack and immediate push; Dazed uses normal decay.\n\n**Equipment / acquisition:** The actual melee weapon required by the attack.\n\nThis magical weapon modifier is not a separate spell casting and requires no free hand beyond the weapon’s requirements."
       },
       {
         "id": "ability-signature-protector-drive-back-the-circle",
@@ -5075,7 +5075,7 @@
       }
     }
   },
-  "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+  "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
   "disciplines": [
     {
       "id": "arms",
@@ -6522,7 +6522,7 @@
       "name": "Driving Opening I",
       "dp": 1,
       "level": 1,
-      "effect": "Maneuver. Choose one visible creature. Before your turn ends, your next Main Action melee weapon attack against it also pushes it 1 square directly away from your attack position on Strong. This modifies one attack, not each target of a sweep. Reusing this technique replaces its unused effect.",
+      "effect": "Maneuver. Choose one visible creature. Before your turn ends, your next Main Action melee weapon attack against it pushes that creature directly away from your attack position, 1 square on Standard or 2 squares on Strong. Resolve collisions normally. Apply the push only to the chosen creature on that attack. Reusing this technique replaces its unused effect.",
       "kind": "technique",
       "disciplineId": "arms",
       "pathId": "arms:impact",
@@ -6536,7 +6536,7 @@
       "name": "Driving Opening II",
       "dp": 2,
       "level": 1,
-      "effect": "Driving Opening pushes 2 squares on Strong.",
+      "effect": "Driving Opening pushes 2 squares on Standard as well as Strong.",
       "kind": "improvement",
       "disciplineId": "arms",
       "pathId": "arms:impact",
@@ -6888,7 +6888,7 @@
       "name": "Direct Thrust III",
       "dp": 2,
       "level": 1,
-      "effect": "On Strong, Direct Thrust lets you move up to 2 squares.",
+      "effect": "After a Strong Direct Thrust, you may move up to 2 squares instead of 1, avoiding movement reactions.",
       "kind": "improvement",
       "disciplineId": "fencing",
       "pathId": "fencing:pointwork",
@@ -7122,7 +7122,7 @@
       "name": "Answering Steel I",
       "dp": 3,
       "level": 3,
-      "effect": "Reaction · Agility. When an adjacent enemy finishes a melee attack against you and your defense was Strong, strike it for 1/2/4 physical damage. You must be able to act and the enemy must still be adjacent.",
+      "effect": "Reaction · Agility. After an adjacent enemy finishes a melee attack against you, strike it for 1/2/4 physical damage if your defense was Standard or Strong and it remains adjacent.",
       "kind": "technique",
       "disciplineId": "fencing",
       "pathId": "fencing:blade-contact",
@@ -7153,7 +7153,7 @@
       "name": "Answering Steel III",
       "dp": 4,
       "level": 3,
-      "effect": "You may use Answering Steel after a Standard or Strong defense.",
+      "effect": "After a Strong Answering Steel counterattack, you may move 1 square without triggering movement reactions.",
       "kind": "improvement",
       "disciplineId": "fencing",
       "pathId": "fencing:blade-contact",
@@ -7184,7 +7184,7 @@
       "name": "Bind the Blade I",
       "dp": 1,
       "level": 1,
-      "effect": "Main Action · Agility. Attack an adjacent enemy wielding a melee weapon for 1/2/3 physical damage. On Strong, that weapon’s next attack takes 1 Bane if made before your next turn starts.",
+      "effect": "Main Action · Agility. Attack an adjacent enemy wielding a melee weapon for 1/2/3 physical damage. On Standard or Strong, that weapon’s next attack takes 1 Bane if made before your next turn starts.",
       "kind": "technique",
       "disciplineId": "fencing",
       "pathId": "fencing:blade-tricks",
@@ -7199,7 +7199,7 @@
       "name": "Bind the Blade II",
       "dp": 2,
       "level": 1,
-      "effect": "Bind the Blade imposes its Bane on Standard or Strong.",
+      "effect": "On Strong, Bind the Blade imposes 2 Banes instead of 1.",
       "kind": "improvement",
       "disciplineId": "fencing",
       "pathId": "fencing:blade-tricks",
@@ -7231,7 +7231,7 @@
       "name": "Strip the Grip I",
       "dp": 3,
       "level": 3,
-      "effect": "Main Action · Agility. Attack an adjacent enemy holding a weapon for 1/3/4 physical damage. On Strong it drops one held weapon of your choice in its square if it can release the weapon. If it cannot release the weapon, its next attack with it takes 1 Bane before your next turn starts.",
+      "effect": "Main Action · Agility. Attack an adjacent enemy holding a weapon for 1/3/4 physical damage. On Standard or Strong, choose one of its held weapons. It drops that weapon in its square if it can release it. If it cannot release the weapon, its next attack with it before your next turn starts takes 1 Bane.",
       "kind": "technique",
       "disciplineId": "fencing",
       "pathId": "fencing:blade-tricks",
@@ -7246,7 +7246,7 @@
       "name": "Strip the Grip II",
       "dp": 4,
       "level": 3,
-      "effect": "On Standard, choose one of the target’s held weapons. Its next attack with that weapon takes 1 Bane if made before your next turn starts.",
+      "effect": "Strip the Grip imposes 2 Banes instead of 1 when you choose a weapon the target cannot release.",
       "kind": "improvement",
       "disciplineId": "fencing",
       "pathId": "fencing:blade-tricks",
@@ -7262,7 +7262,7 @@
       "name": "Strip the Grip III",
       "dp": 4,
       "level": 3,
-      "effect": "On Strong, you may move the dropped weapon into an unoccupied square adjacent to the target instead.",
+      "effect": "You may move the weapon Strip the Grip dislodges into a legal unoccupied square adjacent to the target instead.",
       "kind": "improvement",
       "disciplineId": "fencing",
       "pathId": "fencing:blade-tricks",
@@ -7302,7 +7302,7 @@
       "name": "Exploit the Opening I",
       "dp": 1,
       "level": 1,
-      "effect": "Main Action · Knowledge. Attack one visible adjacent enemy for 1/3/4 physical damage. On Strong, one willing ally adjacent to that enemy may move 1 square after the attack, following the usual movement reactions.",
+      "effect": "Main Action · Knowledge. Attack one visible adjacent enemy for 1/3/4 physical damage. On Standard or Strong, cue one willing ally within 3 squares of you. That ally may move 1 square after the attack, following the usual movement reactions.",
       "kind": "technique",
       "disciplineId": "tactics",
       "pathId": "tactics:openings",
@@ -7411,7 +7411,7 @@
       "name": "Clear the Way I",
       "dp": 1,
       "level": 1,
-      "effect": "Maneuver. Give one willing ally within 3 squares a cue for a declared attack or defense that you can plausibly help. It gains 1 Boon on its next matching roll before your next turn starts. No roll.",
+      "effect": "Maneuver. Give one willing ally within 3 squares a cue and choose attack or defense. The ally gains 1 Boon on its next roll of that type before your next turn starts. No roll.",
       "kind": "technique",
       "disciplineId": "tactics",
       "pathId": "tactics:coordination",
@@ -7440,7 +7440,7 @@
       "name": "Clear the Way III",
       "dp": 2,
       "level": 1,
-      "effect": "Clear the Way can instead help a declared noncombat task you can plausibly assist. The Boon applies to the next matching roll during the exchange or work interval. Outside combat, contribute this aid or your own roll to the objective during that interval.",
+      "effect": "Clear the Way can instead cue the ally for a chosen noncombat task. Its next roll for that task gains the Boon during the exchange or work interval. Outside combat, contribute this aid or your own roll to the objective during that interval.",
       "kind": "improvement",
       "disciplineId": "tactics",
       "pathId": "tactics:coordination",
@@ -7828,7 +7828,7 @@
       "name": "Brace I",
       "dp": 1,
       "level": 1,
-      "effect": "Maneuver. Until your next turn starts, gain Stability 1. You must stand on a supporting surface. No roll.",
+      "effect": "Maneuver. While on solid footing, brace yourself to gain Stability 1 until your next turn starts. No roll.",
       "kind": "technique",
       "disciplineId": "armor",
       "pathId": "armor:bracing",
@@ -7974,7 +7974,7 @@
       "name": "Weather the Storm I",
       "dp": 3,
       "level": 3,
-      "effect": "Reaction. After a defense roll, before damage from that attack is applied, reduce its damage by 2 after resistance. Until your next turn starts, also reduce physical damage from each later attack against you by 1 after resistance.",
+      "effect": "Reaction. After your defense roll, before damage from that attack is applied, reduce its damage by 2 after resistance. Until your next turn starts, also reduce physical damage from each later attack against you by 1 after resistance.",
       "kind": "technique",
       "disciplineId": "armor",
       "pathId": "armor:deflection",
@@ -8018,7 +8018,7 @@
       "name": "Unyielding Shell",
       "dp": 5,
       "level": 7,
-      "effect": "Reaction. After a defense roll, before damage from that attack is applied, reduce its damage by 4 after resistance. Until your next turn starts, reduce damage from each further attack against you by 3 after resistance. Once per scene, this response also prevents new Bleeding and Dazed from the triggering attack; its other effects remain.",
+      "effect": "Reaction. After your defense roll, before damage from that attack is applied, reduce its damage by 4 after resistance. Until your next turn starts, reduce damage from each further attack against you by 3 after resistance. Once per scene, this response also prevents new Bleeding and Dazed from the triggering attack; its other effects remain.",
       "kind": "mastery",
       "disciplineId": "armor",
       "pathId": "armor:deflection",
@@ -8143,7 +8143,7 @@
       "name": "Shield Bash I",
       "dp": 1,
       "level": 1,
-      "effect": "Main Action · Brawn. Attack one adjacent creature with your shield for 1/2/3 physical damage. On Strong push it 1 square directly away.",
+      "effect": "Main Action · Brawn. Attack one adjacent creature with your shield for 1/2/3 physical damage. On Standard or Strong, push it 1 square directly away. Resolve collisions normally.",
       "kind": "technique",
       "disciplineId": "guard",
       "pathId": "guard:shieldwork",
@@ -8420,7 +8420,7 @@
       "name": "Take the Blow III",
       "dp": 4,
       "level": 3,
-      "effect": "When Take the Blow intercepts a melee attack immediately following the attacker’s voluntary movement, give your defense 1 Boon. After it resolves, the attacker’s remaining voluntary movement this turn becomes 0; forced movement still applies.",
+      "effect": "When you use Take the Blow, gain 1 Boon on your defense. After the intercepted attack resolves, the attacker’s remaining voluntary movement this turn becomes 0. Forced movement still applies.",
       "kind": "improvement",
       "disciplineId": "guard",
       "pathId": "guard:interception",
@@ -8648,7 +8648,7 @@
       "name": "Anatomist’s Volley",
       "dp": 5,
       "level": 7,
-      "effect": "Main Action · Agility. Attack up to three enemies within 12 squares whose vulnerable anatomy or construction you have observed through Split the Flight’s study or established evidence. Roll once; each takes 3/5/8 physical damage, ignoring up to 2 physical resistance. Immunity and other reductions still apply. Study does not create a vulnerability where none exists.",
+      "effect": "Main Action · Agility. Attack up to three enemies within 12 squares. Roll once. Each takes 3/5/8 physical damage. For a target whose vulnerable part you know from Split the Flight’s study or evidence, apply that hit ignoring up to 2 physical resistance. Apply immunity and other reductions normally.",
       "kind": "mastery",
       "disciplineId": "marksmanship",
       "pathId": "marksmanship:precision",
@@ -8662,7 +8662,7 @@
       "name": "Hobbling Aim I",
       "dp": 1,
       "level": 1,
-      "effect": "Maneuver. Choose one visible creature within 8 squares. Your next Main Action ranged or thrown attack against it before this turn ends also applies Slowed 1 on Strong. This modifies one target of one attack. Reusing this technique replaces its unused effect.",
+      "effect": "Maneuver. Choose one visible creature within 8 squares. Your next Main Action ranged or thrown attack against it before this turn ends also applies Slowed 1 on Standard or Strong. This modifies one target of one attack. Reusing this technique replaces its unused effect.",
       "kind": "technique",
       "disciplineId": "marksmanship",
       "pathId": "marksmanship:pinning",
@@ -8676,7 +8676,7 @@
       "name": "Hobbling Aim II",
       "dp": 2,
       "level": 1,
-      "effect": "Hobbling Aim applies Slowed 2 on Strong.",
+      "effect": "On Strong, Hobbling Aim applies Slowed 2 instead of 1.",
       "kind": "improvement",
       "disciplineId": "marksmanship",
       "pathId": "marksmanship:pinning",
@@ -8691,7 +8691,7 @@
       "name": "Hobbling Aim III",
       "dp": 2,
       "level": 1,
-      "effect": "Hobbling Aim also applies Slowed 1 on Standard.",
+      "effect": "On Weak, Hobbling Aim also applies Slowed 1.",
       "kind": "improvement",
       "disciplineId": "marksmanship",
       "pathId": "marksmanship:pinning",
@@ -8764,7 +8764,7 @@
       "name": "Watchful Shot I",
       "dp": 1,
       "level": 1,
-      "effect": "Reaction · Agility. When a visible enemy within 6 squares finishes voluntary movement adjacent to an ally, attack it for 1/2/3 physical damage. Resolve after the movement; you need a ready weapon.",
+      "effect": "Reaction · Agility. When a visible enemy within 6 squares finishes voluntary movement, attack it for 1/2/3 physical damage after that movement.",
       "kind": "technique",
       "disciplineId": "marksmanship",
       "pathId": "marksmanship:readiness",
@@ -8793,7 +8793,7 @@
       "name": "Watchful Shot III",
       "dp": 2,
       "level": 1,
-      "effect": "Watchful Shot deals 1/2/4 physical damage and can trigger when any visible enemy within range finishes voluntary movement, whether adjacent to an ally or not.",
+      "effect": "Watchful Shot deals 1/2/4 physical damage. It can also respond when a visible enemy finishes forced movement within range.",
       "kind": "improvement",
       "disciplineId": "marksmanship",
       "pathId": "marksmanship:readiness",
@@ -9181,7 +9181,7 @@
       "name": "Catch Your Balance I",
       "dp": 1,
       "level": 1,
-      "effect": "Reaction. When you would fall Prone, remain standing instead. You must be conscious and able to move. No roll.",
+      "effect": "Reaction. When you would fall Prone and can move, remain standing instead. No roll.",
       "kind": "technique",
       "disciplineId": "athletics",
       "pathId": "athletics:balance",
@@ -9225,7 +9225,7 @@
       "name": "Catch Them Falling I",
       "dp": 3,
       "level": 3,
-      "effect": "Reaction. Catch one adjacent falling creature no larger than you. With secure footing and a free hand, bring it into a free adjacent square. Otherwise, if a reachable hold supports both of you, you both hang there. Without a suitable hold this intervention is unavailable. No roll.",
+      "effect": "Reaction. Use a free hand to catch one adjacent falling creature no larger than you. From secure footing, bring it into a free adjacent square. You can instead hang together from a reachable hold that supports you both. No roll.",
       "kind": "technique",
       "disciplineId": "athletics",
       "pathId": "athletics:balance",
@@ -9283,7 +9283,7 @@
       "name": "Strong Swimmer I",
       "dp": 1,
       "level": 1,
-      "effect": "Passive. Gain 1 Boon on Brawn rolls to swim through rough water. You still need breathable air and a current that permits passage.",
+      "effect": "Passive. Gain 1 Boon on Brawn rolls to swim.",
       "kind": "technique",
       "disciplineId": "athletics",
       "pathId": "athletics:swimming",
@@ -9438,7 +9438,7 @@
       "name": "Open under Pressure I",
       "dp": 3,
       "level": 3,
-      "effect": "Main Action · Guile, with lock tools. Work on a nonmagical lock already examined through at least one Patient Hand attempt; add 1/2/3 progress. You may repeat this faster action until that lock opens, provided its workings remain accessible.",
+      "effect": "Main Action · Guile, with lock tools. Work on a reachable nonmagical lock with accessible workings. Add 1/2/3 progress toward opening it.",
       "kind": "technique",
       "disciplineId": "subterfuge",
       "pathId": "subterfuge:locks",
@@ -9598,7 +9598,7 @@
       "name": "Catch the Click I",
       "dp": 1,
       "level": 1,
-      "effect": "Reaction. When you see a reachable nonmagical mechanism begin to trigger, warn one creature within 3 squares that can perceive you before its defense or avoidance roll; that roll gains 1 Boon. Once per triggering event. You can also inspect a suspected reachable trap for 1 minute, rolling Reason for 1/2/3 progress to identify its trigger and danger.",
+      "effect": "Reaction. When you see a nonmagical trap begin to trigger, warn one creature within 3 squares that can perceive you before its defense or avoidance roll; that roll gains 1 Boon. Once per triggering event. You can also inspect a suspected reachable trap for 1 minute, rolling Reason for 1/2/3 progress to identify its trigger and danger.",
       "kind": "technique",
       "disciplineId": "subterfuge",
       "pathId": "subterfuge:traps",
@@ -9642,7 +9642,7 @@
       "name": "Turn the Trap I",
       "dp": 3,
       "level": 3,
-      "effect": "Reaction. When a nonmagical trap you identified begins to trigger, use tools in hand to shift a reachable trigger or guide one willing adjacent creature 1 square to a legal destination before the trap resolves. This movement triggers no movement reactions; the trap then resolves normally at its actual area. Once per triggering event. You can also reconfigure an identified trap with 10 minutes and tools: roll Guile for 1/2/3 progress; completion establishes one reachable trigger or safe bypass without increasing damage or scale.",
+      "effect": "Reaction. When you notice a nonmagical trap trigger, guide one willing adjacent creature 1 square to a legal destination before the trap resolves. You can instead shift a reachable trigger you understand with tools in hand. This movement triggers no movement reactions; the trap then resolves normally at its actual area. Once per triggering event. You can also reconfigure an identified trap with 10 minutes and tools: roll Guile for 1/2/3 progress; completion establishes one reachable trigger or safe bypass without increasing damage or scale.",
       "kind": "technique",
       "disciplineId": "subterfuge",
       "pathId": "subterfuge:traps",
@@ -9855,7 +9855,7 @@
       "name": "Cut Them Off I",
       "dp": 3,
       "level": 3,
-      "effect": "Main Action · Reason to interpret a visible junction on a trail you followed, or 10 minutes to scout a wider interception route. Add 1/2/3 progress toward finding a physically feasible interception. Completion reveals the route and travel time, not a guarantee of arriving first.",
+      "effect": "Main Action · Reason to interpret a visible junction on a readable trail, or 10 minutes to scout a wider interception route. Add 1/2/3 progress toward finding a physically feasible interception. Completion reveals the route and travel time, not a guarantee of arriving first.",
       "kind": "technique",
       "disciplineId": "wilderness",
       "pathId": "wilderness:tracking",
@@ -9899,7 +9899,7 @@
       "name": "Unerring Pursuit",
       "dp": 5,
       "level": 7,
-      "effect": "Main Action · Reason at a visible junction, or 10 minutes to scout the surrounding area. From a trail you followed, add 3/5/7 progress toward predicting the quarry’s next reachable landmark from its tracks and known terrain. Completion identifies the best-supported destination and gaps in the evidence. You and up to six companions gain 2 Boons on pursuit and traversal rolls along that route until reaching it. This does not locate a quarry that left no readable evidence.",
+      "effect": "Main Action · Reason at a visible junction, or 10 minutes to scout the surrounding area. From a trail you can read, add 3/5/7 progress toward predicting the quarry’s next reachable landmark from its tracks and known terrain. Completion identifies the best-supported destination and gaps in the evidence. You and up to six companions gain 2 Boons on pursuit and traversal rolls along that route until reaching it. This does not locate a quarry that left no readable evidence.",
       "kind": "mastery",
       "disciplineId": "wilderness",
       "pathId": "wilderness:tracking",
@@ -9913,7 +9913,7 @@
       "name": "Gentle Hand I",
       "dp": 1,
       "level": 1,
-      "effect": "Maneuver · Reason. Reassure one nonmagical animal within 2 squares that can perceive you and is already receptive to your presence; add 1/2/3 progress toward calming its immediate fear. An unfamiliar agitated animal takes 1 minute per attempt instead. Immediate danger or an implausible approach prevents progress.",
+      "effect": "Maneuver · Reason. Reassure one nonmagical animal within 2 squares that can perceive you and add 1/2/3 progress toward calming its fear. Spend a Maneuver with a receptive animal or 1 minute per attempt with a wary or agitated one. Find an approach it can respond to in the circumstances.",
       "kind": "technique",
       "disciplineId": "wilderness",
       "pathId": "wilderness:animal-handling",
@@ -10001,7 +10001,7 @@
       "name": "Wild Accord",
       "dp": 5,
       "level": 7,
-      "effect": "Maneuver · Reason. Give a familiar, cooperative nonmagical animal group of up to twelve one understandable direction: follow, wait, scatter to safety or approach a named visible place. Add 3/5/7 progress to the DA’s objective for overcoming present fear or confusion; ordinary cooperation with a safe instruction needs no roll. Completion gets the group carrying out that direction. This grants no attacks or additional combat turns; serious danger or mistreatment ends cooperation.",
+      "effect": "Maneuver · Reason. Give up to twelve nonmagical animals that can perceive you one understandable direction: follow, wait, scatter to safety or approach a named visible place. For a group that needs coaxing, add 3/5/7 progress to the DA’s handling objective. A group already cooperating follows a safe instruction without a roll. Completion gets the group carrying out that direction. This grants no attacks or additional combat turns; serious danger or mistreatment ends cooperation.",
       "kind": "mastery",
       "disciplineId": "wilderness",
       "pathId": "wilderness:animal-handling",
@@ -10689,7 +10689,7 @@
       "name": "Field Repair I",
       "dp": 3,
       "level": 3,
-      "effect": "Main Action · Knowledge, with tools and materials. Repair an item already examined through at least one Mend and Fit work attempt; add 1/2/3 progress. Repeat this faster action until the repair completes. Completion restores its ordinary function; HP restoration for an object with HP is set as part of the repair objective before work.",
+      "effect": "Main Action · Knowledge, with tools and materials. Work on a damaged nonmagical item within reach whose essential structure remains. Add 1/2/3 progress toward repairing it. Completion restores its ordinary function; HP restoration for an object with HP is set as part of the repair objective before work.",
       "kind": "technique",
       "disciplineId": "craft",
       "pathId": "craft:repairs",
@@ -10849,7 +10849,7 @@
       "name": "Catch the Failure I",
       "dp": 1,
       "level": 1,
-      "effect": "Reaction. When a visible component begins to fail during a nonmagical task you are attending within reach, use tools in hand to arrest it before the consequence resolves. Give the worker 1 Boon on the associated roll to prevent injury or material loss, if such a roll is possible. Once per distinct failure event; this does not improve the task’s progress roll or reverse damage already applied.",
+      "effect": "Reaction. When a visible component within reach begins to fail during a nonmagical task, use tools in hand to arrest it before the consequence resolves. Give the worker 1 Boon on the associated roll to prevent injury or material loss, if such a roll is possible. Once per distinct failure event; this does not improve the task’s progress roll or reverse damage already applied.",
       "kind": "technique",
       "disciplineId": "craft",
       "pathId": "craft:safeguards",
@@ -11039,7 +11039,7 @@
       "name": "A City Opens Its Gates",
       "dp": 5,
       "level": 7,
-      "effect": "1 day · Reason. Through an on-site demonstration of a feasible civic project, broker one agreement among up to four willing factions you can communicate with. Build a visible model or working example with real materials. Roll once; add 4/7/10 progress to each faction’s separate agreement objective. Completion secures the commitments established by the DA, such as access, labor or a ceasefire. New terms need a new objective; this creates neither resources nor control over a settlement.",
+      "effect": "1 day · Reason. Present a feasible civic project to representatives of up to four willing factions you can communicate with. Show how it would work with a plan, model or demonstration. Roll once; add 4/7/10 progress to each faction’s separate agreement objective. Completion secures the commitments established by the DA, such as access, labor or a ceasefire. New terms need a new objective; this creates neither resources nor control over a settlement.",
       "kind": "mastery",
       "disciplineId": "craft",
       "pathId": "craft:workshop",
@@ -11106,7 +11106,7 @@
       "name": "Reconstruct the Scene I",
       "dp": 3,
       "level": 3,
-      "effect": "Main Action · Reason to compare up to three clues already in hand, or 10 minutes to reconstruct a larger investigated scene. Add 1/2/3 progress toward the order of up to three related events. On completion the DA states supported conclusions and gaps; this reveals no unseen thoughts.",
+      "effect": "Main Action · Reason to compare up to three accessible clues, or 10 minutes to reconstruct a larger scene you can examine. Add 1/2/3 progress toward the order of up to three related events. On completion the DA states supported conclusions and gaps; this reveals no unseen thoughts.",
       "kind": "technique",
       "disciplineId": "scholarship",
       "pathId": "scholarship:investigation",
@@ -11150,7 +11150,7 @@
       "name": "The Truth before the Council",
       "dp": 5,
       "level": 7,
-      "effect": "10 minutes · Reason. Present a case supported by investigated evidence, including a physical exhibit you can demonstrate, to up to four decision-makers who understand you. Roll once; add 3/5/7 progress to each relevant acceptance objective. On completion a listener acknowledges the supported facts and grants the attainable concession established with the DA. Unsupported claims and inaccessible facts remain unproven.",
+      "effect": "10 minutes · Reason. Present your findings and their supporting evidence to up to four decision-makers who understand you. Use testimony, records, exhibits or an explanation of what you found. Roll once; add 3/5/7 progress to each relevant acceptance objective. On completion a listener acknowledges the supported facts and grants the attainable concession established with the DA. Unsupported claims and inaccessible facts remain unproven.",
       "kind": "mastery",
       "disciplineId": "scholarship",
       "pathId": "scholarship:investigation",
@@ -11208,7 +11208,7 @@
       "name": "Prepared Retreat I",
       "dp": 3,
       "level": 3,
-      "effect": "Maneuver. Once per scene, at a site you surveyed, direct up to three willing allies within 6 squares along its identified fallback route. Each immediately moves 2 squares without movement reactions. They must perceive your instructions; changed or blocked routes provide no passage. No roll.",
+      "effect": "Maneuver. Once per scene, direct up to three willing allies within 6 squares along a visible or familiar fallback route. Each immediately moves 2 squares without movement reactions. They must perceive your instructions; changed or blocked routes provide no passage. No roll.",
       "kind": "technique",
       "disciplineId": "scholarship",
       "pathId": "scholarship:planning",
@@ -11237,7 +11237,7 @@
       "name": "Prepared Retreat III",
       "dp": 4,
       "level": 3,
-      "effect": "You can also name a weakness established by observation or reliable evidence as a Maneuver: tell up to three allies within 6 squares; each gains 1 Boon on its next attack against that creature before your next turn ends. Once per creature per scene. This grants no extra attacks or targets.",
+      "effect": "You can also spend a Maneuver to point out an opening against a visible enemy to up to three allies within 6 squares. Each ally who perceives your cue gains 1 Boon on its next attack against that enemy before your next turn ends. Once per creature per scene. This grants no extra attacks or targets.",
       "kind": "improvement",
       "disciplineId": "scholarship",
       "pathId": "scholarship:planning",
@@ -11252,7 +11252,7 @@
       "name": "Name the Decisive Weakness",
       "dp": 5,
       "level": 7,
-      "effect": "Maneuver. Once per creature per scene, expose one vulnerability in a visible enemy’s anatomy, construction or tactics that you established through evidence. Up to four allies within 6 squares who perceive your explanation gain 2 Boons on their next attack against it before your next turn ends; each such attack ignores 1 point of one matching resistance. Immunity remains. This replaces the preceding step’s weaker weakness benefit for that creature; it creates no vulnerability unsupported by the evidence.",
+      "effect": "Maneuver. Once per creature per scene, describe an opening in a visible enemy’s stance, construction or tactics. Up to four allies within 6 squares who perceive your explanation gain 2 Boons on their next attack against it before your next turn ends; each such attack ignores 1 point of one matching resistance. Immunity remains. Use this benefit in place of Prepared Retreat’s attack Boon for that creature.",
       "kind": "mastery",
       "disciplineId": "scholarship",
       "pathId": "scholarship:planning",
@@ -11266,7 +11266,7 @@
       "name": "Counterexample I",
       "dp": 1,
       "level": 1,
-      "effect": "Reaction. When someone presents a claim contradicting evidence you already possess, before a listener’s roll to assess that claim, identify the contradiction to that listener within 6 squares. If it understands you, give that roll 1 Boon. Once per distinct claim; invented objections grant no repeated opportunities. No roll of your own.",
+      "effect": "Reaction. Before a listener within 6 squares rolls to assess a claim, ask a question or talk through the claim with them. If the listener understands you, give that roll 1 Boon. Once per distinct claim. No roll of your own.",
       "kind": "technique",
       "disciplineId": "scholarship",
       "pathId": "scholarship:disputation",
@@ -11295,7 +11295,7 @@
       "name": "Counterexample III",
       "dp": 2,
       "level": 1,
-      "effect": "Counterexample may aid two listeners assessing the same claim, before their rolls. Reaction: after you have seen a creature make the same attack earlier in this scene, warn one ally within 6 squares before its defense against that repeated attack; if it understands you, grant 1 defense Boon. Once per attacker per scene.",
+      "effect": "Counterexample may aid two listeners assessing the same claim, before their rolls. Reaction: before an ally within 6 squares rolls defense against an attack you can perceive, point out the danger. If the ally understands you, give that defense 1 Boon. Once per attacker per scene.",
       "kind": "improvement",
       "disciplineId": "scholarship",
       "pathId": "scholarship:disputation",
@@ -11310,7 +11310,7 @@
       "name": "Correct the Record I",
       "dp": 3,
       "level": 3,
-      "effect": "Reaction · Knowledge. When a listener within 6 squares is about to act on a factual error contradicted by evidence you can present, state the correction before the action. Add 1/2/3 progress to the DA’s objective for accepting that correction. On completion the listener understands the error; its decisions remain its own. Once per claim per conversation; the listener must perceive and understand the evidence.",
+      "effect": "Reaction · Knowledge. When a listener within 6 squares is about to act on a factual error, explain what it has missed before it acts. Add 1/2/3 progress to the DA’s objective for accepting your correction. On completion the listener understands the error and decides how to act. Once per claim per conversation. The listener must be able to understand you.",
       "kind": "technique",
       "disciplineId": "scholarship",
       "pathId": "scholarship:disputation",
@@ -11354,7 +11354,7 @@
       "name": "Proof against Panic",
       "dp": 5,
       "level": 7,
-      "effect": "Reaction · Knowledge. When a false claim or misidentified visible danger is about to cause a group within 6 squares to flee, attack or abandon a task, present evidence contradicting it before that choice resolves. Roll once; add 3/5/7 progress to up to four listeners’ separate correction objectives. A listener whose objective completes also reduces Frightened arising from that mistaken belief by 2. Once per distinct claim per scene; true danger, magical compulsion and player decisions are unaffected.",
+      "effect": "Reaction · Knowledge. When a group within 6 squares is about to act on an alarming claim or misunderstanding, offer a credible correction it can understand before it acts. Roll once; add 3/5/7 progress to up to four listeners’ separate correction objectives. A listener whose objective completes also reduces Frightened arising from that mistaken belief by 2. Once per distinct claim per scene; true danger, magical compulsion and player decisions are unaffected.",
       "kind": "mastery",
       "disciplineId": "scholarship",
       "pathId": "scholarship:disputation",
@@ -11508,7 +11508,7 @@
       "name": "Make the Case III",
       "dp": 2,
       "level": 1,
-      "effect": "Once per objective, new evidence directly addressing the listener’s stated concern adds 1 extra progress to Make the Case.",
+      "effect": "Once per objective, add 1 extra progress to Make the Case when you answer a listener’s concern with a new fact, concrete offer or demonstration.",
       "kind": "improvement",
       "disciplineId": "influence",
       "pathId": "influence:negotiation",
@@ -11712,7 +11712,7 @@
       "name": "Plausible Rejoinder III",
       "dp": 2,
       "level": 1,
-      "effect": "Once per objective, a relevant prepared prop or corroborating witness adds 1 extra progress to Plausible Rejoinder.",
+      "effect": "Once per objective, add 1 extra progress to Plausible Rejoinder when you give the listener a new reason to believe the account, such as a telling detail, prop or supporting witness.",
       "kind": "improvement",
       "disciplineId": "influence",
       "pathId": "influence:rejoinder",
@@ -11771,7 +11771,7 @@
       "name": "Turn the Conversation",
       "dp": 5,
       "level": 7,
-      "effect": "Reaction · Guile. Once per conversation, when a revealed fact would end your plausible distraction or false account, introduce a prepared alternative explanation before the listeners react. Roll once; add 3/5/7 progress to up to four listeners’ separate objectives for accepting it. Each completed objective keeps that listener engaged for one minute, giving allies 2 Boons on unnoticed tasks outside its sight during that time. Contradictory proof and impossible explanations cannot be talked away; direct danger ends the distraction.",
+      "effect": "Reaction · Guile. Once per conversation, when listeners are about to dismiss your distraction or false account, offer a credible alternative explanation before they act. Roll once; add 3/5/7 progress to up to four listeners’ separate objectives for accepting it. Each completed objective keeps that listener engaged for one minute, giving allies 2 Boons on unnoticed tasks outside its sight during that time. Contradictory proof and impossible explanations cannot be talked away; direct danger ends the distraction.",
       "kind": "mastery",
       "disciplineId": "influence",
       "pathId": "influence:rejoinder",
@@ -11814,7 +11814,7 @@
       "name": "Draw the Line III",
       "dp": 2,
       "level": 1,
-      "effect": "Once per objective, demonstrating the threatened capability without attacking the listener adds 1 extra progress to Draw the Line.",
+      "effect": "Once per objective, add 1 extra progress to Draw the Line when you show or explain how you could carry out the consequence without attacking the listener.",
       "kind": "improvement",
       "disciplineId": "influence",
       "pathId": "influence:pressure",
@@ -11873,7 +11873,7 @@
       "name": "A Way to Yield",
       "dp": 5,
       "level": 7,
-      "effect": "Main Action · Reason. Once per scene, offer a credible, immediately available path out of a losing conflict to up to six enemies who understand you: surrender under stated protection, withdraw through an open route, or release captives for safe passage. Roll once; add 3/5/7 progress to their shared objective if their motives align, otherwise one chosen enemy’s objective. On completion they accept the established concession while you honor its terms. This grants no automatic ceasefire before completion and no control over independent allies.",
+      "effect": "Main Action · Reason. Once per scene, offer a credible, immediately available path out of a conflict to up to six enemies who understand you: surrender under stated protection, withdraw through an open route, or release captives for safe passage. Roll once; add 3/5/7 progress to their shared objective if their motives align, otherwise one chosen enemy’s objective. On completion they accept the established concession while you honor its terms. This grants no automatic ceasefire before completion and no control over independent allies.",
       "kind": "mastery",
       "disciplineId": "influence",
       "pathId": "influence:pressure",
@@ -17251,7 +17251,7 @@
       "escapeAttribute": null,
       "target": "One creature within 6 squares",
       "duration": "Until the end of your next turn; conditions then decay normally",
-      "effect": "Stone creeps across the target. Apply Slowed 2/3/4. On Strong also apply Paralyzed 1. A second Strong casting while this spell's Slowed remains makes the target Petrified for 1 minute. Remove Curse, Greater Restoration or the caster's Maneuver ends that petrification."
+      "effect": "Stone creeps across the target. Apply Slowed 2/3/4. On Standard or Strong, also apply Paralyzed 1. If the target is still Slowed by your previous casting, Standard or Strong also makes it Petrified for 1 minute. Remove Curse, Greater Restoration or the caster's Maneuver ends that petrification."
     },
     {
       "id": "spell:earth:a3",
@@ -18907,7 +18907,7 @@
       "escapeAttribute": null,
       "target": "One creature within 4 squares",
       "duration": "Instant; conditions decay normally",
-      "effect": "Send drowsiness over the target. Apply Slowed 1/2/3; on Strong also apply Asleep 1. Damage or ordinary waking procedures end Asleep."
+      "effect": "Send drowsiness over the target. Apply Slowed 1/2/3. On Standard or Strong, also apply Asleep 1. Damage or ordinary waking procedures end Asleep."
     },
     {
       "id": "spell:dreams:3",
@@ -19349,9 +19349,9 @@
       "defenseAttribute": null,
       "holdAttribute": null,
       "escapeAttribute": null,
-      "target": "One creature you personally know within 100 squares",
+      "target": "One creature within 100 squares that you know or whose personal possession you hold",
       "duration": "10 minutes",
-      "effect": "Sense its direction and whether it is moving closer or farther away. You need a personal possession it used within the last month. The reading follows the creature's current body."
+      "effect": "Sense its direction and whether it is moving closer or farther away. Name the creature you know or focus on an item it has used as a personal possession. The reading follows its current body."
     },
     {
       "id": "spell:farseeing:5",
@@ -20356,7 +20356,7 @@
       "escapeAttribute": "Reason",
       "target": "One humanoid creature within 6 squares",
       "duration": "Sustained, up to 1 minute",
-      "effect": "Bands of pale light grip its limbs. Apply Slowed 1/2/3; on Strong also apply Paralyzed 1. Each upkeep renews this casting’s original ratings rather than adding to them. A conscious target may spend a Main Action to attempt escape using the printed hold and escape attributes, even while these bands restrict its actions. Escape ends this casting’s conditions on that target; ending Sustain removes them."
+      "effect": "Bands of pale light grip its limbs. Apply Slowed 1/2/3. On Standard or Strong, also apply Paralyzed 1. Each upkeep renews this casting’s original ratings rather than adding to them. A conscious target may spend a Main Action to attempt escape using the printed hold and escape attributes, even while these bands restrict its actions. Escape ends this casting’s conditions on that target; ending Sustain removes them."
     },
     {
       "id": "spell:binding:4",
@@ -20393,7 +20393,7 @@
       "escapeAttribute": null,
       "target": "One creature within 6 squares",
       "duration": "Until your next turn ends",
-      "effect": "Deal 3/5/7 radiant damage to a summoned energy form; at 0 HP it disperses. An independent creature instead takes Frightened 1/2/3, with an image of its home as source. On Strong, a willing extraplanar creature may return to its home plane rather than take that fear."
+      "effect": "Deal 3/5/7 radiant damage to a summoned energy form; at 0 HP it disperses. An independent creature instead takes Frightened 1/2/3, with an image of its home as source. On Standard or Strong, a willing extraplanar creature may return to its home plane in place of that fear."
     },
     {
       "id": "spell:binding:6",
@@ -20596,7 +20596,7 @@
       "escapeAttribute": null,
       "target": "Self and up to three adjacent willing creatures; a known destination within 100 squares",
       "duration": "Instant",
-      "effect": "Travel to a place you personally visited within the last day. Arrive in open supported squares at that location. If occupied or obstructed, arrive at the nearest safe space within 3 squares; if none exists, the ritual leaves you at your origin."
+      "effect": "Travel to a place you have personally visited. Arrive in open supported squares at that location. If occupied or obstructed, arrive at the nearest safe space within 3 squares; if none exists, the ritual leaves you at your origin."
     },
     {
       "id": "spell:passage:6",
@@ -20691,7 +20691,7 @@
       "escapeAttribute": null,
       "target": "One portal within 3 squares linking a known planar anchor",
       "duration": "1 minute",
-      "effect": "Consume 100 coins of tuned incense to open a two-way doorway 2 squares wide. Any creature that can reach it may cross while open. The far end must be at an anchor you personally visited and currently have permission to open. You can close it with a Maneuver."
+      "effect": "Consume 100 coins of tuned incense to open a two-way doorway 2 squares wide. Any creature that can reach it may cross while open. Open the far end at an anchor you have visited or whose attunement you possess. A sealed anchor leaves the gate closed. You can close it with a Maneuver."
     },
     {
       "id": "spell-mastery:demiplane",
@@ -21335,7 +21335,7 @@
       "defenseAttribute": null,
       "holdAttribute": null,
       "escapeAttribute": null,
-      "target": "One willing held or unattended object within 3 squares",
+      "target": "One unattended object or object held by a willing creature within 3 squares",
       "duration": "1 hour",
       "effect": "Make it shed bright light to 6 squares and dim light for another 3. Choose the color. You may keep one Light casting at a time and end it with a Maneuver."
     },
@@ -24109,11 +24109,11 @@
       "dp": null,
       "action": "Reaction",
       "attribute": "None (no roll)",
-      "target": "One willing ally on their turn, before they take any action; choose two visible, unoccupied squares within 6 squares of you.",
+      "target": "One willing ally during their turn, before their chosen step or attack resolves. Choose two visible, unoccupied squares within 6 squares of you.",
       "duration": "Until the end of the ally’s turn.",
       "equipment": "A free hand for casting.",
       "limits": "One signature choice at each of levels 1, 3 and 7.",
-      "effect": "**Action:** Reaction · **Attribute:** None (no roll)\n\n**Target / range / shape:** One willing ally on their turn, before they take any action; choose two visible, unoccupied squares within 6 squares of you.\n\nThe two squares become connected windows until the end of the ally’s turn. The ally can use the windows once at any point during their turn, either to move through one and out the other, spending 1 square of movement, or to make one attack through one window, measuring range and cover from the other. The ally must be able to see the window they use. The windows vanish at the end of the ally’s turn. This movement does not provoke opportunity attacks.\n\n**Duration:** Until the end of the ally’s turn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP. Cast at the start of the willing ally’s turn before it acts. The windows grant a passage or attack route, not an extra attack.\n\n**Frequency:** Once per round.",
+      "effect": "**Action:** Reaction · **Attribute:** None (no roll)\n\n**Target / range / shape:** One willing ally during their turn, before their chosen step or attack resolves. Choose two visible, unoccupied squares within 6 squares of you.\n\nThe two squares become connected windows until the end of the ally’s turn. The ally can use the windows once at any point during their turn, either to move through one and out the other, spending 1 square of movement, or to make one attack through one window, measuring range and cover from the other. The ally must be able to see the window they use. The windows vanish at the end of the ally’s turn. This movement does not provoke opportunity attacks.\n\n**Duration:** Until the end of the ally’s turn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP. The windows give the ally a route for its own movement or attack.\n\n**Frequency:** Once per round.",
       "reference": {
         "flavor": [
           "Your spells arrive from an angle no one expected."
@@ -24130,7 +24130,7 @@
             },
             {
               "label": "Target / range / shape",
-              "value": "One willing ally on their turn, before they take any action; choose two visible, unoccupied squares within 6 squares of you."
+              "value": "One willing ally during their turn, before their chosen step or attack resolves. Choose two visible, unoccupied squares within 6 squares of you."
             },
             {
               "label": "Magic",
@@ -24158,20 +24158,20 @@
               "text": "The two squares become connected windows until the end of the ally’s turn. The ally can use the windows once at any point during their turn, either to move through one and out the other, spending 1 square of movement, or to make one attack through one window, measuring range and cover from the other. The ally must be able to see the window they use. The windows vanish at the end of the ally’s turn. This movement does not provoke opportunity attacks."
             },
             {
-              "text": "This is a spell costing 0 SP. Cast at the start of the willing ally’s turn before it acts. The windows grant a passage or attack route, not an extra attack."
+              "text": "This is a spell costing 0 SP. The windows give the ally a route for its own movement or attack."
             }
           ],
           "notes": []
         }
       },
-      "referenceMarkdown": "**Action:** Reaction · **Attribute:** None (no roll)\n\n**Target / range / shape:** One willing ally on their turn, before they take any action; choose two visible, unoccupied squares within 6 squares of you.\n\nThe two squares become connected windows until the end of the ally’s turn. The ally can use the windows once at any point during their turn, either to move through one and out the other, spending 1 square of movement, or to make one attack through one window, measuring range and cover from the other. The ally must be able to see the window they use. The windows vanish at the end of the ally’s turn. This movement does not provoke opportunity attacks.\n\n**Duration:** Until the end of the ally’s turn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP. Cast at the start of the willing ally’s turn before it acts. The windows grant a passage or attack route, not an extra attack.\n\n**Frequency:** Once per round.",
+      "referenceMarkdown": "**Action:** Reaction · **Attribute:** None (no roll)\n\n**Target / range / shape:** One willing ally during their turn, before their chosen step or attack resolves. Choose two visible, unoccupied squares within 6 squares of you.\n\nThe two squares become connected windows until the end of the ally’s turn. The ally can use the windows once at any point during their turn, either to move through one and out the other, spending 1 square of movement, or to make one attack through one window, measuring range and cover from the other. The ally must be able to see the window they use. The windows vanish at the end of the ally’s turn. This movement does not provoke opportunity attacks.\n\n**Duration:** Until the end of the ally’s turn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP. The windows give the ally a route for its own movement or attack.\n\n**Frequency:** Once per round.",
       "classId": "class-arcanist",
       "lineId": "arcanist:bent-trajectory",
       "signatureComponent": true,
       "kind": "ability",
       "sp": 0,
       "magic": "Spell",
-      "rulesMarkdown": "**Action:** Reaction · **Attribute:** None (no roll)\n\n**Target / range / shape:** One willing ally on their turn, before they take any action; choose two visible, unoccupied squares within 6 squares of you.\n\nThe two squares become connected windows until the end of the ally’s turn. The ally can use the windows once at any point during their turn, either to move through one and out the other, spending 1 square of movement, or to make one attack through one window, measuring range and cover from the other. The ally must be able to see the window they use. The windows vanish at the end of the ally’s turn. This movement does not provoke opportunity attacks.\n\n**Duration:** Until the end of the ally’s turn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP. Cast at the start of the willing ally’s turn before it acts. The windows grant a passage or attack route, not an extra attack.\n\n**Frequency:** Once per round."
+      "rulesMarkdown": "**Action:** Reaction · **Attribute:** None (no roll)\n\n**Target / range / shape:** One willing ally during their turn, before their chosen step or attack resolves. Choose two visible, unoccupied squares within 6 squares of you.\n\nThe two squares become connected windows until the end of the ally’s turn. The ally can use the windows once at any point during their turn, either to move through one and out the other, spending 1 square of movement, or to make one attack through one window, measuring range and cover from the other. The ally must be able to see the window they use. The windows vanish at the end of the ally’s turn. This movement does not provoke opportunity attacks.\n\n**Duration:** Until the end of the ally’s turn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP. The windows give the ally a route for its own movement or attack.\n\n**Frequency:** Once per round."
     },
     {
       "id": "ability-signature-arcanist-reading-the-weave",
@@ -25361,7 +25361,7 @@
       "duration": "The plan and its stated limits remain known; each Boon expires when used or at the end of the scene.",
       "equipment": "None.",
       "limits": "One signature choice at each of levels 1, 3 and 7.",
-      "effect": "**Action:** One minute · **Attribute:** None (no roll)\n\n**Time:** One minute.\n\n**Target / range / shape:** Self and up to three allies who can hear and understand you.\n\nSpend one minute forming a plan from the evidence and observations available. State the plan. The DA confirms what is true, what remains uncertain, and one contradiction or risk. You and each chosen ally gain 2 Boons to your next roll that directly follows the plan.\n\n**Duration:** The plan and its stated limits remain known; each Boon expires when used or at the end of the scene.\n\n**Equipment / acquisition:** None.\n\nYou can maintain one plan at a time. A new plan replaces its unused Boons; new relevant evidence is required to plan again for the same objective this scene.\n\n**Frequency:** Once per scene.",
+      "effect": "**Action:** One minute · **Attribute:** None (no roll)\n\n**Time:** One minute.\n\n**Target / range / shape:** Self and up to three allies who can hear and understand you.\n\nSpend one minute forming a plan from the evidence and observations available. State the plan. The DA confirms what is true, what remains uncertain, and one contradiction or risk. You and each chosen ally gain 2 Boons to your next roll that directly follows the plan.\n\n**Duration:** The plan and its stated limits remain known; each Boon expires when used or at the end of the scene.\n\n**Equipment / acquisition:** None.\n\nKeep one plan at a time. A new plan replaces the previous plan and its unused Boons.\n\n**Frequency:** Once per scene.",
       "reference": {
         "flavor": [
           "You recognize the useful detail and show your companions how to act on it."
@@ -25402,18 +25402,18 @@
               "text": "Spend one minute forming a plan from the evidence and observations available. State the plan. The DA confirms what is true, what remains uncertain, and one contradiction or risk. You and each chosen ally gain 2 Boons to your next roll that directly follows the plan."
             },
             {
-              "text": "You can maintain one plan at a time. A new plan replaces its unused Boons; new relevant evidence is required to plan again for the same objective this scene."
+              "text": "Keep one plan at a time. A new plan replaces the previous plan and its unused Boons."
             }
           ],
           "notes": []
         }
       },
-      "referenceMarkdown": "**Action:** One minute · **Attribute:** None (no roll)\n\n**Time:** One minute.\n\n**Target / range / shape:** Self and up to three allies who can hear and understand you.\n\nSpend one minute forming a plan from the evidence and observations available. State the plan. The DA confirms what is true, what remains uncertain, and one contradiction or risk. You and each chosen ally gain 2 Boons to your next roll that directly follows the plan.\n\n**Duration:** The plan and its stated limits remain known; each Boon expires when used or at the end of the scene.\n\n**Equipment / acquisition:** None.\n\nYou can maintain one plan at a time. A new plan replaces its unused Boons; new relevant evidence is required to plan again for the same objective this scene.\n\n**Frequency:** Once per scene.",
+      "referenceMarkdown": "**Action:** One minute · **Attribute:** None (no roll)\n\n**Time:** One minute.\n\n**Target / range / shape:** Self and up to three allies who can hear and understand you.\n\nSpend one minute forming a plan from the evidence and observations available. State the plan. The DA confirms what is true, what remains uncertain, and one contradiction or risk. You and each chosen ally gain 2 Boons to your next roll that directly follows the plan.\n\n**Duration:** The plan and its stated limits remain known; each Boon expires when used or at the end of the scene.\n\n**Equipment / acquisition:** None.\n\nKeep one plan at a time. A new plan replaces the previous plan and its unused Boons.\n\n**Frequency:** Once per scene.",
       "classId": "class-intellect",
       "lineId": "intellect:spot-the-leverage",
       "signatureComponent": true,
       "kind": "ability",
-      "rulesMarkdown": "**Action:** One minute · **Attribute:** None (no roll)\n\n**Time:** One minute.\n\n**Target / range / shape:** Self and up to three allies who can hear and understand you.\n\nSpend one minute forming a plan from the evidence and observations available. State the plan. The DA confirms what is true, what remains uncertain, and one contradiction or risk. You and each chosen ally gain 2 Boons to your next roll that directly follows the plan.\n\n**Duration:** The plan and its stated limits remain known; each Boon expires when used or at the end of the scene.\n\n**Equipment / acquisition:** None.\n\nYou can maintain one plan at a time. A new plan replaces its unused Boons; new relevant evidence is required to plan again for the same objective this scene.\n\n**Frequency:** Once per scene."
+      "rulesMarkdown": "**Action:** One minute · **Attribute:** None (no roll)\n\n**Time:** One minute.\n\n**Target / range / shape:** Self and up to three allies who can hear and understand you.\n\nSpend one minute forming a plan from the evidence and observations available. State the plan. The DA confirms what is true, what remains uncertain, and one contradiction or risk. You and each chosen ally gain 2 Boons to your next roll that directly follows the plan.\n\n**Duration:** The plan and its stated limits remain known; each Boon expires when used or at the end of the scene.\n\n**Equipment / acquisition:** None.\n\nKeep one plan at a time. A new plan replaces the previous plan and its unused Boons.\n\n**Frequency:** Once per scene."
     },
     {
       "id": "ability-signature-intellect-masterwork-bond",
@@ -26778,11 +26778,11 @@
       "dp": null,
       "action": "Passive modifier to a melee weapon attack",
       "attribute": "Use that attack’s attribute",
-      "target": "An enemy that damaged one of your allies since the end of your last turn.",
+      "target": "An enemy that damaged one of your allies this scene.",
       "duration": "The attack.",
       "equipment": "The actual melee weapon required by the attack.",
       "limits": "One signature choice at each of levels 1, 3 and 7.",
-      "effect": "**Action:** Passive modifier to a melee weapon attack · **Attribute:** Use that attack’s attribute\n\n**Target / range / shape:** An enemy that damaged one of your allies since the end of your last turn.\n\n**Magic:** Magical weapon modifier · **SP:** 1\n\nOnce on your turn, declare Oathstrike and pay 1 SP before a melee weapon attack against that enemy. Add 1/2/3 radiant damage to the attack on Weak/Standard/Strong. Resolve each damage component’s resistance, then apply the minimum once to the whole attack. This magical weapon modifier is not a separate spell casting and does not require a free hand beyond the weapon’s requirements.\n\n**Duration:** The attack.\n\n**Equipment / acquisition:** The actual melee weapon required by the attack.",
+      "effect": "**Action:** Passive modifier to a melee weapon attack · **Attribute:** Use that attack’s attribute\n\n**Target / range / shape:** An enemy that damaged one of your allies this scene.\n\n**Magic:** Magical weapon modifier · **SP:** 1\n\nOnce on your turn, declare Oathstrike and pay 1 SP before a melee weapon attack against that enemy. Add 1/2/3 radiant damage to the attack on Weak/Standard/Strong. Resolve each damage component’s resistance, then apply the minimum once to the whole attack. This magical weapon modifier is not a separate spell casting and does not require a free hand beyond the weapon’s requirements.\n\n**Duration:** The attack.\n\n**Equipment / acquisition:** The actual melee weapon required by the attack.",
       "reference": {
         "flavor": [
           "Harm to your companions kindles light along your weapon."
@@ -26799,7 +26799,7 @@
             },
             {
               "label": "Target / range / shape",
-              "value": "An enemy that damaged one of your allies since the end of your last turn."
+              "value": "An enemy that damaged one of your allies this scene."
             },
             {
               "label": "Magic",
@@ -26826,14 +26826,14 @@
           "notes": []
         }
       },
-      "referenceMarkdown": "**Action:** Passive modifier to a melee weapon attack · **Attribute:** Use that attack’s attribute\n\n**Target / range / shape:** An enemy that damaged one of your allies since the end of your last turn.\n\n**Magic:** Magical weapon modifier · **SP:** 1\n\nOnce on your turn, declare Oathstrike and pay 1 SP before a melee weapon attack against that enemy. Add 1/2/3 radiant damage to the attack on Weak/Standard/Strong. Resolve each damage component’s resistance, then apply the minimum once to the whole attack. This magical weapon modifier is not a separate spell casting and does not require a free hand beyond the weapon’s requirements.\n\n**Duration:** The attack.\n\n**Equipment / acquisition:** The actual melee weapon required by the attack.",
+      "referenceMarkdown": "**Action:** Passive modifier to a melee weapon attack · **Attribute:** Use that attack’s attribute\n\n**Target / range / shape:** An enemy that damaged one of your allies this scene.\n\n**Magic:** Magical weapon modifier · **SP:** 1\n\nOnce on your turn, declare Oathstrike and pay 1 SP before a melee weapon attack against that enemy. Add 1/2/3 radiant damage to the attack on Weak/Standard/Strong. Resolve each damage component’s resistance, then apply the minimum once to the whole attack. This magical weapon modifier is not a separate spell casting and does not require a free hand beyond the weapon’s requirements.\n\n**Duration:** The attack.\n\n**Equipment / acquisition:** The actual melee weapon required by the attack.",
       "classId": "class-protector",
       "lineId": "protector:oathstrike",
       "signatureComponent": true,
       "kind": "ability",
       "sp": 1,
       "magic": "Magical weapon modifier",
-      "rulesMarkdown": "**Action:** Passive modifier to a melee weapon attack · **Attribute:** Use that attack’s attribute\n\n**Target / range / shape:** An enemy that damaged one of your allies since the end of your last turn.\n\n**Magic:** Magical weapon modifier · **SP:** 1\n\nOnce on your turn, declare Oathstrike and pay 1 SP before a melee weapon attack against that enemy. Add 1/2/3 radiant damage to the attack on Weak/Standard/Strong. Resolve each damage component’s resistance, then apply the minimum once to the whole attack. This magical weapon modifier is not a separate spell casting and does not require a free hand beyond the weapon’s requirements.\n\n**Duration:** The attack.\n\n**Equipment / acquisition:** The actual melee weapon required by the attack."
+      "rulesMarkdown": "**Action:** Passive modifier to a melee weapon attack · **Attribute:** Use that attack’s attribute\n\n**Target / range / shape:** An enemy that damaged one of your allies this scene.\n\n**Magic:** Magical weapon modifier · **SP:** 1\n\nOnce on your turn, declare Oathstrike and pay 1 SP before a melee weapon attack against that enemy. Add 1/2/3 radiant damage to the attack on Weak/Standard/Strong. Resolve each damage component’s resistance, then apply the minimum once to the whole attack. This magical weapon modifier is not a separate spell casting and does not require a free hand beyond the weapon’s requirements.\n\n**Duration:** The attack.\n\n**Equipment / acquisition:** The actual melee weapon required by the attack."
     },
     {
       "id": "ability-signature-protector-shelter-the-fallen",
@@ -26967,11 +26967,11 @@
       "dp": null,
       "action": "Passive modifier to a melee weapon attack",
       "attribute": "Use that attack’s attribute",
-      "target": "An enemy that damaged one of your allies since the end of your last turn.",
+      "target": "An enemy that damaged one of your allies this scene.",
       "duration": "The attack and immediate push; Dazed uses normal decay.",
       "equipment": "The actual melee weapon required by the attack.",
       "limits": "One signature choice at each of levels 1, 3 and 7.",
-      "effect": "**Action:** Passive modifier to a melee weapon attack · **Attribute:** Use that attack’s attribute\n\n**Target / range / shape:** An enemy that damaged one of your allies since the end of your last turn.\n\nOnce on your turn, declare this modifier and pay 1 SP before a melee weapon attack against that enemy. Add 1/2/3 radiant damage to the attack on Weak/Standard/Strong. On Standard or Strong, also push the target 1 square directly away from you. On Strong, also apply Dazed 1. Resolve each damage component’s resistance, then apply the minimum once to the whole attack. Resolve Stability, collisions and condition immunity normally.\n\n**Duration:** The attack and immediate push; Dazed uses normal decay.\n\n**Equipment / acquisition:** The actual melee weapon required by the attack.\n\nThis magical weapon modifier is not a separate spell casting and requires no free hand beyond the weapon’s requirements.",
+      "effect": "**Action:** Passive modifier to a melee weapon attack · **Attribute:** Use that attack’s attribute\n\n**Target / range / shape:** An enemy that damaged one of your allies this scene.\n\nOnce on your turn, declare this modifier and pay 1 SP before a melee weapon attack against that enemy. Add 1/2/3 radiant damage to the attack on Weak/Standard/Strong. On Standard or Strong, also push the target 1 square directly away from you. On Strong, also apply Dazed 1. Resolve each damage component’s resistance, then apply the minimum once to the whole attack. Resolve Stability, collisions and condition immunity normally.\n\n**Duration:** The attack and immediate push; Dazed uses normal decay.\n\n**Equipment / acquisition:** The actual melee weapon required by the attack.\n\nThis magical weapon modifier is not a separate spell casting and requires no free hand beyond the weapon’s requirements.",
       "reference": {
         "flavor": [
           "Harm to your companions kindles light along your weapon."
@@ -26988,7 +26988,7 @@
             },
             {
               "label": "Target / range / shape",
-              "value": "An enemy that damaged one of your allies since the end of your last turn."
+              "value": "An enemy that damaged one of your allies this scene."
             },
             {
               "label": "Magic",
@@ -27018,14 +27018,14 @@
           "notes": []
         }
       },
-      "referenceMarkdown": "**Action:** Passive modifier to a melee weapon attack · **Attribute:** Use that attack’s attribute\n\n**Target / range / shape:** An enemy that damaged one of your allies since the end of your last turn.\n\nOnce on your turn, declare this modifier and pay 1 SP before a melee weapon attack against that enemy. Add 1/2/3 radiant damage to the attack on Weak/Standard/Strong. On Standard or Strong, also push the target 1 square directly away from you. On Strong, also apply Dazed 1. Resolve each damage component’s resistance, then apply the minimum once to the whole attack. Resolve Stability, collisions and condition immunity normally.\n\n**Duration:** The attack and immediate push; Dazed uses normal decay.\n\n**Equipment / acquisition:** The actual melee weapon required by the attack.\n\nThis magical weapon modifier is not a separate spell casting and requires no free hand beyond the weapon’s requirements.",
+      "referenceMarkdown": "**Action:** Passive modifier to a melee weapon attack · **Attribute:** Use that attack’s attribute\n\n**Target / range / shape:** An enemy that damaged one of your allies this scene.\n\nOnce on your turn, declare this modifier and pay 1 SP before a melee weapon attack against that enemy. Add 1/2/3 radiant damage to the attack on Weak/Standard/Strong. On Standard or Strong, also push the target 1 square directly away from you. On Strong, also apply Dazed 1. Resolve each damage component’s resistance, then apply the minimum once to the whole attack. Resolve Stability, collisions and condition immunity normally.\n\n**Duration:** The attack and immediate push; Dazed uses normal decay.\n\n**Equipment / acquisition:** The actual melee weapon required by the attack.\n\nThis magical weapon modifier is not a separate spell casting and requires no free hand beyond the weapon’s requirements.",
       "classId": "class-protector",
       "lineId": "protector:oathstrike",
       "signatureComponent": true,
       "kind": "ability",
       "sp": 1,
       "magic": "Magical weapon modifier",
-      "rulesMarkdown": "**Action:** Passive modifier to a melee weapon attack · **Attribute:** Use that attack’s attribute\n\n**Target / range / shape:** An enemy that damaged one of your allies since the end of your last turn.\n\nOnce on your turn, declare this modifier and pay 1 SP before a melee weapon attack against that enemy. Add 1/2/3 radiant damage to the attack on Weak/Standard/Strong. On Standard or Strong, also push the target 1 square directly away from you. On Strong, also apply Dazed 1. Resolve each damage component’s resistance, then apply the minimum once to the whole attack. Resolve Stability, collisions and condition immunity normally.\n\n**Duration:** The attack and immediate push; Dazed uses normal decay.\n\n**Equipment / acquisition:** The actual melee weapon required by the attack.\n\nThis magical weapon modifier is not a separate spell casting and requires no free hand beyond the weapon’s requirements."
+      "rulesMarkdown": "**Action:** Passive modifier to a melee weapon attack · **Attribute:** Use that attack’s attribute\n\n**Target / range / shape:** An enemy that damaged one of your allies this scene.\n\nOnce on your turn, declare this modifier and pay 1 SP before a melee weapon attack against that enemy. Add 1/2/3 radiant damage to the attack on Weak/Standard/Strong. On Standard or Strong, also push the target 1 square directly away from you. On Strong, also apply Dazed 1. Resolve each damage component’s resistance, then apply the minimum once to the whole attack. Resolve Stability, collisions and condition immunity normally.\n\n**Duration:** The attack and immediate push; Dazed uses normal decay.\n\n**Equipment / acquisition:** The actual melee weapon required by the attack.\n\nThis magical weapon modifier is not a separate spell casting and requires no free hand beyond the weapon’s requirements."
     },
     {
       "id": "ability-signature-protector-defiant-rescue",

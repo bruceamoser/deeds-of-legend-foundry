@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Clear the Way can instead help a declared noncombat task you can plausibly assist. The Boon applies to the next matching roll during the exchange or work interval. Outside combat, contribute this aid or your own roll to the objective during that interval.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Clear the Way can instead cue the ally for a chosen noncombat task. Its next roll for that task gains the Boon during the exchange or work interval. Outside combat, contribute this aid or your own roll to the objective during that interval.</p>",
     "activity": {
       "action": "passive",
       "rollMode": "none",
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "tactics:coordination:3",
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "improvement",
@@ -34,7 +34,7 @@
         "duration": null,
         "attribute": null,
         "defenseAttribute": null,
-        "effect": "Clear the Way can instead help a declared noncombat task you can plausibly assist. The Boon applies to the next matching roll during the exchange or work interval. Outside combat, contribute this aid or your own roll to the objective during that interval.",
+        "effect": "Clear the Way can instead cue the ally for a chosen noncombat task. Its next roll for that task gains the Boon during the exchange or work interval. Outside combat, contribute this aid or your own roll to the objective during that interval.",
         "improves": "tactics:coordination:1",
         "requires": [
           "tactics:coordination:2"

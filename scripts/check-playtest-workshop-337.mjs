@@ -150,12 +150,18 @@ try {
   await sheet.getByRole("tab", { name: "Development" }).click();
   await sheet.getByRole("button", { name: "Spend DP", exact: true }).click();
   await expect(sheet.getByRole("heading", { name: "Level 1 learning" })).toBeVisible();
-  await sheet.getByText("Learning at this level", { exact: true }).click();
-  await sheet.getByRole("button", { name: "Remove Armor", exact: true }).click();
-  await expect(sheet.locator('[data-build-id="armor:harness:1"]')).toHaveCount(0);
-  const learningSummary = sheet.getByText("Learning at this level", { exact: true });
-  if (!await learningSummary.evaluate(summary => summary.parentElement.open)) await learningSummary.click();
-  await sheet.getByRole("button", { name: "Remove Restoration I", exact: true }).click();
+  const armor = sheet.getByRole("button", { name: "Unlearn Armor", exact: true });
+  const restoration = sheet.getByRole("button", { name: "Unlearn Restoration I", exact: true });
+  await expect(armor).toBeVisible();
+  await expect(restoration).toBeVisible();
+  await restoration.scrollIntoViewIfNeeded();
+  await sheet.screenshot({ path: `${output}/learning-list.png` });
+  await armor.click();
+  await expect(sheet.getByRole("button", { name: "Unlearn Light Armor I", exact: true })).toHaveCount(0);
+  await expect.poll(async () => (await actorState(gm, fixture.actor)).pending)
+    .toEqual(beforeLearning.purchased.filter(id => !["armor", "armor:harness:1"].includes(id)));
+  await expect(sheet.locator("#notice")).toBeEmpty({ timeout: 10000 });
+  await restoration.click();
 
   await expect.poll(async () => (await actorState(gm, fixture.actor)).pending).toEqual(targetPurchases);
   const draft = await actorState(gm, fixture.actor);
@@ -173,7 +179,7 @@ try {
   assert.deepEqual(saved.abilities.sort(), beforeLearning.abilities.filter(id => !removedItems.includes(id)).sort());
   assert.deepEqual(saved.gear, beforeLearning.gear);
   assert.deepEqual(saved.resource, beforeLearning.resource);
-  passed("Level-one development drafts reopen. Saving forgets the dependent ability and two spells, while preserving owned gear and spent resources.");
+  passed("Unlearn removes a bought discipline, its dependent ability, and a spellbook section from the List. Reopening and saving preserves owned gear and spent resources.");
 
   await owner.reload();
   await owner.waitForFunction(() => globalThis.game?.ready, null, { timeout: 60000 });

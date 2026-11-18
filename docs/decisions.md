@@ -430,3 +430,23 @@ A Night’s Rest retains the eight-hour safe recovery procedure. Neither
 refreshes Grit. A retained total of 14 is Standard; Strong begins at 15.
 Actors of type character default to Players and creatures default to
 Creatures; the DA can move either to the other side during encounter setup.
+
+## November 18 — Starting DP and ability triggers (#341–#343)
+
+A level-one hero starts with 10 base DP plus signed Guile, Knowledge and
+Reason and explicit trait benefits. Later awards use 4 + the new level,
+including a base of 6 at level 2. Existing learned entries are retained and
+the added starting points are available to spend.
+
+The Learn list shows learned entries and their costs alongside the next
+choice, including complete branches and branches whose next entry is
+unaffordable or gated. A purchased entry or discipline can be unlearned
+from the list and its dependents are refunded. Origin and class studies
+keep their grant labels.
+
+Counterexample aids a listener assessing a claim without requiring earlier
+contradictory evidence. A defining attack effect applies on Standard and
+Strong. Extra riders can remain Strong-only. Driving Opening I pushes 1
+on Standard and 2 on Strong. Shield Bash’s roll displays Push for the
+appropriate result. Prepared maneuvers, movement and situational effects
+follow their printed table procedures.

@@ -1,4 +1,4 @@
-import { printedAbilityRoll } from "../src/rules/ability-roll.mjs";
+import { abilityRollConfiguration, printedAbilityRoll } from "../src/rules/ability-roll.mjs";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
@@ -113,6 +113,65 @@ test("conditional and optional suffixes never apply their later effects uncondit
   assert.deepEqual(result.conditions,[]);
   assert(result.manual);
  }
+});
+
+function techniqueOutcomes({effect, improvements = [], id = "guard:shieldwork:1"}) {
+  const record = { id, pathId: id.split(":").slice(0, 2).join(":"), attribute: "Brawn", effect };
+  const nodes = improvements.map((text, index) => ({
+    id: `improvement-${index}`, improves: id, effect: text,
+  }));
+  const item = {
+    uuid: "Actor.guard.Item.shield-bash",
+    actor: { type: "character", getFlag: () => nodes.map(node => node.id) },
+  };
+  return abilityRollConfiguration(item, record, { nodes }).outcomes;
+}
+
+test("Shield Bash applies damage and prints the Standard and Strong Push for table resolution", () => {
+  const outcomes = techniqueOutcomes({
+    effect: "Main Action · Brawn. Attack one adjacent creature with your shield for 1/2/3 physical damage. On Standard or Strong, push it 1 square directly away. Resolve collisions normally.",
+    improvements: [
+      "Shield Bash deals 2/3/4 physical damage.",
+      "Shield Bash also knocks its target Prone on Strong after the push.",
+    ],
+  });
+  assert.deepEqual(resolvedAttackEffects(outcomes.weak), {
+    components: [{ type: "physical", amount: 2 }], conditions: [],
+  });
+  for (const [tier, amount] of [["standard", 3], ["strong", 4]]) {
+    assert.deepEqual(resolvedAttackEffects(outcomes[tier]), {
+      components: [{ type: "physical", amount }],
+      conditions: [],
+      manual: "Push it 1 square directly away",
+    });
+  }
+});
+
+test("a weapon attack applies fixed conditions for its exact result band", () => {
+  const outcomes = techniqueOutcomes({
+    id: "arms:bladework:1",
+    effect: "Main Action · Brawn. Attack one creature for 2/3/5 physical damage. On Standard and Strong, apply Dazed 1 to the target.",
+    improvements: ["The attack also applies Bleeding 1 on Strong."],
+  });
+  assert.deepEqual(resolvedAttackEffects(outcomes.weak).conditions, []);
+  assert.deepEqual(resolvedAttackEffects(outcomes.standard).conditions, [{ key: "dazed", rating: 1 }]);
+  assert.deepEqual(resolvedAttackEffects(outcomes.strong).conditions, [
+    { key: "dazed", rating: 1 }, { key: "bleeding", rating: 1 },
+  ]);
+});
+
+test("ambiguous riders remain contextual, including choices and conditional follow-ons", () => {
+  const outcomes = techniqueOutcomes({
+    id: "arms:bladework:1",
+    effect: "Main Action · Brawn. Attack one creature for 2/3/5 physical damage. On Standard or Strong, choose an enemy that gains Dazed 1.",
+    improvements: [
+      "On Strong, you may apply Dazed 2.",
+      "On Strong, apply Dazed 2 if its weapon breaks.",
+      "If the target is braced, deal extra damage; on Strong, apply Dazed 1.",
+    ],
+  });
+  assert.deepEqual(resolvedAttackEffects(outcomes.standard).conditions, []);
+  assert.deepEqual(resolvedAttackEffects(outcomes.strong).conditions, []);
 });
 
 test("element selection recognizes only explicit pre-roll attack choices, including revised conjunctions", () => {

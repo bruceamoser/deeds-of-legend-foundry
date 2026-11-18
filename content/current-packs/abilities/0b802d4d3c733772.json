@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 10 minutes</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One portal within 3 squares linking a known planar anchor</dd></div><div><dt>Duration</dt><dd>1 minute</dd></div></dl><p>Consume 100 coins of tuned incense to open a two-way doorway 2 squares wide. Any creature that can reach it may cross while open. The far end must be at an anchor you personally visited and currently have permission to open. You can close it with a Maneuver.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 10 minutes</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One portal within 3 squares linking a known planar anchor</dd></div><div><dt>Duration</dt><dd>1 minute</dd></div></dl><p>Consume 100 coins of tuned incense to open a two-way doorway 2 squares wide. Any creature that can reach it may cross while open. Open the far end at an anchor you have visited or whose attunement you possess. A sealed anchor leaves the gate closed. You can close it with a Maneuver.</p>",
     "activity": {
       "action": "ritual",
       "rollMode": "attribute",
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:passage:a2",
-      "sourceCommit": "e79dcd1e341169c380e3657fb73cd2968ac446d7",
+      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",
@@ -34,7 +34,7 @@
         "duration": "1 minute",
         "attribute": "None",
         "defenseAttribute": null,
-        "effect": "Consume 100 coins of tuned incense to open a two-way doorway 2 squares wide. Any creature that can reach it may cross while open. The far end must be at an anchor you personally visited and currently have permission to open. You can close it with a Maneuver.",
+        "effect": "Consume 100 coins of tuned incense to open a two-way doorway 2 squares wide. Any creature that can reach it may cross while open. Open the far end at an anchor you have visited or whose attunement you possess. A sealed anchor leaves the gate closed. You can close it with a Maneuver.",
         "improves": null,
         "requires": [
           "passage:4"
@@ -58,7 +58,7 @@
         "escapeAttribute": null,
         "target": "One portal within 3 squares linking a known planar anchor",
         "duration": "1 minute",
-        "effect": "Consume 100 coins of tuned incense to open a two-way doorway 2 squares wide. Any creature that can reach it may cross while open. The far end must be at an anchor you personally visited and currently have permission to open. You can close it with a Maneuver."
+        "effect": "Consume 100 coins of tuned incense to open a two-way doorway 2 squares wide. Any creature that can reach it may cross while open. Open the far end at an anchor you have visited or whose attunement you possess. A sealed anchor leaves the gate closed. You can close it with a Maneuver."
       }
     }
   },

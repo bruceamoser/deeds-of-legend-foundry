@@ -88,7 +88,7 @@ test("a removed origin option does not give an imported hero an unchosen discipl
 test("Direct Thrust trades damage for a safe step on Standard or Strong", () => {
   const effect = id => graph.nodes.find(node => node.id === id).effect;
   assert.match(effect("fencing:pointwork:1"), /1\/2\/4 physical damage\. On Standard or Strong, you may move 1 square after the attack without triggering movement reactions\./);
-  assert.match(effect("fencing:pointwork:3"), /On Strong, Direct Thrust lets you move up to 2 squares\./);
+  assert.match(effect("fencing:pointwork:3"), /After a Strong Direct Thrust, you may move up to 2 squares instead of 1, avoiding movement reactions\./);
   assert.match(effect("arms:bladework:1"), /2\/3\/5 physical damage\. On Strong, you may move 1 square after the attack\./);
 });
 
@@ -172,8 +172,8 @@ test("levels 3 and 7 grant one signature each and do not duplicate DP, Grit, or 
   draft.play = { hp: 5, sp: 2, gritSpent: 1, scars: ["A thin line over the brow."] };
   const once = workshopCharacter(draft, catalogs);
   assert(once.valid, JSON.stringify(once.errors));
-  assert.equal(once.development.current, 31);
-  assert.equal(once.development.total, 8 + 6 + 7 + 8 + 9 + 10 + 11);
+  assert.equal(once.development.current, 33);
+  assert.equal(once.development.total, 10 + 6 + 7 + 8 + 9 + 10 + 11);
   assert.equal(once.limits.maxHp, 56);
   assert.equal(once.limits.maxSp, 16);
   assert.equal(once.limits.gritGranted, 3);

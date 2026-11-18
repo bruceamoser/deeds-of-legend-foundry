@@ -2,6 +2,53 @@ import { DAMAGE_TYPES, canonicalDamageType } from "./damage.mjs";
 import { outcomeEffects } from "./outcome-effects.mjs";
 
 const types = DAMAGE_TYPES.join("|");
+const resultBand = "(?:Weak|Standard|Strong)";
+const resultBands = `${resultBand}(?: (?:or|and) ${resultBand})?`;
+const resultFirst = new RegExp(`^On (${resultBands})(?:,)? (.+)$`, "i");
+const resultLast = new RegExp(`^(.+) on (${resultBands})$`, "i");
+const fixedPush =
+  /^(?:also )?push(?:es)? (it|the target|each target) (\d+ squares? directly away)$/i;
+
+/** Attach only complete, fixed riders to an absolute attack. Movement is printed
+ * with the outcome, and the table still resolves the actual movement. */
+export function fixedTieredAttackRiders(texts, tier) {
+  const fixed = [], movement = [];
+  for (const text of texts) {
+    for (const sentence of text.split(/\.(?:\s+|$)/)) {
+      if (/\b(?:if|unless|when|whenever|otherwise|instead|only|may)\b/i.test(sentence)) continue;
+      for (const fragment of sentence.split(/;\s*|,\s+and (?=on )/i)) {
+        const clause = fragment.trim();
+        const first = resultFirst.exec(clause);
+        const last = first ? null : resultLast.exec(clause);
+        const bands = (first?.[1] ?? last?.[2])?.toLowerCase().split(/ (?:or|and) /);
+        if (!bands?.includes(tier)) continue;
+        const effect = first?.[2] ?? last[1];
+        const push = fixedPush.exec(effect);
+        if (push) {
+          movement.push(`Push ${push[1]} ${push[2]}`);
+          continue;
+        }
+        // After a leading result, assume only an explicit target predicate.
+        // A result at the end can also follow the name of the technique.
+        const predicate = first
+          ? /^(?:(?:it|the target|each target) )?(?:also )?(?:appl(?:y|ies)|adds?|gains?|becomes) (.+)$/i.exec(effect)
+          : /^[^,]+? (?:also )?(?:applies|adds) (.+)$/i.exec(effect);
+        const body = predicate?.[1].replace(/ to (?:its|the) target$/i, "");
+        if (!body) continue;
+        const parts = body.split(/\s+and\s+(?=push(?:es)? )/i);
+        if (parts.length > 2) continue;
+        const [conditions, displacement] = parts;
+        const resolved = outcomeEffects(conditions);
+        const extraPush = displacement && fixedPush.exec(displacement);
+        if (!resolved?.conditions.length || resolved.components.length || (displacement && !extraPush)) continue;
+        fixed.push(conditions);
+        if (extraPush) movement.push(`Push ${extraPush[1]} ${extraPush[2]}`);
+      }
+    }
+  }
+  return [...fixed, ...movement];
+}
+
 /** Fixed numeric effects only. Movement/benefits remain explicit printed clauses. */
 export function resolvedAttackEffects(text, { damageType } = {}) {
   if (typeof text !== "string" || !text.trim()) return null;
