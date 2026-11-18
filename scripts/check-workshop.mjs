@@ -945,9 +945,17 @@ try {
     id: "origin-culture-cloister-valleys",
     pair: 0,
   });
+  // The current Cloister Valleys choice grants Wards. It no longer supports
+  // the armor technique. Keep the purchases supported by the other disciplines.
+  assert(previous.draft.purchases[1].some(entry => entry.id === "armor:harness:1"));
+  const connected = {
+    ...previous.draft.purchases,
+    1: previous.draft.purchases[1].filter(entry => entry.id !== "armor:harness:1"),
+  };
+  assert.deepEqual(refreshed.saved.character.draft.purchases, connected);
   assert.deepEqual(
-    refreshed.saved.character.draft.purchases,
-    previous.draft.purchases,
+    refreshed.library.find(entry => entry.id === "current-rules-save").character.draft.purchases,
+    connected,
   );
   assert.equal(refreshed.saved.saveId, "current-rules-save");
   assert.equal(
@@ -1006,6 +1014,7 @@ try {
     importedCurrent.sourceCommit,
     refreshed.saved.character.sourceCommit,
   );
+  assert.deepEqual(importedCurrent.draft.purchases, connected);
   assert(
     !dialogs
       .slice(beforeUpdateDialogs)
