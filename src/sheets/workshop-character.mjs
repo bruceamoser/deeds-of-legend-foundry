@@ -23,7 +23,7 @@ const {HandlebarsApplicationMixin}=foundry.applications.api;
 /** Native document shell; the published Workshop owns the rendered controls. */
 export class WorkshopCharacterSheet extends HandlebarsApplicationMixin(foundry.applications.sheets.ActorSheetV2) {
   static DEFAULT_OPTIONS={
-    classes:[ID,'hol-workshop-character'],position:{width:1060,height:940},
+    classes:[ID,'hol-workshop-character'],position:{width:780,height:780},
     window:{resizable:true},form:{submitOnChange:false,closeOnSubmit:false},
     actions:{startWorkshop:WorkshopCharacterSheet.startWorkshop,recreateWorkshop:WorkshopCharacterSheet.recreateWorkshop,reconcileRoll:WorkshopCharacterSheet.reconcileRoll},
   };

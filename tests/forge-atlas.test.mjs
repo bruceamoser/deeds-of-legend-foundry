@@ -4,7 +4,8 @@ import {test} from "node:test";
 
 // The browser module gets its rules import when the Workshop is staged.
 const source = (await readFile(new URL("../web/forge-view.mjs", import.meta.url), "utf8"))
-  .replace('"./rules/forge.mjs"', JSON.stringify(new URL("../src/rules/forge.mjs", import.meta.url).href));
+  .replace('"./rules/forge.mjs"', JSON.stringify(new URL("../src/rules/forge.mjs", import.meta.url).href))
+  .replace('"./rules-view.mjs"', JSON.stringify(new URL("../web/rules-view.mjs", import.meta.url).href));
 const {atlasLayout, renderForge} = await import(`data:text/javascript;base64,${Buffer.from(source).toString("base64")}`);
 function fixture() {
   const graph = {disciplines:[], nodes:[], books:[], spells:[], classes:[]};

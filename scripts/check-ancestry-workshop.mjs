@@ -46,6 +46,7 @@ async function seed(ancestryId, traitIds, mode = "builder", overrides = {}) {
   return character;
 }
 const stored = () => page.evaluate(() => JSON.parse(localStorage.getItem("hol.workshop.v1")));
+const visibleProse = text => text.replace(/\[([^\]]+)\]\([^)]+\)/g,"$1").replace(/\*+/g,"");
 try {
   await page.goto(base);
   await page.getByRole("heading", {name:fixture.name,exact:true}).waitFor();
@@ -75,12 +76,12 @@ try {
       const choice = page.locator(".creation-trait").filter({has:page.locator(`input[value="${id}"]`)});
       await choice.getByText("Trait rules", { exact: true }).click();
       for (const block of trait.reference.rules.body)
-        if (block.text) assert((await choice.locator(".creation-inline").innerText()).includes(block.text), `${trait.name}: inline rules`);
+        if (block.text) assert((await choice.locator(".creation-inline").innerText()).includes(visibleProse(block.text)), `${trait.name}: inline rules`);
       await choice.locator(`[data-action="reference"][data-id="${id}"]`).click();
       assert.equal(await dialog.locator("p.flavor").textContent(), trait.reference.flavor[0], `${trait.name}: reference description`);
       const prose = await dialog.innerText();
-      for (const block of trait.reference.rules.body) assert(prose.includes(block.text), `${trait.name}: exact rules`);
-      assert(!prose.includes("**Status:**"));
+      for (const block of trait.reference.rules.body) assert(prose.includes(visibleProse(block.text)), `${trait.name}: exact rules`);
+      assert.doesNotMatch(prose,/\*\*|\]\([^)]+\)/, `${trait.name}: no raw Markdown`);
       if (id === "trait-tallfolk-long-reach") await page.screenshot({path:`${output}/trait-reference.png`,fullPage:true});
       await dialog.getByRole("button", {name:"Close",exact:true}).click();
     }
