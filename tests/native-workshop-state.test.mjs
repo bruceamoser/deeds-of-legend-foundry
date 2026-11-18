@@ -85,10 +85,19 @@ test("explicit commit, isolated draft, stale save and resource-authoritative rel
     async createEmbeddedDocuments(type,sources) { for(const [index,source] of sources.entries()) this.items.push({...source,id:source._id ?? `item-${this.items.length}-${index}`,getFlag:(namespace,key)=>source.flags?.[namespace]?.[key]}); },
     async updateEmbeddedDocuments(type,sources){for(const source of sources){const item=this.items.find(item=>item.id===source._id); for(const [key,value] of Object.entries(source)){if(key.startsWith("system."))item.system[key.slice(7)]=value;else if(key!=="_id") item[key]=structuredClone(value);}}},async deleteEmbeddedDocuments(type,ids){this.items=this.items.filter(item=>!ids.includes(item.id));},
   };
-  const draftSave = await saveNativeWorkshopState(actor,{character:portable,mode:"creation"},{expectedRevision:0});
+  const construction=structuredClone(portable);
+  const waterId="shop-starter-water-flask";
+  const waterPurchase=construction.draft.shopping.find(item=>item.id==="item-water-flask");
+  const originalWaterId=waterPurchase.instanceId;
+  if (originalWaterId !== waterId) {
+    waterPurchase.instanceId=waterId;
+    construction.draft.loadout[waterId]=construction.draft.loadout[originalWaterId];
+    delete construction.draft.loadout[originalWaterId];
+  }
+  const draftSave = await saveNativeWorkshopState(actor,{character:construction,mode:"creation"},{expectedRevision:0});
   assert.equal(draftSave.revision,1);
   assert.equal(actor.items.length,0);
-  await commitNativeWorkshopCharacter(actor,portable,{expectedRevision:1});
+  await commitNativeWorkshopCharacter(actor,construction,{expectedRevision:1});
   assert.ok(actor.items.length);
   actor.system.health.value=2; actor.system.sp.value=1; actor.system.grit.spent=1;
   const customized=actor.items.find(item=>item.type==="ability");
@@ -324,6 +333,32 @@ test("explicit commit, isolated draft, stale save and resource-authoritative rel
     first.system.hands=2;state=await loadNativeWorkshopState(actor);
     await saveNativeWorkshopState(actor,state,{expectedRevision:flags.nativeWorkshop.revision,basePlay:structuredClone(state.character.draft.play),baseLoadout:structuredClone(state.character.draft.loadout)});
     assert.equal(first.system.hands,2);assert.equal(lighting.system.hands,1);
+  });
+  await t.test("a returned starting flask credits the purse and preserves other gear", async()=>{
+    const flask=actor.items.find(item=>nativeWorkshopInventoryId(item)===waterId);
+    assert.ok(flask);
+    const prepare=async()=>{
+      const state=await loadNativeWorkshopState(actor);
+      return {state, basePlay:structuredClone(state.character.draft.play),baseLoadout:structuredClone(state.character.draft.loadout)};
+    };
+    for (const waterUnits of [0,1]) {
+      const {state,basePlay,baseLoadout}=await prepare();
+      state.character.draft.play.inventory.overrides[waterId].waterUnits=waterUnits;
+      await saveNativeWorkshopState(actor,state,{expectedRevision:state.revision,basePlay,baseLoadout});
+      assert.equal(flask.system.waterUnits,waterUnits);
+    }
+    const {state,basePlay,baseLoadout}=await prepare();
+    flags.development.coins-=3; // A later native market purchase was paid from the live purse.
+    const coins=flags.development.coins;
+    const retained=actor.items.filter(item=>item!==flask).map(item=>item.id);
+    state.character.draft.play.inventory.removed.push(waterId);
+    state.character.draft.play.inventory.sold=[waterId];
+    delete state.character.draft.loadout[waterId];
+    const sold=await saveNativeWorkshopState(actor,state,{expectedRevision:state.revision,basePlay,baseLoadout});
+    assert.equal(flags.development.coins,coins+1);
+    assert.ok(!actor.items.some(item=>item.id===flask.id));
+    assert.ok(retained.every(id=>actor.items.some(item=>item.id===id)));
+    assert.deepEqual(sold.character.draft.play.inventory.sold,[waterId]);
   });
 });
 

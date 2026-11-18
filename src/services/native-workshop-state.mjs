@@ -81,7 +81,8 @@ function overlay(actor, portable, catalogs) {
       const ammo = selectedRangedAmmunition(actor, item);
       if (ammo) inventory.ammunition[instanceId] = nativeWorkshopInventoryId(ammo);
     }
-    result.draft.loadout[instanceId] = { carried: item.system.carried, held: item.system.held, worn: item.system.worn };
+    // Match the portable loadout order so an unchanged item compares equal in the save merge.
+    result.draft.loadout[instanceId] = { carried: item.system.carried, worn: item.system.worn, held: item.system.held };
   }
   for (const instanceId of flag(actor)?.inventoryInstances ?? []) if (!instances.has(instanceId) && !inventory.removed.includes(instanceId)) inventory.removed.push(instanceId);
   return result;
@@ -125,10 +126,14 @@ export function saveNativeWorkshopState(actor, savedState, { expectedRevision, r
     const state = await normalize(candidate, true);
     revision(actor, expectedRevision);
     const sold = (state.draft.play?.inventory?.sold ?? []).filter(id => !live.draft.play.inventory.sold?.includes(id));
+    let proceeds = 0;
     if (sold.length) {
       const previous = await normalize(live, true);
-      for (const id of sold) if (!provisionSalePrice(previous.preview.inventory.items.find(item => item.instanceId === id)))
-        throw new Error("Only a complete starting provision can be sold for the printed market price.");
+      for (const id of sold) {
+        const price = provisionSalePrice(previous.preview.inventory.items.find(item => item.instanceId === id));
+        if (!price) throw new Error("Only a complete starting provision can be sold for the printed market price.");
+        proceeds += price;
+      }
     }
     const inputPlay=structuredClone(portable.draft?.play ?? {});
     const basisPlay=structuredClone(basePlay ?? live.draft.play);
@@ -148,7 +153,11 @@ export function saveNativeWorkshopState(actor, savedState, { expectedRevision, r
       if(changedKeys.has("gritSpent"))changes["system.grit.spent"]=Math.min(state.preview.limits.gritGranted,vitals.gritSpent);
       if(changedKeys.has("recovery"))changes["system.recovery"]=normalizeForgeRecovery(finalPlay.recovery);
       if(changedKeys.has("conditions"))changes.effects=nativeConditionSources(actor,finalPlay.conditions??[]);
-      if (sold.length) changes[`flags.${ID}.development.coins`] = state.preview.inventory.remainingCoins;
+      if (proceeds) {
+        const balance = actor.getFlag(ID,"development")?.coins;
+        changes[`flags.${ID}.development.coins`] = Number.isSafeInteger(balance)
+          ? balance + proceeds : state.preview.inventory.remainingCoins;
+      }
       for(const[key,value]of Object.entries(deathState(vitals)))if(changedKeys.has(key))changes[`flags.${ID}.forgeVitals.${key}`]=value;
       if(resolvedImmediateDeathRoll)changes[`flags.${ID}.forgeVitals.immediateDeathRolls`]=(actor.getFlag(ID,"forgeVitals")?.immediateDeathRolls??[]).filter(id=>id!==resolvedImmediateDeathRoll);
       return changes;
