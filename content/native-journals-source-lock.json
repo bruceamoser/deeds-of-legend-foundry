@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "repository": "https://github.com/bruceamoser/heroes-of-legend",
-  "commit": "d6a241b85446be95d6391603880e7788b3c92715",
-  "approval": "Fencing, Tactics and Arms attribute choices (#333): reviewed book PR #1357, merged d6a241b. Complete current player and DA references.",
+  "commit": "1004501fcf53d573b3346faf3f5ba55fbd693924",
+  "approval": "Fencing, Tactics and Arms attribute choices (#333): reviewed book PRs #1357 and #1359, merged 1004501. Complete current player and DA references.",
   "selection": "Current Forge pinned Markdown plus surviving nonretired native references, complete current player manuscript, shared rules and 29 spellbooks. Retired cards and disciplines excluded.",
   "records": [
     {
@@ -1895,7 +1895,7 @@
     },
     {
       "path": "design/disciplines/arms.md",
-      "sha256": "c95457661a8e1f874a4721c54f02e3b7632ad37a7cb93568be711aa52028fd31"
+      "sha256": "6ac3f9aae84b45bc75d8ae15b28332f494828da3be75e70848763b926b8bddfd"
     },
     {
       "path": "design/disciplines/athletics.md",

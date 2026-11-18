@@ -159,7 +159,7 @@ from remaining acceptance work. Monster budget tuning remains deferred to playte
 ## November 17 — Fencing, Tactics and Arms attributes (#333)
 
 The current Forge catalog and native books use book commit
-**d6a241b85446be95d6391603880e7788b3c92715** (book PR #1357). It adds both
+**1004501fcf53d573b3346faf3f5ba55fbd693924** (book PRs #1357 and #1359). These add both
 disciplines, their starting backgrounds, and all ten classes' entry prices.
 The catalog carries the printed selectable roll attributes and held weapon
 requirements for the new techniques.

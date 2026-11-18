@@ -1,5 +1,5 @@
 {
-  "commit": "d6a241b85446be95d6391603880e7788b3c92715",
+  "commit": "1004501fcf53d573b3346faf3f5ba55fbd693924",
   "records": {
     "design/ancestries/deep-dwarf.md": "ae61b846ef9f989fee20e36d3694c63d576356d704a698c7a199cde5d7a2ef23",
     "design/ancestries/gnome.md": "9a7aa5bfacf3772a14123c1b30c3e0a620c64c992da11e62e54bc75b3f886243",
@@ -135,7 +135,7 @@
     "design/discipline-migration.json": "1cab4c95e8c09e084832cb59a6d9e30e8b53a2ae2ea56766a868a9a9e4d8cd7d",
     "design/disciplines.md": "aec5c314ecc3d7fea61f0983d39d4482c6c7878f659cb3c4bed784b2039e46fe",
     "design/disciplines/armor.md": "d743bde5da6cd8c1a5e97ca5f4c5f2200f5a2630df4503ea6e68a0ba0a1d4b85",
-    "design/disciplines/arms.md": "c95457661a8e1f874a4721c54f02e3b7632ad37a7cb93568be711aa52028fd31",
+    "design/disciplines/arms.md": "6ac3f9aae84b45bc75d8ae15b28332f494828da3be75e70848763b926b8bddfd",
     "design/disciplines/athletics.md": "d9737ae8cc9186f58c4a720b155f23ac1f2a72253ef38293c6170e3884356a8c",
     "design/disciplines/craft.md": "fa91d74beee21e8f864757c424e1431a0b2d412ab1703a97b258774e0f992405",
     "design/disciplines/divination.md": "7b8a20d0e02fac3cf37e677b27244f02d60568ad66cc16b01f1207de4198438a",

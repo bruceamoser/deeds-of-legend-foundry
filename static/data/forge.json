@@ -5075,7 +5075,7 @@
       }
     }
   },
-  "sourceCommit": "d6a241b85446be95d6391603880e7788b3c92715",
+  "sourceCommit": "1004501fcf53d573b3346faf3f5ba55fbd693924",
   "disciplines": [
     {
       "id": "arms",
@@ -6716,14 +6716,18 @@
       "name": "Duelist’s Boundary",
       "dp": 5,
       "level": 7,
-      "effect": "Reaction · Agility. When a visible adjacent enemy begins an attack against you or an ally, before its roll, strike it for 3/5/8 physical damage. On Standard or Strong it also gains Dazed 1. If it remains able to attack, resolve its attack normally; reduce its damage by 3 after resistance, respecting the attack minimum. This spends your ordinary Reaction and grants no further retaliation.",
+      "effect": "Reaction · Brawn or Agility, chosen before rolling. When a visible adjacent enemy begins an attack against you or an ally, before its roll, strike it for 3/5/8 physical damage. On Standard or Strong it also gains Dazed 1. If it remains able to attack, resolve its attack normally; reduce its damage by 3 after resistance, respecting the attack minimum. This spends your ordinary Reaction and grants no further retaliation.",
       "kind": "mastery",
       "disciplineId": "arms",
       "pathId": "arms:dueling",
       "requires": [
         "arms:dueling:6"
       ],
-      "shape": "diamond"
+      "shape": "diamond",
+      "attributeChoices": [
+        "brawn",
+        "agility"
+      ]
     },
     {
       "id": "arms:unarmed:1",

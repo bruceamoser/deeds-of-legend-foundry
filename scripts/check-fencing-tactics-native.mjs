@@ -14,13 +14,15 @@ const read = async path => JSON.parse(await readFile(path, "utf8"));
 const catalogs = workshopCatalogs(...await Promise.all(
   ["choices","inventory","wounds","forge","forge-references"].map(name => read(`static/data/${name}.json`)),
 ));
-const { draft } = await read("Build-Offs/revised/builds/fighter-level-1.hol.json");
+const { draft } = await read("Build-Offs/revised/builds/fighter-level-7.hol.json");
 draft.name = "Runtime Fencing and Tactics";
 draft.attributes = {brawn:0,fortitude:0,agility:2,guile:0,knowledge:1,reason:0};
 draft.background = {id:"origin-background-company-runner",pair:0};
 const techniques = ["fencing:pointwork:1","tactics:openings:1","tactics:coordination:1","arms:bladework:1"];
 draft.purchases[1] = ["fencing", "armor:harness:1", ...techniques].map(id => ({id}));
-draft.play = {favorites:{abilities:techniques,items:[]}};
+draft.progression.levels[3].purchases = [1, 2, 3, 4].map(step => ({id:`arms:dueling:${step}`}));
+draft.progression.levels[7].purchases = [5, 6, 7].map(step => ({id:`arms:dueling:${step}`}));
+draft.play = {favorites:{abilities:[...techniques, "arms:dueling:7"],items:[]}};
 const fixture = writePortableCharacter(draft, catalogs, {ready:true});
 await mkdir(output, {recursive:true});
 const browser = await chromium.launch();
@@ -72,6 +74,7 @@ try {
   }
 
   await roll("Measured Cut I", ["brawn","agility"], "agility", "Agility +2");
+  await roll("Duelist’s Boundary", ["brawn","agility"], "brawn", "Brawn +0");
   await roll("Direct Thrust I", ["agility"], "agility", "Agility +2");
   await roll("Exploit the Opening I", ["knowledge"], "knowledge", "Knowledge +1");
   await sheet.getByRole("button",{name:"Use Clear the Way I",exact:true}).click();

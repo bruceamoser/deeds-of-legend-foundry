@@ -48,9 +48,14 @@ test("Fencing and Tactics retain their imported starting choices, class prices a
   }
   const flexNodes = graph.nodes.filter(node => node.attributeChoices);
   assert.deepEqual(flexNodes.map(node => node.id), [
-    "arms:bladework:1", "arms:dueling:4", "arms:unarmed:1", "arms:unarmed:4", "arms:unarmed:7",
+    "arms:bladework:1", "arms:dueling:4", "arms:dueling:7", "arms:unarmed:1", "arms:unarmed:4", "arms:unarmed:7",
   ]);
   for (const node of flexNodes) assert.deepEqual(node.attributeChoices, ["brawn", "agility"]);
+  for (const id of ["arms:bladework:4", "arms:bladework:7"]) {
+    const item = catalogs.choices.find(choice => choice.id === id);
+    assert.equal(item.reference.rules.details.find(field => field.label === "Attribute").value, "Brawn");
+    assert.equal(item.attributeChoices, undefined);
+  }
   assert.equal(graph.nodes.find(node => node.id === "tactics:coordination:1").weaponRequirement, undefined);
 });
 

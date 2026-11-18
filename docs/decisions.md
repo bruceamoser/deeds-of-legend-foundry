@@ -393,6 +393,7 @@ support, and broader attribute choices within Arms. Fencing develops mobile
 one-handed attacks, footwork, parries and weapon control. Tactics gives
 Knowledge-based melee attacks and techniques for preparing a roll, helping an
 ally or coordinating movement. Use the highest Tactics or Aid boon grant on a
-roll. Measured Cut and Riposte give a choice of Brawn or Agility before rolling.
-Duelist’s Boundary uses Agility. The two new starting backgrounds are Salle
-Student and Company Runner. Book PR #1357 supplies the reviewed text.
+roll. Measured Cut, Riposte and Duelist’s Boundary give a choice of Brawn or
+Agility before rolling. Sweeping Blade and Iron Tempest use Brawn. The two
+new starting backgrounds are Salle Student and Company Runner. Book PRs #1357
+and #1359 supply the reviewed text.
