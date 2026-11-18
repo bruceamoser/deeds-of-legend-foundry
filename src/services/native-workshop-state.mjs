@@ -41,7 +41,11 @@ async function normalize(portable, ready = false) {
   const catalogs = await loadWorkshopCatalogs();
   const languages = getCampaignLanguageConfiguration().definitions;
   const { draft, preview } = readPortableCharacter(portable, catalogs, languages);
-  if (ready && !preview.valid) throw new Error("Finish the unresolved Workshop choices before saving this character.");
+  if (ready && !preview.valid) {
+    const problem = preview.errors[0];
+    throw new Error(problem?.text || problem?.reasons?.map(reason => reason.text).join(" ")
+      || "Review the unresolved choices before saving this character.");
+  }
   return { portable: JSON.parse(writePortableCharacter(draft, catalogs, { ready, languages })), draft, preview, catalogs };
 }
 function overlay(actor, portable, catalogs) {
@@ -197,7 +201,9 @@ export function commitNativeWorkshopCharacter(actor, portable, { expectedRevisio
     const state = await normalize(portable, true);
     owner(actor);
     revision(actor, expectedRevision);
-    const previousLevel=existing?.portable ? (await normalize(existing.portable,true)).preview.state.level : 0;
+    // Read the previous level even when the current rules reject an old choice.
+    // The replacement above must still pass the full Review.
+    const previousLevel=existing?.portable ? (await normalize(existing.portable)).preview.state.level : 0;
     if(existing?.portable && state.preview.state.level < previousLevel) throw new Error("A committed character cannot lose levels. Recreate the hero explicitly for a level correction.");
     const desired = nativeWorkshopLearnedItems(state.preview, state.catalogs);
     const carried = existing?.portable ? overlay(actor,state.portable,state.catalogs) : null;

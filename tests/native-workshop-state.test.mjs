@@ -70,7 +70,7 @@ test("fresh authority module first save of an imported hero preserves all gear a
   assert.ok(saved.nativeItems.some(item=>item.id==="custom-gear"));
 });
 
-test("explicit commit, isolated draft, stale save and resource-authoritative reload", async t => {
+test("explicit commit repairs obsolete choices and preserves live state across draft saves", async t => {
   globalThis.fetch = async url => ({ok:true,json:async()=>({choices,inventory,wounds,forge,"forge-references":references})[url.split("/").at(-1).replace(".json","")]});
   globalThis.game = {user:{id:"owner"},settings:{get:()=>({schemaVersion:1,definitions:catalogs.languages})}};
   const flags = {};
@@ -124,9 +124,29 @@ test("explicit commit, isolated draft, stale save and resource-authoritative rel
   assert.equal(reopened.mode,"advancement");
   assert.equal(reopened.editingLevel,1);
   assert(!reopened.character.draft.purchases[1].some(entry=>entry.id==="telekinesis:0"));
+  await t.test("repairing an invalid committed class discipline still requires retaining the level", async () => {
+    // Simulate an earlier rules catalog that allowed the committed choice.
+    const prior = flags.nativeWorkshop.portable;
+    prior.draft.classDisciplines = ["fencing"];
+    const obsolete = readPortableCharacter(prior,catalogs,catalogs.languages).preview;
+    assert.equal(obsolete.valid,false);
+    assert.equal(obsolete.state.level,3);
+    assert.ok(obsolete.errors.some(error=>error.code==="class-disciplines"));
+    assert.equal(readPortableCharacter(reopened.character,catalogs,catalogs.languages).preview.valid,true);
+
+    await assert.rejects(commitNativeWorkshopCharacter(actor,prior,{expectedRevision:3}),
+      /Choose one discipline from your class/);
+    const novice = await read("../Build-Offs/revised/builds/wizard-level-1.hol.json");
+    await assert.rejects(commitNativeWorkshopCharacter(actor,novice,{expectedRevision:3}),/cannot lose levels/);
+    assert.equal(flags.nativeWorkshop.revision,3);
+    assert.equal(actor.system.health.value,2);
+    assert.equal(actor.system.sp.value,1);
+  });
   const committed=await commitNativeWorkshopCharacter(actor,reopened.character,{expectedRevision:3,tab:"Development"});
   assert.equal(committed.mode,"sheet");
   assert.equal(committed.tab,"Development");
+  assert.deepEqual(committed.character.draft.classDisciplines,["force"]);
+  assert.equal(committed.character.draft.progression.level,3);
   assert.equal(flags.nativeWorkshopDraft,null);
   assert(!actor.items.some(item=>spellIds.includes(item.getFlag("heroes-of-legend","catalogId"))));
   assert.equal(actor.items.find(item=>item.id==="training-gear")?.name,"Inherited brigandine");
