@@ -1,4 +1,5 @@
 import { forgeEligibility } from "./rules/forge.mjs";
+import { ruleInline } from "./rules-view.mjs";
 
 const escape = (value) =>
   String(value ?? "").replace(
@@ -142,7 +143,7 @@ function spellCard(spell) {
     ["Target / range", spell.target],
     ["Duration", spell.duration],
   ].filter(([, value]) => value);
-  return `<details class="forge-spell"><summary><span>${escape(spell.name)}</span><span>${spell.sp} SP</span></summary><dl>${fields.map(([label, value]) => `<div><dt>${label}</dt><dd>${escape(value)}</dd></div>`).join("")}</dl><p>${escape(spell.effect)}</p></details>`;
+  return `<details class="forge-spell"><summary><span>${escape(spell.name)}</span><span>${spell.sp} SP</span></summary><dl>${fields.map(([label, value]) => `<div><dt>${label}</dt><dd>${escape(value)}</dd></div>`).join("")}</dl><p>${ruleInline(spell.effect)}</p></details>`;
 }
 
 function plural(count, noun) {
@@ -212,7 +213,7 @@ function stepDetails(model, node) {
   const improves = model.nodes.get(node.improves);
   return `<section class="forge-step-details" id="forge-selection" aria-label="${escape(node.name)} mechanics" tabindex="-1">
     <p class="forge-meta">${escape(node.name)} · ${learned ? "Learned" : `${model.eligibility(node.id).cost ?? "—"} DP`}${node.level ? ` · Level ${node.level}` : ""}</p>
-    ${node.effect ? `<p class="forge-step-effect">${escape(node.effect)}</p>` : ""}
+    ${node.effect ? `<p class="forge-step-effect">${ruleInline(node.effect)}</p>` : ""}
     ${improves ? `<p class="forge-improves">Improves ${escape(improves.name)}.</p>` : ""}
     ${learned ? "" : reasonsList(model.eligibility(node.id))}
     ${spellSection(model, node)}
@@ -226,7 +227,7 @@ function stepRow(model, node, selectedId) {
   const requirement = stepStatus(model, node);
   return `<li class="forge-step-row is-${status}">
     ${control("forge-step", node.id,
-      `<span class="forge-step-name">${escape(node.name)}</span><span class="forge-step-summary">${escape(stepSummary(node))}</span><span class="forge-step-cost">${model.eligibility(node.id).cost ?? "—"} DP</span><span class="forge-step-chevron" aria-hidden="true">${expanded ? "⌄" : "›"}</span>`,
+      `<span class="forge-step-name">${escape(node.name)}</span><span class="forge-step-summary">${ruleInline(stepSummary(node))}</span><span class="forge-step-cost">${model.eligibility(node.id).cost ?? "—"} DP</span><span class="forge-step-chevron" aria-hidden="true">${expanded ? "⌄" : "›"}</span>`,
       `aria-label="${escape([node.name, `${model.eligibility(node.id).cost ?? "—"} DP`, requirement].filter(Boolean).join(", "))}" aria-expanded="${expanded}" ${expanded ? 'aria-controls="forge-selection"' : ""}`, "forge-step-toggle")}
     ${status === "available"
       ? `<span class="forge-step-status">Available now</span>`
@@ -250,7 +251,7 @@ function pathCard(model, path) {
         `aria-expanded="${open}" aria-controls="branch-${escape(path.id)}"`, "forge-path-toggle")}</h4>
       ${availability?.eligible ? control("forge-learn", next.id, "Learn now", `aria-label="Learn ${escape(next.name)} for ${availability.cost ?? "—"} DP"`, "primary forge-next-learn") : `<span class="forge-next-status">${next ? escape(stepStatus(model, next)) : `${learned.length} learned`}</span>`}
     </div>
-    ${next ? `<div class="forge-next-mechanics">${book ? `<p class="forge-book-name">${escape(book.name)}</p>` : ""}${next.effect ? `<p class="forge-step-effect">${escape(next.effect)}</p>` : ""}${spellSection(model, next)}</div>` : ""}
+    ${next ? `<div class="forge-next-mechanics">${book ? `<p class="forge-book-name">${escape(book.name)}</p>` : ""}${next.effect ? `<p class="forge-step-effect">${ruleInline(next.effect)}</p>` : ""}${spellSection(model, next)}</div>` : ""}
     <div id="branch-${escape(path.id)}" ${open ? "" : "hidden"}>
       ${open ? `<ol>${nodes.map((node) => stepRow(model, node, model.selection)).join("")}</ol>` : ""}
     </div>
@@ -327,7 +328,7 @@ function inspector(model) {
     ${context ? `<p class="forge-context">${escape(context)}${node.section ? ` · Section ${escape(node.section)}` : ""}</p>` : ""}
     <h3>${escape(node.name)}</h3>
     <p class="forge-meta">${currency}${node.level ? ` · Level ${node.level}` : ""}</p>
-    ${description ? `<p class="forge-effect">${escape(description)}</p>` : ""}
+    ${description ? `<p class="forge-effect">${ruleInline(description)}</p>` : ""}
     ${!learned ? reasonsList(availability) : ""}
     <div class="forge-inspector-actions">
       ${!learned ? control("forge-learn", node.id, node.kind === "discipline" ? "Begin studying" : "Learn", availability.eligible ? "" : "disabled", "primary") : ""}
@@ -340,8 +341,7 @@ function inspector(model) {
   </section>`;
 }
 
-/** Render learning controls inside the Workshop's delegated button dispatcher. */
-export function renderForge(graph, state, options = {}) {
+function forgeModel(graph, state, options) {
   const nodes = new Map(graph.nodes.map((node) => [node.id, node]));
   const learned = new Set(state.learned ?? []);
   const view = options.view === "atlas" ? "atlas" : "columns";
@@ -351,7 +351,7 @@ export function renderForge(graph, state, options = {}) {
   const atlasDiscipline = graph.disciplines.find(({ id }) => id === options.discipline);
   const requested = studied.find(({ id }) => id === options.discipline);
   const discipline = requested ?? studied.find(({ id }) => id === selected?.disciplineId) ?? studied[0];
-  const model = {
+  return {
     graph, nodes, learned, view, selected, studied, discipline, atlasDiscipline,
     selection: options.selected,
     path: options.path,
@@ -374,7 +374,25 @@ export function renderForge(graph, state, options = {}) {
     eligibility: options.eligibility ?? ((id) => forgeEligibility(graph, state, id)),
   };
 
-  const atlas = view === "atlas";
+}
+
+/** Keep the map buttons mounted so a second click reaches the same node. */
+export function selectAtlasNode(atlas, graph, state, options) {
+  const id = options.selected;
+  const side = atlas.querySelector(".forge-atlas-inspector");
+  side.innerHTML = inspector(forgeModel(graph, state, options));
+  side.scrollTop = 0;
+  for (const node of atlas.querySelectorAll(".forge-map .forge-node"))
+    node.setAttribute("aria-pressed", String(node.dataset.id === id));
+  for (const edge of atlas.querySelectorAll(".forge-branch"))
+    edge.classList.toggle("is-highlighted", edge.dataset.from === id || edge.dataset.to === id);
+}
+
+/** Render learning controls inside the Workshop's delegated button dispatcher. */
+export function renderForge(graph, state, options = {}) {
+  const model = forgeModel(graph, state, options);
+  const { selected, studied, discipline } = model;
+  const atlas = model.view === "atlas";
   const talents = graph.nodes.filter((node) => node.kind === "talent");
   const listModel = atlas ? {...model, view: "columns", filter: options.listDiscipline ?? "all", discipline: studied.find(entry => entry.id === options.listDiscipline) ?? discipline, selected: undefined, selection: undefined} : model;
   const atlasDialog = atlas ? `<dialog id="forge-atlas-dialog" class="forge-atlas-dialog" aria-labelledby="forge-atlas-title">
@@ -453,12 +471,12 @@ export function bindForgeInteractions(container, { onZoom = () => {} } = {}) {
   }, { passive: false });
 
   container.addEventListener("pointerdown", (event) => {
-    if (event.button !== 0 || !event.isPrimary) return;
+    if (![0, 2].includes(event.button) || !event.isPrimary) return;
     suppressClick = false;
     const viewport = event.target.closest(".forge-map-scroll");
     if (!viewport || event.pointerType === "touch") return;
     drag = {
-      viewport, id: event.pointerId,
+      viewport, id: event.pointerId, button: event.button,
       x: event.clientX, y: event.clientY,
       left: viewport.scrollLeft, top: viewport.scrollTop,
       moved: false,
@@ -483,13 +501,27 @@ export function bindForgeInteractions(container, { onZoom = () => {} } = {}) {
 
   function finishPan(event) {
     if (drag?.id !== event.pointerId) return;
-    suppressClick = drag.moved && event.type === "pointerup";
+    suppressClick = drag.button === 0 && drag.moved && event.type === "pointerup";
     drag.viewport.classList.remove("is-panning");
     drag = undefined;
   }
 
   for (const type of ["pointerup", "pointercancel", "lostpointercapture"])
     container.ownerDocument.addEventListener(type, finishPan, {signal:lifetime.signal});
+
+  container.addEventListener("contextmenu", event => {
+    if (!event.target.closest(".forge-map-scroll")) return;
+    event.preventDefault();
+    event.stopPropagation();
+  });
+
+  container.addEventListener("dblclick", event => {
+    const node = event.target.closest(".forge-map .forge-node");
+    if (!node) return;
+    const inspector = node.closest("dialog").querySelector(".forge-atlas-inspector");
+    const toggle = inspector.querySelector('[data-action="forge-learn"],[data-action="forge-refund"]');
+    if (toggle?.dataset.id === node.dataset.id && !toggle.disabled) toggle.click();
+  });
 
   container.addEventListener("click", (event) => {
     if (suppressClick && event.target.closest(".forge-map-scroll") && event.detail) {

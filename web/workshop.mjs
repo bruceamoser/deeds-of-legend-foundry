@@ -3,12 +3,12 @@ import {
   activeForgeSustain, beginForgeSustain, convertForgeManeuver, endForgeSustain,
   maintainForgeSustain, nextForgeTurn, sustainLimit,
 } from "./rules/forge-sustain.mjs";
-import { renderForge, bindForgeInteractions } from "./forge-view.mjs";
+import { renderForge, bindForgeInteractions, selectAtlasNode } from "./forge-view.mjs";
 import { signatureSpellCost, isForgeRitual, isForgeModifier, forgeCastOptions, forgeCastPayment } from "./rules/forge-casting.mjs";
 import { forgeEligibility } from "./rules/forge.mjs";
 import { workshopCatalogs } from "./rules/workshop-forge-catalog.mjs";
 import { forgeArmorRequirement } from "./rules/forge-character.mjs";
-import { ruleBlockMarkup } from "./rules-view.mjs";
+import { ruleBlockMarkup, ruleInline } from "./rules-view.mjs";
 import {
   workshopCraft,
   noRollBrew,
@@ -629,7 +629,7 @@ function actionLabel(record) {
 function attributeLabel(key) { return `${title(key).slice(0,2)} ${(preview.attributes[key] ?? 0) >= 0 ? "+" : ""}${preview.attributes[key] ?? 0}`; }
 function inlineRules(record) {
   let body = record.signatureComponent ? markdown(record.effect) : record.page ? spellProfile(record) : record.reference ?
-    `<dl>${record.reference.rules.details.map(d=>`<dt>${esc(d.label)}</dt><dd>${esc(d.value)}</dd>`).join("")}</dl>${record.reference.rules.body.map(block=>ruleBlockMarkup(block,{outcomeLayout:"stacked"})).join("")}${(record.reference.rules.notes??[]).map(n=>`<p><strong>${esc(n.label)}</strong> ${esc(n.text)}</p>`).join("")}` : markdown(record.effect ?? record.referenceMarkdown ?? references.records[record.id]?.markdown ?? "");
+    `<dl>${record.reference.rules.details.map(d=>`<dt>${esc(d.label)}</dt><dd>${ruleInline(d.value)}</dd>`).join("")}</dl>${record.reference.rules.body.map(block=>ruleBlockMarkup(block,{outcomeLayout:"stacked"})).join("")}${(record.reference.rules.notes??[]).map(n=>`<p><strong>${esc(n.label)}</strong> ${ruleInline(n.text)}</p>`).join("")}` : markdown(record.effect ?? record.referenceMarkdown ?? references.records[record.id]?.markdown ?? "");
   const instrument = preview.state.instruments?.find(entry=>entry.abilityId === record.id)?.instrument;
   if (instrument) body = `<p><strong>Your instrument:</strong> ${esc(instrument)}</p>` + body;
   if(record.id === "ability-message-by-heart" && preview.state.abilities.includes(record.id)) body = `<label>Memorized message<textarea id="memorized-message" aria-label="Memorized message" maxlength="5000">${esc(draft.play?.memorizedMessage ?? "")}</textarea></label><p>Up to 50 words. Rehearse a replacement for one minute.</p>${button("Save message", "save-message", "", "small")}` + body;
@@ -997,11 +997,12 @@ function creationSignature(id) {
   </section>` : "");
 }
 
+const openTraitRules = new Set();
 function creationTrait(id) {
   const selected = draft.traitIds.includes(id);
   return `<div class="creation-trait">
     <label><input type="checkbox" data-list="traitIds" value="${esc(id)}" ${selected ? "checked" : ""}>${esc(name(id))}</label>
-    <details class="creation-inline" ${selected ? "open" : ""}><summary>Trait rules</summary>
+    <details class="creation-inline" data-trait-rules="${esc(id)}" ${openTraitRules.has(id) ? "open" : ""}><summary>Trait rules</summary>
       ${get(id)?.reference?.rules?.body?.map((block) => ruleBlockMarkup(block, { outcomeLayout: "stacked" })).join("") || `<p>${esc(traitBrief(id))}</p>`}
       ${button("Full rules ›", "reference", `data-id="${esc(id)}"`, "table-link")}
     </details>
@@ -1021,12 +1022,11 @@ function staleSelections(list, valid) {
 let pickerKind = null;
 let editingLevel = null;
 const activeLearningLevel = () => editingLevel ?? preview.development.level;
-function learning() {
-  const current = learningState();
+function forgeOptions(current) {
   const learningLedger = mode === "advancement"
     ? preview.levels[activeLearningLevel()].ledger
     : preview.ledger.filter(entry => entry.stage === 1);
-  const content = renderForge(catalogs.forge, current, {
+  return {
     view: forgeView, discipline: forgeDiscipline, listDiscipline: forgeListDiscipline, selected: forgeSelected, zoom: forgeZoom,
     ownedColumns: true, path: forgePath, openPaths: [...forgeOpenPaths], showAll: forgeShowAll, chooser: forgeChooser, candidate: forgeCandidate,
     budget: current.dp - learningLedger.filter(entry => entry.kind === "purchase").reduce((sum, entry) => sum + entry.delta, 0),
@@ -1036,7 +1036,12 @@ function learning() {
     ].filter(([id])=>id)),
     eligibility: (id) => forgeEligibility(catalogs.forge, current, id),
     canRefund: (id) => learningPurchases().some((entry) => entry.id === id),
-  });
+  };
+}
+
+function learning() {
+  const current = learningState();
+  const content = renderForge(catalogs.forge, current, forgeOptions(current));
   const choices = learningPurchases().map((entry, index) => {
     const failed = preview.errors.find((error) => error.code === "purchase" && error.id === entry.id && (
       mode === "advancement" ? error.level === activeLearningLevel() : error.stage === 1
@@ -1895,6 +1900,10 @@ function render({ focusHeading = false } = {}) {
       ? active.selectionStart
       : null;
   const scroll = $("#panel")?.scrollTop ?? 0;
+  for (const details of app.querySelectorAll("[data-trait-rules]")) {
+    if (details.open) openTraitRules.add(details.dataset.traitRules);
+    else openTraitRules.delete(details.dataset.traitRules);
+  }
   const pan = $(".forge-map-scroll");
   const panOffset = pan ? [pan.scrollLeft, pan.scrollTop] : null;
   const markup =
@@ -2121,13 +2130,13 @@ function showReference(id) {
   else if (r.reference) {
     const { flavor, rules } = r.reference;
     body =
-      flavor.map((t) => `<p class="flavor">${esc(t)}</p>`).join("") +
-      `<h3>Rules</h3><dl>${rules.details.map((d) => `<dt>${esc(d.label)}</dt><dd>${esc(d.value)}</dd>`).join("")}</dl>` +
+      flavor.map((t) => `<p class="flavor">${ruleInline(t)}</p>`).join("") +
+      `<h3>Rules</h3><dl>${rules.details.map((d) => `<dt>${esc(d.label)}</dt><dd>${ruleInline(d.value)}</dd>`).join("")}</dl>` +
       rules.body
         .map(block => ruleBlockMarkup(block, { outcomeLayout: "stacked" }))
         .join("") +
       (rules.notes ?? [])
-        .map((n) => `<p><strong>${esc(n.label)}</strong> ${esc(n.text)}</p>`)
+        .map((n) => `<p><strong>${esc(n.label)}</strong> ${ruleInline(n.text)}</p>`)
         .join("");
   } else
     body = markdown(
@@ -2158,6 +2167,18 @@ function showReference(id) {
 }
 async function action(target) {
   const a = target.dataset.action;
+  if (a === "forge-select" && forgeView === "atlas") {
+    const atlas = $("#forge-atlas-dialog");
+    if (!atlas) return;
+    forgeSelected = target.dataset.id;
+    const current = learningState();
+    selectAtlasNode(atlas, catalogs.forge, current, forgeOptions(current));
+    // Leave pointer focus on the same map button for double-click. Keyboard
+    // selection moves to the rules and Learn / Undo controls.
+    if (!target.closest(".forge-map") || target.matches(":focus-visible"))
+      $("#forge-selection")?.focus({ preventScroll: true });
+    return;
+  }
   if(a==='rename-item' && !(options.readOnly || host?.readOnly)) {
     renamingItem=target.dataset.instance;render();const input=$('input[data-item-name]');input?.focus();input?.select();return;
   }

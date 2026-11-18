@@ -714,7 +714,7 @@
 .forge-atlas-dialog>header h2 {margin:0;font-size:18px;}
 .forge-atlas-dialog>header strong {margin-left:auto;font-size:13px;}
 .forge-atlas-dialog .forge-map-toolbar {flex:none;margin:0;}
-.forge-atlas-body {display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:10px;min-height:0;flex:1;}
+.forge-atlas-body {display:grid;grid-template-columns:minmax(0,1fr) clamp(205px, 27vw, 290px);grid-template-rows:minmax(0,1fr);gap:10px;min-height:0;flex:1;}
 .forge-atlas-dialog .forge-map-scroll {--map-max-height:calc(100dvh - 118px);height:100%;max-height:none;min-height:0;}
 .forge-atlas-inspector {min-width:0;min-height:0;overflow:auto;}
 .forge-atlas-inspector .forge-inspector {margin:0;padding:9px;height:auto;}
@@ -731,7 +731,13 @@
 .forge-key-later::before {border-style:dashed;}
 .forge-key-available::before {border:2px solid #41925c;background:transparent;}
 .forge-key-learned::before {background:#e4bb54;border-color:#946d27;}
-@media(max-width:700px) {.forge-atlas-body{grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(200px,1fr) minmax(120px,.55fr);} .forge-atlas-dialog .forge-map-scroll{--map-max-height:calc((100dvh - 135px) * .65);} .forge-atlas-dialog>header h2{font-size:14px;} .forge-atlas-dialog .forge-map-legend{font-size:10px;}}
+@media(max-width:620px) {
+  .forge-atlas-body {grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) minmax(0,2fr);}
+  .forge-atlas-inspector {grid-row:1;}
+  .forge-atlas-dialog .forge-map-scroll {--map-max-height:calc((100dvh - 135px) * .65);}
+  .forge-atlas-dialog>header h2 {font-size:14px;}
+  .forge-atlas-dialog .forge-map-legend {font-size:10px;}
+}
 .forge-map-overview .forge-map-root {width:clamp(13px,calc(13px * var(--map-zoom)),40px);height:clamp(13px,calc(13px * var(--map-zoom)),40px);}
 .forge-map-overview .forge-map-step {width:clamp(7px,calc(7px * var(--map-zoom)),32px);height:clamp(7px,calc(7px * var(--map-zoom)),32px);}
 .forge-map-overview .forge-map-end {width:clamp(9px,calc(9px * var(--map-zoom)),36px);height:clamp(9px,calc(9px * var(--map-zoom)),36px);}
