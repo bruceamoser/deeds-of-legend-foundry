@@ -52,7 +52,7 @@ try {
   const attribute = dialog.locator("#sheet-roll-attribute");
   const technique = name => sheet.getByRole("button",{name:"Roll "+name,exact:true});
 
-  async function roll(name, allowed, selected, printed) {
+  async function roll(name, allowed, selected, printed, effect) {
     const messages = page.locator(".chat-message").filter({hasText:name});
     const previousMessages = await messages.count();
     await technique(name).click();
@@ -67,6 +67,7 @@ try {
     await expect(messages).toHaveCount(previousMessages+1);
     const post = messages.last();
     await expect(post.locator(".hol-chat-bar")).toContainText(printed);
+    if (effect) await expect(post.locator(".hol-chat-effect")).toContainText(effect);
     await dialog.screenshot({path:output+"/"+name.toLowerCase().replaceAll(" ","-")+".png"});
     await page.keyboard.press("Escape");
     await expect(dialog).not.toBeVisible();
@@ -75,7 +76,7 @@ try {
 
   await roll("Measured Cut I", ["brawn","agility"], "agility", "Agility +2");
   await roll("Duelist’s Boundary", ["brawn","agility"], "brawn", "Brawn +1");
-  await roll("Direct Thrust I", ["agility"], "agility", "Agility +2");
+  await roll("Direct Thrust I", ["agility"], "agility", "Agility +2", "1/2/4 physical damage");
   await roll("Exploit the Opening I", ["knowledge"], "knowledge", "Knowledge +1");
   await sheet.getByRole("button",{name:"Use Clear the Way I",exact:true}).click();
   await expect(sheet.locator(".inline-action-detail")).toContainText("1 Boon");

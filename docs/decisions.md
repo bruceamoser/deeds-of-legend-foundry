@@ -396,4 +396,8 @@ ally or coordinating movement. Use the highest Tactics or Aid boon grant on a
 roll. Measured Cut, Riposte and Duelist’s Boundary give a choice of Brawn or
 Agility before rolling. Sweeping Blade and Iron Tempest use Brawn. The two
 new starting backgrounds are Salle Student and Company Runner. Book PRs #1357
-and #1359 supply the reviewed text.
+and #1359 supply the reviewed text. In the Fencing damage pass (#1361), Direct
+Thrust I deals 1/2/4 and offers a step on Standard or Strong, and Direct Thrust
+III makes that step safe from movement reactions. Measured Cut I deals 2/3/5
+and offers its step on Strong. Fencing's other mobile attacks and counters
+also give up damage for safer movement and positioning.

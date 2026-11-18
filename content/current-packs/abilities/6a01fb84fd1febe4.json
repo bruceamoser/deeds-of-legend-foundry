@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div><div><dt>Equipment</dt><dd>Wield a suitable one-handed melee weapon.</dd></div></dl><p>Answering Steel deals 3/4/6 physical damage.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div><div><dt>Equipment</dt><dd>Wield a suitable one-handed melee weapon.</dd></div></dl><p>Answering Steel deals 2/3/5 physical damage.</p>",
     "activity": {
       "action": "passive",
       "rollMode": "none",
@@ -13,15 +13,15 @@
       "defenseAttribute": "agility"
     },
     "outcomes": {
-      "weak": "3 physical damage",
-      "standard": "4 physical damage",
-      "strong": "6 physical damage"
+      "weak": "2 physical damage",
+      "standard": "3 physical damage",
+      "strong": "5 physical damage"
     }
   },
   "flags": {
     "heroes-of-legend": {
       "catalogId": "fencing:blade-contact:5",
-      "sourceCommit": "1004501fcf53d573b3346faf3f5ba55fbd693924",
+      "sourceCommit": "1c26a4aabec0b6652111ec7169cad8e239d3b29c",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "improvement",
@@ -34,7 +34,7 @@
         "duration": null,
         "attribute": null,
         "defenseAttribute": null,
-        "effect": "Answering Steel deals 3/4/6 physical damage.",
+        "effect": "Answering Steel deals 2/3/5 physical damage.",
         "improves": "fencing:blade-contact:4",
         "requires": [
           "fencing:blade-contact:4"

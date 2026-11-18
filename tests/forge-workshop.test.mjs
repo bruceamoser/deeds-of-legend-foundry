@@ -59,6 +59,13 @@ test("Fencing and Tactics retain their imported starting choices, class prices a
   assert.equal(graph.nodes.find(node => node.id === "tactics:coordination:1").weaponRequirement, undefined);
 });
 
+test("Direct Thrust trades damage for a step on Standard or Strong", () => {
+  const effect = id => graph.nodes.find(node => node.id === id).effect;
+  assert.match(effect("fencing:pointwork:1"), /1\/2\/4 physical damage\. On Standard or Strong, you may move 1 square after the attack\./);
+  assert.match(effect("fencing:pointwork:3"), /The movement from Direct Thrust avoids movement reactions\./);
+  assert.match(effect("arms:bladework:1"), /2\/3\/5 physical damage\. On Strong, you may move 1 square after the attack\./);
+});
+
 test("Forge keeps technique improvements on the same attack and teaches one spell per advanced purchase", () => {
   let state = { classId: "class-arcanist", level: 1, dp: 40, learned: [] };
   const learn = (id) => {

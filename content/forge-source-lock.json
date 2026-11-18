@@ -1,5 +1,5 @@
 {
-  "commit": "1004501fcf53d573b3346faf3f5ba55fbd693924",
+  "commit": "1c26a4aabec0b6652111ec7169cad8e239d3b29c",
   "records": {
     "design/ancestries/deep-dwarf.md": "ae61b846ef9f989fee20e36d3694c63d576356d704a698c7a199cde5d7a2ef23",
     "design/ancestries/gnome.md": "9a7aa5bfacf3772a14123c1b30c3e0a620c64c992da11e62e54bc75b3f886243",
@@ -140,7 +140,7 @@
     "design/disciplines/craft.md": "fa91d74beee21e8f864757c424e1431a0b2d412ab1703a97b258774e0f992405",
     "design/disciplines/divination.md": "7b8a20d0e02fac3cf37e677b27244f02d60568ad66cc16b01f1207de4198438a",
     "design/disciplines/elements.md": "d8e016e5b0b6fc1517adafaf7a402c90f6b0f4176b30225c05380419086d0dad",
-    "design/disciplines/fencing.md": "9db456be40fc8cfc42751b69c8738a5bf42a3bd2c3e1ae13a0d5815939f59ece",
+    "design/disciplines/fencing.md": "4cf7b2cca88efe0c33ecf7d16df13695aa5af834da8336bbcdc956b08396e7a4",
     "design/disciplines/force.md": "d6fbdc56685aa992f167b42ecc9226c15bc7792c63115c81c312acf62f937574",
     "design/disciplines/guard.md": "cc5d45a8635a41d70c3a3d7ec1a3961c1678e135ebf84d05951c7d0df9e36ea2",
     "design/disciplines/influence.md": "4e196247191acdc84db03a447140c055bbf36abd5110115865011ec941687909",
