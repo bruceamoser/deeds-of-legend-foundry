@@ -37,12 +37,33 @@ export function learnForgeEntry(catalog, state, id) {
     : { ...result, state };
 }
 
-/** Refund an entry and its prerequisite descendants wherever they were learned. */
-export function refundForgePurchases(catalog, draft, id) {
-  const groups = [
+function purchaseGroups(draft) {
+  return [
     ...Object.entries(draft.purchases ?? {}).map(([level, purchases]) => ({ level, purchases, acquisitions: draft.acquisitions })),
     ...Object.entries(draft.progression?.levels ?? {}).map(([level, data]) => ({ level, ...data })),
   ];
+}
+
+function removePurchases(groups, shouldRemove) {
+  const refunds = [];
+  for (const { level, purchases, acquisitions } of groups) {
+    if (!purchases?.length) continue;
+    const retained = [];
+    for (const entry of purchases) {
+      if (!shouldRemove(entry.id)) retained.push(entry);
+      else {
+        refunds.push({ id: entry.id, level: Number(level) });
+        if (acquisitions) delete acquisitions[entry.id];
+      }
+    }
+    purchases.splice(0, purchases.length, ...retained);
+  }
+  return refunds;
+}
+
+/** Refund an entry and its prerequisite descendants wherever they were learned. */
+export function refundForgePurchases(catalog, draft, id) {
+  const groups = purchaseGroups(draft);
   if (!groups.some(({ purchases }) => purchases?.some(entry => entry.id === id))) return [];
 
   const removed = new Set([id]);
@@ -52,19 +73,38 @@ export function refundForgePurchases(catalog, draft, id) {
       if (node.requires.some(parent => removed.has(parent))) removed.add(node.id);
     }
   }
+  return removePurchases(groups, (entryId) => removed.has(entryId));
+}
 
+/** Rebuild prerequisite access after all three starting disciplines are chosen. */
+export function removeDisconnectedForgePurchases(catalog, draft) {
+  if (!catalog?.playtest && catalog?.rulesRevision !== 299) return [];
+  const origins = ["culture", "background"].map((kind) => {
+    const choice = draft[kind];
+    return catalog.origins.find((origin) => origin.kind === kind && origin.id === choice?.id)
+      ?.pairs[choice?.pair]?.disciplineId;
+  });
+  if (draft.classDisciplines?.length !== 1) return [];
+  const [classDiscipline] = draft.classDisciplines;
+  const cls = catalog.classes.find((entry) => entry.id === draft.classId);
+  const grants = new Set([...origins, classDiscipline]);
+  // Changing a class or origin can take two steps. Preserve learning until the
+  // replacement is selected, since it may grant the same discipline again.
+  if (!origins.every(Boolean) || grants.size !== 3 || !cls?.disciplineIds.includes(classDiscipline)) return [];
+
+  const { nodes } = forgeIndex(catalog);
+  const connected = new Set(grants);
   const refunds = [];
-  for (const { level, purchases, acquisitions } of groups) {
-    if (!purchases?.length) continue;
-    const retained = [];
-    for (const entry of purchases) {
-      if (!removed.has(entry.id)) retained.push(entry);
-      else {
-        refunds.push({ id: entry.id, level: Number(level) });
-        if (acquisitions) delete acquisitions[entry.id];
+  for (const group of purchaseGroups(draft)) {
+    const candidates = (group.purchases ?? []).map(({ id }) => nodes.get(id)).filter(Boolean);
+    for (let size = 0; size < connected.size;) {
+      size = connected.size;
+      for (const node of candidates) {
+        if (node.requires.every((id) => connected.has(id))) connected.add(node.id);
       }
     }
-    purchases.splice(0, purchases.length, ...retained);
+    refunds.push(...removePurchases([group], (id) => grants.has(id) ||
+      (nodes.has(id) && !connected.has(id))));
   }
   return refunds;
 }

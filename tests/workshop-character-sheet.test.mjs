@@ -8,7 +8,7 @@ import {spellAttackOutcomes,resolvedAttackEffects} from '../src/rules/attack-out
 import {classifyRoll} from '../src/rules/roll.mjs';
 const source=(await readFile(new URL('../src/sheets/workshop-character.mjs',import.meta.url),'utf8')).replace(/^import .*\n/gm,'').replaceAll('export ','')+'\nglobalThis.Sheet=WorkshopCharacterSheet;';
 function fixture(overrides={}) {
-  const calls=[];
+  const calls=[];let nextOperation=0;const operations=new Map();
   class Base {
     constructor(){this.isEditable=true;const flags={};this.actor={testUserPermission:()=>true,items:[],getFlag:(namespace,key)=>flags[key],update:async changes=>{for(const [path,value]of Object.entries(changes)){const key=path.split('.').at(-1);if(key.startsWith('-='))delete flags[key.slice(2)];else flags[key]=value;}}};}
     async _prepareContext(){return {};}
@@ -21,18 +21,19 @@ function fixture(overrides={}) {
     async evaluate(options){calls.push(options);return this;}
     async toMessage(data,options){calls.push({data,options});}
   }
-  const context={foundry:{utils:{randomID:()=>"operation-test"},applications:{api:{HandlebarsApplicationMixin:cls=>cls},sheets:{ActorSheetV2:Base}},dice:{Roll}},
+  const context={foundry:{utils:{randomID:()=>`operation-${++nextOperation}`},applications:{api:{HandlebarsApplicationMixin:cls=>cls},sheets:{ActorSheetV2:Base}},dice:{Roll}},
     game:{user:{id:'owner'},settings:{get:()=> 'blind'}},ChatMessage:{getSpeaker:()=>({actor:'hero'})},
     queueMicrotask,structuredClone,CharacterSheet:Base,classifyRoll,spellAttackOutcomes,resolvedAttackEffects,rollCard,resourceCard,inventoryCheck,ui:{notifications:{info(){},error(){}}},
-    claimNativeWorkshopOperation:async(actor,operation)=>{await actor.update({"flags.heroes-of-legend.nativeWorkshopPendingRoll":operation});return operation;},
-    updateNativeWorkshopOperation:async(actor,operation)=>{await actor.update({"flags.heroes-of-legend.nativeWorkshopPendingRoll":operation});return operation;},
-    completeNativeWorkshopOperation:async(actor,id)=>actor.update({"flags.heroes-of-legend.-=nativeWorkshopPendingRoll":null}),
-    reconcileNativeWorkshopOperation:async(actor,id)=>actor.update({"flags.heroes-of-legend.-=nativeWorkshopPendingRoll":null}),
+    nativeWorkshopRoll:(_actor,id)=>operations.get(id),
+    claimNativeWorkshopOperation:async(_actor,operation)=>{operations.set(operation.id,operation);return operation;},
+    updateNativeWorkshopOperation:async(_actor,operation)=>operations.set(operation.id,operation),
+    completeNativeWorkshopOperation:async(_actor,id)=>operations.set(id,{...operations.get(id),status:'complete'}),
+    interruptNativeWorkshopOperation:async(_actor,id)=>operations.set(id,{...operations.get(id),status:'interrupted'}),
     saveNativeWorkshopState:async(actor,state,options)=>{calls.push(options);return {...state,revision:options.expectedRevision+1};},
     saveNativeWorkshopIdentity:async()=>({character:{draft:{}},revision:4,mode:"sheet"}),
     commitNativeWorkshopCharacter:async()=>({character:{draft:{}},revision:5,mode:'sheet'}),...overrides};
   vm.runInNewContext(source,context);
-  return {sheet:new context.Sheet(),calls,context};
+  return {sheet:new context.Sheet(),calls,context,operations};
 }
 test('native Workshop dice use retained Foundry dice and V14 message visibility',async()=>{
   const {sheet,calls}=fixture();
@@ -123,21 +124,31 @@ test('identity completion uses identity service without construction commit',asy
   await sheet.saveIdentity({draft:{name:'Renamed'}});
   assert.equal(identities,1);assert.equal(sheet.revision,7);assert.equal(refreshed.character.draft.name,'Renamed');
 });
-test('failed native chat acknowledgment leaves durable evaluated dice and blocks another roll',async()=>{
-  const {sheet,calls,context}=fixture();
+test('failed native chat acknowledgment keeps the dice and leaves a fresh roll available',async()=>{
+  const {sheet,calls,context,operations}=fixture();
+  const deliver=context.foundry.dice.Roll.prototype.toMessage;
   context.foundry.dice.Roll.prototype.toMessage=async()=>{throw new Error('lost chat acknowledgment');};
   await assert.rejects(sheet.rollDice({count:4,sides:6,kind:'attribute',net:1,attribute:2}),/lost chat/);
-  const marker=sheet.actor.getFlag('heroes-of-legend','nativeWorkshopPendingRoll');
-  assert.equal(marker.status,'evaluated');assert.deepEqual(Array.from(marker.faces),[2,4,5,6]);
-  await assert.rejects(sheet.rollDice({count:4,sides:6,kind:'attribute',net:1,attribute:2}),/reconciliation/);
+  const marker=operations.get('operation-1');
+  assert.equal(marker.status,'interrupted');assert.deepEqual(Array.from(marker.faces),[2,4,5,6]);
   assert.equal(calls.filter(call=>typeof call==='string' && /d6/.test(call)).length,1);
+  context.foundry.dice.Roll.prototype.toMessage=deliver;
+  await sheet.rollDice({count:4,sides:6,kind:'attribute',net:1,attribute:2});
+  assert.equal(operations.get('operation-2').status,'complete');
 });
-test('failed death-state save preserves operation marker and forbids reroll',async()=>{
-  const {sheet}=fixture({saveNativeWorkshopState:async()=>{throw new Error('lost state acknowledgment');}});
+test('failed death-state save retains its dice and permits a later save',async()=>{
+  let fail=true;
+  const {sheet,operations}=fixture({saveNativeWorkshopState:async()=>{
+    if(fail)throw new Error('lost state acknowledgment');
+    return {revision:1};
+  }});
   await sheet.rollDice({count:4,sides:6,kind:'death',net:1,attribute:0});
   await assert.rejects(sheet.saveState({mode:'sheet'}),/lost state/);
-  assert.equal(sheet.actor.getFlag('heroes-of-legend','nativeWorkshopPendingRoll').status,'evaluated');
-  await assert.rejects(sheet.rollDice({count:4,sides:6,kind:'death',net:1,attribute:0}),/reconciliation/);
+  assert.equal(operations.get('operation-1').status,'interrupted');
+  assert.equal(sheet.preparedRollId,undefined);
+  fail=false;
+  await sheet.saveState({mode:'builder'});
+  assert.equal(sheet.revision,1);
 });
 test('native saves retain the immutable enqueue-time play basis',async()=>{
   const {sheet,calls}=fixture();const basis={basePlay:{hp:4,sp:7}};
@@ -180,6 +191,6 @@ test('new hero entry creates a blank Actor without copying invalid character dat
 test('cast budget rejection leaves no Workshop roll receipt', async()=>{
   const {sheet}=fixture({prepareNativeActionCost:async()=>{throw new Error('Spend a Main Action on your turn.');}});
   await assert.rejects(sheet.beginRollOperation('cast',true,'spell:flame:3'),/Spend a Main Action/);
-  assert.equal(sheet.actor.getFlag('heroes-of-legend','nativeWorkshopPendingRoll'),undefined);
+  assert.equal(sheet.preparedRollId,undefined);
   assert.equal(sheet.preparedRollId,undefined);
 });

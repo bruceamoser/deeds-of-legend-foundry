@@ -18,6 +18,7 @@ export function newCreationDraft({ paidProvisions = false } = {}) {
     classDisciplines: [],
     acquisitions: {},
     shopping: paidProvisions ? startingProvisions() : [],
+    ...(paidProvisions ? { startingProvisionsChosen: true } : {}),
   };
 }
 export function creationPreview(

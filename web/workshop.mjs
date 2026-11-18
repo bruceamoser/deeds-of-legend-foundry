@@ -13,10 +13,10 @@ import {
 } from "./rules/workshop-ability.mjs";
 import { compatibleAmmunition, ORDINARY_RANGED_WEAPON, WATER_FLASK } from "./rules/equipment-identity.mjs";
 import { basicAttackDamageProfile } from "./rules/weapon-training.mjs";
-import { provisionSalePrice } from "./rules/training-equipment.mjs";
+import { missingStartingProvisions, provisionSalePrice } from "./rules/training-equipment.mjs";
 import { abilityRollConfiguration } from "./rules/ability-roll.mjs";
 import { signatureSpellCost, isForgeRitual, isForgeModifier, forgeCastOptions, forgeCastPayment } from "./rules/forge-casting.mjs";
-import { forgeEligibility, refundForgePurchases } from "./rules/forge.mjs";
+import { forgeEligibility, refundForgePurchases, removeDisconnectedForgePurchases } from "./rules/forge.mjs";
 import { currentResourceInput } from "./rules/resource-input.mjs";
 import { workshopCatalogs } from "./rules/workshop-forge-catalog.mjs";
 import { FORGE_STARTING_DP, forgeArmorRequirement } from "./rules/forge-character.mjs";
@@ -847,18 +847,11 @@ function recipeRows() {
 }
 function inventoryStats(starting = false) {
   if (starting)
-    return `<div class="inventory-stats"><span><strong>${preview.creation.inventory.remainingCoins}</strong> coins</span><span><strong>${preview.creation.inventory.bulk} / ${preview.inventory.capacity}</strong> Bulk</span><span>Encumbrance <strong>${Math.max(0, preview.creation.inventory.bulk - preview.inventory.capacity)}</strong></span></div>`;
+    return `<div class="inventory-stats"><span><strong>${preview.inventory.remainingCoins}</strong> coins</span><span><strong>${preview.inventory.bulk} / ${preview.inventory.capacity}</strong> Bulk</span><span>Encumbrance <strong>${preview.inventory.encumbrance}</strong></span></div>`;
   return `<div class="inventory-stats"><span><strong>${preview.inventory.remainingCoins}</strong> coins</span><span><strong>${preview.inventory.bulk} / ${preview.inventory.capacity}</strong> Bulk</span><span>Encumbrance <strong>${preview.inventory.encumbrance}</strong></span><span>Speed <strong>${liveVitals().speed}</strong></span><span>Armor DR <strong>${preview.resistances.physical ?? 0}</strong></span></div>`;
 }
 function inventoryTable(controls = false) {
-  const items = controls
-    ? preview.inventory.items
-    : preview.creation.inventory.items.map((item) => ({
-        ...item,
-        carried: true,
-        bulk: get(item.catalogId).bulk * item.quantity,
-        inventoryDie: item.inventoryDie ?? get(item.catalogId).inventoryDie,
-      }));
+  const items = preview.inventory.items;
   const purchaseRemoval = (item) =>
     item.source === "coins" &&
     draft.shopping.some((p) => p.instanceId === item.instanceId)
@@ -888,7 +881,7 @@ function inventoryTable(controls = false) {
       : `<td>${esc(sources[item.source] ?? name(item.source))}</td>`;
     const sale = controls ? provisionSalePrice(item) : 0;
     const remove = !controls ? purchaseRemoval(item) : host?.canDeleteItem?.(item) === false ? "" :
-      sale ? button(`Sell · ${sale}c`, "sell-provision", `data-instance="${id}" aria-label="Sell ${label} for ${sale} coins"`, "quiet small") :
+      sale ? button(`Sell · ${sale}c`, "sell-provision", `data-instance="${id}" aria-label="Sell ${label} for ${sale} coin${sale === 1 ? "" : "s"}"`, "quiet small") :
         button("×", "delete-item", `data-instance="${id}" aria-label="Delete ${label}"`, "quiet small");
     return `<tr data-instance="${id}" class="${item.carried ? "" : "stored-item"}"><td>${nameCell}</td><td>${quantity}</td><td>${item.bulk}</td><td>${inventorySupply(item, controls)}</td>${loadout}<td>${remove}</td></tr>`;
   });
@@ -1271,8 +1264,11 @@ function acquisitions(onlyMissing = false, onlyId = null) {
     .join("");
 }
 function equipment() {
-  const guidance = '<p class="inline-help">Your learned techniques supply their ordinary gear. Starting provisions are included in your spending. Remove any you would rather leave behind.</p>';
-  return `${heading("", "Equipment", "", button("Buy inventory items", "open-picker", 'data-kind="equipment"', "primary small"))}${guidance}${inventoryTable()}`;
+  const guidance = '<p class="inline-help">Learned techniques supply their ordinary gear. You can remove unwanted purchases or sell full starting provisions from Inventory.</p>';
+  const missing = missingStartingProvisions(draft, preview.inventory.items);
+  const cost = missing.reduce((sum, { id }) => sum + get(id).price, 0);
+  const provisions = missing.length ? `<p class="inline-help">${button(`Add starting provisions · ${cost} coins`, "add-starting-provisions", cost > preview.inventory.remainingCoins ? "disabled" : "", "small")} ${esc(missing.map(({ id }) => name(id)).join(", "))}</p>` : "";
+  return `${heading("", "Equipment", "", button("Buy inventory items", "open-picker", 'data-kind="equipment"', "primary small"))}${guidance}${provisions}${inventoryTable()}`;
 }
 function equipmentMarket() {
   return `${searchRow("equipment")}<div class="table-wrap"><table class="market-table"><thead><tr><th>Item</th><th>Coins</th><th>Bulk</th><th>Supply</th><th>Qty</th><th>Hands</th><th></th></tr></thead><tbody>${catalogs.inventory.equipment
@@ -1798,6 +1794,11 @@ async function rollSheetDice() {
       $("#reference").close();
     }
     completed = true;
+  } catch (error) {
+    // The native action may already be spent. Close the paid attempt so its
+    // roll button cannot resubmit the same casting as a second use.
+    if (host && activeRoll?.paymentStarted) $("#reference").close();
+    throw error;
   } finally {
     rollingSheetDice = false;
     if (button.isConnected && (!completed || (!activeRoll?.cast && !activeRoll?.finishRitual && !activeRoll?.death)))
@@ -1818,6 +1819,7 @@ async function resolveSheetRoll() {
     const record = get(activeRoll.id);
     if (sustainUnavailable()) throw new Error("Regain consciousness before casting.");
     const paid=await payCast(record, activeRoll.payment, true);
+    activeRoll.paymentStarted = true;
     draft.play = beginForgeSustain(paid, record);
     persist();
     render();
@@ -2183,6 +2185,8 @@ function updateField(target) {
         target.value === "trait-human-many-homes" && !target.checked)
       draft.languages.extraSpoken = [];
   } else return;
+  if (target.dataset.origin || target.dataset.originDiscipline || target.dataset.field === "classId")
+    refundDisconnectedLearning();
   persist();
   // A field change can fire between pointer-down and click on Continue. Keep
   // that button in the DOM until its click runs, instead of swallowing the click.
@@ -2217,6 +2221,13 @@ function refundLearning(id) {
   const removed = refundForgePurchases(catalogs.forge, draft, id);
   if (!removed.length) return;
   notice(`Removed ${name(id)}${removed.length > 1 ? ` and ${removed.length - 1} dependent ${removed.length === 2 ? "choice" : "choices"}` : ""}. Their DP is available again.`);
+}
+function refundDisconnectedLearning() {
+  const removed = removeDisconnectedForgePurchases(catalogs.forge, draft);
+  if (!removed.length) return;
+  forgeDiscipline = "all";
+  forgeSelected = undefined;
+  notice(`Returned DP for ${removed.map(({ id }) => name(id)).join(", ")}.`);
 }
 function inline(text) {
   return esc(text)
@@ -2597,7 +2608,7 @@ async function action(target) {
     if (a === "sell-provision") {
       const coins = provisionSalePrice(item);
       if (!coins) throw new Error("Only a complete starting provision can be sold.");
-      if (!confirm(`Sell ${itemName(item)} to a willing trader for ${coins} coins?`)) return;
+      if (!confirm(`Sell ${itemName(item)} to a willing trader for ${coins} coin${coins === 1 ? "" : "s"}?`)) return;
       inv.sold = [...new Set([...(inv.sold ?? []), id])];
     }
     const added = inv.added.some((i) => i.instanceId === id);
@@ -2798,8 +2809,10 @@ async function action(target) {
   if (a === "class-discipline") {
     const id = target.dataset.id;
     if (["culture", "background"].some((kind) => chosenOriginDiscipline(kind) === id)) return;
-    if (get(draft.classId)?.startingDisciplines.includes(id))
+    if (get(draft.classId)?.startingDisciplines.includes(id)) {
       draft.classDisciplines = [id];
+      refundDisconnectedLearning();
+    }
   }
   if (a === "signature") draft.signatureId = target.dataset.id;
   if (a === "dismiss-learning-review") delete draft.learningReview;
@@ -2842,6 +2855,13 @@ async function action(target) {
   if (a === "forge-refund") refundLearning(target.dataset.id);
   if (a === "remove-purchase")
     refundLearning(learningPurchases()[Number(target.dataset.index)]?.id);
+  if (a === "add-starting-provisions") {
+    const missing = missingStartingProvisions(draft, preview.inventory.items);
+    const cost = missing.reduce((sum, { id }) => sum + get(id).price, 0);
+    if (cost > preview.inventory.remainingCoins) throw new Error("You do not have enough coins for these provisions.");
+    draft.shopping.push(...missing);
+    draft.startingProvisionsChosen = true;
+  }
   if (a === "remove-equipment") {
     const id = target.dataset.instance;
     draft.shopping = draft.shopping.filter((item) => item.instanceId !== id);

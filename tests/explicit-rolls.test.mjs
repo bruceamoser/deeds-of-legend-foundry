@@ -29,7 +29,7 @@ test('an incoming defense rolls immediately without coordinator, encounter or ac
     async toMessage(data){posts++;return {id:'result',...data};}
   }}}});
   const dependencies={
-    "./native-workshop-coordinator.mjs":{updateNativeWorkshopOperation:()=>{throw Error("Defense does not mutate a marker");},completeNativeWorkshopOperation:()=>{throw Error("Defense does not mutate a marker");}},
+    "./native-workshop-coordinator.mjs":{updateNativeWorkshopOperation:()=>{throw Error("Defense does not mutate a marker");},completeNativeWorkshopOperation:()=>{throw Error("Defense does not mutate a marker");},interruptNativeWorkshopOperation:()=>{throw Error("Defense does not mutate a marker");},nativeWorkshopRoll:()=>{throw Error("Defense does not read a Workshop roll");}},
     "../rules/creature-sheet-profile.mjs":{summonAttackConfiguration},
     "../rules/summon-profile.mjs":{assertSummonPresent},
     "../rules/attack-outcomes.mjs":{resolvedAttackEffects},

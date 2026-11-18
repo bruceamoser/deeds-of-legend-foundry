@@ -1,5 +1,5 @@
 import {benefitCurrent} from './benefits.mjs';
-import {coordinateNativeGameplay,registerNativeGameplayHandler} from './native-workshop-coordinator.mjs';
+import {coordinateNativeGameplay,registerNativeGameplayHandler,nativeWorkshopRoll,workshopRollClaimChanges} from './native-workshop-coordinator.mjs';
 import {writeAuthorityDocument} from './authority.mjs';
 import {declareAction} from '../rules/actions.mjs';
 import {actionConditions} from './turn-budget.mjs';
@@ -137,8 +137,10 @@ registerNativeGameplayHandler('action-budget',async(actor,payload,context)=>{
   category=payload.mode==='sustain'?'maneuver':/^Main Action\b/i.test(action)?'main':/^Maneuver\b/i.test(action)?'maneuver':/^Reaction\b/i.test(action)?'reaction':null;
  }
 
- const pending=actor.getFlag(ID,'nativeWorkshopPendingRoll');
- if(pending&&(pending.id!==context.operationId||pending.status!=='prepared'||pending.authorId&&pending.authorId!==context.author.id))throw new Error('An earlier roll awaits reconciliation. Do not roll its dice again.');
+ const makesRollClaim=attack||payload.mode==='cast';
+ const pending=nativeWorkshopRoll(actor,context.operationId);
+ if(pending&&(pending.status!=='prepared'||pending.authorId!==context.author.id))
+  throw new Error('This roll has already advanced. Submit a fresh roll to try again.');
  const key=`flags.${ID}.nativeAttackActions.${context.operationId}`,signature=JSON.stringify(payload);
  let record=actor.getFlag(ID,'nativeAttackActions')?.[context.operationId];
  if(record&&record.signature!==signature)throw new Error('The saved action changed.');
@@ -150,7 +152,7 @@ registerNativeGameplayHandler('action-budget',async(actor,payload,context)=>{
   if(match&&!budget)throw new Error('The attacker’s native action budget is unavailable.');
   if(match)declareAction(budget,{operationId:context.operationId,sourceId,category,ownTurn:match.state.current===match.participant.id,conditions:actionConditions(actor)});
   record={signature,status:'prepared',sourceId,category,...(match?{combatUuid:match.combat.uuid,participantId:match.participant.id,turnId:budget.turnId}:{})};
-  await context.write({[key]:record,...(attack||payload.mode==='cast'?{[`flags.${ID}.nativeWorkshopPendingRoll`]:{id:context.operationId,status:'prepared',kind:attack?'native-basic-attack':'cast',authorId:context.author.id}}:{})},{status:'prepared'});
+  await context.write({[key]:record},{status:'prepared'});
  }
  if(record.status!=='paid'){
   if(record.combatUuid){
@@ -158,7 +160,8 @@ registerNativeGameplayHandler('action-budget',async(actor,payload,context)=>{
    if(!budget||budget.turnId!==record.turnId)throw new Error('The attacking turn changed before its action completed. Ask the DA to reconcile the paid action; no dice were rolled.');
    if(!budget.operations[context.operationId]){const next=structuredClone(state);next.budgets[record.participantId]=declareAction(budget,{operationId:context.operationId,sourceId,category:record.category,ownTurn:state.current===record.participantId,conditions:actionConditions(actor)});next.revision++;await writeAuthorityDocument(combat,{[`flags.${ID}.encounter`]:next});}
   }
-  await context.write({[key]:{...record,status:'paid'}},{status:'paid'});
+  const operation=makesRollClaim?{id:context.operationId,status:'prepared',kind:attack?'native-basic-attack':'cast',authorId:context.author.id}:null;
+  await context.write({[key]:{...record,status:'paid'},...workshopRollClaimChanges(actor,operation)},{status:'paid'});
  }
  return {status:'paid',operationId:context.operationId};
 });

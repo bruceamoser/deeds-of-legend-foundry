@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { newCreationDraft } from "../src/rules/creation.mjs";
-import { addTrainingEquipment, provisionSalePrice } from "../src/rules/training-equipment.mjs";
+import { addTrainingEquipment, missingStartingProvisions, provisionSalePrice } from "../src/rules/training-equipment.mjs";
 import { basicAttackDamageProfile } from "../src/rules/weapon-training.mjs";
 import { rangedAmmunition, setRangedWeaponAmmunition } from "../src/services/ranged-ammunition.mjs";
 
@@ -19,6 +19,17 @@ test("paid provisions include four distinct defaults and have a reusable resale 
   const item = { ...water, catalogId: water.id, definition: definition(water.id) };
   assert.equal(provisionSalePrice(item), 1);
   assert.equal(provisionSalePrice({ ...item, waterUnits: 0 }), 0);
+});
+
+test("the one-time paid kit repair only offers missing provisions and never refills sold or declined items", () => {
+  const draft = newCreationDraft();
+  const item = { catalogId: "item-water-flask", quantity: 1, waterUnits: 0 };
+  assert.deepEqual(missingStartingProvisions(draft, [item]).map(({ id }) => id), [
+    "item-food-bundle", "item-lighting-bundle", "item-lesser-healing-bottle",
+  ]);
+  assert.deepEqual(missingStartingProvisions({ ...draft, startingProvisionsChosen: true }, []), []);
+  assert.deepEqual(missingStartingProvisions({ ...draft, shopping: [{ instanceId: "shop-starter-food-bundle" }] }, []), []);
+  assert.deepEqual(missingStartingProvisions({ ...draft, play: { inventory: { removed: ["shop-starter-food-bundle"] } } }, []), []);
 });
 
 test("learning supplies missing gear once and roots and unarmed training require none", () => {

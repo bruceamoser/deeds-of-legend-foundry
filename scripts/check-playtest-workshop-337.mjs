@@ -85,7 +85,12 @@ try {
     state.actor = actor.id;
     await actor.importFromJSON(JSON.stringify(portable));
     await user.update({ character: actor.id });
-    await actor.update({ img: "icons/svg/angel.svg", "system.health.value": 8, "system.sp.value": 3 });
+    await actor.update({
+      img: "icons/svg/angel.svg", "system.health.value": 8, "system.sp.value": 3,
+      [`flags.${systemId}.nativeWorkshopPendingRoll`]: {
+        id: "orphaned-use", status: "evaluated", kind: "cast", authorId: user.id, faces: [4, 5, 6],
+      },
+    });
     const grant = actor.items.find(item => item.getFlag(systemId, "acquisitionInstance") === "inventory-learned-ordinary-light-armor");
     if (!grant) throw new Error("The cleric fixture must start with its study-granted light armor.");
     await grant.update({ name: "Playtest337 named armor", "system.quantity": 2 });
@@ -141,6 +146,19 @@ try {
   await changeResource(sp, "+99", "sp", beforePortrait.maxSp);
   await changeResource(sp, "-1", "sp", beforePortrait.maxSp - 1);
   passed("Signed HP and SP edits updated the Actor, clamped at the resource limit, and left unsigned values absolute.");
+
+  const retiredRoll = await gm.evaluate(id => {
+    const actor = game.actors.get(id);
+    return {
+      active: actor.getFlag("heroes-of-legend", "nativeWorkshopPendingRoll") ?? null,
+      retired: actor.getFlag("heroes-of-legend", "nativeWorkshopRolls")?.["orphaned-use"],
+    };
+  }, fixture.actor);
+  assert.equal(retiredRoll.active, null);
+  assert.equal(retiredRoll.retired.status, "interrupted");
+  assert.deepEqual(retiredRoll.retired.faces, [4, 5, 6]);
+  passed("A stale evaluated roll retired automatically during the next save. Its dice were retained and development saves remained available.");
+
 
   const beforeLearning = await actorState(gm, fixture.actor);
   const targetPurchases = beforeLearning.purchased.filter(id => !["armor", "armor:harness:1", "restoration:0"].includes(id));

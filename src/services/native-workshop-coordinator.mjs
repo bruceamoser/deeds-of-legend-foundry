@@ -14,7 +14,7 @@ export async function reconcileNativeGameplayOperation(actor){
 export const coordinateNativeGameplay=(actor,{kind,operationId,payload})=>request(actor,'gameplay',{kind,operationId,payload});
 function assertGameplayOwner(actor,user=game.user){if(!['character','creature'].includes(actor?.type)||actor.pack||!actor.testUserPermission(user,'OWNER'))throw new Error('Choose an actor you own.');}
 const methods={save:'saveNativeWorkshopState',commit:'commitNativeWorkshopCharacter',identity:'saveNativeWorkshopIdentity',draft:'saveNativeWorkshopDraft'};
-const kinds=new Set([...Object.keys(methods),'gameplay','claim-roll','roll-phase','complete-roll','reconcile-roll']);
+const kinds=new Set([...Object.keys(methods),'gameplay','claim-roll','roll-phase','complete-roll','interrupt-roll']);
 const clone=value=>structuredClone(value);
 async function digest(value){const bytes=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(JSON.stringify(value)));return [...new Uint8Array(bytes)].map(byte=>byte.toString(16).padStart(2,'0')).join('');}
 function assertOwner(actor,user=game.user){if(actor?.type!=='character'||actor.pack||actor.isToken||!actor.testUserPermission(user,'OWNER'))throw new Error('Only the owner of this world character can change its Workshop.');}
@@ -27,32 +27,35 @@ async function resultFor(actor,kind,saved){if(kind==='draft')return state.loadNa
 async function request(actor,kind,payload={},options={}) {
  (kind==='gameplay'?assertGameplayOwner:assertOwner)(actor);
  if(!kinds.has(kind))throw new Error('Unknown Workshop action.');
- const existing=pending.get(actor.uuid);
+ const mutatesCharacter=Boolean(methods[kind])||kind==='gameplay';
+ const existing=mutatesCharacter?pending.get(actor.uuid):null;
  if(existing) {
   const saved=receipt(actor,existing.id);
   if(saved?.status==='applying'&&kind==='gameplay'&&payload.operationId===saved.operationId){
    validateReceipt(saved,existing.signature,existing.authorId);pending.delete(actor.uuid);
   }else{
-   if(saved){validateReceipt(saved,existing.signature,existing.authorId);pending.delete(actor.uuid);throw new Error('The previous Workshop action completed. Reload its saved result before trying another action.');}
-   const message=game.messages.get(existing.id),status=message?.getFlag(ID,'nativeWorkshopStatus');
-   if(status?.status==='failed'){pending.delete(actor.uuid);throw new Error(status.error);}
-   throw new Error('A Workshop action is still awaiting acknowledgement. Keep this window open or reload the saved character before trying again.');
+   const status=game.messages.get(existing.id)?.getFlag(ID,'nativeWorkshopStatus');
+   if(saved){validateReceipt(saved,existing.signature,existing.authorId);pending.delete(actor.uuid);}
+   else if(status?.status==='failed'){pending.delete(actor.uuid);}
+   else throw new Error('Foundry has not confirmed the previous change. Its request is saved and can still complete.');
   }
  }
  await ensureAuthorityReady({shared:true,coordinated:true});
  const action={actorUuid:actor.uuid,kind,payload:clone(payload),options:clone(options),expectedRevision:options.expectedRevision??revision(actor)};
  const signature=await digest(action);
  const message=await createActionMessage({content:'Workshop action.',whisper:game.users.filter(user=>user.isGM||user.id===game.user.id).map(user=>user.id),flags:{[ID]:{nativeWorkshopRequest:action}}},{shared:true,coordinated:true});
- const record={id:message.id,signature,authorId:game.user.id};pending.set(actor.uuid,record);
+ const record={id:message.id,signature,authorId:game.user.id};
+ if(mutatesCharacter)pending.set(actor.uuid,record);
+ const acknowledge=()=>{if(pending.get(actor.uuid)?.id===record.id)pending.delete(actor.uuid);};
  const deadline=Date.now()+30000;
  while(Date.now()<deadline) {
   const saved=receipt(actor,message.id);
-  if(saved&&(kind!=='gameplay'||saved.status==='complete')){validateReceipt(saved,signature,record.authorId);pending.delete(actor.uuid);return resultFor(actor,kind,saved);}
+  if(saved&&(kind!=='gameplay'||saved.status==='complete')){validateReceipt(saved,signature,record.authorId);acknowledge();return resultFor(actor,kind,saved);}
   const status=game.messages.get(message.id)?.getFlag(ID,'nativeWorkshopStatus');
-  if(status?.status==='failed'){pending.delete(actor.uuid);throw new Error(status.error);}
+  if(status?.status==='failed'){acknowledge();throw new Error(status.error);}
   await new Promise(done=>setTimeout(done,100));
  }
- throw new Error('Workshop acknowledgement is delayed. The action may already be saved. Keep its pending request; reload the character before taking another action.');
+ throw new Error('Foundry did not confirm this Workshop action. The original request was saved.');
 }
 export const saveNativeWorkshopState=(actor,saved,options={})=>request(actor,'save',{saved},options);
 export const commitNativeWorkshopCharacter=(actor,portable,options={})=>request(actor,'commit',{portable},options);
@@ -61,7 +64,19 @@ export const saveNativeWorkshopDraft=(actor,portable,options={})=>request(actor,
 export const claimNativeWorkshopOperation=(actor,operation)=>request(actor,'claim-roll',{operation});
 export const updateNativeWorkshopOperation=(actor,operation)=>request(actor,'roll-phase',{operation});
 export const completeNativeWorkshopOperation=(actor,id)=>request(actor,'complete-roll',{id});
-export const reconcileNativeWorkshopOperation=(actor,id)=>request(actor,'reconcile-roll',{id});
+export const interruptNativeWorkshopOperation=(actor,id)=>request(actor,'interrupt-roll',{id});
+export const nativeWorkshopRoll=(actor,id)=>actor.getFlag(ID,'nativeWorkshopRolls')?.[id];
+const rollFlag=(id)=>`flags.${ID}.nativeWorkshopRolls.${id}`;
+export function workshopRollClaimChanges(actor,operation) {
+ const previous=actor.getFlag(ID,'nativeWorkshopPendingRoll');
+ return {
+  ...(previous?{
+   [rollFlag(previous.id)]:{...previous,status:'interrupted',interruptedPhase:previous.status},
+   [`flags.${ID}.-=nativeWorkshopPendingRoll`]:null,
+  }:{}),
+  ...(operation?{[rollFlag(operation.id)]:operation}:{}),
+ };
+}
 export function resolveNativeWorkshopRequest(id){return enqueueCharacterOperation(()=>apply(id),{requestId:id});}
 async function apply(id) {
  const message=game.messages.get(id),action=message?.getFlag(ID,'nativeWorkshopRequest');
@@ -72,9 +87,8 @@ async function apply(id) {
  if(prior){validateReceipt(prior,signature,message.author.id);if(prior.status!=='applying')return resultFor(actor,action.kind,prior);}
  const unresolved=Object.values(actor.getFlag(ID,'nativeWorkshopOperations')??{}).find(saved=>saved.kind==='gameplay'&&saved.status==='applying');
  if(unresolved&&!(action.kind==='gameplay'&&action.payload.operationId===unresolved.operationId))throw new Error('A managed gameplay action needs reconciliation before another resource change.');
- const expected=action.expectedRevision;if(action.kind!=='gameplay'&&(!Number.isSafeInteger(expected)||expected!==revision(actor)))throw new Error('The character changed in another window. Reload it before saving.');
- const roll=actor.getFlag(ID,'nativeWorkshopPendingRoll');
- const saved={id,applied:true,authorId:message.author.id,signature,kind:action.kind,revision:expected+Number(Boolean(methods[action.kind]))};
+ const expected=action.expectedRevision;if(methods[action.kind]&&(!Number.isSafeInteger(expected)||expected!==revision(actor)))throw new Error('The character changed in another window. Reload it before saving.');
+ const saved={id,applied:true,authorId:message.author.id,signature,kind:action.kind,revision:revision(actor)+Number(Boolean(methods[action.kind]))};
  if(action.kind==='gameplay'){
   const handler=gameplayHandlers.get(action.payload?.kind),operationId=action.payload?.operationId;
   if(!handler||typeof operationId!=='string'||!/^[A-Za-z0-9_-]{1,160}$/.test(operationId)||(Object.hasOwn(action.payload.payload?.options??{},'operationId')&&action.payload.payload.options.operationId!==operationId))throw new Error('Invalid managed gameplay request.');
@@ -94,26 +108,38 @@ async function apply(id) {
   for(const old of Object.values(actor.getFlag(ID,'nativeWorkshopOperations')??{}))if(old.kind==='gameplay'&&old.status==='applying'&&old.operationId===operationId)completed[`flags.${ID}.nativeWorkshopOperations.${old.id}`]={...old,status:'complete',result:clone(result)};
   await writeAuthorityDocument(actor,completed);
  } else if(methods[action.kind]) {
-  if(roll && (action.options?.rollOperationId!==roll.id||roll.authorId!==message.author.id))throw new Error('A Workshop use awaits reconciliation. Finish that use before changing this character.');
+  const retired=workshopRollClaimChanges(actor);
+  if(Object.keys(retired).length)await writeAuthorityDocument(actor,retired);
   const options={...action.options,expectedRevision:expected,operationReceipt:saved};
   const value=action.kind==='save'?action.payload.saved:action.payload.portable;
   await state[methods[action.kind]](actor,value,options);
  } else {
-  const operation=action.payload?.operation,id=action.payload?.id;
+  const operation=action.payload?.operation, rollId=operation?.id??action.payload?.id;
+  if(typeof rollId!=='string'||!/^[A-Za-z0-9_-]{1,80}$/.test(rollId))throw new Error('Invalid Workshop roll identity.');
+  const roll=nativeWorkshopRoll(actor,rollId);
   const changes={};
   if(action.kind==='claim-roll') {
-   if(roll)throw new Error('A Workshop use already awaits reconciliation. No new roll or resource payment was started.');
-   if(!operation||typeof operation.id!=='string'||!/^[A-Za-z0-9_-]{1,80}$/.test(operation.id)||operation.status!=='prepared')throw new Error('Invalid Workshop roll claim.');
-   saved.result={...clone(operation),authorId:message.author.id};changes[`flags.${ID}.nativeWorkshopPendingRoll`]=saved.result;
+   if(roll)throw new Error('This roll has already been started.');
+   if(operation?.status!=='prepared')throw new Error('Invalid Workshop roll claim.');
+   saved.result={id:rollId,kind:operation.kind,status:'prepared',authorId:message.author.id};
+   Object.assign(changes,workshopRollClaimChanges(actor,saved.result));
   } else {
-   if(!roll||roll.id!==(operation?.id??id))throw new Error('The pending Workshop roll changed. Reload before reconciling it.');
-   if(action.kind!=='reconcile-roll'&&roll.authorId!==message.author.id)throw new Error('Only the owner who started this use can finish it.');
+   if(roll && roll.authorId!==message.author.id)throw new Error('Only the owner who started this use can finish it.');
    if(action.kind==='roll-phase') {
-    const allowed=roll.status==='prepared'?'evaluating':roll.status==='evaluating'?'evaluated':null;
-    if(operation.status!==allowed)throw new Error('That Workshop roll phase is already saved or requires reconciliation.');
+    const allowed=roll?.status==='prepared'?'evaluating':roll?.status==='evaluating'?'evaluated':null;
+    if(!allowed||operation?.status!==allowed)throw new Error('This roll has already advanced. Submit a fresh roll to try again.');
     if(operation.status==='evaluated'&&(!Array.isArray(operation.faces)||operation.faces.length<1||operation.faces.length>6||operation.faces.some(face=>!Number.isSafeInteger(face)||face<1||face>20)))throw new Error('Invalid retained Workshop dice.');
-    saved.result={...clone(operation),authorId:roll.authorId};changes[`flags.${ID}.nativeWorkshopPendingRoll`]=saved.result;
-   } else {saved.result={id:roll.id,status:action.kind==='reconcile-roll'?'reconciled':'complete'};changes[`flags.${ID}.-=nativeWorkshopPendingRoll`]=null;changes[`flags.${ID}.nativeWorkshopLastRoll`]=saved.result;}
+    saved.result={...roll,...clone(operation),authorId:roll.authorId};
+    changes[rollFlag(rollId)]=saved.result;
+   } else {
+    if(action.kind==='complete-roll'&&!roll)throw new Error('This Workshop roll could not be found.');
+    if(roll && !['complete','interrupted'].includes(roll.status)) {
+     saved.result=action.kind==='interrupt-roll'
+      ? {...roll,status:'interrupted',interruptedPhase:roll.status}
+      : {id:roll.id,kind:roll.kind,status:'complete',authorId:roll.authorId};
+     changes[rollFlag(rollId)]=saved.result;
+    } else saved.result=roll??{id:rollId,status:'interrupted'};
+   }
   }
   changes[`flags.${ID}.nativeWorkshopOperations.${saved.id}`]=saved;
   await writeAuthorityDocument(actor,changes);
