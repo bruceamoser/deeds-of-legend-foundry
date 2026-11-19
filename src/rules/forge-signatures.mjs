@@ -1,5 +1,5 @@
 import {signatureSpellCost,isForgeSpell,isForgeModifier} from "./forge-casting.mjs";
-const field = (markdown, label) => markdown.match(new RegExp(`\\*\\*${label}:\\*\\* ([^\\n·]+)`))?.[1]?.trim();
+const field = (markdown, label) => markdown.match(new RegExp(`\\*\\*${label}:\\*\\* ([^\\n]+)`))?.[1]?.split(/\s+·\s+(?=\*\*[^*]+:\*\*)/, 1)[0]?.trim();
 
 function signatureMetadata(graph) {
   const metadata=graph?.signatureDevelopment;

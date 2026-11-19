@@ -5,10 +5,55 @@ import {forgeSignatureLearning,forgeSignatureComponent} from '../src/rules/forge
 import {workshopCatalogs} from '../src/rules/workshop-forge-catalog.mjs';
 import {currentWorkshopItemSource,currentWorkshopLearnedItems} from '../src/rules/current-workshop-items.mjs';
 import {normalizeSignatureDevelopment} from '../scripts/content/forge.mjs';
+import {isForgeRitual,spellActionLabel} from '../src/rules/forge-casting.mjs';
+import {actionTiming,actionTimingLabel} from '../src/rules/workshop-character.mjs';
 const read=async name=>JSON.parse(await readFile(new URL(`../static/data/${name}.json`,import.meta.url),'utf8'));
 const [graph,choices,inventory,wounds,references]=await Promise.all(['forge','choices','inventory','wounds','forge-references'].map(read));
 const catalogs=workshopCatalogs(choices,inventory,wounds,graph,references);
 const entries=graph.signatureDevelopment.signatures;
+
+test('printed signature timing survives alongside attribute and magic fields',()=>{
+ const fixture={...graph,signatureDevelopment:{...graph.signatureDevelopment,signatures:[
+  {id:'test-the-hypothesis',name:'Test the Hypothesis',rulesMarkdown:'**Action:** Main Action · One minute · **Attribute:** None (no roll)'},
+  {id:'shepherds-call',name:"The Shepherd's Call",rulesMarkdown:'**Action:** Ritual — 10 minutes · **Attribute:** None (no roll)\n\nThis is a ritual spell costing 0 SP.'},
+ ]}};
+ const plan=forgeSignatureComponent(fixture,'test-the-hypothesis');
+ assert.equal(plan.attribute,'None (no roll)');
+ assert.equal(actionTimingLabel(plan),'Main Action · One minute');
+ const ritual=forgeSignatureComponent(fixture,'shepherds-call');
+ assert.equal(ritual.magic,'Spell');
+ assert.equal(ritual.sp,0);
+ assert.equal(isForgeRitual(ritual),true);
+ assert.deepEqual(actionTiming(ritual),['Main Action']);
+ assert.equal(actionTimingLabel(ritual),spellActionLabel(ritual));
+ assert.equal(spellActionLabel(ritual),'Main Action · Ritual — 10 minutes');
+ const item=currentWorkshopItemSource(ritual,{...catalogs,forge:fixture});
+ assert.equal(item.system.activity.action,'ritual');
+ assert.equal(item.system.activity.rollMode,'none');
+ assert.equal(item.flags['heroes-of-legend'].spell.sp,0);
+});
+
+test('explicit timed discipline headings preserve both timing and the roll attribute',()=>{
+ const headings=new Map([
+  ['wilderness:provisioning:1',['Main Action · 1 hour','Knowledge',' · Knowledge.']],
+  ['influence:pressure:1',['Main Action · One exchange','Brawn',' · Brawn.']],
+  ['medicine:diagnosis:7',['Main Action · 30 minutes','Knowledge',', with medical supplies. Roll Knowledge once.']],
+ ]);
+ const nodes=graph.nodes.map(node=>{
+  const heading=headings.get(node.id);
+  return heading ? {...node,effect:heading[0]+heading[2]} : node;
+ });
+ const fixture=workshopCatalogs(choices,inventory,wounds,{...graph,nodes},references);
+ for(const [id,[timing,attribute]] of headings){
+  const record=fixture.choices.find(record=>record.id===id);
+  assert.equal(actionTimingLabel(record),timing);
+  assert.deepEqual(actionTiming(record),['Main Action']);
+  const item=currentWorkshopItemSource(record,fixture);
+  assert.equal(item.flags['heroes-of-legend'].workshopRecord.action,timing);
+  assert.equal(item.system.activity.rollMode,'attribute');
+  assert.equal(item.system.activity.attribute,attribute.toLowerCase());
+ }
+});
 
 test('all 90 choices grant exactly themselves with no foundation or conditional earlier grants',()=>{
  assert.equal(entries.length,90);

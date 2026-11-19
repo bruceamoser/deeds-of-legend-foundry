@@ -5,9 +5,9 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>10 minutes</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Up to three willing characters.</dd></div><div><dt>Duration</dt><dd>Until used or dawn.</dd></div><div><dt>Equipment / acquisition</dt><dd>A free hand for casting.</dd></div></dl><p>Mark each target with a physical sigil. The first time a marked character would be reduced to 0 HP, it remains at 1 HP instead; the mark then disappears. An unused mark fades at the coming dawn. A character can bear only one mark from this ability.</p><p>This is a ritual spell costing 0 SP, usable once between safe overnight rests. Unused sigils expire at dawn; a creature may bear one sigil at a time.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual — 10 minutes</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Up to three willing characters.</dd></div><div><dt>Magic</dt><dd>Spell</dd></div><div><dt>SP</dt><dd>0</dd></div><div><dt>Duration</dt><dd>Until used or dawn.</dd></div><div><dt>Equipment / acquisition</dt><dd>A free hand for casting.</dd></div></dl><p>Mark each target with a physical sigil. The first time a marked character would be reduced to 0 HP, it remains at 1 HP instead; the mark then disappears. An unused mark fades at the coming dawn. A character can bear only one mark from this ability.</p><p>This is a ritual spell costing 0 SP, usable once between safe overnight rests. Unused sigils expire at dawn; a creature may bear one sigil at a time.</p>",
     "activity": {
-      "action": "main",
+      "action": "ritual",
       "rollMode": "none",
       "attribute": "knowledge",
       "defenseAttribute": "agility"
@@ -21,24 +21,91 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "ability-signature-shepherd-a-hand-in-darkness",
-      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
+      "sourceCommit": "e5575a674821fe31387cf4bf622a2dea96dd0906",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
-        "kind": "ability",
+        "kind": "spell",
         "nodeId": "ability-signature-shepherd-a-hand-in-darkness",
         "level": 7,
         "cost": 0,
-        "action": "Main Action · 10 minutes",
-        "sp": null,
+        "action": "Ritual — 10 minutes",
+        "sp": 0,
         "range": "Up to three willing characters.",
         "duration": "Until used or dawn.",
         "attribute": "None (no roll)",
         "defenseAttribute": null,
-        "effect": "**Action:** 10 minutes · **Attribute:** None (no roll)\n\n**Target / range / shape:** Up to three willing characters.\n\nMark each target with a physical sigil. The first time a marked character would be reduced to 0 HP, it remains at 1 HP instead; the mark then disappears. An unused mark fades at the coming dawn. A character can bear only one mark from this ability.\n\n**Duration:** Until used or dawn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a ritual spell costing 0 SP, usable once between safe overnight rests. Unused sigils expire at dawn; a creature may bear one sigil at a time.",
+        "effect": "**Action:** Ritual — 10 minutes · **Attribute:** None (no roll)\n\n**Target / range / shape:** Up to three willing characters.\n\nMark each target with a physical sigil. The first time a marked character would be reduced to 0 HP, it remains at 1 HP instead; the mark then disappears. An unused mark fades at the coming dawn. A character can bear only one mark from this ability.\n\n**Duration:** Until used or dawn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a ritual spell costing 0 SP, usable once between safe overnight rests. Unused sigils expire at dawn; a creature may bear one sigil at a time.",
         "improves": null,
         "requires": [],
         "bookId": null,
-        "magic": null
+        "magic": "Spell"
+      },
+      "spell": {
+        "id": "ability-signature-shepherd-a-hand-in-darkness",
+        "name": "The Shepherd's Call",
+        "level": 7,
+        "dp": null,
+        "action": "Ritual — 10 minutes",
+        "attribute": "None (no roll)",
+        "target": "Up to three willing characters.",
+        "duration": "Until used or dawn.",
+        "equipment": "A free hand for casting.",
+        "limits": "One signature choice at each of levels 1, 3 and 7.",
+        "effect": "**Action:** Ritual — 10 minutes · **Attribute:** None (no roll)\n\n**Target / range / shape:** Up to three willing characters.\n\nMark each target with a physical sigil. The first time a marked character would be reduced to 0 HP, it remains at 1 HP instead; the mark then disappears. An unused mark fades at the coming dawn. A character can bear only one mark from this ability.\n\n**Duration:** Until used or dawn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a ritual spell costing 0 SP, usable once between safe overnight rests. Unused sigils expire at dawn; a creature may bear one sigil at a time.",
+        "reference": {
+          "flavor": [
+            "You call living strength back into those who need it."
+          ],
+          "rules": {
+            "details": [
+              {
+                "label": "Action",
+                "value": "Ritual — 10 minutes"
+              },
+              {
+                "label": "Attribute",
+                "value": "None (no roll)"
+              },
+              {
+                "label": "Target / range / shape",
+                "value": "Up to three willing characters."
+              },
+              {
+                "label": "Magic",
+                "value": "Spell"
+              },
+              {
+                "label": "SP",
+                "value": "0"
+              },
+              {
+                "label": "Duration",
+                "value": "Until used or dawn."
+              },
+              {
+                "label": "Equipment / acquisition",
+                "value": "A free hand for casting."
+              }
+            ],
+            "body": [
+              {
+                "text": "Mark each target with a physical sigil. The first time a marked character would be reduced to 0 HP, it remains at 1 HP instead; the mark then disappears. An unused mark fades at the coming dawn. A character can bear only one mark from this ability."
+              },
+              {
+                "text": "This is a ritual spell costing 0 SP, usable once between safe overnight rests. Unused sigils expire at dawn; a creature may bear one sigil at a time."
+              }
+            ],
+            "notes": []
+          }
+        },
+        "referenceMarkdown": "**Action:** Ritual — 10 minutes · **Attribute:** None (no roll)\n\n**Target / range / shape:** Up to three willing characters.\n\nMark each target with a physical sigil. The first time a marked character would be reduced to 0 HP, it remains at 1 HP instead; the mark then disappears. An unused mark fades at the coming dawn. A character can bear only one mark from this ability.\n\n**Duration:** Until used or dawn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a ritual spell costing 0 SP, usable once between safe overnight rests. Unused sigils expire at dawn; a creature may bear one sigil at a time.",
+        "classId": "class-shepherd",
+        "lineId": "shepherd:mend",
+        "signatureComponent": true,
+        "kind": "ability",
+        "sp": 0,
+        "magic": "Spell",
+        "rulesMarkdown": "**Action:** Ritual — 10 minutes · **Attribute:** None (no roll)\n\n**Target / range / shape:** Up to three willing characters.\n\nMark each target with a physical sigil. The first time a marked character would be reduced to 0 HP, it remains at 1 HP instead; the mark then disappears. An unused mark fades at the coming dawn. A character can bear only one mark from this ability.\n\n**Duration:** Until used or dawn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a ritual spell costing 0 SP, usable once between safe overnight rests. Unused sigils expire at dawn; a creature may bear one sigil at a time."
       }
     }
   },

@@ -47,6 +47,7 @@ test("current compendium preserves elapsed time and treats each active ability a
   ["medicine:diagnosis:7", "main", "Main Action · 30 minutes"],
   ["influence:pressure:1", "main", "Main Action · One exchange"],
   ["ability-signature-intellect-test-the-hypothesis", "main", "Main Action · One minute"],
+  ["ability-signature-shepherd-a-hand-in-darkness", "ritual", "Ritual — 10 minutes"],
   ["ability-handle-an-item", "maneuver", "Maneuver"],
   ["ability-convert-an-action", "main", "Main Action / Maneuver"],
  ]) {
@@ -57,4 +58,7 @@ test("current compendium preserves elapsed time and treats each active ability a
  const fieldHospital = byId.get("medicine:diagnosis:7").system.activity;
  assert.equal(fieldHospital.rollMode, "attribute");
  assert.equal(fieldHospital.attribute, "knowledge");
+ const shepherdsCall = byId.get("ability-signature-shepherd-a-hand-in-darkness");
+ assert.equal(shepherdsCall.system.activity.rollMode, "none");
+ assert.equal(shepherdsCall.flags["heroes-of-legend"].workshopRecord.sp, 0);
 });

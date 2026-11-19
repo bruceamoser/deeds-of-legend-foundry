@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "repository": "https://github.com/bruceamoser/heroes-of-legend",
-  "commit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
-  "approval": "Supply dice, harvesting, lighting and ritual timing (#349). Current Player and DA rulebooks.",
+  "commit": "e5575a674821fe31387cf4bf622a2dea96dd0906",
+  "approval": "Timed abilities in the Player’s Book and DA Guide, including Wild Harvest and The Shepherd’s Call (#353).",
   "selection": "Current Forge pinned Markdown plus surviving nonretired native references, complete current player manuscript, shared rules and 29 spellbooks. Retired cards and disciplines excluded.",
   "records": [
     {
@@ -1335,7 +1335,7 @@
     },
     {
       "path": "design/cards/convert-an-action.md",
-      "sha256": "21c13aee25d29521cdce6f024164cb4ac26e9eac3d16fa1ac9abeee21781392e"
+      "sha256": "a1b5bc358c0b88d98a94b4a7274c5d3467240909460d281b048ad439e5c7a35d"
     },
     {
       "path": "design/cards/defend.md",
@@ -1351,7 +1351,7 @@
     },
     {
       "path": "design/cards/handle-an-item.md",
-      "sha256": "b929934142f8916a20a3c0cfa98f17573c5d50a347b7dd0787f9ca58a9b80aab"
+      "sha256": "67ab52c6d3392578f8c1095e616d8720c696ee4b0e534ce083cc3ae9ee66a86a"
     },
     {
       "path": "design/cards/move.md",
@@ -1471,7 +1471,7 @@
     },
     {
       "path": "design/cards/signature-intellect-test-the-hypothesis.md",
-      "sha256": "ecbfb6b6deb703da4744222aaf674a3b803a1dced5aa6311b5229008f7cf76d8"
+      "sha256": "424cf0d7d1c37bdb5ed67deddbc4600bd4fb659866309bc68c92d646e015cfa7"
     },
     {
       "path": "design/cards/signature-intellect-twofold-making.md",
@@ -1623,7 +1623,7 @@
     },
     {
       "path": "design/cards/signature-shepherd-a-hand-in-darkness.md",
-      "sha256": "dbd8910a77f5ad3f91d1b7fac352e0d01b82b889bf6d389b883d8e0aa27128aa"
+      "sha256": "54f1e65594ce7d013ccd3a2ccaf3c10765a2047efb40c6d69ea81999153c4d4f"
     },
     {
       "path": "design/cards/signature-shepherd-borrowed-shape.md",
@@ -1759,11 +1759,11 @@
     },
     {
       "path": "design/characters/lira-ashbow.md",
-      "sha256": "287a0ec10b0255ca04c0ae9b5394ec2bd5818852c63e02279fee0ce391defb92"
+      "sha256": "ab00e8fe0c5eeedb6e968d1058ec464acb7861151ff8e567c7115fe51fab0c2f"
     },
     {
       "path": "design/characters/mara-reedheart.md",
-      "sha256": "9f6a02a5fc86de9e5b5c259270b4407f7beab10ae4420a684db50799b2f35786"
+      "sha256": "2bebb40142d609b8dad340ea54f413b486eed4830c3f4de8d48aac2b9b5299bc"
     },
     {
       "path": "design/characters/oren-brass.md",
@@ -1823,7 +1823,7 @@
     },
     {
       "path": "design/da-book/manuscript/02-running-the-game.md",
-      "sha256": "b910f08cd3ea320691f3a6c2421e93c0d10b7b50762f6f3983a0928ae2b8e06d"
+      "sha256": "45699ebe96745d89eaf5d2914e1c30e07997a15dfad761ce4053b19ffef11a53"
     },
     {
       "path": "design/da-book/manuscript/03-building-adventures.md",
@@ -1851,7 +1851,7 @@
     },
     {
       "path": "design/da-book/manuscript/07-treasure-and-rewards.md",
-      "sha256": "4db3edb0995f2b347b9c37bf2c26c163a2a127d445240f3d2d5715bb6faf0867"
+      "sha256": "e8fa115a9c263feb342554c941e7aa1d57243113723dd98f710eba6b4cc8a35c"
     },
     {
       "path": "design/da-book/manuscript/08-campaigns-and-consequences.md",
@@ -1903,7 +1903,7 @@
     },
     {
       "path": "design/disciplines/craft.md",
-      "sha256": "674e90e83c46286c2a47138b8bb7af59d84c6a427365bd31f09b852fb10cfecf"
+      "sha256": "fbeb510d2be16fbf8d5c818c1cc3c4ee1fe3e2f7184e7ddb18361f4597d710a8"
     },
     {
       "path": "design/disciplines/divination.md",
@@ -1927,7 +1927,7 @@
     },
     {
       "path": "design/disciplines/influence.md",
-      "sha256": "8c298589c0a006ec6235235a3c43bbabe1ef47e7d7f9851e5198bd6a22273073"
+      "sha256": "3ee804a825a86bd35967f390c7bd7ad0e1ed9558e333e3a56236768b577b7061"
     },
     {
       "path": "design/disciplines/invocation.md",
@@ -1939,11 +1939,11 @@
     },
     {
       "path": "design/disciplines/marksmanship.md",
-      "sha256": "2a42df18992d7437e637d4fb1eedde93db6a4e66f3b857f95384f99503974cc1"
+      "sha256": "e9953de8f4b309518f1a34127557f398669b7f170b163f003ed1d75e20b8bec7"
     },
     {
       "path": "design/disciplines/medicine.md",
-      "sha256": "da1c5fb5b8d4a0b0787923282dcedf7ae00b879afdbd6083ebea3150e5d14802"
+      "sha256": "282b1a78e3334aa62d36a6e465603c17619e48e372b458e26ad16bd13083dac9"
     },
     {
       "path": "design/disciplines/mentalism.md",
@@ -1951,7 +1951,7 @@
     },
     {
       "path": "design/disciplines/scholarship.md",
-      "sha256": "6307ccfec7319cd80e4a6d23cccf2d77042ab96301c54faff5d0b86ede271b45"
+      "sha256": "275e42a3d5849e9717a75464e686dd84479ff9bc981786702d780f04125e1a40"
     },
     {
       "path": "design/disciplines/spellcraft.md",
@@ -1959,7 +1959,7 @@
     },
     {
       "path": "design/disciplines/subterfuge.md",
-      "sha256": "47bbcb5832c7436d82c80e29fb28a3d97679baff4ddf89a05d37948b9d69aff9"
+      "sha256": "6d59f4fd7af31a23809d4359ddcaddc501b1512cc93e0546f6a8297a934ac827"
     },
     {
       "path": "design/disciplines/tactics.md",
@@ -1971,7 +1971,7 @@
     },
     {
       "path": "design/disciplines/wilderness.md",
-      "sha256": "e1d569d6bf7c8fbdeb1cca6071358e3f7b7f1d682d1ca17c9d30fb92668aae89"
+      "sha256": "f9a97f86547979eb4647cb2f8673de91ad1135482b7c7151a10f1b3b01f679b7"
     },
     {
       "path": "design/equipment/ammunition-bundle.md",
@@ -2895,7 +2895,7 @@
     },
     {
       "path": "design/player-book/manuscript/06-playing.md",
-      "sha256": "3fbf95656fb57bcc84e54050f2ba9913b70af9ead96b57544187d24f8a315e73"
+      "sha256": "5cfc04334da9f3a2cf147bfcf2421c3fdcc3cf2d41068f253e987d8da5d9f5bc"
     },
     {
       "path": "design/player-book/manuscript/07-adventure.md",
@@ -2995,7 +2995,7 @@
     },
     {
       "path": "design/rules/foundations.md",
-      "sha256": "010a53651c29d725952af98988ba5f41a8dbcbe7246c91a5ff0ed7dbadb1da74"
+      "sha256": "42de0a54ff3ae002923cc0db74b220f3f1f3c89a84b551deea00c8b46b74b091"
     },
     {
       "path": "design/rules/languages.md",

@@ -176,7 +176,7 @@
         "classId": "class-intellect",
         "level": 7,
         "lineId": "intellect:spot-the-leverage",
-        "rulesMarkdown": "**Action:** One minute · **Attribute:** None (no roll)\n\n**Time:** One minute.\n\n**Target / range / shape:** Self and up to three allies who can hear and understand you.\n\nSpend one minute forming a plan from the evidence and observations available. State the plan. The DA confirms what is true, what remains uncertain, and one contradiction or risk. You and each chosen ally gain 2 Boons to your next roll that directly follows the plan.\n\n**Duration:** The plan and its stated limits remain known; each Boon expires when used or at the end of the scene.\n\n**Equipment / acquisition:** None.\n\nKeep one plan at a time. A new plan replaces the previous plan and its unused Boons.\n\n**Frequency:** Once per scene."
+        "rulesMarkdown": "**Action:** Main Action · One minute · **Attribute:** None (no roll)\n\n**Time:** One minute.\n\n**Target / range / shape:** Self and up to three allies who can hear and understand you.\n\nSpend one minute forming a plan from the evidence and observations available. State the plan. The DA confirms what is true, what remains uncertain, and one contradiction or risk. You and each chosen ally gain 2 Boons to your next roll that directly follows the plan.\n\n**Duration:** The plan and its stated limits remain known; each Boon expires when used or at the end of the scene.\n\n**Equipment / acquisition:** None.\n\nKeep one plan at a time. A new plan replaces the previous plan and its unused Boons.\n\n**Frequency:** Once per scene."
       },
       {
         "id": "ability-signature-intellect-make-it-last",
@@ -536,7 +536,7 @@
         "classId": "class-shepherd",
         "level": 7,
         "lineId": "shepherd:mend",
-        "rulesMarkdown": "**Action:** 10 minutes · **Attribute:** None (no roll)\n\n**Target / range / shape:** Up to three willing characters.\n\nMark each target with a physical sigil. The first time a marked character would be reduced to 0 HP, it remains at 1 HP instead; the mark then disappears. An unused mark fades at the coming dawn. A character can bear only one mark from this ability.\n\n**Duration:** Until used or dawn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a ritual spell costing 0 SP, usable once between safe overnight rests. Unused sigils expire at dawn; a creature may bear one sigil at a time."
+        "rulesMarkdown": "**Action:** Ritual — 10 minutes · **Attribute:** None (no roll)\n\n**Target / range / shape:** Up to three willing characters.\n\nMark each target with a physical sigil. The first time a marked character would be reduced to 0 HP, it remains at 1 HP instead; the mark then disappears. An unused mark fades at the coming dawn. A character can bear only one mark from this ability.\n\n**Duration:** Until used or dawn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a ritual spell costing 0 SP, usable once between safe overnight rests. Unused sigils expire at dawn; a creature may bear one sigil at a time."
       },
       {
         "id": "ability-signature-shepherd-ease-the-burden",
@@ -5075,7 +5075,7 @@
       }
     }
   },
-  "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
+  "sourceCommit": "e5575a674821fe31387cf4bf622a2dea96dd0906",
   "disciplines": [
     {
       "id": "arms",
@@ -8852,7 +8852,7 @@
       "name": "Hunt at the Crossroads",
       "dp": 5,
       "level": 7,
-      "effect": "10 minutes. Prepare an ambush along a trail you have followed, at a site you have surveyed by actually examining its routes and sight lines. Choose up to four willing allies and a visible trigger line up to 6 squares long. Once before your next safe overnight rest, when a tracked enemy crosses the line, you and each chosen ally may spend an available Reaction to make one known basic attack against it if in range. These attacks gain 1 Boon and +2 damage. Preparation ends if you leave the site. Resolve awareness and initiative normally; preparation grants no additional surprise turn.",
+      "effect": "Main Action · 10 minutes. Prepare an ambush along a trail you have followed, at a site you have surveyed by actually examining its routes and sight lines. Choose up to four willing allies and a visible trigger line up to 6 squares long. Once before your next safe overnight rest, when a tracked enemy crosses the line, you and each chosen ally may spend an available Reaction to make one known basic attack against it if in range. These attacks gain 1 Boon and +2 damage. Preparation ends if you leave the site. Resolve awareness and initiative normally; preparation grants no additional surprise turn.",
       "kind": "mastery",
       "disciplineId": "marksmanship",
       "pathId": "marksmanship:readiness",
@@ -9686,7 +9686,7 @@
       "name": "Read the Killing Ground",
       "dp": 5,
       "level": 7,
-      "effect": "10 minutes · Reason. Survey a visible area up to 6 squares across; add 3/5/7 progress to identify accessible nonmagical traps, triggers and a safe route. Completion reveals supported findings and inaccessible gaps. Companions following your exact unchanged route avoid triggering its identified traps. Reaction: when a companion within 6 squares starts to leave that route toward an identified trigger, warn it before the step; if it perceives you, it may cancel that step and choose another legal step using the same movement. Once per misstep; no extra movement.",
+      "effect": "Main Action · 10 minutes · Reason. Survey a visible area up to 6 squares across; add 3/5/7 progress to identify accessible nonmagical traps, triggers and a safe route. Completion reveals supported findings and inaccessible gaps. Companions following your exact unchanged route avoid triggering its identified traps. Reaction: when a companion within 6 squares starts to leave that route toward an identified trigger, warn it before the step; if it perceives you, it may cancel that step and choose another legal step using the same movement. Once per misstep; no extra movement.",
       "kind": "mastery",
       "disciplineId": "subterfuge",
       "pathId": "subterfuge:traps",
@@ -9788,7 +9788,7 @@
       "name": "The Hidden Road",
       "dp": 5,
       "level": 7,
-      "effect": "1 hour · Agility, with rope and concealment materials. Establish a concealed route up to 20 squares long across terrain you can physically traverse; add 3/5/7 progress toward the DA’s route objective. On completion, up to six companions following your instructions can traverse it at normal movement cost with 2 Boons to remain unnoticed. It creates no unsupported bridge. Discovery or damage ends these benefits until the route is repaired and concealed again.",
+      "effect": "Main Action · 1 hour · Agility, with rope and concealment materials. Establish a concealed route up to 20 squares long across terrain you can physically traverse; add 3/5/7 progress toward the DA’s route objective. On completion, up to six companions following your instructions can traverse it at normal movement cost with 2 Boons to remain unnoticed. It creates no unsupported bridge. Discovery or damage ends these benefits until the route is repaired and concealed again.",
       "kind": "mastery",
       "disciplineId": "subterfuge",
       "pathId": "subterfuge:stealth",
@@ -10117,7 +10117,7 @@
       "name": "Wild Harvest I",
       "dp": 1,
       "level": 1,
-      "effect": "1 hour · Knowledge. Search an accessible area for food or drinkable water. The DA defines the area and confirms a plausible source before you roll. Raise one Food Bundle or Water Flask of the chosen type by 1/2/3 supply die steps, maximum d8. An empty supply starts at d4 on the first step. You can also spend 1 hour with available materials to shelter two people from ordinary rain and wind, without a roll.",
+      "effect": "Main Action · 1 hour · Knowledge. Search an accessible area for food or drinkable water. The DA defines the area and confirms a plausible source before you roll. Raise one Food Bundle or Water Flask of the chosen type by 1/2/3 supply die steps, maximum d8. An empty supply starts at d4 on the first step. You can also spend 1 hour with available materials to shelter two people from ordinary rain and wind, without a roll.",
       "kind": "technique",
       "disciplineId": "wilderness",
       "pathId": "wilderness:provisioning",
@@ -10161,7 +10161,7 @@
       "name": "A Camp without a Trace I",
       "dp": 3,
       "level": 3,
-      "effect": "30 minutes · Guile. Conceal a completed camp and its approach; add 1/2/3 progress to the DA’s concealment objective. Completion hides casual signs; direct search remains possible. You can also search water-bearing terrain for 1 hour, rolling Reason for 1/2/3 progress toward finding a concealed spring; completion reveals its location and visible hazards, not purification.",
+      "effect": "Main Action · 30 minutes · Guile. Conceal a completed camp and its approach; add 1/2/3 progress to the DA’s concealment objective. Completion hides casual signs; direct search remains possible. You can also search water-bearing terrain for 1 hour, rolling Reason for 1/2/3 progress toward finding a concealed spring; completion reveals its location and visible hazards, not purification.",
       "kind": "technique",
       "disciplineId": "wilderness",
       "pathId": "wilderness:provisioning",
@@ -10205,7 +10205,7 @@
       "name": "Shelter against the Siege",
       "dp": 5,
       "level": 7,
-      "effect": "1 hour, with tools and enough sound structural and concealment materials. Build a concealed fortified shelter for up to eight people on stable ground. No roll. Occupants behind its walls gain 2 Boons on defense against attacks from outside; each door or wall section has 15 HP and physical resistance 2. Open doors provide no protection. The shelter does not automatically make overnight rest safe; ordinary object damage rules apply.",
+      "effect": "Main Action · 1 hour, with tools and enough sound structural and concealment materials. Build a concealed fortified shelter for up to eight people on stable ground. No roll. Occupants behind its walls gain 2 Boons on defense against attacks from outside; each door or wall section has 15 HP and physical resistance 2. Open doors provide no protection. The shelter does not automatically make overnight rest safe; ordinary object damage rules apply.",
       "kind": "mastery",
       "disciplineId": "wilderness",
       "pathId": "wilderness:provisioning",
@@ -10534,7 +10534,7 @@
       "name": "Read the Symptoms I",
       "dp": 1,
       "level": 1,
-      "effect": "10 minutes · Knowledge. Examine a patient with observable symptoms or a sample; add 1/2/3 progress toward identifying a nonmagical disease or toxin and a plausible remedy.",
+      "effect": "Main Action · 10 minutes · Knowledge. Examine a patient with observable symptoms or a sample; add 1/2/3 progress toward identifying a nonmagical disease or toxin and a plausible remedy.",
       "kind": "technique",
       "disciplineId": "medicine",
       "pathId": "medicine:diagnosis",
@@ -10578,7 +10578,7 @@
       "name": "Prepare the Remedy I",
       "dp": 3,
       "level": 3,
-      "effect": "1 hour · Knowledge, with ingredients appropriate to a diagnosed toxin. Prepare one dose by adding 1/2/3 progress to the DA’s preparation objective. Administer the completed dose as a Main Action to reduce that toxin’s Poisoned by 2. Consume it on use. Other disease effects require their stated remedy.",
+      "effect": "Main Action · 1 hour · Knowledge, with ingredients appropriate to a diagnosed toxin. Prepare one dose by adding 1/2/3 progress to the DA’s preparation objective. Administer the completed dose as a Main Action to reduce that toxin’s Poisoned by 2. Consume it on use. Other disease effects require their stated remedy.",
       "kind": "technique",
       "disciplineId": "medicine",
       "pathId": "medicine:diagnosis",
@@ -10622,7 +10622,7 @@
       "name": "The Field Hospital",
       "dp": 5,
       "level": 7,
-      "effect": "30 minutes, with medical supplies and a safe prepared shelter. Treat up to six patients, using each available first-aid attempt. Roll Knowledge once; each restores 5/8/11 HP and reduces temporary Bleeding or Poisoned by 2, choosing separately per patient. A patient with a spent allowance receives condition care only. Supplies must cover all patients. This creates no extra first-aid allowance, SP recovery or overnight rest.",
+      "effect": "Main Action · 30 minutes, with medical supplies and a safe prepared shelter. Treat up to six patients, using each available first-aid attempt. Roll Knowledge once; each restores 5/8/11 HP and reduces temporary Bleeding or Poisoned by 2, choosing separately per patient. A patient with a spent allowance receives condition care only. Supplies must cover all patients. This creates no extra first-aid allowance, SP recovery or overnight rest.",
       "kind": "mastery",
       "disciplineId": "medicine",
       "pathId": "medicine:diagnosis",
@@ -10747,7 +10747,7 @@
       "name": "Smoke in a Bottle I",
       "dp": 1,
       "level": 1,
-      "effect": "1 hour · Knowledge, with alchemical tools and one purchased batch of smoke ingredients. Add 1/2/3 progress toward target 3 to prepare one smoke flask. Maneuver: throw a prepared flask to a visible point within 4 squares, consuming it. Smoke fills a 1-square-radius area until your next turn ends and blocks sight through it. No throwing roll.",
+      "effect": "Main Action · 1 hour · Knowledge, with alchemical tools and one purchased batch of smoke ingredients. Add 1/2/3 progress toward target 3 to prepare one smoke flask. Maneuver: throw a prepared flask to a visible point within 4 squares, consuming it. Smoke fills a 1-square-radius area until your next turn ends and blocks sight through it. No throwing roll.",
       "kind": "technique",
       "disciplineId": "craft",
       "pathId": "craft:mixtures",
@@ -10995,7 +10995,7 @@
       "name": "A Roof before Nightfall I",
       "dp": 3,
       "level": 3,
-      "effect": "1 hour, with tools and sound materials on stable ground. Build a weatherproof shelter for six people without a roll. It resists ordinary weather, not attacks or extreme hazards. You can also improvise a simple hook, wedge, lever or similar tool from suitable salvage: 10 minutes and Knowledge for 1/2/3 progress toward target 3. It lasts one task and cannot be a weapon, armor, consumable ingredient or valuable.",
+      "effect": "Main Action · 1 hour, with tools and sound materials on stable ground. Build a weatherproof shelter for six people without a roll. It resists ordinary weather, not attacks or extreme hazards. You can also improvise a simple hook, wedge, lever or similar tool from suitable salvage: 10 minutes and Knowledge for 1/2/3 progress toward target 3. It lasts one task and cannot be a weapon, armor, consumable ingredient or valuable.",
       "kind": "technique",
       "disciplineId": "craft",
       "pathId": "craft:workshop",
@@ -11039,7 +11039,7 @@
       "name": "A City Opens Its Gates",
       "dp": 5,
       "level": 7,
-      "effect": "1 day · Reason. Present a feasible civic project to representatives of up to four willing factions you can communicate with. Show how it would work with a plan, model or demonstration. Roll once; add 4/7/10 progress to each faction’s separate agreement objective. Completion secures the commitments established by the DA, such as access, labor or a ceasefire. New terms need a new objective; this creates neither resources nor control over a settlement.",
+      "effect": "Main Action · 1 day · Reason. Present a feasible civic project to representatives of up to four willing factions you can communicate with. Show how it would work with a plan, model or demonstration. Roll once; add 4/7/10 progress to each faction’s separate agreement objective. Completion secures the commitments established by the DA, such as access, labor or a ceasefire. New terms need a new objective; this creates neither resources nor control over a settlement.",
       "kind": "mastery",
       "disciplineId": "craft",
       "pathId": "craft:workshop",
@@ -11150,7 +11150,7 @@
       "name": "The Truth before the Council",
       "dp": 5,
       "level": 7,
-      "effect": "10 minutes · Reason. Present your findings and their supporting evidence to up to four decision-makers who understand you. Use testimony, records, exhibits or an explanation of what you found. Roll once; add 3/5/7 progress to each relevant acceptance objective. On completion a listener acknowledges the supported facts and grants the attainable concession established with the DA. Unsupported claims and inaccessible facts remain unproven.",
+      "effect": "Main Action · 10 minutes · Reason. Present your findings and their supporting evidence to up to four decision-makers who understand you. Use testimony, records, exhibits or an explanation of what you found. Roll once; add 3/5/7 progress to each relevant acceptance objective. On completion a listener acknowledges the supported facts and grants the attainable concession established with the DA. Unsupported claims and inaccessible facts remain unproven.",
       "kind": "mastery",
       "disciplineId": "scholarship",
       "pathId": "scholarship:investigation",
@@ -11368,7 +11368,7 @@
       "name": "Patient Translation I",
       "dp": 1,
       "level": 1,
-      "effect": "10 minutes · Knowledge, with a glossary or parallel text. Add 1/2/3 progress toward translating one short passage in an unfamiliar nonmagical language. A reference is required; ciphers need a separate objective.",
+      "effect": "Main Action · 10 minutes · Knowledge, with a glossary or parallel text. Add 1/2/3 progress toward translating one short passage in an unfamiliar nonmagical language. A reference is required; ciphers need a separate objective.",
       "kind": "technique",
       "disciplineId": "scholarship",
       "pathId": "scholarship:languages",
@@ -11412,7 +11412,7 @@
       "name": "Bridge of Words I",
       "dp": 3,
       "level": 3,
-      "effect": "10 minutes with a willing speaker and usable shared signs or reference text. Establish simple communication about directions, quantities and immediate needs for this conversation, without a roll. Abstract bargains and hidden meanings still require translation.",
+      "effect": "Main Action · 10 minutes with a willing speaker and usable shared signs or reference text. Establish simple communication about directions, quantities and immediate needs for this conversation, without a roll. Abstract bargains and hidden meanings still require translation.",
       "kind": "technique",
       "disciplineId": "scholarship",
       "pathId": "scholarship:languages",
@@ -11456,7 +11456,7 @@
       "name": "The Lost Lexicon",
       "dp": 5,
       "level": 7,
-      "effect": "1 hour · Knowledge, with at least three substantial texts or a text and a willing fluent speaker. Add 3/5/7 progress toward reconstructing an unfamiliar nonmagical writing system. On completion create a working glossary that serves as a reference for Patient Translation for anyone who can read your notes. Missing vocabulary, ciphers and magical meanings remain separate questions; the glossary does not grant fluent speech.",
+      "effect": "Main Action · 1 hour · Knowledge, with at least three substantial texts or a text and a willing fluent speaker. Add 3/5/7 progress toward reconstructing an unfamiliar nonmagical writing system. On completion create a working glossary that serves as a reference for Patient Translation for anyone who can read your notes. Missing vocabulary, ciphers and magical meanings remain separate questions; the glossary does not grant fluent speech.",
       "kind": "mastery",
       "disciplineId": "scholarship",
       "pathId": "scholarship:languages",
@@ -11567,7 +11567,7 @@
       "name": "A Treaty in Common Words",
       "dp": 5,
       "level": 7,
-      "effect": "30 minutes · Reason. With willing representatives of up to three sides and a working language, interpreter or shared reference text, formulate one concrete agreement. Roll once; add 3/5/7 progress to each side’s acceptance objective. On completion the DA states that side’s commitments and known reservations plainly. A shared reference permits simple terms; complex terms need adequate translation. No side accepts impossible terms, and the agreement is not magical enforcement.",
+      "effect": "Main Action · 30 minutes · Reason. With willing representatives of up to three sides and a working language, interpreter or shared reference text, formulate one concrete agreement. Roll once; add 3/5/7 progress to each side’s acceptance objective. On completion the DA states that side’s commitments and known reservations plainly. A shared reference permits simple terms; complex terms need adequate translation. No side accepts impossible terms, and the agreement is not magical enforcement.",
       "kind": "mastery",
       "disciplineId": "influence",
       "pathId": "influence:negotiation",
@@ -11785,7 +11785,7 @@
       "name": "Draw the Line I",
       "dp": 1,
       "level": 1,
-      "effect": "One exchange · Brawn. State a credible immediate consequence you can carry out to a listener who perceives and understands the threat; add 1/2/3 progress toward a limited concession established by the DA.",
+      "effect": "Main Action · One exchange · Brawn. State a credible immediate consequence you can carry out to a listener who perceives and understands the threat; add 1/2/3 progress toward a limited concession established by the DA.",
       "kind": "technique",
       "disciplineId": "influence",
       "pathId": "influence:pressure",
@@ -25355,13 +25355,13 @@
       "name": "Test the Hypothesis",
       "level": 7,
       "dp": null,
-      "action": "One minute",
+      "action": "Main Action · One minute",
       "attribute": "None (no roll)",
       "target": "Self and up to three allies who can hear and understand you.",
       "duration": "The plan and its stated limits remain known; each Boon expires when used or at the end of the scene.",
       "equipment": "None.",
       "limits": "One signature choice at each of levels 1, 3 and 7.",
-      "effect": "**Action:** One minute · **Attribute:** None (no roll)\n\n**Time:** One minute.\n\n**Target / range / shape:** Self and up to three allies who can hear and understand you.\n\nSpend one minute forming a plan from the evidence and observations available. State the plan. The DA confirms what is true, what remains uncertain, and one contradiction or risk. You and each chosen ally gain 2 Boons to your next roll that directly follows the plan.\n\n**Duration:** The plan and its stated limits remain known; each Boon expires when used or at the end of the scene.\n\n**Equipment / acquisition:** None.\n\nKeep one plan at a time. A new plan replaces the previous plan and its unused Boons.\n\n**Frequency:** Once per scene.",
+      "effect": "**Action:** Main Action · One minute · **Attribute:** None (no roll)\n\n**Time:** One minute.\n\n**Target / range / shape:** Self and up to three allies who can hear and understand you.\n\nSpend one minute forming a plan from the evidence and observations available. State the plan. The DA confirms what is true, what remains uncertain, and one contradiction or risk. You and each chosen ally gain 2 Boons to your next roll that directly follows the plan.\n\n**Duration:** The plan and its stated limits remain known; each Boon expires when used or at the end of the scene.\n\n**Equipment / acquisition:** None.\n\nKeep one plan at a time. A new plan replaces the previous plan and its unused Boons.\n\n**Frequency:** Once per scene.",
       "reference": {
         "flavor": [
           "You recognize the useful detail and show your companions how to act on it."
@@ -25370,7 +25370,7 @@
           "details": [
             {
               "label": "Action",
-              "value": "One minute"
+              "value": "Main Action · One minute"
             },
             {
               "label": "Attribute",
@@ -25408,12 +25408,12 @@
           "notes": []
         }
       },
-      "referenceMarkdown": "**Action:** One minute · **Attribute:** None (no roll)\n\n**Time:** One minute.\n\n**Target / range / shape:** Self and up to three allies who can hear and understand you.\n\nSpend one minute forming a plan from the evidence and observations available. State the plan. The DA confirms what is true, what remains uncertain, and one contradiction or risk. You and each chosen ally gain 2 Boons to your next roll that directly follows the plan.\n\n**Duration:** The plan and its stated limits remain known; each Boon expires when used or at the end of the scene.\n\n**Equipment / acquisition:** None.\n\nKeep one plan at a time. A new plan replaces the previous plan and its unused Boons.\n\n**Frequency:** Once per scene.",
+      "referenceMarkdown": "**Action:** Main Action · One minute · **Attribute:** None (no roll)\n\n**Time:** One minute.\n\n**Target / range / shape:** Self and up to three allies who can hear and understand you.\n\nSpend one minute forming a plan from the evidence and observations available. State the plan. The DA confirms what is true, what remains uncertain, and one contradiction or risk. You and each chosen ally gain 2 Boons to your next roll that directly follows the plan.\n\n**Duration:** The plan and its stated limits remain known; each Boon expires when used or at the end of the scene.\n\n**Equipment / acquisition:** None.\n\nKeep one plan at a time. A new plan replaces the previous plan and its unused Boons.\n\n**Frequency:** Once per scene.",
       "classId": "class-intellect",
       "lineId": "intellect:spot-the-leverage",
       "signatureComponent": true,
       "kind": "ability",
-      "rulesMarkdown": "**Action:** One minute · **Attribute:** None (no roll)\n\n**Time:** One minute.\n\n**Target / range / shape:** Self and up to three allies who can hear and understand you.\n\nSpend one minute forming a plan from the evidence and observations available. State the plan. The DA confirms what is true, what remains uncertain, and one contradiction or risk. You and each chosen ally gain 2 Boons to your next roll that directly follows the plan.\n\n**Duration:** The plan and its stated limits remain known; each Boon expires when used or at the end of the scene.\n\n**Equipment / acquisition:** None.\n\nKeep one plan at a time. A new plan replaces the previous plan and its unused Boons.\n\n**Frequency:** Once per scene."
+      "rulesMarkdown": "**Action:** Main Action · One minute · **Attribute:** None (no roll)\n\n**Time:** One minute.\n\n**Target / range / shape:** Self and up to three allies who can hear and understand you.\n\nSpend one minute forming a plan from the evidence and observations available. State the plan. The DA confirms what is true, what remains uncertain, and one contradiction or risk. You and each chosen ally gain 2 Boons to your next roll that directly follows the plan.\n\n**Duration:** The plan and its stated limits remain known; each Boon expires when used or at the end of the scene.\n\n**Equipment / acquisition:** None.\n\nKeep one plan at a time. A new plan replaces the previous plan and its unused Boons.\n\n**Frequency:** Once per scene."
     },
     {
       "id": "ability-signature-intellect-masterwork-bond",
@@ -28135,13 +28135,13 @@
       "name": "The Shepherd's Call",
       "level": 7,
       "dp": null,
-      "action": "10 minutes",
+      "action": "Ritual — 10 minutes",
       "attribute": "None (no roll)",
       "target": "Up to three willing characters.",
       "duration": "Until used or dawn.",
       "equipment": "A free hand for casting.",
       "limits": "One signature choice at each of levels 1, 3 and 7.",
-      "effect": "**Action:** 10 minutes · **Attribute:** None (no roll)\n\n**Target / range / shape:** Up to three willing characters.\n\nMark each target with a physical sigil. The first time a marked character would be reduced to 0 HP, it remains at 1 HP instead; the mark then disappears. An unused mark fades at the coming dawn. A character can bear only one mark from this ability.\n\n**Duration:** Until used or dawn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a ritual spell costing 0 SP, usable once between safe overnight rests. Unused sigils expire at dawn; a creature may bear one sigil at a time.",
+      "effect": "**Action:** Ritual — 10 minutes · **Attribute:** None (no roll)\n\n**Target / range / shape:** Up to three willing characters.\n\nMark each target with a physical sigil. The first time a marked character would be reduced to 0 HP, it remains at 1 HP instead; the mark then disappears. An unused mark fades at the coming dawn. A character can bear only one mark from this ability.\n\n**Duration:** Until used or dawn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a ritual spell costing 0 SP, usable once between safe overnight rests. Unused sigils expire at dawn; a creature may bear one sigil at a time.",
       "reference": {
         "flavor": [
           "You call living strength back into those who need it."
@@ -28150,7 +28150,7 @@
           "details": [
             {
               "label": "Action",
-              "value": "10 minutes"
+              "value": "Ritual — 10 minutes"
             },
             {
               "label": "Attribute",
@@ -28159,6 +28159,14 @@
             {
               "label": "Target / range / shape",
               "value": "Up to three willing characters."
+            },
+            {
+              "label": "Magic",
+              "value": "Spell"
+            },
+            {
+              "label": "SP",
+              "value": "0"
             },
             {
               "label": "Duration",
@@ -28180,12 +28188,14 @@
           "notes": []
         }
       },
-      "referenceMarkdown": "**Action:** 10 minutes · **Attribute:** None (no roll)\n\n**Target / range / shape:** Up to three willing characters.\n\nMark each target with a physical sigil. The first time a marked character would be reduced to 0 HP, it remains at 1 HP instead; the mark then disappears. An unused mark fades at the coming dawn. A character can bear only one mark from this ability.\n\n**Duration:** Until used or dawn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a ritual spell costing 0 SP, usable once between safe overnight rests. Unused sigils expire at dawn; a creature may bear one sigil at a time.",
+      "referenceMarkdown": "**Action:** Ritual — 10 minutes · **Attribute:** None (no roll)\n\n**Target / range / shape:** Up to three willing characters.\n\nMark each target with a physical sigil. The first time a marked character would be reduced to 0 HP, it remains at 1 HP instead; the mark then disappears. An unused mark fades at the coming dawn. A character can bear only one mark from this ability.\n\n**Duration:** Until used or dawn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a ritual spell costing 0 SP, usable once between safe overnight rests. Unused sigils expire at dawn; a creature may bear one sigil at a time.",
       "classId": "class-shepherd",
       "lineId": "shepherd:mend",
       "signatureComponent": true,
       "kind": "ability",
-      "rulesMarkdown": "**Action:** 10 minutes · **Attribute:** None (no roll)\n\n**Target / range / shape:** Up to three willing characters.\n\nMark each target with a physical sigil. The first time a marked character would be reduced to 0 HP, it remains at 1 HP instead; the mark then disappears. An unused mark fades at the coming dawn. A character can bear only one mark from this ability.\n\n**Duration:** Until used or dawn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a ritual spell costing 0 SP, usable once between safe overnight rests. Unused sigils expire at dawn; a creature may bear one sigil at a time."
+      "sp": 0,
+      "magic": "Spell",
+      "rulesMarkdown": "**Action:** Ritual — 10 minutes · **Attribute:** None (no roll)\n\n**Target / range / shape:** Up to three willing characters.\n\nMark each target with a physical sigil. The first time a marked character would be reduced to 0 HP, it remains at 1 HP instead; the mark then disappears. An unused mark fades at the coming dawn. A character can bear only one mark from this ability.\n\n**Duration:** Until used or dawn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a ritual spell costing 0 SP, usable once between safe overnight rests. Unused sigils expire at dawn; a creature may bear one sigil at a time."
     },
     {
       "id": "ability-signature-shepherd-restore-composure",
@@ -30503,13 +30513,13 @@
       "name": "Convert an Action",
       "level": 0,
       "dp": null,
-      "action": "Action conversion",
+      "action": "Main Action / Maneuver",
       "attribute": "None — no roll",
       "target": "Self",
       "duration": "Instant",
       "equipment": "None.",
       "limits": "Repeatable; pay the action and any stated costs each use.",
-      "effect": "**Action:** Action conversion · **Attribute:** None — no roll\n\n**Target / range / shape:** Self\n\nSpend Main Action to gain a Maneuver; spend a Maneuver to gain another movement allowance. One-way conversion only. Converting both gives a full sprint.\n\n**Duration:** Instant\n\n**Equipment / acquisition:** None.",
+      "effect": "**Action:** Main Action / Maneuver · **Attribute:** None — no roll\n\n**Target / range / shape:** Self\n\nSpend Main Action to gain a Maneuver; spend a Maneuver to gain another movement allowance. One-way conversion only. Converting both gives a full sprint.\n\n**Duration:** Instant\n\n**Equipment / acquisition:** None.",
       "reference": {
         "flavor": [
           "Spend Main Action to gain a Maneuver. Spend a Maneuver to gain another movement allowance. One-way conversion only. Converting both gives a full sprint."
@@ -30518,7 +30528,7 @@
           "details": [
             {
               "label": "Action",
-              "value": "Action conversion"
+              "value": "Main Action / Maneuver"
             },
             {
               "label": "Attribute",
@@ -30553,7 +30563,7 @@
           "notes": []
         }
       },
-      "referenceMarkdown": "# Convert an Action\n\n*Spend Main Action to gain a Maneuver. Spend a Maneuver to gain another movement allowance. One-way conversion only. Converting both gives a full sprint.*\n\n## Rules\n\n**Action:** Action conversion · **Attribute:** None — no roll\n\n**Target / range / shape:** Self\n\nSpend Main Action to gain a Maneuver; spend a Maneuver to gain another movement allowance. One-way conversion only. Converting both gives a full sprint.\n\n**Duration:** Instant\n\n**Equipment / acquisition:** None.\n\n---\n\n**Tier / minimum level:** Universal · **DP:** Not purchased · **Requirements to learn:** None\n\n**Type:** Universal\n\n**Limits:** Repeatable; pay the action and any stated costs each use.\n\n**ID:** convert-an-action\n\n[Card conventions](../card-conventions.md) · [Catalog](../catalog.md)\n"
+      "referenceMarkdown": "# Convert an Action\n\n*Spend Main Action to gain a Maneuver. Spend a Maneuver to gain another movement allowance. One-way conversion only. Converting both gives a full sprint.*\n\n## Rules\n\n**Action:** Main Action / Maneuver · **Attribute:** None — no roll\n\n**Target / range / shape:** Self\n\nSpend Main Action to gain a Maneuver; spend a Maneuver to gain another movement allowance. One-way conversion only. Converting both gives a full sprint.\n\n**Duration:** Instant\n\n**Equipment / acquisition:** None.\n\n---\n\n**Tier / minimum level:** Universal · **DP:** Not purchased · **Requirements to learn:** None\n\n**Type:** Universal\n\n**Limits:** Repeatable; pay the action and any stated costs each use.\n\n**ID:** convert-an-action\n\n[Card conventions](../card-conventions.md) · [Catalog](../catalog.md)\n"
     },
     {
       "id": "ability-basic-throw",
@@ -30747,13 +30757,13 @@
       "name": "Handle an Item",
       "level": 0,
       "dp": null,
-      "action": "Varies",
+      "action": "Maneuver",
       "attribute": "None — no roll",
       "target": "An accessible item",
       "duration": "Instant",
       "equipment": "None.",
       "limits": "Repeatable; pay the action and any stated costs each use.",
-      "effect": "**Action:** Varies · **Attribute:** None — no roll\n\n**Target / range / shape:** An accessible item\n\nDrawing a weapon is included in its attack action. Dropping is free. Proper stowing or picking up costs a Maneuver. Ordinary item use follows its own card. No free two-handed grip exception is assumed.\n\n**Duration:** Instant\n\n**Equipment / acquisition:** None.",
+      "effect": "**Action:** Maneuver · **Attribute:** None — no roll\n\n**Target / range / shape:** An accessible item\n\nDrawing a weapon is included in its attack action. Dropping is free. Proper stowing or picking up costs a Maneuver. Ordinary item use follows its own card. No free two-handed grip exception is assumed.\n\n**Duration:** Instant\n\n**Equipment / acquisition:** None.",
       "reference": {
         "flavor": [
           "Choose an accessible item. Drawing a weapon is included in its attack action. Dropping is free. Proper stowing or picking up costs a Maneuver. Ordinary item use follows its own card. No free two-handed grip exception is assumed."
@@ -30762,7 +30772,7 @@
           "details": [
             {
               "label": "Action",
-              "value": "Varies"
+              "value": "Maneuver"
             },
             {
               "label": "Attribute",
@@ -30797,7 +30807,7 @@
           "notes": []
         }
       },
-      "referenceMarkdown": "# Handle an Item\n\n*Choose an accessible item. Drawing a weapon is included in its attack action. Dropping is free. Proper stowing or picking up costs a Maneuver. Ordinary item use follows its own card. No free two-handed grip exception is assumed.*\n\n## Rules\n\n**Action:** Varies · **Attribute:** None — no roll\n\n**Target / range / shape:** An accessible item\n\nDrawing a weapon is included in its attack action. Dropping is free. Proper stowing or picking up costs a Maneuver. Ordinary item use follows its own card. No free two-handed grip exception is assumed.\n\n**Duration:** Instant\n\n**Equipment / acquisition:** None.\n\n---\n\n**Tier / minimum level:** Universal · **DP:** Not purchased · **Requirements to learn:** None\n\n**Type:** Universal\n\n**Limits:** Repeatable; pay the action and any stated costs each use.\n\n**ID:** handle-an-item\n\n[Card conventions](../card-conventions.md) · [Catalog](../catalog.md)\n"
+      "referenceMarkdown": "# Handle an Item\n\n*Choose an accessible item. Drawing a weapon is included in its attack action. Dropping is free. Proper stowing or picking up costs a Maneuver. Ordinary item use follows its own card. No free two-handed grip exception is assumed.*\n\n## Rules\n\n**Action:** Maneuver · **Attribute:** None — no roll\n\n**Target / range / shape:** An accessible item\n\nDrawing a weapon is included in its attack action. Dropping is free. Proper stowing or picking up costs a Maneuver. Ordinary item use follows its own card. No free two-handed grip exception is assumed.\n\n**Duration:** Instant\n\n**Equipment / acquisition:** None.\n\n---\n\n**Tier / minimum level:** Universal · **DP:** Not purchased · **Requirements to learn:** None\n\n**Type:** Universal\n\n**Limits:** Repeatable; pay the action and any stated costs each use.\n\n**ID:** handle-an-item\n\n[Card conventions](../card-conventions.md) · [Catalog](../catalog.md)\n"
     },
     {
       "id": "ability-defend",

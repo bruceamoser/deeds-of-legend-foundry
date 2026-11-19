@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action · 1 hour</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div></dl><p>1 hour · Knowledge, with alchemical tools and one purchased batch of smoke ingredients. Add 1/2/3 progress toward target 3 to prepare one smoke flask. Maneuver: throw a prepared flask to a visible point within 4 squares, consuming it. Smoke fills a 1-square-radius area until your next turn ends and blocks sight through it. No throwing roll.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action · 1 hour</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div></dl><p>Main Action · 1 hour · Knowledge, with alchemical tools and one purchased batch of smoke ingredients. Add 1/2/3 progress toward target 3 to prepare one smoke flask. Maneuver: throw a prepared flask to a visible point within 4 squares, consuming it. Smoke fills a 1-square-radius area until your next turn ends and blocks sight through it. No throwing roll.</p>",
     "activity": {
       "action": "main",
       "rollMode": "attribute",
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "craft:mixtures:1",
-      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
+      "sourceCommit": "e5575a674821fe31387cf4bf622a2dea96dd0906",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "technique",
@@ -34,7 +34,7 @@
         "duration": null,
         "attribute": "Knowledge",
         "defenseAttribute": null,
-        "effect": "1 hour · Knowledge, with alchemical tools and one purchased batch of smoke ingredients. Add 1/2/3 progress toward target 3 to prepare one smoke flask. Maneuver: throw a prepared flask to a visible point within 4 squares, consuming it. Smoke fills a 1-square-radius area until your next turn ends and blocks sight through it. No throwing roll.",
+        "effect": "Main Action · 1 hour · Knowledge, with alchemical tools and one purchased batch of smoke ingredients. Add 1/2/3 progress toward target 3 to prepare one smoke flask. Maneuver: throw a prepared flask to a visible point within 4 squares, consuming it. Smoke fills a 1-square-radius area until your next turn ends and blocks sight through it. No throwing roll.",
         "improves": null,
         "requires": [
           "craft"

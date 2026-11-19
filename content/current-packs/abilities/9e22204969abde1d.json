@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action · 30 minutes</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div></dl><p>30 minutes, with medical supplies and a safe prepared shelter. Treat up to six patients, using each available first-aid attempt. Roll Knowledge once; each restores 5/8/11 HP and reduces temporary Bleeding or Poisoned by 2, choosing separately per patient. A patient with a spent allowance receives condition care only. Supplies must cover all patients. This creates no extra first-aid allowance, SP recovery or overnight rest.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action · 30 minutes</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div></dl><p>Main Action · 30 minutes, with medical supplies and a safe prepared shelter. Treat up to six patients, using each available first-aid attempt. Roll Knowledge once; each restores 5/8/11 HP and reduces temporary Bleeding or Poisoned by 2, choosing separately per patient. A patient with a spent allowance receives condition care only. Supplies must cover all patients. This creates no extra first-aid allowance, SP recovery or overnight rest.</p>",
     "activity": {
       "action": "main",
       "rollMode": "attribute",
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "medicine:diagnosis:7",
-      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
+      "sourceCommit": "e5575a674821fe31387cf4bf622a2dea96dd0906",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "mastery",
@@ -34,7 +34,7 @@
         "duration": null,
         "attribute": "Knowledge",
         "defenseAttribute": null,
-        "effect": "30 minutes, with medical supplies and a safe prepared shelter. Treat up to six patients, using each available first-aid attempt. Roll Knowledge once; each restores 5/8/11 HP and reduces temporary Bleeding or Poisoned by 2, choosing separately per patient. A patient with a spent allowance receives condition care only. Supplies must cover all patients. This creates no extra first-aid allowance, SP recovery or overnight rest.",
+        "effect": "Main Action · 30 minutes, with medical supplies and a safe prepared shelter. Treat up to six patients, using each available first-aid attempt. Roll Knowledge once; each restores 5/8/11 HP and reduces temporary Bleeding or Poisoned by 2, choosing separately per patient. A patient with a spent allowance receives condition care only. Supplies must cover all patients. This creates no extra first-aid allowance, SP recovery or overnight rest.",
         "improves": null,
         "requires": [
           "medicine:diagnosis:6"

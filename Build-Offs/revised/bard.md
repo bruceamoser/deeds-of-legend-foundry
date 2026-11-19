@@ -1,6 +1,6 @@
 # Lysa Silverstring: bard after the rewrite
 
-Pinned authored source `a2ae6bd93ef60cf6f9bb523ccdde23364b09c932`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../bard.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
+Pinned authored source `e5575a674821fe31387cf4bf622a2dea96dd0906`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../bard.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
 
 ## What the rewrite changes
 
@@ -16,7 +16,7 @@ Bardic Inspiration remains an immediate coordinated contribution rather than a b
 | SP | 7 | 11 | 19 |
 | DP spent / total | 10 / 14 | 25 / 27 | 65 / 65 |
 | Unspent DP | 4 | 2 | 0 |
-| Learned action choices (Main / Maneuver / Reaction) | 1 / 2 / 0 | 2 / 3 / 0 | 3 / 3 / 0 |
+| Learned action choices (Main / Maneuver / Reaction) | 1 / 2 / 0 | 2 / 3 / 0 | 4 / 3 / 0 |
 | Known book spells (free / paid) | 8 (3 / 5) | 10 (3 / 7) | 33 (4 / 29) |
 | Shared reserve: casts at 2 SP | 3 | 5 | 9 |
 | Shared reserve: casts at 5 SP | 1 | 2 | 3 |
@@ -234,7 +234,7 @@ Use once per scene. Granted attacks cannot grant further attacks.
 - **Steady Voice I:** Maneuver. One willing ally within 4 squares who hears and understands your reassurance reduces Frightened by 1. No roll.
 - **Sheltering Guard I:** Maneuver. Choose one willing adjacent ally. Until your next turn starts it gains 1 Boon on ranged defenses while adjacent. Reusing this technique replaces its previous effect. No roll.
 - **Common Ground I:** Main Action · Reason for a brief proposal, or one exchange for detailed terms. Propose common terms to two willing negotiating sides who understand you. Roll once; add 1/2/3 progress to each side’s separate acceptance objective. Each side retains its established boundaries. Common Ground adds 1/3/4 progress to each objective. Common Ground can address three willing negotiating sides with separate objectives.
-- **A Treaty in Common Words:** 30 minutes · Reason. With willing representatives of up to three sides and a working language, interpreter or shared reference text, formulate one concrete agreement. Roll once; add 3/5/7 progress to each side’s acceptance objective. On completion the DA states that side’s commitments and known reservations plainly. A shared reference permits simple terms; complex terms need adequate translation. No side accepts impossible terms, and the agreement is not magical enforcement.
+- **A Treaty in Common Words:** Main Action · 30 minutes · Reason. With willing representatives of up to three sides and a working language, interpreter or shared reference text, formulate one concrete agreement. Roll once; add 3/5/7 progress to each side’s acceptance objective. On completion the DA states that side’s commitments and known reservations plainly. A shared reference permits simple terms; complex terms need adequate translation. No side accepts impossible terms, and the agreement is not magical enforcement.
 
 **Known book spells:** Vicious Mockery (Main Action; SP 0); Heroism (Main Action; SP 1); Charm Person (Main Action; SP 1); Calm Emotions (Main Action; SP 2); Minor Illusion (Maneuver; SP 0); Silent Image (Main Action; SP 1); Message (Maneuver; SP 0); Comprehend Languages (Ritual; SP 1); Suggestion (Main Action; SP 2); Fear (Main Action; SP 3); Dreams (Maneuver; SP 0); Sleep (Main Action; SP 1); Dream Message (Ritual; SP 1); Phantasmal Force (Main Action; SP 2); Hypnotic Pattern (Main Action; SP 2); Phantasmal Killer (Main Action; SP 3); Dream (Ritual; SP 3); Sign of Sleep (Ritual; SP 4); Lord Dream (Ritual; SP 5); Weird (Main Action; SP 5); Astral Projection (Ritual; SP 6); Charm Monster (Main Action; SP 3); Confusion (Main Action; SP 4); Disguise Self (Main Action; SP 1); Mirror Image (Main Action; SP 2); Invisibility (Main Action; SP 2); Major Image (Main Action; SP 3); Greater Invisibility (Main Action; SP 3); Hallucinatory Terrain (Ritual; SP 4); Detect Thoughts (Main Action; SP 1); Tongues (Main Action; SP 2); Sending (Ritual; SP 2); Telepathic Bond (Ritual; SP 3).
 

@@ -1,6 +1,6 @@
 import { forgeAncestryBenefits } from "./forge-ancestry.mjs";
 import { forgeAdvancement, forgeArmorRequirement } from "./forge-character.mjs";
-import { isForgeRitual } from "./forge-casting.mjs";
+import { isForgeRitual, spellActionLabel } from "./forge-casting.mjs";
 import { forgeMaximums } from "./forge-vitals.mjs";
 import { workshopPlay } from "./workshop-play.mjs";
 import { creationPreview } from "./creation.mjs";
@@ -239,7 +239,7 @@ export function actionTiming(record) {
 
 export function actionTimingLabel(record) {
   const action = printedAction(record);
-  if (isForgeRitual(record)) return `Main Action · ${action}`;
+  if (isForgeRitual(record)) return spellActionLabel(record);
   if (timedAction.test(action)) return `Main Action · ${action}`;
   if (action === "Action conversion" || action === "Varies") return actionTiming(record).join(" / ");
   return action;

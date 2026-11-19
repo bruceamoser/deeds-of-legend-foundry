@@ -1,6 +1,6 @@
 # Brunna Hearthward: cleric after the rewrite
 
-Pinned authored source `a2ae6bd93ef60cf6f9bb523ccdde23364b09c932`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../cleric.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
+Pinned authored source `e5575a674821fe31387cf4bf622a2dea96dd0906`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../cleric.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
 
 ## What the rewrite changes
 
@@ -16,7 +16,7 @@ There is no separate Channel Divinity pool or Turn Undead feature in these selec
 | SP | 6 | 10 | 18 |
 | DP spent / total | 8 / 12 | 24 / 25 | 62 / 63 |
 | Unspent DP | 4 | 1 | 1 |
-| Learned action choices (Main / Maneuver / Reaction) | 2 / 0 / 0 | 4 / 0 / 0 | 5 / 0 / 0 |
+| Learned action choices (Main / Maneuver / Reaction) | 2 / 0 / 0 | 4 / 0 / 0 | 6 / 0 / 0 |
 | Known book spells (free / paid) | 6 (4 / 2) | 14 (4 / 10) | 27 (4 / 23) |
 | Shared reserve: casts at 2 SP | 3 | 5 | 9 |
 | Shared reserve: casts at 5 SP | 1 | 2 | 3 |
@@ -205,7 +205,7 @@ This is a spell.
 
 <details><summary>The Shepherd's Call: complete signature component</summary>
 
-**Action:** 10 minutes · **Attribute:** None (no roll)
+**Action:** Ritual — 10 minutes · **Attribute:** None (no roll)
 
 **Target / range / shape:** Up to three willing characters.
 
