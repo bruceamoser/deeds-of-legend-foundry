@@ -342,6 +342,32 @@ test("explicit commit repairs obsolete choices and preserves live state across d
     await saveNativeWorkshopState(actor,state,{expectedRevision:flags.nativeWorkshop.revision,basePlay});
     assert.ok(!actor.items.some(item=>item.id===victim.id));assert.ok(keepIds.every(id=>actor.items.some(item=>item.id===id)));
   });
+  await t.test("dropping a play-added stack explicitly retires the embedded item",async()=>{
+    let state=await loadNativeWorkshopState(actor),basePlay=structuredClone(state.character.draft.play);
+    const instanceId="inventory-play-added-bundle";
+    state.character.draft.play.inventory.added.push({id:"item-food-bundle",instanceId,quantity:1});
+    state=await saveNativeWorkshopState(actor,state,{expectedRevision:flags.nativeWorkshop.revision,basePlay});
+    const embedded=actor.items.find(item=>nativeWorkshopInventoryId(item)===instanceId);
+    assert.ok(embedded);
+    basePlay=structuredClone(state.character.draft.play);
+    state.character.draft.play.inventory.added=state.character.draft.play.inventory.added.filter(item=>item.instanceId!==instanceId);
+    await assert.rejects(saveNativeWorkshopState(actor,state,{expectedRevision:flags.nativeWorkshop.revision,basePlay}),/Owned equipment is missing/);
+    state.character.draft.play.inventory.removed.push(instanceId);
+    await saveNativeWorkshopState(actor,state,{expectedRevision:flags.nativeWorkshop.revision,basePlay});
+    assert.ok(!actor.items.includes(embedded));
+  });
+  await t.test("removing a sheet condition explicitly retires its embedded source",async()=>{
+    const state=await loadNativeWorkshopState(actor),basePlay=structuredClone(state.character.draft.play);
+    assert.equal(basePlay.conditions.length,1);
+    state.character.draft.play.conditions=[];
+    const saved=await saveNativeWorkshopState(actor,state,{expectedRevision:flags.nativeWorkshop.revision,basePlay});
+    assert.deepEqual(saved.character.draft.play.conditions,[]);
+    const removed=actor.effects.find(effect=>effect.flags?.["heroes-of-legend"]?.condition);
+    assert.ok(removed.flags["heroes-of-legend"].retired);
+    assert.equal(removed.disabled,true);
+    assert.deepEqual(removed.statuses,[]);
+    assert.ok(actor.effects.some(effect=>effect.id==="custom-effect"));
+  });
   await t.test("holding two catalog loot weapons initializes their nonzero hand counts without changing custom arrangements",async()=>{
     const source={name:"Catalog Sword",type:"equipment",system:{...structuredClone(weapon.system),quantity:1,hands:0,held:false,carried:true,worn:false},flags:{}};
     await actor.createEmbeddedDocuments("Item",[{...source,_id:"zero-hands-one"},{...source,_id:"zero-hands-two"}]);
@@ -361,11 +387,11 @@ test("explicit commit repairs obsolete choices and preserves live state across d
       const state=await loadNativeWorkshopState(actor);
       return {state, basePlay:structuredClone(state.character.draft.play),baseLoadout:structuredClone(state.character.draft.loadout)};
     };
-    for (const waterUnits of [0,1]) {
+    for (const inventoryDie of [0,4,8]) {
       const {state,basePlay,baseLoadout}=await prepare();
-      state.character.draft.play.inventory.overrides[waterId].waterUnits=waterUnits;
+      state.character.draft.play.inventory.overrides[waterId].inventoryDie=inventoryDie;
       await saveNativeWorkshopState(actor,state,{expectedRevision:state.revision,basePlay,baseLoadout});
-      assert.equal(flask.system.waterUnits,waterUnits);
+      assert.equal(flask.system.inventoryDie,inventoryDie);
     }
     const {state,basePlay,baseLoadout}=await prepare();
     flags.development.coins-=3; // A later native market purchase was paid from the live purse.

@@ -3,7 +3,6 @@ import { conditionEndPlan } from "./conditions.mjs";
 import { inventoryCheck, refillInventory } from "./inventory.mjs";
 import { healingPotionAdapter, HEALING_POTION_IDS } from "./potions.mjs";
 import { normalizeForgeRecovery } from "./forge-recovery.mjs";
-import { WATER_FLASK } from "./equipment-identity.mjs";
 
 export function workshopSupplyUse({
   item,
@@ -75,8 +74,7 @@ export function workshopFavorites(character, draft, catalogs) {
   const add = (id, item) => {
     const record = records.get(id);
     if (!record) return;
-    const supply =
-      item?.catalogId === WATER_FLASK || Number.isInteger(item?.inventoryDie);
+    const supply = Number.isInteger(item?.inventoryDie);
     const key = supply ? `${id}:${item.instanceId}` : id;
     if (rows.has(key)) {
       if (item) rows.get(key).sourceItems.push(item);

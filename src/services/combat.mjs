@@ -17,12 +17,23 @@ import {
   reconcileTurnRoster,
   selectTurn,
   finishSelectedTurn,
+  canCancelTurn,
+  cancelTurn,
+  encounterSideLabel,
 } from "../rules/encounter.mjs";
 const ID = "heroes-of-legend";
 export function combatSide(combatant) {
   const override = combatant.getFlag(ID, "side");
   if (["players", "opposition"].includes(override)) return override;
   return combatant.actor?.type === "character" ? "players" : "opposition";
+}
+function tokenPosition(combat, id) {
+  const token = combat.combatants.get(id)?.token;
+  return token ? [token.x, token.y, token.elevation, token._stats?.modifiedTime ?? null] : null;
+}
+export function canCancelParticipantTurn(combat, state) {
+  return canCancelTurn(state) &&
+    JSON.stringify(state.turnSelection.position) === JSON.stringify(tokenPosition(combat, state.current));
 }
 export async function requestCombat(combat, kind, payload = {}) {
   if (!combat) throw new Error("Choose an encounter before requesting an action.");
@@ -69,8 +80,9 @@ async function apply(id, combatUuid) {
       : null;
   if (
     combat?.documentName !== "Combat" ||
-    !message.author ||
-    !["start", "ambush", "choose", "finish", "roster"].includes(request.kind)
+    !message?.author ||
+    !request ||
+    !["start", "ambush", "choose", "cancel", "finish", "roster"].includes(request.kind)
   )
     throw new Error("Invalid encounter request.");
   const receipt = combat.getFlag(ID, "operationReceipts")?.[id];
@@ -82,22 +94,23 @@ async function apply(id, combatUuid) {
       throw new Error(
         "Completed request was changed; its receipt cannot be reused.",
       );
-    await expireStaleBenefits(combat);
+    if (!canCancelParticipantTurn(combat, combat.getFlag(ID, "encounter"))) await expireStaleBenefits(combat);
     await presentResult(message, combat);
     return { status: "complete", replay: true };
   }
   const state = combat.getFlag(ID, "encounter"),
-    actor = combat.combatants.get(
+    combatant = combat.combatants.get(
       request.kind === "choose"
         ? (request.id ?? state?.current)
         : state?.current,
-    )?.actor;
-  if (["choose", "finish"].includes(request.kind)) {
+    ),
+    actor = combatant?.actor;
+  if (["choose", "cancel", "finish"].includes(request.kind)) {
     if (
       !message.author.isGM &&
-      !actor?.testUserPermission(message.author, "OWNER")
+      (combatant?.hidden || !actor?.testUserPermission(message.author, "OWNER"))
     )
-      throw new Error("Choose or finish a participant you own, or ask the DA.");
+      throw new Error("Manage a visible participant you own, or ask the DA.");
   } else if (request.kind === "start") {
     if (!message.author.isGM && !combat.combatants.filter(participant => participant.actor?.testUserPermission(message.author, "OWNER")).length)
       throw new Error("Join this encounter with a character you own before starting it.");
@@ -133,7 +146,12 @@ async function apply(id, combatUuid) {
     next.budgets={...(next.budgets??{}),[request.id]:prepared.budget};
     next.speedProfiles={...(next.speedProfiles??{}),[request.id]:prepared.profile};
     if(prepared.ruling)next.speedRulings={...(next.speedRulings??{}),[request.id]:prepared.ruling};
-
+    next.turnSelection.position=tokenPosition(combat,request.id);
+  } else if (request.kind === "cancel") {
+    const current=state && reconcileTurnRoster(state,participants());
+    if (!canCancelParticipantTurn(combat,current))
+      throw new Error("Only an unused turn can be cancelled.");
+    next = cancelTurn(current);
   } else if (request.kind === "finish") {
     if (!state) throw new Error("Choose a participant first.");
     const current=reconcileTurnRoster(state,participants());
@@ -158,7 +176,7 @@ async function apply(id, combatUuid) {
   const commit = {
     round: next.round,
     turn,
-    [`flags.${ID}.encounter`]: next,
+    [`flags.${ID}.encounter`]: foundry.data.operators.ForcedReplacement.create(next),
     [`flags.${ID}.operationReceipts.${id}`]: {
       applied: true,
       kind: request.kind,
@@ -170,7 +188,7 @@ async function apply(id, combatUuid) {
   };
   const completedRounds = state ? Math.max(0,next.round-state.round) : 0;
   await writeAuthorityDocument(combat, commit, completedRounds ? {worldTime:{delta:6*completedRounds}} : {});
-  await expireStaleBenefits(combat);
+  if (!canCancelParticipantTurn(combat, next)) await expireStaleBenefits(combat);
   await presentResult(message, combat);
   return { status: "complete", replay: false };
 }
@@ -190,8 +208,8 @@ async function presentResult(message, combat) {
   if(result){await message.update({content:turnEndContent(result)});return;}
   const current=combat.combatants.get(state.current);
   const opening=state.opening?.ambushSide ? "Ambush" : state.opening ? `Opening ${state.opening.total}` : "";
-  const side=state.nextSide === "players" ? "Players" : "Opposition";
-  await message.update({content:current ? `${foundry.utils.escapeHTML(current.name)}’s turn.` : state.startingSide ? `${opening ? `${opening} · ` : ""}${side} choose next. ${state.startingSide === "players" ? "Players" : "Opposition"} start each round.` : kind === "finish" ? "Turn finished." : "Encounter ready."});
+  const side=encounterSideLabel(state.nextSide);
+  await message.update({content:current ? `${foundry.utils.escapeHTML(current.name)}’s turn.` : state.startingSide ? `${opening ? `${opening} · ` : ""}${side} act next. ${encounterSideLabel(state.startingSide)} start each round.` : kind === "finish" ? "Turn finished." : "Encounter ready."});
 }
 export function registerCombatRequests() {
   Hooks.on("createChatMessage", (message) => {

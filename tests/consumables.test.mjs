@@ -28,3 +28,17 @@ test('custom equipment name survives normalization without changing catalog iden
  assert.equal(value.inventory.overrides['creation-outfit'].name,'Grandfather’s coat');
  assert.throws(()=>normalizeWorkshopPlay({inventory:{added:[],removed:[],overrides:{'creation-outfit':{name:''}}}},catalogs));
 });
+
+test('legacy portable water becomes a normal supply die once and does not replenish on reload',()=>{
+ const catalogs={};
+ const overrides={
+  'legacy-full':{waterUnits:1},
+  'legacy-empty':{waterUnits:0},
+  'current-partial':{inventoryDie:6,waterUnits:1},
+  'current-empty':{inventoryDie:0},
+ };
+ const state=normalizeWorkshopPlay({inventory:{added:[],removed:[],overrides}},catalogs);
+ const converted={'legacy-full':{inventoryDie:8},'legacy-empty':{inventoryDie:0},'current-partial':{inventoryDie:6},'current-empty':{inventoryDie:0}};
+ assert.deepEqual(state.inventory.overrides,converted);
+ assert.deepEqual(normalizeWorkshopPlay(state,catalogs).inventory.overrides,converted);
+});

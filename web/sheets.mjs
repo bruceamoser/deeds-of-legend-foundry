@@ -663,11 +663,14 @@ async function action(t) {
     render();
     return;
   }
-  if (a === "resupply")
+  if (a === "resupply") {
+    if ((state.supply ?? r.inventoryDie) === r.inventoryDie)
+      return popup("Resupply", `<p>${esc(r.name)} is at the maximum d${r.inventoryDie}.</p>`);
     return popup(
       "Resupply",
       `<label>Steps<select id="refill-steps" aria-label="Resupply steps">${[1, 2, 3, 4, 5, 6].map((n) => `<option value="${n}">${n}</option>`).join("")}</select></label>${btn("Resupply", "confirm-refill", "", "primary small")}`,
     );
+  }
   if (a === "confirm-refill") {
     state.supply = refillInventory({
       die: state.supply ?? r.inventoryDie,

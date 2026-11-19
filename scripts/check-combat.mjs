@@ -129,7 +129,7 @@ try {
   assert.match(unauthorized.result.error, /you own/);
   const expected = first === "players" ? [0, 2, 1] : [2, 0, 1];
   const selected = fixture.participants[expected[0]];
-  const buttonName = `Choose ${["Arden", "Briar", "Opponent"][expected[0]]}`;
+  const buttonName = `Take Turn · ${["Arden", "Briar", "Opponent"][expected[0]]}`;
   await gm.page
     .locator(".hol-encounter")
     .getByRole("button", { name: buttonName, exact: true })

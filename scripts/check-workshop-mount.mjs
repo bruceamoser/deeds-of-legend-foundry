@@ -101,7 +101,7 @@ try {
     const burdenBulk=Number(first.shadowRoot.querySelectorAll('.inventory-stats strong')[1].textContent.split('/')[0]);
     const burdenSpeed=Number(first.shadowRoot.querySelectorAll('.inventory-stats strong')[3].textContent);
     const fallbackEquipment=Boolean(first.shadowRoot.querySelector('[data-native-item="custom-rock"]'));
-    const noMisleadingDelete=first.shadowRoot.querySelectorAll('[data-action="delete-item"]').length===0;
+    const noMisleadingDelete=first.shadowRoot.querySelectorAll('[data-action="drop-item"]').length===0;
     nativeHost.readOnly=true;a.setState(a.getState());
     first.shadowRoot.querySelector('[data-native-item="custom-rock"] [data-action="native-open-item"]').click();await a.settle();
     a.setState({...a.getState(),tab:'Abilities'});

@@ -1,5 +1,5 @@
-import {requestCombat,combatSide} from "../services/combat.mjs";
-import {reconcileTurnRoster,availableParticipants} from "../rules/encounter.mjs";
+import {requestCombat,combatSide,canCancelParticipantTurn} from "../services/combat.mjs";
+import {reconcileTurnRoster,availableParticipants,encounterSideLabel} from "../rules/encounter.mjs";
 import {openEncounterPanel,encounterGroups,endEncounter,resolveAmbush} from "./encounter.mjs";
 import {finishCombatParticipant} from "../dialogs/turn-end.mjs";
 import {chooseCombatParticipant} from "../dialogs/turn-choice.mjs";
@@ -13,14 +13,17 @@ export function renderHOLCombatTracker(app,element){
  const saved=combat.getFlag(ID,"encounter"),state=saved?reconcileTurnRoster(saved,combat.combatants.map(c=>({id:c.id,side:combatSide(c)}))):null,current=combat.combatants.get(state?.current);
  if(!state){button(section,"Opening roll",()=>requestCombat(combat,"start"));if(game.user.isGM)button(section,"Ambush",()=>resolveAmbush(combat));}
  const eligible=state?.startingSide?new Set(availableParticipants(state).map(p=>p.id)):null;
- const round=document.createElement("small");round.textContent=`Round ${state?.round??1}${state?.startingSide?` · ${state.nextSide==="players"?"Players":"Opposition"} choose next`:""}`;section.append(round);
- const participants=combat.combatants.filter(c=>!(c.hidden&&!game.user.isGM)).map(c=>({id:c.id,group:combatSide(c)==="players"?"players":"creatures",combatant:c}));
+ const round=document.createElement("small");round.textContent=`Round ${state?.round??1}${state?.startingSide?` · ${encounterSideLabel(state.nextSide)} act next`:""}`;section.append(round);
+ const participants=combat.combatants.filter(c=>!(c.hidden&&!game.user.isGM)).map(c=>({id:c.id,group:combatSide(c),combatant:c}));
  const groups=encounterGroups(participants);
- if(current){const label=document.createElement("strong");label.textContent=current.hidden&&!game.user.isGM?"Turn in progress":`${current.name}’s turn`;section.append(label);if(game.user.isGM||current.actor?.isOwner)button(section,"Finish turn",()=>finishCombatParticipant(combat));}
+ if(current){const label=document.createElement("strong");label.textContent=current.hidden&&!game.user.isGM?"Turn in progress":`${current.name}’s turn`;section.append(label);if(game.user.isGM||(!current.hidden&&current.actor?.isOwner)){
+   if(canCancelParticipantTurn(combat,state))button(section,"Cancel Turn",()=>requestCombat(combat,"cancel"));
+   button(section,"Finish turn",()=>finishCombatParticipant(combat));
+  }}
  else if(state) for(const group of groups){
   const choices=group.participants.filter(({combatant:c})=>(!eligible||eligible.has(c.id))&&!(state?.acted??[]).includes(c.id)&&(game.user.isGM||c.actor?.isOwner));if(!choices.length)continue;
   const box=document.createElement("div");box.className="hol-combat-choices";const label=document.createElement("strong");label.textContent=group.label;box.append(label);section.append(box);
-  for(const {combatant:c}of choices)button(box,`Choose ${c.name}`,()=>chooseCombatParticipant(combat,c.id));
+  for(const {combatant:c}of choices)button(box,`Take Turn · ${c.name}`,()=>chooseCombatParticipant(combat,c.id));
  }
  const rows=new Map([...element.querySelectorAll(".combatant[data-combatant-id]")].map(row=>[row.dataset.combatantId,row]));
  for(const row of rows.values()){row.querySelector(".hol-turn-status")?.remove();row.classList.remove("hol-side-start");delete row.dataset.holSide;if(row.dataset.combatantId===state?.current||(state?.acted??[]).includes(row.dataset.combatantId)){const status=document.createElement("span");status.className="hol-turn-status";status.textContent=row.dataset.combatantId===state?.current?"Active":"✓ Acted";(row.querySelector(".combatant-name")??row).append(status);}}

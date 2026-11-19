@@ -35,8 +35,7 @@ export function missingStartingProvisions(draft, items) {
 export function provisionSalePrice(item) {
   if (!item?.definition || !STARTING_PROVISIONS.includes(item.catalogId) ||
       item.instanceId !== provisionInstanceId(item.catalogId) ||
-      item.quantity !== 1 || (item.inventoryDie ?? null) !== item.definition.inventoryDie ||
-      (item.waterUnits ?? 1) !== 1) return 0;
+      item.quantity !== 1 || (item.inventoryDie ?? null) !== item.definition.inventoryDie) return 0;
   return Math.floor(item.definition.price / 2);
 }
 

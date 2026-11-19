@@ -15,7 +15,7 @@ import { compatibleAmmunition, ORDINARY_RANGED_WEAPON, WATER_FLASK } from "./rul
 import { basicAttackDamageProfile } from "./rules/weapon-training.mjs";
 import { missingStartingProvisions, provisionSalePrice } from "./rules/training-equipment.mjs";
 import { abilityRollConfiguration } from "./rules/ability-roll.mjs";
-import { signatureSpellCost, isForgeRitual, isForgeModifier, forgeCastOptions, forgeCastPayment } from "./rules/forge-casting.mjs";
+import { signatureSpellCost, isForgeRitual, isForgeModifier, forgeCastOptions, forgeCastPayment, spellActionLabel } from "./rules/forge-casting.mjs";
 import { forgeEligibility, refundForgePurchases, removeDisconnectedForgePurchases } from "./rules/forge.mjs";
 import { currentResourceInput } from "./rules/resource-input.mjs";
 import { workshopCatalogs } from "./rules/workshop-forge-catalog.mjs";
@@ -187,7 +187,7 @@ function get(id) {
   );
 }
 function tracksSupply(item) {
-  if (item?.catalogId !== WATER_FLASK && !Number.isInteger(item?.inventoryDie) && !Number.isInteger(get(item?.catalogId)?.inventoryDie)) return true;
+  if (!Number.isInteger(item?.inventoryDie) && !Number.isInteger(get(item?.catalogId)?.inventoryDie)) return true;
   const native=host?.tracksItem?.(item);
   return typeof native==='boolean' ? native : host?.tracking?.[consumableType(item)]!==false;
 }
@@ -426,7 +426,8 @@ function spellbooks() {
   const learned = new Set(preview.state.learning.spells.map(({ id }) => id));
   const books = catalogs.forge.books.map(book => ({ ...book,
     spells: book.spellIds.filter(id => learned.has(id)).map(get).filter(record =>
-      matchesLibrary(record) && (spellTiming === "all" || record.action === spellTiming)),
+      matchesLibrary(record) && (spellTiming === "all" || (spellTiming === "Ritual"
+        ? isRitual(record) : actionTiming(record).includes(spellTiming)))),
   })).filter(book => book.spells.length && (spellDiscipline === "all" || book.disciplineId === spellDiscipline));
   const disciplines = catalogs.forge.disciplines.filter(d => catalogs.forge.books.some(b => b.disciplineId === d.id && b.spellIds.some(id => learned.has(id))));
   return `<div class="library-heading"><h2>Spellbooks</h2><small>${learned.size} spells learned</small><small>★ On Main · ☆ Add to Main</small></div>
@@ -457,7 +458,7 @@ function abilitiesLibrary() {
 
 function spellProfile(record) {
   return `<dl>${Object.entries({
-    Casting: record.actionText ?? record.action,
+    Casting: spellActionLabel(record),
     SP: record.sp, Attribute: record.attribute, "Target / range": record.target,
     Duration: record.duration, Trigger: record.trigger, Defense: record.defense,
     "Hold attribute": record.holdAttribute, "Escape attribute": record.escapeAttribute,
@@ -472,6 +473,13 @@ function learnedImprovements(id) {
 
 const castCost = signatureSpellCost;
 const isRitual = isForgeRitual;
+const castingAttribute = record => /(?:^|[.!] )No (?:casting )?roll\./i.test(record.effect)
+  ? null : attributeFor(record);
+async function postPaidUse(id) {
+  if (!host?.postUse) return;
+  await pendingSave;
+  await host.postUse(id);
+}
 function castOptions(record) {
   return forgeCastOptions(draft.play ?? {}, preview.state, record);
 }
@@ -508,7 +516,9 @@ async function useModifier(id) {
   if(!isForgeModifier(record) || !preview.state.abilities.includes(id) || !Number.isInteger(cost)) throw new Error('Learn this modifier before using it.');
   await host?.beforeUse?.({kind:'modifier',id,willRoll:false});
   const paid=forgeCastPayment(playDraft(),liveVitals().limits,preview.state,record);
-  draft.play=paid;persist();render();notice(`Modifier recorded: ${record.name} · ${cost} SP spent. Apply its printed effects to the qualifying weapon attack.`);
+  draft.play=paid;persist();render();
+  await postPaidUse(id);
+  notice(`Modifier recorded: ${record.name} · ${cost} SP spent. Apply its printed effects to the qualifying weapon attack.`);
 }
 
 async function castFromSheet(id, optionId = null) {
@@ -532,14 +542,15 @@ async function castFromSheet(id, optionId = null) {
   const payment = options.find(option => option.id === optionId);
   if (!payment) throw new Error("Choose an available spell payment.");
   if (payment.cost > vitals.sp) throw new Error("You need more SP.");
-  const attribute = attributeFor(record);
-  const automatic = !attribute || /(?:^|[.!] )No (?:casting )?roll\./i.test(record.effect);
+  const attribute = castingAttribute(record);
+  const automatic = !attribute;
   $("#reference").close();
   if (isRitual(record)) {
     const paid=await payCast(record, optionId);
     draft.play = paid;
     persist();
     render();
+    if (automatic) await postPaidUse(id);
     popup(record.name, `${record.page ? spellProfile(record) : markdown(record.effect)}<p>${payment.cost} SP spent. Finish the printed casting time before resolving the effect.</p>${automatic && !sustainLimit(record) ? "" : `<div class="dialog-actions">${button(automatic ? "Complete Ritual" : "Roll when the Ritual ends", "finish-ritual", `data-id="${esc(id)}"`, "primary")}</div>`}`);
     return;
   }
@@ -551,6 +562,7 @@ async function castFromSheet(id, optionId = null) {
   draft.play = beginForgeSustain(paid, record);
   persist();
   render();
+  await postPaidUse(id);
   notice(`Casting recorded: ${record.name}${payment.cost ? ` · ${payment.cost} SP spent` : ""}.`);
 }
 
@@ -618,20 +630,7 @@ function resupplyButton(item) {
     "icon-button",
   );
 }
-function waterRemaining(item) {
-  return Math.min(item.quantity, item.waterUnits ?? item.quantity);
-}
-function waterSupply(item, controls) {
-  if (!tracksSupply(item)) return "Untracked";
-  const remaining = waterRemaining(item);
-  const label = remaining ? `${remaining} person-day${remaining === 1 ? "" : "s"}` : "Empty";
-  if (!controls || !item.carried || !item.quantity) return label;
-  const group = `data-instance="${esc(item.instanceId)}"`;
-  return label + (remaining ? button("Drink", "drink-water", group, "small quiet") : "") +
-    (remaining < item.quantity ? button("Refill", "refill-water", group, "small quiet") : "");
-}
 function inventorySupply(item, controls, showTorch = false) {
-  if (item.catalogId === WATER_FLASK) return waterSupply(item, controls);
   const supply = Number.isInteger(item.inventoryDie);
   const display = !tracksSupply(item) ? "Untracked" : item.inventoryDie ? `d${item.inventoryDie}` : supply ? "Empty" : "—";
   if (!controls || !supply) return display;
@@ -644,7 +643,7 @@ function supplyRows() {
     preview.inventory.items
       .filter(
         (i) =>
-          i.carried && (i.catalogId === WATER_FLASK || Number.isInteger(i.inventoryDie)),
+          i.carried && Number.isInteger(i.inventoryDie),
       )
       .map(
         (i) =>
@@ -683,12 +682,11 @@ function actionUse(entry) {
     return button(r.weaponRequirement === "one-handed-melee" ? "Hold 1H blade" : "Hold weapon",
       "inline-action", `disabled aria-label="${esc(requirement)}" title="${esc(requirement)}"`, "compact-roll");
   }
-  if (entry.inventoryInstance?.catalogId === WATER_FLASK) return waterSupply(entry.inventoryInstance, true);
   if(entry.inventoryInstance) return entry.inventoryInstance.quantity > 0 && (entry.inventoryInstance.inventoryDie > 0 || !tracksSupply(entry.inventoryInstance)) ? itemUseButton(entry.inventoryInstance) : button("Empty","use-supply-dialog","disabled","compact-roll");
   if(r.id === "ability-use-a-healing-potion") return button("Use","potion-dialog",'aria-label="Use a healing potion"',"compact-roll");
   if(r.id === "ability-sustain-spell") return button("Sustain","sustain-spell",currentSustain().active ? "" : "disabled", "compact-roll");
   if(Number.isInteger(cost) && isForgeModifier(r)) return button(`Use · ${cost} SP`,'use-modifier',`data-id="${esc(r.id)}" aria-label="Use ${esc(r.name)}" ${liveVitals().sp<cost ? 'disabled' : ''}`,'compact-roll');
-  if(Number.isInteger(cost)) return button(key?attributeLabel(key):isRitual(r)?"Ritual":"Cast","cast-spell",`data-id="${esc(r.id)}" aria-label="Cast ${esc(r.name)}" ${liveVitals().sp < minimumCastCost(r) || sustainUnavailable() ? "disabled" : ""}`,"compact-roll");
+  if(Number.isInteger(cost)) return button(isRitual(r) || !key ? "Cast" : attributeLabel(key),"cast-spell",`data-id="${esc(r.id)}" aria-label="Cast ${esc(r.name)}" ${liveVitals().sp < minimumCastCost(r) || sustainUnavailable() ? "disabled" : ""}`,"compact-roll");
   if (key) {
     const keys = workshopRollAttributes(r);
     const choice = keys.length > 1;
@@ -712,7 +710,7 @@ function actionTable(entries, customize = false) {
   const timing = tab !== "Main";
   return `<div class="table-wrap"><table class="action-table compact-actions"><colgroup><col style="width:${timing ? 34 : 40}%">${timing ? '<col style="width:15%">' : ""}<col style="width:76px"><col><col style="width:28px"></colgroup><thead><tr><th>Ability / spell</th>${timing?"<th>Timing</th>":""}<th>Roll / use</th><th>Outcome / target</th><th><span class="sr-only">Details</span></th></tr></thead><tbody>${entries.filter(e=>e.visible||customize).map(e=>{
     const r=e.record, open=expandedActions.has(r.id), full=compactEffect(r);
-    return `<tr data-action-row="${esc(r.id)}"><td><div class="action-name">${e.sourceItems?.length ? e.sourceItems.map(item=>favorite("items",item.instanceId)).join("") : favorite("abilities",r.id)}${button(esc(e.inventoryInstance ? itemName(e.inventoryInstance) : actionLabel(r)),"inline-action",`data-id="${esc(r.id)}" aria-expanded="${open}"`,"table-link")}${e.sourceItems?.length && !e.inventoryInstance ? `<small class="item-source">${esc(e.sourceItems.map(itemName).join(", "))}</small>` : ""}</div></td>${timing?`<td class="timing-cell">${esc(r.actionText ?? actionTiming(r).join(" / "))}</td>`:""}<td class="roll-cell">${actionUse(e)}</td><td class="effect-cell"><span class="brief" title="${esc(full)}">${esc(full)}</span></td><td class="expand-cell">${button(open?"⌄":"›","inline-action",`data-id="${esc(r.id)}" aria-label="${open?"Collapse":"Expand"} ${esc(r.name)}" aria-expanded="${open}"`,"expand-action")}</td></tr>${open?`<tr class="inline-action-detail" data-detail-id="${esc(r.id)}"><td colspan="${timing?5:4}">${e.sourceItems?.length ? `<p><strong>Equipment:</strong> ${esc(e.sourceItems.map(item=>itemName(item)).join(", "))}</p>` : ""}${inlineRules(r)}</td></tr>`:""}`;
+    return `<tr data-action-row="${esc(r.id)}"><td><div class="action-name">${e.sourceItems?.length ? e.sourceItems.map(item=>favorite("items",item.instanceId)).join("") : favorite("abilities",r.id)}${button(esc(e.inventoryInstance ? itemName(e.inventoryInstance) : actionLabel(r)),"inline-action",`data-id="${esc(r.id)}" aria-expanded="${open}"`,"table-link")}${e.sourceItems?.length && !e.inventoryInstance ? `<small class="item-source">${esc(e.sourceItems.map(itemName).join(", "))}</small>` : ""}</div></td>${timing?`<td class="timing-cell">${esc(spellActionLabel(r) ?? actionTiming(r).join(" / "))}</td>`:""}<td class="roll-cell">${actionUse(e)}</td><td class="effect-cell"><span class="brief" title="${esc(full)}">${esc(full)}</span></td><td class="expand-cell">${button(open?"⌄":"›","inline-action",`data-id="${esc(r.id)}" aria-label="${open?"Collapse":"Expand"} ${esc(r.name)}" aria-expanded="${open}"`,"expand-action")}</td></tr>${open?`<tr class="inline-action-detail" data-detail-id="${esc(r.id)}"><td colspan="${timing?5:4}">${e.sourceItems?.length ? `<p><strong>Equipment:</strong> ${esc(e.sourceItems.map(item=>itemName(item)).join(", "))}</p>` : ""}${inlineRules(r)}</td></tr>`:""}`;
   }).join("")}</tbody></table></div>`;
 }
 function favoriteEntries() {
@@ -724,7 +722,7 @@ function favoriteEntries() {
 function editFavorites() {
   const records=[...knownCards(),...catalogs.choices.filter(r=>r.universal),...preview.state.learning.spells];
   const unique=[...new Map(records.map(r=>[r.id,r])).values()];
-  popup("Choose favorites",`<div data-favorites-picker><label>Search favorites<input type="search" id="favorite-search" placeholder="Abilities, basic actions, and spells…"></label><div class="favorite-choices">${unique.map(r=>`<div class="favorite-choice" data-search="${esc((r.name+" "+actionTiming(r).join(" ")).toLowerCase())}">${favorite("abilities",r.id)}<span>${esc(actionLabel(r))}</span><small>${esc(r.actionText??actionTiming(r).join(" / "))}</small></div>`).join("")}</div></div>`);
+  popup("Choose favorites",`<div data-favorites-picker><label>Search favorites<input type="search" id="favorite-search" placeholder="Abilities, basic actions, and spells…"></label><div class="favorite-choices">${unique.map(r=>`<div class="favorite-choice" data-search="${esc((r.name+" "+actionTiming(r).join(" ")).toLowerCase())}">${favorite("abilities",r.id)}<span>${esc(actionLabel(r))}</span><small>${esc(spellActionLabel(r) ?? actionTiming(r).join(" / "))}</small></div>`).join("")}</div></div>`);
 }
 
 function passiveTable(entries) {
@@ -733,7 +731,7 @@ function passiveTable(entries) {
       .filter((e) => e.visible || edit)
       .map(
         (e) =>
-          `<tr><td><div class="section-controls">${button(esc(e.record.name), "reference", `data-id="${esc(e.record.id)}"`, "table-link")}${isForgeModifier(e.record) ? actionUse(e) : ""}${edit && e.basic ? `<input type="checkbox" data-basic="${e.record.id}" aria-label="Show ${esc(e.record.name)}" ${e.visible ? "checked" : ""}>` : ""}</div><span class="brief" title="${esc(brief(e.record))}">${esc(brief(e.record))}</span></td></tr>`,
+          `<tr><td><div class="section-controls">${button(esc(e.record.name), "reference", `data-id="${esc(e.record.id)}"`, "table-link")}${isForgeModifier(e.record) || (host?.postUse && !attributeFor(e.record) && !host.readOnly) ? actionUse(e) : ""}${edit && e.basic ? `<input type="checkbox" data-basic="${e.record.id}" aria-label="Show ${esc(e.record.name)}" ${e.visible ? "checked" : ""}>` : ""}</div><span class="brief" title="${esc(brief(e.record))}">${esc(brief(e.record))}</span></td></tr>`,
       )
       .join("") || "<tr><td><small>None</small></td></tr>"
   }</tbody></table>`;
@@ -880,9 +878,9 @@ function inventoryTable(controls = false) {
         `<td><input type="checkbox" data-loadout="${id}" data-prop="${prop}" aria-label="${labelPrefix} ${label}" ${item[prop] ? "checked" : ""}></td>`).join("")
       : `<td>${esc(sources[item.source] ?? name(item.source))}</td>`;
     const sale = controls ? provisionSalePrice(item) : 0;
-    const remove = !controls ? purchaseRemoval(item) : host?.canDeleteItem?.(item) === false ? "" :
-      sale ? button(`Sell · ${sale}c`, "sell-provision", `data-instance="${id}" aria-label="Sell ${label} for ${sale} coin${sale === 1 ? "" : "s"}"`, "quiet small") :
-        button("×", "delete-item", `data-instance="${id}" aria-label="Delete ${label}"`, "quiet small");
+    const drop = button("Drop", "drop-item", `data-instance="${id}" aria-label="Drop ${label}"`, "quiet small");
+    const sell = sale ? button(`Sell · ${sale}c`, "sell-provision", `data-instance="${id}" aria-label="Sell ${label} for ${sale} coin${sale === 1 ? "" : "s"}"`, "quiet small") : "";
+    const remove = !controls ? purchaseRemoval(item) : host?.canDeleteItem?.(item) === false ? "" : sell + drop;
     return `<tr data-instance="${id}" class="${item.carried ? "" : "stored-item"}"><td>${nameCell}</td><td>${quantity}</td><td>${item.bulk}</td><td>${inventorySupply(item, controls)}</td>${loadout}<td>${remove}</td></tr>`;
   });
   return `<div class="table-wrap"><table class="inventory-table"><thead><tr><th>Item</th><th>Qty</th><th>Bulk</th><th>Supply</th>${controls ? '<th>Held</th><th>Worn</th><th>Carried</th><th aria-label="Remove or sell"></th>' : '<th>Source</th><th aria-label="Remove purchase"></th>'}</tr></thead><tbody>${rows.join("")}</tbody></table></div>`;
@@ -1634,12 +1632,36 @@ function debtRecoveryDialog() {
   popup("Recovery until dawn", `<p>${v.recovery.unavailableHp} HP unavailable until next dawn. Healing and safe overnight rest can restore HP to ${v.recoveryMax} / ${v.max}.</p><p>The Debt Comes Due: ${v.recovery.debtUsed ? "used since safe overnight rest" : "available"}. Use it after a sheet attribute roll to pay 1 HP and replace that roll with a new result using the same modifiers.</p><p>Declare the next dawn when it occurs in play. Dawn releases that HP for healing. A safe overnight rest renews use of the trait.</p><div class="dialog-actions">${button("Recovery", "hero-recovery")}${button("Next dawn", "debt-next-dawn", "", "primary")}</div>`);
 }
 function resupplyDialog(instance) {
-  const item = preview.inventory.items.find((i) => i.instanceId === instance);
+  const item = preview.inventory.items.find(i => i.instanceId === instance);
   if (!item) throw new Error("This supply is no longer in inventory.");
-  popup(
-    `Resupply ${itemName(item)}`,
-    `<p>Current supply: ${item.inventoryDie ? `d${item.inventoryDie}` : "Empty"}. Each step restores one die size, up to its original d${get(item.catalogId).inventoryDie}.</p><label>Resupply steps<select id="resupply-steps" aria-label="Resupply steps">${[1, 2, 3, 4, 5, 6].map((n) => option(n, `${n} step${n === 1 ? "" : "s"}`, n === 1)).join("")}</select></label><div class="dialog-actions">${button("Resupply", "confirm-resupply", `data-instance="${esc(instance)}"`, "primary")}</div>`,
-  );
+  const maximum = get(item.catalogId).inventoryDie;
+  const atMaximum = item.inventoryDie === maximum;
+  const available = atMaximum ? `<p>${esc(itemName(item))} is at the maximum d${maximum}.</p>`
+    : `<p>Current supply: ${item.inventoryDie ? `d${item.inventoryDie}` : "Empty"}. Replenish from accessible stock. Each step restores one die size, up to d${maximum}.</p><label>Resupply steps<select id="resupply-steps" aria-label="Resupply steps">${[1, 2, 3, 4, 5, 6].map(n => option(n, `${n} step${n === 1 ? "" : "s"}`, n === 1)).join("")}</select></label><div class="dialog-actions">${button("Resupply", "confirm-resupply", `data-instance="${esc(instance)}"`, "primary")}</div>`;
+  popup(`Resupply ${itemName(item)}`, available);
+}
+
+function restoreSupply(items, steps) {
+  const catalog = catalogs.inventory;
+  const inventory = playDraft().inventory;
+  inventory.overrides ??= {};
+  const results = items.map(item => ({item, ...workshopResupply({item, steps, catalog})}));
+  for (const {item, before, after} of results) {
+    if (after === before) continue;
+    inventory.overrides[item.instanceId] = { ...inventory.overrides[item.instanceId], inventoryDie: after };
+  }
+  return results;
+}
+
+const wildHarvestId = "wilderness:provisioning:1";
+function harvestTargets() {
+  const carried = preview.inventory.items.filter(item => item.carried && item.quantity > 0 &&
+    tracksSupply(item) && ["item-food-bundle", WATER_FLASK].includes(item.catalogId));
+  const field = (label, items) => `<label>${label}<select data-harvest-supply>${option("", "None", !items.length)}${items.map((item, idx) => option(item.instanceId, itemName(item), idx === 0)).join("")}</select></label>`;
+  return preview.state.learned.includes("wilderness:provisioning:3")
+    ? field("Food to replenish", carried.filter(item => item.catalogId === "item-food-bundle"))
+      + field("Water to replenish", carried.filter(item => item.catalogId === WATER_FLASK))
+    : field("Supply to replenish", carried);
 }
 let supplyInstance = null;
 function supplyDialog(instance) {
@@ -1687,6 +1709,12 @@ async function useSupply() {
     Object.assign(playDraft(), forgeHeal(playDraft(), vitals.limits, result.healed));
   }
   persist();
+  if (host) {
+    await pendingSave;
+    $("#reference").close();
+    render();
+    return;
+  }
   render();
   $("#supply-roll-result").hidden=Boolean(tracking && host?.hideRollResults);
   $("#supply-roll-result").innerHTML = tracking ?
@@ -1708,7 +1736,7 @@ function openSheetRoll({ key, id, death = false, defense = false, cast = false, 
   const weapons = ranged ? preview.inventory.items.filter(item => item.catalogId === ORDINARY_RANGED_WEAPON && item.carried && item.quantity > 0)
     .sort((left, right) => Number(right.held) - Number(left.held)) : [];
   const restricted = restrictedWorkshopRollAttributes(record);
-  const availableAttributes = death ? ["fortitude"] : restricted.length ? restricted : ATTRIBUTES;
+  const availableAttributes = death ? ["fortitude"] : id === wildHarvestId ? ["knowledge"] : restricted.length ? restricted : ATTRIBUTES;
   activeRoll = { death, id, defense, cast, finishRitual, payment, ranged };
   const paymentCost = castOptions(record).find(option => option.id === payment)?.cost;
   const v = liveVitals();
@@ -1723,6 +1751,7 @@ function openSheetRoll({ key, id, death = false, defense = false, cast = false, 
     `
     ${death ? `<section class="death-panel"><div id="death-mark-display">${deathMarks(v)}</div><div class="death-outcomes"><span><b>Weak</b> +1 failure</span><span><b>Standard</b> No change</span><span><b>Strong</b> +1 success</span></div><p class="inline-help">${v.immediateDeathRoll ? "Resolve the roll for the damage just taken." : "Roll at the start of your Dying turn."} Three successes stabilize you at 0 HP.</p>${!v.immediateDeathRoll && forgeCanSpendGrit(v, v.limits, "turn-start") ? button("Spend Grit instead", "confirm-grit", 'data-trigger="turn-start"') : ""}</section>` : ""}
     ${defense ? '<p class="inline-help">Choose the defense attribute named by the attack. Strong defense takes Weak attack effects; Weak defense takes Strong attack effects.</p>' : ""}
+    ${id === wildHarvestId ? harvestTargets() : ""}
     ${ranged ? `<label>Ranged weapon<select id="sheet-ranged-weapon">${weapons.length ? weapons.map(item => option(item.instanceId, itemName(item), false)).join("") : option("", "No carried ranged weapon", true)}</select></label>` : ""}
     ${!death ? [...new Set(conditions.filter(condition=>condition.key==='frightened').map(condition=>condition.source).filter(Boolean))].map(source=>`<label class="inline-toggle"><input type="checkbox" data-perceived-fear="${esc(source)}"> Perceiving ${esc(source)}</label>`).join('') : ''}
     ${rollSetup({ attributes: Object.fromEntries(availableAttributes.map((k) => [k, preview.attributes[k]])), selected: attribute, attributeId: "sheet-roll-attribute", value: preview.attributes[attribute], netId: "recipe-net", labelId: "roll-net-value" })}
@@ -1824,7 +1853,21 @@ async function resolveSheetRoll() {
     persist();
     render();
   }
+  const harvestIds = [...root.querySelectorAll("[data-harvest-supply]")].map(select => select.value).filter(Boolean);
   const result = await displayDice(preview.attributes[key], undefined, activeRoll.death);
+  if (activeRoll.id === wildHarvestId && harvestIds.length) {
+    const supplies = harvestIds.map(id => preview.inventory.items.find(item => item.instanceId === id && item.carried && item.quantity > 0));
+    if (supplies.some(item => !item)) throw new Error("A chosen supply changed during the harvest. Resupply it from the rolled result.");
+    const steps = ["weak", "standard", "strong"].indexOf(result.tier) + (preview.state.learned.includes("wilderness:provisioning:2") ? 2 : 1);
+    const restored = restoreSupply(supplies, steps);
+    if (restored.some(({before, after}) => before !== after)) persist();
+    const summary = restored.map(({item, before, after}) => before === after
+      ? `${itemName(item)} is at the maximum d${after}`
+      : `${itemName(item)} restored to d${after}`);
+    $("#recipe-roll-result").insertAdjacentHTML("beforeend", `<p>${esc(summary.join(". "))}.</p>`);
+    render();
+    if (host) notice(summary.join(". "));
+  }
   const basic = basicAttackDamageProfile([...preview.state.learned, ...preview.state.abilities], activeRoll.id);
   const tier = ["weak", "standard", "strong"].indexOf(result.tier);
   if (basic && tier >= 0)
@@ -2348,7 +2391,11 @@ async function action(target) {
     values:Object.fromEntries([...root.querySelectorAll('#reference input,#reference select')].map(node=>[node.id || node.dataset.rollAbility, node.type==='checkbox' ? node.checked : node.value]))})) return;
   if(a === "inline-action") {
     const id = target.dataset.id;
-    if (target.dataset.useAbility === "true") validateWorkshopAbilityUse(get(id), preview.inventory.items);
+    if (target.dataset.useAbility === "true") {
+      if (options.readOnly || host?.readOnly) return;
+      validateWorkshopAbilityUse(get(id), preview.inventory.items);
+      await host?.postUse?.(id);
+    }
     expandedActions.has(id) ? expandedActions.delete(id) : expandedActions.add(id);
     render();
     return;
@@ -2407,24 +2454,21 @@ async function action(target) {
   }
   if (a === "resupply-dialog") return resupplyDialog(target.dataset.instance);
   if (a === "confirm-resupply") {
-    const item = preview.inventory.items.find(
-      (i) => i.instanceId === target.dataset.instance,
-    );
-    const result = workshopResupply({
-      item,
-      steps: Number($("#resupply-steps").value),
-      catalog: catalogs.inventory,
-    });
-    const inv = playDraft().inventory;
-    inv.overrides ??= {};
-    inv.overrides[item.instanceId] = {
-      ...inv.overrides[item.instanceId],
-      inventoryDie: result.after,
-    };
-    $("#reference").close();
-    persist();
-    render();
-    notice(`Supply restored to d${result.after}.`);
+    const item = preview.inventory.items.find(i => i.instanceId === target.dataset.instance);
+    if (!item) throw new Error("This supply is no longer in inventory.");
+    target.disabled = true;
+    try {
+      const [{before, after}] = restoreSupply([item], Number($("#resupply-steps").value));
+      if (before !== after) {
+        persist();
+        if (host) await pendingSave;
+      }
+      $("#reference").close();
+      render();
+      notice(before === after ? `${itemName(item)} is at the maximum d${after}.` : `Supply restored to d${after}.`);
+    } finally {
+      target.disabled = false;
+    }
     return;
   }
   if (a === "adjust-condition") {
@@ -2506,16 +2550,16 @@ async function action(target) {
   }
   if (a === "potion-dialog") return supplyDialog();
   if (a === "use-supply-dialog") return supplyDialog(target.dataset.instance);
-  if (a === "confirm-supply") return useSupply();
-  if (a === "drink-water" || a === "refill-water") {
-    const item = preview.inventory.items.find(record => record.instanceId === target.dataset.instance);
-    if (item?.catalogId !== WATER_FLASK || !item.carried || !tracksSupply(item)) throw new Error("Choose a carried water flask.");
-    const remaining = waterRemaining(item);
-    if (a === "drink-water" && !remaining) throw new Error("Refill this flask before drinking from it.");
-    if (a === "refill-water" && !confirm("Refill from a safe water source?")) return;
-    const inventory = playDraft().inventory;
-    inventory.overrides ??= {};
-    inventory.overrides[item.instanceId] = { ...inventory.overrides[item.instanceId], waterUnits: a === "drink-water" ? remaining - 1 : item.quantity };
+  if (a === "confirm-supply") {
+    if (target.disabled) return;
+    target.disabled = true;
+    try {
+      await useSupply();
+    } finally {
+      const item = preview.inventory.items.find(it => it.instanceId === (supplyInstance ?? $("#potion-instance")?.value));
+      target.disabled = Boolean(item && tracksSupply(item) && !item.inventoryDie);
+    }
+    return;
   }
   if (a === "assign-ammunition") {
     const weapon = preview.inventory.items.find(record => record.instanceId === target.dataset.instance);
@@ -2557,7 +2601,7 @@ async function action(target) {
     if (sustainUnavailable()) throw new Error("Regain consciousness before completing the Ritual.");
     const record = get(target.dataset.id);
     $("#reference").close();
-    const attribute = attributeFor(record);
+    const attribute = castingAttribute(record);
     if (attribute) return openSheetRoll({ id: record.id, key: attribute, finishRitual: true });
     draft.play = beginForgeSustain(playDraft(), record);
     persist();
@@ -2600,9 +2644,14 @@ async function action(target) {
     });
     $("#reference").close();
   }
-  if (a === "delete-item" || a === "sell-provision") {
+  if (a === "drop-item") {
     const item=preview.inventory.items.find(item=>item.instanceId===target.dataset.instance);
-    if(host?.canDeleteItem?.(item)===false) throw new Error("Open this item’s card to delete it.");
+    if (!item || host?.canDeleteItem?.(item)===false) throw new Error("This item is unavailable to drop.");
+    return popup(`Drop ${itemName(item)}?`, `<p>Remove this stack from your inventory?</p><div class="dialog-actions">${button("Cancel", "close-reference")}${button("Drop item", "confirm-drop-item", `data-instance="${esc(item.instanceId)}"`, "primary")}</div>`);
+  }
+  if (a === "confirm-drop-item" || a === "sell-provision") {
+    const item=preview.inventory.items.find(item=>item.instanceId===target.dataset.instance);
+    if (!item || host?.canDeleteItem?.(item)===false) throw new Error("This item is unavailable to remove.");
     const inv = playDraft().inventory,
       id = target.dataset.instance;
     if (a === "sell-provision") {
@@ -2612,13 +2661,15 @@ async function action(target) {
       inv.sold = [...new Set([...(inv.sold ?? []), id])];
     }
     const added = inv.added.some((i) => i.instanceId === id);
-    if (!added && inv.removed.length >= 500)
+    const recordRemoval = Boolean(host) || !added;
+    if (recordRemoval && inv.removed.length >= 500)
       throw new Error(
         "The character file supports up to 500 removed grant entries.",
       );
     inv.added = inv.added.filter((i) => i.instanceId !== id);
-    if (!added) inv.removed = [...new Set([...inv.removed, id])];
+    if (recordRemoval) inv.removed = [...new Set([...inv.removed, id])];
     if (draft.loadout) delete draft.loadout[id];
+    if (a === "confirm-drop-item") $("#reference").close();
   }
   if (a === "confirm-language") {
     const name = $("#language-name").value.trim(),
@@ -3286,7 +3337,7 @@ return {
    if(!record) throw new Error('This character has not learned that ability or spell.');
    mode='sheet';tab='Abilities';render();
    validateWorkshopAbilityUse(record, preview.inventory.items);
-   if(actionTiming(record).includes('Passive') && !isForgeModifier(record)) return showReference(id);
+   if(actionTiming(record).includes('Passive') && !isForgeModifier(record) && !host?.postUse) return showReference(id);
    const holder=ownerDocument.createElement('div');holder.innerHTML=actionUse({record,visible:true});
    const control=holder.querySelector('button');
    if(!control || control.disabled) throw new Error('This ability is unavailable with the character’s current resources or equipment.');

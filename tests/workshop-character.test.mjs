@@ -265,5 +265,5 @@ test("raw learned spells group by their casting action on the playable sheet", (
   assert.deepEqual(actionTiming({ action: "Main Action" }), ["Main Action"]);
   assert.deepEqual(actionTiming({ action: "Maneuver" }), ["Maneuver"]);
   assert.deepEqual(actionTiming({ action: "Reaction" }), ["Reaction"]);
-  assert.deepEqual(actionTiming({ action: "Ritual", actionText: "Ritual · 10 minutes" }), ["Other"]);
+  assert.deepEqual(actionTiming({ action: "Ritual", actionText: "Ritual · 10 minutes" }), ["Main Action"]);
 });

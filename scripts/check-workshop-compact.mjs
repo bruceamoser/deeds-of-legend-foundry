@@ -482,15 +482,27 @@ try {
     await expect(panel.locator(".inventory-stats")).toContainText("Armor DR 1");
     await byLabel("Ammunition for Ordinary Ranged Weapon").selectOption("shop-test-ammunition");
     const water = panel.locator('tr[data-instance="shop-starter-water-flask"]');
-    await expect(water).toContainText("1 person-day");
-    await water.getByRole("button", { name: "Drink", exact: true }).click();
-    await expect(water).toContainText("Empty");
+    await expect(water).toContainText("d8");
+    await water.getByRole("button", { name: "Resupply Water Flask", exact: true }).click();
+    await expect(dialog).toContainText("Water Flask is at the maximum d8.");
+    await dialog.getByRole("button", { name: "Close", exact: true }).click();
+    await page.evaluate(() => {
+      const original = crypto.getRandomValues.bind(crypto);
+      crypto.getRandomValues = values => {
+        crypto.getRandomValues = original;
+        return values.fill(0);
+      };
+    });
+    await water.getByRole("button", { name: "Use Water Flask", exact: true }).click();
+    await dialog.getByRole("button", { name: "Use & roll supply", exact: true }).click();
+    await expect(dialog.locator("#supply-roll-result")).toContainText("Water Flask: d8 → 1 · d6");
+    await expect(water).toContainText("d6");
     await page.reload();
-    await expect(water).toContainText("Empty");
+    await expect(water).toContainText("d6");
     await expect(byLabel("Ammunition for Ordinary Ranged Weapon")).toHaveValue("shop-test-ammunition");
-    page.once("dialog", popup => popup.accept());
-    await water.getByRole("button", { name: "Refill", exact: true }).click();
-    await expect(water).toContainText("1 person-day");
+    await water.getByRole("button", { name: "Resupply Water Flask", exact: true }).click();
+    await dialog.getByRole("button", { name: "Resupply", exact: true }).click();
+    await expect(water).toContainText("d8");
     await noOverflow("Inventory");
     await tab("Abilities");
     await filter("Basic actions").click();
@@ -498,6 +510,33 @@ try {
     await dialog.getByRole("button", { name: "Roll", exact: true }).click();
     await expect(dialog.locator("#recipe-roll-result")).toContainText("Ammunition Bundle d8 rolled");
     await page.keyboard.press("Escape");
+
+    const foodInstance = "inventory-harvest-food";
+    const waterInstance = "shop-starter-water-flask";
+    fighterDraft.purchases[1] = ["wilderness", "wilderness:provisioning:1", "wilderness:provisioning:2", "wilderness:provisioning:3"].map(id => ({id}));
+    fighterDraft.play = { inventory: {
+      added: [{id:"item-food-bundle", quantity:1, instanceId:foodInstance}],
+      removed: [],
+      overrides: { [foodInstance]: {inventoryDie:0}, [waterInstance]: {inventoryDie:4} },
+    }};
+    await loadFighter("sheet");
+    await byLabel("Roll Wild Harvest I").click();
+    await dialog.getByLabel("Food to replenish").selectOption(foodInstance);
+    await dialog.getByLabel("Water to replenish").selectOption(waterInstance);
+    await page.evaluate(() => {
+      const original = crypto.getRandomValues.bind(crypto);
+      crypto.getRandomValues = values => {
+        crypto.getRandomValues = original;
+        return values.fill(0);
+      };
+    });
+    await dialog.getByRole("button", { name: "Roll", exact: true }).click();
+    await expect(dialog.locator("#recipe-roll-result")).toContainText("Food Bundle restored to d6");
+    await expect(dialog.locator("#recipe-roll-result")).toContainText("Water Flask restored to d8");
+    await dialog.getByRole("button", { name: "Close", exact: true }).click();
+    await tab("Inventory");
+    await expect(panel.locator(`tr[data-instance="${foodInstance}"]`)).toContainText("d6");
+    await expect(water).toContainText("d8");
 
     const historical = JSON.parse(await readFile("Build-Offs/revised/builds/rogue-level-1.hol.json", "utf8"));
     const learnedSword = "inventory-learned-ordinary-melee-weapon";

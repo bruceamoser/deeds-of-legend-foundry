@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>Wild Harvest gathers both food and water in the same hour when both exist, each at the rolled yield. Its ordinary shelter takes 30 minutes.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>When you find both sources, Wild Harvest can raise one Food Bundle and one Water Flask in the same hour. Apply the rolled steps to each. Its ordinary shelter takes 30 minutes.</p>",
     "activity": {
       "action": "passive",
       "rollMode": "none",
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "wilderness:provisioning:3",
-      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
+      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "improvement",
@@ -34,7 +34,7 @@
         "duration": null,
         "attribute": null,
         "defenseAttribute": null,
-        "effect": "Wild Harvest gathers both food and water in the same hour when both exist, each at the rolled yield. Its ordinary shelter takes 30 minutes.",
+        "effect": "When you find both sources, Wild Harvest can raise one Food Bundle and one Water Flask in the same hour. Apply the rolled steps to each. Its ordinary shelter takes 30 minutes.",
         "improves": "wilderness:provisioning:1",
         "requires": [
           "wilderness:provisioning:2"

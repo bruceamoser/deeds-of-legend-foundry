@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Timed work</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div></dl><p>1 hour · Knowledge. Search an accessible area with plausible resources; gather 1/2/3 person-days of food, or that much drinkable water if a source exists. The DA defines the area before rolling. You can also spend 1 hour with available materials to shelter two people from ordinary rain and wind, without a roll.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Timed work</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div></dl><p>1 hour · Knowledge. Search an accessible area for food or drinkable water. The DA defines the area and confirms a plausible source before you roll. Raise one Food Bundle or Water Flask of the chosen type by 1/2/3 supply die steps, maximum d8. An empty supply starts at d4 on the first step. You can also spend 1 hour with available materials to shelter two people from ordinary rain and wind, without a roll.</p>",
     "activity": {
       "action": "other",
       "rollMode": "attribute",
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "wilderness:provisioning:1",
-      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
+      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "technique",
@@ -34,7 +34,7 @@
         "duration": null,
         "attribute": "Knowledge",
         "defenseAttribute": null,
-        "effect": "1 hour · Knowledge. Search an accessible area with plausible resources; gather 1/2/3 person-days of food, or that much drinkable water if a source exists. The DA defines the area before rolling. You can also spend 1 hour with available materials to shelter two people from ordinary rain and wind, without a roll.",
+        "effect": "1 hour · Knowledge. Search an accessible area for food or drinkable water. The DA defines the area and confirms a plausible source before you roll. Raise one Food Bundle or Water Flask of the chosen type by 1/2/3 supply die steps, maximum d8. An empty supply starts at d4 on the first step. You can also spend 1 hour with available materials to shelter two people from ordinary rain and wind, without a roll.",
         "improves": null,
         "requires": [
           "wilderness"

@@ -372,6 +372,9 @@ try {
     .getByRole("button", { name: "Resupply", exact: true })
     .click();
   assert.equal(await page.locator(".supply-current").innerText(), "d8");
+  await page.getByRole("button", { name: "Resupply", exact: true }).click();
+  await expect(page.getByRole("dialog")).toContainText("Food Bundle is at the maximum d8.");
+  await close();
 
   await page.goto(base + "npc.html");
   await expand("npc-details");

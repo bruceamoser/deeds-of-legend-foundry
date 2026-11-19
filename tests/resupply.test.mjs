@@ -26,7 +26,7 @@ async function fixture({die=0,quantity=1,maximum=4}={}) {
  const mod=new vm.SourceTextModule(await readFile(new URL('../src/services/resupply.mjs',import.meta.url),'utf8'),{context});
  await mod.link(async(specifier)=>{const values=deps[specifier];const m=new vm.SyntheticModule(Object.keys(values),function(){for(const[k,v]of Object.entries(values))this.setExport(k,v);},{context});return m;});await mod.evaluate();
  const api=mod.namespace;
- async function request(steps=1){await api.requestResupply(actor,item,steps);const message={id:"request",author:user,getFlag:(_id,key)=>created.flags[ID][key],update:async()=>{}};messages.set(message.id,message);return message;}
+ async function request(steps=1){await api.requestResupply(actor,item,steps);const message={id:"request",author:user,getFlag:(_id,key)=>created.flags[ID][key],update:async changes=>{message.content=changes.content;}};messages.set(message.id,message);return message;}
  return {api,actor,item,flags,game,request,messages,get writes(){return writes;}};
 }
 test("resupply caps empty/full healing bottles at d4 without changing zero quantity",async()=>{
@@ -43,4 +43,12 @@ test("resupply rejects nonowners, stale basis, unknown printed caps, pending sup
  f.item.system.quantity=1;await f.api.applyResupplyRequest("request");f.messages.get("request").author={id:"other"};await assert.rejects(f.api.applyResupplyRequest("request"),/changed/);assert.equal(f.writes,1);
  const unknown=await fixture({maximum:null});await assert.rejects(unknown.request(),/printed supply maximum/);
  for(const steps of [0,-1,7,1.5])await assert.rejects((await fixture()).request(steps),/1–6/);
+});
+
+test("refilling a full supply reports its maximum",async()=>{
+ const f=await fixture({die:8,maximum:8});
+ const message=await f.request(2);
+ await f.api.applyResupplyRequest("request");
+ assert.equal(f.item.system.inventoryDie,8);
+ assert.match(message.content,/at the maximum d8/);
 });

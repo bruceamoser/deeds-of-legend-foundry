@@ -44,6 +44,7 @@ const equipment = current.filter((record) => record.source.path.startsWith("desi
   const previous = inventory.equipment.find((record) => record.id === id);
   const price = Number(markdown.match(/\*\*Market price:\*\* (\d+) coins/)?.[1]);
   const bulk = Number(markdown.match(/\*\*Bulk:\*\* (\d+)/)?.[1]);
+  const supplyDie = Number(markdown.match(/\*\*Supply die:\*\* d(4|6|8|10|12|20)\b/i)?.[1]) || undefined;
   const isHealingPotion = /^item-(lesser|greater|superior)-healing-bottle$/.test(id);
   const healing = Number(markdown.match(/restore (\d+) HP before Life resistance/)?.[1]);
   assert(id && Number.isInteger(price) && Number.isInteger(bulk), source.path);
@@ -55,7 +56,7 @@ const equipment = current.filter((record) => record.source.path.startsWith("desi
     ...(markdown.match(/\*\*Physical resistance when worn:\*\* (\d+)/) ? { physicalResistance: Number(markdown.match(/\*\*Physical resistance when worn:\*\* (\d+)/)[1]) } : {}),
     specialOrder: markdown.includes("special-order benchmark"),
     handChoices: previous?.handChoices ?? [],
-    inventoryDie: id === "item-first-aid-supplies" ? 6 : id === "item-smoke-supply" ? null : previous?.inventoryDie ?? null,
+    inventoryDie: supplyDie ?? (id === "item-first-aid-supplies" ? 6 : id === "item-smoke-supply" ? null : previous?.inventoryDie ?? null),
   };
 });
 const recipes = current.filter((record) => record.source.path.startsWith("design/recipes/")).map(({ markdown, source }) => {

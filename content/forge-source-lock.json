@@ -1,5 +1,5 @@
 {
-  "commit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
+  "commit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
   "records": {
     "design/ancestries/deep-dwarf.md": "ae61b846ef9f989fee20e36d3694c63d576356d704a698c7a199cde5d7a2ef23",
     "design/ancestries/gnome.md": "9a7aa5bfacf3772a14123c1b30c3e0a620c64c992da11e62e54bc75b3f886243",
@@ -154,7 +154,7 @@
     "design/disciplines/subterfuge.md": "47bbcb5832c7436d82c80e29fb28a3d97679baff4ddf89a05d37948b9d69aff9",
     "design/disciplines/tactics.md": "4aadb00b107af38e3f73b8bf5478d37df56f20d9a8b72e171ee83afe3c38b3ae",
     "design/disciplines/wards.md": "947f795572de668944cbcce53817f02afbb7670193fde9725d4a7d3baf720c84",
-    "design/disciplines/wilderness.md": "2eb5afd4bb33f159d4ae07f590fd55c738c901e162ae786d0ab228b46d80a431",
+    "design/disciplines/wilderness.md": "e1d569d6bf7c8fbdeb1cca6071358e3f7b7f1d682d1ca17c9d30fb92668aae89",
     "design/magic-endpoints.md": "0d616d65e40b8ecbedc9ec5112367bf2d6224c428ca3221ebe1261a2004468eb",
     "design/migration/learning-redirects.json": "8de1a7b70303d13703646833028fc6c5b83c11d500ffa7ce5a5ccf4c3809dba7",
     "design/migration/origin-grants.json": "ad823cf5cf2943790fc091bf91e90ee32d8dcadc05b4e53a4c247b00a3461844",

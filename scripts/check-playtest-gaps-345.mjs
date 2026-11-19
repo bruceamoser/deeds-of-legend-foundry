@@ -126,11 +126,37 @@ try {
   await expect(row("Ordinary Melee Weapon")).toContainText("Training equipment");
   await expect(row("Lock Tools")).toContainText("Training equipment");
   const water = row("Water Flask");
-  await expect(water).toContainText("1 person-day");
-  await water.getByRole("button", { name: "Drink", exact: true }).click();
-  await expect(water).toContainText("Empty");
+  await expect(water).toContainText("d8");
+  await water.getByRole("button", { name: "Resupply Water Flask", exact: true }).click();
+  const supplyDialog = sheet.getByRole("dialog", { name: "Resupply Water Flask" });
+  await expect(supplyDialog).toContainText("Water Flask is at the maximum d8.");
+  await supplyDialog.getByRole("button", { name: "Close", exact: true }).click();
+  await player.evaluate(() => {
+    const original = CONFIG.Dice.randomUniform;
+    CONFIG.Dice.randomUniform = () => {
+      CONFIG.Dice.randomUniform = original;
+      return 0.99;
+    };
+  });
+  await water.getByRole("button", { name: "Use Water Flask", exact: true }).click();
+  const useWater = sheet.getByRole("dialog", { name: "Water Flask", exact: true });
+  await useWater.getByRole("button", { name: "Use & roll supply", exact: true }).click();
+  await expect(useWater).toBeHidden();
+  await expect(water).toContainText("d6");
+  const waterState = () => gm.evaluate(id => {
+    const actor = game.actors.get(id);
+    const item = actor.items.find(i => i.system.catalogId === "item-water-flask");
+    const rolls = game.messages.filter(message => message.speaker?.actor === id && message.getFlag("heroes-of-legend", "nativeWorkshopRoll")?.kind === "supply");
+    return {die:item.system.inventoryDie, rolls:rolls.length};
+  }, fixture.actor);
+  await expect.poll(waterState).toEqual({die:6, rolls:1});
+  await water.getByRole("button", { name: "Resupply Water Flask", exact: true }).click();
+  await supplyDialog.getByRole("button", { name: "Resupply", exact: true }).click();
+  await expect(supplyDialog).toBeHidden();
+  await expect(water).toContainText("d8");
+  await expect.poll(waterState).toEqual({die:8, rolls:1});
   await controller();
-  pass("#15–17 Fencing’s free weapon, Lock Tools and all four paid starter provisions persist to native Inventory; water is drinkable.");
+  pass("Foundry starts Water Flask at d8, posts exactly one supply roll, closes its dialog, and updates supply on replenishment.");
 
   const beforeSale = await purse();
   assert.equal(beforeSale, 40 + 3 + 7 + 7 + 3 - (9 + 3 + 5 + 20));

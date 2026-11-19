@@ -167,20 +167,32 @@ try {
   await gm.evaluate(async f=>(await import("/systems/heroes-of-legend/applications/encounter.mjs")).openEncounterPanel(game.combats.get(f.combat)),fixture);
   const groups=gm.locator(".hol-encounter-panel .hol-combat-group");
   for(const name of ["fighter","sorcerer","ranger"])
-    await groups.filter({hasText:"Players"}).getByText(`Playtest336 ${name}`,{exact:true}).waitFor();
+    await groups.filter({hasText:"Allies"}).getByText(`Playtest336 ${name}`,{exact:true}).waitFor();
   for(const name of ["guard","adder"])
-    await groups.filter({hasText:"Creatures"}).getByText(`Playtest336 ${name}`,{exact:true}).waitFor();
-  await gm.locator(`.hol-encounter-panel [data-action="side"][data-id="${fixture.participants.adder}"]`).click({noWaitAfter:true});
-  await gm.locator('.dialog [data-action="players"]').click();
-  await groups.filter({hasText:"Players"}).getByText("Playtest336 adder",{exact:true}).waitFor();
-  await gm.locator(`.hol-encounter-panel [data-action="side"][data-id="${fixture.participants.adder}"]`).click({noWaitAfter:true});
-  await gm.locator('.dialog [data-action="default"]').click();
-  await groups.filter({hasText:"Creatures"}).getByText("Playtest336 adder",{exact:true}).waitFor();
+    await groups.filter({hasText:"Enemies"}).getByText(`Playtest336 ${name}`,{exact:true}).waitFor();
+  const encounterPanel=gm.locator(".hol-encounter-panel");
+  await encounterPanel.getByRole("button",{name:"Move Playtest336 adder to Allies",exact:true}).click();
+  await groups.filter({hasText:"Allies"}).getByText("Playtest336 adder",{exact:true}).waitFor();
+  await encounterPanel.getByRole("button",{name:"Move Playtest336 adder to Enemies",exact:true}).click();
+  await groups.filter({hasText:"Enemies"}).getByText("Playtest336 adder",{exact:true}).waitFor();
   await turn("ambush",{side:"players"});
   await gm.waitForFunction(f=>game.combats.get(f.combat).getFlag("heroes-of-legend","encounter")?.round===1,fixture);
-  await turn("choose",{id:fixture.participants.fighter});
+  await player.evaluate(async f=>(await import("/systems/heroes-of-legend/applications/encounter.mjs")).openEncounterPanel(game.combats.get(f.combat)),fixture);
+  const playerPanel=player.locator(".hol-encounter-panel");
+  assert.equal(await playerPanel.getByRole("button",{name:/^Move /}).count(),0);
+  const takeTurn=playerPanel.locator(`[data-action="choose"][data-id="${fixture.participants.fighter}"]`);
+  assert.equal(await takeTurn.innerText(),"Take Turn");
+  await takeTurn.click();
   await gm.waitForFunction(f=>game.combats.get(f.combat).getFlag("heroes-of-legend","encounter")?.current===f.participants.fighter,fixture);
-  pass("Actor type and explicit DA side override");
+  await playerPanel.getByRole("button",{name:"Cancel Turn",exact:true}).click();
+  await gm.waitForFunction(f=>{
+    const state=game.combats.get(f.combat).getFlag("heroes-of-legend","encounter");
+    return !state.current&&state.round===1&&!state.acted.includes(f.participants.fighter);
+  },fixture);
+  await takeTurn.click();
+  await gm.waitForFunction(f=>game.combats.get(f.combat).getFlag("heroes-of-legend","encounter")?.current===f.participants.fighter,fixture);
+  pass("Allies and Enemies move in one DA click, and the player can take, cancel, and retake an unused turn.");
+
 
   await openSheet(player,fixture.fighter);
   await player.evaluate(f=>{
@@ -198,6 +210,8 @@ try {
     await native.waitFor({state:"detached"});
   });
   const cut=await waitForRoll(player,fixture.fighter,"Measured Cut I");
+  await playerPanel.getByRole("button",{name:"Cancel Turn",exact:true}).waitFor({state:"hidden"});
+  await player.evaluate(async()=>{for(const app of foundry.applications.instances.values())if(app.options.classes.includes("hol-encounter-panel"))await app.close();});
   const cutResult=await snapshot(player,cut);
   assert.equal(cutResult.equipment.name,"Playtest336 Blade");
   assert.equal(cutResult.tier,"strong");

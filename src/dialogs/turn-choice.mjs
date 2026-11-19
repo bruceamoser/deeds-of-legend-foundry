@@ -12,7 +12,7 @@ export async function chooseCombatParticipant(combat,id) {
   const count=3-restriction,labels={main:'Main Action',maneuver:'Maneuver',reaction:'Reaction'};
   const retained=await foundry.applications.api.DialogV2.wait({window:{title:'Choose turn actions'},
    content:`<p>Dazed or Grappled ${restriction}: choose exactly ${count} action ${count===1?'category':'categories'} to retain this turn.</p>${ACTION_CATEGORIES.map(category=>`<label><input type="checkbox" name="retained" value="${category}"> ${labels[category]}</label>`).join('')}`,
-   buttons:[{action:'choose',label:'Begin turn',default:true,callback:(_event,_button,dialog)=>{
+   buttons:[{action:'choose',label:'Take Turn',default:true,callback:(_event,_button,dialog)=>{
     const selected=[...dialog.element.querySelectorAll('[name=retained]:checked')].map(input=>input.value);
     if(selected.length!==count||new Set(selected).size!==count||selected.some(category=>!ACTION_CATEGORIES.includes(category)))throw new Error(`Choose exactly ${count} distinct action categories.`);
     return selected;

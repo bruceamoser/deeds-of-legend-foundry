@@ -1,6 +1,8 @@
 /** Alternating sides; document permissions and phase effects belong to the service. */
 const SIDES = ["players", "opposition"];
-const other = (side) => (side === "players" ? "opposition" : "players");
+
+export const oppositeEncounterSide = side => side === "players" ? "opposition" : "players";
+export const encounterSideLabel = side => side === "players" ? "Allies" : "Enemies";
 function participant(p) {
   if (
     !p ||
@@ -54,8 +56,8 @@ export function availableParticipants(state, side = state.nextSide) {
 function availableSide(state, desired) {
   return availableParticipants(state, desired).length
     ? desired
-    : availableParticipants(state, other(desired)).length
-      ? other(desired)
+    : availableParticipants(state, oppositeEncounterSide(desired)).length
+      ? oppositeEncounterSide(desired)
       : null;
 }
 function audit(state, kind, data) {
@@ -68,6 +70,34 @@ function audit(state, kind, data) {
   });
   return state;
 }
+/** Remember the actor's previous budget while the new turn can still be cancelled. */
+function beginTurnSelection(next, previous, id) {
+  audit(next, "start", { id });
+  next.turnSelection = {
+    id, revision: next.revision,
+    budget: structuredClone(previous.budgets?.[id] ?? null),
+    speedProfile: structuredClone(previous.speedProfiles?.[id] ?? null),
+    speedRuling: structuredClone(previous.speedRulings?.[id] ?? null),
+  };
+  return next;
+}
+export function canCancelTurn(state) {
+  return Boolean(state?.current && state.turnSelection?.id === state.current &&
+    state.turnSelection.revision === state.revision && !state.acted.includes(state.current));
+}
+export function cancelTurn(state) {
+  if (!canCancelTurn(state)) throw new Error("Only an unused turn can be cancelled.");
+  const next = structuredClone(state), { id, budget, speedProfile, speedRuling } = next.turnSelection;
+  for (const [key, previous] of [["budgets", budget], ["speedProfiles", speedProfile], ["speedRulings", speedRuling]]) {
+    if (!next[key]) continue;
+    if (previous === null) delete next[key][id];
+    else next[key][id] = previous;
+  }
+  next.current = null;
+  next.turnSelection = null;
+  if (next.startingSide) next.nextSide = availableSide(next, next.nextSide);
+  return audit(next, "cancel", { id });
+}
 export function chooseParticipant(state, id) {
   if (state.current)
     throw new Error("Finish the current turn before choosing another.");
@@ -77,7 +107,7 @@ export function chooseParticipant(state, id) {
   const next = structuredClone(state);
   next.current = id;
   next.serial++;
-  return audit(next, "start", { id });
+  return beginTurnSelection(next, state, id);
 }
 export function finishTurn(state) {
   if (!state.current) throw new Error("No current turn to finish.");
@@ -87,12 +117,13 @@ export function finishTurn(state) {
   if (!side) throw new Error("Current participant is missing from the roster.");
   if (!next.acted.includes(id)) next.acted.push(id);
   next.current = null;
+  next.turnSelection = null;
   if (next.budgets?.[id]) {
     delete next.budgets[id].bonusMovement;
     delete next.budgets[id].disengaged;
   }
   audit(next, "end", { id });
-  next.nextSide = availableSide(next, other(side));
+  next.nextSide = availableSide(next, oppositeEncounterSide(side));
   if (!next.nextSide && next.roster.some((p) => !p.withdrawn)) {
     next.round++;
     next.acted = [];
@@ -154,7 +185,7 @@ export function reconcileTurnRoster(state,participants) {
   const ids=new Set(roster.map(p=>p.id));
   next.roster=roster.map(p=>({...p,...(state.startingSide?{eligibleRound:state.roster.find(old=>old.id===p.id)?.eligibleRound??state.round}:{}),withdrawn:false}));
   next.acted=[...new Set((next.acted??[]).filter(id=>ids.has(id)))];
-  if(next.current&&!ids.has(next.current))next.current=null;
+  if(next.current&&!ids.has(next.current)){next.current=null;next.turnSelection=null;}
   if(!next.current&&roster.length&&roster.every(p=>next.acted.includes(p.id))){next.round++;next.acted=[];if(next.startingSide)next.nextSide=next.startingSide;}
   if(next.startingSide&&!next.current)next.nextSide=availableSide(next,next.nextSide??next.startingSide);
   return next;
@@ -167,11 +198,11 @@ export function selectTurn(state,id) {
   if(!availableTurnParticipants(state).some(p=>p.id===id))throw new Error("Choose a participant who has not acted this round.");
   const next=structuredClone(state);next.schemaVersion=3;next.current=id;next.serial=(next.serial??0)+1;next.acted??=[];
   delete next.budgets;delete next.opening;delete next.nextSide;delete next.startingSide;
-  return audit(next,"start",{id});
+  return beginTurnSelection(next,state,id);
 }
 export function finishSelectedTurn(state) {
   if(!state.current)throw new Error("No current turn to finish.");
-  const next=structuredClone(state),id=next.current;next.current=null;next.schemaVersion=3;
+  const next=structuredClone(state),id=next.current;next.current=null;next.turnSelection=null;next.schemaVersion=3;
   next.acted=[...new Set([...(next.acted??[]),id])];
   delete next.budgets;delete next.opening;delete next.nextSide;delete next.startingSide;
   audit(next,"end",{id});

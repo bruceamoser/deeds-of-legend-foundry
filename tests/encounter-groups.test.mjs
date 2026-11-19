@@ -5,12 +5,12 @@ import {createContext,SourceTextModule,SyntheticModule} from 'node:vm';
 async function load(game){
  const context=createContext({game,foundry:{applications:{api:{ApplicationV2:class{},HandlebarsApplicationMixin:base=>base}}}});
  const module=new SourceTextModule(await readFile(new URL('../src/applications/encounter.mjs',import.meta.url),'utf8'),{context});
- await module.link(async()=>{const dep=new SyntheticModule(['reconcileTurnRoster','availableParticipants','combatSide','requestCombat','chooseCombatParticipant','finishCombatParticipant'],function(){for(const key of ['reconcileTurnRoster','availableParticipants','combatSide','requestCombat','chooseCombatParticipant','finishCombatParticipant'])this.setExport(key,()=>{});},{context});await dep.link(()=>{});await dep.evaluate();return dep;});await module.evaluate();return module.namespace;
+ await module.link(async()=>{const dep=new SyntheticModule(['reconcileTurnRoster','availableParticipants','encounterSideLabel','oppositeEncounterSide','canCancelParticipantTurn','combatSide','requestCombat','chooseCombatParticipant','finishCombatParticipant'],function(){for(const key of ['reconcileTurnRoster','availableParticipants','encounterSideLabel','oppositeEncounterSide','canCancelParticipantTurn','combatSide','requestCombat','chooseCombatParticipant','finishCombatParticipant'])this.setExport(key,key==='encounterSideLabel'?side=>side==='players'?'Allies':'Enemies':()=>{});},{context});await dep.link(()=>{});await dep.evaluate();return dep;});await module.evaluate();return module.namespace;
 }
-test('encounter groups keep players before creatures and retain their turn data',async()=>{
+test('encounter groups keep allies before enemies and retain their turn data',async()=>{
  const {encounterGroups}=await load({});
- const rows=[{id:'adder',group:'creatures',acted:true},{id:'hero',group:'players',active:true},{id:'wolf',group:'creatures'}];
- const groups=encounterGroups(rows);assert.equal(groups[0].label,'Players');assert.equal(groups[0].participants[0],rows[1]);assert.equal(groups[1].label,'Creatures');assert.equal(groups[1].participants[0],rows[0]);assert.equal(groups[1].participants[1],rows[2]);assert.equal(rows[0].id,'adder');
+ const rows=[{id:'adder',group:'opposition',acted:true},{id:'hero',group:'players',active:true},{id:'wolf',group:'opposition'}];
+ const groups=encounterGroups(rows);assert.equal(groups[0].label,'Allies');assert.equal(groups[0].participants[0],rows[1]);assert.equal(groups[1].label,'Enemies');assert.equal(groups[1].participants[0],rows[0]);assert.equal(groups[1].participants[1],rows[2]);assert.equal(rows[0].id,'adder');
 });
 test('End combat delegates to the native confirmation and rejects players',async()=>{
  const game={user:{isGM:false}},{endEncounter}=await load(game);let called=0;const combat={endCombat(){called++;return 'native';}};

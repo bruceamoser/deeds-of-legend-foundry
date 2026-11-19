@@ -98,7 +98,8 @@ test("explicit Finish ignores old reservations and invokes its once-only conditi
   combat.combatants.filter=fn=>[...combat.combatants.values()].filter(fn);
   const request={kind:"finish",combatUuid:combat.uuid,revision:flags.encounter.revision};
   const message={id:"finish",author:{id:"owner"},getFlag:(_id,key)=>key==="combatRequest"?request:null,async update(){}};
-  const context=createContext({structuredClone,game:{messages:new Map([["finish",message]])},fromUuid:async()=>combat});
+  const context=createContext({structuredClone,game:{messages:new Map([["finish",message]])},fromUuid:async()=>combat,
+    foundry:{data:{operators:{ForcedReplacement:{create:value=>value}}}}});
   const writes=[];
   const service=await loadService("combat",context,async(document,changes)=>{writes.push(document);for(const[key,value]of Object.entries(changes)){if(key==="flags.heroes-of-legend.encounter")flags.encounter=value;}});
   await service.resolveCombatRequest("finish");

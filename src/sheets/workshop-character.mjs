@@ -1,6 +1,7 @@
 import {signatureProse} from '../rules/forge-signatures.mjs';
 import {SharedRollDialog} from '../dialogs/attribute-roll.mjs';
 import {prepareNativeActionCost,activateOwnedAbility,activateDefenseBenefit} from '../services/abilities.mjs';
+import {postAbilityReference} from '../services/reference-play.mjs';
 import {openPotionPreparation} from '../applications/potions.mjs';
 import {HEALING_POTION_IDS} from '../rules/potions.mjs';
 import {torchItemActions,requestTorchToggle} from '../services/torches.mjs';
@@ -175,6 +176,12 @@ export class WorkshopCharacterSheet extends HandlebarsApplicationMixin(foundry.a
           else await this.editWorkshopPortrait(event.target);
           return true;
         },
+        postUse:async id=>{
+          this.assertOwner();
+          const item=this.actor.items.find(item=>item.type==='ability'&&item.getFlag(ID,'catalogId')===id&&item.getFlag(ID,'grantKind')==='nativeWorkshop');
+          if(!item)throw new Error('The character no longer owns this ability.');
+          return postAbilityReference(item);
+        },
         onRoll:request=>this.rollDice(request),
       };
       const controller=await mountWorkshop(target,{host:this.host,initialState:state});
@@ -329,7 +336,7 @@ export class WorkshopCharacterSheet extends HandlebarsApplicationMixin(foundry.a
     let content, rollSnapshot;
     if(kind==='supply') {
       const check=inventoryCheck({die:sides,retained:faces[0]});
-      content=resourceCard({actor:this.actor.name,title:'Supply check',kind:'supply',die:{face:faces[0],before:sides,after:check.after},status:'Rolled',detail:'A 1 steps the supply down; the final use still works.'});
+      content=resourceCard({actor:this.actor.name,title:request.item?.name ?? request.item?.definition?.name ?? 'Supply check',kind:'supply',die:{face:faces[0],before:sides,after:check.after},status:'Rolled',detail:'A 1 steps the supply down; the final use still works.'});
     } else {
       const dice=roll.dice[0].results.filter(die=>!die.rerolled)
         .map((die,index)=>({index,face:die.result,kept:die.active!==false}));

@@ -1,6 +1,7 @@
 import {forgeSignatureComponent} from "./forge-signatures.mjs";
 import { sustainLimit } from "./forge-sustain.mjs";
 import { WOUND_TABLES } from "./damage.mjs";
+import { legacyWaterSupplyDie } from "./inventory.mjs";
 import { woundRoll } from "./wounds.mjs";
 import { normalizeForgeRecovery } from "./forge-recovery.mjs";
 import { normalizeRecovery } from "./recovery.mjs";
@@ -315,7 +316,7 @@ export function normalizeWorkshopPlay(
           }
           if (v.waterUnits !== undefined) {
             if (!Number.isSafeInteger(v.waterUnits) || v.waterUnits < 0 || v.waterUnits > 10000) fail();
-            next.waterUnits = v.waterUnits;
+            if (!next.inventoryDie) next.inventoryDie = legacyWaterSupplyDie(v.waterUnits);
           }
           return [id, next];
         }),
