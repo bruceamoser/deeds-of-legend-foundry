@@ -142,12 +142,15 @@ try{
  const budget=await page.evaluate(id=>{const actor=game.actors.get(id);return {attributes:actor.sheet.controller.getState().character.draft.attributes,sp:actor.system.sp.max,purchases:actor.sheet.controller.getState().character.draft.purchases};},id);
  await page.evaluate(async id=>{const actor=game.actors.get(id);await actor.createEmbeddedDocuments('Item',[{name:'Runtime Knowledge Lens',type:'equipment',system:{quantity:1,carried:true,worn:true,attributeEffects:[{attribute:'knowledge',mode:'modifier',value:3,cursed:false}]}}]);await actor.sheet.render({force:true});},id);
  await expect(app.getByRole('button',{name:'Roll Knowledge',exact:true})).toContainText('+5');
- await app.getByRole('button',{name:'Roll Knowledge',exact:true}).click();await app.locator('#reference [data-action="roll-sheet"]').click();
- await page.evaluate(async id=>{await game.actors.get(id).sheet.controller.settle();},id);
- assert.match(await app.locator('#recipe-roll-result').innerText(),/\+5/);
+ await app.getByRole('button',{name:'Roll Knowledge',exact:true}).click();
+ const knowledgeDialog=page.locator('.hol-roll-dialog');
+ await knowledgeDialog.getByRole('button',{name:'Roll',exact:true}).click();
+ await expect(knowledgeDialog).toHaveCount(0);
+ await expect.poll(()=>page.evaluate(id=>game.messages.filter(message=>message.speaker.actor===id)
+   .map(message=>message.getFlag('heroes-of-legend','roll')).filter(roll=>roll?.attributeKey==='knowledge').at(-1)?.attribute,id)).toBe(5);
  const bonusState=await page.evaluate(id=>{const actor=game.actors.get(id);return {attributes:actor.sheet.controller.getState().character.draft.attributes,sp:actor.system.sp.max,purchases:actor.sheet.controller.getState().character.draft.purchases};},id);
  assert.deepEqual(bonusState,budget);checks.push('Actual worn +3 Knowledge Item displays and rolls +5 in shared result/native chat without altering creation attributes, purchases or maximum SP.');
- await captureNative('native-item-bonus-roll.png',true);await page.keyboard.press('Escape');
+ await captureNative('native-item-bonus-roll.png',true);
  await app.getByRole('tab',{name:'Development',exact:true}).click();
  await app.getByRole('button',{name:'Spend DP',exact:true}).click();
  const branch=app.locator('[data-action="forge-path"]').first();await branch.click();assert.equal(await branch.getAttribute('aria-expanded'),'true');
