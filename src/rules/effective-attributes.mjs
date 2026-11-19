@@ -1,3 +1,4 @@
+import { isEquipped } from "./equipment-bonuses.mjs";
 import { untrainedArmorPenalty } from "./native-armor.mjs";
 
 /** Item modifiers affect play, never creation DP or acquisition eligibility.
@@ -45,7 +46,7 @@ export function equipmentAttributeSources(items = [], attribute) {
     if (item.type !== 'equipment') continue;
     const system=item.system ?? {};
     validateItemAttributeEffects(system.attributeEffects ?? []);
-    if (!system.quantity || system.carried === false || !(system.held || system.worn)) continue;
+    if (!isEquipped(item)) continue;
     for (const effect of system.attributeEffects ?? []) if (effect.attribute === attribute)
       sources.push({kind:effect.mode,value:effect.value,cursed:effect.cursed,id:item.id??item._id,name:item.name??'Equipment'});
   }

@@ -1,3 +1,5 @@
+import * as equipmentBonuses from "../src/rules/equipment-bonuses.mjs";
+import {DAMAGE_TYPES} from "../src/rules/damage.mjs";
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import vm from 'node:vm';
@@ -15,13 +17,13 @@ const item=(name,attribute,mode,value,cursed=false)=>({_id:name,id:name,name,typ
 async function model(path){
  class Field {constructor(...args){this.args=args;}}
  const context=vm.createContext({structuredClone,foundry:{data:{fields:Object.fromEntries(['ArrayField','SchemaField','StringField','BooleanField','HTMLField'].map(key=>[key,Field]))},abstract:{TypeDataModel:class{static migrateData(source){return source;}}}}});
- const exports={WATER_FLASK,legacyWaterSupplyDie,CONSUMABLE_TYPES,...effects,...character,normalizeRecovery,normalizeForgeRecovery,StrictNumberField:Field};
+ const exports={...equipmentBonuses,DAMAGE_TYPES,WATER_FLASK,legacyWaterSupplyDie,CONSUMABLE_TYPES,...effects,...character,normalizeRecovery,normalizeForgeRecovery,StrictNumberField:Field};
  const mod=new vm.SourceTextModule(await readFile(new URL(path,import.meta.url),'utf8'),{context});
  await mod.link(async()=>new vm.SyntheticModule(Object.keys(exports),function(){for(const[key,value]of Object.entries(exports))this.setExport(key,value);},{context}));await mod.evaluate();return mod.namespace;
 }
 test('native character derives equipped effective attributes without changing creation attributes, HP, SP or DP totals',async()=>{
  const {CharacterData}=await model('../src/models/character.mjs');const data=Object.create(CharacterData.prototype);
- Object.assign(data,{attributes:Object.fromEntries(character.ATTRIBUTES.map(key=>[key,{base:1}])),health:{value:8,baseMax:14},grit:{granted:1,spent:0},sp:{value:3,max:6},parent:{items:[item('Ring','brawn','modifier',2),item('Curse','brawn','modifier',-1,true),item('Crown','fortitude','set',3)]}});
+ Object.assign(data,{_source:{sp:{max:6}},attributes:Object.fromEntries(character.ATTRIBUTES.map(key=>[key,{base:1}])),health:{value:8,baseMax:14},grit:{granted:1,spent:0},sp:{value:3,max:6},parent:{items:[item('Ring','brawn','modifier',2),item('Curse','brawn','modifier',-1,true),item('Crown','fortitude','set',3)]}});
  CharacterData.prototype.prepareDerivedData.call(data);assert.equal(data.attributes.brawn.effective,0);assert.equal(data.attributes.fortitude.effective,3);assert.equal(data.attributes.brawn.base,1);assert.equal(data.health.max,14);assert.equal(data.sp.max,6);assert.equal(data.attributeTotal,6);assert.equal(data.health.value,8);
  data.parent.items.pop();data.parent.items.pop();CharacterData.prototype.prepareDerivedData.call(data);assert.equal(data.attributes.brawn.effective,3);assert.equal(data.attributes.fortitude.effective,1);
 });

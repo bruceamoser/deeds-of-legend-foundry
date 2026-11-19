@@ -41,9 +41,9 @@ import {
 import { consumableType } from "./rules/consumables.mjs";
 import { HEALING_POTION_IDS } from "./rules/potions.mjs";
 import {
-  advanceForgeVitals, forgeBeginFirstAid, forgeCanSpendGrit, forgeDamage,
-  forgeDeathRoll, forgeFinalizeDeath, forgeFinishFirstAid, forgeHeal,
-  forgeInterruptFirstAid, forgeRecordScar, forgeRest, forgeSpellcraftRecovery,
+  advanceForgeVitals, FIRST_AID_TREATMENTS, forgeCanSpendGrit, forgeDamage,
+  forgeDeathRoll, forgeFinalizeDeath, forgeHeal,
+  forgeRecordScar, forgeRest,
   forgeSpendGrit, forgeStabilize, forgeVitals,
 } from "./rules/forge-vitals.mjs";
 import { itemArrangement } from "./rules/workshop-play.mjs";
@@ -204,7 +204,7 @@ function rollItemNames(id) {
   return catalogId ? preview.inventory.items.filter(item=>item.catalogId===catalogId && item.carried && item.quantity>0).map(itemName) : [];
 }
 function nativeItemsPanel(kind) {
-  const items=(host?.nativeItems?.() ?? []).filter(item=>kind==='ability' ? item.type==='ability' : item.type!=='ability' && (!item.knownCatalog || item.type!=='equipment'));
+  const items=(host?.nativeItems?.() ?? []).filter(item=>kind==='ability' ? item.type==='ability' : !['ability','equipment'].includes(item.type));
   if(!items.length) return '';
   return `<section class="box owned-item-cards" aria-label="${kind==='ability' ? 'Other ability cards' : 'Other owned items'}"><h3>${kind==='ability' ? 'Other abilities' : 'Other owned items'}</h3>${kind==='ability' ? '<p class="file-hint">Owned ability cards; these do not change your learned Workshop choices.</p>' : ''}<div class="owned-item-list">${items.map(item=>`<div class="stat-row owned-item-card" data-native-item="${esc(item.id)}"><span>${button(esc(item.name),'native-open-item',`data-id="${esc(item.id)}" aria-label="Open ${esc(item.name)}"`,'table-link')}${item.type==='equipment' ? `<small class="item-source">${item.quantity ?? 0} × ${item.bulk ?? 0} Bulk · ${item.carried===false ? 'Stored' : 'Carried'}${item.held ? ' · Held' : ''}${item.worn ? ' · Worn' : ''}</small>` : ''}</span>${button('Open card','native-open-item',`data-id="${esc(item.id)}" aria-label="Open card ${esc(item.name)}"`,'small quiet')}</div>`).join('')}</div></section>`;
 }
@@ -357,8 +357,12 @@ function header() {
   const showResources = mode === "sheet";
   if (host && mode === "builder") return "";
   if (mode === "builder") return `<div class="toolbar creator-toolbar">${button("New", "new", 'aria-label="New hero"', "quiet")}${button("Save", "save", 'aria-label="Save character"', "quiet")}${button("Load", "library", 'aria-label="Load character"', "quiet")}${button("Import", "import", 'aria-label="Import JSON"', "quiet")}${button("Export", "export", 'aria-label="Export JSON"', "quiet")}</div>`;
-  return `<div class="workshop-header"><div class="toolbar"><div class="toolbar-group">${button(edit ? "✓ Done" : "✎ Edit", "edit", `aria-pressed="${edit}"`, edit ? "selected" : "quiet")}</div><div class="toolbar-group">${button("New", "new", 'aria-label="New hero"', "quiet")}${button("Save", "save", 'aria-label="Save character"', "quiet")}${button("Load", "library", 'aria-label="Load character"', "quiet")}${button("Import", "import", 'aria-label="Import JSON"', "quiet")}${button("Export", "export", 'aria-label="Export JSON"', "quiet")}</div></div>
-  <header class="hero-header"><div class="identity-line"><img class="hero-mark" src="assets/crest.webp" alt=""><div><div class="name-line">${edit && mode === "sheet" ? field("Character name", "name", draft.name, "text", 'maxlength="200"') : `<h1>${esc(draft.name || "New hero")}</h1>`}${button(skullIcon + (vitals.dying ? `<span>${vitals.failed} / ${vitals.successfulDeathRolls}</span>` : ""), "death-roll", `aria-label="Death roll" title="Fortitude death roll · ${vitals.failed} failures · ${vitals.successfulDeathRolls} successes" ${vitals.dying && vitals.failed < 3 ? "" : "disabled"}`, "icon-button death-button")}</div><p>${esc(join([get(draft.ancestryId)?.name, get(draft.culture?.id)?.name, get(draft.background?.id)?.name, get(draft.classId)?.name, `Level ${preview.development.level}`]))}</p></div></div><div class="vitals"><div class="vital"><small>HP</small><strong class="hp-value">${showResources ? `<input aria-label="Current HP" title="Enter a value or an adjustment such as +2 or -3" data-field="play.hp" type="text" role="spinbutton" aria-valuemin="0" aria-valuemax="${Math.max(vitals.hp, vitals.recoveryMax)}" aria-valuenow="${vitals.hp}" value="${vitals.hp}"><span>/ ${vitals.max || "—"}</span>` : `<span>${vitals.max || "—"}</span>`}</strong></div><div class="vital"><small>SP</small><strong class="hp-value">${showResources ? `<input aria-label="Current SP" title="Enter a value or an adjustment such as +2 or -3" data-field="play.sp" type="text" role="spinbutton" aria-valuemin="0" aria-valuemax="${vitals.limits.maxSp}" aria-valuenow="${vitals.sp}" value="${vitals.sp}"><span>/ ${vitals.limits.maxSp || "—"}</span>` : `<span>${vitals.limits.maxSp || "—"}</span>`}</strong></div><div class="vital"><small>${button("Grit", "use-grit", 'aria-label="Use Grit"', "vital-link")}</small><strong>${vitals.grit}</strong></div><div class="vital"><small>Speed</small><strong data-speed>${vitals.speed}${vitals.speed < vitals.maxSpeed ? ` / ${vitals.maxSpeed}` : ""}</strong></div><div class="vital"><small>${button("Recovery", "hero-recovery", 'aria-label="Recovery"', "vital-link")}</small><strong>${vitals.dead ? "Dead" : vitals.dying ? "Dying" : vitals.hp === 0 && vitals.max ? "Stable" : ""}</strong></div><div class="vital"><small>Armor DR</small><strong>${preview.resistances.physical ?? 0}</strong></div></div></header>
+  const toolbar = host ? "" : `<div class="toolbar"><div class="toolbar-group">${button(edit ? "✓ Done" : "✎ Edit", "edit", `aria-pressed="${edit}"`, edit ? "selected" : "quiet")}</div><div class="toolbar-group">${button("New", "new", 'aria-label="New hero"', "quiet")}${button("Save", "save", 'aria-label="Save character"', "quiet")}${button("Load", "library", 'aria-label="Load character"', "quiet")}${button("Import", "import", 'aria-label="Import JSON"', "quiet")}${button("Export", "export", 'aria-label="Export JSON"', "quiet")}</div></div>`;
+  const rename = host && mode === "sheet" && !host.readOnly
+    ? button("✎", "edit-hero-name", 'aria-label="Edit character name" title="Edit character name"', "icon-button")
+    : "";
+  const portrait = host?.nativePortrait ? `<slot name="actor-portrait"></slot>` : `<img class="hero-mark" src="assets/crest.webp" alt="">`;
+  return `<div class="workshop-header">${toolbar}<header class="hero-header"><div class="identity-line">${portrait}<div><div class="name-line">${edit && mode === "sheet" ? field("Character name", "name", draft.name, "text", 'maxlength="200"') : `<h1>${esc(draft.name || "New hero")}</h1>`}${rename}${button(skullIcon + (vitals.dying ? `<span>${vitals.failed} / ${vitals.successfulDeathRolls}</span>` : ""), "death-roll", `aria-label="Death roll" title="Fortitude death roll · ${vitals.failed} failures · ${vitals.successfulDeathRolls} successes" ${vitals.dying && vitals.failed < 3 ? "" : "disabled"}`, "icon-button death-button")}</div><p>${esc(join([get(draft.ancestryId)?.name, get(draft.culture?.id)?.name, get(draft.background?.id)?.name, get(draft.classId)?.name, `Level ${preview.development.level}`]))}</p></div></div><div class="vitals"><div class="vital"><small>HP</small><strong class="hp-value">${showResources ? `<input aria-label="Current HP" title="Enter a value or an adjustment such as +2 or -3" data-field="play.hp" type="text" role="spinbutton" aria-valuemin="0" aria-valuemax="${Math.max(vitals.hp, vitals.recoveryMax)}" aria-valuenow="${vitals.hp}" value="${vitals.hp}"><span>/ ${vitals.max || "—"}</span>` : `<span>${vitals.max || "—"}</span>`}</strong></div><div class="vital"><small>SP</small><strong class="hp-value">${showResources ? `<input aria-label="Current SP" title="Enter a value or an adjustment such as +2 or -3" data-field="play.sp" type="text" role="spinbutton" aria-valuemin="0" aria-valuemax="${vitals.limits.maxSp}" aria-valuenow="${vitals.sp}" value="${vitals.sp}"><span>/ ${vitals.limits.maxSp || "—"}</span>` : `<span>${vitals.limits.maxSp || "—"}</span>`}</strong></div><div class="vital"><small>${button("Grit", "use-grit", 'aria-label="Use Grit"', "vital-link")}</small><strong>${vitals.grit}</strong></div><div class="vital"><small>Speed</small><strong data-speed>${vitals.speed}${vitals.speed < vitals.maxSpeed ? ` / ${vitals.maxSpeed}` : ""}</strong></div>${restControls(vitals)}<div class="vital"><small>Armor DR</small><strong>${preview.resistances.physical ?? 0}</strong></div></div></header>
   <div class="attributes">${ATTRIBUTES.map((key) => {
     const label = title(key);
     const value = preview.attributes[key] ?? 0;
@@ -502,6 +506,10 @@ function sustainUnavailable() {
   return liveVitals().hp === 0 || preview.play.conditionSummary.unconscious.active;
 }
 
+function beginTrackedSustain(play, record) {
+  return sustainUnavailable() ? play : beginForgeSustain(play, record);
+}
+
 function currentSustain() {
   const play = draft.play ?? {};
   const spell = [...preview.state.learning.spells, ...(preview.state.signatureComponents ?? [])].find((entry) => entry.id === play.sustain?.spellId);
@@ -537,8 +545,8 @@ async function castFromSheet(id, optionId = null) {
   if (!learned || !Number.isInteger(cost)) throw new Error("Learn this working before casting it.");
   if (!preview.limits) throw new Error("Finish creating this hero to track SP.");
   const vitals = liveVitals();
-  if (vitals.hp <= 0 || vitals.dead) throw new Error("Regain HP before casting.");
-  if (preview.play.conditionSummary.unconscious.active) throw new Error("Regain consciousness before casting.");
+  if (!host && (vitals.hp <= 0 || vitals.dead)) throw new Error("Regain HP before casting.");
+  if (!host && preview.play.conditionSummary.unconscious.active) throw new Error("Regain consciousness before casting.");
   const options = castOptions(record);
   if (!optionId && options.length > 1) {
     popup(`Cast ${record.name}`, `<p>Choose how to pay for this spell.</p><div class="dialog-actions">${options.map(option => button(`${option.label} · ${option.cost} SP`, "cast-spell", `data-id="${esc(id)}" data-payment="${esc(option.id)}" ${option.cost > vitals.sp ? "disabled" : ""}`)).join("")}</div><small>Soul Wellspring and Mind Palace each renew after a safe overnight rest.</small>`);
@@ -568,7 +576,7 @@ async function castFromSheet(id, optionId = null) {
     return;
   }
   const paid=await payCast(record, optionId);
-  draft.play = beginForgeSustain(paid, record);
+  draft.play = beginTrackedSustain(paid, record);
   persist();
   render();
   await postPaidUse(id);
@@ -704,7 +712,7 @@ function actionUse(entry) {
   if(r.id === "ability-use-a-healing-potion") return button("Use","potion-dialog",'aria-label="Use a healing potion"',"compact-roll");
   if(r.id === "ability-sustain-spell") return button("Sustain","sustain-spell",currentSustain().active ? "" : "disabled", "compact-roll");
   if(Number.isInteger(cost) && isForgeModifier(r)) return button(`Use · ${cost} SP`,'use-modifier',`data-id="${esc(r.id)}" aria-label="Use ${esc(r.name)}" ${liveVitals().sp<cost ? 'disabled' : ''}`,'compact-roll');
-  if(Number.isInteger(cost)) return button(isRitual(r) || !key ? "Cast" : attributeLabel(key),"cast-spell",`data-id="${esc(r.id)}" aria-label="Cast ${esc(r.name)}" ${liveVitals().sp < minimumCastCost(r) || sustainUnavailable() ? "disabled" : ""}`,"compact-roll");
+  if(Number.isInteger(cost)) return button(isRitual(r) || !key ? "Cast" : attributeLabel(key),"cast-spell",`data-id="${esc(r.id)}" aria-label="Cast ${esc(r.name)}" ${liveVitals().sp < minimumCastCost(r) || !host && sustainUnavailable() ? "disabled" : ""}`,"compact-roll");
   if (key) {
     const keys = workshopRollAttributes(r);
     const choice = keys.length > 1;
@@ -857,10 +865,15 @@ function recipeRows() {
 function inventoryStats(starting = false) {
   if (starting)
     return `<div class="inventory-stats"><span><strong>${preview.inventory.remainingCoins}</strong> coins</span><span><strong>${preview.inventory.bulk} / ${preview.inventory.capacity}</strong> Bulk</span><span>Encumbrance <strong>${preview.inventory.encumbrance}</strong></span></div>`;
-  return `<div class="inventory-stats"><span><strong>${preview.inventory.remainingCoins}</strong> coins</span><span><strong>${preview.inventory.bulk} / ${preview.inventory.capacity}</strong> Bulk</span><span>Encumbrance <strong>${preview.inventory.encumbrance}</strong></span><span>Speed <strong>${liveVitals().speed}</strong></span><span>Armor DR <strong>${preview.resistances.physical ?? 0}</strong></span></div>`;
+  const coins = host?.coinBalance?.() ?? preview.inventory.remainingCoins;
+  return `<div class="inventory-stats"><span><strong>${coins}</strong> coins</span><span><strong>${preview.inventory.bulk} / ${preview.inventory.capacity}</strong> Bulk</span><span>Encumbrance <strong>${preview.inventory.encumbrance}</strong></span><span>Speed <strong>${liveVitals().speed}</strong></span><span>Armor DR <strong>${preview.resistances.physical ?? 0}</strong></span></div>`;
+}
+function inventoryTableItems(controls) {
+  const external = controls ? (host?.nativeItems?.() ?? []).filter(item=>item.type==='equipment' && !item.knownCatalog) : [];
+  return [...preview.inventory.items, ...external.map(item=>({...item,instanceId:item.id,nativeId:item.id,source:'owned',bulk:item.bulk * item.quantity}))];
 }
 function inventoryTable(controls = false) {
-  const items = preview.inventory.items;
+  const items = inventoryTableItems(controls);
   const purchaseRemoval = (item) =>
     item.source === "coins" &&
     draft.shopping.some((p) => p.instanceId === item.instanceId)
@@ -871,28 +884,32 @@ function inventoryTable(controls = false) {
           "quiet small",
         )
       : "";
-  const sources = { coins: "Purchased", creation: "Starting outfit", play: "Added", training: "Training equipment" };
+  const sources = { coins: "Purchased", creation: "Starting outfit", play: "Added", training: "Training equipment", owned: "Owned item" };
   const rows = items.map(item => {
     const id = esc(item.instanceId), label = esc(itemName(item));
     const title = controls && renamingItem === item.instanceId
       ? `<input class="item-name-input" data-item-name="${id}" aria-label="Item name" maxlength="200" value="${label}">`
-      : button(label, "reference", `data-id="${esc(item.catalogId)}"`, "table-link");
+      : item.nativeId ? button(label, "native-open-item", `data-id="${esc(item.nativeId)}"`, "table-link")
+        : button(label, "reference", `data-id="${esc(item.catalogId)}"`, "table-link");
+    const pencil = host?.editEquipment
+      ? button("✎", "native-edit-equipment", `data-instance="${id}" aria-label="Edit ${label}" title="Edit equipment"`, "small quiet")
+      : button("✎", "rename-item", `data-instance="${id}" aria-label="Rename ${label}" title="Rename item"`, "small quiet");
     const nameCell = controls
-      ? favorite("items", item.instanceId) + title + button("✎", "rename-item", `data-instance="${id}" aria-label="Rename ${label}" title="Rename item"`, "small quiet") +
+      ? (item.nativeId ? "" : favorite("items", item.instanceId)) + title + pencil +
         nativeItemActions(item) + `<small class="item-source">${esc(sources[item.source] ?? name(item.source))}</small>` + ammunitionSelector(item, items)
       : title;
-    const quantity = controls
+    const quantity = controls && !item.nativeId
       ? `<input type="number" class="quantity-input" data-quantity="${id}" aria-label="Quantity ${label}" min="0" max="10000" step="1" value="${item.quantity}">`
       : item.quantity;
     const loadout = controls
       ? Object.entries({held: "Hold", worn: "Wear", carried: "Carry"}).map(([prop, labelPrefix]) =>
-        `<td><input type="checkbox" data-loadout="${id}" data-prop="${prop}" aria-label="${labelPrefix} ${label}" ${item[prop] ? "checked" : ""}></td>`).join("")
+        `<td><input type="checkbox" data-loadout="${id}" data-prop="${prop}" aria-label="${labelPrefix} ${label}" ${item[prop] ? "checked" : ""} ${item.nativeId ? "disabled" : ""}></td>`).join("")
       : `<td>${esc(sources[item.source] ?? name(item.source))}</td>`;
     const sale = controls ? provisionSalePrice(item) : 0;
     const drop = button(dropIcon, "drop-item", `data-instance="${id}" aria-label="Drop ${label}" title="Drop item"`, "icon-button");
     const sell = sale ? button(`${sale}c`, "sell-provision", `data-instance="${id}" aria-label="Sell ${label} for ${sale} coin${sale === 1 ? "" : "s"}" title="Sell for ${sale} coin${sale === 1 ? "" : "s"}"`, "quiet small inventory-sell") : "";
     const remove = !controls ? purchaseRemoval(item) : host?.canDeleteItem?.(item) === false ? "" : `<span class="inventory-actions">${sell}${drop}</span>`;
-    return `<tr data-instance="${id}" class="${item.carried ? "" : "stored-item"}"><td>${nameCell}</td><td>${quantity}</td><td>${item.bulk}</td><td>${inventorySupply(item, controls, true)}</td>${loadout}<td>${remove}</td></tr>`;
+    return `<tr data-instance="${id}" ${item.nativeId ? `data-native-item="${esc(item.nativeId)}"` : ""} class="${item.carried ? "" : "stored-item"}"><td>${nameCell}</td><td>${quantity}</td><td>${item.bulk}</td><td>${inventorySupply(item, controls && !item.nativeId, true)}</td>${loadout}<td>${remove}</td></tr>`;
   });
   return `<div class="table-wrap"><table class="inventory-table"><thead><tr><th>Item</th><th>Qty</th><th>Bulk</th><th>Supply</th>${controls ? '<th>Held</th><th>Worn</th><th>Carried</th><th>Actions</th>' : '<th>Source</th><th aria-label="Remove purchase"></th>'}</tr></thead><tbody>${rows.join("")}</tbody></table></div>`;
 }
@@ -1608,39 +1625,115 @@ function gritDialog() {
   );
 }
 
-function recoveryDialog() {
-  const v = liveVitals();
-  const canAct = v.max > 0 && !v.dead && v.failed < 3 && !v.immediateDeathRoll;
-  const restHour = (v.lastRestHour ?? -16) + 24;
-  const spRecovery = preview.state.learning?.recoverySp ?? 0;
-  const firstAid = v.firstAidPending
-    ? button("Finish first aid", "finish-first-aid", canAct ? "" : "disabled") + button("Interrupt first aid", "interrupt-first-aid", canAct ? "" : "disabled")
-    : button("Begin first aid", "begin-first-aid", canAct && !v.firstAidUsed ? "" : "disabled");
-  popup("Recovery", `
-    <p><strong>${v.hp} / ${v.max} HP</strong> · <strong>${v.sp} / ${v.limits.maxSp} SP</strong> · ${v.grit} Grit</p>
-    ${v.immediateDeathRoll ? `<p>Resolve the death roll for damage at 0 HP before moving on.</p>${button("Roll Fortitude", "death-roll")}` : ""}
-    ${v.dying ? `<p>Failures ${v.failed} / 3 · Successes ${v.successfulDeathRolls} / 3</p><div class="dialog-actions">${button("Stabilize", "stabilize-hero", canAct ? "" : "disabled")}${v.failed === 3 ? button("Last Words", "hero-last-words") : ""}</div>` : ""}
-    <h3>Brief Rest</h3><p>Use First Aid or a learned recovery ability during a safe pause. Each activity sets its own time and recovery.</p>
-    <h4>First Aid</h4><p>One treatment per recipient between Night’s Rests. The healer uses medical supplies when treatment begins. A Dying patient continues to roll Fortitude.</p>
-    <p>${v.firstAidPending ? "Treatment in progress" : v.firstAidUsed ? "Treatment used" : "Treatment available"}</p><div class="dialog-actions">${firstAid}</div>
-    ${spRecovery ? `<h4>Spellcraft Recovery</h4><p>After ${preview.state.learning.recoveryMinutes} uninterrupted minutes of safe rest, restore ${spRecovery} SP. Use once between Night’s Rests.</p><div class="dialog-actions">${button(`Complete ${preview.state.learning.recoveryMinutes} minutes`, "hero-sp-recovery", canAct && !v.dying && !v.spellcraftRecoveryUsed ? "" : "disabled")}</div>` : ""}
-    <h3>Night’s Rest</h3><p>After eight safe hours including at least six hours of sleep or equivalent rest, restore HP and SP and renew First Aid. Gain these benefits once per 24 hours.</p>
-    <label>Campaign hour when rest ended<input id="hero-rest-hour" type="number" min="${restHour}" max="1000000000" value="${restHour}"></label>
-    <div class="dialog-actions">${button("Complete Night’s Rest", "complete-hero-rest", canAct && !v.dying ? "" : "disabled")}</div>
-    <div class="dialog-actions">${button("Record scar", "add-scar", canAct && !v.dying ? "" : "disabled")}</div>`);
+const briefRestIcon = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h13v6a6 6 0 01-6 6H9a6 6 0 01-6-6V7Zm13 1h2a3 3 0 010 6h-2M2 22h20M7 3v1m5-1v1"/></svg>';
+const nightsRestIcon = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 15.5A9 9 0 018.5 3.2a9 9 0 1012.3 12.3Z"/></svg>';
+
+function restControls(vitals) {
+  const status = vitals.dead ? "Dead" : vitals.dying ? "Dying" : vitals.hp === 0 && vitals.max ? "Stable" : "";
+  const disabled = vitals.max > 0 && !vitals.dead ? "" : " disabled";
+  return `<div class="vital rest-controls">${button(briefRestIcon, "brief-rest",
+    `aria-label="Brief Rest" title="Brief Rest · 1 hour"${disabled}`, "rest-control")}
+    ${button(nightsRestIcon, "nights-rest",
+    `aria-label="Night’s Rest" title="Night’s Rest · 8 hours · Restore HP and SP"${disabled}`, "rest-control")}
+    ${status ? button(status, "death-status", "", "vital-link") : ""}</div>`;
 }
 
-function firstAidDialog() {
-  popup("Finish first aid", `
-    <p>Choose the healer’s treatment and their Knowledge result after the required time.</p>
-    <label>Treatment<select id="aid-treatment"><option value="0">First aid · 10 minutes · 2/4/6 HP</option><option value="1">Field Dressing I · 10 minutes · 3/5/7 HP</option><option value="2">Field Dressing II · 10 minutes · 4/6/8 HP</option><option value="2">Field Dressing III · 5 minutes · 4/6/8 HP</option><option value="2">Emergency Treatment I · Main Action · 4/6/8 HP</option><option value="emergency2">Emergency Treatment II / III · Main Action · 5/7/9 HP</option><option value="mastery">A Way through Death / Bring Everyone Home · Main Action · 5/8/11 HP</option></select></label>
-    <label>Knowledge result<select id="aid-outcome"><option value="weak">Weak</option><option value="standard">Standard</option><option value="strong">Strong</option></select></label>
-    <div class="dialog-actions">${button("Record treatment", "record-first-aid", "", "primary")}</div>`);
+const aidTreatments = [
+  { id: "ordinary" },
+  { id: "field-dressing", requires: "medicine:first-aid:1" },
+  { id: "field-dressing2", requires: "medicine:first-aid:2" },
+  { id: "emergency-treatment", requires: "medicine:first-aid:4" },
+  { id: "emergency2", requires: "medicine:first-aid:5" },
+  { id: "mastery", label: "A Way through Death / Bring Everyone Home", requires: "medicine:first-aid:7", alternate: "armor:harness:7" },
+];
+let restInFlight = false;
+
+function restAidOptions(anotherHealer = false) {
+  return aidTreatments
+    .filter(treatment => !treatment.requires || anotherHealer || preview.state.learned.includes(treatment.requires)
+      || (treatment.alternate && preview.state.learned.includes(treatment.alternate)))
+    .map(({ id, label }) => {
+      const treatment = FIRST_AID_TREATMENTS[id];
+      return option(id, `${label ?? treatment.label} · ${treatment.healing.join("/")} HP`, id === "ordinary");
+    })
+    .join("");
+}
+
+function briefRestDialog() {
+  const knowledge = preview.attributes.knowledge;
+  const restoredSp = preview.state.learning?.recoverySp ?? 0;
+  const recoveryMinutes = preview.state.learning?.recoveryMinutes;
+  popup("Brief Rest", `
+    <p><strong>1 hour · Restore up to 6 HP and 3 SP</strong></p>
+    <p>A hero can benefit once per day. Use First Aid and Spellcraft Recovery if available.</p>
+    <label class="inline-toggle"><input id="brief-aid" type="checkbox"> First Aid</label>
+    <div id="brief-aid-options" class="brief-aid-options" hidden>
+      <p class="inline-help">First Aid uses medical supplies.</p>
+      <label>Healer<select id="brief-healer" aria-label="Healer"><option value="self">Treat yourself</option><option value="other">Another healer</option></select></label>
+      <label>Treatment<select id="brief-treatment" aria-label="Treatment">${restAidOptions()}</select></label>
+      <div id="brief-external-roll" class="brief-external-roll" hidden>
+        <label>Healer’s Knowledge roll total<input id="brief-total" type="number" step="1"></label>
+        <label>Result<select id="brief-tier" aria-label="Healer’s result tier"><option value="">From total</option><option>Weak</option><option>Standard</option><option>Strong</option></select></label>
+      </div>
+      <div id="brief-self-roll">
+        <p>Roll Knowledge (${signed(knowledge)})</p>
+        ${netControl({id:"brief-net",labelId:"brief-net-value"})}
+      </div>
+    </div>
+    ${restoredSp ? `<label class="inline-toggle"><input id="brief-spellcraft" type="checkbox"> Spellcraft Recovery · Restore up to ${restoredSp} SP${recoveryMinutes ? ` after ${recoveryMinutes} uninterrupted minutes` : ""}</label>` : ""}
+    <div class="dialog-actions">${button("Complete Brief Rest","complete-brief-rest","","primary")}</div>`);
+  bindRollSetup($("#brief-self-roll"), { getAttributeValue: () => preview.attributes.knowledge });
+}
+
+function survivalDialog() {
+  const v = liveVitals();
+  popup("Death and stabilization", `
+    <p><strong>${v.dead ? "Dead" : v.dying ? "Dying" : "Stable"}</strong> · ${v.hp} / ${v.max} HP</p>
+    ${v.dying ? `<p>Failures ${v.failed} / 3 · Successes ${v.successfulDeathRolls} / 3</p>
+      <div class="dialog-actions">${v.failed === 3
+        ? button("Last Words", "hero-last-words")
+        : button("Roll Fortitude", "death-roll") + (v.immediateDeathRoll ? "" : button("Stabilize", "stabilize-hero"))}</div>` : ""}`);
+}
+
+async function applyRest(kind) {
+  if (host) await pendingSave;
+  const rest = { kind };
+  if (kind === "brief-rest") {
+    if ($("#brief-spellcraft")?.checked) rest.spellcraft = true;
+    if ($("#brief-aid").checked) {
+      const treatment = $("#brief-treatment").value;
+      const self = $("#brief-healer").value === "self";
+      let result = { total: $("#brief-total").valueAsNumber, tier: $("#brief-tier").value.toLowerCase() };
+      if (self) {
+        const net = Number($("#brief-net").value);
+        const attribute = preview.attributes.knowledge;
+        const { count } = rollPlan({ attribute, boons: Math.max(0, net), banes: Math.max(0, -net) });
+        const faces = await nativeDice(count, 6, { kind: "attribute", attributeKey: "knowledge", attribute, net });
+        const retained = [...faces].sort((a, b) => net < 0 ? a - b : b - a).slice(0, 3);
+        result = classifyRoll(retained, attribute);
+      }
+      if (!Number.isSafeInteger(result.total)) throw new Error("Enter the healer’s Knowledge roll total.");
+      rest.firstAid = { total: result.total, treatment, ...(result.tier ? { tier: result.tier } : {}) };
+    }
+  }
+  if (!(host?.onAction && await host.onAction({ action: "apply-workshop-rest", rest }))) {
+    const before = liveVitals();
+    const updated = forgeRest(playDraft(), before.limits, rest, {
+      spellcraftRestoration: preview.state.learning?.recoverySp,
+    });
+    Object.assign(playDraft(), updated);
+    if (kind === "nights-rest")
+      draft.play = endForgeSustain({ ...playDraft(), mainSpent: false, maneuverSpent: false });
+    persist();
+    notice(`Restored ${updated.hp - before.hp} HP and ${updated.sp - before.sp} SP.`);
+  }
+  $("#reference").close();
+  render();
 }
 
 function debtRecoveryDialog() {
   const v = liveVitals();
-  popup("Recovery until dawn", `<p>${v.recovery.unavailableHp} HP unavailable until next dawn. Healing and safe overnight rest can restore HP to ${v.recoveryMax} / ${v.max}.</p><p>The Debt Comes Due: ${v.recovery.debtUsed ? "used since safe overnight rest" : "available"}. Use it after a sheet attribute roll to pay 1 HP and replace that roll with a new result using the same modifiers.</p><p>Declare the next dawn when it occurs in play. Dawn releases that HP for healing. A safe overnight rest renews use of the trait.</p><div class="dialog-actions">${button("Recovery", "hero-recovery")}${button("Next dawn", "debt-next-dawn", "", "primary")}</div>`);
+  popup("Recovery until dawn", `<p>${v.recovery.unavailableHp} HP unavailable until next dawn. Healing and safe overnight rest can restore HP to ${v.recoveryMax} / ${v.max}.</p><p>The Debt Comes Due: ${v.recovery.debtUsed ? "used since safe overnight rest" : "available"}. Use it after a sheet attribute roll to pay 1 HP and replace that roll with a new result using the same modifiers.</p><p>Declare the next dawn when it occurs in play. Dawn releases that HP for healing. A safe overnight rest renews use of the trait.</p><div class="dialog-actions">${button("Next dawn", "debt-next-dawn", "", "primary")}</div>`);
 }
 function resupplyDialog(instance) {
   const item = preview.inventory.items.find(i => i.instanceId === instance);
@@ -1853,14 +1946,14 @@ async function resolveSheetRoll() {
   const ammo = weapon && preview.inventory.items.find(item => item.instanceId === weapon.ammunitionInstanceId && compatibleAmmunition(weapon, item));
   if (activeRoll.ranged && (!ammo || tracksSupply(ammo) && !ammo.inventoryDie))
     throw new Error(weapon ? `Assign a carried ammunition bundle with supply remaining to ${itemName(weapon)} in Inventory.` : "Carry a ranged weapon and assign its ammunition in Inventory.");
-  if ((activeRoll.cast || activeRoll.finishRitual) && liveVitals().hp <= 0)
+  if (!host && (activeRoll.cast || activeRoll.finishRitual) && liveVitals().hp <= 0)
     throw new Error("Regain HP before resolving this working.");
   if (activeRoll.cast) {
     const record = get(activeRoll.id);
-    if (sustainUnavailable()) throw new Error("Regain consciousness before casting.");
+    if (!host && sustainUnavailable()) throw new Error("Regain consciousness before casting.");
     const paid=await payCast(record, activeRoll.payment, true);
     activeRoll.paymentStarted = true;
-    draft.play = beginForgeSustain(paid, record);
+    draft.play = beginTrackedSustain(paid, record);
     persist();
     render();
   }
@@ -1897,8 +1990,8 @@ async function resolveSheetRoll() {
     render();
   }
   if (activeRoll.finishRitual && sustainLimit(get(activeRoll.id))) {
-    if (sustainUnavailable()) throw new Error("Regain consciousness before completing the Ritual.");
-    draft.play = beginForgeSustain(playDraft(), get(activeRoll.id));
+    if (!host && sustainUnavailable()) throw new Error("Regain consciousness before completing the Ritual.");
+    draft.play = beginTrackedSustain(playDraft(), get(activeRoll.id));
     persist();
     render();
   }
@@ -2072,6 +2165,7 @@ function render({ focusHeading = false } = {}) {
   let attributeError;
   preview = workshopCharacter(draft, catalogs, undefined, mode==='sheet' && host ? {
     projectInventory:host.projectInventory,
+    equipmentBonuses:host.getEquipmentBonuses?.(),
     projectAttributes:host.getAttributes ? attributes=>{try{return host.getAttributes(attributes);}catch(error){attributeError=error.message;return attributes;}} : undefined,
   } : {});
   if (mode === "sheet" && !draft.play?.favorites) {
@@ -2105,13 +2199,6 @@ function render({ focusHeading = false } = {}) {
   app.innerHTML=host ? markup.replace(/((?:src|href)=["'])assets\//g,(_,prefix)=>prefix+new URL('assets/',options.dataBaseUrl ?? import.meta.url).href) : markup;
   if (options.readOnly || host?.readOnly) app.querySelectorAll('input,textarea,[data-field],button[data-action="edit"]').forEach(node=>node.disabled=true);
   if (host) {
-    app.querySelectorAll('.toolbar-group').forEach((group,index)=>{if(index>0)group.remove();});
-    const portrait = app.querySelector('.hero-mark');
-    if (portrait) {
-      if(host.portraitUrl ?? host.portrait) portrait.src=host.portraitUrl ?? host.portrait;
-      portrait.dataset.action='native-portrait'; portrait.dataset.edit='img'; portrait.tabIndex=0;
-      portrait.setAttribute('role','button'); portrait.alt=host.readOnly ? 'View character portrait' : 'Edit character portrait';
-    }
     if(mode==='builder') app.querySelectorAll('[data-action="sheet"]').forEach(control=>{
       control.dataset.action=step===REVIEW_STEP ? 'native-commit' : 'review';
       control.textContent=host.committed
@@ -2352,7 +2439,7 @@ function showReference(id) {
   const cost = castCost(r);
   const known = r.page ? preview.state.learning.spells.some((entry) => entry.id === id) : preview.state.abilities.includes(id);
   if (Number.isInteger(cost) && known)
-    body += `<div class="dialog-actions">${button(isForgeModifier(r) ? "Use modifier" : isRitual(r) ? "Begin Ritual" : "Cast", isForgeModifier(r) ? "use-modifier" : "cast-spell", `data-id="${esc(id)}" ${preview.limits && (isForgeModifier(r) || !sustainUnavailable()) && liveVitals().sp >= minimumCastCost(r) ? "" : "disabled"}`, "primary")}</div>`;
+    body += `<div class="dialog-actions">${button(isForgeModifier(r) ? "Use modifier" : isRitual(r) ? "Begin Ritual" : "Cast", isForgeModifier(r) ? "use-modifier" : "cast-spell", `data-id="${esc(id)}" ${preview.limits && (host || isForgeModifier(r) || !sustainUnavailable()) && liveVitals().sp >= minimumCastCost(r) ? "" : "disabled"}`, "primary")}</div>`;
   const instrument = preview.state.instruments?.find(
     (entry) => entry.abilityId === id,
   )?.instrument;
@@ -2385,7 +2472,7 @@ async function action(target) {
     renamingItem=target.dataset.instance;render();const input=$('input[data-item-name]');input?.focus();input?.select();return;
   }
 
-  if ((options.readOnly || host?.readOnly) && !['tab','reference','close-reference','close-picker','inline-action','forge-view','forge-select','forge-list-discipline','forge-discipline','forge-chooser','forge-candidate','library-scope','native-open-item','native-portrait'].includes(a) && !(a==='native-item' && target.dataset.command==='open-card')) return;
+  if ((options.readOnly || host?.readOnly) && !['tab','reference','close-reference','close-picker','inline-action','forge-view','forge-select','forge-list-discipline','forge-discipline','forge-chooser','forge-candidate','library-scope','native-open-item'].includes(a) && !(a==='native-item' && target.dataset.command==='open-card')) return;
 
   if (host && (a === "native-commit" || a === "sheet-development")) {
     if (!preview.valid) throw new Error("Complete the remaining character choices first.");
@@ -2400,7 +2487,7 @@ async function action(target) {
     }
   }
   if (host?.onAction && await host.onAction({action:a,id:target.dataset.id,editing:edit,mode,dataset:{...target.dataset},
-    ...(["native-portrait", "lower-supply"].includes(a) ? { target } : {}),
+    ...(["lower-supply", "confirm-drop-item"].includes(a) ? { target } : {}),
     state:JSON.parse(writePortableCharacter(draft,catalogs)),preview,record:get(target.dataset.id),
     activeRoll: typeof activeRoll === 'undefined' ? undefined : activeRoll,
     values:Object.fromEntries([...root.querySelectorAll('#reference input,#reference select')].map(node=>[node.id || node.dataset.rollAbility, node.type==='checkbox' ? node.checked : node.value]))})) return;
@@ -2448,27 +2535,34 @@ async function action(target) {
     if ($("#reference").open) showReference("ability-sustain-spell");
     return;
   }
-  if (a === "hero-recovery") return recoveryDialog();
+  if (a === "brief-rest") return briefRestDialog();
+  if (a === "complete-brief-rest" || a === "nights-rest") {
+    if (restInFlight) return;
+    restInFlight = true;
+    target.disabled = true;
+    try {
+      await applyRest(a === "nights-rest" ? "nights-rest" : "brief-rest");
+    } finally {
+      target.disabled = false;
+      restInFlight = false;
+    }
+    return;
+  }
+  if (a === "death-status") return survivalDialog();
   if (a === "add-scar") return scarDialog();
-  if (a === "finish-first-aid") return firstAidDialog();
-  if (["save-scar", "complete-hero-rest", "begin-first-aid", "record-first-aid", "interrupt-first-aid", "hero-sp-recovery", "stabilize-hero", "hero-last-words"].includes(a)) {
+  if (["save-scar", "stabilize-hero", "hero-last-words"].includes(a)) {
     const v = liveVitals();
     let next;
     if (a === "save-scar") next = forgeRecordScar(playDraft(), v.limits, $("#scar-description").value);
-    if (a === "complete-hero-rest") next = forgeRest(playDraft(), v.limits, { hour: $("#hero-rest-hour").valueAsNumber });
-    if (a === "begin-first-aid") next = forgeBeginFirstAid(playDraft(), v.limits);
-    if (a === "record-first-aid") next = forgeFinishFirstAid(playDraft(), v.limits, $("#aid-outcome").value, { fieldDressing: Number($("#aid-treatment").value), treatment: ["emergency2", "mastery"].includes($("#aid-treatment").value) ? $("#aid-treatment").value : undefined });
-    if (a === "interrupt-first-aid") next = forgeInterruptFirstAid(playDraft(), v.limits);
-    if (a === "hero-sp-recovery") next = forgeSpellcraftRecovery(playDraft(), v.limits, preview.state.learning.recoverySp);
     if (a === "stabilize-hero") next = forgeStabilize(playDraft(), v.limits);
     if (a === "hero-last-words") next = forgeFinalizeDeath(playDraft(), v.limits);
     Object.assign(playDraft(), next);
-    if (a === "complete-hero-rest" || a === "hero-last-words")
+    if (a === "hero-last-words")
       draft.play = endForgeSustain({ ...playDraft(), mainSpent: false, maneuverSpent: false });
     persist();
     render();
     if (a === "save-scar") return $("#reference").close();
-    return recoveryDialog();
+    return survivalDialog();
   }
   if (a === "resupply-dialog") return resupplyDialog(target.dataset.instance);
   if (a === "lower-supply") {
@@ -2636,12 +2730,12 @@ async function action(target) {
     }
   }
   if (a === "finish-ritual") {
-    if (sustainUnavailable()) throw new Error("Regain consciousness before completing the Ritual.");
+    if (!host && sustainUnavailable()) throw new Error("Regain consciousness before completing the Ritual.");
     const record = get(target.dataset.id);
     $("#reference").close();
     const attribute = castingAttribute(record);
     if (attribute) return openSheetRoll({ id: record.id, key: attribute, finishRitual: true });
-    draft.play = beginForgeSustain(playDraft(), record);
+    draft.play = beginTrackedSustain(playDraft(), record);
     persist();
     render();
     return notice(`${record.name} takes effect.`);
@@ -2683,19 +2777,25 @@ async function action(target) {
     $("#reference").close();
   }
   if (a === "drop-item") {
-    const item=preview.inventory.items.find(item=>item.instanceId===target.dataset.instance);
+    const item=inventoryTableItems(true).find(item=>item.instanceId===target.dataset.instance);
     if (!item || host?.canDeleteItem?.(item)===false) throw new Error("This item is unavailable to drop.");
     return popup(`Drop ${itemName(item)}?`, `<p>Remove this stack from your inventory?</p><div class="dialog-actions">${button("Cancel", "close-reference")}${button("Drop item", "confirm-drop-item", `data-instance="${esc(item.instanceId)}"`, "primary")}</div>`);
   }
-  if (a === "confirm-drop-item" || a === "sell-provision") {
+  if (a === "sell-provision") {
+    const item=preview.inventory.items.find(item=>item.instanceId===target.dataset.instance);
+    const coins=provisionSalePrice(item);
+    if (!coins || host?.canDeleteItem?.(item)===false) throw new Error("Only a complete starting provision can be sold.");
+    return popup(`Sell ${itemName(item)}?`, `<p>Sell this stack to a willing trader for ${coins} coin${coins === 1 ? "" : "s"}?</p><div class="dialog-actions">${button("Cancel", "close-reference")}${button("Sell item", "confirm-sell-provision", `data-instance="${esc(item.instanceId)}"`, "primary")}</div>`);
+  }
+  if (a === "confirm-drop-item" || a === "confirm-sell-provision") {
     const item=preview.inventory.items.find(item=>item.instanceId===target.dataset.instance);
     if (!item || host?.canDeleteItem?.(item)===false) throw new Error("This item is unavailable to remove.");
     const inv = playDraft().inventory,
       id = target.dataset.instance;
-    if (a === "sell-provision") {
+    const before = host ? { draft, play: structuredClone(draft.play), loadout: structuredClone(draft.loadout) } : null;
+    if (a === "confirm-sell-provision") {
       const coins = provisionSalePrice(item);
       if (!coins) throw new Error("Only a complete starting provision can be sold.");
-      if (!confirm(`Sell ${itemName(item)} to a willing trader for ${coins} coin${coins === 1 ? "" : "s"}?`)) return;
       inv.sold = [...new Set([...(inv.sold ?? []), id])];
     }
     const added = inv.added.some((i) => i.instanceId === id);
@@ -2707,7 +2807,22 @@ async function action(target) {
     inv.added = inv.added.filter((i) => i.instanceId !== id);
     if (recordRemoval) inv.removed = [...new Set([...inv.removed, id])];
     if (draft.loadout) delete draft.loadout[id];
-    if (a === "confirm-drop-item") $("#reference").close();
+    if (host) {
+      target.disabled = true;
+      try {
+        persist();
+        await pendingSave;
+      } catch (error) {
+        if (draft === before.draft) Object.assign(draft,{play:before.play,loadout:before.loadout});
+        throw error;
+      } finally {
+        target.disabled = false;
+      }
+      $("#reference")?.close();
+      render();
+      return;
+    }
+    $("#reference").close();
   }
   if (a === "confirm-language") {
     const name = $("#language-name").value.trim(),
@@ -3020,7 +3135,7 @@ function runAction(target) {
 }
 document.addEventListener("click", (event) => {
   const t = event.target.closest("[data-action]");
-  if (t && !t.disabled) runAction(t).catch((e) => notice(e.message));
+  if (t && root.contains(t) && !t.disabled) runAction(t).catch((e) => notice(e.message));
 });
 document.addEventListener("pointerdown", () => {
   pointerDown = true;
@@ -3067,6 +3182,17 @@ app.addEventListener(
 );
 document.addEventListener("change", (event) => {
   const t = event.target;
+  if (t.id === "brief-aid" && root.contains(t)) {
+    $("#brief-aid-options").hidden = !t.checked;
+    return;
+  }
+  if (t.id === "brief-healer" && root.contains(t)) {
+    const anotherHealer = t.value === "other";
+    $("#brief-external-roll").hidden = !anotherHealer;
+    $("#brief-self-roll").hidden = anotherHealer;
+    $("#brief-treatment").innerHTML = restAidOptions(anotherHealer);
+    return;
+  }
   if (t.dataset.ammunitionFor && root.contains(t)) {
     runAction({ dataset: { action: "assign-ammunition", instance: t.dataset.ammunitionFor, ammunition: t.value } }).catch(error => { notice(error.message); render(); });
     return;
@@ -3172,7 +3298,6 @@ app.addEventListener("keydown", (event) => {
     if(event.key==='Enter') event.target.dispatchEvent(new Event('change',{bubbles:true}));
     else {renamingItem=undefined;render();}return;
   }
-  if(event.target.dataset.action==='native-portrait' && ['Enter',' '].includes(event.key)) {event.preventDefault();runAction(event.target).catch(error=>notice(error.message));return;}
   if (
     event.target.getAttribute("role") !== "tab" ||
     ![

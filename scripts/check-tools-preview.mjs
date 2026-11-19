@@ -195,6 +195,9 @@ try {
   await page.evaluate(() => (crypto.getRandomValues = globalThis.toolDice));
   assert.match(await page.locator(".tool-stats").innerText(), /12 \/ 20/);
   assert.equal(await page.getByRole("button", { name: "Give first aid", exact: true }).isDisabled(), true);
+  await page.getByRole("button", { name: "Brief Rest", exact: true }).click();
+  assert.match(await page.locator(".tool-stats").innerText(), /18 \/ 20/);
+  assert.equal(await page.getByRole("button", { name: "Give first aid", exact: true }).isDisabled(), true);
   await page.getByRole("button", { name: "Night’s Rest", exact: true }).click();
   await page.getByRole("button", { name: "Complete Night’s Rest", exact: true }).click();
   assert.match(await page.locator(".tool-stats").innerText(), /20 \/ 20/);
@@ -318,7 +321,7 @@ try {
   await page.screenshot({ path: `${output}/crafting-project.png` });
   assert.deepEqual(failures, []);
   console.log(
-    "PASS tools: alternating sides, budgets/conversions, hidden roster, embedded journal search, ambush and round duration, HP/SP healing, Fortitude death rolls, lifetime Grit, scars, first aid, safe overnight rest, crafting time/rules/steps/cap and compact layouts; zero browser errors.",
+    "PASS tools: alternating sides, budgets/conversions, hidden roster, embedded journal search, ambush and round duration, HP/SP healing, Fortitude death rolls, lifetime Grit, scars, First Aid, Brief Rest and Night’s Rest, crafting time/rules/steps/cap and compact layouts; zero browser errors.",
   );
 } catch (e) {
   await page.screenshot({ path: `${output}/failure.png`, fullPage: true });

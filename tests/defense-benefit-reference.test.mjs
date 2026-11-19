@@ -6,13 +6,14 @@ import {readFile} from 'node:fs/promises';
 import {SourceTextModule,SyntheticModule,createContext} from 'node:vm';
 test('current Defend persists its removable benefit through managed authority and posts actual Item reference',async()=>{
  let serial=0,combat;const posted=[],handlers=new Map(),flags={},ID='heroes-of-legend',user={id:'owner'};
- const actor={type:'character',uuid:'Actor.hero',items:[],effects:[],getFlag:(_,key)=>flags[key],testUserPermission:()=>true,toObject:()=>({effects:structuredClone(actor.effects)})};actor.items.get=id=>actor.items.find(item=>item.id===id);
+ const actor={documentName:'Actor',type:'character',uuid:'Actor.hero',items:[],effects:[],getFlag:(_,key)=>flags[key],testUserPermission:()=>true,toObject:()=>({effects:structuredClone(actor.effects)})};actor.items.get=id=>actor.items.find(item=>item.id===id);
  const item={id:'defend',type:'ability',actor,name:'Defend',img:'defend.webp',getFlag:(_,key)=>({catalogId:'ability-defend',workshopRecord:{nodeId:'ability-defend'},grantKind:'nativeWorkshop'})[key]};actor.items.push(item);
  const combats=[];const context=createContext({structuredClone,fromUuid:async()=>combat,game:{user,combats},foundry:{utils:{randomID:()=>`id${++serial}`}}});
  async function synthetic(exports){const dependency=new SyntheticModule(Object.keys(exports),function(){for(const [key,value]of Object.entries(exports))this.setExport(key,value)},{context});await dependency.link(()=>{});await dependency.evaluate();return dependency;}
  const source=await readFile(new URL('../src/services/abilities.mjs',import.meta.url),'utf8');
  const imports=new Map();for(const [,names,path]of source.matchAll(/import\s*\{([^}]+)\}\s*from\s*["']([^"']+)["']/g))imports.set(path,{...imports.get(path),...Object.fromEntries(names.split(',').map(s=>s.trim()).filter(Boolean).map(name=>[name,()=>{}]))});
  imports.set('../rules/ability-roll.mjs',{abilityCatalogRecord:()=>({}),abilityRollConfiguration:()=>({category:'main'})});
+ imports.set('../rules/equipment-identity.mjs',{isShieldEquipment:item=>item.id==='shield'});
  imports.set('./catalog.mjs',{loadWorkshopCatalogs:async()=>({choices:[{id:'cast-main',action:'Main Action'},{id:'ritual',action:'1 minute'},{id:'ability-sustain-spell',action:'Maneuver'}],forge:{spells:[]}})});
  imports.set('../rules/actions.mjs',{declareAction});imports.set('./authority.mjs',{writeAuthorityDocument:async(document,changes)=>document.update(changes)});
  imports.set('./native-workshop-coordinator.mjs',{nativeWorkshopRoll:(_actor,id)=>flags.nativeWorkshopRolls?.[id],workshopRollClaimChanges:(_actor,claim)=>claim?{[`flags.${ID}.nativeWorkshopRolls.${claim.id}`]:claim}:{},registerNativeGameplayHandler:(kind,handler)=>handlers.set(kind,handler),coordinateNativeGameplay:async(_actor,{kind,payload,operationId})=>handlers.get(kind)(actor,payload,{author:user,operationId,write:async changes=>{for(const[path,value]of Object.entries(changes)){if(path==='effects')actor.effects=structuredClone(value);else{const key=path.split('.').slice(2);let target=flags;for(const part of key.slice(0,-1))target=target[part]??={};target[key.at(-1)]=structuredClone(value);}}}})});
@@ -37,5 +38,43 @@ test('current Defend persists its removable benefit through managed authority an
  await module.namespace.prepareNativeActionCost(actor,'ability-sustain-spell','sustain1','sustain');assert.equal(state.budgets.hero.remaining.maneuver,0);
  const beforeRitual=JSON.stringify(state);await module.namespace.prepareNativeActionCost(actor,'ritual','ritual1','cast');assert.equal(JSON.stringify(state),beforeRitual);
 
+ state={current:null,revision:4,budgets:{}};
+ actor.items.push(cast('ability-shield-block'),{id:'shield',uuid:'Actor.hero.Item.shield',type:'equipment',
+  system:{quantity:1,carried:true,held:true},getFlag:()=>undefined});
+ const beforeOpening=structuredClone(state);
+ await module.namespace.activateDefenseBenefit(item);
+ await module.namespace.activateDefenseBenefit(actor.items.get('ability-shield-block'));
+ assert.equal(actor.effects.find(effect=>effect.flags[ID].benefit.key==='defend').flags[ID].benefit.manual,true);
+ assert.equal(actor.effects.find(effect=>effect.flags[ID].benefit.key==='shield-block').flags[ID].benefit.manual,true);
+ await module.namespace.prepareNativeBasicAttack(actor,'melee','no-budget-attack');
+ await module.namespace.prepareNativeActionCost(actor,'cast-main','no-budget-cast','cast');
+ await module.namespace.prepareNativeActionCost(actor,'ability-sustain-spell','no-budget-sustain','sustain');
+ assert.equal(flags.nativeWorkshopRolls['no-budget-attack'].id,'no-budget-attack');
+ assert.equal(flags.nativeWorkshopRolls['no-budget-cast'].id,'no-budget-cast');
+ assert.equal(flags.nativeAttackActions['no-budget-sustain'].status,'paid');
+ assert.deepEqual(state,beforeOpening);
 
+ state={...state,budgets:{hero:startTurn({turnId:'turn4',speed:6})}};
+ combat.combatants[0].token={uuid:'Scene.example.Token.original'};
+ const otherState={current:'another',revision:0,budgets:{another:startTurn({turnId:'turn5',speed:6})}};
+ combats.push({id:'other',uuid:'Combat.other',combatants:[{id:'another',actor,token:{uuid:'Scene.example.Token.another'}}],getFlag:()=>otherState,
+  update:async()=>assert.fail('Ambiguous play must leave the other encounter budget alone.')});
+ await module.namespace.prepareNativeActionCost(actor,'cast-main','no-unique-budget','cast');
+ assert.equal(state.budgets.hero.remaining.main,1);
+ assert.equal(flags.nativeWorkshopRolls['no-unique-budget'].id,'no-unique-budget');
+ await module.namespace.prepareNativeBasicAttack(actor,'melee','specific-budget','Scene.example.Token.original');
+ assert.equal(state.budgets.hero.remaining.main,0);
+
+ const shield=actor.items.pop();
+ assert.equal(shield.id,'shield');
+ const beforeReference=structuredClone(actor.effects);
+ const shieldBlock=actor.items.get('ability-shield-block');
+ const option=module.namespace.reviewedDefenseAbilityOptions(actor).options.find(choice=>choice.itemId===shieldBlock.id);
+ assert.equal(option.available,true);
+ assert.match(option.warnings[0],/No held shield/);
+ const use=await module.namespace.activateDefenseBenefit(shieldBlock);
+ assert.equal(use.referenceOnly,true);
+ assert.deepEqual(actor.effects,beforeReference);
+ assert.equal(posted.at(-1)[0],shieldBlock);
+ assert.equal(state.budgets.hero.remaining.reaction,1);
 });

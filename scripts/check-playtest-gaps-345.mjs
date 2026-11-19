@@ -62,7 +62,6 @@ try {
   const stage = n => sheet.locator(`[data-action="step"][data-step="${n}"]`).click();
   const controller = () => player.evaluate(id => game.actors.get(id).sheet.controller.settle(), fixture.actor);
   const row = (label) => sheet.getByRole("row").filter({ has: player.getByRole("button", { name: label, exact: true }) });
-  await sheet.getByRole("button", { name: "Create hero in Workshop", exact: true }).click();
   for (const [attribute, value] of [["Agility", "2"], ["Guile", "1"]]) {
     const input = sheet.getByLabel(attribute, { exact: true });
     await input.fill(value);
@@ -162,8 +161,9 @@ try {
   assert.equal(beforeSale, 40 + 3 + 7 + 7 + 3 - (9 + 3 + 5 + 20));
   const sellLight = row("Lighting Bundle").getByRole("button", { name: /Sell Lighting Bundle for/ });
   const salePrice = Number((await sellLight.getAttribute("aria-label")).match(/for (\d+) coins/)[1]);
-  player.once("dialog", popup => popup.accept());
   await sellLight.click();
+  await sheet.getByRole("dialog", { name: "Sell Lighting Bundle?" })
+    .getByRole("button", { name: "Sell item", exact: true }).click();
   await expect(row("Lighting Bundle")).toHaveCount(0);
   await expect.poll(purse).toBe(beforeSale + salePrice);
   await controller();
@@ -178,16 +178,14 @@ try {
     await input.press("Enter");
     await controller();
   }
-  await sheet.getByRole("button", { name: "Recovery", exact: true }).click();
-  const recovery = sheet.getByRole("dialog", { name: "Recovery", exact: true });
-  await expect(recovery.getByRole("heading", { name: "Brief Rest", exact: true })).toBeVisible();
-  await expect(recovery.getByRole("heading", { name: "Night’s Rest", exact: true })).toBeVisible();
-  await expect(recovery.getByRole("button", { name: "Begin first aid", exact: true })).toBeVisible();
-  await recovery.getByRole("button", { name: "Complete Night’s Rest", exact: true }).click();
+  await sheet.getByRole("button", { name: "Brief Rest", exact: true }).click();
+  const recovery = sheet.getByRole("dialog", { name: "Brief Rest", exact: true });
+  await expect(recovery.getByRole("checkbox", { name: "First Aid", exact: true })).toBeVisible();
+  await recovery.getByRole("button", { name: "Close", exact: true }).click();
+  await sheet.getByRole("button", { name: "Night’s Rest", exact: true }).click();
   await controller();
   await expect(hp).toHaveValue(full[0]);
   await expect(sp).toHaveValue(full[1]);
-  await recovery.getByRole("button", { name: "Close", exact: true }).click();
   await expect(recovery).toHaveCount(0);
   await expect(sheet).toBeVisible();
   pass("#23 Native Recovery uses Brief Rest and Night’s Rest, and a completed Night’s Rest restores HP/SP.");

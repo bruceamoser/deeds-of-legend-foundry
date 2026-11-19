@@ -18,7 +18,7 @@ export const emptyLevelDraft = () => ({
 });
 
 /** Rebuild from choices so lowering/revisiting a level cannot duplicate grants. */
-export function workshopCharacter(draft, catalogs, languages, { projectInventory, projectAttributes } = {}) {
+export function workshopCharacter(draft, catalogs, languages, { projectInventory, projectAttributes, equipmentBonuses } = {}) {
   languages ??= catalogs.languages;
   draft = { ...draft, ancestryId: currentAncestryId(draft.ancestryId) };
   const effectiveTraitIds = ancestrySelection(draft, catalogs.choices).traitIds;
@@ -135,6 +135,7 @@ export function workshopCharacter(draft, catalogs, languages, { projectInventory
         passive.resistances.push({ type: "physical", value: playtest ? item.definition.physicalResistance : Number(required.at(-1)), label: item.definition.name });
     }
   }
+  passive.resistances.push(...(equipmentBonuses?.resistances ?? []));
   const resistances = {};
   for (const source of passive.resistances)
     resistances[source.type] = Math.min(
@@ -152,7 +153,7 @@ export function workshopCharacter(draft, catalogs, languages, { projectInventory
   const expired = creation.ledger
     .filter((e) => e.kind === "expired-pool")
     .reduce((n, e) => n - e.delta, 0);
-  const limits = catalogs.forge && creation.summary ? forgeMaximums({
+  const baseLimits = catalogs.forge && creation.summary ? forgeMaximums({
     level: target,
     ancestryHp: catalogs.choices.find((entry) => entry.id === draft.ancestryId).hp,
     classHp: catalogs.choices.find((entry) => entry.id === draft.classId).hp,
@@ -161,6 +162,9 @@ export function workshopCharacter(draft, catalogs, languages, { projectInventory
     capacitySp: state.learning.capacitySp,
     startingSp: creation.summary.startingSp,
   }) : null;
+  const limits = baseLimits && equipmentBonuses
+    ? { ...baseLimits, maxHp: baseLimits.maxHp + equipmentBonuses.hp, maxSp: baseLimits.maxSp + equipmentBonuses.sp }
+    : baseLimits;
   const unresolved = errors.filter(
     (e) =>
       e.code !== "signature" ||
@@ -194,7 +198,7 @@ export function workshopCharacter(draft, catalogs, languages, { projectInventory
           maximumHp: limits?.maxHp ?? creation.summary.maximumHp + maximumHpDelta,
           ...(limits ? { maximumSp: limits.maxSp } : {}),
           gritGranted: state.gritGranted,
-          speed: Math.max(0, creation.summary.unencumberedSpeed + attributes.agility - draft.attributes.agility - encumbrance +
+          speed: Math.max(0, creation.summary.unencumberedSpeed + attributes.agility - draft.attributes.agility - encumbrance + (equipmentBonuses?.speed ?? 0) +
             Number(catalogs.forge?.rulesRevision === 299 && state.learned.includes("armor:harness:3") && items.some(item => item.worn && state.learned.includes(forgeArmorRequirement(item.catalogId, true))))),
         }
       : null,

@@ -1,3 +1,4 @@
+export { requestRest } from "./rest.mjs";
 import {assertCurrentGameplayActor} from '../rules/current-character.mjs';
 import {nativeRecoveryState} from '../rules/native-health.mjs';
 import {healingPlan} from '../rules/damage.mjs';

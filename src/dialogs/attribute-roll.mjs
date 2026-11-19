@@ -366,7 +366,7 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
       this.activating = true;
       this.notice = `Activating ${item.name}…`;
       await this.render();
-      const message = this.attackMessageId
+      const result = this.attackMessageId
         ? await requestDefenseAbility(item, {
             attackMessageId: this.attackMessageId,
             defenderTokenUuid: this.defenderTokenUuid,
@@ -375,7 +375,7 @@ export class SharedRollDialog extends foundry.applications.api.HandlebarsApplica
                 ?.shieldItemUuid ?? null,
           })
         : await activateOwnedAbility(item);
-      this.notice = `${item.name} applied.`;
+      this.notice = result?.referenceOnly ? `${item.name} posted for the table.` : `${item.name} applied.`;
     } catch (e) {
       this.notice = e.message;
       ui.notifications.error(e.message);

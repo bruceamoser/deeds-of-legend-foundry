@@ -1,7 +1,7 @@
 export const ATTRIBUTES = Object.freeze(["brawn", "fortitude", "agility", "guile", "knowledge", "reason"]);
 
-export function validateCharacter(data) {
-  if (data.health.value > data.health.baseMax) throw new Error("Current HP cannot exceed maximum HP.");
+export function validateCharacter(data, { maximumHp = data.health.baseMax } = {}) {
+  if (data.health.value > maximumHp) throw new Error("Current HP cannot exceed maximum HP.");
   if (data.grit.spent > data.grit.granted) throw new Error("Spent Grit cannot exceed granted Grit.");
 }
 

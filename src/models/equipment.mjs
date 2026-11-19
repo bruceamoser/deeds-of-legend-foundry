@@ -1,3 +1,5 @@
+import { EQUIPMENT_STAT_BONUSES } from "../rules/equipment-bonuses.mjs";
+import { DAMAGE_TYPES } from "../rules/damage.mjs";
 import { WATER_FLASK } from "../rules/equipment-identity.mjs";
 import { legacyWaterSupplyDie } from "../rules/inventory.mjs";
 import { CONSUMABLE_TYPES } from '../rules/consumables.mjs';
@@ -36,6 +38,10 @@ export class EquipmentData extends foundry.abstract.TypeDataModel {
         value:integer(0),
         cursed:new BooleanField({required:true,nullable:false,initial:false}),
       }),{required:true,nullable:false,initial:[]}),
+      bonuses: new SchemaField(Object.fromEntries([
+        ...Object.keys(EQUIPMENT_STAT_BONUSES).map(key => [key, integer(0, 0)]),
+        ...DAMAGE_TYPES.map(type => [type, integer(0, 0, 3)]),
+      ])),
       consumableType: new StringField({required:true,nullable:false,initial:"auto",choices:["auto","none",...Object.keys(CONSUMABLE_TYPES)]}),
       quantity: integer(1, 0),
       bulk: integer(1, 0),

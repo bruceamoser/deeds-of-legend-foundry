@@ -1,3 +1,4 @@
+import { equipmentBonuses } from "../rules/equipment-bonuses.mjs";
 import {assertCurrentGameplayActor} from "../rules/current-character.mjs";
 import { isSummon } from "../rules/summon-profile.mjs";
 import { actorContributions } from "./conditions.mjs";
@@ -37,7 +38,7 @@ export function actorMovement(actor) {
   const armorRelief=learned.includes('armor:harness:1')?Math.min(1,trainedArmor.reduce((sum,item)=>sum+item.bulk*item.quantity,0)):0;
   const armorSpeed=Number(learned.includes('armor:harness:3')&&trainedArmor.length>0);
   const profile=movementProfile({
-    speedBase: speedBase+armorSpeed,
+    speedBase: speedBase + armorSpeed + equipmentBonuses(actor.items).speed,
     agility: actor.system.attributes?.agility?.effective,
     brawn: actor.system.attributes?.brawn?.effective,
     capacityBonus,

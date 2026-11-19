@@ -1,4 +1,5 @@
 import {assertCurrentGameplayActor} from "../rules/current-character.mjs";
+import { equipmentBonuses } from "../rules/equipment-bonuses.mjs";
 import { nativeForgeArmorSources } from "../rules/native-armor.mjs";
 import {nativeDamageState} from "../rules/native-health.mjs";
 import { conditionApplication } from "./condition-apply.mjs";
@@ -36,7 +37,7 @@ export function damageBasis(actor) {
   const resolved = {resistances: actor.type === "character" ? nativeForgeArmorSources(passiveCatalogRecords(actor,"equipment")) : [], weaknesses:[]};
   const passiveDefenses = structuredClone({
     immunities: (actor.system.damageImmunities ?? []).map(canonicalDamageType),
-    resistances: [...resolved.resistances, ...(actor.system.resistances?.numeric ?? []).map(source => ({ ...source, type: canonicalDamageType(source.type), label: "Printed resistance" }))],
+    resistances: [...resolved.resistances, ...equipmentBonuses(actor.items).resistances, ...(actor.system.resistances?.numeric ?? []).map(source => ({ ...source, type: canonicalDamageType(source.type), label: "Printed resistance" }))],
     weaknesses: [...resolved.weaknesses, ...(actor.system.weaknesses?.numeric ?? []).map(source => ({ ...source, type: canonicalDamageType(source.type), label: "Printed weakness" }))],
   });
   return {

@@ -263,7 +263,7 @@ try {
   assert(await page.getByRole("button", {name:"The Debt Comes Due · pay 1 HP & reroll",exact:true}).isDisabled());
   await page.keyboard.press("Escape");
   await page.reload();
-  await page.locator("[data-action=hero-recovery]").waitFor();
+  await page.getByRole("button", {name:"Night’s Rest",exact:true}).waitFor();
   assert.deepEqual((await stored()).character.draft.play.recovery, {unavailableHp:1,debtUsed:true});
   await page.getByLabel("Current HP", {exact:true}).fill("0");
   await page.getByLabel("Current HP", {exact:true}).press("Tab");
@@ -274,8 +274,8 @@ try {
   await page.getByRole("button", {name:"Next dawn",exact:true}).click();
   assert.equal(Number(await page.getByLabel("Current HP", {exact:true}).inputValue()), Math.ceil(maximum / 2), "dawn unlocks HP without healing");
   assert.deepEqual((await stored()).character.draft.play.recovery, {unavailableHp:0,debtUsed:true}, "dawn releases HP without refreshing the trait");
-  await page.locator("#reference").getByRole("button", {name:"Recovery",exact:true}).click();
-  await page.getByRole("button", {name:"Complete Night’s Rest",exact:true}).click();
+  await page.keyboard.press("Escape");
+  await page.getByRole("button", {name:"Night’s Rest",exact:true}).click();
   assert.equal(Number(await page.getByLabel("Current HP", {exact:true}).inputValue()), maximum);
   assert.equal((await stored()).character.draft.play.recovery.debtUsed, false, "safe overnight rest refreshes the trait");
   await page.keyboard.press("Escape");

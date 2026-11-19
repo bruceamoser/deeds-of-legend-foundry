@@ -3,13 +3,17 @@
 #app .hero-header :is(p,small) { color:var(--muted); }
 #app .hero-header h1 { font-size:20px; }
 #app .hero-mark { width:32px;height:32px; }
-#app .hero-mark[data-action="native-portrait"] { display:block;width:64px;height:64px;flex:none;object-fit:contain; }
 #app .vitals {display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px;}
 #app .vital {border:1px solid var(--line);padding:4px 7px;min-width:0;display:flex;align-items:center;gap:8px;background:#fffcf5;}
 #app .vital strong {font-size:15px;}
 #app .vital small {font-size:11px;}
 #app .vital input {color:var(--ink);background:transparent;max-width:44px;font-size:15px;min-height:24px;padding:0 2px;}
 #app .vital button {color:var(--ink);}
+#app .rest-controls {gap:4px;flex-wrap:wrap;}
+#app .rest-control {display:inline-grid;place-items:center;padding:2px;min-height:24px;min-width:24px;background:transparent;}
+#app .rest-control svg {display:block;}
+#reference .brief-aid-options:not([hidden]) {display:grid;gap:5px;margin:5px 0 8px;}
+#reference .brief-external-roll:not([hidden]) {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;}
 #app .attributes {padding:0 12px 7px;gap:6px;background:var(--paper);}
 #app .attribute {padding:0;display:block;border:1px solid var(--line);background:#ece8dc;}
 #app .panel.sheet-panel {padding:8px 12px;}

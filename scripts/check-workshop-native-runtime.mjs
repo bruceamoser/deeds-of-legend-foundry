@@ -23,10 +23,9 @@ try{
  await page.evaluate(()=>{foundry.nue.Tour.activeTour?.exit();globalThis.__nativeErrors=[];const error=ui.notifications.error.bind(ui.notifications);ui.notifications.error=(message,...args)=>{__nativeErrors.push(String(message));return error(message,...args);};});
  const id=await page.evaluate(async()=>{const actor=await Actor.create({name:'Runtime Workshop #327',type:'character'});await actor.sheet.render({force:true});return actor.id;});fixtures.push(id);
  console.info('ACTOR',id);const app=page.locator('.hol-workshop-character');
- await app.getByRole('button',{name:'Create hero in Workshop',exact:true}).click();
  await app.locator('[data-workshop-mount] #panel').waitFor({timeout:30000});
  await page.evaluate(()=>foundry.nue.Tour.activeTour?.exit());
- checks.push('Blank native Actor explicit Create hero mounts actual shared creation flow.');
+ checks.push('Opening a blank native Actor starts the shared creation flow.');
  const name = app.getByRole('textbox',{name:'Character name'});
  await page.evaluate(() => {
    globalThis.workshopLeakedKeys = [];
@@ -87,7 +86,7 @@ try{
  await web.setViewportSize({width:Math.round(dimensions.width)+62,height:Math.round(dimensions.height)+50});
  await web.locator('#app').screenshot({path:output+'/web-sheet-matched.png'});captures.push('web-sheet-matched.png');
  const layout = node => Object.fromEntries(
-   ['.sheet-body','.main-layout','.play-summary','.workshop-header h1','#panel'].map(selector => {
+   ['.sheet-body','.main-layout','.play-summary','.hero-header h1','#panel'].map(selector => {
      const style = getComputedStyle(node.querySelector(selector));
      return [selector,[style.display,style.overflowY,style.fontSize]];
    }),
@@ -129,23 +128,29 @@ try{
  await page.keyboard.press('Escape');checks.push(`Queued actual favorites toggle ${favoriteId} preserves GM native damage before save acknowledgment.`);
 
  await app.getByRole('tab',{name:'Inventory',exact:true}).click();
- await app.getByRole('button',{name:'Rename Ordinary Melee Weapon',exact:true}).click();
- await app.getByRole('textbox',{name:'Item name',exact:true}).fill('Bridgekeeper blade');await app.getByRole('textbox',{name:'Item name',exact:true}).press('Enter');
+ await app.getByRole('button',{name:'Edit Ordinary Melee Weapon',exact:true}).click();
+ const equipmentEditor=page.locator('.hol-equipment-editor');
+ await equipmentEditor.getByLabel('Name',{exact:true}).fill('Bridgekeeper blade');
+ await page.locator('.application.hol-equipment').getByRole('button',{name:'Save changes',exact:true}).click();
+ await page.evaluate(async()=>{const editor=[...foundry.applications.instances.values()].find(app=>app.document instanceof Item && app.rendered);await editor?.close();});
  await page.evaluate(async id=>{await game.actors.get(id).sheet.controller.settle();},id);
  assert(await page.evaluate(id=>game.actors.get(id).items.some(item=>item.name==='Bridgekeeper blade' && item.system.catalogId==='item-ordinary-melee-weapon'),id));
  await page.evaluate(async id=>{await game.actors.get(id).sheet.useWorkshopAbility('ability-basic-melee');},id);
  await page.locator('.hol-roll-dialog').waitFor();assert.match(await page.locator('.hol-roll-dialog select[name=weaponItemId]').innerText(),/Bridgekeeper blade/);await page.evaluate(async()=>{const dialog=[...foundry.applications.instances.values()].find(app=>app.options?.classes?.includes('hol-roll-dialog'));await dialog.close();});
- checks.push('Actual inline rename saves native Item name, preserves ordinary-melee catalog identity and appears in the real Basic Melee roll dialog.');
+ checks.push('The full equipment editor saves the native Item name, preserves ordinary-melee catalog identity and appears in the real Basic Melee roll dialog.');
  await app.getByRole('tab',{name:'Main',exact:true}).click();
  const budget=await page.evaluate(id=>{const actor=game.actors.get(id);return {attributes:actor.sheet.controller.getState().character.draft.attributes,sp:actor.system.sp.max,purchases:actor.sheet.controller.getState().character.draft.purchases};},id);
  await page.evaluate(async id=>{const actor=game.actors.get(id);await actor.createEmbeddedDocuments('Item',[{name:'Runtime Knowledge Lens',type:'equipment',system:{quantity:1,carried:true,worn:true,attributeEffects:[{attribute:'knowledge',mode:'modifier',value:3,cursed:false}]}}]);await actor.sheet.render({force:true});},id);
  await expect(app.getByRole('button',{name:'Roll Knowledge',exact:true})).toContainText('+5');
- await app.getByRole('button',{name:'Roll Knowledge',exact:true}).click();await app.locator('#reference [data-action="roll-sheet"]').click();
- await page.evaluate(async id=>{await game.actors.get(id).sheet.controller.settle();},id);
- assert.match(await app.locator('#recipe-roll-result').innerText(),/\+5/);
+ await app.getByRole('button',{name:'Roll Knowledge',exact:true}).click();
+ const knowledgeDialog=page.locator('.hol-roll-dialog');
+ await knowledgeDialog.getByRole('button',{name:'Roll',exact:true}).click();
+ await expect(knowledgeDialog).toHaveCount(0);
+ await expect.poll(()=>page.evaluate(id=>game.messages.filter(message=>message.speaker.actor===id)
+   .map(message=>message.getFlag('heroes-of-legend','roll')).filter(roll=>roll?.attributeKey==='knowledge').at(-1)?.attribute,id)).toBe(5);
  const bonusState=await page.evaluate(id=>{const actor=game.actors.get(id);return {attributes:actor.sheet.controller.getState().character.draft.attributes,sp:actor.system.sp.max,purchases:actor.sheet.controller.getState().character.draft.purchases};},id);
  assert.deepEqual(bonusState,budget);checks.push('Actual worn +3 Knowledge Item displays and rolls +5 in shared result/native chat without altering creation attributes, purchases or maximum SP.');
- await captureNative('native-item-bonus-roll.png',true);await page.keyboard.press('Escape');
+ await captureNative('native-item-bonus-roll.png',true);
  await app.getByRole('tab',{name:'Development',exact:true}).click();
  await app.getByRole('button',{name:'Spend DP',exact:true}).click();
  const branch=app.locator('[data-action="forge-path"]').first();await branch.click();assert.equal(await branch.getAttribute('aria-expanded'),'true');

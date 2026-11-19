@@ -1,7 +1,25 @@
 import {isCurrentCharacter} from "./current-character.mjs";
 import {normalizeForgeRecovery,payForgeDebt,nextForgeDawn} from "./forge-recovery.mjs";
-import {forgeDamage, forgeVitals,forgeHeal,forgeSpendGrit,forgeStabilize} from "./forge-vitals.mjs";
-const KEYS = ["dying","dead","failedDeathRolls","successfulDeathRolls","gritTrigger","scars","firstAidUsed","firstAidPending","spellcraftRecoveryUsed"];
+import {forgeDamage, forgeRestResult, forgeVitals,forgeHeal,forgeSpendGrit,forgeStabilize} from "./forge-vitals.mjs";
+export const NATIVE_FORGE_VITALS_KEYS = Object.freeze([
+ "dying", "dead", "failedDeathRolls", "successfulDeathRolls", "gritTrigger", "scars",
+ "firstAidUsed", "firstAidPending", "spellcraftRecoveryUsed", "soulWellspringUsed", "mindPalaceUsed",
+]);
+export function nativeForgeVitals(play) {
+ return Object.fromEntries(NATIVE_FORGE_VITALS_KEYS.filter(key => play[key] !== undefined).map(key => [key, structuredClone(play[key])]));
+}
+export function nativeRestState(basis, draft, options) {
+ const recovery = normalizeForgeRecovery(basis.recovery);
+ const limits = { maxHp: basis.maxHp, maxSp: basis.maxSp, gritGranted: basis.gritGranted, unavailableHp: recovery.unavailableHp };
+ const result = forgeRestResult({
+  ...basis.forgeVitals, hp: basis.hp, sp: basis.sp, gritSpent: basis.gritSpent, recovery,
+ }, limits, draft, options);
+ return {
+  hp: result.play.hp, sp: result.play.sp, recovery: normalizeForgeRecovery(result.play.recovery),
+  forgeVitals: { ...nativeForgeVitals(result.play), immediateDeathRolls: result.play.dying ? [...(basis.forgeVitals?.immediateDeathRolls ?? [])] : [] },
+  firstAid: result.firstAid, spellcraftSp: result.spellcraftSp,
+ };
+}
 /** Native resource fields remain authoritative; flags contain only recovery/death
  * state. Pending immediate rolls are durable event identities, never automatic dice. */
 export function nativeDamageState({hp,maxHp,sp=0,maxSp=0,gritSpent=0,gritGranted=0,recovery={},state={}}, damage, eventId = null) {
@@ -11,7 +29,7 @@ export function nativeDamageState({hp,maxHp,sp=0,maxSp=0,gritSpent=0,gritGranted
   const pending=[...new Set((state.immediateDeathRolls??[]).filter(id=>typeof id==="string"&&id))];
   if(result.deathRollRequired&&eventId&&!pending.includes(eventId))pending.push(eventId);
   return {hp:result.play.hp,deathRollRequired:result.deathRollRequired,
-    forgeVitals:{...Object.fromEntries(KEYS.map(key=>[key,structuredClone(result.play[key])])),immediateDeathRolls:pending}};
+    forgeVitals:{...nativeForgeVitals(result.play),immediateDeathRolls:pending}};
 }
 
 export function hasNativeForgeState(actor) {
@@ -35,5 +53,5 @@ export function nativeRecoveryState(basis,draft,{traitIds=[]}={}) {
   accounting=result.recovery;play={...play,hp:result.hp};
  } else throw new Error('Unknown current recovery operation.');
  const pending=play.hp>0||!play.dying?[]:[...(basis.forgeVitals?.immediateDeathRolls??[])];
- return {after:play.hp,state:null,forgeVitals:{...Object.fromEntries(KEYS.map(key=>[key,structuredClone(play[key])])),immediateDeathRolls:pending},gritSpent:play.gritSpent,recovery:accounting};
+ return {after:play.hp,state:null,forgeVitals:{...nativeForgeVitals(play),immediateDeathRolls:pending},gritSpent:play.gritSpent,recovery:accounting};
 }

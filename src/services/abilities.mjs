@@ -23,6 +23,21 @@ export function itemAbilityDefinition(item) {
  return {id,...action,source:{id,commit:item.getFlag(ID,'sourceCommit')}};
 }
 const shields=actor=>actor.items.filter(item=>isShieldEquipment(item)&&item.system.quantity>0&&item.system.carried!==false&&item.system.held);
+function encounterActionTracking(actor,tokenUuid) {
+ const combats=game.combats?.contents??[...(game.combats?.values?.()??game.combats??[])];
+ const matches=combats.flatMap(combat=>{
+  const state=combat.getFlag(ID,'encounter');
+  if(!state)return [];
+  return [...combat.combatants]
+    .filter(participant=>participant.actor?.uuid===actor.uuid&&(!tokenUuid||participant.token?.uuid===tokenUuid))
+    .map(participant=>({combat,state,participant}));
+ });
+ if(matches.length!==1)return null;
+ const match=matches[0],budget=match.state.budgets?.[match.participant.id];
+ // There may be no chosen turn yet, or several possible linked participants.
+ // In those cases leave timing to the table and attach no automatic action cost.
+ return budget ? {...match,budget} : null;
+}
 export async function activateOwnedAbility(item,{rangedWeaponItemId=null,weaponItemId=null,weaponAttackOnly=false}={}) {
  assertCurrentGameplayActor(item.actor);
  if(!item.actor?.testUserPermission?.(game.user,'OWNER'))throw new Error('Use an ability belonging to a character or creature you own.');
@@ -49,11 +64,11 @@ export function reviewedDefenseAbilityOptions(actor,{attackMessageId=null,defend
  const held=shields(actor),owner=actor.testUserPermission(game.user,'OWNER');
  const options=actor.items.filter(item=>item.type==='ability').flatMap(item=>{
   const definition=itemAbilityDefinition(item);if(!['defend-v1','shield-block-v1'].includes(definition?.handler))return [];
-  const needsShield=definition.id==='ability-shield-block',reasons=[];
+  const referenceOnly=definition.id==='ability-shield-block'&&!held.length,reasons=[];
   if(!owner)reasons.push('Only the defender’s owner can activate its benefits.');
-  if(needsShield&&!held.length)reasons.push('Hold a shield before using Shield Block.');
-  const active=actor.effects.some(effect=>benefitCurrent(effect)&&effect.getFlag(ID,'benefit')?.current===true&&effect.getFlag(ID,'benefit').sourceId===definition.id);
-  return [{id:definition.id,name:item.name,itemId:item.id,itemUuid:item.uuid,shieldItemUuid:held[0]?.uuid??null,active,pending:false,available:reasons.length===0,reasons,warnings:[]}];
+  const active=!referenceOnly&&actor.effects.some(effect=>benefitCurrent(effect)&&effect.getFlag(ID,'benefit')?.current===true&&effect.getFlag(ID,'benefit').sourceId===definition.id);
+  const warnings=referenceOnly ? ['No held shield is recorded. Posts Shield Block for the table to resolve.'] : [];
+  return [{id:definition.id,name:item.name,itemId:item.id,itemUuid:item.uuid,shieldItemUuid:held[0]?.uuid??null,active,pending:false,available:reasons.length===0,reasons,warnings}];
  });
  return {options};
 }
@@ -81,21 +96,21 @@ registerNativeGameplayHandler('defense-benefit',async(actor,payload,context)=>{
   const tokenUuid=payload.options?.defenderTokenUuid;
   if(tokenUuid&&fromUuidSync(tokenUuid)?.actor?.uuid!==actor.uuid)throw new Error('The selected defender token changed.');
   let shieldItemUuid=payload.options?.shieldItemUuid;
-  if(definition.id==='ability-shield-block'&&!payload.remove){const held=shields(actor);shieldItemUuid??=held[0]?.uuid;if(!held.some(item=>item.uuid===shieldItemUuid))throw new Error('Hold a shield before using Shield Block.');}
-  const combats=game.combats?.contents??[...(game.combats?.values?.()??game.combats??[])];
-  const matches=combats.flatMap(combat=>{
-   const state=combat.getFlag(ID,'encounter');if(!state)return [];
-   return [...combat.combatants].filter(participant=>participant.actor?.uuid===actor.uuid&&(!tokenUuid||participant.token?.uuid===tokenUuid)).map(participant=>({combat,state,participant}));
-  });
-  if(matches.length>1)throw new Error('Choose the exact defender token in its encounter before using this ability.');
-  const match=matches[0],budget=match?.state.budgets?.[match.participant.id];
-  if(match&&!budget)throw new Error('The defender’s native action budget is unavailable.');
+  const needsShield=definition.id==='ability-shield-block'&&!payload.remove;
+  const held=needsShield?shields(actor):[];
+  if(needsShield)shieldItemUuid??=held[0]?.uuid;
+  if(needsShield&&held.length&&!held.some(item=>item.uuid===shieldItemUuid))throw new Error('The selected shield changed. Choose its replacement.');
+  const referenceOnly=needsShield&&!held.length;
+  const match=referenceOnly?null:encounterActionTracking(actor,tokenUuid),budget=match?.budget;
   if(match&&!payload.remove)declareAction(budget,{operationId:context.operationId,sourceId:definition.id,category:definition.category,ownTurn:match.state.current===match.participant.id,conditions:actionConditions(actor)});
-  record={signature,status:'prepared',sourceId:definition.id,key:definition.id==='ability-shield-block'?'shield-block':'defend',name:item.name,img:item.img,remove:Boolean(payload.remove),shieldItemUuid:shieldItemUuid??null,
+  record={signature,status:'prepared',sourceId:definition.id,key:definition.id==='ability-shield-block'?'shield-block':'defend',name:item.name,img:item.img,remove:Boolean(payload.remove),shieldItemUuid:shieldItemUuid??null,referenceOnly,
    ...(match?{combatUuid:match.combat.uuid,participantId:match.participant.id,anchor:{combatId:match.combat.id,participantId:match.participant.id,turnId:budget.turnId},category:definition.category}: {})};
   await context.write({[key]:record},{status:'prepared'});
  }
- if(record.status!=='applied'){
+ if(record.status!=='applied'&&record.referenceOnly) {
+  record={...record,status:'applied'};
+  await context.write({[key]:record},{status:'complete'});
+ }else if(record.status!=='applied'){
   if(record.combatUuid&&!record.remove){
    const combat=await fromUuid(record.combatUuid),state=combat?.getFlag(ID,'encounter'),budget=state?.budgets?.[record.participantId];
    if(!budget)throw new Error('The saved encounter budget is unavailable. Ask the DA to reconcile the saved defense action.');
@@ -113,7 +128,7 @@ registerNativeGameplayHandler('defense-benefit',async(actor,payload,context)=>{
   record={...record,status:'applied'};await context.write({effects,[key]:record},{status:'complete'});
  }
  if(item&&!record.remove)await (await import('./reference-play.mjs')).postAbilityReference(item);
- return {status:'complete',sourceId:record.sourceId,removed:record.remove};
+ return {status:'complete',sourceId:record.sourceId,removed:record.remove,referenceOnly:Boolean(record.referenceOnly)};
 });
 
 const BASIC_ATTACKS=new Set(['ability-basic-melee','ability-basic-ranged','ability-basic-unarmed','ability-basic-throw','ability-opportunity-attack']);
@@ -145,11 +160,7 @@ registerNativeGameplayHandler('action-budget',async(actor,payload,context)=>{
  let record=actor.getFlag(ID,'nativeAttackActions')?.[context.operationId];
  if(record&&record.signature!==signature)throw new Error('The saved action changed.');
  if(!record){
-  const combats=game.combats?.contents??[...(game.combats?.values?.()??game.combats??[])];
-  const matches=(category?combats:[]).flatMap(combat=>{const state=combat.getFlag(ID,'encounter');if(!state)return [];return [...combat.combatants].filter(participant=>participant.actor?.uuid===actor.uuid&&(!payload.actorTokenUuid||participant.token?.uuid===payload.actorTokenUuid)).map(participant=>({combat,state,participant}));});
-  if(matches.length>1)throw new Error('Control the exact attacking token in its encounter.');
-  const match=matches[0],budget=match?.state.budgets?.[match.participant.id];
-  if(match&&!budget)throw new Error('The attacker’s native action budget is unavailable.');
+  const match=category ? encounterActionTracking(actor,payload.actorTokenUuid) : null,budget=match?.budget;
   if(match)declareAction(budget,{operationId:context.operationId,sourceId,category,ownTurn:match.state.current===match.participant.id,conditions:actionConditions(actor)});
   record={signature,status:'prepared',sourceId,category,...(match?{combatUuid:match.combat.uuid,participantId:match.participant.id,turnId:budget.turnId}:{})};
   await context.write({[key]:record},{status:'prepared'});

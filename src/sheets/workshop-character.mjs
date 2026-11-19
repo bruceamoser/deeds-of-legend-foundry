@@ -10,11 +10,12 @@ import { nativeItemForWorkshopInstance } from '../rules/native-item-identity.mjs
 import { setRangedWeaponAmmunition } from '../services/ranged-ammunition.mjs';
 import { consumableTracking,tracksConsumable } from '../services/consumables.mjs';
 import { lowerOwnedSupply } from '../services/inventory.mjs';
-import { viewPortrait } from './portrait.mjs';
-import { updateOwnedDocument } from '../services/documents.mjs';
+import { requestRest } from '../services/recovery.mjs';
+import { bindPortraitControls,savePortrait,viewPortrait } from './portrait.mjs';
 import { loadWorkshopCatalogs } from '../services/catalog.mjs';
 import { newCreationDraft } from '../rules/creation.mjs';
 import { rollCard, resourceCard } from '../rules/chat-cards.mjs';
+import { equipmentBonuses } from "../rules/equipment-bonuses.mjs";
 import { equipmentAttributeValue,effectiveActorAttributeValue } from '../rules/effective-attributes.mjs';
 import { validateWorkshopAbilityUse } from '../rules/workshop-ability.mjs';
 import { inventoryCheck } from '../rules/inventory.mjs';
@@ -23,7 +24,7 @@ import { resolvedAttackEffects,spellAttackOutcomes } from '../rules/attack-outco
 import { workshopRollOutcome } from '../rules/workshop-outcomes.mjs';
 import { writePortableCharacter } from '../rules/portable-character.mjs';
 import { loadNativeWorkshopState } from '../services/native-workshop-state.mjs';
-import {saveNativeWorkshopState,saveNativeWorkshopDraft,saveNativeWorkshopIdentity,commitNativeWorkshopCharacter,claimNativeWorkshopOperation,updateNativeWorkshopOperation,completeNativeWorkshopOperation,interruptNativeWorkshopOperation,nativeWorkshopRoll} from '../services/native-workshop-coordinator.mjs';
+import {saveNativeWorkshopState,saveNativeWorkshopIdentity,commitNativeWorkshopCharacter,claimNativeWorkshopOperation,updateNativeWorkshopOperation,completeNativeWorkshopOperation,interruptNativeWorkshopOperation,nativeWorkshopRoll} from '../services/native-workshop-coordinator.mjs';
 const ID='heroes-of-legend';
 const {HandlebarsApplicationMixin}=foundry.applications.api;
 
@@ -32,9 +33,24 @@ export class WorkshopCharacterSheet extends HandlebarsApplicationMixin(foundry.a
   static DEFAULT_OPTIONS={
     classes:[ID,'hol-workshop-character'],position:{width:780,height:780},
     window:{resizable:true},form:{submitOnChange:false,closeOnSubmit:false},
-    actions:{startWorkshop:WorkshopCharacterSheet.startWorkshop,recreateWorkshop:WorkshopCharacterSheet.recreateWorkshop},
+    actions:{recreateWorkshop:WorkshopCharacterSheet.recreateWorkshop,viewPortrait},
   };
   static PARTS={main:{template:'systems/heroes-of-legend/templates/workshop-character.hbs'}};
+  async _onDropItem(event,item) {
+    if(item?.type!=='equipment' || item.actor?.uuid===this.actor.uuid || item.getFlag(ID,'grantKind')!=='nativeWorkshop')
+      return super._onDropItem(event,item);
+    if(!this.isEditable || !this.actor.isOwner)return null;
+    // Copies keep their equipment and provenance. Acquisition, ammo and torch
+    // state belong to the source Actor and cannot identify the new owned Item.
+    const data=item.toObject();
+    for(const key of ['grantKind','acquisitionInstance','ammunitionItemId','ammunitionInstanceId','torch'])
+      delete data.flags[ID][key];
+    delete data.folder;
+    const keepId=!this.actor.items.has(item.id);
+    if(!keepId)delete data._id;
+    const [copy]=await this.actor.createEmbeddedDocuments('Item',[data],{keepId});
+    return copy ?? null;
+  }
   controller=null;
   revision=0;
   writing=0;
@@ -48,11 +64,22 @@ export class WorkshopCharacterSheet extends HandlebarsApplicationMixin(foundry.a
     const current=actor.getFlag(ID,'nativeWorkshop')?.portable;
     const draft=actor.getFlag(ID,'nativeWorkshopDraft');
     const empty=!actor.getFlag(ID,'creationReceipt') && !actor.items.size && !actor.items.length;
-    context.workshopReady=Boolean(current || draft);
     context.canCreate=this.isEditable && actor.testUserPermission(game.user,'OWNER') && !actor.pack && !actor.isToken;
-    context.legacy=!context.workshopReady && !empty;
+    context.legacy=!current && !draft && !empty;
+    context.workshopReady=Boolean(current || draft || (empty && context.canCreate));
     context.actorName=actor.name;
+    context.portraitUrl=actor.img;
     return context;
+  }
+  async loadSheetState() {
+    if(this.actor.getFlag(ID,'nativeWorkshop')?.portable || this.actor.getFlag(ID,'nativeWorkshopDraft')) {
+      return loadNativeWorkshopState(this.actor);
+    }
+    this.assertOwner();
+    const draft=newCreationDraft({paidProvisions:true});
+    draft.name=this.actor.name;
+    const catalogs=await loadWorkshopCatalogs();
+    return {character:JSON.parse(writePortableCharacter(draft,catalogs)),revision:0,mode:'creation'};
   }
   // Actor.update rerenders document sheets. Preserve the live controller and its
   // focus/atlas state while its own acknowledged writes update the document.
@@ -64,20 +91,21 @@ export class WorkshopCharacterSheet extends HandlebarsApplicationMixin(foundry.a
     await super._onRender(context,options);
     const target=this.element.querySelector('[data-workshop-mount]');
     if(!target || this.mounting) return;
+    this.bindWorkshopPortrait(target.querySelector?.('[data-portrait-image]'));
     if(this.controller) {
       this.host.readOnly=!this.isEditable || !this.actor.testUserPermission(game.user,'OWNER');
-      this.host.portraitUrl=this.actor.img;
       if(this.writing) {this.refreshAfterWrite=true;return;}
       if(!this.writing) {
-        const saved=await loadNativeWorkshopState(this.actor);
+        const saved=await this.loadSheetState();
+        const imported=!this.host.committed && Boolean(this.actor.getFlag(ID,'nativeWorkshop')?.portable);
+        if(imported) this.host.committed=true;
         this.nativeItems=saved.nativeItems ?? [];
         this.basePlay=structuredClone(saved.character.draft.play ?? {});
         this.baseLoadout=structuredClone(saved.character.draft.loadout ?? {});
-        if(saved.revision!==this.revision || this.controller.getState().mode==='sheet') {
+        if(imported || saved.revision!==this.revision || this.controller.getState().mode==='sheet') {
           this.revision=saved.revision;
           const current=this.controller.getState();
-          const character=current.mode!=='sheet' ? current.character : current.editing ? {...saved.character,draft:{...saved.character.draft,name:current.character.draft.name,profile:current.character.draft.profile}} : saved.character;
-          this.controller.setState({...current,character});
+          this.controller.setState(imported ? {...saved,mode:'sheet',tab:'Main'} : {...current,character:current.mode==='sheet' ? saved.character : current.character});
         } else this.controller.setState(this.controller.getState());
       }
       return;
@@ -86,7 +114,7 @@ export class WorkshopCharacterSheet extends HandlebarsApplicationMixin(foundry.a
     this.mounting=true;
     let resolveMount;this.mountReady=new Promise(resolve=>resolveMount=resolve);
     try {
-      const state=await loadNativeWorkshopState(this.actor);
+      const state=await this.loadSheetState();
       if(state.mode==='creation') state.mode='builder';
       this.revision=state.revision;
       this.nativeItems=state.nativeItems ?? [];
@@ -98,21 +126,31 @@ export class WorkshopCharacterSheet extends HandlebarsApplicationMixin(foundry.a
         nativeItems:()=>this.nativeItems ?? [],
         projectInventory:items=>projectNativeWorkshopInventory(this.actor,items),
         tracksItem:item=>{const native=nativeItemForWorkshopInstance(this.actor,item.instanceId);return native ? tracksConsumable(native) : undefined;},
-        canDeleteItem:item=>{const native=nativeItemForWorkshopInstance(this.actor,item?.instanceId);return !native || native.getFlag(ID,'grantKind')==='nativeWorkshop';},
-        itemActions:item=>{
-          const native=nativeItemForWorkshopInstance(this.actor,item.instanceId);
-          return [...torchItemActions(this.actor,item),...(native && native.getFlag(ID,'grantKind')!=='nativeWorkshop' ? [{action:'open-card',label:'Open card',title:'Edit or delete this owned item in its card'}] : [])];
+        editEquipment:true,
+        coinBalance:()=>{
+          const coins=this.actor.getFlag(ID,'development')?.coins;
+          return Number.isSafeInteger(coins) ? coins : undefined;
         },
+        canDeleteItem:item=>!this.host.readOnly && nativeItemForWorkshopInstance(this.actor,item?.instanceId)?.type==='equipment',
+        itemActions:item=>torchItemActions(this.actor,item),
         readOnly:!this.isEditable || !this.actor.testUserPermission(game.user,'OWNER'),
         committed:Boolean(this.actor.getFlag(ID,'nativeWorkshop')?.portable),
-        portraitUrl:this.actor.img,
+        nativePortrait:true,
         getAttributeBase:key=>this.actor.system.attributes[key].base,
+        getEquipmentBonuses:()=>equipmentBonuses(this.actor.items),
         getAttributes:attributes=>Object.fromEntries(Object.entries(attributes).map(([key,value])=>[key,equipmentAttributeValue(this.actor.system.attributes[key].base,this.actor.items,key)])),
         beforeUse:request=>this.beginRollOperation(request.kind,request.willRoll,request.id),
         captureSaveBase:()=>({basePlay:structuredClone(this.basePlay ?? {}),baseLoadout:structuredClone(this.baseLoadout ?? {})}),
         onChange:(saved,basis)=>this.saveState(saved,basis),
         onCommit:(portable,view)=>this.commitState(portable,view),
         onAction:async event=>{
+          if(event.action==='apply-workshop-rest') {
+            this.assertOwner();
+            await this.controller.flush();
+            await requestRest(this.actor,event.rest);
+            await this.render({force:true});
+            return true;
+          }
           if (event.action === 'assign-ammunition') {
             this.assertOwner();await this.controller.flush();
             await setRangedWeaponAmmunition(this.actor, event.dataset.instance, event.dataset.ammunition);
@@ -173,9 +211,31 @@ export class WorkshopCharacterSheet extends HandlebarsApplicationMixin(foundry.a
             return true;
           }
 
-          if(event.action==='native-open-item' || (event.action==='native-item' && event.dataset.command==='open-card')) {
+          if(event.action==='native-edit-equipment' || event.action==='confirm-drop-item') {
+            this.assertOwner();
+            const instance=event.dataset.instance;
+            const item=nativeItemForWorkshopInstance(this.actor,instance);
+            if(item?.type!=='equipment' || !item.isOwner) throw new Error('That owned equipment no longer exists.');
+            if(event.action==='native-edit-equipment') {
+              await this.controller.flush();
+              await item.sheet.render({force:true,editing:true});
+              return true;
+            }
+            if(event.target.disabled)return true;
+            event.target.disabled=true;
+            try {
+              await this.controller.flush();
+              if(nativeItemForWorkshopInstance(this.actor,instance)?.id!==item.id)
+                throw new Error('That owned equipment changed. Check the inventory before trying again.');
+              await this.actor.deleteEmbeddedDocuments('Item',[item.id]);
+              event.target.closest('dialog')?.close();
+              await this.render({force:true});
+            } finally {event.target.disabled=false;}
+            return true;
+          }
+          if(event.action==='native-open-item') {
             if(!this.actor.testUserPermission(game.user,'OBSERVER')) throw new Error('You cannot inspect this character’s items.');
-            const item=event.action==='native-open-item' ? this.actor.items.get(event.id) : nativeItemForWorkshopInstance(this.actor,event.dataset.instance);
+            const item=this.actor.items.get(event.id);
             if(!item) throw new Error('That owned item no longer exists.');
             await item.sheet.render({force:true});return true;
           }
@@ -185,11 +245,8 @@ export class WorkshopCharacterSheet extends HandlebarsApplicationMixin(foundry.a
           if(event.action==='use-supply-dialog' && event.preview.inventory.items.find(item=>item.instanceId===event.dataset.instance)?.catalogId==='item-lighting-bundle') {
             this.assertOwner();await requestTorchToggle(this.actor,event.dataset.instance);return true;
           }
-          if(event.action==='edit' && event.editing) {await this.controller.flush();await this.saveIdentity(event.state);return true;}
-          if(event.action!=='native-portrait') return false;
-          if(this.host.readOnly) viewPortrait.call(this);
-          else await this.editWorkshopPortrait(event.target);
-          return true;
+          if(event.action==='edit-hero-name') {await this.editWorkshopName(event.state);return true;}
+          return false;
         },
         postUse:async id=>{
           this.assertOwner();
@@ -262,6 +319,22 @@ export class WorkshopCharacterSheet extends HandlebarsApplicationMixin(foundry.a
       this.revision=next.revision;this.controller.setState({...next,mode:'sheet'});
     } finally {this.finishWrite();}
   }
+  async editWorkshopName(portable) {
+    this.assertOwner();
+    const name=portable.draft.name;
+    const result=await foundry.applications.api.DialogV2.input({
+      classes:[ID,'hol-native-dialog'],window:{title:'Edit character name'},
+      content:`<div class="form-group"><label for="hol-character-name">Character name</label><input autofocus id="hol-character-name" name="name" value="${foundry.utils.escapeHTML(name)}" required maxlength="200"></div>`,
+      buttons:[{action:'cancel',label:'COMMON.Cancel',type:'button'}],
+      ok:{label:'Save name'},rejectClose:false,
+    });
+    const nextName=result?.name?.trim();
+    if(!nextName || nextName===name) return;
+    await this.controller.flush();
+    const current=this.controller.getState().character;
+    current.draft.name=nextName;
+    await this.saveIdentity(current);
+  }
   async commitState(portable,{tab='Main'}={}) {
     this.assertOwner();this.writing++;
     try {
@@ -275,23 +348,23 @@ export class WorkshopCharacterSheet extends HandlebarsApplicationMixin(foundry.a
       ui.notifications.info('Hero saved to the native Actor.');
     } finally {this.finishWrite();}
   }
-  async editWorkshopPortrait(image) {
-    this.assertOwner();
+  bindWorkshopPortrait(image) {
+    if(!image) return;
+    const editable=this.isEditable && this.actor.testUserPermission(game.user,'OWNER');
+    image.dataset.action=editable ? 'editImage' : 'viewPortrait';
+    if(editable) image.dataset.edit='img';else delete image.dataset.edit;
+    image.alt=editable ? 'Edit character portrait' : 'View character portrait';
+    if(image.getAttribute('src')!==this.actor.img) image.setAttribute('src',this.actor.img);
+    if(this.boundPortrait===image) return;
     this.portraitObserver?.disconnect();
-    const observer=new MutationObserver(()=>{
-      observer.disconnect();
-      const img=image.getAttribute('src');
-      if(img && img!==this.actor.img) updateOwnedDocument(this.actor,{img}).catch(error=>ui.notifications.error(error.message));
+    this.boundPortrait=image;
+    bindPortraitControls(this);
+    // The stock picker changes the IMG; the Workshop does not submit a sheet form.
+    this.portraitObserver=new MutationObserver(()=>{
+      if(image.dataset.edit && image.getAttribute('src')!==this.actor.img)
+        savePortrait.call(this).catch(error=>ui.notifications.error(error.message));
     });
-    this.portraitObserver=observer;
-    observer.observe(image,{attributes:true,attributeFilter:['src']});
-    try {
-      // The shadow DOM retargets clicks before Foundry can see the IMG.
-      await this.options.actions.editImage.call(this,null,image);
-    } catch(error) {
-      observer.disconnect();
-      throw error;
-    }
+    this.portraitObserver.observe(image,{attributes:true,attributeFilter:['src']});
   }
   forgetRoll(id) {
     if(this.preparedRollId===id)this.preparedRollId=undefined;
@@ -384,7 +457,11 @@ export class WorkshopCharacterSheet extends HandlebarsApplicationMixin(foundry.a
     return faces;
   }
   async close(options={}) {
-    if(this.controller?.settle) await this.controller.settle();else await this.controller?.flush();
+    try {
+      if(this.controller?.settle) await this.controller.settle();else await this.controller?.flush();
+    } catch(error) {
+      ui.notifications.error(error.message);
+    }
     return super.close(options);
   }
   async _preClose(options) {
@@ -392,19 +469,9 @@ export class WorkshopCharacterSheet extends HandlebarsApplicationMixin(foundry.a
     // Foundry serializes this hook after queued Actor renders. A render before
     // teardown can still use the current controller and its live frame.
     this.portraitObserver?.disconnect();
+    this.boundPortrait=null;
     ++this.mountGeneration;this.controller?.dispose();this.controller=null;
     this.refreshAfterWrite=false;
-  }
-  static async startWorkshop() {
-    try {
-      this.assertOwner();
-      const actor=this.actor;
-      if(actor.getFlag(ID,'creationReceipt') || actor.items.size || actor.items.length) throw new Error('Recreate an older hero as a separate Actor.');
-      const draft=newCreationDraft({ paidProvisions: true });draft.name=actor.name;
-      const catalogs=await loadWorkshopCatalogs();
-      await saveNativeWorkshopDraft(actor,JSON.parse(writePortableCharacter(draft,catalogs)));
-      await this.render({force:true});
-    } catch(error){ui.notifications.error(error.message);}
   }
   static async recreateWorkshop() {
     try {

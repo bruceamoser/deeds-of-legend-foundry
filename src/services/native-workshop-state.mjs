@@ -1,3 +1,5 @@
+import { nativeForgeVitals } from "../rules/native-health.mjs";
+import { equipmentBonuses, resourceClamp } from "../rules/equipment-bonuses.mjs";
 import { nativeWorkshopInventoryId, nativeEquipmentHands, NATIVE_INVENTORY_PREFIX } from "../rules/native-item-identity.mjs";
 import { currentWorkshopLearnedItems } from "../rules/current-workshop-items.mjs";
 import { validateEquipmentAttributeArrangement } from "../rules/effective-attributes.mjs";
@@ -143,7 +145,9 @@ export function saveNativeWorkshopState(actor, savedState, { expectedRevision, r
     await applyWorkshopTransaction(actor, nativeWorkshopEquipmentItems(state.preview,state.catalogs), () => {
       owner(actor);revision(actor,expectedRevision);
       const finalPlay=mergeNativeWorkshopPlay(basisPlay,inputPlay,overlay(actor,saved.portable,catalogs).draft.play);
-      const vitals=forgeVitals(finalPlay,state.preview.limits);
+      const gear = equipmentBonuses(actor.items);
+      const limits = { ...state.preview.limits, maxHp: state.preview.limits.maxHp + gear.hp, maxSp: state.preview.limits.maxSp + gear.sp };
+      const vitals=forgeVitals(finalPlay,limits);
       const portable=structuredClone(state.portable);
       portable.draft.play=finalPlay;
       delete portable.draft.play.immediateDeathRolls;
@@ -163,7 +167,7 @@ export function saveNativeWorkshopState(actor, savedState, { expectedRevision, r
         changes[`flags.${ID}.development.coins`] = Number.isSafeInteger(balance)
           ? balance + proceeds : state.preview.inventory.remainingCoins;
       }
-      for(const[key,value]of Object.entries(deathState(vitals)))if(changedKeys.has(key))changes[`flags.${ID}.forgeVitals.${key}`]=value;
+      for(const[key,value]of Object.entries(nativeForgeVitals(vitals)))if(changedKeys.has(key))changes[`flags.${ID}.forgeVitals.${key}`]=value;
       if(resolvedImmediateDeathRoll)changes[`flags.${ID}.forgeVitals.immediateDeathRolls`]=(actor.getFlag(ID,"forgeVitals")?.immediateDeathRolls??[]).filter(id=>id!==resolvedImmediateDeathRoll);
       return changes;
     }, next, {catalogs:state.catalogs,equipmentOnly:true,removedInstances:new Set((inputPlay.inventory?.removed??[]).filter(id=>!(basisPlay.inventory?.removed??[]).includes(id)))});
@@ -221,7 +225,8 @@ export function commitNativeWorkshopCharacter(actor, portable, { expectedRevisio
     desired.push(...nativeWorkshopEquipmentItems(equipmentState.preview,state.catalogs));
     await applyWorkshopTransaction(actor, desired, () => {
       owner(actor);revision(actor,expectedRevision);
-      const changes=currentNativeCharacterChanges(state.draft,state.preview,{preserveResources:existing?.portable?actor.system:undefined,previousLevel,level:state.preview.state.level,hpPerLevel:state.catalogs.choices.find(record=>record.id===state.draft.ancestryId).hp+state.catalogs.choices.find(record=>record.id===state.draft.classId).hp});
+      const bonuses = equipmentBonuses(actor.items);
+      const changes=currentNativeCharacterChanges(state.draft,state.preview,{preserveResources:existing?.portable?actor.system:undefined,equipmentBonuses:bonuses,previousLevel,level:state.preview.state.level,hpPerLevel:state.catalogs.choices.find(record=>record.id===state.draft.ancestryId).hp+state.catalogs.choices.find(record=>record.id===state.draft.classId).hp});
       const portable=carried?overlay(actor,equipmentState.portable,state.catalogs):structuredClone(state.portable);
       portable.draft.play??={};
       Object.assign(portable.draft.play,{hp:changes["system.health.value"],sp:changes["system.sp.value"],gritSpent:changes["system.grit.spent"]});
@@ -229,8 +234,8 @@ export function commitNativeWorkshopCharacter(actor, portable, { expectedRevisio
       if(existing?.portable) {
         // Development is not a resource correction. Only earned HP gain or a
         // genuinely reduced maximum requires changing a live resource field.
-        if(state.preview.state.level===previousLevel && actor.system.health.value<=state.preview.limits.maxHp)delete changes["system.health.value"];
-        if((actor.system.sp?.value??0)<=state.preview.limits.maxSp)delete changes["system.sp.value"];
+        if(state.preview.state.level===previousLevel && actor.system.health.value<=state.preview.limits.maxHp+bonuses.hp)delete changes["system.health.value"];
+        if((actor.system.sp?.value??0)<=state.preview.limits.maxSp+bonuses.sp)delete changes["system.sp.value"];
         delete changes["system.grit.spent"];delete changes["system.recovery"];delete changes[`flags.${ID}.forgeVitals`];
       } else changes.effects=nativeConditionSources(actor,state.draft.play?.conditions??[]);
       return {...changes,...operationChanges(operationReceipt),
@@ -246,9 +251,6 @@ export function commitNativeWorkshopCharacter(actor, portable, { expectedRevisio
   });
 }
 
-function deathState(play) {
-  return Object.fromEntries(["dying", "dead", "failedDeathRolls", "successfulDeathRolls", "gritTrigger", "scars", "firstAidUsed", "firstAidPending", "spellcraftRecoveryUsed"].map(key=>[key,structuredClone(play[key])]));
-}
 export function nativeWorkshopEquipmentItems(preview,catalogs) {
   return preview.inventory.items.map(item=>({...equipmentItemSource(catalogs.inventory.equipment.find(record=>record.id===item.catalogId), {
     sourceCommit:catalogs.commit,grantKind:"nativeWorkshop",acquisitionInstance:item.instanceId,
@@ -315,7 +317,16 @@ async function applyWorkshopTransaction(actor,desired,changes,nextRevision,{cata
   const retiring=owned.filter(item=>!keep.has(item.id));
   if(equipmentOnly && retiring.some(item=>!removedInstances.has(nativeWorkshopInventoryId(item))))throw new Error("Owned equipment is missing from this sheet save. Reload the character; no equipment has been removed.");
   const retired=retiring.map(item=>item.id);
-  if(!updates.length&&!creates.length&&!retired.length)return actor.update(typeof changes==="function"?changes():changes);
+  const finalChanges = () => {
+    const next = typeof changes === "function" ? changes() : changes;
+    const system = actor.toObject?.().system ?? actor.system;
+    const gear = equipmentBonuses(actor.items);
+    return { ...resourceClamp({ hp: system.health.value, sp: system.sp.value }, {
+      maxHp: (next["system.health.baseMax"] ?? system.health.baseMax) + gear.hp,
+      maxSp: (next["system.sp.max"] ?? system.sp.max) + gear.sp,
+    }), ...next };
+  };
+  if(!updates.length&&!creates.length&&!retired.length)return actor.update(finalChanges());
   const pending={nextRevision,updates,beforeItems:candidates.filter(item=>retired.includes(item.id)||matchedIds.has(item.id)).map(itemSource),createdIds:creates.map(item=>item._id)};
   await actor.update({[`flags.${ID}.nativeWorkshopPending`]:pending});
   try {
@@ -334,7 +345,7 @@ async function applyWorkshopTransaction(actor,desired,changes,nextRevision,{cata
     }
     if(creates.length) await actor.createEmbeddedDocuments("Item",creates,{keepId:true});
     if(retired.length) await actor.deleteEmbeddedDocuments("Item",retired);
-    await actor.update(typeof changes==="function"?changes():changes);
+    await actor.update(finalChanges());
   } catch(error) {
     try { await recoverNativeWorkshopTransaction(actor); }
     catch(recoveryError) { throw new Error(`${error.message} The saved transaction needs owner recovery before another save: ${recoveryError.message}`,{cause:error}); }
@@ -424,12 +435,12 @@ function nativeConditionSources(actor,conditions) {
 const operationChanges=receipt=>receipt?{[`flags.${ID}.nativeWorkshopOperations.${receipt.id}`]:receipt}:{};
 
 function nativeItemsOverview(actor,catalogs) {
-  return [...actor.items].filter(item=>!managedWorkshopItem(item,catalogs)).map(item=>({id:item.id,name:item.name,type:item.type,img:item.img??"",catalogId:item.system?.catalogId??item.getFlag?.(ID,"catalogId")??"",knownCatalog:Boolean(catalogs.inventory.equipment.some(record=>record.id===item.system?.catalogId)),quantity:item.system?.quantity??null,bulk:item.system?.bulk??0,catalogBulk:catalogs.inventory.equipment.find(record=>record.id===item.system?.catalogId)?.bulk??0,carried:item.system?.carried!==false,held:Boolean(item.system?.held),worn:Boolean(item.system?.worn)}));
+  return [...actor.items].filter(item=>!managedWorkshopItem(item,catalogs)).map(item=>({id:item.id,name:item.name,type:item.type,img:item.img??"",catalogId:item.system?.catalogId??item.getFlag?.(ID,"catalogId")??"",knownCatalog:Boolean(catalogs.inventory.equipment.some(record=>record.id===item.system?.catalogId)),quantity:item.system?.quantity??null,bulk:item.system?.bulk??0,catalogBulk:catalogs.inventory.equipment.find(record=>record.id===item.system?.catalogId)?.bulk??0,inventoryDie:item.system?.inventoryDie,carried:item.system?.carried!==false,held:Boolean(item.system?.held),worn:Boolean(item.system?.worn)}));
 }
 
 function managedWorkshopItem(item,catalogs) {
   if(item.getFlag?.(ID,"grantKind")!=="nativeWorkshop")return false;
-  if(item.type==="equipment")return Boolean(item.getFlag(ID,"acquisitionInstance") && catalogs.inventory.equipment.some(record=>record.id===item.system?.catalogId));
+  if(item.type==="equipment")return Boolean(item.getFlag(ID,"acquisitionInstance") === nativeWorkshopInventoryId(item) && catalogs.inventory.equipment.some(record=>record.id===item.system?.catalogId));
   if(item.type==="ability")return Boolean(catalogs.choices.some(record=>record.id===item.getFlag(ID,"catalogId")) || catalogs.forge.spells.some(record=>record.id===item.getFlag(ID,"catalogId")));
   return false;
 }
