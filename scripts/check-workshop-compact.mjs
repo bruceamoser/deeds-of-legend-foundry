@@ -558,8 +558,9 @@ try {
     await page.getByRole("button", { name: "View character sheet", exact: true }).click();
     await tab("Inventory");
     await expect(panel.getByRole("button", { name: "Sell Water Flask for 1 coin", exact: true })).toBeVisible();
-    page.once("dialog", popup => popup.accept());
     await panel.getByRole("button", { name: "Sell Water Flask for 1 coin", exact: true }).click();
+    await page.getByRole("dialog", { name: "Sell Water Flask?" })
+      .getByRole("button", { name: "Sell item", exact: true }).click();
     await expect(panel.locator('tr[data-instance="shop-starter-water-flask"]')).toHaveCount(0);
     await expect(panel.locator(".inventory-stats strong").first()).toHaveText(String(oldCoins - 36));
 

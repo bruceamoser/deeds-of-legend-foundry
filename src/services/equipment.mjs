@@ -1,3 +1,4 @@
+import { equipmentBonuses, resourceClamp } from "../rules/equipment-bonuses.mjs";
 import {validateEquipmentAttributeArrangement} from "../rules/effective-attributes.mjs";
 import { updateOwnedDocument } from "./documents.mjs";
 import { shouldProcessRequest, enqueueCharacterOperation } from "./authority.mjs";
@@ -26,14 +27,19 @@ export function requestEquipment(actor, _basis, items, _capacity, _reason = "") 
       const bad=!current.items.some(existing=>existing.id===item.id)||ids.has(item.id)||!Number.isSafeInteger(item.hands)||item.hands<0||item.hands>2||typeof item.held!=="boolean"||typeof item.worn!=="boolean"||(item.carried!==undefined&&typeof item.carried!=="boolean");
       ids.add(item.id);return bad;
     }))throw new Error("The equipment list changed. Reopen Inventory and try again.");
-    const sources=actor.toObject().items;
+    const { items: sources, system } = actor.toObject();
     for(const source of sources){
       const state=items.find(item=>item.id===source._id);if(!state)continue;
       source.system.hands=state.hands;source.system.held=state.held;source.system.worn=state.worn;
       source.system.carried=state.carried ?? current.items.find(item=>item.id===source._id).carried;
     }
     validateEquipmentAttributeArrangement(sources);
-    await updateOwnedDocument(actor,{items:sources,[`flags.${ID}.equipmentRevision`]:current.revision+1});
+    const bonuses = equipmentBonuses(sources);
+    const clamp = resourceClamp({ hp: system.health.value, sp: system.sp?.value }, {
+      maxHp: system.health.baseMax + bonuses.hp,
+      maxSp: (system.sp?.max ?? 0) + bonuses.sp,
+    });
+    await updateOwnedDocument(actor,{items:sources,...clamp,[`flags.${ID}.equipmentRevision`]:current.revision+1});
     return {status:"complete"};
   });
   queues.set(actor.uuid,task);task.finally(()=>{if(queues.get(actor.uuid)===task)queues.delete(actor.uuid);}).catch(()=>{});
@@ -50,6 +56,21 @@ export function resolveEquipmentRequest(id) {
   },{requestId:id});
 }
 export function registerEquipmentRequests(){
+  for (const event of ["updateItem", "deleteItem"]) {
+    Hooks.on(event, (item, ...args) => {
+      const actor = item.actor;
+      if (args.at(-1) !== game.user.id || actor?.type !== "character" ||
+          item.type !== "equipment" || actor.getFlag(ID, "nativeWorkshopPending") ||
+          !item.system.bonuses || (!item.system.bonuses.hp && !item.system.bonuses.sp && event !== "updateItem")) return;
+      const { system } = actor.toObject();
+      const clamp = resourceClamp({ hp: system.health.value, sp: system.sp.value }, {
+        maxHp: actor.system.health.max, maxSp: actor.system.sp.max,
+      });
+      if (Object.keys(clamp).length) {
+        void actor.update(clamp).catch(error => ui.notifications.error(error.message));
+      }
+    });
+  }
   Hooks.on("createChatMessage",message=>{
     if(message.getFlag(ID,"equipmentRequest")&&shouldProcessRequest(message))resolveEquipmentRequest(message.id).catch(error=>ui.notifications.error(error.message));
   });

@@ -1,3 +1,4 @@
+import { equipmentBonuses } from "../rules/equipment-bonuses.mjs";
 import {effectiveActorAttributeValue} from "../rules/effective-attributes.mjs";
 import {
   ATTRIBUTES,
@@ -52,12 +53,17 @@ export class CharacterData extends foundry.abstract.TypeDataModel {
     };
   }
   static validateJoint(data) {
-    validateCharacter(data);
+    // Embedded equipment contributes to the effective maximum after source validation.
+    validateCharacter(data, { maximumHp: Infinity });
     normalizeForgeRecovery(data.recovery);
   }
   prepareDerivedData() {
     const summary = characterSummary(this);
-    this.health.max = summary.healthMax;
+    const bonuses = equipmentBonuses(this.parent?.items);
+    this.health.max = summary.healthMax + bonuses.hp;
+    this.sp.max = this._source.sp.max + bonuses.sp;
+    this.health.value = Math.min(this.health.value, this.health.max);
+    this.sp.value = Math.min(this.sp.value, this.sp.max);
     this.grit.available = summary.gritAvailable;
     this.attributeEffectErrors = [];
     for (const key of ATTRIBUTES) {

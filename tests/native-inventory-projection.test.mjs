@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {projectNativeWorkshopInventory} from '../src/rules/native-inventory-projection.mjs';
+import {nativeItemForWorkshopInstance,nativeWorkshopInventoryId} from '../src/rules/native-item-identity.mjs';
 import {workshopCharacter} from '../src/rules/workshop-character.mjs';
 import {workshopCatalogs} from '../src/rules/workshop-forge-catalog.mjs';
 import {applyForgePlaytest} from '../src/rules/forge-playtest-catalog.mjs';
@@ -18,6 +19,22 @@ test('native projection uses original quantity, edited bulk and torch hands with
  assert.equal(result.items.length,1);assert.equal(result.items[0].bulk,6);assert.equal(result.items[0].quantity,2);assert.equal(result.items[0].hands,1);
  assert.equal(result.additional.length,1);assert.equal(result.additional[0].bulk,12);assert.equal(result.additional[0].nativeId,'custom');
  assert.equal(JSON.stringify(actor),before);
+});
+test('copies of a managed acquisition and foreign acquisitions keep their own native Item identities',()=>{
+ const original=native('original',{},'shop-starter-food-bundle');
+ const copied=native('copy',{},'shop-starter-food-bundle');
+ const foreign=native('foreign',{},'shop-other-character');
+ const creating=native('new',{},'shop-new-local');
+ const actor={
+   items:[original,copied,foreign,creating],
+   getFlag:(_,key)=>key==='nativeWorkshop' ? {inventoryInstances:['shop-starter-food-bundle']} : {createdIds:['new']},
+ };
+ for (const item of actor.items) item.actor=actor;
+ assert.equal(nativeItemForWorkshopInstance(actor,'shop-starter-food-bundle'),original);
+ assert.equal(nativeItemForWorkshopInstance(actor,nativeWorkshopInventoryId(copied)),copied);
+ assert.equal(nativeItemForWorkshopInstance(actor,'shop-other-character'),undefined);
+ assert.equal(nativeItemForWorkshopInstance(actor,nativeWorkshopInventoryId(foreign)),foreign);
+ assert.equal(nativeItemForWorkshopInstance(actor,'shop-new-local'),creating);
 });
 test('native custom carried gear affects burden and Speed without changing creation or teaching abilities',()=>{
  const original=workshopCharacter(portable.draft,catalogs);

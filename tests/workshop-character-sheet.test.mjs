@@ -44,6 +44,15 @@ test('native Workshop dice use retained Foundry dice and V14 message visibility'
   assert.equal(calls[2].options.messageMode,'blind');
   assert.match(calls[2].data.content,/hol-chat-verdict standard/);assert.match(calls[2].data.content,/<strong>13<\/strong>/);
 });
+test('native Workshop chat shows the selected utility outcome and keeps the full rules',async()=>{
+  const entangle={id:'spell:growth:2',name:'Entangle',effect:'Apply Slowed 1/2/3 to creatures in the area when cast.'};
+  const {sheet,calls}=fixture({loadWorkshopCatalogs:async()=>({choices:[],forge:{spells:[entangle],nodes:[]}})});
+  await sheet.rollDice({count:4,sides:6,kind:'attribute',net:-1,attribute:2,activeRoll:{id:entangle.id,cast:true}});
+  const posted=calls.find(call=>call.data).data;
+  assert.match(posted.content,/Apply Slowed 2 to creatures in the area when cast/);
+  assert.match(posted.content,/Apply Slowed 1\/2\/3 to creatures in the area when cast/);
+  assert.equal(posted.flags['heroes-of-legend'].roll,undefined);
+});
 test('native observers cannot save, commit or roll',async()=>{
   const {sheet,calls}=fixture();sheet.isEditable=false;
   await assert.rejects(sheet.saveState({}),/owner/);
@@ -95,6 +104,16 @@ test('a native render queued by an acknowledged draft save keeps its controller 
   assert.equal(sheet.controller,null);
   assert.deepEqual(calls,['save','render','dispose','close']);
 });
+test('a rejected Workshop save is reported and the native sheet still closes',async()=>{
+  const {sheet,calls}=fixture({ui:{notifications:{error:message=>calls.push(message)}}});
+  sheet.controller={
+    settle:async()=>{throw new Error('Owned equipment is missing from this sheet save.');},
+    dispose:()=>calls.push('dispose'),
+  };
+  await sheet.close();
+  assert.equal(sheet.controller,null);
+  assert.deepEqual(calls,['Owned equipment is missing from this sheet save.','dispose','close']);
+});
 test('older actors receive an invalid-current-rules entry without modifying documents',async()=>{
   const {sheet}=fixture();sheet.actor.items=[{id:'existing'}];
   const context=await sheet._prepareContext({});assert.equal(context.legacy,true);assert.equal(context.workshopReady,false);
@@ -102,7 +121,8 @@ test('older actors receive an invalid-current-rules entry without modifying docu
 test('native same-revision updates refresh live resources and read-only permission',async()=>{
   const loaded={revision:3,mode:'sheet',character:{draft:{play:{hp:2}}}};
   const {sheet}=fixture({loadNativeWorkshopState:async()=>loaded});
-  sheet.revision=3;sheet.host={};sheet.isEditable=false;
+  sheet.revision=3;sheet.host={committed:true};sheet.isEditable=false;
+  sheet.actor.getFlag=(_namespace,key)=>key==='nativeWorkshop' ? {portable:loaded.character} : undefined;
   sheet.element={querySelector:()=>({})};let refreshed;
   sheet.controller={getState:()=>({mode:'sheet',character:{draft:{play:{hp:9}}}}),setState:state=>{refreshed=state;}};
   // Supply the lifecycle hook provided by Foundry's base class in this fixture.
@@ -157,10 +177,11 @@ test('native saves retain the immutable enqueue-time play basis',async()=>{
   assert.equal(calls[0].basePlay.hp,4);assert.equal(calls[0].basePlay.sp,7);
 });
 
-test('open native sheet refreshes imported name and story outside Edit',async()=>{
+test('open native sheet refreshes imported name and story',async()=>{
   const loaded={revision:4,mode:'sheet',character:{draft:{name:'Imported hero',profile:{story:'Imported story'},play:{hp:2}}}};
   const {sheet}=fixture({loadNativeWorkshopState:async()=>loaded});
-  sheet.revision=3;sheet.host={};sheet.element={querySelector:()=>({})};let refreshed;
+  sheet.revision=3;sheet.host={committed:true};sheet.element={querySelector:()=>({})};let refreshed;
+  sheet.actor.getFlag=(_namespace,key)=>key==='nativeWorkshop' ? {portable:loaded.character} : undefined;
   sheet.controller={getState:()=>({mode:'sheet',tab:'Character',editing:false,character:{draft:{name:'Previous hero',profile:{story:'Previous story'},play:{hp:9}}}}),setState:state=>{refreshed=state;}};
   Object.getPrototypeOf(Object.getPrototypeOf(sheet))._onRender=async()=>{};
   await sheet._onRender({},{});
@@ -169,16 +190,17 @@ test('open native sheet refreshes imported name and story outside Edit',async()=
   assert.equal(refreshed.character.draft.play.hp,2);
   assert.equal(refreshed.tab,'Character');assert.equal(refreshed.editing,false);
 });
-test('native Edit retains local name and story while refreshing live resources',async()=>{
-  const loaded={revision:4,mode:'sheet',character:{draft:{name:'External hero',profile:{story:'External story'},play:{hp:2}}}};
+test('an import takes over a blank mounted Workshop immediately',async()=>{
+  const loaded={revision:1,mode:'sheet',character:{draft:{name:'Imported hero',play:{hp:2}}}};
   const {sheet}=fixture({loadNativeWorkshopState:async()=>loaded});
-  sheet.revision=3;sheet.host={};sheet.element={querySelector:()=>({})};let refreshed;
-  sheet.controller={getState:()=>({mode:'sheet',editing:true,character:{draft:{name:'Local pending name',profile:{story:'Local pending story'},play:{hp:9}}}}),setState:state=>{refreshed=state;}};
+  sheet.host={committed:false};sheet.element={querySelector:()=>({})};let refreshed;
+  sheet.actor.getFlag=(_namespace,key)=>key==='nativeWorkshop' ? {portable:loaded.character} : undefined;
+  sheet.controller={getState:()=>({mode:'builder',character:{draft:{name:'New hero'}}}),setState:state=>{refreshed=state;}};
   Object.getPrototypeOf(Object.getPrototypeOf(sheet))._onRender=async()=>{};
   await sheet._onRender({},{});
-  assert.equal(refreshed.character.draft.name,'Local pending name');
-  assert.equal(refreshed.character.draft.profile.story,'Local pending story');
-  assert.equal(refreshed.character.draft.play.hp,2);assert.equal(refreshed.editing,true);
+  assert.equal(refreshed.character.draft.name,'Imported hero');
+  assert.equal(refreshed.mode,'sheet');
+  assert.equal(sheet.host.committed,true);
 });
 
 test('new hero entry creates a blank Actor without copying invalid character data',async()=>{

@@ -1,3 +1,5 @@
+import { EQUIPMENT_STAT_BONUSES, EQUIPMENT_BONUS_LABELS } from "../rules/equipment-bonuses.mjs";
+import { DAMAGE_TYPES } from "../rules/damage.mjs";
 import { CONSUMABLE_TYPES } from '../rules/consumables.mjs';
 import { tracksConsumable } from '../services/consumables.mjs';
 import { torchItemActions, requestTorchToggle } from "../services/torches.mjs";
@@ -76,6 +78,10 @@ export class EquipmentSheet extends foundry.applications.api.HandlebarsApplicati
       ...cardContext(this, this.item),
       editableDescription: equipmentEditableDescription(description),
       supplyDieOptions: [0,4,6,8,10,12,20].map(value=>({value,label:value ? `d${value}` : "Depleted",selected:value===this.item.system.inventoryDie})),
+      bonusRows: Object.keys(EQUIPMENT_STAT_BONUSES).map(key => ({ key, label: EQUIPMENT_BONUS_LABELS[key], value: this.item.system.bonuses?.[key] ?? 0 })),
+      resistanceRows: DAMAGE_TYPES.map(key => ({ key, label: EQUIPMENT_BONUS_LABELS[key], value: this.item.system.bonuses?.[key] ?? 0 })),
+      equipmentEffectSummary: Object.entries(EQUIPMENT_BONUS_LABELS).filter(([key]) => this.item.system.bonuses?.[key] > 0)
+        .map(([key, label]) => ({ label: DAMAGE_TYPES.includes(key) ? `${label} resistance` : label, value: `+${this.item.system.bonuses[key]}` })),
       attributeEffectRows: ITEM_EFFECT_ATTRIBUTES.map(attribute=>{const effect=(this.item.system.attributeEffects??[]).find(effect=>effect.attribute===attribute);return {attribute,label:attribute[0].toUpperCase()+attribute.slice(1),value:effect?.value??0,cursed:effect?.cursed??false,modes:[{value:"none",label:"None",selected:!effect},...ITEM_EFFECT_MODES.map(mode=>({value:mode,label:{modifier:"Modifier",set:"Set exact value","curse-override":"Curse override"}[mode],selected:effect?.mode===mode}))]};}),
       attributeEffectSummary:(this.item.system.attributeEffects??[]).map(effect=>({label:effect.attribute[0].toUpperCase()+effect.attribute.slice(1),value:`${effect.mode === "modifier" ? "" : effect.mode === "set" ? "Set " : "Curse sets "}${effect.value>=0?"+":""}${effect.value}${effect.cursed?" · cursed":""}`})),
       consumableTypeOptions: Object.entries({auto:"From item type",none:"Not a consumable",...CONSUMABLE_TYPES}).map(([value,label])=>({value,label,selected:value===(this.item.system.consumableType??"auto")})),

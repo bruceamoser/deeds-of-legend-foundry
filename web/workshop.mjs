@@ -204,7 +204,7 @@ function rollItemNames(id) {
   return catalogId ? preview.inventory.items.filter(item=>item.catalogId===catalogId && item.carried && item.quantity>0).map(itemName) : [];
 }
 function nativeItemsPanel(kind) {
-  const items=(host?.nativeItems?.() ?? []).filter(item=>kind==='ability' ? item.type==='ability' : item.type!=='ability' && (!item.knownCatalog || item.type!=='equipment'));
+  const items=(host?.nativeItems?.() ?? []).filter(item=>kind==='ability' ? item.type==='ability' : !['ability','equipment'].includes(item.type));
   if(!items.length) return '';
   return `<section class="box owned-item-cards" aria-label="${kind==='ability' ? 'Other ability cards' : 'Other owned items'}"><h3>${kind==='ability' ? 'Other abilities' : 'Other owned items'}</h3>${kind==='ability' ? '<p class="file-hint">Owned ability cards; these do not change your learned Workshop choices.</p>' : ''}<div class="owned-item-list">${items.map(item=>`<div class="stat-row owned-item-card" data-native-item="${esc(item.id)}"><span>${button(esc(item.name),'native-open-item',`data-id="${esc(item.id)}" aria-label="Open ${esc(item.name)}"`,'table-link')}${item.type==='equipment' ? `<small class="item-source">${item.quantity ?? 0} × ${item.bulk ?? 0} Bulk · ${item.carried===false ? 'Stored' : 'Carried'}${item.held ? ' · Held' : ''}${item.worn ? ' · Worn' : ''}</small>` : ''}</span>${button('Open card','native-open-item',`data-id="${esc(item.id)}" aria-label="Open card ${esc(item.name)}"`,'small quiet')}</div>`).join('')}</div></section>`;
 }
@@ -357,8 +357,11 @@ function header() {
   const showResources = mode === "sheet";
   if (host && mode === "builder") return "";
   if (mode === "builder") return `<div class="toolbar creator-toolbar">${button("New", "new", 'aria-label="New hero"', "quiet")}${button("Save", "save", 'aria-label="Save character"', "quiet")}${button("Load", "library", 'aria-label="Load character"', "quiet")}${button("Import", "import", 'aria-label="Import JSON"', "quiet")}${button("Export", "export", 'aria-label="Export JSON"', "quiet")}</div>`;
-  return `<div class="workshop-header"><div class="toolbar"><div class="toolbar-group">${button(edit ? "✓ Done" : "✎ Edit", "edit", `aria-pressed="${edit}"`, edit ? "selected" : "quiet")}</div><div class="toolbar-group">${button("New", "new", 'aria-label="New hero"', "quiet")}${button("Save", "save", 'aria-label="Save character"', "quiet")}${button("Load", "library", 'aria-label="Load character"', "quiet")}${button("Import", "import", 'aria-label="Import JSON"', "quiet")}${button("Export", "export", 'aria-label="Export JSON"', "quiet")}</div></div>
-  <header class="hero-header"><div class="identity-line"><img class="hero-mark" src="assets/crest.webp" alt=""><div><div class="name-line">${edit && mode === "sheet" ? field("Character name", "name", draft.name, "text", 'maxlength="200"') : `<h1>${esc(draft.name || "New hero")}</h1>`}${button(skullIcon + (vitals.dying ? `<span>${vitals.failed} / ${vitals.successfulDeathRolls}</span>` : ""), "death-roll", `aria-label="Death roll" title="Fortitude death roll · ${vitals.failed} failures · ${vitals.successfulDeathRolls} successes" ${vitals.dying && vitals.failed < 3 ? "" : "disabled"}`, "icon-button death-button")}</div><p>${esc(join([get(draft.ancestryId)?.name, get(draft.culture?.id)?.name, get(draft.background?.id)?.name, get(draft.classId)?.name, `Level ${preview.development.level}`]))}</p></div></div><div class="vitals"><div class="vital"><small>HP</small><strong class="hp-value">${showResources ? `<input aria-label="Current HP" title="Enter a value or an adjustment such as +2 or -3" data-field="play.hp" type="text" role="spinbutton" aria-valuemin="0" aria-valuemax="${Math.max(vitals.hp, vitals.recoveryMax)}" aria-valuenow="${vitals.hp}" value="${vitals.hp}"><span>/ ${vitals.max || "—"}</span>` : `<span>${vitals.max || "—"}</span>`}</strong></div><div class="vital"><small>SP</small><strong class="hp-value">${showResources ? `<input aria-label="Current SP" title="Enter a value or an adjustment such as +2 or -3" data-field="play.sp" type="text" role="spinbutton" aria-valuemin="0" aria-valuemax="${vitals.limits.maxSp}" aria-valuenow="${vitals.sp}" value="${vitals.sp}"><span>/ ${vitals.limits.maxSp || "—"}</span>` : `<span>${vitals.limits.maxSp || "—"}</span>`}</strong></div><div class="vital"><small>${button("Grit", "use-grit", 'aria-label="Use Grit"', "vital-link")}</small><strong>${vitals.grit}</strong></div><div class="vital"><small>Speed</small><strong data-speed>${vitals.speed}${vitals.speed < vitals.maxSpeed ? ` / ${vitals.maxSpeed}` : ""}</strong></div><div class="vital"><small>${button("Recovery", "hero-recovery", 'aria-label="Recovery"', "vital-link")}</small><strong>${vitals.dead ? "Dead" : vitals.dying ? "Dying" : vitals.hp === 0 && vitals.max ? "Stable" : ""}</strong></div><div class="vital"><small>Armor DR</small><strong>${preview.resistances.physical ?? 0}</strong></div></div></header>
+  const toolbar = host ? "" : `<div class="toolbar"><div class="toolbar-group">${button(edit ? "✓ Done" : "✎ Edit", "edit", `aria-pressed="${edit}"`, edit ? "selected" : "quiet")}</div><div class="toolbar-group">${button("New", "new", 'aria-label="New hero"', "quiet")}${button("Save", "save", 'aria-label="Save character"', "quiet")}${button("Load", "library", 'aria-label="Load character"', "quiet")}${button("Import", "import", 'aria-label="Import JSON"', "quiet")}${button("Export", "export", 'aria-label="Export JSON"', "quiet")}</div></div>`;
+  const rename = host && mode === "sheet" && !host.readOnly
+    ? button("✎", "edit-hero-name", 'aria-label="Edit character name" title="Edit character name"', "icon-button")
+    : "";
+  return `<div class="workshop-header">${toolbar}<header class="hero-header"><div class="identity-line"><img class="hero-mark" src="assets/crest.webp" alt=""><div><div class="name-line">${edit && mode === "sheet" ? field("Character name", "name", draft.name, "text", 'maxlength="200"') : `<h1>${esc(draft.name || "New hero")}</h1>`}${rename}${button(skullIcon + (vitals.dying ? `<span>${vitals.failed} / ${vitals.successfulDeathRolls}</span>` : ""), "death-roll", `aria-label="Death roll" title="Fortitude death roll · ${vitals.failed} failures · ${vitals.successfulDeathRolls} successes" ${vitals.dying && vitals.failed < 3 ? "" : "disabled"}`, "icon-button death-button")}</div><p>${esc(join([get(draft.ancestryId)?.name, get(draft.culture?.id)?.name, get(draft.background?.id)?.name, get(draft.classId)?.name, `Level ${preview.development.level}`]))}</p></div></div><div class="vitals"><div class="vital"><small>HP</small><strong class="hp-value">${showResources ? `<input aria-label="Current HP" title="Enter a value or an adjustment such as +2 or -3" data-field="play.hp" type="text" role="spinbutton" aria-valuemin="0" aria-valuemax="${Math.max(vitals.hp, vitals.recoveryMax)}" aria-valuenow="${vitals.hp}" value="${vitals.hp}"><span>/ ${vitals.max || "—"}</span>` : `<span>${vitals.max || "—"}</span>`}</strong></div><div class="vital"><small>SP</small><strong class="hp-value">${showResources ? `<input aria-label="Current SP" title="Enter a value or an adjustment such as +2 or -3" data-field="play.sp" type="text" role="spinbutton" aria-valuemin="0" aria-valuemax="${vitals.limits.maxSp}" aria-valuenow="${vitals.sp}" value="${vitals.sp}"><span>/ ${vitals.limits.maxSp || "—"}</span>` : `<span>${vitals.limits.maxSp || "—"}</span>`}</strong></div><div class="vital"><small>${button("Grit", "use-grit", 'aria-label="Use Grit"', "vital-link")}</small><strong>${vitals.grit}</strong></div><div class="vital"><small>Speed</small><strong data-speed>${vitals.speed}${vitals.speed < vitals.maxSpeed ? ` / ${vitals.maxSpeed}` : ""}</strong></div><div class="vital"><small>${button("Recovery", "hero-recovery", 'aria-label="Recovery"', "vital-link")}</small><strong>${vitals.dead ? "Dead" : vitals.dying ? "Dying" : vitals.hp === 0 && vitals.max ? "Stable" : ""}</strong></div><div class="vital"><small>Armor DR</small><strong>${preview.resistances.physical ?? 0}</strong></div></div></header>
   <div class="attributes">${ATTRIBUTES.map((key) => {
     const label = title(key);
     const value = preview.attributes[key] ?? 0;
@@ -857,10 +860,15 @@ function recipeRows() {
 function inventoryStats(starting = false) {
   if (starting)
     return `<div class="inventory-stats"><span><strong>${preview.inventory.remainingCoins}</strong> coins</span><span><strong>${preview.inventory.bulk} / ${preview.inventory.capacity}</strong> Bulk</span><span>Encumbrance <strong>${preview.inventory.encumbrance}</strong></span></div>`;
-  return `<div class="inventory-stats"><span><strong>${preview.inventory.remainingCoins}</strong> coins</span><span><strong>${preview.inventory.bulk} / ${preview.inventory.capacity}</strong> Bulk</span><span>Encumbrance <strong>${preview.inventory.encumbrance}</strong></span><span>Speed <strong>${liveVitals().speed}</strong></span><span>Armor DR <strong>${preview.resistances.physical ?? 0}</strong></span></div>`;
+  const coins = host?.coinBalance?.() ?? preview.inventory.remainingCoins;
+  return `<div class="inventory-stats"><span><strong>${coins}</strong> coins</span><span><strong>${preview.inventory.bulk} / ${preview.inventory.capacity}</strong> Bulk</span><span>Encumbrance <strong>${preview.inventory.encumbrance}</strong></span><span>Speed <strong>${liveVitals().speed}</strong></span><span>Armor DR <strong>${preview.resistances.physical ?? 0}</strong></span></div>`;
+}
+function inventoryTableItems(controls) {
+  const external = controls ? (host?.nativeItems?.() ?? []).filter(item=>item.type==='equipment' && !item.knownCatalog) : [];
+  return [...preview.inventory.items, ...external.map(item=>({...item,instanceId:item.id,nativeId:item.id,source:'owned',bulk:item.bulk * item.quantity}))];
 }
 function inventoryTable(controls = false) {
-  const items = preview.inventory.items;
+  const items = inventoryTableItems(controls);
   const purchaseRemoval = (item) =>
     item.source === "coins" &&
     draft.shopping.some((p) => p.instanceId === item.instanceId)
@@ -871,28 +879,32 @@ function inventoryTable(controls = false) {
           "quiet small",
         )
       : "";
-  const sources = { coins: "Purchased", creation: "Starting outfit", play: "Added", training: "Training equipment" };
+  const sources = { coins: "Purchased", creation: "Starting outfit", play: "Added", training: "Training equipment", owned: "Owned item" };
   const rows = items.map(item => {
     const id = esc(item.instanceId), label = esc(itemName(item));
     const title = controls && renamingItem === item.instanceId
       ? `<input class="item-name-input" data-item-name="${id}" aria-label="Item name" maxlength="200" value="${label}">`
-      : button(label, "reference", `data-id="${esc(item.catalogId)}"`, "table-link");
+      : item.nativeId ? button(label, "native-open-item", `data-id="${esc(item.nativeId)}"`, "table-link")
+        : button(label, "reference", `data-id="${esc(item.catalogId)}"`, "table-link");
+    const pencil = host?.editEquipment
+      ? button("✎", "native-edit-equipment", `data-instance="${id}" aria-label="Edit ${label}" title="Edit equipment"`, "small quiet")
+      : button("✎", "rename-item", `data-instance="${id}" aria-label="Rename ${label}" title="Rename item"`, "small quiet");
     const nameCell = controls
-      ? favorite("items", item.instanceId) + title + button("✎", "rename-item", `data-instance="${id}" aria-label="Rename ${label}" title="Rename item"`, "small quiet") +
+      ? (item.nativeId ? "" : favorite("items", item.instanceId)) + title + pencil +
         nativeItemActions(item) + `<small class="item-source">${esc(sources[item.source] ?? name(item.source))}</small>` + ammunitionSelector(item, items)
       : title;
-    const quantity = controls
+    const quantity = controls && !item.nativeId
       ? `<input type="number" class="quantity-input" data-quantity="${id}" aria-label="Quantity ${label}" min="0" max="10000" step="1" value="${item.quantity}">`
       : item.quantity;
     const loadout = controls
       ? Object.entries({held: "Hold", worn: "Wear", carried: "Carry"}).map(([prop, labelPrefix]) =>
-        `<td><input type="checkbox" data-loadout="${id}" data-prop="${prop}" aria-label="${labelPrefix} ${label}" ${item[prop] ? "checked" : ""}></td>`).join("")
+        `<td><input type="checkbox" data-loadout="${id}" data-prop="${prop}" aria-label="${labelPrefix} ${label}" ${item[prop] ? "checked" : ""} ${item.nativeId ? "disabled" : ""}></td>`).join("")
       : `<td>${esc(sources[item.source] ?? name(item.source))}</td>`;
     const sale = controls ? provisionSalePrice(item) : 0;
     const drop = button(dropIcon, "drop-item", `data-instance="${id}" aria-label="Drop ${label}" title="Drop item"`, "icon-button");
     const sell = sale ? button(`${sale}c`, "sell-provision", `data-instance="${id}" aria-label="Sell ${label} for ${sale} coin${sale === 1 ? "" : "s"}" title="Sell for ${sale} coin${sale === 1 ? "" : "s"}"`, "quiet small inventory-sell") : "";
     const remove = !controls ? purchaseRemoval(item) : host?.canDeleteItem?.(item) === false ? "" : `<span class="inventory-actions">${sell}${drop}</span>`;
-    return `<tr data-instance="${id}" class="${item.carried ? "" : "stored-item"}"><td>${nameCell}</td><td>${quantity}</td><td>${item.bulk}</td><td>${inventorySupply(item, controls, true)}</td>${loadout}<td>${remove}</td></tr>`;
+    return `<tr data-instance="${id}" ${item.nativeId ? `data-native-item="${esc(item.nativeId)}"` : ""} class="${item.carried ? "" : "stored-item"}"><td>${nameCell}</td><td>${quantity}</td><td>${item.bulk}</td><td>${inventorySupply(item, controls && !item.nativeId, true)}</td>${loadout}<td>${remove}</td></tr>`;
   });
   return `<div class="table-wrap"><table class="inventory-table"><thead><tr><th>Item</th><th>Qty</th><th>Bulk</th><th>Supply</th>${controls ? '<th>Held</th><th>Worn</th><th>Carried</th><th>Actions</th>' : '<th>Source</th><th aria-label="Remove purchase"></th>'}</tr></thead><tbody>${rows.join("")}</tbody></table></div>`;
 }
@@ -2072,6 +2084,7 @@ function render({ focusHeading = false } = {}) {
   let attributeError;
   preview = workshopCharacter(draft, catalogs, undefined, mode==='sheet' && host ? {
     projectInventory:host.projectInventory,
+    equipmentBonuses:host.getEquipmentBonuses?.(),
     projectAttributes:host.getAttributes ? attributes=>{try{return host.getAttributes(attributes);}catch(error){attributeError=error.message;return attributes;}} : undefined,
   } : {});
   if (mode === "sheet" && !draft.play?.favorites) {
@@ -2105,7 +2118,6 @@ function render({ focusHeading = false } = {}) {
   app.innerHTML=host ? markup.replace(/((?:src|href)=["'])assets\//g,(_,prefix)=>prefix+new URL('assets/',options.dataBaseUrl ?? import.meta.url).href) : markup;
   if (options.readOnly || host?.readOnly) app.querySelectorAll('input,textarea,[data-field],button[data-action="edit"]').forEach(node=>node.disabled=true);
   if (host) {
-    app.querySelectorAll('.toolbar-group').forEach((group,index)=>{if(index>0)group.remove();});
     const portrait = app.querySelector('.hero-mark');
     if (portrait) {
       if(host.portraitUrl ?? host.portrait) portrait.src=host.portraitUrl ?? host.portrait;
@@ -2367,7 +2379,7 @@ function showReference(id) {
   if (!$("#reference").open) $("#reference").showModal();
   $("#reference").scrollTop = 0;
 }
-async function action(target) {
+async function action(target, {shiftKey=false}={}) {
   const a = target.dataset.action;
   if (a === "forge-select" && forgeView === "atlas") {
     const atlas = $("#forge-atlas-dialog");
@@ -2400,7 +2412,8 @@ async function action(target) {
     }
   }
   if (host?.onAction && await host.onAction({action:a,id:target.dataset.id,editing:edit,mode,dataset:{...target.dataset},
-    ...(["native-portrait", "lower-supply"].includes(a) ? { target } : {}),
+    ...(["native-portrait", "lower-supply", "confirm-drop-item"].includes(a) ? { target } : {}),
+    ...(a === "native-portrait" ? { shiftKey } : {}),
     state:JSON.parse(writePortableCharacter(draft,catalogs)),preview,record:get(target.dataset.id),
     activeRoll: typeof activeRoll === 'undefined' ? undefined : activeRoll,
     values:Object.fromEntries([...root.querySelectorAll('#reference input,#reference select')].map(node=>[node.id || node.dataset.rollAbility, node.type==='checkbox' ? node.checked : node.value]))})) return;
@@ -2683,19 +2696,25 @@ async function action(target) {
     $("#reference").close();
   }
   if (a === "drop-item") {
-    const item=preview.inventory.items.find(item=>item.instanceId===target.dataset.instance);
+    const item=inventoryTableItems(true).find(item=>item.instanceId===target.dataset.instance);
     if (!item || host?.canDeleteItem?.(item)===false) throw new Error("This item is unavailable to drop.");
     return popup(`Drop ${itemName(item)}?`, `<p>Remove this stack from your inventory?</p><div class="dialog-actions">${button("Cancel", "close-reference")}${button("Drop item", "confirm-drop-item", `data-instance="${esc(item.instanceId)}"`, "primary")}</div>`);
   }
-  if (a === "confirm-drop-item" || a === "sell-provision") {
+  if (a === "sell-provision") {
+    const item=preview.inventory.items.find(item=>item.instanceId===target.dataset.instance);
+    const coins=provisionSalePrice(item);
+    if (!coins || host?.canDeleteItem?.(item)===false) throw new Error("Only a complete starting provision can be sold.");
+    return popup(`Sell ${itemName(item)}?`, `<p>Sell this stack to a willing trader for ${coins} coin${coins === 1 ? "" : "s"}?</p><div class="dialog-actions">${button("Cancel", "close-reference")}${button("Sell item", "confirm-sell-provision", `data-instance="${esc(item.instanceId)}"`, "primary")}</div>`);
+  }
+  if (a === "confirm-drop-item" || a === "confirm-sell-provision") {
     const item=preview.inventory.items.find(item=>item.instanceId===target.dataset.instance);
     if (!item || host?.canDeleteItem?.(item)===false) throw new Error("This item is unavailable to remove.");
     const inv = playDraft().inventory,
       id = target.dataset.instance;
-    if (a === "sell-provision") {
+    const before = host ? { draft, play: structuredClone(draft.play), loadout: structuredClone(draft.loadout) } : null;
+    if (a === "confirm-sell-provision") {
       const coins = provisionSalePrice(item);
       if (!coins) throw new Error("Only a complete starting provision can be sold.");
-      if (!confirm(`Sell ${itemName(item)} to a willing trader for ${coins} coin${coins === 1 ? "" : "s"}?`)) return;
       inv.sold = [...new Set([...(inv.sold ?? []), id])];
     }
     const added = inv.added.some((i) => i.instanceId === id);
@@ -2707,7 +2726,22 @@ async function action(target) {
     inv.added = inv.added.filter((i) => i.instanceId !== id);
     if (recordRemoval) inv.removed = [...new Set([...inv.removed, id])];
     if (draft.loadout) delete draft.loadout[id];
-    if (a === "confirm-drop-item") $("#reference").close();
+    if (host) {
+      target.disabled = true;
+      try {
+        persist();
+        await pendingSave;
+      } catch (error) {
+        if (draft === before.draft) Object.assign(draft,{play:before.play,loadout:before.loadout});
+        throw error;
+      } finally {
+        target.disabled = false;
+      }
+      $("#reference")?.close();
+      render();
+      return;
+    }
+    $("#reference").close();
   }
   if (a === "confirm-language") {
     const name = $("#language-name").value.trim(),
@@ -3013,14 +3047,14 @@ async function action(target) {
   if (a === "tab")
     document.getElementById(`tab-${tab}`)?.focus({ preventScroll: true });
 }
-function runAction(target) {
-  const task=action(target);pendingActions.add(task);
+function runAction(target,event) {
+  const task=action(target,event);pendingActions.add(task);
   task.finally(()=>pendingActions.delete(task)).catch(()=>{});
   return task;
 }
 document.addEventListener("click", (event) => {
   const t = event.target.closest("[data-action]");
-  if (t && !t.disabled) runAction(t).catch((e) => notice(e.message));
+  if (t && !t.disabled) runAction(t,event).catch((e) => notice(e.message));
 });
 document.addEventListener("pointerdown", () => {
   pointerDown = true;
@@ -3172,7 +3206,7 @@ app.addEventListener("keydown", (event) => {
     if(event.key==='Enter') event.target.dispatchEvent(new Event('change',{bubbles:true}));
     else {renamingItem=undefined;render();}return;
   }
-  if(event.target.dataset.action==='native-portrait' && ['Enter',' '].includes(event.key)) {event.preventDefault();runAction(event.target).catch(error=>notice(error.message));return;}
+  if(event.target.dataset.action==='native-portrait' && ['Enter',' '].includes(event.key)) {event.preventDefault();runAction(event.target,event).catch(error=>notice(error.message));return;}
   if (
     event.target.getAttribute("role") !== "tab" ||
     ![

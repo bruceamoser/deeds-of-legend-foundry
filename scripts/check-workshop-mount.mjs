@@ -57,8 +57,8 @@ try {
     const snapshot=localStorage.getItem('hol.workshop.v1');
     const first=document.createElement('div'),second=document.createElement('div');
     first.style.height=second.style.height='900px'; document.body.replaceChildren(first,second);
-    const saved=[],actions=[],rolls=[],opened=[];
-    const nativeHost={tracking:{food:false},onRoll:request=>{rolls.push(request);return Array(request.count).fill(4);},onChange:state=>saved.push(state),onAction:event=>{actions.push(event.action);if(event.action==='native-open-item')opened.push(event.id);return ['native-portrait','native-open-item'].includes(event.action);}};
+    const saved=[],actions=[],rolls=[],opened=[],portraitModifiers=[];
+    const nativeHost={tracking:{food:false},onRoll:request=>{rolls.push(request);return Array(request.count).fill(4);},onChange:state=>saved.push(state),onAction:event=>{actions.push(event.action);if(event.action==='native-open-item')opened.push(event.id);if(event.action==='native-portrait')portraitModifiers.push(event.shiftKey);return ['native-portrait','native-open-item','edit-hero-name'].includes(event.action);}};
     const a=await mountWorkshop(first,{initialState:initial,host:nativeHost});
     first.style.width='780px';
     const torchFits = [false,true].every(lit => {
@@ -87,12 +87,9 @@ try {
     const bHost={};const b=await mountWorkshop(second,{initialState:initial,host:bHost});
     const original=b.getState().character.draft.name;
     const state=a.getState();state.character.draft.name='Isolated hero';a.setState(state);
-    first.shadowRoot.querySelector('[data-action="edit"]').click();
-    await new Promise(resolve=>setTimeout(resolve,100));
-    const input=first.shadowRoot.querySelector('[data-field="name"]');
-    input.value='Persisted hero';input.dispatchEvent(new Event('change',{bubbles:true}));
-    await a.flush();
-    first.shadowRoot.querySelector('.hero-mark').click();
+    const nameEdit=first.shadowRoot.querySelector('[data-action="edit-hero-name"]');
+    nameEdit.click();await a.settle();
+    first.shadowRoot.querySelector('.hero-mark').dispatchEvent(new MouseEvent('click',{bubbles:true,shiftKey:true}));
     await new Promise(resolve=>setTimeout(resolve,50));
     first.shadowRoot.querySelector('[data-action="open-roll"]').click();
     await new Promise(resolve=>setTimeout(resolve,50));
@@ -133,7 +130,7 @@ try {
     first.shadowRoot.querySelector('[data-native-item="custom-ability"] [data-action="native-open-item"]').click();await a.settle();
     bHost.readOnly=true;b.setState(b.getState());
     const result={torchFits,overrideTracked,originalBulk,burdenBulk,burdenSpeed,fallbackEquipment,fallbackAbility,noMisleadingDelete,opened,unknownRejected,renamed,noDepletion,untracked,supplyDialogClosed,readOnly:[...second.shadowRoot.querySelectorAll('#app input,#app textarea')].every(node=>node.disabled),rollCount:rolls.length,rollText,name:b.getState().character.draft.name,original,saved:saved.at(-1)?.character.draft.name,
-      storageUnchanged:snapshot===localStorage.getItem('hol.workshop.v1'),portrait:actions.includes('native-portrait'),
+      storageUnchanged:snapshot===localStorage.getItem('hol.workshop.v1'),portrait:actions.includes('native-portrait'), nameEdit:actions.includes('edit-hero-name'),portraitModifiers,
       nav:first.shadowRoot.querySelector('.site-header'),dialog:first.shadowRoot.querySelector('#reference')!==second.shadowRoot.querySelector('#reference')};
     bHost.readOnly=false;
     const castSaved=[];bHost.onChange=state=>castSaved.push(state);
@@ -149,8 +146,8 @@ try {
   assert.equal(result.castSp,result.startingSp-1);assert.equal(result.savedCastSp,result.startingSp-1);
   assert(result.torchFits,"Both torch states fit with resupply on one row of the mounted sheet.");
   assert(result.overrideTracked);assert.equal(result.burdenBulk,result.originalBulk+40);assert.equal(result.burdenSpeed,0);assert(result.fallbackEquipment);assert(result.fallbackAbility);assert(result.noMisleadingDelete);assert.deepEqual(result.opened,['custom-rock','custom-ability']);
-  assert(result.unknownRejected);assert.equal(result.renamed,'Shared named blade');assert(result.noDepletion);assert(result.untracked);assert(result.supplyDialogClosed);assert(result.readOnly);assert.equal(result.rollCount,1);assert.match(result.rollText,/4 · 4 · 4/);assert.equal(result.name,result.original);assert.equal(result.saved,'Persisted hero');
-  assert(result.storageUnchanged);assert(result.portrait);assert(result.dialog);assert.equal(result.nav,null);
+  assert(result.unknownRejected);assert.equal(result.renamed,'Shared named blade');assert(result.noDepletion);assert(result.untracked);assert(result.supplyDialogClosed);assert(result.readOnly);assert.equal(result.rollCount,1);assert.match(result.rollText,/4 · 4 · 4/);assert.equal(result.name,result.original);assert.equal(result.saved,'Isolated hero');
+  assert(result.storageUnchanged);assert(result.portrait);assert(result.nameEdit);assert.deepEqual(result.portraitModifiers,[true]);assert(result.dialog);assert.equal(result.nav,null);
   assert.deepEqual(failures,[]);
   console.info('Shared Workshop: isolated mounts, host saves/actions, storage isolation and disposal passed.');
 } finally {await browser.close();server.close();}
