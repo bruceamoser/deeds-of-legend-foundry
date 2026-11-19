@@ -7,6 +7,11 @@ import {
   chooseParticipant,
   finishTurn,
   availableParticipants,
+  cancelTurn,
+  canCancelTurn,
+  encounterSideLabel,
+  oppositeEncounterSide,
+  reconcileTurnRoster,
 } from "./rules/encounter.mjs";
 import {
   startTurn,
@@ -153,6 +158,7 @@ const roster = [
     speed: p.character.summary.speed,
     portrait: "assets/crest.webp",
     source: p,
+    owned: true,
   })),
   ...["creature-goblin-scrapper", "creature-shield-soldier"].map((id) => {
     const r = creatures.creatures.find((r) => r.id === id);
@@ -176,32 +182,35 @@ function combat() {
   const active = roster.find((p) => p.id === encounter.current),
     eligible = availableParticipants(encounter).map((p) => p.id);
   const budget = active ? budgets[active.id] : null;
+  const canCancel = budget && canCancelTurn(encounter) &&
+    Object.values(budget.remaining).every(value => value === 1) &&
+    budget.movementSpent === 0 && Object.keys(budget.operations).length === 0;
   app.innerHTML =
     banner(
       `Round ${encounter.round}`,
       active
         ? `${viewer === "player" && active.hidden ? "Hidden participant" : esc(active.name)} · turn in progress`
-        : `${encounter.nextSide === "players" ? "Players" : "Opposition"} choose next`,
+        : `${encounterSideLabel(encounter.nextSide)} act next`,
     ) +
-    `<div class="tool-actions">${btn(viewer === "da" ? "Player view" : "DA view", "viewer")}${btn("Opening roll", "opening")}${viewer === "da" ? btn("Ambush", "ambush") : ""}${btn("Reset", "reset-combat")}${ruleButton("rule-foundations")}</div><p class="tool-help">${ambush ? "Ambush" : `Opening ${encounter.opening.total}`} · ${encounter.startingSide === "players" ? "Players" : "Opposition"} start each round · 6 seconds per round.</p><div class="combat-roster">${[
+    `<div class="tool-actions">${btn(viewer === "da" ? "Player view" : "DA view", "viewer")}${btn("Opening roll", "opening")}${viewer === "da" ? btn("Ambush", "ambush") : ""}${btn("Reset", "reset-combat")}${ruleButton("rule-foundations")}</div><p class="tool-help">${ambush ? "Ambush" : `Opening ${encounter.opening.total}`} · ${encounterSideLabel(encounter.startingSide)} start each round · 6 seconds per round.</p><div class="combat-roster">${[
       "players",
       "opposition",
     ]
       .map(
         (side) =>
-          `<section class="combat-side"><h2>${side === "players" ? "Players" : "Opposition"}<span>${roster.filter((p) => p.side === side && !(viewer === "player" && p.hidden) && !encounter.acted.includes(p.id) && p.id !== encounter.current).length} ready</span></h2>${roster
+          `<section class="combat-side"><h2>${encounterSideLabel(side)}<span>${roster.filter((p) => p.side === side && !(viewer === "player" && p.hidden) && !encounter.acted.includes(p.id) && p.id !== encounter.current).length} ready</span></h2>${roster
             .filter(
               (p) => p.side === side && !(viewer === "player" && p.hidden),
             )
             .map(
               (p) =>
-                `<div class="combat-row ${p.id === encounter.current ? "active" : encounter.acted.includes(p.id) ? "acted" : ""}">${btn(`<img class="combat-portrait" src="${p.portrait}" alt="">`, "actor", `data-id="${p.id}" aria-label="Open ${esc(p.name)}"`, "quiet")}<div><strong>${esc(p.name)}</strong><small>${encounter.acted.includes(p.id) ? "✓ Acted" : p.id === encounter.current ? "◆ Active" : "Ready"}${viewer === "da" || p.side === "players" ? ` · HP ${p.hp}` : ""}${p.hidden ? " · Hidden" : ""}</small></div><div>${!active && eligible.includes(p.id) && (viewer === "da" || p.side === "players") ? btn("Choose", "choose", `data-id="${p.id}"`) : ""}${viewer === "da" && p.side === "opposition" ? btn(p.hidden ? "◉" : "◌", "hide", `data-id="${p.id}" aria-label="${p.hidden ? "Reveal" : "Hide"} ${esc(p.name)}"`, "quiet") : ""}</div></div>`,
+                `<div class="combat-row ${p.id === encounter.current ? "active" : encounter.acted.includes(p.id) ? "acted" : ""}">${btn(`<img class="combat-portrait" src="${p.portrait}" alt="">`, "actor", `data-id="${p.id}" aria-label="Open ${esc(p.name)}"`, "quiet")}<div><strong>${esc(p.name)}</strong><small>${encounter.acted.includes(p.id) ? "✓ Acted" : p.id === encounter.current ? "◆ Active" : "Ready"}${viewer === "da" || p.side === "players" ? ` · HP ${p.hp}` : ""}${p.hidden ? " · Hidden" : ""}</small></div><div>${!active && eligible.includes(p.id) && (viewer === "da" || p.owned) ? btn("Take Turn", "choose", `data-id="${p.id}"`) : ""}${viewer === "da" && p.id !== encounter.current ? btn(p.side === "players" ? "☠" : "⛨", "side", `data-id="${p.id}" aria-label="Move ${esc(p.name)} to ${encounterSideLabel(oppositeEncounterSide(p.side))}"`, "quiet") : ""}${viewer === "da" && p.side === "opposition" ? btn(p.hidden ? "◉" : "◌", "hide", `data-id="${p.id}" aria-label="${p.hidden ? "Reveal" : "Hide"} ${esc(p.name)}"`, "quiet") : ""}</div></div>`,
             )
             .join("")}</section>`,
       )
       .join(
         "",
-      )}</div>${budget && (viewer === "da" || active.side === "players") ? `<div class="combat-budget">${["main", "maneuver", "reaction"].map((k) => btn(`<strong>${budget.remaining[k]}</strong>${k[0].toUpperCase() + k.slice(1)}`, "spend", `data-category="${k}" aria-label="Spend ${k}"`)).join("")}${btn(`<strong>${movementRemaining(budget)}</strong>Move`, "move", 'aria-label="Use one square of movement"')}</div><div class="tool-actions">${btn("Main → Maneuver", "convert", 'data-from="main" data-to="maneuver"')}${btn("Maneuver → Move", "convert", 'data-from="maneuver" data-to="movement"')}${btn("Finish turn", "finish", "", "primary")}</div>` : ""}<p class="tool-help">Local encounter example · no scene or saved character changes.</p>`;
+      )}</div>${budget && (viewer === "da" || active.owned) ? `<div class="combat-budget">${["main", "maneuver", "reaction"].map((k) => btn(`<strong>${budget.remaining[k]}</strong>${k[0].toUpperCase() + k.slice(1)}`, "spend", `data-category="${k}" aria-label="Spend ${k}"`)).join("")}${btn(`<strong>${movementRemaining(budget)}</strong>Move`, "move", 'aria-label="Use one square of movement"')}</div><div class="tool-actions">${btn("Main → Maneuver", "convert", 'data-from="main" data-to="maneuver"')}${btn("Maneuver → Move", "convert", 'data-from="maneuver" data-to="movement"')}${canCancel ? btn("Cancel Turn", "cancel") : ""}${btn("Finish turn", "finish", "", "primary")}</div>` : ""}<p class="tool-help">Local encounter example · no scene or saved character changes.</p>`;
 }
 let journalId = location.hash.slice(1) || "rule-foundations",
   category = byId(location.hash.slice(1))?.category ?? "Rules",
@@ -460,7 +469,7 @@ document.addEventListener("click", (e) => {
     if (a === "ambush") return popup(
       "Resolve an ambush",
       `<p>The DA decides whether either side caught the other unaware. The ambushing side opens each round. Alternate sides from the first turn.</p>
-      <div class="tool-actions">${btn("Players ambush", "resolve-ambush", 'data-side="players"')}${btn("Opposition ambush", "resolve-ambush", 'data-side="opposition"')}${btn("Roll initiative", "opening")}</div>`,
+      <div class="tool-actions">${btn("Allies ambush", "resolve-ambush", 'data-side="players"')}${btn("Enemies ambush", "resolve-ambush", 'data-side="opposition"')}${btn("Roll initiative", "opening")}</div>`,
     );
     if (a === "resolve-ambush") {
       ambush = b.dataset.side;
@@ -483,6 +492,12 @@ document.addEventListener("click", (e) => {
       roster.find((p) => p.id === b.dataset.id).hidden = !roster.find(
         (p) => p.id === b.dataset.id,
       ).hidden;
+    if (a === "side") {
+      const p = roster.find(participant => participant.id === b.dataset.id);
+      if (viewer !== "da" || p.id === encounter.current) return;
+      p.side = oppositeEncounterSide(p.side);
+      encounter = reconcileTurnRoster(encounter, roster);
+    }
     if (a === "choose") {
       encounter = chooseParticipant(encounter, b.dataset.id);
       const p = roster.find((p) => p.id === b.dataset.id);
@@ -490,6 +505,11 @@ document.addEventListener("click", (e) => {
         turnId: "preview-" + ++serial,
         speed: p.speed,
       });
+    }
+    if (a === "cancel") {
+      const id = encounter.current;
+      encounter = cancelTurn(encounter);
+      delete budgets[id];
     }
     if (a === "finish") encounter = finishTurn(encounter);
     if (a === "spend") {

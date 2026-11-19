@@ -118,6 +118,7 @@
 /* The actual combat tool uses a compact, stacked two-side roster. */
 .heroes-of-legend.hol-encounter-panel .hol-combat-side h2{display:flex;justify-content:space-between;font:600 10.92px "HOL Cinzel",serif;background:#eae2cf;padding:4px 6px;margin:6px 0 0;color:#28251c;border:0}
 .heroes-of-legend.hol-encounter-panel .hol-combat-row{display:grid;grid-template-columns:35px minmax(0,1fr) auto;align-items:center;gap:6px;border-bottom:1px solid #b8ad92;padding:5px 3px}
+.heroes-of-legend.hol-encounter-panel .hol-combat-row-actions{display:flex;align-items:center;gap:4px}
 .heroes-of-legend.hol-encounter-panel .hol-combat-row.active{background:#e4d7b3;border-left:3px solid #b39554;padding-left:3px}
 .heroes-of-legend.hol-encounter-panel .hol-combat-row.acted{opacity:.65}
 .heroes-of-legend.hol-encounter-panel .hol-combat-portrait{width:35px;height:39px;object-fit:contain;background:#eae2cf;border:0;padding:1px}

@@ -12,7 +12,6 @@ export function projectNativeWorkshopInventory(actor, knownItems) {
       hands: system.hands ?? 0,
       // Keep non-supply catalog entries non-supplies; their native schema uses 0.
       inventoryDie: prior.inventoryDie == null && !system.inventoryDie ? prior.inventoryDie : system.inventoryDie,
-      ...(Number.isSafeInteger(system.waterUnits) ? { waterUnits: system.waterUnits } : {}),
     };
   };
   const items = knownItems.map(prior => {

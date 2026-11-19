@@ -2,10 +2,10 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import vm from 'node:vm';
 import {readFile} from 'node:fs/promises';
-import {isForgeModifier} from '../src/rules/forge-casting.mjs';
+import {spellActionLabel} from '../src/rules/forge-casting.mjs';
 import {formatStoredRuleProse} from '../src/rules/authored-markdown.mjs';
 async function fixture(){
- const calls=[];const context=vm.createContext({foundry:{applications:{api:{HandlebarsApplicationMixin:Base=>Base},sheets:{ItemSheetV2:class{async _prepareContext(){return {};}}}}},isForgeModifier,game:{i18n:{localize:key=>key}},ATTRIBUTES:[],cardContext:()=>({}),itemCardContext:()=>({}),itemDisplayIcon:()=>null,abilityCatalogRecord:()=>null,loadWorkshopCatalogs:async()=>({choices:[]}),toggleCardEdit(){},isPotionAbility:()=>false,activateOwnedAbility:async item=>calls.push(['custom',item.id]),ui:{notifications:{error:error=>{throw Error(error);}}}});
+ const calls=[];const context=vm.createContext({foundry:{applications:{api:{HandlebarsApplicationMixin:Base=>Base},sheets:{ItemSheetV2:class{async _prepareContext(){return {};}}}}},spellActionLabel,game:{i18n:{localize:key=>key}},ATTRIBUTES:[],cardContext:()=>({}),itemCardContext:()=>({}),itemDisplayIcon:()=>null,abilityCatalogRecord:()=>null,loadWorkshopCatalogs:async()=>({choices:[]}),toggleCardEdit(){},isPotionAbility:()=>false,activateOwnedAbility:async item=>calls.push(['custom',item.id]),ui:{notifications:{error:error=>{throw Error(error);}}}});
  context.formatStoredRuleProse=formatStoredRuleProse;
  const source=(await readFile(new URL('../src/sheets/ability.mjs',import.meta.url),'utf8')).replace(/^import[\s\S]*?;\n/gm,'').replace('export class AbilitySheet','class AbilitySheet')+'\nglobalThis.Sheet=AbilitySheet;';vm.runInContext(source,context);
  const actor={getFlag:()=>({portable:{}}),sheet:{render:async()=>{},useWorkshopAbility:async id=>calls.push(['workshop',id])}};return {Sheet:context.Sheet,actor,calls};
@@ -17,9 +17,9 @@ test('current spell Items retain Workshop learning and SP validation even when d
  const f=await fixture(),item={id:'spell-item',actor:f.actor,getFlag:(_scope,key)=>key==='spell'?{sp:3}:key==='catalogId'?'spell-example':undefined};await f.Sheet.useAbility.call({item});assert.deepEqual(f.calls,[['workshop','spell-example']]);
 });
 
-test('owned paid weapon modifiers expose Use while ordinary passive cards stay read-only',async()=>{
+test('owned passives and paid weapon modifiers expose Use, while improvements and other actors’ items stay read-only',async()=>{
  const f=await fixture();
- for(const [record,owner,expected] of [[{magic:'Magical weapon modifier',sp:1},true,true],[{magic:'Magical weapon modifier',sp:1},false,false],[{sp:1},true,false]]){
+ for(const [record,owner,expected] of [[{magic:'Magical weapon modifier',sp:1},true,true],[{magic:'Magical weapon modifier',sp:1},false,false],[{sp:1},true,true],[{kind:'improvement'},true,false],[{sp:1},false,false]]){
   const sheet=new f.Sheet();sheet.item={actor:{isOwner:owner,getFlag:()=>[]},isOwner:owner,system:{activity:{action:'passive'},description:''},getFlag:(_,key)=>key==='workshopRecord'?record:undefined,toObject:()=>({})};
   assert.equal((await sheet._prepareContext({})).canUse,expected);
  }

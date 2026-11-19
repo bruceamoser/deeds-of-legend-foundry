@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "armor:harness:3",
-      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
+      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "improvement",

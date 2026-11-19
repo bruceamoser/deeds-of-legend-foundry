@@ -10,7 +10,7 @@ import {
 } from "../services/abilities.mjs";
 import { openPotionPreparation } from "../applications/potions.mjs";
 import { isPotionAbility } from "../services/potions.mjs";
-import { isForgeModifier } from "../rules/forge-casting.mjs";
+import { spellActionLabel } from "../rules/forge-casting.mjs";
 import { ATTRIBUTES } from "../rules/character.mjs";
 import { updateOwnedDocument } from "../services/documents.mjs";
 import { formatStoredRuleProse } from "../rules/authored-markdown.mjs";
@@ -62,14 +62,14 @@ export class AbilitySheet extends foundry.applications.api.HandlebarsApplication
       currentWorkshop: current,
       ...(workshopRecord ? {cardLevel:workshopRecord.level??1,cardCost:workshopRecord.cost??"—"} : {}),
       cardKind: spell ? "Spell" : "Ability",
-      spellTiming: spell?.action ?? "",
+      spellTiming: spell ? spellActionLabel(spell) : "",
       learnedImprovements,
       manualOutcomes: !description.includes("hol-reference-outcomes") ? ["weak","standard","strong"].filter(tier=>system.outcomes?.[tier]).map(tier=>({label:game.i18n.localize(`HOL.${tier[0].toUpperCase()+tier.slice(1)}`),text:system.outcomes[tier]})) : [],
       cardMark: itemDisplayIcon(this.item.toObject(), iconCatalogs),
       canPost: Boolean(this.item.actor && this.item.isOwner),
       catalogAbility: Boolean(record),
       potionAbility: isPotionAbility(this.item),
-      canUse: Boolean(this.item.actor?.isOwner && (system.activity.action !== "passive" || (isForgeModifier(workshopRecord) && Number.isSafeInteger(workshopRecord?.sp))) && !["section", "improvement"].includes(workshopRecord?.kind)),
+      canUse: Boolean(this.item.actor?.isOwner && !["section", "improvement"].includes(workshopRecord?.kind)),
       pendingAutomation:
         !definition &&
         this.item.getFlag("heroes-of-legend", "automation") === "pending",

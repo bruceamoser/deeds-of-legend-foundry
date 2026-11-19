@@ -23,7 +23,7 @@ test("encounter presentation follows the next side and preserves hidden actors",
   const state={round:1,nextSide:"players",startingSide:"players",roster:[{id:"visible",side:"players",eligibleRound:1},{id:"private",side:"players",eligibleRound:1},{id:"hidden",side:"players",eligibleRound:1}],acted:[]};
   const collection={get:id=>combatants.find(c=>c.id===id),filter:predicate=>combatants.filter(predicate),map:callback=>combatants.map(callback)};
   const app=Object.create(EncounterPanel.prototype);app.combat={combatants:collection,getFlag:()=>state};
-  const context=await app._prepareContext();assert.deepEqual(context.participants.map(p=>p.id),["visible","private"]);assert.equal(context.currentName,"Players choose next");assert.equal(context.canFinish,false);assert.equal(context.budgets,undefined);
+  const context=await app._prepareContext();assert.deepEqual(context.participants.map(p=>p.id),["visible","private"]);assert.equal(context.currentName,"Allies act next");assert.equal(context.canFinish,false);assert.equal(context.budgets,undefined);
   state.current="visible";const active=await app._prepareContext();assert.equal(active.currentName,"Visible’s turn");assert(active.participants.every(participant=>!participant.canChoose));
 
  }finally{globalThis.foundry=previousFoundry;globalThis.game=previousGame;globalThis.ui=previousUI;}

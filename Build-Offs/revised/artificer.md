@@ -1,6 +1,6 @@
 # Nim Coppercoil: artificer after the rewrite
 
-Pinned authored source `56f2ec94077407c56f60caa29345a5e3dca4c28b`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../artificer.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
+Pinned authored source `a2ae6bd93ef60cf6f9bb523ccdde23364b09c932`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../artificer.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
 
 ## What the rewrite changes
 
@@ -16,7 +16,7 @@ The small curated properties are not the full 5e replication catalog. Each bindi
 | SP | 9 | 13 | 21 |
 | DP spent / total | 9 / 12 | 24 / 25 | 62 / 63 |
 | Unspent DP | 3 | 1 | 1 |
-| Learned action choices (Main / Maneuver / Reaction) | 1 / 0 / 1 | 2 / 0 / 1 | 3 / 0 / 1 |
+| Learned action choices (Main / Maneuver / Reaction) | 2 / 0 / 1 | 4 / 0 / 1 | 6 / 0 / 1 |
 | Known book spells (free / paid) | 8 (4 / 4) | 8 (4 / 4) | 30 (4 / 26) |
 | Shared reserve: casts at 2 SP | 4 | 6 | 10 |
 | Shared reserve: casts at 5 SP | 1 | 2 | 4 |

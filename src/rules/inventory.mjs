@@ -1,6 +1,11 @@
 /** Pure supply-die arithmetic. Applying a result belongs to a document service. */
 export const INVENTORY_DIE_LADDER = Object.freeze([20, 12, 10, 8, 6, 4, 0]);
 
+/** Old water tracking recorded a filled or empty flask. */
+export function legacyWaterSupplyDie(waterUnits) {
+  return waterUnits === 0 ? 0 : 8;
+}
+
 const activeDie = (die, label = "Inventory die") => {
   if (![20, 12, 10, 8, 6, 4].includes(die))
     throw new Error(`${label} must be d4, d6, d8, d10, d12 or d20.`);

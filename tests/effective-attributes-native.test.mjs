@@ -3,6 +3,8 @@ import assert from 'node:assert/strict';
 import vm from 'node:vm';
 import {readFile} from 'node:fs/promises';
 import * as effects from '../src/rules/effective-attributes.mjs';
+import {WATER_FLASK} from "../src/rules/equipment-identity.mjs";
+import {legacyWaterSupplyDie} from "../src/rules/inventory.mjs";
 import {CONSUMABLE_TYPES} from '../src/rules/consumables.mjs';
 import * as character from '../src/rules/character.mjs';
 import {normalizeForgeRecovery} from "../src/rules/forge-recovery.mjs";
@@ -12,8 +14,8 @@ import {rollBasis} from '../src/services/roll-preparation.mjs';
 const item=(name,attribute,mode,value,cursed=false)=>({_id:name,id:name,name,type:'equipment',system:{quantity:1,carried:true,worn:true,held:false,attributeEffects:[{attribute,mode,value,cursed}]}});
 async function model(path){
  class Field {constructor(...args){this.args=args;}}
- const context=vm.createContext({structuredClone,foundry:{data:{fields:Object.fromEntries(['ArrayField','SchemaField','StringField','BooleanField','HTMLField'].map(key=>[key,Field]))},abstract:{TypeDataModel:class{}}}});
- const exports={CONSUMABLE_TYPES,...effects,...character,normalizeRecovery,normalizeForgeRecovery,StrictNumberField:Field};
+ const context=vm.createContext({structuredClone,foundry:{data:{fields:Object.fromEntries(['ArrayField','SchemaField','StringField','BooleanField','HTMLField'].map(key=>[key,Field]))},abstract:{TypeDataModel:class{static migrateData(source){return source;}}}}});
+ const exports={WATER_FLASK,legacyWaterSupplyDie,CONSUMABLE_TYPES,...effects,...character,normalizeRecovery,normalizeForgeRecovery,StrictNumberField:Field};
  const mod=new vm.SourceTextModule(await readFile(new URL(path,import.meta.url),'utf8'),{context});
  await mod.link(async()=>new vm.SyntheticModule(Object.keys(exports),function(){for(const[key,value]of Object.entries(exports))this.setExport(key,value);},{context}));await mod.evaluate();return mod.namespace;
 }
@@ -42,6 +44,18 @@ test('schema retains signed item values and rejects malformed effects without ca
  const value=schema.attributeEffects.args[0].args[0].value;assert.equal(value.args[0].min,undefined);
  for(const effect of [{attribute:'luck',mode:'set',value:3,cursed:false},{attribute:'reason',mode:'set',value:1.5,cursed:false}])assert.throws(()=>EquipmentData.validateJoint({inventoryDie:0,attributeEffects:[effect]}),/attribute effect/);
  assert.doesNotThrow(()=>EquipmentData.validateJoint({inventoryDie:0,attributeEffects:[{attribute:'reason',mode:'set',value:5,cursed:false}]}));
+});
+test('native equipment upgrades old filled or empty flasks once',async()=>{
+ const {EquipmentData}=await model('../src/models/equipment.mjs');
+ const migrate=(schemaVersion,inventoryDie,waterUnits)=>EquipmentData.migrateData({
+  schemaVersion,catalogId:WATER_FLASK,inventoryDie,...(waterUnits===undefined?{}:{waterUnits}),
+ });
+ for(const [die,units,converted] of [[0,1,8],[0,0,0],[0,undefined,8],[6,1,6]]){
+  const item=migrate(1,die,units);
+  assert.equal(item.schemaVersion,2);assert.equal(item.inventoryDie,converted);
+  assert(!Object.hasOwn(item,'waterUnits'));
+ }
+ assert.equal(migrate(2,0).inventoryDie,0);
 });
 test('owned native Item write refuses a second equipped set before mutation and allows removing a conflicting effect',async()=>{
  const a=item('Crown','reason','set',3),b=item('Circlet','reason','set',4);b.system.worn=false;let writes=0;

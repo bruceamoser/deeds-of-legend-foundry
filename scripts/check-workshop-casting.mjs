@@ -6,6 +6,7 @@ import {chromium, expect} from "@playwright/test";
 import {workshopCatalogs} from "../src/rules/workshop-forge-catalog.mjs";
 import {writePortableCharacter} from "../src/rules/portable-character.mjs";
 import {workshopCharacter} from "../src/rules/workshop-character.mjs";
+import {spellActionLabel} from "../src/rules/forge-casting.mjs";
 
 const read = async path => JSON.parse(await readFile(path,"utf8"));
 const catalogs = workshopCatalogs(...await Promise.all(["choices","inventory","wounds","forge","forge-references"].map(n=>read(`static/data/${n}.json`))));
@@ -38,6 +39,25 @@ try {
   };
   const finishRoll=async()=>{const roll=action("roll-sheet");if(await roll.isVisible()){await roll.click();await expect(roll).toBeDisabled();}};
   const close=async()=>{await page.keyboard.press("Escape");};
+
+  const sorcerer = await fixture("sorcerer");
+  await load(sorcerer);
+  await page.getByRole("tab",{name:"Spellbooks",exact:true}).click();
+  await page.getByLabel("Spell timing",{exact:true}).selectOption("Ritual");
+  const boil = page.locator('[data-action-row="spell:flame:2"]');
+  await expect(boil.locator(".timing-cell")).toHaveText("Main Action · Ritual · 1 minute");
+  const boilButton = boil.getByRole("button",{name:"Cast Boil Liquid",exact:true});
+  await expect(boilButton).toHaveText("Cast");
+  const favoriteBoil = boil.locator('[data-action="favorite"]');
+  if (await favoriteBoil.getAttribute("aria-pressed") !== "true") await favoriteBoil.click();
+  await page.getByRole("tab",{name:"Main",exact:true}).click();
+  await expect(boil.locator("xpath=ancestor::details[1]").locator(":scope > summary")).toContainText("Main Action");
+  await boilButton.click();
+  const choosePayment = page.getByRole("button",{name:"Pay printed SP · 1 SP",exact:true});
+  if (await choosePayment.isVisible()) await choosePayment.click();
+  await expect(page.getByRole("dialog")).toContainText("Finish the printed casting time");
+  assert.equal((await state()).sp,7);
+  await close();
 
   for(const [name,id] of [["paladin","ability-signature-protector-healing-hands"],["druid","ability-signature-shepherd-borrowed-shape"]]){
     const draft=await fixture(name);
@@ -73,7 +93,7 @@ try {
     const row=page.locator(`[data-action-row="${spell.id}"]`);
     const book=row.locator("xpath=ancestor::details[1]");
     if(await book.getAttribute("open") === null) await book.locator(":scope > summary").click();
-    await expect(row.locator(".timing-cell")).toHaveText(spell.actionText);
+    await expect(row.locator(".timing-cell")).toHaveText(spellActionLabel(spell));
     await row.getByRole("button",{name:`Expand ${name}`,exact:true}).click();
     await expect(page.locator(`[data-detail-id="${spell.id}"]`)).toContainText(spell.effect);
   }

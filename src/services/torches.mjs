@@ -1,7 +1,6 @@
 import {coordinateNativeGameplay,registerNativeGameplayHandler} from "./native-workshop-coordinator.mjs";
-import {loadWorkshopCatalogs} from "./catalog.mjs";
 import {assertCurrentGameplayActor} from "../rules/current-character.mjs";
-import {nativeItemForWorkshopInstance,nativeEquipmentHands} from "../rules/native-item-identity.mjs";
+import {nativeItemForWorkshopInstance} from "../rules/native-item-identity.mjs";
 import {torchClock,torchLight,TORCH_CHECK_SECONDS} from '../rules/consumables.mjs';
 import {tracksConsumable} from './consumables.mjs';
 import {assertSupplyActionAvailable} from './inventory.mjs';
@@ -21,7 +20,7 @@ export function torchItemActions(actor,item) {
   if(owned?.system.catalogId!=='item-lighting-bundle')return [];
   const state=stateOf(owned);
   return [{action:'torch-toggle',label:state.pendingCheck?'Resolve torch check':state.lit?'Extinguish torch':'Light torch',
-    disabled:!actor.testUserPermission(game.user,'OWNER'),title:state.pendingCheck?'Check the supply die before continuing.':'Maneuver · one free hand · light within 3 squares'}];
+    disabled:!actor.testUserPermission(game.user,'OWNER'),title:state.pendingCheck?'Check the supply die before continuing.':'Maneuver · light within 3 squares'}];
 }
 function chooseToken(actor) {
   const selected=(canvas?.tokens?.controlled??[]).map(token=>token.document).filter(token=>token.actor?.uuid===actor.uuid);
@@ -52,7 +51,7 @@ async function restoreLight(item,{deleted=false}={}) {
     if(token.getFlag(ID,'torchItem')!==item.uuid)continue;
     // A DA or another light effect may have changed this token since ignition.
     const current=token.toObject().light;
-    const updates={[`flags.${ID}.-=torchItem`]:null};
+    const updates={[`flags.${ID}.torchItem`]:new foundry.data.operators.ForcedDeletion()};
     if(same(current,light.applied))updates.light=light.before;
     await token.update(updates);
   }
@@ -69,9 +68,6 @@ async function ignite(actor,item,token) {
   assertSupplyActionAvailable(actor);
   if(!item.system.quantity || !item.system.carried)throw new Error('Carry the lighting bundle before lighting a torch.');
   if(tracksConsumable(item) && !item.system.inventoryDie)throw new Error('The lighting bundle is depleted.');
-  const catalogs=await loadWorkshopCatalogs();
-  const hands=[...actor.items].filter(other=>other.id!==item.id && other.type==='equipment' && other.system.quantity>0 && other.system.carried && other.system.held).reduce((sum,other)=>sum+nativeEquipmentHands(other,catalogs.inventory.equipment.find(record=>record.id===other.system.catalogId)),0);
-  if(hands>1)throw new Error('Free one hand before lighting a torch.');
   if(!token || token.actor?.uuid!==actor.uuid)throw new Error('Choose this character’s token.');
   if(token.getFlag(ID,'torchItem') && token.getFlag(ID,'torchItem')!==item.uuid)throw new Error('Extinguish the torch already lighting this token first.');
   const before=token.toObject().light;
@@ -80,8 +76,8 @@ async function ignite(actor,item,token) {
   const applied=token.clone({light:proposed},{keepId:true}).toObject().light;
   const state={...stateOf(item),lit:true,pendingLight:true,lastWorldTime:game.time.worldTime,
     elapsedSeconds:stateOf(item).elapsedSeconds??0,checkIndex:stateOf(item).checkIndex??0,
-    priorArrangement:{held:item.system.held,hands:item.system.hands},lights:[{uuid:token.uuid,before,applied}]};
-  await item.update({'system.held':true,'system.hands':1,[`flags.${ID}.torch`]:state});
+    priorArrangement:null,lights:[{uuid:token.uuid,before,applied}]};
+  await item.update({[`flags.${ID}.torch`]:state});
   await token.update({light:applied,[`flags.${ID}.torchItem`]:item.uuid});
   await item.update({[`flags.${ID}.torch.pendingLight`]:false});
 }
@@ -101,7 +97,7 @@ async function tickTorchInternal(actor,item,now,context) {
     state=stateOf(item);
     if(result.after===0 && result.tracked!==false)return restoreLight(item);
   }
-  if(!item.system.held || !item.system.carried || !item.system.quantity || (tracksConsumable(item)&&!item.system.inventoryDie))return restoreLight(item);
+  if(!item.system.carried || !item.system.quantity || (tracksConsumable(item)&&!item.system.inventoryDie))return restoreLight(item);
   const clock=torchClock(state,Math.max(now,state.lastWorldTime??now),tracksConsumable(item));
   const {checksDue,...saved}=clock;
   await item.update({[`flags.${ID}.torch`]:saved});
@@ -163,7 +159,7 @@ export function registerTorches() {
     if(!executor())return;
     void enqueueCharacterOperation(async()=>{for(const actor of torchActors())for(const item of actor.items)if(stateOf(item).lit)await item.update({[`flags.${ID}.torch.lastWorldTime`]:game.time.worldTime});});
   });
-  Hooks.on('updateItem',(item,changes)=>{if(stateOf(item).lit && changes.system && (!item.system.held || !item.system.carried || !item.system.quantity || (tracksConsumable(item)&&!item.system.inventoryDie)))scheduleTicks();});
+  Hooks.on('updateItem',(item,changes)=>{if(stateOf(item).lit && changes.system && (!item.system.carried || !item.system.quantity || (tracksConsumable(item)&&!item.system.inventoryDie)))scheduleTicks();});
   Hooks.on('deleteItem',item=>{if(executor()&&stateOf(item).lit)void enqueueCharacterOperation(()=>restoreLight(item,{deleted:true})).catch(error=>ui.notifications.warn(error.message));});
   Hooks.once('ready',scheduleTicks);
 }

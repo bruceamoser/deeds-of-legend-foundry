@@ -83,12 +83,12 @@ try {
     const nameInput=first.shadowRoot.querySelector('[data-item-name]');nameInput.value='Shared named blade';nameInput.dispatchEvent(new Event('change',{bubbles:true}));await a.flush();
     const renamed=a.getState().character.draft.play.inventory.overrides[renamedInstance].name;
     const food=first.shadowRoot.querySelector('[data-action="reference"][data-id="item-food-bundle"]').closest('tr');
+    const untracked=food.children[3].textContent.includes('Untracked');
     const foodInstance=food.dataset.instance;const beforeDie=a.getState().character.draft.play.inventory?.overrides?.[foodInstance]?.inventoryDie;
     food.querySelector('[data-action="use-supply-dialog"]').click();await a.settle();
     first.shadowRoot.querySelector('[data-action="confirm-supply"]').click();await a.settle();
     const noDepletion=a.getState().character.draft.play.inventory?.overrides?.[foodInstance]?.inventoryDie===beforeDie;
-    const untracked=first.shadowRoot.querySelector('#supply-roll-result').textContent.includes('tracking is off');
-    first.shadowRoot.querySelector('#reference').close();
+    const supplyDialogClosed=!first.shadowRoot.querySelector('#reference').open;
     nativeHost.tracksItem=item=>item.catalogId==='item-food-bundle' ? true : undefined;
     a.setState({...a.getState(),tab:'Inventory'});
     const overrideTracked=!first.shadowRoot.querySelector('[data-action="reference"][data-id="item-food-bundle"]').closest('tr').children[3].textContent.includes('Untracked');
@@ -101,14 +101,14 @@ try {
     const burdenBulk=Number(first.shadowRoot.querySelectorAll('.inventory-stats strong')[1].textContent.split('/')[0]);
     const burdenSpeed=Number(first.shadowRoot.querySelectorAll('.inventory-stats strong')[3].textContent);
     const fallbackEquipment=Boolean(first.shadowRoot.querySelector('[data-native-item="custom-rock"]'));
-    const noMisleadingDelete=first.shadowRoot.querySelectorAll('[data-action="delete-item"]').length===0;
+    const noMisleadingDelete=first.shadowRoot.querySelectorAll('[data-action="drop-item"]').length===0;
     nativeHost.readOnly=true;a.setState(a.getState());
     first.shadowRoot.querySelector('[data-native-item="custom-rock"] [data-action="native-open-item"]').click();await a.settle();
     a.setState({...a.getState(),tab:'Abilities'});
     const fallbackAbility=Boolean(first.shadowRoot.querySelector('[data-native-item="custom-ability"]'));
     first.shadowRoot.querySelector('[data-native-item="custom-ability"] [data-action="native-open-item"]').click();await a.settle();
     bHost.readOnly=true;b.setState(b.getState());
-    const result={overrideTracked,originalBulk,burdenBulk,burdenSpeed,fallbackEquipment,fallbackAbility,noMisleadingDelete,opened,unknownRejected,renamed,noDepletion,untracked,readOnly:[...second.shadowRoot.querySelectorAll('#app input,#app textarea')].every(node=>node.disabled),rollCount:rolls.length,rollText,name:b.getState().character.draft.name,original,saved:saved.at(-1)?.character.draft.name,
+    const result={overrideTracked,originalBulk,burdenBulk,burdenSpeed,fallbackEquipment,fallbackAbility,noMisleadingDelete,opened,unknownRejected,renamed,noDepletion,untracked,supplyDialogClosed,readOnly:[...second.shadowRoot.querySelectorAll('#app input,#app textarea')].every(node=>node.disabled),rollCount:rolls.length,rollText,name:b.getState().character.draft.name,original,saved:saved.at(-1)?.character.draft.name,
       storageUnchanged:snapshot===localStorage.getItem('hol.workshop.v1'),portrait:actions.includes('native-portrait'),
       nav:first.shadowRoot.querySelector('.site-header'),dialog:first.shadowRoot.querySelector('#reference')!==second.shadowRoot.querySelector('#reference')};
     bHost.readOnly=false;
@@ -124,7 +124,7 @@ try {
   },wizard);
   assert.equal(result.castSp,result.startingSp-1);assert.equal(result.savedCastSp,result.startingSp-1);
   assert(result.overrideTracked);assert.equal(result.burdenBulk,result.originalBulk+40);assert.equal(result.burdenSpeed,0);assert(result.fallbackEquipment);assert(result.fallbackAbility);assert(result.noMisleadingDelete);assert.deepEqual(result.opened,['custom-rock','custom-ability']);
-  assert(result.unknownRejected);assert.equal(result.renamed,'Shared named blade');assert(result.noDepletion);assert(result.untracked);assert(result.readOnly);assert.equal(result.rollCount,1);assert.match(result.rollText,/4 · 4 · 4/);assert.equal(result.name,result.original);assert.equal(result.saved,'Persisted hero');
+  assert(result.unknownRejected);assert.equal(result.renamed,'Shared named blade');assert(result.noDepletion);assert(result.untracked);assert(result.supplyDialogClosed);assert(result.readOnly);assert.equal(result.rollCount,1);assert.match(result.rollText,/4 · 4 · 4/);assert.equal(result.name,result.original);assert.equal(result.saved,'Persisted hero');
   assert(result.storageUnchanged);assert(result.portrait);assert(result.dialog);assert.equal(result.nav,null);
   assert.deepEqual(failures,[]);
   console.info('Shared Workshop: isolated mounts, host saves/actions, storage isolation and disposal passed.');

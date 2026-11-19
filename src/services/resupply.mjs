@@ -67,7 +67,11 @@ export async function applyResupplyRequest(id) {
   actor.validate({changes:foundry.utils.expandObject(changes),strict:true,fallback:false});
   await writeAuthorityDocument(actor,changes);
   if (actor.items.get(item.id)?.system.inventoryDie !== result.after || actor.items.get(item.id)?.system.quantity !== request.basis.item.quantity) throw new Error("Resupply needs reconciliation; do not repeat the change.");
-  await message.update({content:`${foundry.utils.escapeHTML(item.name)} resupplied: ${result.after ? `d${result.after}` : "Empty"}.`});
+  const label = foundry.utils.escapeHTML(item.name);
+  const content = result.before === result.after && result.capReached
+    ? `${label} is at the maximum d${result.maximumDie}.`
+    : `${label} resupplied to d${result.after}.`;
+  await message.update({content});
   return {status:"complete",replay:false,result};
 }
 export function registerResupplyRequests() {

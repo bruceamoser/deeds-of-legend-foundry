@@ -30,6 +30,11 @@ export function isForgeRitual(record) {
   return /^Ritual\b/i.test(action.trim());
 }
 
+export function spellActionLabel(record) {
+  const printed = record.actionText ?? record.action;
+  return isForgeRitual(record) ? `Main Action · ${printed ?? "Ritual"}` : printed;
+}
+
 export function forgeCastOptions(play = {}, state = {}, record) {
   const cost = signatureSpellCost(record);
   if (!Number.isSafeInteger(cost)) return [];

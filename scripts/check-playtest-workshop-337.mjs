@@ -207,6 +207,45 @@ try {
   reopened.abilities.sort();
   assert.deepEqual(reopened, saved);
   passed("Reloading Foundry and reopening the same Actor retained the learning changes, gear, portrait, and current HP/SP.");
+
+  await sheet.getByRole("tab", { name: "Main" }).click();
+  await sheet.getByRole("button", { name: "Add condition", exact: true }).click();
+  const conditionDialog=sheet.getByRole("dialog",{name:"Add condition"});
+  await conditionDialog.getByLabel("Condition",{exact:true}).selectOption("poisoned");
+  await conditionDialog.getByRole("button",{name:"Add condition",exact:true}).click();
+  const removeCondition=sheet.getByRole("button",{name:"Remove Poisoned",exact:true});
+  const hasPoison=page=>page.evaluate(id=>game.actors.get(id).statuses.has("hol.poisoned"),fixture.actor);
+  await expect.poll(()=>hasPoison(gm)).toBe(true);
+  await removeCondition.click();
+  await expect.poll(()=>hasPoison(gm)).toBe(false);
+  await expect(removeCondition).toHaveCount(0);
+  passed("An owner added and removed a condition from the Workshop and the embedded Foundry status stopped applying.");
+
+  await sheet.getByRole("tab", { name: "Inventory" }).click();
+  const knownGear=(await actorState(gm,fixture.actor)).gear;
+  await sheet.getByRole("button",{name:"Add item",exact:true}).click();
+  const addItem=sheet.getByRole("dialog",{name:"Add item"});
+  await addItem.getByLabel("Item",{exact:true}).selectOption("item-signal-kit");
+  await addItem.getByLabel("Quantity",{exact:true}).fill("3");
+  await addItem.getByRole("button",{name:"Add item",exact:true}).click();
+  await expect.poll(async()=>(await actorState(gm,fixture.actor)).gear.length).toBe(knownGear.length+1);
+  const dropped=(await actorState(gm,fixture.actor)).gear.find(item=>!knownGear.some(known=>known.id===item.id));
+  const drop=sheet.getByRole("row").filter({hasText:"Signal Kit"}).filter({has:owner.getByRole("cell",{name:"3",exact:true})})
+    .getByRole("button",{name:"Drop Signal Kit",exact:true});
+  await drop.click();
+  const confirmDrop=sheet.getByRole("dialog",{name:"Drop Signal Kit?"});
+  await confirmDrop.getByRole("button",{name:"Cancel",exact:true}).click();
+  assert.ok((await actorState(gm,fixture.actor)).gear.some(item=>item.id===dropped.id));
+  await drop.click();
+  await confirmDrop.getByRole("button",{name:"Drop item",exact:true}).click();
+  await expect.poll(async()=>(await actorState(gm,fixture.actor)).gear).toEqual(knownGear);
+  await owner.reload();
+  await owner.waitForFunction(()=>globalThis.game?.ready);
+  await openHero(owner,fixture.actor);
+  await expect(sheet.getByRole("tab",{name:"Inventory"})).toHaveAttribute("aria-selected","true");
+  await expect(drop).toHaveCount(0);
+  assert.equal(await hasPoison(owner),false);
+  passed("Drop cancellation kept the play-added stack. Confirming removed only that owned item, and reload preserved both changes.");
   assert.deepEqual(evidence.errors, []);
 } catch (error) {
   evidence.failure = error.stack;

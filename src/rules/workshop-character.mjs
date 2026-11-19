@@ -1,5 +1,6 @@
 import { forgeAncestryBenefits } from "./forge-ancestry.mjs";
 import { forgeAdvancement, forgeArmorRequirement } from "./forge-character.mjs";
+import { isForgeRitual } from "./forge-casting.mjs";
 import { forgeMaximums } from "./forge-vitals.mjs";
 import { workshopPlay } from "./workshop-play.mjs";
 import { creationPreview } from "./creation.mjs";
@@ -211,6 +212,7 @@ export function workshopAbility(character, record) {
 }
 
 export function actionTiming(record) {
+  if (isForgeRitual(record)) return ["Main Action"];
   const action = record.currentAction ??
     record.reference?.rules.details.find((d) => d.label === "Action")?.value ??
     record.actionText ?? record.action ?? "Passive";

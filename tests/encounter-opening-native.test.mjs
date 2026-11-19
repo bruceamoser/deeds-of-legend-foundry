@@ -10,7 +10,7 @@ async function fixture({faces=[4,4,4],gm=false}={}) {
  const roster=[{id:'hero',actor:owned,name:'Hero',getFlag:()=>null},{id:'foe',actor:foe,name:'Foe',getFlag:()=>null}];roster.get=id=>roster.find(row=>row.id===id);roster.has=id=>Boolean(roster.get(id));
  const combat={uuid:'Combat.test',id:'test',documentName:'Combat',combatants:roster,turns:roster,getFlag:(_,key)=>flags[key]};
  const game={user:player,messages,users:[player]};
- const ctx=vm.createContext({Map,Set,Promise,JSON,Number,Error,structuredClone,game,fromUuid:async()=>combat,foundry:{utils:{escapeHTML:s=>s},dice:{Roll:class{constructor(formula){this.formula=formula;this.dice=[{faces:6,results:faces.map(result=>({result,active:true}))}];}async evaluate(){draws++;return this;}}}}});
+ const ctx=vm.createContext({Map,Set,Promise,JSON,Number,Error,structuredClone,game,fromUuid:async()=>combat,foundry:{data:{operators:{ForcedReplacement:{create:value=>value}}},utils:{escapeHTML:s=>s},dice:{Roll:class{constructor(formula){this.formula=formula;this.dice=[{faces:6,results:faces.map(result=>({result,active:true}))}];}async evaluate(){draws++;return this;}}}}});
  const exports={...encounter,...turnBudget,expireStaleBenefits:async()=>{},settleSummonExpiry:async()=>{},summonState:()=>null,settleTurnConditions:async()=>{conditionSettlements++;return {name:'Hero',events:[],changes:[]};},turnEndContent:()=> 'Finished',ensureAuthorityReady:async()=>{},shouldProcessRequest:()=>true,isCreationAuthority:()=>true,enqueueCharacterOperation:run=>run(),writeAuthorityDocument:async(document,changes,options={})=>{worldTime+=options.worldTime?.delta??0;for(const[path,value]of Object.entries(changes)){if(!path.startsWith('flags.'))continue;const keys=path.split('.').slice(2);let valueAt=flags;for(const key of keys.slice(0,-1))valueAt=valueAt[key]??={};valueAt[keys.at(-1)]=structuredClone(value);}},createActionMessage:async data=>{const message={...data,id:`message${++serial}`,author:{...game.user},getFlag:(_,key)=>data.flags?.['heroes-of-legend']?.[key],update:async change=>Object.assign(message,change)};messages.set(message.id,message);return message;}};
  const mod=new vm.SourceTextModule(await readFile(new URL('../src/services/combat.mjs',import.meta.url),'utf8'),{context:ctx});
  await mod.link(async()=>new vm.SyntheticModule(Object.keys(exports),function(){for(const[key,value]of Object.entries(exports))this.setExport(key,value);},{context:ctx}));await mod.evaluate();
@@ -44,4 +44,31 @@ test('joining initializes only the missing initial reaction and never refills ex
  const actor={...f.combat.combatants.get('hero').actor};f.combat.combatants.push({id:'joiner',actor,name:'Joiner',getFlag:()=>null});
  await f.action('roster',{id:'joiner',mode:'join'});assert.equal(f.flags.encounter.budgets.joiner.remaining.reaction,1);assert.equal(f.flags.encounter.budgets.hero.remaining.reaction,0);
  f.flags.encounter.budgets.joiner.remaining.reaction=0;await f.action('roster',{id:'joiner',mode:'withdraw'});await f.action('roster',{id:'joiner',mode:'join'});assert.equal(f.flags.encounter.budgets.joiner.remaining.reaction,0);
+});
+
+test('the active owner can cancel an unused turn without spending a turn or changing prior budgets',async()=>{
+ const f=await fixture();const hero=f.combat.combatants.get('hero');hero.token={x:0,y:0,elevation:0};
+ await f.action('start');
+ const initial=structuredClone(f.flags.encounter.budgets.hero);
+ await f.action('choose',{id:'hero'});
+ assert(f.api.canCancelParticipantTurn(f.combat,f.flags.encounter));
+ hero.token.x=100;
+ assert(!f.api.canCancelParticipantTurn(f.combat,f.flags.encounter));
+ await assert.rejects(f.action('cancel'),/unused turn/);
+ hero.token.x=0;
+ f.game.user.id='observer';
+ await assert.rejects(f.action('cancel'),/you own/);
+ f.game.user.id='player';
+ const cancelled=await f.action('cancel');
+ assert.equal(f.flags.encounter.current,null);
+ assert.equal(f.flags.encounter.round,1);
+ assert.equal(f.flags.encounter.nextSide,'players');
+ assert.equal(f.flags.encounter.acted.length,0);
+ assert.deepEqual(f.flags.encounter.budgets.hero,initial);
+ assert.equal(f.conditionSettlements,0);assert.equal(f.worldTime,0);
+ await f.api.resolveCombatRequest(cancelled.id);
+ await f.action('choose',{id:'hero'});
+ assert.equal(f.flags.encounter.budgets.hero.turnId,'test_2');
+ f.flags.encounter.revision++;
+ await assert.rejects(f.action('cancel'),/unused turn/);
 });

@@ -48,6 +48,16 @@ try {
   await page.goto(base + "combat.html");
   await page.getByRole("heading", { name: "Round 1", exact: true }).waitFor();
   assert.equal(await page.locator(".combat-row").count(), 4);
+  await page.getByRole("button", { name: "Move Goblin Scrapper to Allies", exact: true }).click();
+  await page.getByRole("button", { name: "Move Goblin Scrapper to Enemies", exact: true }).click();
+  await page.getByRole("button", { name: "Player view", exact: true }).click();
+  const takeTurn = page.locator('[data-action="choose"][data-id="borin-bridgekeeper"]');
+  assert.equal(await takeTurn.innerText(), "Take Turn");
+  await takeTurn.click();
+  await page.getByRole("button", { name: "Cancel Turn", exact: true }).click();
+  assert.equal(await page.locator(".combat-row.active").count(), 0);
+  assert.match(await page.locator(".tool-banner").innerText(), /Round 1/);
+  await page.getByRole("button", { name: "DA view", exact: true }).click();
   await page
     .locator('[data-action="choose"][data-id="borin-bridgekeeper"]')
     .click();
@@ -72,6 +82,7 @@ try {
       .innerText(),
     /2/,
   );
+  assert.equal(await page.getByRole("button", { name: "Cancel Turn", exact: true }).count(), 0);
   await page
     .getByRole("button", { name: "Maneuver → Move", exact: true })
     .click();
@@ -85,7 +96,7 @@ try {
   await page.getByRole("button", { name: "Finish turn", exact: true }).click();
   assert.match(
     await page.locator(".tool-banner").innerText(),
-    /Opposition choose next/,
+    /Enemies act next/,
   );
   await page
     .getByRole("button", { name: "Hide Goblin Scrapper", exact: true })
@@ -114,11 +125,11 @@ try {
   assert.match(await page.locator(".tool-banner").innerText(), /Round 2/);
   assert.match(
     await page.locator(".tool-banner").innerText(),
-    /Players choose next/,
+    /Allies act next/,
   );
   await page.getByRole("button", { name: "Ambush", exact: true }).click();
-  await page.getByRole("button", { name: "Opposition ambush", exact: true }).click();
-  assert.match(await page.locator(".tool-help").first().innerText(), /Ambush · Opposition start each round · 6 seconds per round/);
+  await page.getByRole("button", { name: "Enemies ambush", exact: true }).click();
+  assert.match(await page.locator(".tool-help").first().innerText(), /Ambush · Enemies start each round · 6 seconds per round/);
   await page.goto(base + "journal.html");
   await page
     .getByRole("article", { name: "Rule entry", exact: true })

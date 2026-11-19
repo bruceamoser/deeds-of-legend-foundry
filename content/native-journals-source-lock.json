@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "repository": "https://github.com/bruceamoser/heroes-of-legend",
-  "commit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
-  "approval": "Starting DP and player ability effects (#342–#343). Current complete Player and DA rulebooks.",
+  "commit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
+  "approval": "Supply dice, harvesting, lighting and ritual timing (#349). Current Player and DA rulebooks.",
   "selection": "Current Forge pinned Markdown plus surviving nonretired native references, complete current player manuscript, shared rules and 29 spellbooks. Retired cards and disciplines excluded.",
   "records": [
     {
@@ -1759,11 +1759,11 @@
     },
     {
       "path": "design/characters/lira-ashbow.md",
-      "sha256": "202ec439b51acc189fc5890704b550f562f7deb62355061e48dbfa5ec4bdacf6"
+      "sha256": "287a0ec10b0255ca04c0ae9b5394ec2bd5818852c63e02279fee0ce391defb92"
     },
     {
       "path": "design/characters/mara-reedheart.md",
-      "sha256": "6bc044694627d8cb4423464be406424825f214dbbd1f84cb5f2901bb3275e6b8"
+      "sha256": "9f6a02a5fc86de9e5b5c259270b4407f7beab10ae4420a684db50799b2f35786"
     },
     {
       "path": "design/characters/oren-brass.md",
@@ -1823,7 +1823,7 @@
     },
     {
       "path": "design/da-book/manuscript/02-running-the-game.md",
-      "sha256": "b2b919ed8a257e62aac41548f1379622ca8e8ec3fce1adb30646b417d457d90d"
+      "sha256": "b910f08cd3ea320691f3a6c2421e93c0d10b7b50762f6f3983a0928ae2b8e06d"
     },
     {
       "path": "design/da-book/manuscript/03-building-adventures.md",
@@ -1851,7 +1851,7 @@
     },
     {
       "path": "design/da-book/manuscript/07-treasure-and-rewards.md",
-      "sha256": "286c16d46dd2e6c636ddb0dea3a2e5e95cedb008ac2162f0a06296c379a97bd7"
+      "sha256": "4db3edb0995f2b347b9c37bf2c26c163a2a127d445240f3d2d5715bb6faf0867"
     },
     {
       "path": "design/da-book/manuscript/08-campaigns-and-consequences.md",
@@ -1971,7 +1971,7 @@
     },
     {
       "path": "design/disciplines/wilderness.md",
-      "sha256": "2eb5afd4bb33f159d4ae07f590fd55c738c901e162ae786d0ab228b46d80a431"
+      "sha256": "e1d569d6bf7c8fbdeb1cca6071358e3f7b7f1d682d1ca17c9d30fb92668aae89"
     },
     {
       "path": "design/equipment/ammunition-bundle.md",
@@ -2039,7 +2039,7 @@
     },
     {
       "path": "design/equipment/lighting-bundle.md",
-      "sha256": "53708b9c931803f9be0840dda5a67631e5eb244804e4f40a543a1883c381419b"
+      "sha256": "3390effd45ee534f883dfff09b6afd7f277782c8c3f8df57f794abc263dc3b69"
     },
     {
       "path": "design/equipment/local-map.md",
@@ -2135,7 +2135,7 @@
     },
     {
       "path": "design/equipment/water-flask.md",
-      "sha256": "bc9ccbb0e8c6d48d1e0b4c07d191e90090015332207d1b10ae3215e38e9d7867"
+      "sha256": "c665db0f0ff6b67c74bbe78a6c4b6574b12047339dd3c593dfb46ad049c92988"
     },
     {
       "path": "design/equipment/weather-clothes.md",
@@ -2155,7 +2155,7 @@
     },
     {
       "path": "design/market.md",
-      "sha256": "edbc38161d8b94ef834a48ce8d19db98579b8751fde82a8c83b5366b9b45c857"
+      "sha256": "b62ee3c922f5ca563804e3d701e554329849e31f36768b80bc31c8ce4d3ab53d"
     },
     {
       "path": "design/monster-abilities/README.md",
@@ -2911,7 +2911,7 @@
     },
     {
       "path": "design/player-book/manuscript/10-equipment.md",
-      "sha256": "3071c477cfc6e38d6a9720f65c38b9f377f1da3460be6619ce6282923777dd59"
+      "sha256": "54c61d6a4f3a3cc5175eb7e4c110c857c7128b9c7a704d9e21ca2845b962a3a8"
     },
     {
       "path": "design/player-book/manuscript/11-summons.md",
@@ -3007,7 +3007,7 @@
     },
     {
       "path": "design/rules/magic.md",
-      "sha256": "7086357890bb7853b0fd1ecfabbc1e44314eda0efdbec9917384382e748f227f"
+      "sha256": "75e26a646bc8f0f5f58a70501bccf0655daa9bfc00d20e074c03cbff86652794"
     },
     {
       "path": "design/rules/objectives.md",

@@ -9,7 +9,7 @@ import { getCampaignLanguageConfiguration } from "./languages.mjs";
 import { readPortableCharacter, writePortableCharacter } from "../rules/portable-character.mjs";
 import { currentNativeCharacterChanges } from "../rules/native-character-state.mjs";
 import { abilityItemSource, equipmentItemSource, escapeItemHtml } from "../rules/item-construction.mjs";
-import { ORDINARY_RANGED_WEAPON, WATER_FLASK } from "../rules/equipment-identity.mjs";
+import { ORDINARY_RANGED_WEAPON } from "../rules/equipment-identity.mjs";
 import { selectedRangedAmmunition } from "./ranged-ammunition.mjs";
 import { LEARNED_GEAR_PREFIX, provisionSalePrice } from "../rules/training-equipment.mjs";
 
@@ -79,8 +79,6 @@ function overlay(actor, portable, catalogs) {
       inventory.removed=inventory.removed.filter(id=>id!==instanceId);
     }
     inventory.overrides[instanceId] = { quantity: item.system.quantity, ...(item.name && item.name !== definition?.name ? {name:item.name} : {}), ...((definition?.inventoryDie || item.system.inventoryDie > 0) ? {inventoryDie:item.system.inventoryDie} : {}) };
-    if (item.system.catalogId === WATER_FLASK && Number.isSafeInteger(item.system.waterUnits))
-      inventory.overrides[instanceId].waterUnits = item.system.waterUnits;
     if (item.system.catalogId === ORDINARY_RANGED_WEAPON) {
       const ammo = selectedRangedAmmunition(actor, item);
       if (ammo) inventory.ammunition[instanceId] = nativeWorkshopInventoryId(ammo);
@@ -156,7 +154,10 @@ export function saveNativeWorkshopState(actor, savedState, { expectedRevision, r
       if(changedKeys.has("sp"))changes["system.sp.value"]=vitals.sp;
       if(changedKeys.has("gritSpent"))changes["system.grit.spent"]=Math.min(state.preview.limits.gritGranted,vitals.gritSpent);
       if(changedKeys.has("recovery"))changes["system.recovery"]=normalizeForgeRecovery(finalPlay.recovery);
-      if(changedKeys.has("conditions"))changes.effects=nativeConditionSources(actor,finalPlay.conditions??[]);
+      if(changedKeys.has("conditions")) {
+        changes.effects=nativeConditionSources(actor,finalPlay.conditions??[]);
+        changes[`flags.${ID}.conditionRevision`]=(actor.getFlag(ID,"conditionRevision")??0)+1;
+      }
       if (proceeds) {
         const balance = actor.getFlag(ID,"development")?.coins;
         changes[`flags.${ID}.development.coins`] = Number.isSafeInteger(balance)
@@ -252,7 +253,6 @@ export function nativeWorkshopEquipmentItems(preview,catalogs) {
   return preview.inventory.items.map(item=>({...equipmentItemSource(catalogs.inventory.equipment.find(record=>record.id===item.catalogId), {
     sourceCommit:catalogs.commit,grantKind:"nativeWorkshop",acquisitionInstance:item.instanceId,
     quantity:item.quantity,hands:item.hands??0,inventoryDie:item.inventoryDie??0,
-    waterUnits:item.catalogId === WATER_FLASK ? item.waterUnits : undefined,
     ammunitionInstanceId:item.ammunitionInstanceId,
     worn:item.worn??false,held:item.held??false,carried:item.carried??true,
   }), ...(item.name ? {name:item.name} : {})}));
@@ -297,7 +297,7 @@ async function applyWorkshopTransaction(actor,desired,changes,nextRevision,{cata
       if(source.type==="equipment") {
         const patch={_id:match.id};
         if(source.name!==match.name)patch.name=source.name;
-        for(const key of ["quantity","inventoryDie","carried","held","worn","waterUnits"])if(source.system[key]!==undefined&&!equalState(source.system[key],match.system[key]))patch[`system.${key}`]=source.system[key];
+        for(const key of ["quantity","inventoryDie","carried","held","worn"])if(source.system[key]!==undefined&&!equalState(source.system[key],match.system[key]))patch[`system.${key}`]=source.system[key];
         const hands=nativeEquipmentHands({...source,system:{...source.system,hands:match.system.hands}},catalogs.inventory.equipment.find(record=>record.id===match.system.catalogId));
         if(hands!==match.system.hands)patch["system.hands"]=hands;
         if(Object.keys(patch).length>1)updates.push(patch);
@@ -365,7 +365,16 @@ export function saveNativeWorkshopIdentity(actor,portable,{expectedRevision,oper
   });
 }
 
-const equalState=(a,b)=>JSON.stringify(a)===JSON.stringify(b);
+function equalState(a, b) {
+  if (Object.is(a, b)) return true;
+  if (!a || !b || typeof a !== "object" || typeof b !== "object") return false;
+  if (Array.isArray(a) || Array.isArray(b))
+    return Array.isArray(a) && Array.isArray(b) && a.length === b.length
+      && a.every((value, index) => equalState(value, b[index]));
+  const entries = Object.entries(a);
+  return entries.length === Object.keys(b).length
+    && entries.every(([key, value]) => Object.hasOwn(b, key) && equalState(value, b[key]));
+}
 /** Three-way merge: untouched controls follow live native changes; conflicting edits reject. */
 export function mergeNativeWorkshopPlay(base,candidate,current,path="play") {
   if(equalState(candidate,base))return structuredClone(current);
@@ -378,7 +387,13 @@ export function mergeNativeWorkshopPlay(base,candidate,current,path="play") {
 }
 const effectFlag=(effect,key)=>effect.getFlag?.(ID,key) ?? effect.flags?.[ID]?.[key];
 function nativeConditions(actor) {
-  const result=[...(actor.effects ?? [])].filter(effect=>(effect.active ?? !effect.disabled) && !effectFlag(effect,"retired") && effectFlag(effect,"condition")).map(effect=>({...structuredClone(effectFlag(effect,"condition")),id:effectFlag(effect,"workshopConditionId") ?? effect.id ?? effect._id}));
+  const result=[...(actor.effects ?? [])]
+    .filter(effect=>(effect.active ?? !effect.disabled) && !effectFlag(effect,"retired") && effectFlag(effect,"condition"))
+    .map(effect => {
+      const { key, source, rating, persistence } = effectFlag(effect,"condition");
+      const id = effectFlag(effect,"workshopConditionId") ?? effect.id ?? effect._id;
+      return { id, key, source, rating, persistence };
+    });
   return validateContributions(result);
 }
 function nativeConditionSources(actor,conditions) {
@@ -387,16 +402,24 @@ function nativeConditionSources(actor,conditions) {
   const active=new Map([...(actor.effects ?? [])].filter(effect=>effectFlag(effect,"condition") && !effectFlag(effect,"retired") && (effect.active ?? !effect.disabled)).map(effect=>[effectFlag(effect,"workshopConditionId") ?? effect.id ?? effect._id,effect]));
   const desired=new Set(conditions.map(condition=>condition.id));
   const retired=new Set([...active].filter(([id])=>!desired.has(id)).map(([,effect])=>effect.id ?? effect._id));
-  const result=sources.filter(source=>!retired.has(source._id ?? source.id));
+  // Foundry merges embedded Active Effects when an Actor is updated. Omission
+  // leaves the old effect active, so retire it explicitly in the same save.
+  for(const source of sources) {
+    if(!retired.has(source._id ?? source.id))continue;
+    source.disabled=true;
+    source.statuses=[];
+    source.showIcon=globalThis.CONST?.ACTIVE_EFFECT_SHOW_ICON?.NEVER ?? 0;
+    source.flags[ID].retired={reason:"Removed condition"};
+  }
   for(const condition of conditions) {
     const match=active.get(condition.id);
     const id=match?.id ?? match?._id ?? globalThis.foundry?.utils?.randomID?.() ?? crypto.randomUUID().replaceAll("-","").slice(0,16);
-    const source=result.find(source=>(source._id??source.id)===id);
+    const source=sources.find(source=>(source._id??source.id)===id);
     const flags={...(source?.flags??{}),[ID]:{...(source?.flags?.[ID]??{}),condition:{...condition,id},workshopConditionId:condition.id}};
     const data={_id:id,name:`${condition.key} ${condition.rating}${condition.persistence==="starred"?"*":""}`,img:"icons/svg/aura.svg",disabled:false,statuses:[`hol.${condition.key}`],flags};
-    if(source)Object.assign(source,data);else result.push(data);
+    if(source)Object.assign(source,data);else sources.push(data);
   }
-  return result;
+  return sources;
 }
 const operationChanges=receipt=>receipt?{[`flags.${ID}.nativeWorkshopOperations.${receipt.id}`]:receipt}:{};
 

@@ -354,8 +354,10 @@ try {
     "2",
   );
   await page
-    .getByRole("button", { name: "Delete Ordinary Light Armor", exact: true })
+    .getByRole("button", { name: "Drop Ordinary Light Armor", exact: true })
     .click();
+  await page.getByRole("dialog", { name: "Drop Ordinary Light Armor?" })
+    .getByRole("button", { name: "Drop item", exact: true }).click();
   assert.equal(
     await page.getByLabel("Wear Ordinary Light Armor", { exact: true }).count(),
     0,
@@ -419,8 +421,10 @@ try {
   );
   await page.screenshot({ path: `${output}/play-inventory.png` });
   await page
-    .getByRole("button", { name: "Delete Small Tent", exact: true })
+    .getByRole("button", { name: "Drop Small Tent", exact: true })
     .click();
+  await page.getByRole("dialog", { name: "Drop Small Tent?" })
+    .getByRole("button", { name: "Drop item", exact: true }).click();
   assert.equal(
     await page.getByLabel("Wear Small Tent", { exact: true }).count(),
     0,

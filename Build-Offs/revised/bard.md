@@ -1,6 +1,6 @@
 # Lysa Silverstring: bard after the rewrite
 
-Pinned authored source `56f2ec94077407c56f60caa29345a5e3dca4c28b`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../bard.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
+Pinned authored source `a2ae6bd93ef60cf6f9bb523ccdde23364b09c932`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../bard.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
 
 ## What the rewrite changes
 

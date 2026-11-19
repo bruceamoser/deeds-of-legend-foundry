@@ -1,14 +1,14 @@
 {
   "rulesRevision": 299,
   "spellbookProgressionRevision": 310,
-  "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
+  "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
   "workingTree": false,
   "builds": [
     {
       "id": "barbarian",
       "name": "Harka Stormshoulder",
       "level": 1,
-      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
+      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
       "workingTree": false,
       "draft": {
         "name": "Harka Stormshoulder",
@@ -331,7 +331,7 @@
       "id": "barbarian",
       "name": "Harka Stormshoulder",
       "level": 3,
-      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
+      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
       "workingTree": false,
       "draft": {
         "name": "Harka Stormshoulder",
@@ -747,7 +747,7 @@
       "id": "barbarian",
       "name": "Harka Stormshoulder",
       "level": 7,
-      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
+      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
       "workingTree": false,
       "draft": {
         "name": "Harka Stormshoulder",
@@ -1360,7 +1360,7 @@
       "id": "bard",
       "name": "Lysa Silverstring",
       "level": 1,
-      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
+      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
       "workingTree": false,
       "draft": {
         "name": "Lysa Silverstring",
@@ -1758,7 +1758,7 @@
       "id": "bard",
       "name": "Lysa Silverstring",
       "level": 3,
-      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
+      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
       "workingTree": false,
       "draft": {
         "name": "Lysa Silverstring",
@@ -2283,7 +2283,7 @@
       "id": "bard",
       "name": "Lysa Silverstring",
       "level": 7,
-      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
+      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
       "workingTree": false,
       "draft": {
         "name": "Lysa Silverstring",
@@ -3215,7 +3215,7 @@
       "id": "cleric",
       "name": "Brunna Hearthward",
       "level": 1,
-      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
+      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
       "workingTree": false,
       "draft": {
         "name": "Brunna Hearthward",
@@ -3573,7 +3573,7 @@
       "id": "cleric",
       "name": "Brunna Hearthward",
       "level": 3,
-      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
+      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
       "workingTree": false,
       "draft": {
         "name": "Brunna Hearthward",
@@ -4127,7 +4127,7 @@
       "id": "cleric",
       "name": "Brunna Hearthward",
       "level": 7,
-      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
+      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
       "workingTree": false,
       "draft": {
         "name": "Brunna Hearthward",
@@ -4976,7 +4976,7 @@
       "id": "druid",
       "name": "Thalen Reedwalker",
       "level": 1,
-      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
+      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
       "workingTree": false,
       "draft": {
         "name": "Thalen Reedwalker",
@@ -5380,7 +5380,7 @@
       "id": "druid",
       "name": "Thalen Reedwalker",
       "level": 3,
-      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
+      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
       "workingTree": false,
       "draft": {
         "name": "Thalen Reedwalker",
@@ -5955,7 +5955,7 @@
       "id": "druid",
       "name": "Thalen Reedwalker",
       "level": 7,
-      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
+      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
       "workingTree": false,
       "draft": {
         "name": "Thalen Reedwalker",
@@ -6839,7 +6839,7 @@
       "id": "fighter",
       "name": "Corin Ashguard",
       "level": 1,
-      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
+      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
       "workingTree": false,
       "draft": {
         "name": "Corin Ashguard",
@@ -7186,7 +7186,7 @@
       "id": "fighter",
       "name": "Corin Ashguard",
       "level": 3,
-      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
+      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
       "workingTree": false,
       "draft": {
         "name": "Corin Ashguard",
@@ -7642,7 +7642,7 @@
       "id": "fighter",
       "name": "Corin Ashguard",
       "level": 7,
-      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
+      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
       "workingTree": false,
       "draft": {
         "name": "Corin Ashguard",
@@ -8305,7 +8305,7 @@
       "id": "monk",
       "name": "Sera Quietstep",
       "level": 1,
-      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
+      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
       "workingTree": false,
       "draft": {
         "name": "Sera Quietstep",
@@ -8604,7 +8604,7 @@
       "id": "monk",
       "name": "Sera Quietstep",
       "level": 3,
-      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
+      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
       "workingTree": false,
       "draft": {
         "name": "Sera Quietstep",
@@ -9009,7 +9009,7 @@
       "id": "monk",
       "name": "Sera Quietstep",
       "level": 7,
-      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
+      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
       "workingTree": false,
       "draft": {
         "name": "Sera Quietstep",
@@ -9619,7 +9619,7 @@
       "id": "paladin",
       "name": "Aldren Vowkeeper",
       "level": 1,
-      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
+      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
       "workingTree": false,
       "draft": {
         "name": "Aldren Vowkeeper",
@@ -9974,7 +9974,7 @@
       "id": "paladin",
       "name": "Aldren Vowkeeper",
       "level": 3,
-      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
+      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
       "workingTree": false,
       "draft": {
         "name": "Aldren Vowkeeper",
@@ -10440,7 +10440,7 @@
       "id": "paladin",
       "name": "Aldren Vowkeeper",
       "level": 7,
-      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
+      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
       "workingTree": false,
       "draft": {
         "name": "Aldren Vowkeeper",
@@ -11177,7 +11177,7 @@
       "id": "ranger",
       "name": "Eryn Mossarrow",
       "level": 1,
-      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
+      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
       "workingTree": false,
       "draft": {
         "name": "Eryn Mossarrow",
@@ -11462,7 +11462,7 @@
           "name": "Wild Harvest I",
           "dp": 1,
           "level": 1,
-          "effect": "1 hour · Knowledge. Search an accessible area with plausible resources; gather 1/2/3 person-days of food, or that much drinkable water if a source exists. The DA defines the area before rolling. You can also spend 1 hour with available materials to shelter two people from ordinary rain and wind, without a roll.",
+          "effect": "1 hour · Knowledge. Search an accessible area for food or drinkable water. The DA defines the area and confirms a plausible source before you roll. Raise one Food Bundle or Water Flask of the chosen type by 1/2/3 supply die steps, maximum d8. An empty supply starts at d4 on the first step. You can also spend 1 hour with available materials to shelter two people from ordinary rain and wind, without a roll.",
           "kind": "technique",
           "disciplineId": "wilderness",
           "pathId": "wilderness:provisioning",
@@ -11554,7 +11554,7 @@
       "id": "ranger",
       "name": "Eryn Mossarrow",
       "level": 3,
-      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
+      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
       "workingTree": false,
       "draft": {
         "name": "Eryn Mossarrow",
@@ -11924,7 +11924,7 @@
           "name": "Wild Harvest I",
           "dp": 1,
           "level": 1,
-          "effect": "1 hour · Knowledge. Search an accessible area with plausible resources; gather 1/2/3 person-days of food, or that much drinkable water if a source exists. The DA defines the area before rolling. You can also spend 1 hour with available materials to shelter two people from ordinary rain and wind, without a roll.",
+          "effect": "1 hour · Knowledge. Search an accessible area for food or drinkable water. The DA defines the area and confirms a plausible source before you roll. Raise one Food Bundle or Water Flask of the chosen type by 1/2/3 supply die steps, maximum d8. An empty supply starts at d4 on the first step. You can also spend 1 hour with available materials to shelter two people from ordinary rain and wind, without a roll.",
           "kind": "technique",
           "disciplineId": "wilderness",
           "pathId": "wilderness:provisioning",
@@ -12040,7 +12040,7 @@
       "id": "ranger",
       "name": "Eryn Mossarrow",
       "level": 7,
-      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
+      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
       "workingTree": false,
       "draft": {
         "name": "Eryn Mossarrow",
@@ -12560,7 +12560,7 @@
           "name": "Wild Harvest I",
           "dp": 1,
           "level": 1,
-          "effect": "1 hour · Knowledge. Search an accessible area with plausible resources; gather 1/2/3 person-days of food, or that much drinkable water if a source exists. The DA defines the area before rolling. You can also spend 1 hour with available materials to shelter two people from ordinary rain and wind, without a roll.",
+          "effect": "1 hour · Knowledge. Search an accessible area for food or drinkable water. The DA defines the area and confirms a plausible source before you roll. Raise one Food Bundle or Water Flask of the chosen type by 1/2/3 supply die steps, maximum d8. An empty supply starts at d4 on the first step. You can also spend 1 hour with available materials to shelter two people from ordinary rain and wind, without a roll.",
           "kind": "technique",
           "disciplineId": "wilderness",
           "pathId": "wilderness:provisioning",
@@ -12791,7 +12791,7 @@
       "id": "rogue",
       "name": "Pip Nightjar",
       "level": 1,
-      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
+      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
       "workingTree": false,
       "draft": {
         "name": "Pip Nightjar",
@@ -13134,7 +13134,7 @@
       "id": "rogue",
       "name": "Pip Nightjar",
       "level": 3,
-      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
+      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
       "workingTree": false,
       "draft": {
         "name": "Pip Nightjar",
@@ -13579,7 +13579,7 @@
       "id": "rogue",
       "name": "Pip Nightjar",
       "level": 7,
-      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
+      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
       "workingTree": false,
       "draft": {
         "name": "Pip Nightjar",
@@ -14221,7 +14221,7 @@
       "id": "sorcerer",
       "name": "Ilyra Cinderblood",
       "level": 1,
-      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
+      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
       "workingTree": false,
       "draft": {
         "name": "Ilyra Cinderblood",
@@ -14594,7 +14594,7 @@
       "id": "sorcerer",
       "name": "Ilyra Cinderblood",
       "level": 3,
-      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
+      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
       "workingTree": false,
       "draft": {
         "name": "Ilyra Cinderblood",
@@ -15110,7 +15110,7 @@
       "id": "sorcerer",
       "name": "Ilyra Cinderblood",
       "level": 7,
-      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
+      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
       "workingTree": false,
       "draft": {
         "name": "Ilyra Cinderblood",
@@ -15912,7 +15912,7 @@
       "id": "warlock",
       "name": "Vesper Ashpact",
       "level": 1,
-      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
+      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
       "workingTree": false,
       "draft": {
         "name": "Vesper Ashpact",
@@ -16259,7 +16259,7 @@
       "id": "warlock",
       "name": "Vesper Ashpact",
       "level": 3,
-      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
+      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
       "workingTree": false,
       "draft": {
         "name": "Vesper Ashpact",
@@ -16732,7 +16732,7 @@
       "id": "warlock",
       "name": "Vesper Ashpact",
       "level": 7,
-      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
+      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
       "workingTree": false,
       "draft": {
         "name": "Vesper Ashpact",
@@ -17550,7 +17550,7 @@
       "id": "wizard",
       "name": "Vaelis Quillstar",
       "level": 1,
-      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
+      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
       "workingTree": false,
       "draft": {
         "name": "Vaelis Quillstar",
@@ -17988,7 +17988,7 @@
       "id": "wizard",
       "name": "Vaelis Quillstar",
       "level": 3,
-      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
+      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
       "workingTree": false,
       "draft": {
         "name": "Vaelis Quillstar",
@@ -18580,7 +18580,7 @@
       "id": "wizard",
       "name": "Vaelis Quillstar",
       "level": 7,
-      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
+      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
       "workingTree": false,
       "draft": {
         "name": "Vaelis Quillstar",
@@ -19473,7 +19473,7 @@
       "id": "artificer",
       "name": "Nim Coppercoil",
       "level": 1,
-      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
+      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
       "workingTree": false,
       "draft": {
         "name": "Nim Coppercoil",
@@ -19843,11 +19843,11 @@
         }
       ],
       "actionCounts": {
-        "Main Action": 1,
+        "Main Action": 2,
         "Maneuver": 0,
         "Reaction": 1,
         "Passive": 0,
-        "Other": 2
+        "Other": 1
       },
       "spellCounts": {
         "total": 8,
@@ -19883,7 +19883,7 @@
       "id": "artificer",
       "name": "Nim Coppercoil",
       "level": 3,
-      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
+      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
       "workingTree": false,
       "draft": {
         "name": "Nim Coppercoil",
@@ -20354,11 +20354,11 @@
         }
       ],
       "actionCounts": {
-        "Main Action": 2,
+        "Main Action": 4,
         "Maneuver": 0,
         "Reaction": 1,
         "Passive": 0,
-        "Other": 3
+        "Other": 1
       },
       "spellCounts": {
         "total": 8,
@@ -20405,7 +20405,7 @@
       "id": "artificer",
       "name": "Nim Coppercoil",
       "level": 7,
-      "sourceCommit": "56f2ec94077407c56f60caa29345a5e3dca4c28b",
+      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
       "workingTree": false,
       "draft": {
         "name": "Nim Coppercoil",
@@ -21331,11 +21331,11 @@
         }
       ],
       "actionCounts": {
-        "Main Action": 3,
+        "Main Action": 6,
         "Maneuver": 0,
         "Reaction": 1,
         "Passive": 1,
-        "Other": 5
+        "Other": 2
       },
       "spellCounts": {
         "total": 30,

@@ -1,3 +1,4 @@
+import { WATER_FLASK } from "./equipment-identity.mjs";
 import { printedAbilityRoll } from "./ability-roll.mjs";
 import { actionTiming } from "./workshop-character.mjs";
 import { catalogItemIcon } from "./item-icons.mjs";
@@ -181,10 +182,9 @@ function abilitySystem(description, definition, record) {
 
 function equipmentSystem(record, description, options) {
   return {
-    schemaVersion: ITEM_SCHEMA_VERSION,
+    schemaVersion: record.id === WATER_FLASK && record.inventoryDie === 8 ? 2 : ITEM_SCHEMA_VERSION,
     catalogId: record.id,
     quantity: options.quantity ?? 1,
-    ...(Number.isSafeInteger(options.waterUnits) ? { waterUnits: options.waterUnits } : {}),
     bulk: record.bulk,
     hands: options.hands ?? 0,
     inventoryDie:
@@ -266,7 +266,6 @@ export function equipmentItemSource(
     quantity,
     hands,
     inventoryDie,
-    waterUnits,
     ammunitionInstanceId,
     held,
     worn,
@@ -290,7 +289,6 @@ export function equipmentItemSource(
       quantity,
       hands,
       inventoryDie,
-      waterUnits,
       held,
       worn,
       carried,

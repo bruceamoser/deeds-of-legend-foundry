@@ -16,14 +16,14 @@ test("paid provisions include four distinct defaults and have a reusable resale 
   assert.deepEqual(draft.shopping.map(item => item.id), ["item-food-bundle", "item-water-flask", "item-lighting-bundle", "item-lesser-healing-bottle"]);
   assert.equal(draft.shopping.reduce((sum, item) => sum + definition(item.id).price, 0), 37);
   const water = draft.shopping[1];
-  const item = { ...water, catalogId: water.id, definition: definition(water.id) };
+  const item = { ...water, catalogId: water.id, inventoryDie: 8, definition: { ...definition(water.id), inventoryDie: 8 } };
   assert.equal(provisionSalePrice(item), 1);
-  assert.equal(provisionSalePrice({ ...item, waterUnits: 0 }), 0);
+  assert.equal(provisionSalePrice({ ...item, inventoryDie: 0 }), 0);
 });
 
 test("the one-time paid kit repair only offers missing provisions and never refills sold or declined items", () => {
   const draft = newCreationDraft();
-  const item = { catalogId: "item-water-flask", quantity: 1, waterUnits: 0 };
+  const item = { catalogId: "item-water-flask", quantity: 1, inventoryDie: 0 };
   assert.deepEqual(missingStartingProvisions(draft, [item]).map(({ id }) => id), [
     "item-food-bundle", "item-lighting-bundle", "item-lesser-healing-bottle",
   ]);

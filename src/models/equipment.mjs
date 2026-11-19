@@ -1,3 +1,5 @@
+import { WATER_FLASK } from "../rules/equipment-identity.mjs";
+import { legacyWaterSupplyDie } from "../rules/inventory.mjs";
 import { CONSUMABLE_TYPES } from '../rules/consumables.mjs';
 import {ITEM_EFFECT_ATTRIBUTES,ITEM_EFFECT_MODES,validateItemAttributeEffects} from "../rules/effective-attributes.mjs";
 import { StrictNumberField as NumberField } from "./fields.mjs";
@@ -12,9 +14,17 @@ const integer = (initial, min, max) =>
     max,
   });
 export class EquipmentData extends foundry.abstract.TypeDataModel {
+  static migrateData(source) {
+    if (source.catalogId === WATER_FLASK && (source.schemaVersion ?? 1) === 1) {
+      source.inventoryDie = source.inventoryDie || legacyWaterSupplyDie(source.waterUnits);
+      source.schemaVersion = 2;
+      delete source.waterUnits;
+    }
+    return super.migrateData(source);
+  }
   static defineSchema() {
     return {
-      schemaVersion: integer(1, 1, 1),
+      schemaVersion: integer(1, 1, 2),
       catalogId: new StringField({
         required: true,
         nullable: false,
@@ -31,7 +41,6 @@ export class EquipmentData extends foundry.abstract.TypeDataModel {
       bulk: integer(1, 0),
       hands: integer(0, 0, 2),
       inventoryDie: integer(0, 0, 20),
-      waterUnits: new NumberField({ required: false, nullable: true, integer: true, initial: null, min: 0, max: 10000 }),
       carried: new BooleanField({ initial: true }),
       held: new BooleanField({ initial: false }),
       worn: new BooleanField({ initial: false }),
