@@ -279,9 +279,11 @@ function recovery() {
         <h2>Restore HP and SP</h2>
         <div class="tool-actions">
           ${btn("Healing", "healing", canAct ? "" : "disabled", "primary")}
+          ${btn("Brief Rest", "brief-rest", canAct && !health.dying ? "" : "disabled")}
           ${btn("Night’s Rest", "rest", canAct && !health.dying ? "" : "disabled")}
         </div>
-        <p>Eight safe hours restore HP and SP and renew first aid, once in 24 hours.</p>
+        <p>A safe hour of Brief Rest restores up to 6 HP and 3 SP once per day. You can add First Aid or learned Spellcraft Recovery.</p>
+        <p>Eight safe hours of Night’s Rest restore full HP and SP and renew First Aid, once in 24 hours.</p>
         ${ruleButton("rule-recovery")}
       </section>
       <section class="tool-box">
@@ -544,14 +546,16 @@ document.addEventListener("click", (e) => {
     }
     if (a === "rest") return popup(
       "Night’s Rest",
-      `<p>Rest somewhere safe with food, water and adequate shelter. Record the end of eight uninterrupted hours, including six hours of sleep or equivalent rest. Count elapsed hours from the start of the example.</p>
-      <label>Campaign hour when rest ended <input id="rest-hour" type="number" min="${(health.lastRestHour ?? -16) + 24}" value="${(health.lastRestHour ?? -16) + 24}"></label>
+      `<p>Rest for eight uninterrupted hours somewhere safe with food, water and adequate shelter. Include six hours of sleep or equivalent rest.</p>
       <div class="tool-actions">${btn("Complete Night’s Rest", "complete-rest", "", "primary")}</div>`,
     );
+    if (a === "brief-rest") {
+      const next = forgeRest(health, recoveryLimits, { kind: "brief-rest" });
+      recoveryNotice = `Restored ${next.hp - health.hp} HP and ${next.sp - health.sp} SP.`;
+      health = next;
+    }
     if (a === "complete-rest") {
-      health = forgeRest(health, recoveryLimits, {
-        hour: document.getElementById("rest-hour").valueAsNumber,
-      });
+      health = forgeRest(health, recoveryLimits, { kind: "nights-rest" });
       recoveryNotice = "Restored HP and SP and renewed first aid.";
     }
     if (a === "damage") return popup(
