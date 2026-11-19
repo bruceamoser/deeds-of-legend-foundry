@@ -52,3 +52,21 @@ export function resourceCard({
 }) {
   return `<article class="hol-chat-card" data-chat-kind="${esc(kind)}">${header({ actor, title: label, kind })}${effect ? `<div class="hol-chat-effect">${esc(effect)}</div>` : ""}${die ? `<div class="hol-chat-supply"><span role="img" class="hol-chat-die kept" aria-label="Supply die ${esc(die.face)}">${esc(die.face)}</span><span>Supply d${esc(die.before)} → <strong>${die.after ? "d" + esc(die.after) : "Empty"}</strong></span></div>` : ""}${detail ? `<p class="hol-chat-resource-note">${esc(detail)}</p>` : ""}<footer class="hol-chat-footer"><span>${esc(status)}</span></footer></article>`;
 }
+
+export function restCard({ kind, before, after, spellcraftSp }) {
+  const brief = kind === "brief-rest";
+  const label = brief ? "Brief Rest" : "Night’s Rest";
+  const icon = brief ? "fa-mug-hot" : "fa-moon";
+  const resources = [
+    { key: "hp", label: "HP" },
+    { key: "sp", label: "SP" },
+  ];
+  const panels = resources.map(({ key, label: resource }) => {
+    const change = after[key] - before[key];
+    const status = change === 0 ? "No change" : `${change > 0 ? "+" : "−"}${Math.abs(change)} ${resource}`;
+    return `<div class="hol-rest-resource"><span class="hol-rest-resource-label">${resource}</span><strong class="hol-rest-change${change > 0 ? " recovered" : ""}">${status}</strong><span class="hol-rest-values">${esc(before[key])} → <b>${esc(after[key])}</b></span></div>`;
+  }).join("");
+  const spellcraft = spellcraftSp === undefined ? "" :
+    `<div class="hol-rest-note"><span>Spellcraft Recovery</span><strong>+${esc(spellcraftSp)} SP</strong></div>`;
+  return `<article class="hol-chat-card" data-chat-kind="rest"><header class="hol-chat-header"><i class="fa-solid ${icon} hol-rest-icon" aria-hidden="true"></i><h3>${label}</h3></header><div class="hol-rest-resources">${panels}</div>${spellcraft}</article>`;
+}

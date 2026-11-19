@@ -283,3 +283,67 @@ body.hol-theme #sidebar .message-content .hol-chat-card .hol-reference-rules :is
 .message-content .hol-chat-card .hol-chat-effect p {margin:0;}
 .message-content .hol-chat-card .hol-chat-effect p + p {margin-top:.3em;}
 .message-content .hol-chat-card .hol-chat-effect ul {margin:.25em 0;padding-inline-start:1.25em;}
+
+.message-content .hol-chat-card[data-chat-kind="rest"] .hol-chat-header {
+  gap: 8px;
+  padding: 7px 8px;
+}
+.message-content .hol-chat-card[data-chat-kind="rest"] .hol-chat-header h3 {
+  margin: 0;
+  color: var(--paper);
+  font: 700 12px/1.25 "HOL Cinzel", serif;
+  letter-spacing: normal;
+}
+.message-content .hol-chat-card .hol-rest-icon {
+  display: grid;
+  place-items: center;
+  flex: 0 0 23px;
+  height: 23px;
+  border: 1px solid var(--gold);
+  border-radius: 4px;
+  color: #ead9b3;
+  font-size: 12px;
+}
+.message-content .hol-chat-card .hol-rest-resources {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+  padding: 7px;
+}
+.message-content .hol-chat-card .hol-rest-resource {
+  display: grid;
+  gap: 2px;
+  padding: 4px 6px;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  background: #f1ecde;
+}
+.message-content .hol-chat-card .hol-rest-resource-label {
+  color: var(--forest);
+  font-weight: 700;
+}
+.message-content .hol-chat-card .hol-rest-change {
+  color: var(--muted);
+  font-size: 11px;
+}
+.message-content .hol-chat-card .hol-rest-change.recovered {
+  color: #315540;
+  font-size: 14px;
+}
+.message-content .hol-chat-card .hol-rest-values {
+  color: var(--muted);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+.message-content .hol-chat-card .hol-rest-values b {
+  color: var(--ink);
+}
+.message-content .hol-chat-card .hol-rest-note {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2px 6px;
+  padding: 4px 8px;
+  border-top: 1px solid var(--line);
+  background: #ece5d5;
+}

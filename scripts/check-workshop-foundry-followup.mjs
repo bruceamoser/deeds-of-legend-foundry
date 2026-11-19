@@ -201,11 +201,40 @@ try {
   await expect.poll(readVitals).toEqual({ hp: base.maxHp + 4, sp: base.maxSp + 3, maxHp: base.maxHp + 4, maxSp: base.maxSp + 3 });
   await expect.poll(async () => (await rests()).at(-1)).toMatchObject({ kind: 'nights-rest' });
   console.info('Brief Rest restores 6 HP/3 SP, allows table-authorized repeat use, and offers learned Spellcraft Recovery. Night’s Rest restores full resources with a chat result.');
+  await sheet.getByRole('button', { name: 'Night’s Rest', exact: true }).click();
+  await expect.poll(async () => (await rests()).length).toBe(5);
+  await page.evaluate(() => { ui.sidebar.expand(); ui.sidebar.activateTab('chat'); });
+  const messages = await page.evaluate(id => game.messages.filter(message =>
+    message.getFlag('heroes-of-legend', 'restResult')?.actorUuid === `Actor.${id}`).map(message => message.id), id);
+  const restMessage = index => page.locator(`#chat [data-message-id="${messages[index]}"]`);
+  const briefCard = restMessage(2).locator('[data-chat-kind=rest]');
+  await expect(briefCard.getByRole('heading', { name: 'Brief Rest' })).toBeVisible();
+  await expect(briefCard.locator('.hol-rest-change')).toHaveText(['+6 HP', '+4 SP']);
+  await expect(briefCard.locator('.hol-rest-values')).toHaveText(['1 → 7', '0 → 4']);
+  await expect(briefCard.locator('.hol-rest-note')).toContainText('Spellcraft Recovery');
+  await expect(briefCard.locator('.hol-rest-note strong')).toHaveText('+1 SP');
+  const nightCard = restMessage(4).locator('[data-chat-kind=rest]');
+  await expect(nightCard.getByRole('heading', { name: 'Night’s Rest' })).toBeVisible();
+  await expect(nightCard.locator('.hol-rest-change')).toHaveText(['No change', 'No change']);
+  for (const [index, name] of [[2, 'brief'], [3, 'night'], [4, 'night-at-full']]) {
+    const message = restMessage(index);
+    await message.screenshot({ path: `${output}/${name}-rest-chat.png` });
+    assert(await message.locator('.hol-rest-resources').evaluate(node => node.scrollWidth <= node.clientWidth));
+  }
+  console.info('Native chat sidebar renders Brief Rest with actual Spellcraft recovery, Night’s Rest with gains, and Night’s Rest at full resources.');
   await sheet.locator('[data-action=close]').click();
   await expect(sheet).toHaveCount(0);
   assert.deepEqual(errors, []);
 } finally {
-  await page.evaluate(async () => { if (globalThis.__followupActor) await game.actors.get(__followupActor)?.delete(); }).catch(error => console.error('Fixture cleanup:', error.message));
-  await browser.close();
-  server.close();
+  try {
+    if (id) await page.evaluate(async id => {
+      const messages = game.messages.filter(message =>
+        message.getFlag('heroes-of-legend', 'restResult')?.actorUuid === `Actor.${id}`).map(message => message.id);
+      if (messages.length) await ChatMessage.deleteDocuments(messages);
+      await game.actors.get(id)?.delete();
+    }, id);
+  } finally {
+    await browser.close();
+    server.close();
+  }
 }
