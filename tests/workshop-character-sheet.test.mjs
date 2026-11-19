@@ -24,7 +24,7 @@ function fixture(overrides={}) {
   }
   const context={foundry:{utils:{randomID:()=>`operation-${++nextOperation}`},applications:{api:{HandlebarsApplicationMixin:cls=>cls},sheets:{ActorSheetV2:Base}},dice:{Roll}},
     game:{user:{id:'owner'},settings:{get:()=> 'blind'}},ChatMessage:{getSpeaker:()=>({actor:'hero'})},
-    queueMicrotask,structuredClone,CharacterSheet:Base,classifyRoll,spellAttackOutcomes,resolvedAttackEffects,rollCard,resourceCard,inventoryCheck,workshopRollOutcome,ui:{notifications:{info(){},error(){}}},
+    queueMicrotask,structuredClone,viewPortrait(){},CharacterSheet:Base,classifyRoll,spellAttackOutcomes,resolvedAttackEffects,rollCard,resourceCard,inventoryCheck,workshopRollOutcome,ui:{notifications:{info(){},error(){}}},
     nativeWorkshopRoll:(_actor,id)=>operations.get(id),
     claimNativeWorkshopOperation:async(_actor,operation)=>{operations.set(operation.id,operation);return operation;},
     updateNativeWorkshopOperation:async(_actor,operation)=>operations.set(operation.id,operation),
@@ -66,23 +66,25 @@ test('native acknowledged saves advance revision; explicit commit returns sheet'
   let state;sheet.controller={setState:value=>{state=value;}};
   await sheet.commitState({});assert.equal(sheet.revision,5);assert.equal(state.mode,'sheet');assert.equal(state.tab,'Main');
 });
-test('the shadow Workshop portrait uses inherited Actor editImage and saves only img',async()=>{
-  let observer,selected,changes;
+test('Workshop uses the stock image action and persists the selected picture',async()=>{
+  let observer,selected='old.webp',saved;
   class MutationObserver {
     constructor(callback){observer=this;this.callback=callback;}
     observe(image,options){this.image=image;this.options=options;}
-    disconnect(){this.disconnected=true;}
+    disconnect(){}
   }
-  const {sheet}=fixture({MutationObserver,updateOwnedDocument:async(actor,update)=>{changes=update;}});
+  const {sheet}=fixture({MutationObserver,bindPortraitControls:()=>{},savePortrait:async()=>{saved=selected;}});
   sheet.actor.img='old.webp';
-  const image={getAttribute:name=>name==='src'?selected:null,dataset:{edit:'img'}};
-  sheet.options={actions:{editImage(_event,target){
-    assert.equal(this,sheet);assert.equal(target,image);
-    selected='chosen.webp';observer.callback();
-  }}};
-  await sheet.editWorkshopPortrait(image);
-  assert.deepEqual(Object.keys(changes),['img']);assert.equal(changes.img,'chosen.webp');
-  assert.equal(observer.disconnected,true);
+  const image={getAttribute:()=>selected,setAttribute:(_name,value)=>{selected=value;},dataset:{}};
+  sheet.bindWorkshopPortrait(image);
+  assert.equal(image.dataset.action,'editImage');
+  assert.equal(image.dataset.edit,'img');
+  assert.deepEqual(Array.from(observer.options.attributeFilter),['src']);
+  selected='chosen.webp';observer.callback();
+  assert.equal(saved,'chosen.webp');
+  sheet.isEditable=false;sheet.bindWorkshopPortrait(image);
+  assert.equal(image.dataset.action,'viewPortrait');
+  assert.equal(image.dataset.edit,undefined);
 });
 test('native frame preserves controller on document rerender and flushes before disposal',async()=>{
   const {sheet,calls}=fixture();sheet.element={querySelector:()=>({})};

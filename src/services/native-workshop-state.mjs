@@ -1,3 +1,4 @@
+import { nativeForgeVitals } from "../rules/native-health.mjs";
 import { equipmentBonuses, resourceClamp } from "../rules/equipment-bonuses.mjs";
 import { nativeWorkshopInventoryId, nativeEquipmentHands, NATIVE_INVENTORY_PREFIX } from "../rules/native-item-identity.mjs";
 import { currentWorkshopLearnedItems } from "../rules/current-workshop-items.mjs";
@@ -166,7 +167,7 @@ export function saveNativeWorkshopState(actor, savedState, { expectedRevision, r
         changes[`flags.${ID}.development.coins`] = Number.isSafeInteger(balance)
           ? balance + proceeds : state.preview.inventory.remainingCoins;
       }
-      for(const[key,value]of Object.entries(deathState(vitals)))if(changedKeys.has(key))changes[`flags.${ID}.forgeVitals.${key}`]=value;
+      for(const[key,value]of Object.entries(nativeForgeVitals(vitals)))if(changedKeys.has(key))changes[`flags.${ID}.forgeVitals.${key}`]=value;
       if(resolvedImmediateDeathRoll)changes[`flags.${ID}.forgeVitals.immediateDeathRolls`]=(actor.getFlag(ID,"forgeVitals")?.immediateDeathRolls??[]).filter(id=>id!==resolvedImmediateDeathRoll);
       return changes;
     }, next, {catalogs:state.catalogs,equipmentOnly:true,removedInstances:new Set((inputPlay.inventory?.removed??[]).filter(id=>!(basisPlay.inventory?.removed??[]).includes(id)))});
@@ -250,9 +251,6 @@ export function commitNativeWorkshopCharacter(actor, portable, { expectedRevisio
   });
 }
 
-function deathState(play) {
-  return Object.fromEntries(["dying", "dead", "failedDeathRolls", "successfulDeathRolls", "gritTrigger", "scars", "firstAidUsed", "firstAidPending", "spellcraftRecoveryUsed"].map(key=>[key,structuredClone(play[key])]));
-}
 export function nativeWorkshopEquipmentItems(preview,catalogs) {
   return preview.inventory.items.map(item=>({...equipmentItemSource(catalogs.inventory.equipment.find(record=>record.id===item.catalogId), {
     sourceCommit:catalogs.commit,grantKind:"nativeWorkshop",acquisitionInstance:item.instanceId,

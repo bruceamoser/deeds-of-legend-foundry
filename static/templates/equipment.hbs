@@ -16,9 +16,9 @@
       </details>
       <label class="hol-equipment-description-label" for="equipment-description-{{item.id}}">Description</label>
       <prose-mirror id="equipment-description-{{item.id}}" name="system.description" value="{{editableDescription}}" data-document-uuid="{{item.uuid}}"></prose-mirror>
-      <button type="submit" class="hol-primary">Save changes</button>
     </fieldset>
   </div>
+  <footer class="hol-equipment-edit-footer"><button type="submit" class="hol-primary" {{#unless editable}}disabled{{/unless}}>Save changes</button></footer>
 {{else}}
   <div class="hol-card-fixed"><div class="hol-card-toolbar">{{#if editable}}<button type="button" data-action="cardEdit">✎ Edit</button>{{/if}}</div>
   <header class="hol-item-header"><div class="hol-item-identity"><img class="hol-item-mark" src="{{cardMark}}" alt=""><div><h1>{{item.name}}</h1><p>Equipment</p></div></div><dl class="hol-item-vitals"><div><dt>Qty</dt><dd><input aria-label="Quantity" data-item-quantity type="number" min="0" step="1" value="{{system.quantity}}" {{#unless editable}}disabled{{/unless}}></dd></div><div><dt>Bulk</dt><dd>{{system.bulk}}</dd></div><div><dt>Coins</dt><dd>{{cardPrice}}</dd></div></dl></header></div>

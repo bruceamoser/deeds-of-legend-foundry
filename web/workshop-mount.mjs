@@ -21,7 +21,7 @@ export async function mountWorkshop(root, options = {}) {
     :host{display:block;height:100%;min-height:0;font-size:14px}
     .workshop-surface{height:100%;overflow:auto}
     #app{height:100%;min-height:0;min-width:520px;width:calc(100% - 48px);margin:0 6px 0 42px}
-    .hero-mark[role=button]{cursor:pointer}
+    #app ::slotted(.hero-mark){display:block;width:64px;height:64px;flex:none;object-fit:contain;cursor:pointer}
     .attribute-effect{display:block;font-size:10px;font-style:normal;line-height:1.1}
   </style><div class="workshop-surface"><main id="app" aria-busy="true"></main><div id="notice" role="status" aria-live="polite"></div><dialog id="picker" aria-labelledby="picker-title"></dialog><dialog id="reference" aria-labelledby="reference-title"></dialog><input type="file" id="import-file" accept=".json,application/json" hidden></div>`;
   const lifetime=new AbortController();

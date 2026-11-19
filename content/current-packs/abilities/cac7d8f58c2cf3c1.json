@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:water:2",
-      "sourceCommit": "e5575a674821fe31387cf4bf622a2dea96dd0906",
+      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",

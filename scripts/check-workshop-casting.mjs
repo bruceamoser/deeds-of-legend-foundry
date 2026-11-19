@@ -147,9 +147,9 @@ try {
   assert.equal((await state()).sp,7);assert.equal((await state()).soulWellspringUsed,true);
   await close();await page.reload();
   assert.equal((await state()).soulWellspringUsed,true);
-  await action("hero-recovery").click();await action("complete-hero-rest").click();
+  await action("nights-rest").click();
   assert.equal((await state()).mindPalaceUsed,false);assert.equal((await state()).soulWellspringUsed,false);
-  await close();await cast(ritual);
+  await cast(ritual);
   await expect(page.locator('[data-payment="mind"]')).toBeVisible();
   await expect(page.locator('[data-payment="soul"]')).toBeVisible();
   await close();
@@ -160,6 +160,44 @@ try {
   await expect(formula).toContainText("Maximum SP = 2 × level + ancestry SP + 2 × positive class mental attribute + Spellcraft bonuses + other SP bonuses.");
   await formula.scrollIntoViewIfNeeded();
   await page.screenshot({path:"test-results/workshop-sync/maximum-sp-formula.png"});
+
+  const recoveryWizard = await fixture("wizard");
+  const expectedRecovery = workshopCharacter(recoveryWizard,catalogs).state.learning.recoverySp;
+  assert.equal(expectedRecovery,4);
+  await load(recoveryWizard);
+  await action("brief-rest").click();
+  await page.getByRole("checkbox",{name:/Spellcraft Recovery · Restore up to 4 SP/}).check();
+  await action("complete-brief-rest").click();
+  await expect(page.getByLabel("Current SP",{exact:true})).toHaveValue("15");
+  assert.equal((await state()).spellcraftRecoveryUsed,true);
+  await expect(page.getByRole("dialog")).not.toBeVisible();
+
+  const hostedCaster=(await read("Build-Offs/revised/builds/sorcerer-level-1.hol.json")).draft;
+  hostedCaster.play={hp:0,sp:1};
+  const nativeFixture=JSON.parse(writePortableCharacter(hostedCaster,catalogs,{ready:true}));
+  await page.evaluate(character=>localStorage.setItem("hol.workshop.v1",JSON.stringify({character,mode:"sheet",tab:"Spellbooks"})),nativeFixture);
+  await page.reload();
+  await expect(page.getByRole("button",{name:"Cast Boil Liquid",exact:true})).toBeDisabled();
+  const incapacitatedCast=await page.evaluate(async character=>{
+    const {mountWorkshop}=await import("./workshop-mount.mjs");
+    const element=document.createElement("div");document.body.append(element);
+    const posted=[];
+    const controller=await mountWorkshop(element,{
+      initialState:{character,mode:"sheet",tab:"Spellbooks"},
+      host:{postUse:async id=>posted.push(id)},
+    });
+    await controller.useAbility("spell:flame:2");
+    await controller.settle();
+    const play=controller.getState().character.draft.play;
+    const dialogOpen=Boolean(element.shadowRoot.querySelector("dialog[open]"));
+    let insufficientSp=false;
+    try { await controller.useAbility("spell:flame:2"); }
+    catch { insufficientSp=true; }
+    controller.dispose();
+    return {posted,hp:play.hp,sp:play.sp,dialogOpen,insufficientSp};
+  },nativeFixture);
+  assert.deepEqual(incapacitatedCast,{posted:["spell:flame:2"],hp:0,sp:0,dialogOpen:false,insufficientSp:true});
+
   assert.deepEqual(errors,[]);
   console.log("Workshop casting browser checks passed: signature costs, ritual timing, optional payments, persistence and rest.");
 } finally {await browser?.close();await new Promise(done=>server.close(done));}

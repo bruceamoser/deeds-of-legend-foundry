@@ -31,7 +31,7 @@ export class EquipmentSheet extends foundry.applications.api.HandlebarsApplicati
       usePotion: EquipmentSheet.usePotion,
     },
     classes: ["heroes-of-legend", "hol-equipment"],
-    position: { width: 510, height: "auto" },
+    position: { width: 510, height: 640 },
     window: { resizable:true },
     form: { submitOnChange: false, closeOnSubmit: false },
   };

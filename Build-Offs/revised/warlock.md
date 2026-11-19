@@ -1,6 +1,6 @@
 # Vesper Ashpact: warlock after the rewrite
 
-Pinned authored source `e5575a674821fe31387cf4bf622a2dea96dd0906`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../warlock.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
+Pinned authored source `486f57f4eaf6acd7af39f16d403870dc0e574f6d`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../warlock.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
 
 ## What the rewrite changes
 

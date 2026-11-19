@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>1 uninterrupted hour of safe rest, meditation or quiet leisure. Once between safe overnight rests, recover 1 SP. This can occur during permitted quiet rest time; ordinary overnight recovery remains unchanged.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Passive</dd></div></dl><p>1 uninterrupted hour of safe rest, meditation or quiet leisure. Once between safe overnight rests, recover 1 SP. You can spend this hour during a Brief Rest and add this SP to what the rest restores.</p>",
     "activity": {
       "action": "passive",
       "rollMode": "none",
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spellcraft:recovery:1",
-      "sourceCommit": "e5575a674821fe31387cf4bf622a2dea96dd0906",
+      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "training",
@@ -34,7 +34,7 @@
         "duration": null,
         "attribute": null,
         "defenseAttribute": null,
-        "effect": "1 uninterrupted hour of safe rest, meditation or quiet leisure. Once between safe overnight rests, recover 1 SP. This can occur during permitted quiet rest time; ordinary overnight recovery remains unchanged.",
+        "effect": "1 uninterrupted hour of safe rest, meditation or quiet leisure. Once between safe overnight rests, recover 1 SP. You can spend this hour during a Brief Rest and add this SP to what the rest restores.",
         "improves": null,
         "requires": [
           "spellcraft"

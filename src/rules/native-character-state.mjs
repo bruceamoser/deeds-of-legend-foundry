@@ -1,3 +1,4 @@
+import { nativeForgeVitals } from "./native-health.mjs";
 import { normalizeForgeRecovery } from "./forge-recovery.mjs";
 import { forgeVitals } from "./forge-vitals.mjs";
 const ID = "heroes-of-legend";
@@ -19,7 +20,7 @@ export function currentNativeCharacterChanges(draft, preview, { preserveResource
     "system.grit.spent": current ? current.grit.spent : play.gritSpent,
     "system.biography": draft.profile?.story ?? "",
     [`flags.${ID}.profile`]: structuredClone(draft.profile ?? {}),
-    [`flags.${ID}.forgeVitals`]: Object.fromEntries(["dying", "dead", "failedDeathRolls", "successfulDeathRolls", "gritTrigger", "scars", "firstAidUsed", "firstAidPending", "spellcraftRecoveryUsed"].map(key => [key, structuredClone(play[key])])),
+    [`flags.${ID}.forgeVitals`]: nativeForgeVitals(play),
   };
   for (const [key, value] of Object.entries(draft.attributes)) changes[`system.attributes.${key}.base`] = value;
   return changes;

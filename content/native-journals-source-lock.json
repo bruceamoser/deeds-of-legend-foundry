@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "repository": "https://github.com/bruceamoser/heroes-of-legend",
-  "commit": "e5575a674821fe31387cf4bf622a2dea96dd0906",
-  "approval": "Timed abilities in the Player’s Book and DA Guide, including Wild Harvest and The Shepherd’s Call (#353).",
+  "commit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+  "approval": "Brief Rest and Night’s Rest in the Player’s Book and DA Guide (#359).",
   "selection": "Current Forge pinned Markdown plus surviving nonretired native references, complete current player manuscript, shared rules and 29 spellbooks. Retired cards and disciplines excluded.",
   "records": [
     {
@@ -1819,11 +1819,11 @@
     },
     {
       "path": "design/da-book/manuscript/01-becoming-the-da.md",
-      "sha256": "9d36145272208c13c5ecf95e731d06e4b1aa96a597fe1444318a4bd06df76c19"
+      "sha256": "c4fbc10807a9ea9093c17cb305f36a916ff404c844f9c927482d538a271d7ad4"
     },
     {
       "path": "design/da-book/manuscript/02-running-the-game.md",
-      "sha256": "45699ebe96745d89eaf5d2914e1c30e07997a15dfad761ce4053b19ffef11a53"
+      "sha256": "2ab6f362fcfd4e59b011ed05c033f8779180706e8f448767d9a482cb90703f9f"
     },
     {
       "path": "design/da-book/manuscript/03-building-adventures.md",
@@ -1855,7 +1855,7 @@
     },
     {
       "path": "design/da-book/manuscript/08-campaigns-and-consequences.md",
-      "sha256": "a1e8590ba2be4d3e548cd65ef9babf22a5c8042ce9cc6c12f07ec7241a3dcfff"
+      "sha256": "27775a28c57ad25d36fe0e611a4f7c8193ebb6e8b34e03c22eedfc0e98cb1314"
     },
     {
       "path": "design/da-book/manuscript/09-using-the-bestiary.md",
@@ -1879,7 +1879,7 @@
     },
     {
       "path": "design/da-book/manuscript/appendix-d-table-tools.md",
-      "sha256": "e449d84179e2b9384aa3626bb587ec765e39e94e57c0bbcdaedfd873cd6c5c81"
+      "sha256": "3586aed6a3aa281fcfe8d58e599bf4504787591443a5738bbcf44b6bee61d394"
     },
     {
       "path": "design/development.md",
@@ -1955,7 +1955,7 @@
     },
     {
       "path": "design/disciplines/spellcraft.md",
-      "sha256": "0389e2d97c5b77b3ce95bfba9a4e47eb19d31af72653f6c526da53820c76f9d9"
+      "sha256": "e771ad80b1a17b22908e8e033ef64f6a55d423ac96c8f068fbd8cd9b204a4c0b"
     },
     {
       "path": "design/disciplines/subterfuge.md",
@@ -2879,7 +2879,7 @@
     },
     {
       "path": "design/player-book/manuscript/01-welcome.md",
-      "sha256": "3ca4e7eb79a2ba0b013549fd643d4a31df024e71ad4c79c806adb07dfd50337c"
+      "sha256": "1ba0b1a7cfa8b33a9d4c9a8001a45691b624456b57c0b7bde60de813e96ac137"
     },
     {
       "path": "design/player-book/manuscript/02-creation.md",
@@ -2887,7 +2887,7 @@
     },
     {
       "path": "design/player-book/manuscript/02a-starting-sp.md",
-      "sha256": "bef35581cc9a471b641a2b633135fd9ae3fb887cdf6a17d787234665a1c12a3d"
+      "sha256": "1e124055ecde5638d64d86de7c216ad03fddc0c8d2a9df918b2b2203f2b7fd45"
     },
     {
       "path": "design/player-book/manuscript/05-disciplines.md",
@@ -2895,15 +2895,15 @@
     },
     {
       "path": "design/player-book/manuscript/06-playing.md",
-      "sha256": "5cfc04334da9f3a2cf147bfcf2421c3fdcc3cf2d41068f253e987d8da5d9f5bc"
+      "sha256": "cffe61db42a55ee77a64a92d57351bcbd4cc50b5285d756d1c0a426d2eec1a95"
     },
     {
       "path": "design/player-book/manuscript/07-adventure.md",
-      "sha256": "ba1871f02ebedebe638a24585f0e0eee4d08e9ab5e690ed2a9694745b8e6af34"
+      "sha256": "8fb519c34509358831cca6583e9da905ed362405e1930228cca09e9e18ebf7bd"
     },
     {
       "path": "design/player-book/manuscript/08-recovery.md",
-      "sha256": "837163cdb57eda7030764468dcee06a35ce1efb6bfeefccfe81be5010d65f756"
+      "sha256": "0dce803169f96d3ebbd0471e75adc4d2c40c5951c44d6f6c196f52668bd85f3c"
     },
     {
       "path": "design/player-book/manuscript/09-abilities.md",
@@ -2919,7 +2919,7 @@
     },
     {
       "path": "design/player-book/manuscript/14-reference.md",
-      "sha256": "8159595a25029d00ac2d7d6034b58a1f378713037a420426d3f7e93c4ba31ee5"
+      "sha256": "6e53a04d4247497cc396ed9668e533c4c394900274b18f0091dd336b6adfb8f6"
     },
     {
       "path": "design/player-book/manuscript/intro-ancestry.md",
@@ -3015,7 +3015,7 @@
     },
     {
       "path": "design/rules/recovery.md",
-      "sha256": "d4b83026cbac5eb76679c03819289aff5bcf7ea64bc4d6049b1cf0c09f6a63be"
+      "sha256": "6601f40c9672400c1b5ae9912d2bb03667a9dd4abf0d626e078ab7ea9faffeee"
     },
     {
       "path": "design/rules/session-resolution.md",

@@ -131,7 +131,7 @@ try{
  await app.getByRole('button',{name:'Edit Ordinary Melee Weapon',exact:true}).click();
  const equipmentEditor=page.locator('.hol-equipment-editor');
  await equipmentEditor.getByLabel('Name',{exact:true}).fill('Bridgekeeper blade');
- await equipmentEditor.getByRole('button',{name:'Save changes',exact:true}).click();
+ await page.locator('.application.hol-equipment').getByRole('button',{name:'Save changes',exact:true}).click();
  await page.evaluate(async()=>{const editor=[...foundry.applications.instances.values()].find(app=>app.document instanceof Item && app.rendered);await editor?.close();});
  await page.evaluate(async id=>{await game.actors.get(id).sheet.controller.settle();},id);
  assert(await page.evaluate(id=>game.actors.get(id).items.some(item=>item.name==='Bridgekeeper blade' && item.system.catalogId==='item-ordinary-melee-weapon'),id));

@@ -10,8 +10,8 @@ import { nativeItemForWorkshopInstance } from '../rules/native-item-identity.mjs
 import { setRangedWeaponAmmunition } from '../services/ranged-ammunition.mjs';
 import { consumableTracking,tracksConsumable } from '../services/consumables.mjs';
 import { lowerOwnedSupply } from '../services/inventory.mjs';
-import { viewPortrait } from './portrait.mjs';
-import { updateOwnedDocument } from '../services/documents.mjs';
+import { requestRest } from '../services/recovery.mjs';
+import { bindPortraitControls,savePortrait,viewPortrait } from './portrait.mjs';
 import { loadWorkshopCatalogs } from '../services/catalog.mjs';
 import { newCreationDraft } from '../rules/creation.mjs';
 import { rollCard, resourceCard } from '../rules/chat-cards.mjs';
@@ -26,7 +26,6 @@ import { writePortableCharacter } from '../rules/portable-character.mjs';
 import { loadNativeWorkshopState } from '../services/native-workshop-state.mjs';
 import {saveNativeWorkshopState,saveNativeWorkshopIdentity,commitNativeWorkshopCharacter,claimNativeWorkshopOperation,updateNativeWorkshopOperation,completeNativeWorkshopOperation,interruptNativeWorkshopOperation,nativeWorkshopRoll} from '../services/native-workshop-coordinator.mjs';
 const ID='heroes-of-legend';
-const TOKENIZER_ID='vtta-tokenizer';
 const {HandlebarsApplicationMixin}=foundry.applications.api;
 
 /** Native document shell; the published Workshop owns the rendered controls. */
@@ -34,7 +33,7 @@ export class WorkshopCharacterSheet extends HandlebarsApplicationMixin(foundry.a
   static DEFAULT_OPTIONS={
     classes:[ID,'hol-workshop-character'],position:{width:780,height:780},
     window:{resizable:true},form:{submitOnChange:false,closeOnSubmit:false},
-    actions:{recreateWorkshop:WorkshopCharacterSheet.recreateWorkshop},
+    actions:{recreateWorkshop:WorkshopCharacterSheet.recreateWorkshop,viewPortrait},
   };
   static PARTS={main:{template:'systems/heroes-of-legend/templates/workshop-character.hbs'}};
   async _onDropItem(event,item) {
@@ -69,6 +68,7 @@ export class WorkshopCharacterSheet extends HandlebarsApplicationMixin(foundry.a
     context.legacy=!current && !draft && !empty;
     context.workshopReady=Boolean(current || draft || (empty && context.canCreate));
     context.actorName=actor.name;
+    context.portraitUrl=actor.img;
     return context;
   }
   async loadSheetState() {
@@ -91,9 +91,9 @@ export class WorkshopCharacterSheet extends HandlebarsApplicationMixin(foundry.a
     await super._onRender(context,options);
     const target=this.element.querySelector('[data-workshop-mount]');
     if(!target || this.mounting) return;
+    this.bindWorkshopPortrait(target.querySelector?.('[data-portrait-image]'));
     if(this.controller) {
       this.host.readOnly=!this.isEditable || !this.actor.testUserPermission(game.user,'OWNER');
-      this.host.portraitUrl=this.actor.img;
       if(this.writing) {this.refreshAfterWrite=true;return;}
       if(!this.writing) {
         const saved=await this.loadSheetState();
@@ -135,7 +135,7 @@ export class WorkshopCharacterSheet extends HandlebarsApplicationMixin(foundry.a
         itemActions:item=>torchItemActions(this.actor,item),
         readOnly:!this.isEditable || !this.actor.testUserPermission(game.user,'OWNER'),
         committed:Boolean(this.actor.getFlag(ID,'nativeWorkshop')?.portable),
-        portraitUrl:this.actor.img,
+        nativePortrait:true,
         getAttributeBase:key=>this.actor.system.attributes[key].base,
         getEquipmentBonuses:()=>equipmentBonuses(this.actor.items),
         getAttributes:attributes=>Object.fromEntries(Object.entries(attributes).map(([key,value])=>[key,equipmentAttributeValue(this.actor.system.attributes[key].base,this.actor.items,key)])),
@@ -144,6 +144,13 @@ export class WorkshopCharacterSheet extends HandlebarsApplicationMixin(foundry.a
         onChange:(saved,basis)=>this.saveState(saved,basis),
         onCommit:(portable,view)=>this.commitState(portable,view),
         onAction:async event=>{
+          if(event.action==='apply-workshop-rest') {
+            this.assertOwner();
+            await this.controller.flush();
+            await requestRest(this.actor,event.rest);
+            await this.render({force:true});
+            return true;
+          }
           if (event.action === 'assign-ammunition') {
             this.assertOwner();await this.controller.flush();
             await setRangedWeaponAmmunition(this.actor, event.dataset.instance, event.dataset.ammunition);
@@ -239,10 +246,7 @@ export class WorkshopCharacterSheet extends HandlebarsApplicationMixin(foundry.a
             this.assertOwner();await requestTorchToggle(this.actor,event.dataset.instance);return true;
           }
           if(event.action==='edit-hero-name') {await this.editWorkshopName(event.state);return true;}
-          if(event.action!=='native-portrait') return false;
-          if(this.host.readOnly) viewPortrait.call(this);
-          else await this.editWorkshopPortrait(event.target,event.shiftKey);
-          return true;
+          return false;
         },
         postUse:async id=>{
           this.assertOwner();
@@ -344,33 +348,23 @@ export class WorkshopCharacterSheet extends HandlebarsApplicationMixin(foundry.a
       ui.notifications.info('Hero saved to the native Actor.');
     } finally {this.finishWrite();}
   }
-  async editWorkshopPortrait(image,shiftKey=false) {
-    this.assertOwner();
-    // Tokenizer's avatar listener cannot query into the Workshop's shadow root.
-    const tokenizer=game.modules?.get(TOKENIZER_ID);
-    if(tokenizer?.active && tokenizer.api?.tokenizeDoc && (game.user.can('FILES_UPLOAD') || !game.settings.get(TOKENIZER_ID,'disable-player'))) {
-      const preference=game.settings.get(TOKENIZER_ID,'disable-avatar-click-user');
-      const defaultPicker=preference==='global' ? game.settings.get(TOKENIZER_ID,'disable-avatar-click') : preference==='default';
-      if(defaultPicker===shiftKey) {
-        await tokenizer.api.tokenizeDoc(this.actor);
-        return;
-      }
-    }
+  bindWorkshopPortrait(image) {
+    if(!image) return;
+    const editable=this.isEditable && this.actor.testUserPermission(game.user,'OWNER');
+    image.dataset.action=editable ? 'editImage' : 'viewPortrait';
+    if(editable) image.dataset.edit='img';else delete image.dataset.edit;
+    image.alt=editable ? 'Edit character portrait' : 'View character portrait';
+    if(image.getAttribute('src')!==this.actor.img) image.setAttribute('src',this.actor.img);
+    if(this.boundPortrait===image) return;
     this.portraitObserver?.disconnect();
-    const observer=new MutationObserver(()=>{
-      observer.disconnect();
-      const img=image.getAttribute('src');
-      if(img && img!==this.actor.img) updateOwnedDocument(this.actor,{img}).catch(error=>ui.notifications.error(error.message));
+    this.boundPortrait=image;
+    bindPortraitControls(this);
+    // The stock picker changes the IMG; the Workshop does not submit a sheet form.
+    this.portraitObserver=new MutationObserver(()=>{
+      if(image.dataset.edit && image.getAttribute('src')!==this.actor.img)
+        savePortrait.call(this).catch(error=>ui.notifications.error(error.message));
     });
-    this.portraitObserver=observer;
-    observer.observe(image,{attributes:true,attributeFilter:['src']});
-    try {
-      // The shadow DOM retargets clicks before Foundry can see the IMG.
-      await this.options.actions.editImage.call(this,null,image);
-    } catch(error) {
-      observer.disconnect();
-      throw error;
-    }
+    this.portraitObserver.observe(image,{attributes:true,attributeFilter:['src']});
   }
   forgetRoll(id) {
     if(this.preparedRollId===id)this.preparedRollId=undefined;
@@ -475,6 +469,7 @@ export class WorkshopCharacterSheet extends HandlebarsApplicationMixin(foundry.a
     // Foundry serializes this hook after queued Actor renders. A render before
     // teardown can still use the current controller and its live frame.
     this.portraitObserver?.disconnect();
+    this.boundPortrait=null;
     ++this.mountGeneration;this.controller?.dispose();this.controller=null;
     this.refreshAfterWrite=false;
   }

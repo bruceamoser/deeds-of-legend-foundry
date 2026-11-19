@@ -1,6 +1,10 @@
 <section class="hol-native-workshop">
   {{#if workshopReady}}
-    <div data-workshop-mount class="hol-workshop-mount" aria-label="Character Workshop"></div>
+    <div data-workshop-mount class="hol-workshop-mount" aria-label="Character Workshop">
+      <img slot="actor-portrait" class="hero-mark" src="{{portraitUrl}}" data-portrait-image role="button" tabindex="0"
+        {{#if canCreate}}data-action="editImage" data-edit="img" alt="Edit character portrait"
+        {{else}}data-action="viewPortrait" alt="View character portrait"{{/if}}>
+    </div>
   {{else}}
     <div class="hol-workshop-entry">
       <h2>{{actorName}}</h2>

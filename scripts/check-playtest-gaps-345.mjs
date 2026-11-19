@@ -178,16 +178,14 @@ try {
     await input.press("Enter");
     await controller();
   }
-  await sheet.getByRole("button", { name: "Recovery", exact: true }).click();
-  const recovery = sheet.getByRole("dialog", { name: "Recovery", exact: true });
-  await expect(recovery.getByRole("heading", { name: "Brief Rest", exact: true })).toBeVisible();
-  await expect(recovery.getByRole("heading", { name: "Night’s Rest", exact: true })).toBeVisible();
-  await expect(recovery.getByRole("button", { name: "Begin first aid", exact: true })).toBeVisible();
-  await recovery.getByRole("button", { name: "Complete Night’s Rest", exact: true }).click();
+  await sheet.getByRole("button", { name: "Brief Rest", exact: true }).click();
+  const recovery = sheet.getByRole("dialog", { name: "Brief Rest", exact: true });
+  await expect(recovery.getByRole("checkbox", { name: "First Aid", exact: true })).toBeVisible();
+  await recovery.getByRole("button", { name: "Close", exact: true }).click();
+  await sheet.getByRole("button", { name: "Night’s Rest", exact: true }).click();
   await controller();
   await expect(hp).toHaveValue(full[0]);
   await expect(sp).toHaveValue(full[1]);
-  await recovery.getByRole("button", { name: "Close", exact: true }).click();
   await expect(recovery).toHaveCount(0);
   await expect(sheet).toBeVisible();
   pass("#23 Native Recovery uses Brief Rest and Night’s Rest, and a completed Night’s Rest restores HP/SP.");

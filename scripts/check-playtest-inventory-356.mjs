@@ -125,7 +125,7 @@ try {
     await expect(nameField).toHaveValue(name);
     const renamed = `${name} edited`;
     await nameField.fill(renamed);
-    await editor.getByRole("button", { name: "Save changes", exact: true }).click();
+    await player.locator(".application.hol-equipment").getByRole("button", { name: "Save changes", exact: true }).click();
     await expect(rows(renamed)).toHaveCount(1);
     assert.equal((await state()).items[renamed], embeddedId);
     await checkDrop(renamed);
