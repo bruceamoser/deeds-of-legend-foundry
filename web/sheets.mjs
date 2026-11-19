@@ -426,7 +426,7 @@ function itemMain(r) {
     ${body}${learnedSpells(r)}${ref?.rules?.notes?.map((n) => `<p>${esc(typeof n === "string" ? n : n.text)}</p>`).join("") ?? ""}
     </div></article><aside>
     ${properties ? section("properties", "Properties", properties) : ""}
-    ${die !== null && die !== undefined ? section("supply", "Supply", `<div class="supply-current">${die ? `d${die}` : "Empty"}</div>${die ? btn(icon("die") + " Use supply", "supply", "", "small") : ""}${btn("Resupply", "resupply", "", "small")}`) : ""}
+    ${die !== null && die !== undefined ? section("supply", "Supply", `<div class="supply-current">${die ? `d${die}` : "Empty"}</div>${r.inventoryDie > 0 ? row("Maximum supply die", `d${r.inventoryDie}`) : ""}${die ? btn(icon("die") + " Use supply", "supply", "", "small") : ""}${btn("Resupply", "resupply", "", "small")}`) : ""}
     ${r.requires?.length ? section("requirements", "Learning requirements", r.requires.map((id) => row("Learn", choices.find((entry) => entry.id === id)?.name ?? id)).join("")) : ""}
     </aside></div>`;
 }
@@ -668,7 +668,7 @@ async function action(t) {
       return popup("Resupply", `<p>${esc(r.name)} is at the maximum d${r.inventoryDie}.</p>`);
     return popup(
       "Resupply",
-      `<label>Steps<select id="refill-steps" aria-label="Resupply steps">${[1, 2, 3, 4, 5, 6].map((n) => `<option value="${n}">${n}</option>`).join("")}</select></label>${btn("Resupply", "confirm-refill", "", "primary small")}`,
+      `<p>Maximum supply die: d${r.inventoryDie}.</p><label>Steps<select id="refill-steps" aria-label="Resupply steps">${[1, 2, 3, 4, 5, 6].map((n) => `<option value="${n}">${n}</option>`).join("")}</select></label>${btn("Resupply", "confirm-refill", "", "primary small")}`,
     );
   }
   if (a === "confirm-refill") {
@@ -692,7 +692,7 @@ async function action(t) {
     render();
     return popup(
       r.name,
-      `<p>d${die} → ${face} · ${result.after ? "d" + result.after : "Empty"}</p>`,
+      `<p>d${die} → ${face} · ${result.after ? "d" + result.after : "Empty"}</p><p>Maximum supply die: d${r.inventoryDie}.</p>`,
     );
   }
   if (a === "save") {

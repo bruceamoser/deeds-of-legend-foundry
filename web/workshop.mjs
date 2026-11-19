@@ -15,6 +15,7 @@ import { compatibleAmmunition, ORDINARY_RANGED_WEAPON, WATER_FLASK } from "./rul
 import { basicAttackDamageProfile } from "./rules/weapon-training.mjs";
 import { missingStartingProvisions, provisionSalePrice } from "./rules/training-equipment.mjs";
 import { abilityRollConfiguration } from "./rules/ability-roll.mjs";
+import { workshopRollOutcome } from "./rules/workshop-outcomes.mjs";
 import { signatureSpellCost, isForgeRitual, isForgeModifier, forgeCastOptions, forgeCastPayment, spellActionLabel } from "./rules/forge-casting.mjs";
 import { forgeEligibility, refundForgePurchases, removeDisconnectedForgePurchases } from "./rules/forge.mjs";
 import { currentResourceInput } from "./rules/resource-input.mjs";
@@ -55,6 +56,7 @@ import {
   emptyLevelDraft,
   mainActions,
   actionTiming,
+  actionTimingLabel,
   craftingActions,
 } from "./rules/workshop-character.mjs";
 import { rollPlan, classifyRoll } from "./rules/roll.mjs";
@@ -301,6 +303,8 @@ function persist() {
 }
 const diceIcon =
   '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="8" cy="8" r="1.5" fill="currentColor"/><circle cx="16" cy="16" r="1.5" fill="currentColor"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg>';
+const torchIcon = (lit) =>
+  `<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3c1 4 6 6 6 11a6 6 0 0 1-12 0c0-3 2-5 3-6 0 2 1 3 2 3 1-2 2-4 1-8Z"/>${lit ? '<path d="m3 3 18 18"/>' : ""}</svg>`;
 const skullIcon =
   '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 19H6v-4C0 10 5 2 12 2s12 8 6 13v4h-2v3H8zM12 18v4M9 18v4M15 18v4"/><circle cx="8" cy="11" r="2"/><circle cx="16" cy="11" r="2"/><path d="m12 13-1 3h2z"/></svg>';
 function rollButton(label, extra) {
@@ -550,7 +554,10 @@ async function castFromSheet(id, optionId = null) {
     draft.play = paid;
     persist();
     render();
-    if (automatic) await postPaidUse(id);
+    if (automatic) {
+      await postPaidUse(id);
+      if (host?.postUse && !sustainLimit(record)) return;
+    }
     popup(record.name, `${record.page ? spellProfile(record) : markdown(record.effect)}<p>${payment.cost} SP spent. Finish the printed casting time before resolving the effect.</p>${automatic && !sustainLimit(record) ? "" : `<div class="dialog-actions">${button(automatic ? "Complete Ritual" : "Roll when the Ritual ends", "finish-ritual", `data-id="${esc(id)}"`, "primary")}</div>`}`);
     return;
   }
@@ -614,7 +621,7 @@ function collapsible(
 }
 function itemUseButton(item) {
   const native=(host?.itemActions?.(item) ?? []).find(spec=>spec.action==='torch-toggle');
-  if(native) return button(esc(native.label),'native-item',`data-command="torch-toggle" data-instance="${esc(item.instanceId)}" aria-label="${esc(native.label)}" ${native.disabled || options.readOnly || host?.readOnly ? 'disabled' : ''} title="${esc(native.title ?? native.label)}"`,'small quiet');
+  if(native) return button(native.pendingCheck ? diceIcon : torchIcon(native.lit),'native-item',`data-command="torch-toggle" data-instance="${esc(item.instanceId)}" aria-label="${esc(native.label)}" ${native.disabled || options.readOnly || host?.readOnly ? 'disabled' : ''} title="${esc(native.title ? `${native.label} · ${native.title}` : native.label)}"`,'icon-button');
   return button(
     diceIcon,
     "use-supply-dialog",
@@ -630,13 +637,22 @@ function resupplyButton(item) {
     "icon-button",
   );
 }
-function inventorySupply(item, controls, showTorch = false) {
+function supplyMaximum(die) {
+  return Number.isSafeInteger(die) && die > 0 ? `<p><strong>Maximum supply die:</strong> d${die}.</p>` : "";
+}
+function inventorySupply(item, controls, inInventory = false) {
   const supply = Number.isInteger(item.inventoryDie);
-  const display = !tracksSupply(item) ? "Untracked" : item.inventoryDie ? `d${item.inventoryDie}` : supply ? "Empty" : "—";
+  const tracked = tracksSupply(item);
+  const display = !tracked ? "Untracked" : item.inventoryDie ? `d${item.inventoryDie}` : supply ? "Empty" : "—";
   if (!controls || !supply) return display;
-  const torch = (host?.itemActions?.(item) ?? []).some(spec => spec.action === "torch-toggle");
-  return display + (item.carried && item.quantity && (showTorch || !torch) && (item.inventoryDie || !tracksSupply(item)) ? itemUseButton(item) : "") +
-    (tracksSupply(item) ? resupplyButton(item) : "");
+  const torch = (host?.itemActions?.(item) ?? []).find(spec => spec.action === "torch-toggle");
+  const canUse = item.carried && item.quantity && (item.inventoryDie || !tracked || torch?.lit || torch?.pendingCheck);
+  const use = canUse && (!inInventory || !torch) ? itemUseButton(item) : "";
+  const resupply = tracked ? resupplyButton(item) : "";
+  const deplete = inInventory && tracked && item.quantity > 0 && item.inventoryDie > 0 && !(options.readOnly || host?.readOnly)
+    ? button("−", "deplete-supply-dialog", `data-instance="${esc(item.instanceId)}" aria-label="Deplete ${esc(itemName(item))}" title="Deplete supply"`, "icon-button")
+    : "";
+  return `<span class="supply-readout"><span>${display}</span>${use || resupply || deplete ? `<span class="supply-controls">${use}${resupply}${deplete}</span>` : ""}</span>`;
 }
 function supplyRows() {
   return (
@@ -647,7 +663,7 @@ function supplyRows() {
       )
       .map(
         (i) =>
-          `<div class="stat-row"><span>${esc(itemName(i))}</span><strong>${inventorySupply(i, true, true)}</strong></div>`,
+          `<div class="stat-row supply-row"><span>${esc(itemName(i))}</span><strong>${inventorySupply(i, true)}</strong></div>`,
       )
       .join("") || "<small>No supplies carried.</small>"
   );
@@ -710,7 +726,7 @@ function actionTable(entries, customize = false) {
   const timing = tab !== "Main";
   return `<div class="table-wrap"><table class="action-table compact-actions"><colgroup><col style="width:${timing ? 34 : 40}%">${timing ? '<col style="width:15%">' : ""}<col style="width:76px"><col><col style="width:28px"></colgroup><thead><tr><th>Ability / spell</th>${timing?"<th>Timing</th>":""}<th>Roll / use</th><th>Outcome / target</th><th><span class="sr-only">Details</span></th></tr></thead><tbody>${entries.filter(e=>e.visible||customize).map(e=>{
     const r=e.record, open=expandedActions.has(r.id), full=compactEffect(r);
-    return `<tr data-action-row="${esc(r.id)}"><td><div class="action-name">${e.sourceItems?.length ? e.sourceItems.map(item=>favorite("items",item.instanceId)).join("") : favorite("abilities",r.id)}${button(esc(e.inventoryInstance ? itemName(e.inventoryInstance) : actionLabel(r)),"inline-action",`data-id="${esc(r.id)}" aria-expanded="${open}"`,"table-link")}${e.sourceItems?.length && !e.inventoryInstance ? `<small class="item-source">${esc(e.sourceItems.map(itemName).join(", "))}</small>` : ""}</div></td>${timing?`<td class="timing-cell">${esc(spellActionLabel(r) ?? actionTiming(r).join(" / "))}</td>`:""}<td class="roll-cell">${actionUse(e)}</td><td class="effect-cell"><span class="brief" title="${esc(full)}">${esc(full)}</span></td><td class="expand-cell">${button(open?"⌄":"›","inline-action",`data-id="${esc(r.id)}" aria-label="${open?"Collapse":"Expand"} ${esc(r.name)}" aria-expanded="${open}"`,"expand-action")}</td></tr>${open?`<tr class="inline-action-detail" data-detail-id="${esc(r.id)}"><td colspan="${timing?5:4}">${e.sourceItems?.length ? `<p><strong>Equipment:</strong> ${esc(e.sourceItems.map(item=>itemName(item)).join(", "))}</p>` : ""}${inlineRules(r)}</td></tr>`:""}`;
+    return `<tr data-action-row="${esc(r.id)}"><td><div class="action-name">${e.sourceItems?.length ? e.sourceItems.map(item=>favorite("items",item.instanceId)).join("") : favorite("abilities",r.id)}${button(esc(e.inventoryInstance ? itemName(e.inventoryInstance) : actionLabel(r)),"inline-action",`data-id="${esc(r.id)}" aria-expanded="${open}"`,"table-link")}${e.sourceItems?.length && !e.inventoryInstance ? `<small class="item-source">${esc(e.sourceItems.map(itemName).join(", "))}</small>` : ""}</div></td>${timing?`<td class="timing-cell">${esc(actionTimingLabel(r))}</td>`:""}<td class="roll-cell">${actionUse(e)}</td><td class="effect-cell"><span class="brief" title="${esc(full)}">${esc(full)}</span></td><td class="expand-cell">${button(open?"⌄":"›","inline-action",`data-id="${esc(r.id)}" aria-label="${open?"Collapse":"Expand"} ${esc(r.name)}" aria-expanded="${open}"`,"expand-action")}</td></tr>${open?`<tr class="inline-action-detail" data-detail-id="${esc(r.id)}"><td colspan="${timing?5:4}">${e.sourceItems?.length ? `<p><strong>Equipment:</strong> ${esc(e.sourceItems.map(item=>itemName(item)).join(", "))}</p>` : ""}${inlineRules(r)}</td></tr>`:""}`;
   }).join("")}</tbody></table></div>`;
 }
 function favoriteEntries() {
@@ -722,7 +738,7 @@ function favoriteEntries() {
 function editFavorites() {
   const records=[...knownCards(),...catalogs.choices.filter(r=>r.universal),...preview.state.learning.spells];
   const unique=[...new Map(records.map(r=>[r.id,r])).values()];
-  popup("Choose favorites",`<div data-favorites-picker><label>Search favorites<input type="search" id="favorite-search" placeholder="Abilities, basic actions, and spells…"></label><div class="favorite-choices">${unique.map(r=>`<div class="favorite-choice" data-search="${esc((r.name+" "+actionTiming(r).join(" ")).toLowerCase())}">${favorite("abilities",r.id)}<span>${esc(actionLabel(r))}</span><small>${esc(spellActionLabel(r) ?? actionTiming(r).join(" / "))}</small></div>`).join("")}</div></div>`);
+  popup("Choose favorites",`<div data-favorites-picker><label>Search favorites<input type="search" id="favorite-search" placeholder="Abilities, basic actions, and spells…"></label><div class="favorite-choices">${unique.map(r=>`<div class="favorite-choice" data-search="${esc((r.name+" "+actionTiming(r).join(" ")).toLowerCase())}">${favorite("abilities",r.id)}<span>${esc(actionLabel(r))}</span><small>${esc(actionTimingLabel(r))}</small></div>`).join("")}</div></div>`);
 }
 
 function passiveTable(entries) {
@@ -738,14 +754,7 @@ function passiveTable(entries) {
 }
 function mainPanel() {
   const actions = mainActions(preview, draft, catalogs);
-  const groups = ["Main Action", "Maneuver", "Reaction", "Movement", "Other"];
-  const groupKeys = [
-    "main-action",
-    "maneuver",
-    "reaction",
-    "movement",
-    "other",
-  ];
+  const groups = ["Main Action", "Maneuver", "Reaction", "Movement"];
   const favorites = favoriteEntries();
   const left = `<div class="library-heading"><h2>Favorites</h2>${button("Edit favorites", "edit-favorites", "", "small")}</div>` +
     (favorites.length ? [...groups, "Passive"].map(group => {
@@ -881,7 +890,7 @@ function inventoryTable(controls = false) {
     const drop = button("Drop", "drop-item", `data-instance="${id}" aria-label="Drop ${label}"`, "quiet small");
     const sell = sale ? button(`Sell · ${sale}c`, "sell-provision", `data-instance="${id}" aria-label="Sell ${label} for ${sale} coin${sale === 1 ? "" : "s"}"`, "quiet small") : "";
     const remove = !controls ? purchaseRemoval(item) : host?.canDeleteItem?.(item) === false ? "" : sell + drop;
-    return `<tr data-instance="${id}" class="${item.carried ? "" : "stored-item"}"><td>${nameCell}</td><td>${quantity}</td><td>${item.bulk}</td><td>${inventorySupply(item, controls)}</td>${loadout}<td>${remove}</td></tr>`;
+    return `<tr data-instance="${id}" class="${item.carried ? "" : "stored-item"}"><td>${nameCell}</td><td>${quantity}</td><td>${item.bulk}</td><td>${inventorySupply(item, controls, true)}</td>${loadout}<td>${remove}</td></tr>`;
   });
   return `<div class="table-wrap"><table class="inventory-table"><thead><tr><th>Item</th><th>Qty</th><th>Bulk</th><th>Supply</th>${controls ? '<th>Held</th><th>Worn</th><th>Carried</th><th aria-label="Remove or sell"></th>' : '<th>Source</th><th aria-label="Remove purchase"></th>'}</tr></thead><tbody>${rows.join("")}</tbody></table></div>`;
 }
@@ -1044,7 +1053,7 @@ function classDisciplineChoice(id) {
 function creationSignature(id) {
   const record = catalogs.choices.find(record => record.id === id);
   const { rules, flavor } = record.reference;
-  const timing = join(actionTiming(record));
+  const timing = actionTimingLabel(record);
   const attribute = attributeFor(record);
   const use = attribute ? `${creatorAttribute(attribute)} ${creatorModifier(draft.attributes[attribute])}` : "No roll";
   const cost = castCost(record);
@@ -1634,11 +1643,24 @@ function debtRecoveryDialog() {
 function resupplyDialog(instance) {
   const item = preview.inventory.items.find(i => i.instanceId === instance);
   if (!item) throw new Error("This supply is no longer in inventory.");
-  const maximum = get(item.catalogId).inventoryDie;
+  const maximum = get(item.catalogId)?.inventoryDie;
   const atMaximum = item.inventoryDie === maximum;
   const available = atMaximum ? `<p>${esc(itemName(item))} is at the maximum d${maximum}.</p>`
     : `<p>Current supply: ${item.inventoryDie ? `d${item.inventoryDie}` : "Empty"}. Replenish from accessible stock. Each step restores one die size, up to d${maximum}.</p><label>Resupply steps<select id="resupply-steps" aria-label="Resupply steps">${[1, 2, 3, 4, 5, 6].map(n => option(n, `${n} step${n === 1 ? "" : "s"}`, n === 1)).join("")}</select></label><div class="dialog-actions">${button("Resupply", "confirm-resupply", `data-instance="${esc(instance)}"`, "primary")}</div>`;
   popup(`Resupply ${itemName(item)}`, available);
+}
+
+function supplyToDeplete(instance) {
+  const item = preview.inventory.items.find(i => i.instanceId === instance);
+  if (!item || !tracksSupply(item) || !item.quantity || !item.inventoryDie)
+    throw new Error("Choose an owned supply with a die remaining.");
+  return item;
+}
+
+function depleteSupplyDialog(instance) {
+  const item = supplyToDeplete(instance);
+  popup(`Deplete ${itemName(item)}?`,
+    `<p>Set this stack’s current supply from d${item.inventoryDie} to Empty. The item stays in your inventory and can be resupplied.</p>${supplyMaximum(get(item.catalogId)?.inventoryDie)}<div class="dialog-actions">${button("Cancel", "close-reference")}${button("Deplete supply", "confirm-deplete-supply", `data-instance="${esc(instance)}"`, "primary")}</div>`);
 }
 
 function restoreSupply(items, steps) {
@@ -1680,7 +1702,7 @@ function supplyDialog(instance) {
   supplyInstance = instance ?? null;
   popup(
     item ? itemName(item) : "Use a healing potion",
-    `${item ? !tracksSupply(item) ? `<p>Supply tracking is off. Use this owned supply without rolling or depletion.</p>` : `<p>Use this supply, then check d${item.inventoryDie}. A 1 steps it down; the final use still works.</p>` : potions.length ? `<label>Potion<select id="potion-instance" aria-label="Healing potion">${potions.map((i) => option(i.instanceId, `${itemName(i)} · d${i.inventoryDie}`, false)).join("")}</select></label><p>${potions.length && !tracksSupply(potions[0]) ? "Supply tracking is off. Healing is fixed by the bottle; no supply roll or depletion." : "Healing is fixed by the bottle; roll its supply die after use."}</p>` : "<p>No carried healing potion with supply remaining.</p>"}<div id="supply-roll-result" role="status" aria-live="polite"></div><div class="dialog-actions">${button((item ?? potions[0]) && !tracksSupply(item ?? potions[0]) ? "Use supply" : "Use & roll supply", "confirm-supply", item || potions.length ? "" : "disabled", "primary")}</div>`,
+    `${item ? supplyMaximum(get(item.catalogId)?.inventoryDie) + (!tracksSupply(item) ? `<p>Supply tracking is off. Use this owned supply without rolling or depletion.</p>` : `<p>Use this supply, then check d${item.inventoryDie}. A 1 steps it down; the final use still works.</p>`) : potions.length ? `<label>Potion<select id="potion-instance" aria-label="Healing potion">${potions.map((i) => option(i.instanceId, `${itemName(i)} · ${tracksSupply(i) ? `d${i.inventoryDie}` : "Untracked"} · maximum d${get(i.catalogId)?.inventoryDie}`, false)).join("")}</select></label><p>${potions.length && !tracksSupply(potions[0]) ? "Supply tracking is off. Healing is fixed by the bottle; no supply roll or depletion." : "Healing is fixed by the bottle; roll its supply die after use."}</p>` : "<p>No carried healing potion with supply remaining.</p>"}<div id="supply-roll-result" role="status" aria-live="polite"></div><div class="dialog-actions">${button((item ?? potions[0]) && !tracksSupply(item ?? potions[0]) ? "Use supply" : "Use & roll supply", "confirm-supply", item || potions.length ? "" : "disabled", "primary")}</div>`,
   );
 }
 async function useSupply() {
@@ -1855,11 +1877,14 @@ async function resolveSheetRoll() {
   }
   const harvestIds = [...root.querySelectorAll("[data-harvest-supply]")].map(select => select.value).filter(Boolean);
   const result = await displayDice(preview.attributes[key], undefined, activeRoll.death);
-  if (activeRoll.id === wildHarvestId && harvestIds.length) {
+  const improvements = preview.state.learning.improvements.get(activeRoll.id) ?? [];
+  const outcome = workshopRollOutcome(get(activeRoll.id), improvements, result.tier);
+  if (outcome.text.length)
+    $("#recipe-roll-result").insertAdjacentHTML("beforeend", `<p><strong>${outcome.text.map(esc).join(" · ")}</strong></p>`);
+  if (outcome.supplySteps !== undefined && harvestIds.length) {
     const supplies = harvestIds.map(id => preview.inventory.items.find(item => item.instanceId === id && item.carried && item.quantity > 0));
     if (supplies.some(item => !item)) throw new Error("A chosen supply changed during the harvest. Resupply it from the rolled result.");
-    const steps = ["weak", "standard", "strong"].indexOf(result.tier) + (preview.state.learned.includes("wilderness:provisioning:2") ? 2 : 1);
-    const restored = restoreSupply(supplies, steps);
+    const restored = restoreSupply(supplies, outcome.supplySteps);
     if (restored.some(({before, after}) => before !== after)) persist();
     const summary = restored.map(({item, before, after}) => before === after
       ? `${itemName(item)} is at the maximum d${after}`
@@ -2330,6 +2355,7 @@ function showReference(id) {
       r.referenceMarkdown ?? references.records[id]?.markdown ??
         "This reference is unavailable in this build.",
     );
+  body = supplyMaximum(r.inventoryDie) + body;
   body += learnedImprovements(id);
   if (id === "ability-sustain-spell") body += sustainPanel();
   if (r.spellIds?.length)
@@ -2385,7 +2411,7 @@ async function action(target) {
     }
   }
   if (host?.onAction && await host.onAction({action:a,id:target.dataset.id,editing:edit,mode,dataset:{...target.dataset},
-    ...(a === "native-portrait" ? { target } : {}),
+    ...(["native-portrait", "confirm-deplete-supply"].includes(a) ? { target } : {}),
     state:JSON.parse(writePortableCharacter(draft,catalogs)),preview,record:get(target.dataset.id),
     activeRoll: typeof activeRoll === 'undefined' ? undefined : activeRoll,
     values:Object.fromEntries([...root.querySelectorAll('#reference input,#reference select')].map(node=>[node.id || node.dataset.rollAbility, node.type==='checkbox' ? node.checked : node.value]))})) return;
@@ -2393,8 +2419,11 @@ async function action(target) {
     const id = target.dataset.id;
     if (target.dataset.useAbility === "true") {
       if (options.readOnly || host?.readOnly) return;
-      validateWorkshopAbilityUse(get(id), preview.inventory.items);
+      const record = get(id);
+      validateWorkshopAbilityUse(record, preview.inventory.items);
       await host?.postUse?.(id);
+      if (!host?.postUse) notice(`Used ${record.name}.`);
+      return;
     }
     expandedActions.has(id) ? expandedActions.delete(id) : expandedActions.add(id);
     render();
@@ -2453,6 +2482,19 @@ async function action(target) {
     return recoveryDialog();
   }
   if (a === "resupply-dialog") return resupplyDialog(target.dataset.instance);
+  if (a === "deplete-supply-dialog") return depleteSupplyDialog(target.dataset.instance);
+  if (a === "confirm-deplete-supply") {
+    const item = supplyToDeplete(target.dataset.instance);
+    const inventory = playDraft().inventory;
+    inventory.overrides ??= {};
+    inventory.overrides[item.instanceId] = { ...inventory.overrides[item.instanceId], inventoryDie: 0 };
+    persist();
+    if (host) await pendingSave;
+    $("#reference").close();
+    render();
+    notice(`${itemName(item)} is empty.`);
+    return;
+  }
   if (a === "confirm-resupply") {
     const item = preview.inventory.items.find(i => i.instanceId === target.dataset.instance);
     if (!item) throw new Error("This supply is no longer in inventory.");
@@ -2596,7 +2638,14 @@ async function action(target) {
   if (a === "death-roll") return openSheetRoll({ death: true });
   if (a === "roll-sheet") return rollSheetDice();
   if (a === "use-modifier") return useModifier(target.dataset.id);
-  if (a === "cast-spell") return castFromSheet(target.dataset.id, target.dataset.payment);
+  if (a === "cast-spell") {
+    target.disabled = true;
+    try {
+      return await castFromSheet(target.dataset.id, target.dataset.payment);
+    } finally {
+      target.disabled = false;
+    }
+  }
   if (a === "finish-ritual") {
     if (sustainUnavailable()) throw new Error("Regain consciousness before completing the Ritual.");
     const record = get(target.dataset.id);

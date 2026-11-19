@@ -5,9 +5,9 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Timed work</dd></div><div><dt>Attribute</dt><dd>Guile</dd></div></dl><p>30 minutes · Guile. Conceal a completed camp and its approach; add 1/2/3 progress to the DA’s concealment objective. Completion hides casual signs; direct search remains possible. You can also search water-bearing terrain for 1 hour, rolling Reason for 1/2/3 progress toward finding a concealed spring; completion reveals its location and visible hazards, not purification.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action · 30 minutes</dd></div><div><dt>Attribute</dt><dd>Guile</dd></div></dl><p>30 minutes · Guile. Conceal a completed camp and its approach; add 1/2/3 progress to the DA’s concealment objective. Completion hides casual signs; direct search remains possible. You can also search water-bearing terrain for 1 hour, rolling Reason for 1/2/3 progress toward finding a concealed spring; completion reveals its location and visible hazards, not purification.</p>",
     "activity": {
-      "action": "other",
+      "action": "main",
       "rollMode": "attribute",
       "attribute": "guile",
       "defenseAttribute": "agility"
@@ -28,7 +28,7 @@
         "nodeId": "wilderness:provisioning:4",
         "level": 3,
         "cost": 3,
-        "action": "Timed work",
+        "action": "Main Action · 30 minutes",
         "sp": null,
         "range": null,
         "duration": null,

@@ -60,6 +60,23 @@ try {
     const saved=[],actions=[],rolls=[],opened=[];
     const nativeHost={tracking:{food:false},onRoll:request=>{rolls.push(request);return Array(request.count).fill(4);},onChange:state=>saved.push(state),onAction:event=>{actions.push(event.action);if(event.action==='native-open-item')opened.push(event.id);return ['native-portrait','native-open-item'].includes(event.action);}};
     const a=await mountWorkshop(first,{initialState:initial,host:nativeHost});
+    first.style.width='780px';
+    const torchFits = [false,true].every(lit => {
+      const label = lit ? 'Extinguish torch' : 'Light torch';
+      nativeHost.itemActions = item => item.catalogId === 'item-lighting-bundle'
+        ? [{action:'torch-toggle',label,lit}] : [];
+      a.setState({...a.getState(),tab:'Main'});
+      const torch = first.shadowRoot.querySelector(`[data-collapse="supplies"] button[aria-label="${label}"]`);
+      const row = torch?.closest('.supply-row');
+      if (!row) return false;
+      const controls = row.querySelector('.supply-controls').getBoundingClientRect();
+      const toggle = torch.getBoundingClientRect();
+      const refill = row.querySelector('[data-action="resupply-dialog"]').getBoundingClientRect();
+      return toggle.width <= 24 && toggle.top === refill.top &&
+        controls.right <= row.getBoundingClientRect().right;
+    });
+    delete nativeHost.itemActions;
+    first.style.width='';
     const bHost={};const b=await mountWorkshop(second,{initialState:initial,host:bHost});
     const original=b.getState().character.draft.name;
     const state=a.getState();state.character.draft.name='Isolated hero';a.setState(state);
@@ -108,7 +125,7 @@ try {
     const fallbackAbility=Boolean(first.shadowRoot.querySelector('[data-native-item="custom-ability"]'));
     first.shadowRoot.querySelector('[data-native-item="custom-ability"] [data-action="native-open-item"]').click();await a.settle();
     bHost.readOnly=true;b.setState(b.getState());
-    const result={overrideTracked,originalBulk,burdenBulk,burdenSpeed,fallbackEquipment,fallbackAbility,noMisleadingDelete,opened,unknownRejected,renamed,noDepletion,untracked,supplyDialogClosed,readOnly:[...second.shadowRoot.querySelectorAll('#app input,#app textarea')].every(node=>node.disabled),rollCount:rolls.length,rollText,name:b.getState().character.draft.name,original,saved:saved.at(-1)?.character.draft.name,
+    const result={torchFits,overrideTracked,originalBulk,burdenBulk,burdenSpeed,fallbackEquipment,fallbackAbility,noMisleadingDelete,opened,unknownRejected,renamed,noDepletion,untracked,supplyDialogClosed,readOnly:[...second.shadowRoot.querySelectorAll('#app input,#app textarea')].every(node=>node.disabled),rollCount:rolls.length,rollText,name:b.getState().character.draft.name,original,saved:saved.at(-1)?.character.draft.name,
       storageUnchanged:snapshot===localStorage.getItem('hol.workshop.v1'),portrait:actions.includes('native-portrait'),
       nav:first.shadowRoot.querySelector('.site-header'),dialog:first.shadowRoot.querySelector('#reference')!==second.shadowRoot.querySelector('#reference')};
     bHost.readOnly=false;
@@ -123,6 +140,7 @@ try {
     a.dispose();b.dispose();return result;
   },wizard);
   assert.equal(result.castSp,result.startingSp-1);assert.equal(result.savedCastSp,result.startingSp-1);
+  assert(result.torchFits,"Both torch states fit with resupply on one row of the mounted sheet.");
   assert(result.overrideTracked);assert.equal(result.burdenBulk,result.originalBulk+40);assert.equal(result.burdenSpeed,0);assert(result.fallbackEquipment);assert(result.fallbackAbility);assert(result.noMisleadingDelete);assert.deepEqual(result.opened,['custom-rock','custom-ability']);
   assert(result.unknownRejected);assert.equal(result.renamed,'Shared named blade');assert(result.noDepletion);assert(result.untracked);assert(result.supplyDialogClosed);assert(result.readOnly);assert.equal(result.rollCount,1);assert.match(result.rollText,/4 · 4 · 4/);assert.equal(result.name,result.original);assert.equal(result.saved,'Persisted hero');
   assert(result.storageUnchanged);assert(result.portrait);assert(result.dialog);assert.equal(result.nav,null);

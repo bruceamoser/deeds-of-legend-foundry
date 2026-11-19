@@ -5,9 +5,9 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Timed work</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div></dl><p>1 hour · Knowledge, with at least three substantial texts or a text and a willing fluent speaker. Add 3/5/7 progress toward reconstructing an unfamiliar nonmagical writing system. On completion create a working glossary that serves as a reference for Patient Translation for anyone who can read your notes. Missing vocabulary, ciphers and magical meanings remain separate questions; the glossary does not grant fluent speech.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action · 1 hour</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div></dl><p>1 hour · Knowledge, with at least three substantial texts or a text and a willing fluent speaker. Add 3/5/7 progress toward reconstructing an unfamiliar nonmagical writing system. On completion create a working glossary that serves as a reference for Patient Translation for anyone who can read your notes. Missing vocabulary, ciphers and magical meanings remain separate questions; the glossary does not grant fluent speech.</p>",
     "activity": {
-      "action": "other",
+      "action": "main",
       "rollMode": "attribute",
       "attribute": "knowledge",
       "defenseAttribute": "agility"
@@ -28,7 +28,7 @@
         "nodeId": "scholarship:languages:7",
         "level": 7,
         "cost": 5,
-        "action": "Timed work",
+        "action": "Main Action · 1 hour",
         "sp": null,
         "range": null,
         "duration": null,

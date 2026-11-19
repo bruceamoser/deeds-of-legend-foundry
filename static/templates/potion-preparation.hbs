@@ -2,6 +2,7 @@
   <header class="hol-banner"><h1>Healing potion</h1></header>
   {{#unless bottlesAvailable}}<p class="hol-error">No healing bottle available.</p>{{else}}
   {{#if sourceIsBottle}}<p>{{selectedBottleName}}</p>{{else}}<label>Bottle<select name="bottleUuid">{{#each bottles}}<option value="{{uuid}}" {{#if (eq uuid ../selectedBottleUuid)}}selected{{/if}}>{{name}} · {{supply}}</option>{{/each}}</select></label>{{/if}}
+  <p data-preview="maximum-supply">{{#if preview.maximumSupplyDie}}Maximum supply die: d{{preview.maximumSupplyDie}}.{{/if}}</p>
   <p>Recipient: <strong data-preview="recipient-name">{{recipientName}}</strong><br><small>Target another token to offer it the potion; otherwise use it yourself.</small></p>
   <section class="hol-budget"><p data-preview="healing"></p><p><span data-preview="hands"></span> <span data-preview="reaction"></span></p></section>
   <section data-panel="willingness" hidden><p data-willing-prompt></p><label class="hol-check" data-willing-confirm><input type="checkbox" name="willing"> Willing recipient</label></section>

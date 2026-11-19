@@ -5,9 +5,9 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Timed work</dd></div></dl><p>10 minutes with a willing speaker and usable shared signs or reference text. Establish simple communication about directions, quantities and immediate needs for this conversation, without a roll. Abstract bargains and hidden meanings still require translation.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action · 10 minutes</dd></div></dl><p>10 minutes with a willing speaker and usable shared signs or reference text. Establish simple communication about directions, quantities and immediate needs for this conversation, without a roll. Abstract bargains and hidden meanings still require translation.</p>",
     "activity": {
-      "action": "other",
+      "action": "main",
       "rollMode": "none",
       "attribute": "knowledge",
       "defenseAttribute": "agility"
@@ -28,7 +28,7 @@
         "nodeId": "scholarship:languages:4",
         "level": 3,
         "cost": 3,
-        "action": "Timed work",
+        "action": "Main Action · 10 minutes",
         "sp": null,
         "range": null,
         "duration": null,

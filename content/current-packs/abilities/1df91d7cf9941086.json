@@ -5,9 +5,9 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Timed work</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div></dl><p>10 minutes · Reason. Survey a visible area up to 6 squares across; add 3/5/7 progress to identify accessible nonmagical traps, triggers and a safe route. Completion reveals supported findings and inaccessible gaps. Companions following your exact unchanged route avoid triggering its identified traps. Reaction: when a companion within 6 squares starts to leave that route toward an identified trigger, warn it before the step; if it perceives you, it may cancel that step and choose another legal step using the same movement. Once per misstep; no extra movement.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action · 10 minutes</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div></dl><p>10 minutes · Reason. Survey a visible area up to 6 squares across; add 3/5/7 progress to identify accessible nonmagical traps, triggers and a safe route. Completion reveals supported findings and inaccessible gaps. Companions following your exact unchanged route avoid triggering its identified traps. Reaction: when a companion within 6 squares starts to leave that route toward an identified trigger, warn it before the step; if it perceives you, it may cancel that step and choose another legal step using the same movement. Once per misstep; no extra movement.</p>",
     "activity": {
-      "action": "other",
+      "action": "main",
       "rollMode": "attribute",
       "attribute": "reason",
       "defenseAttribute": "agility"
@@ -28,7 +28,7 @@
         "nodeId": "subterfuge:traps:7",
         "level": 7,
         "cost": 5,
-        "action": "Timed work",
+        "action": "Main Action · 10 minutes",
         "sp": null,
         "range": null,
         "duration": null,

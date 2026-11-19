@@ -6,6 +6,7 @@ import {rollCard,resourceCard} from '../src/rules/chat-cards.mjs';
 import {inventoryCheck} from '../src/rules/inventory.mjs';
 import {spellAttackOutcomes,resolvedAttackEffects} from '../src/rules/attack-outcomes.mjs';
 import {classifyRoll} from '../src/rules/roll.mjs';
+import {workshopRollOutcome} from '../src/rules/workshop-outcomes.mjs';
 const source=(await readFile(new URL('../src/sheets/workshop-character.mjs',import.meta.url),'utf8')).replace(/^import .*\n/gm,'').replaceAll('export ','')+'\nglobalThis.Sheet=WorkshopCharacterSheet;';
 function fixture(overrides={}) {
   const calls=[];let nextOperation=0;const operations=new Map();
@@ -23,7 +24,7 @@ function fixture(overrides={}) {
   }
   const context={foundry:{utils:{randomID:()=>`operation-${++nextOperation}`},applications:{api:{HandlebarsApplicationMixin:cls=>cls},sheets:{ActorSheetV2:Base}},dice:{Roll}},
     game:{user:{id:'owner'},settings:{get:()=> 'blind'}},ChatMessage:{getSpeaker:()=>({actor:'hero'})},
-    queueMicrotask,structuredClone,CharacterSheet:Base,classifyRoll,spellAttackOutcomes,resolvedAttackEffects,rollCard,resourceCard,inventoryCheck,ui:{notifications:{info(){},error(){}}},
+    queueMicrotask,structuredClone,CharacterSheet:Base,classifyRoll,spellAttackOutcomes,resolvedAttackEffects,rollCard,resourceCard,inventoryCheck,workshopRollOutcome,ui:{notifications:{info(){},error(){}}},
     nativeWorkshopRoll:(_actor,id)=>operations.get(id),
     claimNativeWorkshopOperation:async(_actor,operation)=>{operations.set(operation.id,operation);return operation;},
     updateNativeWorkshopOperation:async(_actor,operation)=>operations.set(operation.id,operation),

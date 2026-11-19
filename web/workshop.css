@@ -1312,6 +1312,30 @@ dialog header button {
 .main-layout .stat-row {
   padding: 4px 0;
 }
+.supply-readout,
+.supply-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+.supply-row {
+  align-items: center;
+}
+.supply-row > span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.supply-row > strong {
+  flex: 0 0 auto;
+}
+.supply-controls .icon-button {
+  width: 22px;
+  min-width: 22px;
+  font-size: 0.85rem;
+}
+.sheet-inventory .supply-readout {
+  flex-wrap: wrap;
+}
 .passive-table,
 .play-summary .trait-table {
   table-layout: fixed;

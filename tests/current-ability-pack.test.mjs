@@ -38,3 +38,23 @@ test("current native ability and spell descriptions format authored Markdown", (
  assert.match(byId.get("ability-basic-melee").system.description, /<ul>/);
  assert.match(byId.get("ability-command-a-summon").system.description, /See the summoning rules for the tether/);
 });
+
+test("current compendium preserves elapsed time and treats each active ability as a playable action", () => {
+ const validActions = new Set(["main", "maneuver", "reaction", "passive", "movement", "ritual"]);
+ for (const item of documents) assert.ok(validActions.has(item.system.activity.action), item.name);
+ for (const [id, action, label] of [
+  ["wilderness:provisioning:1", "main", "Main Action · 1 hour"],
+  ["medicine:diagnosis:7", "main", "Main Action · 30 minutes"],
+  ["influence:pressure:1", "main", "Main Action · One exchange"],
+  ["ability-signature-intellect-test-the-hypothesis", "main", "Main Action · One minute"],
+  ["ability-handle-an-item", "maneuver", "Maneuver"],
+  ["ability-convert-an-action", "main", "Main Action / Maneuver"],
+ ]) {
+  const item = byId.get(id);
+  assert.equal(item.system.activity.action, action, item.name);
+  assert.equal(item.flags["heroes-of-legend"].workshopRecord.action, label, item.name);
+ }
+ const fieldHospital = byId.get("medicine:diagnosis:7").system.activity;
+ assert.equal(fieldHospital.rollMode, "attribute");
+ assert.equal(fieldHospital.attribute, "knowledge");
+});

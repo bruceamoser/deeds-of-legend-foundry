@@ -260,6 +260,7 @@ export class PotionPreparation extends foundry.applications.api.HandlebarsApplic
             .join(", ")
         : "";
     this.setText("bottle", preview.bottleName ?? "Unavailable");
+    this.setText("maximum-supply", preview.maximumSupplyDie ? `Maximum supply die: d${preview.maximumSupplyDie}.` : "");
     this.setText("recipient", preview.recipientActorName ?? "Unavailable");
     this.setText(
       "healing",

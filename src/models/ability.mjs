@@ -3,12 +3,16 @@ import { StrictNumberField as NumberField } from "./fields.mjs";
 const { HTMLField, SchemaField, StringField } = foundry.data.fields;
 const text = (initial = "", choices) => new StringField({ required: true, nullable: false, initial, choices });
 export class AbilityData extends foundry.abstract.TypeDataModel {
+  static migrateData(source) {
+    if (source.activity?.action === "other") source.activity.action = "main";
+    return super.migrateData(source);
+  }
   static defineSchema() {
     return {
       schemaVersion: new NumberField({ required: true, nullable: false, integer: true, initial: 1, min: 1, max: 1 }),
       description: new HTMLField({ required: true, nullable: false, initial: "" }),
       activity: new SchemaField({
-        action: text("main", ["main", "maneuver", "reaction", "passive", "movement", "ritual", "other"]),
+        action: text("main", ["main", "maneuver", "reaction", "passive", "movement", "ritual"]),
         rollMode: text("attribute", ["attribute", "none", "delegated"]),
         attribute: text("brawn", ATTRIBUTES),
         defenseAttribute: text("agility", ATTRIBUTES)
