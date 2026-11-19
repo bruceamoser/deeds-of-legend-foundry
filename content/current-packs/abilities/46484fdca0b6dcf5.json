@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action · 1 hour</dd></div><div><dt>Attribute</dt><dd>Agility</dd></div></dl><p>1 hour · Agility, with rope and concealment materials. Establish a concealed route up to 20 squares long across terrain you can physically traverse; add 3/5/7 progress toward the DA’s route objective. On completion, up to six companions following your instructions can traverse it at normal movement cost with 2 Boons to remain unnoticed. It creates no unsupported bridge. Discovery or damage ends these benefits until the route is repaired and concealed again.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action · 1 hour</dd></div><div><dt>Attribute</dt><dd>Agility</dd></div></dl><p>Main Action · 1 hour · Agility, with rope and concealment materials. Establish a concealed route up to 20 squares long across terrain you can physically traverse; add 3/5/7 progress toward the DA’s route objective. On completion, up to six companions following your instructions can traverse it at normal movement cost with 2 Boons to remain unnoticed. It creates no unsupported bridge. Discovery or damage ends these benefits until the route is repaired and concealed again.</p>",
     "activity": {
       "action": "main",
       "rollMode": "attribute",
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "subterfuge:stealth:7",
-      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
+      "sourceCommit": "e5575a674821fe31387cf4bf622a2dea96dd0906",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "mastery",
@@ -34,7 +34,7 @@
         "duration": null,
         "attribute": "Agility",
         "defenseAttribute": null,
-        "effect": "1 hour · Agility, with rope and concealment materials. Establish a concealed route up to 20 squares long across terrain you can physically traverse; add 3/5/7 progress toward the DA’s route objective. On completion, up to six companions following your instructions can traverse it at normal movement cost with 2 Boons to remain unnoticed. It creates no unsupported bridge. Discovery or damage ends these benefits until the route is repaired and concealed again.",
+        "effect": "Main Action · 1 hour · Agility, with rope and concealment materials. Establish a concealed route up to 20 squares long across terrain you can physically traverse; add 3/5/7 progress toward the DA’s route objective. On completion, up to six companions following your instructions can traverse it at normal movement cost with 2 Boons to remain unnoticed. It creates no unsupported bridge. Discovery or damage ends these benefits until the route is repaired and concealed again.",
         "improves": null,
         "requires": [
           "subterfuge:stealth:6"

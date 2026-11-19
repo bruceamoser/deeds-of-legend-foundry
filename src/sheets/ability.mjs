@@ -14,6 +14,7 @@ import { spellActionLabel } from "../rules/forge-casting.mjs";
 import { ATTRIBUTES } from "../rules/character.mjs";
 import { updateOwnedDocument } from "../services/documents.mjs";
 import { formatStoredRuleProse } from "../rules/authored-markdown.mjs";
+import { currentWorkshopReference } from "../rules/current-workshop-items.mjs";
 export class AbilitySheet extends foundry.applications.api.HandlebarsApplicationMixin(
   foundry.applications.sheets.ItemSheetV2,
 ) {
@@ -40,12 +41,13 @@ export class AbilitySheet extends foundry.applications.api.HandlebarsApplication
     try {
       definition = itemAbilityDefinition(this.item);
     } catch {}
-    const spell = this.item.getFlag("heroes-of-legend", "spell");
-    const workshopRecord = this.item.getFlag("heroes-of-legend", "workshopRecord");
-    const current = Boolean(spell || this.item.getFlag("heroes-of-legend", "grantKind") === "nativeWorkshop" || this.item.getFlag("heroes-of-legend", "workshopRecord"));
     const iconCatalogs = await loadWorkshopCatalogs();
+    const reference = currentWorkshopReference(this.item, iconCatalogs);
+    const spell = reference ? reference.flags["heroes-of-legend"].spell : this.item.getFlag("heroes-of-legend", "spell");
+    const workshopRecord = reference?.flags["heroes-of-legend"].workshopRecord ?? this.item.getFlag("heroes-of-legend", "workshopRecord");
+    const current = Boolean(spell || this.item.getFlag("heroes-of-legend", "grantKind") === "nativeWorkshop" || workshopRecord);
     const record = abilityCatalogRecord(this.item, iconCatalogs.choices);
-    const system = this.item.system;
+    const system = reference?.system ?? this.item.system;
     const description = current ? formatStoredRuleProse(system.description) : system.description;
     const learned = new Set(this.item.actor?.getFlag("heroes-of-legend", "forgeLearned") ?? []);
     const learnedImprovements = current ? (iconCatalogs.forge?.nodes ?? []).filter(node => learned.has(node.id) && node.improves === this.item.getFlag("heroes-of-legend", "catalogId")) : [];

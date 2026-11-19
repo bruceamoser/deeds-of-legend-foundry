@@ -72,11 +72,18 @@ try {
       const controls = row.querySelector('.supply-controls').getBoundingClientRect();
       const toggle = torch.getBoundingClientRect();
       const refill = row.querySelector('[data-action="resupply-dialog"]').getBoundingClientRect();
-      return toggle.width <= 24 && toggle.top === refill.top &&
-        controls.right <= row.getBoundingClientRect().right;
+      if (toggle.width > 24 || toggle.top !== refill.top || controls.right > row.getBoundingClientRect().right)
+        return false;
+      a.setState({...a.getState(),tab:'Inventory'});
+      const inventoryTorch = first.shadowRoot.querySelector(`.inventory-table button[aria-label="${label}"]`);
+      const supplyCell = inventoryTorch?.closest('td');
+      const allTorchButtons = first.shadowRoot.querySelectorAll('.inventory-table [data-command="torch-toggle"]');
+      return supplyCell?.cellIndex === 3 && allTorchButtons.length === 1 &&
+        supplyCell.querySelector('.supply-controls').getBoundingClientRect().right <= supplyCell.getBoundingClientRect().right;
     });
     delete nativeHost.itemActions;
     first.style.width='';
+    a.setState({...a.getState(),tab:'Main'});
     const bHost={};const b=await mountWorkshop(second,{initialState:initial,host:bHost});
     const original=b.getState().character.draft.name;
     const state=a.getState();state.character.draft.name='Isolated hero';a.setState(state);

@@ -1,6 +1,6 @@
 # Eryn Mossarrow: ranger after the rewrite
 
-Pinned authored source `a2ae6bd93ef60cf6f9bb523ccdde23364b09c932`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../ranger.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
+Pinned authored source `e5575a674821fe31387cf4bf622a2dea96dd0906`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../ranger.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
 
 ## What the rewrite changes
 
@@ -16,7 +16,7 @@ This hunter line chooses archery over the animal-companion line. It does not get
 | SP | 5 | 9 | 17 |
 | DP spent / total | 8 / 10 | 23 / 23 | 57 / 61 |
 | Unspent DP | 2 | 0 | 4 |
-| Learned action choices (Main / Maneuver / Reaction) | 2 / 1 / 1 | 4 / 1 / 1 | 8 / 1 / 1 |
+| Learned action choices (Main / Maneuver / Reaction) | 3 / 1 / 1 | 5 / 1 / 1 | 9 / 1 / 1 |
 | Known book spells (free / paid) | 4 (2 / 2) | 4 (2 / 2) | 12 (2 / 10) |
 | Shared reserve: casts at 2 SP | 2 | 4 | 8 |
 | Shared reserve: casts at 5 SP | 1 | 1 | 3 |
@@ -71,7 +71,7 @@ The benefit ends when you aim at another target or the scene ends. You must stil
 - **Measured Shot I:** Main Action · Agility. Attack one creature within 8 squares for 2/3/5 physical damage. Measured Shot deals 3/4/6 physical damage.
 - **Watchful Shot I:** Reaction · Agility. When a visible enemy within 6 squares finishes voluntary movement, attack it for 1/2/3 physical damage after that movement.
 - **Read the Trail I:** Main Action · Reason. Read tracks or signs immediately before you; add 1/2/3 progress toward identifying direction, approximate numbers and freshness. Following a trail to the next landmark takes 10 minutes per attempt instead. The DA defines each objective from accessible evidence.
-- **Wild Harvest I:** 1 hour · Knowledge. Search an accessible area for food or drinkable water. The DA defines the area and confirms a plausible source before you roll. Raise one Food Bundle or Water Flask of the chosen type by 1/2/3 supply die steps, maximum d8. An empty supply starts at d4 on the first step. You can also spend 1 hour with available materials to shelter two people from ordinary rain and wind, without a roll.
+- **Wild Harvest I:** Main Action · 1 hour · Knowledge. Search an accessible area for food or drinkable water. The DA defines the area and confirms a plausible source before you roll. Raise one Food Bundle or Water Flask of the chosen type by 1/2/3 supply die steps, maximum d8. An empty supply starts at d4 on the first step. You can also spend 1 hour with available materials to shelter two people from ordinary rain and wind, without a roll.
 
 **Known book spells:** Ray of Frost (Main Action; SP 0); Create or Destroy Water (Ritual; SP 1); Enchanted Rope (Maneuver; SP 0); Loosen Earth (Ritual; SP 1).
 
@@ -133,7 +133,7 @@ Requires a ranged weapon and ammunition. Make one Agility roll and apply it to e
 - **Measured Shot I:** Main Action · Agility. Attack one creature within 8 squares for 2/3/5 physical damage. Measured Shot deals 3/4/6 physical damage. Measured Shot has range 12 squares.
 - **Watchful Shot I:** Reaction · Agility. When a visible enemy within 6 squares finishes voluntary movement, attack it for 1/2/3 physical damage after that movement.
 - **Read the Trail I:** Main Action · Reason. Read tracks or signs immediately before you; add 1/2/3 progress toward identifying direction, approximate numbers and freshness. Following a trail to the next landmark takes 10 minutes per attempt instead. The DA defines each objective from accessible evidence. Read the Trail adds 1/3/4 progress.
-- **Wild Harvest I:** 1 hour · Knowledge. Search an accessible area for food or drinkable water. The DA defines the area and confirms a plausible source before you roll. Raise one Food Bundle or Water Flask of the chosen type by 1/2/3 supply die steps, maximum d8. An empty supply starts at d4 on the first step. You can also spend 1 hour with available materials to shelter two people from ordinary rain and wind, without a roll.
+- **Wild Harvest I:** Main Action · 1 hour · Knowledge. Search an accessible area for food or drinkable water. The DA defines the area and confirms a plausible source before you roll. Raise one Food Bundle or Water Flask of the chosen type by 1/2/3 supply die steps, maximum d8. An empty supply starts at d4 on the first step. You can also spend 1 hour with available materials to shelter two people from ordinary rain and wind, without a roll.
 - **Split the Flight I:** Main Action · Agility. Attack up to three creatures within 8 squares. Roll once; each takes 1/2/4 physical damage. Each is struck once. Split the Flight has range 12 squares. Split the Flight deals 2/3/5 physical damage. You may also spend a Main Action observing one visible creature within 12 squares to mark a vulnerable part of its anatomy or construction for this scene; no roll. The DA identifies a plausible exposed part, or states that none is visible.
 
 **Known book spells:** Ray of Frost (Main Action; SP 0); Create or Destroy Water (Ritual; SP 1); Enchanted Rope (Maneuver; SP 0); Loosen Earth (Ritual; SP 1).
@@ -225,7 +225,7 @@ This ordinary mark is a physical luminous substance. An attack always applies it
 - **Measured Shot I:** Main Action · Agility. Attack one creature within 8 squares for 2/3/5 physical damage. Measured Shot deals 3/4/6 physical damage. Measured Shot has range 12 squares.
 - **Watchful Shot I:** Reaction · Agility. When a visible enemy within 6 squares finishes voluntary movement, attack it for 1/2/3 physical damage after that movement. Watchful Shot has range 8 squares.
 - **Read the Trail I:** Main Action · Reason. Read tracks or signs immediately before you; add 1/2/3 progress toward identifying direction, approximate numbers and freshness. Following a trail to the next landmark takes 10 minutes per attempt instead. The DA defines each objective from accessible evidence. Read the Trail adds 1/3/4 progress. Read the Trail takes 5 minutes per attempt when following a trail.
-- **Wild Harvest I:** 1 hour · Knowledge. Search an accessible area for food or drinkable water. The DA defines the area and confirms a plausible source before you roll. Raise one Food Bundle or Water Flask of the chosen type by 1/2/3 supply die steps, maximum d8. An empty supply starts at d4 on the first step. You can also spend 1 hour with available materials to shelter two people from ordinary rain and wind, without a roll.
+- **Wild Harvest I:** Main Action · 1 hour · Knowledge. Search an accessible area for food or drinkable water. The DA defines the area and confirms a plausible source before you roll. Raise one Food Bundle or Water Flask of the chosen type by 1/2/3 supply die steps, maximum d8. An empty supply starts at d4 on the first step. You can also spend 1 hour with available materials to shelter two people from ordinary rain and wind, without a roll.
 - **Split the Flight I:** Main Action · Agility. Attack up to three creatures within 8 squares. Roll once; each takes 1/2/4 physical damage. Each is struck once. Split the Flight has range 12 squares. Split the Flight deals 2/3/5 physical damage. You may also spend a Main Action observing one visible creature within 12 squares to mark a vulnerable part of its anatomy or construction for this scene; no roll. The DA identifies a plausible exposed part, or states that none is visible.
 - **Anatomist’s Volley:** Main Action · Agility. Attack up to three enemies within 12 squares. Roll once. Each takes 3/5/8 physical damage. For a target whose vulnerable part you know from Split the Flight’s study or evidence, apply that hit ignoring up to 2 physical resistance. Apply immunity and other reductions normally.
 - **Cut Them Off I:** Main Action · Reason to interpret a visible junction on a readable trail, or 10 minutes to scout a wider interception route. Add 1/2/3 progress toward finding a physically feasible interception. Completion reveals the route and travel time, not a guarantee of arriving first. Cut Them Off adds 1/3/4 progress. After completing Cut Them Off, you and up to four companions gain 1 Boon on travel rolls to traverse that identified route until its next landmark. Changed or blocked terrain requires a new route.

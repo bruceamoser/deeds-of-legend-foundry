@@ -8,7 +8,7 @@ export function isForgeSpell(record) {
   if(!record || isForgeModifier(record)) return false;
   const text=magicText(record);
   return Boolean(record.page || record.kind==='spell' || /\bspell\b/i.test(record.magic ?? '')
-    || /\*\*Magic:\*\*[^\n]*\bspell\b/i.test(text) || /\bThis is a spell(?:[.;,]|\s|$)/i.test(text));
+    || /\*\*Magic:\*\*[^\n]*\bspell\b/i.test(text) || /\bThis is a (?:ritual )?spell(?:[.;,]|\s|$)/i.test(text));
 }
 
 /** Read an explicit magical payment, never an SP grant in an ordinary ability. */
@@ -16,7 +16,7 @@ export function signatureSpellCost(record) {
   if (!record) return NaN;
   if (Number.isSafeInteger(record.sp) && record.sp >= 0) return record.sp;
   const text = record.effect ?? record.rulesMarkdown ?? "";
-  const explicit = text.match(/\*\*SP:\*\*\s*(\d+)\b/i) ?? text.match(/\bThis is a spell costing (\d+) SP\b/i);
+  const explicit = text.match(/\*\*SP:\*\*\s*(\d+)\b/i) ?? text.match(/\bThis is a (?:ritual )?spell costing (\d+) SP\b/i);
   if (explicit) return Number(explicit[1]);
   const magic = isForgeSpell(record) || isForgeModifier(record);
   if (!magic) return NaN;
@@ -26,7 +26,7 @@ export function signatureSpellCost(record) {
 
 export function isForgeRitual(record) {
   const text = record?.effect ?? record?.rulesMarkdown ?? "";
-  const action = record?.action ?? text.match(/\*\*Action:\*\*\s*([^\n]+)/i)?.[1] ?? text;
+  const action = record?.actionText ?? record?.action ?? text.match(/\*\*Action:\*\*\s*([^\n]+)/i)?.[1] ?? text;
   return /^Ritual\b/i.test(action.trim());
 }
 

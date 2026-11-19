@@ -4,9 +4,11 @@ import vm from 'node:vm';
 import {readFile} from 'node:fs/promises';
 import {spellActionLabel} from '../src/rules/forge-casting.mjs';
 import {formatStoredRuleProse} from '../src/rules/authored-markdown.mjs';
+import {currentWorkshopReference} from '../src/rules/current-workshop-items.mjs';
 async function fixture(){
  const calls=[];const context=vm.createContext({foundry:{applications:{api:{HandlebarsApplicationMixin:Base=>Base},sheets:{ItemSheetV2:class{async _prepareContext(){return {};}}}}},spellActionLabel,game:{i18n:{localize:key=>key}},ATTRIBUTES:[],cardContext:()=>({}),itemCardContext:()=>({}),itemDisplayIcon:()=>null,abilityCatalogRecord:()=>null,loadWorkshopCatalogs:async()=>({choices:[]}),toggleCardEdit(){},isPotionAbility:()=>false,activateOwnedAbility:async item=>calls.push(['custom',item.id]),ui:{notifications:{error:error=>{throw Error(error);}}}});
  context.formatStoredRuleProse=formatStoredRuleProse;
+ context.currentWorkshopReference=currentWorkshopReference;
  const source=(await readFile(new URL('../src/sheets/ability.mjs',import.meta.url),'utf8')).replace(/^import[\s\S]*?;\n/gm,'').replace('export class AbilitySheet','class AbilitySheet')+'\nglobalThis.Sheet=AbilitySheet;';vm.runInContext(source,context);
  const actor={getFlag:()=>({portable:{}}),sheet:{render:async()=>{},useWorkshopAbility:async id=>calls.push(['workshop',id])}};return {Sheet:context.Sheet,actor,calls};
 }

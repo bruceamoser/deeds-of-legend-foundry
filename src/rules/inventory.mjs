@@ -18,6 +18,11 @@ const whole = (value, label, minimum = 0) => {
   return value;
 };
 
+export function lowerInventoryDie(die) {
+  if (die === 0) return 0;
+  return INVENTORY_DIE_LADDER[INVENTORY_DIE_LADDER.indexOf(activeDie(die)) + 1];
+}
+
 /** Check only after the supplied use succeeded. The final use still takes effect. */
 export function inventoryCheck({ die, retained }) {
   activeDie(die);
@@ -26,7 +31,7 @@ export function inventoryCheck({ die, retained }) {
     throw new Error(`Retained inventory face ${retained} exceeds d${die}.`);
   const after =
     retained === 1
-      ? INVENTORY_DIE_LADDER[INVENTORY_DIE_LADDER.indexOf(die) + 1]
+      ? lowerInventoryDie(die)
       : die;
   return { before: die, retained, after, exhausted: after === 0 };
 }

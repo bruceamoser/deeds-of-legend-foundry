@@ -1,6 +1,6 @@
 # Pip Nightjar: rogue after the rewrite
 
-Pinned authored source `a2ae6bd93ef60cf6f9bb523ccdde23364b09c932`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../rogue.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
+Pinned authored source `e5575a674821fe31387cf4bf622a2dea96dd0906`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../rogue.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
 
 ## What the rewrite changes
 
@@ -16,7 +16,7 @@ Blade in the Back is its own attack rather than bonus Sneak Attack dice. The bui
 | SP | 7 | 11 | 19 |
 | DP spent / total | 9 / 11 | 24 / 24 | 56 / 62 |
 | Unspent DP | 2 | 0 | 6 |
-| Learned action choices (Main / Maneuver / Reaction) | 2 / 2 / 1 | 3 / 3 / 1 | 5 / 4 / 2 |
+| Learned action choices (Main / Maneuver / Reaction) | 2 / 2 / 1 | 3 / 3 / 1 | 6 / 4 / 2 |
 | Known book spells (free / paid) | 0 (0 / 0) | 0 (0 / 0) | 0 (0 / 0) |
 | Shared reserve: casts at 2 SP | 3 | 5 | 9 |
 | Shared reserve: casts at 5 SP | 1 | 2 | 3 |
@@ -221,7 +221,7 @@ Use this Reaction once per scene. Declare it before the target resolves its trig
 - **Light Fingers I:** Maneuver · Guile, with a free hand. Palm or plant one unattended palm-sized object within reach; add 1/2/3 progress toward doing so unnoticed. The DA sets the objective and whether scrutiny permits the attempt. The object moves when that objective completes. Light Fingers adds 1/3/4 progress. Light Fingers can also target an accessible object worn or carried by a distracted creature, other than a held weapon, secured container or worn armor.
 - **Running Vault I:** Maneuver. After moving at least 2 squares this turn, jump up to 2 squares horizontally to a visible unoccupied landing. Spend no additional movement. Movement reactions apply. Running Vault reaches up to 3 squares. Running Vault ignores movement reactions during the jump.
 - **Vanish into Cover I:** Maneuver · Agility. Move up to 2 squares into cover, then add 1/2/3 progress toward evading pursuers. Become Hidden when the DA’s objective completes and concealment is plausible. Vanish into Cover adds 1/3/4 progress. Vanish into Cover moves up to 3 squares; this movement triggers no movement reactions from creatures that cannot see you when you begin moving.
-- **The Hidden Road:** 1 hour · Agility, with rope and concealment materials. Establish a concealed route up to 20 squares long across terrain you can physically traverse; add 3/5/7 progress toward the DA’s route objective. On completion, up to six companions following your instructions can traverse it at normal movement cost with 2 Boons to remain unnoticed. It creates no unsupported bridge. Discovery or damage ends these benefits until the route is repaired and concealed again.
+- **The Hidden Road:** Main Action · 1 hour · Agility, with rope and concealment materials. Establish a concealed route up to 20 squares long across terrain you can physically traverse; add 3/5/7 progress toward the DA’s route objective. On completion, up to six companions following your instructions can traverse it at normal movement cost with 2 Boons to remain unnoticed. It creates no unsupported bridge. Discovery or damage ends these benefits until the route is repaired and concealed again.
 - **Open under Pressure I:** Main Action · Guile, with lock tools. Work on a reachable nonmagical lock with accessible workings. Add 1/2/3 progress toward opening it. Open under Pressure adds 1/3/4 progress. Open under Pressure gains 1 Boon when you have both lock and repair tools at hand.
 - **Silent Entry:** Main Action · Guile for a simple fastening, or 1 minute for an intricate mechanism, with lock and repair tools. Add 3/5/7 progress toward opening one reachable nonmagical door, lock or fastening without visible damage. At completion you can close it to appear undisturbed to casual inspection. Separate alarms and traps remain separate tasks.
 - **Follow My Leap I:** Maneuver. Use Running Vault and guide one willing adjacent ally through the same jump immediately after you. It lands adjacent to your destination; both landings must be legal.

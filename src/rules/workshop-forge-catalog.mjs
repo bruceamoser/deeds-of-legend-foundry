@@ -34,7 +34,7 @@ export function workshopCatalogs(choices, inventory, wounds, forge, references =
   }));
   const nodes = forge.nodes.map((node) => {
     if (node.kind === "discipline" || node.kind === "section") return node;
-    const action = node.effect?.match(/^(Main Action|Maneuver|Reaction|Passive|Movement|Ritual|One exchange|\d+ (?:minutes?|hours?|days?))\b/i)?.[1] ??
+    const action = node.effect?.match(/^((?:Main Action|Maneuver|Reaction)(?: · (?:One exchange|\d+ (?:minutes?|hours?|days?)))?|Passive|Movement|Ritual|One exchange|\d+ (?:minutes?|hours?|days?))\b/i)?.[1] ??
       "Passive";
     const attribute = node.attributeChoices?.length
       ? node.attributeChoices.map(key => key[0].toUpperCase() + key.slice(1)).join(" or ")

@@ -2,6 +2,7 @@ import {abilityRollConfiguration,abilityCatalogRecord} from "../rules/ability-ro
 import {attackEquipmentSnapshot} from "./attack-equipment.mjs";
 import {rollReferenceApplies,reactionTrigger} from "../rules/ability-roll-relevance.mjs";
 import {formatStoredRuleProse,renderMarkdown} from "../rules/authored-markdown.mjs";
+import {currentWorkshopReference} from "../rules/current-workshop-items.mjs";
 const ID = "heroes-of-legend";
 
 function liveAbility(item) {
@@ -71,9 +72,10 @@ export async function postAbilityReference(item,{weaponItemId=null}={}) {
   const workshop = Boolean(item.getFlag(ID,"spell") || item.getFlag(ID,"grantKind") === "nativeWorkshop" || item.getFlag(ID,"workshopRecord"));
   const catalogs = await loadWorkshopCatalogs();
   const record = abilityCatalogRecord(item, catalogs.choices);
+  const current = currentWorkshopReference(item, catalogs);
   const learned = new Set(item.actor.getFlag(ID, "forgeLearned") ?? []);
   const improvements = workshop ? (catalogs.forge?.nodes ?? []).filter(node=>learned.has(node.id) && node.improves === item.getFlag(ID,"catalogId")) : [];
-  const stored = item.system.description ?? "";
+  const stored = current?.system.description ?? item.system.description ?? "";
   const description = (workshop ? formatStoredRuleProse(stored) : stored) + improvements.map(node=>`<h4>${escape(node.name)}</h4>${renderMarkdown(node.effect)}`).join("");
   const parsed = new DOMParser().parseFromString(description, "text/html");
   const trigger=reactionTrigger(record);
@@ -81,7 +83,7 @@ export async function postAbilityReference(item,{weaponItemId=null}={}) {
   const operative = parsed.querySelector(".hol-reference-rules")?.innerHTML ?? parsed.body.innerHTML;
   const reference = { itemUuid: item.uuid, name: item.name, ...(equipment?{equipment}:{}),
     source: structuredClone(item.getFlag(ID, "source") ?? null),
-    sourceCommit: item.getFlag(ID, "sourceCommit") ?? null,
+    sourceCommit: current?.flags[ID].sourceCommit ?? item.getFlag(ID, "sourceCommit") ?? null,
     trigger, damageText: new DOMParser().parseFromString(operative, "text/html").body.textContent };
   const content = `<section class="hol-reference-card hol-chat-card"><header class="hol-chat-header"><h3>${escape(equipment?.name??item.name)}</h3></header>${equipment?`<div class="hol-chat-bar">${escape(item.name)}</div>`:""}${trigger?`<p class="hol-chat-trigger"><strong>Trigger:</strong> ${escape(trigger)}</p>`:""}<div class="hol-chat-effect">${safeReferenceHTML(operative)}</div><footer class="hol-chat-footer"><a class="content-link" data-link data-type="Item" data-uuid="${escape(item.uuid)}">Full ability details</a></footer></section>`;
   return ChatMessage.create(ChatMessage.applyMode({

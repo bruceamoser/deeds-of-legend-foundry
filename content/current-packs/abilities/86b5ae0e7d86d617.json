@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>One minute</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Self and up to three allies who can hear and understand you.</dd></div><div><dt>Duration</dt><dd>The plan and its stated limits remain known; each Boon expires when used or at the end of the scene.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Frequency</dt><dd>Once per scene.</dd></div><div><dt>Time</dt><dd>One minute.</dd></div></dl><p>Spend one minute forming a plan from the evidence and observations available. State the plan. The DA confirms what is true, what remains uncertain, and one contradiction or risk. You and each chosen ally gain 2 Boons to your next roll that directly follows the plan.</p><p>Keep one plan at a time. A new plan replaces the previous plan and its unused Boons.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action · One minute</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Self and up to three allies who can hear and understand you.</dd></div><div><dt>Duration</dt><dd>The plan and its stated limits remain known; each Boon expires when used or at the end of the scene.</dd></div><div><dt>Equipment / acquisition</dt><dd>None.</dd></div><div><dt>Frequency</dt><dd>Once per scene.</dd></div><div><dt>Time</dt><dd>One minute.</dd></div></dl><p>Spend one minute forming a plan from the evidence and observations available. State the plan. The DA confirms what is true, what remains uncertain, and one contradiction or risk. You and each chosen ally gain 2 Boons to your next roll that directly follows the plan.</p><p>Keep one plan at a time. A new plan replaces the previous plan and its unused Boons.</p>",
     "activity": {
       "action": "main",
       "rollMode": "none",
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "ability-signature-intellect-test-the-hypothesis",
-      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
+      "sourceCommit": "e5575a674821fe31387cf4bf622a2dea96dd0906",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "ability",
@@ -34,7 +34,7 @@
         "duration": "The plan and its stated limits remain known; each Boon expires when used or at the end of the scene.",
         "attribute": "None (no roll)",
         "defenseAttribute": null,
-        "effect": "**Action:** One minute · **Attribute:** None (no roll)\n\n**Time:** One minute.\n\n**Target / range / shape:** Self and up to three allies who can hear and understand you.\n\nSpend one minute forming a plan from the evidence and observations available. State the plan. The DA confirms what is true, what remains uncertain, and one contradiction or risk. You and each chosen ally gain 2 Boons to your next roll that directly follows the plan.\n\n**Duration:** The plan and its stated limits remain known; each Boon expires when used or at the end of the scene.\n\n**Equipment / acquisition:** None.\n\nKeep one plan at a time. A new plan replaces the previous plan and its unused Boons.\n\n**Frequency:** Once per scene.",
+        "effect": "**Action:** Main Action · One minute · **Attribute:** None (no roll)\n\n**Time:** One minute.\n\n**Target / range / shape:** Self and up to three allies who can hear and understand you.\n\nSpend one minute forming a plan from the evidence and observations available. State the plan. The DA confirms what is true, what remains uncertain, and one contradiction or risk. You and each chosen ally gain 2 Boons to your next roll that directly follows the plan.\n\n**Duration:** The plan and its stated limits remain known; each Boon expires when used or at the end of the scene.\n\n**Equipment / acquisition:** None.\n\nKeep one plan at a time. A new plan replaces the previous plan and its unused Boons.\n\n**Frequency:** Once per scene.",
         "improves": null,
         "requires": [],
         "bookId": null,

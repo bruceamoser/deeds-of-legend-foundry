@@ -1,14 +1,14 @@
 {
   "rulesRevision": 299,
   "spellbookProgressionRevision": 310,
-  "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
+  "sourceCommit": "e5575a674821fe31387cf4bf622a2dea96dd0906",
   "workingTree": false,
   "builds": [
     {
       "id": "barbarian",
       "name": "Harka Stormshoulder",
       "level": 1,
-      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
+      "sourceCommit": "e5575a674821fe31387cf4bf622a2dea96dd0906",
       "workingTree": false,
       "draft": {
         "name": "Harka Stormshoulder",
@@ -331,7 +331,7 @@
       "id": "barbarian",
       "name": "Harka Stormshoulder",
       "level": 3,
-      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
+      "sourceCommit": "e5575a674821fe31387cf4bf622a2dea96dd0906",
       "workingTree": false,
       "draft": {
         "name": "Harka Stormshoulder",
@@ -747,7 +747,7 @@
       "id": "barbarian",
       "name": "Harka Stormshoulder",
       "level": 7,
-      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
+      "sourceCommit": "e5575a674821fe31387cf4bf622a2dea96dd0906",
       "workingTree": false,
       "draft": {
         "name": "Harka Stormshoulder",
@@ -1360,7 +1360,7 @@
       "id": "bard",
       "name": "Lysa Silverstring",
       "level": 1,
-      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
+      "sourceCommit": "e5575a674821fe31387cf4bf622a2dea96dd0906",
       "workingTree": false,
       "draft": {
         "name": "Lysa Silverstring",
@@ -1758,7 +1758,7 @@
       "id": "bard",
       "name": "Lysa Silverstring",
       "level": 3,
-      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
+      "sourceCommit": "e5575a674821fe31387cf4bf622a2dea96dd0906",
       "workingTree": false,
       "draft": {
         "name": "Lysa Silverstring",
@@ -2283,7 +2283,7 @@
       "id": "bard",
       "name": "Lysa Silverstring",
       "level": 7,
-      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
+      "sourceCommit": "e5575a674821fe31387cf4bf622a2dea96dd0906",
       "workingTree": false,
       "draft": {
         "name": "Lysa Silverstring",
@@ -2846,7 +2846,7 @@
           "name": "A Treaty in Common Words",
           "dp": 5,
           "level": 7,
-          "effect": "30 minutes · Reason. With willing representatives of up to three sides and a working language, interpreter or shared reference text, formulate one concrete agreement. Roll once; add 3/5/7 progress to each side’s acceptance objective. On completion the DA states that side’s commitments and known reservations plainly. A shared reference permits simple terms; complex terms need adequate translation. No side accepts impossible terms, and the agreement is not magical enforcement.",
+          "effect": "Main Action · 30 minutes · Reason. With willing representatives of up to three sides and a working language, interpreter or shared reference text, formulate one concrete agreement. Roll once; add 3/5/7 progress to each side’s acceptance objective. On completion the DA states that side’s commitments and known reservations plainly. A shared reference permits simple terms; complex terms need adequate translation. No side accepts impossible terms, and the agreement is not magical enforcement.",
           "kind": "mastery",
           "disciplineId": "influence",
           "pathId": "influence:negotiation",
@@ -3158,11 +3158,11 @@
         }
       ],
       "actionCounts": {
-        "Main Action": 3,
+        "Main Action": 4,
         "Maneuver": 3,
         "Reaction": 0,
         "Passive": 1,
-        "Other": 1
+        "Other": 0
       },
       "spellCounts": {
         "total": 33,
@@ -3215,7 +3215,7 @@
       "id": "cleric",
       "name": "Brunna Hearthward",
       "level": 1,
-      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
+      "sourceCommit": "e5575a674821fe31387cf4bf622a2dea96dd0906",
       "workingTree": false,
       "draft": {
         "name": "Brunna Hearthward",
@@ -3573,7 +3573,7 @@
       "id": "cleric",
       "name": "Brunna Hearthward",
       "level": 3,
-      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
+      "sourceCommit": "e5575a674821fe31387cf4bf622a2dea96dd0906",
       "workingTree": false,
       "draft": {
         "name": "Brunna Hearthward",
@@ -4127,7 +4127,7 @@
       "id": "cleric",
       "name": "Brunna Hearthward",
       "level": 7,
-      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
+      "sourceCommit": "e5575a674821fe31387cf4bf622a2dea96dd0906",
       "workingTree": false,
       "draft": {
         "name": "Brunna Hearthward",
@@ -4604,13 +4604,15 @@
           "lineId": "shepherd:mend",
           "signatureComponent": true,
           "kind": "ability",
-          "action": "10 minutes",
+          "action": "Ritual — 10 minutes",
           "attribute": "None (no roll)",
           "target": "Up to three willing characters.",
           "duration": "Until used or dawn.",
           "equipment": "A free hand for casting.",
-          "effect": "**Action:** 10 minutes · **Attribute:** None (no roll)\n\n**Target / range / shape:** Up to three willing characters.\n\nMark each target with a physical sigil. The first time a marked character would be reduced to 0 HP, it remains at 1 HP instead; the mark then disappears. An unused mark fades at the coming dawn. A character can bear only one mark from this ability.\n\n**Duration:** Until used or dawn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a ritual spell costing 0 SP, usable once between safe overnight rests. Unused sigils expire at dawn; a creature may bear one sigil at a time.",
-          "rulesMarkdown": "**Action:** 10 minutes · **Attribute:** None (no roll)\n\n**Target / range / shape:** Up to three willing characters.\n\nMark each target with a physical sigil. The first time a marked character would be reduced to 0 HP, it remains at 1 HP instead; the mark then disappears. An unused mark fades at the coming dawn. A character can bear only one mark from this ability.\n\n**Duration:** Until used or dawn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a ritual spell costing 0 SP, usable once between safe overnight rests. Unused sigils expire at dawn; a creature may bear one sigil at a time."
+          "sp": 0,
+          "magic": "Spell",
+          "effect": "**Action:** Ritual — 10 minutes · **Attribute:** None (no roll)\n\n**Target / range / shape:** Up to three willing characters.\n\nMark each target with a physical sigil. The first time a marked character would be reduced to 0 HP, it remains at 1 HP instead; the mark then disappears. An unused mark fades at the coming dawn. A character can bear only one mark from this ability.\n\n**Duration:** Until used or dawn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a ritual spell costing 0 SP, usable once between safe overnight rests. Unused sigils expire at dawn; a creature may bear one sigil at a time.",
+          "rulesMarkdown": "**Action:** Ritual — 10 minutes · **Attribute:** None (no roll)\n\n**Target / range / shape:** Up to three willing characters.\n\nMark each target with a physical sigil. The first time a marked character would be reduced to 0 HP, it remains at 1 HP instead; the mark then disappears. An unused mark fades at the coming dawn. A character can bear only one mark from this ability.\n\n**Duration:** Until used or dawn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a ritual spell costing 0 SP, usable once between safe overnight rests. Unused sigils expire at dawn; a creature may bear one sigil at a time."
         }
       ],
       "abilities": [
@@ -4919,11 +4921,11 @@
         }
       ],
       "actionCounts": {
-        "Main Action": 5,
+        "Main Action": 6,
         "Maneuver": 0,
         "Reaction": 0,
         "Passive": 1,
-        "Other": 1
+        "Other": 0
       },
       "spellCounts": {
         "total": 27,
@@ -4976,7 +4978,7 @@
       "id": "druid",
       "name": "Thalen Reedwalker",
       "level": 1,
-      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
+      "sourceCommit": "e5575a674821fe31387cf4bf622a2dea96dd0906",
       "workingTree": false,
       "draft": {
         "name": "Thalen Reedwalker",
@@ -5380,7 +5382,7 @@
       "id": "druid",
       "name": "Thalen Reedwalker",
       "level": 3,
-      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
+      "sourceCommit": "e5575a674821fe31387cf4bf622a2dea96dd0906",
       "workingTree": false,
       "draft": {
         "name": "Thalen Reedwalker",
@@ -5955,7 +5957,7 @@
       "id": "druid",
       "name": "Thalen Reedwalker",
       "level": 7,
-      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
+      "sourceCommit": "e5575a674821fe31387cf4bf622a2dea96dd0906",
       "workingTree": false,
       "draft": {
         "name": "Thalen Reedwalker",
@@ -6839,7 +6841,7 @@
       "id": "fighter",
       "name": "Corin Ashguard",
       "level": 1,
-      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
+      "sourceCommit": "e5575a674821fe31387cf4bf622a2dea96dd0906",
       "workingTree": false,
       "draft": {
         "name": "Corin Ashguard",
@@ -7186,7 +7188,7 @@
       "id": "fighter",
       "name": "Corin Ashguard",
       "level": 3,
-      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
+      "sourceCommit": "e5575a674821fe31387cf4bf622a2dea96dd0906",
       "workingTree": false,
       "draft": {
         "name": "Corin Ashguard",
@@ -7642,7 +7644,7 @@
       "id": "fighter",
       "name": "Corin Ashguard",
       "level": 7,
-      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
+      "sourceCommit": "e5575a674821fe31387cf4bf622a2dea96dd0906",
       "workingTree": false,
       "draft": {
         "name": "Corin Ashguard",
@@ -8305,7 +8307,7 @@
       "id": "monk",
       "name": "Sera Quietstep",
       "level": 1,
-      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
+      "sourceCommit": "e5575a674821fe31387cf4bf622a2dea96dd0906",
       "workingTree": false,
       "draft": {
         "name": "Sera Quietstep",
@@ -8604,7 +8606,7 @@
       "id": "monk",
       "name": "Sera Quietstep",
       "level": 3,
-      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
+      "sourceCommit": "e5575a674821fe31387cf4bf622a2dea96dd0906",
       "workingTree": false,
       "draft": {
         "name": "Sera Quietstep",
@@ -9009,7 +9011,7 @@
       "id": "monk",
       "name": "Sera Quietstep",
       "level": 7,
-      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
+      "sourceCommit": "e5575a674821fe31387cf4bf622a2dea96dd0906",
       "workingTree": false,
       "draft": {
         "name": "Sera Quietstep",
@@ -9619,7 +9621,7 @@
       "id": "paladin",
       "name": "Aldren Vowkeeper",
       "level": 1,
-      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
+      "sourceCommit": "e5575a674821fe31387cf4bf622a2dea96dd0906",
       "workingTree": false,
       "draft": {
         "name": "Aldren Vowkeeper",
@@ -9974,7 +9976,7 @@
       "id": "paladin",
       "name": "Aldren Vowkeeper",
       "level": 3,
-      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
+      "sourceCommit": "e5575a674821fe31387cf4bf622a2dea96dd0906",
       "workingTree": false,
       "draft": {
         "name": "Aldren Vowkeeper",
@@ -10440,7 +10442,7 @@
       "id": "paladin",
       "name": "Aldren Vowkeeper",
       "level": 7,
-      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
+      "sourceCommit": "e5575a674821fe31387cf4bf622a2dea96dd0906",
       "workingTree": false,
       "draft": {
         "name": "Aldren Vowkeeper",
@@ -11177,7 +11179,7 @@
       "id": "ranger",
       "name": "Eryn Mossarrow",
       "level": 1,
-      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
+      "sourceCommit": "e5575a674821fe31387cf4bf622a2dea96dd0906",
       "workingTree": false,
       "draft": {
         "name": "Eryn Mossarrow",
@@ -11462,7 +11464,7 @@
           "name": "Wild Harvest I",
           "dp": 1,
           "level": 1,
-          "effect": "1 hour · Knowledge. Search an accessible area for food or drinkable water. The DA defines the area and confirms a plausible source before you roll. Raise one Food Bundle or Water Flask of the chosen type by 1/2/3 supply die steps, maximum d8. An empty supply starts at d4 on the first step. You can also spend 1 hour with available materials to shelter two people from ordinary rain and wind, without a roll.",
+          "effect": "Main Action · 1 hour · Knowledge. Search an accessible area for food or drinkable water. The DA defines the area and confirms a plausible source before you roll. Raise one Food Bundle or Water Flask of the chosen type by 1/2/3 supply die steps, maximum d8. An empty supply starts at d4 on the first step. You can also spend 1 hour with available materials to shelter two people from ordinary rain and wind, without a roll.",
           "kind": "technique",
           "disciplineId": "wilderness",
           "pathId": "wilderness:provisioning",
@@ -11513,11 +11515,11 @@
         }
       ],
       "actionCounts": {
-        "Main Action": 2,
+        "Main Action": 3,
         "Maneuver": 1,
         "Reaction": 1,
         "Passive": 0,
-        "Other": 1
+        "Other": 0
       },
       "spellCounts": {
         "total": 4,
@@ -11554,7 +11556,7 @@
       "id": "ranger",
       "name": "Eryn Mossarrow",
       "level": 3,
-      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
+      "sourceCommit": "e5575a674821fe31387cf4bf622a2dea96dd0906",
       "workingTree": false,
       "draft": {
         "name": "Eryn Mossarrow",
@@ -11924,7 +11926,7 @@
           "name": "Wild Harvest I",
           "dp": 1,
           "level": 1,
-          "effect": "1 hour · Knowledge. Search an accessible area for food or drinkable water. The DA defines the area and confirms a plausible source before you roll. Raise one Food Bundle or Water Flask of the chosen type by 1/2/3 supply die steps, maximum d8. An empty supply starts at d4 on the first step. You can also spend 1 hour with available materials to shelter two people from ordinary rain and wind, without a roll.",
+          "effect": "Main Action · 1 hour · Knowledge. Search an accessible area for food or drinkable water. The DA defines the area and confirms a plausible source before you roll. Raise one Food Bundle or Water Flask of the chosen type by 1/2/3 supply die steps, maximum d8. An empty supply starts at d4 on the first step. You can also spend 1 hour with available materials to shelter two people from ordinary rain and wind, without a roll.",
           "kind": "technique",
           "disciplineId": "wilderness",
           "pathId": "wilderness:provisioning",
@@ -11989,11 +11991,11 @@
         }
       ],
       "actionCounts": {
-        "Main Action": 4,
+        "Main Action": 5,
         "Maneuver": 1,
         "Reaction": 1,
         "Passive": 0,
-        "Other": 1
+        "Other": 0
       },
       "spellCounts": {
         "total": 4,
@@ -12040,7 +12042,7 @@
       "id": "ranger",
       "name": "Eryn Mossarrow",
       "level": 7,
-      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
+      "sourceCommit": "e5575a674821fe31387cf4bf622a2dea96dd0906",
       "workingTree": false,
       "draft": {
         "name": "Eryn Mossarrow",
@@ -12560,7 +12562,7 @@
           "name": "Wild Harvest I",
           "dp": 1,
           "level": 1,
-          "effect": "1 hour · Knowledge. Search an accessible area for food or drinkable water. The DA defines the area and confirms a plausible source before you roll. Raise one Food Bundle or Water Flask of the chosen type by 1/2/3 supply die steps, maximum d8. An empty supply starts at d4 on the first step. You can also spend 1 hour with available materials to shelter two people from ordinary rain and wind, without a roll.",
+          "effect": "Main Action · 1 hour · Knowledge. Search an accessible area for food or drinkable water. The DA defines the area and confirms a plausible source before you roll. Raise one Food Bundle or Water Flask of the chosen type by 1/2/3 supply die steps, maximum d8. An empty supply starts at d4 on the first step. You can also spend 1 hour with available materials to shelter two people from ordinary rain and wind, without a roll.",
           "kind": "technique",
           "disciplineId": "wilderness",
           "pathId": "wilderness:provisioning",
@@ -12739,11 +12741,11 @@
         }
       ],
       "actionCounts": {
-        "Main Action": 8,
+        "Main Action": 9,
         "Maneuver": 1,
         "Reaction": 1,
         "Passive": 0,
-        "Other": 1
+        "Other": 0
       },
       "spellCounts": {
         "total": 12,
@@ -12791,7 +12793,7 @@
       "id": "rogue",
       "name": "Pip Nightjar",
       "level": 1,
-      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
+      "sourceCommit": "e5575a674821fe31387cf4bf622a2dea96dd0906",
       "workingTree": false,
       "draft": {
         "name": "Pip Nightjar",
@@ -13134,7 +13136,7 @@
       "id": "rogue",
       "name": "Pip Nightjar",
       "level": 3,
-      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
+      "sourceCommit": "e5575a674821fe31387cf4bf622a2dea96dd0906",
       "workingTree": false,
       "draft": {
         "name": "Pip Nightjar",
@@ -13579,7 +13581,7 @@
       "id": "rogue",
       "name": "Pip Nightjar",
       "level": 7,
-      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
+      "sourceCommit": "e5575a674821fe31387cf4bf622a2dea96dd0906",
       "workingTree": false,
       "draft": {
         "name": "Pip Nightjar",
@@ -14120,7 +14122,7 @@
           "name": "The Hidden Road",
           "dp": 5,
           "level": 7,
-          "effect": "1 hour · Agility, with rope and concealment materials. Establish a concealed route up to 20 squares long across terrain you can physically traverse; add 3/5/7 progress toward the DA’s route objective. On completion, up to six companions following your instructions can traverse it at normal movement cost with 2 Boons to remain unnoticed. It creates no unsupported bridge. Discovery or damage ends these benefits until the route is repaired and concealed again.",
+          "effect": "Main Action · 1 hour · Agility, with rope and concealment materials. Establish a concealed route up to 20 squares long across terrain you can physically traverse; add 3/5/7 progress toward the DA’s route objective. On completion, up to six companions following your instructions can traverse it at normal movement cost with 2 Boons to remain unnoticed. It creates no unsupported bridge. Discovery or damage ends these benefits until the route is repaired and concealed again.",
           "kind": "mastery",
           "disciplineId": "subterfuge",
           "pathId": "subterfuge:stealth",
@@ -14175,11 +14177,11 @@
       "spellIds": [],
       "spells": [],
       "actionCounts": {
-        "Main Action": 5,
+        "Main Action": 6,
         "Maneuver": 4,
         "Reaction": 2,
         "Passive": 1,
-        "Other": 1
+        "Other": 0
       },
       "spellCounts": {
         "total": 0,
@@ -14221,7 +14223,7 @@
       "id": "sorcerer",
       "name": "Ilyra Cinderblood",
       "level": 1,
-      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
+      "sourceCommit": "e5575a674821fe31387cf4bf622a2dea96dd0906",
       "workingTree": false,
       "draft": {
         "name": "Ilyra Cinderblood",
@@ -14594,7 +14596,7 @@
       "id": "sorcerer",
       "name": "Ilyra Cinderblood",
       "level": 3,
-      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
+      "sourceCommit": "e5575a674821fe31387cf4bf622a2dea96dd0906",
       "workingTree": false,
       "draft": {
         "name": "Ilyra Cinderblood",
@@ -15110,7 +15112,7 @@
       "id": "sorcerer",
       "name": "Ilyra Cinderblood",
       "level": 7,
-      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
+      "sourceCommit": "e5575a674821fe31387cf4bf622a2dea96dd0906",
       "workingTree": false,
       "draft": {
         "name": "Ilyra Cinderblood",
@@ -15912,7 +15914,7 @@
       "id": "warlock",
       "name": "Vesper Ashpact",
       "level": 1,
-      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
+      "sourceCommit": "e5575a674821fe31387cf4bf622a2dea96dd0906",
       "workingTree": false,
       "draft": {
         "name": "Vesper Ashpact",
@@ -16259,7 +16261,7 @@
       "id": "warlock",
       "name": "Vesper Ashpact",
       "level": 3,
-      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
+      "sourceCommit": "e5575a674821fe31387cf4bf622a2dea96dd0906",
       "workingTree": false,
       "draft": {
         "name": "Vesper Ashpact",
@@ -16732,7 +16734,7 @@
       "id": "warlock",
       "name": "Vesper Ashpact",
       "level": 7,
-      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
+      "sourceCommit": "e5575a674821fe31387cf4bf622a2dea96dd0906",
       "workingTree": false,
       "draft": {
         "name": "Vesper Ashpact",
@@ -17550,7 +17552,7 @@
       "id": "wizard",
       "name": "Vaelis Quillstar",
       "level": 1,
-      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
+      "sourceCommit": "e5575a674821fe31387cf4bf622a2dea96dd0906",
       "workingTree": false,
       "draft": {
         "name": "Vaelis Quillstar",
@@ -17988,7 +17990,7 @@
       "id": "wizard",
       "name": "Vaelis Quillstar",
       "level": 3,
-      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
+      "sourceCommit": "e5575a674821fe31387cf4bf622a2dea96dd0906",
       "workingTree": false,
       "draft": {
         "name": "Vaelis Quillstar",
@@ -18580,7 +18582,7 @@
       "id": "wizard",
       "name": "Vaelis Quillstar",
       "level": 7,
-      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
+      "sourceCommit": "e5575a674821fe31387cf4bf622a2dea96dd0906",
       "workingTree": false,
       "draft": {
         "name": "Vaelis Quillstar",
@@ -19473,7 +19475,7 @@
       "id": "artificer",
       "name": "Nim Coppercoil",
       "level": 1,
-      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
+      "sourceCommit": "e5575a674821fe31387cf4bf622a2dea96dd0906",
       "workingTree": false,
       "draft": {
         "name": "Nim Coppercoil",
@@ -19742,7 +19744,7 @@
           "name": "Smoke in a Bottle I",
           "dp": 1,
           "level": 1,
-          "effect": "1 hour · Knowledge, with alchemical tools and one purchased batch of smoke ingredients. Add 1/2/3 progress toward target 3 to prepare one smoke flask. Maneuver: throw a prepared flask to a visible point within 4 squares, consuming it. Smoke fills a 1-square-radius area until your next turn ends and blocks sight through it. No throwing roll.",
+          "effect": "Main Action · 1 hour · Knowledge, with alchemical tools and one purchased batch of smoke ingredients. Add 1/2/3 progress toward target 3 to prepare one smoke flask. Maneuver: throw a prepared flask to a visible point within 4 squares, consuming it. Smoke fills a 1-square-radius area until your next turn ends and blocks sight through it. No throwing roll.",
           "kind": "technique",
           "disciplineId": "craft",
           "pathId": "craft:mixtures",
@@ -19843,11 +19845,11 @@
         }
       ],
       "actionCounts": {
-        "Main Action": 2,
+        "Main Action": 3,
         "Maneuver": 0,
         "Reaction": 1,
         "Passive": 0,
-        "Other": 1
+        "Other": 0
       },
       "spellCounts": {
         "total": 8,
@@ -19883,7 +19885,7 @@
       "id": "artificer",
       "name": "Nim Coppercoil",
       "level": 3,
-      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
+      "sourceCommit": "e5575a674821fe31387cf4bf622a2dea96dd0906",
       "workingTree": false,
       "draft": {
         "name": "Nim Coppercoil",
@@ -20239,7 +20241,7 @@
           "name": "Smoke in a Bottle I",
           "dp": 1,
           "level": 1,
-          "effect": "1 hour · Knowledge, with alchemical tools and one purchased batch of smoke ingredients. Add 1/2/3 progress toward target 3 to prepare one smoke flask. Maneuver: throw a prepared flask to a visible point within 4 squares, consuming it. Smoke fills a 1-square-radius area until your next turn ends and blocks sight through it. No throwing roll.",
+          "effect": "Main Action · 1 hour · Knowledge, with alchemical tools and one purchased batch of smoke ingredients. Add 1/2/3 progress toward target 3 to prepare one smoke flask. Maneuver: throw a prepared flask to a visible point within 4 squares, consuming it. Smoke fills a 1-square-radius area until your next turn ends and blocks sight through it. No throwing roll.",
           "kind": "technique",
           "disciplineId": "craft",
           "pathId": "craft:mixtures",
@@ -20354,11 +20356,11 @@
         }
       ],
       "actionCounts": {
-        "Main Action": 4,
+        "Main Action": 5,
         "Maneuver": 0,
         "Reaction": 1,
         "Passive": 0,
-        "Other": 1
+        "Other": 0
       },
       "spellCounts": {
         "total": 8,
@@ -20405,7 +20407,7 @@
       "id": "artificer",
       "name": "Nim Coppercoil",
       "level": 7,
-      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
+      "sourceCommit": "e5575a674821fe31387cf4bf622a2dea96dd0906",
       "workingTree": false,
       "draft": {
         "name": "Nim Coppercoil",
@@ -20976,7 +20978,7 @@
           "name": "Smoke in a Bottle I",
           "dp": 1,
           "level": 1,
-          "effect": "1 hour · Knowledge, with alchemical tools and one purchased batch of smoke ingredients. Add 1/2/3 progress toward target 3 to prepare one smoke flask. Maneuver: throw a prepared flask to a visible point within 4 squares, consuming it. Smoke fills a 1-square-radius area until your next turn ends and blocks sight through it. No throwing roll.",
+          "effect": "Main Action · 1 hour · Knowledge, with alchemical tools and one purchased batch of smoke ingredients. Add 1/2/3 progress toward target 3 to prepare one smoke flask. Maneuver: throw a prepared flask to a visible point within 4 squares, consuming it. Smoke fills a 1-square-radius area until your next turn ends and blocks sight through it. No throwing roll.",
           "kind": "technique",
           "disciplineId": "craft",
           "pathId": "craft:mixtures",
@@ -21046,7 +21048,7 @@
           "name": "A Roof before Nightfall I",
           "dp": 3,
           "level": 3,
-          "effect": "1 hour, with tools and sound materials on stable ground. Build a weatherproof shelter for six people without a roll. It resists ordinary weather, not attacks or extreme hazards. You can also improvise a simple hook, wedge, lever or similar tool from suitable salvage: 10 minutes and Knowledge for 1/2/3 progress toward target 3. It lasts one task and cannot be a weapon, armor, consumable ingredient or valuable.",
+          "effect": "Main Action · 1 hour, with tools and sound materials on stable ground. Build a weatherproof shelter for six people without a roll. It resists ordinary weather, not attacks or extreme hazards. You can also improvise a simple hook, wedge, lever or similar tool from suitable salvage: 10 minutes and Knowledge for 1/2/3 progress toward target 3. It lasts one task and cannot be a weapon, armor, consumable ingredient or valuable.",
           "kind": "technique",
           "disciplineId": "craft",
           "pathId": "craft:workshop",
@@ -21331,11 +21333,11 @@
         }
       ],
       "actionCounts": {
-        "Main Action": 6,
+        "Main Action": 8,
         "Maneuver": 0,
         "Reaction": 1,
         "Passive": 1,
-        "Other": 2
+        "Other": 0
       },
       "spellCounts": {
         "total": 30,

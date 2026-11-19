@@ -9,7 +9,7 @@ import { projectNativeWorkshopInventory } from '../rules/native-inventory-projec
 import { nativeItemForWorkshopInstance } from '../rules/native-item-identity.mjs';
 import { setRangedWeaponAmmunition } from '../services/ranged-ammunition.mjs';
 import { consumableTracking,tracksConsumable } from '../services/consumables.mjs';
-import { depleteOwnedSupply } from '../services/inventory.mjs';
+import { lowerOwnedSupply } from '../services/inventory.mjs';
 import { viewPortrait } from './portrait.mjs';
 import { updateOwnedDocument } from '../services/documents.mjs';
 import { loadWorkshopCatalogs } from '../services/catalog.mjs';
@@ -159,7 +159,7 @@ export class WorkshopCharacterSheet extends HandlebarsApplicationMixin(foundry.a
             if(!item)throw new Error('That owned healing bottle no longer exists.');
             await openPotionPreparation(item,{bottleItemUuid:item.uuid});return true;
           }
-          if(event.action==='confirm-deplete-supply') {
+          if(event.action==='lower-supply') {
             this.assertOwner();
             if(event.target.disabled)return true;
             event.target.disabled=true;
@@ -167,8 +167,7 @@ export class WorkshopCharacterSheet extends HandlebarsApplicationMixin(foundry.a
               await this.controller.flush();
               const item=nativeItemForWorkshopInstance(this.actor,event.dataset.instance);
               if(!item?.system.quantity || !tracksConsumable(item))throw new Error('Choose an owned consumable with supply tracking enabled.');
-              await depleteOwnedSupply(this.actor,item);
-              event.target.closest('dialog')?.close();
+              await lowerOwnedSupply(this.actor,item);
               await this.render({force:true});
             } finally {event.target.disabled=false;}
             return true;

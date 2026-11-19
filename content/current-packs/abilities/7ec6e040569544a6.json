@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action · 1 hour</dd></div></dl><p>1 hour, with tools and enough sound structural and concealment materials. Build a concealed fortified shelter for up to eight people on stable ground. No roll. Occupants behind its walls gain 2 Boons on defense against attacks from outside; each door or wall section has 15 HP and physical resistance 2. Open doors provide no protection. The shelter does not automatically make overnight rest safe; ordinary object damage rules apply.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action · 1 hour</dd></div></dl><p>Main Action · 1 hour, with tools and enough sound structural and concealment materials. Build a concealed fortified shelter for up to eight people on stable ground. No roll. Occupants behind its walls gain 2 Boons on defense against attacks from outside; each door or wall section has 15 HP and physical resistance 2. Open doors provide no protection. The shelter does not automatically make overnight rest safe; ordinary object damage rules apply.</p>",
     "activity": {
       "action": "main",
       "rollMode": "none",
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "wilderness:provisioning:7",
-      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
+      "sourceCommit": "e5575a674821fe31387cf4bf622a2dea96dd0906",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "mastery",
@@ -34,7 +34,7 @@
         "duration": null,
         "attribute": null,
         "defenseAttribute": null,
-        "effect": "1 hour, with tools and enough sound structural and concealment materials. Build a concealed fortified shelter for up to eight people on stable ground. No roll. Occupants behind its walls gain 2 Boons on defense against attacks from outside; each door or wall section has 15 HP and physical resistance 2. Open doors provide no protection. The shelter does not automatically make overnight rest safe; ordinary object damage rules apply.",
+        "effect": "Main Action · 1 hour, with tools and enough sound structural and concealment materials. Build a concealed fortified shelter for up to eight people on stable ground. No roll. Occupants behind its walls gain 2 Boons on defense against attacks from outside; each door or wall section has 15 HP and physical resistance 2. Open doors provide no protection. The shelter does not automatically make overnight rest safe; ordinary object damage rules apply.",
         "improves": null,
         "requires": [
           "wilderness:provisioning:6"

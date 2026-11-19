@@ -3,7 +3,7 @@ import {coordinateNativeGameplay,registerNativeGameplayHandler} from "./native-w
 import { tracksConsumable } from "./consumables.mjs";
 import { createActionMessage, shouldProcessRequest } from "./authority.mjs";
 import { ensureAuthorityReady } from "./authority.mjs";
-import { inventoryCheck } from "../rules/inventory.mjs";
+import { inventoryCheck, lowerInventoryDie } from "../rules/inventory.mjs";
 import { assertNoPendingTurn } from "./turn-lock.mjs";
 import {
   enqueueCharacterOperation,
@@ -869,23 +869,33 @@ export function supplyResultState(result) {
 }
 /** Explicit correction uses the same GM queue and changes only this Item die. */
 export function depleteOwnedSupply(actor,item,{operationId=foundry.utils.randomID()}={}) {
-  if(!actor?.testUserPermission(game.user,"OWNER")||item?.actor?.uuid!==actor.uuid)return Promise.reject(new Error("Choose an owned supply item."));
-  return coordinateNativeGameplay(actor,{kind:"supply-deplete",operationId,payload:{itemId:item.id}});
+  return changeOwnedSupply(actor,item,operationId,false);
 }
-registerNativeGameplayHandler("supply-deplete",async(actor,{itemId},context)=>{
-  let item=actor.items.get(itemId),record=structuredClone(actor.getFlag(ID,"supplyActions")?.[context.operationId]??null);
+export function lowerOwnedSupply(actor,item,{operationId=foundry.utils.randomID()}={}) {
+  return changeOwnedSupply(actor,item,operationId,true);
+}
+function changeOwnedSupply(actor,item,operationId,stepDown) {
+  if(!actor?.testUserPermission(game.user,"OWNER")||item?.actor?.uuid!==actor.uuid)return Promise.reject(new Error("Choose an owned supply item."));
+  return coordinateNativeGameplay(actor,{kind:"supply-deplete",operationId,payload:{itemId:item.id,stepDown}});
+}
+registerNativeGameplayHandler("supply-deplete",async(actor,{itemId,stepDown=false},context)=>{
+  const item=actor.items.get(itemId);
+  let record=structuredClone(actor.getFlag(ID,"supplyActions")?.[context.operationId]??null);
   if(!item||item.type!=="equipment"||item.actor?.uuid!==actor.uuid||!actor.testUserPermission(context.author,"OWNER"))throw new Error("Choose an owned supply item.");
+  if(typeof stepDown!=="boolean" || (stepDown && (!item.system.quantity || !tracksConsumable(item))))throw new Error("Choose a consumable with supply tracking enabled.");
+  const kind=stepDown ? "manual-step-down" : "manual-deplete";
   if(!record){
     assertSupplyActionAvailable(actor);
-    if(item.system.inventoryDie!==0)activeInventoryDie(item.system.inventoryDie);
-    record={operationId:context.operationId,itemId,kind:"manual-deplete",phase:"rolled",before:item.system.inventoryDie,after:0};
+    const before=item.system.inventoryDie;
+    if(before!==0)activeInventoryDie(before);
+    record={operationId:context.operationId,itemId,kind,phase:"rolled",before,after:stepDown ? lowerInventoryDie(before) : 0};
     await context.write({[`flags.${ID}.supplyActions.${context.operationId}`]:record},record);
   }
-  if(record.itemId!==itemId||record.kind!=="manual-deplete")throw new Error("This saved depletion belongs to a different action.");
+  if(record.itemId!==itemId||record.kind!==kind)throw new Error("This saved adjustment belongs to a different action.");
   if(record.phase!=="applied") {
-    if(![record.before,0].includes(item.system.inventoryDie))throw new Error("This supply changed. Review the manual correction before retrying.");
-    if(item.system.inventoryDie!==0)await item.update({"system.inventoryDie":0});
+    if(![record.before,record.after].includes(item.system.inventoryDie))throw new Error("This supply changed. Review the manual correction before retrying.");
+    if(item.system.inventoryDie!==record.after)await item.update({"system.inventoryDie":record.after});
     record={...record,phase:"applied"};await context.write({[`flags.${ID}.supplyActions.${context.operationId}`]:record,[`flags.${ID}.inventoryRevision`]:(actor.getFlag(ID,"inventoryRevision")??0)+1},record);
   }
-  return {status:"complete",changed:record.before!==0};
+  return {status:"complete",changed:record.before!==record.after};
 });

@@ -199,11 +199,12 @@ try {
   const supplyDialog = page.getByRole("dialog");
   assert.match(await supplyDialog.innerText(), /Maximum supply die:\s*d8/);
   await supplyDialog.getByRole("button", { name: "Close", exact: true }).click();
-  await food.getByRole("button", { name: "Deplete Food Bundle", exact: true }).click();
-  await supplyDialog.getByRole("button", { name: "Cancel", exact: true }).click();
-  assert.equal(await food.locator(".supply-readout > span").first().innerText(), "d6");
-  await food.getByRole("button", { name: "Deplete Food Bundle", exact: true }).click();
-  await supplyDialog.getByRole("button", { name: "Deplete supply", exact: true }).click();
+  const lower = food.getByRole("button", { name: "Lower Food Bundle supply", exact: true });
+  await lower.click();
+  assert.equal(await supplyDialog.count(), 0);
+  assert.equal(await food.locator(".supply-readout > span").first().innerText(), "d4");
+  await lower.click();
+  assert.equal(await supplyDialog.count(), 0);
   assert.equal(await food.locator(".supply-readout > span").first().innerText(), "Empty");
   assert.equal(await food.getByRole("spinbutton").inputValue(), "2");
   await page.reload();
@@ -212,6 +213,12 @@ try {
   await supplyDialog.getByRole("button", { name: "Resupply", exact: true }).click();
   assert.equal(await food.locator(".supply-readout > span").first().innerText(), "d4");
   await page.setViewportSize({ width: 760, height: 900 });
+  assert(await food.locator(".supply-readout").evaluate(readout => {
+    const cell = readout.closest("td").getBoundingClientRect();
+    const [die, controls] = [...readout.children].map(child => child.getBoundingClientRect());
+    return die.right <= controls.left && controls.right <= cell.right &&
+      die.top < controls.bottom && die.bottom > controls.top;
+  }), "The current die and controls stay on one line within the supply cell.");
   await page.screenshot({ path: `${output}/resources-inventory-760.png` });
   await page.getByRole("tab", { name: "Abilities", exact: true }).click();
   assert.equal(
@@ -250,7 +257,7 @@ try {
   }
   assert.deepEqual(failures, []);
   console.info(
-    "PASS lifetime Grit, separate failure marks and Last Words, sidebar section states, potion final healing, supply decay and manual depletion, maximum die, quantity, stars and current-only portable persistence; 900/760/390px and zero browser errors.",
+    "PASS lifetime Grit, separate failure marks and Last Words, sidebar section states, potion final healing, supply decay and one-step reduction, maximum die, quantity, stars and current-only portable persistence; 900/760/390px and zero browser errors.",
   );
 } catch (error) {
   await page.screenshot({

@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action · 30 minutes</dd></div><div><dt>Attribute</dt><dd>Guile</dd></div></dl><p>30 minutes · Guile. Conceal a completed camp and its approach; add 1/2/3 progress to the DA’s concealment objective. Completion hides casual signs; direct search remains possible. You can also search water-bearing terrain for 1 hour, rolling Reason for 1/2/3 progress toward finding a concealed spring; completion reveals its location and visible hazards, not purification.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action · 30 minutes</dd></div><div><dt>Attribute</dt><dd>Guile</dd></div></dl><p>Main Action · 30 minutes · Guile. Conceal a completed camp and its approach; add 1/2/3 progress to the DA’s concealment objective. Completion hides casual signs; direct search remains possible. You can also search water-bearing terrain for 1 hour, rolling Reason for 1/2/3 progress toward finding a concealed spring; completion reveals its location and visible hazards, not purification.</p>",
     "activity": {
       "action": "main",
       "rollMode": "attribute",
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "wilderness:provisioning:4",
-      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
+      "sourceCommit": "e5575a674821fe31387cf4bf622a2dea96dd0906",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "technique",
@@ -34,7 +34,7 @@
         "duration": null,
         "attribute": "Guile",
         "defenseAttribute": null,
-        "effect": "30 minutes · Guile. Conceal a completed camp and its approach; add 1/2/3 progress to the DA’s concealment objective. Completion hides casual signs; direct search remains possible. You can also search water-bearing terrain for 1 hour, rolling Reason for 1/2/3 progress toward finding a concealed spring; completion reveals its location and visible hazards, not purification.",
+        "effect": "Main Action · 30 minutes · Guile. Conceal a completed camp and its approach; add 1/2/3 progress to the DA’s concealment objective. Completion hides casual signs; direct search remains possible. You can also search water-bearing terrain for 1 hour, rolling Reason for 1/2/3 progress toward finding a concealed spring; completion reveals its location and visible hazards, not purification.",
         "improves": null,
         "requires": [
           "wilderness:provisioning:3"

@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Range</dt><dd>An accessible item</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p><strong>Action:</strong> Varies · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> An accessible item</p><p>Drawing a weapon is included in its attack action. Dropping is free. Proper stowing or picking up costs a Maneuver. Ordinary item use follows its own card. No free two-handed grip exception is assumed.</p><p><strong>Duration:</strong> Instant</p><p><strong>Equipment / acquisition:</strong> None.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Range</dt><dd>An accessible item</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p><strong>Action:</strong> Maneuver · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> An accessible item</p><p>Drawing a weapon is included in its attack action. Dropping is free. Proper stowing or picking up costs a Maneuver. Ordinary item use follows its own card. No free two-handed grip exception is assumed.</p><p><strong>Duration:</strong> Instant</p><p><strong>Equipment / acquisition:</strong> None.</p>",
     "activity": {
       "action": "maneuver",
       "rollMode": "attribute",
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "ability-handle-an-item",
-      "sourceCommit": "a2ae6bd93ef60cf6f9bb523ccdde23364b09c932",
+      "sourceCommit": "e5575a674821fe31387cf4bf622a2dea96dd0906",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "ability",
@@ -34,7 +34,7 @@
         "duration": "Instant",
         "attribute": "None — no roll",
         "defenseAttribute": null,
-        "effect": "**Action:** Varies · **Attribute:** None — no roll\n\n**Target / range / shape:** An accessible item\n\nDrawing a weapon is included in its attack action. Dropping is free. Proper stowing or picking up costs a Maneuver. Ordinary item use follows its own card. No free two-handed grip exception is assumed.\n\n**Duration:** Instant\n\n**Equipment / acquisition:** None.",
+        "effect": "**Action:** Maneuver · **Attribute:** None — no roll\n\n**Target / range / shape:** An accessible item\n\nDrawing a weapon is included in its attack action. Dropping is free. Proper stowing or picking up costs a Maneuver. Ordinary item use follows its own card. No free two-handed grip exception is assumed.\n\n**Duration:** Instant\n\n**Equipment / acquisition:** None.",
         "improves": null,
         "requires": [],
         "bookId": null

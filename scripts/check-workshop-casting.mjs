@@ -78,6 +78,17 @@ try {
   await action("sustain-spell").click();
   assert.equal((await state()).sp,8);
   assert.equal((await state()).sustain.maintainedTurn,1);
+  const call=await fixture("druid");
+  const callId="ability-signature-shepherd-a-hand-in-darkness";
+  call.progression.levels[7].signatures={7:callId};
+  await load(call);
+  const callRow=page.locator(`[data-action-row="${callId}"]`);
+  await expect(callRow.locator(".timing-cell")).toHaveText("Main Action · Ritual — 10 minutes");
+  await cast(callId);
+  await expect(page.getByRole("dialog")).toContainText("Finish the printed casting time");
+  await expect(action("finish-ritual")).toHaveCount(0);
+  assert.equal((await state()).sp,8);
+  await close();
   const nature=await fixture("druid");
   nature.purchases={0:[],1:[]}; nature.acquisitions={};
   for(const level of Object.values(nature.progression.levels)){level.purchases=[];level.acquisitions={};}
