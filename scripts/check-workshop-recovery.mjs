@@ -83,23 +83,20 @@ try {
   await page.reload();
   await hp.waitFor();
   await page.getByRole("button", { name: "Brief Rest", exact: true }).click();
-  await page.getByRole("checkbox", { name: "First Aid", exact: true }).check();
-  await page.getByLabel("Healer", { exact: true }).selectOption("other");
-  await page.getByLabel("Treatment", { exact: true }).selectOption("field-dressing2");
-  await page.getByLabel("Healer’s Knowledge roll total", { exact: true }).fill("12");
+  assert.doesNotMatch(await page.getByRole("dialog", { name: "Brief Rest", exact: true }).innerText(), /First Aid/i);
   await page.getByRole("button", { name: "Complete Brief Rest", exact: true }).click();
-  assert.equal(await hp.inputValue(), "12");
+  assert.equal(await hp.inputValue(), "6");
   assert.equal(await sp.inputValue(), "4");
+  await hp.fill("+4");
+  await hp.press("Tab");
+  assert.equal(await hp.inputValue(), "10");
   await hp.fill("2");
   await hp.press("Tab");
   await sp.fill("0");
   await sp.press("Tab");
   await page.getByRole("button", { name: "Brief Rest", exact: true }).click();
-  await page.getByRole("checkbox", { name: "First Aid", exact: true }).check();
-  await page.getByRole("button", { name: "1 Boon", exact: true }).click();
-  await dice([2, 2, 2, 2]);
   await page.getByRole("button", { name: "Complete Brief Rest", exact: true }).click();
-  assert.equal(await hp.inputValue(), "10");
+  assert.equal(await hp.inputValue(), "8");
   assert.equal(await sp.inputValue(), "3");
   await page.getByRole("button", { name: "Night’s Rest", exact: true }).click();
   assert.equal(await hp.inputValue(), "20");
@@ -259,7 +256,7 @@ try {
   });
   assert.deepEqual(failures, []);
   console.info(
-    "PASS first aid, overnight rest, scars, resupply caps, basic and inventory Favorites, condition +/- and HP Apply without decay; saved/reloaded/JSON and compact layouts.",
+    "PASS brief rest, separate HP adjustment, overnight rest, scars, resupply caps, basic and inventory Favorites, condition +/- and HP Apply without decay; saved/reloaded/JSON and compact layouts.",
   );
 } catch (error) {
   await page.screenshot({

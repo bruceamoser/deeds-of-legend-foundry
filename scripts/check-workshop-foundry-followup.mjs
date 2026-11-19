@@ -180,6 +180,7 @@ try {
   const completeBrief = () => restDialog.getByRole('button', { name: 'Complete Brief Rest', exact: true }).click();
   await setVitals();
   await brief.click();
+  await expect(restDialog).not.toContainText(/First Aid/i);
   await restDialog.screenshot({ path: `${output}/brief-rest.png` });
   await completeBrief();
   await expect.poll(readVitals).toMatchObject({ hp: 7, sp: 3 });
@@ -190,34 +191,16 @@ try {
 
   await setVitals();
   await brief.click();
-  await restDialog.getByRole('checkbox', { name: 'First Aid', exact: true }).check();
-  await restDialog.getByLabel('Healer', { exact: true }).selectOption('other');
-  await restDialog.getByLabel('Healer’s Knowledge roll total', { exact: true }).fill('12');
   await restDialog.getByRole('checkbox', { name: /Spellcraft Recovery/ }).check();
   await completeBrief();
-  await expect.poll(readVitals).toMatchObject({ hp: 11, sp: 4 });
-  await expect.poll(async () => (await rests()).at(-1)).toMatchObject({ firstAid: { tier: 'standard', total: 12, restored: 4 }, spellcraftSp: 1 });
-
-  await setVitals();
-  await brief.click();
-  await restDialog.getByRole('checkbox', { name: 'First Aid', exact: true }).check();
-  await page.evaluate(() => {
-    const original = CONFIG.Dice.randomUniform;
-    let dice = 3;
-    CONFIG.Dice.randomUniform = () => {
-      if (--dice === 0) CONFIG.Dice.randomUniform = original;
-      return 1 - 3.5 / 6;
-    };
-  });
-  await completeBrief();
-  await expect.poll(readVitals).toMatchObject({ hp: 11, sp: 3 });
-  await expect.poll(async () => (await rests()).at(-1)).toMatchObject({ firstAid: { tier: 'standard', total: 14, restored: 4 } });
+  await expect.poll(readVitals).toMatchObject({ hp: 7, sp: 4 });
+  await expect.poll(async () => (await rests()).at(-1)).toMatchObject({ spellcraftSp: 1 });
 
   await sheet.getByRole('button', { name: 'Night’s Rest', exact: true }).click();
   await expect(restDialog).toBeHidden();
   await expect.poll(readVitals).toEqual({ hp: base.maxHp + 4, sp: base.maxSp + 3, maxHp: base.maxHp + 4, maxSp: base.maxSp + 3 });
   await expect.poll(async () => (await rests()).at(-1)).toMatchObject({ kind: 'nights-rest' });
-  console.info('Brief Rest restores 6 HP/3 SP, allows table-authorized repeat use, and can add a self or outside First Aid roll and Spellcraft. Night’s Rest restores full resources with a chat result.');
+  console.info('Brief Rest restores 6 HP/3 SP, allows table-authorized repeat use, and offers learned Spellcraft Recovery. Night’s Rest restores full resources with a chat result.');
   await sheet.locator('[data-action=close]').click();
   await expect(sheet).toHaveCount(0);
   assert.deepEqual(errors, []);

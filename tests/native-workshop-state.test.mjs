@@ -275,22 +275,21 @@ test("explicit commit repairs obsolete choices and preserves live state across d
   assert.ok(lootState.nativeItems.some(item=>item.id==="custom-ability"));
   assert.ok(!previewLoot.state.abilities.includes("custom-ability"));
   const originalManaged=actor.items.filter(item=>item.type==="equipment"&&item.getFlag("heroes-of-legend","grantKind")==="nativeWorkshop").map(item=>item.id);
-  const committedPortable=structuredClone(flags.nativeWorkshop.portable);
-  const malicious=structuredClone(lootState);
-  // A malformed/stale UI snapshot must never retire gear merely because its
-  // normalized inventory no longer contains the committed construction grants.
-  malicious.character.draft.play.inventory.removed=[...malicious.character.draft.play.inventory.removed,...originalManaged.map(id=>nativeWorkshopInventoryId(actor.items.find(item=>item.id===id)))];
-  flags.nativeWorkshop.portable.draft.play.inventory.removed=structuredClone(malicious.character.draft.play.inventory.removed);
-  await assert.rejects(saveNativeWorkshopState(actor,malicious,{expectedRevision:12,basePlay:malicious.character.draft.play}),/Owned equipment is missing/);
-  assert.deepEqual(flags.nativeWorkshop.portable.draft.play.inventory.removed,malicious.character.draft.play.inventory.removed);
-  flags.nativeWorkshop.portable=committedPortable;
+  const staleInventory=structuredClone(lootState);
+  const survivingInstances=originalManaged.map(id=>nativeWorkshopInventoryId(actor.items.find(item=>item.id===id)));
+  // Existing native Items win over old removal markers. When the player opens
+  // a tab, repair its inventory snapshot and keep every native document.
+  staleInventory.character.draft.play.inventory.removed.push(...survivingInstances);
+  flags.nativeWorkshop.portable.draft.play.inventory.removed=structuredClone(staleInventory.character.draft.play.inventory.removed);
+  lootState=await saveNativeWorkshopState(actor,staleInventory,{expectedRevision:lootState.revision,basePlay:staleInventory.character.draft.play});
+  assert.ok(survivingInstances.every(id=>!lootState.character.draft.play.inventory.removed.includes(id)));
   assert.ok(originalManaged.every(id=>actor.items.some(item=>item.id===id)));
   const lootBase=structuredClone(lootState.character.draft.play),lootLoadout=structuredClone(lootState.character.draft.loadout);
   lootState.character.draft.play.inventory.overrides[lootId]={quantity:4,name:"Named Loot"};lootState.character.draft.loadout[lootId]={carried:false,held:false,worn:false};
-  await saveNativeWorkshopState(actor,lootState,{expectedRevision:12,basePlay:lootBase,baseLoadout:lootLoadout});
+  await saveNativeWorkshopState(actor,lootState,{expectedRevision:lootState.revision,basePlay:lootBase,baseLoadout:lootLoadout});
   assert.equal(loot.system.quantity,4);assert.equal(loot.system.carried,false);assert.equal(loot.name,"Named Loot");assert.equal(loot.system.description,"<p>User-authored loot</p>");assert.equal(loot.img,"loot.png");assert.equal(loot.getFlag("heroes-of-legend","grantKind"),"crafting");
   const beforeCommitCount=actor.items.length;
-  await commitNativeWorkshopCharacter(actor,committed.character,{expectedRevision:13});
+  await commitNativeWorkshopCharacter(actor,committed.character,{expectedRevision:flags.nativeWorkshop.revision});
   assert.equal(actor.items.length,beforeCommitCount);assert.equal(actor.items.filter(item=>item.id==="external-loot").length,1);assert.equal(loot.system.quantity,4);assert.equal(loot.getFlag("heroes-of-legend","grantKind"),"crafting");
   assert.ok(actor.items.some(item=>item.id==="unknown-custom"));assert.ok(actor.items.some(item=>item.id==="custom-ability"));
   actor.items=actor.items.filter(item=>item.id!=="external-loot");
@@ -298,7 +297,7 @@ test("explicit commit repairs obsolete choices and preserves live state across d
   assert.ok(!afterDelete.character.draft.play.inventory.added.some(item=>item.instanceId===lootId));
   const afterDeleteBase=structuredClone(afterDelete.character.draft.play);
   afterDelete.character.draft.play.favorites={abilities:[],items:[]};
-  await saveNativeWorkshopState(actor,afterDelete,{expectedRevision:14,basePlay:afterDeleteBase});
+  await saveNativeWorkshopState(actor,afterDelete,{expectedRevision:afterDelete.revision,basePlay:afterDeleteBase});
   assert.ok(!actor.items.some(item=>item.id==="external-loot"));
   await t.test("damage arriving during awaited Item writes survives a favorites save",async()=>{
     actor.system.health.value=8;
@@ -351,7 +350,11 @@ test("explicit commit repairs obsolete choices and preserves live state across d
     assert.ok(embedded);
     basePlay=structuredClone(state.character.draft.play);
     state.character.draft.play.inventory.added=state.character.draft.play.inventory.added.filter(item=>item.instanceId!==instanceId);
-    await assert.rejects(saveNativeWorkshopState(actor,state,{expectedRevision:flags.nativeWorkshop.revision,basePlay}),/Owned equipment is missing/);
+    state=await saveNativeWorkshopState(actor,state,{expectedRevision:flags.nativeWorkshop.revision,basePlay});
+    assert.ok(actor.items.includes(embedded));
+    assert.ok(state.character.draft.play.inventory.added.some(item=>item.instanceId===instanceId));
+    basePlay=structuredClone(state.character.draft.play);
+    state.character.draft.play.inventory.added=state.character.draft.play.inventory.added.filter(item=>item.instanceId!==instanceId);
     state.character.draft.play.inventory.removed.push(instanceId);
     await saveNativeWorkshopState(actor,state,{expectedRevision:flags.nativeWorkshop.revision,basePlay});
     assert.ok(!actor.items.includes(embedded));
@@ -413,6 +416,13 @@ test("baseline merging preserves external changes and accepts idempotent queued 
  assert.deepEqual(mergeNativeWorkshopPlay({hp:10,sp:3},{hp:10,sp:2},{hp:5,sp:3}),{hp:5,sp:2});
  assert.equal(mergeNativeWorkshopPlay(10,5,5),5);
  assert.throws(()=>mergeNativeWorkshopPlay(10,8,5),/changed elsewhere/);
+});
+test("a Workshop addition and a concurrent Foundry drop merge by stack identity",()=>{
+ const training={instanceId:"inventory-learned-ordinary-melee-weapon",id:"item-ordinary-melee-weapon",quantity:1};
+ const supplies={instanceId:"inventory-purchased-aid",id:"item-first-aid-supplies",quantity:2};
+ const rope={instanceId:"inventory-native-aabb",id:"item-rope-coil",quantity:1};
+ const play=(...added)=>({inventory:{added,removed:[]}});
+ assert.deepEqual(mergeNativeWorkshopPlay(play(training),play(training,supplies),play(training,rope)),play(training,supplies,rope));
 });
 test("level HP gains apply only to positive HP and do not refill SP or lifetime Grit",()=>{
  for(const hp of [0,2,preview.limits.maxHp]){

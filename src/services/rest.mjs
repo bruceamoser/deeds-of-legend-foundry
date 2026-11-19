@@ -21,12 +21,7 @@ export async function requestRest(actor, draft, { operationId = foundry.utils.ra
     return stored?.operationId === operationId && stored.actorUuid === actor.uuid;
   })) {
     const label = result.kind === "brief-rest" ? "Brief Rest" : "Night’s Rest";
-    const titleCase = value => value[0].toUpperCase() + value.slice(1);
-    const care = result.firstAid;
-    const details = [
-      care ? `${care.label}: ${titleCase(care.tier)} (${care.total}), +${care.restored} HP` : "",
-      result.spellcraftSp !== undefined ? `Spellcraft Recovery: +${result.spellcraftSp} SP` : "",
-    ].filter(Boolean).join(" · ");
+    const details = result.spellcraftSp !== undefined ? `Spellcraft Recovery: +${result.spellcraftSp} SP` : "";
     try {
       await ChatMessage.create({
         speaker: ChatMessage.getSpeaker({ actor }),
@@ -58,11 +53,10 @@ registerNativeGameplayHandler("rest", async (actor, draft, context) => {
     spellcraftRestoration = forgeLearning(forge, actor.getFlag(ID, "forgeLearned") ?? []).recoverySp;
   }
   const basis = damageBasis(actor);
-  const plan = nativeRestState(basis, { kind: draft.kind, firstAid: draft.firstAid, spellcraft: draft.spellcraft }, { spellcraftRestoration });
+  const plan = nativeRestState(basis, { kind: draft.kind, spellcraft: draft.spellcraft }, { spellcraftRestoration });
   const result = {
     operationId, source, actorUuid: actor.uuid, authorId: context.author.id, kind: draft.kind,
     before: { hp: basis.hp, sp: basis.sp }, after: { hp: plan.hp, sp: plan.sp },
-    ...(plan.firstAid ? { firstAid: plan.firstAid } : {}),
     ...(draft.spellcraft ? { spellcraftSp: plan.spellcraftSp } : {}),
   };
   const storedPlay = actor.getFlag(ID, "nativeWorkshop")?.portable?.draft?.play;

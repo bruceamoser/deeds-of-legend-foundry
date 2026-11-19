@@ -13,7 +13,7 @@ import { currentNativeCharacterChanges } from "../rules/native-character-state.m
 import { abilityItemSource, equipmentItemSource, escapeItemHtml } from "../rules/item-construction.mjs";
 import { ORDINARY_RANGED_WEAPON } from "../rules/equipment-identity.mjs";
 import { selectedRangedAmmunition } from "./ranged-ammunition.mjs";
-import { LEARNED_GEAR_PREFIX, provisionSalePrice } from "../rules/training-equipment.mjs";
+import { provisionSalePrice } from "../rules/training-equipment.mjs";
 
 const ID = "heroes-of-legend";
 const attribute = (value, fallback) => ["brawn", "fortitude", "agility", "guile", "knowledge", "reason"].includes(value?.toLowerCase()) ? value.toLowerCase() : fallback;
@@ -66,7 +66,8 @@ function overlay(actor, portable, catalogs) {
   const inventory = result.draft.play.inventory ??= { added: [], removed: [] };
   inventory.overrides ??= {};
   inventory.ammunition = {};
-  inventory.added=inventory.added.filter(item=>!item.instanceId.startsWith(NATIVE_INVENTORY_PREFIX));
+  const additions = new Map(inventory.added.filter(item=>!item.instanceId.startsWith(NATIVE_INVENTORY_PREFIX)).map(item=>[item.instanceId,item]));
+  const purchases = new Set((result.draft.shopping ?? []).map((item,index)=>item.instanceId ?? `purchase:${index}`));
   for(const instanceId of Object.keys(inventory.overrides))if(instanceId.startsWith(NATIVE_INVENTORY_PREFIX))delete inventory.overrides[instanceId];
   const instances = new Set();
   for (const item of actor.items ?? []) {
@@ -76,10 +77,10 @@ function overlay(actor, portable, catalogs) {
     const instanceId = nativeWorkshopInventoryId(item);
     if (!instanceId) continue;
     instances.add(instanceId);
-    if(instanceId.startsWith(NATIVE_INVENTORY_PREFIX)) {
-      inventory.added.push({id:item.system.catalogId,instanceId,quantity:Math.max(1,item.system.quantity)});
-      inventory.removed=inventory.removed.filter(id=>id!==instanceId);
-    }
+    // Replay only supplies missing training equipment. Record live grants even
+    // if a newly acquired stack now satisfies the same training requirement.
+    if (instanceId !== "creation-outfit" && !purchases.has(instanceId))
+      additions.set(instanceId, {id:item.system.catalogId,instanceId,quantity:Math.max(1,item.system.quantity)});
     inventory.overrides[instanceId] = { quantity: item.system.quantity, ...(item.name && item.name !== definition?.name ? {name:item.name} : {}), ...((definition?.inventoryDie || item.system.inventoryDie > 0) ? {inventoryDie:item.system.inventoryDie} : {}) };
     if (item.system.catalogId === ORDINARY_RANGED_WEAPON) {
       const ammo = selectedRangedAmmunition(actor, item);
@@ -88,8 +89,24 @@ function overlay(actor, portable, catalogs) {
     // Match the portable loadout order so an unchanged item compares equal in the save merge.
     result.draft.loadout[instanceId] = { carried: item.system.carried, worn: item.system.worn, held: item.system.held };
   }
-  for (const instanceId of flag(actor)?.inventoryInstances ?? []) if (!instances.has(instanceId) && !inventory.removed.includes(instanceId)) inventory.removed.push(instanceId);
+  inventory.added = [...additions.values()];
+  inventory.removed = [...new Set([...inventory.removed, ...(flag(actor)?.inventoryInstances ?? [])])]
+    .filter(id=>!instances.has(id));
   return result;
+}
+
+function equipmentEdits(basisPlay, inputPlay, basisLoadout, inputLoadout) {
+  const before = basisPlay.inventory ?? {};
+  const after = inputPlay.inventory ?? {};
+  const updated = new Set();
+  const addedById = inventory => Object.fromEntries((inventory.added ?? []).map(item=>[item.instanceId,item]));
+  for (const [base, next] of [[before.overrides,after.overrides],[addedById(before),addedById(after)],[basisLoadout,inputLoadout]]) {
+    for (const id of Object.keys(next ?? {})) {
+      if (!equalState(base?.[id],next[id])) updated.add(id);
+    }
+  }
+  const removed = new Set((after.removed ?? []).filter(id=>!before.removed?.includes(id)));
+  return { updated, removed };
 }
 /** Returns schema-7 portable data plus a revision; native resources are authoritative. */
 export async function loadNativeWorkshopState(actor) {
@@ -141,8 +158,10 @@ export function saveNativeWorkshopState(actor, savedState, { expectedRevision, r
     }
     const inputPlay=structuredClone(portable.draft?.play ?? {});
     const basisPlay=structuredClone(basePlay ?? live.draft.play);
+    const edits = equipmentEdits(basisPlay,inputPlay,baseLoadout ?? live.draft.loadout,portable.draft?.loadout);
+    const equipment = nativeWorkshopEquipmentItems(state.preview,state.catalogs,edits.updated);
     const changedKeys=new Set([...new Set([...Object.keys(basisPlay),...Object.keys(inputPlay)])].filter(key=>!equalState(inputPlay[key],basisPlay[key])));
-    await applyWorkshopTransaction(actor, nativeWorkshopEquipmentItems(state.preview,state.catalogs), () => {
+    await applyWorkshopTransaction(actor, equipment, () => {
       owner(actor);revision(actor,expectedRevision);
       const finalPlay=mergeNativeWorkshopPlay(basisPlay,inputPlay,overlay(actor,saved.portable,catalogs).draft.play);
       const gear = equipmentBonuses(actor.items);
@@ -170,7 +189,7 @@ export function saveNativeWorkshopState(actor, savedState, { expectedRevision, r
       for(const[key,value]of Object.entries(nativeForgeVitals(vitals)))if(changedKeys.has(key))changes[`flags.${ID}.forgeVitals.${key}`]=value;
       if(resolvedImmediateDeathRoll)changes[`flags.${ID}.forgeVitals.immediateDeathRolls`]=(actor.getFlag(ID,"forgeVitals")?.immediateDeathRolls??[]).filter(id=>id!==resolvedImmediateDeathRoll);
       return changes;
-    }, next, {catalogs:state.catalogs,equipmentOnly:true,removedInstances:new Set((inputPlay.inventory?.removed??[]).filter(id=>!(basisPlay.inventory?.removed??[]).includes(id)))});
+    }, next, {catalogs:state.catalogs,playEdits:edits});
     return { ...savedState, ...(await loadNativeWorkshopState(actor)) };
   });
 }
@@ -212,15 +231,6 @@ export function commitNativeWorkshopCharacter(actor, portable, { expectedRevisio
     if(existing?.portable && state.preview.state.level < previousLevel) throw new Error("A committed character cannot lose levels. Recreate the hero explicitly for a level correction.");
     const desired = nativeWorkshopLearnedItems(state.preview, state.catalogs);
     const carried = existing?.portable ? overlay(actor,state.portable,state.catalogs) : null;
-    if (carried) {
-      const inventory = carried.draft.play.inventory;
-      for (const item of actor.items) {
-        if (item.type !== "equipment") continue;
-        const instanceId = nativeWorkshopInventoryId(item);
-        if (!instanceId?.startsWith(LEARNED_GEAR_PREFIX) || inventory.added.some(entry => entry.instanceId === instanceId)) continue;
-        inventory.added.push({ id: item.system.catalogId, instanceId, quantity: Math.max(1,item.system.quantity) });
-      }
-    }
     const equipmentState = carried ? await normalize(carried,true) : state;
     desired.push(...nativeWorkshopEquipmentItems(equipmentState.preview,state.catalogs));
     await applyWorkshopTransaction(actor, desired, () => {
@@ -251,8 +261,9 @@ export function commitNativeWorkshopCharacter(actor, portable, { expectedRevisio
   });
 }
 
-export function nativeWorkshopEquipmentItems(preview,catalogs) {
-  return preview.inventory.items.map(item=>({...equipmentItemSource(catalogs.inventory.equipment.find(record=>record.id===item.catalogId), {
+export function nativeWorkshopEquipmentItems(preview,catalogs,instances) {
+  const items = instances ? preview.inventory.items.filter(item=>instances.has(item.instanceId)) : preview.inventory.items;
+  return items.map(item=>({...equipmentItemSource(catalogs.inventory.equipment.find(record=>record.id===item.catalogId), {
     sourceCommit:catalogs.commit,grantKind:"nativeWorkshop",acquisitionInstance:item.instanceId,
     quantity:item.quantity,hands:item.hands??0,inventoryDie:item.inventoryDie??0,
     ammunitionInstanceId:item.ammunitionInstanceId,
@@ -285,10 +296,10 @@ export async function recoverNativeWorkshopTransaction(actor) {
   }
   await actor.update({[`flags.${ID}.nativeWorkshopPending`]:null});
 }
-async function applyWorkshopTransaction(actor,desired,changes,nextRevision,{catalogs,equipmentOnly=false,removedInstances=new Set()}={}) {
+async function applyWorkshopTransaction(actor,desired,changes,nextRevision,{catalogs,playEdits}={}) {
   owner(actor);
-  const owned = [...actor.items].filter(item=>managedWorkshopItem(item,catalogs) && (!equipmentOnly || item.type==="equipment"));
-  const candidates=[...actor.items].filter(item=>owned.includes(item)||item.type==="equipment");
+  const owned = [...actor.items].filter(item=>managedWorkshopItem(item,catalogs));
+  const candidates=[...actor.items].filter(item=>item.type==="equipment"||(!playEdits&&owned.includes(item)));
   const updates=[],creates=[],keep=new Set();
   for (const source of desired) {
     const identity = source.flags[ID];
@@ -308,14 +319,9 @@ async function applyWorkshopTransaction(actor,desired,changes,nextRevision,{cata
     else creates.push({_id:globalThis.foundry?.utils?.randomID?.() ?? crypto.randomUUID().replaceAll("-","").slice(0,16),...source});
   }
   const matchedIds=new Set(updates.map(update=>update._id));
-  const projected=[...actor.items].filter(item=>!owned.includes(item)&&!matchedIds.has(item.id)).map(itemSource);
-  for(const source of desired) {
-    const match=candidates.find(item=>item.type===source.type && (source.type==="equipment" ? nativeWorkshopInventoryId(item)===source.flags[ID].acquisitionInstance : item.getFlag(ID,"catalogId")===source.flags[ID].catalogId));
-    projected.push(match ? {...itemSource(match),system:{...match.system,...Object.fromEntries(["quantity","inventoryDie","carried","held","worn"].map(key=>[key,source.system[key]])),hands:nativeEquipmentHands({...source,system:{...source.system,hands:match.system.hands}},catalogs.inventory.equipment.find(record=>record.id===match.system.catalogId))}} : source);
-  }
-  validateEquipmentAttributeArrangement(projected);
-  const retiring=owned.filter(item=>!keep.has(item.id));
-  if(equipmentOnly && retiring.some(item=>!removedInstances.has(nativeWorkshopInventoryId(item))))throw new Error("Owned equipment is missing from this sheet save. Reload the character; no equipment has been removed.");
+  const retiring=playEdits
+    ? candidates.filter(item=>playEdits.removed.has(nativeWorkshopInventoryId(item)))
+    : owned.filter(item=>!keep.has(item.id));
   const retired=retiring.map(item=>item.id);
   const finalChanges = () => {
     const next = typeof changes === "function" ? changes() : changes;
@@ -327,6 +333,16 @@ async function applyWorkshopTransaction(actor,desired,changes,nextRevision,{cata
     }), ...next };
   };
   if(!updates.length&&!creates.length&&!retired.length)return actor.update(finalChanges());
+  const patches = new Map(updates.map(({_id,...patch})=>[_id,patch]));
+  const projected = [...actor.items].filter(item=>!retired.includes(item.id)).map(item=>{
+    const source=itemSource(item);
+    for (const [key,value] of Object.entries(patches.get(item.id) ?? {})) {
+      if(key.startsWith("system."))source.system[key.slice(7)]=value;
+      else source[key]=value;
+    }
+    return source;
+  });
+  validateEquipmentAttributeArrangement([...projected,...creates]);
   const pending={nextRevision,updates,beforeItems:candidates.filter(item=>retired.includes(item.id)||matchedIds.has(item.id)).map(itemSource),createdIds:creates.map(item=>item._id)};
   await actor.update({[`flags.${ID}.nativeWorkshopPending`]:pending});
   try {
@@ -390,6 +406,10 @@ function equalState(a, b) {
 export function mergeNativeWorkshopPlay(base,candidate,current,path="play") {
   if(equalState(candidate,base))return structuredClone(current);
   if(equalState(candidate,current)||equalState(current,base))return structuredClone(candidate);
+  if (["play.inventory.added","play.inventory.removed","play.inventory.sold"].includes(path) && [base,candidate,current].every(Array.isArray)) {
+    const keyed = values => Object.fromEntries(values.map(value=>[path.endsWith(".added") ? value.instanceId : value,value]));
+    return Object.values(mergeNativeWorkshopPlay(keyed(base),keyed(candidate),keyed(current),path));
+  }
   if((base===undefined || (base && typeof base==="object" && !Array.isArray(base))) && [candidate,current].every(value=>value && typeof value==="object" && !Array.isArray(value))) {
     base ??= {};
     return Object.fromEntries([...new Set([...Object.keys(base),...Object.keys(candidate),...Object.keys(current)])].map(key=>[key,mergeNativeWorkshopPlay(base[key],candidate[key],current[key],`${path}.${key}`)]).filter(([,value])=>value!==undefined));
