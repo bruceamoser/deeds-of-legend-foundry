@@ -1,6 +1,6 @@
 # Aldren Vowkeeper: paladin after the rewrite
 
-Pinned authored source `2b9af553cf9a4aaa3c8e795b57c0163763b85676`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../paladin.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
+Pinned authored source `837a3eb42850d6c531c6153349664b49db0d0882`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../paladin.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
 
 ## What the rewrite changes
 
@@ -14,8 +14,8 @@ The rider needs an enemy that harmed an ally this scene. Healing here comes from
 |---|---|---|---|
 | HP | 16 | 26 | 46 |
 | SP | 6 | 10 | 18 |
-| DP spent / total | 7 / 10 | 22 / 23 | 52 / 61 |
-| Unspent DP | 3 | 1 | 9 |
+| DP spent / total | 7 / 10 | 24 / 27 | 52 / 73 |
+| Unspent DP | 3 | 3 | 21 |
 | Learned action choices (Main / Maneuver / Reaction) | 1 / 1 / 1 | 2 / 1 / 1 | 4 / 1 / 1 |
 | Known book spells (free / paid) | 2 (1 / 1) | 2 (1 / 1) | 12 (3 / 9) |
 | Shared reserve: casts at 2 SP | 3 | 5 | 9 |
@@ -32,7 +32,7 @@ Equipment: Ordinary Melee Weapon (held); Ordinary Light Armor (worn); Ordinary S
 
 The D&D baseline has **20 HP** and **AC 19 (Chain Mail 16 + Shield 2 + Defense 1)** at level 2; HoL uses resistance and player defenses, so these are not equivalent durability measures. Learned action counts exclude universal actions and count signature passive modifications separately; spell choices are listed separately. A learned improvement changes an existing action, not another action button. Actual available actions still depend on equipment, targets and conditions.
 
-Starting DP is **10 + Guile + Knowledge + Reason**, including negative scores, plus explicit ancestry benefits. Later awards are **4 + new level**. The completed `arms:bladework` path costs **1+2+2+3+4+4+5 = 21 DP**; discipline entry, if purchased, is separate. These are sample choices, not an optimizer or evidence of playtest balance.
+Starting DP is **10 + Guile + Knowledge + Reason**, including negative scores, plus explicit ancestry benefits. From level 2 onward, each level grants **6 + new level** DP, plus any applicable ancestry benefits. The completed `arms:bladework` path costs **1+2+2+3+4+4+5 = 21 DP**; discipline entry, if purchased, is separate. These are sample choices, not an optimizer or evidence of playtest balance.
 
 ## Level 1
 
@@ -78,7 +78,7 @@ Once on your turn, declare Oathstrike and pay 1 SP before a melee weapon attack 
 
 ## Level 3
 
-[Import this ready character](builds/paladin-level-3.hol.json). 1 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
+[Import this ready character](builds/paladin-level-3.hol.json). 3 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
 
 | Learned purchase | DP paid | Character level |
 |---|---:|---:|
@@ -93,6 +93,7 @@ Once on your turn, declare Oathstrike and pay 1 SP before a melee weapon attack 
 | Sweeping Blade II (`arms:bladework:5`) | 4 | 3 |
 | Sweeping Blade III (`arms:bladework:6`) | 4 | 3 |
 | Light Armor II (`armor:harness:2`) | 2 | 3 |
+| Light Armor III (`armor:harness:3`) | 2 | 3 |
 
 **Signature choices:** level 1: Oathstrike; level 3: Rebuking Light.
 
@@ -130,7 +131,7 @@ This magical weapon modifier is not a separate spell casting and requires no fre
 
 **Useful actions and improvements:**
 
-- **Light Armor I:** Passive. You are trained to wear light armor; the suit supplies physical resistance 1. Ignore 1 Bulk from worn armor when calculating encumbrance, minimum 0 armor Bulk. This does not change its inventory size. While wearing armor you are trained to use, gain 1 Boon on rolls to resist forced movement. This is not additional resistance or Stability.
+- **Light Armor I:** Passive. You are trained to wear light armor; the suit supplies physical resistance 1. Ignore 1 Bulk from worn armor when calculating encumbrance, minimum 0 armor Bulk. This does not change its inventory size. While wearing armor you are trained to use, gain 1 Boon on rolls to resist forced movement. This is not additional resistance or Stability. You are also trained to wear medium armor; the suit supplies physical resistance 2. Your Speed increases by 1 while wearing armor you are trained to use.
 - **Measured Cut I:** Main Action · Brawn or Agility, chosen before rolling. Attack one adjacent creature for 2/3/5 physical damage. On Strong, you may move 1 square after the attack. Measured Cut deals 3/4/6 physical damage. Measured Cut also applies Bleeding 1 on Strong.
 - **Blade Ward I:** Reaction. After resolving your defense against a melee attack, before taking its damage, reduce that attack’s damage by 2 after resistance, respecting the attack minimum. No roll.
 - **Driving Opening I:** Maneuver. Choose one visible creature. Before your turn ends, your next Main Action melee weapon attack against it pushes that creature directly away from your attack position, 1 square on Standard or 2 squares on Strong. Resolve collisions normally. Apply the push only to the chosen creature on that attack. Reusing this technique replaces its unused effect.
@@ -142,7 +143,7 @@ This magical weapon modifier is not a separate spell casting and requires no fre
 
 ## Level 7
 
-[Import this ready character](builds/paladin-level-7.hol.json). 9 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
+[Import this ready character](builds/paladin-level-7.hol.json). 21 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
 
 | Learned purchase | DP paid | Character level |
 |---|---:|---:|
@@ -157,8 +158,8 @@ This magical weapon modifier is not a separate spell casting and requires no fre
 | Sweeping Blade II (`arms:bladework:5`) | 4 | 3 |
 | Sweeping Blade III (`arms:bladework:6`) | 4 | 3 |
 | Light Armor II (`armor:harness:2`) | 2 | 3 |
+| Light Armor III (`armor:harness:3`) | 2 | 3 |
 | Iron Tempest (`arms:bladework:7`) | 5 | 7 |
-| Light Armor III (`armor:harness:3`) | 2 | 7 |
 | Heavy Armor I (`armor:harness:4`) | 3 | 7 |
 | Heavy Armor II (`armor:harness:5`) | 4 | 7 |
 | Heavy Armor III (`armor:harness:6`) | 4 | 7 |
@@ -235,7 +236,7 @@ This is a spell costing 2 SP, usable once per scene. You may have one threshold 
 
 ## Deferred choices
 
-- Level 3: Light Armor III — Costs 2 DP. You have 1 DP.
+Every planned choice was affordable when scheduled.
 
 ## Playtest questions
 

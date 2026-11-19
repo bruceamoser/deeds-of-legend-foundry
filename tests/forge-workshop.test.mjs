@@ -212,8 +212,12 @@ test("levels 3 and 7 grant one signature each and do not duplicate DP, Grit, or 
   draft.play = { hp: 5, sp: 2, gritSpent: 1, scars: ["A thin line over the brow."] };
   const once = workshopCharacter(draft, catalogs);
   assert(once.valid, JSON.stringify(once.errors));
-  assert.equal(once.development.current, 33);
-  assert.equal(once.development.total, 10 + 6 + 7 + 8 + 9 + 10 + 11);
+  assert.equal(once.development.current, 45);
+  assert.equal(once.development.total, 10 + 8 + 9 + 10 + 11 + 12 + 13);
+  assert.deepEqual(
+    once.advancementLedger.filter(entry => entry.kind === "award").map(({ level, delta }) => [level, delta]),
+    [[2, 8], [3, 9], [4, 10], [5, 11], [6, 12], [7, 13]],
+  );
   assert.equal(once.limits.maxHp, 56);
   assert.equal(once.limits.maxSp, 16);
   assert.equal(once.limits.gritGranted, 3);
@@ -221,6 +225,8 @@ test("levels 3 and 7 grant one signature each and do not duplicate DP, Grit, or 
   assert(once.state.learned.includes("arms:impact:7"));
   const twice = readPortableCharacter(writePortableCharacter(draft, catalogs, { ready: true }), catalogs);
   assert.deepEqual(twice.preview.advancementLedger, once.advancementLedger);
+  assert.deepEqual(twice.preview.development, once.development);
+  assert.equal(twice.draft.play.hp, 5);
   assert.equal(twice.draft.play.sp, 2);
   assert.equal(twice.draft.play.gritSpent, 1);
 });

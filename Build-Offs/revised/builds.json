@@ -1,14 +1,14 @@
 {
   "rulesRevision": 299,
   "spellbookProgressionRevision": 310,
-  "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
+  "sourceCommit": "837a3eb42850d6c531c6153349664b49db0d0882",
   "workingTree": false,
   "builds": [
     {
       "id": "barbarian",
       "name": "Harka Stormshoulder",
       "level": 1,
-      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
+      "sourceCommit": "837a3eb42850d6c531c6153349664b49db0d0882",
       "workingTree": false,
       "draft": {
         "name": "Harka Stormshoulder",
@@ -331,7 +331,7 @@
       "id": "barbarian",
       "name": "Harka Stormshoulder",
       "level": 3,
-      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
+      "sourceCommit": "837a3eb42850d6c531c6153349664b49db0d0882",
       "workingTree": false,
       "draft": {
         "name": "Harka Stormshoulder",
@@ -515,9 +515,9 @@
       },
       "development": {
         "level": 3,
-        "current": 3,
+        "current": 7,
         "spent": 19,
-        "total": 22,
+        "total": 26,
         "expired": 0
       },
       "purchases": [
@@ -747,7 +747,7 @@
       "id": "barbarian",
       "name": "Harka Stormshoulder",
       "level": 7,
-      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
+      "sourceCommit": "837a3eb42850d6c531c6153349664b49db0d0882",
       "workingTree": false,
       "draft": {
         "name": "Harka Stormshoulder",
@@ -984,9 +984,9 @@
       },
       "development": {
         "level": 7,
-        "current": 9,
+        "current": 21,
         "spent": 51,
-        "total": 60,
+        "total": 72,
         "expired": 0
       },
       "purchases": [
@@ -1360,7 +1360,7 @@
       "id": "bard",
       "name": "Lysa Silverstring",
       "level": 1,
-      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
+      "sourceCommit": "837a3eb42850d6c531c6153349664b49db0d0882",
       "workingTree": false,
       "draft": {
         "name": "Lysa Silverstring",
@@ -1758,7 +1758,7 @@
       "id": "bard",
       "name": "Lysa Silverstring",
       "level": 3,
-      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
+      "sourceCommit": "837a3eb42850d6c531c6153349664b49db0d0882",
       "workingTree": false,
       "draft": {
         "name": "Lysa Silverstring",
@@ -1916,6 +1916,9 @@
                 },
                 {
                   "id": "emotion:2"
+                },
+                {
+                  "id": "emotion:3"
                 }
               ],
               "signatures": {
@@ -1943,9 +1946,9 @@
       },
       "development": {
         "level": 3,
-        "current": 2,
-        "spent": 25,
-        "total": 27,
+        "current": 3,
+        "spent": 28,
+        "total": 31,
         "expired": 0
       },
       "purchases": [
@@ -2039,6 +2042,13 @@
           "paidDp": 2,
           "level": 3,
           "requiredLevel": 1
+        },
+        {
+          "id": "emotion:3",
+          "name": "Heartstrings",
+          "paidDp": 3,
+          "level": 3,
+          "requiredLevel": 3
         }
       ],
       "signatureChoices": {
@@ -2147,7 +2157,9 @@
         "spell:thought:1",
         "spell:thought:2",
         "spell:emotion:5",
-        "spell:emotion:6"
+        "spell:emotion:6",
+        "spell:emotion:7",
+        "spell:emotion:8"
       ],
       "spells": [
         {
@@ -2229,6 +2241,22 @@
           "sp": 3,
           "duration": "Instant; conditions decay normally",
           "effect": "Appear as an overwhelming source of dread. Apply Frightened 1/2/3, with you as its source. Each creature retains control of its movement and decisions."
+        },
+        {
+          "id": "spell:emotion:7",
+          "name": "Charm Monster",
+          "action": "Main Action",
+          "sp": 3,
+          "duration": "One social objective, up to 10 minutes",
+          "effect": "Establish rapport through shared sensations even across a language barrier. Add 2/4/6 progress toward a feasible request stated by the DA. The creature's needs and motives shape what you can ask of it."
+        },
+        {
+          "id": "spell:emotion:8",
+          "name": "Confusion",
+          "action": "Main Action",
+          "sp": 4,
+          "duration": "Instant; conditions decay normally",
+          "effect": "Scatter attention with conflicting impulses. Apply Dazed 1/1/2. Each affected creature chooses its remaining action categories normally when its turn begins."
         }
       ],
       "actionCounts": {
@@ -2239,9 +2267,9 @@
         "Other": 0
       },
       "spellCounts": {
-        "total": 10,
+        "total": 12,
         "free": 3,
-        "paid": 7
+        "paid": 9
       },
       "castingBudget": {
         "maxSp": 11,
@@ -2271,19 +2299,13 @@
       ],
       "resolved": "Musical Aid and commanded attacks coexist with emotion/perception utility. Negotiation develops one technique instead of accumulating three unrelated social buttons.",
       "remaining": "Bardic Inspiration remains an immediate coordinated contribution rather than a banked die. Social objectives still depend on the DA and the situation.",
-      "deferred": [
-        {
-          "level": 3,
-          "id": "emotion:3",
-          "reason": "Costs 3 DP. You have 2 DP."
-        }
-      ]
+      "deferred": []
     },
     {
       "id": "bard",
       "name": "Lysa Silverstring",
       "level": 7,
-      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
+      "sourceCommit": "837a3eb42850d6c531c6153349664b49db0d0882",
       "workingTree": false,
       "draft": {
         "name": "Lysa Silverstring",
@@ -2441,6 +2463,9 @@
                 },
                 {
                   "id": "emotion:2"
+                },
+                {
+                  "id": "emotion:3"
                 }
               ],
               "signatures": {
@@ -2490,9 +2515,6 @@
                   "id": "dreams:6"
                 },
                 {
-                  "id": "emotion:3"
-                },
-                {
                   "id": "perception:1"
                 },
                 {
@@ -2506,6 +2528,15 @@
                 },
                 {
                   "id": "thought:2"
+                },
+                {
+                  "id": "guard:shelter:2"
+                },
+                {
+                  "id": "guard:shelter:3"
+                },
+                {
+                  "id": "guard:shelter:4"
                 }
               ],
               "signatures": {
@@ -2533,9 +2564,9 @@
       },
       "development": {
         "level": 7,
-        "current": 0,
-        "spent": 65,
-        "total": 65,
+        "current": 5,
+        "spent": 72,
+        "total": 77,
         "expired": 0
       },
       "purchases": [
@@ -2631,6 +2662,13 @@
           "requiredLevel": 1
         },
         {
+          "id": "emotion:3",
+          "name": "Heartstrings",
+          "paidDp": 3,
+          "level": 3,
+          "requiredLevel": 3
+        },
+        {
           "id": "influence:negotiation:7",
           "name": "A Treaty in Common Words",
           "paidDp": 5,
@@ -2687,13 +2725,6 @@
           "requiredLevel": 7
         },
         {
-          "id": "emotion:3",
-          "name": "Heartstrings",
-          "paidDp": 3,
-          "level": 7,
-          "requiredLevel": 3
-        },
-        {
           "id": "perception:1",
           "name": "Perception II",
           "paidDp": 2,
@@ -2727,6 +2758,27 @@
           "paidDp": 2,
           "level": 7,
           "requiredLevel": 1
+        },
+        {
+          "id": "guard:shelter:2",
+          "name": "Sheltering Guard II",
+          "paidDp": 2,
+          "level": 7,
+          "requiredLevel": 1
+        },
+        {
+          "id": "guard:shelter:3",
+          "name": "Sheltering Guard III",
+          "paidDp": 2,
+          "level": 7,
+          "requiredLevel": 1
+        },
+        {
+          "id": "guard:shelter:4",
+          "name": "Shield Canopy I",
+          "paidDp": 3,
+          "level": 7,
+          "requiredLevel": 3
         }
       ],
       "signatureChoices": {
@@ -2854,6 +2906,20 @@
             "influence:negotiation:6"
           ],
           "shape": "diamond"
+        },
+        {
+          "id": "guard:shelter:4",
+          "name": "Shield Canopy I",
+          "dp": 3,
+          "level": 3,
+          "effect": "Maneuver. Until your next turn starts, you and up to three willing adjacent allies reduce ranged attack damage by 2 after resistance while they remain adjacent. Reusing this technique replaces its previous effect. No roll.",
+          "kind": "technique",
+          "disciplineId": "guard",
+          "pathId": "guard:shelter",
+          "requires": [
+            "guard:shelter:3"
+          ],
+          "shape": "triangle"
         }
       ],
       "spellIds": [
@@ -2867,6 +2933,8 @@
         "spell:thought:2",
         "spell:emotion:5",
         "spell:emotion:6",
+        "spell:emotion:7",
+        "spell:emotion:8",
         "spell:dreams:1",
         "spell:dreams:2",
         "spell:dreams:3",
@@ -2878,8 +2946,6 @@
         "spell:dreams:a1",
         "spell:dreams:a2",
         "spell:dreams:a3",
-        "spell:emotion:7",
-        "spell:emotion:8",
         "spell:perception:3",
         "spell:perception:4",
         "spell:perception:5",
@@ -2973,6 +3039,22 @@
           "effect": "Appear as an overwhelming source of dread. Apply Frightened 1/2/3, with you as its source. Each creature retains control of its movement and decisions."
         },
         {
+          "id": "spell:emotion:7",
+          "name": "Charm Monster",
+          "action": "Main Action",
+          "sp": 3,
+          "duration": "One social objective, up to 10 minutes",
+          "effect": "Establish rapport through shared sensations even across a language barrier. Add 2/4/6 progress toward a feasible request stated by the DA. The creature's needs and motives shape what you can ask of it."
+        },
+        {
+          "id": "spell:emotion:8",
+          "name": "Confusion",
+          "action": "Main Action",
+          "sp": 4,
+          "duration": "Instant; conditions decay normally",
+          "effect": "Scatter attention with conflicting impulses. Apply Dazed 1/1/2. Each affected creature chooses its remaining action categories normally when its turn begins."
+        },
+        {
           "id": "spell:dreams:1",
           "name": "Dreams",
           "action": "Maneuver",
@@ -3061,22 +3143,6 @@
           "effect": "Send visible spirit projections into the nearby spirit realm while your bodies sleep. Projections travel together up to 10 kilometers from the bodies, speak with spirits and observe corresponding places. Magical barriers that block spirit travel still apply. They return when the spell ends, a participant chooses to return with a Maneuver, or a body is disturbed. Projections use observation and speech; physical acts and further casting take place after returning to the bodies."
         },
         {
-          "id": "spell:emotion:7",
-          "name": "Charm Monster",
-          "action": "Main Action",
-          "sp": 3,
-          "duration": "One social objective, up to 10 minutes",
-          "effect": "Establish rapport through shared sensations even across a language barrier. Add 2/4/6 progress toward a feasible request stated by the DA. The creature's needs and motives shape what you can ask of it."
-        },
-        {
-          "id": "spell:emotion:8",
-          "name": "Confusion",
-          "action": "Main Action",
-          "sp": 4,
-          "duration": "Instant; conditions decay normally",
-          "effect": "Scatter attention with conflicting impulses. Apply Dazed 1/1/2. Each affected creature chooses its remaining action categories normally when its turn begins."
-        },
-        {
           "id": "spell:perception:3",
           "name": "Disguise Self",
           "action": "Main Action",
@@ -3159,7 +3225,7 @@
       ],
       "actionCounts": {
         "Main Action": 4,
-        "Maneuver": 3,
+        "Maneuver": 4,
         "Reaction": 0,
         "Passive": 1,
         "Other": 0
@@ -3198,24 +3264,13 @@
       ],
       "resolved": "Musical Aid and commanded attacks coexist with emotion/perception utility. Negotiation develops one technique instead of accumulating three unrelated social buttons.",
       "remaining": "Bardic Inspiration remains an immediate coordinated contribution rather than a banked die. Social objectives still depend on the DA and the situation.",
-      "deferred": [
-        {
-          "level": 3,
-          "id": "emotion:3",
-          "reason": "Costs 3 DP. You have 2 DP."
-        },
-        {
-          "level": 7,
-          "id": "guard:shelter:2",
-          "reason": "Costs 2 DP. You have 0 DP."
-        }
-      ]
+      "deferred": []
     },
     {
       "id": "cleric",
       "name": "Brunna Hearthward",
       "level": 1,
-      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
+      "sourceCommit": "837a3eb42850d6c531c6153349664b49db0d0882",
       "workingTree": false,
       "draft": {
         "name": "Brunna Hearthward",
@@ -3573,7 +3628,7 @@
       "id": "cleric",
       "name": "Brunna Hearthward",
       "level": 3,
-      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
+      "sourceCommit": "837a3eb42850d6c531c6153349664b49db0d0882",
       "workingTree": false,
       "draft": {
         "name": "Brunna Hearthward",
@@ -3769,9 +3824,9 @@
       },
       "development": {
         "level": 3,
-        "current": 1,
+        "current": 5,
         "spent": 24,
-        "total": 25,
+        "total": 29,
         "expired": 0
       },
       "purchases": [
@@ -4127,7 +4182,7 @@
       "id": "cleric",
       "name": "Brunna Hearthward",
       "level": 7,
-      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
+      "sourceCommit": "837a3eb42850d6c531c6153349664b49db0d0882",
       "workingTree": false,
       "draft": {
         "name": "Brunna Hearthward",
@@ -4352,6 +4407,18 @@
                 },
                 {
                   "id": "sanctuary:3"
+                },
+                {
+                  "id": "spellcraft"
+                },
+                {
+                  "id": "spellcraft:soul-capacity:1"
+                },
+                {
+                  "id": "spellcraft:soul-capacity:2"
+                },
+                {
+                  "id": "spellcraft:soul-capacity:3"
                 }
               ],
               "signatures": {
@@ -4372,16 +4439,16 @@
       },
       "resources": {
         "maxHp": 48,
-        "maxSp": 18,
+        "maxSp": 25,
         "gritGranted": 3,
         "speed": 5,
         "remainingCoins": 11
       },
       "development": {
         "level": 7,
-        "current": 1,
-        "spent": 62,
-        "total": 63,
+        "current": 6,
+        "spent": 69,
+        "total": 75,
         "expired": 0
       },
       "purchases": [
@@ -4552,6 +4619,34 @@
           "paidDp": 3,
           "level": 7,
           "requiredLevel": 3
+        },
+        {
+          "id": "spellcraft",
+          "name": "Spellcraft",
+          "paidDp": 2,
+          "level": 7,
+          "requiredLevel": 1
+        },
+        {
+          "id": "spellcraft:soul-capacity:1",
+          "name": "Soul Capacity I",
+          "paidDp": 1,
+          "level": 7,
+          "requiredLevel": 1
+        },
+        {
+          "id": "spellcraft:soul-capacity:2",
+          "name": "Soul Capacity II",
+          "paidDp": 2,
+          "level": 7,
+          "requiredLevel": 1
+        },
+        {
+          "id": "spellcraft:soul-capacity:3",
+          "name": "Soul Capacity III",
+          "paidDp": 2,
+          "level": 7,
+          "requiredLevel": 1
         }
       ],
       "signatureChoices": {
@@ -4933,19 +5028,19 @@
         "paid": 23
       },
       "castingBudget": {
-        "maxSp": 18,
+        "maxSp": 25,
         "oncePerRestRecovery": 0,
         "castsAtCost": {
-          "1": 18,
-          "2": 9,
-          "3": 6,
-          "5": 3
+          "1": 25,
+          "2": 12,
+          "3": 8,
+          "5": 5
         },
         "castsAfterRecovery": {
-          "1": 18,
-          "2": 9,
-          "3": 6,
-          "5": 3
+          "1": 25,
+          "2": 12,
+          "3": 8,
+          "5": 5
         },
         "note": "Alternative uses of the same reserve, not simultaneous allocations. Assumes SP is spent before recovery; time, spell-specific limits, components and maintained actions still apply. Signature spells and conditional discounts are described separately."
       },
@@ -4961,24 +5056,13 @@
       ],
       "resolved": "Repeatable Mend, explicit shared first-aid recovery, defensive prayers and developed treatment make a complete support identity.",
       "remaining": "There is no separate Channel Divinity pool or Turn Undead feature in these selections. Burning SP on healing competes directly with other paid spells.",
-      "deferred": [
-        {
-          "level": 7,
-          "id": "spellcraft",
-          "reason": "Costs 2 DP. You have 1 DP."
-        },
-        {
-          "level": 7,
-          "id": "spellcraft",
-          "reason": "Costs 2 DP. You have 1 DP."
-        }
-      ]
+      "deferred": []
     },
     {
       "id": "druid",
       "name": "Thalen Reedwalker",
       "level": 1,
-      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
+      "sourceCommit": "837a3eb42850d6c531c6153349664b49db0d0882",
       "workingTree": false,
       "draft": {
         "name": "Thalen Reedwalker",
@@ -5382,7 +5466,7 @@
       "id": "druid",
       "name": "Thalen Reedwalker",
       "level": 3,
-      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
+      "sourceCommit": "837a3eb42850d6c531c6153349664b49db0d0882",
       "workingTree": false,
       "draft": {
         "name": "Thalen Reedwalker",
@@ -5578,9 +5662,9 @@
       },
       "development": {
         "level": 3,
-        "current": 4,
+        "current": 8,
         "spent": 21,
-        "total": 25,
+        "total": 29,
         "expired": 0
       },
       "purchases": [
@@ -5957,7 +6041,7 @@
       "id": "druid",
       "name": "Thalen Reedwalker",
       "level": 7,
-      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
+      "sourceCommit": "837a3eb42850d6c531c6153349664b49db0d0882",
       "workingTree": false,
       "draft": {
         "name": "Thalen Reedwalker",
@@ -6188,6 +6272,9 @@
                 },
                 {
                   "id": "spellcraft:soul-capacity:1"
+                },
+                {
+                  "id": "spellcraft:soul-capacity:2"
                 }
               ],
               "signatures": {
@@ -6208,16 +6295,16 @@
       },
       "resources": {
         "maxHp": 38,
-        "maxSp": 21,
+        "maxSp": 23,
         "gritGranted": 3,
         "speed": 8,
         "remainingCoins": 14
       },
       "development": {
         "level": 7,
-        "current": 0,
-        "spent": 63,
-        "total": 63,
+        "current": 10,
+        "spent": 65,
+        "total": 75,
         "expired": 0
       },
       "purchases": [
@@ -6400,6 +6487,13 @@
           "id": "spellcraft:soul-capacity:1",
           "name": "Soul Capacity I",
           "paidDp": 1,
+          "level": 7,
+          "requiredLevel": 1
+        },
+        {
+          "id": "spellcraft:soul-capacity:2",
+          "name": "Soul Capacity II",
+          "paidDp": 2,
           "level": 7,
           "requiredLevel": 1
         }
@@ -6801,17 +6895,17 @@
         "paid": 25
       },
       "castingBudget": {
-        "maxSp": 21,
+        "maxSp": 23,
         "oncePerRestRecovery": 0,
         "castsAtCost": {
-          "1": 21,
-          "2": 10,
+          "1": 23,
+          "2": 11,
           "3": 7,
           "5": 4
         },
         "castsAfterRecovery": {
-          "1": 21,
-          "2": 10,
+          "1": 23,
+          "2": 11,
           "3": 7,
           "5": 4
         },
@@ -6829,19 +6923,13 @@
       ],
       "resolved": "Borrowed Shape supplies an actual early beast form. Its later adaptations and Great Shape cover aquatic, climbing and flying fantasies without resetting HP.",
       "remaining": "Only one transformation per scene and retained personal HP give different attrition from 5e Wild Shape. Shape prevents casting; decide when to be a beast and when to use the books.",
-      "deferred": [
-        {
-          "level": 7,
-          "id": "spellcraft:soul-capacity:2",
-          "reason": "Costs 2 DP. You have 0 DP."
-        }
-      ]
+      "deferred": []
     },
     {
       "id": "fighter",
       "name": "Corin Ashguard",
       "level": 1,
-      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
+      "sourceCommit": "837a3eb42850d6c531c6153349664b49db0d0882",
       "workingTree": false,
       "draft": {
         "name": "Corin Ashguard",
@@ -7188,7 +7276,7 @@
       "id": "fighter",
       "name": "Corin Ashguard",
       "level": 3,
-      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
+      "sourceCommit": "837a3eb42850d6c531c6153349664b49db0d0882",
       "workingTree": false,
       "draft": {
         "name": "Corin Ashguard",
@@ -7351,6 +7439,9 @@
                 },
                 {
                   "id": "armor:harness:2"
+                },
+                {
+                  "id": "armor:harness:3"
                 }
               ],
               "signatures": {
@@ -7373,14 +7464,14 @@
         "maxHp": 24,
         "maxSp": 7,
         "gritGranted": 2,
-        "speed": 6,
+        "speed": 7,
         "remainingCoins": 11
       },
       "development": {
         "level": 3,
-        "current": 1,
-        "spent": 22,
-        "total": 23,
+        "current": 3,
+        "spent": 24,
+        "total": 27,
         "expired": 0
       },
       "purchases": [
@@ -7457,6 +7548,13 @@
         {
           "id": "armor:harness:2",
           "name": "Light Armor II",
+          "paidDp": 2,
+          "level": 3,
+          "requiredLevel": 1
+        },
+        {
+          "id": "armor:harness:3",
+          "name": "Light Armor III",
           "paidDp": 2,
           "level": 3,
           "requiredLevel": 1
@@ -7632,19 +7730,13 @@
       ],
       "resolved": "Measured Guard develops its counter and then an additional constrained Reaction. Main attack, Maneuver preparation, defense and armor investment remain distinct.",
       "remaining": "No Second Wind pool or exact Action Surge is selected. Heavy-armor training is reached at level 3 or later, but this continuing character keeps its purchased light suit until it buys another.",
-      "deferred": [
-        {
-          "level": 3,
-          "id": "armor:harness:3",
-          "reason": "Costs 2 DP. You have 1 DP."
-        }
-      ]
+      "deferred": []
     },
     {
       "id": "fighter",
       "name": "Corin Ashguard",
       "level": 7,
-      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
+      "sourceCommit": "837a3eb42850d6c531c6153349664b49db0d0882",
       "workingTree": false,
       "draft": {
         "name": "Corin Ashguard",
@@ -7807,6 +7899,9 @@
                 },
                 {
                   "id": "armor:harness:2"
+                },
+                {
+                  "id": "armor:harness:3"
                 }
               ],
               "signatures": {
@@ -7853,9 +7948,6 @@
                   "id": "guard:interception:7"
                 },
                 {
-                  "id": "armor:harness:3"
-                },
-                {
                   "id": "armor:harness:4"
                 },
                 {
@@ -7890,9 +7982,9 @@
       },
       "development": {
         "level": 7,
-        "current": 5,
+        "current": 17,
         "spent": 56,
-        "total": 61,
+        "total": 73,
         "expired": 0
       },
       "purchases": [
@@ -7974,6 +8066,13 @@
           "requiredLevel": 1
         },
         {
+          "id": "armor:harness:3",
+          "name": "Light Armor III",
+          "paidDp": 2,
+          "level": 3,
+          "requiredLevel": 1
+        },
+        {
           "id": "arms:bladework:7",
           "name": "Iron Tempest",
           "paidDp": 5,
@@ -8021,13 +8120,6 @@
           "paidDp": 5,
           "level": 7,
           "requiredLevel": 7
-        },
-        {
-          "id": "armor:harness:3",
-          "name": "Light Armor III",
-          "paidDp": 2,
-          "level": 7,
-          "requiredLevel": 1
         },
         {
           "id": "armor:harness:4",
@@ -8295,19 +8387,13 @@
       ],
       "resolved": "Measured Guard develops its counter and then an additional constrained Reaction. Main attack, Maneuver preparation, defense and armor investment remain distinct.",
       "remaining": "No Second Wind pool or exact Action Surge is selected. Heavy-armor training is reached at level 3 or later, but this continuing character keeps its purchased light suit until it buys another.",
-      "deferred": [
-        {
-          "level": 3,
-          "id": "armor:harness:3",
-          "reason": "Costs 2 DP. You have 1 DP."
-        }
-      ]
+      "deferred": []
     },
     {
       "id": "monk",
       "name": "Sera Quietstep",
       "level": 1,
-      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
+      "sourceCommit": "837a3eb42850d6c531c6153349664b49db0d0882",
       "workingTree": false,
       "draft": {
         "name": "Sera Quietstep",
@@ -8606,7 +8692,7 @@
       "id": "monk",
       "name": "Sera Quietstep",
       "level": 3,
-      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
+      "sourceCommit": "837a3eb42850d6c531c6153349664b49db0d0882",
       "workingTree": false,
       "draft": {
         "name": "Sera Quietstep",
@@ -8782,9 +8868,9 @@
       },
       "development": {
         "level": 3,
-        "current": 0,
+        "current": 4,
         "spent": 22,
-        "total": 22,
+        "total": 26,
         "expired": 0
       },
       "purchases": [
@@ -9011,7 +9097,7 @@
       "id": "monk",
       "name": "Sera Quietstep",
       "level": 7,
-      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
+      "sourceCommit": "837a3eb42850d6c531c6153349664b49db0d0882",
       "workingTree": false,
       "draft": {
         "name": "Sera Quietstep",
@@ -9237,9 +9323,9 @@
       },
       "development": {
         "level": 7,
-        "current": 9,
+        "current": 21,
         "spent": 51,
-        "total": 60,
+        "total": 72,
         "expired": 0
       },
       "purchases": [
@@ -9621,7 +9707,7 @@
       "id": "paladin",
       "name": "Aldren Vowkeeper",
       "level": 1,
-      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
+      "sourceCommit": "837a3eb42850d6c531c6153349664b49db0d0882",
       "workingTree": false,
       "draft": {
         "name": "Aldren Vowkeeper",
@@ -9976,7 +10062,7 @@
       "id": "paladin",
       "name": "Aldren Vowkeeper",
       "level": 3,
-      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
+      "sourceCommit": "837a3eb42850d6c531c6153349664b49db0d0882",
       "workingTree": false,
       "draft": {
         "name": "Aldren Vowkeeper",
@@ -10139,6 +10225,9 @@
                 },
                 {
                   "id": "armor:harness:2"
+                },
+                {
+                  "id": "armor:harness:3"
                 }
               ],
               "signatures": {
@@ -10161,14 +10250,14 @@
         "maxHp": 26,
         "maxSp": 10,
         "gritGranted": 2,
-        "speed": 6,
+        "speed": 7,
         "remainingCoins": 11
       },
       "development": {
         "level": 3,
-        "current": 1,
-        "spent": 22,
-        "total": 23,
+        "current": 3,
+        "spent": 24,
+        "total": 27,
         "expired": 0
       },
       "purchases": [
@@ -10245,6 +10334,13 @@
         {
           "id": "armor:harness:2",
           "name": "Light Armor II",
+          "paidDp": 2,
+          "level": 3,
+          "requiredLevel": 1
+        },
+        {
+          "id": "armor:harness:3",
+          "name": "Light Armor III",
           "paidDp": 2,
           "level": 3,
           "requiredLevel": 1
@@ -10430,19 +10526,13 @@
       ],
       "resolved": "Oathstrike supplies a declared, SP-paid radiant rider on the real learned weapon attack. Its later control and threshold create an avenging guardian rather than a generic weapon buff.",
       "remaining": "The rider needs an enemy that harmed an ally this scene. Healing here comes from the restoration book; choosing the healing signature instead would trade away early Oathstrike.",
-      "deferred": [
-        {
-          "level": 3,
-          "id": "armor:harness:3",
-          "reason": "Costs 2 DP. You have 1 DP."
-        }
-      ]
+      "deferred": []
     },
     {
       "id": "paladin",
       "name": "Aldren Vowkeeper",
       "level": 7,
-      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
+      "sourceCommit": "837a3eb42850d6c531c6153349664b49db0d0882",
       "workingTree": false,
       "draft": {
         "name": "Aldren Vowkeeper",
@@ -10605,6 +10695,9 @@
                 },
                 {
                   "id": "armor:harness:2"
+                },
+                {
+                  "id": "armor:harness:3"
                 }
               ],
               "signatures": {
@@ -10631,9 +10724,6 @@
               "purchases": [
                 {
                   "id": "arms:bladework:7"
-                },
-                {
-                  "id": "armor:harness:3"
                 },
                 {
                   "id": "armor:harness:4"
@@ -10688,9 +10778,9 @@
       },
       "development": {
         "level": 7,
-        "current": 9,
+        "current": 21,
         "spent": 52,
-        "total": 61,
+        "total": 73,
         "expired": 0
       },
       "purchases": [
@@ -10772,18 +10862,18 @@
           "requiredLevel": 1
         },
         {
+          "id": "armor:harness:3",
+          "name": "Light Armor III",
+          "paidDp": 2,
+          "level": 3,
+          "requiredLevel": 1
+        },
+        {
           "id": "arms:bladework:7",
           "name": "Iron Tempest",
           "paidDp": 5,
           "level": 7,
           "requiredLevel": 7
-        },
-        {
-          "id": "armor:harness:3",
-          "name": "Light Armor III",
-          "paidDp": 2,
-          "level": 7,
-          "requiredLevel": 1
         },
         {
           "id": "armor:harness:4",
@@ -11167,19 +11257,13 @@
       ],
       "resolved": "Oathstrike supplies a declared, SP-paid radiant rider on the real learned weapon attack. Its later control and threshold create an avenging guardian rather than a generic weapon buff.",
       "remaining": "The rider needs an enemy that harmed an ally this scene. Healing here comes from the restoration book; choosing the healing signature instead would trade away early Oathstrike.",
-      "deferred": [
-        {
-          "level": 3,
-          "id": "armor:harness:3",
-          "reason": "Costs 2 DP. You have 1 DP."
-        }
-      ]
+      "deferred": []
     },
     {
       "id": "ranger",
       "name": "Eryn Mossarrow",
       "level": 1,
-      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
+      "sourceCommit": "837a3eb42850d6c531c6153349664b49db0d0882",
       "workingTree": false,
       "draft": {
         "name": "Eryn Mossarrow",
@@ -11556,7 +11640,7 @@
       "id": "ranger",
       "name": "Eryn Mossarrow",
       "level": 3,
-      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
+      "sourceCommit": "837a3eb42850d6c531c6153349664b49db0d0882",
       "workingTree": false,
       "draft": {
         "name": "Eryn Mossarrow",
@@ -11722,6 +11806,9 @@
                 },
                 {
                   "id": "wilderness:tracking:2"
+                },
+                {
+                  "id": "wilderness:tracking:3"
                 }
               ],
               "signatures": {
@@ -11749,9 +11836,9 @@
       },
       "development": {
         "level": 3,
-        "current": 0,
-        "spent": 23,
-        "total": 23,
+        "current": 2,
+        "spent": 25,
+        "total": 27,
         "expired": 0
       },
       "purchases": [
@@ -11835,6 +11922,13 @@
         {
           "id": "wilderness:tracking:2",
           "name": "Read the Trail II",
+          "paidDp": 2,
+          "level": 3,
+          "requiredLevel": 1
+        },
+        {
+          "id": "wilderness:tracking:3",
+          "name": "Read the Trail III",
           "paidDp": 2,
           "level": 3,
           "requiredLevel": 1
@@ -12030,19 +12124,13 @@
       ],
       "resolved": "Tracking and a disciplined bow line both gain substantive high-level destinations. Level-7 Mark the Quarry retains a tangible, removable mark instead of an impossible hit gate.",
       "remaining": "This hunter line chooses archery over the animal-companion line. It does not get both identities for one signature selection.",
-      "deferred": [
-        {
-          "level": 3,
-          "id": "wilderness:tracking:3",
-          "reason": "Costs 2 DP. You have 0 DP."
-        }
-      ]
+      "deferred": []
     },
     {
       "id": "ranger",
       "name": "Eryn Mossarrow",
       "level": 7,
-      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
+      "sourceCommit": "837a3eb42850d6c531c6153349664b49db0d0882",
       "workingTree": false,
       "draft": {
         "name": "Eryn Mossarrow",
@@ -12208,6 +12296,9 @@
                 },
                 {
                   "id": "wilderness:tracking:2"
+                },
+                {
+                  "id": "wilderness:tracking:3"
                 }
               ],
               "signatures": {
@@ -12234,9 +12325,6 @@
               "purchases": [
                 {
                   "id": "marksmanship:precision:7"
-                },
-                {
-                  "id": "wilderness:tracking:3"
                 },
                 {
                   "id": "wilderness:tracking:4"
@@ -12291,9 +12379,9 @@
       },
       "development": {
         "level": 7,
-        "current": 4,
+        "current": 16,
         "spent": 57,
-        "total": 61,
+        "total": 73,
         "expired": 0
       },
       "purchases": [
@@ -12382,18 +12470,18 @@
           "requiredLevel": 1
         },
         {
+          "id": "wilderness:tracking:3",
+          "name": "Read the Trail III",
+          "paidDp": 2,
+          "level": 3,
+          "requiredLevel": 1
+        },
+        {
           "id": "marksmanship:precision:7",
           "name": "Anatomist’s Volley",
           "paidDp": 5,
           "level": 7,
           "requiredLevel": 7
-        },
-        {
-          "id": "wilderness:tracking:3",
-          "name": "Read the Trail III",
-          "paidDp": 2,
-          "level": 7,
-          "requiredLevel": 1
         },
         {
           "id": "wilderness:tracking:4",
@@ -12781,19 +12869,13 @@
       ],
       "resolved": "Tracking and a disciplined bow line both gain substantive high-level destinations. Level-7 Mark the Quarry retains a tangible, removable mark instead of an impossible hit gate.",
       "remaining": "This hunter line chooses archery over the animal-companion line. It does not get both identities for one signature selection.",
-      "deferred": [
-        {
-          "level": 3,
-          "id": "wilderness:tracking:3",
-          "reason": "Costs 2 DP. You have 0 DP."
-        }
-      ]
+      "deferred": []
     },
     {
       "id": "rogue",
       "name": "Pip Nightjar",
       "level": 1,
-      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
+      "sourceCommit": "837a3eb42850d6c531c6153349664b49db0d0882",
       "workingTree": false,
       "draft": {
         "name": "Pip Nightjar",
@@ -13136,7 +13218,7 @@
       "id": "rogue",
       "name": "Pip Nightjar",
       "level": 3,
-      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
+      "sourceCommit": "837a3eb42850d6c531c6153349664b49db0d0882",
       "workingTree": false,
       "draft": {
         "name": "Pip Nightjar",
@@ -13318,9 +13400,9 @@
       },
       "development": {
         "level": 3,
-        "current": 0,
+        "current": 4,
         "spent": 24,
-        "total": 24,
+        "total": 28,
         "expired": 0
       },
       "purchases": [
@@ -13581,7 +13663,7 @@
       "id": "rogue",
       "name": "Pip Nightjar",
       "level": 7,
-      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
+      "sourceCommit": "837a3eb42850d6c531c6153349664b49db0d0882",
       "workingTree": false,
       "draft": {
         "name": "Pip Nightjar",
@@ -13816,9 +13898,9 @@
       },
       "development": {
         "level": 7,
-        "current": 6,
+        "current": 18,
         "spent": 56,
-        "total": 62,
+        "total": 74,
         "expired": 0
       },
       "purchases": [
@@ -14223,7 +14305,7 @@
       "id": "sorcerer",
       "name": "Ilyra Cinderblood",
       "level": 1,
-      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
+      "sourceCommit": "837a3eb42850d6c531c6153349664b49db0d0882",
       "workingTree": false,
       "draft": {
         "name": "Ilyra Cinderblood",
@@ -14596,7 +14678,7 @@
       "id": "sorcerer",
       "name": "Ilyra Cinderblood",
       "level": 3,
-      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
+      "sourceCommit": "837a3eb42850d6c531c6153349664b49db0d0882",
       "workingTree": false,
       "draft": {
         "name": "Ilyra Cinderblood",
@@ -14781,9 +14863,9 @@
       },
       "development": {
         "level": 3,
-        "current": 3,
+        "current": 7,
         "spent": 22,
-        "total": 25,
+        "total": 29,
         "expired": 0
       },
       "purchases": [
@@ -15112,7 +15194,7 @@
       "id": "sorcerer",
       "name": "Ilyra Cinderblood",
       "level": 7,
-      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
+      "sourceCommit": "837a3eb42850d6c531c6153349664b49db0d0882",
       "workingTree": false,
       "draft": {
         "name": "Ilyra Cinderblood",
@@ -15329,6 +15411,12 @@
                 },
                 {
                   "id": "spellcraft:recovery:2"
+                },
+                {
+                  "id": "spellcraft:recovery:3"
+                },
+                {
+                  "id": "spellcraft:recovery:4"
                 }
               ],
               "signatures": {
@@ -15356,9 +15444,9 @@
       },
       "development": {
         "level": 7,
-        "current": 1,
-        "spent": 62,
-        "total": 63,
+        "current": 8,
+        "spent": 67,
+        "total": 75,
         "expired": 0
       },
       "purchases": [
@@ -15536,6 +15624,20 @@
           "paidDp": 2,
           "level": 7,
           "requiredLevel": 1
+        },
+        {
+          "id": "spellcraft:recovery:3",
+          "name": "Recovery III",
+          "paidDp": 2,
+          "level": 7,
+          "requiredLevel": 1
+        },
+        {
+          "id": "spellcraft:recovery:4",
+          "name": "Quiet Renewal I",
+          "paidDp": 3,
+          "level": 7,
+          "requiredLevel": 3
         }
       ],
       "signatureChoices": {
@@ -15875,7 +15977,7 @@
       },
       "castingBudget": {
         "maxSp": 38,
-        "oncePerRestRecovery": 2,
+        "oncePerRestRecovery": 4,
         "castsAtCost": {
           "1": 38,
           "2": 19,
@@ -15883,9 +15985,9 @@
           "5": 7
         },
         "castsAfterRecovery": {
-          "1": 40,
-          "2": 20,
-          "3": 13,
+          "1": 42,
+          "2": 21,
+          "3": 14,
           "5": 8
         },
         "note": "Alternative uses of the same reserve, not simultaneous allocations. Assumes SP is spent before recovery; time, spell-specific limits, components and maintained actions still apply. Signature spells and conditional discounts are described separately."
@@ -15902,19 +16004,13 @@
       ],
       "resolved": "Bent Trajectory remains a shaping identity, with real later spell duplication bounded to instantaneous targets. Reserves and recovery can now grow through the full training tail.",
       "remaining": "The charismatic ability array still gives less SP than a Knowledge-focused arcanist. Shaping is one line, not a free menu of all metamagic; learned Meteor Swarm still requires its SP and actual casting circumstances.",
-      "deferred": [
-        {
-          "level": 7,
-          "id": "spellcraft:recovery:3",
-          "reason": "Costs 2 DP. You have 1 DP."
-        }
-      ]
+      "deferred": []
     },
     {
       "id": "warlock",
       "name": "Vesper Ashpact",
       "level": 1,
-      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
+      "sourceCommit": "837a3eb42850d6c531c6153349664b49db0d0882",
       "workingTree": false,
       "draft": {
         "name": "Vesper Ashpact",
@@ -16261,7 +16357,7 @@
       "id": "warlock",
       "name": "Vesper Ashpact",
       "level": 3,
-      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
+      "sourceCommit": "837a3eb42850d6c531c6153349664b49db0d0882",
       "workingTree": false,
       "draft": {
         "name": "Vesper Ashpact",
@@ -16443,9 +16539,9 @@
       },
       "development": {
         "level": 3,
-        "current": 3,
+        "current": 7,
         "spent": 21,
-        "total": 24,
+        "total": 28,
         "expired": 0
       },
       "purchases": [
@@ -16734,7 +16830,7 @@
       "id": "warlock",
       "name": "Vesper Ashpact",
       "level": 7,
-      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
+      "sourceCommit": "837a3eb42850d6c531c6153349664b49db0d0882",
       "workingTree": false,
       "draft": {
         "name": "Vesper Ashpact",
@@ -16981,9 +17077,9 @@
       },
       "development": {
         "level": 7,
-        "current": 4,
+        "current": 16,
         "spent": 58,
-        "total": 62,
+        "total": 74,
         "expired": 0
       },
       "purchases": [
@@ -17552,7 +17648,7 @@
       "id": "wizard",
       "name": "Vaelis Quillstar",
       "level": 1,
-      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
+      "sourceCommit": "837a3eb42850d6c531c6153349664b49db0d0882",
       "workingTree": false,
       "draft": {
         "name": "Vaelis Quillstar",
@@ -17990,7 +18086,7 @@
       "id": "wizard",
       "name": "Vaelis Quillstar",
       "level": 3,
-      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
+      "sourceCommit": "837a3eb42850d6c531c6153349664b49db0d0882",
       "workingTree": false,
       "draft": {
         "name": "Vaelis Quillstar",
@@ -18195,9 +18291,9 @@
       },
       "development": {
         "level": 3,
-        "current": 1,
+        "current": 5,
         "spent": 25,
-        "total": 26,
+        "total": 30,
         "expired": 0
       },
       "purchases": [
@@ -18582,7 +18678,7 @@
       "id": "wizard",
       "name": "Vaelis Quillstar",
       "level": 7,
-      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
+      "sourceCommit": "837a3eb42850d6c531c6153349664b49db0d0882",
       "workingTree": false,
       "draft": {
         "name": "Vaelis Quillstar",
@@ -18849,9 +18945,9 @@
       },
       "development": {
         "level": 7,
-        "current": 3,
+        "current": 15,
         "spent": 61,
-        "total": 64,
+        "total": 76,
         "expired": 0
       },
       "purchases": [
@@ -19475,7 +19571,7 @@
       "id": "artificer",
       "name": "Nim Coppercoil",
       "level": 1,
-      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
+      "sourceCommit": "837a3eb42850d6c531c6153349664b49db0d0882",
       "workingTree": false,
       "draft": {
         "name": "Nim Coppercoil",
@@ -19885,7 +19981,7 @@
       "id": "artificer",
       "name": "Nim Coppercoil",
       "level": 3,
-      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
+      "sourceCommit": "837a3eb42850d6c531c6153349664b49db0d0882",
       "workingTree": false,
       "draft": {
         "name": "Nim Coppercoil",
@@ -20054,6 +20150,12 @@
                 },
                 {
                   "id": "craft:repairs:6"
+                },
+                {
+                  "id": "imbuement:1"
+                },
+                {
+                  "id": "imbuement:2"
                 }
               ],
               "signatures": {
@@ -20082,8 +20184,8 @@
       "development": {
         "level": 3,
         "current": 1,
-        "spent": 24,
-        "total": 25,
+        "spent": 28,
+        "total": 29,
         "expired": 0
       },
       "purchases": [
@@ -20177,6 +20279,20 @@
           "paidDp": 4,
           "level": 3,
           "requiredLevel": 3
+        },
+        {
+          "id": "imbuement:1",
+          "name": "Imbuement II",
+          "paidDp": 2,
+          "level": 3,
+          "requiredLevel": 1
+        },
+        {
+          "id": "imbuement:2",
+          "name": "Imbuement III",
+          "paidDp": 2,
+          "level": 3,
+          "requiredLevel": 1
         }
       ],
       "signatureChoices": {
@@ -20287,7 +20403,11 @@
         "spell:imbuement:1",
         "spell:imbuement:2",
         "spell:detection:1",
-        "spell:detection:2"
+        "spell:detection:2",
+        "spell:imbuement:3",
+        "spell:imbuement:4",
+        "spell:imbuement:5",
+        "spell:imbuement:6"
       ],
       "spells": [
         {
@@ -20353,6 +20473,38 @@
           "sp": 1,
           "duration": "Instant",
           "effect": "Determine whether ordinary poison or disease is present and identify its broad type: ingested, inhaled, contact or bodily infection. The reading helps select suitable treatment."
+        },
+        {
+          "id": "spell:imbuement:3",
+          "name": "Elemental Weapon",
+          "action": "Main Action",
+          "sp": 1,
+          "duration": "1 minute",
+          "effect": "Choose fire, cold or lightning. Its attacks deal that type in place of their normal damage type and add 1 damage before resistance. Use the highest magical weapon damage increase; each attack remains one damage event per target."
+        },
+        {
+          "id": "spell:imbuement:4",
+          "name": "Rune Mastery",
+          "action": "Ritual",
+          "sp": 2,
+          "duration": "24 hours or until released",
+          "effect": "Pay the stored spell's SP in addition to this ritual. Inscribe its power into the stone. A bearer uses a Main Action to release it, choosing legal targets from their position and using your class’s casting attribute and your value for it. The stone holds one use; you may keep one prepared Rune Mastery stone at a time."
+        },
+        {
+          "id": "spell:imbuement:5",
+          "name": "Magic Mouth",
+          "action": "Ritual",
+          "sp": 2,
+          "duration": "24 hours or until triggered",
+          "effect": "Record up to twenty-five spoken words and one visible or audible trigger within 3 squares of the object. The first matching event makes the object speak the message once, then ends the spell."
+        },
+        {
+          "id": "spell:imbuement:6",
+          "name": "Continual Flame",
+          "action": "Ritual",
+          "sp": 3,
+          "duration": "7 days",
+          "effect": "Kindle a cool magical flame that sheds bright light to 6 squares. It illuminates without consuming fuel. You may keep up to three such flames; creating a fourth ends the oldest."
         }
       ],
       "actionCounts": {
@@ -20363,9 +20515,9 @@
         "Other": 0
       },
       "spellCounts": {
-        "total": 8,
+        "total": 12,
         "free": 4,
-        "paid": 4
+        "paid": 8
       },
       "castingBudget": {
         "maxSp": 13,
@@ -20395,19 +20547,13 @@
       ],
       "resolved": "Make It Last now creates a persistent bound item, then two and three with reviewed properties. This directly addresses the previous inability to represent enduring magical inventions.",
       "remaining": "The small curated properties are not the full 5e replication catalog. Each binding needs its actual ordinary item and tools; these drafts supply tools, while a chosen lamp/shield would need a separate purchased item.",
-      "deferred": [
-        {
-          "level": 3,
-          "id": "imbuement:1",
-          "reason": "Costs 2 DP. You have 1 DP."
-        }
-      ]
+      "deferred": []
     },
     {
       "id": "artificer",
       "name": "Nim Coppercoil",
       "level": 7,
-      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
+      "sourceCommit": "837a3eb42850d6c531c6153349664b49db0d0882",
       "workingTree": false,
       "draft": {
         "name": "Nim Coppercoil",
@@ -20576,6 +20722,12 @@
                 },
                 {
                   "id": "craft:repairs:6"
+                },
+                {
+                  "id": "imbuement:1"
+                },
+                {
+                  "id": "imbuement:2"
                 }
               ],
               "signatures": {
@@ -20602,12 +20754,6 @@
               "purchases": [
                 {
                   "id": "craft:repairs:7"
-                },
-                {
-                  "id": "imbuement:1"
-                },
-                {
-                  "id": "imbuement:2"
                 },
                 {
                   "id": "imbuement:3"
@@ -20687,9 +20833,9 @@
       },
       "development": {
         "level": 7,
-        "current": 1,
+        "current": 13,
         "spent": 62,
-        "total": 63,
+        "total": 75,
         "expired": 0
       },
       "purchases": [
@@ -20785,25 +20931,25 @@
           "requiredLevel": 3
         },
         {
-          "id": "craft:repairs:7",
-          "name": "Make It Whole",
-          "paidDp": 5,
-          "level": 7,
-          "requiredLevel": 7
-        },
-        {
           "id": "imbuement:1",
           "name": "Imbuement II",
           "paidDp": 2,
-          "level": 7,
+          "level": 3,
           "requiredLevel": 1
         },
         {
           "id": "imbuement:2",
           "name": "Imbuement III",
           "paidDp": 2,
-          "level": 7,
+          "level": 3,
           "requiredLevel": 1
+        },
+        {
+          "id": "craft:repairs:7",
+          "name": "Make It Whole",
+          "paidDp": 5,
+          "level": 7,
+          "requiredLevel": 7
         },
         {
           "id": "imbuement:3",
@@ -21373,13 +21519,7 @@
       ],
       "resolved": "Make It Last now creates a persistent bound item, then two and three with reviewed properties. This directly addresses the previous inability to represent enduring magical inventions.",
       "remaining": "The small curated properties are not the full 5e replication catalog. Each binding needs its actual ordinary item and tools; these drafts supply tools, while a chosen lamp/shield would need a separate purchased item.",
-      "deferred": [
-        {
-          "level": 3,
-          "id": "imbuement:1",
-          "reason": "Costs 2 DP. You have 1 DP."
-        }
-      ]
+      "deferred": []
     }
   ]
 }

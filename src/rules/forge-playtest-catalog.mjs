@@ -1,4 +1,4 @@
-import { FORGE_STARTING_DP } from "./forge-character.mjs";
+import { FORGE_ADVANCEMENT_BASE_DP, FORGE_STARTING_DP } from "./forge-character.mjs";
 
 // These choices apply to the browser playtest. The pinned book catalog is the source
 // for every entry without an override and remains available to existing consumers.
@@ -341,10 +341,10 @@ function playtestDevelopment(markdown) {
       /^Ancestry, culture and background each contribute .+$/m,
       "Starting maximum SP equals your ancestry’s SP, +1 SP each from culture and background, twice the positive part of your class’s SP attribute, and any learned capacity or explicit benefits. Gain +2 maximum SP at each later level. Your current SP stays the same when your maximum rises. Safe overnight rest restores your full reserve.",
     )
-    .replace("gain 8 + the new level in DP", "gain 4 DP plus your new level")
+    .replace("gain 8 + the new level in DP", `gain ${FORGE_ADVANCEMENT_BASE_DP} DP plus your new level`)
     .replaceAll(
       /^\| (\d+) \| \d+ \|/gm,
-      (_, level) => `| ${level} | ${4 + Number(level)} |`,
+      (_, level) => `| ${level} | ${FORGE_ADVANCEMENT_BASE_DP + Number(level)} |`,
     );
 }
 

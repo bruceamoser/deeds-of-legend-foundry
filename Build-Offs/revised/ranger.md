@@ -1,6 +1,6 @@
 # Eryn Mossarrow: ranger after the rewrite
 
-Pinned authored source `2b9af553cf9a4aaa3c8e795b57c0163763b85676`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../ranger.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
+Pinned authored source `837a3eb42850d6c531c6153349664b49db0d0882`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../ranger.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
 
 ## What the rewrite changes
 
@@ -14,8 +14,8 @@ This hunter line chooses archery over the animal-companion line. It does not get
 |---|---|---|---|
 | HP | 15 | 23 | 39 |
 | SP | 5 | 9 | 17 |
-| DP spent / total | 8 / 10 | 23 / 23 | 57 / 61 |
-| Unspent DP | 2 | 0 | 4 |
+| DP spent / total | 8 / 10 | 25 / 27 | 57 / 73 |
+| Unspent DP | 2 | 2 | 16 |
 | Learned action choices (Main / Maneuver / Reaction) | 3 / 1 / 1 | 5 / 1 / 1 | 9 / 1 / 1 |
 | Known book spells (free / paid) | 4 (2 / 2) | 4 (2 / 2) | 12 (2 / 10) |
 | Shared reserve: casts at 2 SP | 2 | 4 | 8 |
@@ -32,7 +32,7 @@ Equipment: Ordinary Ranged Weapon (held); Ammunition Bundle; Travel Pack; Food B
 
 The D&D baseline has **20 HP** and **AC 15 (Studded Leather 12 + DEX 3)** at level 2; HoL uses resistance and player defenses, so these are not equivalent durability measures. Learned action counts exclude universal actions and count signature passive modifications separately; spell choices are listed separately. A learned improvement changes an existing action, not another action button. Actual available actions still depend on equipment, targets and conditions.
 
-Starting DP is **10 + Guile + Knowledge + Reason**, including negative scores, plus explicit ancestry benefits. Later awards are **4 + new level**. The completed `marksmanship:precision` path costs **1+2+2+3+4+4+5 = 21 DP**; discipline entry, if purchased, is separate. These are sample choices, not an optimizer or evidence of playtest balance.
+Starting DP is **10 + Guile + Knowledge + Reason**, including negative scores, plus explicit ancestry benefits. From level 2 onward, each level grants **6 + new level** DP, plus any applicable ancestry benefits. The completed `marksmanship:precision` path costs **1+2+2+3+4+4+5 = 21 DP**; discipline entry, if purchased, is separate. These are sample choices, not an optimizer or evidence of playtest balance.
 
 ## Level 1
 
@@ -79,7 +79,7 @@ The benefit ends when you aim at another target or the scene ends. You must stil
 
 ## Level 3
 
-[Import this ready character](builds/ranger-level-3.hol.json). 0 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
+[Import this ready character](builds/ranger-level-3.hol.json). 2 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
 
 | Learned purchase | DP paid | Character level |
 |---|---:|---:|
@@ -95,6 +95,7 @@ The benefit ends when you aim at another target or the scene ends. You must stil
 | Split the Flight II (`marksmanship:precision:5`) | 4 | 3 |
 | Split the Flight III (`marksmanship:precision:6`) | 4 | 3 |
 | Read the Trail II (`wilderness:tracking:2`) | 2 | 3 |
+| Read the Trail III (`wilderness:tracking:3`) | 2 | 3 |
 
 **Signature choices:** level 1: Steady Aim; level 3: Volley.
 
@@ -132,7 +133,7 @@ Requires a ranged weapon and ammunition. Make one Agility roll and apply it to e
 
 - **Measured Shot I:** Main Action · Agility. Attack one creature within 8 squares for 2/3/5 physical damage. Measured Shot deals 3/4/6 physical damage. Measured Shot has range 12 squares.
 - **Watchful Shot I:** Reaction · Agility. When a visible enemy within 6 squares finishes voluntary movement, attack it for 1/2/3 physical damage after that movement.
-- **Read the Trail I:** Main Action · Reason. Read tracks or signs immediately before you; add 1/2/3 progress toward identifying direction, approximate numbers and freshness. Following a trail to the next landmark takes 10 minutes per attempt instead. The DA defines each objective from accessible evidence. Read the Trail adds 1/3/4 progress.
+- **Read the Trail I:** Main Action · Reason. Read tracks or signs immediately before you; add 1/2/3 progress toward identifying direction, approximate numbers and freshness. Following a trail to the next landmark takes 10 minutes per attempt instead. The DA defines each objective from accessible evidence. Read the Trail adds 1/3/4 progress. Read the Trail takes 5 minutes per attempt when following a trail.
 - **Wild Harvest I:** Main Action · 1 hour · Knowledge. Search an accessible area for food or drinkable water. The DA defines the area and confirms a plausible source before you roll. Raise one Food Bundle or Water Flask of the chosen type by 1/2/3 supply die steps, maximum d8. An empty supply starts at d4 on the first step. You can also spend 1 hour with available materials to shelter two people from ordinary rain and wind, without a roll.
 - **Split the Flight I:** Main Action · Agility. Attack up to three creatures within 8 squares. Roll once; each takes 1/2/4 physical damage. Each is struck once. Split the Flight has range 12 squares. Split the Flight deals 2/3/5 physical damage. You may also spend a Main Action observing one visible creature within 12 squares to mark a vulnerable part of its anatomy or construction for this scene; no roll. The DA identifies a plausible exposed part, or states that none is visible.
 
@@ -142,7 +143,7 @@ Requires a ranged weapon and ammunition. Make one Agility roll and apply it to e
 
 ## Level 7
 
-[Import this ready character](builds/ranger-level-7.hol.json). 4 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
+[Import this ready character](builds/ranger-level-7.hol.json). 16 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
 
 | Learned purchase | DP paid | Character level |
 |---|---:|---:|
@@ -158,8 +159,8 @@ Requires a ranged weapon and ammunition. Make one Agility roll and apply it to e
 | Split the Flight II (`marksmanship:precision:5`) | 4 | 3 |
 | Split the Flight III (`marksmanship:precision:6`) | 4 | 3 |
 | Read the Trail II (`wilderness:tracking:2`) | 2 | 3 |
+| Read the Trail III (`wilderness:tracking:3`) | 2 | 3 |
 | Anatomist’s Volley (`marksmanship:precision:7`) | 5 | 7 |
-| Read the Trail III (`wilderness:tracking:3`) | 2 | 7 |
 | Cut Them Off I (`wilderness:tracking:4`) | 3 | 7 |
 | Cut Them Off II (`wilderness:tracking:5`) | 4 | 7 |
 | Cut Them Off III (`wilderness:tracking:6`) | 4 | 7 |
@@ -237,7 +238,7 @@ This ordinary mark is a physical luminous substance. An attack always applies it
 
 ## Deferred choices
 
-- Level 3: Read the Trail III — Costs 2 DP. You have 0 DP.
+Every planned choice was affordable when scheduled.
 
 ## Playtest questions
 

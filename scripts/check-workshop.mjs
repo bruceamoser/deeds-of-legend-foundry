@@ -207,14 +207,14 @@ try {
   await page
     .getByRole("button", { name: "Increase level", exact: true })
     .click();
-  assert.equal(await page.locator('[data-dp="current"]').innerText(), "8");
+  assert.equal(await page.locator('[data-dp="current"]').innerText(), "10");
   await page.getByRole("button", { name: "Spend DP", exact: true }).click();
   await page.locator('[data-action="forge-view"][data-id="columns"]').click();
   assert.match(await page.locator(".forge-studied").innerText(), /Armor/);
   assert.match(await page.locator(".forge-studied").innerText(), /Guard/);
   assert.equal(await page.locator(".forge-other-learning").count(), 0);
   await page.locator('[data-action="forge-learn"][data-id="guard:watchfulness:1"]').click();
-  assert.equal(await page.locator("[data-dp-remaining]").innerText(), "7 DP remaining");
+  assert.equal(await page.locator("[data-dp-remaining]").innerText(), "9 DP remaining");
   await page.getByRole("button", { name: "Done", exact: true }).click();
   assert.equal(await page.locator('[data-dp="spent"]').innerText(), "9");
   await page
@@ -224,7 +224,7 @@ try {
   await page
     .getByRole("button", { name: "Increase level", exact: true })
     .click();
-  assert.equal(await page.locator('[data-dp="current"]').innerText(), "7");
+  assert.equal(await page.locator('[data-dp="current"]').innerText(), "9");
   await page
     .getByRole("button", { name: "Decrease level", exact: true })
     .click();

@@ -1,6 +1,6 @@
 # Ilyra Cinderblood: sorcerer after the rewrite
 
-Pinned authored source `2b9af553cf9a4aaa3c8e795b57c0163763b85676`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../sorcerer.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
+Pinned authored source `837a3eb42850d6c531c6153349664b49db0d0882`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../sorcerer.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
 
 ## What the rewrite changes
 
@@ -14,13 +14,13 @@ The charismatic ability array still gives less SP than a Knowledge-focused arcan
 |---|---|---|---|
 | HP | 14 | 20 | 32 |
 | SP | 10 | 20 | 38 |
-| DP spent / total | 10 / 12 | 22 / 25 | 62 / 63 |
-| Unspent DP | 2 | 3 | 1 |
+| DP spent / total | 10 / 12 | 22 / 29 | 67 / 75 |
+| Unspent DP | 2 | 7 | 8 |
 | Learned action choices (Main / Maneuver / Reaction) | 0 / 0 / 0 | 0 / 0 / 1 | 0 / 0 / 2 |
 | Known book spells (free / paid) | 10 (4 / 6) | 16 (4 / 12) | 29 (4 / 25) |
 | Shared reserve: casts at 2 SP | 5 | 10 | 19 |
 | Shared reserve: casts at 5 SP | 2 | 4 | 7 |
-| Extra SP from one recovery rest | 1 | 1 | 2 |
+| Extra SP from one recovery rest | 1 | 1 | 4 |
 
 ## Character choices
 
@@ -32,7 +32,7 @@ Equipment: Ordinary Melee Weapon (held); Travel Pack; Food Bundle; Water Flask; 
 
 The D&D baseline has **12 HP** and **AC 12 normally; 15 with Mage Armor (costs one level-1 slot)** at level 2; HoL uses resistance and player defenses, so these are not equivalent durability measures. Learned action counts exclude universal actions and count signature passive modifications separately; spell choices are listed separately. A learned improvement changes an existing action, not another action button. Actual available actions still depend on equipment, targets and conditions.
 
-Starting DP is **10 + Guile + Knowledge + Reason**, including negative scores, plus explicit ancestry benefits. Later awards are **4 + new level**. The completed `spellcraft:soul-capacity` path costs **1+2+2+3+4+4+5 = 21 DP**; discipline entry, if purchased, is separate. These are sample choices, not an optimizer or evidence of playtest balance.
+Starting DP is **10 + Guile + Knowledge + Reason**, including negative scores, plus explicit ancestry benefits. From level 2 onward, each level grants **6 + new level** DP, plus any applicable ancestry benefits. The completed `spellcraft:soul-capacity` path costs **1+2+2+3+4+4+5 = 21 DP**; discipline entry, if purchased, is separate. These are sample choices, not an optimizer or evidence of playtest balance.
 
 ## Level 1
 
@@ -76,7 +76,7 @@ Use this shaping once on your turn. It changes the origin of an existing spell a
 
 ## Level 3
 
-[Import this ready character](builds/sorcerer-level-3.hol.json). 3 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
+[Import this ready character](builds/sorcerer-level-3.hol.json). 7 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
 
 | Learned purchase | DP paid | Character level |
 |---|---:|---:|
@@ -139,7 +139,7 @@ This is a spell costing 0 SP. The windows give the ally a route for its own move
 
 ## Level 7
 
-[Import this ready character](builds/sorcerer-level-7.hol.json). 1 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
+[Import this ready character](builds/sorcerer-level-7.hol.json). 8 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
 
 | Learned purchase | DP paid | Character level |
 |---|---:|---:|
@@ -168,6 +168,8 @@ This is a spell costing 0 SP. The windows give the ally a route for its own move
 | Emotion III (`emotion:2`) | 2 | 7 |
 | Heartstrings (`emotion:3`) | 3 | 7 |
 | Recovery II (`spellcraft:recovery:2`) | 2 | 7 |
+| Recovery III (`spellcraft:recovery:3`) | 2 | 7 |
+| Quiet Renewal I (`spellcraft:recovery:4`) | 3 | 7 |
 
 **Signature choices:** level 1: Bent Trajectory; level 3: Create a Window; level 7: Choose the Edge.
 
@@ -224,11 +226,11 @@ Once per scene, choose two distinct legal targets. Resolve the spell separately 
 
 **Known book spells:** Fire Bolt (Main Action; SP 0); Boil Liquid (Ritual; SP 1); Burning Hands (Main Action; SP 1); Heat Metal (Main Action; SP 2); Elementalism — Air (Maneuver; SP 0); Feather Fall (Reaction; SP 1); Vicious Mockery (Main Action; SP 0); Heroism (Main Action; SP 1); Ray of Frost (Main Action; SP 0); Create or Destroy Water (Ritual; SP 1); Scorching Ray (Main Action; SP 2); Wall of Fire (Main Action; SP 3); Fireball (Main Action; SP 3); Fire Shield (Main Action; SP 4); Fog Cloud (Main Action; SP 1); Gust of Wind (Main Action; SP 2); Fire Storm (Main Action; SP 5); Delayed Blast Fireball (Main Action; SP 5); Meteor Swarm (Main Action; SP 6); Levitate (Main Action; SP 2); Lightning Bolt (Main Action; SP 3); Fly (Main Action; SP 3); Wind Wall (Main Action; SP 4); Charm Person (Main Action; SP 1); Calm Emotions (Main Action; SP 2); Suggestion (Main Action; SP 2); Fear (Main Action; SP 3); Charm Monster (Main Action; SP 3); Confusion (Main Action; SP 4).
 
-**Spell output:** Alternative uses of the same reserve, not simultaneous allocations. Assumes SP is spent before recovery; time, spell-specific limits, components and maintained actions still apply. Signature spells and conditional discounts are described separately. At costs 1/2/3/5 SP, the full reserve funds 38/19/12/7 casts respectively; with the learned once-per-rest recovery it funds 40/20/13/8. Zero-SP spells remain limited by actions and circumstances.
+**Spell output:** Alternative uses of the same reserve, not simultaneous allocations. Assumes SP is spent before recovery; time, spell-specific limits, components and maintained actions still apply. Signature spells and conditional discounts are described separately. At costs 1/2/3/5 SP, the full reserve funds 38/19/12/7 casts respectively; with the learned once-per-rest recovery it funds 42/21/14/8. Zero-SP spells remain limited by actions and circumstances.
 
 ## Deferred choices
 
-- Level 7: Recovery III — Costs 2 DP. You have 1 DP.
+Every planned choice was affordable when scheduled.
 
 ## Playtest questions
 

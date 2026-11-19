@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "repository": "https://github.com/bruceamoser/heroes-of-legend",
-  "commit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
-  "approval": "Class casting attributes and manual range adjudication (book #1376, Foundry #364).",
+  "commit": "837a3eb42850d6c531c6153349664b49db0d0882",
+  "approval": "Advancement DP uses 6 + the new level (book #1378, Foundry #368).",
   "selection": "Current Forge pinned Markdown plus surviving nonretired native references, complete current player manuscript, shared rules and 29 spellbooks. Retired cards and disciplines excluded.",
   "records": [
     {
@@ -1855,7 +1855,7 @@
     },
     {
       "path": "design/da-book/manuscript/08-campaigns-and-consequences.md",
-      "sha256": "01e1a00d464f90123268feabe452d576cb442277d5675136ad6ef911d46839ab"
+      "sha256": "23f0e8a626e149332a798d300c0364bdbfe358ac0e9dc925b6d28fbe85460dc5"
     },
     {
       "path": "design/da-book/manuscript/09-using-the-bestiary.md",
@@ -1883,7 +1883,7 @@
     },
     {
       "path": "design/development.md",
-      "sha256": "0822240e2577a414af4fc44c3ca58cce2c2591d5e06c74c76618c7eacb8d15f8"
+      "sha256": "98f4feb5d7aa5597e3992981f524e3887dc273a456cf15d7dbb3b458909f2455"
     },
     {
       "path": "design/disciplines.md",
@@ -2875,7 +2875,7 @@
     },
     {
       "path": "design/player-book/decision-log.md",
-      "sha256": "658b80a03dc2816cbc6574341e56de4c8f553a119349b46219ad5f9222f7c621"
+      "sha256": "820e98a0ddcd129b289d29e5af2427f8a3284e7c769012731ace5021d187f02b"
     },
     {
       "path": "design/player-book/manuscript/01-welcome.md",
@@ -2883,7 +2883,7 @@
     },
     {
       "path": "design/player-book/manuscript/02-creation.md",
-      "sha256": "9c7732dd08bce8ce2c4add8f320d1d215dd14fb667d1e33d17a287816b20456d"
+      "sha256": "25b95f828ac18c0f976fdfdbd105c8d3f8bb6b710572a4bd82a808d05b00998f"
     },
     {
       "path": "design/player-book/manuscript/02a-starting-sp.md",
@@ -2919,7 +2919,7 @@
     },
     {
       "path": "design/player-book/manuscript/14-reference.md",
-      "sha256": "64b92da45012c393236ff201063a0c713178f569d6ca19735365e725893082f0"
+      "sha256": "2860976933deceb3cdc7d43043055a5ca474dcefa5ace7554821868475ea9962"
     },
     {
       "path": "design/player-book/manuscript/intro-ancestry.md",

@@ -128,6 +128,7 @@ export class WorkshopCharacterSheet extends HandlebarsApplicationMixin(foundry.a
       this.basePlay=structuredClone(state.character.draft.play ?? {});
       this.baseLoadout=structuredClone(state.character.draft.loadout ?? {});
       const {mountWorkshop}=await import(new URL('systems/heroes-of-legend/workshop/workshop-mount.mjs', document.baseURI).href);
+      const actor=this.actor;
       this.host={
         get tracking(){return consumableTracking();},
         nativeItems:()=>this.nativeItems ?? [],
@@ -148,6 +149,7 @@ export class WorkshopCharacterSheet extends HandlebarsApplicationMixin(foundry.a
         itemActions:item=>torchItemActions(this.actor,item),
         readOnly:!this.isEditable || !this.actor.testUserPermission(game.user,'OWNER'),
         committed:Boolean(this.actor.getFlag(ID,'nativeWorkshop')?.portable),
+        get committedLevel(){return actor.getFlag(ID,'nativeWorkshop')?.portable?.draft?.progression?.level ?? 1;},
         nativePortrait:true,
         canEditAbilityAttribute:id=>Boolean(ownedWorkshopAbility(this.actor,id)),
         getAbilityAttribute:record=>ownedWorkshopRollAttribute(this.actor,record),
