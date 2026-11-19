@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {forgeSignatureLearning,forgeSignatureComponent} from '../src/rules/forge-signatures.mjs';
 import {workshopCatalogs} from '../src/rules/workshop-forge-catalog.mjs';
-import {currentWorkshopItemSource,currentWorkshopLearnedItems} from '../src/rules/current-workshop-items.mjs';
+import {currentWorkshopItemSource,currentWorkshopLearnedItems,currentWorkshopReference} from '../src/rules/current-workshop-items.mjs';
 import {normalizeSignatureDevelopment} from '../scripts/content/forge.mjs';
 import {isForgeRitual,spellActionLabel} from '../src/rules/forge-casting.mjs';
 import {actionTiming,actionTimingLabel} from '../src/rules/workshop-character.mjs';
@@ -94,6 +94,19 @@ test('all 90 learned native Items and compendium constructors contain only their
   assert.deepEqual(learned.filter(item=>item.flags['heroes-of-legend'].catalogId.startsWith('ability-signature-')).map(item=>item.flags['heroes-of-legend'].catalogId),[entry.id]);
   assert.equal(learned.find(item=>item.flags['heroes-of-legend'].catalogId===entry.id).flags['heroes-of-legend'].workshopRecord.effect,own.effect);
  }
+});
+
+test('an existing Workshop Item presents the installed timing without updating the owned document', () => {
+ const id='ability-signature-shepherd-a-hand-in-darkness';
+ const flags={catalogId:id,grantKind:'nativeWorkshop',sourceCommit:'older-version'};
+ const item={system:{description:'Stored rules'},getFlag:(_scope,key)=>flags[key]};
+ const reference=currentWorkshopReference(item,catalogs);
+ assert.equal(reference.system.activity.action,'ritual');
+ assert.match(reference.system.description,/Ritual — 10 minutes/);
+ assert.equal(reference.flags['heroes-of-legend'].spell.sp,0);
+ assert.equal(item.system.description,'Stored rules');
+ flags.grantKind='custom';
+ assert.equal(currentWorkshopReference(item,catalogs),undefined);
 });
 test('schema 2 imports direct own rules and rejects former bundle fields',()=>{
  const source={schemaVersion:2,choiceLevels:[1,3,7],signatures:[{id:'signature-test',name:'Standalone',classId:'class-test',level:7,lineId:'theme',rulesMarkdown:'**Action:** Passive\n\nWorks independently.'}]};

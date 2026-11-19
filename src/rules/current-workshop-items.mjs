@@ -37,6 +37,17 @@ export function currentWorkshopItemSource(record,catalogs,{spell=false}={}) {
   const damage=effect.match(/(?:deal(?:s)?|for) (\d+)\/(\d+)\/(\d+) ([a-z-]+) damage/i);
   return {name:record.name,type:"ability",system:{schemaVersion:1,description:html,activity:{action,rollMode:action==="passive"||(record.signatureComponent?!attributeKey:!attribute)?"none":"attribute",attribute:attributeKey??"knowledge",defenseAttribute:attr(record.defenseAttribute,"agility")},outcomes:{weak:damage?`${damage[1]} ${damage[4]} damage`:"",standard:damage?`${damage[2]} ${damage[4]} damage`:"",strong:damage?`${damage[3]} ${damage[4]} damage`:""}},flags:{[ID]:{catalogId:record.id,sourceCommit:catalogs.commit,grantKind:"nativeWorkshop",workshopRecord:metadata,...(isSpell?{spell:structuredClone(record)}:{})}}};
 }
+
+/** Present current rules for managed Items that predate the installed catalog. */
+export function currentWorkshopReference(item, catalogs) {
+  if (item.getFlag(ID, "grantKind") !== "nativeWorkshop" || item.getFlag(ID, "sourceCommit") === catalogs.commit)
+    return undefined;
+  const id = item.getFlag(ID, "catalogId");
+  const spell = catalogs.forge?.spells?.find(record => record.id === id);
+  const record = spell ?? catalogs.choices.find(choice => choice.id === id && choice.kind === "ability");
+  return record ? currentWorkshopItemSource(record, catalogs, { spell: Boolean(spell) }) : undefined;
+}
+
 export function currentWorkshopLearnedItems(preview,catalogs) {
   const ids=new Set([...preview.state.abilities,...catalogs.choices.filter(record=>record.universal).map(record=>record.id)]);
   return [...[...ids].map(id=>{const record=catalogs.choices.find(record=>record.id===id);if(!record)throw new Error(`Current learned ability unavailable: ${id}`);return currentWorkshopItemSource(record,catalogs);}),...preview.state.learning.spells.map(record=>currentWorkshopItemSource(record,catalogs,{spell:true}))];
