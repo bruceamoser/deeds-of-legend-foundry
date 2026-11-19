@@ -85,7 +85,7 @@ test("explicit commit repairs obsolete choices and preserves live state across d
     testUserPermission:()=>true,getFlag:(namespace,key)=>flags[key],
     async update(changes) {
       for (const [key,value] of Object.entries(changes)) {
-        if(key.startsWith("flags.heroes-of-legend.")) {const path=key.slice("flags.heroes-of-legend.".length).split(".");let target=flags;for(const part of path.slice(0,-1))target=target[part]??={};target[path.at(-1)]=structuredClone(value); }
+        if(key.startsWith("flags.heroes-of-legend.")) {const path=key.slice("flags.heroes-of-legend.".length).split(".");let target=flags;for(const part of path.slice(0,-1))target=target[part]??={};target[path.at(-1)]=JSON.parse(JSON.stringify(value),(field, entry)=>field.startsWith("-=") ? undefined : entry); }
         else { const path=key.split("."); let target=this; for(const part of path.slice(0,-1)) target=target[part]??={}; target[path.at(-1)]=structuredClone(value); }
       }
     },

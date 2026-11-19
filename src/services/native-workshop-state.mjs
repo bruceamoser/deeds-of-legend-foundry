@@ -122,6 +122,22 @@ export async function loadNativeWorkshopState(actor) {
   const normalized = await normalize(saved.view?.mode && saved.view.mode !== "sheet" && draft ? draft : overlay(actor, saved.portable,catalogs));
   return { ...(saved.view ?? {}), nativeItems: nativeItemsOverview(actor,catalogs), character: normalized.portable, revision: saved.revision, mode: saved.view?.mode ?? "sheet" };
 }
+// A Foundry document update merges nested flag objects. Explicitly remove keys
+// that a development edit discarded so reopening cannot revive those choices.
+function removeDroppedKeys(record, prior) {
+  return { ...record, ...Object.fromEntries(Object.keys(prior ?? {})
+    .filter(key => !Object.hasOwn(record, key))
+    .map(key => [`-=${key}`, null])) };
+}
+
+function portableProgressionUpdate(portable, prior) {
+  const update = structuredClone(portable);
+  if (update.draft.progression?.levels) {
+    update.draft.progression.levels = removeDroppedKeys(update.draft.progression.levels, prior?.draft?.progression?.levels);
+  }
+  return update;
+}
+
 /** Saves play state only. Changes to construction require explicit commit. */
 export function saveNativeWorkshopState(actor, savedState, { expectedRevision, resolvedImmediateDeathRoll, basePlay, baseLoadout, operationReceipt } = {}) {
   const portable = savedState.character ?? savedState;
@@ -134,7 +150,7 @@ export function saveNativeWorkshopState(actor, savedState, { expectedRevision, r
     if (savedState.mode && savedState.mode !== "sheet") {
       const draft = await normalize(portable);
       revision(actor, expectedRevision);
-      await actor.update({ [`flags.${ID}.nativeWorkshopDraft`]: draft.portable, [`flags.${ID}.nativeWorkshop`]: { ...saved, revision: next, view: Object.fromEntries(Object.entries(savedState).filter(([key]) => !["character", "revision"].includes(key))) }, ...operationChanges(operationReceipt) });
+      await actor.update({ [`flags.${ID}.nativeWorkshopDraft`]: portableProgressionUpdate(draft.portable, actor.getFlag(ID, "nativeWorkshopDraft")), [`flags.${ID}.nativeWorkshop`]: { ...saved, revision: next, view: Object.fromEntries(Object.entries(savedState).filter(([key]) => !["character", "revision"].includes(key))) }, ...operationChanges(operationReceipt) });
       return { ...savedState, character: draft.portable, revision: next };
     }
     const candidate = structuredClone(saved.portable);
@@ -302,13 +318,19 @@ export function commitNativeWorkshopCharacter(actor, portable, { expectedRevisio
       const liveCoins = actor.getFlag(ID,"development")?.coins;
       const coins = previous && Number.isSafeInteger(liveCoins)
         ? liveCoins + remainingCoins - previous.inventory.remainingCoins : remainingCoins;
+      const development = { ...state.preview.state, creation: structuredClone(state.draft), languages: state.preview.play.languages, sourceCommit: state.catalogs.commit, coins };
+      if (state.preview.state.level < previousLevel) {
+        const prior = actor.getFlag(ID, "development");
+        development.creation.progression.levels = removeDroppedKeys(development.creation.progression.levels, prior?.creation?.progression?.levels);
+        development.signatureChoices = removeDroppedKeys(development.signatureChoices ?? {}, prior?.signatureChoices);
+      }
       return {...changes,...operationChanges(operationReceipt),
         [`flags.${ID}.forgeLearned`]:state.preview.state.learned,
         "prototypeToken.name":state.draft.name.trim(),"prototypeToken.actorLink":true,
-        [`flags.${ID}.nativeWorkshop`]:{revision:next,portable,inventoryInstances:equipmentState.preview.inventory.items.map(item=>item.instanceId),view:{mode:"sheet",tab:tab==="Development"?"Development":"Main",step:0,editingLevel:null}},
+        [`flags.${ID}.nativeWorkshop`]:{revision:next,portable:portableProgressionUpdate(portable, existing?.portable),inventoryInstances:equipmentState.preview.inventory.items.map(item=>item.instanceId),view:{mode:"sheet",tab:tab==="Development"?"Development":"Main",step:0,editingLevel:null}},
         [`flags.${ID}.nativeWorkshopDraft`]:null,
         [`flags.${ID}.creationReceipt`]:{status:"complete",revision:next,sourceCommit:state.catalogs.commit,currentWorkshop:true},
-        [`flags.${ID}.development`]:{...state.preview.state,creation:state.draft,languages:state.preview.play.languages,sourceCommit:state.catalogs.commit,coins},
+        [`flags.${ID}.development`]:development,
       };
     },next,{catalogs:state.catalogs});
     return loadNativeWorkshopState(actor);
