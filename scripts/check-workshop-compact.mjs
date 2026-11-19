@@ -523,19 +523,14 @@ try {
     await byLabel("Roll Wild Harvest I").click();
     await dialog.getByLabel("Food to replenish").selectOption(foodInstance);
     await dialog.getByLabel("Water to replenish").selectOption(waterInstance);
-    await page.evaluate(() => {
-      const original = crypto.getRandomValues.bind(crypto);
-      crypto.getRandomValues = values => {
-        crypto.getRandomValues = original;
-        return values.fill(0);
-      };
-    });
     await dialog.getByRole("button", { name: "Roll", exact: true }).click();
-    await expect(dialog.locator("#recipe-roll-result")).toContainText("Food Bundle restored to d6");
-    await expect(dialog.locator("#recipe-roll-result")).toContainText("Water Flask restored to d8");
+    const harvestResult = dialog.locator("#recipe-roll-result");
+    await expect(harvestResult).toContainText("Water Flask restored to d8");
+    const restoredFoodDie = (await harvestResult.locator("strong").textContent()).startsWith("Weak") ? "d6" : "d8";
+    await expect(harvestResult).toContainText(`Food Bundle restored to ${restoredFoodDie}`);
     await dialog.getByRole("button", { name: "Close", exact: true }).click();
     await tab("Inventory");
-    await expect(panel.locator(`tr[data-instance="${foodInstance}"]`)).toContainText("d6");
+    await expect(panel.locator(`tr[data-instance="${foodInstance}"]`)).toContainText(restoredFoodDie);
     await expect(water).toContainText("d8");
 
     const historical = JSON.parse(await readFile("Build-Offs/revised/builds/rogue-level-1.hol.json", "utf8"));

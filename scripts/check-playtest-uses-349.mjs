@@ -11,8 +11,12 @@ assert.equal(process.env.HOL_NATIVE_RUNTIME_LEASE, "workshop");
 const expectedVersion = JSON.parse(await readFile("static/system.json")).version;
 const portable = JSON.parse(await readFile("Build-Offs/revised/builds/sorcerer-level-1.hol.json"));
 portable.draft.name = "Playtest349 casting and use";
-const spellsAndAbilities = ["spell:flame:2", "athletics:balance:1", "athletics:swimming:1"];
-portable.draft.purchases[1] = ["flame:0", "athletics", ...spellsAndAbilities.slice(1)].map(id => ({id}));
+portable.draft.background = {id:"origin-background-shore-gatherer",pair:0};
+const spellsAndAbilities = ["spell:flame:2", "athletics:balance:1", "athletics:swimming:1", "wilderness:provisioning:1"];
+portable.draft.purchases[1] = [
+  "flame:0", "athletics", ...spellsAndAbilities.slice(1),
+  "wilderness:provisioning:2", "wilderness:provisioning:3",
+].map(id => ({id}));
 portable.draft.play = {favorites:{abilities:spellsAndAbilities,items:[]}};
 const browser = await chromium.launch();
 let gm, player, fixture;
@@ -41,6 +45,11 @@ try {
     });
     f.actor = actor.id;
     await actor.importFromJSON(JSON.stringify(portable));
+    const food = actor.items.find(item => item.system.catalogId === "item-food-bundle");
+    const water = actor.items.find(item => item.system.catalogId === "item-water-flask");
+    await actor.updateEmbeddedDocuments("Item", [
+      {_id:food.id,"system.inventoryDie":0}, {_id:water.id,"system.inventoryDie":4},
+    ]);
     await user.update({character:actor.id});
     return f;
   }, portable);
@@ -78,8 +87,25 @@ try {
   await expect.poll(async()=>(await posts()).map(post=>post.name)).toEqual(["Boil Liquid","Catch Your Balance I","Strong Swimmer I"]);
   assert((await posts()).every(post=>!post.roll && post.author===fixture.user));
   assert.equal(await sp(),before-1);
-  assert.deepEqual(errors,[]);
   console.info("Verified player Boil Liquid as Main Action and Cast, one SP paid, and single effect-only chat cards for the ritual, reaction and passive.");
+
+  const supplies = () => gm.evaluate(id => {
+    const actor = game.actors.get(id);
+    return ["item-food-bundle","item-water-flask"].map(catalogId =>
+      actor.items.find(item => item.system.catalogId === catalogId)?.system.inventoryDie);
+  },fixture.actor);
+  assert.deepEqual(await supplies(),[0,4]);
+  await sheet.getByRole("button",{name:"Roll Wild Harvest I",exact:true}).click();
+  const harvest = sheet.getByRole("dialog",{name:"Wild Harvest I"});
+  await expect(harvest.getByLabel("Food to replenish")).toContainText("Food Bundle");
+  await expect(harvest.getByLabel("Water to replenish")).toContainText("Water Flask");
+  await harvest.getByRole("button",{name:"Roll",exact:true}).click();
+  await expect.poll(async() => {
+    const [food,water] = await supplies();
+    return food >= 6 && water === 8;
+  }).toBe(true);
+  assert.deepEqual(errors,[]);
+  console.info("Verified Wild Harvest restores both owned supply dice, including an empty Food Bundle.");
 } finally {
   await player?.close();
   await gm?.evaluate(async ()=>{
