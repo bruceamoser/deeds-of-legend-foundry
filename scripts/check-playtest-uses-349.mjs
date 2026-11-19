@@ -120,20 +120,22 @@ try {
   const supply = sheet.getByRole("dialog",{name:"Water Flask",exact:true});
   await expect(supply).toContainText("Maximum supply die: d8");
   await supply.getByRole("button",{name:"Close",exact:true}).click();
-  const deplete = water.getByRole("button",{name:"Deplete Water Flask",exact:true});
-  const confirmation = sheet.getByRole("dialog",{name:"Deplete Water Flask?"});
-  await deplete.click();
-  await confirmation.getByRole("button",{name:"Cancel",exact:true}).click();
-  assert.deepEqual(await supplies(),[6,4]);
-  await deplete.click();
-  await confirmation.getByRole("button",{name:"Deplete supply",exact:true}).click();
-  await expect.poll(supplies).toEqual([6,0]);
-  await expect(confirmation).toHaveCount(0);
+  const food = sheet.getByRole("row").filter({hasText:"Food Bundle"});
+  const lower = food.getByRole("button",{name:"Lower Food Bundle supply",exact:true});
+  await lower.click();
+  await expect.poll(supplies).toEqual([4,4]);
+  await expect(sheet.getByRole("dialog")).toHaveCount(0);
+  await expect(food.locator(".supply-readout > span").first()).toHaveText("d4");
+  await lower.click();
+  await expect.poll(supplies).toEqual([0,4]);
+  await expect(food).toContainText("Empty");
+  await water.getByRole("button",{name:"Lower Water Flask supply",exact:true}).click();
+  await expect.poll(supplies).toEqual([0,0]);
   await expect(water).toContainText("Empty");
   await expect(water.locator("input[type=number]")).toHaveValue("1");
   assert.deepEqual(errors,[]);
   console.info("Verified Wild Harvest is a Main Action. A total of 10 posts 2 supply die steps and changes an empty Food Bundle to d6.");
-  console.info("Verified the Water Flask shows its d8 maximum. Cancelling depletion leaves its supply intact. Confirming keeps the item and empties its die.");
+  console.info("Verified the Water Flask shows its d8 maximum. Inventory lowers the selected supply by one step per click, without a dialog or change to quantity.");
 } finally {
   await player?.close();
   await gm?.evaluate(async ()=>{

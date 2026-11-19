@@ -13,6 +13,7 @@ import {
 } from "./rules/workshop-ability.mjs";
 import { compatibleAmmunition, ORDINARY_RANGED_WEAPON, WATER_FLASK } from "./rules/equipment-identity.mjs";
 import { basicAttackDamageProfile } from "./rules/weapon-training.mjs";
+import { lowerInventoryDie } from "./rules/inventory.mjs";
 import { missingStartingProvisions, provisionSalePrice } from "./rules/training-equipment.mjs";
 import { abilityRollConfiguration } from "./rules/ability-roll.mjs";
 import { workshopRollOutcome } from "./rules/workshop-outcomes.mjs";
@@ -208,7 +209,7 @@ function nativeItemsPanel(kind) {
   return `<section class="box owned-item-cards" aria-label="${kind==='ability' ? 'Other ability cards' : 'Other owned items'}"><h3>${kind==='ability' ? 'Other abilities' : 'Other owned items'}</h3>${kind==='ability' ? '<p class="file-hint">Owned ability cards; these do not change your learned Workshop choices.</p>' : ''}<div class="owned-item-list">${items.map(item=>`<div class="stat-row owned-item-card" data-native-item="${esc(item.id)}"><span>${button(esc(item.name),'native-open-item',`data-id="${esc(item.id)}" aria-label="Open ${esc(item.name)}"`,'table-link')}${item.type==='equipment' ? `<small class="item-source">${item.quantity ?? 0} × ${item.bulk ?? 0} Bulk · ${item.carried===false ? 'Stored' : 'Carried'}${item.held ? ' · Held' : ''}${item.worn ? ' · Worn' : ''}</small>` : ''}</span>${button('Open card','native-open-item',`data-id="${esc(item.id)}" aria-label="Open card ${esc(item.name)}"`,'small quiet')}</div>`).join('')}</div></section>`;
 }
 function nativeItemActions(item) {
-  return (host?.itemActions?.(item) ?? []).map(spec=>button(esc(spec.label),'native-item',`data-command="${esc(spec.action)}" data-instance="${esc(item.instanceId)}" ${spec.disabled || options.readOnly || host?.readOnly ? 'disabled' : ''} title="${esc(spec.title ?? spec.label)}"`,'small quiet')).join('');
+  return (host?.itemActions?.(item) ?? []).filter(spec=>spec.action!=='torch-toggle').map(spec=>button(esc(spec.label),'native-item',`data-command="${esc(spec.action)}" data-instance="${esc(item.instanceId)}" ${spec.disabled || options.readOnly || host?.readOnly ? 'disabled' : ''} title="${esc(spec.title ?? spec.label)}"`,'small quiet')).join('');
 }
 let renamingItem;
 function name(id) {
@@ -303,6 +304,7 @@ function persist() {
 }
 const diceIcon =
   '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="8" cy="8" r="1.5" fill="currentColor"/><circle cx="16" cy="16" r="1.5" fill="currentColor"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg>';
+const dropIcon = '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 5h8l4 7v7H4v-7zm4 1v8m-3-3 3 3 3-3"/></svg>';
 const torchIcon = (lit) =>
   `<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3c1 4 6 6 6 11a6 6 0 0 1-12 0c0-3 2-5 3-6 0 2 1 3 2 3 1-2 2-4 1-8Z"/>${lit ? '<path d="m3 3 18 18"/>' : ""}</svg>`;
 const skullIcon =
@@ -631,7 +633,7 @@ function itemUseButton(item) {
 }
 function resupplyButton(item) {
   return button(
-    "↥",
+    "↑",
     "resupply-dialog",
     `data-instance="${esc(item.instanceId)}" aria-label="Resupply ${esc(itemName(item))}" title="Resupply"`,
     "icon-button",
@@ -647,12 +649,12 @@ function inventorySupply(item, controls, inInventory = false) {
   if (!controls || !supply) return display;
   const torch = (host?.itemActions?.(item) ?? []).find(spec => spec.action === "torch-toggle");
   const canUse = item.carried && item.quantity && (item.inventoryDie || !tracked || torch?.lit || torch?.pendingCheck);
-  const use = canUse && (!inInventory || !torch) ? itemUseButton(item) : "";
+  const use = canUse ? itemUseButton(item) : "";
   const resupply = tracked ? resupplyButton(item) : "";
-  const deplete = inInventory && tracked && item.quantity > 0 && item.inventoryDie > 0 && !(options.readOnly || host?.readOnly)
-    ? button("−", "deplete-supply-dialog", `data-instance="${esc(item.instanceId)}" aria-label="Deplete ${esc(itemName(item))}" title="Deplete supply"`, "icon-button")
+  const lower = inInventory && tracked && item.quantity > 0 && item.inventoryDie > 0 && !(options.readOnly || host?.readOnly)
+    ? button("↓", "lower-supply", `data-instance="${esc(item.instanceId)}" aria-label="Lower ${esc(itemName(item))} supply" title="Lower supply one die size"`, "icon-button")
     : "";
-  return `<span class="supply-readout"><span>${display}</span>${use || resupply || deplete ? `<span class="supply-controls">${use}${resupply}${deplete}</span>` : ""}</span>`;
+  return `<span class="supply-readout"><span>${display}</span>${use || resupply || lower ? `<span class="supply-controls">${use}${resupply}${lower}</span>` : ""}</span>`;
 }
 function supplyRows() {
   return (
@@ -887,12 +889,12 @@ function inventoryTable(controls = false) {
         `<td><input type="checkbox" data-loadout="${id}" data-prop="${prop}" aria-label="${labelPrefix} ${label}" ${item[prop] ? "checked" : ""}></td>`).join("")
       : `<td>${esc(sources[item.source] ?? name(item.source))}</td>`;
     const sale = controls ? provisionSalePrice(item) : 0;
-    const drop = button("Drop", "drop-item", `data-instance="${id}" aria-label="Drop ${label}"`, "quiet small");
-    const sell = sale ? button(`Sell · ${sale}c`, "sell-provision", `data-instance="${id}" aria-label="Sell ${label} for ${sale} coin${sale === 1 ? "" : "s"}"`, "quiet small") : "";
-    const remove = !controls ? purchaseRemoval(item) : host?.canDeleteItem?.(item) === false ? "" : sell + drop;
+    const drop = button(dropIcon, "drop-item", `data-instance="${id}" aria-label="Drop ${label}" title="Drop item"`, "icon-button");
+    const sell = sale ? button(`${sale}c`, "sell-provision", `data-instance="${id}" aria-label="Sell ${label} for ${sale} coin${sale === 1 ? "" : "s"}" title="Sell for ${sale} coin${sale === 1 ? "" : "s"}"`, "quiet small inventory-sell") : "";
+    const remove = !controls ? purchaseRemoval(item) : host?.canDeleteItem?.(item) === false ? "" : `<span class="inventory-actions">${sell}${drop}</span>`;
     return `<tr data-instance="${id}" class="${item.carried ? "" : "stored-item"}"><td>${nameCell}</td><td>${quantity}</td><td>${item.bulk}</td><td>${inventorySupply(item, controls, true)}</td>${loadout}<td>${remove}</td></tr>`;
   });
-  return `<div class="table-wrap"><table class="inventory-table"><thead><tr><th>Item</th><th>Qty</th><th>Bulk</th><th>Supply</th>${controls ? '<th>Held</th><th>Worn</th><th>Carried</th><th aria-label="Remove or sell"></th>' : '<th>Source</th><th aria-label="Remove purchase"></th>'}</tr></thead><tbody>${rows.join("")}</tbody></table></div>`;
+  return `<div class="table-wrap"><table class="inventory-table"><thead><tr><th>Item</th><th>Qty</th><th>Bulk</th><th>Supply</th>${controls ? '<th>Held</th><th>Worn</th><th>Carried</th><th>Actions</th>' : '<th>Source</th><th aria-label="Remove purchase"></th>'}</tr></thead><tbody>${rows.join("")}</tbody></table></div>`;
 }
 function ammunitionSelector(weapon, items) {
   if (weapon.catalogId !== ORDINARY_RANGED_WEAPON || !weapon.quantity) return "";
@@ -1650,19 +1652,6 @@ function resupplyDialog(instance) {
   popup(`Resupply ${itemName(item)}`, available);
 }
 
-function supplyToDeplete(instance) {
-  const item = preview.inventory.items.find(i => i.instanceId === instance);
-  if (!item || !tracksSupply(item) || !item.quantity || !item.inventoryDie)
-    throw new Error("Choose an owned supply with a die remaining.");
-  return item;
-}
-
-function depleteSupplyDialog(instance) {
-  const item = supplyToDeplete(instance);
-  popup(`Deplete ${itemName(item)}?`,
-    `<p>Set this stack’s current supply from d${item.inventoryDie} to Empty. The item stays in your inventory and can be resupplied.</p>${supplyMaximum(get(item.catalogId)?.inventoryDie)}<div class="dialog-actions">${button("Cancel", "close-reference")}${button("Deplete supply", "confirm-deplete-supply", `data-instance="${esc(instance)}"`, "primary")}</div>`);
-}
-
 function restoreSupply(items, steps) {
   const catalog = catalogs.inventory;
   const inventory = playDraft().inventory;
@@ -2411,7 +2400,7 @@ async function action(target) {
     }
   }
   if (host?.onAction && await host.onAction({action:a,id:target.dataset.id,editing:edit,mode,dataset:{...target.dataset},
-    ...(["native-portrait", "confirm-deplete-supply"].includes(a) ? { target } : {}),
+    ...(["native-portrait", "lower-supply"].includes(a) ? { target } : {}),
     state:JSON.parse(writePortableCharacter(draft,catalogs)),preview,record:get(target.dataset.id),
     activeRoll: typeof activeRoll === 'undefined' ? undefined : activeRoll,
     values:Object.fromEntries([...root.querySelectorAll('#reference input,#reference select')].map(node=>[node.id || node.dataset.rollAbility, node.type==='checkbox' ? node.checked : node.value]))})) return;
@@ -2482,17 +2471,17 @@ async function action(target) {
     return recoveryDialog();
   }
   if (a === "resupply-dialog") return resupplyDialog(target.dataset.instance);
-  if (a === "deplete-supply-dialog") return depleteSupplyDialog(target.dataset.instance);
-  if (a === "confirm-deplete-supply") {
-    const item = supplyToDeplete(target.dataset.instance);
+  if (a === "lower-supply") {
+    const item = preview.inventory.items.find(i => i.instanceId === target.dataset.instance);
+    if (!item || !tracksSupply(item) || !item.quantity || !item.inventoryDie)
+      throw new Error("Choose an owned supply with a die remaining.");
+    const after = lowerInventoryDie(item.inventoryDie);
     const inventory = playDraft().inventory;
     inventory.overrides ??= {};
-    inventory.overrides[item.instanceId] = { ...inventory.overrides[item.instanceId], inventoryDie: 0 };
+    inventory.overrides[item.instanceId] = { ...inventory.overrides[item.instanceId], inventoryDie: after };
     persist();
     if (host) await pendingSave;
-    $("#reference").close();
     render();
-    notice(`${itemName(item)} is empty.`);
     return;
   }
   if (a === "confirm-resupply") {

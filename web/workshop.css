@@ -1333,9 +1333,6 @@ dialog header button {
   min-width: 22px;
   font-size: 0.85rem;
 }
-.sheet-inventory .supply-readout {
-  flex-wrap: wrap;
-}
 .passive-table,
 .play-summary .trait-table {
   table-layout: fixed;
@@ -1402,32 +1399,40 @@ dialog header button {
   min-height: 24px;
   padding: 2px 4px;
 }
-.sheet-inventory .inventory-table td:last-child button {
-  min-height: 24px;
-  padding: 0 5px;
-}
 .sheet-inventory .inventory-table {
   table-layout: fixed;
+  min-width: 550px;
+  max-width: 770px;
+}
+.sheet-inventory .inventory-table :is(th,td) {
+  padding: 3px 5px;
+  vertical-align: middle;
 }
 .sheet-inventory .inventory-table th:nth-child(2),
 .sheet-inventory .inventory-table th:nth-child(3) {
-  width: 48px;
+  width: 44px;
 }
 .sheet-inventory .inventory-table th:nth-child(4) {
-  width: 94px;
+  width: 113px;
 }
-.sheet-inventory .inventory-table td:nth-child(4) {
-  white-space: normal;
-}
-.sheet-inventory .inventory-table th:nth-child(5),
-.sheet-inventory .inventory-table th:nth-child(6) {
-  width: 52px;
-}
-.sheet-inventory .inventory-table th:nth-child(7) {
-  width: 62px;
+.sheet-inventory .inventory-table th:nth-child(n+5):nth-child(-n+7) {
+  width: 45px;
 }
 .sheet-inventory .inventory-table th:last-child {
-  width: 57px;
+  width: 70px;
+}
+.sheet-inventory .supply-readout,
+.inventory-actions {
+  white-space: nowrap;
+}
+.inventory-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+.inventory-actions .inventory-sell {
+  min-height: 24px;
+  padding: 0 4px;
 }
 .known-disciplines h3 {
   margin: 0 0 4px;
