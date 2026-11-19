@@ -5,11 +5,11 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>3</dd></div><div><dt>Attribute</dt><dd>Guile</dd></div><div><dt>Defense</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>One creature within 6 squares able to understand an offered image or emotion</dd></div><div><dt>Duration</dt><dd>One social objective, up to 10 minutes</dd></div></dl><p>Establish rapport through shared sensations even across a language barrier. Add 2/4/6 progress toward a feasible request stated by the DA. The creature&#39;s needs and motives shape what you can ask of it.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>3</dd></div><div><dt>Attribute</dt><dd>Class casting attribute</dd></div><div><dt>Defense</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>One creature within 6 squares able to understand an offered image or emotion</dd></div><div><dt>Duration</dt><dd>One social objective, up to 10 minutes</dd></div></dl><p>Establish rapport through shared sensations even across a language barrier. Add 2/4/6 progress toward a feasible request stated by the DA. The creature&#39;s needs and motives shape what you can ask of it.</p>",
     "activity": {
       "action": "main",
-      "rollMode": "attribute",
-      "attribute": "guile",
+      "rollMode": "delegated",
+      "attribute": "knowledge",
       "defenseAttribute": "reason"
     },
     "outcomes": {
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:emotion:7",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",
@@ -32,7 +32,7 @@
         "sp": 3,
         "range": "One creature within 6 squares able to understand an offered image or emotion",
         "duration": "One social objective, up to 10 minutes",
-        "attribute": "Guile",
+        "attribute": "Class",
         "defenseAttribute": "Reason",
         "effect": "Establish rapport through shared sensations even across a language barrier. Add 2/4/6 progress toward a feasible request stated by the DA. The creature's needs and motives shape what you can ask of it.",
         "improves": null,
@@ -50,7 +50,7 @@
         "sp": 3,
         "action": "Main Action",
         "actionText": "Main Action",
-        "attribute": "Guile",
+        "attribute": "Class",
         "defense": "Reason",
         "defenseAttribute": "Reason",
         "holdAttribute": null,

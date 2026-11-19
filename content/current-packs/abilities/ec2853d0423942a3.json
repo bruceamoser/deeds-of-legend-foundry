@@ -5,10 +5,10 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 10 minutes</dd></div><div><dt>SP</dt><dd>3</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One fixed seal and one known Main Action spell costing at most 2 SP</dd></div><div><dt>Duration</dt><dd>8 hours or until triggered</dd></div></dl><p>Pay the stored spell&#39;s SP in addition to the ritual. Choose its targets relative to the seal and a visible or audible trigger within 3 squares. At the first trigger, release it using the stored spell’s printed attribute, your value for it and legal targets, then end the seal. Keep one such prepared seal at a time.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 10 minutes</dd></div><div><dt>SP</dt><dd>3</dd></div><div><dt>Attribute</dt><dd>Automatic</dd></div><div><dt>Range</dt><dd>One fixed seal and one known Main Action spell costing at most 2 SP</dd></div><div><dt>Duration</dt><dd>8 hours or until triggered</dd></div></dl><p>Pay the stored spell&#39;s SP in addition to the ritual. Choose its targets relative to the seal and a visible or audible trigger within 3 squares. At the first trigger, release it using your class’s casting attribute and legal targets, then end the seal. Keep one such prepared seal at a time.</p>",
     "activity": {
       "action": "ritual",
-      "rollMode": "attribute",
+      "rollMode": "none",
       "attribute": "knowledge",
       "defenseAttribute": "agility"
     },
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:seals:7",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",
@@ -34,7 +34,7 @@
         "duration": "8 hours or until triggered",
         "attribute": "None",
         "defenseAttribute": null,
-        "effect": "Pay the stored spell's SP in addition to the ritual. Choose its targets relative to the seal and a visible or audible trigger within 3 squares. At the first trigger, release it using the stored spell’s printed attribute, your value for it and legal targets, then end the seal. Keep one such prepared seal at a time.",
+        "effect": "Pay the stored spell's SP in addition to the ritual. Choose its targets relative to the seal and a visible or audible trigger within 3 squares. At the first trigger, release it using your class’s casting attribute and legal targets, then end the seal. Keep one such prepared seal at a time.",
         "improves": null,
         "requires": [
           "seals:2"
@@ -58,7 +58,7 @@
         "escapeAttribute": null,
         "target": "One fixed seal and one known Main Action spell costing at most 2 SP",
         "duration": "8 hours or until triggered",
-        "effect": "Pay the stored spell's SP in addition to the ritual. Choose its targets relative to the seal and a visible or audible trigger within 3 squares. At the first trigger, release it using the stored spell’s printed attribute, your value for it and legal targets, then end the seal. Keep one such prepared seal at a time."
+        "effect": "Pay the stored spell's SP in addition to the ritual. Choose its targets relative to the seal and a visible or audible trigger within 3 squares. At the first trigger, release it using your class’s casting attribute and legal targets, then end the seal. Keep one such prepared seal at a time."
       }
     }
   },

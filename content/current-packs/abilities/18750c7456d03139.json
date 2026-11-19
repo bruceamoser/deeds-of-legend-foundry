@@ -5,11 +5,11 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>Guile</dd></div><div><dt>Defense</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>One creature within 6 squares that understands you</dd></div><div><dt>Duration</dt><dd>Until the end of its next turn</dd></div></dl><p>State one brief command: move to a named safe place, release a held object, or perform one ordinary interaction. On its turn the target chooses to perform that command using its own actions or suffer Dazed 1/2/3 from resisting the pressure. Once that choice resolves, the command ends.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>Class casting attribute</dd></div><div><dt>Defense</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>One creature within 6 squares that understands you</dd></div><div><dt>Duration</dt><dd>Until the end of its next turn</dd></div></dl><p>State one brief command: move to a named safe place, release a held object, or perform one ordinary interaction. On its turn the target chooses to perform that command using its own actions or suffer Dazed 1/2/3 from resisting the pressure. Once that choice resolves, the command ends.</p>",
     "activity": {
       "action": "main",
-      "rollMode": "attribute",
-      "attribute": "guile",
+      "rollMode": "delegated",
+      "attribute": "knowledge",
       "defenseAttribute": "reason"
     },
     "outcomes": {
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:emotion:a2",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",
@@ -32,7 +32,7 @@
         "sp": 5,
         "range": "One creature within 6 squares that understands you",
         "duration": "Until the end of its next turn",
-        "attribute": "Guile",
+        "attribute": "Class",
         "defenseAttribute": "Reason",
         "effect": "State one brief command: move to a named safe place, release a held object, or perform one ordinary interaction. On its turn the target chooses to perform that command using its own actions or suffer Dazed 1/2/3 from resisting the pressure. Once that choice resolves, the command ends.",
         "improves": null,
@@ -50,7 +50,7 @@
         "sp": 5,
         "action": "Main Action",
         "actionText": "Main Action",
-        "attribute": "Guile",
+        "attribute": "Class",
         "defense": "Reason",
         "defenseAttribute": "Reason",
         "holdAttribute": null,

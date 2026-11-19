@@ -5,11 +5,11 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Defense</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>One creature within 3 squares with its own SP reserve</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Transfer 1/2/3 of the target&#39;s current SP into your reserve, limited by its available SP and your missing SP after paying the casting cost. Every point received leaves the target&#39;s reserve. An empty reserve transfers 0.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>Class casting attribute</dd></div><div><dt>Defense</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>One creature within 6 squares with its own SP reserve</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Transfer 1/2/3 of the target&#39;s current SP into your reserve, limited by its available SP and your missing SP after paying the casting cost. Every point received leaves the target&#39;s reserve. An empty reserve transfers 0.</p>",
     "activity": {
       "action": "main",
-      "rollMode": "attribute",
-      "attribute": "reason",
+      "rollMode": "delegated",
+      "attribute": "knowledge",
       "defenseAttribute": "reason"
     },
     "outcomes": {
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:channeling:4",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",
@@ -30,9 +30,9 @@
         "cost": 2,
         "action": "Main Action",
         "sp": 2,
-        "range": "One creature within 3 squares with its own SP reserve",
+        "range": "One creature within 6 squares with its own SP reserve",
         "duration": "Instant",
-        "attribute": "Reason",
+        "attribute": "Class",
         "defenseAttribute": "Reason",
         "effect": "Transfer 1/2/3 of the target's current SP into your reserve, limited by its available SP and your missing SP after paying the casting cost. Every point received leaves the target's reserve. An empty reserve transfers 0.",
         "improves": null,
@@ -50,12 +50,12 @@
         "sp": 2,
         "action": "Main Action",
         "actionText": "Main Action",
-        "attribute": "Reason",
+        "attribute": "Class",
         "defense": "Reason",
         "defenseAttribute": "Reason",
         "holdAttribute": null,
         "escapeAttribute": null,
-        "target": "One creature within 3 squares with its own SP reserve",
+        "target": "One creature within 6 squares with its own SP reserve",
         "duration": "Instant",
         "effect": "Transfer 1/2/3 of the target's current SP into your reserve, limited by its available SP and your missing SP after paying the casting cost. Every point received leaves the target's reserve. An empty reserve transfers 0."
       }

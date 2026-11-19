@@ -5,10 +5,10 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>3</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One willing creature within 3 squares</dd></div><div><dt>Duration</dt><dd>1 minute</dd></div></dl><p>Give the recipient the body of a familiar ordinary Small or Medium animal. It keeps its HP, attributes and mind. Choose walking, swimming or climbing at its normal Speed; use claws or a bite for Basic Unarmed attacks. Worn gear merges into the form. Returning costs a Maneuver; speech, item use and casting resume in the original body.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>3</dd></div><div><dt>Attribute</dt><dd>Automatic</dd></div><div><dt>Range</dt><dd>One willing creature within 6 squares</dd></div><div><dt>Duration</dt><dd>1 minute</dd></div></dl><p>Give the recipient the body of a familiar ordinary Small or Medium animal. It keeps its HP, attributes and mind. Choose walking, swimming or climbing at its normal Speed; use claws or a bite for Basic Unarmed attacks. Worn gear merges into the form. Returning costs a Maneuver; speech, item use and casting resume in the original body.</p>",
     "activity": {
       "action": "main",
-      "rollMode": "attribute",
+      "rollMode": "none",
       "attribute": "knowledge",
       "defenseAttribute": "agility"
     },
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:transformation:7",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",
@@ -30,7 +30,7 @@
         "cost": 3,
         "action": "Main Action",
         "sp": 3,
-        "range": "One willing creature within 3 squares",
+        "range": "One willing creature within 6 squares",
         "duration": "1 minute",
         "attribute": "None",
         "defenseAttribute": null,
@@ -55,7 +55,7 @@
         "defenseAttribute": null,
         "holdAttribute": null,
         "escapeAttribute": null,
-        "target": "One willing creature within 3 squares",
+        "target": "One willing creature within 6 squares",
         "duration": "1 minute",
         "effect": "Give the recipient the body of a familiar ordinary Small or Medium animal. It keeps its HP, attributes and mind. Choose walking, swimming or climbing at its normal Speed; use claws or a bite for Basic Unarmed attacks. Worn gear merges into the form. Returning costs a Maneuver; speech, item use and casting resume in the original body."
       }

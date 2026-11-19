@@ -5,10 +5,10 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 hour</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>The open sky within 1 kilometer of your ritual site</dd></div><div><dt>Duration</dt><dd>8 hours</dd></div></dl><p>Gradually change local weather over the casting hour: clear or gather clouds, bring ordinary rain or snow, or raise or calm strong wind. Choose one weather change. Seasonal temperatures and sound shelter remain relevant. The change creates ordinary weather rather than attack damage.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 hour</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>Automatic</dd></div><div><dt>Range</dt><dd>The open sky within 1 kilometer of your ritual site</dd></div><div><dt>Duration</dt><dd>8 hours</dd></div></dl><p>Gradually change local weather over the casting hour: clear or gather clouds, bring ordinary rain or snow, or raise or calm strong wind. Choose one weather change. Seasonal temperatures and sound shelter remain relevant. The change creates ordinary weather rather than attack damage.</p>",
     "activity": {
       "action": "ritual",
-      "rollMode": "attribute",
+      "rollMode": "none",
       "attribute": "knowledge",
       "defenseAttribute": "agility"
     },
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:air:a2",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",

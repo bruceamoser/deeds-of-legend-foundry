@@ -5,11 +5,11 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Target / range / shape</dt><dd>One known ongoing magical effect within 5 squares.</dd></div><div><dt>Magic</dt><dd>Spell</dd></div><div><dt>SP</dt><dd>0</dd></div><div><dt>Duration</dt><dd>Facts remain known; the Boon expires when used or at scene end.</dd></div><div><dt>Equipment / acquisition</dt><dd>A free hand for casting.</dd></div></dl><p>Study the effect once per scene. Roll Reason and learn 1/2/3 facts on Weak/Standard/Strong, chosen from its purpose, its remaining duration, and the category of its source (creature, object, place or independent spell). Gain 1 Boon to your next roll applying a learned fact this scene. The DA describes what the effect reveals, not unknown true names or hidden personal history.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>Class casting attribute</dd></div><div><dt>Target / range / shape</dt><dd>One known ongoing magical effect within 5 squares.</dd></div><div><dt>Magic</dt><dd>Spell</dd></div><div><dt>SP</dt><dd>0</dd></div><div><dt>Duration</dt><dd>Facts remain known; the Boon expires when used or at scene end.</dd></div><div><dt>Equipment / acquisition</dt><dd>A free hand for casting.</dd></div></dl><p>Study the effect once per scene. Roll your class’s casting attribute and learn 1/2/3 facts on Weak/Standard/Strong, chosen from its purpose, its remaining duration, and the category of its source (creature, object, place or independent spell). Gain 1 Boon to your next roll applying a learned fact this scene. The DA describes what the effect reveals, not unknown true names or hidden personal history.</p>",
     "activity": {
       "action": "maneuver",
-      "rollMode": "attribute",
-      "attribute": "reason",
+      "rollMode": "delegated",
+      "attribute": "knowledge",
       "defenseAttribute": "agility"
     },
     "outcomes": {
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "ability-signature-arcanist-study-the-pattern",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",
@@ -32,9 +32,9 @@
         "sp": 0,
         "range": "One known ongoing magical effect within 5 squares.",
         "duration": "Facts remain known; the Boon expires when used or at scene end.",
-        "attribute": "Reason",
+        "attribute": "Class",
         "defenseAttribute": null,
-        "effect": "**Action:** Maneuver · **Attribute:** Reason\n\n**Target / range / shape:** One known ongoing magical effect within 5 squares.\n\n**Magic:** Spell · **SP:** 0\n\nStudy the effect once per scene. Roll Reason and learn 1/2/3 facts on Weak/Standard/Strong, chosen from its purpose, its remaining duration, and the category of its source (creature, object, place or independent spell). Gain 1 Boon to your next roll applying a learned fact this scene. The DA describes what the effect reveals, not unknown true names or hidden personal history.\n\n**Duration:** Facts remain known; the Boon expires when used or at scene end.\n\n**Equipment / acquisition:** A free hand for casting.",
+        "effect": "**Action:** Maneuver · **Attribute:** Class\n\n**Target / range / shape:** One known ongoing magical effect within 5 squares.\n\n**Magic:** Spell · **SP:** 0\n\nStudy the effect once per scene. Roll your class’s casting attribute and learn 1/2/3 facts on Weak/Standard/Strong, chosen from its purpose, its remaining duration, and the category of its source (creature, object, place or independent spell). Gain 1 Boon to your next roll applying a learned fact this scene. The DA describes what the effect reveals, not unknown true names or hidden personal history.\n\n**Duration:** Facts remain known; the Boon expires when used or at scene end.\n\n**Equipment / acquisition:** A free hand for casting.",
         "improves": null,
         "requires": [],
         "bookId": null,
@@ -46,12 +46,12 @@
         "level": 1,
         "dp": null,
         "action": "Maneuver",
-        "attribute": "Reason",
+        "attribute": "Class",
         "target": "One known ongoing magical effect within 5 squares.",
         "duration": "Facts remain known; the Boon expires when used or at scene end.",
         "equipment": "A free hand for casting.",
         "limits": "One signature choice at each of levels 1, 3 and 7.",
-        "effect": "**Action:** Maneuver · **Attribute:** Reason\n\n**Target / range / shape:** One known ongoing magical effect within 5 squares.\n\n**Magic:** Spell · **SP:** 0\n\nStudy the effect once per scene. Roll Reason and learn 1/2/3 facts on Weak/Standard/Strong, chosen from its purpose, its remaining duration, and the category of its source (creature, object, place or independent spell). Gain 1 Boon to your next roll applying a learned fact this scene. The DA describes what the effect reveals, not unknown true names or hidden personal history.\n\n**Duration:** Facts remain known; the Boon expires when used or at scene end.\n\n**Equipment / acquisition:** A free hand for casting.",
+        "effect": "**Action:** Maneuver · **Attribute:** Class\n\n**Target / range / shape:** One known ongoing magical effect within 5 squares.\n\n**Magic:** Spell · **SP:** 0\n\nStudy the effect once per scene. Roll your class’s casting attribute and learn 1/2/3 facts on Weak/Standard/Strong, chosen from its purpose, its remaining duration, and the category of its source (creature, object, place or independent spell). Gain 1 Boon to your next roll applying a learned fact this scene. The DA describes what the effect reveals, not unknown true names or hidden personal history.\n\n**Duration:** Facts remain known; the Boon expires when used or at scene end.\n\n**Equipment / acquisition:** A free hand for casting.",
         "reference": {
           "flavor": [
             "Patterns in magic reveal their purpose to your patient scrutiny."
@@ -64,7 +64,7 @@
               },
               {
                 "label": "Attribute",
-                "value": "Reason"
+                "value": "Class"
               },
               {
                 "label": "Target / range / shape",
@@ -89,20 +89,20 @@
             ],
             "body": [
               {
-                "text": "Study the effect once per scene. Roll Reason and learn 1/2/3 facts on Weak/Standard/Strong, chosen from its purpose, its remaining duration, and the category of its source (creature, object, place or independent spell). Gain 1 Boon to your next roll applying a learned fact this scene. The DA describes what the effect reveals, not unknown true names or hidden personal history."
+                "text": "Study the effect once per scene. Roll your class’s casting attribute and learn 1/2/3 facts on Weak/Standard/Strong, chosen from its purpose, its remaining duration, and the category of its source (creature, object, place or independent spell). Gain 1 Boon to your next roll applying a learned fact this scene. The DA describes what the effect reveals, not unknown true names or hidden personal history."
               }
             ],
             "notes": []
           }
         },
-        "referenceMarkdown": "**Action:** Maneuver · **Attribute:** Reason\n\n**Target / range / shape:** One known ongoing magical effect within 5 squares.\n\n**Magic:** Spell · **SP:** 0\n\nStudy the effect once per scene. Roll Reason and learn 1/2/3 facts on Weak/Standard/Strong, chosen from its purpose, its remaining duration, and the category of its source (creature, object, place or independent spell). Gain 1 Boon to your next roll applying a learned fact this scene. The DA describes what the effect reveals, not unknown true names or hidden personal history.\n\n**Duration:** Facts remain known; the Boon expires when used or at scene end.\n\n**Equipment / acquisition:** A free hand for casting.",
+        "referenceMarkdown": "**Action:** Maneuver · **Attribute:** Class\n\n**Target / range / shape:** One known ongoing magical effect within 5 squares.\n\n**Magic:** Spell · **SP:** 0\n\nStudy the effect once per scene. Roll your class’s casting attribute and learn 1/2/3 facts on Weak/Standard/Strong, chosen from its purpose, its remaining duration, and the category of its source (creature, object, place or independent spell). Gain 1 Boon to your next roll applying a learned fact this scene. The DA describes what the effect reveals, not unknown true names or hidden personal history.\n\n**Duration:** Facts remain known; the Boon expires when used or at scene end.\n\n**Equipment / acquisition:** A free hand for casting.",
         "classId": "class-arcanist",
         "lineId": "arcanist:study-the-pattern",
         "signatureComponent": true,
         "kind": "ability",
         "sp": 0,
         "magic": "Spell",
-        "rulesMarkdown": "**Action:** Maneuver · **Attribute:** Reason\n\n**Target / range / shape:** One known ongoing magical effect within 5 squares.\n\n**Magic:** Spell · **SP:** 0\n\nStudy the effect once per scene. Roll Reason and learn 1/2/3 facts on Weak/Standard/Strong, chosen from its purpose, its remaining duration, and the category of its source (creature, object, place or independent spell). Gain 1 Boon to your next roll applying a learned fact this scene. The DA describes what the effect reveals, not unknown true names or hidden personal history.\n\n**Duration:** Facts remain known; the Boon expires when used or at scene end.\n\n**Equipment / acquisition:** A free hand for casting."
+        "rulesMarkdown": "**Action:** Maneuver · **Attribute:** Class\n\n**Target / range / shape:** One known ongoing magical effect within 5 squares.\n\n**Magic:** Spell · **SP:** 0\n\nStudy the effect once per scene. Roll your class’s casting attribute and learn 1/2/3 facts on Weak/Standard/Strong, chosen from its purpose, its remaining duration, and the category of its source (creature, object, place or independent spell). Gain 1 Boon to your next roll applying a learned fact this scene. The DA describes what the effect reveals, not unknown true names or hidden personal history.\n\n**Duration:** Facts remain known; the Boon expires when used or at scene end.\n\n**Equipment / acquisition:** A free hand for casting."
       }
     }
   },

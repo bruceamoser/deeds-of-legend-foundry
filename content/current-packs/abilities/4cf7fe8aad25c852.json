@@ -5,10 +5,10 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 3 days, 8 hours each day</dd></div><div><dt>SP</dt><dd>10</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One prepared 12-by-12-square site; soil, water, stone and 600 coins of materials consumed</dd></div><div><dt>Duration</dt><dd>Permanent structure; wards renewed for 24 hours</dd></div></dl><p>On a sound prepared site, raise a one-story living keep with six rooms, a courtyard, a gate and walls 3 squares high. Pay 10 SP on each workday. Walls block movement and sight; each 1-square section has 20 HP and physical resistance 3, and takes at least 1 damage per attack. Designate up to twelve residents. Paying 4 SP at dawn renews the wards for 24 hours: residents inside gain 1 Boon to defenses, and you sense any breached wall’s location while inside. Without renewal the ordinary structure remains. It needs food, water and repairs. You may ward one citadel at a time.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 3 days, 8 hours each day</dd></div><div><dt>SP</dt><dd>10</dd></div><div><dt>Attribute</dt><dd>Automatic</dd></div><div><dt>Range</dt><dd>One prepared 12-by-12-square site; soil, water, stone and 600 coins of materials consumed</dd></div><div><dt>Duration</dt><dd>Permanent structure; wards renewed for 24 hours</dd></div></dl><p>On a sound prepared site, raise a one-story living keep with six rooms, a courtyard, a gate and walls 3 squares high. Pay 10 SP on each workday. Walls block movement and sight; each 1-square section has 20 HP and physical resistance 3, and takes at least 1 damage per attack. Designate up to twelve residents. Paying 4 SP at dawn renews the wards for 24 hours: residents inside gain 1 Boon to defenses, and you sense any breached wall’s location while inside. Without renewal the ordinary structure remains. It needs food, water and repairs. You may ward one citadel at a time.</p>",
     "activity": {
       "action": "ritual",
-      "rollMode": "attribute",
+      "rollMode": "none",
       "attribute": "knowledge",
       "defenseAttribute": "agility"
     },
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell-mastery:guards-and-wards-living-citadel",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",

@@ -183,7 +183,7 @@ test("an incomplete origin edit preserves learning while a new grant refunds a p
 
 test("canonical example heroes match current book numbers and survive a portable round trip", () => {
   const printed = [
-    [20, 4, 20, 9], [15, 3, 2, 9], [15, 7, 5, 7],
+    [20, 4, 20, 9], [15, 5, 2, 9], [15, 7, 5, 7],
     [13, 7, 4, 9], [13, 7, 19, 8], [13, 13, 15, 7],
   ];
   for (const [{ draft, id }, expected] of party.map((entry, index) => [entry, printed[index]])) {

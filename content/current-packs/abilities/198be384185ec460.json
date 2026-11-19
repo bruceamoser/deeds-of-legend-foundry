@@ -5,10 +5,10 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div><div><dt>Defense</dt><dd>Brawn</dd></div><div><dt>Range</dt><dd>Every creature along a straight 6-square line from you</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Drive a powerful gust along the line. Push each affected creature 1/2/3 squares away from you and disperse ordinary smoke or fog in the line. Stability applies to the push.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>Class casting attribute</dd></div><div><dt>Defense</dt><dd>Brawn</dd></div><div><dt>Range</dt><dd>Every creature along a straight 6-square line from you</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Drive a powerful gust along the line. Push each affected creature 1/2/3 squares away from you and disperse ordinary smoke or fog in the line. Stability applies to the push.</p>",
     "activity": {
       "action": "main",
-      "rollMode": "attribute",
+      "rollMode": "delegated",
       "attribute": "knowledge",
       "defenseAttribute": "brawn"
     },
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:air:4",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",
@@ -32,7 +32,7 @@
         "sp": 2,
         "range": "Every creature along a straight 6-square line from you",
         "duration": "Instant",
-        "attribute": "Knowledge",
+        "attribute": "Class",
         "defenseAttribute": "Brawn",
         "effect": "Drive a powerful gust along the line. Push each affected creature 1/2/3 squares away from you and disperse ordinary smoke or fog in the line. Stability applies to the push.",
         "improves": null,
@@ -50,7 +50,7 @@
         "sp": 2,
         "action": "Main Action",
         "actionText": "Main Action",
-        "attribute": "Knowledge",
+        "attribute": "Class",
         "defense": "Brawn",
         "defenseAttribute": "Brawn",
         "holdAttribute": null,

@@ -5,11 +5,11 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>4</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Defense</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>One creature within 6 squares</dd></div><div><dt>Duration</dt><dd>Sustained, up to 1 minute</dd></div><div><dt>Hold attribute</dt><dd>Reason</dd></div><div><dt>Escape attribute</dt><dd>Reason</dd></div></dl><p>Close binding bands around the target. Apply Slowed 2/3/4 and Paralyzed 1/1/2. Each upkeep renews this casting’s original ratings rather than adding to them. A conscious target may spend a Main Action to attempt escape using the printed hold and escape attributes, even while the bands restrict its actions. Escape or ending Sustain removes this casting’s conditions from the target.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>4</dd></div><div><dt>Attribute</dt><dd>Class casting attribute</dd></div><div><dt>Defense</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>One creature within 6 squares</dd></div><div><dt>Duration</dt><dd>Sustained, up to 1 minute</dd></div><div><dt>Hold attribute</dt><dd>Reason</dd></div><div><dt>Escape attribute</dt><dd>Reason</dd></div></dl><p>Close binding bands around the target. Apply Slowed 2/3/4 and Paralyzed 1/1/2. Each upkeep renews this casting’s original ratings rather than adding to them. A conscious target may spend a Main Action to attempt escape using the printed hold and escape attributes, even while the bands restrict its actions. Escape or ending Sustain removes this casting’s conditions from the target.</p>",
     "activity": {
       "action": "main",
-      "rollMode": "attribute",
-      "attribute": "reason",
+      "rollMode": "delegated",
+      "attribute": "knowledge",
       "defenseAttribute": "reason"
     },
     "outcomes": {
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:binding:8",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",
@@ -32,7 +32,7 @@
         "sp": 4,
         "range": "One creature within 6 squares",
         "duration": "Sustained, up to 1 minute",
-        "attribute": "Reason",
+        "attribute": "Class",
         "defenseAttribute": "Reason",
         "effect": "Close binding bands around the target. Apply Slowed 2/3/4 and Paralyzed 1/1/2. Each upkeep renews this casting’s original ratings rather than adding to them. A conscious target may spend a Main Action to attempt escape using the printed hold and escape attributes, even while the bands restrict its actions. Escape or ending Sustain removes this casting’s conditions from the target.",
         "improves": null,
@@ -50,7 +50,7 @@
         "sp": 4,
         "action": "Main Action",
         "actionText": "Main Action",
-        "attribute": "Reason",
+        "attribute": "Class",
         "defense": "Reason",
         "defenseAttribute": "Reason",
         "holdAttribute": "Reason",

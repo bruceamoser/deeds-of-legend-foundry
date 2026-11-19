@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "repository": "https://github.com/bruceamoser/heroes-of-legend",
-  "commit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
-  "approval": "Brief Rest and Night’s Rest in the Player’s Book and DA Guide (#359).",
+  "commit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
+  "approval": "Class casting attributes and manual range adjudication (book #1376, Foundry #364).",
   "selection": "Current Forge pinned Markdown plus surviving nonretired native references, complete current player manuscript, shared rules and 29 spellbooks. Retired cards and disciplines excluded.",
   "records": [
     {
@@ -1319,11 +1319,11 @@
     },
     {
       "path": "design/cards/basic-ranged.md",
-      "sha256": "5f95faa8c60e79e7a6887f2ba7c9ef24f02753231c1835b24f97408b8037acb3"
+      "sha256": "363ffcc352b7efc9403d0bbe8596ab364958ea440cab9051b4a61b79807969a8"
     },
     {
       "path": "design/cards/basic-throw.md",
-      "sha256": "05f645727e47b57fe6921699caaa3b4ce711f86afb83b2394dc687fc4a321c83"
+      "sha256": "3735911d4071db8bfff937fc9a0efe0119b7321e2246dde91a84bbd2482b82ad"
     },
     {
       "path": "design/cards/basic-unarmed.md",
@@ -1399,11 +1399,11 @@
     },
     {
       "path": "design/cards/signature-arcanist-reading-the-weave.md",
-      "sha256": "2e301e9eaec3219bfc85a42a10522934512de1feba7f07b64a08d6068ac3805b"
+      "sha256": "891895e618c2bafb680988067035680d1caa1c6d5fb5e301ff225640dd29cf85"
     },
     {
       "path": "design/cards/signature-arcanist-study-the-pattern.md",
-      "sha256": "994417e3c588608d2fee50e4cd29d511affd107999319bfa60b7fb11d4dfc0de"
+      "sha256": "eaadb8ea000140f26f4617fd28a7d6f40ccdef7451685617d93567ae94d490ed"
     },
     {
       "path": "design/cards/signature-blade-cut-and-turn.md",
@@ -1523,7 +1523,7 @@
     },
     {
       "path": "design/cards/signature-odd-pacts-claim.md",
-      "sha256": "d84aa170758736261bba563c14aae98ceda02eae1e0fbc148631f2c06af15533"
+      "sha256": "d0cea47a43e13727315313316a6f02c7f06815b14866f6528e13db12cb18f2fe"
     },
     {
       "path": "design/cards/signature-odd-sideways-thinking.md",
@@ -1535,7 +1535,7 @@
     },
     {
       "path": "design/cards/signature-odd-the-bargain.md",
-      "sha256": "b6cb11536ab86685911698e2ac2a2c97785df11608913d1763fd2c5ca9f1de78"
+      "sha256": "2eb841066aef65e6aa29ff95e6756c6d2bf179b02d8a0cea191a98afb83de9e9"
     },
     {
       "path": "design/cards/signature-odd-the-price-deferred.md",
@@ -1559,11 +1559,11 @@
     },
     {
       "path": "design/cards/signature-protector-drive-back-the-circle.md",
-      "sha256": "a1c258c210c2f334843efea9d71859354de47e581b224f87c4513ad028bfe299"
+      "sha256": "d4ef5eb8c7e2b0e2fff6f995bc3d406b195874bbdef5028584172aebe65d249a"
     },
     {
       "path": "design/cards/signature-protector-healing-hands.md",
-      "sha256": "836b37ab75a1e3acafa118253eead902c565562b076301b124c10de71469bf39"
+      "sha256": "545330a8b02ab0671bf5b2fd818b2bbbd518fce60fae28185aa03adac4caa6f8"
     },
     {
       "path": "design/cards/signature-protector-oathstrike.md",
@@ -1575,7 +1575,7 @@
     },
     {
       "path": "design/cards/signature-protector-restoring-hands.md",
-      "sha256": "f10b26d58bd7761ad2609e1f29300583b650519e1e72dc1c874226e7657da210"
+      "sha256": "831ce96dc12f766b594328b7e35ad3e93a896ee6950a38ba6eacea0da5f9e9f0"
     },
     {
       "path": "design/cards/signature-protector-shelter-the-fallen.md",
@@ -1583,7 +1583,7 @@
     },
     {
       "path": "design/cards/signature-protector-sheltering-hands.md",
-      "sha256": "70d3445dd31332c197ba426b445977aef56606bf3e325a464cc1fb8b768a390b"
+      "sha256": "ce85ee65312cf9dd72d49124b5c23b85669847c4e9605428d2d33b7dd1c5ab8a"
     },
     {
       "path": "design/cards/signature-shadow-exploit-confusion.md",
@@ -1635,7 +1635,7 @@
     },
     {
       "path": "design/cards/signature-shepherd-careful-transfer.md",
-      "sha256": "a6bab46b4a580da1ce32166f511d888c8bd3ffeeee371f935cdaa7f22c715075"
+      "sha256": "adc9a5595670b4ecf7f0d7022a4c16cc944848da03822b46d2a4e98c176c8ea4"
     },
     {
       "path": "design/cards/signature-shepherd-ease-the-burden.md",
@@ -1643,7 +1643,7 @@
     },
     {
       "path": "design/cards/signature-shepherd-gentle-return.md",
-      "sha256": "bb72f03f2841e2087159b216e7b870b552d0b8cc2890bea6e28774c0b0c22231"
+      "sha256": "3e10a352d058d74abfdef55c7b03fd4be9c93b42400c5ba834b033fbb47e6141"
     },
     {
       "path": "design/cards/signature-shepherd-great-shape.md",
@@ -1759,11 +1759,11 @@
     },
     {
       "path": "design/characters/lira-ashbow.md",
-      "sha256": "ab00e8fe0c5eeedb6e968d1058ec464acb7861151ff8e567c7115fe51fab0c2f"
+      "sha256": "d98f2f3a8e448682a538e55f114f1a8e355336df5bee88227ddb2d13d074cb30"
     },
     {
       "path": "design/characters/mara-reedheart.md",
-      "sha256": "2bebb40142d609b8dad340ea54f413b486eed4830c3f4de8d48aac2b9b5299bc"
+      "sha256": "e7f385f12c2e082434edc64ee3ba460f9daff7d41c65d4f34f464fb06d37b62e"
     },
     {
       "path": "design/characters/oren-brass.md",
@@ -1779,43 +1779,43 @@
     },
     {
       "path": "design/classes/arcanist.md",
-      "sha256": "c25b0e0c1e9a3d690fcd0b1387c8dca8ac59c442a56ed12eaec79fb1b6905af8"
+      "sha256": "97c156e1aa33ca175f71b5616667c5da7fe1a39e733655434628d4f58cce4619"
     },
     {
       "path": "design/classes/blade.md",
-      "sha256": "b38ece3eb27221d7d61c2788d63e4873acdd7d09ffd17f708580781931d8e987"
+      "sha256": "6330aaf626567942b56b0110c95a3094a8859f87384e048eeec34f51bba12a18"
     },
     {
       "path": "design/classes/intellect.md",
-      "sha256": "dcc65742d35582e97717ac1154a4c137f8e83d7f53af9f3124e7af22a3949b5f"
+      "sha256": "06b4ad8a47610afcf9203e5862404af5b5766649ec64ba6c0aa3c31cae21a4e2"
     },
     {
       "path": "design/classes/leader.md",
-      "sha256": "e29391fc008fbd289a31e1beb70ab5daef1f31044f2a47156ce8e1fda4906c75"
+      "sha256": "8dec6c212acb88fc479afc0ff99f74d17742f126389716968e26f976987276f9"
     },
     {
       "path": "design/classes/odd.md",
-      "sha256": "f35f6e29caba9b61ab5024b3c713781f0ed1934cc7f8872b3165a972e1e7a4b5"
+      "sha256": "5a31d8fdb894b7c6a36229d11ad5c2461f34ea2b39a6a0ac089b0bde9110a001"
     },
     {
       "path": "design/classes/protector.md",
-      "sha256": "7daca7177e7ac09c076e07d2acad80874396b37957223cf8a3480ace2abce40d"
+      "sha256": "914ab74a9ce5cafb3a3e2d5119c5f22887cb5411883c5a88aa624a78eb7c6cbd"
     },
     {
       "path": "design/classes/shadow.md",
-      "sha256": "7a3a598cefd905c1ac0f3a9530f4101c3f12a23e76a5bc243d9a42248ff67ea6"
+      "sha256": "c4e46c6cb15030029ebd8523037af6db404e39604f67cf40abb61026d1887b33"
     },
     {
       "path": "design/classes/shepherd.md",
-      "sha256": "6b1ea2f0bc34930d18a473cc945e462b6e63f35de1c686da3ed394f333f9588c"
+      "sha256": "319d73a3e40bf04712b5a23286b995b2653797b2285fddd0e797b80b99c4b83b"
     },
     {
       "path": "design/classes/unbalanced.md",
-      "sha256": "f6cef6cfbef32bf9aebb41507f700b59a6b18b936835397f3ff0aa0a5392942a"
+      "sha256": "67c75ec3fa05e66972150efe1c049fc884e9939673159d594c096f6b2671df57"
     },
     {
       "path": "design/classes/warden.md",
-      "sha256": "eccfe8c0551e61e36a05f061c6445a04d6466c92ebc7c62159209325ffb43287"
+      "sha256": "1f56366c65045e073ee2714752f792cb255ff39ab6312237f83ae3038c523dfc"
     },
     {
       "path": "design/da-book/manuscript/01-becoming-the-da.md",
@@ -1823,7 +1823,7 @@
     },
     {
       "path": "design/da-book/manuscript/02-running-the-game.md",
-      "sha256": "2ab6f362fcfd4e59b011ed05c033f8779180706e8f448767d9a482cb90703f9f"
+      "sha256": "6b23fba135ca1cac70660fba9bbaa5ed7c21231a6c750b8d140b31c821a32bd9"
     },
     {
       "path": "design/da-book/manuscript/03-building-adventures.md",
@@ -1855,7 +1855,7 @@
     },
     {
       "path": "design/da-book/manuscript/08-campaigns-and-consequences.md",
-      "sha256": "27775a28c57ad25d36fe0e611a4f7c8193ebb6e8b34e03c22eedfc0e98cb1314"
+      "sha256": "01e1a00d464f90123268feabe452d576cb442277d5675136ad6ef911d46839ab"
     },
     {
       "path": "design/da-book/manuscript/09-using-the-bestiary.md",
@@ -1883,7 +1883,7 @@
     },
     {
       "path": "design/development.md",
-      "sha256": "28ad7f395ed3ada5fc5e6bb9f31458ae5b28fde9d33eeedaaf93c819f144f128"
+      "sha256": "0822240e2577a414af4fc44c3ca58cce2c2591d5e06c74c76618c7eacb8d15f8"
     },
     {
       "path": "design/disciplines.md",
@@ -1939,7 +1939,7 @@
     },
     {
       "path": "design/disciplines/marksmanship.md",
-      "sha256": "e9953de8f4b309518f1a34127557f398669b7f170b163f003ed1d75e20b8bec7"
+      "sha256": "12fa76030783c1f369706c72549e3bd489c3bcbf0e89d0466348d9e721143b38"
     },
     {
       "path": "design/disciplines/medicine.md",
@@ -2079,7 +2079,7 @@
     },
     {
       "path": "design/equipment/ordinary-ranged-weapon.md",
-      "sha256": "9c69356c4e6fcf554f80a24f700311290ae8c5472d009ab64c1c6e1b6822ceb9"
+      "sha256": "9a8eb7005f2f25db1ed90df92777436604e7466f9803ba039921729b623e5671"
     },
     {
       "path": "design/equipment/ordinary-shield.md",
@@ -2883,11 +2883,11 @@
     },
     {
       "path": "design/player-book/manuscript/02-creation.md",
-      "sha256": "fa5d5fea4bb583eeb0ad5fc5a2d63744a2f56cb1f4c93c7651339ed2de7ae721"
+      "sha256": "9c7732dd08bce8ce2c4add8f320d1d215dd14fb667d1e33d17a287816b20456d"
     },
     {
       "path": "design/player-book/manuscript/02a-starting-sp.md",
-      "sha256": "1e124055ecde5638d64d86de7c216ad03fddc0c8d2a9df918b2b2203f2b7fd45"
+      "sha256": "f8cd35f03b1440d9bd81f2ff7d6a3867d9cdd23cbd26616b6e9c4bad21ac5216"
     },
     {
       "path": "design/player-book/manuscript/05-disciplines.md",
@@ -2895,15 +2895,15 @@
     },
     {
       "path": "design/player-book/manuscript/06-playing.md",
-      "sha256": "cffe61db42a55ee77a64a92d57351bcbd4cc50b5285d756d1c0a426d2eec1a95"
+      "sha256": "c819b25ee0ad849378cfda669b547d4bf231b1314288abfc4e6bbd471cfdfe11"
     },
     {
       "path": "design/player-book/manuscript/07-adventure.md",
-      "sha256": "8fb519c34509358831cca6583e9da905ed362405e1930228cca09e9e18ebf7bd"
+      "sha256": "8f5c2fb4458ee789bbac9469cc4e87851305b5693c837c9cafbc63539ee60ec1"
     },
     {
       "path": "design/player-book/manuscript/08-recovery.md",
-      "sha256": "0dce803169f96d3ebbd0471e75adc4d2c40c5951c44d6f6c196f52668bd85f3c"
+      "sha256": "6d4872f3f034cea6194ca9015f18a608ebca5af1f35d4a2a8fa8bce0ca5799b3"
     },
     {
       "path": "design/player-book/manuscript/09-abilities.md",
@@ -2919,7 +2919,7 @@
     },
     {
       "path": "design/player-book/manuscript/14-reference.md",
-      "sha256": "6e53a04d4247497cc396ed9668e533c4c394900274b18f0091dd336b6adfb8f6"
+      "sha256": "64b92da45012c393236ff201063a0c713178f569d6ca19735365e725893082f0"
     },
     {
       "path": "design/player-book/manuscript/intro-ancestry.md",
@@ -2995,7 +2995,7 @@
     },
     {
       "path": "design/rules/foundations.md",
-      "sha256": "42de0a54ff3ae002923cc0db74b220f3f1f3c89a84b551deea00c8b46b74b091"
+      "sha256": "fb8a8d3db295bcdea09b4657a4c3ae5553c54db91b219588927a79ed9f29a5b8"
     },
     {
       "path": "design/rules/languages.md",
@@ -3007,7 +3007,7 @@
     },
     {
       "path": "design/rules/magic.md",
-      "sha256": "75e26a646bc8f0f5f58a70501bccf0655daa9bfc00d20e074c03cbff86652794"
+      "sha256": "98b8ce499a20448c776b128c8d8ac55cfcc5b0defeb74e7fe8677d02b2c845ac"
     },
     {
       "path": "design/rules/objectives.md",
@@ -3015,11 +3015,11 @@
     },
     {
       "path": "design/rules/recovery.md",
-      "sha256": "6601f40c9672400c1b5ae9912d2bb03667a9dd4abf0d626e078ab7ea9faffeee"
+      "sha256": "cbb732c670d8b010ac5ef4b0db5376a6ec815dbd82b0fe7e84f99a47a4422335"
     },
     {
       "path": "design/rules/session-resolution.md",
-      "sha256": "153ead70c534503741e47b05f7117704077a65129f99edbd1e38a6f512fc9b8c"
+      "sha256": "dcf38de67847b5a18c92db21cbc00b93e2628942258010033183c98ca42daf22"
     },
     {
       "path": "design/rules/stability.md",
@@ -3039,15 +3039,15 @@
     },
     {
       "path": "design/spellbooks/air.md",
-      "sha256": "a4fa5bbf3a7ec92fcc93a147bfb374ead211aa13ae57389a36a1f122740bb306"
+      "sha256": "760ef3eaed4cc32e3e2e5d7f8b50378249a7edfaf4d7e934f023899a5b453f9c"
     },
     {
       "path": "design/spellbooks/animation.md",
-      "sha256": "383a5e88dedad79b65c744c8b9141eff5e6373f4a547a33409eaf885cf2ac1a6"
+      "sha256": "34ec3c1291c84ace8e993cea53c7c59feeafb6fd8b59a8b4a2de3eed6d0479c6"
     },
     {
       "path": "design/spellbooks/binding.md",
-      "sha256": "1bd69fdda6f790caf96be5834687c083416f6a4b76c2ce45dee3565768d97b53"
+      "sha256": "fed162000e83615e1686fe8eb177bad952d8e21b1fb6f5eab4ce2b65899c3ff1"
     },
     {
       "path": "design/spellbooks/calling.md",
@@ -3055,47 +3055,47 @@
     },
     {
       "path": "design/spellbooks/channeling.md",
-      "sha256": "e33897443734ab14763d64900c6e4311b094097124630197ca339c8560533ed1"
+      "sha256": "f04995414b700fdcc1abb32552e8091b98720f61f464a90cabb47b003559ccbd"
     },
     {
       "path": "design/spellbooks/decay.md",
-      "sha256": "7ca1cce79337c85d464e045047857a69d7b1e4da85479aebcdc77256f3cd284e"
+      "sha256": "4c18108a063848f2e892576d0dff620f36c85c0821947c657f37023a6bebbd4b"
     },
     {
       "path": "design/spellbooks/detection.md",
-      "sha256": "2da66851aaf2bd9baf787777f33a8cb56558c5d68543663ee5371480089f56c0"
+      "sha256": "599b5ddbf26ff5059a420c1fdbc5d5f17c65335cac3411a1f9bfe766beef43e9"
     },
     {
       "path": "design/spellbooks/dreams.md",
-      "sha256": "bd520ce6f46df6242596ba56f0489b3abd45a27be16929fb203c31c1c27d6f7d"
+      "sha256": "2161e3e4ebcab897372fc5ad71a277e9d47fc2c52937ecde82fd9dfe5a71d0ff"
     },
     {
       "path": "design/spellbooks/earth.md",
-      "sha256": "649939833c0d8f1e40e4bec8d1ac47a7636dd7dab3a2e86fe37f6d6f16ee790f"
+      "sha256": "d989e5a7a379e22ec0e0fdc1e02ab4881c592a8f553d7c92658a138152fde24f"
     },
     {
       "path": "design/spellbooks/echoes.md",
-      "sha256": "a67ed9d948df61f79032e453a48abbf991633cd08a8d1c46cde3967c22189b67"
+      "sha256": "0f9b196ff0895290da8e183247f8c6923b443c30b50748cf22587f3d283c0406"
     },
     {
       "path": "design/spellbooks/emotion.md",
-      "sha256": "828983aea190ffb14d40e768b0f63023d6aa47a504e3665d74da5f4e4ba4e600"
+      "sha256": "2ad4cd93b39efb3ac1a478f46322c248a5c21df27065493196975c8b9cc7d2c4"
     },
     {
       "path": "design/spellbooks/farseeing.md",
-      "sha256": "0d4b9de5123fafe7637b264ac6d128465d2e26b78c07bfc156e0dc6bce58157a"
+      "sha256": "918c6ccec6770c480817d4094a2b754f3c404197ac42403cbbc519c974f23716"
     },
     {
       "path": "design/spellbooks/flame.md",
-      "sha256": "5c8a8a51e6b4cfe469bfa8cd4bcb271f78c1c7e9775706f9c3acad6314ba8ab2"
+      "sha256": "78beaa4f4b0544275dfc1d71d04161453beea52a5563fe4c69157f86d07cef8b"
     },
     {
       "path": "design/spellbooks/growth.md",
-      "sha256": "b13d84f7d8373b4f486e218a4fae9eceb8dd848c92eff6b0194a3d34f3e4151c"
+      "sha256": "f40e2e5e9801f000bc9dda1cdb55c1c3ebf02564f214966f5e69cb3c355b8605"
     },
     {
       "path": "design/spellbooks/imbuement.md",
-      "sha256": "d000129e2089a960707f4ab651e12508df07f0dfe2e3a7b6e986a616e5d7ea4a"
+      "sha256": "420cf967aab830d0f90922ad10c294faeedadaade975d82330570b0d8c6ea8a4"
     },
     {
       "path": "design/spellbooks/passage.md",
@@ -3103,55 +3103,55 @@
     },
     {
       "path": "design/spellbooks/perception.md",
-      "sha256": "6d0bda156b4ea797f678c827fd567413f5c46e98eb58bd0f2e83bd4ac7d831e3"
+      "sha256": "aa25a9423a8ca82e7e199243404c8a5ff789297342dacee8738f08f01887db30"
     },
     {
       "path": "design/spellbooks/portents.md",
-      "sha256": "6c1091b1cc8d35552d17806c56d86abd673cd47d048b47234a4b5939a83283a8"
+      "sha256": "b2b1af80d524f12070ee01ce94ab09362931b89d94cb03fe350d28aa8299ce9c"
     },
     {
       "path": "design/spellbooks/protection.md",
-      "sha256": "b46389c1cd0871242d6a10460c48900f94703be1a4c3435ee0b2ca96a75f6871"
+      "sha256": "897516ccbdcdae823eb36463006b2e3376b3caae701aaedc4a6b232f9228c883"
     },
     {
       "path": "design/spellbooks/restoration.md",
-      "sha256": "914358ff71fd32e1667219080141f2895d1dd2c8469523295e791166badb98bd"
+      "sha256": "095b1b70870c324ca7474d01e813bedaf442fc000a880a6720534c0faf819973"
     },
     {
       "path": "design/spellbooks/sanctuary.md",
-      "sha256": "cdb9d3b86f540b5edde6d6f90c9773f573b815ae6b04d988b032d8dd00b16a93"
+      "sha256": "e3ec4e525bdc164cf2c4b437fc5d6f7591adce479d2e9ed2b8474e2a0d885fe8"
     },
     {
       "path": "design/spellbooks/seals.md",
-      "sha256": "70c37f20f150335623cad0d8586ef24998e2b2e0734acedab156ec211908341c"
+      "sha256": "51bfe042096aa92d64f87d736de0191b8539d830f03a03d9c257ce0eba85e973"
     },
     {
       "path": "design/spellbooks/shaping.md",
-      "sha256": "287cd0bafb40a14be89a3a4ef5d012e7df0beb12f6a67b6f54cd09dc0644bbf2"
+      "sha256": "710d130377729dedbda0dc6d1e339c17745170b3149481d36ffbf664944edf1e"
     },
     {
       "path": "design/spellbooks/spirits.md",
-      "sha256": "2cf6bc31b736c74b4641390ec406ab181c5d23b1eee2c5581329c5e26a1326d5"
+      "sha256": "3ec22ea8f205c27a0fc8495a4ddb6eb902eeae6e9a4e864caa655e612e96dcb9"
     },
     {
       "path": "design/spellbooks/telekinesis.md",
-      "sha256": "a04ba337113c83601d51ebee53959f2b1b632cbf104094f38be53dc134085d43"
+      "sha256": "f790353cbee59292360b659a520e82ccd263ed192c59ebfa9815df8d069a34fc"
     },
     {
       "path": "design/spellbooks/thought.md",
-      "sha256": "4d802e2f921f9b628081ac6d8c12db3d71a7382bca0cdb0e740063df76b4f25e"
+      "sha256": "c696b1ad56c3c1cb3d4919eb64f3a56ef40b7afaaecbe294d8a04d18d9246dab"
     },
     {
       "path": "design/spellbooks/transformation.md",
-      "sha256": "c73f8ce94a7d7e8bc5f3fc0038054733b9a71d2221ff7e044b1f99413273fcf0"
+      "sha256": "5a840350c363d9483eba17c8d73bc2d2260d03fd71920468d83affa6a6dae537"
     },
     {
       "path": "design/spellbooks/unraveling.md",
-      "sha256": "5cd413c1cdf097770d2f5897717b1da44e26603a9a842738ef9bf51a603da5e6"
+      "sha256": "891aaa50f893cee7c2e11f3dbcf98c16c9f8f07a4214fe5a657b7b4fce7edbf5"
     },
     {
       "path": "design/spellbooks/water.md",
-      "sha256": "9e1eb8a527497abc3431522664f73a05c417be511823e7914c7b544961159d20"
+      "sha256": "8bf7b536cb7ba20258d375f06dc3a041c6c0c72f31825521f374dbc4694c87d5"
     },
     {
       "path": "design/starting-coins.md",

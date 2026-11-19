@@ -5,11 +5,11 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>7</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Defense</dt><dd>Agility</dd></div><div><dt>Range</dt><dd>A 3-square-radius storm centered within 12 squares, with one safe square within 2 of its center</dd></div><div><dt>Duration</dt><dd>3 rounds</dd></div></dl><p>Choose a visible point and one safe square within 2 squares of it. A storm fills a 3-square radius around that point. Roll when cast; creatures in the storm outside the safe square take 3/5/7 lightning damage. On each of your next two turns, a Main Action lets you roll again to strike with the storm for the same damage and push each affected creature 1 square away from its center. Stability and normal collision rules apply. Without that action the storm remains visible but deals no further damage that turn. The safe square remains exempt. Keep one Storm of Vengeance active; casting another ends the first.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>7</dd></div><div><dt>Attribute</dt><dd>Class casting attribute</dd></div><div><dt>Defense</dt><dd>Agility</dd></div><div><dt>Range</dt><dd>A 3-square-radius storm centered within 12 squares, with one safe square within 2 of its center</dd></div><div><dt>Duration</dt><dd>3 rounds</dd></div></dl><p>Choose a visible point and one safe square within 2 squares of it. A storm fills a 3-square radius around that point. Roll when cast; creatures in the storm outside the safe square take 3/5/7 lightning damage. On each of your next two turns, a Main Action lets you roll again to strike with the storm for the same damage and push each affected creature 1 square away from its center. Stability and normal collision rules apply. Without that action the storm remains visible but deals no further damage that turn. The safe square remains exempt. Keep one Storm of Vengeance active; casting another ends the first.</p>",
     "activity": {
       "action": "main",
-      "rollMode": "attribute",
-      "attribute": "reason",
+      "rollMode": "delegated",
+      "attribute": "knowledge",
       "defenseAttribute": "agility"
     },
     "outcomes": {
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell-mastery:storm-of-vengeance",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",
@@ -32,7 +32,7 @@
         "sp": 7,
         "range": "A 3-square-radius storm centered within 12 squares, with one safe square within 2 of its center",
         "duration": "3 rounds",
-        "attribute": "Reason",
+        "attribute": "Class",
         "defenseAttribute": "Agility",
         "effect": "Choose a visible point and one safe square within 2 squares of it. A storm fills a 3-square radius around that point. Roll when cast; creatures in the storm outside the safe square take 3/5/7 lightning damage. On each of your next two turns, a Main Action lets you roll again to strike with the storm for the same damage and push each affected creature 1 square away from its center. Stability and normal collision rules apply. Without that action the storm remains visible but deals no further damage that turn. The safe square remains exempt. Keep one Storm of Vengeance active; casting another ends the first.",
         "improves": null,
@@ -50,7 +50,7 @@
         "sp": 7,
         "action": "Main Action",
         "actionText": "Main Action",
-        "attribute": "Reason",
+        "attribute": "Class",
         "defense": "Agility",
         "defenseAttribute": "Agility",
         "holdAttribute": null,

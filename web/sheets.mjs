@@ -2,6 +2,7 @@ import { ruleBlockMarkup } from "./rules-view.mjs";
 import { rollSetup, bindRollSetup } from "./roll-ui.mjs";
 import { workshopCatalogs } from "./rules/workshop-forge-catalog.mjs";
 import { forgeArmorRequirement } from "./rules/forge-character.mjs";
+import { forgeSpellCastingLabel } from "./rules/forge-casting.mjs";
 import { ATTRIBUTES } from "./rules/character.mjs";
 import { rollPlan, classifyRoll } from "./rules/roll.mjs";
 import { inventoryCheck, refillInventory } from "./rules/inventory.mjs";
@@ -384,7 +385,7 @@ function learnedSpells(r) {
       const spell = spellById.get(id);
       const properties = [
         ["Casting", spell.actionText],
-        ["Attribute", spell.attribute === "None" ? "Automatic" : spell.attribute],
+        ["Attribute", forgeSpellCastingLabel(spell)],
         ["Target / range", spell.target],
         ["Duration", spell.duration],
         ["Defense", spell.defenseAttribute],

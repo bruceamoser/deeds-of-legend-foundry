@@ -1,6 +1,6 @@
 # Vaelis Quillstar: wizard after the rewrite
 
-Pinned authored source `486f57f4eaf6acd7af39f16d403870dc0e574f6d`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../wizard.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
+Pinned authored source `2b9af553cf9a4aaa3c8e795b57c0163763b85676`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../wizard.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
 
 ## What the rewrite changes
 
@@ -55,13 +55,13 @@ Starting DP is **10 + Guile + Knowledge + Reason**, including negative scores, p
 
 <details><summary>Study the Pattern: complete signature component</summary>
 
-**Action:** Maneuver · **Attribute:** Reason
+**Action:** Maneuver · **Attribute:** Class
 
 **Target / range / shape:** One known ongoing magical effect within 5 squares.
 
 **Magic:** Spell · **SP:** 0
 
-Study the effect once per scene. Roll Reason and learn 1/2/3 facts on Weak/Standard/Strong, chosen from its purpose, its remaining duration, and the category of its source (creature, object, place or independent spell). Gain 1 Boon to your next roll applying a learned fact this scene. The DA describes what the effect reveals, not unknown true names or hidden personal history.
+Study the effect once per scene. Roll your class’s casting attribute and learn 1/2/3 facts on Weak/Standard/Strong, chosen from its purpose, its remaining duration, and the category of its source (creature, object, place or independent spell). Gain 1 Boon to your next roll applying a learned fact this scene. The DA describes what the effect reveals, not unknown true names or hidden personal history.
 
 **Duration:** Facts remain known; the Boon expires when used or at scene end.
 
@@ -104,13 +104,13 @@ Study the effect once per scene. Roll Reason and learn 1/2/3 facts on Weak/Stand
 
 <details><summary>Study the Pattern: complete signature component</summary>
 
-**Action:** Maneuver · **Attribute:** Reason
+**Action:** Maneuver · **Attribute:** Class
 
 **Target / range / shape:** One known ongoing magical effect within 5 squares.
 
 **Magic:** Spell · **SP:** 0
 
-Study the effect once per scene. Roll Reason and learn 1/2/3 facts on Weak/Standard/Strong, chosen from its purpose, its remaining duration, and the category of its source (creature, object, place or independent spell). Gain 1 Boon to your next roll applying a learned fact this scene. The DA describes what the effect reveals, not unknown true names or hidden personal history.
+Study the effect once per scene. Roll your class’s casting attribute and learn 1/2/3 facts on Weak/Standard/Strong, chosen from its purpose, its remaining duration, and the category of its source (creature, object, place or independent spell). Gain 1 Boon to your next roll applying a learned fact this scene. The DA describes what the effect reveals, not unknown true names or hidden personal history.
 
 **Duration:** Facts remain known; the Boon expires when used or at scene end.
 
@@ -120,11 +120,11 @@ Study the effect once per scene. Roll Reason and learn 1/2/3 facts on Weak/Stand
 
 <details><summary>Reading the Weave: complete signature component</summary>
 
-**Action:** Maneuver · **Attribute:** Reason
+**Action:** Maneuver · **Attribute:** Class
 
 **Target / range / shape:** One known ongoing magical effect within 5 squares.
 
-Study the effect once per scene. Roll Reason and learn 1/2/3 facts on Weak/Standard/Strong, chosen from its purpose, remaining duration, and source category (creature, object, place or independent spell). Gain 1 Boon to your next roll applying a learned fact this scene. The DA describes what the effect reveals, not unknown true names or hidden personal history.
+Study the effect once per scene. Roll your class’s casting attribute and learn 1/2/3 facts on Weak/Standard/Strong, chosen from its purpose, remaining duration, and source category (creature, object, place or independent spell). Gain 1 Boon to your next roll applying a learned fact this scene. The DA describes what the effect reveals, not unknown true names or hidden personal history.
 
 Your next cancellation roll against that effect this scene also gains 1 Boon. The examination reveals whether a specific remedy exists and the kind of evidence needed to discover it. Use the learned facts with your cancellation abilities or to seek the remedy.
 
@@ -184,13 +184,13 @@ This is a spell costing 0 SP.
 
 <details><summary>Study the Pattern: complete signature component</summary>
 
-**Action:** Maneuver · **Attribute:** Reason
+**Action:** Maneuver · **Attribute:** Class
 
 **Target / range / shape:** One known ongoing magical effect within 5 squares.
 
 **Magic:** Spell · **SP:** 0
 
-Study the effect once per scene. Roll Reason and learn 1/2/3 facts on Weak/Standard/Strong, chosen from its purpose, its remaining duration, and the category of its source (creature, object, place or independent spell). Gain 1 Boon to your next roll applying a learned fact this scene. The DA describes what the effect reveals, not unknown true names or hidden personal history.
+Study the effect once per scene. Roll your class’s casting attribute and learn 1/2/3 facts on Weak/Standard/Strong, chosen from its purpose, its remaining duration, and the category of its source (creature, object, place or independent spell). Gain 1 Boon to your next roll applying a learned fact this scene. The DA describes what the effect reveals, not unknown true names or hidden personal history.
 
 **Duration:** Facts remain known; the Boon expires when used or at scene end.
 
@@ -200,11 +200,11 @@ Study the effect once per scene. Roll Reason and learn 1/2/3 facts on Weak/Stand
 
 <details><summary>Reading the Weave: complete signature component</summary>
 
-**Action:** Maneuver · **Attribute:** Reason
+**Action:** Maneuver · **Attribute:** Class
 
 **Target / range / shape:** One known ongoing magical effect within 5 squares.
 
-Study the effect once per scene. Roll Reason and learn 1/2/3 facts on Weak/Standard/Strong, chosen from its purpose, remaining duration, and source category (creature, object, place or independent spell). Gain 1 Boon to your next roll applying a learned fact this scene. The DA describes what the effect reveals, not unknown true names or hidden personal history.
+Study the effect once per scene. Roll your class’s casting attribute and learn 1/2/3 facts on Weak/Standard/Strong, chosen from its purpose, remaining duration, and source category (creature, object, place or independent spell). Gain 1 Boon to your next roll applying a learned fact this scene. The DA describes what the effect reveals, not unknown true names or hidden personal history.
 
 Your next cancellation roll against that effect this scene also gains 1 Boon. The examination reveals whether a specific remedy exists and the kind of evidence needed to discover it. Use the learned facts with your cancellation abilities or to seek the remedy.
 

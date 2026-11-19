@@ -1,4 +1,5 @@
 import { workshopCatalogs } from "./rules/workshop-forge-catalog.mjs";
+import { forgeSpellCastingLabel } from "./rules/forge-casting.mjs";
 import { noRollBrew } from "./rules/workshop-crafting.mjs";
 import { localCraftingOutcome } from "./crafting-attempt.mjs";
 import { esc, ruleMarkup, recordMarkup } from "./rules-view.mjs";
@@ -99,7 +100,7 @@ const entries = [
     category: "Spells",
     markdown: [
       `## ${spell.name}`,
-      `**${spell.action}** · ${spell.sp} SP · ${spell.attribute}`,
+      `**${spell.action}** · ${spell.sp} SP · ${forgeSpellCastingLabel(spell)}`,
       `**Target / range** ${spell.target}`,
       `**Duration** ${spell.duration}`,
       spell.defenseAttribute ? `**Defense attribute** ${spell.defenseAttribute}` : "",

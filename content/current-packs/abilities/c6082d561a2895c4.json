@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual — 1 hour</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Target / range / shape</dt><dd>One ordinary item you own within reach.</dd></div><div><dt>Magic</dt><dd>Bound-item spell</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Duration</dt><dd>Indefinite; no Sustain.</dd></div><div><dt>Equipment / acquisition</dt><dd>Suitable tools and the actual ordinary item.</dd></div></dl><p>Pay 1 SP and bind one item with a property chosen when bound: a lamp gives controllable ordinary torchlight; a tool returns to its bearer’s empty hand with a Maneuver from within 3 squares along a clear path; or a shield lets its bearer spend a Reaction once per scene to reduce one attack’s damage by 1 after rolling defense, respecting the attack’s minimum damage. You can have one bound item. A binding lasts until you end or replace it, even if the item is lent or lost. Cancellation target 3 ends its magic but leaves the ordinary item and occupied binding; restore the magic with a new ritual and SP. Lending or re-binding an item does not refresh its limited use.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual — 1 hour</dd></div><div><dt>Attribute</dt><dd>Automatic</dd></div><div><dt>Target / range / shape</dt><dd>One ordinary item you own within reach.</dd></div><div><dt>Magic</dt><dd>Bound-item spell</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Duration</dt><dd>Indefinite; no Sustain.</dd></div><div><dt>Equipment / acquisition</dt><dd>Suitable tools and the actual ordinary item.</dd></div></dl><p>Pay 1 SP and bind one item with a property chosen when bound: a lamp gives controllable ordinary torchlight; a tool returns to its bearer’s empty hand with a Maneuver from within 3 squares along a clear path; or a shield lets its bearer spend a Reaction once per scene to reduce one attack’s damage by 1 after rolling defense, respecting the attack’s minimum damage. You can have one bound item. A binding lasts until you end or replace it, even if the item is lent or lost. Cancellation target 3 ends its magic but leaves the ordinary item and occupied binding; restore the magic with a new ritual and SP. Lending or re-binding an item does not refresh its limited use.</p>",
     "activity": {
       "action": "ritual",
       "rollMode": "none",
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "ability-signature-intellect-make-it-last",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",

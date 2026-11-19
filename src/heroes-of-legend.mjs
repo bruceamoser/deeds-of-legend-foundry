@@ -1,5 +1,6 @@
 import "./services/explicit-damage.mjs";
 import { registerAuthority } from "./services/authority.mjs";
+import { registerCastingSpMigration } from "./services/casting-sp-migration.mjs";
 import { registerConsumableSettings } from "./services/consumables.mjs";
 import { registerTorches } from "./services/torches.mjs";
 import {registerNativeWorkshopRequests} from "./services/native-workshop-coordinator.mjs";
@@ -51,6 +52,7 @@ export const SYSTEM_ID = "heroes-of-legend";
 Hooks.once("init", () => {
   CONFIG.time.roundTime = 6;
   registerAuthority();
+  registerCastingSpMigration();
   registerConsumableSettings();
   registerTorches();
   CONFIG.Actor.documentClass = HOLActor;

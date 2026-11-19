@@ -5,10 +5,10 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Reaction · when a visible caster finishes a spell</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div><div><dt>Range</dt><dd>The spell; caster within 8 squares</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Add 3/5/7 cancellation progress toward target 2 plus its printed SP cost. At completion it ends before resolving. Otherwise its caster receives 2 Banes on any resolution roll, and incomplete cancellation progress expires.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Reaction · when a visible caster finishes a spell</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>Class casting attribute</dd></div><div><dt>Range</dt><dd>The spell; caster within 8 squares</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Add 3/5/7 cancellation progress toward target 2 plus its printed SP cost. At completion it ends before resolving. Otherwise its caster receives 2 Banes on any resolution roll, and incomplete cancellation progress expires.</p>",
     "activity": {
       "action": "reaction",
-      "rollMode": "attribute",
+      "rollMode": "delegated",
       "attribute": "knowledge",
       "defenseAttribute": "agility"
     },
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:unraveling:a2",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",
@@ -32,7 +32,7 @@
         "sp": 5,
         "range": "The spell; caster within 8 squares",
         "duration": "Instant",
-        "attribute": "Knowledge",
+        "attribute": "Class",
         "defenseAttribute": null,
         "effect": "Add 3/5/7 cancellation progress toward target 2 plus its printed SP cost. At completion it ends before resolving. Otherwise its caster receives 2 Banes on any resolution roll, and incomplete cancellation progress expires.",
         "improves": null,
@@ -51,7 +51,7 @@
         "action": "Reaction",
         "actionText": "Reaction · when a visible caster finishes a spell",
         "trigger": "when a visible caster finishes a spell",
-        "attribute": "Knowledge",
+        "attribute": "Class",
         "defense": null,
         "defenseAttribute": null,
         "holdAttribute": null,

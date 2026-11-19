@@ -5,11 +5,11 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>Guile</dd></div><div><dt>Defense</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>One creature within 6 squares</dd></div><div><dt>Duration</dt><dd>Sustained, up to 1 minute</dd></div><div><dt>Hold attribute</dt><dd>Guile</dd></div><div><dt>Escape attribute</dt><dd>Reason</dd></div></dl><p>Create a troubling sensory image that only the target perceives. Apply Frightened 1/2/3, naming the image as its source. Each upkeep renews Frightened 1. Physical contact or a completed illusion examination exposes it and ends its fear contribution. A conscious target may also spend a Main Action to reject the image using the printed hold and escape attributes. Escape or ending Sustain removes this casting’s fear contribution.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>Class casting attribute</dd></div><div><dt>Defense</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>One creature within 6 squares</dd></div><div><dt>Duration</dt><dd>Sustained, up to 1 minute</dd></div><div><dt>Hold attribute</dt><dd>Guile</dd></div><div><dt>Escape attribute</dt><dd>Reason</dd></div></dl><p>Create a troubling sensory image that only the target perceives. Apply Frightened 1/2/3, naming the image as its source. Each upkeep renews Frightened 1. Physical contact or a completed illusion examination exposes it and ends its fear contribution. A conscious target may also spend a Main Action to reject the image using the printed hold and escape attributes. Escape or ending Sustain removes this casting’s fear contribution.</p>",
     "activity": {
       "action": "main",
-      "rollMode": "attribute",
-      "attribute": "guile",
+      "rollMode": "delegated",
+      "attribute": "knowledge",
       "defenseAttribute": "reason"
     },
     "outcomes": {
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:dreams:4",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",
@@ -32,7 +32,7 @@
         "sp": 2,
         "range": "One creature within 6 squares",
         "duration": "Sustained, up to 1 minute",
-        "attribute": "Guile",
+        "attribute": "Class",
         "defenseAttribute": "Reason",
         "effect": "Create a troubling sensory image that only the target perceives. Apply Frightened 1/2/3, naming the image as its source. Each upkeep renews Frightened 1. Physical contact or a completed illusion examination exposes it and ends its fear contribution. A conscious target may also spend a Main Action to reject the image using the printed hold and escape attributes. Escape or ending Sustain removes this casting’s fear contribution.",
         "improves": null,
@@ -50,7 +50,7 @@
         "sp": 2,
         "action": "Main Action",
         "actionText": "Main Action",
-        "attribute": "Guile",
+        "attribute": "Class",
         "defense": "Reason",
         "defenseAttribute": "Reason",
         "holdAttribute": "Guile",

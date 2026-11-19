@@ -59,6 +59,32 @@ try {
   assert.equal((await state()).sp,7);
   await close();
 
+  const warlock = await fixture("warlock");
+  await load(warlock);
+  await cast("ability-signature-odd-the-bargain");
+  const castingRoll = page.getByLabel("Roll attribute", {exact:true});
+  await expect(castingRoll).toHaveValue("guile");
+  await expect(castingRoll).toBeDisabled();
+  await finishRoll();
+  assert.equal((await state()).sp,8);
+  await close();
+
+  const scholar = await fixture("artificer");
+  await load(scholar);
+  await page.getByRole("tab",{name:"Spellbooks",exact:true}).click();
+  const identify = page.locator('[data-action-row="spell:detection:6"]');
+  const identifyBook = identify.locator("xpath=ancestor::details[1]");
+  if (await identifyBook.getAttribute("open") === null) await identifyBook.locator(":scope > summary").click();
+  await identify.getByRole("button",{name:"Cast Identify",exact:true}).click();
+  const payIdentify = page.getByRole("button",{name:"Pay printed SP · 3 SP",exact:true});
+  if (await payIdentify.isVisible()) await payIdentify.click();
+  await action("finish-ritual").click();
+  await expect(castingRoll).toHaveValue("knowledge");
+  await expect(castingRoll).toBeDisabled();
+  await finishRoll();
+  assert.equal((await state()).sp,5,"a rolled Ritual pays its SP cost once");
+  await close();
+
   for(const [name,id] of [["paladin","ability-signature-protector-healing-hands"],["druid","ability-signature-shepherd-borrowed-shape"]]){
     const draft=await fixture(name);
     if(name==="paladin"){draft.signatureId=id;draft.progression.levels[3].signatures={3:"ability-signature-protector-restoring-hands"};draft.progression.levels[7].signatures={7:"ability-signature-protector-sheltering-hands"};}
@@ -157,7 +183,7 @@ try {
   await page.reload();
   const formula=page.locator("details").filter({has:page.locator("summary",{hasText:"How maximum SP is calculated"})});
   await formula.locator("summary").click();
-  await expect(formula).toContainText("Maximum SP = 2 × level + ancestry SP + 2 × positive class mental attribute + Spellcraft bonuses + other SP bonuses.");
+  await expect(formula).toContainText("Maximum SP = 2 × level + ancestry SP + 2 × positive class casting attribute + Spellcraft bonuses + other SP bonuses.");
   await formula.scrollIntoViewIfNeeded();
   await page.screenshot({path:"test-results/workshop-sync/maximum-sp-formula.png"});
 

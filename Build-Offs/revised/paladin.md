@@ -1,6 +1,6 @@
 # Aldren Vowkeeper: paladin after the rewrite
 
-Pinned authored source `486f57f4eaf6acd7af39f16d403870dc0e574f6d`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../paladin.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
+Pinned authored source `2b9af553cf9a4aaa3c8e795b57c0163763b85676`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../paladin.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
 
 ## What the rewrite changes
 
@@ -205,11 +205,11 @@ This magical weapon modifier is not a separate spell casting and requires no fre
 
 <details><summary>Radiant Threshold: complete signature component</summary>
 
-**Action:** Main Action · **Attribute:** Reason
+**Action:** Main Action · **Attribute:** Class
 
 **Target / range / shape:** A straight line starting from a point you can see within 5 squares.
 
-Make a Reason roll. Weak: 3 squares long; 1 radiant damage. Standard: 5 squares long; 2 radiant damage. Strong: 7 squares long; 3 radiant damage. The line is 1 square wide and lasts until the start of your next turn. You and allies you choose when you create it are unaffected. A creature takes the damage when the line appears in its square, when it enters a square of the line, or when it starts its turn there. A creature can take this damage only once per round. The line does not block movement.
+Roll your class’s casting attribute. Weak: 3 squares long; 1 radiant damage. Standard: 5 squares long; 2 radiant damage. Strong: 7 squares long; 3 radiant damage. The line is 1 square wide and lasts until the start of your next turn. You and allies you choose when you create it are unaffected. A creature takes the damage when the line appears in its square, when it enters a square of the line, or when it starts its turn there. A creature can take this damage only once per round. The line does not block movement.
 
 **Duration:** Until the start of your next turn.
 

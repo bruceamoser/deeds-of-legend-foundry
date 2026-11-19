@@ -5,10 +5,10 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div><div><dt>Range</dt><dd>One unattended melee weapon within 3 squares; attack within 6 squares</dd></div><div><dt>Duration</dt><dd>1 minute, with commands</dd></div></dl><p>Set the weapon dancing as a single summoned form with 6 HP, Speed 4 and your attributes for defenses. Give one immediate Main command to attack for 2/4/6 physical damage or perform an ordinary manipulation. Further activity uses normal commands and the six-square tether; it has no independent Reaction.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>Class casting attribute</dd></div><div><dt>Range</dt><dd>One unattended melee weapon within 3 squares; attack within 6 squares</dd></div><div><dt>Duration</dt><dd>1 minute, with commands</dd></div></dl><p>Set the weapon dancing as a single summoned form with 6 HP, Speed 4 and your attributes for defenses. Give one immediate Main command to attack for 2/4/6 physical damage or perform an ordinary manipulation. Further activity uses normal commands and the six-square tether; it has no independent Reaction.</p>",
     "activity": {
       "action": "main",
-      "rollMode": "attribute",
+      "rollMode": "delegated",
       "attribute": "knowledge",
       "defenseAttribute": "agility"
     },
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:animation:4",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",
@@ -32,7 +32,7 @@
         "sp": 2,
         "range": "One unattended melee weapon within 3 squares; attack within 6 squares",
         "duration": "1 minute, with commands",
-        "attribute": "Knowledge",
+        "attribute": "Class",
         "defenseAttribute": null,
         "effect": "Set the weapon dancing as a single summoned form with 6 HP, Speed 4 and your attributes for defenses. Give one immediate Main command to attack for 2/4/6 physical damage or perform an ordinary manipulation. Further activity uses normal commands and the six-square tether; it has no independent Reaction.",
         "improves": null,
@@ -50,7 +50,7 @@
         "sp": 2,
         "action": "Main Action",
         "actionText": "Main Action",
-        "attribute": "Knowledge",
+        "attribute": "Class",
         "defense": null,
         "defenseAttribute": null,
         "holdAttribute": null,

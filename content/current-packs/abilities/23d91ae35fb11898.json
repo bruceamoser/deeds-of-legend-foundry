@@ -5,11 +5,11 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 10 minutes</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>One adjacent site</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Ask how one visible trace came to be here. Add 1/2/3 progress toward a historical inquiry objective, target 3. At completion see the event that left that trace, if it occurred within the last year.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 10 minutes</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>Class casting attribute</dd></div><div><dt>Range</dt><dd>One adjacent site</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Ask how one visible trace came to be here. Add 1/2/3 progress toward a historical inquiry objective, target 3. At completion see the event that left that trace, if it occurred within the last year.</p>",
     "activity": {
       "action": "ritual",
-      "rollMode": "attribute",
-      "attribute": "reason",
+      "rollMode": "delegated",
+      "attribute": "knowledge",
       "defenseAttribute": "agility"
     },
     "outcomes": {
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:echoes:5",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",
@@ -32,7 +32,7 @@
         "sp": 2,
         "range": "One adjacent site",
         "duration": "Instant",
-        "attribute": "Reason",
+        "attribute": "Class",
         "defenseAttribute": null,
         "effect": "Ask how one visible trace came to be here. Add 1/2/3 progress toward a historical inquiry objective, target 3. At completion see the event that left that trace, if it occurred within the last year.",
         "improves": null,
@@ -51,7 +51,7 @@
         "action": "Ritual",
         "actionText": "Ritual · 10 minutes",
         "ritualTime": "10 minutes",
-        "attribute": "Reason",
+        "attribute": "Class",
         "defense": null,
         "defenseAttribute": null,
         "holdAttribute": null,

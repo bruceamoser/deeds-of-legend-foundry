@@ -1,14 +1,14 @@
 {
   "rulesRevision": 299,
   "spellbookProgressionRevision": 310,
-  "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+  "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
   "workingTree": false,
   "builds": [
     {
       "id": "barbarian",
       "name": "Harka Stormshoulder",
       "level": 1,
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "workingTree": false,
       "draft": {
         "name": "Harka Stormshoulder",
@@ -331,7 +331,7 @@
       "id": "barbarian",
       "name": "Harka Stormshoulder",
       "level": 3,
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "workingTree": false,
       "draft": {
         "name": "Harka Stormshoulder",
@@ -747,7 +747,7 @@
       "id": "barbarian",
       "name": "Harka Stormshoulder",
       "level": 7,
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "workingTree": false,
       "draft": {
         "name": "Harka Stormshoulder",
@@ -1360,7 +1360,7 @@
       "id": "bard",
       "name": "Lysa Silverstring",
       "level": 1,
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "workingTree": false,
       "draft": {
         "name": "Lysa Silverstring",
@@ -1758,7 +1758,7 @@
       "id": "bard",
       "name": "Lysa Silverstring",
       "level": 3,
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "workingTree": false,
       "draft": {
         "name": "Lysa Silverstring",
@@ -2283,7 +2283,7 @@
       "id": "bard",
       "name": "Lysa Silverstring",
       "level": 7,
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "workingTree": false,
       "draft": {
         "name": "Lysa Silverstring",
@@ -3215,7 +3215,7 @@
       "id": "cleric",
       "name": "Brunna Hearthward",
       "level": 1,
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "workingTree": false,
       "draft": {
         "name": "Brunna Hearthward",
@@ -3434,14 +3434,14 @@
           "signatureComponent": true,
           "kind": "ability",
           "action": "Main Action",
-          "attribute": "Reason",
+          "attribute": "Class",
           "target": "One living ally within 3 squares.",
           "duration": "Immediate.",
           "equipment": "A free hand.",
           "sp": 1,
           "magic": "Spell",
-          "effect": "**Action:** Main Action · **Attribute:** Reason\n\n**Target / range / shape:** One living ally within 3 squares.\n\npay 1 SP before rolling. You must have enough SP to pay this cost. Requires a free hand. Make a Reason roll. Weak: restore 3 HP. Standard: restore 6 HP. Strong: restore 9 HP, and the target may stand without spending movement. Reduce the restored amount by the target's Life resistance, to a minimum of 1 if HP is missing, and never exceed maximum HP. A Dying or stabilized living creature can receive this healing. This does not erase scars or restore the dead.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** A free hand.\n\nThis is a spell; use its printed 1 SP cost and ordinary casting rules.",
-          "rulesMarkdown": "**Action:** Main Action · **Attribute:** Reason\n\n**Target / range / shape:** One living ally within 3 squares.\n\npay 1 SP before rolling. You must have enough SP to pay this cost. Requires a free hand. Make a Reason roll. Weak: restore 3 HP. Standard: restore 6 HP. Strong: restore 9 HP, and the target may stand without spending movement. Reduce the restored amount by the target's Life resistance, to a minimum of 1 if HP is missing, and never exceed maximum HP. A Dying or stabilized living creature can receive this healing. This does not erase scars or restore the dead.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** A free hand.\n\nThis is a spell; use its printed 1 SP cost and ordinary casting rules."
+          "effect": "**Action:** Main Action · **Attribute:** Class\n\n**Target / range / shape:** One living ally within 3 squares.\n\npay 1 SP before rolling. You must have enough SP to pay this cost. Requires a free hand. Roll your class’s casting attribute. Weak: restore 3 HP. Standard: restore 6 HP. Strong: restore 9 HP, and the target may stand without spending movement. Reduce the restored amount by the target's Life resistance, to a minimum of 1 if HP is missing, and never exceed maximum HP. A Dying or stabilized living creature can receive this healing. This does not erase scars or restore the dead.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** A free hand.\n\nThis is a spell; use its printed 1 SP cost and ordinary casting rules.",
+          "rulesMarkdown": "**Action:** Main Action · **Attribute:** Class\n\n**Target / range / shape:** One living ally within 3 squares.\n\npay 1 SP before rolling. You must have enough SP to pay this cost. Requires a free hand. Roll your class’s casting attribute. Weak: restore 3 HP. Standard: restore 6 HP. Strong: restore 9 HP, and the target may stand without spending movement. Reduce the restored amount by the target's Life resistance, to a minimum of 1 if HP is missing, and never exceed maximum HP. A Dying or stabilized living creature can receive this healing. This does not erase scars or restore the dead.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** A free hand.\n\nThis is a spell; use its printed 1 SP cost and ordinary casting rules."
         }
       ],
       "abilities": [
@@ -3573,7 +3573,7 @@
       "id": "cleric",
       "name": "Brunna Hearthward",
       "level": 3,
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "workingTree": false,
       "draft": {
         "name": "Brunna Hearthward",
@@ -3881,14 +3881,14 @@
           "signatureComponent": true,
           "kind": "ability",
           "action": "Main Action",
-          "attribute": "Reason",
+          "attribute": "Class",
           "target": "One living ally within 3 squares.",
           "duration": "Immediate.",
           "equipment": "A free hand.",
           "sp": 1,
           "magic": "Spell",
-          "effect": "**Action:** Main Action · **Attribute:** Reason\n\n**Target / range / shape:** One living ally within 3 squares.\n\npay 1 SP before rolling. You must have enough SP to pay this cost. Requires a free hand. Make a Reason roll. Weak: restore 3 HP. Standard: restore 6 HP. Strong: restore 9 HP, and the target may stand without spending movement. Reduce the restored amount by the target's Life resistance, to a minimum of 1 if HP is missing, and never exceed maximum HP. A Dying or stabilized living creature can receive this healing. This does not erase scars or restore the dead.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** A free hand.\n\nThis is a spell; use its printed 1 SP cost and ordinary casting rules.",
-          "rulesMarkdown": "**Action:** Main Action · **Attribute:** Reason\n\n**Target / range / shape:** One living ally within 3 squares.\n\npay 1 SP before rolling. You must have enough SP to pay this cost. Requires a free hand. Make a Reason roll. Weak: restore 3 HP. Standard: restore 6 HP. Strong: restore 9 HP, and the target may stand without spending movement. Reduce the restored amount by the target's Life resistance, to a minimum of 1 if HP is missing, and never exceed maximum HP. A Dying or stabilized living creature can receive this healing. This does not erase scars or restore the dead.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** A free hand.\n\nThis is a spell; use its printed 1 SP cost and ordinary casting rules."
+          "effect": "**Action:** Main Action · **Attribute:** Class\n\n**Target / range / shape:** One living ally within 3 squares.\n\npay 1 SP before rolling. You must have enough SP to pay this cost. Requires a free hand. Roll your class’s casting attribute. Weak: restore 3 HP. Standard: restore 6 HP. Strong: restore 9 HP, and the target may stand without spending movement. Reduce the restored amount by the target's Life resistance, to a minimum of 1 if HP is missing, and never exceed maximum HP. A Dying or stabilized living creature can receive this healing. This does not erase scars or restore the dead.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** A free hand.\n\nThis is a spell; use its printed 1 SP cost and ordinary casting rules.",
+          "rulesMarkdown": "**Action:** Main Action · **Attribute:** Class\n\n**Target / range / shape:** One living ally within 3 squares.\n\npay 1 SP before rolling. You must have enough SP to pay this cost. Requires a free hand. Roll your class’s casting attribute. Weak: restore 3 HP. Standard: restore 6 HP. Strong: restore 9 HP, and the target may stand without spending movement. Reduce the restored amount by the target's Life resistance, to a minimum of 1 if HP is missing, and never exceed maximum HP. A Dying or stabilized living creature can receive this healing. This does not erase scars or restore the dead.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** A free hand.\n\nThis is a spell; use its printed 1 SP cost and ordinary casting rules."
         },
         {
           "id": "ability-signature-shepherd-careful-transfer",
@@ -3899,14 +3899,14 @@
           "signatureComponent": true,
           "kind": "ability",
           "action": "Main Action",
-          "attribute": "Reason",
+          "attribute": "Class",
           "target": "One or two living allies within 3 squares.",
           "duration": "Immediate.",
           "equipment": "A free hand.",
           "sp": 2,
           "magic": "Spell",
-          "effect": "**Action:** Main Action · **Attribute:** Reason\n\n**Target / range / shape:** One or two living allies within 3 squares.\n\nPay 2 SP before rolling. You must have enough SP to pay this cost. Requires a free hand. Make a Reason roll. Choose one or two allies. One ally: restore 6 HP on Weak, 11 HP on Standard, 16 HP on Strong. Two allies: restore 4 HP each on Weak, 7 HP each on Standard, 10 HP each on Strong. Reduce the restored amount by each target's Life resistance, to a minimum of 1 if HP is missing, and never exceed maximum HP. A Dying or stabilized living creature can receive this healing. This does not erase scars or restore the dead.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** A free hand.\n\nThis is a spell.",
-          "rulesMarkdown": "**Action:** Main Action · **Attribute:** Reason\n\n**Target / range / shape:** One or two living allies within 3 squares.\n\nPay 2 SP before rolling. You must have enough SP to pay this cost. Requires a free hand. Make a Reason roll. Choose one or two allies. One ally: restore 6 HP on Weak, 11 HP on Standard, 16 HP on Strong. Two allies: restore 4 HP each on Weak, 7 HP each on Standard, 10 HP each on Strong. Reduce the restored amount by each target's Life resistance, to a minimum of 1 if HP is missing, and never exceed maximum HP. A Dying or stabilized living creature can receive this healing. This does not erase scars or restore the dead.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** A free hand.\n\nThis is a spell."
+          "effect": "**Action:** Main Action · **Attribute:** Class\n\n**Target / range / shape:** One or two living allies within 3 squares.\n\nPay 2 SP before rolling. You must have enough SP to pay this cost. Requires a free hand. Roll your class’s casting attribute. Choose one or two allies. One ally: restore 6 HP on Weak, 11 HP on Standard, 16 HP on Strong. Two allies: restore 4 HP each on Weak, 7 HP each on Standard, 10 HP each on Strong. Reduce the restored amount by each target's Life resistance, to a minimum of 1 if HP is missing, and never exceed maximum HP. A Dying or stabilized living creature can receive this healing. This does not erase scars or restore the dead.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** A free hand.\n\nThis is a spell.",
+          "rulesMarkdown": "**Action:** Main Action · **Attribute:** Class\n\n**Target / range / shape:** One or two living allies within 3 squares.\n\nPay 2 SP before rolling. You must have enough SP to pay this cost. Requires a free hand. Roll your class’s casting attribute. Choose one or two allies. One ally: restore 6 HP on Weak, 11 HP on Standard, 16 HP on Strong. Two allies: restore 4 HP each on Weak, 7 HP each on Standard, 10 HP each on Strong. Reduce the restored amount by each target's Life resistance, to a minimum of 1 if HP is missing, and never exceed maximum HP. A Dying or stabilized living creature can receive this healing. This does not erase scars or restore the dead.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** A free hand.\n\nThis is a spell."
         }
       ],
       "abilities": [
@@ -4127,7 +4127,7 @@
       "id": "cleric",
       "name": "Brunna Hearthward",
       "level": 7,
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "workingTree": false,
       "draft": {
         "name": "Brunna Hearthward",
@@ -4569,14 +4569,14 @@
           "signatureComponent": true,
           "kind": "ability",
           "action": "Main Action",
-          "attribute": "Reason",
+          "attribute": "Class",
           "target": "One living ally within 3 squares.",
           "duration": "Immediate.",
           "equipment": "A free hand.",
           "sp": 1,
           "magic": "Spell",
-          "effect": "**Action:** Main Action · **Attribute:** Reason\n\n**Target / range / shape:** One living ally within 3 squares.\n\npay 1 SP before rolling. You must have enough SP to pay this cost. Requires a free hand. Make a Reason roll. Weak: restore 3 HP. Standard: restore 6 HP. Strong: restore 9 HP, and the target may stand without spending movement. Reduce the restored amount by the target's Life resistance, to a minimum of 1 if HP is missing, and never exceed maximum HP. A Dying or stabilized living creature can receive this healing. This does not erase scars or restore the dead.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** A free hand.\n\nThis is a spell; use its printed 1 SP cost and ordinary casting rules.",
-          "rulesMarkdown": "**Action:** Main Action · **Attribute:** Reason\n\n**Target / range / shape:** One living ally within 3 squares.\n\npay 1 SP before rolling. You must have enough SP to pay this cost. Requires a free hand. Make a Reason roll. Weak: restore 3 HP. Standard: restore 6 HP. Strong: restore 9 HP, and the target may stand without spending movement. Reduce the restored amount by the target's Life resistance, to a minimum of 1 if HP is missing, and never exceed maximum HP. A Dying or stabilized living creature can receive this healing. This does not erase scars or restore the dead.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** A free hand.\n\nThis is a spell; use its printed 1 SP cost and ordinary casting rules."
+          "effect": "**Action:** Main Action · **Attribute:** Class\n\n**Target / range / shape:** One living ally within 3 squares.\n\npay 1 SP before rolling. You must have enough SP to pay this cost. Requires a free hand. Roll your class’s casting attribute. Weak: restore 3 HP. Standard: restore 6 HP. Strong: restore 9 HP, and the target may stand without spending movement. Reduce the restored amount by the target's Life resistance, to a minimum of 1 if HP is missing, and never exceed maximum HP. A Dying or stabilized living creature can receive this healing. This does not erase scars or restore the dead.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** A free hand.\n\nThis is a spell; use its printed 1 SP cost and ordinary casting rules.",
+          "rulesMarkdown": "**Action:** Main Action · **Attribute:** Class\n\n**Target / range / shape:** One living ally within 3 squares.\n\npay 1 SP before rolling. You must have enough SP to pay this cost. Requires a free hand. Roll your class’s casting attribute. Weak: restore 3 HP. Standard: restore 6 HP. Strong: restore 9 HP, and the target may stand without spending movement. Reduce the restored amount by the target's Life resistance, to a minimum of 1 if HP is missing, and never exceed maximum HP. A Dying or stabilized living creature can receive this healing. This does not erase scars or restore the dead.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** A free hand.\n\nThis is a spell; use its printed 1 SP cost and ordinary casting rules."
         },
         {
           "id": "ability-signature-shepherd-careful-transfer",
@@ -4587,14 +4587,14 @@
           "signatureComponent": true,
           "kind": "ability",
           "action": "Main Action",
-          "attribute": "Reason",
+          "attribute": "Class",
           "target": "One or two living allies within 3 squares.",
           "duration": "Immediate.",
           "equipment": "A free hand.",
           "sp": 2,
           "magic": "Spell",
-          "effect": "**Action:** Main Action · **Attribute:** Reason\n\n**Target / range / shape:** One or two living allies within 3 squares.\n\nPay 2 SP before rolling. You must have enough SP to pay this cost. Requires a free hand. Make a Reason roll. Choose one or two allies. One ally: restore 6 HP on Weak, 11 HP on Standard, 16 HP on Strong. Two allies: restore 4 HP each on Weak, 7 HP each on Standard, 10 HP each on Strong. Reduce the restored amount by each target's Life resistance, to a minimum of 1 if HP is missing, and never exceed maximum HP. A Dying or stabilized living creature can receive this healing. This does not erase scars or restore the dead.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** A free hand.\n\nThis is a spell.",
-          "rulesMarkdown": "**Action:** Main Action · **Attribute:** Reason\n\n**Target / range / shape:** One or two living allies within 3 squares.\n\nPay 2 SP before rolling. You must have enough SP to pay this cost. Requires a free hand. Make a Reason roll. Choose one or two allies. One ally: restore 6 HP on Weak, 11 HP on Standard, 16 HP on Strong. Two allies: restore 4 HP each on Weak, 7 HP each on Standard, 10 HP each on Strong. Reduce the restored amount by each target's Life resistance, to a minimum of 1 if HP is missing, and never exceed maximum HP. A Dying or stabilized living creature can receive this healing. This does not erase scars or restore the dead.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** A free hand.\n\nThis is a spell."
+          "effect": "**Action:** Main Action · **Attribute:** Class\n\n**Target / range / shape:** One or two living allies within 3 squares.\n\nPay 2 SP before rolling. You must have enough SP to pay this cost. Requires a free hand. Roll your class’s casting attribute. Choose one or two allies. One ally: restore 6 HP on Weak, 11 HP on Standard, 16 HP on Strong. Two allies: restore 4 HP each on Weak, 7 HP each on Standard, 10 HP each on Strong. Reduce the restored amount by each target's Life resistance, to a minimum of 1 if HP is missing, and never exceed maximum HP. A Dying or stabilized living creature can receive this healing. This does not erase scars or restore the dead.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** A free hand.\n\nThis is a spell.",
+          "rulesMarkdown": "**Action:** Main Action · **Attribute:** Class\n\n**Target / range / shape:** One or two living allies within 3 squares.\n\nPay 2 SP before rolling. You must have enough SP to pay this cost. Requires a free hand. Roll your class’s casting attribute. Choose one or two allies. One ally: restore 6 HP on Weak, 11 HP on Standard, 16 HP on Strong. Two allies: restore 4 HP each on Weak, 7 HP each on Standard, 10 HP each on Strong. Reduce the restored amount by each target's Life resistance, to a minimum of 1 if HP is missing, and never exceed maximum HP. A Dying or stabilized living creature can receive this healing. This does not erase scars or restore the dead.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** A free hand.\n\nThis is a spell."
         },
         {
           "id": "ability-signature-shepherd-a-hand-in-darkness",
@@ -4978,7 +4978,7 @@
       "id": "druid",
       "name": "Thalen Reedwalker",
       "level": 1,
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "workingTree": false,
       "draft": {
         "name": "Thalen Reedwalker",
@@ -5382,7 +5382,7 @@
       "id": "druid",
       "name": "Thalen Reedwalker",
       "level": 3,
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "workingTree": false,
       "draft": {
         "name": "Thalen Reedwalker",
@@ -5957,7 +5957,7 @@
       "id": "druid",
       "name": "Thalen Reedwalker",
       "level": 7,
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "workingTree": false,
       "draft": {
         "name": "Thalen Reedwalker",
@@ -6841,7 +6841,7 @@
       "id": "fighter",
       "name": "Corin Ashguard",
       "level": 1,
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "workingTree": false,
       "draft": {
         "name": "Corin Ashguard",
@@ -7188,7 +7188,7 @@
       "id": "fighter",
       "name": "Corin Ashguard",
       "level": 3,
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "workingTree": false,
       "draft": {
         "name": "Corin Ashguard",
@@ -7644,7 +7644,7 @@
       "id": "fighter",
       "name": "Corin Ashguard",
       "level": 7,
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "workingTree": false,
       "draft": {
         "name": "Corin Ashguard",
@@ -8307,7 +8307,7 @@
       "id": "monk",
       "name": "Sera Quietstep",
       "level": 1,
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "workingTree": false,
       "draft": {
         "name": "Sera Quietstep",
@@ -8606,7 +8606,7 @@
       "id": "monk",
       "name": "Sera Quietstep",
       "level": 3,
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "workingTree": false,
       "draft": {
         "name": "Sera Quietstep",
@@ -9011,7 +9011,7 @@
       "id": "monk",
       "name": "Sera Quietstep",
       "level": 7,
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "workingTree": false,
       "draft": {
         "name": "Sera Quietstep",
@@ -9621,7 +9621,7 @@
       "id": "paladin",
       "name": "Aldren Vowkeeper",
       "level": 1,
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "workingTree": false,
       "draft": {
         "name": "Aldren Vowkeeper",
@@ -9976,7 +9976,7 @@
       "id": "paladin",
       "name": "Aldren Vowkeeper",
       "level": 3,
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "workingTree": false,
       "draft": {
         "name": "Aldren Vowkeeper",
@@ -10442,7 +10442,7 @@
       "id": "paladin",
       "name": "Aldren Vowkeeper",
       "level": 7,
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "workingTree": false,
       "draft": {
         "name": "Aldren Vowkeeper",
@@ -10900,14 +10900,14 @@
           "signatureComponent": true,
           "kind": "ability",
           "action": "Main Action",
-          "attribute": "Reason",
+          "attribute": "Class",
           "target": "A straight line starting from a point you can see within 5 squares.",
           "duration": "Until the start of your next turn.",
           "equipment": "A free hand for casting.",
           "sp": 2,
           "magic": "Spell",
-          "effect": "**Action:** Main Action · **Attribute:** Reason\n\n**Target / range / shape:** A straight line starting from a point you can see within 5 squares.\n\nMake a Reason roll. Weak: 3 squares long; 1 radiant damage. Standard: 5 squares long; 2 radiant damage. Strong: 7 squares long; 3 radiant damage. The line is 1 square wide and lasts until the start of your next turn. You and allies you choose when you create it are unaffected. A creature takes the damage when the line appears in its square, when it enters a square of the line, or when it starts its turn there. A creature can take this damage only once per round. The line does not block movement.\n\n**Duration:** Until the start of your next turn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 2 SP, usable once per scene. You may have one threshold at a time; creating another ends it. Each creature takes its zone damage at most once per round. Damage dealt by occupying/crossing the persistent zone is non-attack damage and can be reduced to 0.",
-          "rulesMarkdown": "**Action:** Main Action · **Attribute:** Reason\n\n**Target / range / shape:** A straight line starting from a point you can see within 5 squares.\n\nMake a Reason roll. Weak: 3 squares long; 1 radiant damage. Standard: 5 squares long; 2 radiant damage. Strong: 7 squares long; 3 radiant damage. The line is 1 square wide and lasts until the start of your next turn. You and allies you choose when you create it are unaffected. A creature takes the damage when the line appears in its square, when it enters a square of the line, or when it starts its turn there. A creature can take this damage only once per round. The line does not block movement.\n\n**Duration:** Until the start of your next turn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 2 SP, usable once per scene. You may have one threshold at a time; creating another ends it. Each creature takes its zone damage at most once per round. Damage dealt by occupying/crossing the persistent zone is non-attack damage and can be reduced to 0."
+          "effect": "**Action:** Main Action · **Attribute:** Class\n\n**Target / range / shape:** A straight line starting from a point you can see within 5 squares.\n\nRoll your class’s casting attribute. Weak: 3 squares long; 1 radiant damage. Standard: 5 squares long; 2 radiant damage. Strong: 7 squares long; 3 radiant damage. The line is 1 square wide and lasts until the start of your next turn. You and allies you choose when you create it are unaffected. A creature takes the damage when the line appears in its square, when it enters a square of the line, or when it starts its turn there. A creature can take this damage only once per round. The line does not block movement.\n\n**Duration:** Until the start of your next turn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 2 SP, usable once per scene. You may have one threshold at a time; creating another ends it. Each creature takes its zone damage at most once per round. Damage dealt by occupying/crossing the persistent zone is non-attack damage and can be reduced to 0.",
+          "rulesMarkdown": "**Action:** Main Action · **Attribute:** Class\n\n**Target / range / shape:** A straight line starting from a point you can see within 5 squares.\n\nRoll your class’s casting attribute. Weak: 3 squares long; 1 radiant damage. Standard: 5 squares long; 2 radiant damage. Strong: 7 squares long; 3 radiant damage. The line is 1 square wide and lasts until the start of your next turn. You and allies you choose when you create it are unaffected. A creature takes the damage when the line appears in its square, when it enters a square of the line, or when it starts its turn there. A creature can take this damage only once per round. The line does not block movement.\n\n**Duration:** Until the start of your next turn.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 2 SP, usable once per scene. You may have one threshold at a time; creating another ends it. Each creature takes its zone damage at most once per round. Damage dealt by occupying/crossing the persistent zone is non-attack damage and can be reduced to 0."
         }
       ],
       "abilities": [
@@ -11179,7 +11179,7 @@
       "id": "ranger",
       "name": "Eryn Mossarrow",
       "level": 1,
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "workingTree": false,
       "draft": {
         "name": "Eryn Mossarrow",
@@ -11556,7 +11556,7 @@
       "id": "ranger",
       "name": "Eryn Mossarrow",
       "level": 3,
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "workingTree": false,
       "draft": {
         "name": "Eryn Mossarrow",
@@ -12042,7 +12042,7 @@
       "id": "ranger",
       "name": "Eryn Mossarrow",
       "level": 7,
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "workingTree": false,
       "draft": {
         "name": "Eryn Mossarrow",
@@ -12793,7 +12793,7 @@
       "id": "rogue",
       "name": "Pip Nightjar",
       "level": 1,
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "workingTree": false,
       "draft": {
         "name": "Pip Nightjar",
@@ -13136,7 +13136,7 @@
       "id": "rogue",
       "name": "Pip Nightjar",
       "level": 3,
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "workingTree": false,
       "draft": {
         "name": "Pip Nightjar",
@@ -13581,7 +13581,7 @@
       "id": "rogue",
       "name": "Pip Nightjar",
       "level": 7,
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "workingTree": false,
       "draft": {
         "name": "Pip Nightjar",
@@ -14223,7 +14223,7 @@
       "id": "sorcerer",
       "name": "Ilyra Cinderblood",
       "level": 1,
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "workingTree": false,
       "draft": {
         "name": "Ilyra Cinderblood",
@@ -14596,7 +14596,7 @@
       "id": "sorcerer",
       "name": "Ilyra Cinderblood",
       "level": 3,
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "workingTree": false,
       "draft": {
         "name": "Ilyra Cinderblood",
@@ -15112,7 +15112,7 @@
       "id": "sorcerer",
       "name": "Ilyra Cinderblood",
       "level": 7,
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "workingTree": false,
       "draft": {
         "name": "Ilyra Cinderblood",
@@ -15914,7 +15914,7 @@
       "id": "warlock",
       "name": "Vesper Ashpact",
       "level": 1,
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "workingTree": false,
       "draft": {
         "name": "Vesper Ashpact",
@@ -16132,14 +16132,14 @@
           "signatureComponent": true,
           "kind": "ability",
           "action": "Main Action",
-          "attribute": "Reason",
+          "attribute": "Class",
           "target": "One visible creature within 8 squares.",
           "duration": "Attack immediate; accepted defense penalty until your next turn.",
           "equipment": "A free hand.",
           "sp": 0,
           "magic": "Spell",
-          "effect": "**Action:** Main Action · **Attribute:** Reason\n\n**Target / range / shape:** One visible creature within 8 squares.\n\n**Magic:** Spell · **SP:** 0\n\nChoose a patron or supernatural compact with the DA when learning this signature; your choices remain your own. Cast Pact Bolt for 2/3/5 force damage on Weak/Standard/Strong. Once per scene, before this roll, you may accept 1 Bane to defenses until the start of your next turn to gain 1 Boon on the bolt’s roll.\n\n**Duration:** Attack immediate; accepted defense penalty until your next turn.\n\n**Equipment / acquisition:** A free hand.",
-          "rulesMarkdown": "**Action:** Main Action · **Attribute:** Reason\n\n**Target / range / shape:** One visible creature within 8 squares.\n\n**Magic:** Spell · **SP:** 0\n\nChoose a patron or supernatural compact with the DA when learning this signature; your choices remain your own. Cast Pact Bolt for 2/3/5 force damage on Weak/Standard/Strong. Once per scene, before this roll, you may accept 1 Bane to defenses until the start of your next turn to gain 1 Boon on the bolt’s roll.\n\n**Duration:** Attack immediate; accepted defense penalty until your next turn.\n\n**Equipment / acquisition:** A free hand."
+          "effect": "**Action:** Main Action · **Attribute:** Class\n\n**Target / range / shape:** One visible creature within 8 squares.\n\n**Magic:** Spell · **SP:** 0\n\nChoose a patron or supernatural compact with the DA when learning this signature; your choices remain your own. Cast Pact Bolt for 2/3/5 force damage on Weak/Standard/Strong. Once per scene, before this roll, you may accept 1 Bane to defenses until the start of your next turn to gain 1 Boon on the bolt’s roll.\n\n**Duration:** Attack immediate; accepted defense penalty until your next turn.\n\n**Equipment / acquisition:** A free hand.",
+          "rulesMarkdown": "**Action:** Main Action · **Attribute:** Class\n\n**Target / range / shape:** One visible creature within 8 squares.\n\n**Magic:** Spell · **SP:** 0\n\nChoose a patron or supernatural compact with the DA when learning this signature; your choices remain your own. Cast Pact Bolt for 2/3/5 force damage on Weak/Standard/Strong. Once per scene, before this roll, you may accept 1 Bane to defenses until the start of your next turn to gain 1 Boon on the bolt’s roll.\n\n**Duration:** Attack immediate; accepted defense penalty until your next turn.\n\n**Equipment / acquisition:** A free hand."
         }
       ],
       "abilities": [],
@@ -16261,7 +16261,7 @@
       "id": "warlock",
       "name": "Vesper Ashpact",
       "level": 3,
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "workingTree": false,
       "draft": {
         "name": "Vesper Ashpact",
@@ -16548,14 +16548,14 @@
           "signatureComponent": true,
           "kind": "ability",
           "action": "Main Action",
-          "attribute": "Reason",
+          "attribute": "Class",
           "target": "One visible creature within 8 squares.",
           "duration": "Attack immediate; accepted defense penalty until your next turn.",
           "equipment": "A free hand.",
           "sp": 0,
           "magic": "Spell",
-          "effect": "**Action:** Main Action · **Attribute:** Reason\n\n**Target / range / shape:** One visible creature within 8 squares.\n\n**Magic:** Spell · **SP:** 0\n\nChoose a patron or supernatural compact with the DA when learning this signature; your choices remain your own. Cast Pact Bolt for 2/3/5 force damage on Weak/Standard/Strong. Once per scene, before this roll, you may accept 1 Bane to defenses until the start of your next turn to gain 1 Boon on the bolt’s roll.\n\n**Duration:** Attack immediate; accepted defense penalty until your next turn.\n\n**Equipment / acquisition:** A free hand.",
-          "rulesMarkdown": "**Action:** Main Action · **Attribute:** Reason\n\n**Target / range / shape:** One visible creature within 8 squares.\n\n**Magic:** Spell · **SP:** 0\n\nChoose a patron or supernatural compact with the DA when learning this signature; your choices remain your own. Cast Pact Bolt for 2/3/5 force damage on Weak/Standard/Strong. Once per scene, before this roll, you may accept 1 Bane to defenses until the start of your next turn to gain 1 Boon on the bolt’s roll.\n\n**Duration:** Attack immediate; accepted defense penalty until your next turn.\n\n**Equipment / acquisition:** A free hand."
+          "effect": "**Action:** Main Action · **Attribute:** Class\n\n**Target / range / shape:** One visible creature within 8 squares.\n\n**Magic:** Spell · **SP:** 0\n\nChoose a patron or supernatural compact with the DA when learning this signature; your choices remain your own. Cast Pact Bolt for 2/3/5 force damage on Weak/Standard/Strong. Once per scene, before this roll, you may accept 1 Bane to defenses until the start of your next turn to gain 1 Boon on the bolt’s roll.\n\n**Duration:** Attack immediate; accepted defense penalty until your next turn.\n\n**Equipment / acquisition:** A free hand.",
+          "rulesMarkdown": "**Action:** Main Action · **Attribute:** Class\n\n**Target / range / shape:** One visible creature within 8 squares.\n\n**Magic:** Spell · **SP:** 0\n\nChoose a patron or supernatural compact with the DA when learning this signature; your choices remain your own. Cast Pact Bolt for 2/3/5 force damage on Weak/Standard/Strong. Once per scene, before this roll, you may accept 1 Bane to defenses until the start of your next turn to gain 1 Boon on the bolt’s roll.\n\n**Duration:** Attack immediate; accepted defense penalty until your next turn.\n\n**Equipment / acquisition:** A free hand."
         },
         {
           "id": "ability-signature-odd-pacts-claim",
@@ -16566,14 +16566,14 @@
           "signatureComponent": true,
           "kind": "ability",
           "action": "Main Action",
-          "attribute": "Reason",
+          "attribute": "Class",
           "target": "One visible creature within 8 squares.",
           "duration": "Attack immediate; Slowed uses ordinary decay.",
           "equipment": "A free hand.",
           "sp": 0,
           "magic": "Spell",
-          "effect": "**Action:** Main Action · **Attribute:** Reason\n\n**Target / range / shape:** One visible creature within 8 squares.\n\nCast a binding bolt for 2/3/5 force damage on Weak/Standard/Strong. Before rolling, you may choose to bind as well as wound: on Standard, reduce the damage by 1 and apply Slowed 1; on Strong, reduce the damage by 1 and apply Slowed 2. Weak deals its ordinary damage. Apply resistance and attack minimum normally; Slowed decays normally.\n\n**Duration:** Attack immediate; Slowed uses ordinary decay.\n\n**Equipment / acquisition:** A free hand.\n\nThis is a spell costing 0 SP. If you also know The Bargain, you may use its once-per-scene defense-Bane bargain on this bolt; that remains the same limited use.",
-          "rulesMarkdown": "**Action:** Main Action · **Attribute:** Reason\n\n**Target / range / shape:** One visible creature within 8 squares.\n\nCast a binding bolt for 2/3/5 force damage on Weak/Standard/Strong. Before rolling, you may choose to bind as well as wound: on Standard, reduce the damage by 1 and apply Slowed 1; on Strong, reduce the damage by 1 and apply Slowed 2. Weak deals its ordinary damage. Apply resistance and attack minimum normally; Slowed decays normally.\n\n**Duration:** Attack immediate; Slowed uses ordinary decay.\n\n**Equipment / acquisition:** A free hand.\n\nThis is a spell costing 0 SP. If you also know The Bargain, you may use its once-per-scene defense-Bane bargain on this bolt; that remains the same limited use."
+          "effect": "**Action:** Main Action · **Attribute:** Class\n\n**Target / range / shape:** One visible creature within 8 squares.\n\nCast a binding bolt for 2/3/5 force damage on Weak/Standard/Strong. Before rolling, you may choose to bind as well as wound: on Standard, reduce the damage by 1 and apply Slowed 1; on Strong, reduce the damage by 1 and apply Slowed 2. Weak deals its ordinary damage. Apply resistance and attack minimum normally; Slowed decays normally.\n\n**Duration:** Attack immediate; Slowed uses ordinary decay.\n\n**Equipment / acquisition:** A free hand.\n\nThis is a spell costing 0 SP. If you also know The Bargain, you may use its once-per-scene defense-Bane bargain on this bolt; that remains the same limited use.",
+          "rulesMarkdown": "**Action:** Main Action · **Attribute:** Class\n\n**Target / range / shape:** One visible creature within 8 squares.\n\nCast a binding bolt for 2/3/5 force damage on Weak/Standard/Strong. Before rolling, you may choose to bind as well as wound: on Standard, reduce the damage by 1 and apply Slowed 1; on Strong, reduce the damage by 1 and apply Slowed 2. Weak deals its ordinary damage. Apply resistance and attack minimum normally; Slowed decays normally.\n\n**Duration:** Attack immediate; Slowed uses ordinary decay.\n\n**Equipment / acquisition:** A free hand.\n\nThis is a spell costing 0 SP. If you also know The Bargain, you may use its once-per-scene defense-Bane bargain on this bolt; that remains the same limited use."
         }
       ],
       "abilities": [],
@@ -16734,7 +16734,7 @@
       "id": "warlock",
       "name": "Vesper Ashpact",
       "level": 7,
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "workingTree": false,
       "draft": {
         "name": "Vesper Ashpact",
@@ -17185,14 +17185,14 @@
           "signatureComponent": true,
           "kind": "ability",
           "action": "Main Action",
-          "attribute": "Reason",
+          "attribute": "Class",
           "target": "One visible creature within 8 squares.",
           "duration": "Attack immediate; accepted defense penalty until your next turn.",
           "equipment": "A free hand.",
           "sp": 0,
           "magic": "Spell",
-          "effect": "**Action:** Main Action · **Attribute:** Reason\n\n**Target / range / shape:** One visible creature within 8 squares.\n\n**Magic:** Spell · **SP:** 0\n\nChoose a patron or supernatural compact with the DA when learning this signature; your choices remain your own. Cast Pact Bolt for 2/3/5 force damage on Weak/Standard/Strong. Once per scene, before this roll, you may accept 1 Bane to defenses until the start of your next turn to gain 1 Boon on the bolt’s roll.\n\n**Duration:** Attack immediate; accepted defense penalty until your next turn.\n\n**Equipment / acquisition:** A free hand.",
-          "rulesMarkdown": "**Action:** Main Action · **Attribute:** Reason\n\n**Target / range / shape:** One visible creature within 8 squares.\n\n**Magic:** Spell · **SP:** 0\n\nChoose a patron or supernatural compact with the DA when learning this signature; your choices remain your own. Cast Pact Bolt for 2/3/5 force damage on Weak/Standard/Strong. Once per scene, before this roll, you may accept 1 Bane to defenses until the start of your next turn to gain 1 Boon on the bolt’s roll.\n\n**Duration:** Attack immediate; accepted defense penalty until your next turn.\n\n**Equipment / acquisition:** A free hand."
+          "effect": "**Action:** Main Action · **Attribute:** Class\n\n**Target / range / shape:** One visible creature within 8 squares.\n\n**Magic:** Spell · **SP:** 0\n\nChoose a patron or supernatural compact with the DA when learning this signature; your choices remain your own. Cast Pact Bolt for 2/3/5 force damage on Weak/Standard/Strong. Once per scene, before this roll, you may accept 1 Bane to defenses until the start of your next turn to gain 1 Boon on the bolt’s roll.\n\n**Duration:** Attack immediate; accepted defense penalty until your next turn.\n\n**Equipment / acquisition:** A free hand.",
+          "rulesMarkdown": "**Action:** Main Action · **Attribute:** Class\n\n**Target / range / shape:** One visible creature within 8 squares.\n\n**Magic:** Spell · **SP:** 0\n\nChoose a patron or supernatural compact with the DA when learning this signature; your choices remain your own. Cast Pact Bolt for 2/3/5 force damage on Weak/Standard/Strong. Once per scene, before this roll, you may accept 1 Bane to defenses until the start of your next turn to gain 1 Boon on the bolt’s roll.\n\n**Duration:** Attack immediate; accepted defense penalty until your next turn.\n\n**Equipment / acquisition:** A free hand."
         },
         {
           "id": "ability-signature-odd-pacts-claim",
@@ -17203,14 +17203,14 @@
           "signatureComponent": true,
           "kind": "ability",
           "action": "Main Action",
-          "attribute": "Reason",
+          "attribute": "Class",
           "target": "One visible creature within 8 squares.",
           "duration": "Attack immediate; Slowed uses ordinary decay.",
           "equipment": "A free hand.",
           "sp": 0,
           "magic": "Spell",
-          "effect": "**Action:** Main Action · **Attribute:** Reason\n\n**Target / range / shape:** One visible creature within 8 squares.\n\nCast a binding bolt for 2/3/5 force damage on Weak/Standard/Strong. Before rolling, you may choose to bind as well as wound: on Standard, reduce the damage by 1 and apply Slowed 1; on Strong, reduce the damage by 1 and apply Slowed 2. Weak deals its ordinary damage. Apply resistance and attack minimum normally; Slowed decays normally.\n\n**Duration:** Attack immediate; Slowed uses ordinary decay.\n\n**Equipment / acquisition:** A free hand.\n\nThis is a spell costing 0 SP. If you also know The Bargain, you may use its once-per-scene defense-Bane bargain on this bolt; that remains the same limited use.",
-          "rulesMarkdown": "**Action:** Main Action · **Attribute:** Reason\n\n**Target / range / shape:** One visible creature within 8 squares.\n\nCast a binding bolt for 2/3/5 force damage on Weak/Standard/Strong. Before rolling, you may choose to bind as well as wound: on Standard, reduce the damage by 1 and apply Slowed 1; on Strong, reduce the damage by 1 and apply Slowed 2. Weak deals its ordinary damage. Apply resistance and attack minimum normally; Slowed decays normally.\n\n**Duration:** Attack immediate; Slowed uses ordinary decay.\n\n**Equipment / acquisition:** A free hand.\n\nThis is a spell costing 0 SP. If you also know The Bargain, you may use its once-per-scene defense-Bane bargain on this bolt; that remains the same limited use."
+          "effect": "**Action:** Main Action · **Attribute:** Class\n\n**Target / range / shape:** One visible creature within 8 squares.\n\nCast a binding bolt for 2/3/5 force damage on Weak/Standard/Strong. Before rolling, you may choose to bind as well as wound: on Standard, reduce the damage by 1 and apply Slowed 1; on Strong, reduce the damage by 1 and apply Slowed 2. Weak deals its ordinary damage. Apply resistance and attack minimum normally; Slowed decays normally.\n\n**Duration:** Attack immediate; Slowed uses ordinary decay.\n\n**Equipment / acquisition:** A free hand.\n\nThis is a spell costing 0 SP. If you also know The Bargain, you may use its once-per-scene defense-Bane bargain on this bolt; that remains the same limited use.",
+          "rulesMarkdown": "**Action:** Main Action · **Attribute:** Class\n\n**Target / range / shape:** One visible creature within 8 squares.\n\nCast a binding bolt for 2/3/5 force damage on Weak/Standard/Strong. Before rolling, you may choose to bind as well as wound: on Standard, reduce the damage by 1 and apply Slowed 1; on Strong, reduce the damage by 1 and apply Slowed 2. Weak deals its ordinary damage. Apply resistance and attack minimum normally; Slowed decays normally.\n\n**Duration:** Attack immediate; Slowed uses ordinary decay.\n\n**Equipment / acquisition:** A free hand.\n\nThis is a spell costing 0 SP. If you also know The Bargain, you may use its once-per-scene defense-Bane bargain on this bolt; that remains the same limited use."
         },
         {
           "id": "ability-signature-odd-the-price-deferred",
@@ -17552,7 +17552,7 @@
       "id": "wizard",
       "name": "Vaelis Quillstar",
       "level": 1,
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "workingTree": false,
       "draft": {
         "name": "Vaelis Quillstar",
@@ -17811,14 +17811,14 @@
           "signatureComponent": true,
           "kind": "ability",
           "action": "Maneuver",
-          "attribute": "Reason",
+          "attribute": "Class",
           "target": "One known ongoing magical effect within 5 squares.",
           "duration": "Facts remain known; the Boon expires when used or at scene end.",
           "equipment": "A free hand for casting.",
           "sp": 0,
           "magic": "Spell",
-          "effect": "**Action:** Maneuver · **Attribute:** Reason\n\n**Target / range / shape:** One known ongoing magical effect within 5 squares.\n\n**Magic:** Spell · **SP:** 0\n\nStudy the effect once per scene. Roll Reason and learn 1/2/3 facts on Weak/Standard/Strong, chosen from its purpose, its remaining duration, and the category of its source (creature, object, place or independent spell). Gain 1 Boon to your next roll applying a learned fact this scene. The DA describes what the effect reveals, not unknown true names or hidden personal history.\n\n**Duration:** Facts remain known; the Boon expires when used or at scene end.\n\n**Equipment / acquisition:** A free hand for casting.",
-          "rulesMarkdown": "**Action:** Maneuver · **Attribute:** Reason\n\n**Target / range / shape:** One known ongoing magical effect within 5 squares.\n\n**Magic:** Spell · **SP:** 0\n\nStudy the effect once per scene. Roll Reason and learn 1/2/3 facts on Weak/Standard/Strong, chosen from its purpose, its remaining duration, and the category of its source (creature, object, place or independent spell). Gain 1 Boon to your next roll applying a learned fact this scene. The DA describes what the effect reveals, not unknown true names or hidden personal history.\n\n**Duration:** Facts remain known; the Boon expires when used or at scene end.\n\n**Equipment / acquisition:** A free hand for casting."
+          "effect": "**Action:** Maneuver · **Attribute:** Class\n\n**Target / range / shape:** One known ongoing magical effect within 5 squares.\n\n**Magic:** Spell · **SP:** 0\n\nStudy the effect once per scene. Roll your class’s casting attribute and learn 1/2/3 facts on Weak/Standard/Strong, chosen from its purpose, its remaining duration, and the category of its source (creature, object, place or independent spell). Gain 1 Boon to your next roll applying a learned fact this scene. The DA describes what the effect reveals, not unknown true names or hidden personal history.\n\n**Duration:** Facts remain known; the Boon expires when used or at scene end.\n\n**Equipment / acquisition:** A free hand for casting.",
+          "rulesMarkdown": "**Action:** Maneuver · **Attribute:** Class\n\n**Target / range / shape:** One known ongoing magical effect within 5 squares.\n\n**Magic:** Spell · **SP:** 0\n\nStudy the effect once per scene. Roll your class’s casting attribute and learn 1/2/3 facts on Weak/Standard/Strong, chosen from its purpose, its remaining duration, and the category of its source (creature, object, place or independent spell). Gain 1 Boon to your next roll applying a learned fact this scene. The DA describes what the effect reveals, not unknown true names or hidden personal history.\n\n**Duration:** Facts remain known; the Boon expires when used or at scene end.\n\n**Equipment / acquisition:** A free hand for casting."
         }
       ],
       "abilities": [
@@ -17990,7 +17990,7 @@
       "id": "wizard",
       "name": "Vaelis Quillstar",
       "level": 3,
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "workingTree": false,
       "draft": {
         "name": "Vaelis Quillstar",
@@ -18328,14 +18328,14 @@
           "signatureComponent": true,
           "kind": "ability",
           "action": "Maneuver",
-          "attribute": "Reason",
+          "attribute": "Class",
           "target": "One known ongoing magical effect within 5 squares.",
           "duration": "Facts remain known; the Boon expires when used or at scene end.",
           "equipment": "A free hand for casting.",
           "sp": 0,
           "magic": "Spell",
-          "effect": "**Action:** Maneuver · **Attribute:** Reason\n\n**Target / range / shape:** One known ongoing magical effect within 5 squares.\n\n**Magic:** Spell · **SP:** 0\n\nStudy the effect once per scene. Roll Reason and learn 1/2/3 facts on Weak/Standard/Strong, chosen from its purpose, its remaining duration, and the category of its source (creature, object, place or independent spell). Gain 1 Boon to your next roll applying a learned fact this scene. The DA describes what the effect reveals, not unknown true names or hidden personal history.\n\n**Duration:** Facts remain known; the Boon expires when used or at scene end.\n\n**Equipment / acquisition:** A free hand for casting.",
-          "rulesMarkdown": "**Action:** Maneuver · **Attribute:** Reason\n\n**Target / range / shape:** One known ongoing magical effect within 5 squares.\n\n**Magic:** Spell · **SP:** 0\n\nStudy the effect once per scene. Roll Reason and learn 1/2/3 facts on Weak/Standard/Strong, chosen from its purpose, its remaining duration, and the category of its source (creature, object, place or independent spell). Gain 1 Boon to your next roll applying a learned fact this scene. The DA describes what the effect reveals, not unknown true names or hidden personal history.\n\n**Duration:** Facts remain known; the Boon expires when used or at scene end.\n\n**Equipment / acquisition:** A free hand for casting."
+          "effect": "**Action:** Maneuver · **Attribute:** Class\n\n**Target / range / shape:** One known ongoing magical effect within 5 squares.\n\n**Magic:** Spell · **SP:** 0\n\nStudy the effect once per scene. Roll your class’s casting attribute and learn 1/2/3 facts on Weak/Standard/Strong, chosen from its purpose, its remaining duration, and the category of its source (creature, object, place or independent spell). Gain 1 Boon to your next roll applying a learned fact this scene. The DA describes what the effect reveals, not unknown true names or hidden personal history.\n\n**Duration:** Facts remain known; the Boon expires when used or at scene end.\n\n**Equipment / acquisition:** A free hand for casting.",
+          "rulesMarkdown": "**Action:** Maneuver · **Attribute:** Class\n\n**Target / range / shape:** One known ongoing magical effect within 5 squares.\n\n**Magic:** Spell · **SP:** 0\n\nStudy the effect once per scene. Roll your class’s casting attribute and learn 1/2/3 facts on Weak/Standard/Strong, chosen from its purpose, its remaining duration, and the category of its source (creature, object, place or independent spell). Gain 1 Boon to your next roll applying a learned fact this scene. The DA describes what the effect reveals, not unknown true names or hidden personal history.\n\n**Duration:** Facts remain known; the Boon expires when used or at scene end.\n\n**Equipment / acquisition:** A free hand for casting."
         },
         {
           "id": "ability-signature-arcanist-reading-the-weave",
@@ -18346,14 +18346,14 @@
           "signatureComponent": true,
           "kind": "ability",
           "action": "Maneuver",
-          "attribute": "Reason",
+          "attribute": "Class",
           "target": "One known ongoing magical effect within 5 squares.",
           "duration": "Facts remain known; each Boon expires when used or at scene end.",
           "equipment": "A free hand for casting.",
           "sp": 0,
           "magic": "Spell",
-          "effect": "**Action:** Maneuver · **Attribute:** Reason\n\n**Target / range / shape:** One known ongoing magical effect within 5 squares.\n\nStudy the effect once per scene. Roll Reason and learn 1/2/3 facts on Weak/Standard/Strong, chosen from its purpose, remaining duration, and source category (creature, object, place or independent spell). Gain 1 Boon to your next roll applying a learned fact this scene. The DA describes what the effect reveals, not unknown true names or hidden personal history.\n\nYour next cancellation roll against that effect this scene also gains 1 Boon. The examination reveals whether a specific remedy exists and the kind of evidence needed to discover it. Use the learned facts with your cancellation abilities or to seek the remedy.\n\n**Duration:** Facts remain known; each Boon expires when used or at scene end.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP.",
-          "rulesMarkdown": "**Action:** Maneuver · **Attribute:** Reason\n\n**Target / range / shape:** One known ongoing magical effect within 5 squares.\n\nStudy the effect once per scene. Roll Reason and learn 1/2/3 facts on Weak/Standard/Strong, chosen from its purpose, remaining duration, and source category (creature, object, place or independent spell). Gain 1 Boon to your next roll applying a learned fact this scene. The DA describes what the effect reveals, not unknown true names or hidden personal history.\n\nYour next cancellation roll against that effect this scene also gains 1 Boon. The examination reveals whether a specific remedy exists and the kind of evidence needed to discover it. Use the learned facts with your cancellation abilities or to seek the remedy.\n\n**Duration:** Facts remain known; each Boon expires when used or at scene end.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP."
+          "effect": "**Action:** Maneuver · **Attribute:** Class\n\n**Target / range / shape:** One known ongoing magical effect within 5 squares.\n\nStudy the effect once per scene. Roll your class’s casting attribute and learn 1/2/3 facts on Weak/Standard/Strong, chosen from its purpose, remaining duration, and source category (creature, object, place or independent spell). Gain 1 Boon to your next roll applying a learned fact this scene. The DA describes what the effect reveals, not unknown true names or hidden personal history.\n\nYour next cancellation roll against that effect this scene also gains 1 Boon. The examination reveals whether a specific remedy exists and the kind of evidence needed to discover it. Use the learned facts with your cancellation abilities or to seek the remedy.\n\n**Duration:** Facts remain known; each Boon expires when used or at scene end.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP.",
+          "rulesMarkdown": "**Action:** Maneuver · **Attribute:** Class\n\n**Target / range / shape:** One known ongoing magical effect within 5 squares.\n\nStudy the effect once per scene. Roll your class’s casting attribute and learn 1/2/3 facts on Weak/Standard/Strong, chosen from its purpose, remaining duration, and source category (creature, object, place or independent spell). Gain 1 Boon to your next roll applying a learned fact this scene. The DA describes what the effect reveals, not unknown true names or hidden personal history.\n\nYour next cancellation roll against that effect this scene also gains 1 Boon. The examination reveals whether a specific remedy exists and the kind of evidence needed to discover it. Use the learned facts with your cancellation abilities or to seek the remedy.\n\n**Duration:** Facts remain known; each Boon expires when used or at scene end.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP."
         }
       ],
       "abilities": [
@@ -18582,7 +18582,7 @@
       "id": "wizard",
       "name": "Vaelis Quillstar",
       "level": 7,
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "workingTree": false,
       "draft": {
         "name": "Vaelis Quillstar",
@@ -19074,14 +19074,14 @@
           "signatureComponent": true,
           "kind": "ability",
           "action": "Maneuver",
-          "attribute": "Reason",
+          "attribute": "Class",
           "target": "One known ongoing magical effect within 5 squares.",
           "duration": "Facts remain known; the Boon expires when used or at scene end.",
           "equipment": "A free hand for casting.",
           "sp": 0,
           "magic": "Spell",
-          "effect": "**Action:** Maneuver · **Attribute:** Reason\n\n**Target / range / shape:** One known ongoing magical effect within 5 squares.\n\n**Magic:** Spell · **SP:** 0\n\nStudy the effect once per scene. Roll Reason and learn 1/2/3 facts on Weak/Standard/Strong, chosen from its purpose, its remaining duration, and the category of its source (creature, object, place or independent spell). Gain 1 Boon to your next roll applying a learned fact this scene. The DA describes what the effect reveals, not unknown true names or hidden personal history.\n\n**Duration:** Facts remain known; the Boon expires when used or at scene end.\n\n**Equipment / acquisition:** A free hand for casting.",
-          "rulesMarkdown": "**Action:** Maneuver · **Attribute:** Reason\n\n**Target / range / shape:** One known ongoing magical effect within 5 squares.\n\n**Magic:** Spell · **SP:** 0\n\nStudy the effect once per scene. Roll Reason and learn 1/2/3 facts on Weak/Standard/Strong, chosen from its purpose, its remaining duration, and the category of its source (creature, object, place or independent spell). Gain 1 Boon to your next roll applying a learned fact this scene. The DA describes what the effect reveals, not unknown true names or hidden personal history.\n\n**Duration:** Facts remain known; the Boon expires when used or at scene end.\n\n**Equipment / acquisition:** A free hand for casting."
+          "effect": "**Action:** Maneuver · **Attribute:** Class\n\n**Target / range / shape:** One known ongoing magical effect within 5 squares.\n\n**Magic:** Spell · **SP:** 0\n\nStudy the effect once per scene. Roll your class’s casting attribute and learn 1/2/3 facts on Weak/Standard/Strong, chosen from its purpose, its remaining duration, and the category of its source (creature, object, place or independent spell). Gain 1 Boon to your next roll applying a learned fact this scene. The DA describes what the effect reveals, not unknown true names or hidden personal history.\n\n**Duration:** Facts remain known; the Boon expires when used or at scene end.\n\n**Equipment / acquisition:** A free hand for casting.",
+          "rulesMarkdown": "**Action:** Maneuver · **Attribute:** Class\n\n**Target / range / shape:** One known ongoing magical effect within 5 squares.\n\n**Magic:** Spell · **SP:** 0\n\nStudy the effect once per scene. Roll your class’s casting attribute and learn 1/2/3 facts on Weak/Standard/Strong, chosen from its purpose, its remaining duration, and the category of its source (creature, object, place or independent spell). Gain 1 Boon to your next roll applying a learned fact this scene. The DA describes what the effect reveals, not unknown true names or hidden personal history.\n\n**Duration:** Facts remain known; the Boon expires when used or at scene end.\n\n**Equipment / acquisition:** A free hand for casting."
         },
         {
           "id": "ability-signature-arcanist-reading-the-weave",
@@ -19092,14 +19092,14 @@
           "signatureComponent": true,
           "kind": "ability",
           "action": "Maneuver",
-          "attribute": "Reason",
+          "attribute": "Class",
           "target": "One known ongoing magical effect within 5 squares.",
           "duration": "Facts remain known; each Boon expires when used or at scene end.",
           "equipment": "A free hand for casting.",
           "sp": 0,
           "magic": "Spell",
-          "effect": "**Action:** Maneuver · **Attribute:** Reason\n\n**Target / range / shape:** One known ongoing magical effect within 5 squares.\n\nStudy the effect once per scene. Roll Reason and learn 1/2/3 facts on Weak/Standard/Strong, chosen from its purpose, remaining duration, and source category (creature, object, place or independent spell). Gain 1 Boon to your next roll applying a learned fact this scene. The DA describes what the effect reveals, not unknown true names or hidden personal history.\n\nYour next cancellation roll against that effect this scene also gains 1 Boon. The examination reveals whether a specific remedy exists and the kind of evidence needed to discover it. Use the learned facts with your cancellation abilities or to seek the remedy.\n\n**Duration:** Facts remain known; each Boon expires when used or at scene end.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP.",
-          "rulesMarkdown": "**Action:** Maneuver · **Attribute:** Reason\n\n**Target / range / shape:** One known ongoing magical effect within 5 squares.\n\nStudy the effect once per scene. Roll Reason and learn 1/2/3 facts on Weak/Standard/Strong, chosen from its purpose, remaining duration, and source category (creature, object, place or independent spell). Gain 1 Boon to your next roll applying a learned fact this scene. The DA describes what the effect reveals, not unknown true names or hidden personal history.\n\nYour next cancellation roll against that effect this scene also gains 1 Boon. The examination reveals whether a specific remedy exists and the kind of evidence needed to discover it. Use the learned facts with your cancellation abilities or to seek the remedy.\n\n**Duration:** Facts remain known; each Boon expires when used or at scene end.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP."
+          "effect": "**Action:** Maneuver · **Attribute:** Class\n\n**Target / range / shape:** One known ongoing magical effect within 5 squares.\n\nStudy the effect once per scene. Roll your class’s casting attribute and learn 1/2/3 facts on Weak/Standard/Strong, chosen from its purpose, remaining duration, and source category (creature, object, place or independent spell). Gain 1 Boon to your next roll applying a learned fact this scene. The DA describes what the effect reveals, not unknown true names or hidden personal history.\n\nYour next cancellation roll against that effect this scene also gains 1 Boon. The examination reveals whether a specific remedy exists and the kind of evidence needed to discover it. Use the learned facts with your cancellation abilities or to seek the remedy.\n\n**Duration:** Facts remain known; each Boon expires when used or at scene end.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP.",
+          "rulesMarkdown": "**Action:** Maneuver · **Attribute:** Class\n\n**Target / range / shape:** One known ongoing magical effect within 5 squares.\n\nStudy the effect once per scene. Roll your class’s casting attribute and learn 1/2/3 facts on Weak/Standard/Strong, chosen from its purpose, remaining duration, and source category (creature, object, place or independent spell). Gain 1 Boon to your next roll applying a learned fact this scene. The DA describes what the effect reveals, not unknown true names or hidden personal history.\n\nYour next cancellation roll against that effect this scene also gains 1 Boon. The examination reveals whether a specific remedy exists and the kind of evidence needed to discover it. Use the learned facts with your cancellation abilities or to seek the remedy.\n\n**Duration:** Facts remain known; each Boon expires when used or at scene end.\n\n**Equipment / acquisition:** A free hand for casting.\n\nThis is a spell costing 0 SP."
         },
         {
           "id": "ability-signature-arcanist-open-the-circle",
@@ -19475,7 +19475,7 @@
       "id": "artificer",
       "name": "Nim Coppercoil",
       "level": 1,
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "workingTree": false,
       "draft": {
         "name": "Nim Coppercoil",
@@ -19885,7 +19885,7 @@
       "id": "artificer",
       "name": "Nim Coppercoil",
       "level": 3,
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "workingTree": false,
       "draft": {
         "name": "Nim Coppercoil",
@@ -20407,7 +20407,7 @@
       "id": "artificer",
       "name": "Nim Coppercoil",
       "level": 7,
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "workingTree": false,
       "draft": {
         "name": "Nim Coppercoil",
@@ -21169,7 +21169,7 @@
           "action": "Ritual",
           "sp": 2,
           "duration": "24 hours or until released",
-          "effect": "Pay the stored spell's SP in addition to this ritual. Inscribe its power into the stone. A bearer uses a Main Action to release it, choosing legal targets from their position and using the stored spell’s printed attribute and your value for it. The stone holds one use; you may keep one prepared Rune Mastery stone at a time."
+          "effect": "Pay the stored spell's SP in addition to this ritual. Inscribe its power into the stone. A bearer uses a Main Action to release it, choosing legal targets from their position and using your class’s casting attribute and your value for it. The stone holds one use; you may keep one prepared Rune Mastery stone at a time."
         },
         {
           "id": "spell:imbuement:5",

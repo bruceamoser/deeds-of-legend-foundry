@@ -5,10 +5,10 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One sensor initially within 3 squares; remains within 12 squares</dd></div><div><dt>Duration</dt><dd>1 minute</dd></div></dl><p>Create a tiny visible glimmering eye. A Maneuver moves it up to 4 squares through open passages; otherwise it stays in place. Spend a Main Action to see from it until your next turn begins. The sensor has 1 HP and uses your Agility for player-rolled defenses.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>Automatic</dd></div><div><dt>Range</dt><dd>One sensor initially within 3 squares; remains within 12 squares</dd></div><div><dt>Duration</dt><dd>1 minute</dd></div></dl><p>Create a tiny visible glimmering eye. A Maneuver moves it up to 4 squares through open passages; otherwise it stays in place. Spend a Main Action to see from it until your next turn begins. The sensor has 1 HP and uses your Agility for player-rolled defenses.</p>",
     "activity": {
       "action": "main",
-      "rollMode": "attribute",
+      "rollMode": "none",
       "attribute": "knowledge",
       "defenseAttribute": "agility"
     },
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:farseeing:5",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",

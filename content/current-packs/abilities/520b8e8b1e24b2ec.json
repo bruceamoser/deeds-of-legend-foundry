@@ -5,10 +5,10 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>SP</dt><dd>0</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One unattended rope up to 6 squares long within 3 squares</dd></div><div><dt>Duration</dt><dd>1 minute</dd></div></dl><p>Guide the rope&#39;s free end through a reachable opening and tie or undo one ordinary knot. It can secure itself to a suitable anchor. It bears its ordinary load and moves through unoccupied space.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>SP</dt><dd>0</dd></div><div><dt>Attribute</dt><dd>Automatic</dd></div><div><dt>Range</dt><dd>One unattended rope up to 6 squares long within 6 squares</dd></div><div><dt>Duration</dt><dd>1 minute</dd></div></dl><p>Guide the rope&#39;s free end through a reachable opening and tie or undo one ordinary knot. It can secure itself to a suitable anchor. It bears its ordinary load and moves through unoccupied space.</p>",
     "activity": {
       "action": "maneuver",
-      "rollMode": "attribute",
+      "rollMode": "none",
       "attribute": "knowledge",
       "defenseAttribute": "agility"
     },
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:earth:1",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",
@@ -30,7 +30,7 @@
         "cost": 1,
         "action": "Maneuver",
         "sp": 0,
-        "range": "One unattended rope up to 6 squares long within 3 squares",
+        "range": "One unattended rope up to 6 squares long within 6 squares",
         "duration": "1 minute",
         "attribute": "None",
         "defenseAttribute": null,
@@ -55,7 +55,7 @@
         "defenseAttribute": null,
         "holdAttribute": null,
         "escapeAttribute": null,
-        "target": "One unattended rope up to 6 squares long within 3 squares",
+        "target": "One unattended rope up to 6 squares long within 6 squares",
         "duration": "1 minute",
         "effect": "Guide the rope's free end through a reachable opening and tie or undo one ordinary knot. It can secure itself to a suitable anchor. It bears its ordinary load and moves through unoccupied space."
       }

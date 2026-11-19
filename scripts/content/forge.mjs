@@ -409,6 +409,8 @@ export function parseForge(read, list, sourceCommit) {
     const name = title(text);
     const hp = match(text, /\*\*HP contribution:\*\* \+(\d+) at level 1/, `HP for ${id}`)[1];
     const spAttribute = match(text, /Starting SP contribution:\*\* Twice your positive (\w+)/, `SP for ${id}`)[1].toLowerCase();
+    const castingAttribute = text.match(/^\*\*Casting attribute:\*\*\s*(\w+)/mi)?.[1]?.toLowerCase();
+    if (castingAttribute) assert.equal(castingAttribute, spAttribute, `Casting and starting SP attributes for ${id}`);
     const choices = match(text, /^\*\*Starting disciplines:\*\* Choose one of ([^.]+)\./m, `disciplines for ${id}`)[1];
     const disciplineIds = choices.split(", ").map((choice) => {
       const discipline = disciplineByName.get(choice); assert.ok(discipline, choice); return discipline.id;

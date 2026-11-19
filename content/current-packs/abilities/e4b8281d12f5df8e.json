@@ -5,11 +5,11 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Defense</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>One creature within 3 squares that you can see</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Read surface impressions. Learn 1/2/3 immediate concerns or sensory impressions, chosen by the DA for an NPC or its player for a hero. The target senses the intrusion after the reading. Deep memories use stronger workings.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Attribute</dt><dd>Class casting attribute</dd></div><div><dt>Defense</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>One creature within 6 squares that you can see</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Read surface impressions. Learn 1/2/3 immediate concerns or sensory impressions, chosen by the DA for an NPC or its player for a hero. The target senses the intrusion after the reading. Deep memories use stronger workings.</p>",
     "activity": {
       "action": "main",
-      "rollMode": "attribute",
-      "attribute": "reason",
+      "rollMode": "delegated",
+      "attribute": "knowledge",
       "defenseAttribute": "reason"
     },
     "outcomes": {
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:thought:3",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",
@@ -30,9 +30,9 @@
         "cost": 2,
         "action": "Main Action",
         "sp": 1,
-        "range": "One creature within 3 squares that you can see",
+        "range": "One creature within 6 squares that you can see",
         "duration": "Instant",
-        "attribute": "Reason",
+        "attribute": "Class",
         "defenseAttribute": "Reason",
         "effect": "Read surface impressions. Learn 1/2/3 immediate concerns or sensory impressions, chosen by the DA for an NPC or its player for a hero. The target senses the intrusion after the reading. Deep memories use stronger workings.",
         "improves": null,
@@ -50,12 +50,12 @@
         "sp": 1,
         "action": "Main Action",
         "actionText": "Main Action",
-        "attribute": "Reason",
+        "attribute": "Class",
         "defense": "Reason",
         "defenseAttribute": "Reason",
         "holdAttribute": null,
         "escapeAttribute": null,
-        "target": "One creature within 3 squares that you can see",
+        "target": "One creature within 6 squares that you can see",
         "duration": "Instant",
         "effect": "Read surface impressions. Learn 1/2/3 immediate concerns or sensory impressions, chosen by the DA for an NPC or its player for a hero. The target senses the intrusion after the reading. Deep memories use stronger workings."
       }

@@ -5,11 +5,11 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Defense</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>Two different creatures within 6 squares with their own SP reserves</dd></div><div><dt>Duration</dt><dd>Sustained, up to 1 minute</dd></div><div><dt>Hold attribute</dt><dd>Reason</dd></div><div><dt>Escape attribute</dt><dd>Reason</dd></div></dl><p>Choose a donor and recipient. On casting, and on each later upkeep, transfer up to 6 existing SP if both consent, or roll for 2/4/6 if either is unwilling. Use the donor&#39;s current reserve and recipient&#39;s missing SP as limits. The bridge ends if either moves beyond 6 squares of you. Pay the casting cost once. Each later transfer uses the Sustain Maneuver and costs 0 SP beyond the actual points transferred. Either conscious unwilling participant may spend a Main Action to sever the bridge using the printed hold and escape attributes. A successful escape ends the entire bridge; willing participants may end their participation with a Maneuver.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>Class casting attribute</dd></div><div><dt>Defense</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>Two different creatures within 6 squares with their own SP reserves</dd></div><div><dt>Duration</dt><dd>Sustained, up to 1 minute</dd></div><div><dt>Hold attribute</dt><dd>Reason</dd></div><div><dt>Escape attribute</dt><dd>Reason</dd></div></dl><p>Choose a donor and recipient. On casting, and on each later upkeep, transfer up to 6 existing SP if both consent, or roll for 2/4/6 if either is unwilling. Use the donor&#39;s current reserve and recipient&#39;s missing SP as limits. The bridge ends if either moves beyond 6 squares of you. Pay the casting cost once. Each later transfer uses the Sustain Maneuver and costs 0 SP beyond the actual points transferred. Either conscious unwilling participant may spend a Main Action to sever the bridge using the printed hold and escape attributes. A successful escape ends the entire bridge; willing participants may end their participation with a Maneuver.</p>",
     "activity": {
       "action": "main",
-      "rollMode": "attribute",
-      "attribute": "reason",
+      "rollMode": "delegated",
+      "attribute": "knowledge",
       "defenseAttribute": "reason"
     },
     "outcomes": {
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:channeling:a3",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",
@@ -32,7 +32,7 @@
         "sp": 5,
         "range": "Two different creatures within 6 squares with their own SP reserves",
         "duration": "Sustained, up to 1 minute",
-        "attribute": "Reason",
+        "attribute": "Class",
         "defenseAttribute": "Reason",
         "effect": "Choose a donor and recipient. On casting, and on each later upkeep, transfer up to 6 existing SP if both consent, or roll for 2/4/6 if either is unwilling. Use the donor's current reserve and recipient's missing SP as limits. The bridge ends if either moves beyond 6 squares of you. Pay the casting cost once. Each later transfer uses the Sustain Maneuver and costs 0 SP beyond the actual points transferred. Either conscious unwilling participant may spend a Main Action to sever the bridge using the printed hold and escape attributes. A successful escape ends the entire bridge; willing participants may end their participation with a Maneuver.",
         "improves": null,
@@ -50,7 +50,7 @@
         "sp": 5,
         "action": "Main Action",
         "actionText": "Main Action",
-        "attribute": "Reason",
+        "attribute": "Class",
         "defense": "Reason",
         "defenseAttribute": "Reason",
         "holdAttribute": "Reason",

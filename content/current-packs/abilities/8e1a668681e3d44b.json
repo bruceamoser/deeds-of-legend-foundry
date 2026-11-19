@@ -5,11 +5,11 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>One living creature within 4 squares that can hear you</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Speak a brief word of renewal. Restore 1/2/3 HP, applying Life resistance and maximum HP.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Attribute</dt><dd>Class casting attribute</dd></div><div><dt>Range</dt><dd>One living creature within 6 squares that can hear you</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Speak a brief word of renewal. Restore 1/2/3 HP, applying Life resistance and maximum HP.</p>",
     "activity": {
       "action": "maneuver",
-      "rollMode": "attribute",
-      "attribute": "reason",
+      "rollMode": "delegated",
+      "attribute": "knowledge",
       "defenseAttribute": "agility"
     },
     "outcomes": {
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:restoration:3",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",
@@ -30,9 +30,9 @@
         "cost": 2,
         "action": "Maneuver",
         "sp": 1,
-        "range": "One living creature within 4 squares that can hear you",
+        "range": "One living creature within 6 squares that can hear you",
         "duration": "Instant",
-        "attribute": "Reason",
+        "attribute": "Class",
         "defenseAttribute": null,
         "effect": "Speak a brief word of renewal. Restore 1/2/3 HP, applying Life resistance and maximum HP.",
         "improves": null,
@@ -50,12 +50,12 @@
         "sp": 1,
         "action": "Maneuver",
         "actionText": "Maneuver",
-        "attribute": "Reason",
+        "attribute": "Class",
         "defense": null,
         "defenseAttribute": null,
         "holdAttribute": null,
         "escapeAttribute": null,
-        "target": "One living creature within 4 squares that can hear you",
+        "target": "One living creature within 6 squares that can hear you",
         "duration": "Instant",
         "effect": "Speak a brief word of renewal. Restore 1/2/3 HP, applying Life resistance and maximum HP."
       }

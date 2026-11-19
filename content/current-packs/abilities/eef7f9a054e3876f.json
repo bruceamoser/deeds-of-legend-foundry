@@ -5,11 +5,11 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 10 minutes</dd></div><div><dt>SP</dt><dd>6</dd></div><div><dt>Attribute</dt><dd>Guile</dd></div><div><dt>Defense</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>One fixed object or 6-square-radius place within reach</dd></div><div><dt>Duration</dt><dd>24 hours</dd></div></dl><p>Choose a recognizable group and either welcome or dread. A matching creature entering the place or coming within 6 squares of the object feels the chosen pull and recognizes it as magic. Welcome grants your group 1 Boon to social contributions made there toward an attainable agreement with a matching creature. Dread applies Frightened 2/3/4, set by your ritual roll, once per creature for this casting; the object or place is the fear source. Leaving that area ends this casting’s fear contribution. Keep one Antipathy/Sympathy working active; casting another ends the first.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 10 minutes</dd></div><div><dt>SP</dt><dd>6</dd></div><div><dt>Attribute</dt><dd>Class casting attribute</dd></div><div><dt>Defense</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>One fixed object or 6-square-radius place within reach</dd></div><div><dt>Duration</dt><dd>24 hours</dd></div></dl><p>Choose a recognizable group and either welcome or dread. A matching creature entering the place or coming within 6 squares of the object feels the chosen pull and recognizes it as magic. Welcome grants your group 1 Boon to social contributions made there toward an attainable agreement with a matching creature. Dread applies Frightened 2/3/4, set by your ritual roll, once per creature for this casting; the object or place is the fear source. Leaving that area ends this casting’s fear contribution. Keep one Antipathy/Sympathy working active; casting another ends the first.</p>",
     "activity": {
       "action": "ritual",
-      "rollMode": "attribute",
-      "attribute": "guile",
+      "rollMode": "delegated",
+      "attribute": "knowledge",
       "defenseAttribute": "reason"
     },
     "outcomes": {
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:emotion:a3",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",
@@ -32,7 +32,7 @@
         "sp": 6,
         "range": "One fixed object or 6-square-radius place within reach",
         "duration": "24 hours",
-        "attribute": "Guile",
+        "attribute": "Class",
         "defenseAttribute": "Reason",
         "effect": "Choose a recognizable group and either welcome or dread. A matching creature entering the place or coming within 6 squares of the object feels the chosen pull and recognizes it as magic. Welcome grants your group 1 Boon to social contributions made there toward an attainable agreement with a matching creature. Dread applies Frightened 2/3/4, set by your ritual roll, once per creature for this casting; the object or place is the fear source. Leaving that area ends this casting’s fear contribution. Keep one Antipathy/Sympathy working active; casting another ends the first.",
         "improves": null,
@@ -51,7 +51,7 @@
         "action": "Ritual",
         "actionText": "Ritual · 10 minutes",
         "ritualTime": "10 minutes",
-        "attribute": "Guile",
+        "attribute": "Class",
         "defense": "Reason",
         "defenseAttribute": "Reason",
         "holdAttribute": null,

@@ -5,10 +5,10 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>Self; one adjacent natural stone mass large enough to hold you</dd></div><div><dt>Duration</dt><dd>10 minutes</dd></div></dl><p>Step inside the stone with your carried gear. You can hear muffled sounds and may emerge from your entry face with a Maneuver. While inside, rest and observe; manipulating the outside world requires emerging. If the stone is broken apart, emerge into the nearest open square and take 3 physical damage.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>Automatic</dd></div><div><dt>Range</dt><dd>Self; one adjacent natural stone mass large enough to hold you</dd></div><div><dt>Duration</dt><dd>10 minutes</dd></div></dl><p>Step inside the stone with your carried gear. You can hear muffled sounds and may emerge from your entry face with a Maneuver. While inside, rest and observe; manipulating the outside world requires emerging. If the stone is broken apart, emerge into the nearest open square and take 3 physical damage.</p>",
     "activity": {
       "action": "main",
-      "rollMode": "attribute",
+      "rollMode": "none",
       "attribute": "knowledge",
       "defenseAttribute": "agility"
     },
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:earth:5",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",

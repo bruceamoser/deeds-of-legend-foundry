@@ -5,10 +5,10 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 hour</dd></div><div><dt>SP</dt><dd>4</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One weapon beside you; 25 coins of enchanting oil consumed</dd></div><div><dt>Duration</dt><dd>24 hours</dd></div></dl><p>The weapon&#39;s damaging attacks gain +1 damage of their normal type before resistance, once per target per attack. Use the highest magical weapon increase. You may keep one Weapon I enchantment at a time.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 hour</dd></div><div><dt>SP</dt><dd>4</dd></div><div><dt>Attribute</dt><dd>Automatic</dd></div><div><dt>Range</dt><dd>One weapon beside you; 25 coins of enchanting oil consumed</dd></div><div><dt>Duration</dt><dd>24 hours</dd></div></dl><p>The weapon&#39;s damaging attacks gain +1 damage of their normal type before resistance, once per target per attack. Use the highest magical weapon increase. You may keep one Weapon I enchantment at a time.</p>",
     "activity": {
       "action": "ritual",
-      "rollMode": "attribute",
+      "rollMode": "none",
       "attribute": "knowledge",
       "defenseAttribute": "agility"
     },
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:imbuement:8",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",

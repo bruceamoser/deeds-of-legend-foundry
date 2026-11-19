@@ -5,10 +5,10 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 8 hours</dd></div><div><dt>SP</dt><dd>8</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One willing adjacent living model; 300 coins of sculpting materials consumed</dd></div><div><dt>Duration</dt><dd>Until destroyed or replaced</dd></div></dl><p>Sculpt the model’s appearance and voice into a likeness with 10 HP, 0 SP, 0 Grit, your Speed and defense attributes. Give one immediate Main command. Thereafter, a normal Main command directs an ordinary task or Basic Melee attack: Knowledge, 2/3/5 physical damage. Unlike other summons, it remains inert when uncommanded, beyond the six-square tether, or while you are unconscious or dead. It responds only to your commands while you are conscious and within that range. It has no Reactions, spells, learned abilities or healing. At 0 HP or when you create another, it disappears without harming the model.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 8 hours</dd></div><div><dt>SP</dt><dd>8</dd></div><div><dt>Attribute</dt><dd>Automatic</dd></div><div><dt>Range</dt><dd>One willing adjacent living model; 300 coins of sculpting materials consumed</dd></div><div><dt>Duration</dt><dd>Until destroyed or replaced</dd></div></dl><p>Sculpt the model’s appearance and voice into a likeness with 10 HP, 0 SP, 0 Grit, your Speed and defense attributes. Give one immediate Main command. Thereafter, a normal Main command directs an ordinary task or Basic Melee attack: Knowledge, 2/3/5 physical damage. Unlike other summons, it remains inert when uncommanded, beyond the six-square tether, or while you are unconscious or dead. It responds only to your commands while you are conscious and within that range. It has no Reactions, spells, learned abilities or healing. At 0 HP or when you create another, it disappears without harming the model.</p>",
     "activity": {
       "action": "ritual",
-      "rollMode": "attribute",
+      "rollMode": "none",
       "attribute": "knowledge",
       "defenseAttribute": "agility"
     },
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell-mastery:simulacrum",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",

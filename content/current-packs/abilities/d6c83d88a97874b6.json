@@ -5,10 +5,10 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 minute</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div><div><dt>Range</dt><dd>One adjacent mundane lock</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Guide its mechanism with invisible tools. Add 1/2/3 progress toward the lock&#39;s DA-set opening objective. The spell supplies delicate manipulation; an explicit magical seal uses its named remedy.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 minute</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>Class casting attribute</dd></div><div><dt>Range</dt><dd>One adjacent mundane lock</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Guide its mechanism with invisible tools. Add 1/2/3 progress toward the lock&#39;s DA-set opening objective. The spell supplies delicate manipulation; an explicit magical seal uses its named remedy.</p>",
     "activity": {
       "action": "ritual",
-      "rollMode": "attribute",
+      "rollMode": "delegated",
       "attribute": "knowledge",
       "defenseAttribute": "agility"
     },
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:shaping:4",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",
@@ -32,7 +32,7 @@
         "sp": 2,
         "range": "One adjacent mundane lock",
         "duration": "Instant",
-        "attribute": "Knowledge",
+        "attribute": "Class",
         "defenseAttribute": null,
         "effect": "Guide its mechanism with invisible tools. Add 1/2/3 progress toward the lock's DA-set opening objective. The spell supplies delicate manipulation; an explicit magical seal uses its named remedy.",
         "improves": null,
@@ -51,7 +51,7 @@
         "action": "Ritual",
         "actionText": "Ritual · 1 minute",
         "ritualTime": "1 minute",
-        "attribute": "Knowledge",
+        "attribute": "Class",
         "defense": null,
         "defenseAttribute": null,
         "holdAttribute": null,

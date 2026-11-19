@@ -5,10 +5,10 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 8 hours</dd></div><div><dt>SP</dt><dd>8</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>Remains of one willing person dead no longer than seven days; 500 coins of funerary materials</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Restore a life ended before its natural span. Prepare the remains with unique funerary materials whose availability the DA establishes before the ritual. The spirit must freely agree. At completion, consume the materials and return the person to life at 1 HP in a restored body, clearing both death roll tallies. Descriptive scars remain; spent SP and Grit remain spent. Each person has one lifetime return to life, shared with Lifegiving. The ritual creates one restored body, replacing the prepared remains.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 8 hours</dd></div><div><dt>SP</dt><dd>8</dd></div><div><dt>Attribute</dt><dd>Automatic</dd></div><div><dt>Range</dt><dd>Remains of one willing person dead no longer than seven days; 500 coins of funerary materials</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Restore a life ended before its natural span. Prepare the remains with unique funerary materials whose availability the DA establishes before the ritual. The spirit must freely agree. At completion, consume the materials and return the person to life at 1 HP in a restored body, clearing both death roll tallies. Descriptive scars remain; spent SP and Grit remain spent. Each person has one lifetime return to life, shared with Lifegiving. The ritual creates one restored body, replacing the prepared remains.</p>",
     "activity": {
       "action": "ritual",
-      "rollMode": "attribute",
+      "rollMode": "none",
       "attribute": "knowledge",
       "defenseAttribute": "agility"
     },
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell-mastery:true-resurrection",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",

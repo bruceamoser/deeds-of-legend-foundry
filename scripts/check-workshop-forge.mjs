@@ -142,7 +142,7 @@ try {
     has: page.locator("summary").getByText("How maximum SP is calculated", { exact: true }),
   });
   await spExplanation.locator("summary").click();
-  await expect(spExplanation).toContainText("Maximum SP = 2 × level + ancestry SP + 2 × positive class mental attribute + Spellcraft bonuses + other SP bonuses.");
+  await expect(spExplanation).toContainText("Maximum SP = 2 × level + ancestry SP + 2 × positive class casting attribute + Spellcraft bonuses + other SP bonuses.");
   await expect(spExplanation).toContainText("Soul Capacity and Mind Capacity are paths in the Spellcraft discipline");
   const creation = (await data()).character.draft;
   assert.deepEqual(creation.classDisciplines, ["guard"]);

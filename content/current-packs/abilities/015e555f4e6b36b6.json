@@ -5,10 +5,10 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 hour</dd></div><div><dt>SP</dt><dd>6</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One willing adjacent creature; 100 coins of transformative incense consumed</dd></div><div><dt>Duration</dt><dd>24 hours</dd></div></dl><p>Shape an ordinary living body of Small, Medium or Large size: a humanoid guise or familiar animal. The recipient keeps its mind, HP and attributes. Choose swimming, climbing or flight at its normal Speed as the body&#39;s movement adaptation. Animal bodies use Polymorph&#39;s equipment and action rules. The recipient may return with a Maneuver; Greater Restoration also ends the transformation.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 hour</dd></div><div><dt>SP</dt><dd>6</dd></div><div><dt>Attribute</dt><dd>Automatic</dd></div><div><dt>Range</dt><dd>One willing adjacent creature; 100 coins of transformative incense consumed</dd></div><div><dt>Duration</dt><dd>24 hours</dd></div></dl><p>Shape an ordinary living body of Small, Medium or Large size: a humanoid guise or familiar animal. The recipient keeps its mind, HP and attributes. Choose swimming, climbing or flight at its normal Speed as the body&#39;s movement adaptation. Animal bodies use Polymorph&#39;s equipment and action rules. The recipient may return with a Maneuver; Greater Restoration also ends the transformation.</p>",
     "activity": {
       "action": "ritual",
-      "rollMode": "attribute",
+      "rollMode": "none",
       "attribute": "knowledge",
       "defenseAttribute": "agility"
     },
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:transformation:a3",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",

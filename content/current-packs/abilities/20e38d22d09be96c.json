@@ -5,10 +5,10 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One willing creature within 3 squares</dd></div><div><dt>Duration</dt><dd>10 minutes</dd></div></dl><p>Give the recipient 1 Boon to defenses. Once during the duration, after a defense roll, it may reroll the whole roll and keep either result. Recasting replaces the previous benefit on that creature.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>Automatic</dd></div><div><dt>Range</dt><dd>One willing creature within 6 squares</dd></div><div><dt>Duration</dt><dd>10 minutes</dd></div></dl><p>Give the recipient 1 Boon to defenses. Once during the duration, after a defense roll, it may reroll the whole roll and keep either result. Recasting replaces the previous benefit on that creature.</p>",
     "activity": {
       "action": "main",
-      "rollMode": "attribute",
+      "rollMode": "none",
       "attribute": "knowledge",
       "defenseAttribute": "agility"
     },
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:portents:a1",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",
@@ -30,7 +30,7 @@
         "cost": 4,
         "action": "Main Action",
         "sp": 5,
-        "range": "One willing creature within 3 squares",
+        "range": "One willing creature within 6 squares",
         "duration": "10 minutes",
         "attribute": "None",
         "defenseAttribute": null,
@@ -55,7 +55,7 @@
         "defenseAttribute": null,
         "holdAttribute": null,
         "escapeAttribute": null,
-        "target": "One willing creature within 3 squares",
+        "target": "One willing creature within 6 squares",
         "duration": "10 minutes",
         "effect": "Give the recipient 1 Boon to defenses. Once during the duration, after a defense roll, it may reroll the whole roll and keep either result. Recasting replaces the previous benefit on that creature."
       }

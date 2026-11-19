@@ -5,10 +5,10 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>A 1-square-radius area centered on you</dd></div><div><dt>Duration</dt><dd>Sustained, up to 1 minute</dd></div></dl><p>Create a quiet zone where magical effects, including your own, are suspended except for this field and its upkeep. Casting and magical targeting operate outside the zone; ongoing durations continue to pass inside it. Effects resume after leaving if their durations remain. Mundane equipment and ordinary actions work normally.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>Automatic</dd></div><div><dt>Range</dt><dd>A 1-square-radius area centered on you</dd></div><div><dt>Duration</dt><dd>Sustained, up to 1 minute</dd></div></dl><p>Create a quiet zone where magical effects, including your own, are suspended except for this field and its upkeep. Casting and magical targeting operate outside the zone; ongoing durations continue to pass inside it. Effects resume after leaving if their durations remain. Mundane equipment and ordinary actions work normally.</p>",
     "activity": {
       "action": "main",
-      "rollMode": "attribute",
+      "rollMode": "none",
       "attribute": "knowledge",
       "defenseAttribute": "agility"
     },
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:unraveling:a1",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",

@@ -5,10 +5,10 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>Self</dd></div><div><dt>Duration</dt><dd>1 minute</dd></div></dl><p>Assume a familiar animal shape of Small, Medium or Large size. Keep your HP and attributes. Choose flying, swimming or climbing at your normal Speed and gain physical resistance 1. While transformed, you may spend a Main Action to bite or claw one adjacent creature: roll Brawn or Agility for 3/5/7 physical damage. A Maneuver may change the form; otherwise it remains unchanged. Gear merges; return with a Maneuver to speak, use items or cast.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>Automatic</dd></div><div><dt>Range</dt><dd>Self</dd></div><div><dt>Duration</dt><dd>1 minute</dd></div></dl><p>Assume a familiar animal shape of Small, Medium or Large size. Keep your HP and attributes. Choose flying, swimming or climbing at your normal Speed and gain physical resistance 1. While transformed, you may spend a Main Action to bite or claw one adjacent creature: roll Brawn or Agility for 3/5/7 physical damage. A Maneuver may change the form; otherwise it remains unchanged. Gear merges; return with a Maneuver to speak, use items or cast.</p>",
     "activity": {
       "action": "main",
-      "rollMode": "attribute",
+      "rollMode": "none",
       "attribute": "knowledge",
       "defenseAttribute": "agility"
     },
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:transformation:a2",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",

@@ -5,10 +5,10 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 minute</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>A marked 2-square-radius circle centered beside you</dd></div><div><dt>Duration</dt><dd>1 hour</dd></div></dl><p>Choose summoned forms, undead or spirits. Creatures of that kind gain 2 Banes on attacks crossing the circle boundary. A creature may cross the line by spending a Main Action; crossing breaks no physical barrier. The circle remains while its drawn line is intact.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 minute</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>Automatic</dd></div><div><dt>Range</dt><dd>A marked 2-square-radius circle centered beside you</dd></div><div><dt>Duration</dt><dd>1 hour</dd></div></dl><p>Choose summoned forms, undead or spirits. Creatures of that kind gain 2 Banes on attacks crossing the circle boundary. A creature may cross the line by spending a Main Action; crossing breaks no physical barrier. The circle remains while its drawn line is intact.</p>",
     "activity": {
       "action": "ritual",
-      "rollMode": "attribute",
+      "rollMode": "none",
       "attribute": "knowledge",
       "defenseAttribute": "agility"
     },
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:binding:4",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",

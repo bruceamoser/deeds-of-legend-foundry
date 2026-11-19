@@ -5,10 +5,10 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 10 minutes</dd></div><div><dt>SP</dt><dd>6</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One unattended nonmagical object of Bulk 12 or less; 100 coins of reagents consumed</dd></div><div><dt>Duration</dt><dd>Until dismissed or replaced</dd></div></dl><p>Reshape it into one mundane object of equal or smaller Bulk made of stone, wood, glass or common iron. Choose an ordinary function whose construction you understand, with all necessary parts. It has that material’s ordinary qualities and provides no precious substances or learned abilities. Keep one such transformation at a time; dismissing it, completing another, or unraveling it returns the surviving material to its original form. Separated pieces remain parts of the same transformation, not new objects to copy.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 10 minutes</dd></div><div><dt>SP</dt><dd>6</dd></div><div><dt>Attribute</dt><dd>Automatic</dd></div><div><dt>Range</dt><dd>One unattended nonmagical object of Bulk 12 or less; 100 coins of reagents consumed</dd></div><div><dt>Duration</dt><dd>Until dismissed or replaced</dd></div></dl><p>Reshape it into one mundane object of equal or smaller Bulk made of stone, wood, glass or common iron. Choose an ordinary function whose construction you understand, with all necessary parts. It has that material’s ordinary qualities and provides no precious substances or learned abilities. Keep one such transformation at a time; dismissing it, completing another, or unraveling it returns the surviving material to its original form. Separated pieces remain parts of the same transformation, not new objects to copy.</p>",
     "activity": {
       "action": "ritual",
-      "rollMode": "attribute",
+      "rollMode": "none",
       "attribute": "knowledge",
       "defenseAttribute": "agility"
     },
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:shaping:a3",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",

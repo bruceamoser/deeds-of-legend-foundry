@@ -5,11 +5,11 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 8 hours</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>One adjacent ancient site; 100 coins of rare incense consumed</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Explore one named event up to a thousand years old. Add 3/5/7 progress toward target 7. At completion witness up to one hour from a fixed position and learn one surviving location or object connected to it. Each further attempt requires a new ritual and its costs.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 8 hours</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>Class casting attribute</dd></div><div><dt>Range</dt><dd>One adjacent ancient site; 100 coins of rare incense consumed</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Explore one named event up to a thousand years old. Add 3/5/7 progress toward target 7. At completion witness up to one hour from a fixed position and learn one surviving location or object connected to it. Each further attempt requires a new ritual and its costs.</p>",
     "activity": {
       "action": "ritual",
-      "rollMode": "attribute",
-      "attribute": "reason",
+      "rollMode": "delegated",
+      "attribute": "knowledge",
       "defenseAttribute": "agility"
     },
     "outcomes": {
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:echoes:a3",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",
@@ -32,7 +32,7 @@
         "sp": 5,
         "range": "One adjacent ancient site; 100 coins of rare incense consumed",
         "duration": "Instant",
-        "attribute": "Reason",
+        "attribute": "Class",
         "defenseAttribute": null,
         "effect": "Explore one named event up to a thousand years old. Add 3/5/7 progress toward target 7. At completion witness up to one hour from a fixed position and learn one surviving location or object connected to it. Each further attempt requires a new ritual and its costs.",
         "improves": null,
@@ -51,7 +51,7 @@
         "action": "Ritual",
         "actionText": "Ritual · 8 hours",
         "ritualTime": "8 hours",
-        "attribute": "Reason",
+        "attribute": "Class",
         "defense": null,
         "defenseAttribute": null,
         "holdAttribute": null,

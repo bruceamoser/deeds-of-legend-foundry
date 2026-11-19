@@ -36,6 +36,7 @@ try{
   const {mountWorkshop}=await import('./workshop-mount.mjs');
   const {workshopCatalogs}=await import('./rules/workshop-forge-catalog.mjs');
   const {signatureProse}=await import('./rules/forge-signatures.mjs');
+  const {forgeSpellCastingLabel,isForgeSpell}=await import('./rules/forge-casting.mjs');
   const {currentWorkshopItemSource}=await import('./rules/current-workshop-items.mjs');
   const load=async name=>(await fetch(`data/${name}.json`)).json();
   const [choices,inventory,wounds,graph,refs]=await Promise.all(['choices','inventory','wounds','forge','forge-references'].map(load));
@@ -60,12 +61,15 @@ try{
    const reference=root.querySelector('#reference .reference-body').innerText;
    check(!reference.includes('**'),`Reference raw markdown ${entry.name}`);
    for(const paragraph of paragraphs)check(plain(reference).includes(plain(paragraph)),`Reference missing prose ${entry.name}`);
-   for(const field of catalogs.choices.find(record=>record.id===entry.id).reference.rules.details)check(plain(reference).toLowerCase().includes(plain(field.value).toLowerCase()),`Reference missing ${field.label}: ${entry.name}`);
+   const record=catalogs.choices.find(record=>record.id===entry.id);
+   const casterClass=catalogs.choices.find(record=>record.id===entry.classId);
+   const expectedField=(field,cls)=>field.label==='Attribute'&&isForgeSpell(record)?forgeSpellCastingLabel(record,cls):field.value;
+   for(const field of record.reference.rules.details)check(plain(reference).toLowerCase().includes(plain(expectedField(field,casterClass)).toLowerCase()),`Reference missing ${field.label}: ${entry.name}`);
    referenceCount++;root.querySelector('#reference').close();
-   const record=catalogs.choices.find(record=>record.id===entry.id),native=document.querySelector('#native');native.innerHTML=currentWorkshopItemSource(record,catalogs).system.description;
+   const native=document.querySelector('#native');native.innerHTML=currentWorkshopItemSource(record,catalogs).system.description;
    check(!native.innerText.includes('**'),`Native raw markdown ${entry.name}`);
    for(const paragraph of paragraphs)check(plain(native.innerText).includes(plain(paragraph)),`Native missing prose ${entry.name}`);
-   for(const field of record.reference.rules.details)check(plain(native.innerText).toLowerCase().includes(plain(field.value).toLowerCase()),`Native missing ${field.label}: ${entry.name}`);
+   for(const field of record.reference.rules.details)check(plain(native.innerText).toLowerCase().includes(plain(expectedField(field)).toLowerCase()),`Native missing ${field.label}: ${entry.name}`);
    check(native.querySelectorAll(':scope > :is(p, ul, ol, table)').length>=paragraphs.length,`Native flattened paragraphs or lists ${entry.name}`);nativeCount++;
    if(entry.level===1){
     controller.setState({character:portable,mode:'builder',step:3});
