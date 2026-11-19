@@ -6,7 +6,8 @@ import { readFile } from "node:fs/promises";
 import { workshopCatalogs } from "../src/rules/workshop-forge-catalog.mjs";
 import { applyForgePlaytest } from "../src/rules/forge-playtest-catalog.mjs";
 import { readPortableCharacter } from "../src/rules/portable-character.mjs";
-import { nativeWorkshopLearnedItems, nativeWorkshopEquipmentItems, loadNativeWorkshopState, saveNativeWorkshopState, commitNativeWorkshopCharacter, saveNativeWorkshopIdentity, mergeNativeWorkshopPlay } from "../src/services/native-workshop-state.mjs";
+import { nativeWorkshopLearnedItems, nativeWorkshopEquipmentItems, loadNativeWorkshopState, saveNativeWorkshopState, commitNativeWorkshopCharacter, saveNativeWorkshopIdentity, mergeNativeWorkshopPlay, sellNativeWorkshopEquipment } from "../src/services/native-workshop-state.mjs";
+import { standardEquipmentSalePrice } from "../src/rules/equipment-sale.mjs";
 import { currentNativeCharacterChanges } from "../src/rules/native-character-state.mjs";
 import { refundForgePurchases } from "../src/rules/forge.mjs";
 import { LEARNED_GEAR_PREFIX } from "../src/rules/training-equipment.mjs";
@@ -16,6 +17,12 @@ const current = applyForgePlaytest(forge,references);
 const catalogs = workshopCatalogs(choices,inventory,wounds,current.forge,current.references);
 const portable = await read("../Build-Offs/revised/builds/wizard-level-3.hol.json");
 const {draft, preview} = readPortableCharacter(portable,catalogs,catalogs.languages);
+test("a sale quote uses half the listed price per unit, while partial consumables and custom gear need an offer", () => {
+  assert.equal(standardEquipmentSalePrice({ price: 5, inventoryDie: null }, { quantity: 3, inventoryDie: 0 }), 6);
+  assert.equal(standardEquipmentSalePrice({ price: 9, inventoryDie: 8 }, { quantity: 2, inventoryDie: 8 }), 8);
+  assert.equal(standardEquipmentSalePrice({ price: 9, inventoryDie: 8 }, { quantity: 2, inventoryDie: 6 }), null);
+  assert.equal(standardEquipmentSalePrice(undefined, { quantity: 1, inventoryDie: 0 }), null);
+});
 test("current native learned Items contain all learned spells with stable identities", () => {
   assert.equal(preview.valid,true);
   const items = nativeWorkshopLearnedItems(preview,catalogs);
@@ -408,6 +415,35 @@ test("explicit commit repairs obsolete choices and preserves live state across d
     assert.ok(!actor.items.some(item=>item.id===flask.id));
     assert.ok(retained.every(id=>actor.items.some(item=>item.id===id)));
     assert.deepEqual(sold.character.draft.play.inventory.sold,[waterId]);
+  });
+  await t.test("selling purchased gear is atomic and keeps its proceeds through a Workshop commit", async () => {
+    const instance = nativeWorkshopInventoryId(weapon);
+    assert.match(instance, /^shop-/);
+    const sale = { itemId: weapon.id, quantity: weapon.system.quantity, inventoryDie: weapon.system.inventoryDie, coins: 6 };
+    const coins = flags.development.coins;
+    const before = await loadNativeWorkshopState(actor);
+    const options = { expectedRevision: before.revision };
+    await assert.rejects(sellNativeWorkshopEquipment(actor, { ...sale, quantity: sale.quantity + 1 }, options), /stack changed/);
+    await assert.rejects(sellNativeWorkshopEquipment(actor, { ...sale, coins: -1 }, options), /whole coins/);
+    const update = actor.update;
+    actor.update = async function(changes) {
+      if (Object.hasOwn(changes, "flags.heroes-of-legend.development.coins")) throw new Error("Sale persistence failed");
+      return update.call(this, changes);
+    };
+    try {
+      await assert.rejects(sellNativeWorkshopEquipment(actor, sale, options), /persistence failed/);
+      assert.ok(actor.items.some(item => item.id === sale.itemId));
+      assert.equal(flags.development.coins, coins);
+      assert.equal(flags.nativeWorkshop.revision, before.revision);
+    } finally { actor.update = update; }
+    const sold = await sellNativeWorkshopEquipment(actor, sale, options);
+    assert.ok(sold.character.draft.play.inventory.removed.includes(instance));
+    assert.ok(!actor.items.some(item => item.id === sale.itemId));
+    assert.equal(flags.development.coins, coins + 6);
+    await assert.rejects(sellNativeWorkshopEquipment(actor, sale, options), /character changed/);
+    await commitNativeWorkshopCharacter(actor, sold.character, { expectedRevision: sold.revision });
+    assert.ok(!actor.items.some(item => nativeWorkshopInventoryId(item) === instance));
+    assert.equal(flags.development.coins, coins + 6);
   });
 });
 

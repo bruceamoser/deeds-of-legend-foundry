@@ -1,6 +1,6 @@
 import {DAMAGE_TYPES} from "./damage.mjs";
 import {fixedTieredAttackRiders,printedDamageChoices} from "./attack-outcomes.mjs";
-import {workshopRollAttributes} from "./workshop-ability.mjs";
+import {canCustomizeWorkshopRoll,workshopRollAttributes,workshopRollSourceId} from "./workshop-ability.mjs";
 import {basicAttackDamageProfile,nativeWeaponTrainingIds} from "./weapon-training.mjs";
 import {reactionTrigger} from "./ability-roll-relevance.mjs";
 /** Printed roll metadata is independent of whether an effect has an automation adapter. */
@@ -8,6 +8,18 @@ const TIERS = ['weak', 'standard', 'strong'];
 const PHYSICAL_PROFILE = /\b(?:for|takes|deals) (\d+)\/(\d+)\/(\d+) physical damage\b/i;
 
 const ATTRIBUTES = new Set(['brawn', 'fortitude', 'agility', 'guile', 'knowledge', 'reason']);
+const SYSTEM_ID = 'heroes-of-legend';
+export const WORKSHOP_ROLL_ATTRIBUTE_FLAG = 'rollAttributeOverride';
+export function ownedWorkshopAbility(actor, id) {
+  return actor?.items?.find(item => item.type === 'ability' &&
+    item.getFlag(SYSTEM_ID, 'grantKind') === 'nativeWorkshop' && item.getFlag(SYSTEM_ID, 'catalogId') === id);
+}
+export function ownedWorkshopRollAttribute(actor, record) {
+  const id = workshopRollSourceId(record?.id);
+  if (!id || (id === record.id && !canCustomizeWorkshopRoll(record))) return null;
+  const key = ownedWorkshopAbility(actor, id)?.getFlag(SYSTEM_ID, WORKSHOP_ROLL_ATTRIBUTE_FLAG);
+  return ATTRIBUTES.has(key) ? key : null;
+}
 /** Resolve imported identity without guessing from a mutable display name. */
 export function abilityCatalogRecord(item, records) {
   const flaggedId = item?.getFlag?.("heroes-of-legend", "catalogId");
@@ -71,12 +83,13 @@ export function abilityRollConfiguration(item, record, forge) {
   const learned = nativeWeaponTrainingIds(item.actor);
   const technique = forgeWeaponAttack(record, forge, learned);
   const basic = item.actor?.type === "character" && basicAttackDamageProfile(learned, record?.id);
-  const attributes = workshopRollAttributes(record);
+  const override = ownedWorkshopRollAttribute(item.actor, record);
+  const attributes = workshopRollAttributes(record, override);
   const configured = item.system?.activity;
-  const attribute = record
+  const attribute = override ?? (record
     ? (technique || record.id === "ability-opportunity-attack" ? attributes[0] : printed.attribute)
     : configured?.rollMode === 'attribute' && ATTRIBUTES.has(configured.attribute)
-      ? configured.attribute : null;
+      ? configured.attribute : null);
   const outcomes = technique?.outcomes ?? (basic
     ? Object.fromEntries(TIERS.map((tier, index) => [tier, `${basic[index]} physical damage`]))
     : record ? printed.outcomes : item.system?.outcomes);

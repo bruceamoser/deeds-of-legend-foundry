@@ -10,6 +10,8 @@ import {
   heldWorkshopWeapons,
   validateWorkshopAbilityUse,
   workshopWeaponLabel,
+  canCustomizeWorkshopRoll,
+  workshopRollSourceId,
 } from "./rules/workshop-ability.mjs";
 import { compatibleAmmunition, ORDINARY_RANGED_WEAPON, WATER_FLASK } from "./rules/equipment-identity.mjs";
 import { basicAttackDamageProfile } from "./rules/weapon-training.mjs";
@@ -604,11 +606,12 @@ function brief(record) {
   if (outcome) return outcome.map((o) => `${o.label}: ${o.text}`).join(" · ");
   return body.find((b) => b.text)?.text ?? record.reference?.flavor?.[0] ?? "";
 }
+function abilityAttributes(record) {
+  const sourceId = workshopRollSourceId(record?.id);
+  return workshopRollAttributes(sourceId === record?.id ? record : get(sourceId), host?.getAbilityAttribute?.(record));
+}
 function attributeFor(record) {
-  // The universal opportunity is one Basic Melee, using that action's printed roll.
-  if (record?.id === "ability-opportunity-attack")
-    return attributeFor(get("ability-basic-melee"));
-  return workshopRollAttributes(record)[0] ?? null;
+  return abilityAttributes(record)[0] ?? null;
 }
 function favorite(kind, id) {
   const active = draft.play?.favorites?.[kind]?.includes(id) ?? false;
@@ -699,6 +702,8 @@ function inlineRules(record) {
   const instrument = preview.state.instruments?.find(entry=>entry.abilityId === record.id)?.instrument;
   if (instrument) body = `<p><strong>Your instrument:</strong> ${esc(instrument)}</p>` + body;
   if(record.id === "ability-message-by-heart" && preview.state.abilities.includes(record.id)) body = `<label>Memorized message<textarea id="memorized-message" aria-label="Memorized message" maxlength="5000">${esc(draft.play?.memorizedMessage ?? "")}</textarea></label><p>Up to 50 words. Rehearse a replacement for one minute.</p>${button("Save message", "save-message", "", "small")}` + body;
+  const override = host?.getAbilityAttribute?.(record);
+  if (override) body = `<p><strong>Your roll:</strong> ${title(override)}</p>` + body;
   return body + learnedImprovements(record.id);
 }
 function actionUse(entry) {
@@ -714,7 +719,7 @@ function actionUse(entry) {
   if(Number.isInteger(cost) && isForgeModifier(r)) return button(`Use · ${cost} SP`,'use-modifier',`data-id="${esc(r.id)}" aria-label="Use ${esc(r.name)}" ${liveVitals().sp<cost ? 'disabled' : ''}`,'compact-roll');
   if(Number.isInteger(cost)) return button(isRitual(r) || !key ? "Cast" : attributeLabel(key),"cast-spell",`data-id="${esc(r.id)}" aria-label="Cast ${esc(r.name)}" ${liveVitals().sp < minimumCastCost(r) || !host && sustainUnavailable() ? "disabled" : ""}`,"compact-roll");
   if (key) {
-    const keys = workshopRollAttributes(r);
+    const keys = abilityAttributes(r);
     const choice = keys.length > 1;
     const label = choice ? keys.map(attributeLabel).join(" / ") : attributeLabel(key);
     return button(label, "open-roll", `data-id="${esc(r.id)}" aria-label="Roll ${esc(r.name)}"`,
@@ -736,7 +741,11 @@ function actionTable(entries, customize = false) {
   const timing = tab !== "Main";
   return `<div class="table-wrap"><table class="action-table compact-actions"><colgroup><col style="width:${timing ? 34 : 40}%">${timing ? '<col style="width:15%">' : ""}<col style="width:76px"><col><col style="width:28px"></colgroup><thead><tr><th>Ability / spell</th>${timing?"<th>Timing</th>":""}<th>Roll / use</th><th>Outcome / target</th><th><span class="sr-only">Details</span></th></tr></thead><tbody>${entries.filter(e=>e.visible||customize).map(e=>{
     const r=e.record, open=expandedActions.has(r.id), full=compactEffect(r);
-    return `<tr data-action-row="${esc(r.id)}"><td><div class="action-name">${e.sourceItems?.length ? e.sourceItems.map(item=>favorite("items",item.instanceId)).join("") : favorite("abilities",r.id)}${button(esc(e.inventoryInstance ? itemName(e.inventoryInstance) : actionLabel(r)),"inline-action",`data-id="${esc(r.id)}" aria-expanded="${open}"`,"table-link")}${e.sourceItems?.length && !e.inventoryInstance ? `<small class="item-source">${esc(e.sourceItems.map(itemName).join(", "))}</small>` : ""}</div></td>${timing?`<td class="timing-cell">${esc(actionTimingLabel(r))}</td>`:""}<td class="roll-cell">${actionUse(e)}</td><td class="effect-cell"><span class="brief" title="${esc(full)}">${esc(full)}</span></td><td class="expand-cell">${button(open?"⌄":"›","inline-action",`data-id="${esc(r.id)}" aria-label="${open?"Collapse":"Expand"} ${esc(r.name)}" aria-expanded="${open}"`,"expand-action")}</td></tr>${open?`<tr class="inline-action-detail" data-detail-id="${esc(r.id)}"><td colspan="${timing?5:4}">${e.sourceItems?.length ? `<p><strong>Equipment:</strong> ${esc(e.sourceItems.map(item=>itemName(item)).join(", "))}</p>` : ""}${inlineRules(r)}</td></tr>`:""}`;
+    const editAttribute = tab === "Abilities" && !options.readOnly && !host?.readOnly &&
+      host?.canEditAbilityAttribute?.(r.id) && canCustomizeWorkshopRoll(r)
+        ? button("✎", "edit-ability-attribute", `data-id="${esc(r.id)}" aria-label="Edit roll attribute for ${esc(r.name)}" title="Edit roll attribute"`, "quiet small")
+        : "";
+    return `<tr data-action-row="${esc(r.id)}"><td><div class="action-name">${e.sourceItems?.length ? e.sourceItems.map(item=>favorite("items",item.instanceId)).join("") : favorite("abilities",r.id)}${button(esc(e.inventoryInstance ? itemName(e.inventoryInstance) : actionLabel(r)),"inline-action",`data-id="${esc(r.id)}" aria-expanded="${open}"`,"table-link")}${editAttribute}${e.sourceItems?.length && !e.inventoryInstance ? `<small class="item-source">${esc(e.sourceItems.map(itemName).join(", "))}</small>` : ""}</div></td>${timing?`<td class="timing-cell">${esc(actionTimingLabel(r))}</td>`:""}<td class="roll-cell">${actionUse(e)}</td><td class="effect-cell"><span class="brief" title="${esc(full)}">${esc(full)}</span></td><td class="expand-cell">${button(open?"⌄":"›","inline-action",`data-id="${esc(r.id)}" aria-label="${open?"Collapse":"Expand"} ${esc(r.name)}" aria-expanded="${open}"`,"expand-action")}</td></tr>${open?`<tr class="inline-action-detail" data-detail-id="${esc(r.id)}"><td colspan="${timing?5:4}">${e.sourceItems?.length ? `<p><strong>Equipment:</strong> ${esc(e.sourceItems.map(item=>itemName(item)).join(", "))}</p>` : ""}${inlineRules(r)}</td></tr>`:""}`;
   }).join("")}</tbody></table></div>`;
 }
 function favoriteEntries() {
@@ -905,9 +914,14 @@ function inventoryTable(controls = false) {
       ? Object.entries({held: "Hold", worn: "Wear", carried: "Carry"}).map(([prop, labelPrefix]) =>
         `<td><input type="checkbox" data-loadout="${id}" data-prop="${prop}" aria-label="${labelPrefix} ${label}" ${item[prop] ? "checked" : ""} ${item.nativeId ? "disabled" : ""}></td>`).join("")
       : `<td>${esc(sources[item.source] ?? name(item.source))}</td>`;
-    const sale = controls ? provisionSalePrice(item) : 0;
+    const nativeSale = controls && host?.equipmentSale?.(item);
+    const sale = controls && !host?.equipmentSale ? provisionSalePrice(item) : 0;
     const drop = button(dropIcon, "drop-item", `data-instance="${id}" aria-label="Drop ${label}" title="Drop item"`, "icon-button");
-    const sell = sale ? button(`${sale}c`, "sell-provision", `data-instance="${id}" aria-label="Sell ${label} for ${sale} coin${sale === 1 ? "" : "s"}" title="Sell for ${sale} coin${sale === 1 ? "" : "s"}"`, "quiet small inventory-sell") : "";
+    const saleLabel = nativeSale?.coins == null ? `Sell ${label}` :
+      `Sell ${label} for ${nativeSale.coins} coin${nativeSale.coins === 1 ? "" : "s"}`;
+    const sell = nativeSale ? button(nativeSale.coins === null ? "Sell" : `${nativeSale.coins}c`, "sell-native-equipment",
+      `data-instance="${id}" aria-label="${saleLabel}" title="Sell item"`, "quiet small inventory-sell")
+      : sale ? button(`${sale}c`, "sell-provision", `data-instance="${id}" aria-label="Sell ${label} for ${sale} coin${sale === 1 ? "" : "s"}" title="Sell for ${sale} coin${sale === 1 ? "" : "s"}"`, "quiet small inventory-sell") : "";
     const remove = !controls ? purchaseRemoval(item) : host?.canDeleteItem?.(item) === false ? "" : `<span class="inventory-actions">${sell}${drop}</span>`;
     return `<tr data-instance="${id}" ${item.nativeId ? `data-native-item="${esc(item.nativeId)}"` : ""} class="${item.carried ? "" : "stored-item"}"><td>${nameCell}</td><td>${quantity}</td><td>${item.bulk}</td><td>${inventorySupply(item, controls && !item.nativeId, true)}</td>${loadout}<td>${remove}</td></tr>`;
   });
@@ -1781,15 +1795,16 @@ function deathMarks(v) {
 function openSheetRoll({ key, id, death = false, defense = false, cast = false, finishRitual = false, payment = "normal" }) {
   const record = get(id),
     attribute = death ? "fortitude" : (key ?? attributeFor(record));
+  const attributeOverride = host?.getAbilityAttribute?.(record);
   if (!ATTRIBUTES.includes(attribute))
     throw new Error("Choose an attribute for this roll.");
-  validateWorkshopAbilityUse(record, preview.inventory.items, attribute);
+  validateWorkshopAbilityUse(record, preview.inventory.items, attribute, attributeOverride);
   const ranged = !host && record && abilityRollConfiguration({ name: record.name }, record, catalogs.forge).ranged;
   const weapons = ranged ? preview.inventory.items.filter(item => item.catalogId === ORDINARY_RANGED_WEAPON && item.carried && item.quantity > 0)
     .sort((left, right) => Number(right.held) - Number(left.held)) : [];
-  const restricted = restrictedWorkshopRollAttributes(record);
-  const availableAttributes = death ? ["fortitude"] : id === wildHarvestId ? ["knowledge"] : restricted.length ? restricted : ATTRIBUTES;
-  activeRoll = { death, id, defense, cast, finishRitual, payment, ranged };
+  const restricted = restrictedWorkshopRollAttributes(record, attributeOverride);
+  const availableAttributes = death ? ["fortitude"] : restricted.length ? restricted : id === wildHarvestId ? ["knowledge"] : ATTRIBUTES;
+  activeRoll = { death, id, defense, cast, finishRitual, payment, ranged, attributeOverride };
   const paymentCost = castOptions(record).find(option => option.id === payment)?.cost;
   const v = liveVitals();
   const conditions = [...preview.play.conditions];
@@ -1825,7 +1840,7 @@ function openSheetRoll({ key, id, death = false, defense = false, cast = false, 
   bindRollSetup($("#reference .reference-body"), {
     getAttributeValue: () => preview.attributes[$("#sheet-roll-attribute").value],
   });
-  if (cast || finishRitual) $("#sheet-roll-attribute").disabled = true;
+  if (cast || finishRitual || attributeOverride) $("#sheet-roll-attribute").disabled = true;
   const equipmentNames=rollItemNames(id);if(equipmentNames.length) $("#reference-title").textContent += ` · ${equipmentNames.join(", ")}`;
   if (defense && v.max > 0 && v.hp === 0 && !v.dead) {
     // Stable heroes at 0 HP retain the same defense Banes as unconscious heroes.
@@ -1889,7 +1904,7 @@ async function rollSheetDice() {
 
 async function resolveSheetRoll() {
   const key = $("#sheet-roll-attribute").value;
-  validateWorkshopAbilityUse(get(activeRoll.id), preview.inventory.items, key);
+  validateWorkshopAbilityUse(get(activeRoll.id), preview.inventory.items, key, activeRoll.attributeOverride);
   const weapon = activeRoll.ranged && preview.inventory.items.find(item => item.instanceId === $("#sheet-ranged-weapon").value);
   const ammo = weapon && preview.inventory.items.find(item => item.instanceId === weapon.ammunitionInstanceId && compatibleAmmunition(weapon, item));
   if (activeRoll.ranged && (!ammo || tracksSupply(ammo) && !ammo.inventoryDie))
@@ -1998,7 +2013,7 @@ async function debtReroll() {
   if (!activeRoll?.last || activeRoll.death)
     throw new Error("Complete a sheet attribute roll before using The Debt Comes Due.");
   const original = activeRoll.last;
-  validateWorkshopAbilityUse(get(activeRoll.id), preview.inventory.items, original.attributeKey);
+  validateWorkshopAbilityUse(get(activeRoll.id), preview.inventory.items, original.attributeKey, activeRoll.attributeOverride);
   $("#sheet-roll-attribute").value = original.attributeKey;
   $("#sheet-roll-attribute").dispatchEvent(new Event("change", { bubbles: true }));
   await host?.beforeUse?.({kind:"debt",willRoll:true});
@@ -2435,7 +2450,7 @@ async function action(target) {
     }
   }
   if (host?.onAction && await host.onAction({action:a,id:target.dataset.id,editing:edit,mode,dataset:{...target.dataset},
-    ...(["lower-supply", "confirm-drop-item"].includes(a) ? { target } : {}),
+    ...(["lower-supply", "confirm-drop-item", "confirm-native-sale"].includes(a) ? { target } : {}),
     state:JSON.parse(writePortableCharacter(draft,catalogs)),preview,record:get(target.dataset.id),
     activeRoll: typeof activeRoll === 'undefined' ? undefined : activeRoll,
     values:Object.fromEntries([...root.querySelectorAll('#reference input,#reference select')].map(node=>[node.id || node.dataset.rollAbility, node.type==='checkbox' ? node.checked : node.value]))})) return;
@@ -2728,6 +2743,13 @@ async function action(target) {
     const item=inventoryTableItems(true).find(item=>item.instanceId===target.dataset.instance);
     if (!item || host?.canDeleteItem?.(item)===false) throw new Error("This item is unavailable to drop.");
     return popup(`Drop ${itemName(item)}?`, `<p>Remove this stack from your inventory?</p><div class="dialog-actions">${button("Cancel", "close-reference")}${button("Drop item", "confirm-drop-item", `data-instance="${esc(item.instanceId)}"`, "primary")}</div>`);
+  }
+  if (a === "sell-native-equipment") {
+    const item=inventoryTableItems(true).find(item=>item.instanceId===target.dataset.instance);
+    const offer=item && host?.equipmentSale?.(item);
+    if(!offer)throw new Error("This item is unavailable to sell.");
+    return popup(`Sell ${itemName(item)}?`,
+      `<p>Record the trader’s offer for ${offer.quantity === 1 ? "this item" : `all ${offer.quantity} items in this stack`}.</p><label>Offer in coins <input id="native-sale-price" type="number" required min="0" step="1" value="${offer.coins ?? ""}"></label><div class="dialog-actions">${button("Cancel", "close-reference")}${button("Sell item", "confirm-native-sale", `data-id="${esc(offer.itemId)}" data-quantity="${offer.quantity}" data-inventory-die="${offer.inventoryDie}"`, "primary")}</div>`);
   }
   if (a === "sell-provision") {
     const item=preview.inventory.items.find(item=>item.instanceId===target.dataset.instance);
