@@ -1,6 +1,6 @@
 # Brunna Hearthward: cleric after the rewrite
 
-Pinned authored source `486f57f4eaf6acd7af39f16d403870dc0e574f6d`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../cleric.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
+Pinned authored source `2b9af553cf9a4aaa3c8e795b57c0163763b85676`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../cleric.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
 
 ## What the rewrite changes
 
@@ -51,11 +51,11 @@ Starting DP is **10 + Guile + Knowledge + Reason**, including negative scores, p
 
 <details><summary>Mend: complete signature component</summary>
 
-**Action:** Main Action · **Attribute:** Reason
+**Action:** Main Action · **Attribute:** Class
 
 **Target / range / shape:** One living ally within 3 squares.
 
-pay 1 SP before rolling. You must have enough SP to pay this cost. Requires a free hand. Make a Reason roll. Weak: restore 3 HP. Standard: restore 6 HP. Strong: restore 9 HP, and the target may stand without spending movement. Reduce the restored amount by the target's Life resistance, to a minimum of 1 if HP is missing, and never exceed maximum HP. A Dying or stabilized living creature can receive this healing. This does not erase scars or restore the dead.
+pay 1 SP before rolling. You must have enough SP to pay this cost. Requires a free hand. Roll your class’s casting attribute. Weak: restore 3 HP. Standard: restore 6 HP. Strong: restore 9 HP, and the target may stand without spending movement. Reduce the restored amount by the target's Life resistance, to a minimum of 1 if HP is missing, and never exceed maximum HP. A Dying or stabilized living creature can receive this healing. This does not erase scars or restore the dead.
 
 **Duration:** Immediate.
 
@@ -98,11 +98,11 @@ This is a spell; use its printed 1 SP cost and ordinary casting rules.
 
 <details><summary>Mend: complete signature component</summary>
 
-**Action:** Main Action · **Attribute:** Reason
+**Action:** Main Action · **Attribute:** Class
 
 **Target / range / shape:** One living ally within 3 squares.
 
-pay 1 SP before rolling. You must have enough SP to pay this cost. Requires a free hand. Make a Reason roll. Weak: restore 3 HP. Standard: restore 6 HP. Strong: restore 9 HP, and the target may stand without spending movement. Reduce the restored amount by the target's Life resistance, to a minimum of 1 if HP is missing, and never exceed maximum HP. A Dying or stabilized living creature can receive this healing. This does not erase scars or restore the dead.
+pay 1 SP before rolling. You must have enough SP to pay this cost. Requires a free hand. Roll your class’s casting attribute. Weak: restore 3 HP. Standard: restore 6 HP. Strong: restore 9 HP, and the target may stand without spending movement. Reduce the restored amount by the target's Life resistance, to a minimum of 1 if HP is missing, and never exceed maximum HP. A Dying or stabilized living creature can receive this healing. This does not erase scars or restore the dead.
 
 **Duration:** Immediate.
 
@@ -114,11 +114,11 @@ This is a spell; use its printed 1 SP cost and ordinary casting rules.
 
 <details><summary>Triage: complete signature component</summary>
 
-**Action:** Main Action · **Attribute:** Reason
+**Action:** Main Action · **Attribute:** Class
 
 **Target / range / shape:** One or two living allies within 3 squares.
 
-Pay 2 SP before rolling. You must have enough SP to pay this cost. Requires a free hand. Make a Reason roll. Choose one or two allies. One ally: restore 6 HP on Weak, 11 HP on Standard, 16 HP on Strong. Two allies: restore 4 HP each on Weak, 7 HP each on Standard, 10 HP each on Strong. Reduce the restored amount by each target's Life resistance, to a minimum of 1 if HP is missing, and never exceed maximum HP. A Dying or stabilized living creature can receive this healing. This does not erase scars or restore the dead.
+Pay 2 SP before rolling. You must have enough SP to pay this cost. Requires a free hand. Roll your class’s casting attribute. Choose one or two allies. One ally: restore 6 HP on Weak, 11 HP on Standard, 16 HP on Strong. Two allies: restore 4 HP each on Weak, 7 HP each on Standard, 10 HP each on Strong. Reduce the restored amount by each target's Life resistance, to a minimum of 1 if HP is missing, and never exceed maximum HP. A Dying or stabilized living creature can receive this healing. This does not erase scars or restore the dead.
 
 **Duration:** Immediate.
 
@@ -173,11 +173,11 @@ This is a spell.
 
 <details><summary>Mend: complete signature component</summary>
 
-**Action:** Main Action · **Attribute:** Reason
+**Action:** Main Action · **Attribute:** Class
 
 **Target / range / shape:** One living ally within 3 squares.
 
-pay 1 SP before rolling. You must have enough SP to pay this cost. Requires a free hand. Make a Reason roll. Weak: restore 3 HP. Standard: restore 6 HP. Strong: restore 9 HP, and the target may stand without spending movement. Reduce the restored amount by the target's Life resistance, to a minimum of 1 if HP is missing, and never exceed maximum HP. A Dying or stabilized living creature can receive this healing. This does not erase scars or restore the dead.
+pay 1 SP before rolling. You must have enough SP to pay this cost. Requires a free hand. Roll your class’s casting attribute. Weak: restore 3 HP. Standard: restore 6 HP. Strong: restore 9 HP, and the target may stand without spending movement. Reduce the restored amount by the target's Life resistance, to a minimum of 1 if HP is missing, and never exceed maximum HP. A Dying or stabilized living creature can receive this healing. This does not erase scars or restore the dead.
 
 **Duration:** Immediate.
 
@@ -189,11 +189,11 @@ This is a spell; use its printed 1 SP cost and ordinary casting rules.
 
 <details><summary>Triage: complete signature component</summary>
 
-**Action:** Main Action · **Attribute:** Reason
+**Action:** Main Action · **Attribute:** Class
 
 **Target / range / shape:** One or two living allies within 3 squares.
 
-Pay 2 SP before rolling. You must have enough SP to pay this cost. Requires a free hand. Make a Reason roll. Choose one or two allies. One ally: restore 6 HP on Weak, 11 HP on Standard, 16 HP on Strong. Two allies: restore 4 HP each on Weak, 7 HP each on Standard, 10 HP each on Strong. Reduce the restored amount by each target's Life resistance, to a minimum of 1 if HP is missing, and never exceed maximum HP. A Dying or stabilized living creature can receive this healing. This does not erase scars or restore the dead.
+Pay 2 SP before rolling. You must have enough SP to pay this cost. Requires a free hand. Roll your class’s casting attribute. Choose one or two allies. One ally: restore 6 HP on Weak, 11 HP on Standard, 16 HP on Strong. Two allies: restore 4 HP each on Weak, 7 HP each on Standard, 10 HP each on Strong. Reduce the restored amount by each target's Life resistance, to a minimum of 1 if HP is missing, and never exceed maximum HP. A Dying or stabilized living creature can receive this healing. This does not erase scars or restore the dead.
 
 **Duration:** Immediate.
 

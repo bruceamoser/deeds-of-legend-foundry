@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Target / range / shape</dt><dd>Self.</dd></div><div><dt>Magic</dt><dd>Spell</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Duration</dt><dd>Fixed 10 minutes; no Sustain.</dd></div><div><dt>Equipment / acquisition</dt><dd>A free hand to cast before transforming.</dd></div></dl><p>Once per scene, assume the appearance of a familiar Small or Medium ground beast for 10 minutes. Keep your HP, attributes, conditions, resources and Speed. Your equipment melds and provides no effects or resistance. Your form has physical resistance 1 and a natural attack: Main Action, Brawn, adjacent target, 2/3/5 physical damage on Weak/Standard/Strong. You speak only animal calls and cannot cast spells or use equipment. Return to your own shape with a Maneuver or automatically at 0 HP. Changing form never restores HP.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Automatic</dd></div><div><dt>Target / range / shape</dt><dd>Self.</dd></div><div><dt>Magic</dt><dd>Spell</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Duration</dt><dd>Fixed 10 minutes; no Sustain.</dd></div><div><dt>Equipment / acquisition</dt><dd>A free hand to cast before transforming.</dd></div></dl><p>Once per scene, assume the appearance of a familiar Small or Medium ground beast for 10 minutes. Keep your HP, attributes, conditions, resources and Speed. Your equipment melds and provides no effects or resistance. Your form has physical resistance 1 and a natural attack: Main Action, Brawn, adjacent target, 2/3/5 physical damage on Weak/Standard/Strong. You speak only animal calls and cannot cast spells or use equipment. Return to your own shape with a Maneuver or automatically at 0 HP. Changing form never restores HP.</p>",
     "activity": {
       "action": "main",
       "rollMode": "none",
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "ability-signature-shepherd-borrowed-shape",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",

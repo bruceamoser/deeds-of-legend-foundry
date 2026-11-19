@@ -5,10 +5,10 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div><div><dt>Defense</dt><dd>Agility</dd></div><div><dt>Range</dt><dd>One visible point within 10 squares; 2-square-radius burst</dd></div><div><dt>Duration</dt><dd>Sustained, up to 3 rounds</dd></div></dl><p>Place a glowing bead at the point. On casting, or after a later upkeep, you may detonate it. Roll on detonation for 4/6/9 fire damage, adding 1 damage per completed upkeep, maximum +2. Ending sustain or touching the bead detonates it immediately. Every creature in the burst is affected once.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>Class casting attribute</dd></div><div><dt>Defense</dt><dd>Agility</dd></div><div><dt>Range</dt><dd>One visible point within 12 squares; 2-square-radius burst</dd></div><div><dt>Duration</dt><dd>Sustained, up to 3 rounds</dd></div></dl><p>Place a glowing bead at the point. On casting, or after a later upkeep, you may detonate it. Roll on detonation for 4/6/9 fire damage, adding 1 damage per completed upkeep, maximum +2. Ending sustain or touching the bead detonates it immediately. Every creature in the burst is affected once.</p>",
     "activity": {
       "action": "main",
-      "rollMode": "attribute",
+      "rollMode": "delegated",
       "attribute": "knowledge",
       "defenseAttribute": "agility"
     },
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:flame:a2",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",
@@ -30,9 +30,9 @@
         "cost": 4,
         "action": "Main Action",
         "sp": 5,
-        "range": "One visible point within 10 squares; 2-square-radius burst",
+        "range": "One visible point within 12 squares; 2-square-radius burst",
         "duration": "Sustained, up to 3 rounds",
-        "attribute": "Knowledge",
+        "attribute": "Class",
         "defenseAttribute": "Agility",
         "effect": "Place a glowing bead at the point. On casting, or after a later upkeep, you may detonate it. Roll on detonation for 4/6/9 fire damage, adding 1 damage per completed upkeep, maximum +2. Ending sustain or touching the bead detonates it immediately. Every creature in the burst is affected once.",
         "improves": null,
@@ -50,12 +50,12 @@
         "sp": 5,
         "action": "Main Action",
         "actionText": "Main Action",
-        "attribute": "Knowledge",
+        "attribute": "Class",
         "defense": "Agility",
         "defenseAttribute": "Agility",
         "holdAttribute": null,
         "escapeAttribute": null,
-        "target": "One visible point within 10 squares; 2-square-radius burst",
+        "target": "One visible point within 12 squares; 2-square-radius burst",
         "duration": "Sustained, up to 3 rounds",
         "effect": "Place a glowing bead at the point. On casting, or after a later upkeep, you may detonate it. Roll on detonation for 4/6/9 fire damage, adding 1 damage per completed upkeep, maximum +2. Ending sustain or touching the bead detonates it immediately. Every creature in the burst is affected once."
       }

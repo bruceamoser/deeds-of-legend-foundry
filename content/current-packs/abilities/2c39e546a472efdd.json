@@ -5,11 +5,11 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>Guile</dd></div><div><dt>Defense</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>Up to six creatures within 8 squares</dd></div><div><dt>Duration</dt><dd>Instant; conditions decay normally</dd></div></dl><p>Surround the targets with personalized waking terrors. Roll once; each takes 3/5/7 mental damage and gains Frightened 2, with the visions as source until your next turn ends.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>Class casting attribute</dd></div><div><dt>Defense</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>Up to six creatures within 12 squares</dd></div><div><dt>Duration</dt><dd>Instant; conditions decay normally</dd></div></dl><p>Surround the targets with personalized waking terrors. Roll once; each takes 3/5/7 mental damage and gains Frightened 2, with the visions as source until your next turn ends.</p>",
     "activity": {
       "action": "main",
-      "rollMode": "attribute",
-      "attribute": "guile",
+      "rollMode": "delegated",
+      "attribute": "knowledge",
       "defenseAttribute": "reason"
     },
     "outcomes": {
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:dreams:a2",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",
@@ -30,9 +30,9 @@
         "cost": 4,
         "action": "Main Action",
         "sp": 5,
-        "range": "Up to six creatures within 8 squares",
+        "range": "Up to six creatures within 12 squares",
         "duration": "Instant; conditions decay normally",
-        "attribute": "Guile",
+        "attribute": "Class",
         "defenseAttribute": "Reason",
         "effect": "Surround the targets with personalized waking terrors. Roll once; each takes 3/5/7 mental damage and gains Frightened 2, with the visions as source until your next turn ends.",
         "improves": null,
@@ -50,12 +50,12 @@
         "sp": 5,
         "action": "Main Action",
         "actionText": "Main Action",
-        "attribute": "Guile",
+        "attribute": "Class",
         "defense": "Reason",
         "defenseAttribute": "Reason",
         "holdAttribute": null,
         "escapeAttribute": null,
-        "target": "Up to six creatures within 8 squares",
+        "target": "Up to six creatures within 12 squares",
         "duration": "Instant; conditions decay normally",
         "effect": "Surround the targets with personalized waking terrors. Roll once; each takes 3/5/7 mental damage and gains Frightened 2, with the visions as source until your next turn ends."
       }

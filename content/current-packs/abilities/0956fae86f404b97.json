@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>You and each ally within 5 squares; each enemy within 5 squares.</dd></div><div><dt>Magic</dt><dd>Spell</dd></div><div><dt>SP</dt><dd>0</dd></div><div><dt>Duration</dt><dd>Until the end of your next turn.</dd></div><div><dt>Equipment / acquisition</dt><dd>A free hand for casting.</dd></div></dl><p>Once per scene, spectral figures fill the area. You and each ally gain 1 Boon to your next defense and may move 1 square without provoking. Each enemy gains 1 Bane to its next attack.</p><p>This is a spell costing 0 SP. When the same attack would suffer both this spell’s attack Bane and its recipient’s defense Boon, apply only one of them.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Automatic</dd></div><div><dt>Target / range / shape</dt><dd>You and each ally within 5 squares; each enemy within 5 squares.</dd></div><div><dt>Magic</dt><dd>Spell</dd></div><div><dt>SP</dt><dd>0</dd></div><div><dt>Duration</dt><dd>Until the end of your next turn.</dd></div><div><dt>Equipment / acquisition</dt><dd>A free hand for casting.</dd></div></dl><p>Once per scene, spectral figures fill the area. You and each ally gain 1 Boon to your next defense and may move 1 square without provoking. Each enemy gains 1 Bane to its next attack.</p><p>This is a spell costing 0 SP. When the same attack would suffer both this spell’s attack Bane and its recipient’s defense Boon, apply only one of them.</p>",
     "activity": {
       "action": "main",
       "rollMode": "none",
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "ability-signature-odd-an-unexpected-exit",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",

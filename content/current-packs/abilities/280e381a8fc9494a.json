@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Self.</dd></div><div><dt>Magic</dt><dd>Spell</dd></div><div><dt>SP</dt><dd>0</dd></div><div><dt>Duration</dt><dd>2 hours.</dd></div><div><dt>Equipment / acquisition</dt><dd>A free hand for casting.</dd></div></dl><p>For 2 hours, you are wrapped in magical heavy armor. You gain physical resistance 3, fire resistance 3 and cold resistance 3. Use the highest matching resistance for each damage type, to the normal cap of 3. The armor is weightless and needs no armor training.</p><p>This is a spell costing 0 SP, usable once between safe overnight rests. Its duration is fixed and requires no Sustain. Cancellation ends the armor; the cancellation progress target is 2.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Automatic</dd></div><div><dt>Target / range / shape</dt><dd>Self.</dd></div><div><dt>Magic</dt><dd>Spell</dd></div><div><dt>SP</dt><dd>0</dd></div><div><dt>Duration</dt><dd>2 hours.</dd></div><div><dt>Equipment / acquisition</dt><dd>A free hand for casting.</dd></div></dl><p>For 2 hours, you are wrapped in magical heavy armor. You gain physical resistance 3, fire resistance 3 and cold resistance 3. Use the highest matching resistance for each damage type, to the normal cap of 3. The armor is weightless and needs no armor training.</p><p>This is a spell costing 0 SP, usable once between safe overnight rests. Its duration is fixed and requires no Sustain. Cancellation ends the armor; the cancellation progress target is 2.</p>",
     "activity": {
       "action": "main",
       "rollMode": "none",
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "ability-signature-arcanist-fold-the-distance",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",

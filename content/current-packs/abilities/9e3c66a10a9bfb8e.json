@@ -5,10 +5,10 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div><div><dt>Range</dt><dd>Every creature in a 2-square-radius burst within 10 squares</dd></div><div><dt>Duration</dt><dd>Instant; frozen water lasts 10 minutes</dd></div></dl><p>Burst a globe of intense cold for 4/7/10 cold damage. Exposed surface water in the area freezes into a walkable crust; a creature can break one adjacent ice square with a Main Action and a suitable tool.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>Class casting attribute</dd></div><div><dt>Range</dt><dd>Every creature in a 2-square-radius burst within 12 squares</dd></div><div><dt>Duration</dt><dd>Instant; frozen water lasts 10 minutes</dd></div></dl><p>Burst a globe of intense cold for 4/7/10 cold damage. Exposed surface water in the area freezes into a walkable crust; a creature can break one adjacent ice square with a Main Action and a suitable tool.</p>",
     "activity": {
       "action": "main",
-      "rollMode": "attribute",
+      "rollMode": "delegated",
       "attribute": "knowledge",
       "defenseAttribute": "agility"
     },
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:water:a2",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",
@@ -30,9 +30,9 @@
         "cost": 4,
         "action": "Main Action",
         "sp": 5,
-        "range": "Every creature in a 2-square-radius burst within 10 squares",
+        "range": "Every creature in a 2-square-radius burst within 12 squares",
         "duration": "Instant; frozen water lasts 10 minutes",
-        "attribute": "Knowledge",
+        "attribute": "Class",
         "defenseAttribute": null,
         "effect": "Burst a globe of intense cold for 4/7/10 cold damage. Exposed surface water in the area freezes into a walkable crust; a creature can break one adjacent ice square with a Main Action and a suitable tool.",
         "improves": null,
@@ -50,12 +50,12 @@
         "sp": 5,
         "action": "Main Action",
         "actionText": "Main Action",
-        "attribute": "Knowledge",
+        "attribute": "Class",
         "defense": null,
         "defenseAttribute": null,
         "holdAttribute": null,
         "escapeAttribute": null,
-        "target": "Every creature in a 2-square-radius burst within 10 squares",
+        "target": "Every creature in a 2-square-radius burst within 12 squares",
         "duration": "Instant; frozen water lasts 10 minutes",
         "effect": "Burst a globe of intense cold for 4/7/10 cold damage. Exposed surface water in the area freezes into a walkable crust; a creature can break one adjacent ice square with a Main Action and a suitable tool."
       }

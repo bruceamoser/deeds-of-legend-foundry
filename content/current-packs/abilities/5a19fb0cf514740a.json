@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Target / range / shape</dt><dd>Self.</dd></div><div><dt>Magic</dt><dd>Spell</dd></div><div><dt>SP</dt><dd>0</dd></div><div><dt>Duration</dt><dd>Until scene end.</dd></div><div><dt>Equipment / acquisition</dt><dd>A free hand.</dd></div></dl><p>Once between safe overnight rests, invite a spirit’s expertise for the scene. Choose one named tool practice or one specific noncombat objective approach, such as interpreting old boundary stones. Gain 3 Boons to rolls using that expertise. The spirit lends mannerisms and speech while you remain in control. Use your own equipment and learned capabilities; the expertise is not weapon training or a spell repertoire.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Automatic</dd></div><div><dt>Target / range / shape</dt><dd>Self.</dd></div><div><dt>Magic</dt><dd>Spell</dd></div><div><dt>SP</dt><dd>0</dd></div><div><dt>Duration</dt><dd>Until scene end.</dd></div><div><dt>Equipment / acquisition</dt><dd>A free hand.</dd></div></dl><p>Once between safe overnight rests, invite a spirit’s expertise for the scene. Choose one named tool practice or one specific noncombat objective approach, such as interpreting old boundary stones. Gain 3 Boons to rolls using that expertise. The spirit lends mannerisms and speech while you remain in control. Use your own equipment and learned capabilities; the expertise is not weapon training or a spell repertoire.</p>",
     "activity": {
       "action": "main",
       "rollMode": "none",
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "ability-signature-odd-strange-but-effective",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",

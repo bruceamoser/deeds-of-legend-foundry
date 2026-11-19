@@ -1,4 +1,4 @@
-import {signatureSpellCost,isForgeSpell,isForgeRitual} from "./forge-casting.mjs";
+import {signatureSpellCost,isForgeSpell,isForgeRitual,forgeSpellCastingAttribute,forgeSpellCastingLabel,forgeSpellHasCastingRoll} from "./forge-casting.mjs";
 import {forgeSignatureRecord} from "./forge-signatures.mjs";
 import { escapeItemHtml } from "./item-construction.mjs";
 import { actionTiming, actionTimingLabel } from "./workshop-character.mjs";
@@ -7,16 +7,16 @@ import { renderMarkdown } from "./authored-markdown.mjs";
 const ID="heroes-of-legend";
 const attr=(value,fallback)=>["brawn","fortitude","agility","guile","knowledge","reason"].includes(value?.toLowerCase())?value.toLowerCase():fallback;
 const inline=text=>escapeItemHtml(String(text??'')).replace(/\[([^\]]+)\]\([^)]*\)/g,'$1').replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>').replace(/\*([^*]+)\*/g,'<em>$1</em>');
-function signatureReferenceHTML(record,sp) {
+function signatureReferenceHTML(record,sp,castingLabel) {
   const rules=record.reference.rules;
-  const details=[...(rules.details??[])];
+  const details=(rules.details??[]).map(detail=>castingLabel&&detail.label==='Attribute'?{...detail,value:castingLabel}:detail);
   if(Number.isSafeInteger(sp)&&!details.some(detail=>detail.label==='SP'))details.push({label:'SP',value:String(sp)});
   const body=(rules.body??[]).map(block=>(block.text ? renderMarkdown(block.text) : '')
     +(block.outcomes?`<table class="hol-reference-outcomes">${block.outcomes.map(outcome=>`<tr><th>${inline(outcome.label)}</th><td>${inline(outcome.text)}</td></tr>`).join('')}</table>`:'')
     +(block.items?`<ul>${block.items.map(item=>`<li>${inline(item)}</li>`).join('')}</ul>`:'')).join('');
   return `<dl class="hol-reference-details">${details.map(detail=>`<div><dt>${inline(detail.label)}</dt><dd>${inline(detail.value)}</dd></div>`).join('')}</dl>${body}${(rules.notes??[]).map(note=>`<p>${inline(typeof note==='string'?note:note.text)}</p>`).join('')}`;
 }
-export function currentWorkshopItemSource(record,catalogs,{spell=false}={}) {
+export function currentWorkshopItemSource(record,catalogs,{spell=false,casterClass}={}) {
   record=forgeSignatureRecord(catalogs.forge,record);
   const node=catalogs.forge.nodes.find(node=>node.id===record.id || (spell && node.spellIds?.includes(record.id)));
   const detail=record.reference?.rules?.details??[];
@@ -25,27 +25,36 @@ export function currentWorkshopItemSource(record,catalogs,{spell=false}={}) {
   const attribute=record.attribute??detail.find(entry=>entry.label==="Attribute")?.value??effect.match(/^(?:Main Action|Maneuver|Reaction) · (Brawn|Fortitude|Agility|Guile|Knowledge|Reason)/i)?.[1];
   const ownSp=record.signatureComponent ? signatureSpellCost({effect}) : record.sp;
   const isSpell=spell || Boolean(record.signatureComponent && isForgeSpell(record));
-  const attributeKey=record.attributeChoices?.[0] ?? attr(attribute,null);
+  const castingLabel=isSpell ? forgeSpellCastingLabel(record,casterClass) : null;
+  const castingKey=isSpell ? forgeSpellCastingAttribute(record,casterClass) : null;
+  const attributeKey=castingKey ?? record.attributeChoices?.[0] ?? attr(attribute,null);
   const action=isForgeRitual(record)?"ritual":({
     "Main Action":"main",Maneuver:"maneuver",Reaction:"reaction",Movement:"movement",Passive:"passive",
   })[actionTiming(record)[0]];
   const metadata={kind:isSpell?"spell":node?.kind??record.kind,nodeId:record.id,level:node?.level??record.minLevel??record.level??1,cost:node?.dp??record.dp??0,action:printedAction,sp:record.signatureComponent?(Number.isSafeInteger(ownSp)?ownSp:null):record.sp??null,range:record.target??record.range??null,duration:record.duration??null,attribute:attribute??null,defenseAttribute:record.defenseAttribute??null,effect,improves:node?.improves??null,requires:node?.requires??[],bookId:record.bookId??null,...(record.signatureComponent?{magic:record.magic??null}:{})};
   if (record.attributeChoices) metadata.attributeChoices = record.attributeChoices;
   if (record.weaponRequirement) metadata.weaponRequirement = record.weaponRequirement;
-  const fields={Action:printedAction,...(isSpell || (record.signatureComponent && Number.isSafeInteger(ownSp))?{SP:String(ownSp??0)}:{}),Attribute:attribute,Defense:record.defenseAttribute,Range:metadata.range,Duration:metadata.duration,...(record.weaponRequirement?{Equipment:`Wield a ${workshopWeaponLabel(record.weaponRequirement)}.`}:{}),...(record.holdAttribute?{"Hold attribute":record.holdAttribute}:{}),...(record.escapeAttribute?{"Escape attribute":record.escapeAttribute}:{})};
-  const html=record.signatureComponent ? signatureReferenceHTML(record,ownSp) : `<dl class="hol-reference-details">${Object.entries(fields).filter(([,value])=>value).map(([key,value])=>`<div><dt>${escapeItemHtml(key)}</dt><dd>${escapeItemHtml(String(value))}</dd></div>`).join("")}</dl>${renderMarkdown(effect)}`;
+  const fields={Action:printedAction,...(isSpell || (record.signatureComponent && Number.isSafeInteger(ownSp))?{SP:String(ownSp??0)}:{}),Attribute:castingLabel??attribute,Defense:record.defenseAttribute,Range:metadata.range,Duration:metadata.duration,...(record.weaponRequirement?{Equipment:`Wield a ${workshopWeaponLabel(record.weaponRequirement)}.`}:{}),...(record.holdAttribute?{"Hold attribute":record.holdAttribute}:{}),...(record.escapeAttribute?{"Escape attribute":record.escapeAttribute}:{})};
+  const html=record.signatureComponent ? signatureReferenceHTML(record,ownSp,castingLabel) : `<dl class="hol-reference-details">${Object.entries(fields).filter(([,value])=>value).map(([key,value])=>`<div><dt>${escapeItemHtml(key)}</dt><dd>${escapeItemHtml(String(value))}</dd></div>`).join("")}</dl>${renderMarkdown(effect)}`;
+  const rollMode=isSpell
+    ? !forgeSpellHasCastingRoll(record) ? "none" : attributeKey ? "attribute" : "delegated"
+    : action==="passive"||(record.signatureComponent?!attributeKey:!attribute)?"none":"attribute";
   const damage=effect.match(/(?:deal(?:s)?|for) (\d+)\/(\d+)\/(\d+) ([a-z-]+) damage/i);
-  return {name:record.name,type:"ability",system:{schemaVersion:1,description:html,activity:{action,rollMode:action==="passive"||(record.signatureComponent?!attributeKey:!attribute)?"none":"attribute",attribute:attributeKey??"knowledge",defenseAttribute:attr(record.defenseAttribute,"agility")},outcomes:{weak:damage?`${damage[1]} ${damage[4]} damage`:"",standard:damage?`${damage[2]} ${damage[4]} damage`:"",strong:damage?`${damage[3]} ${damage[4]} damage`:""}},flags:{[ID]:{catalogId:record.id,sourceCommit:catalogs.commit,grantKind:"nativeWorkshop",workshopRecord:metadata,...(isSpell?{spell:structuredClone(record)}:{})}}};
+  return {name:record.name,type:"ability",system:{schemaVersion:1,description:html,activity:{action,rollMode,attribute:attributeKey??"knowledge",defenseAttribute:attr(record.defenseAttribute,"agility")},outcomes:{weak:damage?`${damage[1]} ${damage[4]} damage`:"",standard:damage?`${damage[2]} ${damage[4]} damage`:"",strong:damage?`${damage[3]} ${damage[4]} damage`:""}},flags:{[ID]:{catalogId:record.id,sourceCommit:catalogs.commit,grantKind:"nativeWorkshop",workshopRecord:metadata,...(isSpell?{spell:structuredClone(record)}:{})}}};
 }
 
 /** Present current rules for managed Items that predate the installed catalog. */
 export function currentWorkshopReference(item, catalogs) {
-  if (item.getFlag(ID, "grantKind") !== "nativeWorkshop" || item.getFlag(ID, "sourceCommit") === catalogs.commit)
-    return undefined;
+  if (item.getFlag(ID, "grantKind") !== "nativeWorkshop") return undefined;
   const id = item.getFlag(ID, "catalogId");
   const spell = catalogs.forge?.spells?.find(record => record.id === id);
   const record = spell ?? catalogs.choices.find(choice => choice.id === id && choice.kind === "ability");
-  return record ? currentWorkshopItemSource(record, catalogs, { spell: Boolean(spell) }) : undefined;
+  if (!record) return undefined;
+  const classId = item.actor?.getFlag(ID, "nativeWorkshop")?.portable?.draft?.classId;
+  const casterClass = catalogs.forge?.classes?.find(record => record.id === classId);
+  if (item.getFlag(ID, "sourceCommit") === catalogs.commit && !(casterClass && forgeSpellHasCastingRoll(record)))
+    return undefined;
+  return currentWorkshopItemSource(record, catalogs, { spell: Boolean(spell), casterClass });
 }
 
 export function currentWorkshopLearnedItems(preview,catalogs) {

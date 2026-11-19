@@ -24,7 +24,7 @@ const classAffinities = {
 
 const classAttributes = {
   "class-arcanist": "knowledge",
-  "class-blade": "reason",
+  "class-blade": "knowledge",
   "class-intellect": "knowledge",
   "class-leader": "guile",
   "class-odd": "guile",

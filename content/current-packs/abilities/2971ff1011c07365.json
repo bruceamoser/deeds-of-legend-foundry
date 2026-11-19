@@ -5,10 +5,10 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 hour</dd></div><div><dt>SP</dt><dd>6</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>Self and up to three willing creatures you personally know on the same plane</dd></div><div><dt>Duration</dt><dd>8 hours</dd></div></dl><p>Establish a remote sensory link with each recipient. A linked creature may spend a Main Action to see and hear from one consenting member until its next turn begins, while that member continues using its own senses. During that interval the observer’s own sight and hearing rest at the remote point; touch can still alert it to nearby contact. A member can leave the link at any time. Magical concealment operates at each viewpoint. Keep one Long Sense True link active; casting another ends the first.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 hour</dd></div><div><dt>SP</dt><dd>6</dd></div><div><dt>Attribute</dt><dd>Automatic</dd></div><div><dt>Range</dt><dd>Self and up to three willing creatures you personally know on the same plane</dd></div><div><dt>Duration</dt><dd>8 hours</dd></div></dl><p>Establish a remote sensory link with each recipient. A linked creature may spend a Main Action to see and hear from one consenting member until its next turn begins, while that member continues using its own senses. During that interval the observer’s own sight and hearing rest at the remote point; touch can still alert it to nearby contact. A member can leave the link at any time. Magical concealment operates at each viewpoint. Keep one Long Sense True link active; casting another ends the first.</p>",
     "activity": {
       "action": "ritual",
-      "rollMode": "attribute",
+      "rollMode": "none",
       "attribute": "knowledge",
       "defenseAttribute": "agility"
     },
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:farseeing:a3",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",

@@ -1,6 +1,6 @@
 # Vesper Ashpact: warlock after the rewrite
 
-Pinned authored source `486f57f4eaf6acd7af39f16d403870dc0e574f6d`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../warlock.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
+Pinned authored source `2b9af553cf9a4aaa3c8e795b57c0163763b85676`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../warlock.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
 
 ## What the rewrite changes
 
@@ -52,7 +52,7 @@ Starting DP is **10 + Guile + Knowledge + Reason**, including negative scores, p
 
 <details><summary>The Bargain: complete signature component</summary>
 
-**Action:** Main Action · **Attribute:** Reason
+**Action:** Main Action · **Attribute:** Class
 
 **Target / range / shape:** One visible creature within 8 squares.
 
@@ -96,7 +96,7 @@ Choose a patron or supernatural compact with the DA when learning this signature
 
 <details><summary>The Bargain: complete signature component</summary>
 
-**Action:** Main Action · **Attribute:** Reason
+**Action:** Main Action · **Attribute:** Class
 
 **Target / range / shape:** One visible creature within 8 squares.
 
@@ -112,7 +112,7 @@ Choose a patron or supernatural compact with the DA when learning this signature
 
 <details><summary>Pact’s Claim: complete signature component</summary>
 
-**Action:** Main Action · **Attribute:** Reason
+**Action:** Main Action · **Attribute:** Class
 
 **Target / range / shape:** One visible creature within 8 squares.
 
@@ -170,7 +170,7 @@ This is a spell costing 0 SP. If you also know The Bargain, you may use its once
 
 <details><summary>The Bargain: complete signature component</summary>
 
-**Action:** Main Action · **Attribute:** Reason
+**Action:** Main Action · **Attribute:** Class
 
 **Target / range / shape:** One visible creature within 8 squares.
 
@@ -186,7 +186,7 @@ Choose a patron or supernatural compact with the DA when learning this signature
 
 <details><summary>Pact’s Claim: complete signature component</summary>
 
-**Action:** Main Action · **Attribute:** Reason
+**Action:** Main Action · **Attribute:** Class
 
 **Target / range / shape:** One visible creature within 8 squares.
 

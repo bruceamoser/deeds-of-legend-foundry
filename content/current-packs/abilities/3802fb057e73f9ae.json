@@ -5,11 +5,11 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>0</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Defense</dt><dd>Brawn against a melee weapon; Agility against a ranged weapon</dd></div><div><dt>Range</dt><dd>One adjacent creature with a melee weapon, or one visible creature within 8 squares with a ranged weapon</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Follow a brief vision of the opening to come. Make one weapon attack using Reason and deal 2/3/5 physical damage. Use the weapon&#39;s ordinary hand and ammunition requirements.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>0</dd></div><div><dt>Attribute</dt><dd>Class casting attribute</dd></div><div><dt>Defense</dt><dd>Brawn against a melee weapon; Agility against a ranged weapon</dd></div><div><dt>Range</dt><dd>One adjacent creature with a melee weapon, or one visible creature within 12 squares with a ranged weapon</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Follow a brief vision of the opening to come. Make one weapon attack using Reason and deal 2/3/5 physical damage. Use the weapon&#39;s ordinary hand and ammunition requirements.</p>",
     "activity": {
       "action": "main",
-      "rollMode": "attribute",
-      "attribute": "reason",
+      "rollMode": "delegated",
+      "attribute": "knowledge",
       "defenseAttribute": "agility"
     },
     "outcomes": {
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:portents:1",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",
@@ -30,9 +30,9 @@
         "cost": 1,
         "action": "Main Action",
         "sp": 0,
-        "range": "One adjacent creature with a melee weapon, or one visible creature within 8 squares with a ranged weapon",
+        "range": "One adjacent creature with a melee weapon, or one visible creature within 12 squares with a ranged weapon",
         "duration": "Instant",
-        "attribute": "Reason",
+        "attribute": "Class",
         "defenseAttribute": "Brawn against a melee weapon; Agility against a ranged weapon",
         "effect": "Follow a brief vision of the opening to come. Make one weapon attack using Reason and deal 2/3/5 physical damage. Use the weapon's ordinary hand and ammunition requirements.",
         "improves": null,
@@ -50,12 +50,12 @@
         "sp": 0,
         "action": "Main Action",
         "actionText": "Main Action",
-        "attribute": "Reason",
+        "attribute": "Class",
         "defense": "Brawn against a melee weapon; Agility against a ranged weapon",
         "defenseAttribute": "Brawn against a melee weapon; Agility against a ranged weapon",
         "holdAttribute": null,
         "escapeAttribute": null,
-        "target": "One adjacent creature with a melee weapon, or one visible creature within 8 squares with a ranged weapon",
+        "target": "One adjacent creature with a melee weapon, or one visible creature within 12 squares with a ranged weapon",
         "duration": "Instant",
         "effect": "Follow a brief vision of the opening to come. Make one weapon attack using Reason and deal 2/3/5 physical damage. Use the weapon's ordinary hand and ammunition requirements."
       }

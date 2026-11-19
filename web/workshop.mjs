@@ -19,7 +19,7 @@ import { lowerInventoryDie } from "./rules/inventory.mjs";
 import { missingStartingProvisions, provisionSalePrice } from "./rules/training-equipment.mjs";
 import { abilityRollConfiguration } from "./rules/ability-roll.mjs";
 import { workshopRollOutcome } from "./rules/workshop-outcomes.mjs";
-import { signatureSpellCost, isForgeRitual, isForgeModifier, forgeCastOptions, forgeCastPayment, spellActionLabel } from "./rules/forge-casting.mjs";
+import { signatureSpellCost, isForgeRitual, isForgeModifier, isForgeSpell, forgeCastOptions, forgeCastPayment, spellActionLabel, forgeSpellCastingAttribute, forgeSpellCastingLabel } from "./rules/forge-casting.mjs";
 import { forgeEligibility, refundForgePurchases, removeDisconnectedForgePurchases } from "./rules/forge.mjs";
 import { currentResourceInput } from "./rules/resource-input.mjs";
 import { workshopCatalogs } from "./rules/workshop-forge-catalog.mjs";
@@ -471,7 +471,7 @@ function abilitiesLibrary() {
 function spellProfile(record) {
   return `<dl>${Object.entries({
     Casting: spellActionLabel(record),
-    SP: record.sp, Attribute: record.attribute, "Target / range": record.target,
+    SP: record.sp, Attribute: forgeSpellCastingLabel(record, get(draft.classId)), "Target / range": record.target,
     Duration: record.duration, Trigger: record.trigger, Defense: record.defense,
     "Hold attribute": record.holdAttribute, "Escape attribute": record.escapeAttribute,
   }).filter(([, value]) => value != null && value !== "").map(([label, value]) =>
@@ -485,8 +485,13 @@ function learnedImprovements(id) {
 
 const castCost = signatureSpellCost;
 const isRitual = isForgeRitual;
-const castingAttribute = record => /(?:^|[.!] )No (?:casting )?roll\./i.test(record.effect)
-  ? null : attributeFor(record);
+const castingAttribute = record => forgeSpellCastingAttribute(record, get(draft.classId));
+function signatureRulesMarkup(record) {
+  const effect = isForgeSpell(record)
+    ? record.effect.replace(/(\*\*Attribute:\*\* )[^\n]+/, `$1${forgeSpellCastingLabel(record, get(draft.classId))}`)
+    : record.effect;
+  return markdown(effect);
+}
 async function postPaidUse(id) {
   if (!host?.postUse) return;
   await pendingSave;
@@ -570,7 +575,7 @@ async function castFromSheet(id, optionId = null) {
       await postPaidUse(id);
       if (host?.postUse && !sustainLimit(record)) return;
     }
-    popup(record.name, `${record.page ? spellProfile(record) : markdown(record.effect)}<p>${payment.cost} SP spent. Finish the printed casting time before resolving the effect.</p>${automatic && !sustainLimit(record) ? "" : `<div class="dialog-actions">${button(automatic ? "Complete Ritual" : "Roll when the Ritual ends", "finish-ritual", `data-id="${esc(id)}"`, "primary")}</div>`}`);
+    popup(record.name, `${record.page ? spellProfile(record) : signatureRulesMarkup(record)}<p>${payment.cost} SP spent. Finish the printed casting time before resolving the effect.</p>${automatic && !sustainLimit(record) ? "" : `<div class="dialog-actions">${button(automatic ? "Complete Ritual" : "Roll when the Ritual ends", "finish-ritual", `data-id="${esc(id)}"`, "primary")}</div>`}`);
     return;
   }
   if (!automatic) {
@@ -607,6 +612,10 @@ function brief(record) {
   return body.find((b) => b.text)?.text ?? record.reference?.flavor?.[0] ?? "";
 }
 function abilityAttributes(record) {
+  if (isForgeSpell(record)) {
+    const key = castingAttribute(record);
+    return key ? [key] : [];
+  }
   const sourceId = workshopRollSourceId(record?.id);
   return workshopRollAttributes(sourceId === record?.id ? record : get(sourceId), host?.getAbilityAttribute?.(record));
 }
@@ -695,7 +704,7 @@ function inlineRules(record) {
       return rating ? { ...outcome, text: `${rating} physical damage.` } : outcome;
     }),
   } : block);
-  let body = record.signatureComponent ? markdown(record.effect) : record.page ? spellProfile(record) : record.reference ?
+  let body = record.signatureComponent ? signatureRulesMarkup(record) : record.page ? spellProfile(record) : record.reference ?
     `<dl>${rules.details.map(d=>`<dt>${esc(d.label)}</dt><dd>${ruleInline(d.value)}</dd>`).join("")}</dl>${blocks.map(block=>ruleBlockMarkup(block,{outcomeLayout:"stacked"})).join("")}${(rules.notes??[]).map(n=>`<p><strong>${esc(n.label)}</strong> ${ruleInline(n.text)}</p>`).join("")}` : markdown(record.effect ?? record.referenceMarkdown ?? references.records[record.id]?.markdown ?? "");
   if (record.weaponRequirement)
     body = `<p><strong>Equipment:</strong> Wield a ${workshopWeaponLabel(record.weaponRequirement)}.</p>` + body;
@@ -965,7 +974,7 @@ function creationHeading(label, hint) {
 function startingSpExplanation() {
   if (catalogs.forge.rulesRevision !== 299) return "";
   return `<details class="planned"><summary>How maximum SP is calculated</summary>
-    <p>Maximum SP = 2 × level + ancestry SP + 2 × positive class mental attribute + Spellcraft bonuses + other SP bonuses.</p>
+    <p>Maximum SP = 2 × level + ancestry SP + 2 × positive class casting attribute + Spellcraft bonuses + other SP bonuses.</p>
     <p>Soul Capacity and Mind Capacity are paths in the Spellcraft discipline. The first entry in either path adds 2 to your maximum SP. Add each learned increase once to the same reserve. Later capacity gains leave your current SP as it is.</p>
   </details>`;
 }
@@ -1056,7 +1065,8 @@ function creationClass() {
   return `${creationHeading("Class", "Choose your class, one starting discipline, and one signature ability.")}
     ${originDisciplinesStrip("Already studying")}
     <div class="creation-class-picker">${select("Class", "classId", option("", "Choose a class", !cls) + options)}
-    ${cls ? `<div><p>${creatorModifier(cls.hp)} HP per level · ${creatorModifier(sp)} SP${spKey ? ` from positive ${creatorAttribute(spKey)} × 2` : ""} · ${creatorModifier(cls.coins)} coins</p>
+    ${cls ? `<div><p>${creatorModifier(cls.hp)} HP per level · ${creatorModifier(sp)} SP${spKey ? ` from positive ${title(spKey)} × 2` : ""} · ${creatorModifier(cls.coins)} coins</p>
+      ${spKey ? `<p class="creation-muted">Casting attribute <strong>${title(spKey)}</strong></p>` : ""}
       <p class="creation-muted">${requirements.length ? `Requires ${esc(new Intl.ListFormat("en").format(requirements))} of at least 0.` : "No attribute prerequisites."}
       ${classEligibility(cls, draft.attributes).reasons.map(({ text }) => `<strong>${esc(text)}</strong>`).join(" ")}
       ${button("Class rules", "reference", `data-id="${esc(cls.id)}"`, "table-link")}</p></div>` : ""}</div>
@@ -1803,7 +1813,7 @@ function openSheetRoll({ key, id, death = false, defense = false, cast = false, 
   const weapons = ranged ? preview.inventory.items.filter(item => item.catalogId === ORDINARY_RANGED_WEAPON && item.carried && item.quantity > 0)
     .sort((left, right) => Number(right.held) - Number(left.held)) : [];
   const restricted = restrictedWorkshopRollAttributes(record, attributeOverride);
-  const availableAttributes = death ? ["fortitude"] : restricted.length ? restricted : id === wildHarvestId ? ["knowledge"] : ATTRIBUTES;
+  const availableAttributes = death ? ["fortitude"] : cast || finishRitual ? [attribute] : restricted.length ? restricted : id === wildHarvestId ? ["knowledge"] : ATTRIBUTES;
   activeRoll = { death, id, defense, cast, finishRitual, payment, ranged, attributeOverride };
   const paymentCost = castOptions(record).find(option => option.id === payment)?.cost;
   const v = liveVitals();
@@ -2377,7 +2387,7 @@ function showReference(id) {
   if (!r) throw new Error("This reference is not in the current catalog.");
   let body;
   if (r.page) body = spellProfile(r);
-  else if (r.signatureComponent) body=markdown(r.effect);
+  else if (r.signatureComponent) body=signatureRulesMarkup(r);
   else if (r.reference) {
     const { flavor, rules } = r.reference;
     body =

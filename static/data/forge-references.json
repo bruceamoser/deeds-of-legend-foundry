@@ -1,5 +1,5 @@
 {
-  "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+  "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
   "rulesRevision": 299,
   "records": {
     "item-ammunition-bundle": {
@@ -192,10 +192,10 @@
       }
     },
     "item-ordinary-ranged-weapon": {
-      "markdown": "# Ordinary Ranged Weapon\n\n*You check your weapon with the familiar care that makes the first shot feel right.*\n\n## Rules\n\n- **ID:** item-ordinary-ranged-weapon\n- **Bulk:** 1\n- **Requirements / supply:** No DP; ordinary equipment\n- **Acquisition:** Explicit ability grant, coins, or DA treasure; no automatic extra starting kit.\n\nA ranged implement described by its owner. Attack card supplies mechanics. Uses a separate ammunition bundle where required. Two hands while in use.\n\nNo DP price. Purchase does not grant training or an ability.\n\n[Equipment index](../equipment.md)\n\n**Market price:** 18 coins. Proposal; see [market rules](../market.md).\n",
+      "markdown": "# Ordinary Ranged Weapon\n\n*You check your weapon with the familiar care that makes the first shot feel right.*\n\n## Rules\n\n- **ID:** item-ordinary-ranged-weapon\n- **Bulk:** 1\n- **Requirements / supply:** No DP; ordinary equipment\n- **Acquisition:** Explicit ability grant, coins, or DA treasure; no automatic extra starting kit.\n\nA ranged implement described by its owner. Its normal range is 12 squares. Basic Ranged can reach 18 squares with the usual modifier for distance. Techniques with their own reach use the distance they give. Uses a separate ammunition bundle where required. Two hands while in use.\n\nNo DP price. Purchase does not grant training or an ability.\n\n[Equipment index](../equipment.md)\n\n**Market price:** 18 coins. Proposal; see [market rules](../market.md).\n",
       "source": {
         "path": "design/equipment/ordinary-ranged-weapon.md",
-        "sha256": "9c69356c4e6fcf554f80a24f700311290ae8c5472d009ab64c1c6e1b6822ceb9"
+        "sha256": "9a8eb7005f2f25db1ed90df92777436604e7466f9803ba039921729b623e5671"
       }
     },
     "item-ordinary-shield": {
@@ -2025,7 +2025,7 @@
       "name": "Ordinary Ranged Weapon",
       "source": {
         "path": "design/equipment/ordinary-ranged-weapon.md",
-        "sha256": "9c69356c4e6fcf554f80a24f700311290ae8c5472d009ab64c1c6e1b6822ceb9"
+        "sha256": "9a8eb7005f2f25db1ed90df92777436604e7466f9803ba039921729b623e5671"
       },
       "bulk": 1,
       "price": 18,

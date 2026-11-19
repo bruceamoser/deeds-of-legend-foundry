@@ -5,10 +5,10 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 10 minutes</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One named willing being on another plane; arrival within 3 squares of you</dd></div><div><dt>Duration</dt><dd>1 minute</dd></div></dl><p>Send an invitation naming the destination and purpose. If accepted, open a doorway through which that being and its carried possessions may enter once. The door closes after its arrival or after one minute. The guest acts independently; agree on its service through conversation.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 10 minutes</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>Automatic</dd></div><div><dt>Range</dt><dd>One named willing being on another plane; arrival within 3 squares of you</dd></div><div><dt>Duration</dt><dd>1 minute</dd></div></dl><p>Send an invitation naming the destination and purpose. If accepted, open a doorway through which that being and its carried possessions may enter once. The door closes after its arrival or after one minute. The guest acts independently; agree on its service through conversation.</p>",
     "activity": {
       "action": "ritual",
-      "rollMode": "attribute",
+      "rollMode": "none",
       "attribute": "knowledge",
       "defenseAttribute": "agility"
     },
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:calling:a3",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",

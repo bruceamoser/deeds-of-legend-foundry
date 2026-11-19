@@ -5,11 +5,11 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Defense</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>One creature within 6 squares that perceives your command</dd></div><div><dt>Duration</dt><dd>Until the end of its next turn</dd></div></dl><p>Command one ordinary movement or interaction within the creature&#39;s abilities. It may obey using its own actions or take 4/6/8 mental damage and Dazed 1/1/2. Its player chooses for a hero. The command ends after that choice resolves.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>Class casting attribute</dd></div><div><dt>Defense</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>One creature within 6 squares that perceives your command</dd></div><div><dt>Duration</dt><dd>Until the end of its next turn</dd></div></dl><p>Command one ordinary movement or interaction within the creature&#39;s abilities. It may obey using its own actions or take 4/6/8 mental damage and Dazed 1/1/2. Its player chooses for a hero. The command ends after that choice resolves.</p>",
     "activity": {
       "action": "main",
-      "rollMode": "attribute",
-      "attribute": "reason",
+      "rollMode": "delegated",
+      "attribute": "knowledge",
       "defenseAttribute": "reason"
     },
     "outcomes": {
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:binding:a1",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",
@@ -32,7 +32,7 @@
         "sp": 5,
         "range": "One creature within 6 squares that perceives your command",
         "duration": "Until the end of its next turn",
-        "attribute": "Reason",
+        "attribute": "Class",
         "defenseAttribute": "Reason",
         "effect": "Command one ordinary movement or interaction within the creature's abilities. It may obey using its own actions or take 4/6/8 mental damage and Dazed 1/1/2. Its player chooses for a hero. The command ends after that choice resolves.",
         "improves": null,
@@ -50,7 +50,7 @@
         "sp": 5,
         "action": "Main Action",
         "actionText": "Main Action",
-        "attribute": "Reason",
+        "attribute": "Class",
         "defense": "Reason",
         "defenseAttribute": "Reason",
         "holdAttribute": null,

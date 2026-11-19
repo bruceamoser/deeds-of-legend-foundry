@@ -5,10 +5,10 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 10 minutes</dd></div><div><dt>SP</dt><dd>3</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div><div><dt>Defense</dt><dd>Agility</dd></div><div><dt>Range</dt><dd>One fixed surface within reach; burst within 1 square of it</dd></div><div><dt>Duration</dt><dd>8 hours or until triggered</dd></div></dl><p>Inscribe a visible glyph and define a creature crossing or touching its surface as the trigger. On the first trigger, every creature in the burst takes 3/5/7 force damage, set by your ritual roll. The glyph triggers once. Moving its surface more than 1 square ends it safely.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 10 minutes</dd></div><div><dt>SP</dt><dd>3</dd></div><div><dt>Attribute</dt><dd>Class casting attribute</dd></div><div><dt>Defense</dt><dd>Agility</dd></div><div><dt>Range</dt><dd>One fixed surface within reach; burst within 1 square of it</dd></div><div><dt>Duration</dt><dd>8 hours or until triggered</dd></div></dl><p>Inscribe a visible glyph and define a creature crossing or touching its surface as the trigger. On the first trigger, every creature in the burst takes 3/5/7 force damage, set by your ritual roll. The glyph triggers once. Moving its surface more than 1 square ends it safely.</p>",
     "activity": {
       "action": "ritual",
-      "rollMode": "attribute",
+      "rollMode": "delegated",
       "attribute": "knowledge",
       "defenseAttribute": "agility"
     },
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:seals:6",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",
@@ -32,7 +32,7 @@
         "sp": 3,
         "range": "One fixed surface within reach; burst within 1 square of it",
         "duration": "8 hours or until triggered",
-        "attribute": "Knowledge",
+        "attribute": "Class",
         "defenseAttribute": "Agility",
         "effect": "Inscribe a visible glyph and define a creature crossing or touching its surface as the trigger. On the first trigger, every creature in the burst takes 3/5/7 force damage, set by your ritual roll. The glyph triggers once. Moving its surface more than 1 square ends it safely.",
         "improves": null,
@@ -51,7 +51,7 @@
         "action": "Ritual",
         "actionText": "Ritual · 10 minutes",
         "ritualTime": "10 minutes",
-        "attribute": "Knowledge",
+        "attribute": "Class",
         "defense": "Agility",
         "defenseAttribute": "Agility",
         "holdAttribute": null,

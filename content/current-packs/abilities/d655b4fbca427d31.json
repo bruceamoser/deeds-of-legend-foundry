@@ -5,11 +5,11 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>4</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Defense</dt><dd>Fortitude</dd></div><div><dt>Range</dt><dd>One adjacent living creature</dd></div><div><dt>Duration</dt><dd>10 minutes or until treated</dd></div></dl><p>Inflict Poisoned 1/2/3*. This magical sickness persists at that rating until you end it with a Maneuver, Lesser Restoration treats it, or a successful 10-minute Knowledge treatment reaches 3 progress at 1/2/3 per attempt. It fades after 10 minutes in any case.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>4</dd></div><div><dt>Attribute</dt><dd>Class casting attribute</dd></div><div><dt>Defense</dt><dd>Fortitude</dd></div><div><dt>Range</dt><dd>One adjacent living creature</dd></div><div><dt>Duration</dt><dd>10 minutes or until treated</dd></div></dl><p>Inflict Poisoned 1/2/3*. This magical sickness persists at that rating until you end it with a Maneuver, Lesser Restoration treats it, or a successful 10-minute Knowledge treatment reaches 3 progress at 1/2/3 per attempt. It fades after 10 minutes in any case.</p>",
     "activity": {
       "action": "main",
-      "rollMode": "attribute",
-      "attribute": "reason",
+      "rollMode": "delegated",
+      "attribute": "knowledge",
       "defenseAttribute": "fortitude"
     },
     "outcomes": {
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:decay:8",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",
@@ -32,7 +32,7 @@
         "sp": 4,
         "range": "One adjacent living creature",
         "duration": "10 minutes or until treated",
-        "attribute": "Reason",
+        "attribute": "Class",
         "defenseAttribute": "Fortitude",
         "effect": "Inflict Poisoned 1/2/3*. This magical sickness persists at that rating until you end it with a Maneuver, Lesser Restoration treats it, or a successful 10-minute Knowledge treatment reaches 3 progress at 1/2/3 per attempt. It fades after 10 minutes in any case.",
         "improves": null,
@@ -50,7 +50,7 @@
         "sp": 4,
         "action": "Main Action",
         "actionText": "Main Action",
-        "attribute": "Reason",
+        "attribute": "Class",
         "defense": "Fortitude",
         "defenseAttribute": "Fortitude",
         "holdAttribute": null,

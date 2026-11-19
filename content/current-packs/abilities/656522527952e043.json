@@ -5,11 +5,11 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Target / range / shape</dt><dd>One visible creature within 8 squares.</dd></div><div><dt>Magic</dt><dd>Spell</dd></div><div><dt>SP</dt><dd>0</dd></div><div><dt>Duration</dt><dd>Attack immediate; Slowed uses ordinary decay.</dd></div><div><dt>Equipment / acquisition</dt><dd>A free hand.</dd></div></dl><p>Cast a binding bolt for 2/3/5 force damage on Weak/Standard/Strong. Before rolling, you may choose to bind as well as wound: on Standard, reduce the damage by 1 and apply Slowed 1; on Strong, reduce the damage by 1 and apply Slowed 2. Weak deals its ordinary damage. Apply resistance and attack minimum normally; Slowed decays normally.</p><p>This is a spell costing 0 SP. If you also know The Bargain, you may use its once-per-scene defense-Bane bargain on this bolt; that remains the same limited use.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Class casting attribute</dd></div><div><dt>Target / range / shape</dt><dd>One visible creature within 8 squares.</dd></div><div><dt>Magic</dt><dd>Spell</dd></div><div><dt>SP</dt><dd>0</dd></div><div><dt>Duration</dt><dd>Attack immediate; Slowed uses ordinary decay.</dd></div><div><dt>Equipment / acquisition</dt><dd>A free hand.</dd></div></dl><p>Cast a binding bolt for 2/3/5 force damage on Weak/Standard/Strong. Before rolling, you may choose to bind as well as wound: on Standard, reduce the damage by 1 and apply Slowed 1; on Strong, reduce the damage by 1 and apply Slowed 2. Weak deals its ordinary damage. Apply resistance and attack minimum normally; Slowed decays normally.</p><p>This is a spell costing 0 SP. If you also know The Bargain, you may use its once-per-scene defense-Bane bargain on this bolt; that remains the same limited use.</p>",
     "activity": {
       "action": "main",
-      "rollMode": "attribute",
-      "attribute": "reason",
+      "rollMode": "delegated",
+      "attribute": "knowledge",
       "defenseAttribute": "agility"
     },
     "outcomes": {
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "ability-signature-odd-pacts-claim",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",
@@ -32,9 +32,9 @@
         "sp": 0,
         "range": "One visible creature within 8 squares.",
         "duration": "Attack immediate; Slowed uses ordinary decay.",
-        "attribute": "Reason",
+        "attribute": "Class",
         "defenseAttribute": null,
-        "effect": "**Action:** Main Action · **Attribute:** Reason\n\n**Target / range / shape:** One visible creature within 8 squares.\n\nCast a binding bolt for 2/3/5 force damage on Weak/Standard/Strong. Before rolling, you may choose to bind as well as wound: on Standard, reduce the damage by 1 and apply Slowed 1; on Strong, reduce the damage by 1 and apply Slowed 2. Weak deals its ordinary damage. Apply resistance and attack minimum normally; Slowed decays normally.\n\n**Duration:** Attack immediate; Slowed uses ordinary decay.\n\n**Equipment / acquisition:** A free hand.\n\nThis is a spell costing 0 SP. If you also know The Bargain, you may use its once-per-scene defense-Bane bargain on this bolt; that remains the same limited use.",
+        "effect": "**Action:** Main Action · **Attribute:** Class\n\n**Target / range / shape:** One visible creature within 8 squares.\n\nCast a binding bolt for 2/3/5 force damage on Weak/Standard/Strong. Before rolling, you may choose to bind as well as wound: on Standard, reduce the damage by 1 and apply Slowed 1; on Strong, reduce the damage by 1 and apply Slowed 2. Weak deals its ordinary damage. Apply resistance and attack minimum normally; Slowed decays normally.\n\n**Duration:** Attack immediate; Slowed uses ordinary decay.\n\n**Equipment / acquisition:** A free hand.\n\nThis is a spell costing 0 SP. If you also know The Bargain, you may use its once-per-scene defense-Bane bargain on this bolt; that remains the same limited use.",
         "improves": null,
         "requires": [],
         "bookId": null,
@@ -46,12 +46,12 @@
         "level": 3,
         "dp": null,
         "action": "Main Action",
-        "attribute": "Reason",
+        "attribute": "Class",
         "target": "One visible creature within 8 squares.",
         "duration": "Attack immediate; Slowed uses ordinary decay.",
         "equipment": "A free hand.",
         "limits": "One signature choice at each of levels 1, 3 and 7.",
-        "effect": "**Action:** Main Action · **Attribute:** Reason\n\n**Target / range / shape:** One visible creature within 8 squares.\n\nCast a binding bolt for 2/3/5 force damage on Weak/Standard/Strong. Before rolling, you may choose to bind as well as wound: on Standard, reduce the damage by 1 and apply Slowed 1; on Strong, reduce the damage by 1 and apply Slowed 2. Weak deals its ordinary damage. Apply resistance and attack minimum normally; Slowed decays normally.\n\n**Duration:** Attack immediate; Slowed uses ordinary decay.\n\n**Equipment / acquisition:** A free hand.\n\nThis is a spell costing 0 SP. If you also know The Bargain, you may use its once-per-scene defense-Bane bargain on this bolt; that remains the same limited use.",
+        "effect": "**Action:** Main Action · **Attribute:** Class\n\n**Target / range / shape:** One visible creature within 8 squares.\n\nCast a binding bolt for 2/3/5 force damage on Weak/Standard/Strong. Before rolling, you may choose to bind as well as wound: on Standard, reduce the damage by 1 and apply Slowed 1; on Strong, reduce the damage by 1 and apply Slowed 2. Weak deals its ordinary damage. Apply resistance and attack minimum normally; Slowed decays normally.\n\n**Duration:** Attack immediate; Slowed uses ordinary decay.\n\n**Equipment / acquisition:** A free hand.\n\nThis is a spell costing 0 SP. If you also know The Bargain, you may use its once-per-scene defense-Bane bargain on this bolt; that remains the same limited use.",
         "reference": {
           "flavor": [
             "A supernatural compact lends your purpose a voice and a weapon."
@@ -64,7 +64,7 @@
               },
               {
                 "label": "Attribute",
-                "value": "Reason"
+                "value": "Class"
               },
               {
                 "label": "Target / range / shape",
@@ -98,14 +98,14 @@
             "notes": []
           }
         },
-        "referenceMarkdown": "**Action:** Main Action · **Attribute:** Reason\n\n**Target / range / shape:** One visible creature within 8 squares.\n\nCast a binding bolt for 2/3/5 force damage on Weak/Standard/Strong. Before rolling, you may choose to bind as well as wound: on Standard, reduce the damage by 1 and apply Slowed 1; on Strong, reduce the damage by 1 and apply Slowed 2. Weak deals its ordinary damage. Apply resistance and attack minimum normally; Slowed decays normally.\n\n**Duration:** Attack immediate; Slowed uses ordinary decay.\n\n**Equipment / acquisition:** A free hand.\n\nThis is a spell costing 0 SP. If you also know The Bargain, you may use its once-per-scene defense-Bane bargain on this bolt; that remains the same limited use.",
+        "referenceMarkdown": "**Action:** Main Action · **Attribute:** Class\n\n**Target / range / shape:** One visible creature within 8 squares.\n\nCast a binding bolt for 2/3/5 force damage on Weak/Standard/Strong. Before rolling, you may choose to bind as well as wound: on Standard, reduce the damage by 1 and apply Slowed 1; on Strong, reduce the damage by 1 and apply Slowed 2. Weak deals its ordinary damage. Apply resistance and attack minimum normally; Slowed decays normally.\n\n**Duration:** Attack immediate; Slowed uses ordinary decay.\n\n**Equipment / acquisition:** A free hand.\n\nThis is a spell costing 0 SP. If you also know The Bargain, you may use its once-per-scene defense-Bane bargain on this bolt; that remains the same limited use.",
         "classId": "class-odd",
         "lineId": "odd:the-bargain",
         "signatureComponent": true,
         "kind": "ability",
         "sp": 0,
         "magic": "Spell",
-        "rulesMarkdown": "**Action:** Main Action · **Attribute:** Reason\n\n**Target / range / shape:** One visible creature within 8 squares.\n\nCast a binding bolt for 2/3/5 force damage on Weak/Standard/Strong. Before rolling, you may choose to bind as well as wound: on Standard, reduce the damage by 1 and apply Slowed 1; on Strong, reduce the damage by 1 and apply Slowed 2. Weak deals its ordinary damage. Apply resistance and attack minimum normally; Slowed decays normally.\n\n**Duration:** Attack immediate; Slowed uses ordinary decay.\n\n**Equipment / acquisition:** A free hand.\n\nThis is a spell costing 0 SP. If you also know The Bargain, you may use its once-per-scene defense-Bane bargain on this bolt; that remains the same limited use."
+        "rulesMarkdown": "**Action:** Main Action · **Attribute:** Class\n\n**Target / range / shape:** One visible creature within 8 squares.\n\nCast a binding bolt for 2/3/5 force damage on Weak/Standard/Strong. Before rolling, you may choose to bind as well as wound: on Standard, reduce the damage by 1 and apply Slowed 1; on Strong, reduce the damage by 1 and apply Slowed 2. Weak deals its ordinary damage. Apply resistance and attack minimum normally; Slowed decays normally.\n\n**Duration:** Attack immediate; Slowed uses ordinary decay.\n\n**Equipment / acquisition:** A free hand.\n\nThis is a spell costing 0 SP. If you also know The Bargain, you may use its once-per-scene defense-Bane bargain on this bolt; that remains the same limited use."
       }
     }
   },

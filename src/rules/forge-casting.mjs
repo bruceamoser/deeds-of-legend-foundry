@@ -1,4 +1,5 @@
 import { forgeSpendSp } from "./forge-vitals.mjs";
+import { ATTRIBUTES } from "./character.mjs";
 
 const magicText=record=>record?.effect ?? record?.rulesMarkdown ?? '';
 export function isForgeModifier(record) {
@@ -9,6 +10,25 @@ export function isForgeSpell(record) {
   const text=magicText(record);
   return Boolean(record.page || record.kind==='spell' || /\bspell\b/i.test(record.magic ?? '')
     || /\*\*Magic:\*\*[^\n]*\bspell\b/i.test(text) || /\bThis is a (?:ritual )?spell(?:[.;,]|\s|$)/i.test(text));
+}
+
+/** Only the spell's initial roll uses this class attribute. */
+export function forgeSpellHasCastingRoll(record) {
+  if (!isForgeSpell(record) || /(?:^|[.!]\s+)No (?:casting )?roll\./i.test(magicText(record))) return false;
+  const printed = (record.attribute ?? "").trim().toLowerCase();
+  return printed === "class" || ATTRIBUTES.includes(printed);
+}
+
+export function forgeSpellCastingAttribute(record, casterClass) {
+  const key = casterClass?.spAttribute;
+  return forgeSpellHasCastingRoll(record) && ATTRIBUTES.includes(key) ? key : null;
+}
+
+export function forgeSpellCastingLabel(record, casterClass) {
+  if (!forgeSpellHasCastingRoll(record))
+    return /^As the (funded|transmitted) spell$/i.test(record?.attribute) ? record.attribute : "Automatic";
+  const key = forgeSpellCastingAttribute(record, casterClass);
+  return key ? key[0].toUpperCase() + key.slice(1) : "Class casting attribute";
 }
 
 /** Read an explicit magical payment, never an SP grant in an ordinary ability. */

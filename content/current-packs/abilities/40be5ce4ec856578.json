@@ -5,11 +5,11 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Target / range / shape</dt><dd>Self or one living creature you touch.</dd></div><div><dt>Magic</dt><dd>Spell</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Duration</dt><dd>Immediate.</dd></div><div><dt>Equipment / acquisition</dt><dd>A free hand touching the recipient.</dd></div></dl><p>Restore 3/5/7 HP on Weak/Standard/Strong. Apply the recipient’s Life resistance, minimum 1 healing when HP is missing, and its maximum HP. Healing above 0 ends Dying and clears death marks normally. Also reduce one ordinary Bleeding, Burning or Freezing condition by 1 on Weak or Standard, or by 2 on Strong. Choose the condition when healing. A starred condition still needs its own stated remedy.</p><p>This is a spell costing 1 SP.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Class casting attribute</dd></div><div><dt>Target / range / shape</dt><dd>Self or one living creature you touch.</dd></div><div><dt>Magic</dt><dd>Spell</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Duration</dt><dd>Immediate.</dd></div><div><dt>Equipment / acquisition</dt><dd>A free hand touching the recipient.</dd></div></dl><p>Restore 3/5/7 HP on Weak/Standard/Strong. Apply the recipient’s Life resistance, minimum 1 healing when HP is missing, and its maximum HP. Healing above 0 ends Dying and clears death marks normally. Also reduce one ordinary Bleeding, Burning or Freezing condition by 1 on Weak or Standard, or by 2 on Strong. Choose the condition when healing. A starred condition still needs its own stated remedy.</p><p>This is a spell costing 1 SP.</p>",
     "activity": {
       "action": "main",
-      "rollMode": "attribute",
-      "attribute": "reason",
+      "rollMode": "delegated",
+      "attribute": "knowledge",
       "defenseAttribute": "agility"
     },
     "outcomes": {
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "ability-signature-protector-restoring-hands",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",
@@ -32,9 +32,9 @@
         "sp": 1,
         "range": "Self or one living creature you touch.",
         "duration": "Immediate.",
-        "attribute": "Reason",
+        "attribute": "Class",
         "defenseAttribute": null,
-        "effect": "**Action:** Main Action · **Attribute:** Reason\n\n**Target / range / shape:** Self or one living creature you touch.\n\nRestore 3/5/7 HP on Weak/Standard/Strong. Apply the recipient’s Life resistance, minimum 1 healing when HP is missing, and its maximum HP. Healing above 0 ends Dying and clears death marks normally. Also reduce one ordinary Bleeding, Burning or Freezing condition by 1 on Weak or Standard, or by 2 on Strong. Choose the condition when healing. A starred condition still needs its own stated remedy.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** A free hand touching the recipient.\n\nThis is a spell costing 1 SP.",
+        "effect": "**Action:** Main Action · **Attribute:** Class\n\n**Target / range / shape:** Self or one living creature you touch.\n\nRestore 3/5/7 HP on Weak/Standard/Strong. Apply the recipient’s Life resistance, minimum 1 healing when HP is missing, and its maximum HP. Healing above 0 ends Dying and clears death marks normally. Also reduce one ordinary Bleeding, Burning or Freezing condition by 1 on Weak or Standard, or by 2 on Strong. Choose the condition when healing. A starred condition still needs its own stated remedy.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** A free hand touching the recipient.\n\nThis is a spell costing 1 SP.",
         "improves": null,
         "requires": [],
         "bookId": null,
@@ -46,12 +46,12 @@
         "level": 3,
         "dp": null,
         "action": "Main Action",
-        "attribute": "Reason",
+        "attribute": "Class",
         "target": "Self or one living creature you touch.",
         "duration": "Immediate.",
         "equipment": "A free hand touching the recipient.",
         "limits": "One signature choice at each of levels 1, 3 and 7.",
-        "effect": "**Action:** Main Action · **Attribute:** Reason\n\n**Target / range / shape:** Self or one living creature you touch.\n\nRestore 3/5/7 HP on Weak/Standard/Strong. Apply the recipient’s Life resistance, minimum 1 healing when HP is missing, and its maximum HP. Healing above 0 ends Dying and clears death marks normally. Also reduce one ordinary Bleeding, Burning or Freezing condition by 1 on Weak or Standard, or by 2 on Strong. Choose the condition when healing. A starred condition still needs its own stated remedy.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** A free hand touching the recipient.\n\nThis is a spell costing 1 SP.",
+        "effect": "**Action:** Main Action · **Attribute:** Class\n\n**Target / range / shape:** Self or one living creature you touch.\n\nRestore 3/5/7 HP on Weak/Standard/Strong. Apply the recipient’s Life resistance, minimum 1 healing when HP is missing, and its maximum HP. Healing above 0 ends Dying and clears death marks normally. Also reduce one ordinary Bleeding, Burning or Freezing condition by 1 on Weak or Standard, or by 2 on Strong. Choose the condition when healing. A starred condition still needs its own stated remedy.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** A free hand touching the recipient.\n\nThis is a spell costing 1 SP.",
         "reference": {
           "flavor": [
             "Your touch brings a wounded companion back into the fight."
@@ -64,7 +64,7 @@
               },
               {
                 "label": "Attribute",
-                "value": "Reason"
+                "value": "Class"
               },
               {
                 "label": "Target / range / shape",
@@ -98,14 +98,14 @@
             "notes": []
           }
         },
-        "referenceMarkdown": "**Action:** Main Action · **Attribute:** Reason\n\n**Target / range / shape:** Self or one living creature you touch.\n\nRestore 3/5/7 HP on Weak/Standard/Strong. Apply the recipient’s Life resistance, minimum 1 healing when HP is missing, and its maximum HP. Healing above 0 ends Dying and clears death marks normally. Also reduce one ordinary Bleeding, Burning or Freezing condition by 1 on Weak or Standard, or by 2 on Strong. Choose the condition when healing. A starred condition still needs its own stated remedy.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** A free hand touching the recipient.\n\nThis is a spell costing 1 SP.",
+        "referenceMarkdown": "**Action:** Main Action · **Attribute:** Class\n\n**Target / range / shape:** Self or one living creature you touch.\n\nRestore 3/5/7 HP on Weak/Standard/Strong. Apply the recipient’s Life resistance, minimum 1 healing when HP is missing, and its maximum HP. Healing above 0 ends Dying and clears death marks normally. Also reduce one ordinary Bleeding, Burning or Freezing condition by 1 on Weak or Standard, or by 2 on Strong. Choose the condition when healing. A starred condition still needs its own stated remedy.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** A free hand touching the recipient.\n\nThis is a spell costing 1 SP.",
         "classId": "class-protector",
         "lineId": "protector:healing-hands",
         "signatureComponent": true,
         "kind": "ability",
         "sp": 1,
         "magic": "Spell",
-        "rulesMarkdown": "**Action:** Main Action · **Attribute:** Reason\n\n**Target / range / shape:** Self or one living creature you touch.\n\nRestore 3/5/7 HP on Weak/Standard/Strong. Apply the recipient’s Life resistance, minimum 1 healing when HP is missing, and its maximum HP. Healing above 0 ends Dying and clears death marks normally. Also reduce one ordinary Bleeding, Burning or Freezing condition by 1 on Weak or Standard, or by 2 on Strong. Choose the condition when healing. A starred condition still needs its own stated remedy.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** A free hand touching the recipient.\n\nThis is a spell costing 1 SP."
+        "rulesMarkdown": "**Action:** Main Action · **Attribute:** Class\n\n**Target / range / shape:** Self or one living creature you touch.\n\nRestore 3/5/7 HP on Weak/Standard/Strong. Apply the recipient’s Life resistance, minimum 1 healing when HP is missing, and its maximum HP. Healing above 0 ends Dying and clears death marks normally. Also reduce one ordinary Bleeding, Burning or Freezing condition by 1 on Weak or Standard, or by 2 on Strong. Choose the condition when healing. A starred condition still needs its own stated remedy.\n\n**Duration:** Immediate.\n\n**Equipment / acquisition:** A free hand touching the recipient.\n\nThis is a spell costing 1 SP."
       }
     }
   },

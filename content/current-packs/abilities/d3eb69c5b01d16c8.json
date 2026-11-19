@@ -5,11 +5,11 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Defense</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>One creature within 6 squares</dd></div><div><dt>Duration</dt><dd>Until your next turn ends</dd></div></dl><p>Deal 3/5/7 radiant damage to a summoned energy form; at 0 HP it disperses. An independent creature instead takes Frightened 1/2/3, with an image of its home as source. On Standard or Strong, a willing extraplanar creature may return to its home plane in place of that fear.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>Class casting attribute</dd></div><div><dt>Defense</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>One creature within 6 squares</dd></div><div><dt>Duration</dt><dd>Until your next turn ends</dd></div></dl><p>Deal 3/5/7 radiant damage to a summoned energy form; at 0 HP it disperses. An independent creature instead takes Frightened 1/2/3, with an image of its home as source. On Standard or Strong, a willing extraplanar creature may return to its home plane in place of that fear.</p>",
     "activity": {
       "action": "main",
-      "rollMode": "attribute",
-      "attribute": "reason",
+      "rollMode": "delegated",
+      "attribute": "knowledge",
       "defenseAttribute": "reason"
     },
     "outcomes": {
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:binding:5",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",
@@ -32,7 +32,7 @@
         "sp": 2,
         "range": "One creature within 6 squares",
         "duration": "Until your next turn ends",
-        "attribute": "Reason",
+        "attribute": "Class",
         "defenseAttribute": "Reason",
         "effect": "Deal 3/5/7 radiant damage to a summoned energy form; at 0 HP it disperses. An independent creature instead takes Frightened 1/2/3, with an image of its home as source. On Standard or Strong, a willing extraplanar creature may return to its home plane in place of that fear.",
         "improves": null,
@@ -50,7 +50,7 @@
         "sp": 2,
         "action": "Main Action",
         "actionText": "Main Action",
-        "attribute": "Reason",
+        "attribute": "Class",
         "defense": "Reason",
         "defenseAttribute": "Reason",
         "holdAttribute": null,

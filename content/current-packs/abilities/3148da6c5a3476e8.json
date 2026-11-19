@@ -5,11 +5,11 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>Guile</dd></div><div><dt>Defense</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>Up to six creatures within 6 squares that understand you and share a motive</dd></div><div><dt>Duration</dt><dd>One social objective, up to 10 minutes</dd></div></dl><p>Propose one common course of action. Add 3/5/7 progress toward a single attainable group objective. The DA sets the concession and boundaries before casting. A later attempt needs a new relevant contribution.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>Class casting attribute</dd></div><div><dt>Defense</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>Up to six creatures within 6 squares that understand you and share a motive</dd></div><div><dt>Duration</dt><dd>One social objective, up to 10 minutes</dd></div></dl><p>Propose one common course of action. Add 3/5/7 progress toward a single attainable group objective. The DA sets the concession and boundaries before casting. A later attempt needs a new relevant contribution.</p>",
     "activity": {
       "action": "main",
-      "rollMode": "attribute",
-      "attribute": "guile",
+      "rollMode": "delegated",
+      "attribute": "knowledge",
       "defenseAttribute": "reason"
     },
     "outcomes": {
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:emotion:a1",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",
@@ -32,7 +32,7 @@
         "sp": 5,
         "range": "Up to six creatures within 6 squares that understand you and share a motive",
         "duration": "One social objective, up to 10 minutes",
-        "attribute": "Guile",
+        "attribute": "Class",
         "defenseAttribute": "Reason",
         "effect": "Propose one common course of action. Add 3/5/7 progress toward a single attainable group objective. The DA sets the concession and boundaries before casting. A later attempt needs a new relevant contribution.",
         "improves": null,
@@ -50,7 +50,7 @@
         "sp": 5,
         "action": "Main Action",
         "actionText": "Main Action",
-        "attribute": "Guile",
+        "attribute": "Class",
         "defense": "Reason",
         "defenseAttribute": "Reason",
         "holdAttribute": null,

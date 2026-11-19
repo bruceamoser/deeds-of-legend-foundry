@@ -5,10 +5,10 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 hour</dd></div><div><dt>SP</dt><dd>6</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>Self and up to three willing creatures beside you</dd></div><div><dt>Duration</dt><dd>8 hours</dd></div></dl><p>Send visible spirit projections into the nearby spirit realm while your bodies sleep. Projections travel together up to 10 kilometers from the bodies, speak with spirits and observe corresponding places. Magical barriers that block spirit travel still apply. They return when the spell ends, a participant chooses to return with a Maneuver, or a body is disturbed. Projections use observation and speech; physical acts and further casting take place after returning to the bodies.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 hour</dd></div><div><dt>SP</dt><dd>6</dd></div><div><dt>Attribute</dt><dd>Automatic</dd></div><div><dt>Range</dt><dd>Self and up to three willing creatures beside you</dd></div><div><dt>Duration</dt><dd>8 hours</dd></div></dl><p>Send visible spirit projections into the nearby spirit realm while your bodies sleep. Projections travel together up to 10 kilometers from the bodies, speak with spirits and observe corresponding places. Magical barriers that block spirit travel still apply. They return when the spell ends, a participant chooses to return with a Maneuver, or a body is disturbed. Projections use observation and speech; physical acts and further casting take place after returning to the bodies.</p>",
     "activity": {
       "action": "ritual",
-      "rollMode": "attribute",
+      "rollMode": "none",
       "attribute": "knowledge",
       "defenseAttribute": "agility"
     },
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:dreams:a3",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",

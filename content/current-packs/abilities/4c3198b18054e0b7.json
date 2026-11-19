@@ -5,10 +5,10 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>0</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div><div><dt>Defense</dt><dd>Agility</dd></div><div><dt>Range</dt><dd>One creature within 8 squares</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Strike with a bolt of compressed force. Deal 2/3/5 force damage.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>0</dd></div><div><dt>Attribute</dt><dd>Class casting attribute</dd></div><div><dt>Defense</dt><dd>Agility</dd></div><div><dt>Range</dt><dd>One creature within 12 squares</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Strike with a bolt of compressed force. Deal 2/3/5 force damage.</p>",
     "activity": {
       "action": "main",
-      "rollMode": "attribute",
+      "rollMode": "delegated",
       "attribute": "knowledge",
       "defenseAttribute": "agility"
     },
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:telekinesis:1",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",
@@ -30,9 +30,9 @@
         "cost": 1,
         "action": "Main Action",
         "sp": 0,
-        "range": "One creature within 8 squares",
+        "range": "One creature within 12 squares",
         "duration": "Instant",
-        "attribute": "Knowledge",
+        "attribute": "Class",
         "defenseAttribute": "Agility",
         "effect": "Strike with a bolt of compressed force. Deal 2/3/5 force damage.",
         "improves": null,
@@ -50,12 +50,12 @@
         "sp": 0,
         "action": "Main Action",
         "actionText": "Main Action",
-        "attribute": "Knowledge",
+        "attribute": "Class",
         "defense": "Agility",
         "defenseAttribute": "Agility",
         "holdAttribute": null,
         "escapeAttribute": null,
-        "target": "One creature within 8 squares",
+        "target": "One creature within 12 squares",
         "duration": "Instant",
         "effect": "Strike with a bolt of compressed force. Deal 2/3/5 force damage."
       }

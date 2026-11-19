@@ -5,10 +5,10 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div><div><dt>Range</dt><dd>Up to three unattended objects, combined Bulk at most 3, within 3 squares</dd></div><div><dt>Duration</dt><dd>1 minute, with commands</dd></div></dl><p>Animate them as one group with shared 10 HP, Speed 4, and your attributes for defenses. They occupy one square together. Give one immediate Main command to attack one adjacent target for 3/5/7 physical damage or perform a simple task. Use normal commands and the six-square tether thereafter.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>Class casting attribute</dd></div><div><dt>Range</dt><dd>Up to three unattended objects, combined Bulk at most 3, within 6 squares</dd></div><div><dt>Duration</dt><dd>1 minute, with commands</dd></div></dl><p>Animate them as one group with shared 10 HP, Speed 4, and your attributes for defenses. They occupy one square together. Give one immediate Main command to attack one adjacent target for 3/5/7 physical damage or perform a simple task. Use normal commands and the six-square tether thereafter.</p>",
     "activity": {
       "action": "main",
-      "rollMode": "attribute",
+      "rollMode": "delegated",
       "attribute": "knowledge",
       "defenseAttribute": "agility"
     },
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:animation:5",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",
@@ -30,9 +30,9 @@
         "cost": 2,
         "action": "Main Action",
         "sp": 2,
-        "range": "Up to three unattended objects, combined Bulk at most 3, within 3 squares",
+        "range": "Up to three unattended objects, combined Bulk at most 3, within 6 squares",
         "duration": "1 minute, with commands",
-        "attribute": "Knowledge",
+        "attribute": "Class",
         "defenseAttribute": null,
         "effect": "Animate them as one group with shared 10 HP, Speed 4, and your attributes for defenses. They occupy one square together. Give one immediate Main command to attack one adjacent target for 3/5/7 physical damage or perform a simple task. Use normal commands and the six-square tether thereafter.",
         "improves": null,
@@ -50,12 +50,12 @@
         "sp": 2,
         "action": "Main Action",
         "actionText": "Main Action",
-        "attribute": "Knowledge",
+        "attribute": "Class",
         "defense": null,
         "defenseAttribute": null,
         "holdAttribute": null,
         "escapeAttribute": null,
-        "target": "Up to three unattended objects, combined Bulk at most 3, within 3 squares",
+        "target": "Up to three unattended objects, combined Bulk at most 3, within 6 squares",
         "duration": "1 minute, with commands",
         "effect": "Animate them as one group with shared 10 HP, Speed 4, and your attributes for defenses. They occupy one square together. Give one immediate Main command to attack one adjacent target for 3/5/7 physical damage or perform a simple task. Use normal commands and the six-square tether thereafter."
       }

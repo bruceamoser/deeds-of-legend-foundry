@@ -5,11 +5,11 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>3</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>One willing creature within 3 squares</dd></div><div><dt>Duration</dt><dd>10 minutes of conversation; altered memory lasts until restored</dd></div></dl><p>Help the recipient replace or soften one memory covering up to five minutes of a real event. It chooses the replacement account with you. Add 1/2/3 progress toward target 3, with each further conversation attempt taking a Main Action and a new casting. At completion the altered recollection becomes its remembered account. Greater Restoration or a matching consensual working restores the original.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>3</dd></div><div><dt>Attribute</dt><dd>Class casting attribute</dd></div><div><dt>Range</dt><dd>One willing creature within 6 squares</dd></div><div><dt>Duration</dt><dd>10 minutes of conversation; altered memory lasts until restored</dd></div></dl><p>Help the recipient replace or soften one memory covering up to five minutes of a real event. It chooses the replacement account with you. Add 1/2/3 progress toward target 3, with each further conversation attempt taking a Main Action and a new casting. At completion the altered recollection becomes its remembered account. Greater Restoration or a matching consensual working restores the original.</p>",
     "activity": {
       "action": "main",
-      "rollMode": "attribute",
-      "attribute": "reason",
+      "rollMode": "delegated",
+      "attribute": "knowledge",
       "defenseAttribute": "agility"
     },
     "outcomes": {
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:thought:7",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",
@@ -30,9 +30,9 @@
         "cost": 3,
         "action": "Main Action",
         "sp": 3,
-        "range": "One willing creature within 3 squares",
+        "range": "One willing creature within 6 squares",
         "duration": "10 minutes of conversation; altered memory lasts until restored",
-        "attribute": "Reason",
+        "attribute": "Class",
         "defenseAttribute": null,
         "effect": "Help the recipient replace or soften one memory covering up to five minutes of a real event. It chooses the replacement account with you. Add 1/2/3 progress toward target 3, with each further conversation attempt taking a Main Action and a new casting. At completion the altered recollection becomes its remembered account. Greater Restoration or a matching consensual working restores the original.",
         "improves": null,
@@ -50,12 +50,12 @@
         "sp": 3,
         "action": "Main Action",
         "actionText": "Main Action",
-        "attribute": "Reason",
+        "attribute": "Class",
         "defense": null,
         "defenseAttribute": null,
         "holdAttribute": null,
         "escapeAttribute": null,
-        "target": "One willing creature within 3 squares",
+        "target": "One willing creature within 6 squares",
         "duration": "10 minutes of conversation; altered memory lasts until restored",
         "effect": "Help the recipient replace or soften one memory covering up to five minutes of a real event. It chooses the replacement account with you. Add 1/2/3 progress toward target 3, with each further conversation attempt taking a Main Action and a new casting. At completion the altered recollection becomes its remembered account. Greater Restoration or a matching consensual working restores the original."
       }

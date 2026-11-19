@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>Self.</dd></div><div><dt>Magic</dt><dd>Spell</dd></div><div><dt>SP</dt><dd>0</dd></div><div><dt>Duration</dt><dd>The scene.</dd></div><div><dt>Equipment / acquisition</dt><dd>A free hand for casting.</dd></div><div><dt>Frequency</dt><dd>Once per scene.</dd></div></dl><p>For the scene, you can speak with animals. You can ask questions and understand their replies, limited by what the animal has experienced and can understand. You gain 1 Boon to all rolls interacting with animals you are speaking with. This does not make an animal friendly or obedient, and does not compel it to act against its nature.</p><p>This is a spell costing 0 SP. Animals retain their motives and agency. A companion acquired through play uses its actual profile.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>Automatic</dd></div><div><dt>Target / range / shape</dt><dd>Self.</dd></div><div><dt>Magic</dt><dd>Spell</dd></div><div><dt>SP</dt><dd>0</dd></div><div><dt>Duration</dt><dd>The scene.</dd></div><div><dt>Equipment / acquisition</dt><dd>A free hand for casting.</dd></div><div><dt>Frequency</dt><dd>Once per scene.</dd></div></dl><p>For the scene, you can speak with animals. You can ask questions and understand their replies, limited by what the animal has experienced and can understand. You gain 1 Boon to all rolls interacting with animals you are speaking with. This does not make an animal friendly or obedient, and does not compel it to act against its nature.</p><p>This is a spell costing 0 SP. Animals retain their motives and agency. A companion acquired through play uses its actual profile.</p>",
     "activity": {
       "action": "maneuver",
       "rollMode": "none",
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "ability-signature-warden-read-the-passing",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",

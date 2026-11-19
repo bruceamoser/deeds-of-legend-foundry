@@ -21,6 +21,7 @@ import { equipmentAttributeValue,effectiveActorAttributeValue } from '../rules/e
 import { canCustomizeWorkshopRoll, validateWorkshopAbilityUse, workshopRollAttributes } from '../rules/workshop-ability.mjs';
 import { ownedWorkshopAbility, ownedWorkshopRollAttribute, WORKSHOP_ROLL_ATTRIBUTE_FLAG } from '../rules/ability-roll.mjs';
 import { ATTRIBUTES } from '../rules/character.mjs';
+import { forgeSpellCastingAttribute, isForgeSpell } from '../rules/forge-casting.mjs';
 import { inventoryCheck } from '../rules/inventory.mjs';
 import { classifyRoll } from '../rules/roll.mjs';
 import { resolvedAttackEffects,spellAttackOutcomes } from '../rules/attack-outcomes.mjs';
@@ -469,6 +470,13 @@ export class WorkshopCharacterSheet extends HandlebarsApplicationMixin(foundry.a
     const abilityId=request.activeRoll?.id;
     const catalogs=abilityId || request.abilityIds?.length ? await loadWorkshopCatalogs() : null;
     const record=catalogs?.choices.find(record=>record.id===abilityId) ?? catalogs?.forge.spells.find(record=>record.id===abilityId);
+    if (request.activeRoll?.cast || request.activeRoll?.finishRitual || isForgeSpell(record)) {
+      const classId=this.actor.getFlag(ID,'nativeWorkshop')?.portable?.draft?.classId;
+      const casterClass=catalogs?.forge.classes?.find(record=>record.id===classId);
+      const expected=forgeSpellCastingAttribute(record,casterClass);
+      if (!expected || request.attributeKey!==expected)
+        throw new Error('Roll this spell with your class casting attribute.');
+    }
     const override=ownedWorkshopRollAttribute(this.actor,record);
     if (request.activeRoll?.attributeOverride !== undefined && request.activeRoll.attributeOverride !== override)
       throw new Error('This ability’s roll attribute changed. Reopen the roll to use its current attribute.');

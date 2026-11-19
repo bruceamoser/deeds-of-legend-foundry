@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Brawn</dd></div><div><dt>Range</dt><dd>One visible creature within 3 squares</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p><strong>Action:</strong> Main Action · <strong>Attribute:</strong> Brawn</p><p><strong>Target / range / shape:</strong> One visible creature within 3 squares</p><p>Choose your target and make the attack. Use the printed outcomes if you have learned a technique that uses thrown weapons. Without that training, deal 1/1/2 physical damage.</p><ul><li><strong>Weak:</strong> 2 physical damage.</li><li><strong>Standard:</strong> 3 physical damage.</li><li><strong>Strong:</strong> 5 physical damage.</li></ul><p><strong>Duration:</strong> Instant</p><p><strong>Equipment / acquisition:</strong> Requires a suitable carried object; grants none. The thrown object lands in the target square.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>Attribute</dt><dd>Brawn</dd></div><div><dt>Range</dt><dd>One visible creature within 6 squares</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p><strong>Action:</strong> Main Action · <strong>Attribute:</strong> Brawn</p><p><strong>Target / range / shape:</strong> One visible creature within 6 squares</p><p>Choose your target and make the attack. You can reach a target 7–12 squares away with 1 Bane on the attack, or 1 Boon to its defense if the target rolls. Use the printed outcomes if you have learned a technique that uses thrown weapons. Without that training, deal 1/1/2 physical damage.</p><ul><li><strong>Weak:</strong> 2 physical damage.</li><li><strong>Standard:</strong> 3 physical damage.</li><li><strong>Strong:</strong> 5 physical damage.</li></ul><p><strong>Duration:</strong> Instant</p><p><strong>Equipment / acquisition:</strong> Requires a suitable carried object; grants none. The thrown object lands in the target square.</p>",
     "activity": {
       "action": "main",
       "rollMode": "attribute",
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "ability-basic-throw",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "ability",
@@ -30,11 +30,11 @@
         "cost": 0,
         "action": "Main Action",
         "sp": null,
-        "range": "One visible creature within 3 squares",
+        "range": "One visible creature within 6 squares",
         "duration": "Instant",
         "attribute": "Brawn",
         "defenseAttribute": null,
-        "effect": "**Action:** Main Action · **Attribute:** Brawn\n\n**Target / range / shape:** One visible creature within 3 squares\n\nChoose your target and make the attack. Use the printed outcomes if you have learned a technique that uses thrown weapons. Without that training, deal 1/1/2 physical damage.\n\n- **Weak:** 2 physical damage.\n- **Standard:** 3 physical damage.\n- **Strong:** 5 physical damage.\n\n**Duration:** Instant\n\n**Equipment / acquisition:** Requires a suitable carried object; grants none. The thrown object lands in the target square.",
+        "effect": "**Action:** Main Action · **Attribute:** Brawn\n\n**Target / range / shape:** One visible creature within 6 squares\n\nChoose your target and make the attack. You can reach a target 7–12 squares away with 1 Bane on the attack, or 1 Boon to its defense if the target rolls. Use the printed outcomes if you have learned a technique that uses thrown weapons. Without that training, deal 1/1/2 physical damage.\n\n- **Weak:** 2 physical damage.\n- **Standard:** 3 physical damage.\n- **Strong:** 5 physical damage.\n\n**Duration:** Instant\n\n**Equipment / acquisition:** Requires a suitable carried object; grants none. The thrown object lands in the target square.",
         "improves": null,
         "requires": [],
         "bookId": null

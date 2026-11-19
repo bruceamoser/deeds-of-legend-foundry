@@ -5,7 +5,7 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>None (no roll)</dd></div><div><dt>Target / range / shape</dt><dd>One enemy within 5 squares that can hear you; one willing ally within 5 squares that can see or hear you.</dd></div><div><dt>Magic</dt><dd>Spell</dd></div><div><dt>SP</dt><dd>0</dd></div><div><dt>Duration</dt><dd>Movement is immediate; the Boon expires when used or at the start of your next turn.</dd></div><div><dt>Equipment / acquisition</dt><dd>A free hand for casting.</dd></div></dl><p>The spirit calls out in the target’s own voice from a point you choose within 5 squares. The target turns toward the voice. The ally may move up to 2 squares without provoking and gains 1 Boon to its next attack against that target before the start of your next turn.</p><p>This is a spell costing 0 SP, usable once per scene. Turning toward the voice costs the target no action and does not compel any other behavior.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>Attribute</dt><dd>Automatic</dd></div><div><dt>Target / range / shape</dt><dd>One enemy within 5 squares that can hear you; one willing ally within 5 squares that can see or hear you.</dd></div><div><dt>Magic</dt><dd>Spell</dd></div><div><dt>SP</dt><dd>0</dd></div><div><dt>Duration</dt><dd>Movement is immediate; the Boon expires when used or at the start of your next turn.</dd></div><div><dt>Equipment / acquisition</dt><dd>A free hand for casting.</dd></div></dl><p>The spirit calls out in the target’s own voice from a point you choose within 5 squares. The target turns toward the voice. The ally may move up to 2 squares without provoking and gains 1 Boon to its next attack against that target before the start of your next turn.</p><p>This is a spell costing 0 SP, usable once per scene. Turning toward the voice costs the target no action and does not compel any other behavior.</p>",
     "activity": {
       "action": "maneuver",
       "rollMode": "none",
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "ability-signature-odd-useful-interruption",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",

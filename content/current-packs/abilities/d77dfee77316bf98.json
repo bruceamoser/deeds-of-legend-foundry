@@ -5,11 +5,11 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Reaction · when a visible spell transfers SP between creatures</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>The transfer and a replacement recipient within 6 squares</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Add 3/5/7 cancellation progress against the transfer, target 2 plus its casting SP cost. At completion, redirect its stated transferred amount to the replacement recipient, limited by the original donor&#39;s available SP and the new recipient&#39;s missing SP. Otherwise the original transfer resolves. Pay your own casting cost separately.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Reaction · when a visible spell transfers SP between creatures</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>Class casting attribute</dd></div><div><dt>Range</dt><dd>The transfer and a replacement recipient within 6 squares</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Add 3/5/7 cancellation progress against the transfer, target 2 plus its casting SP cost. At completion, redirect its stated transferred amount to the replacement recipient, limited by the original donor&#39;s available SP and the new recipient&#39;s missing SP. Otherwise the original transfer resolves. Pay your own casting cost separately.</p>",
     "activity": {
       "action": "reaction",
-      "rollMode": "attribute",
-      "attribute": "reason",
+      "rollMode": "delegated",
+      "attribute": "knowledge",
       "defenseAttribute": "agility"
     },
     "outcomes": {
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:channeling:a2",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",
@@ -32,7 +32,7 @@
         "sp": 5,
         "range": "The transfer and a replacement recipient within 6 squares",
         "duration": "Instant",
-        "attribute": "Reason",
+        "attribute": "Class",
         "defenseAttribute": null,
         "effect": "Add 3/5/7 cancellation progress against the transfer, target 2 plus its casting SP cost. At completion, redirect its stated transferred amount to the replacement recipient, limited by the original donor's available SP and the new recipient's missing SP. Otherwise the original transfer resolves. Pay your own casting cost separately.",
         "improves": null,
@@ -51,7 +51,7 @@
         "action": "Reaction",
         "actionText": "Reaction · when a visible spell transfers SP between creatures",
         "trigger": "when a visible spell transfers SP between creatures",
-        "attribute": "Reason",
+        "attribute": "Class",
         "defense": null,
         "defenseAttribute": null,
         "holdAttribute": null,

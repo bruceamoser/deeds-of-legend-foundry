@@ -5,10 +5,10 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 hour</dd></div><div><dt>SP</dt><dd>3</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div><div><dt>Range</dt><dd>Prepared ordinary materials and tools beside you</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Work the materials toward one mundane item or component of Bulk 6 or less whose construction you understand. Each completed ritual adds 3/5/7 progress toward its ordinary crafting objective, using the normal recipe and material quantities. The item is ready when that objective is complete. Finish fine details with the required tools.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 hour</dd></div><div><dt>SP</dt><dd>3</dd></div><div><dt>Attribute</dt><dd>Class casting attribute</dd></div><div><dt>Range</dt><dd>Prepared ordinary materials and tools beside you</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Work the materials toward one mundane item or component of Bulk 6 or less whose construction you understand. Each completed ritual adds 3/5/7 progress toward its ordinary crafting objective, using the normal recipe and material quantities. The item is ready when that objective is complete. Finish fine details with the required tools.</p>",
     "activity": {
       "action": "ritual",
-      "rollMode": "attribute",
+      "rollMode": "delegated",
       "attribute": "knowledge",
       "defenseAttribute": "agility"
     },
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:shaping:7",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",
@@ -32,7 +32,7 @@
         "sp": 3,
         "range": "Prepared ordinary materials and tools beside you",
         "duration": "Instant",
-        "attribute": "Knowledge",
+        "attribute": "Class",
         "defenseAttribute": null,
         "effect": "Work the materials toward one mundane item or component of Bulk 6 or less whose construction you understand. Each completed ritual adds 3/5/7 progress toward its ordinary crafting objective, using the normal recipe and material quantities. The item is ready when that objective is complete. Finish fine details with the required tools.",
         "improves": null,
@@ -51,7 +51,7 @@
         "action": "Ritual",
         "actionText": "Ritual · 1 hour",
         "ritualTime": "1 hour",
-        "attribute": "Knowledge",
+        "attribute": "Class",
         "defense": null,
         "defenseAttribute": null,
         "holdAttribute": null,

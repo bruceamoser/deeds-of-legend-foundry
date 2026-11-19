@@ -5,11 +5,11 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>One visible 3-by-3-square area within 6 squares</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Sense intentionally prepared mechanisms or magical triggers that could harm an entrant. Add 1/2/3 progress toward a search objective set by the DA. At completion identify each detected trigger&#39;s location and how it is activated; disarming uses its own procedure.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>Class casting attribute</dd></div><div><dt>Range</dt><dd>One visible 3-by-3-square area within 6 squares</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Sense intentionally prepared mechanisms or magical triggers that could harm an entrant. Add 1/2/3 progress toward a search objective set by the DA. At completion identify each detected trigger&#39;s location and how it is activated; disarming uses its own procedure.</p>",
     "activity": {
       "action": "main",
-      "rollMode": "attribute",
-      "attribute": "reason",
+      "rollMode": "delegated",
+      "attribute": "knowledge",
       "defenseAttribute": "agility"
     },
     "outcomes": {
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:detection:4",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",
@@ -32,7 +32,7 @@
         "sp": 2,
         "range": "One visible 3-by-3-square area within 6 squares",
         "duration": "Instant",
-        "attribute": "Reason",
+        "attribute": "Class",
         "defenseAttribute": null,
         "effect": "Sense intentionally prepared mechanisms or magical triggers that could harm an entrant. Add 1/2/3 progress toward a search objective set by the DA. At completion identify each detected trigger's location and how it is activated; disarming uses its own procedure.",
         "improves": null,
@@ -50,7 +50,7 @@
         "sp": 2,
         "action": "Main Action",
         "actionText": "Main Action",
-        "attribute": "Reason",
+        "attribute": "Class",
         "defense": null,
         "defenseAttribute": null,
         "holdAttribute": null,

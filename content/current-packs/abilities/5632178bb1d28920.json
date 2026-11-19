@@ -5,10 +5,10 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 10 minutes</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>Self and up to three willing creatures within 3 squares</dd></div><div><dt>Duration</dt><dd>1 hour</dd></div></dl><p>Link your awareness of approaching danger. Linked creatures within 12 squares of you receive a warning when any linked member perceives a threat. If it alerts the group before the attack, roll initiative normally. Once each round, after one linked creature rolls a defense, it may reroll the entire roll and keep either result. The group shares this one reroll. The link carries warnings. Keep one Shared Vigil link active; casting another ends the first.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 10 minutes</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>Automatic</dd></div><div><dt>Range</dt><dd>Self and up to three willing creatures within 6 squares</dd></div><div><dt>Duration</dt><dd>1 hour</dd></div></dl><p>Link your awareness of approaching danger. Linked creatures within 12 squares of you receive a warning when any linked member perceives a threat. If it alerts the group before the attack, roll initiative normally. Once each round, after one linked creature rolls a defense, it may reroll the entire roll and keep either result. The group shares this one reroll. The link carries warnings. Keep one Shared Vigil link active; casting another ends the first.</p>",
     "activity": {
       "action": "ritual",
-      "rollMode": "attribute",
+      "rollMode": "none",
       "attribute": "knowledge",
       "defenseAttribute": "agility"
     },
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell-mastery:foresight-shared-vigil",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",
@@ -30,7 +30,7 @@
         "cost": 5,
         "action": "Ritual · 10 minutes",
         "sp": 5,
-        "range": "Self and up to three willing creatures within 3 squares",
+        "range": "Self and up to three willing creatures within 6 squares",
         "duration": "1 hour",
         "attribute": "None",
         "defenseAttribute": null,
@@ -56,7 +56,7 @@
         "defenseAttribute": null,
         "holdAttribute": null,
         "escapeAttribute": null,
-        "target": "Self and up to three willing creatures within 3 squares",
+        "target": "Self and up to three willing creatures within 6 squares",
         "duration": "1 hour",
         "effect": "Link your awareness of approaching danger. Linked creatures within 12 squares of you receive a warning when any linked member perceives a threat. If it alerts the group before the attack, roll initiative normally. Once each round, after one linked creature rolls a defense, it may reroll the entire roll and keep either result. The group shares this one reroll. The link carries warnings. Keep one Shared Vigil link active; casting another ends the first."
       }

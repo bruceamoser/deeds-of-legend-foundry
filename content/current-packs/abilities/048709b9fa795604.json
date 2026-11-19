@@ -5,10 +5,10 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div><div><dt>Defense</dt><dd>Fortitude</dd></div><div><dt>Range</dt><dd>One visible metal item worn or held within 6 squares</dd></div><div><dt>Duration</dt><dd>Sustained, up to 1 minute</dd></div></dl><p>Heat the item until it glows. Its wearer or holder takes 2/3/5 fire damage when cast. Each later upkeep deals 1 fire damage to a creature still touching the item; this continuing heat is not an attack and resistance can reduce it to 0. A holder may drop it immediately after damage. Worn items take their normal removal time. The heat ends when Sustain ends.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>Class casting attribute</dd></div><div><dt>Defense</dt><dd>Fortitude</dd></div><div><dt>Range</dt><dd>One visible metal item worn or held within 6 squares</dd></div><div><dt>Duration</dt><dd>Sustained, up to 1 minute</dd></div></dl><p>Heat the item until it glows. Its wearer or holder takes 2/3/5 fire damage when cast. Each later upkeep deals 1 fire damage to a creature still touching the item; this continuing heat is not an attack and resistance can reduce it to 0. A holder may drop it immediately after damage. Worn items take their normal removal time. The heat ends when Sustain ends.</p>",
     "activity": {
       "action": "main",
-      "rollMode": "attribute",
+      "rollMode": "delegated",
       "attribute": "knowledge",
       "defenseAttribute": "fortitude"
     },
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:flame:4",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",
@@ -32,7 +32,7 @@
         "sp": 2,
         "range": "One visible metal item worn or held within 6 squares",
         "duration": "Sustained, up to 1 minute",
-        "attribute": "Knowledge",
+        "attribute": "Class",
         "defenseAttribute": "Fortitude",
         "effect": "Heat the item until it glows. Its wearer or holder takes 2/3/5 fire damage when cast. Each later upkeep deals 1 fire damage to a creature still touching the item; this continuing heat is not an attack and resistance can reduce it to 0. A holder may drop it immediately after damage. Worn items take their normal removal time. The heat ends when Sustain ends.",
         "improves": null,
@@ -50,7 +50,7 @@
         "sp": 2,
         "action": "Main Action",
         "actionText": "Main Action",
-        "attribute": "Knowledge",
+        "attribute": "Class",
         "defense": "Fortitude",
         "defenseAttribute": "Fortitude",
         "holdAttribute": null,

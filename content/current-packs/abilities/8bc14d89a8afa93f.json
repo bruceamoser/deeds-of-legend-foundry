@@ -5,10 +5,10 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>3</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>A 6-by-6-square patch of existing ordinary vegetation within 6 squares</dd></div><div><dt>Duration</dt><dd>24 hours</dd></div></dl><p>Existing plants immediately swell into dense, tangled growth, making the affected squares difficult terrain. Use the normal difficult-terrain movement costs, including when crawling. Choose any squares to leave clear when casting, including paths through the growth. Creatures already there remain in place and can act normally. The growth lasts 24 hours without Sustain.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>3</dd></div><div><dt>Attribute</dt><dd>Automatic</dd></div><div><dt>Range</dt><dd>A 6-by-6-square patch of existing ordinary vegetation within 6 squares</dd></div><div><dt>Duration</dt><dd>24 hours</dd></div></dl><p>Existing plants immediately swell into dense, tangled growth, making the affected squares difficult terrain. Use the normal difficult-terrain movement costs, including when crawling. Choose any squares to leave clear when casting, including paths through the growth. Creatures already there remain in place and can act normally. The growth lasts 24 hours without Sustain.</p>",
     "activity": {
       "action": "main",
-      "rollMode": "attribute",
+      "rollMode": "none",
       "attribute": "knowledge",
       "defenseAttribute": "agility"
     },
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:growth:6",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",

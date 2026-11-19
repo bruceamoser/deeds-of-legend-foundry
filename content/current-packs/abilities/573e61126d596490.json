@@ -5,11 +5,11 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 10 minutes</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>Up to six willing living creatures within 3 squares throughout the ritual</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Guide a shared prayer of recovery. Roll once; each recipient restores 3/5/7 HP after Life resistance. Each creature can benefit from Prayer of Healing once between safe overnight rests.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 10 minutes</dd></div><div><dt>SP</dt><dd>2</dd></div><div><dt>Attribute</dt><dd>Class casting attribute</dd></div><div><dt>Range</dt><dd>Up to six willing living creatures within 6 squares throughout the ritual</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Guide a shared prayer of recovery. Roll once; each recipient restores 3/5/7 HP after Life resistance. Each creature can benefit from Prayer of Healing once between safe overnight rests.</p>",
     "activity": {
       "action": "ritual",
-      "rollMode": "attribute",
-      "attribute": "reason",
+      "rollMode": "delegated",
+      "attribute": "knowledge",
       "defenseAttribute": "agility"
     },
     "outcomes": {
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:restoration:5",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",
@@ -30,9 +30,9 @@
         "cost": 2,
         "action": "Ritual · 10 minutes",
         "sp": 2,
-        "range": "Up to six willing living creatures within 3 squares throughout the ritual",
+        "range": "Up to six willing living creatures within 6 squares throughout the ritual",
         "duration": "Instant",
-        "attribute": "Reason",
+        "attribute": "Class",
         "defenseAttribute": null,
         "effect": "Guide a shared prayer of recovery. Roll once; each recipient restores 3/5/7 HP after Life resistance. Each creature can benefit from Prayer of Healing once between safe overnight rests.",
         "improves": null,
@@ -51,12 +51,12 @@
         "action": "Ritual",
         "actionText": "Ritual · 10 minutes",
         "ritualTime": "10 minutes",
-        "attribute": "Reason",
+        "attribute": "Class",
         "defense": null,
         "defenseAttribute": null,
         "holdAttribute": null,
         "escapeAttribute": null,
-        "target": "Up to six willing living creatures within 3 squares throughout the ritual",
+        "target": "Up to six willing living creatures within 6 squares throughout the ritual",
         "duration": "Instant",
         "effect": "Guide a shared prayer of recovery. Roll once; each recipient restores 3/5/7 HP after Life resistance. Each creature can benefit from Prayer of Healing once between safe overnight rests."
       }

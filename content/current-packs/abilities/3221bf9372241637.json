@@ -5,10 +5,10 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>4</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>Six connected unoccupied squares within 8 squares</dd></div><div><dt>Duration</dt><dd>10 minutes</dd></div></dl><p>Raise a solid ice wall 2 squares high. Each square has 8 HP and physical resistance 1; fire damage uses its full value. A destroyed square opens a passage. Existing structures support the wall&#39;s weight.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>4</dd></div><div><dt>Attribute</dt><dd>Automatic</dd></div><div><dt>Range</dt><dd>Six connected unoccupied squares within 12 squares</dd></div><div><dt>Duration</dt><dd>10 minutes</dd></div></dl><p>Raise a solid ice wall 2 squares high. Each square has 8 HP and physical resistance 1; fire damage uses its full value. A destroyed square opens a passage. Existing structures support the wall&#39;s weight.</p>",
     "activity": {
       "action": "main",
-      "rollMode": "attribute",
+      "rollMode": "none",
       "attribute": "knowledge",
       "defenseAttribute": "agility"
     },
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:water:8",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",
@@ -30,7 +30,7 @@
         "cost": 3,
         "action": "Main Action",
         "sp": 4,
-        "range": "Six connected unoccupied squares within 8 squares",
+        "range": "Six connected unoccupied squares within 12 squares",
         "duration": "10 minutes",
         "attribute": "None",
         "defenseAttribute": null,
@@ -55,7 +55,7 @@
         "defenseAttribute": null,
         "holdAttribute": null,
         "escapeAttribute": null,
-        "target": "Six connected unoccupied squares within 8 squares",
+        "target": "Six connected unoccupied squares within 12 squares",
         "duration": "10 minutes",
         "effect": "Raise a solid ice wall 2 squares high. Each square has 8 HP and physical resistance 1; fire damage uses its full value. A destroyed square opens a passage. Existing structures support the wall's weight."
       }

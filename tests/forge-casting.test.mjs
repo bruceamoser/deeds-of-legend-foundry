@@ -1,7 +1,35 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { signatureSpellCost, isForgeRitual, forgeCastOptions, forgeCastPayment } from "../src/rules/forge-casting.mjs";
+import { signatureSpellCost, isForgeRitual, forgeCastOptions, forgeCastPayment, forgeSpellCastingAttribute, forgeSpellCastingLabel } from "../src/rules/forge-casting.mjs";
 import { forgeRest } from "../src/rules/forge-vitals.mjs";
+import { bladeCastingSpChanges } from "../src/rules/native-character-state.mjs";
+
+test("rolled spells use the class attribute while delegated and automatic spells keep their procedure", () => {
+  const casterClass = { spAttribute: "guile" };
+  const spell = { page: "2", attribute: "Class", defenseAttribute: "fortitude", holdAttribute: "reason", escapeAttribute: "agility" };
+  assert.equal(forgeSpellCastingAttribute(spell, casterClass), "guile");
+  assert.equal(forgeSpellCastingLabel(spell, casterClass), "Guile");
+  assert.equal(forgeSpellCastingLabel(spell), "Class casting attribute");
+  assert.equal(forgeSpellCastingAttribute({...spell, attribute:"Reason"}, casterClass), "guile");
+  assert.equal(forgeSpellCastingAttribute({...spell, attribute:"None"}, casterClass), null);
+  assert.equal(forgeSpellCastingAttribute({...spell, effect:"Apply the effect. No casting roll."}, casterClass), null);
+  assert.equal(forgeSpellCastingAttribute({...spell, magic:"Magical weapon modifier"}, casterClass), null);
+  assert.equal(forgeSpellCastingLabel({...spell, attribute:"As the funded spell"}, casterClass), "As the funded spell");
+  assert.deepEqual([spell.defenseAttribute, spell.holdAttribute, spell.escapeAttribute], ["fortitude", "reason", "agility"]);
+});
+
+test("the Blade reserve migration adjusts the base maximum once and never refills", () => {
+  const blade = { classId: "class-blade", sp: { max: 9, value: 9 }, attributes: { reason: { base: 2 }, knowledge: { base: -1 } } };
+  assert.deepEqual(bladeCastingSpChanges({...blade, bonusSp:1}), {
+    "system.sp.max": 5, "system.sp.value": 6, "flags.heroes-of-legend.bladeCastingSpUpdated": true,
+  });
+  assert.equal(bladeCastingSpChanges({...blade, updated:true}), null);
+  assert.equal(bladeCastingSpChanges({...blade, classId:"class-protector"}), null);
+  const attributes = { reason: { base: 0 }, knowledge: { base: 2 } };
+  const changes = bladeCastingSpChanges({...blade, sp:{max:9,value:3}, attributes});
+  assert.equal(changes["system.sp.max"], 13);
+  assert.equal(changes["system.sp.value"], 3);
+});
 
 const limits = { maxHp: 20, maxSp: 10, gritGranted: 1 };
 const state = { learned: ["spellcraft:soul-capacity:7", "spellcraft:mind-capacity:7"] };

@@ -5,10 +5,10 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>6</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div><div><dt>Defense</dt><dd>Agility</dd></div><div><dt>Range</dt><dd>Every creature in a 5-square-wide, 3-square-long area within 8 squares</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Raise a surging wave from nearby water or conjured spray. Deal 5/8/11 physical damage, push each affected creature 2/3/4 squares away from you, and make it Prone on Strong. Stability and normal collision rules apply to the push. Each creature is affected once; the water drains away after resolution.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>6</dd></div><div><dt>Attribute</dt><dd>Class casting attribute</dd></div><div><dt>Defense</dt><dd>Agility</dd></div><div><dt>Range</dt><dd>Every creature in a 5-square-wide, 3-square-long area within 12 squares</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Raise a surging wave from nearby water or conjured spray. Deal 5/8/11 physical damage, push each affected creature 2/3/4 squares away from you, and make it Prone on Strong. Stability and normal collision rules apply to the push. Each creature is affected once; the water drains away after resolution.</p>",
     "activity": {
       "action": "main",
-      "rollMode": "attribute",
+      "rollMode": "delegated",
       "attribute": "knowledge",
       "defenseAttribute": "agility"
     },
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:water:a3",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",
@@ -30,9 +30,9 @@
         "cost": 5,
         "action": "Main Action",
         "sp": 6,
-        "range": "Every creature in a 5-square-wide, 3-square-long area within 8 squares",
+        "range": "Every creature in a 5-square-wide, 3-square-long area within 12 squares",
         "duration": "Instant",
-        "attribute": "Knowledge",
+        "attribute": "Class",
         "defenseAttribute": "Agility",
         "effect": "Raise a surging wave from nearby water or conjured spray. Deal 5/8/11 physical damage, push each affected creature 2/3/4 squares away from you, and make it Prone on Strong. Stability and normal collision rules apply to the push. Each creature is affected once; the water drains away after resolution.",
         "improves": null,
@@ -50,12 +50,12 @@
         "sp": 6,
         "action": "Main Action",
         "actionText": "Main Action",
-        "attribute": "Knowledge",
+        "attribute": "Class",
         "defense": "Agility",
         "defenseAttribute": "Agility",
         "holdAttribute": null,
         "escapeAttribute": null,
-        "target": "Every creature in a 5-square-wide, 3-square-long area within 8 squares",
+        "target": "Every creature in a 5-square-wide, 3-square-long area within 12 squares",
         "duration": "Instant",
         "effect": "Raise a surging wave from nearby water or conjured spray. Deal 5/8/11 physical damage, push each affected creature 2/3/4 squares away from you, and make it Prone on Strong. Stability and normal collision rules apply to the push. Each creature is affected once; the water drains away after resolution."
       }

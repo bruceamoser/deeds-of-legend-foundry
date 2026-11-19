@@ -8,6 +8,8 @@ import {spellAttackOutcomes,resolvedAttackEffects} from '../src/rules/attack-out
 import {classifyRoll} from '../src/rules/roll.mjs';
 import {workshopRollOutcome} from '../src/rules/workshop-outcomes.mjs';
 import {ownedWorkshopRollAttribute} from '../src/rules/ability-roll.mjs';
+import {forgeSpellCastingAttribute,isForgeSpell} from '../src/rules/forge-casting.mjs';
+import {effectiveActorAttributeValue} from '../src/rules/effective-attributes.mjs';
 const source=(await readFile(new URL('../src/sheets/workshop-character.mjs',import.meta.url),'utf8')).replace(/^import .*\n/gm,'').replaceAll('export ','')+'\nglobalThis.Sheet=WorkshopCharacterSheet;';
 function fixture(overrides={}) {
   const calls=[];let nextOperation=0;const operations=new Map();
@@ -25,7 +27,7 @@ function fixture(overrides={}) {
   }
   const context={foundry:{utils:{randomID:()=>`operation-${++nextOperation}`},applications:{api:{HandlebarsApplicationMixin:cls=>cls},sheets:{ActorSheetV2:Base}},dice:{Roll}},
     game:{user:{id:'owner'},settings:{get:()=> 'blind'}},ChatMessage:{getSpeaker:()=>({actor:'hero'})},
-    queueMicrotask,structuredClone,viewPortrait(){},CharacterSheet:Base,classifyRoll,spellAttackOutcomes,resolvedAttackEffects,rollCard,resourceCard,inventoryCheck,workshopRollOutcome,ownedWorkshopRollAttribute,ui:{notifications:{info(){},error(){}}},
+    queueMicrotask,structuredClone,viewPortrait(){},CharacterSheet:Base,classifyRoll,spellAttackOutcomes,resolvedAttackEffects,rollCard,resourceCard,inventoryCheck,workshopRollOutcome,ownedWorkshopRollAttribute,forgeSpellCastingAttribute,isForgeSpell,effectiveActorAttributeValue,ui:{notifications:{info(){},error(){}}},
     nativeWorkshopRoll:(_actor,id)=>operations.get(id),
     claimNativeWorkshopOperation:async(_actor,operation)=>{operations.set(operation.id,operation);return operation;},
     updateNativeWorkshopOperation:async(_actor,operation)=>operations.set(operation.id,operation),
@@ -46,9 +48,14 @@ test('native Workshop dice use retained Foundry dice and V14 message visibility'
   assert.match(calls[2].data.content,/hol-chat-verdict standard/);assert.match(calls[2].data.content,/<strong>13<\/strong>/);
 });
 test('native Workshop chat shows the selected utility outcome and keeps the full rules',async()=>{
-  const entangle={id:'spell:growth:2',name:'Entangle',effect:'Apply Slowed 1/2/3 to creatures in the area when cast.'};
-  const {sheet,calls}=fixture({loadWorkshopCatalogs:async()=>({choices:[],forge:{spells:[entangle],nodes:[]}})});
-  await sheet.rollDice({count:4,sides:6,kind:'attribute',net:-1,attribute:2,activeRoll:{id:entangle.id,cast:true}});
+  const entangle={id:'spell:growth:2',name:'Entangle',page:'2',attribute:'Class',effect:'Apply Slowed 1/2/3 to creatures in the area when cast.'};
+  const {sheet,calls}=fixture({loadWorkshopCatalogs:async()=>({choices:[],forge:{spells:[entangle],nodes:[],classes:[{id:'class-shepherd',spAttribute:'reason'}]}})});
+  await sheet.actor.update({'flags.heroes-of-legend.nativeWorkshop':{portable:{draft:{classId:'class-shepherd'}}}});
+  sheet.actor.system={attributes:{reason:{base:2}}};
+  const request={count:4,sides:6,kind:'attribute',net:-1,attribute:2,activeRoll:{id:entangle.id,cast:true}};
+  await assert.rejects(sheet.rollDice({...request,attributeKey:'knowledge'}),/class casting attribute/);
+  assert.deepEqual(calls,[]);
+  await sheet.rollDice({...request,attributeKey:'reason'});
   const posted=calls.find(call=>call.data).data;
   assert.match(posted.content,/Apply Slowed 2 to creatures in the area when cast/);
   assert.match(posted.content,/Apply Slowed 1\/2\/3 to creatures in the area when cast/);

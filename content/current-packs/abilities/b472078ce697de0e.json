@@ -5,10 +5,10 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One willing creature within 3 squares</dd></div><div><dt>Duration</dt><dd>Until its next roll or your next turn ends</dd></div></dl><p>Offer a useful flash of intuition. Give 1 Boon to the recipient&#39;s next non-attack task roll. A creature can hold one Guidance benefit at a time.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Maneuver</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Attribute</dt><dd>Automatic</dd></div><div><dt>Range</dt><dd>One willing creature within 6 squares</dd></div><div><dt>Duration</dt><dd>Until its next roll or your next turn ends</dd></div></dl><p>Offer a useful flash of intuition. Give 1 Boon to the recipient&#39;s next non-attack task roll. A creature can hold one Guidance benefit at a time.</p>",
     "activity": {
       "action": "maneuver",
-      "rollMode": "attribute",
+      "rollMode": "none",
       "attribute": "knowledge",
       "defenseAttribute": "agility"
     },
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:portents:2",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",
@@ -30,7 +30,7 @@
         "cost": 1,
         "action": "Maneuver",
         "sp": 1,
-        "range": "One willing creature within 3 squares",
+        "range": "One willing creature within 6 squares",
         "duration": "Until its next roll or your next turn ends",
         "attribute": "None",
         "defenseAttribute": null,
@@ -55,7 +55,7 @@
         "defenseAttribute": null,
         "holdAttribute": null,
         "escapeAttribute": null,
-        "target": "One willing creature within 3 squares",
+        "target": "One willing creature within 6 squares",
         "duration": "Until its next roll or your next turn ends",
         "effect": "Offer a useful flash of intuition. Give 1 Boon to the recipient's next non-attack task roll. A creature can hold one Guidance benefit at a time."
       }

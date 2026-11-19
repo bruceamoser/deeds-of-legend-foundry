@@ -5,11 +5,11 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>3</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Defense</dt><dd>Fortitude</dd></div><div><dt>Range</dt><dd>One creature within 3 squares</dd></div><div><dt>Duration</dt><dd>1 minute</dd></div></dl><p>Speak a curse that burdens its efforts. Apply Poisoned 1/2/3, representing magical frailty, with ordinary decay. While the curse persists, you may spend a Maneuver to renew Poisoned 1 on that target, once on your turn; this costs 0 SP. Remove Curse ends the curse and its remaining contribution immediately. You may have one Bestow Curse active; casting it again ends the earlier curse.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>3</dd></div><div><dt>Attribute</dt><dd>Class casting attribute</dd></div><div><dt>Defense</dt><dd>Fortitude</dd></div><div><dt>Range</dt><dd>One creature within 6 squares</dd></div><div><dt>Duration</dt><dd>1 minute</dd></div></dl><p>Speak a curse that burdens its efforts. Apply Poisoned 1/2/3, representing magical frailty, with ordinary decay. While the curse persists, you may spend a Maneuver to renew Poisoned 1 on that target, once on your turn; this costs 0 SP. Remove Curse ends the curse and its remaining contribution immediately. You may have one Bestow Curse active; casting it again ends the earlier curse.</p>",
     "activity": {
       "action": "main",
-      "rollMode": "attribute",
-      "attribute": "reason",
+      "rollMode": "delegated",
+      "attribute": "knowledge",
       "defenseAttribute": "fortitude"
     },
     "outcomes": {
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:decay:6",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",
@@ -30,9 +30,9 @@
         "cost": 2,
         "action": "Main Action",
         "sp": 3,
-        "range": "One creature within 3 squares",
+        "range": "One creature within 6 squares",
         "duration": "1 minute",
-        "attribute": "Reason",
+        "attribute": "Class",
         "defenseAttribute": "Fortitude",
         "effect": "Speak a curse that burdens its efforts. Apply Poisoned 1/2/3, representing magical frailty, with ordinary decay. While the curse persists, you may spend a Maneuver to renew Poisoned 1 on that target, once on your turn; this costs 0 SP. Remove Curse ends the curse and its remaining contribution immediately. You may have one Bestow Curse active; casting it again ends the earlier curse.",
         "improves": null,
@@ -50,12 +50,12 @@
         "sp": 3,
         "action": "Main Action",
         "actionText": "Main Action",
-        "attribute": "Reason",
+        "attribute": "Class",
         "defense": "Fortitude",
         "defenseAttribute": "Fortitude",
         "holdAttribute": null,
         "escapeAttribute": null,
-        "target": "One creature within 3 squares",
+        "target": "One creature within 6 squares",
         "duration": "1 minute",
         "effect": "Speak a curse that burdens its efforts. Apply Poisoned 1/2/3, representing magical frailty, with ordinary decay. While the curse persists, you may spend a Maneuver to renew Poisoned 1 on that target, once on your turn; this costs 0 SP. Remove Curse ends the curse and its remaining contribution immediately. You may have one Bestow Curse active; casting it again ends the earlier curse."
       }

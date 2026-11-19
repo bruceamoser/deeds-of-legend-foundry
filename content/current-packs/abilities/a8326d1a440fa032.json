@@ -5,10 +5,10 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>4</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div><div><dt>Range</dt><dd>Up to three visible ongoing spells within 6 squares</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Choose one shared cancellation total of 4/6/8 progress and divide it among the effects, assigning at least 1 to each. Each target is 2 plus that spell&#39;s printed SP cost. End each effect whose objective is completed.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>4</dd></div><div><dt>Attribute</dt><dd>Class casting attribute</dd></div><div><dt>Range</dt><dd>Up to three visible ongoing spells within 6 squares</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Choose one shared cancellation total of 4/6/8 progress and divide it among the effects, assigning at least 1 to each. Each target is 2 plus that spell&#39;s printed SP cost. End each effect whose objective is completed.</p>",
     "activity": {
       "action": "main",
-      "rollMode": "attribute",
+      "rollMode": "delegated",
       "attribute": "knowledge",
       "defenseAttribute": "agility"
     },
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:unraveling:8",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",
@@ -32,7 +32,7 @@
         "sp": 4,
         "range": "Up to three visible ongoing spells within 6 squares",
         "duration": "Instant",
-        "attribute": "Knowledge",
+        "attribute": "Class",
         "defenseAttribute": null,
         "effect": "Choose one shared cancellation total of 4/6/8 progress and divide it among the effects, assigning at least 1 to each. Each target is 2 plus that spell's printed SP cost. End each effect whose objective is completed.",
         "improves": null,
@@ -50,7 +50,7 @@
         "sp": 4,
         "action": "Main Action",
         "actionText": "Main Action",
-        "attribute": "Knowledge",
+        "attribute": "Class",
         "defense": null,
         "defenseAttribute": null,
         "holdAttribute": null,

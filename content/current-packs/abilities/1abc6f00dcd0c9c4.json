@@ -5,11 +5,11 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 10 minutes</dd></div><div><dt>SP</dt><dd>4</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>One adjacent object, creature or fixed magical effect</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Add 2/4/6 progress toward understanding one magical effect, with target 6. Each completed analysis reveals its purpose, remaining duration, whether it requires Sustain and one named remedy or interruption method. Use further castings for further effects.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 10 minutes</dd></div><div><dt>SP</dt><dd>4</dd></div><div><dt>Attribute</dt><dd>Class casting attribute</dd></div><div><dt>Range</dt><dd>One adjacent object, creature or fixed magical effect</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Add 2/4/6 progress toward understanding one magical effect, with target 6. Each completed analysis reveals its purpose, remaining duration, whether it requires Sustain and one named remedy or interruption method. Use further castings for further effects.</p>",
     "activity": {
       "action": "ritual",
-      "rollMode": "attribute",
-      "attribute": "reason",
+      "rollMode": "delegated",
+      "attribute": "knowledge",
       "defenseAttribute": "agility"
     },
     "outcomes": {
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:detection:8",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",
@@ -32,7 +32,7 @@
         "sp": 4,
         "range": "One adjacent object, creature or fixed magical effect",
         "duration": "Instant",
-        "attribute": "Reason",
+        "attribute": "Class",
         "defenseAttribute": null,
         "effect": "Add 2/4/6 progress toward understanding one magical effect, with target 6. Each completed analysis reveals its purpose, remaining duration, whether it requires Sustain and one named remedy or interruption method. Use further castings for further effects.",
         "improves": null,
@@ -51,7 +51,7 @@
         "action": "Ritual",
         "actionText": "Ritual · 10 minutes",
         "ritualTime": "10 minutes",
-        "attribute": "Reason",
+        "attribute": "Class",
         "defense": null,
         "defenseAttribute": null,
         "holdAttribute": null,

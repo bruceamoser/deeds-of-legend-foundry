@@ -5,11 +5,11 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Attribute</dt><dd>Guile</dd></div><div><dt>Defense</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>One creature within 3 squares that can hear and understand you</dd></div><div><dt>Duration</dt><dd>Until the social exchange ends, up to 10 minutes</dd></div></dl><p>Offer an appealing introduction. Add 1/2/3 progress toward an attainable social objective involving a friendly hearing or small favor. During the exchange, the target senses you as approachable. The DA establishes the concession and its boundaries before casting.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Attribute</dt><dd>Class casting attribute</dd></div><div><dt>Defense</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>One creature within 6 squares that can hear and understand you</dd></div><div><dt>Duration</dt><dd>Until the social exchange ends, up to 10 minutes</dd></div></dl><p>Offer an appealing introduction. Add 1/2/3 progress toward an attainable social objective involving a friendly hearing or small favor. During the exchange, the target senses you as approachable. The DA establishes the concession and its boundaries before casting.</p>",
     "activity": {
       "action": "main",
-      "rollMode": "attribute",
-      "attribute": "guile",
+      "rollMode": "delegated",
+      "attribute": "knowledge",
       "defenseAttribute": "reason"
     },
     "outcomes": {
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:emotion:3",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",
@@ -30,9 +30,9 @@
         "cost": 2,
         "action": "Main Action",
         "sp": 1,
-        "range": "One creature within 3 squares that can hear and understand you",
+        "range": "One creature within 6 squares that can hear and understand you",
         "duration": "Until the social exchange ends, up to 10 minutes",
-        "attribute": "Guile",
+        "attribute": "Class",
         "defenseAttribute": "Reason",
         "effect": "Offer an appealing introduction. Add 1/2/3 progress toward an attainable social objective involving a friendly hearing or small favor. During the exchange, the target senses you as approachable. The DA establishes the concession and its boundaries before casting.",
         "improves": null,
@@ -50,12 +50,12 @@
         "sp": 1,
         "action": "Main Action",
         "actionText": "Main Action",
-        "attribute": "Guile",
+        "attribute": "Class",
         "defense": "Reason",
         "defenseAttribute": "Reason",
         "holdAttribute": null,
         "escapeAttribute": null,
-        "target": "One creature within 3 squares that can hear and understand you",
+        "target": "One creature within 6 squares that can hear and understand you",
         "duration": "Until the social exchange ends, up to 10 minutes",
         "effect": "Offer an appealing introduction. Add 1/2/3 progress toward an attainable social objective involving a friendly hearing or small favor. During the exchange, the target senses you as approachable. The DA establishes the concession and its boundaries before casting."
       }

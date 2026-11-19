@@ -5,10 +5,10 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 hour</dd></div><div><dt>SP</dt><dd>6</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One willing adjacent creature</dd></div><div><dt>Duration</dt><dd>24 hours</dd></div></dl><p>Borrow the subject&#39;s remembered experience of one named place, undertaking or field of study. Agree on that topic before casting. You can recall facts and sensory memories the subject actually knows about it as though you had witnessed them, gaining 1 Boon to Knowledge rolls using that borrowed experience. Record the shared topic and one ordinary language the subject knows, which you can speak and read for the duration. The subject retains its memories. Learned abilities and SP remain with their owner; memories preserve the subject&#39;s errors and gaps.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 hour</dd></div><div><dt>SP</dt><dd>6</dd></div><div><dt>Attribute</dt><dd>Automatic</dd></div><div><dt>Range</dt><dd>One willing adjacent creature</dd></div><div><dt>Duration</dt><dd>24 hours</dd></div></dl><p>Borrow the subject&#39;s remembered experience of one named place, undertaking or field of study. Agree on that topic before casting. You can recall facts and sensory memories the subject actually knows about it as though you had witnessed them, gaining 1 Boon to Knowledge rolls using that borrowed experience. Record the shared topic and one ordinary language the subject knows, which you can speak and read for the duration. The subject retains its memories. Learned abilities and SP remain with their owner; memories preserve the subject&#39;s errors and gaps.</p>",
     "activity": {
       "action": "ritual",
-      "rollMode": "attribute",
+      "rollMode": "none",
       "attribute": "knowledge",
       "defenseAttribute": "agility"
     },
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:thought:a3",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",

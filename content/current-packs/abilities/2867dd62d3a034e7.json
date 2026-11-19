@@ -5,11 +5,11 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 10 minutes</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div><div><dt>Range</dt><dd>One adjacent corpse with a recognizable head</dd></div><div><dt>Duration</dt><dd>Up to three questions</dd></div></dl><p>Call an echo of its remembered experience. Weak permits one question, Standard two, Strong three. The DA answers from what the person knew in life, in brief sensory recollections. A corpse can provide this echo once between safe overnight rests.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 10 minutes</dd></div><div><dt>SP</dt><dd>1</dd></div><div><dt>Attribute</dt><dd>Class casting attribute</dd></div><div><dt>Range</dt><dd>One adjacent corpse with a recognizable head</dd></div><div><dt>Duration</dt><dd>Up to three questions</dd></div></dl><p>Call an echo of its remembered experience. Weak permits one question, Standard two, Strong three. The DA answers from what the person knew in life, in brief sensory recollections. A corpse can provide this echo once between safe overnight rests.</p>",
     "activity": {
       "action": "ritual",
-      "rollMode": "attribute",
-      "attribute": "reason",
+      "rollMode": "delegated",
+      "attribute": "knowledge",
       "defenseAttribute": "agility"
     },
     "outcomes": {
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:spirits:3",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",
@@ -32,7 +32,7 @@
         "sp": 1,
         "range": "One adjacent corpse with a recognizable head",
         "duration": "Up to three questions",
-        "attribute": "Reason",
+        "attribute": "Class",
         "defenseAttribute": null,
         "effect": "Call an echo of its remembered experience. Weak permits one question, Standard two, Strong three. The DA answers from what the person knew in life, in brief sensory recollections. A corpse can provide this echo once between safe overnight rests.",
         "improves": null,
@@ -51,7 +51,7 @@
         "action": "Ritual",
         "actionText": "Ritual · 10 minutes",
         "ritualTime": "10 minutes",
-        "attribute": "Reason",
+        "attribute": "Class",
         "defense": null,
         "defenseAttribute": null,
         "holdAttribute": null,

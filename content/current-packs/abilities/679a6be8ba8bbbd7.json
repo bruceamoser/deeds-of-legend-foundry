@@ -5,10 +5,10 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>3</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div><div><dt>Defense</dt><dd>Brawn</dd></div><div><dt>Range</dt><dd>One creature or unattended object within 6 squares</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Move a creature 1/2/3 squares toward a visible supported destination, applying Stability. Alternatively, automatically move an unattended object of Bulk 6 or less up to 3 squares. The route must be open and wide enough for the target.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action</dd></div><div><dt>SP</dt><dd>3</dd></div><div><dt>Attribute</dt><dd>Class casting attribute</dd></div><div><dt>Defense</dt><dd>Brawn</dd></div><div><dt>Range</dt><dd>One creature or unattended object within 6 squares</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p>Move a creature 1/2/3 squares toward a visible supported destination, applying Stability. Alternatively, automatically move an unattended object of Bulk 6 or less up to 3 squares. The route must be open and wide enough for the target.</p>",
     "activity": {
       "action": "main",
-      "rollMode": "attribute",
+      "rollMode": "delegated",
       "attribute": "knowledge",
       "defenseAttribute": "brawn"
     },
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:telekinesis:7",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",
@@ -32,7 +32,7 @@
         "sp": 3,
         "range": "One creature or unattended object within 6 squares",
         "duration": "Instant",
-        "attribute": "Knowledge",
+        "attribute": "Class",
         "defenseAttribute": "Brawn",
         "effect": "Move a creature 1/2/3 squares toward a visible supported destination, applying Stability. Alternatively, automatically move an unattended object of Bulk 6 or less up to 3 squares. The route must be open and wide enough for the target.",
         "improves": null,
@@ -50,7 +50,7 @@
         "sp": 3,
         "action": "Main Action",
         "actionText": "Main Action",
-        "attribute": "Knowledge",
+        "attribute": "Class",
         "defense": "Brawn",
         "defenseAttribute": "Brawn",
         "holdAttribute": null,

@@ -5,10 +5,10 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 hour</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>Self and up to five willing sleepers within 3 squares</dd></div><div><dt>Duration</dt><dd>1 hour</dd></div></dl><p>Host a shared dream with chosen scenery and conversation about one undertaking within the next 24 hours. The DA gives one truthful warning of a foreseeable obstacle, based on present circumstances. Each participant receives 1 Boon on its first roll directly implementing the agreed plan within 24 hours; record the plan before waking. A creature can hold one Lord Dream benefit at a time. The dream reveals possibilities, while later decisions can change the outcome.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 1 hour</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>Automatic</dd></div><div><dt>Range</dt><dd>Self and up to five willing sleepers within 6 squares</dd></div><div><dt>Duration</dt><dd>1 hour</dd></div></dl><p>Host a shared dream with chosen scenery and conversation about one undertaking within the next 24 hours. The DA gives one truthful warning of a foreseeable obstacle, based on present circumstances. Each participant receives 1 Boon on its first roll directly implementing the agreed plan within 24 hours; record the plan before waking. A creature can hold one Lord Dream benefit at a time. The dream reveals possibilities, while later decisions can change the outcome.</p>",
     "activity": {
       "action": "ritual",
-      "rollMode": "attribute",
+      "rollMode": "none",
       "attribute": "knowledge",
       "defenseAttribute": "agility"
     },
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:dreams:a1",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",
@@ -30,7 +30,7 @@
         "cost": 4,
         "action": "Ritual · 1 hour",
         "sp": 5,
-        "range": "Self and up to five willing sleepers within 3 squares",
+        "range": "Self and up to five willing sleepers within 6 squares",
         "duration": "1 hour",
         "attribute": "None",
         "defenseAttribute": null,
@@ -56,7 +56,7 @@
         "defenseAttribute": null,
         "holdAttribute": null,
         "escapeAttribute": null,
-        "target": "Self and up to five willing sleepers within 3 squares",
+        "target": "Self and up to five willing sleepers within 6 squares",
         "duration": "1 hour",
         "effect": "Host a shared dream with chosen scenery and conversation about one undertaking within the next 24 hours. The DA gives one truthful warning of a foreseeable obstacle, based on present circumstances. Each participant receives 1 Boon on its first roll directly implementing the agreed plan within 24 hours; record the plan before waking. A creature can hold one Lord Dream benefit at a time. The dream reveals possibilities, while later decisions can change the outcome."
       }

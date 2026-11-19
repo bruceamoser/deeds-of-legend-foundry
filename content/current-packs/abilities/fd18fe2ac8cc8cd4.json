@@ -5,10 +5,10 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 10 minutes</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>None</dd></div><div><dt>Range</dt><dd>One adjacent ordinary wall up to 2 squares thick</dd></div><div><dt>Duration</dt><dd>1 hour</dd></div></dl><p>Make a work opening 1 square wide and 2 high through stone or earth. At expiry the opening closes; occupants emerge at the nearest end first. Secure ordinary supports before using it in a load-bearing wall.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Ritual · 10 minutes</dd></div><div><dt>SP</dt><dd>5</dd></div><div><dt>Attribute</dt><dd>Automatic</dd></div><div><dt>Range</dt><dd>One adjacent ordinary wall up to 2 squares thick</dd></div><div><dt>Duration</dt><dd>1 hour</dd></div></dl><p>Make a work opening 1 square wide and 2 high through stone or earth. At expiry the opening closes; occupants emerge at the nearest end first. Secure ordinary supports before using it in a load-bearing wall.</p>",
     "activity": {
       "action": "ritual",
-      "rollMode": "attribute",
+      "rollMode": "none",
       "attribute": "knowledge",
       "defenseAttribute": "agility"
     },
@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:shaping:a1",
-      "sourceCommit": "486f57f4eaf6acd7af39f16d403870dc0e574f6d",
+      "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",
