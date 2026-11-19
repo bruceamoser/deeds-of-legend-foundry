@@ -8,7 +8,7 @@ import {
 
 export const CREATURE_PACK_DEFINITION = Object.freeze({
   name: "creatures",
-  label: "Heroes of Legend Creatures",
+  label: "Deeds of Legend Creatures",
   type: "Actor",
   path: "packs/creatures",
   directory: "creatures",

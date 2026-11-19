@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "guard:interception:4",
-      "sourceCommit": "837a3eb42850d6c531c6153349664b49db0d0882",
+      "sourceCommit": "59610c9cc291340484f07024f7a48b7690520e6f",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "technique",

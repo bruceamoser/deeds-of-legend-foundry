@@ -191,7 +191,7 @@ async function join(name) {
   )
     throw new Error(
       [
-        "Heroes of Legend did not initialize after Foundry became ready; refusing to bind the potion coordinator.",
+        "Deeds of Legend did not initialize after Foundry became ready; refusing to bind the potion coordinator.",
         `ready=${startup.ready} system=${startup.systemId ?? "(missing)"} version=${startup.systemVersion ?? "(missing)"}`,
         `readyHook=${startup.readyHook} dataModels=${startup.dataModels}`,
         `authorityMeta=${startup.authorityMeta.registered ? "registered" : `missing (${startup.authorityMeta.error ?? "unknown error"})`}`,

@@ -363,21 +363,21 @@ test("manifest declares native content packs and sanitizes Item descriptions", a
   assert.deepEqual(manifest.packs.filter(pack => ["abilities", "equipment", "creatures"].includes(pack.name)), [
     {
       name: "abilities",
-      label: "Heroes of Legend Abilities",
+      label: "Deeds of Legend Abilities",
       type: "Item",
       path: "packs/abilities",
       system: "heroes-of-legend",
     },
     {
       name: "equipment",
-      label: "Heroes of Legend Equipment",
+      label: "Deeds of Legend Equipment",
       type: "Item",
       path: "packs/equipment",
       system: "heroes-of-legend",
     },
     {
       name: "creatures",
-      label: "Heroes of Legend Creatures",
+      label: "Deeds of Legend Creatures",
       type: "Actor",
       path: "packs/creatures",
       system: "heroes-of-legend",

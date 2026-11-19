@@ -1,6 +1,6 @@
-# Heroes of Legend for Foundry VTT
+# Deeds of Legend for Foundry VTT
 
-Bruce Moser's **Heroes of Legend**, for Foundry Virtual Tabletop **V14**.
+Bruce Moser's **Deeds of Legend**, formerly **Heroes of Legend**, for Foundry Virtual Tabletop **V14**.
 Version **3.0.0** brings the Character Workshop into native Foundry: guided creation, discipline learning and atlas, compact favorites and spellbooks, current HP/SP and recovery, and timed torch lighting. See the [implementation and test record](docs/native-workshop-port-325.md).
 
 ## Install and update
@@ -11,7 +11,7 @@ In Foundry **Setup → Game Systems → Install System**, paste this manifest UR
 https://github.com/bruceamoser/heroes-of-legend-foundry/releases/latest/download/system.json
 ```
 
-Select **Install**, then create a world using **Heroes of Legend**. The full release is published on [GitHub Releases](https://github.com/bruceamoser/heroes-of-legend-foundry/releases). No account on another service or external module is required.
+Select **Install**, then create a world using **Deeds of Legend**. The full release is published on [GitHub Releases](https://github.com/bruceamoser/heroes-of-legend-foundry/releases). No account on another service or external module is required.
 
 Before updating, back up your world and return to Setup. Use the system's **Update** control when Foundry offers a newer version, then launch the world again.
 
@@ -20,7 +20,7 @@ For a local candidate, extract the ZIP directly into your isolated test data dir
 ## Start playing
 
 1. Install the system as described above, then create a Foundry V14 world using
-   **Heroes of Legend**. For a local development build, follow
+   **Deeds of Legend**. For a local development build, follow
    [development setup](docs/development.md).
 2. Join as the GM. A fresh world starts request processing automatically in the
    active GM's window; players do not need to enable a service or seek approval
@@ -74,6 +74,6 @@ World Actors and Items imported from compendiums are editable snapshots. Updatin
 
 Use Node 24 (`.node-version`), `npm ci`, `npx playwright install --with-deps chromium`, then `npm run check`. Build output is `dist/heroes-of-legend/`; `npm run package:release` creates the install artifacts. Read [AGENTS.md](AGENTS.md), [development and native test evidence](docs/development.md), [data contracts](docs/data-contracts.md) and [acceptance scenarios](docs/acceptance-scenarios.md).
 
-Rules are authored in the [Heroes of Legend book repository](https://github.com/bruceamoser/heroes-of-legend). The system uses the pinned approved player/DA source baseline recorded in [rules authority](docs/rules-authority.md) and the current journal/Forge source locks. [Interaction design](docs/interaction-design.md) and the [decision register](docs/decisions.md) describe the current scope.
+Rules are authored in the [Deeds of Legend book repository](https://github.com/bruceamoser/heroes-of-legend). The system uses the pinned approved player/DA source baseline recorded in [rules authority](docs/rules-authority.md) and the current journal/Forge source locks. [Interaction design](docs/interaction-design.md) and the [decision register](docs/decisions.md) describe the current scope.
 
 Code and content licensing remain undecided. Retained source, artwork and provenance notices do not create additional license grants or assign a new license to the books or artwork.
