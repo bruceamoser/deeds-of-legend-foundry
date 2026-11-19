@@ -156,13 +156,13 @@ export function forgeHeal(play, limits, healing, { lifeResistance = 0 } = {}) {
   return hp > 0 ? { ...clearDying(current), hp } : current;
 }
 
-export const FIRST_AID_TREATMENTS = Object.freeze({
-  ordinary: { label: "First Aid", healing: [2, 4, 6] },
-  "field-dressing": { label: "Field Dressing I", healing: [3, 5, 7] },
-  "field-dressing2": { label: "Field Dressing II or III", healing: [4, 6, 8] },
-  "emergency-treatment": { label: "Emergency Treatment I", healing: [4, 6, 8] },
-  emergency2: { label: "Emergency Treatment II or III", healing: [5, 7, 9] },
-  mastery: { label: "Mastery treatment", healing: [5, 8, 11] },
+const FIRST_AID_TREATMENTS = Object.freeze({
+  ordinary: [2, 4, 6],
+  "field-dressing": [3, 5, 7],
+  "field-dressing2": [4, 6, 8],
+  "emergency-treatment": [4, 6, 8],
+  emergency2: [5, 7, 9],
+  mastery: [5, 8, 11],
 });
 const FIRST_AID_TIERS = ["weak", "standard", "strong"];
 
@@ -170,7 +170,7 @@ export function forgeRest(play, limits, draft, options) {
   return forgeRestResult(play, limits, draft, options).play;
 }
 
-export function forgeRestResult(play, limits, { kind = "nights-rest", hour, firstAid, spellcraft } = {}, { spellcraftRestoration = 0 } = {}) {
+export function forgeRestResult(play, limits, { kind = "nights-rest", hour, spellcraft } = {}, { spellcraftRestoration = 0 } = {}) {
   const current = forgeVitals(play, limits);
   assertLiving(current);
   if (kind === "brief-rest") {
@@ -179,22 +179,12 @@ export function forgeRestResult(play, limits, { kind = "nights-rest", hour, firs
     if (spellcraft && (!Number.isSafeInteger(spellcraftRestoration) || spellcraftRestoration <= 0))
       throw new Error("Learn Spellcraft Recovery to use this benefit.");
     const hp = Math.max(current.hp, Math.min(current.hp + 6, recoveryLimit(limits)));
-    const sp = Math.min(current.sp + 3, limits.maxSp);
-    let recovered = forgeVitals({ ...current, hp, sp }, limits);
-    let treatment;
-    if (firstAid !== undefined) {
-      const { total, tier = total <= 8 ? "weak" : total <= 14 ? "standard" : "strong", treatment: choice = "ordinary" } = firstAid ?? {};
-      const index = FIRST_AID_TIERS.indexOf(tier);
-      if (!Number.isSafeInteger(total) || index < 0 || !Object.hasOwn(FIRST_AID_TREATMENTS, choice))
-        throw new Error("Enter the healer’s Knowledge result and select a First Aid treatment.");
-      const { label, healing } = FIRST_AID_TREATMENTS[choice];
-      recovered = forgeHeal({ ...recovered, firstAidUsed: true, firstAidPending: false }, limits, healing[index]);
-      treatment = { total, tier, label, restored: recovered.hp - hp };
-    }
-    if (spellcraft) recovered = { ...recovered, sp: Math.min(limits.maxSp, sp + spellcraftRestoration), spellcraftRecoveryUsed: true };
-    return { play: recovered, baseHp: hp - current.hp, baseSp: sp - current.sp, firstAid: treatment, spellcraftSp: recovered.sp - sp };
+    const baseSp = Math.min(current.sp + 3, limits.maxSp);
+    const sp = spellcraft ? Math.min(baseSp + spellcraftRestoration, limits.maxSp) : baseSp;
+    const recovered = forgeVitals({ ...current, hp, sp, spellcraftRecoveryUsed: spellcraft || current.spellcraftRecoveryUsed }, limits);
+    return { play: recovered, spellcraftSp: sp - baseSp };
   }
-  if (kind !== "nights-rest" || firstAid !== undefined || spellcraft !== undefined)
+  if (kind !== "nights-rest" || spellcraft !== undefined)
     throw new Error("Choose a Brief Rest or a Night’s Rest.");
   if (hour !== undefined) {
     amount(hour);
@@ -228,7 +218,7 @@ export function forgeFinishFirstAid(play, limits, tier, { trained = false, field
   const healing = { weak: 2, standard: 4, strong: 6 }[tier];
   if (!Number.isSafeInteger(healing)) throw new Error("Choose a Weak, Standard, or Strong result.");
   if (treatment && !Object.hasOwn(FIRST_AID_TREATMENTS, treatment)) throw new Error("Choose a listed treatment.");
-  return forgeHeal({ ...current, firstAidPending: false }, limits, treatment ? FIRST_AID_TREATMENTS[treatment].healing[FIRST_AID_TIERS.indexOf(tier)] : healing + cap(integer(fieldDressing), 2));
+  return forgeHeal({ ...current, firstAidPending: false }, limits, treatment ? FIRST_AID_TREATMENTS[treatment][FIRST_AID_TIERS.indexOf(tier)] : healing + cap(integer(fieldDressing), 2));
 }
 
 export function forgeInterruptFirstAid(play, limits) {

@@ -12,17 +12,21 @@ const play = {
   recovery: { unavailableHp: 1, debtUsed: true },
 };
 
-test("brief rest adds First Aid and learned Spellcraft, capped by effective maximums", () => {
-  const brief = forgeRest(play, limits, { kind: "brief-rest", firstAid: { total: 15, treatment: "field-dressing2" }, spellcraft: true }, { spellcraftRestoration: 4 });
-  assert.deepEqual([brief.hp, brief.sp, brief.gritSpent], [16, 9, 1]);
+test("brief rest restores base HP and SP plus learned Spellcraft and preserves treatment use", () => {
+  const brief = forgeRest(play, limits, { kind: "brief-rest", spellcraft: true }, { spellcraftRestoration: 4 });
+  assert.deepEqual([brief.hp, brief.sp, brief.gritSpent], [8, 9, 1]);
   assert.equal(brief.firstAidUsed, true);
   assert.equal(brief.spellcraftRecoveryUsed, true);
   assert.equal(brief.mindPalaceUsed, true);
   assert.equal(brief.soulWellspringUsed, true);
   assert.deepEqual(brief.scars, play.scars);
-  const topped = forgeRest(brief, limits, { kind: "brief-rest" });
+  const topped = forgeRest({ ...brief, hp: 16, firstAidPending: true }, limits, { kind: "brief-rest" });
   assert.deepEqual([topped.hp, topped.sp], [17, 12]);
+  assert.equal(topped.firstAidPending, true);
   assert.throws(() => forgeRest(play, limits, { kind: "brief-rest", spellcraft: true }), /Learn Spellcraft/);
+  const fromOlderClient = forgeRest({ ...play, firstAidUsed: false }, limits, { kind: "brief-rest", firstAid: { total: 15 } });
+  assert.equal(fromOlderClient.hp, 8);
+  assert.equal(fromOlderClient.firstAidUsed, false);
 });
 
 test("night’s rest restores effective HP and SP and renews nightly abilities without declaring dawn", () => {
@@ -68,16 +72,16 @@ test("coordinated rest writes once, records both resources and posts the complet
     for (const [key, value] of Object.entries(exports)) this.setExport(key, value);
   }, { context }));
   await module.evaluate();
-  const draft = { kind: "brief-rest", firstAid: { total: 11 }, spellcraft: true };
+  const draft = { kind: "brief-rest", spellcraft: true };
   await module.namespace.requestRest(actor, draft, { operationId: "rest1" });
   await module.namespace.requestRest(actor, draft, { operationId: "rest1" });
   assert.equal(writes.length, 1);
-  assert.equal(writes[0]["system.health.value"], 12);
+  assert.equal(writes[0]["system.health.value"], 8);
   assert.equal(writes[0]["system.sp.value"], 9);
   assert.equal(writes[0]["system.grit.spent"], undefined);
   assert.equal(writes[0][`flags.${id}.forgeVitals`].soulWellspringUsed, true);
   assert.equal(messages.length, 1);
-  assert.match(messages[0].content, /HP 2 → 12 · SP 2 → 9/);
-  assert.match(messages[0].content, /First Aid: Standard \(11\), \+4 HP/);
+  assert.match(messages[0].content, /HP 2 → 8 · SP 2 → 9/);
+  assert.match(messages[0].content, /Spellcraft Recovery: \+4 SP/);
   await assert.rejects(module.namespace.requestRest(actor, { kind: "nights-rest" }, { operationId: "rest1" }), /different choices/);
 });

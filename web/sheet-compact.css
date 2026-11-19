@@ -12,8 +12,6 @@
 #app .rest-controls {gap:4px;flex-wrap:wrap;}
 #app .rest-control {display:inline-grid;place-items:center;padding:2px;min-height:24px;min-width:24px;background:transparent;}
 #app .rest-control svg {display:block;}
-#reference .brief-aid-options:not([hidden]) {display:grid;gap:5px;margin:5px 0 8px;}
-#reference .brief-external-roll:not([hidden]) {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;}
 #app .attributes {padding:0 12px 7px;gap:6px;background:var(--paper);}
 #app .attribute {padding:0;display:block;border:1px solid var(--line);background:#ece8dc;}
 #app .panel.sheet-panel {padding:8px 12px;}

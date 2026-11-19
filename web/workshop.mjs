@@ -41,7 +41,7 @@ import {
 import { consumableType } from "./rules/consumables.mjs";
 import { HEALING_POTION_IDS } from "./rules/potions.mjs";
 import {
-  advanceForgeVitals, FIRST_AID_TREATMENTS, forgeCanSpendGrit, forgeDamage,
+  advanceForgeVitals, forgeCanSpendGrit, forgeDamage,
   forgeDeathRoll, forgeFinalizeDeath, forgeHeal,
   forgeRecordScar, forgeRest,
   forgeSpendGrit, forgeStabilize, forgeVitals,
@@ -1638,51 +1638,16 @@ function restControls(vitals) {
     ${status ? button(status, "death-status", "", "vital-link") : ""}</div>`;
 }
 
-const aidTreatments = [
-  { id: "ordinary" },
-  { id: "field-dressing", requires: "medicine:first-aid:1" },
-  { id: "field-dressing2", requires: "medicine:first-aid:2" },
-  { id: "emergency-treatment", requires: "medicine:first-aid:4" },
-  { id: "emergency2", requires: "medicine:first-aid:5" },
-  { id: "mastery", label: "A Way through Death / Bring Everyone Home", requires: "medicine:first-aid:7", alternate: "armor:harness:7" },
-];
 let restInFlight = false;
 
-function restAidOptions(anotherHealer = false) {
-  return aidTreatments
-    .filter(treatment => !treatment.requires || anotherHealer || preview.state.learned.includes(treatment.requires)
-      || (treatment.alternate && preview.state.learned.includes(treatment.alternate)))
-    .map(({ id, label }) => {
-      const treatment = FIRST_AID_TREATMENTS[id];
-      return option(id, `${label ?? treatment.label} · ${treatment.healing.join("/")} HP`, id === "ordinary");
-    })
-    .join("");
-}
-
 function briefRestDialog() {
-  const knowledge = preview.attributes.knowledge;
   const restoredSp = preview.state.learning?.recoverySp ?? 0;
   const recoveryMinutes = preview.state.learning?.recoveryMinutes;
   popup("Brief Rest", `
     <p><strong>1 hour · Restore up to 6 HP and 3 SP</strong></p>
-    <p>A hero can benefit once per day. Use First Aid and Spellcraft Recovery if available.</p>
-    <label class="inline-toggle"><input id="brief-aid" type="checkbox"> First Aid</label>
-    <div id="brief-aid-options" class="brief-aid-options" hidden>
-      <p class="inline-help">First Aid uses medical supplies.</p>
-      <label>Healer<select id="brief-healer" aria-label="Healer"><option value="self">Treat yourself</option><option value="other">Another healer</option></select></label>
-      <label>Treatment<select id="brief-treatment" aria-label="Treatment">${restAidOptions()}</select></label>
-      <div id="brief-external-roll" class="brief-external-roll" hidden>
-        <label>Healer’s Knowledge roll total<input id="brief-total" type="number" step="1"></label>
-        <label>Result<select id="brief-tier" aria-label="Healer’s result tier"><option value="">From total</option><option>Weak</option><option>Standard</option><option>Strong</option></select></label>
-      </div>
-      <div id="brief-self-roll">
-        <p>Roll Knowledge (${signed(knowledge)})</p>
-        ${netControl({id:"brief-net",labelId:"brief-net-value"})}
-      </div>
-    </div>
+    <p>A hero can benefit once per day.</p>
     ${restoredSp ? `<label class="inline-toggle"><input id="brief-spellcraft" type="checkbox"> Spellcraft Recovery · Restore up to ${restoredSp} SP${recoveryMinutes ? ` after ${recoveryMinutes} uninterrupted minutes` : ""}</label>` : ""}
     <div class="dialog-actions">${button("Complete Brief Rest","complete-brief-rest","","primary")}</div>`);
-  bindRollSetup($("#brief-self-roll"), { getAttributeValue: () => preview.attributes.knowledge });
 }
 
 function survivalDialog() {
@@ -1698,24 +1663,7 @@ function survivalDialog() {
 async function applyRest(kind) {
   if (host) await pendingSave;
   const rest = { kind };
-  if (kind === "brief-rest") {
-    if ($("#brief-spellcraft")?.checked) rest.spellcraft = true;
-    if ($("#brief-aid").checked) {
-      const treatment = $("#brief-treatment").value;
-      const self = $("#brief-healer").value === "self";
-      let result = { total: $("#brief-total").valueAsNumber, tier: $("#brief-tier").value.toLowerCase() };
-      if (self) {
-        const net = Number($("#brief-net").value);
-        const attribute = preview.attributes.knowledge;
-        const { count } = rollPlan({ attribute, boons: Math.max(0, net), banes: Math.max(0, -net) });
-        const faces = await nativeDice(count, 6, { kind: "attribute", attributeKey: "knowledge", attribute, net });
-        const retained = [...faces].sort((a, b) => net < 0 ? a - b : b - a).slice(0, 3);
-        result = classifyRoll(retained, attribute);
-      }
-      if (!Number.isSafeInteger(result.total)) throw new Error("Enter the healer’s Knowledge roll total.");
-      rest.firstAid = { total: result.total, treatment, ...(result.tier ? { tier: result.tier } : {}) };
-    }
-  }
+  if (kind === "brief-rest" && $("#brief-spellcraft")?.checked) rest.spellcraft = true;
   if (!(host?.onAction && await host.onAction({ action: "apply-workshop-rest", rest }))) {
     const before = liveVitals();
     const updated = forgeRest(playDraft(), before.limits, rest, {
@@ -3182,17 +3130,6 @@ app.addEventListener(
 );
 document.addEventListener("change", (event) => {
   const t = event.target;
-  if (t.id === "brief-aid" && root.contains(t)) {
-    $("#brief-aid-options").hidden = !t.checked;
-    return;
-  }
-  if (t.id === "brief-healer" && root.contains(t)) {
-    const anotherHealer = t.value === "other";
-    $("#brief-external-roll").hidden = !anotherHealer;
-    $("#brief-self-roll").hidden = anotherHealer;
-    $("#brief-treatment").innerHTML = restAidOptions(anotherHealer);
-    return;
-  }
   if (t.dataset.ammunitionFor && root.contains(t)) {
     runAction({ dataset: { action: "assign-ammunition", instance: t.dataset.ammunitionFor, ammunition: t.value } }).catch(error => { notice(error.message); render(); });
     return;

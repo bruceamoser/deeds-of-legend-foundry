@@ -17,7 +17,7 @@ export function nativeRestState(basis, draft, options) {
  return {
   hp: result.play.hp, sp: result.play.sp, recovery: normalizeForgeRecovery(result.play.recovery),
   forgeVitals: { ...nativeForgeVitals(result.play), immediateDeathRolls: result.play.dying ? [...(basis.forgeVitals?.immediateDeathRolls ?? [])] : [] },
-  firstAid: result.firstAid, spellcraftSp: result.spellcraftSp,
+  spellcraftSp: result.spellcraftSp,
  };
 }
 /** Native resource fields remain authoritative; flags contain only recovery/death
