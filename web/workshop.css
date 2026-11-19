@@ -879,6 +879,7 @@ button.table-link:hover {
 #notice {
   position: fixed;
   bottom: 16px;
+  pointer-events: none;
   left: 50%;
   transform: translateX(-50%);
   background: var(--forest);
