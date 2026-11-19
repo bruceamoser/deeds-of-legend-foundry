@@ -122,6 +122,22 @@ export async function loadNativeWorkshopState(actor) {
   const normalized = await normalize(saved.view?.mode && saved.view.mode !== "sheet" && draft ? draft : overlay(actor, saved.portable,catalogs));
   return { ...(saved.view ?? {}), nativeItems: nativeItemsOverview(actor,catalogs), character: normalized.portable, revision: saved.revision, mode: saved.view?.mode ?? "sheet" };
 }
+// A Foundry document update merges nested flag objects. Explicitly remove keys
+// that a development edit discarded so reopening cannot revive those choices.
+function removeDroppedKeys(record, prior) {
+  return { ...record, ...Object.fromEntries(Object.keys(prior ?? {})
+    .filter(key => !Object.hasOwn(record, key))
+    .map(key => [`-=${key}`, null])) };
+}
+
+function portableProgressionUpdate(portable, prior) {
+  const update = structuredClone(portable);
+  if (update.draft.progression?.levels) {
+    update.draft.progression.levels = removeDroppedKeys(update.draft.progression.levels, prior?.draft?.progression?.levels);
+  }
+  return update;
+}
+
 /** Saves play state only. Changes to construction require explicit commit. */
 export function saveNativeWorkshopState(actor, savedState, { expectedRevision, resolvedImmediateDeathRoll, basePlay, baseLoadout, operationReceipt } = {}) {
   const portable = savedState.character ?? savedState;
@@ -134,7 +150,7 @@ export function saveNativeWorkshopState(actor, savedState, { expectedRevision, r
     if (savedState.mode && savedState.mode !== "sheet") {
       const draft = await normalize(portable);
       revision(actor, expectedRevision);
-      await actor.update({ [`flags.${ID}.nativeWorkshopDraft`]: draft.portable, [`flags.${ID}.nativeWorkshop`]: { ...saved, revision: next, view: Object.fromEntries(Object.entries(savedState).filter(([key]) => !["character", "revision"].includes(key))) }, ...operationChanges(operationReceipt) });
+      await actor.update({ [`flags.${ID}.nativeWorkshopDraft`]: portableProgressionUpdate(draft.portable, actor.getFlag(ID, "nativeWorkshopDraft")), [`flags.${ID}.nativeWorkshop`]: { ...saved, revision: next, view: Object.fromEntries(Object.entries(savedState).filter(([key]) => !["character", "revision"].includes(key))) }, ...operationChanges(operationReceipt) });
       return { ...savedState, character: draft.portable, revision: next };
     }
     const candidate = structuredClone(saved.portable);
@@ -259,7 +275,7 @@ export function nativeWorkshopLearnedItems(preview,catalogs) {
   return currentWorkshopLearnedItems(preview,catalogs);
 }
 /** Explicit construction commit only; arbitrary native Items, effects and portrait survive. */
-export function commitNativeWorkshopCharacter(actor, portable, { expectedRevision = 0, operationReceipt, tab } = {}) {
+export function commitNativeWorkshopCharacter(actor, portable, { expectedRevision = 0, operationReceipt, tab, levelCorrection } = {}) {
   owner(actor);
   return serialize(actor, async () => {
     await recoverNativeWorkshopTransaction(actor);
@@ -273,7 +289,12 @@ export function commitNativeWorkshopCharacter(actor, portable, { expectedRevisio
     // The replacement above must still pass the full Review.
     const previous = existing?.portable ? (await normalize(existing.portable)).preview : null;
     const previousLevel=previous?.state.level ?? 0;
-    if(existing?.portable && state.preview.state.level < previousLevel) throw new Error("A committed character cannot lose levels. Recreate the hero explicitly for a level correction.");
+    if (state.preview.state.level < previousLevel) {
+      if (levelCorrection !== true || tab !== "Development")
+        throw new Error("A committed character cannot lose levels through an import. Open Development to correct the level.");
+      if (Object.keys(state.draft.progression.levels).some(level => Number(level) > state.preview.state.level))
+        throw new Error("Remove learning from the dropped levels before saving the correction.");
+    }
     const desired = nativeWorkshopLearnedItems(state.preview, state.catalogs);
     const carried = existing?.portable ? overlay(actor,state.portable,state.catalogs) : null;
     const equipmentState = carried ? await normalize(carried,true) : state;
@@ -289,7 +310,7 @@ export function commitNativeWorkshopCharacter(actor, portable, { expectedRevisio
       if(existing?.portable) {
         // Development is not a resource correction. Only earned HP gain or a
         // genuinely reduced maximum requires changing a live resource field.
-        if(state.preview.state.level===previousLevel && actor.system.health.value<=state.preview.limits.maxHp+bonuses.hp)delete changes["system.health.value"];
+        if(state.preview.state.level<=previousLevel && actor.system.health.value<=state.preview.limits.maxHp+bonuses.hp)delete changes["system.health.value"];
         if((actor.system.sp?.value??0)<=state.preview.limits.maxSp+bonuses.sp)delete changes["system.sp.value"];
         delete changes["system.grit.spent"];delete changes["system.recovery"];delete changes[`flags.${ID}.forgeVitals`];
       } else changes.effects=nativeConditionSources(actor,state.draft.play?.conditions??[]);
@@ -297,13 +318,19 @@ export function commitNativeWorkshopCharacter(actor, portable, { expectedRevisio
       const liveCoins = actor.getFlag(ID,"development")?.coins;
       const coins = previous && Number.isSafeInteger(liveCoins)
         ? liveCoins + remainingCoins - previous.inventory.remainingCoins : remainingCoins;
+      const development = { ...state.preview.state, creation: structuredClone(state.draft), languages: state.preview.play.languages, sourceCommit: state.catalogs.commit, coins };
+      if (state.preview.state.level < previousLevel) {
+        const prior = actor.getFlag(ID, "development");
+        development.creation.progression.levels = removeDroppedKeys(development.creation.progression.levels, prior?.creation?.progression?.levels);
+        development.signatureChoices = removeDroppedKeys(development.signatureChoices ?? {}, prior?.signatureChoices);
+      }
       return {...changes,...operationChanges(operationReceipt),
         [`flags.${ID}.forgeLearned`]:state.preview.state.learned,
         "prototypeToken.name":state.draft.name.trim(),"prototypeToken.actorLink":true,
-        [`flags.${ID}.nativeWorkshop`]:{revision:next,portable,inventoryInstances:equipmentState.preview.inventory.items.map(item=>item.instanceId),view:{mode:"sheet",tab:tab==="Development"?"Development":"Main",step:0,editingLevel:null}},
+        [`flags.${ID}.nativeWorkshop`]:{revision:next,portable:portableProgressionUpdate(portable, existing?.portable),inventoryInstances:equipmentState.preview.inventory.items.map(item=>item.instanceId),view:{mode:"sheet",tab:tab==="Development"?"Development":"Main",step:0,editingLevel:null}},
         [`flags.${ID}.nativeWorkshopDraft`]:null,
         [`flags.${ID}.creationReceipt`]:{status:"complete",revision:next,sourceCommit:state.catalogs.commit,currentWorkshop:true},
-        [`flags.${ID}.development`]:{...state.preview.state,creation:state.draft,languages:state.preview.play.languages,sourceCommit:state.catalogs.commit,coins},
+        [`flags.${ID}.development`]:development,
       };
     },next,{catalogs:state.catalogs});
     return loadNativeWorkshopState(actor);

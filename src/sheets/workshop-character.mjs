@@ -403,10 +403,10 @@ export class WorkshopCharacterSheet extends HandlebarsApplicationMixin(foundry.a
     current.draft.name=nextName;
     await this.saveIdentity(current);
   }
-  async commitState(portable,{tab='Main'}={}) {
+  async commitState(portable,{tab='Main',levelCorrection=false}={}) {
     this.assertOwner();this.writing++;
     try {
-      const next=await commitNativeWorkshopCharacter(this.actor,portable,{expectedRevision:this.revision,tab});
+      const next=await commitNativeWorkshopCharacter(this.actor,portable,{expectedRevision:this.revision,tab,levelCorrection});
       this.revision=next.revision;
       this.nativeItems=next.nativeItems ?? this.nativeItems ?? [];
       if(this.host) this.host.committed=true;
