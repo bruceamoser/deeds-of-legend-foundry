@@ -445,6 +445,29 @@ test("explicit commit repairs obsolete choices and preserves live state across d
     assert.ok(!actor.items.some(item => nativeWorkshopInventoryId(item) === instance));
     assert.equal(flags.development.coins, coins + 6);
   });
+  await t.test("a saved level correction removes later learning while preserving native state", async () => {
+    const before = await loadNativeWorkshopState(actor);
+    const correction = structuredClone(before.character);
+    const equipmentIds = actor.items.filter(item => item.type === "equipment").map(item => item.id).sort();
+    const current = [actor.system.health.value, actor.system.sp.value, actor.system.grit.spent];
+    assert.ok(correction.draft.progression.level > 1);
+    correction.draft.progression.level = 1;
+    correction.draft.progression.levels = {};
+    const expectedRevision = before.revision;
+    await assert.rejects(commitNativeWorkshopCharacter(actor, correction, { expectedRevision }), /cannot lose levels/);
+    const saved = await commitNativeWorkshopCharacter(actor, correction, { expectedRevision, tab: "Development", levelCorrection: true });
+    const levelOne = readPortableCharacter(saved.character, catalogs, catalogs.languages).preview;
+    const previous = readPortableCharacter(before.character, catalogs, catalogs.languages).preview;
+    assert.equal(saved.character.draft.progression.level, 1);
+    assert.deepEqual(saved.character.draft.progression.levels, {});
+    assert.equal(flags.development.dp, levelOne.development.current);
+    assert.ok(previous.state.learned.some(id => !levelOne.state.learned.includes(id)));
+    const laterAbilities = new Set(previous.state.abilities.filter(id => !levelOne.state.abilities.includes(id)));
+    assert.ok(laterAbilities.size > 0);
+    assert.ok(actor.items.every(item => !laterAbilities.has(item.getFlag("heroes-of-legend", "catalogId"))));
+    assert.deepEqual(actor.items.filter(item => item.type === "equipment").map(item => item.id).sort(), equipmentIds);
+    assert.deepEqual([actor.system.health.value, actor.system.sp.value, actor.system.grit.spent], current);
+  });
 });
 
 

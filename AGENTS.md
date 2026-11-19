@@ -1,4 +1,4 @@
-# Working on Heroes of Legend Foundry
+# Working on Deeds of Legend Foundry
 
 This is the software companion to the Heroes of Legend rulebook. Bruce is the final authority on game design. The specification is a proposed implementation contract, not permission to change the game.
 

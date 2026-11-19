@@ -259,7 +259,7 @@ export function nativeWorkshopLearnedItems(preview,catalogs) {
   return currentWorkshopLearnedItems(preview,catalogs);
 }
 /** Explicit construction commit only; arbitrary native Items, effects and portrait survive. */
-export function commitNativeWorkshopCharacter(actor, portable, { expectedRevision = 0, operationReceipt, tab } = {}) {
+export function commitNativeWorkshopCharacter(actor, portable, { expectedRevision = 0, operationReceipt, tab, levelCorrection } = {}) {
   owner(actor);
   return serialize(actor, async () => {
     await recoverNativeWorkshopTransaction(actor);
@@ -273,7 +273,12 @@ export function commitNativeWorkshopCharacter(actor, portable, { expectedRevisio
     // The replacement above must still pass the full Review.
     const previous = existing?.portable ? (await normalize(existing.portable)).preview : null;
     const previousLevel=previous?.state.level ?? 0;
-    if(existing?.portable && state.preview.state.level < previousLevel) throw new Error("A committed character cannot lose levels. Recreate the hero explicitly for a level correction.");
+    if (state.preview.state.level < previousLevel) {
+      if (levelCorrection !== true || tab !== "Development")
+        throw new Error("A committed character cannot lose levels through an import. Open Development to correct the level.");
+      if (Object.keys(state.draft.progression.levels).some(level => Number(level) > state.preview.state.level))
+        throw new Error("Remove learning from the dropped levels before saving the correction.");
+    }
     const desired = nativeWorkshopLearnedItems(state.preview, state.catalogs);
     const carried = existing?.portable ? overlay(actor,state.portable,state.catalogs) : null;
     const equipmentState = carried ? await normalize(carried,true) : state;
@@ -289,7 +294,7 @@ export function commitNativeWorkshopCharacter(actor, portable, { expectedRevisio
       if(existing?.portable) {
         // Development is not a resource correction. Only earned HP gain or a
         // genuinely reduced maximum requires changing a live resource field.
-        if(state.preview.state.level===previousLevel && actor.system.health.value<=state.preview.limits.maxHp+bonuses.hp)delete changes["system.health.value"];
+        if(state.preview.state.level<=previousLevel && actor.system.health.value<=state.preview.limits.maxHp+bonuses.hp)delete changes["system.health.value"];
         if((actor.system.sp?.value??0)<=state.preview.limits.maxSp+bonuses.sp)delete changes["system.sp.value"];
         delete changes["system.grit.spent"];delete changes["system.recovery"];delete changes[`flags.${ID}.forgeVitals`];
       } else changes.effects=nativeConditionSources(actor,state.draft.play?.conditions??[]);
