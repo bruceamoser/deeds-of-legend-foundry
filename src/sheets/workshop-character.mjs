@@ -32,6 +32,9 @@ const {HandlebarsApplicationMixin}=foundry.applications.api;
 export class WorkshopCharacterSheet extends HandlebarsApplicationMixin(foundry.applications.sheets.ActorSheetV2) {
   static DEFAULT_OPTIONS={
     classes:[ID,'hol-workshop-character'],position:{width:780,height:780},
+    // PopOut! 2.24 takes over the frame using ApplicationV1 methods. Use V14's
+    // built-in Detach Window and Re-attach Window controls for this sheet.
+    popOutModuleDisable:true,
     window:{resizable:true},form:{submitOnChange:false,closeOnSubmit:false},
     actions:{recreateWorkshop:WorkshopCharacterSheet.recreateWorkshop,viewPortrait},
   };

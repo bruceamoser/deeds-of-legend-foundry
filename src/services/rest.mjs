@@ -1,3 +1,4 @@
+import { restCard } from "../rules/chat-cards.mjs";
 import { assertCurrentGameplayActor } from "../rules/current-character.mjs";
 import { forgeLearning } from "../rules/forge.mjs";
 import { nativeRestState } from "../rules/native-health.mjs";
@@ -20,12 +21,10 @@ export async function requestRest(actor, draft, { operationId = foundry.utils.ra
     const stored = message.getFlag(ID, "restResult");
     return stored?.operationId === operationId && stored.actorUuid === actor.uuid;
   })) {
-    const label = result.kind === "brief-rest" ? "Brief Rest" : "Night’s Rest";
-    const details = result.spellcraftSp !== undefined ? `Spellcraft Recovery: +${result.spellcraftSp} SP` : "";
     try {
       await ChatMessage.create({
         speaker: ChatMessage.getSpeaker({ actor }),
-        content: `<section class="hol-chat-card"><p><strong>${label}</strong></p><p>HP ${result.before.hp} → ${result.after.hp} · SP ${result.before.sp} → ${result.after.sp}</p>${details ? `<p>${details}</p>` : ""}</section>`,
+        content: restCard(result),
         flags: { [ID]: { restResult: result } },
       });
     } catch {

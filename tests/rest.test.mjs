@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
 import vm from "node:vm";
+import { restCard } from "../src/rules/chat-cards.mjs";
 import { forgeRest } from "../src/rules/forge-vitals.mjs";
 import { nativeRestState } from "../src/rules/native-health.mjs";
 
@@ -59,7 +60,7 @@ test("coordinated rest writes once, records both resources and posts the complet
     ChatMessage: { getSpeaker: () => ({ alias: "Tyra" }), create: async message => messages.push({ ...message, getFlag: (scope, key) => message.flags[scope][key] }) },
   });
   const exports = {
-    assertCurrentGameplayActor: actor => actor, nativeRestState,
+    assertCurrentGameplayActor: actor => actor, nativeRestState, restCard,
     forgeLearning: () => ({ recoverySp: 4 }), loadWorkshopCatalogs: async () => ({ forge: {} }), damageBasis: () => basis,
     registerNativeGameplayHandler: (_name, fn) => { handler = fn; },
     coordinateNativeGameplay: (actor, { operationId, payload }) => handler(actor, payload, {
@@ -81,7 +82,21 @@ test("coordinated rest writes once, records both resources and posts the complet
   assert.equal(writes[0]["system.grit.spent"], undefined);
   assert.equal(writes[0][`flags.${id}.forgeVitals`].soulWellspringUsed, true);
   assert.equal(messages.length, 1);
-  assert.match(messages[0].content, /HP 2 → 8 · SP 2 → 9/);
-  assert.match(messages[0].content, /Spellcraft Recovery: \+4 SP/);
+  assert.match(messages[0].content, /fa-mug-hot.*Brief Rest/);
+  assert.match(messages[0].content, /\+6 HP<\/strong>.*2 → <b>8<\/b>/);
+  assert.match(messages[0].content, /\+7 SP<\/strong>.*2 → <b>9<\/b>/);
+  assert.match(messages[0].content, /Spellcraft Recovery<\/span><strong>\+4 SP/);
   await assert.rejects(module.namespace.requestRest(actor, { kind: "nights-rest" }, { operationId: "rest1" }), /different choices/);
+});
+
+test("rest cards show when each resource stays unchanged and report capped Spellcraft separately", () => {
+  const atCapacity = { hp: 14, sp: 7 };
+  const night = restCard({ kind: "nights-rest", before: atCapacity, after: atCapacity });
+  assert.match(night, /fa-moon.*Night’s Rest/);
+  assert.equal((night.match(/No change/g) ?? []).length, 2);
+  assert.doesNotMatch(night, /Spellcraft Recovery|recovered/);
+  const brief = restCard({ kind: "brief-rest", before: { hp: 11, sp: 6 }, after: atCapacity, spellcraftSp: 0 });
+  assert.match(brief, /\+3 HP<\/strong>.*11 → <b>14<\/b>/);
+  assert.match(brief, /\+1 SP<\/strong>.*6 → <b>7<\/b>/);
+  assert.match(brief, /Spellcraft Recovery<\/span><strong>\+0 SP/);
 });
