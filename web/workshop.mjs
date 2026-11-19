@@ -2411,7 +2411,7 @@ async function action(target) {
     }
   }
   if (host?.onAction && await host.onAction({action:a,id:target.dataset.id,editing:edit,mode,dataset:{...target.dataset},
-    ...(a === "native-portrait" ? { target } : {}),
+    ...(["native-portrait", "confirm-deplete-supply"].includes(a) ? { target } : {}),
     state:JSON.parse(writePortableCharacter(draft,catalogs)),preview,record:get(target.dataset.id),
     activeRoll: typeof activeRoll === 'undefined' ? undefined : activeRoll,
     values:Object.fromEntries([...root.querySelectorAll('#reference input,#reference select')].map(node=>[node.id || node.dataset.rollAbility, node.type==='checkbox' ? node.checked : node.value]))})) return;
