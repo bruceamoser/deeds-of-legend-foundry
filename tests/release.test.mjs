@@ -11,7 +11,7 @@ test("release tag and version must agree; ZIP URL is immutable per version", () 
   assert.throws(() => releaseLinks("../bad"), /tag/);
   assert.equal(
     releaseLinks("1.2.3").download,
-    "https://github.com/bruceamoser/heroes-of-legend-foundry/releases/download/v1.2.3/heroes-of-legend.zip",
+    "https://github.com/bruceamoser/deeds-of-legend-foundry/releases/download/v1.2.3/heroes-of-legend.zip",
   );
 });
 test("release package round-trips and rebuilds byte-identically", async (t) => {
