@@ -38,7 +38,7 @@ test('every generated rules section is a nonempty contents page linking every so
    const expectedIntroduction=chapterFirst?(first.text.content.match(/<p\b[^>]*>[\s\S]*?<\/p>/g)??[]).slice(0,3).join(''):'';
    const actualIntroduction=section.text.content.match(/<div class="hol-journal-introduction">([\s\S]*?)<\/div>/)?.[1]??'';
    assert.equal(actualIntroduction,expectedIntroduction,`${book.pack}: ${section.name} authored introduction`);
-   if(book.pack==='player-rules'&&section.flags[ID].ruleSection===0){assert.equal((actualIntroduction.match(/<p\b/g)??[]).length,3);assert.match(actualIntroduction,/Heroes of Legend/);}
+   if(book.pack==='player-rules'&&section.flags[ID].ruleSection===0){assert.equal((actualIntroduction.match(/<p\b/g)??[]).length,3);assert.match(actualIntroduction,/Deeds of Legend/);}
 
    for(const link of links){const pageId=link.split('.').at(-1);assert(document.pages.some(page=>page._id===pageId&&page.flags?.[ID]?.ruleSource),`Missing link destination ${link}`);}
   }

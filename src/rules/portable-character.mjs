@@ -287,7 +287,7 @@ function parsePortableCharacter(input, catalogs, languages, levelOnly = false) {
       value.schemaVersion,
     )
   )
-    throw new Error("Choose a supported Heroes of Legend character JSON file.");
+    throw new Error("Choose a supported Deeds of Legend character JSON file.");
   if (!catalogs.forge && value.schemaVersion >= FORGE_PORTABLE_VERSION)
     throw new Error(
       "Open this character in the current Character Workshop. This Foundry version uses the earlier character format.",

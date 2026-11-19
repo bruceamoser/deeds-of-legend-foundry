@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "repository": "https://github.com/bruceamoser/heroes-of-legend",
-  "commit": "837a3eb42850d6c531c6153349664b49db0d0882",
-  "approval": "Advancement DP uses 6 + the new level (book #1378, Foundry #368).",
+  "commit": "59610c9cc291340484f07024f7a48b7690520e6f",
+  "approval": "Deeds of Legend branding (Foundry #370, book #1380).",
   "selection": "Current Forge pinned Markdown plus surviving nonretired native references, complete current player manuscript, shared rules and 29 spellbooks. Retired cards and disciplines excluded.",
   "records": [
     {
@@ -1819,7 +1819,7 @@
     },
     {
       "path": "design/da-book/manuscript/01-becoming-the-da.md",
-      "sha256": "c4fbc10807a9ea9093c17cb305f36a916ff404c844f9c927482d538a271d7ad4"
+      "sha256": "6f853a487e486f7eac8d1cd09e6ab229e9677d8e3056f619ea886f2734b27112"
     },
     {
       "path": "design/da-book/manuscript/02-running-the-game.md",
@@ -2879,7 +2879,7 @@
     },
     {
       "path": "design/player-book/manuscript/01-welcome.md",
-      "sha256": "1ba0b1a7cfa8b33a9d4c9a8001a45691b624456b57c0b7bde60de813e96ac137"
+      "sha256": "84ecd6d707b9d677c8e9c31e5247f1fd24eb1574bf0c16f06dc023abaa925e0f"
     },
     {
       "path": "design/player-book/manuscript/02-creation.md",

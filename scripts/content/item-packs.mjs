@@ -12,14 +12,14 @@ import {
 export const ITEM_PACK_DEFINITIONS = Object.freeze([
   Object.freeze({
     name: "abilities",
-    label: "Heroes of Legend Abilities",
+    label: "Deeds of Legend Abilities",
     type: "Item",
     path: "packs/abilities",
     directory: "abilities",
   }),
   Object.freeze({
     name: "equipment",
-    label: "Heroes of Legend Equipment",
+    label: "Deeds of Legend Equipment",
     type: "Item",
     path: "packs/equipment",
     directory: "equipment",

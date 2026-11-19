@@ -26,6 +26,8 @@ try {
     globalThis.__landingFixture = scene.id;
     if (game.scenes.active?.id !== active) throw Error("Landing creation changed active scene");
     if (scene.invalid || scene.tiles.some(tile => tile.invalid) || scene.drawings.some(drawing => drawing.invalid)) throw Error("Invalid native landing document");
+    if (scene.name !== "Deeds of Legend · The gathering") throw Error("Incorrect landing scene title");
+    if (!scene.drawings.some(drawing => drawing.text === "DEEDS\nOF LEGEND")) throw Error("Missing Deeds of Legend title drawing");
     await scene.update({name: "The gathering · preserved campaign title"});
     const again = await createLandingScene();
     if (again.id !== scene.id || again.name !== "The gathering · preserved campaign title") throw Error("Repeated setup changed campaign edits");
@@ -35,6 +37,11 @@ try {
   await page.locator("#hol-landing-navigation").waitFor();
   await page.evaluate(() => document.fonts.ready);
   await page.waitForFunction(() => canvas.ready && canvas.scene?.id === globalThis.__landingFixture);
+  assert(await page.evaluate(async () => {
+    const sources = canvas.scene.tiles.map(tile => tile.texture.src);
+    const loaded = await Promise.all(sources.map(source => fetch(source)));
+    return loaded.length === 2 && loaded.every(response => response.ok);
+  }));
   await page.locator("#notifications .notification .close").evaluateAll(nodes => nodes.forEach(node => node.click()));
   await page.screenshot({path: resolve(output, "native-gathering.png"), style: "#notifications {visibility:hidden}"});
   assert.equal(await page.locator("#hol-landing-navigation button").count(), 4);
@@ -55,6 +62,10 @@ try {
   await player.waitForFunction(() => globalThis.game?.ready, null, {timeout: 60000});
   await player.evaluate(async id => {await foundry.nue.Tour.activeTour?.exit(); await game.scenes.get(id).view();}, created);
   await player.locator("#hol-landing-navigation").waitFor();
+  await player.evaluate(async () => {
+    for (const app of foundry.applications.instances.values())
+      if (app.rendered && app.element?.classList?.contains("user-config")) await app.close();
+  });
   assert.equal(await player.locator("#hol-landing-navigation button").count(), 3);
   assert.equal(await player.getByRole("button", {name: "DA’s Guide", exact: true}).count(), 0);
   assert.match(await player.evaluate(async () => {try {const {createLandingScene} = await import("/systems/heroes-of-legend/services/landing.mjs"); await createLandingScene(); return "Unexpectedly created";} catch (error) {return error.message;}}), /Only the Dungeon Architect/);

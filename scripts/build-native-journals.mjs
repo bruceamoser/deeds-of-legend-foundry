@@ -120,7 +120,7 @@ const index = [], books = [];
 for (const audience of ["player-rules", "da-rules"]) {
   const selected = records.filter(record => pack(record.path) === audience).sort((a,b) => sectionOf(a.path)-sectionOf(b.path) || chapterFirst(a.path)-chapterFirst(b.path) || preferredOrder(a.path)-preferredOrder(b.path) || nameOf(a.path).localeCompare(nameOf(b.path)) || a.path.localeCompare(b.path));
   const id = documentId(selected[0].path);
-  const entry = {_key:`!journal!${id}`, _id:id, name: audience === "player-rules" ? "Heroes of Legend · Player’s Book" : "Heroes of Legend · Dungeon Architect’s Guide & Bestiary", categories:[], ownership:{default: audience === "player-rules" ? 2 : 0}, flags:{"heroes-of-legend":{ruleBook:{key:audience,commit:lock.commit,schema:2}}}, pages:[]};
+  const entry = {_key:`!journal!${id}`, _id:id, name: audience === "player-rules" ? "Deeds of Legend · Player’s Book" : "Deeds of Legend · Dungeon Architect’s Guide & Bestiary", categories:[], ownership:{default: audience === "player-rules" ? 2 : 0}, flags:{"heroes-of-legend":{ruleBook:{key:audience,commit:lock.commit,schema:2}}}, pages:[]};
   let lastSection;
   for (const record of selected) {
     const section = sectionOf(record.path);

@@ -3,7 +3,7 @@ const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 export class RulesLibrary extends HandlebarsApplicationMixin(ApplicationV2) {
   static DEFAULT_OPTIONS = {
     classes: ["heroes-of-legend", "hol-rules-library"],
-    window: { title: "Heroes of Legend · Rules library", resizable: true },
+    window: { title: "Deeds of Legend · Rules library", resizable: true },
     position: { width: 700, height: 680 },
     actions: { openRule: RulesLibrary.openRule },
   };
@@ -41,12 +41,12 @@ export class RulesLibrary extends HandlebarsApplicationMixin(ApplicationV2) {
 
 }
 export function registerRulesLibrary() {
-  game.settings.registerMenu("heroes-of-legend", "rulesLibrary", { name: "Heroes of Legend rules", label: "Open rules library", hint: "Read the current installed rules and catalogs.", icon: "fa-solid fa-book-open", type: RulesLibrary, restricted: false });
+  game.settings.registerMenu("heroes-of-legend", "rulesLibrary", { name: "Deeds of Legend rules", label: "Open rules library", hint: "Read the current installed rules and catalogs.", icon: "fa-solid fa-book-open", type: RulesLibrary, restricted: false });
   Hooks.on("renderJournalDirectory", (app, html) => {
     const root = html instanceof HTMLElement ? html : html[0];
     if (!root || root.querySelector("[data-hol-library]")) return;
     const button = document.createElement("button"); button.type = "button";
-    button.dataset.holLibrary = "true"; button.textContent = "Heroes of Legend rules";
+    button.dataset.holLibrary = "true"; button.textContent = "Deeds of Legend rules";
     button.addEventListener("click", () => new RulesLibrary().render({ force: true }));
     (root.querySelector(".directory-header") ?? root).prepend(button);
   });

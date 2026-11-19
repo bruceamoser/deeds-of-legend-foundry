@@ -5,7 +5,7 @@ const ID = "heroes-of-legend";
 const {ApplicationV2, HandlebarsApplicationMixin} = foundry.applications.api;
 export class LandingSetup extends HandlebarsApplicationMixin(ApplicationV2) {
   static DEFAULT_OPTIONS = {
-    classes: [ID, "hol-landing-setup"], window: {title: "Heroes of Legend · The gathering"},
+    classes: [ID, "hol-landing-setup"], window: {title: "Deeds of Legend · The gathering"},
     position: {width: 650}, actions: {create: LandingSetup.create, view: LandingSetup.view},
   };
   static PARTS = {main: {template: `systems/${ID}/templates/landing-setup.hbs`}};
@@ -23,7 +23,7 @@ function renderLandingNavigation() {
   document.getElementById("hol-landing-navigation")?.remove();
   if (!canvas.scene?.getFlag(ID, "landing")) return;
   const nav = document.createElement("nav"); nav.id = "hol-landing-navigation";
-  nav.setAttribute("aria-label", "Heroes of Legend gathering");
+  nav.setAttribute("aria-label", "Deeds of Legend gathering");
   const button = (label, action) => {
     const item = document.createElement("button"); item.type = "button"; item.textContent = label;
     item.addEventListener("click", () => Promise.resolve().then(action).catch(error => ui.notifications.warn(error.message)));
@@ -46,9 +46,9 @@ function renderLandingNavigation() {
   document.body.append(nav);
 }
 export function registerHOLTheme() {
-  game.settings.register(ID, "theme", {name: "Heroes of Legend interface", hint: "Forest green, gold and parchment for Foundry’s controls and sidebars.", scope: "client", config: true, type: Boolean, default: true,
+  game.settings.register(ID, "theme", {name: "Deeds of Legend interface", hint: "Forest green, gold and parchment for Foundry’s controls and sidebars.", scope: "client", config: true, type: Boolean, default: true,
     onChange: enabled => document.body.classList.toggle("hol-theme", enabled)});
-  game.settings.registerMenu(ID, "landingScene", {name: "Heroes of Legend landing scene", label: "Prepare the gathering", hint: "Create an editable scene using the Player’s Book artwork. Existing scenes and edits are preserved.", icon: "fa-solid fa-panorama", type: LandingSetup, restricted: true});
+  game.settings.registerMenu(ID, "landingScene", {name: "Deeds of Legend landing scene", label: "Prepare the gathering", hint: "Create an editable scene using the Player’s Book artwork. Existing scenes and edits are preserved.", icon: "fa-solid fa-panorama", type: LandingSetup, restricted: true});
   // Register canvas font loading as well as CSS: native Drawings use PIXI text.
   for (const [name, file] of [["HOL Cinzel", "Cinzel.ttf"], ["HOL Garamond", "EBGaramond.ttf"]]) {
     CONFIG.fontDefinitions[name] = {editor: true, fonts: [{urls: [`systems/${ID}/fonts/${file}`], weight: 400, style: "normal"}]};
