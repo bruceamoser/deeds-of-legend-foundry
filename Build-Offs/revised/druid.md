@@ -1,6 +1,6 @@
 # Thalen Reedwalker: druid after the rewrite
 
-Pinned authored source `2b9af553cf9a4aaa3c8e795b57c0163763b85676`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../druid.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
+Pinned authored source `837a3eb42850d6c531c6153349664b49db0d0882`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../druid.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
 
 ## What the rewrite changes
 
@@ -13,12 +13,12 @@ Only one transformation per scene and retained personal HP give different attrit
 | Measure | HoL 1 | HoL 3 | HoL 7 |
 |---|---|---|---|
 | HP | 14 | 22 | 38 |
-| SP | 7 | 11 | 21 |
-| DP spent / total | 8 / 12 | 21 / 25 | 63 / 63 |
-| Unspent DP | 4 | 4 | 0 |
+| SP | 7 | 11 | 23 |
+| DP spent / total | 8 / 12 | 21 / 29 | 65 / 75 |
+| Unspent DP | 4 | 8 | 10 |
 | Learned action choices (Main / Maneuver / Reaction) | 2 / 1 / 0 | 3 / 1 / 0 | 4 / 3 / 0 |
 | Known book spells (free / paid) | 10 (4 / 6) | 18 (4 / 14) | 29 (4 / 25) |
-| Shared reserve: casts at 2 SP | 3 | 5 | 10 |
+| Shared reserve: casts at 2 SP | 3 | 5 | 11 |
 | Shared reserve: casts at 5 SP | 1 | 2 | 4 |
 | Extra SP from one recovery rest | 0 | 0 | 0 |
 
@@ -32,7 +32,7 @@ Equipment: Ordinary Melee Weapon (held); Travel Pack; Food Bundle; Water Flask; 
 
 The D&D baseline has **17 HP** and **AC 15 (Leather 11 + DEX 2 + Shield 2)** at level 2; HoL uses resistance and player defenses, so these are not equivalent durability measures. Learned action counts exclude universal actions and count signature passive modifications separately; spell choices are listed separately. A learned improvement changes an existing action, not another action button. Actual available actions still depend on equipment, targets and conditions.
 
-Starting DP is **10 + Guile + Knowledge + Reason**, including negative scores, plus explicit ancestry benefits. Later awards are **4 + new level**. The completed `wilderness:animal-handling` path costs **1+2+2+3+4+4+5 = 21 DP**; discipline entry, if purchased, is separate. These are sample choices, not an optimizer or evidence of playtest balance.
+Starting DP is **10 + Guile + Knowledge + Reason**, including negative scores, plus explicit ancestry benefits. From level 2 onward, each level grants **6 + new level** DP, plus any applicable ancestry benefits. The completed `wilderness:animal-handling` path costs **1+2+2+3+4+4+5 = 21 DP**; discipline entry, if purchased, is separate. These are sample choices, not an optimizer or evidence of playtest balance.
 
 ## Level 1
 
@@ -77,7 +77,7 @@ Once per scene, assume the appearance of a familiar Small or Medium ground beast
 
 ## Level 3
 
-[Import this ready character](builds/druid-level-3.hol.json). 4 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
+[Import this ready character](builds/druid-level-3.hol.json). 8 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
 
 | Learned purchase | DP paid | Character level |
 |---|---:|---:|
@@ -142,7 +142,7 @@ This is a spell costing 1 SP. If you also know Borrowed Shape, both signatures s
 
 ## Level 7
 
-[Import this ready character](builds/druid-level-7.hol.json). 0 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
+[Import this ready character](builds/druid-level-7.hol.json). 10 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
 
 | Learned purchase | DP paid | Character level |
 |---|---:|---:|
@@ -172,6 +172,7 @@ This is a spell costing 1 SP. If you also know Borrowed Shape, both signatures s
 | Winter’s Dominion (`water:3`) | 3 | 7 |
 | Spellcraft (`spellcraft`) | 2 | 7 |
 | Soul Capacity I (`spellcraft:soul-capacity:1`) | 1 | 7 |
+| Soul Capacity II (`spellcraft:soul-capacity:2`) | 2 | 7 |
 
 **Signature choices:** level 1: Borrowed Shape; level 3: Shape of the Wild; level 7: Great Shape.
 
@@ -236,11 +237,11 @@ This is a spell costing 1 SP. If you also know Borrowed Shape or Shape of the Wi
 
 **Known book spells:** Druidcraft (Maneuver; SP 0); Entangle (Main Action; SP 1); Goodberry (Ritual; SP 1); Speak with Plants (Main Action; SP 2); Hues (Maneuver; SP 0); Jump (Maneuver; SP 1); Ray of Frost (Main Action; SP 0); Create or Destroy Water (Ritual; SP 1); Enchanted Rope (Maneuver; SP 0); Loosen Earth (Ritual; SP 1); Spike Growth (Main Action; SP 2); Plant Growth (Main Action; SP 3); Tree Skin (Main Action; SP 3); Tree Stride (Main Action; SP 4); Longstrider (Main Action; SP 1); Alter Self (Main Action; SP 2); Enlarge/Reduce — Living (Main Action; SP 2); Darkvision (Main Action; SP 3); Awaken (Ritual; SP 5); Wall of Thorns (Main Action; SP 5); Transport via Plants (Ritual; SP 6); Polymorph (Main Action; SP 3); Freedom of Movement (Main Action; SP 4); Purify Food and Drink (Ritual; SP 1); Water Breathing (Main Action; SP 2); Water Walk (Main Action; SP 2); Control Water (Main Action; SP 3); Ice Storm (Main Action; SP 3); Wall of Ice (Main Action; SP 4).
 
-**Spell output:** Alternative uses of the same reserve, not simultaneous allocations. Assumes SP is spent before recovery; time, spell-specific limits, components and maintained actions still apply. Signature spells and conditional discounts are described separately. At costs 1/2/3/5 SP, the full reserve funds 21/10/7/4 casts respectively; with the learned once-per-rest recovery it funds 21/10/7/4. Zero-SP spells remain limited by actions and circumstances.
+**Spell output:** Alternative uses of the same reserve, not simultaneous allocations. Assumes SP is spent before recovery; time, spell-specific limits, components and maintained actions still apply. Signature spells and conditional discounts are described separately. At costs 1/2/3/5 SP, the full reserve funds 23/11/7/4 casts respectively; with the learned once-per-rest recovery it funds 23/11/7/4. Zero-SP spells remain limited by actions and circumstances.
 
 ## Deferred choices
 
-- Level 7: Soul Capacity II — Costs 2 DP. You have 0 DP.
+Every planned choice was affordable when scheduled.
 
 ## Playtest questions
 

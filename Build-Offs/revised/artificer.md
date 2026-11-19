@@ -1,6 +1,6 @@
 # Nim Coppercoil: artificer after the rewrite
 
-Pinned authored source `2b9af553cf9a4aaa3c8e795b57c0163763b85676`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../artificer.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
+Pinned authored source `837a3eb42850d6c531c6153349664b49db0d0882`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../artificer.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
 
 ## What the rewrite changes
 
@@ -14,10 +14,10 @@ The small curated properties are not the full 5e replication catalog. Each bindi
 |---|---|---|---|
 | HP | 13 | 17 | 25 |
 | SP | 9 | 13 | 21 |
-| DP spent / total | 9 / 12 | 24 / 25 | 62 / 63 |
-| Unspent DP | 3 | 1 | 1 |
+| DP spent / total | 9 / 12 | 28 / 29 | 62 / 75 |
+| Unspent DP | 3 | 1 | 13 |
 | Learned action choices (Main / Maneuver / Reaction) | 3 / 0 / 1 | 5 / 0 / 1 | 8 / 0 / 1 |
-| Known book spells (free / paid) | 8 (4 / 4) | 8 (4 / 4) | 30 (4 / 26) |
+| Known book spells (free / paid) | 8 (4 / 4) | 12 (4 / 8) | 30 (4 / 26) |
 | Shared reserve: casts at 2 SP | 4 | 6 | 10 |
 | Shared reserve: casts at 5 SP | 1 | 2 | 4 |
 | Extra SP from one recovery rest | 0 | 0 | 0 |
@@ -32,7 +32,7 @@ Equipment: Ordinary Melee Weapon (held); Craft Tools; Material Bundle; Writing K
 
 The D&D baseline has **17 HP** and **AC 16 (Studded Leather 12 + DEX 2 + purchased Shield 2)** at level 2; HoL uses resistance and player defenses, so these are not equivalent durability measures. Learned action counts exclude universal actions and count signature passive modifications separately; spell choices are listed separately. A learned improvement changes an existing action, not another action button. Actual available actions still depend on equipment, targets and conditions.
 
-Starting DP is **10 + Guile + Knowledge + Reason**, including negative scores, plus explicit ancestry benefits. Later awards are **4 + new level**. The completed `craft:repairs` path costs **1+2+2+3+4+4+5 = 21 DP**; discipline entry, if purchased, is separate. These are sample choices, not an optimizer or evidence of playtest balance.
+Starting DP is **10 + Guile + Knowledge + Reason**, including negative scores, plus explicit ancestry benefits. From level 2 onward, each level grants **6 + new level** DP, plus any applicable ancestry benefits. The completed `craft:repairs` path costs **1+2+2+3+4+4+5 = 21 DP**; discipline entry, if purchased, is separate. These are sample choices, not an optimizer or evidence of playtest balance.
 
 ## Level 1
 
@@ -96,6 +96,8 @@ Pay 1 SP and bind one item with a property chosen when bound: a lamp gives contr
 | Field Repair I (`craft:repairs:4`) | 3 | 3 |
 | Field Repair II (`craft:repairs:5`) | 4 | 3 |
 | Field Repair III (`craft:repairs:6`) | 4 | 3 |
+| Imbuement II (`imbuement:1`) | 2 | 3 |
+| Imbuement III (`imbuement:2`) | 2 | 3 |
 
 **Signature choices:** level 1: Make It Last; level 3: Twofold Making.
 
@@ -142,13 +144,13 @@ If you also know Make It Last, both signatures use this same two-item binding li
 - **Catch the Failure I:** Reaction. When a visible component within reach begins to fail during a nonmagical task, use tools in hand to arrest it before the consequence resolves. Give the worker 1 Boon on the associated roll to prevent injury or material loss, if such a roll is possible. Once per distinct failure event; this does not improve the task’s progress roll or reverse damage already applied.
 - **Field Repair I:** Main Action · Knowledge, with tools and materials. Work on a damaged nonmagical item within reach whose essential structure remains. Add 1/2/3 progress toward repairing it. Completion restores its ordinary function; HP restoration for an object with HP is set as part of the repair objective before work. Field Repair adds 1/3/4 progress. Field Repair gains 1 Boon when you can reach and work on all damaged components.
 
-**Known book spells:** Arcane Bolt (Main Action; SP 0); Mage Hand (Maneuver; SP 1); Mending (Ritual; SP 0); Grease (Main Action; SP 1); Light (Maneuver; SP 0); Magic Weapon (Main Action; SP 1); Detect Magic (Maneuver; SP 0); Detect Poison and Disease (Ritual; SP 1).
+**Known book spells:** Arcane Bolt (Main Action; SP 0); Mage Hand (Maneuver; SP 1); Mending (Ritual; SP 0); Grease (Main Action; SP 1); Light (Maneuver; SP 0); Magic Weapon (Main Action; SP 1); Detect Magic (Maneuver; SP 0); Detect Poison and Disease (Ritual; SP 1); Elemental Weapon (Main Action; SP 1); Rune Mastery (Ritual; SP 2); Magic Mouth (Ritual; SP 2); Continual Flame (Ritual; SP 3).
 
 **Spell output:** Alternative uses of the same reserve, not simultaneous allocations. Assumes SP is spent before recovery; time, spell-specific limits, components and maintained actions still apply. Signature spells and conditional discounts are described separately. At costs 1/2/3/5 SP, the full reserve funds 13/6/4/2 casts respectively; with the learned once-per-rest recovery it funds 13/6/4/2. Zero-SP spells remain limited by actions and circumstances.
 
 ## Level 7
 
-[Import this ready character](builds/artificer-level-7.hol.json). 1 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
+[Import this ready character](builds/artificer-level-7.hol.json). 13 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
 
 | Learned purchase | DP paid | Character level |
 |---|---:|---:|
@@ -165,9 +167,9 @@ If you also know Make It Last, both signatures use this same two-item binding li
 | Field Repair I (`craft:repairs:4`) | 3 | 3 |
 | Field Repair II (`craft:repairs:5`) | 4 | 3 |
 | Field Repair III (`craft:repairs:6`) | 4 | 3 |
+| Imbuement II (`imbuement:1`) | 2 | 3 |
+| Imbuement III (`imbuement:2`) | 2 | 3 |
 | Make It Whole (`craft:repairs:7`) | 5 | 7 |
-| Imbuement II (`imbuement:1`) | 2 | 7 |
-| Imbuement III (`imbuement:2`) | 2 | 7 |
 | The Enchanter’s Legacy (`imbuement:3`) | 3 | 7 |
 | Shaping II (`shaping:1`) | 2 | 7 |
 | Shaping III (`shaping:2`) | 2 | 7 |
@@ -256,7 +258,7 @@ If you also know Make It Last or Twofold Making, all your bindings share this th
 
 ## Deferred choices
 
-- Level 3: Imbuement II — Costs 2 DP. You have 1 DP.
+Every planned choice was affordable when scheduled.
 
 ## Playtest questions
 

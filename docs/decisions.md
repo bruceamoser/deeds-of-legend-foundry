@@ -450,3 +450,15 @@ Strong. Extra riders can remain Strong-only. Driving Opening I pushes 1
 on Standard and 2 on Strong. Shield Bash’s roll displays Push for the
 appropriate result. Prepared maneuvers, movement and situational effects
 follow their printed table procedures.
+
+## November 19 — Advancement DP (#368)
+
+From level 2 onward, gain 6 + the new level in DP, plus any applicable
+ancestry benefit. Level 2 grants 8 DP before trait benefits. Starting DP
+remains 10 + Guile + Knowledge + Reason, with explicit trait benefits.
+The Workshop rebuilds the earned budget from each character’s level and
+recorded purchases. Previously earned levels receive the revised award
+while learned abilities and live resources are preserved.
+
+Foundry’s development draft lets players undo a level increase before saving.
+Undo returns the prior level budget and clears learning made at the discarded level.

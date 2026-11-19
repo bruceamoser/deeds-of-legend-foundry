@@ -155,7 +155,7 @@ try {
   await openDevelopment();
   await expect(page.locator('[data-dp="current"]')).toHaveText("3");
   await action("level-up").click();
-  await expect(page.locator('[data-dp="current"]')).toHaveText("9");
+  await expect(page.locator('[data-dp="current"]')).toHaveText("11");
   for (let level = 3; level <= 7; level++) await action("level-up").click();
   for (const tier of [3, 7]) {
     await page.locator(`[data-action="choose-signature"][data-tier="${tier}"]`).click();

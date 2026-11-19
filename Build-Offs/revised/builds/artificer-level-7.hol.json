@@ -1,7 +1,7 @@
 {
   "format": "heroes-of-legend-character",
   "schemaVersion": 7,
-  "sourceCommit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
+  "sourceCommit": "837a3eb42850d6c531c6153349664b49db0d0882",
   "draft": {
     "name": "Nim Coppercoil",
     "attributes": {
@@ -169,6 +169,12 @@
             },
             {
               "id": "craft:repairs:6"
+            },
+            {
+              "id": "imbuement:1"
+            },
+            {
+              "id": "imbuement:2"
             }
           ],
           "acquisitions": {},
@@ -195,12 +201,6 @@
           "purchases": [
             {
               "id": "craft:repairs:7"
-            },
-            {
-              "id": "imbuement:1"
-            },
-            {
-              "id": "imbuement:2"
             },
             {
               "id": "imbuement:3"

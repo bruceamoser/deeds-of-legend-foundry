@@ -1,5 +1,5 @@
 {
-  "commit": "2b9af553cf9a4aaa3c8e795b57c0163763b85676",
+  "commit": "837a3eb42850d6c531c6153349664b49db0d0882",
   "records": {
     "design/ancestries/deep-dwarf.md": "ae61b846ef9f989fee20e36d3694c63d576356d704a698c7a199cde5d7a2ef23",
     "design/ancestries/gnome.md": "9a7aa5bfacf3772a14123c1b30c3e0a620c64c992da11e62e54bc75b3f886243",
@@ -131,7 +131,7 @@
     "design/classes/shepherd.md": "319d73a3e40bf04712b5a23286b995b2653797b2285fddd0e797b80b99c4b83b",
     "design/classes/unbalanced.md": "67c75ec3fa05e66972150efe1c049fc884e9939673159d594c096f6b2671df57",
     "design/classes/warden.md": "1f56366c65045e073ee2714752f792cb255ff39ab6312237f83ae3038c523dfc",
-    "design/development.md": "0822240e2577a414af4fc44c3ca58cce2c2591d5e06c74c76618c7eacb8d15f8",
+    "design/development.md": "98f4feb5d7aa5597e3992981f524e3887dc273a456cf15d7dbb3b458909f2455",
     "design/discipline-migration.json": "1cab4c95e8c09e084832cb59a6d9e30e8b53a2ae2ea56766a868a9a9e4d8cd7d",
     "design/disciplines.md": "aec5c314ecc3d7fea61f0983d39d4482c6c7878f659cb3c4bed784b2039e46fe",
     "design/disciplines/armor.md": "41255039cfb30b5b68db0c6021ce07470a9e5a2fa455bf848a14b15d33e77cad",

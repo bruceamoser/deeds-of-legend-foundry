@@ -1,6 +1,6 @@
 # Vaelis Quillstar: wizard after the rewrite
 
-Pinned authored source `2b9af553cf9a4aaa3c8e795b57c0163763b85676`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../wizard.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
+Pinned authored source `837a3eb42850d6c531c6153349664b49db0d0882`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../wizard.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
 
 ## What the rewrite changes
 
@@ -14,8 +14,8 @@ Fixed book sections differ from learning or copying arbitrary individual 5e spel
 |---|---|---|---|
 | HP | 13 | 19 | 31 |
 | SP | 10 | 22 | 40 |
-| DP spent / total | 11 / 13 | 25 / 26 | 61 / 64 |
-| Unspent DP | 2 | 1 | 3 |
+| DP spent / total | 11 / 13 | 25 / 30 | 61 / 76 |
+| Unspent DP | 2 | 5 | 15 |
 | Learned action choices (Main / Maneuver / Reaction) | 1 / 1 / 0 | 1 / 2 / 0 | 1 / 3 / 0 |
 | Known book spells (free / paid) | 12 (5 / 7) | 18 (5 / 13) | 32 (5 / 27) |
 | Shared reserve: casts at 2 SP | 5 | 11 | 20 |
@@ -32,7 +32,7 @@ Equipment: Ordinary Melee Weapon (held); Writing Kit; Travel Pack; Food Bundle; 
 
 The D&D baseline has **14 HP** and **AC 12 normally; 15 with Mage Armor (costs one level-1 slot)** at level 2; HoL uses resistance and player defenses, so these are not equivalent durability measures. Learned action counts exclude universal actions and count signature passive modifications separately; spell choices are listed separately. A learned improvement changes an existing action, not another action button. Actual available actions still depend on equipment, targets and conditions.
 
-Starting DP is **10 + Guile + Knowledge + Reason**, including negative scores, plus explicit ancestry benefits. Later awards are **4 + new level**. The completed `spellcraft:soul-capacity` path costs **1+2+2+3+4+4+5 = 21 DP**; discipline entry, if purchased, is separate. These are sample choices, not an optimizer or evidence of playtest balance.
+Starting DP is **10 + Guile + Knowledge + Reason**, including negative scores, plus explicit ancestry benefits. From level 2 onward, each level grants **6 + new level** DP, plus any applicable ancestry benefits. The completed `spellcraft:soul-capacity` path costs **1+2+2+3+4+4+5 = 21 DP**; discipline entry, if purchased, is separate. These are sample choices, not an optimizer or evidence of playtest balance.
 
 ## Level 1
 
@@ -79,7 +79,7 @@ Study the effect once per scene. Roll your class’s casting attribute and learn
 
 ## Level 3
 
-[Import this ready character](builds/wizard-level-3.hol.json). 1 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
+[Import this ready character](builds/wizard-level-3.hol.json). 5 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
 
 | Learned purchase | DP paid | Character level |
 |---|---:|---:|
@@ -146,7 +146,7 @@ This is a spell costing 0 SP.
 
 ## Level 7
 
-[Import this ready character](builds/wizard-level-7.hol.json). 3 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
+[Import this ready character](builds/wizard-level-7.hol.json). 15 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
 
 | Learned purchase | DP paid | Character level |
 |---|---:|---:|

@@ -36,7 +36,7 @@ for(const b of manifest.builds){
  }
  const bonus=draft.traitIds.includes('trait-human-far-walker')?1:0;
  let total=10+draft.attributes.guile+draft.attributes.knowledge+draft.attributes.reason+bonus;
- for(let level=2;level<=b.level;level++)total+=4+level+bonus;
+ for(let level=2;level<=b.level;level++)total+=6+level+bonus;
  assert.equal(b.development.total,total);assert.equal(spent,b.development.spent);assert.equal(total-spent,b.development.current);
  const capacity=[...learned].reduce((sum,id)=>sum+(nodes.get(id)?.spCapacity??0),0);
  const sp=ancestry.spContribution+2+2*Math.max(0,draft.attributes[cls.spAttribute])+2*(b.level-1)+capacity;

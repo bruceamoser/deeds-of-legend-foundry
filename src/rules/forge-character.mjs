@@ -6,6 +6,7 @@ import { classEligibility } from "./development.mjs";
 import { forgeIndex, forgeLearning, learnForgeEntry } from "./forge.mjs";
 
 export const FORGE_STARTING_DP = 10;
+export const FORGE_ADVANCEMENT_BASE_DP = 6;
 
 const trailRecipeIds = new Set(["recipe-bound-torches", "recipe-fletched-ammunition", "recipe-travel-food", "recipe-twisted-cord", "recipe-wooden-brace"]);
 const recipeSteps = new Set(["craft:supplies:1", "craft:supplies:2", "craft:workshop:1", "craft:workshop:2"]);

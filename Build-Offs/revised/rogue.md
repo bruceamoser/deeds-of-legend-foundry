@@ -1,6 +1,6 @@
 # Pip Nightjar: rogue after the rewrite
 
-Pinned authored source `2b9af553cf9a4aaa3c8e795b57c0163763b85676`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../rogue.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
+Pinned authored source `837a3eb42850d6c531c6153349664b49db0d0882`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../rogue.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
 
 ## What the rewrite changes
 
@@ -14,8 +14,8 @@ Blade in the Back is its own attack rather than bonus Sneak Attack dice. The bui
 |---|---|---|---|
 | HP | 13 | 19 | 31 |
 | SP | 7 | 11 | 19 |
-| DP spent / total | 9 / 11 | 24 / 24 | 56 / 62 |
-| Unspent DP | 2 | 0 | 6 |
+| DP spent / total | 9 / 11 | 24 / 28 | 56 / 74 |
+| Unspent DP | 2 | 4 | 18 |
 | Learned action choices (Main / Maneuver / Reaction) | 2 / 2 / 1 | 3 / 3 / 1 | 6 / 4 / 2 |
 | Known book spells (free / paid) | 0 (0 / 0) | 0 (0 / 0) | 0 (0 / 0) |
 | Shared reserve: casts at 2 SP | 3 | 5 | 9 |
@@ -32,7 +32,7 @@ Equipment: Ordinary Melee Weapon (held); Lock Tools; Travel Pack; Food Bundle; W
 
 The D&D baseline has **17 HP** and **AC 14 (Leather 11 + DEX 3)** at level 2; HoL uses resistance and player defenses, so these are not equivalent durability measures. Learned action counts exclude universal actions and count signature passive modifications separately; spell choices are listed separately. A learned improvement changes an existing action, not another action button. Actual available actions still depend on equipment, targets and conditions.
 
-Starting DP is **10 + Guile + Knowledge + Reason**, including negative scores, plus explicit ancestry benefits. Later awards are **4 + new level**. The completed `subterfuge:stealth` path costs **1+2+2+3+4+4+5 = 21 DP**; discipline entry, if purchased, is separate. These are sample choices, not an optimizer or evidence of playtest balance.
+Starting DP is **10 + Guile + Knowledge + Reason**, including negative scores, plus explicit ancestry benefits. From level 2 onward, each level grants **6 + new level** DP, plus any applicable ancestry benefits. The completed `subterfuge:stealth` path costs **1+2+2+3+4+4+5 = 21 DP**; discipline entry, if purchased, is separate. These are sample choices, not an optimizer or evidence of playtest balance.
 
 ## Level 1
 
@@ -78,7 +78,7 @@ Make an Agility roll against the target. Weak: 3 physical damage. Standard: 4 ph
 
 ## Level 3
 
-[Import this ready character](builds/rogue-level-3.hol.json). 0 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
+[Import this ready character](builds/rogue-level-3.hol.json). 4 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
 
 | Learned purchase | DP paid | Character level |
 |---|---:|---:|
@@ -140,7 +140,7 @@ Make an Agility roll against the target. On Weak, deal 3 physical damage and app
 
 ## Level 7
 
-[Import this ready character](builds/rogue-level-7.hol.json). 6 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
+[Import this ready character](builds/rogue-level-7.hol.json). 18 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
 
 | Learned purchase | DP paid | Character level |
 |---|---:|---:|

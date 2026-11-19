@@ -1,5 +1,5 @@
 import { forgeAncestryBenefits } from "./forge-ancestry.mjs";
-import { forgeAdvancement, forgeArmorRequirement } from "./forge-character.mjs";
+import { FORGE_ADVANCEMENT_BASE_DP, forgeAdvancement, forgeArmorRequirement } from "./forge-character.mjs";
 import { isForgeRitual, spellActionLabel } from "./forge-casting.mjs";
 import { forgeMaximums } from "./forge-vitals.mjs";
 import { workshopPlay } from "./workshop-play.mjs";
@@ -30,7 +30,7 @@ export function workshopCharacter(draft, catalogs, languages, { projectInventory
     catalogs.forge,
   );
   const playtest = Boolean(catalogs.forge?.playtest || catalogs.forge?.rulesRevision === 299);
-  const dpBase = playtest ? 4 : 8;
+  const dpBase = playtest ? FORGE_ADVANCEMENT_BASE_DP : 8;
   const target = draft.progression?.level ?? 1;
   if (!Number.isSafeInteger(target) || target < 1 || target > 100)
     throw new Error("Choose a whole level from 1 to 100.");

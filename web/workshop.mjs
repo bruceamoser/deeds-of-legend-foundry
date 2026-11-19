@@ -23,7 +23,7 @@ import { signatureSpellCost, isForgeRitual, isForgeModifier, isForgeSpell, forge
 import { forgeEligibility, refundForgePurchases, removeDisconnectedForgePurchases } from "./rules/forge.mjs";
 import { currentResourceInput } from "./rules/resource-input.mjs";
 import { workshopCatalogs } from "./rules/workshop-forge-catalog.mjs";
-import { FORGE_STARTING_DP, forgeArmorRequirement } from "./rules/forge-character.mjs";
+import { FORGE_ADVANCEMENT_BASE_DP, FORGE_STARTING_DP, forgeArmorRequirement } from "./rules/forge-character.mjs";
 import { ruleBlockMarkup, ruleInline } from "./rules-view.mjs";
 import {
   workshopCraft,
@@ -422,7 +422,7 @@ function sheetContent() {
   if (tab === "Character")
     return `${heading("", "Character", "")}<div class="columns"><section class="box"><h3>Origins</h3>${row("Ancestry", name(draft.ancestryId))}${row("Culture", name(draft.culture?.id))}${row("Background", name(draft.background?.id))}</section><section class="box"><h3 class="section-controls">Languages ${button("Add", "add-language", 'aria-label="Add language"', "small")}</h3>${languageTable()}</section></div>${collapsible("story", "Story", `<label class="story-editor"><textarea aria-label="Story" data-field="profile.story" maxlength="10000" placeholder="Write your character’s story…">${esc(draft.profile?.story ?? "")}</textarea></label>`)}${scarSection()}`;
   const dev = preview.development;
-  return `${heading("", "Development", "")}<section class="box development-training"><h3 class="section-controls">Training ${button("Edit creation", "review", "", "small quiet")}</h3><div class="development-summary"><div class="level-control"><span>Level</span>${button("−", "level-down", `aria-label="Decrease level" ${host?.committed || dev.level === 1 ? "disabled" : ""}`)}<strong>${dev.level}</strong>${button("+", "level-up", `aria-label="Increase level" ${dev.level === 100 ? "disabled" : ""}`)}</div><div><small>Current DP</small><strong data-dp="current">${dev.current}</strong></div><div><small>DP spent</small><strong data-dp="spent">${dev.spent}</strong></div><div><small>Total DP</small><strong data-dp="total">${dev.total}</strong></div></div><div class="training-footer"><small>Each new level grants 4 + level DP. Unspent advancement DP carries forward.</small>${dev.level > 1 ? button("Edit earlier learning", "edit-learning-level", `data-level="1"`, "small quiet") : ""}${button("Spend DP", "advance", dev.current > 0 || currentPurchases(dev.level).length ? "" : "disabled", "primary small")}</div></section>${collapsible("signatures", "Class signatures", signatureProgress())}${
+  return `${heading("", "Development", "")}<section class="box development-training"><h3 class="section-controls">Training ${button("Edit creation", "review", "", "small quiet")}</h3><div class="development-summary"><div class="level-control"><span>Level</span>${button("−", "level-down", `aria-label="Decrease level" ${dev.level <= (host?.committedLevel ?? 1) ? "disabled" : ""}`)}<strong>${dev.level}</strong>${button("+", "level-up", `aria-label="Increase level" ${dev.level === 100 ? "disabled" : ""}`)}</div><div><small>Current DP</small><strong data-dp="current">${dev.current}</strong></div><div><small>DP spent</small><strong data-dp="spent">${dev.spent}</strong></div><div><small>Total DP</small><strong data-dp="total">${dev.total}</strong></div></div><div class="training-footer"><small>From level 2 onward, gain ${FORGE_ADVANCEMENT_BASE_DP} + your new level in DP, plus any trait benefits. Unspent DP carries forward.</small>${dev.level > 1 ? button("Edit earlier learning", "edit-learning-level", `data-level="1"`, "small quiet") : ""}${button("Spend DP", "advance", dev.current > 0 || currentPurchases(dev.level).length ? "" : "disabled", "primary small")}</div></section>${collapsible("signatures", "Class signatures", signatureProgress())}${
     preview.errors.filter((e) => e.level && e.code !== "signature").length
       ? `<section class="box"><h3>Choices to finish</h3><ul class="error-list">${preview.errors
           .filter((e) => e.level && e.code !== "signature")
@@ -1378,7 +1378,10 @@ function learningFrame(content, label = "Spend DP") {
   const done = host ? "Save development" : "Done";
   const returnLabel = host ? "Save and return to Development" : "Development";
   const hint = host ? "Choices stay in your draft until you save development." : "Choices saved automatically";
-  return `<div class="wizard"><nav class="edge-tabs" aria-label="Development">${button(navIcon("Development", returnLabel), "sheet-development", `aria-label="${returnLabel}"`)}${button(navIcon(mode === "signature" ? "Heroic" : "Abilities", label), mode === "signature" ? "choose-signature" : "edit-learning-level", `aria-label="${esc(label)}" data-tier="${signatureTier}" data-level="${activeLearningLevel()}" aria-current="step"`)}</nav><div class="wizard-body">${requiredChoicesBanner()}${mode === "signature" ? "" : contextStrip()}<section id="panel" class="panel">${content}</section><footer class="wizard-footer">${host ? "" : button("Back to development", "sheet-development")}<small>${hint}</small>${button(done, "sheet-development", "", "primary")}</footer></div></div>`;
+  const undoLevel = host?.committed && preview.development.level > host.committedLevel
+    ? button("Undo level increase", "level-down", "", "small quiet")
+    : "";
+  return `<div class="wizard"><nav class="edge-tabs" aria-label="Development">${button(navIcon("Development", returnLabel), "sheet-development", `aria-label="${returnLabel}"`)}${button(navIcon(mode === "signature" ? "Heroic" : "Abilities", label), mode === "signature" ? "choose-signature" : "edit-learning-level", `aria-label="${esc(label)}" data-tier="${signatureTier}" data-level="${activeLearningLevel()}" aria-current="step"`)}</nav><div class="wizard-body">${requiredChoicesBanner()}${mode === "signature" ? "" : contextStrip()}<section id="panel" class="panel">${content}</section><footer class="wizard-footer">${host ? undoLevel : button("Back to development", "sheet-development")}<small>${hint}</small>${button(done, "sheet-development", "", "primary")}</footer></div></div>`;
 }
 function advancementBuilder() {
   return learningFrame(
@@ -2920,12 +2923,12 @@ async function action(target) {
   }
   if (a === "level-up" || a === "level-down") {
     draft.progression ??= { level: 1, levels: {} };
-    if (host?.committed && a === "level-down") throw new Error("A saved character keeps their earned levels.");
+    const previousLevel = draft.progression.level;
+    const nextLevel = previousLevel + (a === "level-up" ? 1 : -1);
+    if (nextLevel < (host?.committedLevel ?? 1) || nextLevel > 100) return;
     const before = liveVitals().limits;
-    draft.progression.level = Math.max(
-      1,
-      Math.min(100, draft.progression.level + (a === "level-up" ? 1 : -1)),
-    );
+    draft.progression.level = nextLevel;
+    if (host?.committed && a === "level-down") delete draft.progression.levels[previousLevel];
     const after = workshopCharacter(draft, catalogs).limits;
     if (after && before.maxHp > 0) Object.assign(playDraft(), advanceForgeVitals(playDraft(), before, after));
     if (host?.committed) {

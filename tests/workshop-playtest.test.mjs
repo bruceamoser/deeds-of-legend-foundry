@@ -57,9 +57,18 @@ test("level-one DP supports physical, battle-caster, and broad generalist builds
     draft.progression = { level: 2, levels: {} };
     const atSecond = hero(draft);
     assert.deepEqual(atSecond.errors, []);
-    assert.equal(atSecond.development.current, atFirst.development.current + 6);
+    assert.equal(atSecond.development.current, atFirst.development.current + 8);
     assert.equal(atSecond.limits.maxSp, atFirst.limits.maxSp + 2);
   }
+
+  broad.traitIds = ["trait-human-far-walker", "trait-human-shared-table"];
+  const withAdaptable = hero(broad);
+  assert.deepEqual(withAdaptable.errors, []);
+  assert.equal(withAdaptable.development.total, 16 + 9);
+  assert.deepEqual(
+    withAdaptable.advancementLedger.filter(entry => entry.kind === "award"),
+    [{ kind: "award", level: 2, delta: 9 }],
+  );
 });
 
 test("worn armor gives resistance while training removes its Agility penalty", () => {
@@ -101,7 +110,7 @@ test("a mixed martial and magical build reaches its own level-seven masteries wi
   draft.purchases[1] = [];
   draft.progression = { level: 7, levels: {} };
   let state = hero(draft).state;
-  assert.equal(state.dp, 64);
+  assert.equal(state.dp, 76);
   const { nodes } = forgeIndex(forge);
   const learnPath = key => {
     if (state.learned.includes(key)) return;
@@ -119,7 +128,7 @@ test("a mixed martial and magical build reaches its own level-seven masteries wi
   assert.equal(forgeEligibility(forge,{...state,level:6},mastery).eligible,false);
   assert.equal(forgeEligibility(forge,{...state,learned:state.learned.filter(id=>id!=="air:5")},mastery).eligible,false);
   learnPath(mastery);
-  assert.equal(state.dp,19); // 64 - Arms entry3 - martial path21 - spellbook21.
+  assert.equal(state.dp,31); // 76 - Arms entry3 - martial path21 - spellbook21.
   assert.ok(!forge.nodes.some(node=>node.kind==="combined"));
 });
 

@@ -1,6 +1,6 @@
 # Sera Quietstep: monk after the rewrite
 
-Pinned authored source `2b9af553cf9a4aaa3c8e795b57c0163763b85676`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../monk.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
+Pinned authored source `837a3eb42850d6c531c6153349664b49db0d0882`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../monk.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
 
 ## What the rewrite changes
 
@@ -14,8 +14,8 @@ The character is not a Focus-point monk. Measured Guard still needs the readied 
 |---|---|---|---|
 | HP | 16 | 24 | 40 |
 | SP | 3 | 7 | 15 |
-| DP spent / total | 7 / 9 | 22 / 22 | 51 / 60 |
-| Unspent DP | 2 | 0 | 9 |
+| DP spent / total | 7 / 9 | 22 / 26 | 51 / 72 |
+| Unspent DP | 2 | 4 | 21 |
 | Learned action choices (Main / Maneuver / Reaction) | 1 / 1 / 2 | 2 / 1 / 3 | 3 / 2 / 5 |
 | Known book spells (free / paid) | 0 (0 / 0) | 0 (0 / 0) | 0 (0 / 0) |
 | Shared reserve: casts at 2 SP | 1 | 3 | 7 |
@@ -32,7 +32,7 @@ Equipment: Ordinary Melee Weapon (held); Travel Pack; Food Bundle; Water Flask; 
 
 The D&D baseline has **17 HP** and **AC 15 unarmored (10 + DEX 3 + WIS 2)** at level 2; HoL uses resistance and player defenses, so these are not equivalent durability measures. Learned action counts exclude universal actions and count signature passive modifications separately; spell choices are listed separately. A learned improvement changes an existing action, not another action button. Actual available actions still depend on equipment, targets and conditions.
 
-Starting DP is **10 + Guile + Knowledge + Reason**, including negative scores, plus explicit ancestry benefits. Later awards are **4 + new level**. The completed `arms:unarmed` path costs **1+2+2+3+4+4+5 = 21 DP**; discipline entry, if purchased, is separate. These are sample choices, not an optimizer or evidence of playtest balance.
+Starting DP is **10 + Guile + Knowledge + Reason**, including negative scores, plus explicit ancestry benefits. From level 2 onward, each level grants **6 + new level** DP, plus any applicable ancestry benefits. The completed `arms:unarmed` path costs **1+2+2+3+4+4+5 = 21 DP**; discipline entry, if purchased, is separate. These are sample choices, not an optimizer or evidence of playtest balance.
 
 ## Level 1
 
@@ -76,7 +76,7 @@ You must wield a melee weapon to use this guard and counterattack. A granted cou
 
 ## Level 3
 
-[Import this ready character](builds/monk-level-3.hol.json). 0 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
+[Import this ready character](builds/monk-level-3.hol.json). 4 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
 
 | Learned purchase | DP paid | Character level |
 |---|---:|---:|
@@ -136,7 +136,7 @@ Declare this guard before defending and gain 1 Boon to the defense. Resolve the 
 
 ## Level 7
 
-[Import this ready character](builds/monk-level-7.hol.json). 9 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
+[Import this ready character](builds/monk-level-7.hol.json). 21 DP remains available. Starting inventory is carried forward; no unpriced level-up equipment, gold or magic items are assumed.
 
 | Learned purchase | DP paid | Character level |
 |---|---:|---:|
