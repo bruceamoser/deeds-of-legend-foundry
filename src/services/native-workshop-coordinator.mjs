@@ -13,7 +13,7 @@ export async function reconcileNativeGameplayOperation(actor){
 }
 export const coordinateNativeGameplay=(actor,{kind,operationId,payload})=>request(actor,'gameplay',{kind,operationId,payload});
 function assertGameplayOwner(actor,user=game.user){if(!['character','creature'].includes(actor?.type)||actor.pack||!actor.testUserPermission(user,'OWNER'))throw new Error('Choose an actor you own.');}
-const methods={save:'saveNativeWorkshopState',commit:'commitNativeWorkshopCharacter',identity:'saveNativeWorkshopIdentity',draft:'saveNativeWorkshopDraft'};
+const methods={save:'saveNativeWorkshopState',commit:'commitNativeWorkshopCharacter',identity:'saveNativeWorkshopIdentity',draft:'saveNativeWorkshopDraft',sell:'sellNativeWorkshopEquipment'};
 const kinds=new Set([...Object.keys(methods),'gameplay','claim-roll','roll-phase','complete-roll','interrupt-roll']);
 const clone=value=>structuredClone(value);
 async function digest(value){const bytes=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(JSON.stringify(value)));return [...new Uint8Array(bytes)].map(byte=>byte.toString(16).padStart(2,'0')).join('');}
@@ -61,6 +61,7 @@ export const saveNativeWorkshopState=(actor,saved,options={})=>request(actor,'sa
 export const commitNativeWorkshopCharacter=(actor,portable,options={})=>request(actor,'commit',{portable},options);
 export const saveNativeWorkshopIdentity=(actor,portable,options={})=>request(actor,'identity',{portable},options);
 export const saveNativeWorkshopDraft=(actor,portable,options={})=>request(actor,'draft',{portable},options);
+export const sellNativeWorkshopEquipment=(actor,sale,options={})=>request(actor,'sell',{sale},options);
 export const claimNativeWorkshopOperation=(actor,operation)=>request(actor,'claim-roll',{operation});
 export const updateNativeWorkshopOperation=(actor,operation)=>request(actor,'roll-phase',{operation});
 export const completeNativeWorkshopOperation=(actor,id)=>request(actor,'complete-roll',{id});
@@ -111,7 +112,7 @@ async function apply(id) {
   const retired=workshopRollClaimChanges(actor);
   if(Object.keys(retired).length)await writeAuthorityDocument(actor,retired);
   const options={...action.options,expectedRevision:expected,operationReceipt:saved};
-  const value=action.kind==='save'?action.payload.saved:action.payload.portable;
+  const value=action.kind==='save'?action.payload.saved:action.kind==='sell'?action.payload.sale:action.payload.portable;
   await state[methods[action.kind]](actor,value,options);
  } else {
   const operation=action.payload?.operation, rollId=operation?.id??action.payload?.id;

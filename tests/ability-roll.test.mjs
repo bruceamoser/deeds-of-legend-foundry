@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {abilityCatalogRecord,printedAbilityRoll, abilityRollConfiguration, assertAbilityConfiguration} from '../src/rules/ability-roll.mjs';
+import {canCustomizeWorkshopRoll, validateWorkshopAbilityUse} from '../src/rules/workshop-ability.mjs';
 const catalog=JSON.parse(await readFile(new URL('../static/data/choices.json',import.meta.url))).records;
 test('all explicitly printed attribute abilities retain roll configuration independent of automation adapters',()=>{
   const records=catalog.filter(record=>record.kind==='ability');
@@ -49,6 +50,22 @@ const legacyItem = (flags = {}, system = {}) => ({
     outcomes: {},
     ...system,
   },
+});
+test('an owned choice fixes the attack attribute and carries to Opportunity Attack', () => {
+  const melee = catalog.find(record => record.id === 'ability-basic-melee');
+  const opportunity = catalog.find(record => record.id === 'ability-opportunity-attack');
+  const item = { ...legacyItem({ grantKind: 'nativeWorkshop', catalogId: melee.id, rollAttributeOverride: 'knowledge' }), type: 'ability' };
+  item.actor = { items: [item] };
+  for (const record of [melee, opportunity]) {
+    const config = abilityRollConfiguration(item, record);
+    assert.equal(config.attribute, 'knowledge');
+    assert.deepEqual(config.attributes, ['knowledge']);
+    assert.equal(config.attack, true);
+  }
+  assert.equal(canCustomizeWorkshopRoll(opportunity), false);
+  assert.equal(canCustomizeWorkshopRoll({ ...melee, sp: 0, magic: 'Spell' }), false);
+  assert.throws(() => validateWorkshopAbilityUse(melee, [], 'brawn', 'knowledge'), /Choose one of the attributes/);
+  assert.doesNotThrow(() => validateWorkshopAbilityUse(melee, [], 'knowledge', 'knowledge'));
 });
 test("legacy Basic Melee resolves exact provenance and opens a Brawn attack configuration", () => {
   const record = catalog.find((record) => record.id === "ability-basic-melee");

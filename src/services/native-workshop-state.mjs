@@ -206,6 +206,50 @@ export function saveNativeWorkshopDraft(actor, portable,{expectedRevision,operat
     return state.portable;
   });
 }
+
+/** Retire one owned stack and credit its accepted offer in the same journaled save. */
+export function sellNativeWorkshopEquipment(actor, sale, {expectedRevision,operationReceipt}={}) {
+  owner(actor);
+  return serialize(actor, async () => {
+    await recoverNativeWorkshopTransaction(actor);
+    const next = revision(actor, expectedRevision);
+    const saved = flag(actor);
+    if (!saved?.portable) throw new Error("Create this character in the current Workshop first.");
+    const item = [...actor.items].find(item => item.id === sale?.itemId && item.type === "equipment");
+    if (!item || item.system.quantity < 1 || item.system.quantity !== sale.quantity || item.system.inventoryDie !== sale.inventoryDie)
+      throw new Error("This equipment stack changed. Check the inventory before making another offer.");
+    if (!Number.isSafeInteger(sale.coins) || sale.coins < 0)
+      throw new Error("Enter an agreed price in whole coins.");
+    const catalogs = await loadWorkshopCatalogs();
+    revision(actor, expectedRevision);
+    const portable = overlay(actor, saved.portable, catalogs);
+    const instance = nativeWorkshopInventoryId(item);
+    const inventory = portable.draft.play.inventory;
+    inventory.added = inventory.added.filter(entry => entry.instanceId !== instance);
+    // A removed acquisition marker keeps one-time training and starting gear from reappearing.
+    if (!instance.startsWith(NATIVE_INVENTORY_PREFIX)) inventory.removed = [...new Set([...inventory.removed, instance])];
+    delete inventory.overrides[instance];
+    for (const [weapon, ammunition] of Object.entries(inventory.ammunition))
+      if (weapon === instance || ammunition === instance) delete inventory.ammunition[weapon];
+    delete portable.draft.loadout[instance];
+    const favorites = portable.draft.play.favorites;
+    if (favorites?.items) favorites.items = favorites.items.filter(id => id !== instance);
+    delete portable.draft.play.immediateDeathRolls;
+    const normalized = await normalize(portable);
+    const defaultBalance = normalized.preview.inventory.remainingCoins;
+    await applyWorkshopTransaction(actor, [], () => {
+      revision(actor, expectedRevision);
+      const balance = actor.getFlag(ID, "development")?.coins ?? defaultBalance;
+      if (!Number.isSafeInteger(balance + sale.coins)) throw new Error("The resulting coin balance is too large.");
+      return {
+        ...operationChanges(operationReceipt),
+        [`flags.${ID}.nativeWorkshop`]: { ...saved, revision: next, portable: normalized.portable },
+        [`flags.${ID}.development.coins`]: balance + sale.coins,
+      };
+    }, next, { catalogs, playEdits: { removed: new Set([instance]) } });
+    return loadNativeWorkshopState(actor);
+  });
+}
 export async function loadNativeWorkshopDraft(actor) {
   readable(actor);
   return structuredClone(actor.getFlag(ID, "nativeWorkshopDraft") ?? null);
@@ -227,7 +271,8 @@ export function commitNativeWorkshopCharacter(actor, portable, { expectedRevisio
     revision(actor, expectedRevision);
     // Read the previous level even when the current rules reject an old choice.
     // The replacement above must still pass the full Review.
-    const previousLevel=existing?.portable ? (await normalize(existing.portable)).preview.state.level : 0;
+    const previous = existing?.portable ? (await normalize(existing.portable)).preview : null;
+    const previousLevel=previous?.state.level ?? 0;
     if(existing?.portable && state.preview.state.level < previousLevel) throw new Error("A committed character cannot lose levels. Recreate the hero explicitly for a level correction.");
     const desired = nativeWorkshopLearnedItems(state.preview, state.catalogs);
     const carried = existing?.portable ? overlay(actor,state.portable,state.catalogs) : null;
@@ -248,13 +293,17 @@ export function commitNativeWorkshopCharacter(actor, portable, { expectedRevisio
         if((actor.system.sp?.value??0)<=state.preview.limits.maxSp+bonuses.sp)delete changes["system.sp.value"];
         delete changes["system.grit.spent"];delete changes["system.recovery"];delete changes[`flags.${ID}.forgeVitals`];
       } else changes.effects=nativeConditionSources(actor,state.draft.play?.conditions??[]);
+      const remainingCoins = state.preview.inventory.remainingCoins;
+      const liveCoins = actor.getFlag(ID,"development")?.coins;
+      const coins = previous && Number.isSafeInteger(liveCoins)
+        ? liveCoins + remainingCoins - previous.inventory.remainingCoins : remainingCoins;
       return {...changes,...operationChanges(operationReceipt),
         [`flags.${ID}.forgeLearned`]:state.preview.state.learned,
         "prototypeToken.name":state.draft.name.trim(),"prototypeToken.actorLink":true,
         [`flags.${ID}.nativeWorkshop`]:{revision:next,portable,inventoryInstances:equipmentState.preview.inventory.items.map(item=>item.instanceId),view:{mode:"sheet",tab:tab==="Development"?"Development":"Main",step:0,editingLevel:null}},
         [`flags.${ID}.nativeWorkshopDraft`]:null,
         [`flags.${ID}.creationReceipt`]:{status:"complete",revision:next,sourceCommit:state.catalogs.commit,currentWorkshop:true},
-        [`flags.${ID}.development`]:{...state.preview.state,creation:state.draft,languages:state.preview.play.languages,sourceCommit:state.catalogs.commit,coins:state.preview.inventory.remainingCoins},
+        [`flags.${ID}.development`]:{...state.preview.state,creation:state.draft,languages:state.preview.play.languages,sourceCommit:state.catalogs.commit,coins},
       };
     },next,{catalogs:state.catalogs});
     return loadNativeWorkshopState(actor);

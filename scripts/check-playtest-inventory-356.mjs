@@ -55,7 +55,7 @@ try {
     f.trainingWeapon = trainingWeapon.id;
     const base = trainingWeapon.toObject();
     delete base._id;
-    const catalog = await Item.create({ ...base, name: "External steel blade", ownership });
+    const catalog = await Item.create({ ...base, system: { ...base.system, quantity: 2 }, name: "External steel blade", ownership });
     f.sources.push(catalog.id);
     const custom = await Item.create({ name: "Custom lantern frame", type: "equipment", ownership,
       system: { catalogId: "item-custom-lantern-frame", quantity: 1, bulk: 1 } });
@@ -89,6 +89,40 @@ try {
     dataTransfer.setData("text/plain", JSON.stringify({ type: "Item", uuid }));
     table.dispatchEvent(new DragEvent("drop", { bubbles: true, composed: true, cancelable: true, dataTransfer }));
   }, uuid);
+
+  await tab("Abilities");
+  const attackRow = sheet.locator('[data-action-row="arms:bladework:1"]');
+  const editAttack = attackRow.getByRole("button", { name: "Edit roll attribute for Measured Cut I" });
+  const attack = attackRow.getByRole("button", { name: "Roll Measured Cut I" });
+  const attributeDialog = player.locator(".hol-native-dialog").filter({ has: player.locator("#hol-ability-attribute") });
+  const choice = attributeDialog.getByRole("combobox", { name: "Roll attribute" });
+  await expect(attack).toContainText("Br +2");
+  await editAttack.click();
+  await choice.selectOption("knowledge");
+  await attributeDialog.getByRole("button", { name: "Cancel", exact: true }).click();
+  await expect(attack).toContainText("Br +2");
+  await editAttack.click();
+  await choice.selectOption("knowledge");
+  await attributeDialog.getByRole("button", { name: "Save attribute", exact: true }).click();
+  await expect(attack).toHaveText("Kn +0");
+  await sheet.locator('.window-header [data-action="close"]').click();
+  await expect(sheet).toHaveCount(0);
+  await render();
+  await tab("Abilities");
+  await expect(attack).toHaveText("Kn +0");
+  await attack.click();
+  const rollDialog = player.locator(".hol-roll-dialog").filter({ hasText: "Measured Cut I" });
+  await expect(rollDialog.getByRole("combobox", { name: "Roll attribute" })).toHaveValue("knowledge");
+  await expect(rollDialog.locator("[data-roll-value]")).toHaveText("+0");
+  await rollDialog.getByRole("button", { name: "Roll", exact: true }).click();
+  await expect(rollDialog).toHaveCount(0);
+  await expect.poll(() => gm.evaluate(id => game.messages.map(message => message.getFlag("heroes-of-legend", "roll"))
+    .find(roll => roll?.actorUuid === `Actor.${id}` && roll?.ability?.name === "Measured Cut I"), fixture.actor)).toMatchObject({ attributeKey: "knowledge", attribute: 0 });
+  await editAttack.click();
+  await choice.selectOption("");
+  await attributeDialog.getByRole("button", { name: "Save attribute", exact: true }).click();
+  await expect(attack).toContainText("Br +2");
+  console.info("Ability attribute cancellation, override, actual Knowledge attack, reopen, and reset all passed for the actor owner.");
 
   await tab("Inventory");
   const initialCoins = (await state()).coins;
@@ -197,6 +231,51 @@ try {
   assert.equal((await state()).hp, newHp);
   await expect(rows("Water Flask")).toHaveCount(0);
   await expect(rows("Ordinary Melee Weapon")).toHaveCount(1);
+
+  async function sellStack(name, suggested, agreed = suggested) {
+    const before = await state();
+    const accessible = suggested === null ? `Sell ${name}` : `Sell ${name} for ${suggested} coins`;
+    const button = rows(name).getByRole("button", { name: accessible, exact: true });
+    const dialog = sheet.getByRole("dialog", { name: `Sell ${name}?`, exact: true });
+    const offer = dialog.getByRole("spinbutton", { name: "Offer in coins" });
+    await button.click();
+    await expect(offer).toHaveValue(suggested === null ? "" : String(suggested));
+    await offer.fill(String(agreed));
+    await dialog.getByRole("button", { name: "Cancel", exact: true }).click();
+    assert.deepEqual(await state(), before);
+    await button.click();
+    await offer.fill(String(agreed));
+    await dialog.getByRole("button", { name: "Sell item", exact: true }).click();
+    await expect(dialog).toBeHidden();
+    await expect(rows(name)).toHaveCount(0);
+    await expect(coins).toHaveText(String(before.coins + agreed));
+    const after = await state();
+    assert.equal(after.coins, before.coins + agreed);
+    assert.deepEqual(after.equipment.map(item => item.id),
+      before.equipment.map(item => item.id).filter(id => id !== before.items[name]));
+  }
+  await drag(`Item.${fixture.sources[0]}`);
+  await expect(rows("External steel blade")).toHaveCount(1);
+  await sellStack("External steel blade", 12);
+  await drag(`Item.${fixture.sources[1]}`);
+  await expect(rows("Custom lantern frame")).toHaveCount(1);
+  await sellStack("Custom lantern frame", null, 7);
+  await rows("Food Bundle").getByRole("button", { name: "Lower Food Bundle supply", exact: true }).click();
+  await sellStack("Food Bundle", null, 2);
+  await sellStack("Ordinary Melee Weapon", 6);
+  const afterSales = await state();
+  await gm.evaluate(async id => {
+    const actor = game.actors.get(id);
+    const { loadNativeWorkshopState } = await import("/systems/heroes-of-legend/services/native-workshop-state.mjs");
+    const { commitNativeWorkshopCharacter } = await import("/systems/heroes-of-legend/services/native-workshop-coordinator.mjs");
+    const saved = await loadNativeWorkshopState(actor);
+    await commitNativeWorkshopCharacter(actor, saved.character, { expectedRevision: saved.revision });
+  }, fixture.actor);
+  const afterCommit = await state();
+  assert.equal(afterCommit.coins, afterSales.coins);
+  assert.ok(!afterCommit.items["Ordinary Melee Weapon"]);
+  console.info("Verified native sales of a two-item catalog loot stack, custom gear, partial supplies for an agreed offer, and training gear, with cancel and lasting purse credit.");
+
   const failures = await gm.evaluate(id => game.messages.filter(message => {
     const request = message.getFlag("heroes-of-legend", "nativeWorkshopRequest");
     const status = message.getFlag("heroes-of-legend", "nativeWorkshopStatus");

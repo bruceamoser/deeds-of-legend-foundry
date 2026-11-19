@@ -7,6 +7,7 @@ import {HEALING_POTION_IDS} from '../rules/potions.mjs';
 import {torchItemActions,requestTorchToggle} from '../services/torches.mjs';
 import { projectNativeWorkshopInventory } from '../rules/native-inventory-projection.mjs';
 import { nativeItemForWorkshopInstance } from '../rules/native-item-identity.mjs';
+import { standardEquipmentSalePrice } from '../rules/equipment-sale.mjs';
 import { setRangedWeaponAmmunition } from '../services/ranged-ammunition.mjs';
 import { consumableTracking,tracksConsumable } from '../services/consumables.mjs';
 import { lowerOwnedSupply } from '../services/inventory.mjs';
@@ -17,14 +18,16 @@ import { newCreationDraft } from '../rules/creation.mjs';
 import { rollCard, resourceCard } from '../rules/chat-cards.mjs';
 import { equipmentBonuses } from "../rules/equipment-bonuses.mjs";
 import { equipmentAttributeValue,effectiveActorAttributeValue } from '../rules/effective-attributes.mjs';
-import { validateWorkshopAbilityUse } from '../rules/workshop-ability.mjs';
+import { canCustomizeWorkshopRoll, validateWorkshopAbilityUse, workshopRollAttributes } from '../rules/workshop-ability.mjs';
+import { ownedWorkshopAbility, ownedWorkshopRollAttribute, WORKSHOP_ROLL_ATTRIBUTE_FLAG } from '../rules/ability-roll.mjs';
+import { ATTRIBUTES } from '../rules/character.mjs';
 import { inventoryCheck } from '../rules/inventory.mjs';
 import { classifyRoll } from '../rules/roll.mjs';
 import { resolvedAttackEffects,spellAttackOutcomes } from '../rules/attack-outcomes.mjs';
 import { workshopRollOutcome } from '../rules/workshop-outcomes.mjs';
 import { writePortableCharacter } from '../rules/portable-character.mjs';
 import { loadNativeWorkshopState } from '../services/native-workshop-state.mjs';
-import {saveNativeWorkshopState,saveNativeWorkshopIdentity,commitNativeWorkshopCharacter,claimNativeWorkshopOperation,updateNativeWorkshopOperation,completeNativeWorkshopOperation,interruptNativeWorkshopOperation,nativeWorkshopRoll} from '../services/native-workshop-coordinator.mjs';
+import {saveNativeWorkshopState,saveNativeWorkshopIdentity,sellNativeWorkshopEquipment,commitNativeWorkshopCharacter,claimNativeWorkshopOperation,updateNativeWorkshopOperation,completeNativeWorkshopOperation,interruptNativeWorkshopOperation,nativeWorkshopRoll} from '../services/native-workshop-coordinator.mjs';
 const ID='heroes-of-legend';
 const {HandlebarsApplicationMixin}=foundry.applications.api;
 
@@ -135,10 +138,18 @@ export class WorkshopCharacterSheet extends HandlebarsApplicationMixin(foundry.a
           return Number.isSafeInteger(coins) ? coins : undefined;
         },
         canDeleteItem:item=>!this.host.readOnly && nativeItemForWorkshopInstance(this.actor,item?.instanceId)?.type==='equipment',
+        equipmentSale:row=>{
+          const item=nativeItemForWorkshopInstance(this.actor,row.instanceId);
+          if(this.host.readOnly || item?.type!=='equipment' || !item.isOwner || item.system.quantity<1)return null;
+          return { itemId:item.id, quantity:item.system.quantity, inventoryDie:item.system.inventoryDie,
+            coins:standardEquipmentSalePrice(row.definition,item.system) };
+        },
         itemActions:item=>torchItemActions(this.actor,item),
         readOnly:!this.isEditable || !this.actor.testUserPermission(game.user,'OWNER'),
         committed:Boolean(this.actor.getFlag(ID,'nativeWorkshop')?.portable),
         nativePortrait:true,
+        canEditAbilityAttribute:id=>Boolean(ownedWorkshopAbility(this.actor,id)),
+        getAbilityAttribute:record=>ownedWorkshopRollAttribute(this.actor,record),
         getAttributeBase:key=>this.actor.system.attributes[key].base,
         getEquipmentBonuses:()=>equipmentBonuses(this.actor.items),
         getAttributes:attributes=>Object.fromEntries(Object.entries(attributes).map(([key,value])=>[key,equipmentAttributeValue(this.actor.system.attributes[key].base,this.actor.items,key)])),
@@ -147,6 +158,10 @@ export class WorkshopCharacterSheet extends HandlebarsApplicationMixin(foundry.a
         onChange:(saved,basis)=>this.saveState(saved,basis),
         onCommit:(portable,view)=>this.commitState(portable,view),
         onAction:async event=>{
+          if(event.action==='edit-ability-attribute') {
+            await this.editAbilityRollAttribute(event.id);
+            return true;
+          }
           if(event.action==='apply-workshop-rest') {
             this.assertOwner();
             await this.controller.flush();
@@ -214,6 +229,26 @@ export class WorkshopCharacterSheet extends HandlebarsApplicationMixin(foundry.a
             return true;
           }
 
+          if(event.action==='confirm-native-sale') {
+            this.assertOwner();
+            if(event.target.disabled)return true;
+            const input=event.values['native-sale-price'];
+            if(!input?.trim())throw new Error('Enter the agreed price.');
+            event.target.disabled=true;
+            try {
+              await this.controller.flush();
+              this.writing++;
+              try {
+                await sellNativeWorkshopEquipment(this.actor,{
+                  itemId:event.id,quantity:Number(event.dataset.quantity),
+                  inventoryDie:Number(event.dataset.inventoryDie),coins:Number(input),
+                },{expectedRevision:this.revision});
+              } finally {this.finishWrite();}
+              event.target.closest('dialog')?.close();
+              await this.render({force:true});
+            } finally {event.target.disabled=false;}
+            return true;
+          }
           if(event.action==='native-edit-equipment' || event.action==='confirm-drop-item') {
             this.assertOwner();
             const instance=event.dataset.instance;
@@ -314,6 +349,33 @@ export class WorkshopCharacterSheet extends HandlebarsApplicationMixin(foundry.a
     if(!this.controller) throw new Error('Finish creating this hero in the current Workshop first.');
     return this.controller.useAbility(id);
   }
+  async editAbilityRollAttribute(id) {
+    this.assertOwner();
+    const catalogs=await loadWorkshopCatalogs();
+    const record=catalogs.choices.find(record=>record.id===id);
+    const item=ownedWorkshopAbility(this.actor,id);
+    if(!item?.isOwner || !canCustomizeWorkshopRoll(record)) throw new Error('Choose a rolled ability this hero owns.');
+    const original=ownedWorkshopRollAttribute(this.actor,record);
+    const attributeName=key=>game.i18n.localize(`HOL.Attributes.${key}`);
+    const defaults=workshopRollAttributes(record).map(attributeName).join(' / ');
+    const options=ATTRIBUTES.map(key=>`<option value="${key}" ${original===key?'selected':''}>${foundry.utils.escapeHTML(attributeName(key))}</option>`).join('');
+    const result=await foundry.applications.api.DialogV2.input({
+      classes:[ID,'hol-native-dialog'],window:{title:`Edit ${record.name}`},
+      content:`<div class="form-group"><label for="hol-ability-attribute">Roll attribute</label><select autofocus id="hol-ability-attribute" name="attribute"><option value="">Ability default (${foundry.utils.escapeHTML(defaults)})</option>${options}</select></div>`,
+      buttons:[{action:'cancel',label:'COMMON.Cancel',type:'button'}],
+      ok:{label:'Save attribute'},rejectClose:false,
+    });
+    if(!result || (result.attribute || null)===original) return;
+    const key=result.attribute;
+    if(key!=='' && !ATTRIBUTES.includes(key)) throw new Error('Choose a valid roll attribute.');
+    await this.controller.flush();
+    this.assertOwner();
+    if(ownedWorkshopAbility(this.actor,id)?.id!==item.id || ownedWorkshopRollAttribute(this.actor,record)!==original)
+      throw new Error('This ability changed. Open its attribute editor again.');
+    if(key) await item.setFlag(ID,WORKSHOP_ROLL_ATTRIBUTE_FLAG,key);
+    else await item.unsetFlag(ID,WORKSHOP_ROLL_ATTRIBUTE_FLAG);
+    await this.render({force:true});
+  }
   async saveIdentity(portable) {
     this.assertOwner();this.writing++;
     try {
@@ -407,8 +469,11 @@ export class WorkshopCharacterSheet extends HandlebarsApplicationMixin(foundry.a
     const abilityId=request.activeRoll?.id;
     const catalogs=abilityId || request.abilityIds?.length ? await loadWorkshopCatalogs() : null;
     const record=catalogs?.choices.find(record=>record.id===abilityId) ?? catalogs?.forge.spells.find(record=>record.id===abilityId);
-    if (record?.weaponRequirement || record?.attributeChoices)
-      validateWorkshopAbilityUse(record, [...this.actor.items].filter(item=>item.type==='equipment').map(item=>item.system), request.attributeKey);
+    const override=ownedWorkshopRollAttribute(this.actor,record);
+    if (request.activeRoll?.attributeOverride !== undefined && request.activeRoll.attributeOverride !== override)
+      throw new Error('This ability’s roll attribute changed. Reopen the roll to use its current attribute.');
+    if (record?.weaponRequirement || record?.attributeChoices || override)
+      validateWorkshopAbilityUse(record, [...this.actor.items].filter(item=>item.type==='equipment').map(item=>item.system), request.attributeKey, override);
     const attribute=request.attributeKey ? effectiveActorAttributeValue(this.actor.system.attributes[request.attributeKey].base,this.actor,request.attributeKey) : (request.attribute ?? 0);
     if(request.attributeKey && attribute!==request.attribute) throw new Error('Equipment changed this attribute. Reopen the roll to use its current effective value.');
     const pendingDeathRoll=kind==='death' ? this.actor.getFlag(ID,'forgeVitals')?.immediateDeathRolls?.[0] : undefined;
