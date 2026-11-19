@@ -5,9 +5,9 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Timed work</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div></dl><p>10 minutes · Reason. Present your findings and their supporting evidence to up to four decision-makers who understand you. Use testimony, records, exhibits or an explanation of what you found. Roll once; add 3/5/7 progress to each relevant acceptance objective. On completion a listener acknowledges the supported facts and grants the attainable concession established with the DA. Unsupported claims and inaccessible facts remain unproven.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action · 10 minutes</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div></dl><p>10 minutes · Reason. Present your findings and their supporting evidence to up to four decision-makers who understand you. Use testimony, records, exhibits or an explanation of what you found. Roll once; add 3/5/7 progress to each relevant acceptance objective. On completion a listener acknowledges the supported facts and grants the attainable concession established with the DA. Unsupported claims and inaccessible facts remain unproven.</p>",
     "activity": {
-      "action": "other",
+      "action": "main",
       "rollMode": "attribute",
       "attribute": "reason",
       "defenseAttribute": "agility"
@@ -28,7 +28,7 @@
         "nodeId": "scholarship:investigation:7",
         "level": 7,
         "cost": 5,
-        "action": "Timed work",
+        "action": "Main Action · 10 minutes",
         "sp": null,
         "range": null,
         "duration": null,

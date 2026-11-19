@@ -5,9 +5,9 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Timed work</dd></div><div><dt>Attribute</dt><dd>Agility</dd></div></dl><p>1 hour · Agility, with rope and concealment materials. Establish a concealed route up to 20 squares long across terrain you can physically traverse; add 3/5/7 progress toward the DA’s route objective. On completion, up to six companions following your instructions can traverse it at normal movement cost with 2 Boons to remain unnoticed. It creates no unsupported bridge. Discovery or damage ends these benefits until the route is repaired and concealed again.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action · 1 hour</dd></div><div><dt>Attribute</dt><dd>Agility</dd></div></dl><p>1 hour · Agility, with rope and concealment materials. Establish a concealed route up to 20 squares long across terrain you can physically traverse; add 3/5/7 progress toward the DA’s route objective. On completion, up to six companions following your instructions can traverse it at normal movement cost with 2 Boons to remain unnoticed. It creates no unsupported bridge. Discovery or damage ends these benefits until the route is repaired and concealed again.</p>",
     "activity": {
-      "action": "other",
+      "action": "main",
       "rollMode": "attribute",
       "attribute": "agility",
       "defenseAttribute": "agility"
@@ -28,7 +28,7 @@
         "nodeId": "subterfuge:stealth:7",
         "level": 7,
         "cost": 5,
-        "action": "Timed work",
+        "action": "Main Action · 1 hour",
         "sp": null,
         "range": null,
         "duration": null,

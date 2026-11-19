@@ -13,10 +13,7 @@ const portable = JSON.parse(await readFile("Build-Offs/revised/builds/sorcerer-l
 portable.draft.name = "Playtest349 casting and use";
 portable.draft.background = {id:"origin-background-shore-gatherer",pair:0};
 const spellsAndAbilities = ["spell:flame:2", "athletics:balance:1", "athletics:swimming:1", "wilderness:provisioning:1"];
-portable.draft.purchases[1] = [
-  "flame:0", "athletics", ...spellsAndAbilities.slice(1),
-  "wilderness:provisioning:2", "wilderness:provisioning:3",
-].map(id => ({id}));
+portable.draft.purchases[1] = ["flame:0", "athletics", ...spellsAndAbilities.slice(1)].map(id => ({id}));
 portable.draft.play = {favorites:{abilities:spellsAndAbilities,items:[]}};
 const browser = await chromium.launch();
 let gm, player, fixture;
@@ -75,16 +72,16 @@ try {
   const cast = boil.getByRole("button",{name:"Cast Boil Liquid",exact:true});
   await expect(cast).toHaveText("Cast");
   await cast.click();
-  const dialog = sheet.getByRole("dialog",{name:"Boil Liquid"});
-  await expect(dialog).toContainText("Finish the printed casting time");
   await expect.poll(sp).toBe(before-1);
   await expect.poll(async()=>(await posts()).map(post=>post.name)).toEqual(["Boil Liquid"]);
   assert.match((await posts())[0].content,/Bring its liquid to a rolling boil/);
-  await dialog.getByRole("button",{name:"Close",exact:true}).click();
+  assert.match((await posts())[0].content,/1 minute/);
+  await expect(sheet.getByRole("dialog")).toHaveCount(0);
 
   await sheet.locator('[data-action-row="athletics:balance:1"]').getByRole("button",{name:"Use Catch Your Balance I",exact:true}).click();
   await sheet.locator('[data-action-row="athletics:swimming:1"]').getByRole("button",{name:"Use Strong Swimmer I",exact:true}).click();
   await expect.poll(async()=>(await posts()).map(post=>post.name)).toEqual(["Boil Liquid","Catch Your Balance I","Strong Swimmer I"]);
+  await expect(sheet.locator('[data-detail-id="athletics:balance:1"],[data-detail-id="athletics:swimming:1"]')).toHaveCount(0);
   assert((await posts()).every(post=>!post.roll && post.author===fixture.user));
   assert.equal(await sp(),before-1);
   console.info("Verified player Boil Liquid as Main Action and Cast, one SP paid, and single effect-only chat cards for the ritual, reaction and passive.");
@@ -95,17 +92,48 @@ try {
       actor.items.find(item => item.system.catalogId === catalogId)?.system.inventoryDie);
   },fixture.actor);
   assert.deepEqual(await supplies(),[0,4]);
-  await sheet.getByRole("button",{name:"Roll Wild Harvest I",exact:true}).click();
+  const wild = sheet.locator('[data-action-row="wilderness:provisioning:1"]');
+  await expect(wild.locator("xpath=ancestor::details[1]").locator(":scope > summary")).toContainText("Main Action");
+  await wild.getByRole("button",{name:"Roll Wild Harvest I",exact:true}).click();
   const harvest = sheet.getByRole("dialog",{name:"Wild Harvest I"});
-  await expect(harvest.getByLabel("Food to replenish")).toContainText("Food Bundle");
-  await expect(harvest.getByLabel("Water to replenish")).toContainText("Water Flask");
+  await harvest.getByLabel("Supply to replenish").selectOption({label:"Food Bundle"});
+  await player.evaluate(() => {
+    const original = CONFIG.Dice.randomUniform;
+    const faces = [2,3,4];
+    CONFIG.Dice.randomUniform = () => {
+      const face = faces.shift();
+      if (!faces.length) CONFIG.Dice.randomUniform = original;
+      return 1-(face-0.5)/6;
+    };
+  });
   await harvest.getByRole("button",{name:"Roll",exact:true}).click();
-  await expect.poll(async() => {
-    const [food,water] = await supplies();
-    return food >= 6 && water === 8;
-  }).toBe(true);
+  await expect.poll(supplies).toEqual([6,4]);
+  const outcome = () => gm.evaluate(id => game.messages.filter(message => message.speaker?.actor === id && message.isRoll)
+    .map(({content,rolls}) => ({
+      total:rolls[0]?.total,
+      text:new DOMParser().parseFromString(content,"text/html").querySelector("[data-hol-roll-outcome]")?.textContent,
+    })),fixture.actor);
+  await expect.poll(outcome).toContainEqual({total:10,text:"2 supply die steps"});
+  await sheet.getByRole("tab",{name:"Inventory",exact:true}).click();
+  const water = sheet.getByRole("row").filter({hasText:"Water Flask"});
+  await water.getByRole("button",{name:"Use Water Flask",exact:true}).click();
+  const supply = sheet.getByRole("dialog",{name:"Water Flask",exact:true});
+  await expect(supply).toContainText("Maximum supply die: d8");
+  await supply.getByRole("button",{name:"Close",exact:true}).click();
+  const deplete = water.getByRole("button",{name:"Deplete Water Flask",exact:true});
+  const confirmation = sheet.getByRole("dialog",{name:"Deplete Water Flask?"});
+  await deplete.click();
+  await confirmation.getByRole("button",{name:"Cancel",exact:true}).click();
+  assert.deepEqual(await supplies(),[6,4]);
+  await deplete.click();
+  await confirmation.getByRole("button",{name:"Deplete supply",exact:true}).click();
+  await expect.poll(supplies).toEqual([6,0]);
+  await expect(confirmation).toHaveCount(0);
+  await expect(water).toContainText("Empty");
+  await expect(water.locator("input[type=number]")).toHaveValue("1");
   assert.deepEqual(errors,[]);
-  console.info("Verified Wild Harvest restores both owned supply dice, including an empty Food Bundle.");
+  console.info("Verified Wild Harvest is a Main Action. A total of 10 posts 2 supply die steps and changes an empty Food Bundle to d6.");
+  console.info("Verified the Water Flask shows its d8 maximum. Cancelling depletion leaves its supply intact. Confirming keeps the item and empties its die.");
 } finally {
   await player?.close();
   await gm?.evaluate(async ()=>{

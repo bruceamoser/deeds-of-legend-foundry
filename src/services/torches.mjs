@@ -20,6 +20,7 @@ export function torchItemActions(actor,item) {
   if(owned?.system.catalogId!=='item-lighting-bundle')return [];
   const state=stateOf(owned);
   return [{action:'torch-toggle',label:state.pendingCheck?'Resolve torch check':state.lit?'Extinguish torch':'Light torch',
+    lit:Boolean(state.lit),pendingCheck:Boolean(state.pendingCheck),
     disabled:!actor.testUserPermission(game.user,'OWNER'),title:state.pendingCheck?'Check the supply die before continuing.':'Maneuver · light within 3 squares'}];
 }
 function chooseToken(actor) {

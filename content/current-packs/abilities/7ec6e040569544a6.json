@@ -5,9 +5,9 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Timed work</dd></div></dl><p>1 hour, with tools and enough sound structural and concealment materials. Build a concealed fortified shelter for up to eight people on stable ground. No roll. Occupants behind its walls gain 2 Boons on defense against attacks from outside; each door or wall section has 15 HP and physical resistance 2. Open doors provide no protection. The shelter does not automatically make overnight rest safe; ordinary object damage rules apply.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action · 1 hour</dd></div></dl><p>1 hour, with tools and enough sound structural and concealment materials. Build a concealed fortified shelter for up to eight people on stable ground. No roll. Occupants behind its walls gain 2 Boons on defense against attacks from outside; each door or wall section has 15 HP and physical resistance 2. Open doors provide no protection. The shelter does not automatically make overnight rest safe; ordinary object damage rules apply.</p>",
     "activity": {
-      "action": "other",
+      "action": "main",
       "rollMode": "none",
       "attribute": "knowledge",
       "defenseAttribute": "agility"
@@ -28,7 +28,7 @@
         "nodeId": "wilderness:provisioning:7",
         "level": 7,
         "cost": 5,
-        "action": "Timed work",
+        "action": "Main Action · 1 hour",
         "sp": null,
         "range": null,
         "duration": null,

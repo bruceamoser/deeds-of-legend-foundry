@@ -9,6 +9,7 @@ import { projectNativeWorkshopInventory } from '../rules/native-inventory-projec
 import { nativeItemForWorkshopInstance } from '../rules/native-item-identity.mjs';
 import { setRangedWeaponAmmunition } from '../services/ranged-ammunition.mjs';
 import { consumableTracking,tracksConsumable } from '../services/consumables.mjs';
+import { depleteOwnedSupply } from '../services/inventory.mjs';
 import { viewPortrait } from './portrait.mjs';
 import { updateOwnedDocument } from '../services/documents.mjs';
 import { loadWorkshopCatalogs } from '../services/catalog.mjs';
@@ -19,6 +20,7 @@ import { validateWorkshopAbilityUse } from '../rules/workshop-ability.mjs';
 import { inventoryCheck } from '../rules/inventory.mjs';
 import { classifyRoll } from '../rules/roll.mjs';
 import { resolvedAttackEffects,spellAttackOutcomes } from '../rules/attack-outcomes.mjs';
+import { workshopRollOutcome } from '../rules/workshop-outcomes.mjs';
 import { writePortableCharacter } from '../rules/portable-character.mjs';
 import { loadNativeWorkshopState } from '../services/native-workshop-state.mjs';
 import {saveNativeWorkshopState,saveNativeWorkshopDraft,saveNativeWorkshopIdentity,commitNativeWorkshopCharacter,claimNativeWorkshopOperation,updateNativeWorkshopOperation,completeNativeWorkshopOperation,interruptNativeWorkshopOperation,nativeWorkshopRoll} from '../services/native-workshop-coordinator.mjs';
@@ -156,6 +158,20 @@ export class WorkshopCharacterSheet extends HandlebarsApplicationMixin(foundry.a
             const item=nativeItemForWorkshopInstance(this.actor,event.dataset.instance);
             if(!item)throw new Error('That owned healing bottle no longer exists.');
             await openPotionPreparation(item,{bottleItemUuid:item.uuid});return true;
+          }
+          if(event.action==='confirm-deplete-supply') {
+            this.assertOwner();
+            if(event.target.disabled)return true;
+            event.target.disabled=true;
+            try {
+              await this.controller.flush();
+              const item=nativeItemForWorkshopInstance(this.actor,event.dataset.instance);
+              if(!item?.system.quantity || !tracksConsumable(item))throw new Error('Choose an owned consumable with supply tracking enabled.');
+              await depleteOwnedSupply(this.actor,item);
+              event.target.closest('dialog')?.close();
+              await this.render({force:true});
+            } finally {event.target.disabled=false;}
+            return true;
           }
 
           if(event.action==='native-open-item' || (event.action==='native-item' && event.dataset.command==='open-card')) {
@@ -350,9 +366,12 @@ export class WorkshopCharacterSheet extends HandlebarsApplicationMixin(foundry.a
           resolvedEffects:resolvedAttackEffects(outcomes[result.tier]),attributeKey:request.attributeKey,
           attribute,net,count,boons:Math.max(0,net),banes:Math.max(0,-net),dice,retained,...result};
       } else {
+        const learned = new Set(this.actor.getFlag(ID, 'forgeLearned') ?? []);
+        const improvements = record ? catalogs.forge.nodes.filter(node => node.improves === record.id && learned.has(node.id)) : [];
+        const outcome = workshopRollOutcome(record, improvements, result.tier);
         content=rollCard({actor:this.actor.name,portrait:this.actor.img,allowReroll:false,mode:request.activeRoll?.defense ? 'defense' : 'attribute',
           attribute:request.attributeKey ?? (kind==='death' ? 'fortitude' : ''),title:kind==='death' ? 'Fortitude death roll' : `${record?.name ?? 'Attribute check'}${request.equipmentNames?.length ? ' · '+request.equipmentNames.join(', ') : ''}`,
-          effect:record?.signatureComponent ? signatureProse(record) : record?.effect ?? '',abilities:(request.abilityIds ?? []).map(id=>catalogs?.choices.find(record=>record.id===id)?.name ?? id),roll:{faces,retainedIndices,result,plan:{attribute,net,count,formula:roll.formula}}});
+          outcome:outcome.text, effect:record?.signatureComponent ? signatureProse(record) : record?.effect ?? '',abilities:(request.abilityIds ?? []).map(id=>catalogs?.choices.find(record=>record.id===id)?.name ?? id),roll:{faces,retainedIndices,result,plan:{attribute,net,count,formula:roll.formula}}});
       }
     }
     const flags=rollSnapshot?{roll:rollSnapshot}:{nativeWorkshopRoll:{kind,actorUuid:this.actor.uuid}};

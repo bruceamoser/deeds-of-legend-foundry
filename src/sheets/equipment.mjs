@@ -80,6 +80,7 @@ export class EquipmentSheet extends foundry.applications.api.HandlebarsApplicati
       attributeEffectSummary:(this.item.system.attributeEffects??[]).map(effect=>({label:effect.attribute[0].toUpperCase()+effect.attribute.slice(1),value:`${effect.mode === "modifier" ? "" : effect.mode === "set" ? "Set " : "Curse sets "}${effect.value>=0?"+":""}${effect.value}${effect.cursed?" · cursed":""}`})),
       consumableTypeOptions: Object.entries({auto:"From item type",none:"Not a consumable",...CONSUMABLE_TYPES}).map(([value,label])=>({value,label,selected:value===(this.item.system.consumableType??"auto")})),
       supplyTracking: tracksConsumable(this.item),
+      maximumSupplyDie: catalogSupply > 0 ? catalogSupply : null,
       item: this.item,
       cardMark: itemDisplayIcon(this.item.toObject(), catalogs),
       system: this.item.system,

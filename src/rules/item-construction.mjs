@@ -162,7 +162,7 @@ export function equipmentReferenceHtml(
 
 function abilitySystem(description, definition, record) {
   const printedRoll = printedAbilityRoll(record);
-  const printedCategory = actionTiming(record).map(timing => ({"Main Action":"main",Maneuver:"maneuver",Reaction:"reaction",Passive:"passive",Movement:"movement",Other:"other"}[timing])).find(Boolean);
+  const printedCategory = actionTiming(record).map(timing => ({"Main Action":"main",Maneuver:"maneuver",Reaction:"reaction",Passive:"passive",Movement:"movement"}[timing])).find(Boolean);
   return {
     schemaVersion: ITEM_SCHEMA_VERSION,
     description,

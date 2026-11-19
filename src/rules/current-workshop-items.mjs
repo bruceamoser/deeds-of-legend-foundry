@@ -1,6 +1,7 @@
-import {signatureSpellCost,isForgeSpell} from "./forge-casting.mjs";
+import {signatureSpellCost,isForgeSpell,isForgeRitual} from "./forge-casting.mjs";
 import {forgeSignatureRecord} from "./forge-signatures.mjs";
 import { escapeItemHtml } from "./item-construction.mjs";
+import { actionTiming, actionTimingLabel } from "./workshop-character.mjs";
 import { workshopWeaponLabel } from "./workshop-ability.mjs";
 import { renderMarkdown } from "./authored-markdown.mjs";
 const ID="heroes-of-legend";
@@ -19,13 +20,15 @@ export function currentWorkshopItemSource(record,catalogs,{spell=false}={}) {
   record=forgeSignatureRecord(catalogs.forge,record);
   const node=catalogs.forge.nodes.find(node=>node.id===record.id || (spell && node.spellIds?.includes(record.id)));
   const detail=record.reference?.rules?.details??[];
-  const printedAction=record.actionText??record.action??detail.find(entry=>entry.label==="Action")?.value??record.effect?.match(/^(?:Main Action|Maneuver|Reaction|Passive|Movement|Ritual)/i)?.[0]??"Passive";
+  const printedAction=isForgeRitual(record) ? record.actionText??record.action : actionTimingLabel(record);
   const effect=record.effect??record.reference?.rules?.body?.map(block=>block.text??"").join("\n\n")??record.referenceMarkdown??"";
   const attribute=record.attribute??detail.find(entry=>entry.label==="Attribute")?.value??effect.match(/^(?:Main Action|Maneuver|Reaction) · (Brawn|Fortitude|Agility|Guile|Knowledge|Reason)/i)?.[1];
   const ownSp=record.signatureComponent ? signatureSpellCost({effect}) : record.sp;
   const isSpell=spell || Boolean(record.signatureComponent && isForgeSpell(record));
   const attributeKey=record.attributeChoices?.[0] ?? attr(attribute,null);
-  const action=/ritual/i.test(printedAction)?"ritual":/Main Action/i.test(printedAction)?"main":/Maneuver/i.test(printedAction)?"maneuver":/Reaction/i.test(printedAction)?"reaction":/Movement/i.test(printedAction)?"movement":/Passive/i.test(printedAction)?"passive":"other";
+  const action=isForgeRitual(record)?"ritual":({
+    "Main Action":"main",Maneuver:"maneuver",Reaction:"reaction",Movement:"movement",Passive:"passive",
+  })[actionTiming(record)[0]];
   const metadata={kind:isSpell?"spell":node?.kind??record.kind,nodeId:record.id,level:node?.level??record.minLevel??record.level??1,cost:node?.dp??record.dp??0,action:printedAction,sp:record.signatureComponent?(Number.isSafeInteger(ownSp)?ownSp:null):record.sp??null,range:record.target??record.range??null,duration:record.duration??null,attribute:attribute??null,defenseAttribute:record.defenseAttribute??null,effect,improves:node?.improves??null,requires:node?.requires??[],bookId:record.bookId??null,...(record.signatureComponent?{magic:record.magic??null}:{})};
   if (record.attributeChoices) metadata.attributeChoices = record.attributeChoices;
   if (record.weaponRequirement) metadata.weaponRequirement = record.weaponRequirement;

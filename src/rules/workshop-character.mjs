@@ -211,11 +211,19 @@ export function workshopAbility(character, record) {
   return currentAction ? { ...record, currentAction } : record;
 }
 
-export function actionTiming(record) {
-  if (isForgeRitual(record)) return ["Main Action"];
-  const action = record.currentAction ??
+function printedAction(record) {
+  return record.currentAction ??
     record.reference?.rules.details.find((d) => d.label === "Action")?.value ??
     record.actionText ?? record.action ?? "Passive";
+}
+
+const timedAction = /^(?:\d+|One)\s+(?:minutes?|hours?|days?|exchange)\b/i;
+
+export function actionTiming(record) {
+  if (isForgeRitual(record)) return ["Main Action"];
+  const action = printedAction(record);
+  if (action === "Action conversion") return ["Main Action", "Maneuver"];
+  if (action === "Varies" && record.id === "ability-handle-an-item") return ["Maneuver"];
   if (/^Passive/i.test(action)) return ["Passive"];
   const groups = [
     [/Main Action/i, "Main Action"],
@@ -226,7 +234,15 @@ export function actionTiming(record) {
     .map(([, group]) => group);
   return groups.length
     ? groups
-    : [/Movement/i.test(action) ? "Movement" : "Other"];
+    : [/Movement/i.test(action) ? "Movement" : "Main Action"];
+}
+
+export function actionTimingLabel(record) {
+  const action = printedAction(record);
+  if (isForgeRitual(record)) return `Main Action · ${action}`;
+  if (timedAction.test(action)) return `Main Action · ${action}`;
+  if (action === "Action conversion" || action === "Varies") return actionTiming(record).join(" / ");
+  return action;
 }
 
 /** Visible weapon basics derive from owned gear, not the first six learned cards. */

@@ -5,9 +5,9 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Action conversion</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Range</dt><dd>Self</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p><strong>Action:</strong> Action conversion · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> Self</p><p>Spend Main Action to gain a Maneuver; spend a Maneuver to gain another movement allowance. One-way conversion only. Converting both gives a full sprint.</p><p><strong>Duration:</strong> Instant</p><p><strong>Equipment / acquisition:</strong> None.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action / Maneuver</dd></div><div><dt>Attribute</dt><dd>None — no roll</dd></div><div><dt>Range</dt><dd>Self</dd></div><div><dt>Duration</dt><dd>Instant</dd></div></dl><p><strong>Action:</strong> Action conversion · <strong>Attribute:</strong> None — no roll</p><p><strong>Target / range / shape:</strong> Self</p><p>Spend Main Action to gain a Maneuver; spend a Maneuver to gain another movement allowance. One-way conversion only. Converting both gives a full sprint.</p><p><strong>Duration:</strong> Instant</p><p><strong>Equipment / acquisition:</strong> None.</p>",
     "activity": {
-      "action": "other",
+      "action": "main",
       "rollMode": "attribute",
       "attribute": "knowledge",
       "defenseAttribute": "agility"
@@ -28,7 +28,7 @@
         "nodeId": "ability-convert-an-action",
         "level": 0,
         "cost": 0,
-        "action": "Action conversion",
+        "action": "Main Action / Maneuver",
         "sp": null,
         "range": "Self",
         "duration": "Instant",

@@ -5,9 +5,9 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Timed work</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div></dl><p>1 day · Reason. Present a feasible civic project to representatives of up to four willing factions you can communicate with. Show how it would work with a plan, model or demonstration. Roll once; add 4/7/10 progress to each faction’s separate agreement objective. Completion secures the commitments established by the DA, such as access, labor or a ceasefire. New terms need a new objective; this creates neither resources nor control over a settlement.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action · 1 day</dd></div><div><dt>Attribute</dt><dd>Reason</dd></div></dl><p>1 day · Reason. Present a feasible civic project to representatives of up to four willing factions you can communicate with. Show how it would work with a plan, model or demonstration. Roll once; add 4/7/10 progress to each faction’s separate agreement objective. Completion secures the commitments established by the DA, such as access, labor or a ceasefire. New terms need a new objective; this creates neither resources nor control over a settlement.</p>",
     "activity": {
-      "action": "other",
+      "action": "main",
       "rollMode": "attribute",
       "attribute": "reason",
       "defenseAttribute": "agility"
@@ -28,7 +28,7 @@
         "nodeId": "craft:workshop:7",
         "level": 7,
         "cost": 5,
-        "action": "Timed work",
+        "action": "Main Action · 1 day",
         "sp": null,
         "range": null,
         "duration": null,

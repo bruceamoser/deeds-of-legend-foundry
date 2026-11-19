@@ -5,9 +5,9 @@
   "type": "ability",
   "system": {
     "schemaVersion": 1,
-    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Timed work</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div></dl><p>10 minutes · Knowledge. Examine a patient with observable symptoms or a sample; add 1/2/3 progress toward identifying a nonmagical disease or toxin and a plausible remedy.</p>",
+    "description": "<dl class=\"hol-reference-details\"><div><dt>Action</dt><dd>Main Action · 10 minutes</dd></div><div><dt>Attribute</dt><dd>Knowledge</dd></div></dl><p>10 minutes · Knowledge. Examine a patient with observable symptoms or a sample; add 1/2/3 progress toward identifying a nonmagical disease or toxin and a plausible remedy.</p>",
     "activity": {
-      "action": "other",
+      "action": "main",
       "rollMode": "attribute",
       "attribute": "knowledge",
       "defenseAttribute": "agility"
@@ -28,7 +28,7 @@
         "nodeId": "medicine:diagnosis:1",
         "level": 1,
         "cost": 1,
-        "action": "Timed work",
+        "action": "Main Action · 10 minutes",
         "sp": null,
         "range": null,
         "duration": null,

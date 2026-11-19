@@ -161,6 +161,7 @@ try {
       `[data-collapse="supplies"] [data-action="use-supply-dialog"][data-instance="${foodId}"]`,
     )
     .click();
+  assert.match(await page.getByRole("dialog").innerText(), /Maximum supply die:\s*d8/);
   await dice([1]);
   await page
     .getByRole("button", { name: "Use & roll supply", exact: true })
@@ -194,6 +195,22 @@ try {
   await page.getByRole("tab", { name: "Inventory", exact: true }).click();
   assert.equal(await row.locator('[data-action="favorite"]').innerText(), "★");
   assert.match(await row.innerText(), /Empty/);
+  await food.getByRole("button", { name: "Food Bundle", exact: true }).click();
+  const supplyDialog = page.getByRole("dialog");
+  assert.match(await supplyDialog.innerText(), /Maximum supply die:\s*d8/);
+  await supplyDialog.getByRole("button", { name: "Close", exact: true }).click();
+  await food.getByRole("button", { name: "Deplete Food Bundle", exact: true }).click();
+  await supplyDialog.getByRole("button", { name: "Cancel", exact: true }).click();
+  assert.equal(await food.locator(".supply-readout > span").first().innerText(), "d6");
+  await food.getByRole("button", { name: "Deplete Food Bundle", exact: true }).click();
+  await supplyDialog.getByRole("button", { name: "Deplete supply", exact: true }).click();
+  assert.equal(await food.locator(".supply-readout > span").first().innerText(), "Empty");
+  assert.equal(await food.getByRole("spinbutton").inputValue(), "2");
+  await page.reload();
+  await food.getByRole("button", { name: "Resupply Food Bundle", exact: true }).click();
+  assert.equal(await food.locator(".supply-readout > span").first().innerText(), "Empty");
+  await supplyDialog.getByRole("button", { name: "Resupply", exact: true }).click();
+  assert.equal(await food.locator(".supply-readout > span").first().innerText(), "d4");
   await page.setViewportSize({ width: 760, height: 900 });
   await page.screenshot({ path: `${output}/resources-inventory-760.png` });
   await page.getByRole("tab", { name: "Abilities", exact: true }).click();
@@ -233,7 +250,7 @@ try {
   }
   assert.deepEqual(failures, []);
   console.info(
-    "PASS lifetime Grit, separate failure marks and Last Words, sidebar section states, potion final healing, supply decay, quantity, stars and current-only portable persistence; 900/760/390px and zero browser errors.",
+    "PASS lifetime Grit, separate failure marks and Last Words, sidebar section states, potion final healing, supply decay and manual depletion, maximum die, quantity, stars and current-only portable persistence; 900/760/390px and zero browser errors.",
   );
 } catch (error) {
   await page.screenshot({

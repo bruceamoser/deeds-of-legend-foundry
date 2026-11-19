@@ -88,7 +88,7 @@ export class AbilitySheet extends foundry.applications.api.HandlebarsApplication
           game.i18n.localize(`HOL.Attributes.${key}`),
         ]),
       ),
-      actions: {...labels(["main", "maneuver", "reaction", "passive", "movement", "other"]),ritual:"Ritual"},
+      actions: {...labels(["main", "maneuver", "reaction", "passive", "movement"]),ritual:"Ritual"},
       rollModes: labels(["attribute", "none", "delegated"]),
     };
   }

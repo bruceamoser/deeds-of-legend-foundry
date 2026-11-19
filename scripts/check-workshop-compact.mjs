@@ -526,7 +526,10 @@ try {
     await dialog.getByRole("button", { name: "Roll", exact: true }).click();
     const harvestResult = dialog.locator("#recipe-roll-result");
     await expect(harvestResult).toContainText("Water Flask restored to d8");
-    const restoredFoodDie = (await harvestResult.locator("strong").textContent()).startsWith("Weak") ? "d6" : "d8";
+    const rolledTier = (await harvestResult.locator(":scope > strong").textContent()).split(" · ")[0];
+    const supplySteps = {Weak: 2, Standard: 3, Strong: 4}[rolledTier];
+    const restoredFoodDie = rolledTier === "Weak" ? "d6" : "d8";
+    await expect(harvestResult).toContainText(`${supplySteps} supply die steps`);
     await expect(harvestResult).toContainText(`Food Bundle restored to ${restoredFoodDie}`);
     await dialog.getByRole("button", { name: "Close", exact: true }).click();
     await tab("Inventory");
