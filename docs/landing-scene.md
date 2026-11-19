@@ -1,15 +1,15 @@
 # The gathering — theme and landing scene
 
-Issue #226. In Settings → Heroes of Legend landing scene, choose **Prepare the
+Issue #226. In Settings → Deeds of Legend landing scene, choose **Prepare the
  gathering**, then **Create landing scene**. The same control appears in Scenes.
 The scene is a normal editable Foundry Scene with native Tiles and Drawings.
 View it privately or use Foundry’s Activate command to bring the table there.
-Creation never activates a scene, and running setup again preserves existing edits.
+Creation never activates a scene, and running setup again preserves existing edits. When the active Dungeon Architect joins, the system refreshes the old stock landing title and default scene name in place. Custom titles and scene contents are preserved.
 The landing navigation opens the assigned hero, Player’s Book and searchable rules;
 the Dungeon Architect also sees the DA’s Guide.
 
 The interface theme uses the workshop’s forest `#15221c`, gold `#b39253`, parchment
-`#f7f3e9` and ivory `#f1e6ce`. The **Heroes of Legend interface** client setting
+`#f7f3e9` and ivory `#f1e6ce`. The **Deeds of Legend interface** client setting
 switches the Foundry chrome theme off without changing any documents or sheet layouts.
 
 ## Art provenance

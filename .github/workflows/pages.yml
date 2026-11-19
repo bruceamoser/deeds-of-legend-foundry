@@ -26,7 +26,7 @@ jobs:
         run: node -e 'const fs=require("fs"); fs.appendFileSync(process.env.GITHUB_OUTPUT, "commit="+JSON.parse(fs.readFileSync("content/source-lock.json")).commit+"\n")'
       - uses: actions/checkout@v4
         with:
-          repository: bruceamoser/heroes-of-legend
+          repository: bruceamoser/deeds-of-legend
           ref: ${{ steps.book.outputs.commit }}
           path: .book-source
           sparse-checkout: |
@@ -41,7 +41,7 @@ jobs:
         run: node -e 'const fs=require("fs"); fs.appendFileSync(process.env.GITHUB_OUTPUT, "commit="+JSON.parse(fs.readFileSync("content/forge-source-lock.json")).commit+"\n")'
       - uses: actions/checkout@v4
         with:
-          repository: bruceamoser/heroes-of-legend
+          repository: bruceamoser/deeds-of-legend
           ref: ${{ steps.forge-book.outputs.commit }}
           path: .forge-book-source
           sparse-checkout: |

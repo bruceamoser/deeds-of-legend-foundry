@@ -217,7 +217,7 @@ acquisitions. Missing signatures do not block learning purchases.
 Guard rank itself grants no equipment. Shielding Step grants an ordinary shield
 if absent. Walled Communities' Guard + Shielding Step alternative therefore
 supplies a shield. The Armor alternative is awaiting canonical correction in
-[book issue #1270](https://github.com/bruceamoser/heroes-of-legend/issues/1270):
+[book issue #1270](https://github.com/bruceamoser/deeds-of-legend/issues/1270):
 Bruce directed it to grant Wear Light Armor, and medium armor to require multiple
 Armor ranks. The issue now contains the inferred three-step progression and
 required Borin/catalog updates; the web build still uses the pinned pre-correction

@@ -7,12 +7,12 @@ On **October 17, 2026**, Bruce selected the current `design/player-book` and `de
 Order of authority:
 
 1. Bruce's latest explicit decisions.
-2. Dated approval/correction records, especially the [player-book decision log](https://github.com/bruceamoser/heroes-of-legend/blob/3a08c5b1aa68be45885e488479e4984d169cd115/design/player-book/decision-log.md).
+2. Dated approval/correction records, especially the [player-book decision log](https://github.com/bruceamoser/deeds-of-legend/blob/3a08c5b1aa68be45885e488479e4984d169cd115/design/player-book/decision-log.md).
 3. Current approved design rules, player manuscript, shared cards and catalogs; apply later corrections where the released PDF lags.
 4. The completed DA/bestiary sources once their revision and approval are recorded.
 5. Historical prose only as context. Legacy Quarto rules, old playtests and superseded GitHub specification issues do not override current decisions.
 
-The [player-book README](https://github.com/bruceamoser/heroes-of-legend/blob/3a08c5b1aa68be45885e488479e4984d169cd115/design/player-book/README.md) records approval of all active open proposals on October 15. Old per-card “Proposal” labels are retained historical metadata, not a reason to reopen every entry. Withdrawn proposals remain withdrawn. The October 16 decisions include weakness, collision placement, minimum-damage wound selection, NPC-only resolution, summon healing payment, tangible energy forms and nearest-square tether measurement.
+The [player-book README](https://github.com/bruceamoser/deeds-of-legend/blob/3a08c5b1aa68be45885e488479e4984d169cd115/design/player-book/README.md) records approval of all active open proposals on October 15. Old per-card “Proposal” labels are retained historical metadata, not a reason to reopen every entry. Withdrawn proposals remain withdrawn. The October 16 decisions include weakness, collision placement, minimum-damage wound selection, NPC-only resolution, summon healing payment, tangible energy forms and nearest-square tether measurement.
 
 ## Reproducible research baseline
 

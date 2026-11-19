@@ -1,4 +1,4 @@
-import {createLandingScene} from "../services/landing.mjs";
+import {createLandingScene, refreshLandingBranding} from "../services/landing.mjs";
 import {RulesLibrary} from "./journals.mjs";
 import {ruleIndex, openLocalRule} from "../services/journals.mjs";
 const ID = "heroes-of-legend";
@@ -54,6 +54,8 @@ export function registerHOLTheme() {
     CONFIG.fontDefinitions[name] = {editor: true, fonts: [{urls: [`systems/${ID}/fonts/${file}`], weight: 400, style: "normal"}]};
   }
   Hooks.once("ready", () => document.body.classList.toggle("hol-theme", game.settings.get(ID, "theme")));
+  Hooks.once("ready", refreshLandingBranding);
+  Hooks.on("userConnected", refreshLandingBranding);
   Hooks.on("canvasReady", renderLandingNavigation);
   Hooks.on("canvasTearDown", () => document.getElementById("hol-landing-navigation")?.remove());
   Hooks.on("renderSceneDirectory", (app, html) => {

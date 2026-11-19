@@ -16,7 +16,7 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 import { createHash } from "node:crypto";
 import { execFileSync } from "node:child_process";
 import { validatePackage } from "./validate.mjs";
-const repo = "https://github.com/bruceamoser/heroes-of-legend-foundry";
+const repo = "https://github.com/bruceamoser/deeds-of-legend-foundry";
 export function releaseLinks(version, tag = `v${version}`) {
   if (!/^\d+\.\d+\.\d+(?:-[\w.-]+)?$/.test(version) || tag !== `v${version}`)
     throw new Error("Release tag must equal v plus the package version.");
