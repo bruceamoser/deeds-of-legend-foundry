@@ -2,6 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import {
+  favoriteSectionKey,
   itemArrangement,
   normalizeWorkshopPlay,
 } from "../src/rules/workshop-play.mjs";
@@ -271,4 +272,15 @@ test("instrument acquired in play supports later Party Piece learning without a 
   d.play.inventory.removed = ["inventory-flute"];
   const removed = workshopCharacter(d, catalogs);
   assert(removed.errors.some(e => e.id === "ability-a-party-piece" && e.equipment));
+});
+
+test("favorite sections save portable keys and repair the labels older sheets saved", () => {
+  const groups = ["Main Action", "Maneuver", "Reaction", "Movement", "Passive"];
+  const old = Object.fromEntries(groups.map(group => [`favorites-${group}`, true]));
+  const keys = Object.fromEntries(groups.map(group => [favoriteSectionKey(group), true]));
+  assert.deepEqual(normalizeWorkshopPlay({collapsed: old}, catalogs).collapsed, keys);
+  keys["favorites-main-action"] = false;
+  assert.deepEqual(normalizeWorkshopPlay({collapsed: {...old, ...keys}}, catalogs).collapsed, keys);
+  assert.throws(() => normalizeWorkshopPlay({collapsed: {"unknown label": true}}, catalogs),
+    /malformed play controls/);
 });

@@ -48,7 +48,7 @@ import {
   forgeRecordScar, forgeRest,
   forgeSpendGrit, forgeStabilize, forgeVitals,
 } from "./rules/forge-vitals.mjs";
-import { itemArrangement } from "./rules/workshop-play.mjs";
+import { favoriteSectionKey, itemArrangement } from "./rules/workshop-play.mjs";
 import { normalizeForgeRecovery as normalizeRecovery, payForgeDebt as payDebt, nextForgeDawn as nextDawn } from "./rules/forge-recovery.mjs";
 import { passiveAncestryDefenseSources } from "./rules/passive-defenses.mjs";
 import { ancestrySelection } from "./rules/ancestry.mjs";
@@ -357,7 +357,11 @@ const effectiveTraits = () => ancestrySelection(draft, catalogs.choices).traitId
 function header() {
   const vitals = liveVitals();
   const showResources = mode === "sheet";
-  if (host && mode === "builder") return "";
+  if (host && mode === "builder") {
+    return host.canImport?.() && !host.readOnly
+      ? `<div class="toolbar creator-toolbar">${button("Import Workshop JSON", "import", "", "quiet")}</div>`
+      : "";
+  }
   if (mode === "builder") return `<div class="toolbar creator-toolbar">${button("New", "new", 'aria-label="New hero"', "quiet")}${button("Save", "save", 'aria-label="Save character"', "quiet")}${button("Load", "library", 'aria-label="Load character"', "quiet")}${button("Import", "import", 'aria-label="Import JSON"', "quiet")}${button("Export", "export", 'aria-label="Export JSON"', "quiet")}</div>`;
   const toolbar = host ? "" : `<div class="toolbar"><div class="toolbar-group">${button(edit ? "✓ Done" : "✎ Edit", "edit", `aria-pressed="${edit}"`, edit ? "selected" : "quiet")}</div><div class="toolbar-group">${button("New", "new", 'aria-label="New hero"', "quiet")}${button("Save", "save", 'aria-label="Save character"', "quiet")}${button("Load", "library", 'aria-label="Load character"', "quiet")}${button("Import", "import", 'aria-label="Import JSON"', "quiet")}${button("Export", "export", 'aria-label="Export JSON"', "quiet")}</div></div>`;
   const rename = host && mode === "sheet" && !host.readOnly
@@ -787,7 +791,7 @@ function mainPanel() {
   const left = `<div class="library-heading"><h2>Favorites</h2>${button("Edit favorites", "edit-favorites", "", "small")}</div>` +
     (favorites.length ? [...groups, "Passive"].map(group => {
       const entries = favorites.filter(e => actionTiming(e.record).includes(group));
-      return entries.length ? collapsible(`favorites-${group}`, group, actionTable(entries,false), "", "action-group") : "";
+      return entries.length ? collapsible(favoriteSectionKey(group), group, actionTable(entries,false), "", "action-group") : "";
     }).join("") : '<p class="empty">Star learned abilities, basic actions, spells, or inventory items to keep them here.</p>');
   const traits = `<table class="trait-table"><tbody>${effectiveTraits().map((id) => `<tr><td>${button(esc(name(id)), "reference", `data-id="${esc(id)}"`, "table-link")}<span class="brief">${esc(traitBrief(id))}</span></td></tr>`).join("")}</tbody></table>`;
   const defenses =
@@ -2454,6 +2458,8 @@ async function action(target) {
 
   if ((options.readOnly || host?.readOnly) && !['tab','reference','close-reference','close-picker','inline-action','forge-view','forge-select','forge-list-discipline','forge-discipline','forge-chooser','forge-candidate','library-scope','native-open-item'].includes(a) && !(a==='native-item' && target.dataset.command==='open-card')) return;
 
+  if (a === "import") return $("#import-file").click();
+
   if (host && (a === "native-commit" || a === "sheet-development")) {
     if (!preview.valid) throw new Error("Complete the remaining character choices first.");
     if (app.inert) return;
@@ -2904,7 +2910,6 @@ async function action(target) {
     return;
   }
   if (a === "close-reference") return $("#reference").close();
-  if (a === "import") return $("#import-file").click();
   if (a === "export" || a === "ready-export")
     return exportFile(a === "ready-export");
   if (a === "new") {
@@ -3335,11 +3340,25 @@ app.addEventListener("drop", (event) => {
   }
 });
 $("#import-file").addEventListener("change", async (event) => {
+  const input = event.currentTarget;
   try {
-    const file = event.target.files[0];
+    const file = input.files[0];
     if (!file) return;
     if (file.size > MAX_CHARACTER_BYTES)
       throw new Error("Character file is too large.");
+    if (host) {
+      if (!host.canImport?.() || host.readOnly || !host.onImport)
+        throw new Error("This character is unavailable for Workshop import.");
+      if (app.inert) return;
+      app.inert = true;
+      try {
+        await host.onImport(file);
+        notice("Character imported.");
+      } finally {
+        app.inert = false;
+      }
+      return;
+    }
     const result = readPortableCharacter(await file.text(), catalogs);
     if (
       !isExample &&
@@ -3363,7 +3382,7 @@ $("#import-file").addEventListener("change", async (event) => {
   } catch (e) {
     notice(e.message);
   } finally {
-    event.target.value = "";
+    input.value = "";
   }
 });
 try {

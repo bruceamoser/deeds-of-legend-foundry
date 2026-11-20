@@ -10,6 +10,7 @@ import {workshopRollOutcome} from '../src/rules/workshop-outcomes.mjs';
 import {ownedWorkshopRollAttribute} from '../src/rules/ability-roll.mjs';
 import {forgeSpellCastingAttribute,isForgeSpell} from '../src/rules/forge-casting.mjs';
 import {effectiveActorAttributeValue} from '../src/rules/effective-attributes.mjs';
+import {MAX_CHARACTER_BYTES, PORTABLE_FORMAT} from '../src/rules/portable-character.mjs';
 const source=(await readFile(new URL('../src/sheets/workshop-character.mjs',import.meta.url),'utf8')).replace(/^import .*\n/gm,'').replaceAll('export ','')+'\nglobalThis.Sheet=WorkshopCharacterSheet;';
 function fixture(overrides={}) {
   const calls=[];let nextOperation=0;const operations=new Map();
@@ -127,6 +128,27 @@ test('a rejected Workshop save is reported and the native sheet still closes',as
 test('older actors receive an invalid-current-rules entry without modifying documents',async()=>{
   const {sheet}=fixture();sheet.actor.items=[{id:'existing'}];
   const context=await sheet._prepareContext({});assert.equal(context.legacy,true);assert.equal(context.workshopReady,false);
+});
+test('creation imports only a Workshop export into a new owned world character',async()=>{
+  const {sheet,calls}=fixture({MAX_CHARACTER_BYTES,PORTABLE_FORMAT});
+  sheet.actor.type='character';
+  sheet.actor.importFromJSON=async json=>calls.push(JSON.parse(json));
+  sheet.controller={flush:async()=>calls.push('flush')};
+  sheet.render=async()=>calls.push('render');
+  const file=json=>({size:json.length,text:async()=>json});
+  await assert.rejects(sheet.importCharacter(file('{')),/valid JSON/);
+  await assert.rejects(sheet.importCharacter(file('{"type":"character"}')),/exported from the Character Workshop/);
+  await assert.rejects(sheet.importCharacter({size:MAX_CHARACTER_BYTES+1}),/too large/);
+  assert.deepEqual(calls,[]);
+  const portable={format:PORTABLE_FORMAT,schemaVersion:7};
+  sheet.actor.testUserPermission=()=>false;
+  await assert.rejects(sheet.importCharacter(file(JSON.stringify(portable))),/own/);
+  sheet.actor.testUserPermission=()=>true;
+  await sheet.importCharacter(file(JSON.stringify(portable)));
+  assert.deepEqual(calls,['flush',portable,'render']);
+  await sheet.actor.update({'flags.heroes-of-legend.creationReceipt':{status:'complete'}});
+  assert.equal(sheet.canImportCharacter(),false);
+  await assert.rejects(sheet.importCharacter(file(JSON.stringify(portable))),/new world character/);
 });
 test('native same-revision updates refresh live resources and read-only permission',async()=>{
   const loaded={revision:3,mode:'sheet',character:{draft:{play:{hp:2}}}};

@@ -85,17 +85,16 @@ try {
     f.ownership = target.toObject().ownership;
     return f;
   });
-  await page.evaluate((id) => {
-    void game.actors.get(id).importFromJSONDialog();
-  }, fixture.target);
-  await page
-    .locator("input[type=file][name=data]")
-    .setInputFiles({
-      name: "workshop-character.json",
-      mimeType: "application/json",
-      buffer: portable,
-    });
-  await page.locator("button[data-action=import]").click();
+  await page.evaluate(id => game.actors.get(id).sheet.render({ force: true }), fixture.target);
+  const importButton=page.getByRole("button", {name:"Import Workshop JSON",exact:true});
+  const chooserPromise=page.waitForEvent("filechooser");
+  await importButton.click();
+  const chooser=await chooserPromise;
+  await chooser.setFiles({
+    name:"workshop-character.json",
+    mimeType:"application/json",
+    buffer:portable,
+  });
   await page.waitForFunction(
     (id) => {
       const a = game.actors.get(id);
@@ -124,7 +123,7 @@ try {
   assert.deepEqual(imported.ownership, fixture.ownership);
   assert(imported.items > 0);
   evidence.checks.push(
-    "Native Import Data dialog imports exported name/type/token name, HP, inventory and completed character while preserving identity/ownership.",
+    "The creation toolbar imports the web export with name/type/token name, HP, inventory and completed character while preserving identity/ownership.",
   );
   await page.evaluate(
     (id) => game.actors.get(id).sheet.render({ force: true }),
@@ -385,5 +384,5 @@ try {
   await browser.close();
 }
 console.log(
-  "Shared native sheet audit and real workshop Export → Actor Import Data passed.",
+  "Shared native sheet audit and real workshop Export → creation toolbar import passed.",
 );
