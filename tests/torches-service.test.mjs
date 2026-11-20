@@ -30,11 +30,12 @@ async function fixture({tracked=true,after=6}={}){
   const execute=()=>handlers.get(kind)(target,payload,{author:game.user,operationId,write:changes=>target.update(changes),executeNested:(_kind,nested)=>consumeOwnedSupply(target,target.items.get(nested.itemId),{operationId:nested.options.operationId,label:nested.label})});
   pending=pending.catch(()=>{}).then(execute);return pending;
  },assertCurrentGameplayActor,nativeItemForWorkshopInstance,assertSupplyActionAvailable:actor=>{if(actor.getFlag(ID,"pendingInventory"))throw new Error("Finish the unfinished supply check first.");},torchClock,torchLight,TORCH_CHECK_SECONDS,tracksConsumable:()=>tracked,consumeOwnedSupply,createActionMessage:async source=>{requests.push(source);return source;},shouldProcessRequest:()=>true,enqueueCharacterOperation:operation=>{pending=pending.catch(()=>{}).then(operation);return pending;}};
- const context=createContext({structuredClone,game,canvas:{tokens:{controlled:[]}},fromUuid:async uuid=>docs.get(uuid),foundry:{data:{operators:{ForcedDeletion}},utils:{randomID:()=>`torch-${++counter}`,escapeHTML:value=>value},applications:{api:{DialogV2:{confirm:async()=>true}}}},ui:{notifications:{warn:value=>warnings.push(value),error:value=>warnings.push(value)}},Hooks:{on:(name,fn)=>hooks.set(name,fn),once:(name,fn)=>hooks.set(name,fn)}});
+ const controlled=[];
+ const context=createContext({structuredClone,game,canvas:{tokens:{controlled}},fromUuid:async uuid=>docs.get(uuid),foundry:{data:{operators:{ForcedDeletion}},utils:{randomID:()=>`torch-${++counter}`,escapeHTML:value=>value},applications:{api:{DialogV2:{confirm:async()=>true}}}},ui:{notifications:{warn:value=>warnings.push(value),error:value=>warnings.push(value)}},Hooks:{on:(name,fn)=>hooks.set(name,fn),once:(name,fn)=>hooks.set(name,fn)}});
  const module=new SourceTextModule(await readFile(new URL('../src/services/torches.mjs',import.meta.url),'utf8'),{context});
  await module.link(async()=>{const dep=new SyntheticModule(Object.keys(exports),function(){for(const [key,value] of Object.entries(exports))this.setExport(key,value);},{context});await dep.link(()=>{});await dep.evaluate();return dep;});await module.evaluate();const api=module.namespace;api.registerTorches();
  async function command(command,{id=`message-${++counter}`,author=game.user}={}){return exports.coordinateNativeGameplay(actor,{kind:'torch-toggle',operationId:id,payload:{itemId:item.id,command,tokenUuid:token.uuid}});}
- return {api,actor,item,token,game,checks,warnings,requests,command,hooks,setTracking:value=>{tracked=value;},settled:async()=>{await pending;await new Promise(resolve=>setTimeout(resolve,0));await pending;}};
+ return {api,actor,item,token,game,checks,warnings,requests,command,hooks,controlled,setTracking:value=>{tracked=value;},settled:async()=>{await pending;await new Promise(resolve=>setTimeout(resolve,0));await pending;}};
 }
 test('torch service checks ownership and lights three squares without occupying a hand',async()=>{
  const f=await fixture();f.actor.testUserPermission=()=>false;
@@ -42,6 +43,32 @@ test('torch service checks ownership and lights three squares without occupying 
  f.actor.items.push({id:'greatsword',type:'equipment',system:{quantity:1,carried:true,held:true,hands:2}});
  await f.command('light');assert.equal(f.token.light.bright,15);assert.equal(f.token.light.dim,15);
  assert.equal(f.item.system.held,false);assert.equal(f.item.system.hands,0);assert.equal(f.item.getFlag(ID,'torch').pendingLight,false);
+});
+test('owning player can light and extinguish a torch from the world Actor with one visible unlinked token',async()=>{
+ const f=await fixture();
+ f.game.user={id:'player',isGM:false};
+ f.token.baseActor=f.actor;
+ f.token.actor={uuid:`${f.token.uuid}.Actor.hero`,testUserPermission:author=>author.id==='player'};
+ f.actor.getActiveTokens=linked=>linked?[]:[f.token,{...f.token,uuid:'hidden-copy',hidden:true}];
+ await f.api.requestTorchToggle(f.actor,'torch');
+ assert.equal(f.token.light.bright,15);
+ assert.equal(f.token.getFlag(ID,'torchItem'),f.item.uuid);
+ await f.api.requestTorchToggle(f.actor,'torch');
+ assert.equal(f.token.light.bright,0);
+ assert.equal(f.token.getFlag(ID,'torchItem'),undefined);
+});
+test('torch selects a controlled token among multiple matching copies and rejects a relay request without token ownership',async()=>{
+ const f=await fixture();
+ f.game.user={id:'player',isGM:false};
+ f.token.baseActor=f.actor;
+ f.token.actor={uuid:`${f.token.uuid}.Actor.hero`,testUserPermission:()=>false};
+ f.actor.getActiveTokens=()=>[f.token,{...f.token,uuid:'second-copy'}];
+ await assert.rejects(f.api.requestTorchToggle(f.actor,'torch'),/select exactly one/);
+ f.controlled.push({document:f.token});
+ await assert.rejects(f.api.requestTorchToggle(f.actor,'torch'),/owned token/);
+ assert.equal(f.requests.at(-1).flags[ID].torchRequest.tokenUuid,f.token.uuid);
+ assert.equal(f.token.light.bright,0);
+ assert.equal(f.item.getFlag(ID,'torch'),undefined);
 });
 test('lit-only hourly clock pauses partial hours, tracking-off never consumes, depletion restores light and hands',async()=>{
  const f=await fixture({after:0});await f.command('light');

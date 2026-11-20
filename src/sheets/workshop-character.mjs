@@ -26,7 +26,7 @@ import { inventoryCheck } from '../rules/inventory.mjs';
 import { classifyRoll } from '../rules/roll.mjs';
 import { resolvedAttackEffects,spellAttackOutcomes } from '../rules/attack-outcomes.mjs';
 import { workshopRollOutcome } from '../rules/workshop-outcomes.mjs';
-import { writePortableCharacter } from '../rules/portable-character.mjs';
+import { MAX_CHARACTER_BYTES, PORTABLE_FORMAT, writePortableCharacter } from '../rules/portable-character.mjs';
 import { loadNativeWorkshopState } from '../services/native-workshop-state.mjs';
 import {saveNativeWorkshopState,saveNativeWorkshopIdentity,sellNativeWorkshopEquipment,commitNativeWorkshopCharacter,claimNativeWorkshopOperation,updateNativeWorkshopOperation,completeNativeWorkshopOperation,interruptNativeWorkshopOperation,nativeWorkshopRoll} from '../services/native-workshop-coordinator.mjs';
 const ID='heroes-of-legend';
@@ -149,6 +149,8 @@ export class WorkshopCharacterSheet extends HandlebarsApplicationMixin(foundry.a
         itemActions:item=>torchItemActions(this.actor,item),
         readOnly:!this.isEditable || !this.actor.testUserPermission(game.user,'OWNER'),
         committed:Boolean(this.actor.getFlag(ID,'nativeWorkshop')?.portable),
+        canImport:()=>this.canImportCharacter(),
+        onImport:file=>this.importCharacter(file),
         get committedLevel(){return actor.getFlag(ID,'nativeWorkshop')?.portable?.draft?.progression?.level ?? 1;},
         nativePortrait:true,
         canEditAbilityAttribute:id=>Boolean(ownedWorkshopAbility(this.actor,id)),
@@ -308,6 +310,32 @@ export class WorkshopCharacterSheet extends HandlebarsApplicationMixin(foundry.a
   assertOwner() {
     if(this.actor.pack || this.actor.isToken) throw new Error('Use a linked world character for Workshop changes.');
     if(!this.isEditable || !this.actor.testUserPermission(game.user,'OWNER')) throw new Error('Only this character’s owner can change it.');
+  }
+  canImportCharacter() {
+    const actor=this.actor;
+    return this.isEditable && actor.type==='character' && !actor.pack && !actor.isToken
+      && actor.testUserPermission(game.user,'OWNER')
+      && !actor.getFlag(ID,'creationReceipt') && !actor.getFlag(ID,'nativeWorkshop')?.portable
+      && !actor.items.size && !actor.items.length;
+  }
+  async importCharacter(file) {
+    if(!this.canImportCharacter()) throw new Error('Choose a new world character that you own to import a Workshop character.');
+    if(this.importingCharacter) return;
+    this.importingCharacter=true;
+    try {
+      if(file.size>MAX_CHARACTER_BYTES) throw new Error('Character file is too large.');
+      const json=await file.text();
+      let source;
+      try { source=JSON.parse(json); }
+      catch { throw new Error('Choose a valid JSON file exported from the Character Workshop.'); }
+      if(source?.format!==PORTABLE_FORMAT) throw new Error('Choose a JSON file exported from the Character Workshop.');
+      await this.controller?.flush();
+      if(!this.canImportCharacter()) throw new Error('This character is no longer available for Workshop import.');
+      await this.actor.importFromJSON(json);
+      if(this.controller) await this.render({force:true});
+    } finally {
+      this.importingCharacter=false;
+    }
   }
   finishWrite() {
     this.writing--;

@@ -23,15 +23,19 @@ export function torchItemActions(actor,item) {
     lit:Boolean(state.lit),pendingCheck:Boolean(state.pendingCheck),
     disabled:!actor.testUserPermission(game.user,'OWNER'),title:state.pendingCheck?'Check the supply die before continuing.':'Maneuver · light within 3 squares'}];
 }
+function representsActor(token,actor) {
+  return token?.actor?.uuid===actor.uuid || (!actor.isToken && token?.baseActor?.uuid===actor.uuid);
+}
 function chooseToken(actor) {
-  const selected=(canvas?.tokens?.controlled??[]).map(token=>token.document).filter(token=>token.actor?.uuid===actor.uuid);
-  const available=selected.length ? selected : actor.getActiveTokens(true,true);
-  if(available.length!==1)throw new Error('Select exactly one token for this character to carry the torch.');
+  const active=actor.getActiveTokens(false,true).filter(token=>representsActor(token,actor));
+  const selected=(canvas?.tokens?.controlled??[]).map(token=>token.document).filter(token=>active.includes(token));
+  const available=selected.length ? selected : active.filter(token=>game.user.isGM || !token.hidden);
+  if(available.length!==1)throw new Error('Place this character’s token on your current scene and select exactly one token to carry the torch.');
   return available[0];
 }
 export async function requestTorchToggle(actor,instance) {
   assertCurrentGameplayActor(actor);
-  if(!actor.testUserPermission(game.user,'OWNER'))throw new Error('You must own this character to use its torch.');
+  if(actor.pack || !actor.testUserPermission(game.user,'OWNER'))throw new Error('You must own this character to use its torch.');
   const item=lightingItem(actor,instance);
   if(item?.system.catalogId!=='item-lighting-bundle')throw new Error('Choose an owned lighting bundle.');
   const state=stateOf(item);
@@ -64,12 +68,12 @@ async function restoreLight(item,{deleted=false}={}) {
   });
   await item.update(changes);
 }
-async function ignite(actor,item,token) {
+async function ignite(actor,item,token,author) {
   if(stateOf(item).lit)return;
   assertSupplyActionAvailable(actor);
   if(!item.system.quantity || !item.system.carried)throw new Error('Carry the lighting bundle before lighting a torch.');
   if(tracksConsumable(item) && !item.system.inventoryDie)throw new Error('The lighting bundle is depleted.');
-  if(!token || token.actor?.uuid!==actor.uuid)throw new Error('Choose this character’s token.');
+  if(!representsActor(token,actor) || !token.actor?.testUserPermission(author,'OWNER') || (token.hidden && !author.isGM))throw new Error('Choose an owned token for this character.');
   if(token.getFlag(ID,'torchItem') && token.getFlag(ID,'torchItem')!==item.uuid)throw new Error('Extinguish the torch already lighting this token first.');
   const before=token.toObject().light;
   const proposed=torchLight(before,token.parent.grid.distance);
@@ -119,7 +123,7 @@ registerNativeGameplayHandler('torch-toggle',async(actor,request,context)=>{
   if(!actor.testUserPermission(context.author,'OWNER'))throw new Error('Only this character’s owner can use its lighting bundle.');
   const item=actor.items.get(request.itemId);
   if(item?.system.catalogId!=='item-lighting-bundle')throw new Error('The lighting bundle is unavailable.');
-  if(request.command==='light')await ignite(actor,item,await fromUuid(request.tokenUuid));
+  if(request.command==='light')await ignite(actor,item,await fromUuid(request.tokenUuid),context.author);
   else if(request.command==='extinguish'){try{if(!stateOf(item).pendingLight)await tickTorchInternal(actor,item,game.time.worldTime,context);}finally{await restoreLight(item);}}
   else if(request.command==='reconcile') {
     const state=stateOf(item);if(!state.pendingCheck)throw new Error('There is no interrupted torch check.');

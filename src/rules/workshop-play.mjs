@@ -19,6 +19,15 @@ const text = (value, max = 200) =>
 const instance = (value) => text(value) && /^[a-z0-9:-]{1,200}$/.test(value);
 const list = (value, max = 500) => Array.isArray(value) && value.length <= max;
 
+// These labels were previously written directly into the portable structure.
+const favoriteSectionLabels = ["Main Action", "Maneuver", "Reaction", "Movement", "Passive"];
+export function favoriteSectionKey(label) {
+  return `favorites-${label.toLowerCase().replaceAll(" ", "-")}`;
+}
+const oldFavoriteKeys = new Map(favoriteSectionLabels.map(label =>
+  [`favorites-${label}`, favoriteSectionKey(label)]));
+
+
 /** Explicit play edits stay separate from acquisition and creation receipts. */
 export function normalizeWorkshopPlay(
   value,
@@ -137,11 +146,16 @@ export function normalizeWorkshopPlay(
       !object(value.collapsed) ||
       Object.keys(value.collapsed).length > 100 ||
       Object.entries(value.collapsed).some(
-        ([k, v]) => !instance(k) || typeof v !== "boolean",
+        ([k, v]) => (!instance(k) && !oldFavoriteKeys.has(k)) || typeof v !== "boolean",
       )
     )
       fail();
-    result.collapsed = Object.fromEntries(Object.entries(value.collapsed));
+    result.collapsed = Object.fromEntries(Object.entries(value.collapsed)
+      .filter(([key]) => instance(key)));
+    for (const [oldKey, key] of oldFavoriteKeys) {
+      if (Object.hasOwn(value.collapsed, oldKey) && !Object.hasOwn(result.collapsed, key))
+        result.collapsed[key] = value.collapsed[oldKey];
+    }
   }
   if (value.crafting !== undefined) {
     if (!object(value.crafting) || Object.keys(value.crafting).length > 100)
