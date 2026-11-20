@@ -129,10 +129,9 @@ try {
     (id) => game.actors.get(id).sheet.render({ force: true }),
     fixture.target,
   );
-  await page.locator(".hol-character-sheet").waitFor();
-  await page
-    .locator(".hol-character")
-    .screenshot({ path: `${output}/character-imported.png` });
+  const importedSheet = page.locator(".hol-workshop-character");
+  await importedSheet.getByRole("heading", {name:"Borin Bridgekeeper",exact:true}).waitFor();
+  await importedSheet.screenshot({ path: `${output}/character-imported.png` });
   await page.reload();
   await page.waitForFunction(() => game.ready, null, { timeout: 60000 });
   await page.evaluate(f => { globalThis.__holShared249 = f; }, fixture);
