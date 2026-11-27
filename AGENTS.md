@@ -83,3 +83,10 @@ Foundry's root font size and global label/input/table rules differ from the web
 app. Port typography with explicit scoped sizes (web `rem` values use a 14px root),
 reset checkbox/radio presentation and inspect the entire native window/message,
 not only an inner card. Use the packaged `HOL Cinzel` and `HOL Garamond` names.
+
+## Release preparation
+
+Commit all work intended for the release before building or tagging it. Review and
+commit outstanding project changes, then verify the release checkout is clean with
+`git status --short`. Build and publish from the exact commit the release tag points
+to, and keep generated output and caches out of source commits.
