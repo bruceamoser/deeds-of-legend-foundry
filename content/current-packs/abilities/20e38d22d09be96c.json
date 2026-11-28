@@ -21,7 +21,7 @@
   "flags": {
     "heroes-of-legend": {
       "catalogId": "spell:portents:a1",
-      "sourceCommit": "59610c9cc291340484f07024f7a48b7690520e6f",
+      "sourceCommit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6",
       "grantKind": "nativeWorkshop",
       "workshopRecord": {
         "kind": "spell",

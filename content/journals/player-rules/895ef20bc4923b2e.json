@@ -10,7 +10,7 @@
     "heroes-of-legend": {
       "ruleBook": {
         "key": "player-rules",
-        "commit": "59610c9cc291340484f07024f7a48b7690520e6f",
+        "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6",
         "schema": 2
       }
     }
@@ -57,7 +57,7 @@
           "ruleSource": {
             "path": "design/player-book/manuscript/01-welcome.md",
             "sha256": "84ecd6d707b9d677c8e9c31e5247f1fd24eb1574bf0c16f06dc023abaa925e0f",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -107,7 +107,7 @@
           "ruleSource": {
             "path": "design/player-book/manuscript/02-creation.md",
             "sha256": "25b95f828ac18c0f976fdfdbd105c8d3f8bb6b710572a4bd82a808d05b00998f",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -134,7 +134,7 @@
           "ruleSource": {
             "path": "design/player-book/manuscript/02a-starting-sp.md",
             "sha256": "f8cd35f03b1440d9bd81f2ff7d6a3867d9cdd23cbd26616b6e9c4bad21ac5216",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -161,7 +161,7 @@
           "ruleSource": {
             "path": "design/development.md",
             "sha256": "98f4feb5d7aa5597e3992981f524e3887dc273a456cf15d7dbb3b458909f2455",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -188,7 +188,7 @@
           "ruleSource": {
             "path": "design/starting-coins.md",
             "sha256": "035a5f28f897bffc23246b8d260d4fb9afbce42961709c5a4bd436f3cb00a4b9",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -238,7 +238,7 @@
           "ruleSource": {
             "path": "design/ancestries/human.md",
             "sha256": "770c7d74c8f6d74e1b0161f54753b40a576c5a285ad8f314b06e40db639c53d6",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -265,7 +265,7 @@
           "ruleSource": {
             "path": "design/ancestries/trait-human-weathered.md",
             "sha256": "69e3f3352ccfc3cc7242ae32fd326a5d41e3c6c841c09779eb8d22faefee22f1",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -292,7 +292,7 @@
           "ruleSource": {
             "path": "design/ancestries/trait-human-far-walker.md",
             "sha256": "9878d3e3493203e3d30df37d0a9ab4e3033501f894169741e05a04159892eedc",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -319,7 +319,7 @@
           "ruleSource": {
             "path": "design/ancestries/trait-human-many-homes.md",
             "sha256": "634e55e98fb20c3b52572dc87d499b628f8533004006fdfb58c350e28bcd8730",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -346,7 +346,7 @@
           "ruleSource": {
             "path": "design/ancestries/trait-human-shared-table.md",
             "sha256": "49aa97ceccc4161f3bd176a0cfbf925a57ba75fd580dc4e0db11410c5140c319",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -373,7 +373,7 @@
           "ruleSource": {
             "path": "design/ancestries/trait-human-practiced-patience.md",
             "sha256": "3120b8a3c049c2184f4de1f3ccbc8e16186fddef473299fa4b68364f463b20bd",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -400,7 +400,7 @@
           "ruleSource": {
             "path": "design/ancestries/wood-elf.md",
             "sha256": "4d945101f27776880cd233c8bf8c8a8a102db7e92a4806c022f4596a3bde0f0a",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -427,7 +427,7 @@
           "ruleSource": {
             "path": "design/ancestries/trait-elf-light-tread.md",
             "sha256": "c956c2c3193367b1a34f63725bac94a163d71f9872c3d49ea2800db57f952ba6",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -454,7 +454,7 @@
           "ruleSource": {
             "path": "design/ancestries/trait-elf-age-of-memory.md",
             "sha256": "75722509a9aa51ed0b9b1c5c4d97d226529db3a23e54bb708ab8c2c8f2f3eaac",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -481,7 +481,7 @@
           "ruleSource": {
             "path": "design/ancestries/trait-elf-leaf-listener.md",
             "sha256": "c55563a20afb29b0f5d21988c180e4587259ba8af42a6972cf53b620ea05d3f3",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -508,7 +508,7 @@
           "ruleSource": {
             "path": "design/ancestries/trait-elf-unhurried-grace.md",
             "sha256": "bc68be6905510cdc8e8ec18148e6b35422368213ab60e6b00fcb62016112d61a",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -535,7 +535,7 @@
           "ruleSource": {
             "path": "design/ancestries/trait-elf-star-familiar.md",
             "sha256": "3ff5c3000ac2fa9617d7de6e98f00c74fcfbd3286377fa1d266cf640895ed502",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -562,7 +562,7 @@
           "ruleSource": {
             "path": "design/ancestries/high-elf.md",
             "sha256": "b744c9bd85b5ac098326ead8bf53d7c4d2a7c0b10ede9b203cf3b30f802e20d4",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -589,7 +589,7 @@
           "ruleSource": {
             "path": "design/ancestries/trait-high-elf-practised-hand.md",
             "sha256": "3c86a80408a984e7070d8b3b86d55331b8664de6f1acfb47e82f5eceb3c1c97c",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -616,7 +616,7 @@
           "ruleSource": {
             "path": "design/ancestries/trait-high-elf-old-courtesies.md",
             "sha256": "b380a5515cbe4ebd061bb21b6a4a6cfecf410bc665d3d44c7190b791a4041edb",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -643,7 +643,7 @@
           "ruleSource": {
             "path": "design/ancestries/trait-high-elf-starlight-eyes.md",
             "sha256": "4da94c02e0d051452d8245eb26c9bafd22884d789162bc425197aadc66321dbf",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -670,7 +670,7 @@
           "ruleSource": {
             "path": "design/ancestries/trait-high-elf-name-that-opens-doors.md",
             "sha256": "37264db77b81e8fe8b1938c019268a3adf501ee8fbbfb37e98a5fe118dbbc076",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -697,7 +697,7 @@
           "ruleSource": {
             "path": "design/ancestries/trait-high-elf-weight-of-centuries.md",
             "sha256": "ccda91d1770f7ca5744105c3cc04025e52b6afa09fb3fcfc29325a50d665ae4d",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -724,7 +724,7 @@
           "ruleSource": {
             "path": "design/ancestries/hill-dwarf.md",
             "sha256": "ba424dd243cb1543686353d398a08c9e4c3c1d44edefc993d6ae691cc1cd1b87",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -751,7 +751,7 @@
           "ruleSource": {
             "path": "design/ancestries/trait-dwarf-deep-constitution.md",
             "sha256": "12a20dd072af14fa2e71c94084324cf086345c5d11d3769c7e987ceaec802074",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -778,7 +778,7 @@
           "ruleSource": {
             "path": "design/ancestries/trait-dwarf-stone-reader.md",
             "sha256": "089b72611fe209b8700a4ae6894fe9bb15ea494968fe01873d2014cc1bba7a88",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -805,7 +805,7 @@
           "ruleSource": {
             "path": "design/ancestries/trait-dwarf-low-center.md",
             "sha256": "577b2ee404aa19eef669d25aa1490e644da74ae55c804e11de448d75f1b7e55e",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -832,7 +832,7 @@
           "ruleSource": {
             "path": "design/ancestries/trait-dwarf-maker-s-eye.md",
             "sha256": "9acfdaff5c3f73bebbc06e54413a98096831891a7a51057b091d9b2eb12fe497",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -859,7 +859,7 @@
           "ruleSource": {
             "path": "design/ancestries/trait-dwarf-carved-history.md",
             "sha256": "1a7ca36d59750410740bc06dba1084fcdd000c7f5328212274db2143c64e09af",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -886,7 +886,7 @@
           "ruleSource": {
             "path": "design/ancestries/deep-dwarf.md",
             "sha256": "ae61b846ef9f989fee20e36d3694c63d576356d704a698c7a199cde5d7a2ef23",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -913,7 +913,7 @@
           "ruleSource": {
             "path": "design/ancestries/trait-deep-dwarf-eyes-for-the-dark.md",
             "sha256": "4a65463cbf8dcbbc6b394ccf8b66011edb11642877004a1842a739207f73b43a",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -940,7 +940,7 @@
           "ruleSource": {
             "path": "design/ancestries/trait-deep-dwarf-stone-tells-you.md",
             "sha256": "344ac73c59141924b9364be292bfcd316aac05df083857c51012dd3337f33f3e",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -967,7 +967,7 @@
           "ruleSource": {
             "path": "design/ancestries/trait-deep-dwarf-never-off-the-map.md",
             "sha256": "f2db82e4c1b1c4b4fca1a66db7d979d415ea5ce60a4283b6869b13ad543f9b19",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -994,7 +994,7 @@
           "ruleSource": {
             "path": "design/ancestries/trait-deep-dwarf-holds-its-own.md",
             "sha256": "e51c7fcb640200627c0bf2eabd037ceb9ea26b20556750b3157264e8a19e4771",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -1021,7 +1021,7 @@
           "ruleSource": {
             "path": "design/ancestries/trait-deep-dwarf-where-tall-folk-cannot-stand.md",
             "sha256": "b3ea1e9d14f035e5064fa2f1504b0fbe28abbcd1f607317cee360cb9322e45c9",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -1048,7 +1048,7 @@
           "ruleSource": {
             "path": "design/ancestries/halfling.md",
             "sha256": "744ea1f09337122e17090d56e29e124700ea2c0bf4fea7982ef39041fd4a567f",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -1075,7 +1075,7 @@
           "ruleSource": {
             "path": "design/ancestries/trait-halfling-stout-heart.md",
             "sha256": "d1d262b00816318c59a3bbfa7c89842c4cab237f80b5e1295ea5eef73db82559",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -1102,7 +1102,7 @@
           "ruleSource": {
             "path": "design/ancestries/trait-halfling-small-passage.md",
             "sha256": "703c00a8c8e8df159231448594da9f45c83b36dd8d11668709ae34cdce7ee753",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -1129,7 +1129,7 @@
           "ruleSource": {
             "path": "design/ancestries/trait-halfling-quiet-company.md",
             "sha256": "90058b7420544350f557c8d27716409776595a6d22fa02bb1df3c54f4511821e",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -1156,7 +1156,7 @@
           "ruleSource": {
             "path": "design/ancestries/trait-halfling-good-cheer.md",
             "sha256": "e6a6c4ebde27d4d3355caceb521f6e93a28c42b6e1d08f08e42d27c8b5eb1af1",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -1183,7 +1183,7 @@
           "ruleSource": {
             "path": "design/ancestries/trait-halfling-resilient.md",
             "sha256": "2d11a53f700e18fa4c21d4e27aabe22101ce1d504d467323eb32c591ee59b5f6",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -1210,7 +1210,7 @@
           "ruleSource": {
             "path": "design/ancestries/gnome.md",
             "sha256": "9a7aa5bfacf3772a14123c1b30c3e0a620c64c992da11e62e54bc75b3f886243",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -1237,7 +1237,7 @@
           "ruleSource": {
             "path": "design/ancestries/trait-gnome-whats-it-made-of.md",
             "sha256": "a7273c6a211436984777d233e53bbc782f5d9729d5098765fd750f93deca93f0",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -1264,7 +1264,7 @@
           "ruleSource": {
             "path": "design/ancestries/trait-gnome-one-more-question.md",
             "sha256": "3e616948b6d53dbc5024dec1403eef8f0e7ec3d4d7a78d9c41f61672a7218a92",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -1291,7 +1291,7 @@
           "ruleSource": {
             "path": "design/ancestries/trait-gnome-fingers-in-the-works.md",
             "sha256": "fc7aee189c048ae35fa49dcc301ebaf7292b14a61499e02b1366ed1be09cdfc1",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -1318,7 +1318,7 @@
           "ruleSource": {
             "path": "design/ancestries/trait-gnome-small-target.md",
             "sha256": "af895b3836fed83a7c0248b3bc1a157b5feceffc27ef9e22023cc6d2de85d1d0",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -1345,7 +1345,7 @@
           "ruleSource": {
             "path": "design/ancestries/trait-gnome-bright-idea.md",
             "sha256": "76adca98e0f74605dfd5a47f44dd78b507ecdbee420a5a3fb30a4ebc4610248c",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -1372,7 +1372,7 @@
           "ruleSource": {
             "path": "design/ancestries/goblin.md",
             "sha256": "6833c0065cfc2cb40d3b16a764b5ce07bfcbbae9e7ffb17b21afcc572834567f",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -1399,7 +1399,7 @@
           "ruleSource": {
             "path": "design/ancestries/trait-goblin-scavenger.md",
             "sha256": "76b37172c25263952f0837eb317e7d737a55dcc5faf6a5f40772a3610a14b62e",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -1426,7 +1426,7 @@
           "ruleSource": {
             "path": "design/ancestries/trait-goblin-more-of-us-than-you.md",
             "sha256": "e0f7640964fe0345fbe6bdf1f154d2df1d413f9f574a67f125f8745fe479ffda",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -1453,7 +1453,7 @@
           "ruleSource": {
             "path": "design/ancestries/trait-goblin-run-away-better.md",
             "sha256": "d6dd04762aa5773862e4cb709212ab0930078e48993d5a6478f1146e3200106f",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -1480,7 +1480,7 @@
           "ruleSource": {
             "path": "design/ancestries/trait-goblin-other-side-of-the-fire.md",
             "sha256": "fd9dc9d864e855e128564a374934c976dd9316ce3a8852b2ceb9ed3252c25920",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -1507,7 +1507,7 @@
           "ruleSource": {
             "path": "design/ancestries/trait-goblin-never-where-you-aim.md",
             "sha256": "4da2a0b7cf3a217cea205d0f372939820e7cc5b9325bf79da5518044fd0d9da1",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -1534,7 +1534,7 @@
           "ruleSource": {
             "path": "design/ancestries/tallfolk.md",
             "sha256": "b6bfdbe887734092662769a678a09caefe907d3bc5f11485eb00727e3b7f3281",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -1561,7 +1561,7 @@
           "ruleSource": {
             "path": "design/ancestries/trait-tallfolk-long-reach.md",
             "sha256": "67f58fdd214d5d48c2c5f549d61aa5b11fdae8281ee45601b96515315d8a12b1",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -1588,7 +1588,7 @@
           "ruleSource": {
             "path": "design/ancestries/trait-tallfolk-broad-back.md",
             "sha256": "a035dcd7e858b752d76073481f6752b1787f8276e8830ea2e40c5898a68a9271",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -1615,7 +1615,7 @@
           "ruleSource": {
             "path": "design/ancestries/trait-tallfolk-a-big-shadow.md",
             "sha256": "02b665081d0ccd6b4db5d22d17cc3a45b25af0f5cd86dc3332ac9cc423aad203",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -1642,7 +1642,7 @@
           "ruleSource": {
             "path": "design/ancestries/trait-tallfolk-built-for-the-weather.md",
             "sha256": "329a3ced90ad20a35d61a4941fc6267deeb0c17b301bae684917516ee2621d84",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -1669,7 +1669,7 @@
           "ruleSource": {
             "path": "design/ancestries/trait-tallfolk-you-take-the-blow.md",
             "sha256": "350b0d597a2d4287165d1e05b827646fe29d75f72635ad1aa321e9f7a6ffb9e4",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -1696,7 +1696,7 @@
           "ruleSource": {
             "path": "design/ancestries/oath-bound.md",
             "sha256": "215b73e798feb9987ca69db5cede5c2afe688dbd9c79fb481056737ce74c5e09",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -1723,7 +1723,7 @@
           "ruleSource": {
             "path": "design/ancestries/trait-oath-bound-the-mark.md",
             "sha256": "e4132b849b7c7f2456990b42be64513af8960400430cdef3db1bede97f5b3ebd",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -1750,7 +1750,7 @@
           "ruleSource": {
             "path": "design/ancestries/trait-oath-bound-read-the-oath.md",
             "sha256": "5029a88faae3b215fa9fa66dfcc9c42dc8c33397727006e2f9fd519c3b1e20db",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -1777,7 +1777,7 @@
           "ruleSource": {
             "path": "design/ancestries/trait-oath-bound-the-debt-comes-due.md",
             "sha256": "06796d0c31b33ee51d8de84a00767bf3572c64fa75026dc4bb6f8d2b5d40f3b8",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -1804,7 +1804,7 @@
           "ruleSource": {
             "path": "design/ancestries/trait-oath-bound-bound-by-your-word.md",
             "sha256": "a3e094f3ff270743b31dd2839051038a0a7c7db431f98fbd219471e83395d9e3",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -1831,7 +1831,7 @@
           "ruleSource": {
             "path": "design/ancestries/trait-oath-bound-neither-here-nor-there.md",
             "sha256": "a5d4d77c39b6f17710e10db4c32ff8bfb6b4939731c6d18ff03f2735be77ea64",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -1858,7 +1858,7 @@
           "ruleSource": {
             "path": "design/player-book/manuscript/intro-culture.md",
             "sha256": "26b96495553c50faefbe6558a3ca550a09996c507648cb6fe6ed662b87c273b1",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -1885,7 +1885,7 @@
           "ruleSource": {
             "path": "design/origins/culture-border-marches.md",
             "sha256": "13c880cd8823270932a8f30250846769cf85443ff1fdc5409db027db04f2a280",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -1912,7 +1912,7 @@
           "ruleSource": {
             "path": "design/origins/culture-cairn-communities.md",
             "sha256": "3b6a6cc6140b9816aeca7fdee4e48ee24fc1d8de99b36b8e620e27cbb489e1d8",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -1939,7 +1939,7 @@
           "ruleSource": {
             "path": "design/origins/culture-cloister-valleys.md",
             "sha256": "27dd2ace508df057f2da13f48b87c871b4948e44402da4d71447f9a14b550f6f",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -1966,7 +1966,7 @@
           "ruleSource": {
             "path": "design/origins/culture-deep-halls.md",
             "sha256": "6a001ec9cc6f6d21c78fb19efd67d92ed96baacb9323b67355dc89947355aa27",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -1993,7 +1993,7 @@
           "ruleSource": {
             "path": "design/origins/culture-ember-cities.md",
             "sha256": "0d1fe3556f2b62adab29aab21d5abb69e2cec3c85f0f82906ec6f631765f500e",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -2020,7 +2020,7 @@
           "ruleSource": {
             "path": "design/origins/culture-forest-communities.md",
             "sha256": "f21a342f0fb8213dcab5b5b156f5498b3cc5ac309eac3d8f097775b3aaeae3ec",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -2047,7 +2047,7 @@
           "ruleSource": {
             "path": "design/origins/culture-free-harbors.md",
             "sha256": "10ce3adc877f83040eda48ac681ec4e8b0ddab9cc4e2a5220f50c4b9d5b0270b",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -2074,7 +2074,7 @@
           "ruleSource": {
             "path": "design/origins/culture-gathered-peoples.md",
             "sha256": "ba14974a8e0d7ae88b39ab4ab7e38cdb6a04266104229cd88b372bdc47ca613d",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -2101,7 +2101,7 @@
           "ruleSource": {
             "path": "design/origins/culture-grass-sea-clans.md",
             "sha256": "061c6243ff259d082a63fbc6d64aab19e583fa0f10ae8340995cf96ce183241d",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -2128,7 +2128,7 @@
           "ruleSource": {
             "path": "design/origins/culture-highland-holds.md",
             "sha256": "4981c351ab89f23924efd3db3ed9a71250a732c227b5353b48a76ab300a348e7",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -2155,7 +2155,7 @@
           "ruleSource": {
             "path": "design/origins/culture-island-kinships.md",
             "sha256": "1c0fc71f196bc580e73f5e9938b9cae82777d3fe9f56b19949416ce24bc1032c",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -2182,7 +2182,7 @@
           "ruleSource": {
             "path": "design/origins/culture-learning-houses.md",
             "sha256": "952a68cac985e74e12f821113cdceec6d267b12a397abada40ed11ac43db22de",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -2209,7 +2209,7 @@
           "ruleSource": {
             "path": "design/origins/culture-oasis-cities.md",
             "sha256": "b895d0b629bcbcd972c2e11ee66a5b2f69bfcb130dd3ec5d58cb505bd0937562",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -2236,7 +2236,7 @@
           "ruleSource": {
             "path": "design/origins/culture-reed-villages.md",
             "sha256": "c98fe36fdc76f65ce49eff0c2abdb5540f8849193b738b71f22d83725f71d8b7",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -2263,7 +2263,7 @@
           "ruleSource": {
             "path": "design/origins/culture-river-settlements.md",
             "sha256": "4713f70009222fa469ea89879a8d209d75204787b388f2569aef11886009821d",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -2290,7 +2290,7 @@
           "ruleSource": {
             "path": "design/origins/culture-terrace-towns.md",
             "sha256": "9a11828e0634dc9bbdd1c5e897310350839475b2f11635b7318b11060f26eb94",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -2317,7 +2317,7 @@
           "ruleSource": {
             "path": "design/origins/culture-traveling-companies.md",
             "sha256": "7acbb141d2b49dd908b3a5a64572c80bb5b4f8c984e1e2ab215388f8087e8ca8",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -2344,7 +2344,7 @@
           "ruleSource": {
             "path": "design/origins/culture-walled-communities.md",
             "sha256": "46f9acecb9931b72fad6eb35de1fa62e71170ceecfea0882f0f80c0169e33b26",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -2371,7 +2371,7 @@
           "ruleSource": {
             "path": "design/player-book/manuscript/intro-background.md",
             "sha256": "bffe4f5ffb686e7f60f9ff937c8421c3467d43b7e6e4f2d4610e7e5b0ab9d34f",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -2398,7 +2398,7 @@
           "ruleSource": {
             "path": "design/origins/background-apothecary-s-helper.md",
             "sha256": "cc9e1fb8a89e8f2646b81f96734af3d689cb2bb29453a530efac64bd27fb4015",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -2425,7 +2425,7 @@
           "ruleSource": {
             "path": "design/origins/background-bargain-keeper.md",
             "sha256": "e2ca129362b0f2f354cf1f1593adf9d38cd9b59bcc7f933a442432052d7813fb",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -2452,7 +2452,7 @@
           "ruleSource": {
             "path": "design/origins/background-beast-reared.md",
             "sha256": "36d5727c06201a48c214aaa983849ce41c89f6ccef33d18849b1e455a0cd3d2f",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -2479,7 +2479,7 @@
           "ruleSource": {
             "path": "design/origins/background-bone-tender.md",
             "sha256": "cd541595e051fdc7fcd18f957ecff994ba830907479d6d4f0c0394559583388c",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -2506,7 +2506,7 @@
           "ruleSource": {
             "path": "design/origins/background-bridge-worker.md",
             "sha256": "fb1578ce81c86106e290ec71587eb3d293712ee391c6b4bed59b61be1446e290",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -2533,7 +2533,7 @@
           "ruleSource": {
             "path": "design/origins/background-burglar.md",
             "sha256": "3e32abe6e00d556256325e0c4b02286c8b0d345b1f8f5d7ed3a8ab6b225995b4",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -2560,7 +2560,7 @@
           "ruleSource": {
             "path": "design/origins/background-company-runner.md",
             "sha256": "ef7b7371834864840f5eb635aa0f6121b3d61f6cac80b9d6623a169adbf99ecb",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -2587,7 +2587,7 @@
           "ruleSource": {
             "path": "design/origins/background-confidence-artist.md",
             "sha256": "e8fba554367f63f11388ac2245d871305b9d7ed96436e20ba2c05cd1155fc5a6",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -2614,7 +2614,7 @@
           "ruleSource": {
             "path": "design/origins/background-court-questioner.md",
             "sha256": "cdafac95da2b89d3dd96569698220cb318437f3604724583640253f132ca2136",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -2641,7 +2641,7 @@
           "ruleSource": {
             "path": "design/origins/background-dragon-dreamer.md",
             "sha256": "9fe4ae816c651266c7e8cf00cac78b83a4bd2a10daf39db5bc317e562de4c0ec",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -2668,7 +2668,7 @@
           "ruleSource": {
             "path": "design/origins/background-duelist-s-second.md",
             "sha256": "304eaab3a4b37577064c107a04121748552dfb6883c46017fead5e973bd2e598",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -2695,7 +2695,7 @@
           "ruleSource": {
             "path": "design/origins/background-grave-attendant.md",
             "sha256": "07ccbb47f65983f8a5a5ba5e101a72cbec13416437ce4ca264f7f2ff7c16ca23",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -2722,7 +2722,7 @@
           "ruleSource": {
             "path": "design/origins/background-grove-tended.md",
             "sha256": "2f8d35ca29e8f5a6760840e96f52ad41f97d8f976472264ffce063c31d6c7a0d",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -2749,7 +2749,7 @@
           "ruleSource": {
             "path": "design/origins/background-household-guard.md",
             "sha256": "debd98197c6d6d3f5f3a9b05a453308ccde5de8f4d3423e64682cd252aea4fa9",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -2776,7 +2776,7 @@
           "ruleSource": {
             "path": "design/origins/background-itinerant-tinker.md",
             "sha256": "d8d91918d3092e2526ad8716fe55696f7566389ce2bd5b77f0a33bf26cb9e144",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -2803,7 +2803,7 @@
           "ruleSource": {
             "path": "design/origins/background-kennel-keeper.md",
             "sha256": "4e04d36299ba7fd2f9c53718b842d69b0573fdd48c0d7dc48f1360d79b66bbd0",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -2830,7 +2830,7 @@
           "ruleSource": {
             "path": "design/origins/background-market-chemist.md",
             "sha256": "177605f63c3db4b917e707e251821a670557b5ea02722a96c560b57d19e0b378",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -2857,7 +2857,7 @@
           "ruleSource": {
             "path": "design/origins/background-messenger.md",
             "sha256": "b6882798e60e71ebdda8e92414c7b88f3151cb510428a8ec09e8b7911560241c",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -2884,7 +2884,7 @@
           "ruleSource": {
             "path": "design/origins/background-monastery-runaway.md",
             "sha256": "6fc52d9c7b2fedf175c8d7e1e189077e048b644b16f8420b6dee25aa7047aa6b",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -2911,7 +2911,7 @@
           "ruleSource": {
             "path": "design/origins/background-oath-witness.md",
             "sha256": "518862e43d9192fa8d8836726ebce96fc1bc605cf2feff73989e59d08853bbcf",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -2938,7 +2938,7 @@
           "ruleSource": {
             "path": "design/origins/background-physician-s-student.md",
             "sha256": "cfd43687d1292b7830f69c023fea605f911ce048f5279f49cc874d2c979f71dd",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -2965,7 +2965,7 @@
           "ruleSource": {
             "path": "design/origins/background-pit-fighter.md",
             "sha256": "fdfcf22d27d07a9058a5f81c86fb14ae3348bfbe472da80b06da88b3f44fdc09",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -2992,7 +2992,7 @@
           "ruleSource": {
             "path": "design/origins/background-poacher.md",
             "sha256": "f486727f02f196e7ef37a169d183b87c0178e838dd22f2c4832cd5a4f6865db2",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -3019,7 +3019,7 @@
           "ruleSource": {
             "path": "design/origins/background-reluctant-knife.md",
             "sha256": "9aa97192e3f2dfe47e5690d1b9adf1a93d6c3d46a46d3da46a555c4fd0959eb6",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -3046,7 +3046,7 @@
           "ruleSource": {
             "path": "design/origins/background-salle-student.md",
             "sha256": "7dac2794dec1cbc28e7ee45abf755ac92e9af090e23788c383bde054d7de4373",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -3073,7 +3073,7 @@
           "ruleSource": {
             "path": "design/origins/background-shore-gatherer.md",
             "sha256": "a64a8c0ba2cb053ea29389dc7858c080af79b1b7f75e855b410de9cea4bf4c35",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -3100,7 +3100,7 @@
           "ruleSource": {
             "path": "design/origins/background-stage-assistant.md",
             "sha256": "42c3e3248666f5ceaaee98f5ccac2daf4808b0b3260617c53d9b6ee259280be4",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -3127,7 +3127,7 @@
           "ruleSource": {
             "path": "design/origins/background-star-touched.md",
             "sha256": "885a546d5e8526372066a257b0d677e00209571a86bde5a61c948792004fd248",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -3154,7 +3154,7 @@
           "ruleSource": {
             "path": "design/origins/background-storm-survivor.md",
             "sha256": "c5e1197e16fa104630ab1b9d1edf46d7d2f46377c825d4547cda13f4ff552acb",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -3181,7 +3181,7 @@
           "ruleSource": {
             "path": "design/origins/background-temple-attendant.md",
             "sha256": "63c83a7c7b25e65c2fc8f0609746115ffd2261425fc805738ab54c518bb5910c",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -3208,7 +3208,7 @@
           "ruleSource": {
             "path": "design/origins/background-traveling-player.md",
             "sha256": "fa8606180d5e1b97eea2833cc36eebcbc79f7e933343507b6823e8df0a2088d7",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -3235,7 +3235,7 @@
           "ruleSource": {
             "path": "design/origins/background-war-drummer.md",
             "sha256": "64b6116fd5f7ef93e03d153651705f4a9681db1485e2e0880c2f4764687754e1",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -3262,7 +3262,7 @@
           "ruleSource": {
             "path": "design/origins/background-ward-scribe.md",
             "sha256": "a0e3c72ae40eabb11c05009b2c3ed3ad4ef930a18052e319ffa64456cfb77117",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -3289,7 +3289,7 @@
           "ruleSource": {
             "path": "design/origins/background-weather-apprentice.md",
             "sha256": "b7c5c347a5db71b7456223bfb7f3aa2841e50521e889da3d3a216aa81a87bb72",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -3316,7 +3316,7 @@
           "ruleSource": {
             "path": "design/rules/ancestry-procedures.md",
             "sha256": "a947bbb277fe020f73e9b2e3cefeed68f2976a06f8754e1f5d214597b5461560",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -3343,7 +3343,7 @@
           "ruleSource": {
             "path": "design/player-book/manuscript/intro-ancestry.md",
             "sha256": "a32e89f2c7214e6215bdd06480cbe81dc3508556f4a9f184205cf61bd045cad1",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -3393,7 +3393,7 @@
           "ruleSource": {
             "path": "design/classes/protector.md",
             "sha256": "914ab74a9ce5cafb3a3e2d5119c5f22887cb5411883c5a88aa624a78eb7c6cbd",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -3420,7 +3420,7 @@
           "ruleSource": {
             "path": "design/cards/signature-protector-between-them.md",
             "sha256": "fe8b20dd07c58460680c2c847fc69e0a813c2b052128bbceb7ff9b90db1c411e",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -3447,7 +3447,7 @@
           "ruleSource": {
             "path": "design/cards/signature-protector-healing-hands.md",
             "sha256": "545330a8b02ab0671bf5b2fd818b2bbbd518fce60fae28185aa03adac4caa6f8",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -3474,7 +3474,7 @@
           "ruleSource": {
             "path": "design/cards/signature-protector-oathstrike.md",
             "sha256": "3ae2290200577884d4cf8cf8cd8d4db80b3083ded25adee0f37c219a51142e33",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -3501,7 +3501,7 @@
           "ruleSource": {
             "path": "design/cards/signature-protector-shelter-the-fallen.md",
             "sha256": "45c3cedbbacf77d96eb0644998c15054ffdb30f2937a96c9ea2ec3e2ce175de4",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -3528,7 +3528,7 @@
           "ruleSource": {
             "path": "design/cards/signature-protector-restoring-hands.md",
             "sha256": "831ce96dc12f766b594328b7e35ad3e93a896ee6950a38ba6eacea0da5f9e9f0",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -3555,7 +3555,7 @@
           "ruleSource": {
             "path": "design/cards/signature-protector-rebuking-light.md",
             "sha256": "c2bfb4b7abe072e536539e7f4dfa8dd5b28520670ff4976cc0e0905698469cdb",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -3582,7 +3582,7 @@
           "ruleSource": {
             "path": "design/cards/signature-protector-defiant-rescue.md",
             "sha256": "7d18d070dc38d4e8bab32172a61d23ba591f6a4f686c1e126aac094a7c5d4d80",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -3609,7 +3609,7 @@
           "ruleSource": {
             "path": "design/cards/signature-protector-sheltering-hands.md",
             "sha256": "ce85ee65312cf9dd72d49124b5c23b85669847c4e9605428d2d33b7dd1c5ab8a",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -3636,7 +3636,7 @@
           "ruleSource": {
             "path": "design/cards/signature-protector-drive-back-the-circle.md",
             "sha256": "d4ef5eb8c7e2b0e2fff6f995bc3d406b195874bbdef5028584172aebe65d249a",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -3663,7 +3663,7 @@
           "ruleSource": {
             "path": "design/classes/blade.md",
             "sha256": "6330aaf626567942b56b0110c95a3094a8859f87384e048eeec34f51bba12a18",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -3690,7 +3690,7 @@
           "ruleSource": {
             "path": "design/cards/signature-blade-cut-and-turn.md",
             "sha256": "5eb3a418f6da442097a522d7ac027f51ceb55fefcf62ee6b54b1b6e5230ab1dd",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -3717,7 +3717,7 @@
           "ruleSource": {
             "path": "design/cards/signature-blade-measured-guard.md",
             "sha256": "775e2c3e3ac4d4ad83430ec159b2f27af8283ca263a1e05238250e56bfa7b8cd",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -3744,7 +3744,7 @@
           "ruleSource": {
             "path": "design/cards/signature-blade-pressure-point.md",
             "sha256": "a4f3bee197a7cd890adc10dea48655be316e1628b7335ce599168a95503a350c",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -3771,7 +3771,7 @@
           "ruleSource": {
             "path": "design/cards/signature-blade-press-on.md",
             "sha256": "bc1f8a8747dbe80d8a6003ea27a870b832608b561245e5956093e9c74ea761ee",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -3798,7 +3798,7 @@
           "ruleSource": {
             "path": "design/cards/signature-blade-return-stroke.md",
             "sha256": "1b95a9873f3e13897106acec21d6457d618d525785334b2a4c2253998724df1e",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -3825,7 +3825,7 @@
           "ruleSource": {
             "path": "design/cards/signature-blade-fell-the-balance.md",
             "sha256": "7ea4b750da235bf999523fb900f2c52732b5d6545ec11b6b069820a277a67d4f",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -3852,7 +3852,7 @@
           "ruleSource": {
             "path": "design/cards/signature-blade-relentless-pursuit.md",
             "sha256": "ef03378933f2a1afebce43c1cdfa4b55c34f4129f4cf76fcaa17efe45b969ec3",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -3879,7 +3879,7 @@
           "ruleSource": {
             "path": "design/cards/signature-blade-sweeping-entry.md",
             "sha256": "037d383e8e5f96b1921233eee9ce2f9baa1729748dd2eac7cd61cf6bf765f1ab",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -3906,7 +3906,7 @@
           "ruleSource": {
             "path": "design/cards/signature-blade-dance-through-steel.md",
             "sha256": "8a67c33e6997f52cacfce1a6ea23587d4d82bbec1e3e09c2f9353e60a1d0c0fb",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -3933,7 +3933,7 @@
           "ruleSource": {
             "path": "design/classes/arcanist.md",
             "sha256": "97c156e1aa33ca175f71b5616667c5da7fe1a39e733655434628d4f58cce4619",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -3960,7 +3960,7 @@
           "ruleSource": {
             "path": "design/cards/signature-arcanist-bent-trajectory.md",
             "sha256": "89070cea112c92a42e04008cdfc3910ccc3639d67c6b0693cf0ed46fd2bab8d7",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -3987,7 +3987,7 @@
           "ruleSource": {
             "path": "design/cards/signature-arcanist-study-the-pattern.md",
             "sha256": "eaadb8ea000140f26f4617fd28a7d6f40ccdef7451685617d93567ae94d490ed",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -4014,7 +4014,7 @@
           "ruleSource": {
             "path": "design/cards/signature-arcanist-deliberate-spark.md",
             "sha256": "dc5497ea5213099a14b7a874a156f4142ce5e2439e5b5b4b96c582c0a077bd18",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -4041,7 +4041,7 @@
           "ruleSource": {
             "path": "design/cards/signature-arcanist-leave-a-window.md",
             "sha256": "46761b48d587a2e6ed05d1efef43b22431dd7ae929d00d5e6e248bfe25b942f0",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -4068,7 +4068,7 @@
           "ruleSource": {
             "path": "design/cards/signature-arcanist-reading-the-weave.md",
             "sha256": "891895e618c2bafb680988067035680d1caa1c6d5fb5e301ff225640dd29cf85",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -4095,7 +4095,7 @@
           "ruleSource": {
             "path": "design/cards/signature-arcanist-arcane-deflection.md",
             "sha256": "a40026b5793b78398a69d0de2ab2d0a4535e2cb711ab065be9dd96e9500d4b48",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -4122,7 +4122,7 @@
           "ruleSource": {
             "path": "design/cards/signature-arcanist-choose-the-edge.md",
             "sha256": "2e854763a0d5d33efe909baedde8733d0fd5021899da6699113ba479c7a37376",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -4149,7 +4149,7 @@
           "ruleSource": {
             "path": "design/cards/signature-arcanist-open-the-circle.md",
             "sha256": "7d721fb462a144849bcc0908323d25f5cf0f7b0e4b08de8eec5010419a5d2e60",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -4176,7 +4176,7 @@
           "ruleSource": {
             "path": "design/cards/signature-arcanist-fold-the-distance.md",
             "sha256": "f59644d77897988ecdc51a4ec0ea257f300501377ab374a27892e245da773a8c",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -4203,7 +4203,7 @@
           "ruleSource": {
             "path": "design/classes/shepherd.md",
             "sha256": "319d73a3e40bf04712b5a23286b995b2653797b2285fddd0e797b80b99c4b83b",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -4230,7 +4230,7 @@
           "ruleSource": {
             "path": "design/cards/signature-shepherd-gentle-return.md",
             "sha256": "3e10a352d058d74abfdef55c7b03fd4be9c93b42400c5ba834b033fbb47e6141",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -4257,7 +4257,7 @@
           "ruleSource": {
             "path": "design/cards/signature-shepherd-ease-the-burden.md",
             "sha256": "d8a88a3c7d7d185b60518fc1317afbc615524be32dd856923c23ed0d7851d308",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -4284,7 +4284,7 @@
           "ruleSource": {
             "path": "design/cards/signature-shepherd-borrowed-shape.md",
             "sha256": "e3082ac6c4600d6d9f107f95f0cd50646d0497c89c299372e1a0b2c9a3e16583",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -4311,7 +4311,7 @@
           "ruleSource": {
             "path": "design/cards/signature-shepherd-careful-transfer.md",
             "sha256": "adc9a5595670b4ecf7f0d7022a4c16cc944848da03822b46d2a4e98c176c8ea4",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -4338,7 +4338,7 @@
           "ruleSource": {
             "path": "design/cards/signature-shepherd-bring-them-near.md",
             "sha256": "e74493700075fadb5d9d93c80e6940832325d7edc553ae2d1ee0c5e4e3d66883",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -4365,7 +4365,7 @@
           "ruleSource": {
             "path": "design/cards/signature-shepherd-shape-of-the-wild.md",
             "sha256": "147866f5dbd442f136f782ae366ef083677bd83d0763456621e5396e26babaa1",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -4392,7 +4392,7 @@
           "ruleSource": {
             "path": "design/cards/signature-shepherd-a-hand-in-darkness.md",
             "sha256": "54f1e65594ce7d013ccd3a2ccaf3c10765a2047efb40c6d69ea81999153c4d4f",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -4419,7 +4419,7 @@
           "ruleSource": {
             "path": "design/cards/signature-shepherd-restore-composure.md",
             "sha256": "5276e2a15f334b4677900d1d2908ac01624739514972148a2214d5d38d30678c",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -4446,7 +4446,7 @@
           "ruleSource": {
             "path": "design/cards/signature-shepherd-great-shape.md",
             "sha256": "a92bf519b597a29b1a235f03f419e3a5056a964f4f831efc871a493d4e12f171",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -4473,7 +4473,7 @@
           "ruleSource": {
             "path": "design/classes/intellect.md",
             "sha256": "06b4ad8a47610afcf9203e5862404af5b5766649ec64ba6c0aa3c31cae21a4e2",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -4500,7 +4500,7 @@
           "ruleSource": {
             "path": "design/cards/signature-intellect-spot-the-leverage.md",
             "sha256": "ef1bee1208f2284f0c435261cdf4eabbd8493eb161506cf921138957cfbf540a",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -4527,7 +4527,7 @@
           "ruleSource": {
             "path": "design/cards/signature-intellect-make-it-last.md",
             "sha256": "7f12e32fc55a03e4ca82a7ef6d85e9970df69036913fd1fb1a7de793f706c1b4",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -4554,7 +4554,7 @@
           "ruleSource": {
             "path": "design/cards/signature-intellect-prepared-explanation.md",
             "sha256": "1409328caf7723b34295b1f14d552aae833041c3fb0c1fe9ba3a523ece59b71b",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -4581,7 +4581,7 @@
           "ruleSource": {
             "path": "design/cards/signature-intellect-diagnose-the-failure.md",
             "sha256": "09a29d2fc32492affaa3d3ae502df68986bc0172c4245ccbdfd67c91f913f47f",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -4608,7 +4608,7 @@
           "ruleSource": {
             "path": "design/cards/signature-intellect-twofold-making.md",
             "sha256": "7c424ffb5a00fb3a7d752cc19dcf2cf7a712f5c620a8ad17a59188aa30b74532",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -4635,7 +4635,7 @@
           "ruleSource": {
             "path": "design/cards/signature-intellect-predict-the-motion.md",
             "sha256": "5c9fc896a872de1d9ad019e8445824e6a0e8973a2e123e0ec1fb295eba1efc75",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -4662,7 +4662,7 @@
           "ruleSource": {
             "path": "design/cards/signature-intellect-test-the-hypothesis.md",
             "sha256": "424cf0d7d1c37bdb5ed67deddbc4600bd4fb659866309bc68c92d646e015cfa7",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -4689,7 +4689,7 @@
           "ruleSource": {
             "path": "design/cards/signature-intellect-masterwork-bond.md",
             "sha256": "74ba4057972e7bd4b2d238d2f0aec26371226cdd145ae3078cac022c4603543e",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -4716,7 +4716,7 @@
           "ruleSource": {
             "path": "design/cards/signature-intellect-expose-the-mechanism.md",
             "sha256": "b382974bdb65cf2823329801087520fa3be8480b14d1dbb596bde00efef02a48",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -4743,7 +4743,7 @@
           "ruleSource": {
             "path": "design/classes/leader.md",
             "sha256": "8dec6c212acb88fc479afc0ff99f74d17742f126389716968e26f976987276f9",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -4770,7 +4770,7 @@
           "ruleSource": {
             "path": "design/cards/signature-leader-follow-my-signal.md",
             "sha256": "6c07d2ca99fd061c401b7c3000aaf84bdf40acde472318ea9c5b63dd1ec5791e",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -4797,7 +4797,7 @@
           "ruleSource": {
             "path": "design/cards/signature-leader-lead-the-step.md",
             "sha256": "5a07383bfd8ae1318955670eab4f3219379701274691deda0ece6c9fa1ecceab",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -4824,7 +4824,7 @@
           "ruleSource": {
             "path": "design/cards/signature-leader-stand-together.md",
             "sha256": "931041be90996f02c678d9a4e033214486613ed8596c5f67415630e56f002046",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -4851,7 +4851,7 @@
           "ruleSource": {
             "path": "design/cards/signature-leader-press-the-opening.md",
             "sha256": "6a6778775837a0acc7c40e05933213905de5b2408ed3a495f845ef02bccf73b6",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -4878,7 +4878,7 @@
           "ruleSource": {
             "path": "design/cards/signature-leader-orderly-withdrawal.md",
             "sha256": "da6ad0c0bb5276d3af6baa3dae2660bc6ab7b6dd0712ef026993bcc8299f2ee3",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -4905,7 +4905,7 @@
           "ruleSource": {
             "path": "design/cards/signature-leader-hold-your-nerve.md",
             "sha256": "c711ecd2f20db8ebb0985ec6e9090ced3ed82b56aea5f180383cb8f5da74d877",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -4932,7 +4932,7 @@
           "ruleSource": {
             "path": "design/cards/signature-leader-coordinated-rush.md",
             "sha256": "9a65a43d97aaf69e3ba19d1bba13549367ae98675d1f05eb6126f2d8b9967e0d",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -4959,7 +4959,7 @@
           "ruleSource": {
             "path": "design/cards/signature-leader-watch-the-rear.md",
             "sha256": "df90a7faedf97d9df8065eb314e960a9aef4c5c0ec383b0b8fe93dd8542b2a58",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -4986,7 +4986,7 @@
           "ruleSource": {
             "path": "design/cards/signature-leader-refuse-the-rout.md",
             "sha256": "0053779b6bef838f83f829fcf421cb00f6c2951d61224d9967010d7d24c0bf01",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -5013,7 +5013,7 @@
           "ruleSource": {
             "path": "design/classes/unbalanced.md",
             "sha256": "67c75ec3fa05e66972150efe1c049fc884e9939673159d594c096f6b2671df57",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -5040,7 +5040,7 @@
           "ruleSource": {
             "path": "design/cards/signature-unbalanced-wild-approach.md",
             "sha256": "422b309db3296173e8df50551aac144e7e985d070602da1dcca0cabcc484fc9f",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -5067,7 +5067,7 @@
           "ruleSource": {
             "path": "design/cards/signature-unbalanced-shoulder-through.md",
             "sha256": "0f17fca80f2f03c8b6177169b78a2eadcf3d750bd61e3ef2c8a9ff8d79028d26",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -5094,7 +5094,7 @@
           "ruleSource": {
             "path": "design/cards/signature-unbalanced-laugh-at-the-fall.md",
             "sha256": "b87ec187564a1b740a00e889a6be89042fc185c7cfafe35f0e9464fa8cf3470b",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -5121,7 +5121,7 @@
           "ruleSource": {
             "path": "design/cards/signature-unbalanced-raging-recoil.md",
             "sha256": "5c00ca78dc986f4ae0fce2389f701e6ac2fafd9bd2f47583bc6b8369f0629a1d",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -5148,7 +5148,7 @@
           "ruleSource": {
             "path": "design/cards/signature-unbalanced-crush-the-barrier.md",
             "sha256": "75c2058a98b52f1c6536cf7835b3197388088de5627e541189697d86bcc904c4",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -5175,7 +5175,7 @@
           "ruleSource": {
             "path": "design/cards/signature-unbalanced-fling-the-captive.md",
             "sha256": "5d721880071e38027dc995740ad7ff1de53b0bab7dd106603da16f1deef10500",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -5202,7 +5202,7 @@
           "ruleSource": {
             "path": "design/cards/signature-unbalanced-break-their-grip.md",
             "sha256": "ce0558887672bd5c8c5a5168c2dbf0d47af4289d4c641360ba192be0e8d61830",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -5229,7 +5229,7 @@
           "ruleSource": {
             "path": "design/cards/signature-unbalanced-scatter-the-line.md",
             "sha256": "fea56c69caa307a432b85f5d73aa546d95a18969db2219ae9ab81b718c187e7b",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -5256,7 +5256,7 @@
           "ruleSource": {
             "path": "design/cards/signature-unbalanced-crash-down.md",
             "sha256": "f723d71039389b573f65f0daeccfed38f7ecc1bd0a6270a1b47720235c637d79",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -5283,7 +5283,7 @@
           "ruleSource": {
             "path": "design/classes/shadow.md",
             "sha256": "c4e46c6cb15030029ebd8523037af6db404e39604f67cf40abb61026d1887b33",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -5310,7 +5310,7 @@
           "ruleSource": {
             "path": "design/cards/signature-shadow-soft-landing.md",
             "sha256": "b7ece2b99f2d1754daa68ce0011d73610a0e752c5e7b02449bc7bbce721d0207",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -5337,7 +5337,7 @@
           "ruleSource": {
             "path": "design/cards/signature-shadow-fade-behind.md",
             "sha256": "2114131d616f3d7d89e60c7551919d3462afbbd5498b12def92cac6154f93a29",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -5364,7 +5364,7 @@
           "ruleSource": {
             "path": "design/cards/signature-shadow-turn-their-eye.md",
             "sha256": "2c9fffe7acf7ed99b1504f350c461d218d88ec37588f8cd0cbd5da292cc26ad4",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -5391,7 +5391,7 @@
           "ruleSource": {
             "path": "design/cards/signature-shadow-strike-and-vanish.md",
             "sha256": "bd5e8b08bb8f1d74da1b80b9f17c9d0fbd7d306d8c4b475aae614c2bef77b934",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -5418,7 +5418,7 @@
           "ruleSource": {
             "path": "design/cards/signature-shadow-open-the-way.md",
             "sha256": "04fca4d765df8d6f353712239dfc16fcc6270a1088a0552370dcfe15aa4bacf8",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -5445,7 +5445,7 @@
           "ruleSource": {
             "path": "design/cards/signature-shadow-pass-the-guard.md",
             "sha256": "a66cf8b08f4eb1ef67f4c01e9aa181d0b62525ec22ed30c82490d8961f4fbb22",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -5472,7 +5472,7 @@
           "ruleSource": {
             "path": "design/cards/signature-shadow-exploit-confusion.md",
             "sha256": "86979c66d3e57d32ae7b01642ea6c451cf743843b9bc76f2e58335f0c24a5a01",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -5499,7 +5499,7 @@
           "ruleSource": {
             "path": "design/cards/signature-shadow-unseen-passage.md",
             "sha256": "f7353da887aa3e2f815ad51db9dfe70cb1f48a0cc4eab16a9e431836073f0a2b",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -5526,7 +5526,7 @@
           "ruleSource": {
             "path": "design/cards/signature-shadow-leave-no-pursuit.md",
             "sha256": "71c837cf442aba6c93c41406d4c707171fe141a2c53a3e7aa1f4aed31fa2ca40",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -5553,7 +5553,7 @@
           "ruleSource": {
             "path": "design/classes/odd.md",
             "sha256": "5a31d8fdb894b7c6a36229d11ad5c2461f34ea2b39a6a0ac089b0bde9110a001",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -5580,7 +5580,7 @@
           "ruleSource": {
             "path": "design/cards/signature-odd-the-bargain.md",
             "sha256": "2eb841066aef65e6aa29ff95e6756c6d2bf179b02d8a0cea191a98afb83de9e9",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -5607,7 +5607,7 @@
           "ruleSource": {
             "path": "design/cards/signature-odd-sideways-thinking.md",
             "sha256": "0fd235fb4cea198981d00228ff3e82e2e12445969a1614e1124c5c31a3bc3ffe",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -5634,7 +5634,7 @@
           "ruleSource": {
             "path": "design/cards/signature-odd-useful-interruption.md",
             "sha256": "2304f4884693017cfbfe6efc98b2151b0e89c8ea0ff78d77f407aac5843bf239",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -5661,7 +5661,7 @@
           "ruleSource": {
             "path": "design/cards/signature-odd-pacts-claim.md",
             "sha256": "d0cea47a43e13727315313316a6f02c7f06815b14866f6528e13db12cb18f2fe",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -5688,7 +5688,7 @@
           "ruleSource": {
             "path": "design/cards/signature-odd-wrong-place-for-that.md",
             "sha256": "8de32e2c2a69a8b9befa2201be5ce90e0320eefcaf0fc0db58ddcd08cce0fa08",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -5715,7 +5715,7 @@
           "ruleSource": {
             "path": "design/cards/signature-odd-change-the-question.md",
             "sha256": "acaeffecd195f1ffbbcbce729b2d5847b7a60654da8db841246c1dd5bed6faf9",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -5742,7 +5742,7 @@
           "ruleSource": {
             "path": "design/cards/signature-odd-the-price-deferred.md",
             "sha256": "81882cb969257482c443d86659a450951578241bc8820bdc4814cb8d544102f4",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -5769,7 +5769,7 @@
           "ruleSource": {
             "path": "design/cards/signature-odd-strange-but-effective.md",
             "sha256": "1aef247aa2ce6ed6fd6b467516201cdde7f2ef8082400b6257bb4cb5ae4080df",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -5796,7 +5796,7 @@
           "ruleSource": {
             "path": "design/cards/signature-odd-an-unexpected-exit.md",
             "sha256": "f2f1977c6d82864edbd1e817a08d562e5782b3c3371047c4d40b9852357cbcad",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -5823,7 +5823,7 @@
           "ruleSource": {
             "path": "design/classes/warden.md",
             "sha256": "1f56366c65045e073ee2714752f792cb255ff39ab6312237f83ae3038c523dfc",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -5850,7 +5850,7 @@
           "ruleSource": {
             "path": "design/cards/signature-warden-keep-the-quarry-close.md",
             "sha256": "daba4b1d048918ebf9c3ba08e2e9286f42243ebf7972b63877cb3194bb866b49",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -5877,7 +5877,7 @@
           "ruleSource": {
             "path": "design/cards/signature-warden-read-the-passing.md",
             "sha256": "6f8a7c53e280a76bd1224c05767fa43ac5751d7a105966853dce19501d4db9bf",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -5904,7 +5904,7 @@
           "ruleSource": {
             "path": "design/cards/signature-warden-follow-my-footsteps.md",
             "sha256": "15d02aa79da9bcf581fae9a93c60e0f4e1ee6d23a650483660466c62c896fed7",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -5931,7 +5931,7 @@
           "ruleSource": {
             "path": "design/cards/signature-warden-stay-on-the-scent.md",
             "sha256": "8d1b48d953492a8b12bdf9a304f43e1bd406ab1887cc6b799ee6f0795a04f83b",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -5958,7 +5958,7 @@
           "ruleSource": {
             "path": "design/cards/signature-warden-wild-partnership.md",
             "sha256": "26404230390b819f58c7aff352adf9806527f518672802296f01d45f62ccd103",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -5985,7 +5985,7 @@
           "ruleSource": {
             "path": "design/cards/signature-warden-through-bramble.md",
             "sha256": "0fa5ff77941192d4e595375367acb540fb77c3cc638703dead26e1d03f924765",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -6012,7 +6012,7 @@
           "ruleSource": {
             "path": "design/cards/signature-warden-turn-the-hunt.md",
             "sha256": "27ddbfea4073223a8d0771ceaf8d4200d0208004c9f61b21621e8f29265450a2",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -6039,7 +6039,7 @@
           "ruleSource": {
             "path": "design/cards/signature-warden-bring-them-through.md",
             "sha256": "f2b689a22e5dd009d79000a702e5593bf4230a88f6e5c20ad29ab44d9d57239a",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -6066,7 +6066,7 @@
           "ruleSource": {
             "path": "design/cards/signature-warden-know-what-you-hunt.md",
             "sha256": "8178bab861986f56dba7450d0f97ea2c45686ccb9c1a5b2aeb1fe3d544ef7ea6",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -6116,7 +6116,7 @@
           "ruleSource": {
             "path": "design/player-book/manuscript/05-disciplines.md",
             "sha256": "5c969fd684ffa072ae1b92e1e571de5402534133940f5f1ac0133259bae47595",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -6143,7 +6143,7 @@
           "ruleSource": {
             "path": "design/disciplines/armor.md",
             "sha256": "41255039cfb30b5b68db0c6021ce07470a9e5a2fa455bf848a14b15d33e77cad",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -6170,7 +6170,7 @@
           "ruleSource": {
             "path": "design/disciplines/arms.md",
             "sha256": "d800a0a588fc335d53b7243629577d8d98eeb629671faac57927b6166c340920",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -6197,7 +6197,7 @@
           "ruleSource": {
             "path": "design/disciplines/athletics.md",
             "sha256": "11d356ce6602589c225cddfbb163301a94c735b8170db8d49e31f76950db2ad3",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -6224,7 +6224,7 @@
           "ruleSource": {
             "path": "design/disciplines/craft.md",
             "sha256": "fbeb510d2be16fbf8d5c818c1cc3c4ee1fe3e2f7184e7ddb18361f4597d710a8",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -6251,7 +6251,7 @@
           "ruleSource": {
             "path": "design/disciplines/divination.md",
             "sha256": "7b8a20d0e02fac3cf37e677b27244f02d60568ad66cc16b01f1207de4198438a",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -6278,7 +6278,7 @@
           "ruleSource": {
             "path": "design/disciplines/elements.md",
             "sha256": "d8e016e5b0b6fc1517adafaf7a402c90f6b0f4176b30225c05380419086d0dad",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -6305,7 +6305,7 @@
           "ruleSource": {
             "path": "design/disciplines/fencing.md",
             "sha256": "4c0d251230457e781e4696789ce53007186b17ea5c37e305d8854da248c68c04",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -6332,7 +6332,7 @@
           "ruleSource": {
             "path": "design/disciplines/force.md",
             "sha256": "d6fbdc56685aa992f167b42ecc9226c15bc7792c63115c81c312acf62f937574",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -6359,7 +6359,7 @@
           "ruleSource": {
             "path": "design/disciplines/guard.md",
             "sha256": "945dd2e06469690fafd1bf3c0049d7b4ff96af88e173f654b120b9106e0b872e",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -6386,7 +6386,7 @@
           "ruleSource": {
             "path": "design/disciplines/influence.md",
             "sha256": "3ee804a825a86bd35967f390c7bd7ad0e1ed9558e333e3a56236768b577b7061",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -6413,7 +6413,7 @@
           "ruleSource": {
             "path": "design/disciplines/invocation.md",
             "sha256": "7b59a7569f46ac93e2c1c68ee20f042bb2ea978fd742e525ae112bd41a39feaf",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -6440,7 +6440,7 @@
           "ruleSource": {
             "path": "design/disciplines/life.md",
             "sha256": "cca89aeec471c93b20a9bdfc213d0f1c6dffdd98138cedf03ec639e17571b0aa",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -6467,7 +6467,7 @@
           "ruleSource": {
             "path": "design/disciplines/marksmanship.md",
             "sha256": "12fa76030783c1f369706c72549e3bd489c3bcbf0e89d0466348d9e721143b38",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -6494,7 +6494,7 @@
           "ruleSource": {
             "path": "design/disciplines/medicine.md",
             "sha256": "282b1a78e3334aa62d36a6e465603c17619e48e372b458e26ad16bd13083dac9",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -6521,7 +6521,7 @@
           "ruleSource": {
             "path": "design/disciplines/mentalism.md",
             "sha256": "85e9826317bd8e30ab502e8d52e10634f700b4534d6be9d4e4d8ad2508a04357",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -6548,7 +6548,7 @@
           "ruleSource": {
             "path": "design/disciplines/scholarship.md",
             "sha256": "275e42a3d5849e9717a75464e686dd84479ff9bc981786702d780f04125e1a40",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -6575,7 +6575,7 @@
           "ruleSource": {
             "path": "design/disciplines/spellcraft.md",
             "sha256": "e771ad80b1a17b22908e8e033ef64f6a55d423ac96c8f068fbd8cd9b204a4c0b",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -6602,7 +6602,7 @@
           "ruleSource": {
             "path": "design/disciplines/subterfuge.md",
             "sha256": "6d59f4fd7af31a23809d4359ddcaddc501b1512cc93e0546f6a8297a934ac827",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -6629,7 +6629,7 @@
           "ruleSource": {
             "path": "design/disciplines/tactics.md",
             "sha256": "4aadb00b107af38e3f73b8bf5478d37df56f20d9a8b72e171ee83afe3c38b3ae",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -6656,7 +6656,7 @@
           "ruleSource": {
             "path": "design/disciplines/wards.md",
             "sha256": "947f795572de668944cbcce53817f02afbb7670193fde9725d4a7d3baf720c84",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -6683,7 +6683,7 @@
           "ruleSource": {
             "path": "design/disciplines/wilderness.md",
             "sha256": "f9a97f86547979eb4647cb2f8673de91ad1135482b7c7151a10f1b3b01f679b7",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -6710,7 +6710,7 @@
           "ruleSource": {
             "path": "design/rules/learning.md",
             "sha256": "d4722e22200a672538af526f4435f70bf2710da4c7188ac20ba5df4e35911d54",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -6737,7 +6737,7 @@
           "ruleSource": {
             "path": "design/rules/magic.md",
             "sha256": "98b8ce499a20448c776b128c8d8ac55cfcc5b0defeb74e7fe8677d02b2c845ac",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -6764,7 +6764,7 @@
           "ruleSource": {
             "path": "design/disciplines.md",
             "sha256": "aec5c314ecc3d7fea61f0983d39d4482c6c7878f659cb3c4bed784b2039e46fe",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -6791,7 +6791,7 @@
           "ruleSource": {
             "path": "design/spellbooks/protection.md",
             "sha256": "897516ccbdcdae823eb36463006b2e3376b3caae701aaedc4a6b232f9228c883",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -6818,7 +6818,7 @@
           "ruleSource": {
             "path": "design/spellbooks/sanctuary.md",
             "sha256": "e3ec4e525bdc164cf2c4b437fc5d6f7591adce479d2e9ed2b8474e2a0d885fe8",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -6845,7 +6845,7 @@
           "ruleSource": {
             "path": "design/spellbooks/seals.md",
             "sha256": "51bfe042096aa92d64f87d736de0191b8539d830f03a03d9c257ce0eba85e973",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -6872,7 +6872,7 @@
           "ruleSource": {
             "path": "design/spellbooks/unraveling.md",
             "sha256": "891aaa50f893cee7c2e11f3dbcf98c16c9f8f07a4214fe5a657b7b4fce7edbf5",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -6899,7 +6899,7 @@
           "ruleSource": {
             "path": "design/spellbooks/dreams.md",
             "sha256": "2161e3e4ebcab897372fc5ad71a277e9d47fc2c52937ecde82fd9dfe5a71d0ff",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -6926,7 +6926,7 @@
           "ruleSource": {
             "path": "design/spellbooks/emotion.md",
             "sha256": "2ad4cd93b39efb3ac1a478f46322c248a5c21df27065493196975c8b9cc7d2c4",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -6953,7 +6953,7 @@
           "ruleSource": {
             "path": "design/spellbooks/perception.md",
             "sha256": "aa25a9423a8ca82e7e199243404c8a5ff789297342dacee8738f08f01887db30",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -6980,7 +6980,7 @@
           "ruleSource": {
             "path": "design/spellbooks/thought.md",
             "sha256": "c696b1ad56c3c1cb3d4919eb64f3a56ef40b7afaaecbe294d8a04d18d9246dab",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -7007,7 +7007,7 @@
           "ruleSource": {
             "path": "design/spellbooks/animation.md",
             "sha256": "34ec3c1291c84ace8e993cea53c7c59feeafb6fd8b59a8b4a2de3eed6d0479c6",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -7034,7 +7034,7 @@
           "ruleSource": {
             "path": "design/spellbooks/imbuement.md",
             "sha256": "420cf967aab830d0f90922ad10c294faeedadaade975d82330570b0d8c6ea8a4",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -7061,7 +7061,7 @@
           "ruleSource": {
             "path": "design/spellbooks/shaping.md",
             "sha256": "710d130377729dedbda0dc6d1e339c17745170b3149481d36ffbf664944edf1e",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -7088,7 +7088,7 @@
           "ruleSource": {
             "path": "design/spellbooks/telekinesis.md",
             "sha256": "f790353cbee59292360b659a520e82ccd263ed192c59ebfa9815df8d069a34fc",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -7115,7 +7115,7 @@
           "ruleSource": {
             "path": "design/spellbooks/earth.md",
             "sha256": "d989e5a7a379e22ec0e0fdc1e02ab4881c592a8f553d7c92658a138152fde24f",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -7142,7 +7142,7 @@
           "ruleSource": {
             "path": "design/spellbooks/detection.md",
             "sha256": "599b5ddbf26ff5059a420c1fdbc5d5f17c65335cac3411a1f9bfe766beef43e9",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -7169,7 +7169,7 @@
           "ruleSource": {
             "path": "design/spellbooks/echoes.md",
             "sha256": "0f9b196ff0895290da8e183247f8c6923b443c30b50748cf22587f3d283c0406",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -7196,7 +7196,7 @@
           "ruleSource": {
             "path": "design/spellbooks/farseeing.md",
             "sha256": "918c6ccec6770c480817d4094a2b754f3c404197ac42403cbbc519c974f23716",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -7223,7 +7223,7 @@
           "ruleSource": {
             "path": "design/spellbooks/portents.md",
             "sha256": "b2b1af80d524f12070ee01ce94ab09362931b89d94cb03fe350d28aa8299ce9c",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -7250,7 +7250,7 @@
           "ruleSource": {
             "path": "design/spellbooks/decay.md",
             "sha256": "4c18108a063848f2e892576d0dff620f36c85c0821947c657f37023a6bebbd4b",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -7277,7 +7277,7 @@
           "ruleSource": {
             "path": "design/spellbooks/growth.md",
             "sha256": "f40e2e5e9801f000bc9dda1cdb55c1c3ebf02564f214966f5e69cb3c355b8605",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -7304,7 +7304,7 @@
           "ruleSource": {
             "path": "design/spellbooks/restoration.md",
             "sha256": "095b1b70870c324ca7474d01e813bedaf442fc000a880a6720534c0faf819973",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -7331,7 +7331,7 @@
           "ruleSource": {
             "path": "design/spellbooks/transformation.md",
             "sha256": "5a840350c363d9483eba17c8d73bc2d2260d03fd71920468d83affa6a6dae537",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -7358,7 +7358,7 @@
           "ruleSource": {
             "path": "design/spellbooks/channeling.md",
             "sha256": "f04995414b700fdcc1abb32552e8091b98720f61f464a90cabb47b003559ccbd",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -7385,7 +7385,7 @@
           "ruleSource": {
             "path": "design/spellbooks/binding.md",
             "sha256": "fed162000e83615e1686fe8eb177bad952d8e21b1fb6f5eab4ce2b65899c3ff1",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -7412,7 +7412,7 @@
           "ruleSource": {
             "path": "design/spellbooks/calling.md",
             "sha256": "69fc607f0f57cabeb7437008e39bd13cb558f9f70ff7357b0d0c41593a93a9d7",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -7439,7 +7439,7 @@
           "ruleSource": {
             "path": "design/spellbooks/passage.md",
             "sha256": "1ee81efbd96cc6cde950ef09a4ea8ef24b60f2abf1256f271428d1cf71ea616f",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -7466,7 +7466,7 @@
           "ruleSource": {
             "path": "design/spellbooks/spirits.md",
             "sha256": "3ec22ea8f205c27a0fc8495a4ddb6eb902eeae6e9a4e864caa655e612e96dcb9",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -7493,7 +7493,7 @@
           "ruleSource": {
             "path": "design/spellbooks/flame.md",
             "sha256": "78beaa4f4b0544275dfc1d71d04161453beea52a5563fe4c69157f86d07cef8b",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -7520,7 +7520,7 @@
           "ruleSource": {
             "path": "design/spellbooks/water.md",
             "sha256": "8bf7b536cb7ba20258d375f06dc3a041c6c0c72f31825521f374dbc4694c87d5",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -7547,7 +7547,7 @@
           "ruleSource": {
             "path": "design/spellbooks/air.md",
             "sha256": "760ef3eaed4cc32e3e2e5d7f8b50378249a7edfaf4d7e934f023899a5b453f9c",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -7597,7 +7597,7 @@
           "ruleSource": {
             "path": "design/player-book/manuscript/06-playing.md",
             "sha256": "c819b25ee0ad849378cfda669b547d4bf231b1314288abfc4e6bbd471cfdfe11",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -7624,7 +7624,7 @@
           "ruleSource": {
             "path": "design/rules/vision.md",
             "sha256": "321e19030ac14ade7e51dc2718d0a73d9d98abe068479c0b6de171fa94d5d1f4",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -7651,7 +7651,7 @@
           "ruleSource": {
             "path": "design/rules/foundations.md",
             "sha256": "fb8a8d3db295bcdea09b4657a4c3ae5553c54db91b219588927a79ed9f29a5b8",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -7678,7 +7678,7 @@
           "ruleSource": {
             "path": "design/rules/session-resolution.md",
             "sha256": "dcf38de67847b5a18c92db21cbc00b93e2628942258010033183c98ca42daf22",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -7705,7 +7705,7 @@
           "ruleSource": {
             "path": "design/rules/stability.md",
             "sha256": "fdd44dac48682dbfae110c12e3f2e6c96907fdc61e77da0df49ba20616bfc6c8",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -7755,7 +7755,7 @@
           "ruleSource": {
             "path": "design/player-book/manuscript/07-adventure.md",
             "sha256": "8f5c2fb4458ee789bbac9469cc4e87851305b5693c837c9cafbc63539ee60ec1",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -7782,7 +7782,7 @@
           "ruleSource": {
             "path": "design/rules/languages.md",
             "sha256": "c1ca6f157429d5c1c384c31d6a1fc67c3ab78053f7e3c1f3955864c6c32a3935",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -7809,7 +7809,7 @@
           "ruleSource": {
             "path": "design/rules/objectives.md",
             "sha256": "5c8554607293fe1bb7de46260443a6de2482baafee09489c7cb473d90d79d03f",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -7859,7 +7859,7 @@
           "ruleSource": {
             "path": "design/player-book/manuscript/08-recovery.md",
             "sha256": "6d4872f3f034cea6194ca9015f18a608ebca5af1f35d4a2a8fa8bce0ca5799b3",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -7886,7 +7886,7 @@
           "ruleSource": {
             "path": "design/rules/conditions.md",
             "sha256": "120e95dde668944037cbdd11dea4dc70b2d393827fb271dbf2b01453be15b053",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -7913,7 +7913,7 @@
           "ruleSource": {
             "path": "design/rules/recovery.md",
             "sha256": "cbb732c670d8b010ac5ef4b0db5376a6ec815dbd82b0fe7e84f99a47a4422335",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -7963,7 +7963,7 @@
           "ruleSource": {
             "path": "design/player-book/manuscript/09-abilities.md",
             "sha256": "347853829da982c2df3042ba289881868dc33c97dcae56696f6b917c71dffa72",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -7990,7 +7990,7 @@
           "ruleSource": {
             "path": "design/cards/aid.md",
             "sha256": "246d22d9d6fcf35b6bc6ecb3f3391f41c67cce926b89a66d2dc2ce3ed64e79d5",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -8017,7 +8017,7 @@
           "ruleSource": {
             "path": "design/cards/basic-melee.md",
             "sha256": "195d356e0cea74ca1792f4781c732b24d202ea6262cf2198efbdf91826924740",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -8044,7 +8044,7 @@
           "ruleSource": {
             "path": "design/cards/basic-ranged.md",
             "sha256": "363ffcc352b7efc9403d0bbe8596ab364958ea440cab9051b4a61b79807969a8",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -8071,7 +8071,7 @@
           "ruleSource": {
             "path": "design/cards/basic-throw.md",
             "sha256": "3735911d4071db8bfff937fc9a0efe0119b7321e2246dde91a84bbd2482b82ad",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -8098,7 +8098,7 @@
           "ruleSource": {
             "path": "design/cards/basic-unarmed.md",
             "sha256": "b56af9b388d7846c688f3224d3eed3013acb49f0df1b39a375bd3e06e387394f",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -8125,7 +8125,7 @@
           "ruleSource": {
             "path": "design/cards/command-a-summon.md",
             "sha256": "ce0b72de4136e8754827749146128f5e1c3f9392fe1fade9d696688588f03155",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -8152,7 +8152,7 @@
           "ruleSource": {
             "path": "design/cards/convert-an-action.md",
             "sha256": "a1b5bc358c0b88d98a94b4a7274c5d3467240909460d281b048ad439e5c7a35d",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -8179,7 +8179,7 @@
           "ruleSource": {
             "path": "design/cards/defend.md",
             "sha256": "76ce970ae3353024ec605abd9ad3f7150da0d49b2b61b47d54eef71a2adbb2cc",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -8206,7 +8206,7 @@
           "ruleSource": {
             "path": "design/cards/disengage.md",
             "sha256": "0a1f6e37a922ad8caf7db55b1fa8530cfebb83cc0d17e5aaa5e34b2a237eea8c",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -8233,7 +8233,7 @@
           "ruleSource": {
             "path": "design/cards/force.md",
             "sha256": "da3e3a27eb44333bbc604a3740ece62ce5ba225b2c60bce0a1f5ade29e587d82",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -8260,7 +8260,7 @@
           "ruleSource": {
             "path": "design/cards/handle-an-item.md",
             "sha256": "67ab52c6d3392578f8c1095e616d8720c696ee4b0e534ce083cc3ae9ee66a86a",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -8287,7 +8287,7 @@
           "ruleSource": {
             "path": "design/cards/move.md",
             "sha256": "1bf14a5e1f7e0eebc44f1cf55dd6610b7014628cdbfa5da588a6d8c74818fbb3",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -8314,7 +8314,7 @@
           "ruleSource": {
             "path": "design/cards/opportunity-attack.md",
             "sha256": "73db1d46a657cc29abff9141357bff5e553564de3240f16a473e965b13e53b94",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -8341,7 +8341,7 @@
           "ruleSource": {
             "path": "design/cards/reduce-a-condition.md",
             "sha256": "5117edf3653d02a41e02d4a4f74ac0b7543dfa09bbdcee22d6ef0111dc1ea18f",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -8368,7 +8368,7 @@
           "ruleSource": {
             "path": "design/cards/shield-block.md",
             "sha256": "ff6eae0fcee3cd150b488183c4dbc93382ed17dbc44666254ecf65889bf8f19b",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -8395,7 +8395,7 @@
           "ruleSource": {
             "path": "design/cards/stabilize.md",
             "sha256": "092f118fbdd1dc7c11586d0183ed7d4ceca9cab7b4aceb0d6e238b72660399a4",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -8422,7 +8422,7 @@
           "ruleSource": {
             "path": "design/cards/stand.md",
             "sha256": "257ac3a02177ded871a3674b3d4be24a35cafe1911c0144faf604dc394ac3633",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -8449,7 +8449,7 @@
           "ruleSource": {
             "path": "design/cards/sustain-spell.md",
             "sha256": "8b949b5e884fc32e4609602602504b6eb1a205e16df091866365ec5269c7dc28",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -8476,7 +8476,7 @@
           "ruleSource": {
             "path": "design/cards/use-a-healing-potion.md",
             "sha256": "84933878119fa6ac46406c0f501a6324decfa333e207019fa166d9603d7ae6af",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -8526,7 +8526,7 @@
           "ruleSource": {
             "path": "design/player-book/manuscript/10-equipment.md",
             "sha256": "54c61d6a4f3a3cc5175eb7e4c110c857c7128b9c7a704d9e21ca2845b962a3a8",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -8553,7 +8553,7 @@
           "ruleSource": {
             "path": "design/market.md",
             "sha256": "b62ee3c922f5ca563804e3d701e554329849e31f36768b80bc31c8ce4d3ab53d",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -8580,7 +8580,7 @@
           "ruleSource": {
             "path": "design/player-book/manuscript/intro-equipment.md",
             "sha256": "3561c531a7139dcda78018166f0655d366ebe29351b57f87ff29f53c911fefea",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -8607,7 +8607,7 @@
           "ruleSource": {
             "path": "design/equipment/ammunition-bundle.md",
             "sha256": "c02935b51488491b7bd0f00ae0c1926e9cf0778e0895bb13b6489389c16020f6",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -8634,7 +8634,7 @@
           "ruleSource": {
             "path": "design/equipment/book-of-quiet-doors.md",
             "sha256": "2eb2fc988fa75c00f37395a9fe4a98112cc11a5fed90146602ba1f5fbd46aeab",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -8661,7 +8661,7 @@
           "ruleSource": {
             "path": "design/equipment/chain-coil.md",
             "sha256": "c11703294ad3bd70f86283d19ffa5481c30d76e8ab3038b4609576bcd3eb6f55",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -8688,7 +8688,7 @@
           "ruleSource": {
             "path": "design/equipment/cincture-of-might.md",
             "sha256": "20aa5c5fbc4d12a843987f7a19d5c13fca06aead57eb1294a5f55246f823c9ab",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -8715,7 +8715,7 @@
           "ruleSource": {
             "path": "design/equipment/clearing-tonic.md",
             "sha256": "e23eb9d479a8547676146a535bf56d9b2c13dc83ab5b7b5597e3f81844499d8e",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -8742,7 +8742,7 @@
           "ruleSource": {
             "path": "design/equipment/climbing-fittings.md",
             "sha256": "b7052601ccd087483d6824a838d8a80754856e77a796da5a599445b0fe17b700",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -8769,7 +8769,7 @@
           "ruleSource": {
             "path": "design/equipment/craft-tools.md",
             "sha256": "ffed6d1a46d316f0b9434c6575fd59e9766733c701d2c9c38567984853996edf",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -8796,7 +8796,7 @@
           "ruleSource": {
             "path": "design/equipment/digging-tools.md",
             "sha256": "ec3263f560891397286f988c82b5bcea679dbd5fd67a85520f37937a497f8b6d",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -8823,7 +8823,7 @@
           "ruleSource": {
             "path": "design/equipment/disguise-clothes.md",
             "sha256": "eb79e3b0d58ba6d3e29af4c4d701a49c96e1ae342bceb0f95fb53d40d81b69d1",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -8850,7 +8850,7 @@
           "ruleSource": {
             "path": "design/equipment/ember-edge.md",
             "sha256": "5b00f7bea7d60e3dd13570c4bc47bed8c854eba70d4977f4787e709c1e7dfeab",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -8877,7 +8877,7 @@
           "ruleSource": {
             "path": "design/equipment/food-bundle.md",
             "sha256": "2a4f33076941ca8131977c9631bf35d206e0729f86191d91532a3d710a23eb4d",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -8904,7 +8904,7 @@
           "ruleSource": {
             "path": "design/equipment/glass-of-fine-detail.md",
             "sha256": "3ace7427d54c7b622f9314eb4672490bb6d87ffe841d8fa5e942a5baf72bf82d",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -8931,7 +8931,7 @@
           "ruleSource": {
             "path": "design/equipment/gravebound-brooch.md",
             "sha256": "261ba1de92ca5ce990992ad8e7975c9620454d30038ac8e1a78b53efb29fcf8e",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -8958,7 +8958,7 @@
           "ruleSource": {
             "path": "design/equipment/greater-healing-bottle.md",
             "sha256": "4bf2db73f94f05fedae447810ef59bea829b96f6fd655356c33b324d9b2b85a0",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -8985,7 +8985,7 @@
           "ruleSource": {
             "path": "design/equipment/lesser-healing-bottle.md",
             "sha256": "353fbba306dbd03dd560d1b66d18278cfc9f72e68ae662d15f537dcd19d8c178",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -9012,7 +9012,7 @@
           "ruleSource": {
             "path": "design/equipment/lever-and-wedges.md",
             "sha256": "d947fcbfe91a440befede4166427c09774ef42638709768322526810c552b1d0",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -9039,7 +9039,7 @@
           "ruleSource": {
             "path": "design/equipment/lighting-bundle.md",
             "sha256": "3390effd45ee534f883dfff09b6afd7f277782c8c3f8df57f794abc263dc3b69",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -9066,7 +9066,7 @@
           "ruleSource": {
             "path": "design/equipment/local-map.md",
             "sha256": "013ccd4aca49de93fa83f9cc3f5d9d6807efda78041f7406be83b543aa283b20",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -9093,7 +9093,7 @@
           "ruleSource": {
             "path": "design/equipment/lock-tools.md",
             "sha256": "f026f86b2e7da159dc03563d775858ad7ba22947170cc216dcb2c41a8a84bf41",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -9120,7 +9120,7 @@
           "ruleSource": {
             "path": "design/equipment/material-bundle.md",
             "sha256": "b3f6a85c25e80ed5b9e0b53e028211334da7d17afa1d1107cd59436a454ce9d9",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -9147,7 +9147,7 @@
           "ruleSource": {
             "path": "design/equipment/mixing-kit.md",
             "sha256": "1a6084d7e6a5a1822fb03be8123393951cc3fb74e3a252bbcd94fcd59032331a",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -9174,7 +9174,7 @@
           "ruleSource": {
             "path": "design/equipment/musical-instrument.md",
             "sha256": "200cd2a56fe9b6a043054c1662ebe4dbda38c81cba2785e134388fd42693045e",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -9201,7 +9201,7 @@
           "ruleSource": {
             "path": "design/equipment/ordinary-heavy-armor.md",
             "sha256": "01a7b66d62c1a5f69f98608af1d83c7309683cc238dfd2eda6c733800860461d",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -9228,7 +9228,7 @@
           "ruleSource": {
             "path": "design/equipment/ordinary-light-armor.md",
             "sha256": "78e4963f8ce17a454c4bc6526419166a71b253c771329b0b8c13bc1342efbae8",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -9255,7 +9255,7 @@
           "ruleSource": {
             "path": "design/equipment/ordinary-medium-armor.md",
             "sha256": "342d7fc677662f54b517451d0e11f2940bfe089e3f4a89f43081628d05309654",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -9282,7 +9282,7 @@
           "ruleSource": {
             "path": "design/equipment/ordinary-melee-weapon.md",
             "sha256": "541a3db620061e7a67ab8dd2ff0535df2749b413ce45689296ba48f40c8eefee",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -9309,7 +9309,7 @@
           "ruleSource": {
             "path": "design/equipment/ordinary-ranged-weapon.md",
             "sha256": "9a8eb7005f2f25db1ed90df92777436604e7466f9803ba039921729b623e5671",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -9336,7 +9336,7 @@
           "ruleSource": {
             "path": "design/equipment/ordinary-shield.md",
             "sha256": "bb1853376e23ce49755c14aa8ec9899512540bc529a4448a42c3e78f9654dc0f",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -9363,7 +9363,7 @@
           "ruleSource": {
             "path": "design/equipment/padlock.md",
             "sha256": "2486954008ddd2e6cef47efc32456f759f326c06bec006cc5b6e92b0576cb2b6",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -9390,7 +9390,7 @@
           "ruleSource": {
             "path": "design/equipment/restraints.md",
             "sha256": "bcd37283e5c5216ee9bc0e16a2743f9a2ae42022464a5d942eb126da53fb0630",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -9417,7 +9417,7 @@
           "ruleSource": {
             "path": "design/equipment/rope-coil.md",
             "sha256": "36764f0405445fb2479940770dc7cc0e2fe27b00b8703bbd16a56149820bc83a",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -9444,7 +9444,7 @@
           "ruleSource": {
             "path": "design/equipment/signal-kit.md",
             "sha256": "c48685f7a976efb358a4990488cbc565a2714885806ce13cdc959783ecbef8e0",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -9471,7 +9471,7 @@
           "ruleSource": {
             "path": "design/equipment/sleeping-roll.md",
             "sha256": "3e89c7c5aa5c2f64d28108e47c10b3544d00fa2e4dcfdc4406279b2af65e44ce",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -9498,7 +9498,7 @@
           "ruleSource": {
             "path": "design/equipment/small-necessities.md",
             "sha256": "3e246478e7a9231240b81111def96bd089dbede5f08ad1687761da026a9437c7",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -9525,7 +9525,7 @@
           "ruleSource": {
             "path": "design/equipment/small-tent.md",
             "sha256": "32d20a1accd35e707e8bbd8ebb50f7220d6d697d80ea38123682677288ea25bb",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -9552,7 +9552,7 @@
           "ruleSource": {
             "path": "design/equipment/smoke-supply.md",
             "sha256": "cb5f850f7f7463966264bddea0a180f040681f74b875ec6e55a018d64b3e5677",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -9579,7 +9579,7 @@
           "ruleSource": {
             "path": "design/equipment/superior-healing-bottle.md",
             "sha256": "f689e243706b257f2d5ab085563250a9c7322bf8a6438db6f60e4c055528a676",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -9606,7 +9606,7 @@
           "ruleSource": {
             "path": "design/equipment/trade-sack.md",
             "sha256": "dde790f4d6d6a1bac96852aee86642a0218bdf3531113372a702e6ca81ee2409",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -9633,7 +9633,7 @@
           "ruleSource": {
             "path": "design/equipment/travel-clothes.md",
             "sha256": "08719e82259f870ccac4e5295f139d4694449c0233acf20478ecc00f596dd3ba",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -9660,7 +9660,7 @@
           "ruleSource": {
             "path": "design/equipment/travel-pack.md",
             "sha256": "7ba4d0fa1492af9f7ae6b20fea45323de34e592e04ddda2d9b8fdf74f3a3c918",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -9687,7 +9687,7 @@
           "ruleSource": {
             "path": "design/equipment/water-flask.md",
             "sha256": "c665db0f0ff6b67c74bbe78a6c4b6574b12047339dd3c593dfb46ad049c92988",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -9714,7 +9714,7 @@
           "ruleSource": {
             "path": "design/equipment/weather-clothes.md",
             "sha256": "b3fea16c52c181be45419e9249d3dc845b46e74dba6f8782c94d9a0fe80f8cec",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -9741,7 +9741,7 @@
           "ruleSource": {
             "path": "design/equipment/winter-lining.md",
             "sha256": "4834218c2ea801166992f2a64aaac68f94ec0645364c592283f80d7f909f5bde",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -9768,7 +9768,7 @@
           "ruleSource": {
             "path": "design/equipment/writing-kit.md",
             "sha256": "21dc1c071c004e87f0f2044faaa27f65b80af14822d09347b0109ea37949d9a6",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -9795,7 +9795,7 @@
           "ruleSource": {
             "path": "design/player-book/manuscript/intro-recipes.md",
             "sha256": "99b46909f5a22907d50dddccff4d88653012ebe2f1b3887d55365b72d0d16535",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -9822,7 +9822,7 @@
           "ruleSource": {
             "path": "design/recipes/bound-torches.md",
             "sha256": "3821826d83056f8c1de61c05940376519acf209c7ef70633759c699d752cf0fd",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -9849,7 +9849,7 @@
           "ruleSource": {
             "path": "design/recipes/camp-shelter.md",
             "sha256": "5f5de2add91fad8284cbfc7900becedcf76c5c2d39770defdaff28c60045829c",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -9876,7 +9876,7 @@
           "ruleSource": {
             "path": "design/recipes/clearing-tonic.md",
             "sha256": "cc7553697490156d16bc04f88c553ec7af0bb62b06d903d06be603204b105f83",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -9903,7 +9903,7 @@
           "ruleSource": {
             "path": "design/recipes/fletched-ammunition.md",
             "sha256": "fed19e2059c1a5f3fa747762cd81563f76d1bcb6a0ac419895a639d9d62f96e9",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -9930,7 +9930,7 @@
           "ruleSource": {
             "path": "design/recipes/lesser-healing-bottle.md",
             "sha256": "407e078b0c6f6bab870b28b12096328e96be4d4e2a261216e2312278bad3cb72",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -9957,7 +9957,7 @@
           "ruleSource": {
             "path": "design/recipes/simple-replacement-leg.md",
             "sha256": "14609709a7e76dad087442e027ee75ce68bf856f42f2b36e2bcd4ece7bc12141",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -9984,7 +9984,7 @@
           "ruleSource": {
             "path": "design/recipes/smoke-flask.md",
             "sha256": "b5c5d17df13622ce2f5838813ede647186d4556037f44268cb7697e455b069af",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -10011,7 +10011,7 @@
           "ruleSource": {
             "path": "design/recipes/travel-food.md",
             "sha256": "4679665c1e121e696bb6f311fb13e6490fb546d37692aecf14836fe5f10d9ebd",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -10038,7 +10038,7 @@
           "ruleSource": {
             "path": "design/recipes/twisted-cord.md",
             "sha256": "418bf6742ed40cbaf53385a7f8e465470c89d874998f2f2b0bd0ba699881cdfa",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -10065,7 +10065,7 @@
           "ruleSource": {
             "path": "design/recipes/wooden-brace.md",
             "sha256": "b4f3d2e42fcf5afff1cd255be06a8d338f7cbba1b4ed08342860e16545a30fbc",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -10115,7 +10115,7 @@
           "ruleSource": {
             "path": "design/player-book/manuscript/11-summons.md",
             "sha256": "1bbbf07f4c892fa308b787de3376608292b9b4e83b36cf5cb5606309caf72d33",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -10142,7 +10142,7 @@
           "ruleSource": {
             "path": "design/rules/summoning.md",
             "sha256": "debbf1dc557321342f977a084a644d2bfa51fea1a922b16eb6028e10606e1bda",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -10192,7 +10192,7 @@
           "ruleSource": {
             "path": "design/rules/wounds.md",
             "sha256": "299a6e17f66970fa5168f576cd1790343196add6cd02ab3494d578b71587388b",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -10242,7 +10242,7 @@
           "ruleSource": {
             "path": "design/characters/borin-bridgekeeper.md",
             "sha256": "f9874badc46f05f1eee4d8d7702cb972187124cd40192a39117ac0ac5735dac8",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -10269,7 +10269,7 @@
           "ruleSource": {
             "path": "design/characters/lira-ashbow.md",
             "sha256": "d98f2f3a8e448682a538e55f114f1a8e355336df5bee88227ddb2d13d074cb30",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -10296,7 +10296,7 @@
           "ruleSource": {
             "path": "design/characters/mara-reedheart.md",
             "sha256": "e7f385f12c2e082434edc64ee3ba460f9daff7d41c65d4f34f464fb06d37b62e",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -10323,7 +10323,7 @@
           "ruleSource": {
             "path": "design/characters/oren-brass.md",
             "sha256": "c74c158f353f85e5e09741d68804fc310aaf092322126bfa959540caa5be05fd",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -10350,7 +10350,7 @@
           "ruleSource": {
             "path": "design/characters/pip-copperwink.md",
             "sha256": "ca926ef97fb81163a6c45c8872847d966680d327688d140367e0d9f485994a07",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -10377,7 +10377,7 @@
           "ruleSource": {
             "path": "design/characters/README.md",
             "sha256": "730dd7443423da5747ee1f0716ed989bc1f22b8fb25507bdcf91f5053f258d0b",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -10404,7 +10404,7 @@
           "ruleSource": {
             "path": "design/characters/vaelis-emberglass.md",
             "sha256": "a895e03e3de1dee8949d2f54ca941654078ad9a79ac50f472bb0ce968ab2a13e",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -10454,7 +10454,7 @@
           "ruleSource": {
             "path": "design/player-book/manuscript/14-reference.md",
             "sha256": "2860976933deceb3cdc7d43043055a5ca474dcefa5ace7554821868475ea9962",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -10504,7 +10504,7 @@
           "ruleSource": {
             "path": "design/catalog.md",
             "sha256": "a40b5a168e12dbfb1c8f23992e6fa6a4b17de7918ccdef6039a5fcda8548ea7d",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -10531,7 +10531,7 @@
           "ruleSource": {
             "path": "design/card-conventions.md",
             "sha256": "4b6d9578bf5622a18ae4517badf0145234412d5d59c7a7348cf84208a862bdb0",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -10558,7 +10558,7 @@
           "ruleSource": {
             "path": "design/player-book/decision-log.md",
             "sha256": "820e98a0ddcd129b289d29e5af2427f8a3284e7c769012731ace5021d187f02b",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -10585,7 +10585,7 @@
           "ruleSource": {
             "path": "design/rules/encounters.md",
             "sha256": "a30b21e1ec8c2da78d24600be50f8b7f55bc700fa9d15a17d30863ebd1dd5de7",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
@@ -10612,7 +10612,7 @@
           "ruleSource": {
             "path": "design/magic-endpoints.md",
             "sha256": "0d616d65e40b8ecbedc9ec5112367bf2d6224c428ca3221ebe1261a2004468eb",
-            "commit": "59610c9cc291340484f07024f7a48b7690520e6f"
+            "commit": "bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6"
           }
         }
       },
