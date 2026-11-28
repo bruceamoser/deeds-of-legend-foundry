@@ -1,6 +1,6 @@
 # Harka Stormshoulder: barbarian after the rewrite
 
-Pinned authored source `59610c9cc291340484f07024f7a48b7690520e6f`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../barbarian.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
+Pinned authored source `bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6`. These HoL levels 1, 3 and 7 test the same trope over its development. The [original paired build](../barbarian.md) supplies the researched D&D 2024 level-2 baseline (2025 Artificer). It is not a claim that these later HoL levels numerically match higher D&D levels. Original HoL files are historical evidence, not current legal builds.
 
 ## What the rewrite changes
 

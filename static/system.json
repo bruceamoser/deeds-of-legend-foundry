@@ -2,7 +2,7 @@
   "id": "heroes-of-legend",
   "title": "Deeds of Legend",
   "description": "Deeds of Legend for Foundry VTT V14: guided character creation, discipline learning and spellbooks, compact character and creature sheets, player rolls, HP and spell points, scars and recovery, equipment, and player/DA rulebooks. Specialty effects resolve at the table unless their controls provide an explicit procedure.",
-  "version": "3.7.3",
+  "version": "3.7.4",
   "authors": [
     {
       "name": "Bruce Moser"
@@ -103,5 +103,5 @@
     "styles/native-chat.css"
   ],
   "manifest": "https://github.com/bruceamoser/deeds-of-legend-foundry/releases/latest/download/system.json",
-  "download": "https://github.com/bruceamoser/deeds-of-legend-foundry/releases/download/v3.7.3/heroes-of-legend.zip"
+  "download": "https://github.com/bruceamoser/deeds-of-legend-foundry/releases/download/v3.7.4/heroes-of-legend.zip"
 }

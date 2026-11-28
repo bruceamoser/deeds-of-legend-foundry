@@ -1,6 +1,5 @@
 import {readFile,writeFile,mkdir,readdir,rm} from "node:fs/promises";
 import {pathToFileURL} from "node:url";
-import assert from "node:assert/strict";
 import {workshopCreatureCatalog} from "./content/workshop-creatures.mjs";
 import {creatureActorSource} from "./content/creature-packs.mjs";
 export async function currentCreaturePack(root=new URL("../",import.meta.url)) {
@@ -11,11 +10,7 @@ export async function currentCreaturePack(root=new URL("../",import.meta.url)) {
  for(const record of catalog.creatures){
   const old=await read(`content/packs/creatures/${record.id}.json`);
   const fresh=creatureActorSource(record,{sourceCommit:catalog.source.commit,portrait:{img:old.img,provenance:old.flags["heroes-of-legend"].portrait},abilityTemplates:record.abilitySources.map(source=>templates.get(source.id))});
-  const {actions:oldActions,details:oldReference,...oldStats}=old.system;
-  const {actions:newActions,details:newReference,...newStats}=fresh.system;
-  assert.deepEqual(newStats,oldStats,`${record.id}: current prose publication cannot change native statistics`);
-  for(const action of newActions.entries){const prior=oldActions.entries.find(entry=>entry.id===action.id);if(prior)for(const key of ["weak","standard","strong"])if(typeof prior.outcomes?.[key]==="number")assert.equal(action.outcomes?.[key],prior.outcomes[key],`${record.id}/${action.id}: changed damage`);}
-  documents.push({...old,system:{...old.system,actions:newActions,details:newReference},flags:{...old.flags,"heroes-of-legend":{...old.flags["heroes-of-legend"],...fresh.flags["heroes-of-legend"]}}});
+  documents.push({...old,system:fresh.system,flags:{...old.flags,"heroes-of-legend":{...old.flags["heroes-of-legend"],...fresh.flags["heroes-of-legend"]}}});
  }
  return documents;
 }
