@@ -1,6 +1,6 @@
 # Revised trope Build-Offs
 
-Pinned authored source `59610c9cc291340484f07024f7a48b7690520e6f`. Thirteen continuing characters are validated at HoL levels 1, 3 and 7: **39 ready portable characters**. The earlier [Build-Offs](../README.md) remain unchanged historical comparison material.
+Pinned authored source `bd2c0d0ec0e52a3d870be67d0b8435b8529ffcb6`. Thirteen continuing characters are validated at HoL levels 1, 3 and 7: **39 ready portable characters**. The earlier [Build-Offs](../README.md) remain unchanged historical comparison material.
 
 - [barbarian: Harka Stormshoulder](barbarian.md)
 - [bard: Lysa Silverstring](bard.md)
